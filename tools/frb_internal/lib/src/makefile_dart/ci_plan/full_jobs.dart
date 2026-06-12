@@ -14,7 +14,9 @@ const _exampleDartPackages = [
 
 const _flutterNativePackages = [
   'frb_example--flutter_via_create',
+  'frb_example--flutter_via_create_native_assets',
   'frb_example--flutter_package--example',
+  'frb_example--flutter_package_native_assets--example',
   'frb_example--rust_ui_counter--ui',
   'frb_example--rust_ui_todo_list--ui',
 ];
@@ -38,6 +40,9 @@ final kCiJobs = [
           'frb_example--flutter_via_create',
           'frb_example--flutter_via_integrate',
           'frb_example--flutter_package',
+          'frb_example--flutter_via_create_native_assets',
+          'frb_example--flutter_via_integrate_native_assets',
+          'frb_example--flutter_package_native_assets',
           'frb_example--rust_ui_counter--ui',
           'frb_example--rust_ui_todo_list--ui',
         ])
@@ -56,6 +61,9 @@ final kCiJobs = [
           'frb_example--flutter_via_create',
           'frb_example--flutter_via_integrate',
           'frb_example--flutter_package',
+          'frb_example--flutter_via_create_native_assets',
+          'frb_example--flutter_via_integrate_native_assets',
+          'frb_example--flutter_package_native_assets',
         ])
           {'image': image, 'package': package, 'platforms': 'default'},
       {
@@ -85,7 +93,6 @@ final kCiJobs = [
         {'image': 'ubuntu-latest', 'target': 'android-aab'},
         {'image': 'ubuntu-latest', 'target': 'android-apk'},
         {'image': 'macos-15-intel', 'target': 'ios'},
-        {'image': 'ubuntu-latest', 'target': 'ohos'},
       ])
         {'info': info},
     ]),
@@ -116,6 +123,7 @@ final kCiJobs = [
       for (final image in _githubHostedDesktopImages)
         for (final package in [
           'frb_dart',
+          'frb_hooks',
           'frb_utils',
           'tools--frb_internal',
           ..._exampleDartPackages,
@@ -168,6 +176,7 @@ final kCiJobs = [
           ..._flutterDesktopPackageEntries(package),
         ..._linuxFlutterDesktopPackageEntries([
           'frb_example--flutter_via_integrate',
+          'frb_example--flutter_via_integrate_native_assets',
           'frb_example--gallery',
           'frb_example--integrate_third_party',
         ]),
@@ -180,6 +189,7 @@ final kCiJobs = [
     matrix: CiMatrix([
       for (final package in [
         'frb_example--flutter_via_create',
+        'frb_example--flutter_via_create_native_assets',
         'frb_example--gallery',
       ])
         {'package': package},
@@ -248,6 +258,7 @@ bool _isExcludedGenerateCommandGenerate({
       'frb_example--deliberate_bad',
       'frb_example--integrate_third_party',
       'frb_example--flutter_via_integrate',
+      'frb_example--flutter_via_integrate_native_assets',
     }.contains(package);
 
 bool _isExcludedTestDartNative({

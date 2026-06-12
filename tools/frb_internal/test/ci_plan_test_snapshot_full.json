@@ -41,6 +41,14 @@
         },
         {
           "image": "windows-2025",
+          "package": "frb_example--flutter_via_create_native_assets"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--flutter_package_native_assets"
+        },
+        {
+          "image": "windows-2025",
           "package": "frb_example--rust_ui_counter--ui"
         },
         {
@@ -70,6 +78,14 @@
         {
           "image": "macos-15-intel",
           "package": "frb_example--flutter_package"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_via_create_native_assets"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_package_native_assets"
         },
         {
           "image": "macos-15-intel",
@@ -117,6 +133,18 @@
         },
         {
           "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_via_create_native_assets"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_via_integrate_native_assets"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_package_native_assets"
+        },
+        {
+          "image": "ubuntu-24.04",
           "package": "frb_example--rust_ui_counter--ui"
         },
         {
@@ -144,6 +172,21 @@
           "platforms": "default"
         },
         {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_via_create_native_assets",
+          "platforms": "default"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_via_integrate_native_assets",
+          "platforms": "default"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_package_native_assets",
+          "platforms": "default"
+        },
+        {
           "image": "windows-2025",
           "package": "frb_example--flutter_via_create",
           "platforms": "default"
@@ -159,6 +202,21 @@
           "platforms": "default"
         },
         {
+          "image": "windows-2025",
+          "package": "frb_example--flutter_via_create_native_assets",
+          "platforms": "default"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--flutter_via_integrate_native_assets",
+          "platforms": "default"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--flutter_package_native_assets",
+          "platforms": "default"
+        },
+        {
           "image": "ubuntu-24.04",
           "package": "frb_example--flutter_via_create",
           "platforms": "default"
@@ -171,6 +229,21 @@
         {
           "image": "ubuntu-24.04",
           "package": "frb_example--flutter_package",
+          "platforms": "default"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_via_create_native_assets",
+          "platforms": "default"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_via_integrate_native_assets",
+          "platforms": "default"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_package_native_assets",
           "platforms": "default"
         },
         {
@@ -209,49 +282,121 @@
         {
           "info": {
             "image": "windows-2025",
-            "target": "windows"
+            "target": "windows",
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
           "info": {
             "image": "windows-11-arm",
-            "target": "windows"
+            "target": "windows",
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
           "info": {
             "image": "macos-15-intel",
-            "target": "macos"
+            "target": "macos",
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
           "info": {
             "image": "ubuntu-latest",
-            "target": "linux"
+            "target": "linux",
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
           "info": {
             "image": "ubuntu-latest",
-            "target": "android-aab"
+            "target": "android-aab",
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
           "info": {
             "image": "ubuntu-latest",
-            "target": "android-apk"
+            "target": "android-apk",
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
           "info": {
             "image": "macos-15-intel",
-            "target": "ios"
+            "target": "ios",
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-2025",
+            "target": "windows",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-11-arm",
+            "target": "windows",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "target": "macos",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
           }
         },
         {
           "info": {
             "image": "ubuntu-latest",
-            "target": "ohos"
+            "target": "linux",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "target": "android-aab",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "target": "android-apk",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "target": "ios",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "target": "ohos",
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         }
       ]
@@ -314,6 +459,10 @@
         },
         {
           "image": "windows-2025",
+          "package": "frb_hooks"
+        },
+        {
+          "image": "windows-2025",
           "package": "frb_example--dart_minimal"
         },
         {
@@ -331,6 +480,10 @@
         {
           "image": "macos-15-intel",
           "package": "frb_dart"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_hooks"
         },
         {
           "image": "macos-15-intel",
@@ -351,6 +504,10 @@
         {
           "image": "ubuntu-24.04",
           "package": "frb_dart"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_hooks"
         },
         {
           "image": "ubuntu-24.04",
@@ -447,7 +604,17 @@
           "api-level": 35
         },
         {
+          "package": "frb_example--flutter_via_create_native_assets",
+          "device": "pixel",
+          "api-level": 35
+        },
+        {
           "package": "frb_example--flutter_package--example",
+          "device": "pixel",
+          "api-level": 35
+        },
+        {
+          "package": "frb_example--flutter_package_native_assets--example",
           "device": "pixel",
           "api-level": 35
         },
@@ -471,7 +638,15 @@
           "device": "iPhone 16 Pro Max Simulator (18.6)"
         },
         {
+          "package": "frb_example--flutter_via_create_native_assets",
+          "device": "iPhone 16 Pro Max Simulator (18.6)"
+        },
+        {
           "package": "frb_example--flutter_package--example",
+          "device": "iPhone 16 Pro Max Simulator (18.6)"
+        },
+        {
+          "package": "frb_example--flutter_package_native_assets--example",
           "device": "iPhone 16 Pro Max Simulator (18.6)"
         },
         {
@@ -512,6 +687,27 @@
           "info": {
             "image": "windows-2025",
             "platform": "windows",
+            "package": "frb_example--flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "platform": "macos",
+            "package": "frb_example--flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-2025",
+            "platform": "windows",
             "package": "frb_example--flutter_package--example"
           }
         },
@@ -527,6 +723,27 @@
             "image": "ubuntu-latest",
             "platform": "linux",
             "package": "frb_example--flutter_package--example"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-2025",
+            "platform": "windows",
+            "package": "frb_example--flutter_package_native_assets--example"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "platform": "macos",
+            "package": "frb_example--flutter_package_native_assets--example"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--flutter_package_native_assets--example"
           }
         },
         {
@@ -582,6 +799,13 @@
           "info": {
             "image": "ubuntu-latest",
             "platform": "linux",
+            "package": "frb_example--flutter_via_integrate_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
             "package": "frb_example--gallery"
           }
         },
@@ -601,6 +825,9 @@
           "package": "frb_example--flutter_via_create"
         },
         {
+          "package": "frb_example--flutter_via_create_native_assets"
+        },
+        {
           "package": "frb_example--gallery"
         }
       ]
@@ -614,7 +841,8 @@
             "platform": "web",
             "target": "web",
             "device": "chrome",
-            "package": "frb_example--flutter_via_create"
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
@@ -624,7 +852,8 @@
             "target": "android",
             "device": "pixel",
             "api-level": 35,
-            "package": "frb_example--flutter_via_create"
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
@@ -633,7 +862,8 @@
             "platform": "ios",
             "target": "ios",
             "device": "iPhone 16 Pro Max Simulator (18.6)",
-            "package": "frb_example--flutter_via_create"
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
@@ -642,7 +872,8 @@
             "platform": "linux",
             "target": "desktop",
             "device": "linux",
-            "package": "frb_example--flutter_via_create"
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
@@ -651,7 +882,8 @@
             "platform": "macos",
             "target": "desktop",
             "device": "macos",
-            "package": "frb_example--flutter_via_create"
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
           }
         },
         {
@@ -660,7 +892,69 @@
             "platform": "windows",
             "target": "desktop",
             "device": "windows",
-            "package": "frb_example--flutter_via_create"
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "web",
+            "target": "web",
+            "device": "chrome",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "android",
+            "target": "android",
+            "device": "pixel",
+            "api-level": 35,
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-latest",
+            "platform": "ios",
+            "target": "ios",
+            "device": "iPhone 16 Pro Max Simulator (18.6)",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "target": "desktop",
+            "device": "linux",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "platform": "macos",
+            "target": "desktop",
+            "device": "macos",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-2025",
+            "platform": "windows",
+            "target": "desktop",
+            "device": "windows",
+            "package": "frb_example--flutter_via_create_native_assets",
+            "package_path": "frb_example/flutter_via_create_native_assets"
           }
         }
       ]

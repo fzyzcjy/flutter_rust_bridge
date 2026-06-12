@@ -1,7 +1,7 @@
 use crate::integration::integrator;
 use crate::integration::integrator::IntegrateConfig;
 use crate::library::commands::flutter::flutter_create;
-use crate::misc::{FvmInstallMode, Template};
+use crate::misc::{FvmInstallMode, IntegrationBackend, Template};
 use anyhow::{bail, ensure};
 use log::{debug, info};
 use std::path::Path;
@@ -14,6 +14,7 @@ pub struct CreateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub integration_backend: IntegrationBackend,
     pub platforms: Option<String>,
     pub fvm_install_mode: FvmInstallMode,
 }
@@ -61,6 +62,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         rust_crate_name: config.rust_crate_name,
         rust_crate_dir: config.rust_crate_dir,
         template: config.template,
+        integration_backend: config.integration_backend,
         platforms,
         fvm_install_mode: config.fvm_install_mode,
     })

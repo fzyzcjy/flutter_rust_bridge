@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -391,6 +392,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       config.coverage &&
       !const [
         'frb_dart',
+        'frb_hooks',
         'frb_utils',
         'tools/frb_internal',
       ].contains(config.package);
@@ -461,6 +463,7 @@ Future<T> withLlvmCovReport<T>(
   if (envMap.containsKey('RUSTFLAGS')) {
     envMap['NIX_FRB_RUSTFLAGS'] = envMap['RUSTFLAGS']!;
   }
+  envMap['NIX_FRB_SIMPLE_BUILD_EXTRA_ENV'] = jsonEncode(envMap);
   print('envMap=$envMap');
 
   await exec(
@@ -491,7 +494,7 @@ Future<void> _formatDartCoverage({required String package}) async {
 
   final reportOn = '${exec.pwd}/frb_dart';
   await exec(
-    'format_coverage --check-ignore --lcov --in=coverage --out=${getCoverageDir('dart')}/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
+    'dart pub global run coverage:format_coverage --check-ignore --lcov --in=coverage --out=${getCoverageDir('dart')}/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
     relativePwd: package,
   );
 }

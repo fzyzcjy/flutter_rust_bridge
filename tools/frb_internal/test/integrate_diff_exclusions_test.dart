@@ -2,61 +2,120 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_ex
 import 'package:test/test.dart';
 
 void main() {
+  test('generate extra args are explicit for flutter_via_create', () {
+    for (final package in [
+      'frb_example/flutter_via_create',
+      'frb_example/flutter_via_create_native_assets',
+    ]) {
+      expect(
+        generateDiffExclusionArgsForTesting(package),
+        "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
+        "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig'",
+        reason: package,
+      );
+    }
+  });
+
+  test('generate extra args are explicit for flutter_via_integrate', () {
+    for (final package in [
+      'frb_example/flutter_via_integrate',
+      'frb_example/flutter_via_integrate_native_assets',
+    ]) {
+      expect(
+        generateDiffExclusionArgsForTesting(package),
+        "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
+        "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig'",
+        reason: package,
+      );
+    }
+  });
+
+  test('generate extra args are explicit for flutter_package', () {
+    for (final package in [
+      'frb_example/flutter_package',
+      'frb_example/flutter_package_native_assets',
+    ]) {
+      expect(
+        generateDiffExclusionArgsForTesting(package),
+        "':(exclude)$package/example/macos/Flutter/Flutter-Debug.xcconfig' "
+        "':(exclude)$package/example/macos/Flutter/Flutter-Release.xcconfig'",
+        reason: package,
+      );
+    }
+  });
+
+  test('generate extra args are empty for unrelated package', () {
+    expect(generateDiffExclusionArgsForTesting('frb_example/gallery'), isEmpty);
+  });
+
   test('integrate extra args are explicit for flutter_via_create', () {
-    expect(
-      integrateDiffExclusionArgsForTesting(
-        'frb_example/flutter_via_create',
-        needCompareOhos: false,
-      ),
-      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
-      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig' "
-      "':(exclude)frb_example/flutter_via_create/pubspec.lock' "
-      "':(exclude)frb_example/flutter_via_create/pubspec.yaml' "
-      "':(exclude)frb_example/flutter_via_create/ohos/' "
-      "':(exclude)frb_example/flutter_via_create/rust_builder/ohos/' "
-      "':(exclude)frb_example/flutter_via_create/rust_builder/pubspec.yaml'",
-    );
+    for (final package in [
+      'frb_example/flutter_via_create',
+      'frb_example/flutter_via_create_native_assets',
+    ]) {
+      expect(
+        integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
+        "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
+        "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
+        "':(exclude)$package/pubspec.lock' "
+        "':(exclude)$package/pubspec.yaml' "
+        "':(exclude)$package/ohos/' "
+        "':(exclude)$package/rust_builder/ohos/' "
+        "':(exclude)$package/rust_builder/pubspec.yaml'",
+        reason: package,
+      );
+    }
   });
 
   test(
     'integrate extra args compare ohos for flutter_via_create when requested',
     () {
-      expect(
-        integrateDiffExclusionArgsForTesting(
-          'frb_example/flutter_via_create',
-          needCompareOhos: true,
-        ),
-        "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
-        "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig' "
-        "':(exclude)frb_example/flutter_via_create/pubspec.lock' "
-        "':(exclude)frb_example/flutter_via_create/pubspec.yaml' "
-        "':(exclude)frb_example/flutter_via_create/android/' "
-        "':(exclude)frb_example/flutter_via_create/macos/' "
-        "':(exclude)frb_example/flutter_via_create/windows/'",
-      );
+      for (final package in [
+        'frb_example/flutter_via_create',
+        'frb_example/flutter_via_create_native_assets',
+      ]) {
+        expect(
+          integrateDiffExclusionArgsForTesting(package, needCompareOhos: true),
+          "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
+          "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
+          "':(exclude)$package/pubspec.lock' "
+          "':(exclude)$package/pubspec.yaml' "
+          "':(exclude)$package/android/' "
+          "':(exclude)$package/macos/' "
+          "':(exclude)$package/windows/' "
+          "':(exclude)$package/rust_builder/pubspec.yaml'",
+          reason: package,
+        );
+      }
     },
   );
 
   test('integrate extra args are explicit for flutter_via_integrate', () {
-    expect(
-      integrateDiffExclusionArgsForTesting(
-        'frb_example/flutter_via_integrate',
-        needCompareOhos: false,
-      ),
-      "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Debug.xcconfig' "
-      "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Release.xcconfig'",
-    );
+    for (final package in [
+      'frb_example/flutter_via_integrate',
+      'frb_example/flutter_via_integrate_native_assets',
+    ]) {
+      expect(
+        integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
+        "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
+        "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig'",
+        reason: package,
+      );
+    }
   });
 
   test('integrate extra args are explicit for flutter_package', () {
-    expect(
-      integrateDiffExclusionArgsForTesting(
-        'frb_example/flutter_package',
-        needCompareOhos: false,
-      ),
-      "':(exclude)frb_example/flutter_package/example/macos/Flutter/Flutter-Debug.xcconfig' "
-      "':(exclude)frb_example/flutter_package/example/macos/Flutter/Flutter-Release.xcconfig'",
-    );
+    for (final package in [
+      'frb_example/flutter_package',
+      'frb_example/flutter_package_native_assets',
+    ]) {
+      expect(
+        integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
+        "':(exclude)$package/example/macos/Flutter/Flutter-Debug.xcconfig' "
+        "':(exclude)$package/example/macos/Flutter/Flutter-Release.xcconfig'",
+        reason: package,
+      );
+    }
   });
 
   test('integrate extra args are empty for unrelated package', () {

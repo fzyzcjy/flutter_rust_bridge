@@ -65,6 +65,11 @@ Future<void> releaseUpdateVersion() async {
     '\nversion: ${versionInfo.oldVersion}\n',
     '\nversion: ${versionInfo.newVersion}\n',
   );
+  simpleReplaceFile(
+    '${exec.pwd}frb_hooks/pubspec.yaml',
+    '\nversion: ${versionInfo.oldVersion}\n',
+    '\nversion: ${versionInfo.newVersion}\n',
+  );
 }
 
 Future<void> releaseUpdateCode() async {
@@ -183,6 +188,9 @@ Future<void> releasePublishAll() async {
   await exec('cd frb_rust && cargo publish');
   await exec(
     'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org',
+  );
+  await exec(
+    'cd frb_hooks && dart pub publish --force --server=https://pub.dartlang.org',
   );
 }
 
