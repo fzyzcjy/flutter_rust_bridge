@@ -60,13 +60,25 @@ List<BigInt> _toListBigInt(List<dynamic> raw) =>
     raw.map((x) => jsBigIntToDartBigInt(x!)).toList();
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-JSAny cstEncodeInt64List(List<BigInt> raw) => _cstEncodeBigIntList(raw);
+JSAny cstEncodeInt64List(List<BigInt> raw) =>
+    _JSBigInt64Array(_cstEncodeBigIntList(raw));
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-JSAny cstEncodeUint64List(List<BigInt> raw) => _cstEncodeBigIntList(raw);
+JSAny cstEncodeUint64List(List<BigInt> raw) =>
+    _JSBigUint64Array(_cstEncodeBigIntList(raw));
 
-JSAny _cstEncodeBigIntList(List<BigInt> raw) =>
-    raw.map(castNativeBigInt).toList().toJS;
+JSArray<JSBigInt> _cstEncodeBigIntList(List<BigInt> raw) =>
+    raw.map((value) => castNativeBigInt(value) as JSBigInt).toList().toJS;
+
+@JS('BigInt64Array')
+extension type _JSBigInt64Array._(JSObject _) implements JSObject {
+  external factory _JSBigInt64Array(JSArray<JSBigInt> values);
+}
+
+@JS('BigUint64Array')
+extension type _JSBigUint64Array._(JSObject _) implements JSObject {
+  external factory _JSBigUint64Array(JSArray<JSBigInt> values);
+}
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 BigInt sseEncodeCastedPrimitiveI64(int raw) => BigInt.from(raw);
