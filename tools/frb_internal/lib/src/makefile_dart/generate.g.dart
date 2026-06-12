@@ -52,6 +52,7 @@ GenerateIntegratePackageConfig _$parseGenerateIntegratePackageConfigResult(
   package: convertConfigPackage(result['package'] as String),
   coverage: result['coverage'] as bool,
   includeOhos: result['include-ohos'] as bool,
+  skipCheckedInAppleScaffold: result['skip-checked-in-apple-scaffold'] as bool,
 );
 
 ArgParser _$populateGenerateIntegratePackageConfigParser(ArgParser parser) =>
@@ -59,7 +60,8 @@ ArgParser _$populateGenerateIntegratePackageConfigParser(ArgParser parser) =>
       ..addFlag('set-exit-if-changed')
       ..addOption('package')
       ..addFlag('coverage')
-      ..addFlag('include-ohos');
+      ..addFlag('include-ohos')
+      ..addFlag('skip-checked-in-apple-scaffold');
 
 final _$parserForGenerateIntegratePackageConfig =
     _$populateGenerateIntegratePackageConfigParser(ArgParser());

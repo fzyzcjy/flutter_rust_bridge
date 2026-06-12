@@ -5,20 +5,17 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_s
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
 
-const _kSkipAppleScaffoldSourceOfTruthEnv =
-    'FRB_SKIP_APPLE_SCAFFOLD_SOURCE_OF_TRUTH';
-
-Future<void> verifyAppleScaffoldSourceOfTruth() async {
+Future<void> verifyAppleScaffold() async {
   if (!Platform.isMacOS) {
     throw StateError(
-      'verify-apple-scaffold-source-of-truth requires macOS because it compares against Flutter Apple scaffolds generated on macOS.',
+      'verify-apple-scaffold requires macOS because it compares against Flutter Apple scaffolds generated on macOS.',
     );
   }
 
   final tempRepoRoot = path.join(
     exec.pwd!,
     'target',
-    'VerifyAppleScaffoldSourceOfTruth',
+    'VerifyAppleScaffold',
     randomTempDirName(),
   );
   print('Pick temporary repository copy: $tempRepoRoot');
@@ -35,8 +32,7 @@ Future<void> verifyAppleScaffoldSourceOfTruth() async {
     for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
       print('Verifying Apple scaffold source-of-truth for $package');
       await tempExec(
-        'bash ./frb_internal generate-run-frb-codegen-command-integrate --package ${_shellQuote(package)}',
-        extraEnv: {_kSkipAppleScaffoldSourceOfTruthEnv: '1'},
+        'bash ./frb_internal generate-run-frb-codegen-command-integrate --package ${_shellQuote(package)} --skip-checked-in-apple-scaffold',
       );
       _verifyAppleScaffoldPackage(
         repoRootPath: exec.pwd!,
@@ -55,12 +51,6 @@ Future<void> verifyAppleScaffoldSourceOfTruth() async {
     }
   }
 }
-
-bool shouldSkipAppleScaffoldSourceOfTruth({
-  Map<String, String>? environment,
-}) =>
-    (environment ?? Platform.environment)[_kSkipAppleScaffoldSourceOfTruthEnv] ==
-    '1';
 
 void _copyRepositoryForAppleScaffoldVerification({
   required Directory source,
@@ -103,12 +93,15 @@ void _verifyAppleScaffoldPackage({
   required String generatedRepoRootPath,
   required String package,
 }) {
-  for (final relativePath in integrateAppleScaffoldSourceOfTruthPaths(package)) {
-    final expectedPath = integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
-      repoRootPath: repoRootPath,
-      package: package,
-      relativePath: relativePath,
-    );
+  for (final relativePath in integrateAppleScaffoldSourceOfTruthPaths(
+    package,
+  )) {
+    final expectedPath =
+        integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
+          repoRootPath: repoRootPath,
+          package: package,
+          relativePath: relativePath,
+        );
     final actualPath = path.join(generatedRepoRootPath, package, relativePath);
     _verifyAppleScaffoldPath(
       expectedPath: expectedPath,

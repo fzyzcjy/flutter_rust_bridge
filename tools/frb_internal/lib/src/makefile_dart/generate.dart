@@ -100,10 +100,7 @@ List<Command<void>> createCommands() {
     ),
     SimpleCommand('generate-website-merge', generateWebsiteMerge),
     SimpleCommand('generate-website-serve', generateWebsiteServe),
-    SimpleCommand(
-      'verify-apple-scaffold-source-of-truth',
-      verifyAppleScaffoldSourceOfTruth,
-    ),
+    SimpleCommand('verify-apple-scaffold', verifyAppleScaffold),
   ];
 }
 
@@ -147,12 +144,15 @@ class GenerateIntegratePackageConfig implements GenerateConfig {
   final bool coverage;
   @CliOption(defaultsTo: false)
   final bool includeOhos;
+  @CliOption(defaultsTo: false)
+  final bool skipCheckedInAppleScaffold;
 
   const GenerateIntegratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
     required this.coverage,
     required this.includeOhos,
+    required this.skipCheckedInAppleScaffold,
   });
 }
 
@@ -456,7 +456,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           );
       }
 
-      if (!shouldSkipAppleScaffoldSourceOfTruth()) {
+      if (!config.skipCheckedInAppleScaffold) {
         await applyCheckedInAppleScaffoldSourceOfTruth(
           package: config.package,
           generatedPackageDir: dirPackage,
