@@ -50,7 +50,7 @@ pub(super) fn execute_overlay_templates(
     dart_package_name: &str,
 ) -> Result<()> {
     execute_overlay_dir(
-        &TemplateDirs::SHARED,
+        &TemplateDirs::SHARED_SHARED,
         replacements,
         dart_root,
         config,
@@ -58,19 +58,32 @@ pub(super) fn execute_overlay_templates(
         include_ohos,
     )?;
 
-    let (dir, comment_out_files) = match &config.template {
-        Template::App => (&TemplateDirs::APP, vec!["main.dart".to_string()]),
+    let (shared_dir, backend_dir, comment_out_files) = match &config.template {
+        Template::App => (
+            &TemplateDirs::SHARED_APP,
+            &TemplateDirs::CARGOKIT_APP,
+            vec!["main.dart".to_string()],
+        ),
         Template::Plugin => (
-            &TemplateDirs::PLUGIN,
+            &TemplateDirs::SHARED_PLUGIN,
+            &TemplateDirs::CARGOKIT_PLUGIN,
             vec![format!("{dart_package_name}.dart")],
         ),
     };
     execute_overlay_dir(
-        dir,
+        shared_dir,
         replacements,
         dart_root,
         config,
         Some(&comment_out_files),
+        include_ohos,
+    )?;
+    execute_overlay_dir(
+        backend_dir,
+        replacements,
+        dart_root,
+        config,
+        None,
         include_ohos,
     )
 }
@@ -264,11 +277,16 @@ const CARGOKIT_PRELUDE: &[&str] = &[
 struct TemplateDirs;
 
 impl TemplateDirs {
-    const SHARED: Dir<'static> =
-        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared");
-    const APP: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/app");
-    const PLUGIN: Dir<'static> =
-        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/plugin");
+    const SHARED_SHARED: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/shared");
+    const SHARED_APP: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/app");
+    const SHARED_PLUGIN: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/plugin");
+    const CARGOKIT_APP: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/app");
+    const CARGOKIT_PLUGIN: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/plugin");
 }
 
 #[cfg(test)]
