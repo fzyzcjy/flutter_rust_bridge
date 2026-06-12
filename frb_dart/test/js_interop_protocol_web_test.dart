@@ -1,7 +1,5 @@
 @TestOn('browser')
-import 'dart:js_interop';
-
-import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:test/test.dart';
 
 @JS('BigInt64Array')
