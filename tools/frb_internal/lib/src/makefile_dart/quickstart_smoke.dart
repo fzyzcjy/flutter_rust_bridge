@@ -36,6 +36,7 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
     final screenshotEvidence = await _captureQuickstartSmokeEvidence(
       context: context,
       readyForScreenshot: readyForScreenshot,
+      flutterRun: activeFlutterRun,
     );
     final exitStatus = await _stopQuickstartSmokeFlutterRun(
       flutterRun: activeFlutterRun,
@@ -280,6 +281,21 @@ String quickstartSmokePackagePathForTesting(
   String? repoRootPath,
 }) => Directory('${repoRootPath ?? exec.pwd}$package').absolute.path;
 
+@visibleForTesting
+List<String> quickstartSmokeAndroidScreenshotArgsForTesting(String deviceId) =>
+    ['-s', deviceId, 'exec-out', 'screencap', '-p'];
+
+@visibleForTesting
+List<String> quickstartSmokeIosScreenshotArgsForTesting({
+  required String deviceId,
+  required String screenshotPath,
+}) => ['simctl', 'io', deviceId, 'screenshot', screenshotPath];
+
+@visibleForTesting
+List<String> quickstartSmokeMacosScreenshotArgsForTesting(
+  String screenshotPath,
+) => ['-x', '-T', '1', screenshotPath];
+
 Future<_QuickstartSmokeFlutterRun> _startQuickstartSmokeFlutterRun(
   _QuickstartSmokeContext context,
 ) async {
@@ -349,6 +365,7 @@ Future<bool> _waitForQuickstartSmokeFlutterRunReady({
 Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
   required _QuickstartSmokeContext context,
   required bool readyForScreenshot,
+  required _QuickstartSmokeFlutterRun flutterRun,
 }) async {
   if (!readyForScreenshot) {
     print('Capturing one diagnostic screenshot before failing readiness check');
@@ -489,6 +506,7 @@ Future<void> _captureAndOcrQuickstartSmokeScreenshotFromContext(
 ) async {
   await _captureAndOcrQuickstartSmokeScreenshot(
     target: context.target,
+    deviceId: context.resolvedDeviceId,
     screenshotFile: context.screenshotFile,
     preprocessedScreenshotFile: context.preprocessedScreenshotFile,
     ocrOutputFile: context.ocrOutputFile,
@@ -538,6 +556,7 @@ Future<int?> _waitForQuickstartSmokeExit(Future<int> exitCodeFuture) async {
 
 Future<void> _captureAndOcrQuickstartSmokeScreenshot({
   required QuickstartSmokeTarget target,
+  required String deviceId,
   required File screenshotFile,
   required File preprocessedScreenshotFile,
   required File ocrOutputFile,
@@ -545,6 +564,7 @@ Future<void> _captureAndOcrQuickstartSmokeScreenshot({
 }) async {
   await _captureQuickstartSmokeScreenshot(
     target: target,
+    deviceId: deviceId,
     screenshotFile: screenshotFile,
   );
   await _preprocessQuickstartSmokeScreenshot(
@@ -573,26 +593,27 @@ Future<void> _captureAndOcrQuickstartSmokeScreenshot({
 
 Future<void> _captureQuickstartSmokeScreenshot({
   required QuickstartSmokeTarget target,
+  required String deviceId,
   required File screenshotFile,
 }) async {
   final result = switch (target) {
     QuickstartSmokeTarget.android => await Process.run(
       'adb',
-      ['exec-out', 'screencap', '-p'],
+      quickstartSmokeAndroidScreenshotArgsForTesting(deviceId),
       stdoutEncoding: null,
       stderrEncoding: systemEncoding,
     ),
-    QuickstartSmokeTarget.ios => await Process.run('xcrun', [
-      'simctl',
-      'io',
-      'booted',
-      'screenshot',
-      screenshotFile.path,
-    ], stderrEncoding: systemEncoding),
-    _ when Platform.isMacOS => await Process.run('screencapture', [
-      '-x',
-      screenshotFile.path,
-    ], stderrEncoding: systemEncoding),
+    QuickstartSmokeTarget.ios => await Process.run(
+      'xcrun',
+      quickstartSmokeIosScreenshotArgsForTesting(
+        deviceId: deviceId,
+        screenshotPath: screenshotFile.path,
+      ),
+      stderrEncoding: systemEncoding,
+    ),
+    _ when Platform.isMacOS => await _captureMacosQuickstartSmokeScreenshot(
+      screenshotFile,
+    ),
     _ when Platform.isWindows => await _captureWindowsQuickstartSmokeScreenshot(
       screenshotFile,
     ),
@@ -609,6 +630,30 @@ Future<void> _captureQuickstartSmokeScreenshot({
     throw Exception(
       'Failed to capture quickstart screenshot (exitCode=${result.exitCode}, '
       'stderr=${result.stderr})',
+    );
+  }
+}
+
+Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
+  File screenshotFile,
+) async {
+  await _activateMacosQuickstartSmokeApp();
+  return Process.run(
+    'screencapture',
+    quickstartSmokeMacosScreenshotArgsForTesting(screenshotFile.path),
+    stderrEncoding: systemEncoding,
+  );
+}
+
+Future<void> _activateMacosQuickstartSmokeApp() async {
+  final result = await Process.run('osascript', [
+    '-e',
+    'tell application "flutter_via_create" to activate',
+  ], stderrEncoding: systemEncoding);
+  if (result.exitCode != 0) {
+    print(
+      'Failed to activate macOS quickstart app before screenshot '
+      '(exitCode=${result.exitCode}, stderr=${result.stderr})',
     );
   }
 }

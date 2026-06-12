@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -173,6 +174,29 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
+  test('quickstart smoke screenshots target the requested device', () {
+    expect(quickstartSmokeAndroidScreenshotArgsForTesting('emulator-5556'), [
+      '-s',
+      'emulator-5556',
+      'exec-out',
+      'screencap',
+      '-p',
+    ]);
+    expect(
+      quickstartSmokeIosScreenshotArgsForTesting(
+        deviceId: 'IPHONE-UDID',
+        screenshotPath: '/tmp/quickstart.png',
+      ),
+      ['simctl', 'io', 'IPHONE-UDID', 'screenshot', '/tmp/quickstart.png'],
+    );
+    expect(quickstartSmokeMacosScreenshotArgsForTesting('/tmp/smoke.png'), [
+      '-x',
+      '-T',
+      '1',
+      '/tmp/smoke.png',
+    ]);
+  });
+
   test(
     'quickstart smoke waits for Flutter run readiness before screenshot',
     () {
@@ -318,6 +342,83 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
           ),
         ),
       );
+    });
+  });
+
+  group('release version check', () {
+    test('parses crates.io package metadata', () {
+      expect(
+        parseCratesIoReleasedVersion({
+          'crate': {'max_version': '2.12.0'},
+        }),
+        '2.12.0',
+      );
+    });
+
+    test('parses pub.dev package metadata', () {
+      expect(
+        parsePubDevReleasedVersion({
+          'latest': {'version': '2.12.0'},
+        }),
+        '2.12.0',
+      );
+    });
+
+    test('summarizes whether every package is published', () {
+      final output = buildReleasePackageStatusOutput([
+        const ReleasePackageStatus(
+          registry: 'crates.io',
+          name: 'flutter_rust_bridge',
+          manifestVersion: '2.12.0',
+          releasedVersion: '2.12.0',
+        ),
+        const ReleasePackageStatus(
+          registry: 'pub.dev',
+          name: 'flutter_rust_bridge',
+          manifestVersion: '2.12.0',
+          releasedVersion: '2.11.1',
+        ),
+      ]);
+
+      expect(output['allReleased'], false);
+      expect(output['packages'], [
+        {
+          'registry': 'crates.io',
+          'name': 'flutter_rust_bridge',
+          'manifestVersion': '2.12.0',
+          'releasedVersion': '2.12.0',
+          'isReleased': true,
+        },
+        {
+          'registry': 'pub.dev',
+          'name': 'flutter_rust_bridge',
+          'manifestVersion': '2.12.0',
+          'releasedVersion': '2.11.1',
+          'isReleased': false,
+        },
+      ]);
+    });
+
+    test('uses explicit target version for every published package', () async {
+      final statuses = await fetchReleasePackageStatuses(
+        targetVersion: '9.9.9',
+        fetcher: (uri) async {
+          if (uri.host == 'crates.io') {
+            return {
+              'crate': {'max_version': '9.9.9'},
+            };
+          }
+          return {
+            'latest': {'version': '9.9.9'},
+          };
+        },
+      );
+
+      expect(
+        statuses.map((status) => status.manifestVersion),
+        everyElement('9.9.9'),
+      );
+      expect(statuses.map((status) => status.isReleased), everyElement(true));
     });
   });
 
