@@ -94,6 +94,30 @@ void main() {
     },
   );
 
+  test('integrate apple scaffold diff args are scoped to Apple files', () {
+    final diffArgs = integrateAppleScaffoldSourceOfTruthDiffArgs();
+
+    expect(diffArgs, startsWith('-- '));
+    expect(
+      diffArgs.split(' '),
+      containsAll([
+        'frb_example/flutter_via_create/.metadata',
+        'frb_example/flutter_via_create/ios',
+        'frb_example/flutter_via_create/macos/Podfile',
+        'tools/frb_internal/assets/apple_scaffold/frb_example/flutter_via_create/.metadata',
+        'tools/frb_internal/assets/apple_scaffold/frb_example/flutter_via_create/ios',
+        'tools/frb_internal/assets/apple_scaffold/frb_example/flutter_via_create/macos/Podfile',
+        'frb_example/flutter_package/pubspec.yaml',
+        'frb_example/flutter_package/example/ios',
+        'frb_example/flutter_package/example/macos/Podfile',
+        'tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/pubspec.yaml',
+        'tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/example/ios',
+        'tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/example/macos/Podfile',
+      ]),
+    );
+    expect(diffArgs, isNot(contains('ohos')));
+  });
+
   test('copyDirectoryRecursive preserves dotfiles and nested workspace files', () {
     final tempDir = Directory.systemTemp.createTempSync('frb-copy-recursive-');
     addTearDown(() => tempDir.deleteSync(recursive: true));
