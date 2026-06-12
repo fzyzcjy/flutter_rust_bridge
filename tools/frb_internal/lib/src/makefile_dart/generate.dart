@@ -18,7 +18,6 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalize
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/verify_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
@@ -100,7 +99,7 @@ List<Command<void>> createCommands() {
     ),
     SimpleCommand('generate-website-merge', generateWebsiteMerge),
     SimpleCommand('generate-website-serve', generateWebsiteServe),
-    SimpleCommand('verify-apple-scaffold', verifyAppleScaffold),
+    SimpleCommand('generate-apple-scaffold', generateAppleScaffold),
   ];
 }
 
@@ -388,6 +387,26 @@ Future<void> _formatPackageAfterGenerate(String package) async {
       await exec('dart format lib test benchmark', relativePwd: package);
     default:
       return;
+  }
+}
+
+Future<void> generateAppleScaffold() async {
+  if (!Platform.isMacOS) {
+    throw StateError(
+      'generate-apple-scaffold requires macOS because Flutter only generates Apple scaffolds on macOS.',
+    );
+  }
+
+  for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
+    await generateRunFrbCodegenCommandIntegrate(
+      GenerateIntegratePackageConfig(
+        setExitIfChanged: true,
+        package: package,
+        coverage: false,
+        includeOhos: false,
+        skipCheckedInAppleScaffold: true,
+      ),
+    );
   }
 }
 
