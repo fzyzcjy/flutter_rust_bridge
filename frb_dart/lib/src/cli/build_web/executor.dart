@@ -188,11 +188,13 @@ Future<void> _executeWasmPack(
       // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
       // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
     ],
-    env: {
-      'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
-      'RUSTFLAGS': rustflagsResolution.rustflags,
-      if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
-    },
+    env: computeWasmPackEnvironment(
+      baseEnvironment: Platform.environment,
+      rustupToolchain: args.wasmPackRustupToolchain ?? 'nightly',
+      rustflags: rustflagsResolution.rustflags,
+      cargoTermColor: stdout.supportsAnsiEscapes,
+    ),
+    includeParentEnvironment: false,
   );
 }
 
@@ -249,6 +251,45 @@ WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
       : 'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default threaded-WASM flags `$buildWebDefaultWasmPackRustflags`. Keep the default flags when overriding `--wasm-pack-rustflags`, otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.';
   return WasmPackRustflagsResolution(rustflags: argsOverride, warning: warning);
 }
+
+@visibleForTesting
+Map<String, String> computeWasmPackEnvironment({
+  required Map<String, String> baseEnvironment,
+  required String rustupToolchain,
+  required String rustflags,
+  required bool cargoTermColor,
+}) =>
+    <String, String>{
+      for (final key in _wasmPackInheritedEnvironmentKeys)
+        if (baseEnvironment[key] case final value?) key: value,
+      'RUSTUP_TOOLCHAIN': rustupToolchain,
+      'RUSTFLAGS': rustflags,
+      if (cargoTermColor) 'CARGO_TERM_COLOR': 'always',
+    };
+
+const _wasmPackInheritedEnvironmentKeys = [
+  'PATH',
+  'HOME',
+  'USER',
+  'USERNAME',
+  'SHELL',
+  'TMPDIR',
+  'TEMP',
+  'TMP',
+  'SYSTEMROOT',
+  'COMSPEC',
+  'PATHEXT',
+  'APPDATA',
+  'LOCALAPPDATA',
+  'CARGO_HOME',
+  'RUSTUP_HOME',
+  'HTTP_PROXY',
+  'HTTPS_PROXY',
+  'NO_PROXY',
+  'http_proxy',
+  'https_proxy',
+  'no_proxy',
+];
 
 Future<void> _executeWasmBindgen(
   BuildWebArgs args, {
