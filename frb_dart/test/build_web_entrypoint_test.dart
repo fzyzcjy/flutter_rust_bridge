@@ -20,4 +20,12 @@ void main() {
     expect(args.dartCompileJsEntrypoint, 'web/main.dart');
     expect(args.dartCompileWasmEntrypoint, 'web/main.dart');
   });
+
+  test('build-web parser falls back to current directory web output', () {
+    final config = parseConfig([]);
+
+    final args = parseBuildWebConfigToArgs(config);
+
+    expect(args.output, path.join('.', 'web'));
+  });
 }

@@ -118,7 +118,7 @@ class Config {
 @visibleForTesting
 BuildWebArgs parseBuildWebConfigToArgs(Config config) {
   return BuildWebArgs(
-    output: config.output ?? _fallbackOutput(dartRoot: config.dartRoot),
+    output: config.output ?? _fallbackOutput(dartRoot: config.dartRoot ?? '.'),
     release: config.release,
     verbose: config.verbose,
     rustCrateDir: config.rustRoot,
@@ -131,5 +131,5 @@ BuildWebArgs parseBuildWebConfigToArgs(Config config) {
   );
 }
 
-String _fallbackOutput({required String? dartRoot}) =>
-    path.join(dartRoot!, 'web');
+String _fallbackOutput({required String dartRoot}) =>
+    path.join(dartRoot, 'web');

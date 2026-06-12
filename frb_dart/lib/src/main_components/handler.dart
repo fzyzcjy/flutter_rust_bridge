@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge/src/dart_opaque/dart_opaque.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
+import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 
@@ -50,16 +51,6 @@ class BaseHandler {
     final closureDartObject =
         decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding)
             as Function;
-    Function.apply(closureDartObject, [_decodeProtocolInt(callId), ...args]);
+    Function.apply(closureDartObject, [dcoDecodePrimitiveInt(callId), ...args]);
   }
-}
-
-int _decodeProtocolInt(Object? raw) {
-  if (raw is int) return raw;
-  if (raw is double && raw.isFinite && raw == raw.truncateToDouble()) {
-    return raw.toInt();
-  }
-  throw Exception(
-    'decodeProtocolInt see unexpected type=${raw.runtimeType} value=$raw',
-  );
 }

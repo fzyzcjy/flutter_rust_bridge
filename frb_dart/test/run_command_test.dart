@@ -32,6 +32,22 @@ void main() {
   );
 
   test(
+    'runCommand removes selected parent environment keys case-insensitively',
+    skip: !(Platform.isLinux || Platform.isMacOS),
+    () async {
+      final output = await runCommand(
+        '/usr/bin/env',
+        [],
+        shell: false,
+        silent: true,
+        removedParentEnvKeys: const ['path'],
+      );
+
+      expect(output.stdout.split('\n'), isNot(contains(startsWith('PATH='))));
+    },
+  );
+
+  test(
     'runCommand kills the process tree when timeout expires',
     skip: !(Platform.isLinux || Platform.isMacOS),
     () async {

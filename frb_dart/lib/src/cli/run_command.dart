@@ -34,11 +34,14 @@ Future<RunCommandOutput> runCommand(
   List<String> removedParentEnvKeys = const [],
   Duration? timeout,
 }) async {
+  final removedKeysSet = removedParentEnvKeys
+      .map((key) => key.toUpperCase())
+      .toSet();
   final processEnvironment = removedParentEnvKeys.isEmpty
       ? env
       : {
           for (final entry in Platform.environment.entries)
-            if (!removedParentEnvKeys.contains(entry.key))
+            if (!removedKeysSet.contains(entry.key.toUpperCase()))
               entry.key: entry.value,
           ...?env,
         };

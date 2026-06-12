@@ -31,7 +31,7 @@ void main() {
     );
   });
 
-  test('Dart function handler accepts integral JavaScript call ids', () {
+  test('Dart function handler accepts native integer call ids', () {
     var observedCallId = -1;
     var observedArgument = '';
     final binding = _FakeGeneralizedFrbRustBinding(
@@ -43,24 +43,18 @@ void main() {
       },
     );
 
-    BaseHandler().dartFnInvoke([9, 42.0, 'payload'], binding);
+    BaseHandler().dartFnInvoke([9, 42, 'payload'], binding);
 
     expect(observedCallId, 42);
     expect(observedArgument, 'payload');
   });
 
-  test('Dart function handler rejects non-integral JavaScript call ids', () {
+  test('Dart function handler rejects non-native call ids', () {
     final binding = _FakeGeneralizedFrbRustBinding(values: {9: (int _) {}});
 
     expect(
       () => BaseHandler().dartFnInvoke([9, 42.5], binding),
-      throwsA(
-        isA<Exception>().having(
-          (error) => error.toString(),
-          'message',
-          contains('decodeProtocolInt see unexpected type=double value=42.5'),
-        ),
-      ),
+      throwsA(isA<TypeError>()),
     );
   });
 
