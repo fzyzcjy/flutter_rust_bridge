@@ -14,6 +14,10 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 - Work from the repository root on the intended release branch, normally fresh `master`.
 - Check `git status --short --branch` and do not start publishing from a dirty tree.
 - Confirm the target version in `CHANGELOG.md`, root `Cargo.toml`, and `frb_dart/pubspec.yaml`.
+- Compute the release versions the same way `./frb_internal release` does: the top `CHANGELOG.md` version is the new version and the next release section is the old version.
+- Verify both old and new versions are legal before running any mutating release command. The only allowed shapes are stable SemVer `MAJOR.MINOR.PATCH` such as `2.0.0`, or beta SemVer `MAJOR.MINOR.PATCH-beta.N` such as `2.0.0-beta.1`. Use exactly `^\d+\.\d+\.\d+(-beta\.\d+)?$`.
+- Reject versions with any other prerelease label, build metadata, missing numeric components, leading `v`, or loose text. Stop if either old or new version fails this check.
+- Confirm the new version is different from the old version.
 - Confirm GitHub, crates.io, and pub.dev credentials are available before starting irreversible publish steps.
 - Confirm normal CI is green for the release commit before publishing.
 
