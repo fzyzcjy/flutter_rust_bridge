@@ -328,7 +328,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AnyhowException(raw as String);
+    return AnyhowException(dcoDecodeString(raw));
   }
 
   @protected

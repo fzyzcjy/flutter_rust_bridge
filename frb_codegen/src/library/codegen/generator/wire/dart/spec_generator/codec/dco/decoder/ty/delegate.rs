@@ -68,10 +68,10 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
                 "return UuidValue.fromByteList(dco_decode_list_prim_u_8_strict(raw));".to_owned()
             }
             MirTypeDelegate::SerdeJsonValue => {
-                "return jsonDecode(raw as String);".to_owned()
+                "return jsonDecode(dcoDecodeString(raw));".to_owned()
             }
             // MirTypeDelegate::Uuids => ...,
-            MirTypeDelegate::AnyhowException => "return AnyhowException(raw as String);".to_owned(),
+            MirTypeDelegate::AnyhowException => "return AnyhowException(dcoDecodeString(raw));".to_owned(),
             MirTypeDelegate::Map(_) => format!(
                 "return Map.fromEntries(dco_decode_{}(raw).map((e) => MapEntry(e.$1, e.$2)));",
                 self.mir.get_delegate().safe_ident(),
@@ -82,7 +82,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
             ),
             MirTypeDelegate::StreamSink(_) | MirTypeDelegate::DynTrait(_) => "throw UnimplementedError();".to_owned(),
             MirTypeDelegate::BigPrimitive(_) => {
-                "return BigInt.parse(raw);".to_owned()
+                "return BigInt.parse(dcoDecodeString(raw));".to_owned()
             }
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => format!(r"return dco_decode_{}(raw);", mir.inner.safe_ident()),
             MirTypeDelegate::CustomSerDes(inner) => {

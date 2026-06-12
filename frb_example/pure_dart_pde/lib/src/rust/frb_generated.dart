@@ -44371,7 +44371,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AnyhowException(raw as String);
+    return AnyhowException(dcoDecodeString(raw));
   }
 
   @protected
@@ -45780,7 +45780,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt dco_decode_I128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BigInt.parse(raw);
+    return BigInt.parse(dcoDecodeString(raw));
   }
 
   @protected
@@ -47022,7 +47022,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Object? dco_decode_SerdeJsonValue(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return jsonDecode(raw as String);
+    return jsonDecode(dcoDecodeString(raw));
   }
 
   @protected
@@ -47336,7 +47336,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt dco_decode_U128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BigInt.parse(raw);
+    return BigInt.parse(dcoDecodeString(raw));
   }
 
   @protected
