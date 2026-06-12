@@ -169,12 +169,13 @@ Future<void> _executeWasmPack(
     Platform.environment.entries,
     (entry) => _isWasmPackCoverageEnvironmentKey(entry.key),
   );
-  final environment = _computeWasmPackEnvironmentFromEntries(
-    environmentEntries: environmentSplit.unmatched,
-    rustupToolchain: args.wasmPackRustupToolchain ?? 'nightly',
-    rustflags: rustflagsResolution.rustflags,
-    cargoTermColor: stdout.supportsAnsiEscapes,
-  );
+  final environment = {
+    for (final MapEntry(key: key, value: value) in environmentSplit.unmatched)
+      key: value,
+    'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
+    'RUSTFLAGS': rustflagsResolution.rustflags,
+    if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
+  };
   final removedCoverageEnvironmentKeys =
       environmentSplit.matched.map((entry) => entry.key).toList()..sort();
   if (removedCoverageEnvironmentKeys.isNotEmpty) {
@@ -276,23 +277,8 @@ Map<String, String> computeWasmPackEnvironment({
     baseEnvironment.entries,
     (entry) => _isWasmPackCoverageEnvironmentKey(entry.key),
   );
-  return _computeWasmPackEnvironmentFromEntries(
-    environmentEntries: split.unmatched,
-    rustupToolchain: rustupToolchain,
-    rustflags: rustflags,
-    cargoTermColor: cargoTermColor,
-  );
-}
-
-Map<String, String> _computeWasmPackEnvironmentFromEntries({
-  required Iterable<MapEntry<String, String>> environmentEntries,
-  required String rustupToolchain,
-  required String rustflags,
-  required bool cargoTermColor,
-}) {
   return {
-    for (final MapEntry(key: key, value: value) in environmentEntries)
-      key: value,
+    for (final MapEntry(key: key, value: value) in split.unmatched) key: value,
     'RUSTUP_TOOLCHAIN': rustupToolchain,
     'RUSTFLAGS': rustflags,
     if (cargoTermColor) 'CARGO_TERM_COLOR': 'always',
