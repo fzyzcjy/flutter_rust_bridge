@@ -18,6 +18,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalize
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/verify_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
@@ -27,6 +28,7 @@ import 'package:yaml/yaml.dart';
 part 'generate.g.dart';
 
 const _kRefreshCargoLockOrderingEnv = 'FRB_REFRESH_CARGO_LOCK_ORDERING';
+
 List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand(
@@ -98,6 +100,10 @@ List<Command<void>> createCommands() {
     ),
     SimpleCommand('generate-website-merge', generateWebsiteMerge),
     SimpleCommand('generate-website-serve', generateWebsiteServe),
+    SimpleCommand(
+      'verify-apple-scaffold-source-of-truth',
+      verifyAppleScaffoldSourceOfTruth,
+    ),
   ];
 }
 
@@ -450,10 +456,12 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           );
       }
 
-      await applyCheckedInAppleScaffoldSourceOfTruth(
-        package: config.package,
-        generatedPackageDir: dirPackage,
-      );
+      if (!shouldSkipAppleScaffoldSourceOfTruth()) {
+        await applyCheckedInAppleScaffoldSourceOfTruth(
+          package: config.package,
+          generatedPackageDir: dirPackage,
+        );
+      }
 
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {

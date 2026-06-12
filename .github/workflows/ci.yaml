@@ -419,6 +419,37 @@ jobs:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--${{ matrix.platforms }}--coverage
           path: target/coverage
 
+  verify_apple_scaffold_source_of_truth:
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).verify_apple_scaffold_source_of_truth.enable == true }}
+    name: 'Generate :: Apple Scaffold Source Of Truth'
+    runs-on: macos-15-intel
+
+    steps:
+      # setup
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
+        with:
+          comment_on_pr: false
+          job_summary: false
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt, clippy
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          cache: true
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+
+      # execute
+      - run: ./frb_internal verify-apple-scaffold-source-of-truth
+
   generate_internal:
     needs: plan_ci
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_internal.enable == true }}
@@ -1208,6 +1239,7 @@ jobs:
       - plan_ci
       - generate_run_frb_codegen_command_generate
       - generate_run_frb_codegen_command_integrate
+      - verify_apple_scaffold_source_of_truth
       - generate_internal
       # - test_upgrade
       - test_rust

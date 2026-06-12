@@ -181,6 +181,9 @@
       ]
     },
     {
+      "id": "verify_apple_scaffold_source_of_truth"
+    },
+    {
       "id": "generate_internal"
     },
     {

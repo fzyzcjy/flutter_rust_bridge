@@ -65,6 +65,7 @@ final kCiJobs = [
       },
     ]),
   ),
+  const CiJob('verify_apple_scaffold_source_of_truth'),
   const CiJob('generate_internal'),
   CiJob(
     'bench_dart_native',

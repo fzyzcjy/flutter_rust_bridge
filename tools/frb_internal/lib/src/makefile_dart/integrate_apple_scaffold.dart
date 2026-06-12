@@ -21,15 +21,18 @@ const _kIntegrateAppleScaffoldSourceOfTruthPaths = <String, List<String>>{
   ],
 };
 
+List<String> integrateAppleScaffoldSourceOfTruthPackages() =>
+    List.unmodifiable(_kIntegrateAppleScaffoldSourceOfTruthPaths.keys);
+
 Future<void> applyCheckedInAppleScaffoldSourceOfTruth({
   required String package,
   required String generatedPackageDir,
 }) async {
-  for (final relativePath in _integrateAppleScaffoldSourceOfTruthPaths(
+  for (final relativePath in integrateAppleScaffoldSourceOfTruthPaths(
     package,
   )) {
     _restorePathIfExists(
-      source: _integrateAppleScaffoldSourceOfTruthAssetPath(
+      source: integrateAppleScaffoldSourceOfTruthAssetPath(
         package: package,
         relativePath: relativePath,
       ),
@@ -38,22 +41,23 @@ Future<void> applyCheckedInAppleScaffoldSourceOfTruth({
   }
 }
 
-List<String> _integrateAppleScaffoldSourceOfTruthPaths(String package) {
-  return _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [];
-}
+List<String> integrateAppleScaffoldSourceOfTruthPaths(String package) =>
+    List.unmodifiable(
+      _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [],
+    );
 
-String _integrateAppleScaffoldSourceOfTruthAssetPath({
+String integrateAppleScaffoldSourceOfTruthAssetPath({
   required String package,
   required String relativePath,
 }) {
-  return _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
+  return integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
     repoRootPath: exec.pwd!,
     package: package,
     relativePath: relativePath,
   );
 }
 
-String _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot({
+String integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot({
   required String repoRootPath,
   required String package,
   required String relativePath,
@@ -72,15 +76,15 @@ String _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot({
 @visibleForTesting
 List<String> integrateAppleScaffoldSourceOfTruthPathsForTesting(
   String package,
-) => List.unmodifiable(_integrateAppleScaffoldSourceOfTruthPaths(package));
+) => List.unmodifiable(integrateAppleScaffoldSourceOfTruthPaths(package));
 
 @visibleForTesting
 List<String> integrateAppleScaffoldSourceOfTruthAssetPathsForTesting({
   required String repoRootPath,
   required String package,
 }) => List.unmodifiable(
-  _integrateAppleScaffoldSourceOfTruthPaths(package).map(
-    (relativePath) => _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
+  integrateAppleScaffoldSourceOfTruthPaths(package).map(
+    (relativePath) => integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
       repoRootPath: repoRootPath,
       package: package,
       relativePath: relativePath,
