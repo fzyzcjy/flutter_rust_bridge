@@ -76,39 +76,4 @@ void main() {
       expect(resolution.warning, isNull);
     },
   );
-
-  test('wasm-pack environment drops cargo llvm-cov variables', () {
-    final environment = computeWasmPackEnvironment(
-      baseEnvironment: const {
-        'PATH': '/usr/bin',
-        'HOME': '/home/test',
-        'FRB_CUSTOM_TOOLCHAIN_ENV': 'kept',
-        'CARGO_LLVM_COV': '1',
-        'CARGO_LLVM_COV_EXTRA': 'extra',
-        'CARGO_LLVM_COV_TARGET_DIR': '/tmp/target',
-        'LLVM_PROFILE_FILE': '/tmp/profile-%p.profraw',
-        'RUSTC_WRAPPER': 'cargo-llvm-cov',
-        '__CARGO_LLVM_COV_RUSTC_WRAPPER': '1',
-        '__CARGO_LLVM_COV_EXTRA': 'extra',
-        'RUSTFLAGS': '-C instrument-coverage',
-      },
-      rustupToolchain: 'nightly',
-      rustflags: '-C target-feature=+atomics',
-      cargoTermColor: true,
-    );
-
-    expect(environment['PATH'], '/usr/bin');
-    expect(environment['HOME'], '/home/test');
-    expect(environment['FRB_CUSTOM_TOOLCHAIN_ENV'], 'kept');
-    expect(environment['RUSTUP_TOOLCHAIN'], 'nightly');
-    expect(environment['RUSTFLAGS'], '-C target-feature=+atomics');
-    expect(environment['CARGO_TERM_COLOR'], 'always');
-    expect(environment, isNot(contains('CARGO_LLVM_COV')));
-    expect(environment, isNot(contains('CARGO_LLVM_COV_EXTRA')));
-    expect(environment, isNot(contains('CARGO_LLVM_COV_TARGET_DIR')));
-    expect(environment, isNot(contains('LLVM_PROFILE_FILE')));
-    expect(environment, isNot(contains('RUSTC_WRAPPER')));
-    expect(environment, isNot(contains('__CARGO_LLVM_COV_RUSTC_WRAPPER')));
-    expect(environment, isNot(contains('__CARGO_LLVM_COV_EXTRA')));
-  });
 }

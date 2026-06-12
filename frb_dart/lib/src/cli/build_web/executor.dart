@@ -169,7 +169,7 @@ Future<void> _executeWasmPack(
     Platform.environment.entries,
     (entry) => _isWasmPackCoverageEnvironmentKey(entry.key),
   );
-  final environment = {
+  final cmdEnv = {
     for (final MapEntry(key: key, value: value) in environmentSplit.unmatched)
       key: value,
     'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
@@ -207,7 +207,7 @@ Future<void> _executeWasmPack(
       // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
       // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
     ],
-    env: environment,
+    env: cmdEnv,
     includeParentEnvironment: false,
   );
 }
@@ -264,25 +264,6 @@ WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
       ? null
       : 'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default threaded-WASM flags `$buildWebDefaultWasmPackRustflags`. Keep the default flags when overriding `--wasm-pack-rustflags`, otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.';
   return WasmPackRustflagsResolution(rustflags: argsOverride, warning: warning);
-}
-
-@visibleForTesting
-Map<String, String> computeWasmPackEnvironment({
-  required Map<String, String> baseEnvironment,
-  required String rustupToolchain,
-  required String rustflags,
-  required bool cargoTermColor,
-}) {
-  final split = _splitByPredicate(
-    baseEnvironment.entries,
-    (entry) => _isWasmPackCoverageEnvironmentKey(entry.key),
-  );
-  return {
-    for (final MapEntry(key: key, value: value) in split.unmatched) key: value,
-    'RUSTUP_TOOLCHAIN': rustupToolchain,
-    'RUSTFLAGS': rustflags,
-    if (cargoTermColor) 'CARGO_TERM_COLOR': 'always',
-  };
 }
 
 ({List<T> matched, List<T> unmatched}) _splitByPredicate<T>(
