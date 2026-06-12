@@ -417,12 +417,15 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
 
   group('release version config and validation', () {
     test('requires new version option', () {
-      expect(() => parseReleaseConfigForTesting([]), throwsArgumentError);
+      expect(
+        () => parseRequiredReleaseConfigForTesting([]),
+        throwsArgumentError,
+      );
     });
 
     test('accepts explicit beta version', () {
       expect(
-        parseReleaseConfigForTesting([
+        parseRequiredReleaseConfigForTesting([
           '--new-version',
           '2.13.0-beta.1',
         ]).newVersion,

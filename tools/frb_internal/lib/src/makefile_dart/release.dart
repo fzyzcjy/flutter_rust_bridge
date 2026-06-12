@@ -2,8 +2,10 @@
 
 import 'dart:io';
 
-import 'package:args/args.dart';
+import 'package:args/args.dart' show ArgParser, ArgResults;
 import 'package:args/command_runner.dart';
+import 'package:build_cli_annotations/build_cli_annotations.dart'
+    hide ArgParser, ArgResults;
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
@@ -11,6 +13,8 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:yaml/yaml.dart';
+
+part 'release.g.dart';
 
 List<Command<void>> createCommands() {
   return [
@@ -30,15 +34,30 @@ SimpleConfigCommand<ReleaseConfig> _releaseConfigCommand(
 ) => SimpleConfigCommand(
   name,
   executor,
-  populateReleaseConfigParser,
-  parseReleaseConfigResult,
+  _$populateReleaseConfigParser,
+  parseRequiredReleaseConfigResult,
   description: 'Release command that requires --new-version.',
 );
 
+@CliOptions()
 class ReleaseConfig {
+  @CliOption(help: 'The exact version to release, for example 2.13.0-beta.1.')
   final String newVersion;
 
   const ReleaseConfig({required this.newVersion});
+}
+
+ReleaseConfig parseRequiredReleaseConfigResult(ArgResults result) {
+  final newVersion = result['new-version'] as String?;
+  if (newVersion == null || newVersion.isEmpty) {
+    throw ArgumentError('Missing required option --new-version.');
+  }
+  return ReleaseConfig(newVersion: newVersion);
+}
+
+ReleaseConfig parseRequiredReleaseConfigForTesting(List<String> args) {
+  final parser = _$populateReleaseConfigParser(ArgParser());
+  return parseRequiredReleaseConfigResult(parser.parse(args));
 }
 
 class VersionInfo {
@@ -50,24 +69,6 @@ class VersionInfo {
   @override
   String toString() =>
       '_VersionInfo{oldVersion: $oldVersion, newVersion: $newVersion}';
-}
-
-void populateReleaseConfigParser(ArgParser parser) {
-  parser.addOption(
-    'new-version',
-    help: 'The exact version to release, for example 2.13.0-beta.1.',
-    mandatory: true,
-  );
-}
-
-ReleaseConfig parseReleaseConfigResult(ArgResults result) {
-  return ReleaseConfig(newVersion: result['new-version'] as String);
-}
-
-ReleaseConfig parseReleaseConfigForTesting(List<String> args) {
-  final parser = ArgParser();
-  populateReleaseConfigParser(parser);
-  return parseReleaseConfigResult(parser.parse(args));
 }
 
 Future<void> release(ReleaseConfig config) async {
