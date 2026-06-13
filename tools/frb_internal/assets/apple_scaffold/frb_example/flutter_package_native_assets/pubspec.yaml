@@ -1,6 +1,6 @@
 publish_to: none
 name: flutter_package_native_assets
-description: "A new Flutter FFI package project."
+description: "A new Dart FFI package project."
 version: 0.0.1
 
 environment:
@@ -16,5 +16,3 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   integration_test:
     sdk: flutter
-
-flutter:
