@@ -25,7 +25,24 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
   ```
 
   Stop if the preflight fails. It checks GitHub CLI auth, Cargo credentials, and Dart pub credentials inside the same temporary credential layout used by release publishing.
-- Confirm normal CI is green for the release commit before publishing.
+- Confirm normal CI is green for the release commit before publishing. This is the default hard gate.
+
+  A narrow exception is allowed only when all of these are true:
+
+  - A recent earlier commit on the same release branch has fully green normal CI.
+  - Every commit between that green commit and the intended release commit is unrelated to the publishable packages, version sources, generated release artifacts, and `frb_internal` release logic.
+  - The mechanical gate script below exits successfully and its output is recorded in the release notes or journal.
+  - The agent explicitly states that it is using the exception before publishing.
+
+  Run the mechanical gate from the repository root:
+
+  ```bash
+  uv run --with typer .claude/skills/frb-publish-release/release_ci_gate.py \
+    --base-green-ref <LAST_GREEN_SHA> \
+    --release-ref HEAD
+  ```
+
+  Stop and wait for normal CI if the script reports any `BLOCK` path. The script is intentionally conservative: release-surface paths such as `CHANGELOG.md`, `Cargo.toml`, `frb_dart/pubspec.yaml`, `frb_codegen/**`, `frb_macros/**`, `frb_rust/**`, `frb_dart/**`, `frb_utils/**`, `frb_example/**`, `tools/frb_internal/**`, `pubspec.yaml`, `melos.yaml`, and lockfiles are not in the allowlist. This exception is for docs, agent tooling, devcontainer, selected CI configuration, and other explicitly non-release paths only.
 
 ### 2. Write Changelog
 
