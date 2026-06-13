@@ -82,6 +82,21 @@ impl ConcatenateWithTwinNormal {
     }
 }
 
+pub struct StreamSinkConstructorTwinNormal {
+    pub value: u32,
+}
+
+impl StreamSinkConstructorTwinNormal {
+    pub fn new_twin_normal(value: u32, sink: StreamSink<u32>) -> StreamSinkConstructorTwinNormal {
+        sink.add(value).unwrap();
+        StreamSinkConstructorTwinNormal { value }
+    }
+
+    pub fn value_twin_normal(&self) -> u32 {
+        self.value
+    }
+}
+
 pub struct SumWithTwinNormal {
     pub x: u32,
 }

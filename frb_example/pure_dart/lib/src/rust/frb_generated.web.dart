@@ -6219,6 +6219,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  StreamSinkConstructorTwinNormal
+      dco_decode_box_autoadd_stream_sink_constructor_twin_normal(dynamic raw);
+
+  @protected
   StructInLowerLevel dco_decode_box_autoadd_struct_in_lower_level(dynamic raw);
 
   @protected
@@ -10020,6 +10024,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   StaticOnlyTwinSyncSse dco_decode_static_only_twin_sync_sse(dynamic raw);
+
+  @protected
+  StreamSinkConstructorTwinNormal
+      dco_decode_stream_sink_constructor_twin_normal(dynamic raw);
 
   @protected
   StructInLowerLevel dco_decode_struct_in_lower_level(dynamic raw);
@@ -15854,6 +15862,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StreamSinkConstructorTwinNormal
+      sse_decode_box_autoadd_stream_sink_constructor_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   StructInLowerLevel sse_decode_box_autoadd_struct_in_lower_level(
       SseDeserializer deserializer);
 
@@ -20166,6 +20179,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StreamSinkConstructorTwinNormal
+      sse_decode_stream_sink_constructor_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   StructInLowerLevel sse_decode_struct_in_lower_level(
       SseDeserializer deserializer);
 
@@ -23568,6 +23586,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_some_struct_twin_sync(SomeStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_some_struct_twin_sync(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_stream_sink_constructor_twin_normal(
+      StreamSinkConstructorTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_stream_sink_constructor_twin_normal(raw);
   }
 
   @protected
@@ -28741,6 +28766,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_static_only_twin_sync(StaticOnlyTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.one)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_stream_sink_constructor_twin_normal(
+      StreamSinkConstructorTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_u_32(raw.value)].jsify()!;
   }
 
   @protected
@@ -36091,6 +36123,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SomeStructTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_stream_sink_constructor_twin_normal(
+      StreamSinkConstructorTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_in_lower_level(
       StructInLowerLevel self, SseSerializer serializer);
 
@@ -40200,6 +40236,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_static_only_twin_sync_sse(
       StaticOnlyTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_stream_sink_constructor_twin_normal(
+      StreamSinkConstructorTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_in_lower_level(
@@ -60789,6 +60829,18 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
                   a);
 
+  void wire__crate__api__method__stream_sink_constructor_twin_normal_new_twin_normal(
+          NativePortType port_, int value, String sink) =>
+      wasmModule
+          .wire__crate__api__method__stream_sink_constructor_twin_normal_new_twin_normal(
+              port_, value, sink);
+
+  void wire__crate__api__method__stream_sink_constructor_twin_normal_value_twin_normal(
+          NativePortType port_, JSAny that) =>
+      wasmModule
+          .wire__crate__api__method__stream_sink_constructor_twin_normal_value_twin_normal(
+              port_, that);
+
   void wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal(
           NativePortType port_, String sink) =>
       wasmModule
@@ -78866,6 +78918,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
           int a);
+
+  external void
+      wire__crate__api__method__stream_sink_constructor_twin_normal_new_twin_normal(
+          NativePortType port_, int value, String sink);
+
+  external void
+      wire__crate__api__method__stream_sink_constructor_twin_normal_value_twin_normal(
+          NativePortType port_, JSAny that);
 
   external void
       wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal(

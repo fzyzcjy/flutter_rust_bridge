@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart/src/rust/api/method.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -91,6 +92,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final stream = ConcatenateWithTwinNormal
         .handleSomeStaticStreamSinkSingleArgTwinNormal();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
+  });
+
+  test('StreamSinkConstructor newTwinNormal', () async {
+    final sink = RustStreamSink<int>();
+    final objectFuture = StreamSinkConstructorTwinNormal.newTwinNormal(
+      value: 42,
+      sink: sink,
+    );
+    final values = sink.stream.take(1).toList();
+    final object = await objectFuture;
+    expect(await object.valueTwinNormal(), 42);
+    expect(await values, [42]);
   });
 
   test('getter', () async {
