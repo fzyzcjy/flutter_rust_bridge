@@ -9,6 +9,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
+import 'package:pub_semver/pub_semver.dart';
 import 'package:yaml/yaml.dart';
 
 List<Command<void>> createCommands() {
@@ -149,15 +150,30 @@ Future<void> releaseUpdateGithub() async {
   File('${exec.pwd}temp.txt').writeAsStringSync(_extractChangelog().$2);
 
   await exec(
-    'gh release create v${versionInfo.newVersion} '
-    '--notes-file temp.txt '
-    '--draft '
-    '--title v${versionInfo.newVersion}',
+    githubReleaseCreateCommandForTesting(
+      version: versionInfo.newVersion,
+      notesFile: 'temp.txt',
+    ),
   );
   print(
     'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.',
   );
   await exec('open https://github.com/fzyzcjy/flutter_rust_bridge/releases');
+}
+
+String githubReleaseCreateCommandForTesting({
+  required String version,
+  required String notesFile,
+}) {
+  final parsedVersion = Version.parse(version);
+
+  return [
+    'gh release create v$version',
+    '--notes-file $notesFile',
+    '--draft',
+    if (parsedVersion.isPreRelease) '--prerelease',
+    '--title v$version',
+  ].join(' ');
 }
 
 Future<void> releasePublishAll() async {

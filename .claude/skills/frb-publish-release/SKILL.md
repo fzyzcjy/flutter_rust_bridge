@@ -64,6 +64,8 @@ Do not split the normal release into separate `release-update-*` or publish comm
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all
 ```
 
+For beta versions such as `2.13.0-beta.1`, verify the GitHub release is labeled as a pre-release before treating the release as complete.
+
 `release-publish-all` publishes these packages:
 
 - `frb_codegen` -> crates.io package `flutter_rust_bridge_codegen`

@@ -6,6 +6,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
@@ -52,6 +53,26 @@ void main() {
     expect(
       linuxBuildBundlePathForTesting(machineArchitecture: 'riscv64'),
       'build/linux/riscv64/release/bundle',
+    );
+  });
+
+  test('GitHub release create command labels prerelease versions', () {
+    expect(
+      githubReleaseCreateCommandForTesting(
+        version: '2.13.0-beta.1',
+        notesFile: 'temp.txt',
+      ),
+      'gh release create v2.13.0-beta.1 --notes-file temp.txt --draft --prerelease --title v2.13.0-beta.1',
+    );
+  });
+
+  test('GitHub release create command keeps stable versions latest-neutral', () {
+    expect(
+      githubReleaseCreateCommandForTesting(
+        version: '2.13.0',
+        notesFile: 'temp.txt',
+      ),
+      'gh release create v2.13.0 --notes-file temp.txt --draft --title v2.13.0',
     );
   });
 
