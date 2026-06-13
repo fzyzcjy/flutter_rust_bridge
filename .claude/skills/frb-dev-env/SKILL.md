@@ -72,6 +72,31 @@ Typical usage:
 .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc './frb_internal --help'
 ```
 
+### Temporary Docker Commands With Publish Credentials
+
+Use `docker-run-rm --with-publish-credentials` only for release publishing commands that need host credentials. Unlike the normal long-lived development container, this runs a fresh temporary container with `docker run --rm`, mounts the worktree and git common root, mounts the host credential directories read-only, copies the credential files into temporary container-local homes, checks login status, runs the requested command, then discards the container.
+
+The publish credential flag mounts these host credential sources when present:
+
+- GitHub CLI config from `GH_CONFIG_DIR` or `~/.config/gh`
+- Cargo credentials and config from `CARGO_HOME` or `~/.cargo`
+- Git config from `~/.gitconfig` and `~/.config/git`
+- Dart pub credentials from `~/.pub-cache`, `~/.config/dart`, or `~/Library/Application Support/dart`
+
+Run the credential preflight before any irreversible release step:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- true
+```
+
+Run release publishing through a temporary publish-credential container:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release
+```
+
+The credential preflight fails before running release commands if host GitHub CLI auth is invalid, Cargo credentials are missing, or Dart pub credentials are missing. It then re-checks GitHub CLI auth inside the temporary container and runs `gh auth setup-git` there so HTTPS `git push` can use the mounted GitHub CLI auth.
+
 ### Cleanup
 
 Delete a worktree's Docker container when the worktree is no longer needed, or when local Docker resources are getting crowded:
