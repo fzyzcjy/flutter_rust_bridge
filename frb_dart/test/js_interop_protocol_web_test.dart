@@ -17,6 +17,10 @@ void main() {
     expect(dcoDecodeString('hello'.toJS), 'hello');
   });
 
+  test('DCO string decoder accepts JavaScript integer character codes', () {
+    expect(dcoDecodeString(65.toJS), 'A');
+  });
+
   test('CST int64 list encoder emits BigInt64Array', () {
     final encoded = cstEncodeInt64List([BigInt.from(-1), BigInt.zero]);
 

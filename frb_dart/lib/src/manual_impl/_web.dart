@@ -22,10 +22,11 @@ int dcoDecodePrimitiveInt(Object? raw) {
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 String dcoDecodeString(Object? raw) {
   if (raw is String) return raw;
-  if (raw is JSString) return raw.toDart;
   if (raw is JSAny) {
+    if (raw.typeofEquals('string')) return (raw as JSString).toDart;
     final dartified = raw.dartify();
     if (dartified is String) return dartified;
+    return String.fromCharCode(dcoDecodePrimitiveInt(dartified));
   }
   return String.fromCharCode(dcoDecodePrimitiveInt(raw));
 }
