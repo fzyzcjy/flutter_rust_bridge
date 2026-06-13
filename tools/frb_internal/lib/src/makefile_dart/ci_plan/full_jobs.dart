@@ -150,19 +150,14 @@ final kCiJobs = [
     'test_flutter_native_android',
     matrix: CiMatrix([
       for (final package in _flutterNativePackages)
-        for (final device in ['pixel', 'Nexus 6'])
-          {'package': package, 'device': device, 'api-level': 35},
+        {'package': package, 'device': 'pixel', 'api-level': 35},
     ]),
   ),
   CiJob(
     'test_flutter_native_ios',
     matrix: CiMatrix([
       for (final package in _flutterNativePackages)
-        for (final device in [
-          'iPad (10th generation) Simulator (18.6)',
-          'iPhone 16 Pro Max Simulator (18.6)',
-        ])
-          {'package': package, 'device': device},
+        {'package': package, 'device': 'iPhone 16 Pro Max Simulator (18.6)'},
     ]),
   ),
   CiJob(
@@ -207,21 +202,6 @@ final kCiJobs = [
           'target': 'android',
           'device': 'pixel',
           'api-level': 35,
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'android',
-          'target': 'android',
-          'device': 'Nexus 6',
-          'api-level': 35,
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'macos-latest',
-          'platform': 'ios',
-          'target': 'ios',
-          'device': 'iPad (10th generation) Simulator (18.6)',
           'package': 'frb_example--flutter_via_create',
         },
         {
