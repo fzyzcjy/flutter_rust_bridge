@@ -38,11 +38,11 @@ take a look at [mimir](https://github.com/GregoryConrad/mimir) (which is created
 It incorporates all functionality present in this guide and some more.
 
 ## Warning!
-Please note, this entire section will be outdated & need to be overhauled once
-["Native Assets"](https://github.com/dart-lang/sdk/issues/50565) are added to Dart.
-A lot of the techniques described here are merely workarounds until Dart supports Native Assets.
+This section is a legacy, fine-grained guide for library authors who want to own
+their prebuilt binary distribution and CI workflow.
+For new Flutter packages that can require a recent Flutter/Dart SDK with build hooks
+and code assets, also consider the [Native Assets backend](../../native-assets).
 
-Also, this guide does not currently cover web support, but provides the necessary ground work
+This guide does not currently cover web support, but provides the necessary ground work
 to support web in the future.
-It *may* be worth waiting for Native Assets before trying to come up with a custom solution for WASM.
 Feel free to PR to add web support to this guide!
