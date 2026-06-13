@@ -9,9 +9,8 @@
 * Pass platforms through create and integrate commands #3129
 * Support skipping FVM installation #3126
 * Fix macOS xcconfig drift #3118
-* Restore Rust-to-Dart logging bridge #3114
+* Add Rust-to-Dart logging bridge #3114 #3111 #3079 #2766 (thanks @patmuk)
 * Upgrade Flutter to 3.44 #3112
-* Revert Rust-to-Dart logging bridge #3111
 * Rename `ObjectId` to `MoiObjectId` in `frb_generated_moi_arc_def!` #3106 (thanks @ganeshrvel)
 * Fix Dart native test hangs after logging bridge #3103
 * Fix generated fixed array equality #3093
@@ -19,7 +18,6 @@
 * Fix concurrent cargo-expand auto install #3090
 * Add generic Dart initializer hook #3083
 * Allow frb_internal clean checks without git metadata #3082
-* Add Rust-to-Dart logging bridge #3079
 * Split out @rlch's serde_json Value support #3077
 * Support multi-arch Docker development on Apple Silicon #3070
 * Remove outdated Dockerfile in favor of devcontainer up-to-date Dockerfile #3069
@@ -27,7 +25,6 @@
 * Fix threaded WASM build-web defaults for the website demo #3052
 * Introduce conversion between chrono::NaiveDate and DateTime avoiding RustOpaque #2968 (thanks @TrackerSB)
 * Fix Map/List/Set equality in generated Dart structs #2956 (thanks @nightscape)
-* Re-apply Rust-to-Dart logging overhaul #2766 (thanks @patmuk)
 * Improve release publishing and post-release validation tooling #3221 #3220 #3219 #3218 #3217 #3216 #3215 #3214 #3211 #3210
 * Improve CI, workflow dispatch, and precommit automation #3195 #3193 #3189 #3178 #3175 #3174 #3172 #3166 #3160 #3143 #3137 #3135 #3134 #3132 #3131 #3115 #3099 #3096 #3076 #3072 #3051 #2990
 * Improve local dev, Docker, Tart, Android, and manual-test tooling #3197 #3196 #3192 #3191 #3188 #3187 #3186 #3185 #3184 #3183 #3180 #3179 #3176 #3150 #3149 #3147 #3146 #3144 #3142 #3113
