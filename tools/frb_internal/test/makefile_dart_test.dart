@@ -464,7 +464,7 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       'uses local Dart manifest version as pub.dev target version',
       () async {
         final rustVersion = released_version.getWorkspaceRustVersion();
-        final dartVersion = released_version.getFrbDartVersion();
+        final dartVersion = getFrbDartVersion();
 
         final statuses = await released_version.fetchReleasePackageStatuses(
           fetcher: (uri) async {
