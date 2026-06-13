@@ -1,7 +1,7 @@
 publish_to: none
 name: flutter_package_native_assets
 description: "A new Flutter FFI package project."
-version: 1.0.0
+version: 0.0.1
 
 environment:
   sdk: ^3.11.0
