@@ -6,6 +6,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
@@ -54,6 +55,26 @@ void main() {
       'build/linux/riscv64/release/bundle',
     );
   });
+
+  test('GitHub release create command labels prerelease versions', () {
+    expect(
+      githubReleaseCreateCommand(
+        version: '2.13.0-beta.1',
+        notesFile: 'temp.txt',
+      ),
+      'gh release create v2.13.0-beta.1 --notes-file temp.txt --prerelease --title v2.13.0-beta.1',
+    );
+  });
+
+  test(
+    'GitHub release create command keeps stable versions latest-neutral',
+    () {
+      expect(
+        githubReleaseCreateCommand(version: '2.13.0', notesFile: 'temp.txt'),
+        'gh release create v2.13.0 --notes-file temp.txt --title v2.13.0',
+      );
+    },
+  );
 
   test(
     'pure dart generator resolves package from repo root instead of cwd',
