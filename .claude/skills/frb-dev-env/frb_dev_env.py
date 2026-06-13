@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 import shlex
+import shutil
 import subprocess
 import sys
 import time
@@ -57,6 +58,7 @@ PUBLISH_CARGO_HOME = Path("/tmp/frb-publish-cargo-home")
 PUBLISH_PUB_CACHE = Path("/tmp/frb-publish-pub-cache")
 PUBLISH_XDG_CONFIG_HOME = Path("/tmp/frb-publish-config")
 PUBLISH_GH_HOST = "github.com"
+PUBLISH_GH_TOKEN_ENV_NAMES = ["GH_TOKEN", "GITHUB_TOKEN"]
 
 
 # ========== Common ==========
@@ -150,7 +152,7 @@ def docker_volume_args_for_roots(*, worktree_root: Path, git_common_root: Path) 
 @dataclass(frozen=True)
 class PublishCredentialPaths:
     cargo_home: Path
-    gh_config_dir: Path
+    gh_config_dir: Path | None
     git_config: Path | None
     git_config_dir: Path | None
     pub_cache_dir: Path | None
@@ -160,10 +162,12 @@ class PublishCredentialPaths:
 def resolve_publish_credential_paths(*, home: Path | None = None) -> PublishCredentialPaths:
     resolved_home = (home or Path.home()).expanduser().resolve()
     cargo_home = env_path("CARGO_HOME") or resolved_home / ".cargo"
-    gh_config_dir = env_path("GH_CONFIG_DIR") or resolved_home / ".config" / "gh"
+    gh_config_dir = _existing_dir(
+        env_path("GH_CONFIG_DIR") or resolved_home / ".config" / "gh"
+    )
     git_config = _existing_file(resolved_home / ".gitconfig")
     git_config_dir = _existing_dir(resolved_home / ".config" / "git")
-    pub_cache_dir = _existing_dir(resolved_home / ".pub-cache")
+    pub_cache_dir = _existing_dir(env_path("PUB_CACHE") or resolved_home / ".pub-cache")
     dart_config_dir = _first_existing_dir(
         [
             resolved_home / ".config" / "dart",
@@ -196,8 +200,11 @@ def _first_existing_dir(paths: list[Path]) -> Path | None:
 def validate_publish_credentials(paths: PublishCredentialPaths) -> None:
     missing = []
 
-    if not paths.gh_config_dir.is_dir():
-        missing.append(f"GitHub CLI config directory: {paths.gh_config_dir}")
+    if not _has_github_token_env() and paths.gh_config_dir is None:
+        missing.append(
+            "GitHub CLI config directory in GH_CONFIG_DIR or ~/.config/gh, "
+            "or GH_TOKEN/GITHUB_TOKEN env var"
+        )
     if not _has_cargo_credentials(paths.cargo_home):
         missing.append(f"Cargo credentials file in: {paths.cargo_home}")
     if not _has_pub_credentials(paths):
@@ -214,7 +221,14 @@ def validate_publish_credentials(paths: PublishCredentialPaths) -> None:
 
 
 def check_publish_host_login_status() -> None:
+    if shutil.which("gh") is None:
+        return
+
     exec_command(["gh", "auth", "status", "--hostname", PUBLISH_GH_HOST])
+
+
+def _has_github_token_env() -> bool:
+    return any(os.environ.get(name) for name in PUBLISH_GH_TOKEN_ENV_NAMES)
 
 
 def _has_cargo_credentials(cargo_home: Path) -> bool:
@@ -243,9 +257,14 @@ def publish_credential_volume_args(paths: PublishCredentialPaths) -> list[str]:
     volumes = [
         "--volume",
         f"{paths.cargo_home}:{PUBLISH_CREDENTIAL_ROOT / 'cargo'}:ro",
-        "--volume",
-        f"{paths.gh_config_dir}:{PUBLISH_CREDENTIAL_ROOT / 'gh'}:ro",
     ]
+    if paths.gh_config_dir is not None:
+        volumes.extend(
+            [
+                "--volume",
+                f"{paths.gh_config_dir}:{PUBLISH_CREDENTIAL_ROOT / 'gh'}:ro",
+            ]
+        )
 
     optional_volumes = [
         (paths.git_config, PUBLISH_CREDENTIAL_ROOT / "gitconfig"),
@@ -268,7 +287,19 @@ def publish_container_environment_args() -> list[str]:
         "XDG_CONFIG_HOME": str(PUBLISH_XDG_CONFIG_HOME),
         "GH_CONFIG_DIR": str(PUBLISH_HOME / ".config" / "gh"),
     }
-    return docker_exec_env_args(env)
+    return [
+        *docker_exec_env_args(env),
+        *docker_env_passthrough_args(PUBLISH_GH_TOKEN_ENV_NAMES),
+    ]
+
+
+def docker_env_passthrough_args(names: list[str]) -> list[str]:
+    result = []
+    for name in names:
+        if os.environ.get(name):
+            result.extend(["--env", name])
+
+    return result
 
 
 def publish_container_bootstrap_script() -> str:
@@ -287,7 +318,7 @@ def publish_container_bootstrap_script() -> str:
             f"export XDG_CONFIG_HOME={shlex.quote(str(PUBLISH_XDG_CONFIG_HOME))}",
             f"export GH_CONFIG_DIR={shlex.quote(str(PUBLISH_HOME / '.config' / 'gh'))}",
             'mkdir -p "$HOME/.config" "$CARGO_HOME" "$PUB_CACHE" "$XDG_CONFIG_HOME/dart"',
-            f"cp -a {gh_credential_root} \"$HOME/.config/gh\"",
+            f"if [ -d {gh_credential_root} ]; then cp -a {gh_credential_root} \"$HOME/.config/gh\"; fi",
             f"if [ -f {gitconfig_path} ]; then cp {gitconfig_path} \"$HOME/.gitconfig\"; fi",
             f"if [ -d {git_config_root} ]; then mkdir -p \"$HOME/.config\" && cp -a {git_config_root} \"$HOME/.config/git\"; fi",
             f"for name in credentials.toml credentials config.toml config; do if [ -f {cargo_credential_root}/$name ]; then cp {cargo_credential_root}/$name \"$CARGO_HOME/$name\"; fi; done",
