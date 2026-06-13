@@ -29,13 +29,13 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 ### 3. Publish
 
-Use the repository release command:
+Use the repository release command as the normal publishing path:
 
 ```bash
 ./frb_internal release
 ```
 
-This command computes old/new versions from `CHANGELOG.md`, updates checked-in versions and generated version text, updates Scoop metadata, commits and pushes the version bump, creates a draft GitHub release, then runs:
+Do not split the normal release into separate `release-update-*` or publish commands. The one-shot command is the source of truth for release sequencing: it computes old/new versions from `CHANGELOG.md`, updates checked-in versions and generated version text, updates Scoop metadata, commits and pushes the version bump, creates a draft GitHub release, then runs the registry publisher:
 
 ```bash
 ./frb_internal release-publish-all
@@ -48,7 +48,7 @@ This command computes old/new versions from `CHANGELOG.md`, updates checked-in v
 - `frb_rust` -> crates.io package `flutter_rust_bridge`
 - `frb_dart` -> pub.dev package `flutter_rust_bridge`
 
-If the version bump and GitHub draft already exist and only registry publication is needed, use `./frb_internal release-publish-all` directly.
+Only use a split subcommand as a recovery path after confirming which one-shot step already completed. For example, if the version bump and GitHub draft already exist and only registry publication is needed, use `./frb_internal release-publish-all` directly.
 
 ### 4. Check Released Versions
 
