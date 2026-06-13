@@ -18,6 +18,8 @@ pub struct SendableMessagePortHandle(String);
 
 thread_local! {
     static BROADCAST_CHANNEL_OF_NAME: RefCell<HashMap<String, MessagePort>> = Default::default();
+    static BROADCAST_CHANNELS_PENDING_CLOSE: RefCell<Vec<MessagePort>> = Default::default();
+    static BROADCAST_CHANNEL_CLOSE_CALLBACK: Closure<dyn FnMut()> = Closure::wrap(Box::new(close_pending_message_ports) as Box<dyn FnMut()>);
 }
 
 #[wasm_bindgen]
@@ -62,14 +64,22 @@ pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessageP
 pub type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
 
 fn close_message_port_later(port: MessagePort) {
-    let callback_port = port.clone();
-    let callback = Closure::once(move || close_message_port(callback_port));
-    if let Err(error) = set_timeout(callback.as_ref().unchecked_ref(), 0) {
+    BROADCAST_CHANNELS_PENDING_CLOSE.with(|ports| ports.borrow_mut().push(port));
+
+    if let Err(error) = BROADCAST_CHANNEL_CLOSE_CALLBACK
+        .with(|callback| set_timeout(callback.as_ref().unchecked_ref(), 0))
+    {
         crate::console_error!("schedule broadcast channel close: {:?}", error);
-        close_message_port(port);
-        return;
+        close_pending_message_ports();
     }
-    callback.forget();
+}
+
+fn close_pending_message_ports() {
+    let ports = BROADCAST_CHANNELS_PENDING_CLOSE
+        .with(|ports| ports.borrow_mut().drain(..).collect::<Vec<_>>());
+    for port in ports {
+        close_message_port(port);
+    }
 }
 
 fn close_message_port(port: MessagePort) {
