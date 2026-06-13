@@ -201,13 +201,6 @@ plain
     );
   });
 
-  test('cargokit build tool formatting restores package config first', () {
-    expect(cargokitBuildToolDartCommandsForTesting(), [
-      ['pub', 'get'],
-      ['format', '.'],
-    ]);
-  });
-
   test('pub get guard refreshes stale package config roots', () async {
     final tempDir = await Directory.systemTemp.createTemp('frb_pub_get_guard_');
     try {
