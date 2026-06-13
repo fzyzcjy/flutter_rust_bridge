@@ -6,7 +6,6 @@ It does not replace the core bridge code generator.
 
 :::info
 The flutter_rust_bridge Native Assets backend is available through `--integration-backend native-assets`.
-The default `flutter_rust_bridge_codegen create/integrate` backend remains [Cargokit](cargokit).
 :::
 
 ## Usage
