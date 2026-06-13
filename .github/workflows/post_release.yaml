@@ -33,6 +33,9 @@ jobs:
           - cargo-binstall
           # - scoop # TODO re-enable after configured
           # - homebrew # TODO re-enable after configured
+        release_channel:
+          - stable
+          - unstable
         exclude:
           - { image: windows-2022, codegen_install_mode: homebrew }
           - { image: macos-15-intel, codegen_install_mode: scoop }
@@ -70,4 +73,4 @@ jobs:
         uses: pyvista/setup-headless-display-action@v4
 
       # execute
-      - run: ./frb_internal post-release-mimic-quickstart --codegen-install-mode ${{ matrix.codegen_install_mode }}
+      - run: ./frb_internal post-release-mimic-quickstart --codegen-install-mode ${{ matrix.codegen_install_mode }} --release-channel ${{ matrix.release_channel }}

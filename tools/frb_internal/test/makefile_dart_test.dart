@@ -4,7 +4,10 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -52,6 +55,26 @@ void main() {
       'build/linux/riscv64/release/bundle',
     );
   });
+
+  test('GitHub release create command labels prerelease versions', () {
+    expect(
+      githubReleaseCreateCommand(
+        version: '2.13.0-beta.1',
+        notesFile: 'temp.txt',
+      ),
+      'gh release create v2.13.0-beta.1 --notes-file temp.txt --prerelease --title v2.13.0-beta.1',
+    );
+  });
+
+  test(
+    'GitHub release create command keeps stable versions latest-neutral',
+    () {
+      expect(
+        githubReleaseCreateCommand(version: '2.13.0', notesFile: 'temp.txt'),
+        'gh release create v2.13.0 --notes-file temp.txt --title v2.13.0',
+      );
+    },
+  );
 
   test(
     'pure dart generator resolves package from repo root instead of cwd',
@@ -341,6 +364,184 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
           ),
         ),
       );
+    });
+  });
+
+  group('release version check', () {
+    test('parses crates.io package metadata', () {
+      expect(
+        parseCratesIoReleasedVersion({
+          'crate': {'max_version': '2.12.0'},
+        }),
+        '2.12.0',
+      );
+    });
+
+    test('parses pub.dev package metadata', () {
+      expect(
+        parsePubDevReleasedVersion({
+          'latest': {'version': '2.12.0'},
+        }),
+        '2.12.0',
+      );
+    });
+
+    test('finds pub.dev prerelease target version outside latest', () {
+      expect(
+        parsePubDevReleasedVersion({
+          'latest': {'version': '2.12.0'},
+          'versions': [
+            {'version': '2.12.0'},
+            {'version': '2.13.0-beta.1'},
+          ],
+        }, targetVersion: '2.13.0-beta.1'),
+        '2.13.0-beta.1',
+      );
+    });
+
+    test('summarizes whether every package is published', () {
+      final output = buildReleasePackageStatusOutput([
+        const ReleasePackageStatus(
+          registry: 'crates.io',
+          name: 'flutter_rust_bridge',
+          manifestVersion: '2.12.0',
+          releasedVersion: '2.12.0',
+        ),
+        const ReleasePackageStatus(
+          registry: 'pub.dev',
+          name: 'flutter_rust_bridge',
+          manifestVersion: '2.12.0',
+          releasedVersion: '2.11.1',
+        ),
+      ]);
+
+      expect(output['allReleased'], false);
+      expect(output['packages'], [
+        {
+          'registry': 'crates.io',
+          'name': 'flutter_rust_bridge',
+          'manifestVersion': '2.12.0',
+          'releasedVersion': '2.12.0',
+          'isReleased': true,
+        },
+        {
+          'registry': 'pub.dev',
+          'name': 'flutter_rust_bridge',
+          'manifestVersion': '2.12.0',
+          'releasedVersion': '2.11.1',
+          'isReleased': false,
+        },
+      ]);
+    });
+
+    test('uses explicit target version for every published package', () async {
+      final statuses = await fetchReleasePackageStatuses(
+        targetVersion: '9.9.9',
+        fetcher: (uri) async {
+          if (uri.host == 'crates.io') {
+            return {
+              'crate': {'max_version': '9.9.9'},
+            };
+          }
+          return {
+            'latest': {'version': '9.9.9'},
+            'versions': [
+              {'version': '9.9.9'},
+            ],
+          };
+        },
+      );
+
+      expect(
+        statuses.map((status) => status.manifestVersion),
+        everyElement('9.9.9'),
+      );
+      expect(statuses.map((status) => status.isReleased), everyElement(true));
+    });
+
+    test(
+      'uses local Dart manifest version as pub.dev target version',
+      () async {
+        final rustVersion = getWorkspaceRustVersion();
+        final dartVersion = getFrbDartVersion();
+
+        final statuses = await fetchReleasePackageStatuses(
+          fetcher: (uri) async {
+            if (uri.host == 'crates.io') {
+              return {
+                'crate': {'max_version': rustVersion},
+              };
+            }
+            return {
+              'latest': {'version': '2.12.0'},
+              'versions': [
+                {'version': dartVersion},
+              ],
+            };
+          },
+        );
+
+        final pubDevStatus = statuses.singleWhere(
+          (status) => status.registry == 'pub.dev',
+        );
+        expect(pubDevStatus.releasedVersion, dartVersion);
+        expect(pubDevStatus.isReleased, true);
+      },
+    );
+  });
+
+  group('post-release config', () {
+    test('uses stable constraint without fetching crates.io', () async {
+      final requirement = await resolveCodegenVersionRequirement(
+        ReleaseChannel.stable,
+        fetcher: (_) => throw StateError('should not fetch'),
+      );
+
+      expect(requirement, '^2.0.0');
+    });
+
+    test('uses latest unstable exact constraint from crates.io', () async {
+      final requirement = await resolveCodegenVersionRequirement(
+        ReleaseChannel.unstable,
+        fetcher: (_) async => {
+          'crate': {'max_stable_version': '2.12.0'},
+          'versions': [
+            {'num': '2.14.0-beta.1', 'yanked': true},
+            {'num': '2.13.0-alpha.1', 'yanked': false},
+            {'num': '2.13.0-beta.1', 'yanked': false},
+            {'num': '2.12.0', 'yanked': false},
+          ],
+        },
+      );
+
+      expect(requirement, '=2.13.0-beta.1');
+    });
+
+    test('skips unstable channel when only old prereleases exist', () async {
+      final requirement = await resolveCodegenVersionRequirement(
+        ReleaseChannel.unstable,
+        fetcher: (_) async => {
+          'crate': {'max_stable_version': '2.12.0'},
+          'versions': [
+            {'num': '2.12.0', 'yanked': false},
+            {'num': '2.0.0-dev.42', 'yanked': false},
+          ],
+        },
+      );
+
+      expect(requirement, isNull);
+    });
+
+    test('parses release channel from CLI arguments', () {
+      final config = parsePostReleaseConfig([
+        '--codegen-install-mode',
+        'cargo-install',
+        '--release-channel',
+        'unstable',
+      ]);
+
+      expect(config.codegenInstallMode, CodegenInstallMode.cargoInstall);
+      expect(config.releaseChannel, ReleaseChannel.unstable);
     });
   });
 

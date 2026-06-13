@@ -5,6 +5,7 @@ FROM ghcr.io/cirruslabs/flutter:${FLUTTER_VERSION}
 ARG RUST_VERSION=1.93.1
 ARG RUST_NIGHTLY_VERSION=2025-02-01
 ARG NODE_VERSION=22.11.0
+ARG YARN_VERSION=1.22.22
 
 # Environment variables
 ENV DEBIAN_FRONTEND=noninteractive
@@ -16,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     clang \
     cmake \
+    gh \
     ninja-build \
     pkg-config \
     libclang-dev \
@@ -98,7 +100,7 @@ RUN cargo install wasm-pack
 # Install extra CLI tools used by internal generation and coverage workflows
 RUN cargo install cargo-expand && \
     cargo install cargo-llvm-cov && \
-    npm install -g all-contributors-cli
+    npm install -g all-contributors-cli "yarn@${YARN_VERSION}"
 
 # Install Chromium for web tests (headless testing). Google Chrome does not
 # provide Linux arm64 builds yet, and Ubuntu's chromium-browser package is snap.
@@ -129,6 +131,7 @@ RUN flutter --version && \
     dart --version && \
     node --version && \
     npm --version && \
+    yarn --version && \
     cargo --version && \
     rustup toolchain list | grep "nightly-${RUST_NIGHTLY_VERSION}" && \
     rustup target list --installed | grep wasm32-unknown-unknown && \
@@ -137,6 +140,7 @@ RUN flutter --version && \
     rustup component list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep rust-src && \
     cargo expand --version && \
     cargo llvm-cov --version && \
+    gh --version && \
     wasm-pack --version && \
     all-contributors --version && \
     "${CHROME_BIN}" --version && \

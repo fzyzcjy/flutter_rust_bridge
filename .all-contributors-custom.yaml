@@ -36,10 +36,12 @@
 - kyrias: Use portable atomic. Ignore accessor fields. Update doc.
 - SilverMira: Fix StreamSink. Encoded types in DCO.
 - star4277: Support OHOS platform.
+- nightscape: Support struct deep equality.
 - Integral-Tech: Use concat. Fix lint.
 - h3x4d3c1m4l: Fix when outside folder. Support publish tag.
 - Tienisto: Remove default enum case. Add mock init.
 - AadamZ5: Workspace root resolution logic.
+- rlch: Support serde_json Value.
 - dt-iohk: Support multi packages on web.
 - NathanKolbas: Crate name different from plugin. Update CI.
 - satvikpendem: 'Add json_serializable. Update CI. Little co-work #989.'
@@ -48,6 +50,7 @@
 - NightFeather0615: Fix Vec bool.
 - fmeef: Add cargo feature flag.
 - ethicnology: Fix fvm install.
+- ganeshrvel: Fix name conflict.
 - xuxiaocheng0201: Support skipping in integrate.
 - ski0090: Fix folder creation.
 - khangah: Dart fn output extra handling.

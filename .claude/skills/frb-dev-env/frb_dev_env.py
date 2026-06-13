@@ -8,11 +8,14 @@ import hashlib
 import json
 import os
 import shlex
+import shutil
 import subprocess
 import sys
 import time
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Annotated
+from urllib.parse import urlsplit, urlunsplit
 
 import typer
 
@@ -50,6 +53,24 @@ TART_LOCAL_COPY_EXCLUDES = [
     "target",
 ]
 DEFAULT_TART_FLUTTER_ROOT = Path("/Users/admin/flutter")
+PUBLISH_CREDENTIAL_ROOT = Path("/frb-publish-host-credentials")
+PUBLISH_HOME = Path("/tmp/frb-publish-home")
+PUBLISH_CARGO_HOME = Path("/tmp/frb-publish-cargo-home")
+PUBLISH_PUB_CACHE = Path("/tmp/frb-publish-pub-cache")
+PUBLISH_XDG_CONFIG_HOME = Path("/tmp/frb-publish-config")
+PUBLISH_RUSTUP_HOME = Path("/root/.rustup")
+PUBLISH_GH_HOST = "github.com"
+PUBLISH_GH_TOKEN_ENV_NAMES = ["GH_TOKEN", "GITHUB_TOKEN"]
+PUBLISH_PROXY_ENV_NAMES = [
+    "http_proxy",
+    "https_proxy",
+    "all_proxy",
+    "HTTP_PROXY",
+    "HTTPS_PROXY",
+    "ALL_PROXY",
+    "CARGO_HTTP_PROXY",
+]
+PUBLISH_DOCKER_HOST_ALIAS = "host.docker.internal"
 
 
 # ========== Common ==========
@@ -118,6 +139,13 @@ def container_name_for_worktree(worktree_root: Path) -> str:
 
 def docker_volume_args(*, worktree_root: Path) -> list[str]:
     git_common_root = resolve_git_common_root(worktree_root=worktree_root)
+    return docker_volume_args_for_roots(
+        worktree_root=worktree_root,
+        git_common_root=git_common_root,
+    )
+
+
+def docker_volume_args_for_roots(*, worktree_root: Path, git_common_root: Path) -> list[str]:
     volumes = [
         "--volume",
         f"{worktree_root}:{worktree_root}",
@@ -131,6 +159,288 @@ def docker_volume_args(*, worktree_root: Path) -> list[str]:
         )
 
     return volumes
+
+
+@dataclass(frozen=True)
+class PublishCredentialPaths:
+    cargo_home: Path
+    gh_config_dir: Path | None
+    git_config: Path | None
+    git_config_dir: Path | None
+    pub_cache_dir: Path | None
+    dart_config_dir: Path | None
+
+
+def resolve_publish_credential_paths(*, home: Path | None = None) -> PublishCredentialPaths:
+    resolved_home = (home or Path.home()).expanduser().resolve()
+    cargo_home = env_path("CARGO_HOME") or resolved_home / ".cargo"
+    gh_config_dir = _existing_dir(
+        env_path("GH_CONFIG_DIR") or resolved_home / ".config" / "gh"
+    )
+    git_config = _existing_file(resolved_home / ".gitconfig")
+    git_config_dir = _existing_dir(resolved_home / ".config" / "git")
+    pub_cache_dir = _existing_dir(env_path("PUB_CACHE") or resolved_home / ".pub-cache")
+    dart_config_dir = _first_existing_dir(
+        [
+            resolved_home / ".config" / "dart",
+            resolved_home / "Library" / "Application Support" / "dart",
+        ]
+    )
+
+    return PublishCredentialPaths(
+        cargo_home=cargo_home,
+        gh_config_dir=gh_config_dir,
+        git_config=git_config,
+        git_config_dir=git_config_dir,
+        pub_cache_dir=pub_cache_dir,
+        dart_config_dir=dart_config_dir,
+    )
+
+
+def _existing_file(path: Path) -> Path | None:
+    return path if path.is_file() else None
+
+
+def _existing_dir(path: Path) -> Path | None:
+    return path if path.is_dir() else None
+
+
+def _first_existing_dir(paths: list[Path]) -> Path | None:
+    return next((path for path in paths if path.is_dir()), None)
+
+
+def validate_publish_credentials(paths: PublishCredentialPaths) -> None:
+    missing = []
+
+    if not _has_github_token_env() and paths.gh_config_dir is None:
+        missing.append(
+            "GitHub CLI config directory in GH_CONFIG_DIR or ~/.config/gh, "
+            "or GH_TOKEN/GITHUB_TOKEN env var"
+        )
+    if not _has_cargo_credentials(paths.cargo_home):
+        missing.append(f"Cargo credentials file in: {paths.cargo_home}")
+    if not _has_pub_credentials(paths):
+        missing.append(
+            "Dart pub credentials file in ~/.pub-cache, ~/.config/dart, "
+            "or ~/Library/Application Support/dart"
+        )
+
+    if missing:
+        raise CommandError(
+            "Missing release credentials before starting publish credentials mode:\n"
+            + "\n".join(f"- {entry}" for entry in missing)
+        )
+
+
+def check_publish_host_login_status() -> None:
+    if shutil.which("gh") is None:
+        return
+
+    exec_command(["gh", "auth", "status", "--hostname", PUBLISH_GH_HOST])
+
+
+def _has_github_token_env() -> bool:
+    return any(os.environ.get(name) for name in PUBLISH_GH_TOKEN_ENV_NAMES)
+
+
+def _has_cargo_credentials(cargo_home: Path) -> bool:
+    return any(
+        (cargo_home / name).is_file()
+        for name in ["credentials.toml", "credentials"]
+    )
+
+
+def _has_pub_credentials(paths: PublishCredentialPaths) -> bool:
+    candidates = []
+    if paths.pub_cache_dir is not None:
+        candidates.append(paths.pub_cache_dir / "credentials.json")
+    if paths.dart_config_dir is not None:
+        candidates.extend(
+            [
+                paths.dart_config_dir / "pub-credentials.json",
+                paths.dart_config_dir / "credentials.json",
+            ]
+        )
+
+    return any(path.is_file() for path in candidates)
+
+
+def publish_credential_volume_args(paths: PublishCredentialPaths) -> list[str]:
+    volumes = [
+        "--volume",
+        f"{paths.cargo_home}:{PUBLISH_CREDENTIAL_ROOT / 'cargo'}:ro",
+    ]
+    if paths.gh_config_dir is not None:
+        volumes.extend(
+            [
+                "--volume",
+                f"{paths.gh_config_dir}:{PUBLISH_CREDENTIAL_ROOT / 'gh'}:ro",
+            ]
+        )
+
+    optional_volumes = [
+        (paths.git_config, PUBLISH_CREDENTIAL_ROOT / "gitconfig"),
+        (paths.git_config_dir, PUBLISH_CREDENTIAL_ROOT / "git-config"),
+        (paths.pub_cache_dir, PUBLISH_CREDENTIAL_ROOT / "pub-cache"),
+        (paths.dart_config_dir, PUBLISH_CREDENTIAL_ROOT / "dart-config"),
+    ]
+    for host_path, container_path in optional_volumes:
+        if host_path is not None:
+            volumes.extend(["--volume", f"{host_path}:{container_path}:ro"])
+
+    return volumes
+
+
+def publish_container_environment_args() -> list[str]:
+    env = {
+        "HOME": str(PUBLISH_HOME),
+        "CARGO_HOME": str(PUBLISH_CARGO_HOME),
+        "PUB_CACHE": str(PUBLISH_PUB_CACHE),
+        "XDG_CONFIG_HOME": str(PUBLISH_XDG_CONFIG_HOME),
+        "GH_CONFIG_DIR": str(PUBLISH_HOME / ".config" / "gh"),
+        "RUSTUP_HOME": str(PUBLISH_RUSTUP_HOME),
+    }
+    return [
+        *docker_exec_env_args(env),
+        *docker_env_passthrough_args(PUBLISH_GH_TOKEN_ENV_NAMES),
+        *docker_proxy_env_args(),
+    ]
+
+
+def docker_env_passthrough_args(names: list[str]) -> list[str]:
+    result = []
+    for name in names:
+        if os.environ.get(name):
+            result.extend(["--env", name])
+
+    return result
+
+
+def docker_proxy_env_args() -> list[str]:
+    result = []
+    for name in PUBLISH_PROXY_ENV_NAMES:
+        value = os.environ.get(name)
+        if value:
+            result.extend(["--env", f"{name}={dockerize_host_proxy_url(value)}"])
+
+    return result
+
+
+def dockerize_host_proxy_url(value: str) -> str:
+    parsed = urlsplit(value)
+    if parsed.hostname not in {"localhost", "127.0.0.1"} or parsed.port is None:
+        return value
+
+    username = parsed.username or ""
+    password = f":{parsed.password}" if parsed.password else ""
+    auth = f"{username}{password}@" if username else ""
+    netloc = f"{auth}{PUBLISH_DOCKER_HOST_ALIAS}:{parsed.port}"
+    return urlunsplit(
+        (parsed.scheme, netloc, parsed.path, parsed.query, parsed.fragment)
+    )
+
+
+def publish_container_bootstrap_script() -> str:
+    cargo_credential_root = shlex.quote(str(PUBLISH_CREDENTIAL_ROOT / "cargo"))
+    dart_config_root = shlex.quote(str(PUBLISH_CREDENTIAL_ROOT / "dart-config"))
+    gh_credential_root = shlex.quote(str(PUBLISH_CREDENTIAL_ROOT / "gh"))
+    git_config_root = shlex.quote(str(PUBLISH_CREDENTIAL_ROOT / "git-config"))
+    gitconfig_path = shlex.quote(str(PUBLISH_CREDENTIAL_ROOT / "gitconfig"))
+    pub_cache_root = shlex.quote(str(PUBLISH_CREDENTIAL_ROOT / "pub-cache"))
+    return "\n".join(
+        [
+            "set -euo pipefail",
+            f"export HOME={shlex.quote(str(PUBLISH_HOME))}",
+            f"export CARGO_HOME={shlex.quote(str(PUBLISH_CARGO_HOME))}",
+            f"export PUB_CACHE={shlex.quote(str(PUBLISH_PUB_CACHE))}",
+            f"export XDG_CONFIG_HOME={shlex.quote(str(PUBLISH_XDG_CONFIG_HOME))}",
+            f"export GH_CONFIG_DIR={shlex.quote(str(PUBLISH_HOME / '.config' / 'gh'))}",
+            f"export RUSTUP_HOME={shlex.quote(str(PUBLISH_RUSTUP_HOME))}",
+            'mkdir -p "$HOME/.config" "$CARGO_HOME" "$PUB_CACHE" "$XDG_CONFIG_HOME/dart"',
+            f"if [ -d {gh_credential_root} ]; then cp -a {gh_credential_root} \"$HOME/.config/gh\"; fi",
+            f"if [ -f {gitconfig_path} ]; then cp {gitconfig_path} \"$HOME/.gitconfig\"; fi",
+            f"if [ -d {git_config_root} ]; then mkdir -p \"$HOME/.config\" && cp -a {git_config_root} \"$HOME/.config/git\"; fi",
+            f"for name in credentials.toml credentials config.toml config; do if [ -f {cargo_credential_root}/$name ]; then cp {cargo_credential_root}/$name \"$CARGO_HOME/$name\"; fi; done",
+            f"if [ -f {pub_cache_root}/credentials.json ]; then cp {pub_cache_root}/credentials.json \"$PUB_CACHE/credentials.json\"; fi",
+            f"for name in pub-credentials.json credentials.json; do if [ -f {dart_config_root}/$name ]; then cp {dart_config_root}/$name \"$XDG_CONFIG_HOME/dart/$name\"; fi; done",
+            'chmod -R u+w "$HOME" "$CARGO_HOME" 2>/dev/null || true',
+            'for file in "$HOME/.gitconfig" "$HOME/.config/git/config" "$CARGO_HOME/config.toml" "$CARGO_HOME/config"; do if [ -f "$file" ]; then sed -i "s#://localhost:#://host.docker.internal:#g; s#://127\\.0\\.0\\.1:#://host.docker.internal:#g" "$file"; fi; done',
+            'command -v gh >/dev/null || { echo "GitHub CLI (gh) is required in the Docker image" >&2; exit 1; }',
+            'command -v cargo >/dev/null || { echo "Cargo is required in the Docker image" >&2; exit 1; }',
+            'command -v dart >/dev/null || { echo "Dart is required in the Docker image" >&2; exit 1; }',
+            'cargo --version',
+            f"gh auth status --hostname {shlex.quote(PUBLISH_GH_HOST)}",
+            f"gh auth setup-git --hostname {shlex.quote(PUBLISH_GH_HOST)}",
+            'test -s "$CARGO_HOME/credentials.toml" || test -s "$CARGO_HOME/credentials"',
+            'test -s "$PUB_CACHE/credentials.json" || test -s "$XDG_CONFIG_HOME/dart/pub-credentials.json" || test -s "$XDG_CONFIG_HOME/dart/credentials.json"',
+            'git ls-remote --heads https://github.com/fzyzcjy/flutter_rust_bridge.git master >/dev/null',
+            'cargo search flutter_rust_bridge --limit 1 >/dev/null',
+            'dart pub token list >/dev/null',
+            'exec "$@"',
+        ]
+    )
+
+
+def build_docker_run_rm_command(
+    *,
+    worktree_root: Path,
+    git_common_root: Path | None = None,
+    image: str,
+    command: list[str],
+    with_publish_credentials: bool,
+    publish_credential_paths: PublishCredentialPaths | None = None,
+) -> list[str]:
+    worktree_volumes = (
+        docker_volume_args_for_roots(
+            worktree_root=worktree_root,
+            git_common_root=git_common_root,
+        )
+        if git_common_root is not None
+        else docker_volume_args(worktree_root=worktree_root)
+    )
+    credential_args = (
+        [
+            *publish_container_environment_args(),
+            *publish_credential_volume_args(
+                _expect_publish_credential_paths(publish_credential_paths)
+            ),
+        ]
+        if with_publish_credentials
+        else []
+    )
+    command_args = (
+        [
+            "bash",
+            "-lc",
+            publish_container_bootstrap_script(),
+            "frb-publish-container",
+            *command,
+        ]
+        if with_publish_credentials
+        else command
+    )
+
+    return [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        *credential_args,
+        *worktree_volumes,
+        "--workdir",
+        str(worktree_root),
+        image,
+        *command_args,
+    ]
+
+
+def _expect_publish_credential_paths(
+    paths: PublishCredentialPaths | None,
+) -> PublishCredentialPaths:
+    if paths is None:
+        raise CommandError("publish credential paths are required")
+
+    return paths
 
 
 def get_image(image: str | None) -> str:
@@ -1053,6 +1363,55 @@ def exec_in_container(
     )
 
 
+@app.command(name="docker-run-rm")
+def docker_run_rm(
+    command: Annotated[
+        list[str],
+        typer.Argument(help="Command to execute inside the temporary Docker container."),
+    ],
+    worktree_root: Annotated[
+        Path | None,
+        typer.Option("--worktree-root", help="FRB worktree root. Defaults to git root."),
+    ] = None,
+    image: Annotated[
+        str | None,
+        typer.Option("--image", help="Docker image. Defaults to FRB_DOCKER_IMAGE or the published FRB dev image."),
+    ] = None,
+    with_publish_credentials: Annotated[
+        bool,
+        typer.Option(
+            "--with-publish-credentials",
+            help="Mount and check host GitHub, Cargo, Git, and Dart pub credentials.",
+        ),
+    ] = False,
+) -> None:
+    """Run a command in a temporary Docker container."""
+
+    if not command:
+        raise typer.BadParameter(
+            "docker-run-rm requires a command, for example: docker-run-rm -- ./frb_internal --help"
+        )
+
+    resolved_worktree_root = resolve_worktree_root(worktree_root=worktree_root)
+    resolved_image = get_image(image=image)
+    credential_paths = None
+    if with_publish_credentials:
+        credential_paths = resolve_publish_credential_paths()
+        validate_publish_credentials(credential_paths)
+        check_publish_host_login_status()
+
+    pull_image(image=resolved_image)
+    exec_command(
+        build_docker_run_rm_command(
+            worktree_root=resolved_worktree_root,
+            image=resolved_image,
+            command=command,
+            with_publish_credentials=with_publish_credentials,
+            publish_credential_paths=credential_paths,
+        )
+    )
+
+
 # ========== Tart commands ==========
 
 
@@ -1376,4 +1735,4 @@ if __name__ == "__main__":
         app()
     except CommandError as error:
         typer.echo(f"Error: {error}", err=True)
-        raise typer.Exit(1) from error
+        raise SystemExit(1) from None
