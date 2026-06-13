@@ -437,6 +437,36 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       );
       expect(statuses.map((status) => status.isReleased), everyElement(true));
     });
+
+    test(
+      'uses local Dart manifest version as pub.dev target version',
+      () async {
+        final rustVersion = getWorkspaceRustVersion();
+        final dartVersion = getFrbDartVersion();
+
+        final statuses = await fetchReleasePackageStatuses(
+          fetcher: (uri) async {
+            if (uri.host == 'crates.io') {
+              return {
+                'crate': {'max_version': rustVersion},
+              };
+            }
+            return {
+              'latest': {'version': '2.12.0'},
+              'versions': [
+                {'version': dartVersion},
+              ],
+            };
+          },
+        );
+
+        final pubDevStatus = statuses.singleWhere(
+          (status) => status.registry == 'pub.dev',
+        );
+        expect(pubDevStatus.releasedVersion, dartVersion);
+        expect(pubDevStatus.isReleased, true);
+      },
+    );
   });
 
   group('post-release config', () {

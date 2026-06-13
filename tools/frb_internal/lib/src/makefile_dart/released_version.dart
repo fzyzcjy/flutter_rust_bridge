@@ -96,7 +96,7 @@ Future<List<ReleasePackageStatus>> fetchReleasePackageStatuses({
       manifestVersion: dartVersion,
       releasedVersion: await fetchPubDevReleasedVersion(
         'flutter_rust_bridge',
-        targetVersion: targetVersion,
+        targetVersion: dartVersion,
         fetcher: fetcher,
       ),
     ),
