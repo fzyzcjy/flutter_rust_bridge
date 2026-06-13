@@ -1,5 +1,38 @@
 # Changelog
 
+## 2.13.0-beta.1
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Update git clone URL for flutter-ohos setup #3157 (thanks @star4277)
+* Add Rust-to-Dart logging bridge #3114 #3111 #3079 #2766 (thanks @patmuk)
+* Rename `ObjectId` to `MoiObjectId` in `frb_generated_moi_arc_def!` #3106 (thanks @ganeshrvel)
+* Support HarmonyOS #3065 (thanks @star4277)
+* Support serde_json Value #3077 (thanks @rlch)
+* Introduce conversion between chrono::NaiveDate and DateTime avoiding RustOpaque #2968 (thanks @TrackerSB)
+* Fix Map/List/Set equality in generated Dart structs #2956 (thanks @nightscape)
+* Fix web worker wasm initialization #3171
+* Bump CargoKit to latest and update it for Android 16KB pages #3170
+* Pass platforms through create and integrate commands #3129
+* Support skipping FVM installation #3126
+* Fix macOS xcconfig drift #3118
+* Upgrade Flutter to 3.44 #3112
+* Fix Dart native test hangs after logging bridge #3103
+* Fix generated fixed array equality #3093
+* Fix DCO boxed record decoding #3092
+* Fix concurrent cargo-expand auto install #3090
+* Add generic Dart initializer hook #3083
+* Allow frb_internal clean checks without git metadata #3082
+* Support multi-arch Docker development on Apple Silicon #3070
+* Remove outdated Dockerfile in favor of devcontainer up-to-date Dockerfile #3069
+* Fix threaded WASM build-web defaults for the website demo #3052
+* Improve release publishing and post-release validation tooling #3221 #3220 #3219 #3218 #3217 #3216 #3215 #3214 #3211 #3210
+* Improve CI, workflow dispatch, and precommit automation #3195 #3193 #3189 #3178 #3175 #3174 #3172 #3166 #3160 #3143 #3137 #3135 #3134 #3132 #3131 #3115 #3099 #3096 #3076 #3072 #3051 #2990
+* Improve local dev, Docker, Tart, Android, and manual-test tooling #3197 #3196 #3192 #3191 #3188 #3187 #3186 #3185 #3184 #3183 #3180 #3179 #3176 #3150 #3149 #3147 #3146 #3144 #3142 #3113
+* Update agent development skills and internal workflow documentation #3201 #3159 #3138 #3116 #3110 #3109 #3102 #3100 #3095 #3094 #3091 #3089 #3087
+* Exclude CargoKit from generated analyzer options and improve Flutter integration test timeouts #3168 #3167
+* Add coverage tests for existing helpers #3130
+* Bump website dependencies #3047 #3046
+
 ## 2.12.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

@@ -124,6 +124,7 @@ jobs:
             set -euo pipefail
             flutter --version
             dart --version
+            yarn --version
             cargo --version
             rustup show
             rustup target list --toolchain nightly-${{ needs.metadata.outputs.rust_nightly_version }} --installed

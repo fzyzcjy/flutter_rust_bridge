@@ -57,7 +57,8 @@ Match the existing changelog style.
 
 - Write each item as `* Summary #1234`.
 - Append `(thanks @username)` when attribution is appropriate.
-- Keep items in merge order from newest to oldest unless the surrounding section clearly uses another order.
+- Place entries with `(thanks @username)` before entries without thanks.
+- Within the thanks group and the no-thanks group, keep items in merge order from newest to oldest unless the surrounding section clearly uses another order.
 
 Edit only `CHANGELOG.md`. Do not manually edit generated files for this task.
 
@@ -69,14 +70,28 @@ Review the final diff.
 - Confirm wording and ordering match nearby release sections.
 - Create a small atomic commit after finishing the edit.
 
-## Step 7: Verify with a subagent
+## Step 7: Run mechanical verification
 
-Launch a separate subagent after finishing the changelog draft.
+Run the changelog verifier after finishing the draft.
 
-- Ask the subagent to independently collect the merged PR list for the same release range.
-- Ask the subagent to compare that list against `CHANGELOG.md`.
-- Ask the subagent to report missing PRs, suspicious duplicates, and formatting inconsistencies.
-- Apply any confirmed fixes, then re-check the final diff.
+```bash
+gh pr list --state merged --limit 200 --json number,title,author,mergedAt,baseRefName,url > /tmp/frb-merged-prs.json
+uv run --script .claude/skills/frb-write-changelog/verify_changelog.py \
+  --version <VERSION> \
+  --previous-release-time <PREVIOUS_RELEASE_TIMESTAMP> \
+  --merged-prs-json /tmp/frb-merged-prs.json
+```
+
+The verifier checks that:
+
+- PR numbers in the target section are complete, not duplicated, and not unexpected.
+- Third-party thanks authors are complete and not unexpected. The same author may be thanked on multiple entries.
+- Entries with third-party thanks appear before entries without thanks.
+- `docs: add <name> as a contributor ...` all-contributors PRs are ignored.
+
+Use `--ignore-pr <NUMBER>` only for a documented intentional exclusion. Use `--extra-local-pr <NUMBER>` for a stacked local maintainer PR that belongs in the changelog but is not present in the merged PR JSON yet.
+
+Apply any confirmed fixes, then re-run the verifier.
 
 ## Step 8: Ask the user to review ordering
 
@@ -88,9 +103,11 @@ Tell the user the changelog draft is complete and ask for a manual review.
 
 ## Step 9: Re-verify after human edits
 
-Launch a separate subagent after the user finishes manual edits.
+Run the mechanical verifier again after the user finishes manual edits.
 
-- Ask the subagent to independently inspect the final `CHANGELOG.md`.
-- Ask the subagent to compare the final text against the merged PR list for the same release range.
-- Ask the subagent to specifically report any missing PR numbers.
+- Confirm there are no missing, duplicated, or extra PR numbers.
+- Confirm there are no missing or unexpected third-party thanks authors.
+- Confirm entries with third-party thanks appear before entries without thanks.
 - Apply any confirmed fixes, then do one final diff check.
+
+If the user explicitly wants an independent review, ask a separate reviewer or subagent to compare the final `CHANGELOG.md` against the same merged PR list.

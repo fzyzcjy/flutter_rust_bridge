@@ -72,6 +72,38 @@ Typical usage:
 .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc './frb_internal --help'
 ```
 
+### Temporary Docker Commands With Publish Credentials
+
+Use `docker-run-rm --with-publish-credentials` only for release publishing commands that need host credentials. Unlike the normal long-lived development container, this runs a fresh temporary container with `docker run --rm`, mounts the worktree and git common root, mounts the host credential directories read-only, copies the credential files into temporary container-local homes, checks login status, runs the requested command, then discards the container.
+
+The publish credential flag mounts these host credential sources when present:
+
+- GitHub CLI config from `GH_CONFIG_DIR` or `~/.config/gh`
+- GitHub token env vars from `GH_TOKEN` or `GITHUB_TOKEN`, forwarded without printing token values
+- Cargo credentials and config from `CARGO_HOME` or `~/.cargo`
+- Git config from `~/.gitconfig` and `~/.config/git`
+- Dart pub credentials from `PUB_CACHE`, `~/.pub-cache`, `~/.config/dart`, or `~/Library/Application Support/dart`
+
+Publish mode also prepares the container environment used by the release command:
+
+- Reuses the Docker image's Rust toolchain via `RUSTUP_HOME=/root/.rustup` even though `HOME` is changed to a temporary credential directory.
+- Rewrites copied Git/Cargo config proxy URLs from `localhost` or `127.0.0.1` to `host.docker.internal`, and forwards common proxy environment variables with the same rewrite. This lets a container use a host proxy such as `http://localhost:7897`.
+- Checks GitHub auth, GitHub network access, Cargo availability, crates.io search access, and Dart pub credential readability before running the requested command.
+
+Run the credential preflight before any irreversible release step:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- true
+```
+
+Run release publishing through a temporary publish-credential container. Do not manually add `RUSTUP_HOME` or proxy environment overrides unless debugging the helper itself:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release
+```
+
+The credential preflight fails before running release commands if host GitHub CLI auth is invalid, Cargo credentials are missing, Dart pub credentials are missing, the image has no usable Cargo toolchain, or the container cannot reach GitHub/crates.io through the configured network path. It then re-checks GitHub CLI auth inside the temporary container and runs `gh auth setup-git` there so HTTPS `git push` can use the mounted GitHub CLI auth.
+
 ### Cleanup
 
 Delete a worktree's Docker container when the worktree is no longer needed, or when local Docker resources are getting crowded:
@@ -252,6 +284,96 @@ For example, when an iOS 18.1 `iPhone 16 Pro Max` simulator with UDID `826DC3E8-
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec --sync-code -- bash -lc 'export FLUTTER_GIT_URL=file:///Users/admin/flutter; export FRB_SKIP_FLUTTER_DOCTOR=1; ./frb_internal test-flutter-native --package frb_example/flutter_via_create --flutter-test-args "--device-id 826DC3E8-2073-42A9-A6DB-05C1926DC82A"'
+```
+
+## VMware Windows
+
+Use VMware Fusion + Vagrant for local Windows desktop validation when Docker, Tart, and the Android Emulator coverage are not enough. This workflow targets Apple Silicon macOS hosts running Windows 11 Arm in VMware Fusion.
+
+Read `tools/vmware_windows/README.md` for the detailed Packer, Vagrant, VMware Fusion, proxy, storage, host-installation, daily-use, and troubleshooting instructions. The README is the source of truth for the Windows VM workflow. Read `frb-vmware-windows-prepare` before preparing or rebuilding the reusable Packer-built base box.
+
+### Storage
+
+Configure a per-user VM root before creating or building VMs. The helper reads
+`~/.config/flutter_rust_bridge/vmware_windows.json` by default, and environment variables such as
+`FRB_WINDOWS_VM_ROOT` override the config. The helper derives all heavy paths from that configured
+root, including Vagrant home, boxes, per-worktree project directories, Packer cache/output, logs,
+and VM bundles. Check it before starting a VM:
+
+```bash
+tools/vmware_windows/frb_vmware_windows_env.py info
+```
+
+The helper uses only the Python standard library and refuses to create directories under `/Volumes/<name>/...` unless that volume is mounted. This keeps first-run helper checks independent from `uv`/`pip` and avoids accidentally writing VM files to the internal disk when an external drive is absent.
+
+### Network
+
+If Windows VM downloads and Packer host-side network operations need a proxy, configure it in the
+user config or with:
+
+```bash
+export FRB_WINDOWS_HOST_PROXY_URL=http://localhost:PORT
+```
+
+Leave it unset when direct network access is preferred. If guest-side provision scripts need a
+proxy, set `FRB_WINDOWS_GUEST_PROXY_URL` to an address reachable from inside the Windows guest.
+
+For real Packer builds, provide the Windows ISO SHA-256 checksum with `FRB_WINDOWS_ISO_CHECKSUM=sha256:<digest>` or an `.iso.sha256` file next to the ISO. The helper uses a placeholder checksum only for `packer-build --validate`.
+
+### Base Box Preparation
+
+For the initial base-image build on a developer Mac, prefer the ordinary-Terminal wrapper:
+
+```bash
+tools/vmware_windows/run_packer_build.zsh \
+  --iso /path/to/frb-windows-vmware/downloads/iso/Windows11_Arm64.iso \
+  --add-box
+```
+
+The wrapper applies the configured host proxy when present, runs preflight checks, regenerates the
+UEFI autounattend ISO, writes logs under the configured VM root, monitors `/` and the VM root for the
+100GB free-space threshold, and can import the produced Vagrant box. Use `--prepare-only` when you
+want to validate ISO remastering before starting VMware.
+
+### Daily Lifecycle
+
+Run from the repository root:
+
+```bash
+tools/vmware_windows/frb_vmware_windows_env.py info
+tools/vmware_windows/frb_vmware_windows_env.py start
+tools/vmware_windows/frb_vmware_windows_env.py upload
+tools/vmware_windows/frb_vmware_windows_env.py exec -- powershell -NoProfile -Command "cd C:\frb\worktree; flutter --version"
+tools/vmware_windows/frb_vmware_windows_env.py stop
+```
+
+`upload` copies the host checkout into a VM-local directory before heavy builds. Do not compile from a VMware shared folder because shared folders are slower for many small files and can distort build behavior.
+
+### Windows Flutter Test
+
+After the VM is running and code is uploaded:
+
+```bash
+tools/vmware_windows/frb_vmware_windows_env.py test-flutter-windows \
+  --package frb_example/flutter_via_create
+```
+
+The command runs inside the guest and should use the VM-local uploaded checkout. Capture logs under the external root for audit.
+
+### Credentials And Cleanup
+
+Do not put guest passwords in the repository. Use `FRB_WINDOWS_VM_USERNAME`, `FRB_WINDOWS_VM_PASSWORD`, or `~/.secrets/FRB_WINDOWS_VM_PASSWORD`.
+
+Stop the per-worktree VM when it is not needed:
+
+```bash
+tools/vmware_windows/frb_vmware_windows_env.py stop
+```
+
+Delete disposable per-worktree VMs only when intentionally reclaiming space:
+
+```bash
+tools/vmware_windows/frb_vmware_windows_env.py destroy
 ```
 
 ## Project Skills

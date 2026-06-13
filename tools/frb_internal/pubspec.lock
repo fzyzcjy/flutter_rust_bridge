@@ -215,7 +215,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "2.12.0"
+    version: "2.13.0-beta.1"
   freezed:
     dependency: "direct dev"
     description:
@@ -385,7 +385,7 @@ packages:
     source: hosted
     version: "1.5.1"
   pub_semver:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: pub_semver
       sha256: "40d3ab1bbd474c4c2328c91e3a7df8c6dd629b79ece4c4bd04bee496a224fb0c"
