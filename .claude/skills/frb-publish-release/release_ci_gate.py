@@ -1,3 +1,7 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = ["typer>=0.12"]
+# ///
 from __future__ import annotations
 
 import fnmatch

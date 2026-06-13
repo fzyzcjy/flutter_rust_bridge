@@ -37,7 +37,7 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
   Run the mechanical gate from the repository root:
 
   ```bash
-  uv run --with typer .claude/skills/frb-publish-release/release_ci_gate.py \
+  uv run --script .claude/skills/frb-publish-release/release_ci_gate.py \
     --base-green-ref <LAST_GREEN_SHA> \
     --release-ref HEAD
   ```
