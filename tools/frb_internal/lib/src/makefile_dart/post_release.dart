@@ -22,19 +22,32 @@ List<Command<void>> createCommands() {
 @CliOptions()
 class PostReleaseConfig {
   final CodegenInstallMode codegenInstallMode;
+  final ReleaseChannel releaseChannel;
 
-  const PostReleaseConfig({required this.codegenInstallMode});
+  const PostReleaseConfig({
+    required this.codegenInstallMode,
+    required this.releaseChannel,
+  });
 }
 
 Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
   await quickstartStepInstall(
     config.codegenInstallMode,
-    versionConstraint: '^2.0.0-dev.0',
+    versionConstraint: config.releaseChannel.versionConstraint,
   );
   await const MimicQuickstartTester(postRelease: true).test();
 }
 
 enum CodegenInstallMode { cargoInstall, cargoBinstall, scoop, homebrew }
+
+enum ReleaseChannel { stable, unstable }
+
+extension ReleaseChannelExtension on ReleaseChannel {
+  String get versionConstraint => switch (this) {
+    ReleaseChannel.stable => '^2.0.0',
+    ReleaseChannel.unstable => '^2.0.0-dev.0',
+  };
+}
 
 Future<void> quickstartStepInstall(
   CodegenInstallMode mode, {

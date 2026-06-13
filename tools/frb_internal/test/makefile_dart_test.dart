@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
@@ -419,6 +420,25 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
         everyElement('9.9.9'),
       );
       expect(statuses.map((status) => status.isReleased), everyElement(true));
+    });
+  });
+
+  group('post-release config', () {
+    test('uses separate constraints for stable and unstable channels', () {
+      expect(ReleaseChannel.stable.versionConstraint, '^2.0.0');
+      expect(ReleaseChannel.unstable.versionConstraint, '^2.0.0-dev.0');
+    });
+
+    test('parses release channel from CLI arguments', () {
+      final config = parsePostReleaseConfig([
+        '--codegen-install-mode',
+        'cargo-install',
+        '--release-channel',
+        'unstable',
+      ]);
+
+      expect(config.codegenInstallMode, CodegenInstallMode.cargoInstall);
+      expect(config.releaseChannel, ReleaseChannel.unstable);
     });
   });
 
