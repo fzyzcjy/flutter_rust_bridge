@@ -74,7 +74,7 @@ Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 const bool kIsWeb = bool.fromEnvironment('dart.library.js_interop');
 
 /// Whether these tests were compiled by `dart compile wasm`.
-const bool kIsDartWasm = bool.fromEnvironment('frb.test.dart_wasm');
+const bool kIsDartWasm = kIsWeb && !identical(0, 0.0);
 
 String? skipWeb([String reason = 'unspecified']) =>
     kIsWeb ? 'Skipped on web (reason: $reason)' : null;

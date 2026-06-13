@@ -356,7 +356,6 @@ Future<void> _executeDartCompileWasm(
     'wasm',
     '-o',
     args.outputDartWasm,
-    '-Dfrb.test.dart_wasm=true',
     if (args.verbose) '--verbose',
     args.dartCompileWasmEntrypoint!,
   ]);

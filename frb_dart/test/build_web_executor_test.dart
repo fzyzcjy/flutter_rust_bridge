@@ -195,7 +195,6 @@ void main() {
           'wasm',
           '-o',
           'web/main.dart.wasm',
-          '-Dfrb.test.dart_wasm=true',
           '--verbose',
           'web/main.dart',
         ],
