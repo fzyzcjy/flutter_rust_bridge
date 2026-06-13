@@ -4,6 +4,17 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_s
 import 'package:test/test.dart';
 
 void main() {
+  test('integrate apple scaffold packages are explicit', () {
+    expect(integrateAppleScaffoldSourceOfTruthPackages(), [
+      'frb_example/flutter_via_create',
+      'frb_example/flutter_via_create_native_assets',
+      'frb_example/flutter_via_integrate',
+      'frb_example/flutter_via_integrate_native_assets',
+      'frb_example/flutter_package',
+      'frb_example/flutter_package_native_assets',
+    ]);
+  });
+
   test(
     'integrate apple scaffold source of truth is explicit for flutter_via_create',
     () {
