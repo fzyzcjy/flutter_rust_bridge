@@ -1,0 +1,37 @@
+# frozen_string_literal: true
+
+vm_root = ENV.fetch("FRB_WINDOWS_VM_ROOT")
+worktree = ENV.fetch("FRB_WINDOWS_HOST_WORKTREE")
+provision_dir = ENV.fetch("FRB_WINDOWS_PROVISION_DIR")
+digest = ENV.fetch("FRB_WINDOWS_WORKTREE_DIGEST")
+box_name = ENV.fetch("FRB_WINDOWS_VAGRANT_BOX", "frb/windows11-arm64")
+username = ENV.fetch("FRB_WINDOWS_VM_USERNAME", "frb")
+password = ENV.fetch("FRB_WINDOWS_VM_PASSWORD", ENV.fetch("FRB_WINDOWS_DEFAULT_VM_PASSWORD"))
+
+Vagrant.configure("2") do |config|
+  config.vm.box = box_name
+  config.vm.boot_timeout = 1800
+  config.vm.communicator = "winrm"
+  config.winrm.username = username
+  config.winrm.password = password
+  config.winrm.timeout = 1800
+  config.winrm.transport = :plaintext
+  config.winrm.basic_auth_only = true
+
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.provider "vmware_desktop" do |vmware|
+    vmware.gui = ENV.fetch("FRB_WINDOWS_VM_GUI", "true") != "false"
+    vmware.vmx["memsize"] = ENV.fetch("FRB_WINDOWS_VM_MEMORY_MB", "16384")
+    vmware.vmx["numvcpus"] = ENV.fetch("FRB_WINDOWS_VM_CPUS", "6")
+    vmware.vmx["displayName"] = "frb-windows-#{digest}"
+    vmware.vmx["ethernet0.virtualDev"] = "vmxnet3"
+    vmware.vmx["sharedFolder.maxNum"] = "4"
+    vmware.vmx["workingDir"] = File.join(vm_root, "vmware", "worktrees", digest)
+  end
+
+  config.vm.provision "shell",
+                      path: File.join(provision_dir, "prepare-guest-control.ps1"),
+                      privileged: true,
+                      powershell_args: "-ExecutionPolicy Bypass"
+end
