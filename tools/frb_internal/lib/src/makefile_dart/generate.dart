@@ -375,21 +375,17 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
 Future<void> generateRunFrbCodegenCommandGenerate(
   GeneratePackageConfig config,
 ) async {
-  await _wrapMaybeSetExitIfChanged(
-    config,
-    extraArgs: generateDiffExclusionArgs(config.package),
-    () async {
-      await runPubGetIfNotRunYet(config.package);
-      print("generating with ${config.package}");
-      await executeFrbCodegen(
-        'generate',
-        relativePwd: config.package,
-        coverage: config.coverage,
-        coverageName: 'GenerateRunFrbCodegenCommandGenerate',
-      );
-      await _formatPackageAfterGenerate(config.package);
-    },
-  );
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    await runPubGetIfNotRunYet(config.package);
+    print("generating with ${config.package}");
+    await executeFrbCodegen(
+      'generate',
+      relativePwd: config.package,
+      coverage: config.coverage,
+      coverageName: 'GenerateRunFrbCodegenCommandGenerate',
+    );
+    await _formatPackageAfterGenerate(config.package);
+  });
 }
 
 Future<void> _formatPackageAfterGenerate(String package) async {
