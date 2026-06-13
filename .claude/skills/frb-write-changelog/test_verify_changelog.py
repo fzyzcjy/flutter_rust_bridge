@@ -123,6 +123,41 @@ def test_verify_changelog_reports_thanks_attribution_problems() -> None:
     assert result.extra_thanks_authors == ["carol"]
 
 
+def test_verify_changelog_reports_thanks_order_problems() -> None:
+    """Verifier reports thanks entries placed after entries without thanks."""
+
+    merged_prs = [
+        make_pr(number=4, author_login="alice"),
+        make_pr(number=3),
+        make_pr(number=2, author_login="bob"),
+    ]
+    changelog_text = """
+# Changelog
+
+## 2.0.0
+
+* Please refer to https://example.com for what's changed.
+* Add first feature #4 (thanks @alice)
+* Improve CI #3
+* Add second feature #2 (thanks @bob)
+
+## 1.0.0
+"""
+
+    result = verify_changelog.verify_changelog(
+        changelog_text=changelog_text,
+        merged_prs=merged_prs,
+        version="2.0.0",
+        previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        local_authors={"fzyzcjy"},
+        ignored_pr_numbers=set(),
+        extra_local_pr_numbers=set(),
+    )
+
+    assert result.ok is False
+    assert result.thanks_order_violations == ["* Add second feature #2 (thanks @bob)"]
+
+
 def test_verify_changelog_accepts_stacked_local_pr() -> None:
     """Verifier accepts an explicitly included local PR missing from merged PR JSON."""
 

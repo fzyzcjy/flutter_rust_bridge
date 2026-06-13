@@ -41,6 +41,7 @@ class VerificationResult:
     duplicate_thanks_authors: list[str]
     missing_thanks_authors: list[str]
     extra_thanks_authors: list[str]
+    thanks_order_violations: list[str]
 
     @property
     def ok(self) -> bool:
@@ -52,6 +53,7 @@ class VerificationResult:
                 self.duplicate_thanks_authors,
                 self.missing_thanks_authors,
                 self.extra_thanks_authors,
+                self.thanks_order_violations,
             ],
         )
 
@@ -107,6 +109,7 @@ def verify_changelog(
         extra_thanks_authors=sorted(
             set(actual_thanks_authors) - set(expected_thanks_authors),
         ),
+        thanks_order_violations=find_thanks_order_violations(section),
     )
 
 
@@ -157,6 +160,27 @@ def extract_pr_numbers(section: str) -> list[int]:
 
 def extract_thanks_authors(section: str) -> list[str]:
     return re.findall(r"\(thanks @([A-Za-z0-9-]+)\)", section)
+
+
+def find_thanks_order_violations(section: str) -> list[str]:
+    seen_entry_without_thanks = False
+    violations: list[str] = []
+    for entry in extract_pr_entry_lines(section):
+        if "(thanks @" in entry:
+            if seen_entry_without_thanks:
+                violations.append(entry)
+        else:
+            seen_entry_without_thanks = True
+
+    return violations
+
+
+def extract_pr_entry_lines(section: str) -> list[str]:
+    return [
+        line.strip()
+        for line in section.splitlines()
+        if line.startswith("* ") and re.search(r"#\d+", line) is not None
+    ]
 
 
 def find_duplicates(values: list[DuplicateValue]) -> list[DuplicateValue]:
@@ -216,6 +240,7 @@ def format_result(result: VerificationResult) -> str:
             f"Duplicate thanks authors: {result.duplicate_thanks_authors}",
             f"Missing thanks authors: {result.missing_thanks_authors}",
             f"Extra thanks authors: {result.extra_thanks_authors}",
+            f"Thanks ordering violations: {result.thanks_order_violations}",
         ],
     )
 

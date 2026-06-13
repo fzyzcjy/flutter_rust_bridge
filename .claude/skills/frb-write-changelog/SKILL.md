@@ -57,7 +57,8 @@ Match the existing changelog style.
 
 - Write each item as `* Summary #1234`.
 - Append `(thanks @username)` when attribution is appropriate.
-- Keep items in merge order from newest to oldest unless the surrounding section clearly uses another order.
+- Place entries with `(thanks @username)` before entries without thanks.
+- Within the thanks group and the no-thanks group, keep items in merge order from newest to oldest unless the surrounding section clearly uses another order.
 
 Edit only `CHANGELOG.md`. Do not manually edit generated files for this task.
 
@@ -85,6 +86,7 @@ The verifier checks that:
 
 - PR numbers in the target section are complete, not duplicated, and not unexpected.
 - Third-party thanks authors are complete, not duplicated, and not unexpected.
+- Entries with third-party thanks appear before entries without thanks.
 - `docs: add <name> as a contributor ...` all-contributors PRs are ignored.
 
 Use `--ignore-pr <NUMBER>` only for a documented intentional exclusion. Use `--extra-local-pr <NUMBER>` for a stacked local maintainer PR that belongs in the changelog but is not present in the merged PR JSON yet.
@@ -105,6 +107,7 @@ Run the mechanical verifier again after the user finishes manual edits.
 
 - Confirm there are no missing, duplicated, or extra PR numbers.
 - Confirm there are no missing, duplicated, or extra third-party thanks authors.
+- Confirm entries with third-party thanks appear before entries without thanks.
 - Apply any confirmed fixes, then do one final diff check.
 
 If the user explicitly wants an independent review, ask a separate reviewer or subagent to compare the final `CHANGELOG.md` against the same merged PR list.

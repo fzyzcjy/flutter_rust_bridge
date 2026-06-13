@@ -3,15 +3,17 @@
 ## 2.13.0-beta.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Update git clone URL for flutter-ohos setup #3157 (thanks @star4277)
+* Add Rust-to-Dart logging bridge #3114 #3111 #3079 #2766 (thanks @patmuk)
+* Rename `ObjectId` to `MoiObjectId` in `frb_generated_moi_arc_def!` #3106 (thanks @ganeshrvel)
+* Introduce conversion between chrono::NaiveDate and DateTime avoiding RustOpaque #2968 (thanks @TrackerSB)
+* Fix Map/List/Set equality in generated Dart structs #2956 (thanks @nightscape)
 * Fix web worker wasm initialization #3171
 * Bump CargoKit to latest and update it for Android 16KB pages #3170
-* Update git clone URL for flutter-ohos setup #3157 (thanks @star4277)
 * Pass platforms through create and integrate commands #3129
 * Support skipping FVM installation #3126
 * Fix macOS xcconfig drift #3118
-* Add Rust-to-Dart logging bridge #3114 #3111 #3079 #2766 (thanks @patmuk)
 * Upgrade Flutter to 3.44 #3112
-* Rename `ObjectId` to `MoiObjectId` in `frb_generated_moi_arc_def!` #3106 (thanks @ganeshrvel)
 * Fix Dart native test hangs after logging bridge #3103
 * Fix generated fixed array equality #3093
 * Fix DCO boxed record decoding #3092
@@ -23,8 +25,6 @@
 * Remove outdated Dockerfile in favor of devcontainer up-to-date Dockerfile #3069
 * Support HarmonyOS #3065
 * Fix threaded WASM build-web defaults for the website demo #3052
-* Introduce conversion between chrono::NaiveDate and DateTime avoiding RustOpaque #2968 (thanks @TrackerSB)
-* Fix Map/List/Set equality in generated Dart structs #2956 (thanks @nightscape)
 * Improve release publishing and post-release validation tooling #3221 #3220 #3219 #3218 #3217 #3216 #3215 #3214 #3211 #3210
 * Improve CI, workflow dispatch, and precommit automation #3195 #3193 #3189 #3178 #3175 #3174 #3172 #3166 #3160 #3143 #3137 #3135 #3134 #3132 #3131 #3115 #3099 #3096 #3076 #3072 #3051 #2990
 * Improve local dev, Docker, Tart, Android, and manual-test tooling #3197 #3196 #3192 #3191 #3188 #3187 #3186 #3185 #3184 #3183 #3180 #3179 #3176 #3150 #3149 #3147 #3146 #3144 #3142 #3113
