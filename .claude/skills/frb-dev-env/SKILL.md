@@ -79,9 +79,10 @@ Use `docker-run-rm --with-publish-credentials` only for release publishing comma
 The publish credential flag mounts these host credential sources when present:
 
 - GitHub CLI config from `GH_CONFIG_DIR` or `~/.config/gh`
+- GitHub token env vars from `GH_TOKEN` or `GITHUB_TOKEN`, forwarded without printing token values
 - Cargo credentials and config from `CARGO_HOME` or `~/.cargo`
 - Git config from `~/.gitconfig` and `~/.config/git`
-- Dart pub credentials from `~/.pub-cache`, `~/.config/dart`, or `~/Library/Application Support/dart`
+- Dart pub credentials from `PUB_CACHE`, `~/.pub-cache`, `~/.config/dart`, or `~/Library/Application Support/dart`
 
 Run the credential preflight before any irreversible release step:
 

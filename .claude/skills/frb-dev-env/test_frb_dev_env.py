@@ -22,12 +22,18 @@ def load_frb_dev_env_module() -> Any:
 frb_dev_env = load_frb_dev_env_module()
 
 
-def test_validate_publish_credentials_rejects_missing_credentials(tmp_path: Path) -> None:
+def test_validate_publish_credentials_rejects_missing_credentials(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """Publish preflight fails before Docker when required credential files are absent."""
+
+    monkeypatch.delenv("GH_TOKEN", raising=False)
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
 
     paths = frb_dev_env.PublishCredentialPaths(
         cargo_home=tmp_path / "cargo",
-        gh_config_dir=tmp_path / "gh",
+        gh_config_dir=None,
         git_config=None,
         git_config_dir=None,
         pub_cache_dir=None,
@@ -43,11 +49,54 @@ def test_validate_publish_credentials_rejects_missing_credentials(tmp_path: Path
     assert "Dart pub credentials file" in message
 
 
+def test_resolve_publish_credential_paths_respects_pub_cache(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Credential discovery respects a custom PUB_CACHE directory."""
+
+    custom_pub_cache = tmp_path / "custom-pub-cache"
+    custom_pub_cache.mkdir()
+    monkeypatch.setenv("PUB_CACHE", str(custom_pub_cache))
+
+    paths = frb_dev_env.resolve_publish_credential_paths(home=tmp_path)
+
+    assert paths.pub_cache_dir == custom_pub_cache
+
+
+def test_validate_publish_credentials_accepts_github_token(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """GitHub token env vars can replace a local gh config directory."""
+
+    cargo_home = tmp_path / "cargo"
+    cargo_home.mkdir()
+    (cargo_home / "credentials").write_text("token = 'dummy'\n")
+    pub_cache_dir = tmp_path / "pub-cache"
+    pub_cache_dir.mkdir()
+    (pub_cache_dir / "credentials.json").write_text("{}\n")
+    monkeypatch.setenv("GH_TOKEN", "dummy-token")
+
+    paths = frb_dev_env.PublishCredentialPaths(
+        cargo_home=cargo_home,
+        gh_config_dir=None,
+        git_config=None,
+        git_config_dir=None,
+        pub_cache_dir=pub_cache_dir,
+        dart_config_dir=None,
+    )
+
+    frb_dev_env.validate_publish_credentials(paths)
+
+
 def test_build_docker_run_rm_command_mounts_publish_credentials(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """Publish credential mode adds read-only credential mounts."""
 
+    monkeypatch.setenv("GH_TOKEN", "dummy-token")
     cargo_home = tmp_path / "cargo"
     cargo_home.mkdir()
     (cargo_home / "credentials").write_text("token = 'dummy'\n")
@@ -85,6 +134,9 @@ def test_build_docker_run_rm_command_mounts_publish_credentials(
     assert f"{gh_config_dir}:/frb-publish-host-credentials/gh:ro" in command
     assert f"{pub_cache_dir}:/frb-publish-host-credentials/pub-cache:ro" in command
     assert f"{git_config}:/frb-publish-host-credentials/gitconfig:ro" in command
+    assert "--env" in command
+    assert "GH_TOKEN" in command
+    assert "dummy-token" not in command
 
     script = command[command.index("bash") + 2]
     assert "GitHub CLI (gh) is required in the Docker image" in script
