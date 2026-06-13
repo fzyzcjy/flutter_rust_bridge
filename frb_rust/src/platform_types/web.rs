@@ -36,6 +36,12 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
     })
 }
 
+pub fn release_message_port_handle(handle: &SendableMessagePortHandle) {
+    BROADCAST_CHANNEL_CACHE.with(|cache| {
+        cache.borrow_mut().remove(&handle.0);
+    })
+}
+
 pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessagePortHandle {
     SendableMessagePortHandle(raw)
 }
