@@ -29,19 +29,24 @@ void main() {
     final input = _createBuildInput(outputDirectoryShared: '/tmp/frb-long');
     final adjusted = await buildInputForHost(isWindows: true, input: input);
     final shortOutputDirectoryShared = adjusted.outputDirectoryShared;
+    final shortOutputDirectorySharedPath =
+        Directory.fromUri(shortOutputDirectoryShared).path;
 
     expect(
-      shortOutputDirectoryShared.path,
-      startsWith('${Directory.systemTemp.uri.path}frb_native_assets_'),
+      shortOutputDirectorySharedPath,
+      startsWith(
+        '${Directory.systemTemp.path}${Platform.pathSeparator}'
+        'frb_native_assets_',
+      ),
     );
     expect(shortOutputDirectoryShared, isNot(input.outputDirectoryShared));
     expect(adjusted.json, {
       ...input.json,
-      'out_dir_shared': Directory.fromUri(shortOutputDirectoryShared).path,
+      'out_dir_shared': shortOutputDirectorySharedPath,
     });
     expect(
-      adjusted.outputDirectory.path,
-      startsWith(Directory.fromUri(shortOutputDirectoryShared).path),
+      Directory.fromUri(adjusted.outputDirectory).path,
+      startsWith(shortOutputDirectorySharedPath),
     );
   });
 
