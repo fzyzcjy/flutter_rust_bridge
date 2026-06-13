@@ -7,21 +7,24 @@ import 'package:path/path.dart' as path;
 //
 // Do not list `flutter_via_create`, `flutter_via_integrate`, or `flutter_package`
 // here; the integrate generation CI already recreates those examples from templates.
+const _kCargokitAppTemplatePath =
+    'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit';
+
 const _kCargokitCopyMappings = [
   _CargokitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
+    source: _kCargokitAppTemplatePath,
     target: 'frb_example/gallery/rust_builder/cargokit',
   ),
   _CargokitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
+    source: _kCargokitAppTemplatePath,
     target: 'frb_example/integrate_third_party/rust_builder/cargokit',
   ),
   _CargokitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
+    source: _kCargokitAppTemplatePath,
     target: 'frb_example/rust_ui_counter/ui/rust_builder/cargokit',
   ),
   _CargokitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
+    source: _kCargokitAppTemplatePath,
     target: 'frb_example/rust_ui_todo_list/ui/rust_builder/cargokit',
   ),
 ];
