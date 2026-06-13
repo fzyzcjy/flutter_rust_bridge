@@ -7,8 +7,8 @@
 - `frb_codegen`: Code generator. It inputs `api.rs` and outputs Rust and Dart code files.
 - `frb_example`: Examples.
   - `pure_dart`: Not only an example, but, more importantly, serves as end-to-end tests.
-  - `flutter_via_create` / `flutter_via_integrate` / `flutter_package`: Checked-in examples generated via `flutter_rust_bridge_codegen create/integrate` with the default integration backend.
-  - `flutter_via_create_native_assets` / `flutter_via_integrate_native_assets` / `flutter_package_native_assets`: Checked-in examples generated via `flutter_rust_bridge_codegen create/integrate` with the native-assets integration backend.
+  - `with_flutter`: Example with integration into Flutter.
+  - `pure_dart_multi`: Demonstrate multi-file usage.
 - `frb_dart`: Support library for Dart - to be imported by users.
 - `frb_rust`: Support library for Rust - to be imported by users.
 - `frb_macros`: Indeed part of `frb_rust`. <small>It is a separate package simply because limitation of proc macros.</small>
