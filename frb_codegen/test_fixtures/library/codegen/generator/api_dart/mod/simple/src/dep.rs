@@ -19,3 +19,7 @@ pub struct ShallowCollectionStruct {
     bytes: Vec<u8>,
     fixed_bytes: [u8; 3],
 }
+
+pub enum EnumWithEmptyNamedVariant {
+    Empty {},
+}

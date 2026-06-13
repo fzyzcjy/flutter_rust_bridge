@@ -8,8 +8,6 @@ import 'dart:io';
 import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'misc_example.freezed.dart';
 
 // These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_normal`
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `MySizeFreezedTwinNormal`
@@ -72,8 +70,7 @@ class ATwinNormal {
       other is ATwinNormal && runtimeType == other.runtimeType && a == other.a;
 }
 
-@freezed
-sealed class AbcTwinNormal with _$AbcTwinNormal {
+sealed class AbcTwinNormal {
   const AbcTwinNormal._();
 
   const factory AbcTwinNormal.a(
@@ -88,6 +85,100 @@ sealed class AbcTwinNormal with _$AbcTwinNormal {
   const factory AbcTwinNormal.justInt(
     int field0,
   ) = AbcTwinNormal_JustInt;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ATwinNormal field0)? a,
+    TResult Function(BTwinNormal field0)? b,
+    TResult Function(CTwinNormal field0)? c,
+    TResult Function(int field0)? justInt,
+  }) {
+    final self = this;
+    if (self is AbcTwinNormal_A) {
+      return a?.call(self.field0);
+    }
+    if (self is AbcTwinNormal_B) {
+      return b?.call(self.field0);
+    }
+    if (self is AbcTwinNormal_C) {
+      return c?.call(self.field0);
+    }
+    if (self is AbcTwinNormal_JustInt) {
+      return justInt?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class AbcTwinNormal_A extends AbcTwinNormal {
+  final ATwinNormal field0;
+
+  const AbcTwinNormal_A(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AbcTwinNormal_A &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class AbcTwinNormal_B extends AbcTwinNormal {
+  final BTwinNormal field0;
+
+  const AbcTwinNormal_B(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AbcTwinNormal_B &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class AbcTwinNormal_C extends AbcTwinNormal {
+  final CTwinNormal field0;
+
+  const AbcTwinNormal_C(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AbcTwinNormal_C &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class AbcTwinNormal_JustInt extends AbcTwinNormal {
+  final int field0;
+
+  const AbcTwinNormal_JustInt(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AbcTwinNormal_JustInt &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class BTwinNormal {

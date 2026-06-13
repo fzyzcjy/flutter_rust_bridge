@@ -109,6 +109,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub no_dart_enums_style: bool,
 
+    /// Generate native Dart classes instead of Freezed for enums with associated data.
+    #[arg(long)]
+    pub no_dart_enums_freezed: bool,
+
     /// Skip automatically adding `mod frb_generated;` to `lib.rs`
     #[arg(long)]
     pub no_add_mod_to_lib: bool,

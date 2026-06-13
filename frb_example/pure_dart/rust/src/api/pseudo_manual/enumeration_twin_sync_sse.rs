@@ -71,6 +71,24 @@ pub fn func_enum_with_discriminant_twin_sync_sse(
     arg
 }
 
+#[frb(dart_enums_freezed)]
+#[derive(Debug, Clone)]
+pub enum EnumWithFreezedOverrideTwinSyncSse {
+    Empty,
+    Named {
+        #[frb(default = -1)]
+        count: i32,
+    },
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn func_enum_with_freezed_override_twin_sync_sse(
+    arg: EnumWithFreezedOverrideTwinSyncSse,
+) -> EnumWithFreezedOverrideTwinSyncSse {
+    arg
+}
+
 #[frb]
 #[derive(Debug)]
 pub struct NoteTwinSyncSse {

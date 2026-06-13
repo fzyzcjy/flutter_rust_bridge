@@ -8,8 +8,6 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'method_twin_sync.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
@@ -129,14 +127,27 @@ class MyCallableTwinSync {
           one == other.one;
 }
 
-@freezed
-sealed class SimpleEnumTwinSync with _$SimpleEnumTwinSync {
+sealed class SimpleEnumTwinSync {
   const SimpleEnumTwinSync._();
 
   const factory SimpleEnumTwinSync.first() = SimpleEnumTwinSync_First;
   const factory SimpleEnumTwinSync.second(
     String field0,
   ) = SimpleEnumTwinSync_Second;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? first,
+    TResult Function(String field0)? second,
+  }) {
+    final self = this;
+    if (self is SimpleEnumTwinSync_First) {
+      return first?.call();
+    }
+    if (self is SimpleEnumTwinSync_Second) {
+      return second?.call(self.field0);
+    }
+    return null;
+  }
 
   static SimpleEnumTwinSync returnSelfTwinSync({required String one}) => RustLib
       .instance.api
@@ -147,6 +158,36 @@ sealed class SimpleEnumTwinSync with _$SimpleEnumTwinSync {
           .crateApiPseudoManualMethodTwinSyncSimpleEnumTwinSyncSimpleMethodTwinSync(
         that: this,
       );
+}
+
+class SimpleEnumTwinSync_First extends SimpleEnumTwinSync {
+  const SimpleEnumTwinSync_First() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinSync_First && runtimeType == other.runtimeType;
+}
+
+class SimpleEnumTwinSync_Second extends SimpleEnumTwinSync {
+  final String field0;
+
+  const SimpleEnumTwinSync_Second(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinSync_Second &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 enum SimplePrimitiveEnumTwinSync {

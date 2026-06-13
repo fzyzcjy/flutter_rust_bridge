@@ -23,7 +23,7 @@ use crate::if_then_some;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use std::collections::HashMap;
-use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
+use syn::{Attribute, Fields, ItemEnum, Type, Variant, Visibility};
 
 impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_path_data_enum(
@@ -69,6 +69,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             variants,
             mode,
             ignore,
+            dart_enums_freezed: attributes.dart_enums_freezed(),
             needs_json_serializable: attributes.json_serializable(),
         })
     }
@@ -83,19 +84,20 @@ impl TypeParserWithContext<'_, '_, '_> {
             name: variant_name.clone(),
             wrapper_name: MirIdent::new(format!("{}_{}", src_enum.name.name, variant.ident), None),
             comments: parse_comments(&variant.attrs),
-            kind: match variant.fields.iter().next() {
-                None => MirVariantKind::Value,
-                Some(Field {
-                    attrs,
-                    ident: field_ident,
-                    ..
-                }) => self.parse_variant_kind_struct(
-                    src_enum,
-                    variant,
-                    attrs,
-                    field_ident,
-                    &variant_name,
-                )?,
+            kind: match &variant.fields {
+                Fields::Unit => MirVariantKind::Value,
+                Fields::Named(_) | Fields::Unnamed(_) => {
+                    let first_field = variant.fields.iter().next();
+                    self.parse_variant_kind_struct(
+                        src_enum,
+                        variant,
+                        first_field
+                            .map(|field| field.attrs.as_slice())
+                            .unwrap_or(&[]),
+                        matches!(variant.fields, Fields::Named(_)),
+                        &variant_name,
+                    )?
+                }
             },
         })
     }
@@ -105,14 +107,14 @@ impl TypeParserWithContext<'_, '_, '_> {
         src_enum: &HirFlatEnum,
         variant: &Variant,
         attrs: &[Attribute],
-        field_ident: &Option<Ident>,
+        is_fields_named: bool,
         variant_name: &MirIdent,
     ) -> anyhow::Result<MirVariantKind> {
         let attributes = FrbAttributes::parse(attrs)?;
         Ok(MirVariantKind::Struct(MirStruct {
             name: compute_enum_variant_kind_struct_name(&src_enum.name, variant_name),
             wrapper_name: None,
-            is_fields_named: field_ident.is_some(),
+            is_fields_named,
             dart_metadata_raw: attributes.dart_metadata(),
             ignore: attributes.ignore(),
             needs_json_serializable: attributes.json_serializable(),

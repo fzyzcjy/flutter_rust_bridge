@@ -7,9 +7,7 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
-part 'rust_auto_opaque_twin_rust_async_sse.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSse(
         {required NonCloneSimpleTwinRustAsyncSse arg, required int expect}) =>
@@ -270,9 +268,7 @@ abstract class MyTraitTwinRustAsyncSse {
   Future<void> f();
 }
 
-@freezed
-sealed class EnumWithGoodAndOpaqueTwinRustAsyncSse
-    with _$EnumWithGoodAndOpaqueTwinRustAsyncSse {
+sealed class EnumWithGoodAndOpaqueTwinRustAsyncSse {
   const EnumWithGoodAndOpaqueTwinRustAsyncSse._();
 
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSse.good(
@@ -281,6 +277,58 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsyncSse
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSse.opaque(
     NonCloneSimpleTwinRustAsyncSse field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? good,
+    TResult Function(NonCloneSimpleTwinRustAsyncSse field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumWithGoodAndOpaqueTwinRustAsyncSse_Good) {
+      return good?.call(self.field0);
+    }
+    if (self is EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class EnumWithGoodAndOpaqueTwinRustAsyncSse_Good
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSse {
+  final String field0;
+
+  const EnumWithGoodAndOpaqueTwinRustAsyncSse_Good(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinRustAsyncSse_Good &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSse {
+  final NonCloneSimpleTwinRustAsyncSse field0;
+
+  const EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinRustAsyncSse_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse {

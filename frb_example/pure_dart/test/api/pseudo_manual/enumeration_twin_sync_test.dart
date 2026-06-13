@@ -40,6 +40,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
     EnumWithDiscriminantTwinSync.fifty,
   ]);
 
+  addTestsIdentityFunctionCall(funcEnumWithFreezedOverrideTwinSync, [
+    const EnumWithFreezedOverrideTwinSync.empty(),
+    const EnumWithFreezedOverrideTwinSync.named(count: 42),
+    const EnumWithFreezedOverrideTwinSync.named(),
+  ]);
+
   group('example-based tests', () {
     test('dart call handleReturnEnum', () async {
       expect(

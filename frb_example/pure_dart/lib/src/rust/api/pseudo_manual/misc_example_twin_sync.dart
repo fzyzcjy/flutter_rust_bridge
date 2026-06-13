@@ -8,8 +8,6 @@ import 'dart:io';
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'misc_example_twin_sync.freezed.dart';
 
 // These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_sync`
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `MySizeFreezedTwinSync`
@@ -80,8 +78,7 @@ class ATwinSync {
       other is ATwinSync && runtimeType == other.runtimeType && a == other.a;
 }
 
-@freezed
-sealed class AbcTwinSync with _$AbcTwinSync {
+sealed class AbcTwinSync {
   const AbcTwinSync._();
 
   const factory AbcTwinSync.a(
@@ -96,6 +93,100 @@ sealed class AbcTwinSync with _$AbcTwinSync {
   const factory AbcTwinSync.justInt(
     int field0,
   ) = AbcTwinSync_JustInt;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ATwinSync field0)? a,
+    TResult Function(BTwinSync field0)? b,
+    TResult Function(CTwinSync field0)? c,
+    TResult Function(int field0)? justInt,
+  }) {
+    final self = this;
+    if (self is AbcTwinSync_A) {
+      return a?.call(self.field0);
+    }
+    if (self is AbcTwinSync_B) {
+      return b?.call(self.field0);
+    }
+    if (self is AbcTwinSync_C) {
+      return c?.call(self.field0);
+    }
+    if (self is AbcTwinSync_JustInt) {
+      return justInt?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class AbcTwinSync_A extends AbcTwinSync {
+  final ATwinSync field0;
+
+  const AbcTwinSync_A(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AbcTwinSync_A &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class AbcTwinSync_B extends AbcTwinSync {
+  final BTwinSync field0;
+
+  const AbcTwinSync_B(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AbcTwinSync_B &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class AbcTwinSync_C extends AbcTwinSync {
+  final CTwinSync field0;
+
+  const AbcTwinSync_C(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AbcTwinSync_C &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class AbcTwinSync_JustInt extends AbcTwinSync {
+  final int field0;
+
+  const AbcTwinSync_JustInt(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AbcTwinSync_JustInt &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class BTwinSync {

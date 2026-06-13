@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'basic_twin_sync.freezed.dart';
 
 int exampleBasicTypeI8TwinSync({required int arg, required String expect}) =>
     RustLib.instance.api
@@ -113,8 +111,7 @@ BasicStructTwinSync exampleBasicTypeBasicStructTwinSyncTwinSync(
         .crateApiPseudoManualBasicTwinSyncExampleBasicTypeBasicStructTwinSyncTwinSync(
             arg: arg);
 
-@freezed
-sealed class BasicGeneralEnumTwinSync with _$BasicGeneralEnumTwinSync {
+sealed class BasicGeneralEnumTwinSync {
   const BasicGeneralEnumTwinSync._();
 
   const factory BasicGeneralEnumTwinSync.apple({
@@ -122,6 +119,51 @@ sealed class BasicGeneralEnumTwinSync with _$BasicGeneralEnumTwinSync {
   }) = BasicGeneralEnumTwinSync_Apple;
   const factory BasicGeneralEnumTwinSync.orange() =
       BasicGeneralEnumTwinSync_Orange;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String field})? apple,
+    TResult Function()? orange,
+  }) {
+    final self = this;
+    if (self is BasicGeneralEnumTwinSync_Apple) {
+      return apple?.call(field: self.field);
+    }
+    if (self is BasicGeneralEnumTwinSync_Orange) {
+      return orange?.call();
+    }
+    return null;
+  }
+}
+
+class BasicGeneralEnumTwinSync_Apple extends BasicGeneralEnumTwinSync {
+  final String field;
+
+  const BasicGeneralEnumTwinSync_Apple({
+    required this.field,
+  }) : super._();
+
+  @override
+  int get hashCode => field.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinSync_Apple &&
+          runtimeType == other.runtimeType &&
+          field == other.field;
+}
+
+class BasicGeneralEnumTwinSync_Orange extends BasicGeneralEnumTwinSync {
+  const BasicGeneralEnumTwinSync_Orange() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinSync_Orange &&
+          runtimeType == other.runtimeType;
 }
 
 enum BasicPrimitiveEnumTwinSync {

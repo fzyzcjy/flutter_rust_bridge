@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'raw_string.freezed.dart';
 
 Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal() =>
     RustLib.instance.api.crateApiRawStringTestRawStringItemStructTwinNormal();
@@ -48,8 +46,7 @@ class MoreThanJustOneRawStringStructTwinNormal {
           another == other.another;
 }
 
-@freezed
-sealed class RawStringItemEnumTwinNormal with _$RawStringItemEnumTwinNormal {
+sealed class RawStringItemEnumTwinNormal {
   const RawStringItemEnumTwinNormal._();
 
   const factory RawStringItemEnumTwinNormal.regular({
@@ -58,6 +55,56 @@ sealed class RawStringItemEnumTwinNormal with _$RawStringItemEnumTwinNormal {
   const factory RawStringItemEnumTwinNormal.raw({
     required String type,
   }) = RawStringItemEnumTwinNormal_Raw;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String regular})? regular,
+    TResult Function({required String type})? raw,
+  }) {
+    final self = this;
+    if (self is RawStringItemEnumTwinNormal_Regular) {
+      return regular?.call(regular: self.regular);
+    }
+    if (self is RawStringItemEnumTwinNormal_Raw) {
+      return raw?.call(type: self.type);
+    }
+    return null;
+  }
+}
+
+class RawStringItemEnumTwinNormal_Regular extends RawStringItemEnumTwinNormal {
+  final String regular;
+
+  const RawStringItemEnumTwinNormal_Regular({
+    required this.regular,
+  }) : super._();
+
+  @override
+  int get hashCode => regular.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RawStringItemEnumTwinNormal_Regular &&
+          runtimeType == other.runtimeType &&
+          regular == other.regular;
+}
+
+class RawStringItemEnumTwinNormal_Raw extends RawStringItemEnumTwinNormal {
+  final String type;
+
+  const RawStringItemEnumTwinNormal_Raw({
+    required this.type,
+  }) : super._();
+
+  @override
+  int get hashCode => type.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RawStringItemEnumTwinNormal_Raw &&
+          runtimeType == other.runtimeType &&
+          type == other.type;
 }
 
 class RawStringItemStructTwinNormal {

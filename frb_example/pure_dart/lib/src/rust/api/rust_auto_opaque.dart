@@ -7,9 +7,7 @@ import 'dart:io';
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_auto_opaque_twin_moi.dart';
-part 'rust_auto_opaque.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required NonCloneSimpleTwinNormal arg, required int expect}) =>
@@ -257,9 +255,7 @@ abstract class MyTraitTwinNormal {
   Future<void> f();
 }
 
-@freezed
-sealed class EnumWithGoodAndOpaqueTwinNormal
-    with _$EnumWithGoodAndOpaqueTwinNormal {
+sealed class EnumWithGoodAndOpaqueTwinNormal {
   const EnumWithGoodAndOpaqueTwinNormal._();
 
   const factory EnumWithGoodAndOpaqueTwinNormal.good(
@@ -268,6 +264,58 @@ sealed class EnumWithGoodAndOpaqueTwinNormal
   const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
     NonCloneSimpleTwinNormal field0,
   ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? good,
+    TResult Function(NonCloneSimpleTwinNormal field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumWithGoodAndOpaqueTwinNormal_Good) {
+      return good?.call(self.field0);
+    }
+    if (self is EnumWithGoodAndOpaqueTwinNormal_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class EnumWithGoodAndOpaqueTwinNormal_Good
+    extends EnumWithGoodAndOpaqueTwinNormal {
+  final String field0;
+
+  const EnumWithGoodAndOpaqueTwinNormal_Good(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinNormal_Good &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumWithGoodAndOpaqueTwinNormal_Opaque
+    extends EnumWithGoodAndOpaqueTwinNormal {
+  final NonCloneSimpleTwinNormal field0;
+
+  const EnumWithGoodAndOpaqueTwinNormal_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinNormal_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinNormal {

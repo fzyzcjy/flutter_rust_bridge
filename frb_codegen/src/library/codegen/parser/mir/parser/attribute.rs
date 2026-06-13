@@ -143,6 +143,25 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::DartCollectionDeepEquality)
     }
 
+    pub(crate) fn dart_enums_freezed(&self) -> Option<bool> {
+        let candidates = self
+            .0
+            .iter()
+            .filter_map(|item| match item {
+                FrbAttribute::DartEnumsFreezed => Some(true),
+                FrbAttribute::NonDartEnumsFreezed => Some(false),
+                _ => None,
+            })
+            .collect_vec();
+        if candidates.len() > 1 {
+            // We do not care about details of this warning message
+            // frb-coverage:ignore-start
+            log::warn!("Only one `dart_enums_freezed` attribute is expected; taking the last one");
+            // frb-coverage:ignore-end
+        }
+        candidates.last().copied()
+    }
+
     pub(crate) fn positional(&self) -> bool {
         self.any_eq(&FrbAttribute::Positional)
     }
@@ -290,6 +309,7 @@ fn parse_syn_attribute(raw: &str) -> anyhow::Result<Attribute> {
 
 mod frb_keyword {
     syn::custom_keyword!(dart_collection_deep_equality);
+    syn::custom_keyword!(dart_enums_freezed);
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
@@ -306,6 +326,7 @@ mod frb_keyword {
     syn::custom_keyword!(non_opaque);
     syn::custom_keyword!(non_hash);
     syn::custom_keyword!(non_eq);
+    syn::custom_keyword!(non_dart_enums_freezed);
     syn::custom_keyword!(positional);
     syn::custom_keyword!(proxy);
     syn::custom_keyword!(json_serializable);
@@ -345,6 +366,7 @@ impl Parse for FrbAttributesInner {
 #[derive(Eq, PartialEq, Debug, Clone)]
 enum FrbAttribute {
     DartCollectionDeepEquality,
+    DartEnumsFreezed,
     Dart2Rust(FrbAttributeSerDes),
     DartCode(FrbAttributeDartCode),
     Default(FrbAttributeDefaultValue),
@@ -358,6 +380,7 @@ enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     Name(FrbAttributeName),
     NonEq,
+    NonDartEnumsFreezed,
     NonFinal,
     NonHash,
     NonOpaque,
@@ -433,6 +456,22 @@ impl Parse for FrbAttribute {
                     &lookahead,
                     dart_collection_deep_equality,
                     DartCollectionDeepEquality,
+                )
+            })
+            .or_else(|| {
+                parse_keyword::<dart_enums_freezed, _>(
+                    input,
+                    &lookahead,
+                    dart_enums_freezed,
+                    DartEnumsFreezed,
+                )
+            })
+            .or_else(|| {
+                parse_keyword::<non_dart_enums_freezed, _>(
+                    input,
+                    &lookahead,
+                    non_dart_enums_freezed,
+                    NonDartEnumsFreezed,
                 )
             })
             // .or_else(|| {
@@ -879,6 +918,23 @@ mod tests {
             "dart_collection_deep_equality",
             FrbAttribute::DartCollectionDeepEquality,
         );
+    }
+
+    #[test]
+    fn test_dart_enums_freezed() {
+        simple_keyword_tester("dart_enums_freezed", FrbAttribute::DartEnumsFreezed);
+    }
+
+    #[test]
+    fn test_non_dart_enums_freezed() {
+        simple_keyword_tester("non_dart_enums_freezed", FrbAttribute::NonDartEnumsFreezed);
+    }
+
+    #[test]
+    fn test_dart_enums_freezed_last_wins() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(dart_enums_freezed, non_dart_enums_freezed)]")?;
+        assert_eq!(parsed.dart_enums_freezed(), Some(false));
+        Ok(())
     }
 
     #[test]

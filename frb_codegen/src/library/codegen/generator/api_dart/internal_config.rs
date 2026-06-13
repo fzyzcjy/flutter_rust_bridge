@@ -7,6 +7,7 @@ use std::path::PathBuf;
 pub(crate) struct GeneratorApiDartInternalConfig {
     pub dart_collection_deep_equality: bool,
     pub dart_enums_style: bool,
+    pub dart_enums_freezed: bool,
     pub dart3: bool,
     pub dart_decl_base_output_path: PathBuf,
     pub dart_impl_output_path: TargetOrCommonMap<PathBuf>,

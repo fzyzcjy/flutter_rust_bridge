@@ -7,11 +7,12 @@ import 'dart:io';
 
 import '../frb_generated.dart';
 import 'misc_example.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'enumeration.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
         {required EnumSimpleTwinNormal arg}) =>
@@ -37,6 +38,11 @@ Future<EnumWithDiscriminantTwinNormal> funcEnumWithDiscriminantTwinNormal(
     RustLib.instance.api
         .crateApiEnumerationFuncEnumWithDiscriminantTwinNormal(arg: arg);
 
+Future<EnumWithFreezedOverrideTwinNormal> funcEnumWithFreezedOverrideTwinNormal(
+        {required EnumWithFreezedOverrideTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiEnumerationFuncEnumWithFreezedOverrideTwinNormal(arg: arg);
+
 Future<Uint8List> printNoteTwinNormal({required NoteTwinNormal note}) =>
     RustLib.instance.api.crateApiEnumerationPrintNoteTwinNormal(note: note);
 
@@ -60,14 +66,57 @@ Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal(
     RustLib.instance.api
         .crateApiEnumerationHandleEnumStructTwinNormal(val: val);
 
-@freezed
-sealed class DistanceTwinNormal with _$DistanceTwinNormal {
+sealed class DistanceTwinNormal {
   const DistanceTwinNormal._();
 
   const factory DistanceTwinNormal.unknown() = DistanceTwinNormal_Unknown;
   const factory DistanceTwinNormal.map(
     double field0,
   ) = DistanceTwinNormal_Map;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? map,
+  }) {
+    final self = this;
+    if (self is DistanceTwinNormal_Unknown) {
+      return unknown?.call();
+    }
+    if (self is DistanceTwinNormal_Map) {
+      return map?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class DistanceTwinNormal_Unknown extends DistanceTwinNormal {
+  const DistanceTwinNormal_Unknown() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DistanceTwinNormal_Unknown && runtimeType == other.runtimeType;
+}
+
+class DistanceTwinNormal_Map extends DistanceTwinNormal {
+  final double field0;
+
+  const DistanceTwinNormal_Map(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DistanceTwinNormal_Map &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 enum EnumSimpleTwinNormal {
@@ -83,7 +132,18 @@ enum EnumWithDiscriminantTwinNormal {
 }
 
 @freezed
-sealed class EnumWithItemMixedTwinNormal with _$EnumWithItemMixedTwinNormal {
+sealed class EnumWithFreezedOverrideTwinNormal
+    with _$EnumWithFreezedOverrideTwinNormal {
+  const EnumWithFreezedOverrideTwinNormal._();
+
+  const factory EnumWithFreezedOverrideTwinNormal.empty() =
+      EnumWithFreezedOverrideTwinNormal_Empty;
+  const factory EnumWithFreezedOverrideTwinNormal.named({
+    @Default(-1) int count,
+  }) = EnumWithFreezedOverrideTwinNormal_Named;
+}
+
+sealed class EnumWithItemMixedTwinNormal {
   const EnumWithItemMixedTwinNormal._();
 
   const factory EnumWithItemMixedTwinNormal.a() = EnumWithItemMixedTwinNormal_A;
@@ -93,10 +153,76 @@ sealed class EnumWithItemMixedTwinNormal with _$EnumWithItemMixedTwinNormal {
   const factory EnumWithItemMixedTwinNormal.c({
     required String cField,
   }) = EnumWithItemMixedTwinNormal_C;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? a,
+    TResult Function(Uint8List field0)? b,
+    TResult Function({required String cField})? c,
+  }) {
+    final self = this;
+    if (self is EnumWithItemMixedTwinNormal_A) {
+      return a?.call();
+    }
+    if (self is EnumWithItemMixedTwinNormal_B) {
+      return b?.call(self.field0);
+    }
+    if (self is EnumWithItemMixedTwinNormal_C) {
+      return c?.call(cField: self.cField);
+    }
+    return null;
+  }
 }
 
-@freezed
-sealed class EnumWithItemStructTwinNormal with _$EnumWithItemStructTwinNormal {
+class EnumWithItemMixedTwinNormal_A extends EnumWithItemMixedTwinNormal {
+  const EnumWithItemMixedTwinNormal_A() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemMixedTwinNormal_A &&
+          runtimeType == other.runtimeType;
+}
+
+class EnumWithItemMixedTwinNormal_B extends EnumWithItemMixedTwinNormal {
+  final Uint8List field0;
+
+  const EnumWithItemMixedTwinNormal_B(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(field0);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemMixedTwinNormal_B &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(field0, other.field0);
+}
+
+class EnumWithItemMixedTwinNormal_C extends EnumWithItemMixedTwinNormal {
+  final String cField;
+
+  const EnumWithItemMixedTwinNormal_C({
+    required this.cField,
+  }) : super._();
+
+  @override
+  int get hashCode => cField.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemMixedTwinNormal_C &&
+          runtimeType == other.runtimeType &&
+          cField == other.cField;
+}
+
+sealed class EnumWithItemStructTwinNormal {
   const EnumWithItemStructTwinNormal._();
 
   const factory EnumWithItemStructTwinNormal.a({
@@ -105,10 +231,59 @@ sealed class EnumWithItemStructTwinNormal with _$EnumWithItemStructTwinNormal {
   const factory EnumWithItemStructTwinNormal.b({
     required Int32List bField,
   }) = EnumWithItemStructTwinNormal_B;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required Uint8List aField})? a,
+    TResult Function({required Int32List bField})? b,
+  }) {
+    final self = this;
+    if (self is EnumWithItemStructTwinNormal_A) {
+      return a?.call(aField: self.aField);
+    }
+    if (self is EnumWithItemStructTwinNormal_B) {
+      return b?.call(bField: self.bField);
+    }
+    return null;
+  }
 }
 
-@freezed
-sealed class EnumWithItemTupleTwinNormal with _$EnumWithItemTupleTwinNormal {
+class EnumWithItemStructTwinNormal_A extends EnumWithItemStructTwinNormal {
+  final Uint8List aField;
+
+  const EnumWithItemStructTwinNormal_A({
+    required this.aField,
+  }) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(aField);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemStructTwinNormal_A &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(aField, other.aField);
+}
+
+class EnumWithItemStructTwinNormal_B extends EnumWithItemStructTwinNormal {
+  final Int32List bField;
+
+  const EnumWithItemStructTwinNormal_B({
+    required this.bField,
+  }) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(bField);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemStructTwinNormal_B &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(bField, other.bField);
+}
+
+sealed class EnumWithItemTupleTwinNormal {
   const EnumWithItemTupleTwinNormal._();
 
   const factory EnumWithItemTupleTwinNormal.a(
@@ -117,39 +292,238 @@ sealed class EnumWithItemTupleTwinNormal with _$EnumWithItemTupleTwinNormal {
   const factory EnumWithItemTupleTwinNormal.b(
     int field0,
   ) = EnumWithItemTupleTwinNormal_B;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Uint8List field0)? a,
+    TResult Function(int field0)? b,
+  }) {
+    final self = this;
+    if (self is EnumWithItemTupleTwinNormal_A) {
+      return a?.call(self.field0);
+    }
+    if (self is EnumWithItemTupleTwinNormal_B) {
+      return b?.call(self.field0);
+    }
+    return null;
+  }
 }
 
-@freezed
-sealed class KitchenSinkTwinNormal with _$KitchenSinkTwinNormal {
+class EnumWithItemTupleTwinNormal_A extends EnumWithItemTupleTwinNormal {
+  final Uint8List field0;
+
+  const EnumWithItemTupleTwinNormal_A(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(field0);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemTupleTwinNormal_A &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(field0, other.field0);
+}
+
+class EnumWithItemTupleTwinNormal_B extends EnumWithItemTupleTwinNormal {
+  final int field0;
+
+  const EnumWithItemTupleTwinNormal_B(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemTupleTwinNormal_B &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class KitchenSinkTwinNormal {
   const KitchenSinkTwinNormal._();
 
   /// Comment on variant
   const factory KitchenSinkTwinNormal.empty() = KitchenSinkTwinNormal_Empty;
   const factory KitchenSinkTwinNormal.primitives({
     /// Dart field comment
-    @Default(-1) int int32,
+    int int32,
     required double float64,
     required bool boolean,
   }) = KitchenSinkTwinNormal_Primitives;
   const factory KitchenSinkTwinNormal.nested(
     int field0, [
-    @Default(KitchenSinkTwinNormal.empty()) KitchenSinkTwinNormal field1,
+    KitchenSinkTwinNormal field1,
   ]) = KitchenSinkTwinNormal_Nested;
   const factory KitchenSinkTwinNormal.optional([
     /// Comment on anonymous field
-    @Default(-1) int? field0,
+    int? field0,
     int? field1,
   ]) = KitchenSinkTwinNormal_Optional;
   const factory KitchenSinkTwinNormal.buffer(
     Uint8List field0,
   ) = KitchenSinkTwinNormal_Buffer;
   const factory KitchenSinkTwinNormal.enums([
-    @Default(WeekdaysTwinNormal.sunday) WeekdaysTwinNormal field0,
+    WeekdaysTwinNormal field0,
   ]) = KitchenSinkTwinNormal_Enums;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(
+            {required int int32,
+            required double float64,
+            required bool boolean})?
+        primitives,
+    TResult Function(int field0, KitchenSinkTwinNormal field1)? nested,
+    TResult Function(int? field0, int? field1)? optional,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(WeekdaysTwinNormal field0)? enums,
+  }) {
+    final self = this;
+    if (self is KitchenSinkTwinNormal_Empty) {
+      return empty?.call();
+    }
+    if (self is KitchenSinkTwinNormal_Primitives) {
+      return primitives?.call(
+          int32: self.int32, float64: self.float64, boolean: self.boolean);
+    }
+    if (self is KitchenSinkTwinNormal_Nested) {
+      return nested?.call(self.field0, self.field1);
+    }
+    if (self is KitchenSinkTwinNormal_Optional) {
+      return optional?.call(self.field0, self.field1);
+    }
+    if (self is KitchenSinkTwinNormal_Buffer) {
+      return buffer?.call(self.field0);
+    }
+    if (self is KitchenSinkTwinNormal_Enums) {
+      return enums?.call(self.field0);
+    }
+    return null;
+  }
 }
 
-@freezed
-sealed class MeasureTwinNormal with _$MeasureTwinNormal {
+class KitchenSinkTwinNormal_Empty extends KitchenSinkTwinNormal {
+  const KitchenSinkTwinNormal_Empty() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinNormal_Empty && runtimeType == other.runtimeType;
+}
+
+class KitchenSinkTwinNormal_Primitives extends KitchenSinkTwinNormal {
+  /// Dart field comment
+  final int int32;
+  final double float64;
+  final bool boolean;
+
+  const KitchenSinkTwinNormal_Primitives({
+    this.int32 = -1,
+    required this.float64,
+    required this.boolean,
+  }) : super._();
+
+  @override
+  int get hashCode => int32.hashCode ^ float64.hashCode ^ boolean.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinNormal_Primitives &&
+          runtimeType == other.runtimeType &&
+          int32 == other.int32 &&
+          float64 == other.float64 &&
+          boolean == other.boolean;
+}
+
+class KitchenSinkTwinNormal_Nested extends KitchenSinkTwinNormal {
+  final int field0;
+  final KitchenSinkTwinNormal field1;
+
+  const KitchenSinkTwinNormal_Nested(
+    this.field0, [
+    this.field1 = const KitchenSinkTwinNormal.empty(),
+  ]) : super._();
+
+  @override
+  int get hashCode => field0.hashCode ^ field1.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinNormal_Nested &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0 &&
+          field1 == other.field1;
+}
+
+class KitchenSinkTwinNormal_Optional extends KitchenSinkTwinNormal {
+  /// Comment on anonymous field
+  final int? field0;
+  final int? field1;
+
+  const KitchenSinkTwinNormal_Optional([
+    this.field0 = -1,
+    this.field1,
+  ]) : super._();
+
+  @override
+  int get hashCode => field0.hashCode ^ field1.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinNormal_Optional &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0 &&
+          field1 == other.field1;
+}
+
+class KitchenSinkTwinNormal_Buffer extends KitchenSinkTwinNormal {
+  final Uint8List field0;
+
+  const KitchenSinkTwinNormal_Buffer(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(field0);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinNormal_Buffer &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(field0, other.field0);
+}
+
+class KitchenSinkTwinNormal_Enums extends KitchenSinkTwinNormal {
+  final WeekdaysTwinNormal field0;
+
+  const KitchenSinkTwinNormal_Enums([
+    this.field0 = WeekdaysTwinNormal.sunday,
+  ]) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinNormal_Enums &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class MeasureTwinNormal {
   const MeasureTwinNormal._();
 
   const factory MeasureTwinNormal.speed(
@@ -158,6 +532,56 @@ sealed class MeasureTwinNormal with _$MeasureTwinNormal {
   const factory MeasureTwinNormal.distance(
     DistanceTwinNormal field0,
   ) = MeasureTwinNormal_Distance;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(SpeedTwinNormal field0)? speed,
+    TResult Function(DistanceTwinNormal field0)? distance,
+  }) {
+    final self = this;
+    if (self is MeasureTwinNormal_Speed) {
+      return speed?.call(self.field0);
+    }
+    if (self is MeasureTwinNormal_Distance) {
+      return distance?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class MeasureTwinNormal_Speed extends MeasureTwinNormal {
+  final SpeedTwinNormal field0;
+
+  const MeasureTwinNormal_Speed(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MeasureTwinNormal_Speed &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class MeasureTwinNormal_Distance extends MeasureTwinNormal {
+  final DistanceTwinNormal field0;
+
+  const MeasureTwinNormal_Distance(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MeasureTwinNormal_Distance &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class NoteTwinNormal {
@@ -181,12 +605,55 @@ class NoteTwinNormal {
           body == other.body;
 }
 
-@freezed
-sealed class SpeedTwinNormal with _$SpeedTwinNormal {
+sealed class SpeedTwinNormal {
   const SpeedTwinNormal._();
 
   const factory SpeedTwinNormal.unknown() = SpeedTwinNormal_Unknown;
   const factory SpeedTwinNormal.gps(
     double field0,
   ) = SpeedTwinNormal_GPS;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+  }) {
+    final self = this;
+    if (self is SpeedTwinNormal_Unknown) {
+      return unknown?.call();
+    }
+    if (self is SpeedTwinNormal_GPS) {
+      return gps?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class SpeedTwinNormal_Unknown extends SpeedTwinNormal {
+  const SpeedTwinNormal_Unknown() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SpeedTwinNormal_Unknown && runtimeType == other.runtimeType;
+}
+
+class SpeedTwinNormal_GPS extends SpeedTwinNormal {
+  final double field0;
+
+  const SpeedTwinNormal_GPS(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SpeedTwinNormal_GPS &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }

@@ -23,6 +23,7 @@ pub struct MirEnum {
     pub variants: Vec<MirEnumVariant>,
     pub mode: MirEnumMode,
     pub ignore: bool,
+    pub dart_enums_freezed: Option<bool>,
     pub needs_json_serializable: bool,
 }
 

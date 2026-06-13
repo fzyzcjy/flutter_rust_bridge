@@ -8,9 +8,7 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_twin_rust_async.dart';
-part 'rust_opaque_twin_sync.freezed.dart';
 
 HideDataTwinSync createOpaqueTwinSync() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncCreateOpaqueTwinSync();
@@ -107,8 +105,7 @@ abstract class NonCloneDataTwinSync implements RustOpaqueInterface {}
 // Rust type: RustOpaqueNom<RwLock < HideDataTwinSync >>
 abstract class RwLockHideDataTwinSync implements RustOpaqueInterface {}
 
-@freezed
-sealed class EnumOpaqueTwinSync with _$EnumOpaqueTwinSync {
+sealed class EnumOpaqueTwinSync {
   const EnumOpaqueTwinSync._();
 
   const factory EnumOpaqueTwinSync.struct(
@@ -127,6 +124,138 @@ sealed class EnumOpaqueTwinSync with _$EnumOpaqueTwinSync {
     RwLockHideDataTwinSync field0,
   ) = EnumOpaqueTwinSync_RwLock;
   const factory EnumOpaqueTwinSync.nothing() = EnumOpaqueTwinSync_Nothing;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HideDataTwinSync field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSync field0)? traitObj,
+    TResult Function(MutexHideDataTwinSync field0)? mutex,
+    TResult Function(RwLockHideDataTwinSync field0)? rwLock,
+    TResult Function()? nothing,
+  }) {
+    final self = this;
+    if (self is EnumOpaqueTwinSync_Struct) {
+      return struct?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_TraitObj) {
+      return traitObj?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_Mutex) {
+      return mutex?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_RwLock) {
+      return rwLock?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_Nothing) {
+      return nothing?.call();
+    }
+    return null;
+  }
+}
+
+class EnumOpaqueTwinSync_Struct extends EnumOpaqueTwinSync {
+  final HideDataTwinSync field0;
+
+  const EnumOpaqueTwinSync_Struct(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSync_Struct &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSync_Primitive extends EnumOpaqueTwinSync {
+  final I32 field0;
+
+  const EnumOpaqueTwinSync_Primitive(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSync_Primitive &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSync_TraitObj extends EnumOpaqueTwinSync {
+  final BoxDartDebugTwinSync field0;
+
+  const EnumOpaqueTwinSync_TraitObj(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSync_TraitObj &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSync_Mutex extends EnumOpaqueTwinSync {
+  final MutexHideDataTwinSync field0;
+
+  const EnumOpaqueTwinSync_Mutex(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSync_Mutex &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSync_RwLock extends EnumOpaqueTwinSync {
+  final RwLockHideDataTwinSync field0;
+
+  const EnumOpaqueTwinSync_RwLock(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSync_RwLock &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSync_Nothing extends EnumOpaqueTwinSync {
+  const EnumOpaqueTwinSync_Nothing() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSync_Nothing && runtimeType == other.runtimeType;
 }
 
 class EnumOpaqueTwinSyncArray5 extends NonGrowableListView<EnumOpaqueTwinSync> {

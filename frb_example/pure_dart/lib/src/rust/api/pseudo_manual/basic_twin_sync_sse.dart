@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'basic_twin_sync_sse.freezed.dart';
 
 int exampleBasicTypeI8TwinSyncSse({required int arg, required String expect}) =>
     RustLib.instance.api
@@ -124,8 +122,7 @@ BasicStructTwinSyncSse exampleBasicTypeBasicStructTwinSyncSseTwinSyncSse(
         .crateApiPseudoManualBasicTwinSyncSseExampleBasicTypeBasicStructTwinSyncSseTwinSyncSse(
             arg: arg);
 
-@freezed
-sealed class BasicGeneralEnumTwinSyncSse with _$BasicGeneralEnumTwinSyncSse {
+sealed class BasicGeneralEnumTwinSyncSse {
   const BasicGeneralEnumTwinSyncSse._();
 
   const factory BasicGeneralEnumTwinSyncSse.apple({
@@ -133,6 +130,51 @@ sealed class BasicGeneralEnumTwinSyncSse with _$BasicGeneralEnumTwinSyncSse {
   }) = BasicGeneralEnumTwinSyncSse_Apple;
   const factory BasicGeneralEnumTwinSyncSse.orange() =
       BasicGeneralEnumTwinSyncSse_Orange;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String field})? apple,
+    TResult Function()? orange,
+  }) {
+    final self = this;
+    if (self is BasicGeneralEnumTwinSyncSse_Apple) {
+      return apple?.call(field: self.field);
+    }
+    if (self is BasicGeneralEnumTwinSyncSse_Orange) {
+      return orange?.call();
+    }
+    return null;
+  }
+}
+
+class BasicGeneralEnumTwinSyncSse_Apple extends BasicGeneralEnumTwinSyncSse {
+  final String field;
+
+  const BasicGeneralEnumTwinSyncSse_Apple({
+    required this.field,
+  }) : super._();
+
+  @override
+  int get hashCode => field.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinSyncSse_Apple &&
+          runtimeType == other.runtimeType &&
+          field == other.field;
+}
+
+class BasicGeneralEnumTwinSyncSse_Orange extends BasicGeneralEnumTwinSyncSse {
+  const BasicGeneralEnumTwinSyncSse_Orange() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinSyncSse_Orange &&
+          runtimeType == other.runtimeType;
 }
 
 enum BasicPrimitiveEnumTwinSyncSse {

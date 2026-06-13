@@ -52,6 +52,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
     } = args;
 
     let dart_enums_style = config.dart_enums_style.unwrap_or(true);
+    let dart_enums_freezed = config.dart_enums_freezed.unwrap_or(true);
     let dart3 = config.dart3.unwrap_or(true);
     let default_external_library_loader =
         compute_default_external_library_loader(rust_crate_dir, dart_root, config);
@@ -61,6 +62,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
         api_dart: GeneratorApiDartInternalConfig {
             dart_collection_deep_equality: config.dart_collection_deep_equality.unwrap_or(false),
             dart_enums_style,
+            dart_enums_freezed,
             dart3,
             dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path.clone(),
             dart_impl_output_path: dart_output_path_pack.dart_impl_output_path.clone(),

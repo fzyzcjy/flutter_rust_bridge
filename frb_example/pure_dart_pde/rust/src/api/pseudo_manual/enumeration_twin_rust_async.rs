@@ -65,6 +65,22 @@ pub async fn func_enum_with_discriminant_twin_rust_async(
     arg
 }
 
+#[frb(dart_enums_freezed)]
+#[derive(Debug, Clone)]
+pub enum EnumWithFreezedOverrideTwinRustAsync {
+    Empty,
+    Named {
+        #[frb(default = -1)]
+        count: i32,
+    },
+}
+
+pub async fn func_enum_with_freezed_override_twin_rust_async(
+    arg: EnumWithFreezedOverrideTwinRustAsync,
+) -> EnumWithFreezedOverrideTwinRustAsync {
+    arg
+}
+
 #[frb]
 #[derive(Debug)]
 pub struct NoteTwinRustAsync {

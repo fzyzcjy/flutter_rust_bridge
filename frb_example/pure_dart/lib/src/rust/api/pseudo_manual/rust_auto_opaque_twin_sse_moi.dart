@@ -7,9 +7,7 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
-part 'rust_auto_opaque_twin_sse_moi.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinSseMoi(
         {required NonCloneSimpleTwinSseMoi arg, required int expect}) =>
@@ -265,9 +263,7 @@ abstract class MyTraitTwinSseMoi {
   Future<void> f();
 }
 
-@freezed
-sealed class EnumWithGoodAndOpaqueTwinSseMoi
-    with _$EnumWithGoodAndOpaqueTwinSseMoi {
+sealed class EnumWithGoodAndOpaqueTwinSseMoi {
   const EnumWithGoodAndOpaqueTwinSseMoi._();
 
   const factory EnumWithGoodAndOpaqueTwinSseMoi.good(
@@ -276,6 +272,58 @@ sealed class EnumWithGoodAndOpaqueTwinSseMoi
   const factory EnumWithGoodAndOpaqueTwinSseMoi.opaque(
     NonCloneSimpleTwinSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinSseMoi_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? good,
+    TResult Function(NonCloneSimpleTwinSseMoi field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumWithGoodAndOpaqueTwinSseMoi_Good) {
+      return good?.call(self.field0);
+    }
+    if (self is EnumWithGoodAndOpaqueTwinSseMoi_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class EnumWithGoodAndOpaqueTwinSseMoi_Good
+    extends EnumWithGoodAndOpaqueTwinSseMoi {
+  final String field0;
+
+  const EnumWithGoodAndOpaqueTwinSseMoi_Good(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinSseMoi_Good &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumWithGoodAndOpaqueTwinSseMoi_Opaque
+    extends EnumWithGoodAndOpaqueTwinSseMoi {
+  final NonCloneSimpleTwinSseMoi field0;
+
+  const EnumWithGoodAndOpaqueTwinSseMoi_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinSseMoi_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSseMoi {

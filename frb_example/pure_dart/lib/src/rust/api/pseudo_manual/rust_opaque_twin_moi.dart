@@ -8,9 +8,7 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_sync_twin_moi.dart';
-part 'rust_opaque_twin_moi.freezed.dart';
 
 Future<HideDataTwinMoi> createOpaqueTwinMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinMoiCreateOpaqueTwinMoi();
@@ -108,8 +106,7 @@ abstract class RwLockHideDataTwinMoi implements RustOpaqueInterface {}
 // Rust type: RustOpaqueMoi<i16>
 abstract class I16 implements RustOpaqueInterface {}
 
-@freezed
-sealed class EnumOpaqueTwinMoi with _$EnumOpaqueTwinMoi {
+sealed class EnumOpaqueTwinMoi {
   const EnumOpaqueTwinMoi._();
 
   const factory EnumOpaqueTwinMoi.struct(
@@ -128,6 +125,138 @@ sealed class EnumOpaqueTwinMoi with _$EnumOpaqueTwinMoi {
     RwLockHideDataTwinMoi field0,
   ) = EnumOpaqueTwinMoi_RwLock;
   const factory EnumOpaqueTwinMoi.nothing() = EnumOpaqueTwinMoi_Nothing;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HideDataTwinMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult Function()? nothing,
+  }) {
+    final self = this;
+    if (self is EnumOpaqueTwinMoi_Struct) {
+      return struct?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_TraitObj) {
+      return traitObj?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_Mutex) {
+      return mutex?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_RwLock) {
+      return rwLock?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_Nothing) {
+      return nothing?.call();
+    }
+    return null;
+  }
+}
+
+class EnumOpaqueTwinMoi_Struct extends EnumOpaqueTwinMoi {
+  final HideDataTwinMoi field0;
+
+  const EnumOpaqueTwinMoi_Struct(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinMoi_Struct &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinMoi_Primitive extends EnumOpaqueTwinMoi {
+  final I16 field0;
+
+  const EnumOpaqueTwinMoi_Primitive(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinMoi_Primitive &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinMoi_TraitObj extends EnumOpaqueTwinMoi {
+  final BoxDartDebugTwinMoi field0;
+
+  const EnumOpaqueTwinMoi_TraitObj(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinMoi_TraitObj &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinMoi_Mutex extends EnumOpaqueTwinMoi {
+  final MutexHideDataTwinMoi field0;
+
+  const EnumOpaqueTwinMoi_Mutex(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinMoi_Mutex &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinMoi_RwLock extends EnumOpaqueTwinMoi {
+  final RwLockHideDataTwinMoi field0;
+
+  const EnumOpaqueTwinMoi_RwLock(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinMoi_RwLock &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinMoi_Nothing extends EnumOpaqueTwinMoi {
+  const EnumOpaqueTwinMoi_Nothing() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinMoi_Nothing && runtimeType == other.runtimeType;
 }
 
 class EnumOpaqueTwinMoiArray5 extends NonGrowableListView<EnumOpaqueTwinMoi> {

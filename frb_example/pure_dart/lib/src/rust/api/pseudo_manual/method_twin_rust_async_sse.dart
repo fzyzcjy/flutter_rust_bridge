@@ -8,8 +8,6 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'method_twin_rust_async_sse.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
@@ -134,8 +132,7 @@ class MyCallableTwinRustAsyncSse {
           one == other.one;
 }
 
-@freezed
-sealed class SimpleEnumTwinRustAsyncSse with _$SimpleEnumTwinRustAsyncSse {
+sealed class SimpleEnumTwinRustAsyncSse {
   const SimpleEnumTwinRustAsyncSse._();
 
   const factory SimpleEnumTwinRustAsyncSse.first() =
@@ -143,6 +140,20 @@ sealed class SimpleEnumTwinRustAsyncSse with _$SimpleEnumTwinRustAsyncSse {
   const factory SimpleEnumTwinRustAsyncSse.second(
     String field0,
   ) = SimpleEnumTwinRustAsyncSse_Second;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? first,
+    TResult Function(String field0)? second,
+  }) {
+    final self = this;
+    if (self is SimpleEnumTwinRustAsyncSse_First) {
+      return first?.call();
+    }
+    if (self is SimpleEnumTwinRustAsyncSse_Second) {
+      return second?.call(self.field0);
+    }
+    return null;
+  }
 
   static Future<SimpleEnumTwinRustAsyncSse> returnSelfTwinRustAsyncSse(
           {required String one}) =>
@@ -154,6 +165,37 @@ sealed class SimpleEnumTwinRustAsyncSse with _$SimpleEnumTwinRustAsyncSse {
           .crateApiPseudoManualMethodTwinRustAsyncSseSimpleEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
         that: this,
       );
+}
+
+class SimpleEnumTwinRustAsyncSse_First extends SimpleEnumTwinRustAsyncSse {
+  const SimpleEnumTwinRustAsyncSse_First() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinRustAsyncSse_First &&
+          runtimeType == other.runtimeType;
+}
+
+class SimpleEnumTwinRustAsyncSse_Second extends SimpleEnumTwinRustAsyncSse {
+  final String field0;
+
+  const SimpleEnumTwinRustAsyncSse_Second(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinRustAsyncSse_Second &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 enum SimplePrimitiveEnumTwinRustAsyncSse {

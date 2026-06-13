@@ -8,9 +8,7 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_twin_rust_async.dart';
-part 'rust_opaque_twin_rust_async_sse.freezed.dart';
 
 Future<HideDataTwinRustAsyncSse> createOpaqueTwinRustAsyncSse() => RustLib
     .instance.api
@@ -127,8 +125,7 @@ abstract class NonCloneDataTwinRustAsyncSse implements RustOpaqueInterface {}
 // Rust type: RustOpaqueNom<RwLock < HideDataTwinRustAsyncSse >>
 abstract class RwLockHideDataTwinRustAsyncSse implements RustOpaqueInterface {}
 
-@freezed
-sealed class EnumOpaqueTwinRustAsyncSse with _$EnumOpaqueTwinRustAsyncSse {
+sealed class EnumOpaqueTwinRustAsyncSse {
   const EnumOpaqueTwinRustAsyncSse._();
 
   const factory EnumOpaqueTwinRustAsyncSse.struct(
@@ -148,6 +145,139 @@ sealed class EnumOpaqueTwinRustAsyncSse with _$EnumOpaqueTwinRustAsyncSse {
   ) = EnumOpaqueTwinRustAsyncSse_RwLock;
   const factory EnumOpaqueTwinRustAsyncSse.nothing() =
       EnumOpaqueTwinRustAsyncSse_Nothing;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HideDataTwinRustAsyncSse field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebugTwinRustAsyncSse field0)? traitObj,
+    TResult Function(MutexHideDataTwinRustAsyncSse field0)? mutex,
+    TResult Function(RwLockHideDataTwinRustAsyncSse field0)? rwLock,
+    TResult Function()? nothing,
+  }) {
+    final self = this;
+    if (self is EnumOpaqueTwinRustAsyncSse_Struct) {
+      return struct?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_TraitObj) {
+      return traitObj?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_Mutex) {
+      return mutex?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_RwLock) {
+      return rwLock?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_Nothing) {
+      return nothing?.call();
+    }
+    return null;
+  }
+}
+
+class EnumOpaqueTwinRustAsyncSse_Struct extends EnumOpaqueTwinRustAsyncSse {
+  final HideDataTwinRustAsyncSse field0;
+
+  const EnumOpaqueTwinRustAsyncSse_Struct(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncSse_Struct &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncSse_Primitive extends EnumOpaqueTwinRustAsyncSse {
+  final I32 field0;
+
+  const EnumOpaqueTwinRustAsyncSse_Primitive(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncSse_Primitive &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncSse_TraitObj extends EnumOpaqueTwinRustAsyncSse {
+  final BoxDartDebugTwinRustAsyncSse field0;
+
+  const EnumOpaqueTwinRustAsyncSse_TraitObj(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncSse_TraitObj &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncSse_Mutex extends EnumOpaqueTwinRustAsyncSse {
+  final MutexHideDataTwinRustAsyncSse field0;
+
+  const EnumOpaqueTwinRustAsyncSse_Mutex(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncSse_Mutex &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncSse_RwLock extends EnumOpaqueTwinRustAsyncSse {
+  final RwLockHideDataTwinRustAsyncSse field0;
+
+  const EnumOpaqueTwinRustAsyncSse_RwLock(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncSse_RwLock &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncSse_Nothing extends EnumOpaqueTwinRustAsyncSse {
+  const EnumOpaqueTwinRustAsyncSse_Nothing() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncSse_Nothing &&
+          runtimeType == other.runtimeType;
 }
 
 class EnumOpaqueTwinRustAsyncSseArray5

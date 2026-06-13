@@ -8,8 +8,6 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import '../dart_opaque.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'dart_opaque_twin_rust_async_sse.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `initialize`
 
@@ -125,9 +123,7 @@ class DartOpaqueNestedTwinRustAsyncSse {
           second == other.second;
 }
 
-@freezed
-sealed class EnumDartOpaqueTwinRustAsyncSse
-    with _$EnumDartOpaqueTwinRustAsyncSse {
+sealed class EnumDartOpaqueTwinRustAsyncSse {
   const EnumDartOpaqueTwinRustAsyncSse._();
 
   const factory EnumDartOpaqueTwinRustAsyncSse.primitive(
@@ -136,4 +132,56 @@ sealed class EnumDartOpaqueTwinRustAsyncSse
   const factory EnumDartOpaqueTwinRustAsyncSse.opaque(
     Object field0,
   ) = EnumDartOpaqueTwinRustAsyncSse_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int field0)? primitive,
+    TResult Function(Object field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumDartOpaqueTwinRustAsyncSse_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumDartOpaqueTwinRustAsyncSse_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class EnumDartOpaqueTwinRustAsyncSse_Primitive
+    extends EnumDartOpaqueTwinRustAsyncSse {
+  final int field0;
+
+  const EnumDartOpaqueTwinRustAsyncSse_Primitive(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumDartOpaqueTwinRustAsyncSse_Primitive &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumDartOpaqueTwinRustAsyncSse_Opaque
+    extends EnumDartOpaqueTwinRustAsyncSse {
+  final Object field0;
+
+  const EnumDartOpaqueTwinRustAsyncSse_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumDartOpaqueTwinRustAsyncSse_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }

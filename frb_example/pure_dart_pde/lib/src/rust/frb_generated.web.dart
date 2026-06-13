@@ -2635,6 +2635,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   EnumOpaqueTwinSync dco_decode_box_autoadd_enum_opaque_twin_sync(dynamic raw);
 
   @protected
+  EnumWithFreezedOverrideTwinNormal
+      dco_decode_box_autoadd_enum_with_freezed_override_twin_normal(
+          dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsync
+      dco_decode_box_autoadd_enum_with_freezed_override_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinSync
+      dco_decode_box_autoadd_enum_with_freezed_override_twin_sync(dynamic raw);
+
+  @protected
   EnumWithGoodAndOpaqueTwinNormal
       dco_decode_box_autoadd_enum_with_good_and_opaque_twin_normal(dynamic raw);
 
@@ -3618,6 +3632,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithDiscriminantTwinSync dco_decode_enum_with_discriminant_twin_sync(
       dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinNormal
+      dco_decode_enum_with_freezed_override_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsync
+      dco_decode_enum_with_freezed_override_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinSync
+      dco_decode_enum_with_freezed_override_twin_sync(dynamic raw);
 
   @protected
   EnumWithGoodAndOpaqueTwinNormal
@@ -7490,6 +7516,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  EnumWithFreezedOverrideTwinNormal
+      sse_decode_box_autoadd_enum_with_freezed_override_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsync
+      sse_decode_box_autoadd_enum_with_freezed_override_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinSync
+      sse_decode_box_autoadd_enum_with_freezed_override_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
   EnumWithGoodAndOpaqueTwinNormal
       sse_decode_box_autoadd_enum_with_good_and_opaque_twin_normal(
           SseDeserializer deserializer);
@@ -8596,6 +8637,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithDiscriminantTwinSync sse_decode_enum_with_discriminant_twin_sync(
       SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinNormal
+      sse_decode_enum_with_freezed_override_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsync
+      sse_decode_enum_with_freezed_override_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinSync
+      sse_decode_enum_with_freezed_override_twin_sync(
+          SseDeserializer deserializer);
 
   @protected
   EnumWithGoodAndOpaqueTwinNormal
@@ -12770,6 +12826,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EnumOpaqueTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_enum_with_freezed_override_twin_normal(
+      EnumWithFreezedOverrideTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_freezed_override_twin_rust_async(
+      EnumWithFreezedOverrideTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_freezed_override_twin_sync(
+      EnumWithFreezedOverrideTwinSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
       EnumWithGoodAndOpaqueTwinNormal self, SseSerializer serializer);
 
@@ -13814,6 +13882,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_enum_with_discriminant_twin_sync(
       EnumWithDiscriminantTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_freezed_override_twin_normal(
+      EnumWithFreezedOverrideTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_freezed_override_twin_rust_async(
+      EnumWithFreezedOverrideTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_freezed_override_twin_sync(
+      EnumWithFreezedOverrideTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_enum_with_good_and_opaque_twin_normal(

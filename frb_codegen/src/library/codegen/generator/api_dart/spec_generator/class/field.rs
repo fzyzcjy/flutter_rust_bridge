@@ -22,6 +22,27 @@ pub(crate) fn generate_field_default(
     dart_enums_style: bool,
 ) -> String {
     // frb-coverage:ignore-end
+    let Some(default_value) = compute_default_value(field, dart_enums_style) else {
+        return "".to_string();
+    };
+
+    if freezed {
+        format!("@Default({default_value})")
+    } else {
+        format!("= {default_value}")
+    }
+}
+
+pub(crate) fn generate_field_default_for_constructor(
+    field: &MirField,
+    dart_enums_style: bool,
+) -> String {
+    compute_default_value(field, dart_enums_style)
+        .map(|default_value| format!("= {}", ensure_const_default_value(default_value)))
+        .unwrap_or_default()
+}
+
+fn compute_default_value(field: &MirField, dart_enums_style: bool) -> Option<String> {
     if let Some(default_value) = field.default.as_ref() {
         let default_value = match default_value {
             MirDefaultValue::String { content }
@@ -32,14 +53,39 @@ pub(crate) fn generate_field_default(
             _ => default_value.to_dart_literal(),
         };
 
-        if freezed {
-            format!("@Default({default_value})")
-        } else {
-            format!("= {default_value}")
-        }
+        Some(default_value.to_string())
     } else {
-        "".to_string()
+        None
     }
+}
+
+fn ensure_const_default_value(default_value: String) -> String {
+    let trimmed = default_value.trim_start();
+    if !trimmed.starts_with("const ")
+        && (is_dart_collection_literal(trimmed)
+            || (trimmed.contains('(')
+                && !is_dart_string_literal(trimmed)
+                && !is_parenthesized_expression(trimmed)))
+    {
+        format!("const {default_value}")
+    } else {
+        default_value
+    }
+}
+
+fn is_dart_collection_literal(value: &str) -> bool {
+    value.starts_with('[') || value.starts_with('{')
+}
+
+fn is_parenthesized_expression(value: &str) -> bool {
+    value.starts_with('(')
+}
+
+fn is_dart_string_literal(value: &str) -> bool {
+    value.starts_with('\'')
+        || value.starts_with('"')
+        || value.starts_with("r'")
+        || value.starts_with("r\"")
 }
 
 fn default_value_maybe_to_dart_style(value: &str, enable: bool) -> Cow<'_, str> {
@@ -82,6 +128,46 @@ mod tests {
         assert_eq!(
             &default_value_to_dart_style("const Foo.bar()"),
             "const Foo.bar()"
+        );
+    }
+
+    #[test]
+    pub fn test_ensure_const_default_value() {
+        assert_eq!(
+            &ensure_const_default_value("Foo.bar()".to_string()),
+            "const Foo.bar()"
+        );
+        assert_eq!(
+            &ensure_const_default_value("const Foo.bar()".to_string()),
+            "const Foo.bar()"
+        );
+        assert_eq!(
+            &ensure_const_default_value("Foo.bar".to_string()),
+            "Foo.bar"
+        );
+        assert_eq!(
+            &ensure_const_default_value("'hello()'".to_string()),
+            "'hello()'"
+        );
+        assert_eq!(
+            &ensure_const_default_value("r'hello()'".to_string()),
+            "r'hello()'"
+        );
+        assert_eq!(
+            &ensure_const_default_value("(1 + 2)".to_string()),
+            "(1 + 2)"
+        );
+        assert_eq!(
+            &ensure_const_default_value("[1, 2]".to_string()),
+            "const [1, 2]"
+        );
+        assert_eq!(
+            &ensure_const_default_value("{'answer': 42}".to_string()),
+            "const {'answer': 42}"
+        );
+        assert_eq!(
+            &ensure_const_default_value("{1, 2}".to_string()),
+            "const {1, 2}"
         );
     }
 }

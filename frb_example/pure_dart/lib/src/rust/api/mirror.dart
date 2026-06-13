@@ -9,8 +9,6 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'mirror.freezed.dart';
 
 Future<ApplicationSettings> getAppSettingsTwinNormal() =>
     RustLib.instance.api.crateApiMirrorGetAppSettingsTwinNormal();
@@ -160,8 +158,7 @@ class ApplicationEnvVar {
           field1 == other.field1;
 }
 
-@freezed
-sealed class ApplicationMessage with _$ApplicationMessage {
+sealed class ApplicationMessage {
   const ApplicationMessage._();
 
   const factory ApplicationMessage.displayMessage(
@@ -172,6 +169,75 @@ sealed class ApplicationMessage with _$ApplicationMessage {
     required int y,
   }) = ApplicationMessage_RenderPixel;
   const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function({required int x, required int y})? renderPixel,
+    TResult Function()? exit,
+  }) {
+    final self = this;
+    if (self is ApplicationMessage_DisplayMessage) {
+      return displayMessage?.call(self.field0);
+    }
+    if (self is ApplicationMessage_RenderPixel) {
+      return renderPixel?.call(x: self.x, y: self.y);
+    }
+    if (self is ApplicationMessage_Exit) {
+      return exit?.call();
+    }
+    return null;
+  }
+}
+
+class ApplicationMessage_DisplayMessage extends ApplicationMessage {
+  final String field0;
+
+  const ApplicationMessage_DisplayMessage(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ApplicationMessage_DisplayMessage &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class ApplicationMessage_RenderPixel extends ApplicationMessage {
+  final int x;
+  final int y;
+
+  const ApplicationMessage_RenderPixel({
+    required this.x,
+    required this.y,
+  }) : super._();
+
+  @override
+  int get hashCode => x.hashCode ^ y.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ApplicationMessage_RenderPixel &&
+          runtimeType == other.runtimeType &&
+          x == other.x &&
+          y == other.y;
+}
+
+class ApplicationMessage_Exit extends ApplicationMessage {
+  const ApplicationMessage_Exit() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ApplicationMessage_Exit && runtimeType == other.runtimeType;
 }
 
 enum ApplicationMode {
@@ -350,8 +416,7 @@ class Numbers {
           field0 == other.field0;
 }
 
-@freezed
-sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
+sealed class RawStringEnumMirrored {
   const RawStringEnumMirrored._();
 
   const factory RawStringEnumMirrored.raw(
@@ -363,6 +428,78 @@ sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
   const factory RawStringEnumMirrored.listOfNested(
     ListOfNestedRawStringMirrored field0,
   ) = RawStringEnumMirrored_ListOfNested;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+  }) {
+    final self = this;
+    if (self is RawStringEnumMirrored_Raw) {
+      return raw?.call(self.field0);
+    }
+    if (self is RawStringEnumMirrored_Nested) {
+      return nested?.call(self.field0);
+    }
+    if (self is RawStringEnumMirrored_ListOfNested) {
+      return listOfNested?.call(self.field0);
+    }
+    return null;
+  }
+}
+
+class RawStringEnumMirrored_Raw extends RawStringEnumMirrored {
+  final RawStringMirrored field0;
+
+  const RawStringEnumMirrored_Raw(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RawStringEnumMirrored_Raw &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class RawStringEnumMirrored_Nested extends RawStringEnumMirrored {
+  final NestedRawStringMirrored field0;
+
+  const RawStringEnumMirrored_Nested(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RawStringEnumMirrored_Nested &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class RawStringEnumMirrored_ListOfNested extends RawStringEnumMirrored {
+  final ListOfNestedRawStringMirrored field0;
+
+  const RawStringEnumMirrored_ListOfNested(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RawStringEnumMirrored_ListOfNested &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class RawStringMirrored {

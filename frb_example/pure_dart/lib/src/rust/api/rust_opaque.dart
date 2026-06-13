@@ -8,9 +8,7 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_opaque_twin_rust_async.dart';
-part 'rust_opaque.freezed.dart';
 
 Future<HideDataTwinNormal> createOpaqueTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueCreateOpaqueTwinNormal();
@@ -104,8 +102,7 @@ abstract class NonCloneDataTwinNormal implements RustOpaqueInterface {}
 // Rust type: RustOpaqueNom<RwLock < HideDataTwinNormal >>
 abstract class RwLockHideDataTwinNormal implements RustOpaqueInterface {}
 
-@freezed
-sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
+sealed class EnumOpaqueTwinNormal {
   const EnumOpaqueTwinNormal._();
 
   const factory EnumOpaqueTwinNormal.struct(
@@ -124,6 +121,138 @@ sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
     RwLockHideDataTwinNormal field0,
   ) = EnumOpaqueTwinNormal_RwLock;
   const factory EnumOpaqueTwinNormal.nothing() = EnumOpaqueTwinNormal_Nothing;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HideDataTwinNormal field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
+    TResult Function(MutexHideDataTwinNormal field0)? mutex,
+    TResult Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult Function()? nothing,
+  }) {
+    final self = this;
+    if (self is EnumOpaqueTwinNormal_Struct) {
+      return struct?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_TraitObj) {
+      return traitObj?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_Mutex) {
+      return mutex?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_RwLock) {
+      return rwLock?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_Nothing) {
+      return nothing?.call();
+    }
+    return null;
+  }
+}
+
+class EnumOpaqueTwinNormal_Struct extends EnumOpaqueTwinNormal {
+  final HideDataTwinNormal field0;
+
+  const EnumOpaqueTwinNormal_Struct(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinNormal_Struct &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinNormal_Primitive extends EnumOpaqueTwinNormal {
+  final I32 field0;
+
+  const EnumOpaqueTwinNormal_Primitive(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinNormal_Primitive &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinNormal_TraitObj extends EnumOpaqueTwinNormal {
+  final BoxDartDebugTwinNormal field0;
+
+  const EnumOpaqueTwinNormal_TraitObj(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinNormal_TraitObj &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinNormal_Mutex extends EnumOpaqueTwinNormal {
+  final MutexHideDataTwinNormal field0;
+
+  const EnumOpaqueTwinNormal_Mutex(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinNormal_Mutex &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinNormal_RwLock extends EnumOpaqueTwinNormal {
+  final RwLockHideDataTwinNormal field0;
+
+  const EnumOpaqueTwinNormal_RwLock(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinNormal_RwLock &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinNormal_Nothing extends EnumOpaqueTwinNormal {
+  const EnumOpaqueTwinNormal_Nothing() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinNormal_Nothing && runtimeType == other.runtimeType;
 }
 
 class EnumOpaqueTwinNormalArray5

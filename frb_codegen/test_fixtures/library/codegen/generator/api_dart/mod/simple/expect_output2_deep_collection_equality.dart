@@ -8,7 +8,8 @@
 import 'api.dart';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'dep.freezed.dart';
 
 
 
@@ -41,6 +42,17 @@ final U8Array3 fixedBytes;
                 && const DeepCollectionEquality().equals(values, other.values)&& const DeepCollectionEquality().equals(map, other.map)&& const DeepCollectionEquality().equals(set_, other.set_)&& const DeepCollectionEquality().equals(optionalValues, other.optionalValues)&& const DeepCollectionEquality().equals(bytes, other.bytes)&& const DeepCollectionEquality().equals(fixedBytes, other.fixedBytes);
 
             }
+
+@freezed
+                sealed class EnumWithEmptyNamedVariant with _$EnumWithEmptyNamedVariant  {
+                    const EnumWithEmptyNamedVariant._();
+
+                     const factory EnumWithEmptyNamedVariant.empty() = EnumWithEmptyNamedVariant_Empty;
+
+
+
+
+                }
 
 class ShallowCollectionStruct  {
                 final Uint8List bytes;

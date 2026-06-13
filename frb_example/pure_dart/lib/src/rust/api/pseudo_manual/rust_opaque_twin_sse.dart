@@ -8,10 +8,8 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_sync_twin_sse.dart';
 import 'rust_opaque_twin_rust_async.dart';
-part 'rust_opaque_twin_sse.freezed.dart';
 
 Future<HideDataTwinSse> createOpaqueTwinSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSseCreateOpaqueTwinSse();
@@ -106,8 +104,7 @@ abstract class MutexHideDataTwinSse implements RustOpaqueInterface {}
 // Rust type: RustOpaqueNom<RwLock < HideDataTwinSse >>
 abstract class RwLockHideDataTwinSse implements RustOpaqueInterface {}
 
-@freezed
-sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse {
+sealed class EnumOpaqueTwinSse {
   const EnumOpaqueTwinSse._();
 
   const factory EnumOpaqueTwinSse.struct(
@@ -126,6 +123,138 @@ sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse {
     RwLockHideDataTwinSse field0,
   ) = EnumOpaqueTwinSse_RwLock;
   const factory EnumOpaqueTwinSse.nothing() = EnumOpaqueTwinSse_Nothing;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HideDataTwinSse field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSse field0)? traitObj,
+    TResult Function(MutexHideDataTwinSse field0)? mutex,
+    TResult Function(RwLockHideDataTwinSse field0)? rwLock,
+    TResult Function()? nothing,
+  }) {
+    final self = this;
+    if (self is EnumOpaqueTwinSse_Struct) {
+      return struct?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSse_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSse_TraitObj) {
+      return traitObj?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSse_Mutex) {
+      return mutex?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSse_RwLock) {
+      return rwLock?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSse_Nothing) {
+      return nothing?.call();
+    }
+    return null;
+  }
+}
+
+class EnumOpaqueTwinSse_Struct extends EnumOpaqueTwinSse {
+  final HideDataTwinSse field0;
+
+  const EnumOpaqueTwinSse_Struct(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSse_Struct &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSse_Primitive extends EnumOpaqueTwinSse {
+  final I32 field0;
+
+  const EnumOpaqueTwinSse_Primitive(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSse_Primitive &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSse_TraitObj extends EnumOpaqueTwinSse {
+  final BoxDartDebugTwinSse field0;
+
+  const EnumOpaqueTwinSse_TraitObj(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSse_TraitObj &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSse_Mutex extends EnumOpaqueTwinSse {
+  final MutexHideDataTwinSse field0;
+
+  const EnumOpaqueTwinSse_Mutex(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSse_Mutex &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSse_RwLock extends EnumOpaqueTwinSse {
+  final RwLockHideDataTwinSse field0;
+
+  const EnumOpaqueTwinSse_RwLock(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSse_RwLock &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinSse_Nothing extends EnumOpaqueTwinSse {
+  const EnumOpaqueTwinSse_Nothing() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinSse_Nothing && runtimeType == other.runtimeType;
 }
 
 class EnumOpaqueTwinSseArray5 extends NonGrowableListView<EnumOpaqueTwinSse> {

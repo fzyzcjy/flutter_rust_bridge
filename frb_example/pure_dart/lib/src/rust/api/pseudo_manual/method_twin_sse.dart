@@ -8,8 +8,6 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'method_twin_sse.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
@@ -129,14 +127,27 @@ class MyCallableTwinSse {
           one == other.one;
 }
 
-@freezed
-sealed class SimpleEnumTwinSse with _$SimpleEnumTwinSse {
+sealed class SimpleEnumTwinSse {
   const SimpleEnumTwinSse._();
 
   const factory SimpleEnumTwinSse.first() = SimpleEnumTwinSse_First;
   const factory SimpleEnumTwinSse.second(
     String field0,
   ) = SimpleEnumTwinSse_Second;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? first,
+    TResult Function(String field0)? second,
+  }) {
+    final self = this;
+    if (self is SimpleEnumTwinSse_First) {
+      return first?.call();
+    }
+    if (self is SimpleEnumTwinSse_Second) {
+      return second?.call(self.field0);
+    }
+    return null;
+  }
 
   static Future<SimpleEnumTwinSse> returnSelfTwinSse({required String one}) =>
       RustLib.instance.api
@@ -147,6 +158,36 @@ sealed class SimpleEnumTwinSse with _$SimpleEnumTwinSse {
           .crateApiPseudoManualMethodTwinSseSimpleEnumTwinSseSimpleMethodTwinSse(
         that: this,
       );
+}
+
+class SimpleEnumTwinSse_First extends SimpleEnumTwinSse {
+  const SimpleEnumTwinSse_First() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinSse_First && runtimeType == other.runtimeType;
+}
+
+class SimpleEnumTwinSse_Second extends SimpleEnumTwinSse {
+  final String field0;
+
+  const SimpleEnumTwinSse_Second(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinSse_Second &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 enum SimplePrimitiveEnumTwinSse {
