@@ -91,6 +91,14 @@ fn remove_unnecessary_plugin_files(
     integration_backend: IntegrationBackend,
 ) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
+    remove_flutter_plugin_template_files(dart_root)?;
+    if integration_backend == IntegrationBackend::NativeAssets {
+        remove_package_ffi_template_files(dart_root)?;
+    }
+    Ok(())
+}
+
+fn remove_flutter_plugin_template_files(dart_root: &Path) -> anyhow::Result<()> {
     let lib_dir = dart_root.join("lib");
     remove_files_in_dir(&lib_dir)?;
     let src_dir = dart_root.join("src");
@@ -102,29 +110,9 @@ fn remove_unnecessary_plugin_files(
     if ffi_gen_file.exists() {
         fs::remove_file(ffi_gen_file)?;
     }
-    let hook_dir = dart_root.join("hook");
-    if hook_dir.exists() {
-        remove_files_in_dir(&hook_dir)?;
-    }
-    let test_dir = dart_root.join("test");
-    if test_dir.exists() {
-        remove_files_in_dir(&test_dir)?;
-        fs::remove_dir(test_dir)?;
-    }
-    remove_package_ffi_pubspec_dependencies(dart_root)?;
 
     let example_lib_dir = dart_root.join("example").join("lib");
     remove_files_in_dir(&example_lib_dir)?;
-    let example_web_dir = dart_root.join("example").join("web");
-    if example_web_dir.exists() {
-        fs::remove_dir_all(example_web_dir)?;
-    }
-    if integration_backend == IntegrationBackend::NativeAssets {
-        let readme_file = dart_root.join("README.md");
-        if readme_file.exists() {
-            fs::remove_file(readme_file)?;
-        }
-    }
 
     let android_dir = dart_root.join("android");
     if android_dir.exists() {
@@ -166,6 +154,28 @@ fn remove_unnecessary_plugin_files(
     if ohos_dir.exists() {
         fs::remove_dir_all(&ohos_dir)?;
     }
+    Ok(())
+}
+
+fn remove_package_ffi_template_files(dart_root: &Path) -> anyhow::Result<()> {
+    let hook_dir = dart_root.join("hook");
+    if hook_dir.exists() {
+        remove_files_in_dir(&hook_dir)?;
+    }
+    let test_dir = dart_root.join("test");
+    if test_dir.exists() {
+        remove_files_in_dir(&test_dir)?;
+        fs::remove_dir(test_dir)?;
+    }
+    let example_web_dir = dart_root.join("example").join("web");
+    if example_web_dir.exists() {
+        fs::remove_dir_all(example_web_dir)?;
+    }
+    let readme_file = dart_root.join("README.md");
+    if readme_file.exists() {
+        fs::remove_file(readme_file)?;
+    }
+    remove_package_ffi_pubspec_dependencies(dart_root)?;
     Ok(())
 }
 
@@ -304,5 +314,57 @@ dev_dependencies:
         assert!(dart_root.join("linux").exists());
         assert!(dart_root.join("macos").exists());
         assert!(dart_root.join("windows").exists());
+    }
+
+    #[test]
+    fn test_remove_unnecessary_plugin_files_keeps_package_ffi_only_files_for_cargokit() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let dart_root = temp_dir.path();
+
+        write_file(&dart_root.join("lib").join("a.dart"));
+        write_file(&dart_root.join("src").join("bridge.h"));
+        write_file(&dart_root.join("ffigen.yaml"));
+        write_file(&dart_root.join("hook").join("build.dart"));
+        write_file(&dart_root.join("test").join("sample_test.dart"));
+        write_file(&dart_root.join("example").join("lib").join("example.dart"));
+        write_file(&dart_root.join("example").join("web").join("index.html"));
+        write_file(&dart_root.join("README.md"));
+        fs::write(
+            dart_root.join("pubspec.yaml"),
+            r#"name: sample
+dependencies:
+  code_assets: ^1.0.0
+  hooks: ^1.0.0
+  native_toolchain_c: ^0.17.4
+  keep_me: ^1.0.0
+
+dev_dependencies:
+  ffi: ^2.1.4
+  ffigen: ^20.1.1
+  test: ^1.28.0
+"#,
+        )
+        .unwrap();
+
+        remove_unnecessary_plugin_files(dart_root, IntegrationBackend::Cargokit).unwrap();
+
+        assert!(!dart_root.join("ffigen.yaml").exists());
+        assert!(!dart_root.join("src").exists());
+        assert!(dart_root.join("hook").join("build.dart").exists());
+        assert!(dart_root.join("test").join("sample_test.dart").exists());
+        assert!(dart_root
+            .join("example")
+            .join("web")
+            .join("index.html")
+            .exists());
+        assert!(dart_root.join("README.md").exists());
+        let pubspec = fs::read_to_string(dart_root.join("pubspec.yaml")).unwrap();
+        assert!(pubspec.contains("code_assets:"));
+        assert!(pubspec.contains("hooks:"));
+        assert!(pubspec.contains("native_toolchain_c:"));
+        assert!(pubspec.contains("ffi:"));
+        assert!(pubspec.contains("ffigen:"));
+        assert!(pubspec.contains("test:"));
+        assert!(pubspec.contains("keep_me:"));
     }
 }
