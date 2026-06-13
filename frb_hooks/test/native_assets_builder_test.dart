@@ -25,17 +25,19 @@ void main() {
 
   test('buildInputForHost uses short Windows output directory', () {
     final input = _createBuildInput(outputDirectoryShared: '/tmp/frb-long');
+    final expectedJson = {
+      ...input.json,
+      'out_dir_shared': Uri.directory('/tmp/frb-short/').toFilePath(),
+    };
     final adjusted = buildInputForHost(
       isWindows: true,
       input: input,
       windowsOutputDirectoryShared: Uri.directory('/tmp/frb-short/'),
     );
 
+    expect(adjusted.json, expectedJson);
     expect(adjusted.outputDirectoryShared, Uri.directory('/tmp/frb-short/'));
     expect(adjusted.outputDirectory.path, startsWith('/tmp/frb-short/'));
-    expect(adjusted.packageName, input.packageName);
-    expect(adjusted.packageRoot, input.packageRoot);
-    expect(adjusted.config.linkingEnabled, input.config.linkingEnabled);
   });
 
   test('buildInputForHost keeps non-Windows input unchanged', () {
