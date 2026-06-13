@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     clang \
     cmake \
+    gh \
     ninja-build \
     pkg-config \
     libclang-dev \
@@ -137,6 +138,7 @@ RUN flutter --version && \
     rustup component list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep rust-src && \
     cargo expand --version && \
     cargo llvm-cov --version && \
+    gh --version && \
     wasm-pack --version && \
     all-contributors --version && \
     "${CHROME_BIN}" --version && \

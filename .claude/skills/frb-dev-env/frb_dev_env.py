@@ -208,7 +208,7 @@ def validate_publish_credentials(paths: PublishCredentialPaths) -> None:
 
     if missing:
         raise CommandError(
-            "Missing release credentials before starting publish mode:\n"
+            "Missing release credentials before starting publish credentials mode:\n"
             + "\n".join(f"- {entry}" for entry in missing)
         )
 
@@ -271,8 +271,7 @@ def publish_container_environment_args() -> list[str]:
     return docker_exec_env_args(env)
 
 
-def publish_container_bootstrap_script(*, preflight_only: bool) -> str:
-    command = "exit 0" if preflight_only else 'exec "$@"'
+def publish_container_bootstrap_script() -> str:
     cargo_credential_root = shlex.quote(str(PUBLISH_CREDENTIAL_ROOT / "cargo"))
     dart_config_root = shlex.quote(str(PUBLISH_CREDENTIAL_ROOT / "dart-config"))
     gh_credential_root = shlex.quote(str(PUBLISH_CREDENTIAL_ROOT / "gh"))
@@ -294,25 +293,25 @@ def publish_container_bootstrap_script(*, preflight_only: bool) -> str:
             f"for name in credentials.toml credentials config.toml config; do if [ -f {cargo_credential_root}/$name ]; then cp {cargo_credential_root}/$name \"$CARGO_HOME/$name\"; fi; done",
             f"if [ -f {pub_cache_root}/credentials.json ]; then cp {pub_cache_root}/credentials.json \"$PUB_CACHE/credentials.json\"; fi",
             f"for name in pub-credentials.json credentials.json; do if [ -f {dart_config_root}/$name ]; then cp {dart_config_root}/$name \"$XDG_CONFIG_HOME/dart/$name\"; fi; done",
+            'command -v gh >/dev/null || { echo "GitHub CLI (gh) is required in the Docker image" >&2; exit 1; }',
             f"gh auth status --hostname {shlex.quote(PUBLISH_GH_HOST)}",
             f"gh auth setup-git --hostname {shlex.quote(PUBLISH_GH_HOST)}",
             'test -s "$CARGO_HOME/credentials.toml" || test -s "$CARGO_HOME/credentials"',
             'test -s "$PUB_CACHE/credentials.json" || test -s "$XDG_CONFIG_HOME/dart/pub-credentials.json" || test -s "$XDG_CONFIG_HOME/dart/credentials.json"',
-            command,
+            'exec "$@"',
         ]
     )
 
 
-def build_publish_container_command(
+def build_docker_run_rm_command(
     *,
     worktree_root: Path,
     git_common_root: Path | None = None,
     image: str,
     command: list[str],
-    preflight_only: bool,
-    paths: PublishCredentialPaths,
+    with_publish_credentials: bool,
+    publish_credential_paths: PublishCredentialPaths | None = None,
 ) -> list[str]:
-    container_command = [] if preflight_only else command
     worktree_volumes = (
         docker_volume_args_for_roots(
             worktree_root=worktree_root,
@@ -321,23 +320,49 @@ def build_publish_container_command(
         if git_common_root is not None
         else docker_volume_args(worktree_root=worktree_root)
     )
+    credential_args = (
+        [
+            *publish_container_environment_args(),
+            *publish_credential_volume_args(
+                _expect_publish_credential_paths(publish_credential_paths)
+            ),
+        ]
+        if with_publish_credentials
+        else []
+    )
+    command_args = (
+        [
+            "bash",
+            "-lc",
+            publish_container_bootstrap_script(),
+            "frb-publish-container",
+            *command,
+        ]
+        if with_publish_credentials
+        else command
+    )
+
     return [
         "docker",
         "run",
         "--rm",
         "-i",
-        *publish_container_environment_args(),
+        *credential_args,
         *worktree_volumes,
-        *publish_credential_volume_args(paths),
         "--workdir",
         str(worktree_root),
         image,
-        "bash",
-        "-lc",
-        publish_container_bootstrap_script(preflight_only=preflight_only),
-        "frb-publish-container",
-        *container_command,
+        *command_args,
     ]
+
+
+def _expect_publish_credential_paths(
+    paths: PublishCredentialPaths | None,
+) -> PublishCredentialPaths:
+    if paths is None:
+        raise CommandError("publish credential paths are required")
+
+    return paths
 
 
 def get_image(image: str | None) -> str:
@@ -1260,41 +1285,11 @@ def exec_in_container(
     )
 
 
-@docker_app.command(name="publish-preflight")
-def publish_preflight(
-    worktree_root: Annotated[
-        Path | None,
-        typer.Option("--worktree-root", help="FRB worktree root. Defaults to git root."),
-    ] = None,
-    image: Annotated[
-        str | None,
-        typer.Option("--image", help="Docker image. Defaults to FRB_DOCKER_IMAGE or the published FRB dev image."),
-    ] = None,
-) -> None:
-    """Check release credentials inside a temporary publish container."""
-
-    resolved_worktree_root = resolve_worktree_root(worktree_root=worktree_root)
-    resolved_image = get_image(image=image)
-    credential_paths = resolve_publish_credential_paths()
-    validate_publish_credentials(credential_paths)
-    check_publish_host_login_status()
-    pull_image(image=resolved_image)
-    exec_command(
-        build_publish_container_command(
-            worktree_root=resolved_worktree_root,
-            image=resolved_image,
-            command=[],
-            preflight_only=True,
-            paths=credential_paths,
-        )
-    )
-
-
-@docker_app.command(name="publish")
-def publish_in_container(
+@app.command(name="docker-run-rm")
+def docker_run_rm(
     command: Annotated[
         list[str],
-        typer.Argument(help="Release command to execute inside the temporary publish container."),
+        typer.Argument(help="Command to execute inside the temporary Docker container."),
     ],
     worktree_root: Annotated[
         Path | None,
@@ -1304,27 +1299,37 @@ def publish_in_container(
         str | None,
         typer.Option("--image", help="Docker image. Defaults to FRB_DOCKER_IMAGE or the published FRB dev image."),
     ] = None,
+    with_publish_credentials: Annotated[
+        bool,
+        typer.Option(
+            "--with-publish-credentials",
+            help="Mount and check host GitHub, Cargo, Git, and Dart pub credentials.",
+        ),
+    ] = False,
 ) -> None:
-    """Run a release command inside a temporary container with mounted credentials."""
+    """Run a command in a temporary Docker container."""
 
     if not command:
         raise typer.BadParameter(
-            "publish requires a command, for example: publish -- ./frb_internal release"
+            "docker-run-rm requires a command, for example: docker-run-rm -- ./frb_internal --help"
         )
 
     resolved_worktree_root = resolve_worktree_root(worktree_root=worktree_root)
     resolved_image = get_image(image=image)
-    credential_paths = resolve_publish_credential_paths()
-    validate_publish_credentials(credential_paths)
-    check_publish_host_login_status()
+    credential_paths = None
+    if with_publish_credentials:
+        credential_paths = resolve_publish_credential_paths()
+        validate_publish_credentials(credential_paths)
+        check_publish_host_login_status()
+
     pull_image(image=resolved_image)
     exec_command(
-        build_publish_container_command(
+        build_docker_run_rm_command(
             worktree_root=resolved_worktree_root,
             image=resolved_image,
             command=command,
-            preflight_only=False,
-            paths=credential_paths,
+            with_publish_credentials=with_publish_credentials,
+            publish_credential_paths=credential_paths,
         )
     )
 

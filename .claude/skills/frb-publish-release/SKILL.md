@@ -21,10 +21,10 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 - Run the publish container credential preflight before starting irreversible publish steps:
 
   ```bash
-  .claude/skills/frb-dev-env/frb_dev_env.py docker publish-preflight
+  .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- true
   ```
 
-  Stop if the preflight fails. It checks GitHub CLI auth, Cargo credentials, and Dart pub credentials inside the same temporary credential layout used by publish mode.
+  Stop if the preflight fails. It checks GitHub CLI auth, Cargo credentials, and Dart pub credentials inside the same temporary credential layout used by release publishing.
 - Confirm normal CI is green for the release commit before publishing.
 
 ### 2. Write Changelog
@@ -35,16 +35,16 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 ### 3. Publish
 
-Use the repository release command through Docker publish mode as the normal publishing path:
+Use the repository release command through a temporary Docker container with publish credentials as the normal publishing path:
 
 ```bash
-.claude/skills/frb-dev-env/frb_dev_env.py docker publish -- ./frb_internal release
+.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release
 ```
 
 Do not split the normal release into separate `release-update-*` or publish commands. The one-shot command is the source of truth for release sequencing: it computes old/new versions from `CHANGELOG.md`, updates checked-in versions and generated version text, updates Scoop metadata, commits and pushes the version bump, creates a draft GitHub release, then runs the registry publisher:
 
 ```bash
-.claude/skills/frb-dev-env/frb_dev_env.py docker publish -- ./frb_internal release-publish-all
+.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all
 ```
 
 `release-publish-all` publishes these packages:
@@ -54,7 +54,7 @@ Do not split the normal release into separate `release-update-*` or publish comm
 - `frb_rust` -> crates.io package `flutter_rust_bridge`
 - `frb_dart` -> pub.dev package `flutter_rust_bridge`
 
-Only use a split subcommand as a recovery path after confirming which one-shot step already completed. For example, if the version bump and GitHub draft already exist and only registry publication is needed, use `.claude/skills/frb-dev-env/frb_dev_env.py docker publish -- ./frb_internal release-publish-all` directly.
+Only use a split subcommand as a recovery path after confirming which one-shot step already completed. For example, if the version bump and GitHub draft already exist and only registry publication is needed, use `.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all` directly.
 
 ### 4. Check Released Versions
 

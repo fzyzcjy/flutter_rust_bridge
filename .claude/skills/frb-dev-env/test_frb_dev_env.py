@@ -43,8 +43,10 @@ def test_validate_publish_credentials_rejects_missing_credentials(tmp_path: Path
     assert "Dart pub credentials file" in message
 
 
-def test_build_publish_container_command_mounts_credentials(tmp_path: Path) -> None:
-    """Publish mode runs a temporary container with read-only credential mounts."""
+def test_build_docker_run_rm_command_mounts_publish_credentials(
+    tmp_path: Path,
+) -> None:
+    """Publish credential mode adds read-only credential mounts."""
 
     cargo_home = tmp_path / "cargo"
     cargo_home.mkdir()
@@ -66,13 +68,13 @@ def test_build_publish_container_command_mounts_credentials(tmp_path: Path) -> N
         dart_config_dir=None,
     )
 
-    command = frb_dev_env.build_publish_container_command(
+    command = frb_dev_env.build_docker_run_rm_command(
         worktree_root=Path("/repo/flutter_rust_bridge"),
         git_common_root=Path("/repo/flutter_rust_bridge"),
         image="example/frb-dev:latest",
         command=["./frb_internal", "release"],
-        preflight_only=False,
-        paths=paths,
+        with_publish_credentials=True,
+        publish_credential_paths=paths,
     )
 
     assert command[:4] == ["docker", "run", "--rm", "-i"]
@@ -85,37 +87,35 @@ def test_build_publish_container_command_mounts_credentials(tmp_path: Path) -> N
     assert f"{git_config}:/frb-publish-host-credentials/gitconfig:ro" in command
 
     script = command[command.index("bash") + 2]
+    assert "GitHub CLI (gh) is required in the Docker image" in script
     assert "gh auth status --hostname github.com" in script
     assert "gh auth setup-git --hostname github.com" in script
     assert 'test -s "$CARGO_HOME/credentials.toml"' in script
     assert 'test -s "$PUB_CACHE/credentials.json"' in script
 
 
-def test_build_publish_preflight_command_does_not_append_release_command(
-    tmp_path: Path,
-) -> None:
-    """Publish preflight only checks credentials and exits without release work."""
+def test_build_docker_run_rm_command_without_credentials_is_plain() -> None:
+    """Plain run-rm mode does not add publish credential bootstrap."""
 
-    paths = frb_dev_env.PublishCredentialPaths(
-        cargo_home=tmp_path / "cargo",
-        gh_config_dir=tmp_path / "gh",
-        git_config=None,
-        git_config_dir=None,
-        pub_cache_dir=None,
-        dart_config_dir=None,
-    )
-
-    command = frb_dev_env.build_publish_container_command(
+    command = frb_dev_env.build_docker_run_rm_command(
         worktree_root=Path("/repo/flutter_rust_bridge"),
         git_common_root=Path("/repo/flutter_rust_bridge"),
         image="example/frb-dev:latest",
-        command=["./frb_internal", "release"],
-        preflight_only=True,
-        paths=paths,
+        command=["./frb_internal", "--help"],
+        with_publish_credentials=False,
+        publish_credential_paths=None,
     )
 
-    assert command[-1] == "frb-publish-container"
-    assert "./frb_internal" not in command
-    assert "release" not in command
-    script = command[command.index("bash") + 2]
-    assert script.endswith("exit 0")
+    assert command == [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--volume",
+        "/repo/flutter_rust_bridge:/repo/flutter_rust_bridge",
+        "--workdir",
+        "/repo/flutter_rust_bridge",
+        "example/frb-dev:latest",
+        "./frb_internal",
+        "--help",
+    ]
