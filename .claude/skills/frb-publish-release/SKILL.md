@@ -1,6 +1,6 @@
 ---
 name: frb-publish-release
-description: Publish a flutter_rust_bridge release end to end: preflight checks, changelog preparation, frb_internal release publishing, released-version polling, CI babysitting, and post-release CI verification.
+description: "Publish a flutter_rust_bridge release end to end: preflight checks, changelog preparation, frb_internal release publishing, released-version polling, CI babysitting, and post-release CI verification."
 ---
 
 # FRB Publish Release
