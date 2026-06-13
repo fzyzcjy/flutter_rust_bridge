@@ -375,7 +375,7 @@ Secondly, thanks goes to these wonderful contributors ([emoji key](https://allco
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://thesimplekid.com"><img src="https://avatars.githubusercontent.com/u/8606367?v=4?s=100" width="100px;" alt="thesimplekid"/><br /><sub><b>thesimplekid</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=thesimplekid" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://www.ganeshrvel.com"><img src="https://avatars.githubusercontent.com/u/182092?v=4?s=100" width="100px;" alt="Ganesh Rathinavel Medayil"/><br /><sub><b>Ganesh Rathinavel Medayil</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=ganeshrvel" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.ganeshrvel.com"><img src="https://avatars.githubusercontent.com/u/182092?v=4?s=100" width="100px;" alt="Ganesh Rathinavel Medayil"/><br /><sub><b>Ganesh Rathinavel Medayil</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=ganeshrvel" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
