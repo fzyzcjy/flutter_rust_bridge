@@ -1,6 +1,6 @@
 # flutter_package_native_assets_example
 
-Demonstrates how to use the flutter_package_native_assets plugin.
+Demonstrates how to use the flutter_package_native_assets package.
 
 ## Getting Started
 

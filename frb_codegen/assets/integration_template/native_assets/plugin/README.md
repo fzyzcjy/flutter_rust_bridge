@@ -1,4 +1,4 @@
-# flutter_package_native_assets
+# REPLACE_ME_DART_PACKAGE_NAME
 
 A Flutter package using `flutter_rust_bridge` with native assets.
 

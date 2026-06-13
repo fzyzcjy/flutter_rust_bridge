@@ -101,7 +101,10 @@ fn backend_template_dir(
     match (integration_backend, template) {
         (IntegrationBackend::Cargokit, Template::App) => Some(&TemplateDirs::CARGOKIT_APP),
         (IntegrationBackend::Cargokit, Template::Plugin) => Some(&TemplateDirs::CARGOKIT_PLUGIN),
-        (IntegrationBackend::NativeAssets, _) => None,
+        (IntegrationBackend::NativeAssets, Template::App) => None,
+        (IntegrationBackend::NativeAssets, Template::Plugin) => {
+            Some(&TemplateDirs::NATIVE_ASSETS_PLUGIN)
+        }
     }
 }
 
@@ -306,6 +309,8 @@ impl TemplateDirs {
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/plugin");
     const NATIVE_ASSETS_SHARED: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/native_assets/shared");
+    const NATIVE_ASSETS_PLUGIN: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/native_assets/plugin");
 }
 
 #[cfg(test)]

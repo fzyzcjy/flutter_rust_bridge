@@ -51,7 +51,9 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
 
     match &config.template {
         Template::App => remove_unnecessary_app_files(&dart_root)?,
-        Template::Plugin => remove_unnecessary_plugin_files(&dart_root)?,
+        Template::Plugin => {
+            remove_unnecessary_plugin_files(&dart_root, config.integration_backend)?
+        }
     }
 
     info!("Step: Inject flutter_rust_bridge related code");
@@ -84,7 +86,10 @@ fn remove_unnecessary_app_files(dart_root: &Path) -> anyhow::Result<()> {
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
-fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
+fn remove_unnecessary_plugin_files(
+    dart_root: &Path,
+    integration_backend: IntegrationBackend,
+) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
     let lib_dir = dart_root.join("lib");
     remove_files_in_dir(&lib_dir)?;
@@ -110,6 +115,16 @@ fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
 
     let example_lib_dir = dart_root.join("example").join("lib");
     remove_files_in_dir(&example_lib_dir)?;
+    let example_web_dir = dart_root.join("example").join("web");
+    if example_web_dir.exists() {
+        fs::remove_dir_all(example_web_dir)?;
+    }
+    if integration_backend == IntegrationBackend::NativeAssets {
+        let readme_file = dart_root.join("README.md");
+        if readme_file.exists() {
+            fs::remove_file(readme_file)?;
+        }
+    }
 
     let android_dir = dart_root.join("android");
     if android_dir.exists() {
@@ -180,6 +195,7 @@ fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use super::{remove_files_in_dir, remove_unnecessary_plugin_files};
+    use crate::misc::IntegrationBackend;
     use std::fs;
     use std::path::Path;
 
@@ -214,6 +230,8 @@ mod tests {
         write_file(&dart_root.join("hook").join("build.dart"));
         write_file(&dart_root.join("test").join("sample_test.dart"));
         write_file(&dart_root.join("example").join("lib").join("example.dart"));
+        write_file(&dart_root.join("example").join("web").join("index.html"));
+        write_file(&dart_root.join("README.md"));
         fs::write(
             dart_root.join("pubspec.yaml"),
             r#"name: sample
@@ -260,12 +278,14 @@ dev_dependencies:
         write_file(&ohos_lib.join("bridge.c"));
         write_file(&dart_root.join("ohos").join("top.txt"));
 
-        remove_unnecessary_plugin_files(dart_root).unwrap();
+        remove_unnecessary_plugin_files(dart_root, IntegrationBackend::NativeAssets).unwrap();
 
         assert!(!dart_root.join("ffigen.yaml").exists());
         assert!(!dart_root.join("src").exists());
         assert!(!dart_root.join("hook").join("build.dart").exists());
         assert!(!dart_root.join("test").exists());
+        assert!(!dart_root.join("example").join("web").exists());
+        assert!(!dart_root.join("README.md").exists());
         let pubspec = fs::read_to_string(dart_root.join("pubspec.yaml")).unwrap();
         assert!(!pubspec.contains("code_assets:"));
         assert!(!pubspec.contains("hooks:"));
