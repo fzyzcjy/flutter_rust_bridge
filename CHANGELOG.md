@@ -3,101 +3,38 @@
 ## 2.13.0-beta.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
-* Allow changelog release gate updates #3221
-* Document release CI gate exception #3220
-* Fix release publish skill frontmatter #3219
-* Support token-based publish credentials #3218
-* Add release publish container mode #3217
-* Skip stale unstable post-release versions #3216
-* Test stable and unstable post-release channels #3215
-* Clarify one-shot FRB release publishing #3214
-* Guard FRB release version formats #3211
-* Add FRB release publishing workflow #3210
-* Document feature flag test coverage rules #3201
-* Fix macOS quickstart smoke capture #3197
-* Fix quickstart smoke screenshots on selected devices #3196
-* Comment on manual CI dispatch runs #3195
-* Add CI filter manual test #3193
-* Add Linux Flutter Docker manual coverage #3192
-* Move Tart prepare guide into README #3191
-* Support manual CI dispatch filters #3189
-* Support Tart iOS integration test preparation #3188
-* Require precise manual test evidence #3187
-* Add online demo gallery manual test #3186
-* Fix arm64 dev Docker ChromeDriver support #3185
-* Tag dev Docker images with source revision #3184
-* Pull FRB dev Docker image before container create #3183
-* Support Android host emulator workflow #3180
-* Add manual tests for local FRB dev environments #3179
-* Require narrow CI for reproduction PRs #3178
-* Add quickstart GUI smoke on all platforms #3176
-* Document CI-backed bug reproduction workflow #3175
-* Document temporary CI narrowing tip #3174
-* Stop CI for closed PRs #3172
 * Fix web worker wasm initialization #3171
 * Bump CargoKit to latest and update it for Android 16KB pages #3170
-* Exclude CargoKit from generated analyzer options #3168
-* Timeout Flutter integration test commands #3167
-* Avoid CI reruns on PR metadata edits #3166
-* Fix main CI failures #3160
-* Add main CI regression skill #3159
 * Update git clone URL for flutter-ohos setup #3157 (thanks @star4277)
-* Support Tart local code uploads #3150
-* Add Packer workflow for Tart iOS test base VM #3149
-* Mount git worktree paths in dev env helpers #3147
-* Add FRB development environment skill #3146
-* Add CargoKit copy sync gate #3144
-* Respect browser executable environment for web tests #3143
-* Update commented workflow telemetry references #3142
-* Add FRB PR review gate #3138
-* Add precommit autofix devcontainer fallback #3137
-* Install devcontainer validation dependencies #3135
-* Make workflow telemetry optional #3134
-* Remove commented precommit check job #3132
-* Re-enable Android native Flutter CI #3131
-* Add coverage tests for existing helpers #3130
 * Pass platforms through create and integrate commands #3129
 * Support skipping FVM installation #3126
 * Fix macOS xcconfig drift #3118
-* Update Flutter upgrade skill for fresh Docker validation #3116
-* Run CI for stacked PRs #3115
 * Restore Rust-to-Dart logging bridge #3114
-* Document iOS Simulator validation with Tart #3113
-* Upgrade CI's Flutter version to 3.44 #3112
+* Upgrade Flutter to 3.44 #3112
 * Revert Rust-to-Dart logging bridge #3111
-* Add FRB Codecov fix skill #3110
-* Add Flutter upgrade workflow skill #3109
 * Rename `ObjectId` to `MoiObjectId` in `frb_generated_moi_arc_def!` #3106 (thanks @ganeshrvel)
 * Fix Dart native test hangs after logging bridge #3103
-* Require pure_dart final regression coverage in skills #3102
-* Add FRB issue-to-green-PR skill #3100
-* Fix precommit autofix comments for fork PRs #3099
-* Add Windows ARM Flutter build CI #3096
-* Add CargoKit development skill #3095
-* Require bug reproduction reports in skills #3094
 * Fix generated fixed array equality #3093
 * Fix DCO boxed record decoding #3092
-* Update feature workflow for bug fixes #3091
 * Fix concurrent cargo-expand auto install #3090
-* Update integrate template guidance #3089
-* Add merge conflict resolution skill #3087
 * Add generic Dart initializer hook #3083
 * Allow frb_internal clean checks without git metadata #3082
 * Add Rust-to-Dart logging bridge #3079
 * Split out @rlch's serde_json Value support #3077
-* Fix Codecov project coverage #3076
-* Fix main CI generated drift and threaded wasm build #3072
 * Support multi-arch Docker development on Apple Silicon #3070
 * Remove outdated Dockerfile in favor of devcontainer up-to-date Dockerfile #3069
 * Support HarmonyOS #3065 (thanks @star4277)
 * Fix threaded WASM build-web defaults for the website demo #3052
-* Add precommit autofix workflow and patch artifact #3051
-* Bump lodash from 4.17.21 to 4.18.1 in /website #3047
-* Bump lodash-es from 4.17.21 to 4.18.1 in /website #3046
-* Upgrade Flutter and Rust version in CI #2990
 * Introduce conversion between chrono::NaiveDate and DateTime avoiding RustOpaque #2968 (thanks @TrackerSB)
 * Fix Map/List/Set equality in generated Dart structs #2956 (thanks @nightscape)
 * Re-apply Rust-to-Dart logging overhaul #2766 (thanks @patmuk)
+* Improve release publishing and post-release validation tooling #3221 #3220 #3219 #3218 #3217 #3216 #3215 #3214 #3211 #3210
+* Improve CI, workflow dispatch, and precommit automation #3195 #3193 #3189 #3178 #3175 #3174 #3172 #3166 #3160 #3143 #3137 #3135 #3134 #3132 #3131 #3115 #3099 #3096 #3076 #3072 #3051 #2990
+* Improve local dev, Docker, Tart, Android, and manual-test tooling #3197 #3196 #3192 #3191 #3188 #3187 #3186 #3185 #3184 #3183 #3180 #3179 #3176 #3150 #3149 #3147 #3146 #3144 #3142 #3113
+* Update agent development skills and internal workflow documentation #3201 #3159 #3138 #3116 #3110 #3109 #3102 #3100 #3095 #3094 #3091 #3089 #3087
+* Exclude CargoKit from generated analyzer options and improve Flutter integration test timeouts #3168 #3167
+* Add coverage tests for existing helpers #3130
+* Bump website dependencies #3047 #3046
 
 ## 2.12.0
 
