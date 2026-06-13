@@ -38,7 +38,11 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
 
 pub fn release_message_port_handle(handle: &SendableMessagePortHandle) {
     BROADCAST_CHANNEL_OF_NAME.with(|channel_of_name| {
-        channel_of_name.borrow_mut().remove(&handle.0);
+        if let Some(port) = channel_of_name.borrow_mut().remove(&handle.0) {
+            if let Err(error) = port.close() {
+                crate::console_error!("close broadcast channel: {:?}", error);
+            }
+        }
     })
 }
 
