@@ -17,7 +17,7 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
   const FlutterRustBridgeNativeAssetsBuilder({
     this.assetName = 'src/rust/frb_generated.io.dart',
     this.cratePath = 'rust',
-    this.buildMode,
+    this.buildMode = native_toolchain_rust.BuildMode.release,
     this.enableDefaultFeatures = true,
     this.features = const <String>[],
     this.extraCargoBuildArgs = const <String>[],
@@ -31,8 +31,8 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
   /// The Rust crate path, relative to the Dart package root.
   final String cratePath;
 
-  /// The Cargo build mode. When omitted, native_toolchain_rust chooses its default.
-  final FlutterRustBridgeBuildMode? buildMode;
+  /// The Cargo build mode.
+  final FlutterRustBridgeBuildMode buildMode;
 
   /// Whether Cargo should enable default crate features.
   final bool enableDefaultFeatures;
@@ -66,37 +66,21 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
               )
             : null,
       );
-      final builder = _createRustBuilder();
-      await builder.run(
+      await native_toolchain_rust.RustBuilder(
+        assetName: assetName,
+        cratePath: cratePath,
+        buildMode: buildMode,
+        enableDefaultFeatures: enableDefaultFeatures,
+        features: features,
+        extraCargoBuildArgs: extraCargoBuildArgs,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+      ).run(
         input: effectiveInput,
         output: output,
         assetRouting: assetRouting,
         logger: logger,
       );
     });
-  }
-
-  native_toolchain_rust.RustBuilder _createRustBuilder() {
-    if (buildMode != null) {
-      return native_toolchain_rust.RustBuilder(
-        assetName: assetName,
-        cratePath: cratePath,
-        buildMode: buildMode!,
-        enableDefaultFeatures: enableDefaultFeatures,
-        features: features,
-        extraCargoBuildArgs: extraCargoBuildArgs,
-        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
-      );
-    }
-
-    return native_toolchain_rust.RustBuilder(
-      assetName: assetName,
-      cratePath: cratePath,
-      enableDefaultFeatures: enableDefaultFeatures,
-      features: features,
-      extraCargoBuildArgs: extraCargoBuildArgs,
-      extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
-    );
   }
 }
 

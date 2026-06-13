@@ -5,13 +5,13 @@ import 'package:test/test.dart';
 
 void main() {
   test(
-    'builder defaults to generated IO asset, rust crate path, and upstream build mode',
+    'builder defaults to generated IO asset, rust crate path, and release build mode',
     () {
       const builder = FlutterRustBridgeNativeAssetsBuilder();
 
       expect(builder.assetName, 'src/rust/frb_generated.io.dart');
       expect(builder.cratePath, 'rust');
-      expect(builder.buildMode, isNull);
+      expect(builder.buildMode, native_toolchain_rust.BuildMode.release);
     },
   );
 
