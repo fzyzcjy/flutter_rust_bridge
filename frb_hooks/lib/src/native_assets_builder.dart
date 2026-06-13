@@ -111,7 +111,12 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
 Map<String, String> defaultCargoEnvironmentVariablesForHost({
   required bool isWindows,
   required Map<String, String> userEnvironmentVariables,
-}) => {if (isWindows) 'CARGO_BUILD_JOBS': '1', ...userEnvironmentVariables};
+}) => {
+  // Keep Windows native-assets builds from spawning multiple concurrent Cargo
+  // compile jobs inside the already serialized hook build.
+  if (isWindows) 'CARGO_BUILD_JOBS': '1',
+  ...userEnvironmentVariables,
+};
 
 /// Returns a build input adjusted for host-specific Native Assets behavior.
 BuildInput buildInputForHost({
@@ -122,6 +127,9 @@ BuildInput buildInputForHost({
   if (!isWindows || windowsOutputDirectoryShared == null) {
     return input;
   }
+  // Keep Windows Native Assets output paths short. native_toolchain_rust places
+  // Cargo artifacts under input.outputDirectory/target, and Flutter hook output
+  // roots can otherwise make those paths exceed Windows toolchain limits.
   return BuildInput({
     ...input.json,
     'out_dir_shared': Directory.fromUri(windowsOutputDirectoryShared).path,
