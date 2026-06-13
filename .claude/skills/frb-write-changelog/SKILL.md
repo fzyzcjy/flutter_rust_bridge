@@ -85,7 +85,7 @@ uv run --script .claude/skills/frb-write-changelog/verify_changelog.py \
 The verifier checks that:
 
 - PR numbers in the target section are complete, not duplicated, and not unexpected.
-- Third-party thanks authors are complete, not duplicated, and not unexpected.
+- Third-party thanks authors are complete and not unexpected. The same author may be thanked on multiple entries.
 - Entries with third-party thanks appear before entries without thanks.
 - `docs: add <name> as a contributor ...` all-contributors PRs are ignored.
 
@@ -106,7 +106,7 @@ Tell the user the changelog draft is complete and ask for a manual review.
 Run the mechanical verifier again after the user finishes manual edits.
 
 - Confirm there are no missing, duplicated, or extra PR numbers.
-- Confirm there are no missing, duplicated, or extra third-party thanks authors.
+- Confirm there are no missing or unexpected third-party thanks authors.
 - Confirm entries with third-party thanks appear before entries without thanks.
 - Apply any confirmed fixes, then do one final diff check.
 

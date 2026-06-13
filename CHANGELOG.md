@@ -3,6 +3,7 @@
 ## 2.13.0-beta.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Update git clone URL for flutter-ohos setup #3157 (thanks @star4277)
 * Add Rust-to-Dart logging bridge #3114 #3111 #3079 #2766 (thanks @patmuk)
 * Rename `ObjectId` to `MoiObjectId` in `frb_generated_moi_arc_def!` #3106 (thanks @ganeshrvel)
 * Support HarmonyOS #3065 (thanks @star4277)
@@ -10,7 +11,6 @@
 * Fix Map/List/Set equality in generated Dart structs #2956 (thanks @nightscape)
 * Fix web worker wasm initialization #3171
 * Bump CargoKit to latest and update it for Android 16KB pages #3170
-* Update git clone URL for flutter-ohos setup #3157
 * Pass platforms through create and integrate commands #3129
 * Support skipping FVM installation #3126
 * Fix macOS xcconfig drift #3118

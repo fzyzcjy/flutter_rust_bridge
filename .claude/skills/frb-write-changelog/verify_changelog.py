@@ -38,7 +38,6 @@ class VerificationResult:
     extra_pr_numbers: list[int]
     expected_thanks_authors: list[str]
     actual_thanks_authors: list[str]
-    duplicate_thanks_authors: list[str]
     missing_thanks_authors: list[str]
     extra_thanks_authors: list[str]
     thanks_order_violations: list[str]
@@ -50,7 +49,6 @@ class VerificationResult:
                 self.duplicate_pr_numbers,
                 self.missing_pr_numbers,
                 self.extra_pr_numbers,
-                self.duplicate_thanks_authors,
                 self.missing_thanks_authors,
                 self.extra_thanks_authors,
                 self.thanks_order_violations,
@@ -102,7 +100,6 @@ def verify_changelog(
         extra_pr_numbers=sorted(set(actual_pr_numbers) - set(expected_pr_numbers)),
         expected_thanks_authors=expected_thanks_authors,
         actual_thanks_authors=sorted(actual_thanks_authors),
-        duplicate_thanks_authors=find_duplicates(actual_thanks_authors),
         missing_thanks_authors=sorted(
             set(expected_thanks_authors) - set(actual_thanks_authors),
         ),
@@ -237,7 +234,6 @@ def format_result(result: VerificationResult) -> str:
             f"Extra PR numbers: {result.extra_pr_numbers}",
             f"Expected third-party thanks authors: {result.expected_thanks_authors}",
             f"Actual third-party thanks authors: {result.actual_thanks_authors}",
-            f"Duplicate thanks authors: {result.duplicate_thanks_authors}",
             f"Missing thanks authors: {result.missing_thanks_authors}",
             f"Extra thanks authors: {result.extra_thanks_authors}",
             f"Thanks ordering violations: {result.thanks_order_violations}",

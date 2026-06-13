@@ -90,7 +90,7 @@ def test_verify_changelog_reports_missing_extra_and_duplicate_pr_numbers() -> No
 
 
 def test_verify_changelog_reports_thanks_attribution_problems() -> None:
-    """Verifier reports missing, extra, and duplicate third-party thanks."""
+    """Verifier reports missing and extra third-party thanks."""
 
     merged_prs = [
         make_pr(number=4, author_login="alice"),
@@ -118,9 +118,43 @@ def test_verify_changelog_reports_thanks_attribution_problems() -> None:
     )
 
     assert result.ok is False
-    assert result.duplicate_thanks_authors == ["alice"]
     assert result.missing_thanks_authors == ["bob"]
     assert result.extra_thanks_authors == ["carol"]
+
+
+def test_verify_changelog_accepts_duplicate_thanks_author() -> None:
+    """Verifier accepts thanking the same third-party author on multiple entries."""
+
+    merged_prs = [
+        make_pr(number=4, author_login="alice"),
+        make_pr(number=3, author_login="alice"),
+        make_pr(number=2),
+    ]
+    changelog_text = """
+# Changelog
+
+## 2.0.0
+
+* Add first feature #4 (thanks @alice)
+* Add second feature #3 (thanks @alice)
+* Improve CI #2
+
+## 1.0.0
+"""
+
+    result = verify_changelog.verify_changelog(
+        changelog_text=changelog_text,
+        merged_prs=merged_prs,
+        version="2.0.0",
+        previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        local_authors={"fzyzcjy"},
+        ignored_pr_numbers=set(),
+        extra_local_pr_numbers=set(),
+    )
+
+    assert result.ok is True
+    assert result.expected_thanks_authors == ["alice"]
+    assert result.actual_thanks_authors == ["alice", "alice"]
 
 
 def test_verify_changelog_reports_thanks_order_problems() -> None:
