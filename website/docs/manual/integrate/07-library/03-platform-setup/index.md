@@ -13,7 +13,7 @@ this is because the binaries are not yet distributed along with the package!
 ## Binary distribution
 Unfortunately, at the time of writing, pub.dev has a hard 100 MB upload limit and
 discourages distributing platform-specific binaries through pub.dev directly.
-The [Native Assets backend](../../native-assets) can build and bundle Rust as code assets
+The [Native Assets backend](../native-assets) can build and bundle Rust as code assets
 for projects that can require a compatible Flutter/Dart SDK.
 This legacy guide instead documents a prebuilt-binary workflow for authors who need
 to publish and fetch platform artifacts themselves.

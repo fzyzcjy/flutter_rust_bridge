@@ -41,7 +41,7 @@ It incorporates all functionality present in this guide and some more.
 This section is a legacy, fine-grained guide for library authors who want to own
 their prebuilt binary distribution and CI workflow.
 For new Flutter packages that can require a recent Flutter/Dart SDK with build hooks
-and code assets, also consider the [Native Assets backend](../../native-assets).
+and code assets, also consider the [Native Assets backend](../native-assets).
 
 This guide does not currently cover web support, but provides the necessary ground work
 to support web in the future.
