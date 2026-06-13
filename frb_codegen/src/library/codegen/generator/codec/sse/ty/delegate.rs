@@ -33,10 +33,11 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     MirTypeDelegateTime::Utc
                     | MirTypeDelegateTime::Local
                     | MirTypeDelegateTime::NaiveDate
-                    | MirTypeDelegateTime::NaiveDateTime => {
+                    | MirTypeDelegateTime::NaiveDateTime
+                    | MirTypeDelegateTime::StdSystemTime => {
                         "PlatformInt64Util.from(self.microsecondsSinceEpoch)".to_owned()
                     }
-                    MirTypeDelegateTime::Duration => {
+                    MirTypeDelegateTime::Duration | MirTypeDelegateTime::StdDuration => {
                         "PlatformInt64Util.from(self.inMicroseconds)".to_owned()
                     }
                 },
@@ -108,6 +109,8 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                         r#"self.num_microseconds().expect("cannot get microseconds from time")"#
                             .to_owned()
                     }
+                    MirTypeDelegateTime::StdSystemTime => encode_std_system_time("self"),
+                    MirTypeDelegateTime::StdDuration => encode_std_duration("self"),
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 MirTypeDelegate::SerdeJsonValue => {
@@ -168,14 +171,14 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                         MirTypeDelegateTime::Utc
                         | MirTypeDelegateTime::Local
                         | MirTypeDelegateTime::NaiveDate
-                        | MirTypeDelegateTime::NaiveDateTime => {
+                        | MirTypeDelegateTime::NaiveDateTime
+                        | MirTypeDelegateTime::StdSystemTime => {
                             format!(
                             "DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: {is_utc})",
-                            is_utc =
-                                matches!(mir, MirTypeDelegateTime::NaiveDateTime | MirTypeDelegateTime::NaiveDate | MirTypeDelegateTime::Utc),
+                            is_utc = is_dart_datetime_utc(mir),
                         )
                         }
-                        MirTypeDelegateTime::Duration => {
+                        MirTypeDelegateTime::Duration | MirTypeDelegateTime::StdDuration => {
                             "Duration(microseconds: inner.toInt())".to_owned()
                         }
                     },
@@ -229,6 +232,8 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                         MirTypeDelegateTime::Duration => {
                             "chrono::Duration::microseconds(inner)".to_owned()
                         }
+                        MirTypeDelegateTime::StdSystemTime => decode_std_system_time("inner"),
+                        MirTypeDelegateTime::StdDuration => decode_std_duration("inner"),
                     }
                 }
                 MirTypeDelegate::Uuid => {
@@ -276,6 +281,58 @@ pub(super) fn simple_delegate_decode(
         return {wrapper_expr};",
         lang.call_decode(inner_ty),
         var_decl = lang.var_decl()
+    )
+}
+
+pub(crate) fn is_dart_datetime_utc(mir: &MirTypeDelegateTime) -> bool {
+    matches!(
+        mir,
+        MirTypeDelegateTime::NaiveDateTime
+            | MirTypeDelegateTime::NaiveDate
+            | MirTypeDelegateTime::Utc
+            | MirTypeDelegateTime::StdSystemTime
+    )
+}
+
+pub(crate) fn is_duration(mir: &MirTypeDelegateTime) -> bool {
+    matches!(
+        mir,
+        MirTypeDelegateTime::Duration | MirTypeDelegateTime::StdDuration
+    )
+}
+
+pub(crate) fn encode_std_duration(value: &str) -> String {
+    format!(r#"{value}.as_micros().try_into().expect("cannot get microseconds from time")"#)
+}
+
+pub(crate) fn decode_std_duration(value: &str) -> String {
+    format!(
+        r#"std::time::Duration::from_micros({value}.try_into().expect("negative duration is not valid for std::time::Duration"))"#
+    )
+}
+
+pub(crate) fn encode_std_system_time(value: &str) -> String {
+    format!(
+        r#"match {value}.duration_since(std::time::SystemTime::UNIX_EPOCH) {{
+            Ok(duration) => duration.as_micros().try_into().expect("cannot get microseconds from time"),
+            Err(error) => {{
+                let micros = i128::try_from(error.duration().as_micros()).expect("cannot get microseconds from time");
+                i64::try_from(-micros).expect("cannot get microseconds from time")
+            }},
+        }}"#
+    )
+}
+
+pub(crate) fn decode_std_system_time(value: &str) -> String {
+    format!(
+        r#"{{
+            let value = {value};
+            if value >= 0 {{
+                std::time::SystemTime::UNIX_EPOCH.checked_add(std::time::Duration::from_micros(value.unsigned_abs())).expect("timestamp out of range")
+            }} else {{
+                std::time::SystemTime::UNIX_EPOCH.checked_sub(std::time::Duration::from_micros(value.unsigned_abs())).expect("timestamp out of range")
+            }}
+        }}"#
     )
 }
 

@@ -70,9 +70,38 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('Duration', () async {
-    final d = Duration(hours: 4);
+    final d = preciseDuration();
     final resp = await durationTwinSyncSse(d: d);
-    expect(resp.inHours, d.inHours);
+    expect(resp, d);
+  });
+
+  test('std::time::Duration', () async {
+    final d = preciseDuration();
+    final resp = await stdTimeDurationTwinSyncSse(d: d);
+    expect(resp, d);
+  });
+
+  test('std::time::SystemTime', () async {
+    final date =
+        DateTime.fromMillisecondsSinceEpoch(1631297333000, isUtc: true);
+    final resp = await stdTimeSystemTimeTwinSyncSse(d: date);
+    expect(resp.isUtc, true);
+    expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+  });
+
+  test('std::time::SystemTime before UNIX epoch',
+      skip: skipWeb('wasm SystemTime does not support pre-epoch values'),
+      () async {
+    final date = DateTime.fromMicrosecondsSinceEpoch(-1000000000, isUtc: true);
+    final resp = await stdTimeSystemTimeBeforeEpochTwinSyncSse(d: date);
+    expect(resp.isUtc, true);
+    expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+  });
+
+  test('tokio::time::Duration', () async {
+    final d = preciseDuration();
+    final resp = await tokioTimeDurationTwinSyncSse(d: d);
+    expect(resp, d);
   });
 
   test('List<Duration>', () async {
@@ -144,3 +173,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     debugPrint('$difference');
   });
 }
+
+Duration preciseDuration() => Duration(
+      hours: 4,
+      seconds: 3,
+      milliseconds: 2,
+      microseconds: kIsWeb ? 0 : 1,
+    );

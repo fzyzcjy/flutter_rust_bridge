@@ -29,6 +29,20 @@ Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal({DateTime? d}) =>
 Future<Duration> durationTwinNormal({required Duration d}) =>
     RustLib.instance.api.crateApiChronoTypeDurationTwinNormal(d: d);
 
+Future<Duration> stdTimeDurationTwinNormal({required Duration d}) =>
+    RustLib.instance.api.crateApiChronoTypeStdTimeDurationTwinNormal(d: d);
+
+Future<DateTime> stdTimeSystemTimeTwinNormal({required DateTime d}) =>
+    RustLib.instance.api.crateApiChronoTypeStdTimeSystemTimeTwinNormal(d: d);
+
+Future<DateTime> stdTimeSystemTimeBeforeEpochTwinNormal(
+        {required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiChronoTypeStdTimeSystemTimeBeforeEpochTwinNormal(d: d);
+
+Future<Duration> tokioTimeDurationTwinNormal({required Duration d}) =>
+    RustLib.instance.api.crateApiChronoTypeTokioTimeDurationTwinNormal(d: d);
+
 Future<List<Duration>> handleTimestampsTwinNormal(
         {required List<DateTime> timestamps, required DateTime epoch}) =>
     RustLib.instance.api.crateApiChronoTypeHandleTimestampsTwinNormal(

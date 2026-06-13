@@ -37,6 +37,27 @@ Future<Duration> durationTwinRustAsync({required Duration d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinRustAsyncDurationTwinRustAsync(d: d);
 
+Future<Duration> stdTimeDurationTwinRustAsync({required Duration d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncStdTimeDurationTwinRustAsync(
+        d: d);
+
+Future<DateTime> stdTimeSystemTimeTwinRustAsync({required DateTime d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncStdTimeSystemTimeTwinRustAsync(
+        d: d);
+
+Future<DateTime> stdTimeSystemTimeBeforeEpochTwinRustAsync(
+        {required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncStdTimeSystemTimeBeforeEpochTwinRustAsync(
+            d: d);
+
+Future<Duration> tokioTimeDurationTwinRustAsync({required Duration d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncTokioTimeDurationTwinRustAsync(
+        d: d);
+
 Future<List<Duration>> handleTimestampsTwinRustAsync(
         {required List<DateTime> timestamps, required DateTime epoch}) =>
     RustLib.instance.api

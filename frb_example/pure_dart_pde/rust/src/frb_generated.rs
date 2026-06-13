@@ -75,7 +75,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.12.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1020479450;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 231677322;
 
 // Section: executor
 
@@ -28720,6 +28720,218 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_stat
                      let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::StaticOnlyTwinSync::static_method_twin_sync(api_a))?;   Ok(output_ok)
                 })()) })
 }
+fn wire__crate__api__chrono_type__std_time_duration_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "std_time_duration_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::Duration>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::api::chrono_type::std_time_duration_twin_normal(api_d),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_duration_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "std_time_duration_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::Duration>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::std_time_duration_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_duration_twin_sync_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "std_time_duration_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::Duration>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::chrono_type_twin_sync::std_time_duration_twin_sync(
+                        api_d,
+                    ),
+                )?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__chrono_type__std_time_system_time_before_epoch_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "std_time_system_time_before_epoch_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::SystemTime>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::api::chrono_type::std_time_system_time_before_epoch_twin_normal(
+                            api_d,
+                        ),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_before_epoch_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "std_time_system_time_before_epoch_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::SystemTime>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::std_time_system_time_before_epoch_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_before_epoch_twin_sync_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "std_time_system_time_before_epoch_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::SystemTime>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_sync::std_time_system_time_before_epoch_twin_sync(api_d))?;   Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__chrono_type__std_time_system_time_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "std_time_system_time_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::SystemTime>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::api::chrono_type::std_time_system_time_twin_normal(api_d),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "std_time_system_time_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::SystemTime>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::std_time_system_time_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_twin_sync_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "std_time_system_time_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::SystemTime>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_sync::std_time_system_time_twin_sync(api_d))?;   Ok(output_ok)
+                })()) })
+}
 fn wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -30773,6 +30985,90 @@ fn wire__crate__api__pseudo_manual__exception_twin_sync__throw_anyhow_twin_sync_
                     Ok(output_ok)
                 })(),
             )
+        },
+    )
+}
+fn wire__crate__api__chrono_type__tokio_time_duration_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "tokio_time_duration_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::Duration>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::api::chrono_type::tokio_time_duration_twin_normal(api_d),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__tokio_time_duration_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "tokio_time_duration_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::Duration>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::tokio_time_duration_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__tokio_time_duration_twin_sync_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "tokio_time_duration_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_d = <std::time::Duration>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::api::pseudo_manual::chrono_type_twin_sync::tokio_time_duration_twin_sync(
+                        api_d,
+                    ),
+                )?;
+                Ok(output_ok)
+            })())
         },
     )
 }
@@ -34695,6 +34991,37 @@ impl SseDecode for std::collections::HashSet<i32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <Vec<i32>>::sse_decode(deserializer);
         return inner.into_iter().collect();
+    }
+}
+
+impl SseDecode for std::time::Duration {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i64>::sse_decode(deserializer);
+        return std::time::Duration::from_micros(
+            inner
+                .try_into()
+                .expect("negative duration is not valid for std::time::Duration"),
+        );
+    }
+}
+
+impl SseDecode for std::time::SystemTime {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i64>::sse_decode(deserializer);
+        return {
+            let value = inner;
+            if value >= 0 {
+                std::time::SystemTime::UNIX_EPOCH
+                    .checked_add(std::time::Duration::from_micros(value.unsigned_abs()))
+                    .expect("timestamp out of range")
+            } else {
+                std::time::SystemTime::UNIX_EPOCH
+                    .checked_sub(std::time::Duration::from_micros(value.unsigned_abs()))
+                    .expect("timestamp out of range")
+            }
+        };
     }
 }
 
@@ -44207,74 +44534,82 @@ fn pde_ffi_dispatcher_primary_impl(
 1224 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_ok_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 1230 => wire__crate__api__method__static_only_twin_normal_static_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 1231 => wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1233 => wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1234 => wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1235 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1236 => wire__crate__api__stream__stream_sink_inside_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1237 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1238 => wire__crate__api__stream__stream_sink_inside_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1239 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1240 => wire__crate__api__exception__stream_sink_throw_anyhow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1241 => wire__crate__api__pseudo_manual__exception_twin_rust_async__stream_sink_throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1243 => wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1244 => wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1245 => wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_instance_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1246 => wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1250 => wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f_impl(port, ptr, rust_vec_len, data_len),
-1251 => wire__crate__api__misc_no_twin_example_a__struct_with_raw_name_field_dummy_function_impl(port, ptr, rust_vec_len, data_len),
-1252 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_with_many_derive_default_impl(port, ptr, rust_vec_len, data_len),
-1253 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_with_many_derive_f_impl(port, ptr, rust_vec_len, data_len),
-1254 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_with_non_clone_data_f_impl(port, ptr, rust_vec_len, data_len),
-1255 => wire__crate__api__method__sum_with_twin_normal_sum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1256 => wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_rust_async_sum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1265 => wire__crate__api__misc_example__test_abc_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1266 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1268 => wire__crate__api__chrono_type__test_chrono_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1269 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1271 => wire__crate__api__mirror__test_contains_mirrored_sub_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1272 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_contains_mirrored_sub_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1274 => wire__crate__api__deliberate_name_conflict__test_duplicated_module_names_impl(port, ptr, rust_vec_len, data_len),
-1275 => wire__crate__api__mirror__test_fallible_of_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1276 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_fallible_of_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1278 => wire__crate__api__mirror__test_hashmap_with_mirrored_value_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1279 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_hashmap_with_mirrored_value_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1281 => wire__crate__api__mirror__test_list_of_nested_enums_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1282 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_nested_enums_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1284 => wire__crate__api__mirror__test_list_of_raw_nested_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1285 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_raw_nested_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1287 => wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1288 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_more_than_just_one_raw_string_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1290 => wire__crate__api__mirror__test_nested_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1291 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_nested_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1293 => wire__crate__api__chrono_type__test_precise_chrono_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1294 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_precise_chrono_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1296 => wire__crate__api__mirror__test_raw_string_enum_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1297 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_enum_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1299 => wire__crate__api__raw_string__test_raw_string_item_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1300 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1302 => wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1303 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1305 => wire__crate__api__mirror__test_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1306 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1308 => wire__crate__api__misc_example__test_struct_with_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1309 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1311 => wire__crate__api__tuple__test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1312 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1314 => wire__crate__api__tuple__test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1315 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1317 => wire__crate__api__exception__throw_anyhow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1318 => wire__crate__api__pseudo_manual__exception_twin_rust_async__throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1320 => wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1322 => wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1323 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1325 => wire__crate__api__array__use_boxed_blob_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1326 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1328 => wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1329 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1331 => wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1332 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1334 => wire__crate__api__array__use_msgid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1335 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1233 => wire__crate__api__chrono_type__std_time_duration_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1234 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_duration_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1236 => wire__crate__api__chrono_type__std_time_system_time_before_epoch_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1237 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_before_epoch_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1239 => wire__crate__api__chrono_type__std_time_system_time_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1240 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1242 => wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1243 => wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1244 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1245 => wire__crate__api__stream__stream_sink_inside_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1246 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1247 => wire__crate__api__stream__stream_sink_inside_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1248 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1249 => wire__crate__api__exception__stream_sink_throw_anyhow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1250 => wire__crate__api__pseudo_manual__exception_twin_rust_async__stream_sink_throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1252 => wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1253 => wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1254 => wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_instance_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1255 => wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1259 => wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f_impl(port, ptr, rust_vec_len, data_len),
+1260 => wire__crate__api__misc_no_twin_example_a__struct_with_raw_name_field_dummy_function_impl(port, ptr, rust_vec_len, data_len),
+1261 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_with_many_derive_default_impl(port, ptr, rust_vec_len, data_len),
+1262 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_with_many_derive_f_impl(port, ptr, rust_vec_len, data_len),
+1263 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_with_non_clone_data_f_impl(port, ptr, rust_vec_len, data_len),
+1264 => wire__crate__api__method__sum_with_twin_normal_sum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1265 => wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_rust_async_sum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1274 => wire__crate__api__misc_example__test_abc_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1275 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1277 => wire__crate__api__chrono_type__test_chrono_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1278 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1280 => wire__crate__api__mirror__test_contains_mirrored_sub_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1281 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_contains_mirrored_sub_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1283 => wire__crate__api__deliberate_name_conflict__test_duplicated_module_names_impl(port, ptr, rust_vec_len, data_len),
+1284 => wire__crate__api__mirror__test_fallible_of_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1285 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_fallible_of_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1287 => wire__crate__api__mirror__test_hashmap_with_mirrored_value_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1288 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_hashmap_with_mirrored_value_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1290 => wire__crate__api__mirror__test_list_of_nested_enums_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1291 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_nested_enums_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1293 => wire__crate__api__mirror__test_list_of_raw_nested_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1294 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_raw_nested_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1296 => wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1297 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_more_than_just_one_raw_string_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1299 => wire__crate__api__mirror__test_nested_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1300 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_nested_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1302 => wire__crate__api__chrono_type__test_precise_chrono_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1303 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_precise_chrono_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1305 => wire__crate__api__mirror__test_raw_string_enum_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1306 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_enum_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1308 => wire__crate__api__raw_string__test_raw_string_item_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1309 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1311 => wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1312 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1314 => wire__crate__api__mirror__test_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1315 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1317 => wire__crate__api__misc_example__test_struct_with_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1318 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1320 => wire__crate__api__tuple__test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1321 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1323 => wire__crate__api__tuple__test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1324 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1326 => wire__crate__api__exception__throw_anyhow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1327 => wire__crate__api__pseudo_manual__exception_twin_rust_async__throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1329 => wire__crate__api__chrono_type__tokio_time_duration_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1330 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__tokio_time_duration_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1332 => wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1334 => wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1335 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1337 => wire__crate__api__array__use_boxed_blob_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1338 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1340 => wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1341 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1343 => wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1344 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1346 => wire__crate__api__array__use_msgid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1347 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
@@ -44688,42 +45023,46 @@ fn pde_ffi_dispatcher_sync_impl(
 1228 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_err_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
 1229 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_ok_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
 1232 => wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync_impl(ptr, rust_vec_len, data_len),
-1242 => wire__crate__api__pseudo_manual__exception_twin_sync__stream_sink_throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1247 => wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync_impl(ptr, rust_vec_len, data_len),
-1248 => wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync_impl(ptr, rust_vec_len, data_len),
-1249 => wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal_impl(ptr, rust_vec_len, data_len),
-1257 => wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1258 => wire__crate__api__dart_opaque_sync__sync_accept_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1259 => wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal_impl(ptr, rust_vec_len, data_len),
-1260 => wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1261 => wire__crate__api__dart_opaque_sync__sync_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
-1262 => wire__crate__api__dart_opaque_sync__sync_option_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1263 => wire__crate__api__dart_opaque_sync__sync_option_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
-1264 => wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1267 => wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1270 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync_impl(ptr, rust_vec_len, data_len),
-1273 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_contains_mirrored_sub_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1277 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_fallible_of_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1280 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_hashmap_with_mirrored_value_twin_sync_impl(ptr, rust_vec_len, data_len),
-1283 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_nested_enums_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1286 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_raw_nested_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1289 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_one_raw_string_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1292 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_nested_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1295 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_precise_chrono_twin_sync_impl(ptr, rust_vec_len, data_len),
-1298 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_enum_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1301 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1304 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1307 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1310 => wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1313 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync_impl(ptr, rust_vec_len, data_len),
-1316 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync_impl(ptr, rust_vec_len, data_len),
-1319 => wire__crate__api__pseudo_manual__exception_twin_sync__throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1321 => wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1324 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1327 => wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync_impl(ptr, rust_vec_len, data_len),
-1330 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1333 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1336 => wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync_impl(ptr, rust_vec_len, data_len),
+1235 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_duration_twin_sync_impl(ptr, rust_vec_len, data_len),
+1238 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_before_epoch_twin_sync_impl(ptr, rust_vec_len, data_len),
+1241 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_twin_sync_impl(ptr, rust_vec_len, data_len),
+1251 => wire__crate__api__pseudo_manual__exception_twin_sync__stream_sink_throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1256 => wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync_impl(ptr, rust_vec_len, data_len),
+1257 => wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync_impl(ptr, rust_vec_len, data_len),
+1258 => wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal_impl(ptr, rust_vec_len, data_len),
+1266 => wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1267 => wire__crate__api__dart_opaque_sync__sync_accept_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1268 => wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal_impl(ptr, rust_vec_len, data_len),
+1269 => wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1270 => wire__crate__api__dart_opaque_sync__sync_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
+1271 => wire__crate__api__dart_opaque_sync__sync_option_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1272 => wire__crate__api__dart_opaque_sync__sync_option_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
+1273 => wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1276 => wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1279 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync_impl(ptr, rust_vec_len, data_len),
+1282 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_contains_mirrored_sub_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1286 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_fallible_of_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1289 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_hashmap_with_mirrored_value_twin_sync_impl(ptr, rust_vec_len, data_len),
+1292 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_nested_enums_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1295 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_raw_nested_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1298 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_one_raw_string_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1301 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_nested_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1304 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_precise_chrono_twin_sync_impl(ptr, rust_vec_len, data_len),
+1307 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_enum_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1310 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1313 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1316 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1319 => wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1322 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync_impl(ptr, rust_vec_len, data_len),
+1325 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync_impl(ptr, rust_vec_len, data_len),
+1328 => wire__crate__api__pseudo_manual__exception_twin_sync__throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1331 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__tokio_time_duration_twin_sync_impl(ptr, rust_vec_len, data_len),
+1333 => wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1336 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1339 => wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync_impl(ptr, rust_vec_len, data_len),
+1342 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1345 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1348 => wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync_impl(ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
@@ -45962,6 +46301,84 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<MessageWithCustomSerializerTwi
     for MessageWithCustomSerializerTwinNormal
 {
     fn into_into_dart(self) -> FrbWrapper<MessageWithCustomSerializerTwinNormal> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::Duration> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        let value: i64 = {
+            #[cfg(target_arch = "wasm32")]
+            {
+                self.0
+                    .as_millis()
+                    .try_into()
+                    .expect("cannot get milliseconds from time")
+            }
+            #[cfg(not(target_arch = "wasm32"))]
+            {
+                self.0
+                    .as_micros()
+                    .try_into()
+                    .expect("cannot get microseconds from time")
+            }
+        };
+        value.into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<std::time::Duration>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<std::time::Duration>> for std::time::Duration {
+    fn into_into_dart(self) -> FrbWrapper<std::time::Duration> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::SystemTime> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        let value: i64 = {
+            #[cfg(target_arch = "wasm32")]
+            {
+                match self.0.duration_since(std::time::SystemTime::UNIX_EPOCH) {
+                    Ok(duration) => duration
+                        .as_millis()
+                        .try_into()
+                        .expect("cannot get milliseconds from time"),
+                    Err(error) => {
+                        let millis = i128::try_from(error.duration().as_millis())
+                            .expect("cannot get milliseconds from time");
+                        i64::try_from(-millis).expect("cannot get milliseconds from time")
+                    }
+                }
+            }
+            #[cfg(not(target_arch = "wasm32"))]
+            {
+                match self.0.duration_since(std::time::SystemTime::UNIX_EPOCH) {
+                    Ok(duration) => duration
+                        .as_micros()
+                        .try_into()
+                        .expect("cannot get microseconds from time"),
+                    Err(error) => {
+                        let micros = i128::try_from(error.duration().as_micros())
+                            .expect("cannot get microseconds from time");
+                        i64::try_from(-micros).expect("cannot get microseconds from time")
+                    }
+                }
+            }
+        };
+        value.into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<std::time::SystemTime>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<std::time::SystemTime>>
+    for std::time::SystemTime
+{
+    fn into_into_dart(self) -> FrbWrapper<std::time::SystemTime> {
         self.into()
     }
 }
@@ -56175,6 +56592,38 @@ impl SseEncode for std::collections::HashSet<i32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<i32>>::sse_encode(self.into_iter().collect(), serializer);
+    }
+}
+
+impl SseEncode for std::time::Duration {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i64>::sse_encode(
+            self.as_micros()
+                .try_into()
+                .expect("cannot get microseconds from time"),
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for std::time::SystemTime {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i64>::sse_encode(
+            match self.duration_since(std::time::SystemTime::UNIX_EPOCH) {
+                Ok(duration) => duration
+                    .as_micros()
+                    .try_into()
+                    .expect("cannot get microseconds from time"),
+                Err(error) => {
+                    let micros = i128::try_from(error.duration().as_micros())
+                        .expect("cannot get microseconds from time");
+                    i64::try_from(-micros).expect("cannot get microseconds from time")
+                }
+            },
+            serializer,
+        );
     }
 }
 

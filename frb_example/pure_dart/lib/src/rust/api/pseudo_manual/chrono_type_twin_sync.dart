@@ -30,6 +30,22 @@ DateTime? optionalEmptyDatetimeUtcTwinSync({DateTime? d}) =>
 Duration durationTwinSync({required Duration d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSyncDurationTwinSync(d: d);
 
+Duration stdTimeDurationTwinSync({required Duration d}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncStdTimeDurationTwinSync(d: d);
+
+DateTime stdTimeSystemTimeTwinSync({required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncStdTimeSystemTimeTwinSync(d: d);
+
+DateTime stdTimeSystemTimeBeforeEpochTwinSync({required DateTime d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncStdTimeSystemTimeBeforeEpochTwinSync(
+        d: d);
+
+Duration tokioTimeDurationTwinSync({required Duration d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncTokioTimeDurationTwinSync(d: d);
+
 List<Duration> handleTimestampsTwinSync(
         {required List<DateTime> timestamps, required DateTime epoch}) =>
     RustLib.instance.api

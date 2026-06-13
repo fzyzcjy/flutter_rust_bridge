@@ -1,5 +1,7 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::codec::sse::ty::delegate::rust_decode_primitive_enum;
+use crate::codegen::generator::codec::sse::ty::delegate::{
+    decode_std_duration, decode_std_system_time, rust_decode_primitive_enum,
+};
 use crate::codegen::generator::misc::is_js_value;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
@@ -45,6 +47,20 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                         ..Default::default()
                     };
                 }
+                if mir == &MirTypeDelegateTime::StdDuration {
+                    return Acc {
+                        io: Some(decode_std_duration("self")),
+                        web: None,
+                        ..Default::default()
+                    };
+                }
+                if mir == &MirTypeDelegateTime::StdSystemTime {
+                    return Acc {
+                        io: Some(decode_std_system_time("self")),
+                        web: None,
+                        ..Default::default()
+                    };
+                }
                 let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::decode_timestamp(self);";
                 let codegen_naive_date_time =
                     "chrono::DateTime::from_timestamp(s, ns).expect(\"invalid or out-of-range datetime\").naive_utc()";
@@ -53,12 +69,14 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive_date_time}, chrono::Utc)");
                 let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
                 let codegen_conversion = match mir {
-                    MirTypeDelegateTime::NaiveDate => codegen_naive_date.as_str(),
-                    MirTypeDelegateTime::NaiveDateTime => codegen_naive_date_time,
-                    MirTypeDelegateTime::Utc => codegen_utc.as_str(),
-                    MirTypeDelegateTime::Local => codegen_local.as_str(),
+                    MirTypeDelegateTime::NaiveDate => codegen_naive_date,
+                    MirTypeDelegateTime::NaiveDateTime => codegen_naive_date_time.to_owned(),
+                    MirTypeDelegateTime::Utc => codegen_utc,
+                    MirTypeDelegateTime::Local => codegen_local,
                     // frb-coverage:ignore-start
-                    MirTypeDelegateTime::Duration => unreachable!(),
+                    MirTypeDelegateTime::Duration
+                    | MirTypeDelegateTime::StdDuration
+                    | MirTypeDelegateTime::StdSystemTime => unreachable!(),
                     // frb-coverage:ignore-end
                 };
                 Acc {
@@ -141,6 +159,12 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
             // }
             MirTypeDelegate::Time(mir) => match mir {
                 MirTypeDelegateTime::Duration => "chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))".into(),
+                MirTypeDelegateTime::StdDuration => {
+                    decode_js_value_millis_once_then(&decode_std_duration)
+                }
+                MirTypeDelegateTime::StdSystemTime => {
+                    decode_js_value_millis_once_then(&decode_std_system_time)
+                }
                 _ => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
             },
             // MirTypeDelegate::TimeList(_) =>
@@ -206,6 +230,18 @@ impl DelegateWireRustCodecCstGenerator<'_> {
             Acc::distribute(Some(acc))
         }
     }
+}
+
+fn decode_js_value_millis_once_then(
+    generate_conversion: &dyn Fn(&str) -> String,
+) -> std::borrow::Cow<'static, str> {
+    format!(
+        "let millis = CstDecode::<i64>::cst_decode(self);
+        let inner = millis.checked_mul(1000).expect(\"timestamp out of range\");
+        {}",
+        generate_conversion("inner")
+    )
+    .into()
 }
 
 fn generate_decode_array(array: &MirTypeDelegateArray) -> String {

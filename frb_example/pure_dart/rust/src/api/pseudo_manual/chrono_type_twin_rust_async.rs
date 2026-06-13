@@ -60,7 +60,74 @@ pub async fn optional_empty_datetime_utc_twin_rust_async(
 }
 
 pub async fn duration_twin_rust_async(d: chrono::Duration) -> chrono::Duration {
-    assert_eq!(&d.num_hours(), &4);
+    let expected_micros: i64 = {
+        #[cfg(target_arch = "wasm32")]
+        {
+            14_403_002_000
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            14_403_002_001
+        }
+    };
+    assert_eq!(d.num_microseconds().unwrap(), expected_micros);
+    d
+}
+
+pub async fn std_time_duration_twin_rust_async(d: std::time::Duration) -> std::time::Duration {
+    let expected_micros: i64 = {
+        #[cfg(target_arch = "wasm32")]
+        {
+            14_403_002_000
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            14_403_002_001
+        }
+    };
+    assert_eq!(d.as_micros(), expected_micros.try_into().unwrap());
+    d
+}
+
+pub async fn std_time_system_time_twin_rust_async(
+    d: std::time::SystemTime,
+) -> std::time::SystemTime {
+    assert_eq!(
+        d.duration_since(std::time::SystemTime::UNIX_EPOCH)
+            .unwrap()
+            .as_secs(),
+        1_631_297_333
+    );
+    d
+}
+
+pub async fn std_time_system_time_before_epoch_twin_rust_async(
+    d: std::time::SystemTime,
+) -> std::time::SystemTime {
+    assert_eq!(
+        std::time::SystemTime::UNIX_EPOCH
+            .duration_since(d)
+            .unwrap()
+            .as_secs(),
+        1_000
+    );
+    d
+}
+
+pub async fn tokio_time_duration_twin_rust_async(
+    d: tokio::time::Duration,
+) -> tokio::time::Duration {
+    let expected_micros: i64 = {
+        #[cfg(target_arch = "wasm32")]
+        {
+            14_403_002_000
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            14_403_002_001
+        }
+    };
+    assert_eq!(d.as_micros(), expected_micros.try_into().unwrap());
     d
 }
 

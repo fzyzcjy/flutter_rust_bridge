@@ -1,6 +1,6 @@
-# DateTime (Chrono)
+# DateTime and Duration
 
-Codegen optionally support [chrono crate](https://docs.rs/chrono) with feature `chrono`.
+Codegen optionally supports [chrono crate](https://docs.rs/chrono) with feature `chrono`.
 
 | :crab: Rust       | :dart: Dart                   |
 | -----------       | -----------                   |
@@ -8,6 +8,16 @@ Codegen optionally support [chrono crate](https://docs.rs/chrono) with feature `
 | `DateTime<Local>` | `DateTime` *local timezone*   |
 | `NaiveDateTime`   | `DateTime` *utc assumed*      |
 | `Duration`        | `Duration`                    |
+
+Codegen also supports these time types from the Rust standard library and Tokio:
+
+| :crab: Rust              | :dart: Dart      |
+| -----------              | -----------      |
+| `std::time::SystemTime`  | `DateTime` *utc* |
+| `std::time::Duration`    | `Duration`       |
+| `tokio::time::Duration`  | `Duration`       |
+
+For Tokio types, enable Tokio's `time` feature in your Rust crate.
 
 You can also use nullable values through `Option`, for example: `Option<NaiveDateTime>`.
 

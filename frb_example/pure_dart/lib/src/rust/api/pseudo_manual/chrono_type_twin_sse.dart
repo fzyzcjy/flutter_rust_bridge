@@ -32,6 +32,23 @@ Future<DateTime?> optionalEmptyDatetimeUtcTwinSse({DateTime? d}) => RustLib
 Future<Duration> durationTwinSse({required Duration d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSseDurationTwinSse(d: d);
 
+Future<Duration> stdTimeDurationTwinSse({required Duration d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSseStdTimeDurationTwinSse(d: d);
+
+Future<DateTime> stdTimeSystemTimeTwinSse({required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSseStdTimeSystemTimeTwinSse(d: d);
+
+Future<DateTime> stdTimeSystemTimeBeforeEpochTwinSse({required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSseStdTimeSystemTimeBeforeEpochTwinSse(
+            d: d);
+
+Future<Duration> tokioTimeDurationTwinSse({required Duration d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSseTokioTimeDurationTwinSse(d: d);
+
 Future<List<Duration>> handleTimestampsTwinSse(
         {required List<DateTime> timestamps, required DateTime epoch}) =>
     RustLib.instance.api

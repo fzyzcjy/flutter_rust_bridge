@@ -2,10 +2,13 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::misc::gen_decode_simple_type_cast;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::codegen::ir::mir::ty::delegate::{
-    MirTypeDelegate, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum, MirTypeDelegateTime,
+    MirTypeDelegate, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use crate::library::codegen::generator::codec::sse::ty::delegate::{
+    is_dart_datetime_utc, is_duration,
+};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator<'_> {
@@ -53,12 +56,12 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
                 ) // here `as int` is neccessary in strict dynamic mode
             }
             MirTypeDelegate::Time(mir) => {
-                if mir == &MirTypeDelegateTime::Duration {
+                if is_duration(mir) {
                     "return dcoDecodeDuration(dco_decode_i_64(raw).toInt());".to_owned()
                 } else {
                     format!(
                         "return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: {is_utc});",
-                        is_utc = matches!(mir, MirTypeDelegateTime::NaiveDateTime | MirTypeDelegateTime::NaiveDate | MirTypeDelegateTime::Utc)
+                        is_utc = is_dart_datetime_utc(mir)
                     )
                 }
             }

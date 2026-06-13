@@ -43,6 +43,14 @@
       "sources": [
         "Normal"
       ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=func_std_time, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
     }
   ],
   "skips": [],

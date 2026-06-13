@@ -4223,6 +4223,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Set<int> dco_decode_Set_i_32_None(dynamic raw);
 
   @protected
+  Duration dco_decode_StdTime_StdDuration(dynamic raw);
+
+  @protected
+  DateTime dco_decode_StdTime_StdSystemTime(dynamic raw);
+
+  @protected
   RustStreamSink<NonCloneSimpleTwinMoi>
       dco_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi_Dco(
           dynamic raw);
@@ -13680,6 +13686,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Set<int> sse_decode_Set_i_32_None(SseDeserializer deserializer);
 
   @protected
+  Duration sse_decode_StdTime_StdDuration(SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_StdTime_StdSystemTime(SseDeserializer deserializer);
+
+  @protected
   RustStreamSink<NonCloneSimpleTwinMoi>
       sse_decode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi_Dco(
           SseDeserializer deserializer);
@@ -21475,6 +21487,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_Set_i_32_None(Set<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_prim_i_32_strict(Int32List.fromList(raw.toList()));
+  }
+
+  @protected
+  JSAny cst_encode_StdTime_StdDuration(Duration raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_i_64(BigInt.from(raw.inMilliseconds));
+  }
+
+  @protected
+  JSAny cst_encode_StdTime_StdSystemTime(DateTime raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));
   }
 
   @protected
@@ -34043,6 +34067,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_Set_i_32_None(Set<int> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StdTime_StdDuration(Duration self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StdTime_StdSystemTime(
+      DateTime self, SseSerializer serializer);
 
   @protected
   void
@@ -60789,6 +60820,143 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
                   a);
 
+  void wire__crate__api__chrono_type__std_time_duration_twin_normal(
+          NativePortType port_, JSAny d) =>
+      wasmModule.wire__crate__api__chrono_type__std_time_duration_twin_normal(
+          port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_duration_twin_rust_async(
+          NativePortType port_, JSAny d) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_duration_twin_rust_async(
+              port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__std_time_duration_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__std_time_duration_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_sse__std_time_duration_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_sse__std_time_duration_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_duration_twin_sync(
+              JSAny d) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_duration_twin_sync(
+                  d);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__std_time_duration_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__std_time_duration_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__chrono_type__std_time_system_time_before_epoch_twin_normal(
+          NativePortType port_, JSAny d) =>
+      wasmModule
+          .wire__crate__api__chrono_type__std_time_system_time_before_epoch_twin_normal(
+              port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_before_epoch_twin_rust_async(
+          NativePortType port_, JSAny d) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_before_epoch_twin_rust_async(
+              port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__std_time_system_time_before_epoch_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__std_time_system_time_before_epoch_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_sse__std_time_system_time_before_epoch_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_sse__std_time_system_time_before_epoch_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_before_epoch_twin_sync(
+              JSAny d) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_before_epoch_twin_sync(
+                  d);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__std_time_system_time_before_epoch_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__std_time_system_time_before_epoch_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__chrono_type__std_time_system_time_twin_normal(
+          NativePortType port_, JSAny d) =>
+      wasmModule
+          .wire__crate__api__chrono_type__std_time_system_time_twin_normal(
+              port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_twin_rust_async(
+          NativePortType port_, JSAny d) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_twin_rust_async(
+              port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__std_time_system_time_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__std_time_system_time_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_sse__std_time_system_time_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_sse__std_time_system_time_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_twin_sync(
+              JSAny d) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_twin_sync(
+                  d);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__std_time_system_time_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__std_time_system_time_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal(
           NativePortType port_, String sink) =>
       wasmModule
@@ -62058,6 +62226,51 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__throw_anyhow_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__chrono_type__tokio_time_duration_twin_normal(
+          NativePortType port_, JSAny d) =>
+      wasmModule.wire__crate__api__chrono_type__tokio_time_duration_twin_normal(
+          port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__tokio_time_duration_twin_rust_async(
+          NativePortType port_, JSAny d) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__tokio_time_duration_twin_rust_async(
+              port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__tokio_time_duration_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__tokio_time_duration_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_sse__tokio_time_duration_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_sse__tokio_time_duration_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__tokio_time_duration_twin_sync(
+              JSAny d) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync__tokio_time_duration_twin_sync(
+                  d);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__tokio_time_duration_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__tokio_time_duration_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
@@ -78867,6 +79080,100 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
           int a);
 
+  external void wire__crate__api__chrono_type__std_time_duration_twin_normal(
+      NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_duration_twin_rust_async(
+          NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__std_time_duration_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_sse__std_time_duration_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_duration_twin_sync(
+          JSAny d);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__std_time_duration_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__chrono_type__std_time_system_time_before_epoch_twin_normal(
+          NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_before_epoch_twin_rust_async(
+          NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__std_time_system_time_before_epoch_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_sse__std_time_system_time_before_epoch_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_before_epoch_twin_sync(
+          JSAny d);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__std_time_system_time_before_epoch_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__chrono_type__std_time_system_time_twin_normal(
+      NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__std_time_system_time_twin_rust_async(
+          NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__std_time_system_time_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_sse__std_time_system_time_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__std_time_system_time_twin_sync(
+          JSAny d);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__std_time_system_time_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void
       wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal(
           NativePortType port_, String sink);
@@ -79745,6 +80052,37 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__throw_anyhow_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__chrono_type__tokio_time_duration_twin_normal(
+      NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__tokio_time_duration_twin_rust_async(
+          NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__tokio_time_duration_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_sse__tokio_time_duration_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__tokio_time_duration_twin_sync(
+          JSAny d);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__tokio_time_duration_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
