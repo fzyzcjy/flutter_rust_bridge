@@ -24,25 +24,6 @@ const _kIntegrateAppleScaffoldSourceOfTruthPaths = <String, List<String>>{
 List<String> integrateAppleScaffoldSourceOfTruthPackages() =>
     List.unmodifiable(_kIntegrateAppleScaffoldSourceOfTruthPaths.keys);
 
-String integrateAppleScaffoldSourceOfTruthDiffArgs() {
-  final paths = [
-    for (final package in integrateAppleScaffoldSourceOfTruthPackages()) ...[
-      ..._integrateAppleScaffoldSourceOfTruthPaths(
-        package,
-      ).map((relativePath) => path.join(package, relativePath)),
-      ..._integrateAppleScaffoldSourceOfTruthPaths(package).map(
-        (relativePath) =>
-            _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
-              repoRootPath: '',
-              package: package,
-              relativePath: relativePath,
-            ),
-      ),
-    ],
-  ];
-  return '-- ${paths.join(' ')}';
-}
-
 Future<void> applyCheckedInAppleScaffoldSourceOfTruth({
   required String package,
   required String generatedPackageDir,

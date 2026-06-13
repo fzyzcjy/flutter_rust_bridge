@@ -397,23 +397,19 @@ Future<void> generateAppleScaffold() async {
     );
   }
 
-  await wrapMaybeSetExitIfChangedRaw(
-    true,
-    extraArgs: integrateAppleScaffoldSourceOfTruthDiffArgs(),
-    () async {
-      for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
-        await generateRunFrbCodegenCommandIntegrate(
-          GenerateIntegratePackageConfig(
-            setExitIfChanged: false,
-            package: package,
-            coverage: false,
-            includeOhos: true,
-            skipCheckedInAppleScaffold: true,
-          ),
-        );
-      }
-    },
-  );
+  await wrapMaybeSetExitIfChangedRaw(true, () async {
+    for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
+      await generateRunFrbCodegenCommandIntegrate(
+        GenerateIntegratePackageConfig(
+          setExitIfChanged: false,
+          package: package,
+          coverage: false,
+          includeOhos: true,
+          skipCheckedInAppleScaffold: true,
+        ),
+      );
+    }
+  });
 }
 
 Future<void> generateRunFrbCodegenCommandIntegrate(
