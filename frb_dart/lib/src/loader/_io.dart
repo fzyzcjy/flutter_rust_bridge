@@ -50,11 +50,11 @@ ExternalLibrary loadExternalLibraryRaw({
     }
 
     final filePath = effectiveNativeLibDir.resolve(name).toFilePath();
-    if (File(filePath).existsSync()) {
-      return ExternalLibrary.open(filePath);
+    if (!File(filePath).existsSync()) {
+      return fallback('(after trying $filePath but it does not exist)');
     }
 
-    return fallback('(after trying $filePath but it does not exist)');
+    return ExternalLibrary.open(filePath);
   }
 
   if (Platform.isAndroid || Platform.operatingSystem == 'ohos') {
