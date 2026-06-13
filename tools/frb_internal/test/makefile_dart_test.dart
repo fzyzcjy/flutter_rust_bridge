@@ -58,23 +58,23 @@ void main() {
 
   test('GitHub release create command labels prerelease versions', () {
     expect(
-      githubReleaseCreateCommandForTesting(
+      githubReleaseCreateCommand(
         version: '2.13.0-beta.1',
         notesFile: 'temp.txt',
       ),
-      'gh release create v2.13.0-beta.1 --notes-file temp.txt --draft --prerelease --title v2.13.0-beta.1',
+      'gh release create v2.13.0-beta.1 --notes-file temp.txt --prerelease --title v2.13.0-beta.1',
     );
   });
 
-  test('GitHub release create command keeps stable versions latest-neutral', () {
-    expect(
-      githubReleaseCreateCommandForTesting(
-        version: '2.13.0',
-        notesFile: 'temp.txt',
-      ),
-      'gh release create v2.13.0 --notes-file temp.txt --draft --title v2.13.0',
-    );
-  });
+  test(
+    'GitHub release create command keeps stable versions latest-neutral',
+    () {
+      expect(
+        githubReleaseCreateCommand(version: '2.13.0', notesFile: 'temp.txt'),
+        'gh release create v2.13.0 --notes-file temp.txt --title v2.13.0',
+      );
+    },
+  );
 
   test(
     'pure dart generator resolves package from repo root instead of cwd',

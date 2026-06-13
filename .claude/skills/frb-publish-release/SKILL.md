@@ -58,7 +58,7 @@ Use the repository release command through a temporary Docker container with pub
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release
 ```
 
-Do not split the normal release into separate `release-update-*` or publish commands. The one-shot command is the source of truth for release sequencing: it computes old/new versions from `CHANGELOG.md`, updates checked-in versions and generated version text, updates Scoop metadata, commits and pushes the version bump, creates a draft GitHub release, then runs the registry publisher:
+Do not split the normal release into separate `release-update-*` or publish commands. The one-shot command is the source of truth for release sequencing: it computes old/new versions from `CHANGELOG.md`, updates checked-in versions and generated version text, updates Scoop metadata, commits and pushes the version bump, creates the GitHub release, then runs the registry publisher:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all
@@ -73,7 +73,7 @@ For beta versions such as `2.13.0-beta.1`, verify the GitHub release is labeled 
 - `frb_rust` -> crates.io package `flutter_rust_bridge`
 - `frb_dart` -> pub.dev package `flutter_rust_bridge`
 
-Only use a split subcommand as a recovery path after confirming which one-shot step already completed. For example, if the version bump and GitHub draft already exist and only registry publication is needed, use `.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all` directly.
+Only use a split subcommand as a recovery path after confirming which one-shot step already completed. For example, if the version bump and GitHub release already exist and only registry publication is needed, use `.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all` directly.
 
 ### 4. Check Released Versions
 
