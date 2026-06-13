@@ -9,6 +9,9 @@ There are roughly two components, let's call them "core" and "compilation":
 - **Compilation**:
   This component makes _any_ Rust code be compiled/bundled with _any_ Flutter (Dart) code.
 
+The selected integration backend only controls how Rust is compiled and bundled.
+It does not replace the flutter_rust_bridge core code generator.
+
 In this chapter, we focus on the _compilation_ component.
 Since it is not specific or tied to the flutter_rust_bridge core,
 we demonstrate some approaches to do so as follows.
@@ -21,8 +24,8 @@ some people may prefer prebuilt binaries (e.g. no need for user to have a full R
 while some people may prefer the opposite (e.g. user may want to build all binaries by themselves).
 A (very brief) overview of the approaches are as follows:
 
-- [`flutter_rust_bridge_codegen create/integrate` command](builtin): Currently based on Cargokit, thus high automation level, and (for library instead of app) no prebuilt binaries.
-- [Native assets](native-assets): Future Dart feature. High automation level, possibly the preferred way in the future.
+- [`flutter_rust_bridge_codegen create/integrate` command](builtin): High automation level, and (for library instead of app) no prebuilt binaries. By default, it uses the Cargokit backend. It can also generate the Native Assets backend when `--integration-backend native-assets` is specified.
+- [Native assets](native-assets): Dart/Flutter build hooks backend. High automation level, possibly the preferred way in the future.
 - [Cargokit](cargokit): High automation level, (for library instead of app) no prebuilt binaries.
 - [flutter_rust_bridge_template](template): Fine-grained control to compilation process.
 - [BrickHub brick](existing): Similar to the line above.

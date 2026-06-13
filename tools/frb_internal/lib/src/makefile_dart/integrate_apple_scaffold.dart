@@ -12,8 +12,24 @@ import 'package:path/path.dart' as path;
 // comparison until integrate/create can produce the same result directly.
 const _kIntegrateAppleScaffoldSourceOfTruthPaths = <String, List<String>>{
   'frb_example/flutter_via_create': ['.metadata', 'ios', 'macos/Podfile'],
+  'frb_example/flutter_via_create_native_assets': [
+    '.metadata',
+    'ios',
+    'macos/Podfile',
+  ],
   'frb_example/flutter_via_integrate': ['.metadata', 'ios', 'macos/Podfile'],
+  'frb_example/flutter_via_integrate_native_assets': [
+    '.metadata',
+    'ios',
+    'macos/Podfile',
+  ],
   'frb_example/flutter_package': [
+    '.metadata',
+    'pubspec.yaml',
+    'example/ios',
+    'example/macos/Podfile',
+  ],
+  'frb_example/flutter_package_native_assets': [
     '.metadata',
     'pubspec.yaml',
     'example/ios',

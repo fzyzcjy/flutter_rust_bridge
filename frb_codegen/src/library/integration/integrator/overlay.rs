@@ -1,6 +1,6 @@
 use super::IntegrateConfig;
 use crate::integration::utils::{overlay_dir, replace_file_content};
-use crate::misc::Template;
+use crate::misc::{IntegrationBackend, Template};
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
@@ -58,34 +58,54 @@ pub(super) fn execute_overlay_templates(
         include_ohos,
     )?;
 
-    let (shared_dir, backend_dir, comment_out_files) = match &config.template {
-        Template::App => (
-            &TemplateDirs::SHARED_APP,
-            &TemplateDirs::CARGOKIT_APP,
-            vec!["main.dart".to_string()],
-        ),
+    let (shared_template_dir, comment_out_files) = match &config.template {
+        Template::App => (&TemplateDirs::SHARED_APP, vec!["main.dart".to_string()]),
         Template::Plugin => (
             &TemplateDirs::SHARED_PLUGIN,
-            &TemplateDirs::CARGOKIT_PLUGIN,
             vec![format!("{dart_package_name}.dart")],
         ),
     };
     execute_overlay_dir(
-        shared_dir,
+        shared_template_dir,
         replacements,
         dart_root,
         config,
         Some(&comment_out_files),
         include_ohos,
     )?;
-    execute_overlay_dir(
-        backend_dir,
-        replacements,
-        dart_root,
-        config,
-        None,
-        include_ohos,
-    )
+
+    if let Some(dir) = backend_shared_template_dir(config.integration_backend) {
+        execute_overlay_dir(dir, replacements, dart_root, config, None, include_ohos)?;
+    }
+
+    if let Some(dir) = backend_template_dir(config.integration_backend, config.template) {
+        execute_overlay_dir(dir, replacements, dart_root, config, None, include_ohos)?;
+    }
+
+    Ok(())
+}
+
+fn backend_shared_template_dir(
+    integration_backend: IntegrationBackend,
+) -> Option<&'static Dir<'static>> {
+    match integration_backend {
+        IntegrationBackend::Cargokit => None,
+        IntegrationBackend::NativeAssets => Some(&TemplateDirs::NATIVE_ASSETS_SHARED),
+    }
+}
+
+fn backend_template_dir(
+    integration_backend: IntegrationBackend,
+    template: Template,
+) -> Option<&'static Dir<'static>> {
+    match (integration_backend, template) {
+        (IntegrationBackend::Cargokit, Template::App) => Some(&TemplateDirs::CARGOKIT_APP),
+        (IntegrationBackend::Cargokit, Template::Plugin) => Some(&TemplateDirs::CARGOKIT_PLUGIN),
+        (IntegrationBackend::NativeAssets, Template::App) => None,
+        (IntegrationBackend::NativeAssets, Template::Plugin) => {
+            Some(&TemplateDirs::NATIVE_ASSETS_PLUGIN)
+        }
+    }
 }
 
 pub(super) fn compute_replacements<'a>(
@@ -287,6 +307,10 @@ impl TemplateDirs {
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/app");
     const CARGOKIT_PLUGIN: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/plugin");
+    const NATIVE_ASSETS_SHARED: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/native_assets/shared");
+    const NATIVE_ASSETS_PLUGIN: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/native_assets/plugin");
 }
 
 #[cfg(test)]
@@ -331,6 +355,29 @@ mod tests {
         assert!(!filter_file(
             Path::new("ohos/src/main/module.json5"),
             false,
+            true,
+            true,
+        ));
+    }
+
+    #[test]
+    fn test_filter_file_excludes_cargokit_metadata() {
+        assert!(!filter_file(
+            Path::new("rust_builder/cargokit/.git"),
+            true,
+            true,
+            true,
+        ));
+        assert!(!filter_file(
+            Path::new("cargokit/.github"),
+            true,
+            true,
+            true,
+        ));
+        assert!(!filter_file(Path::new("cargokit/docs"), true, true, true,));
+        assert!(filter_file(
+            Path::new("cargokit/build_tool/pubspec.yaml"),
+            true,
             true,
             true,
         ));

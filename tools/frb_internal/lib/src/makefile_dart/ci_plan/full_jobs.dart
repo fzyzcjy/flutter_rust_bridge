@@ -14,7 +14,9 @@ const _exampleDartPackages = [
 
 const _flutterNativePackages = [
   'frb_example--flutter_via_create',
+  'frb_example--flutter_via_create_native_assets',
   'frb_example--flutter_package--example',
+  'frb_example--flutter_package_native_assets--example',
   'frb_example--rust_ui_counter--ui',
   'frb_example--rust_ui_todo_list--ui',
 ];
@@ -38,6 +40,9 @@ final kCiJobs = [
           'frb_example--flutter_via_create',
           'frb_example--flutter_via_integrate',
           'frb_example--flutter_package',
+          'frb_example--flutter_via_create_native_assets',
+          'frb_example--flutter_via_integrate_native_assets',
+          'frb_example--flutter_package_native_assets',
           'frb_example--rust_ui_counter--ui',
           'frb_example--rust_ui_todo_list--ui',
         ])
@@ -56,6 +61,9 @@ final kCiJobs = [
           'frb_example--flutter_via_create',
           'frb_example--flutter_via_integrate',
           'frb_example--flutter_package',
+          'frb_example--flutter_via_create_native_assets',
+          'frb_example--flutter_via_integrate_native_assets',
+          'frb_example--flutter_package_native_assets',
         ])
           {'image': image, 'package': package, 'platforms': 'default'},
       {
@@ -78,14 +86,30 @@ final kCiJobs = [
     'build_flutter',
     matrix: CiMatrix([
       for (final info in [
-        {'image': 'windows-2025', 'target': 'windows'},
-        {'image': 'windows-11-arm', 'target': 'windows'},
-        {'image': 'macos-15-intel', 'target': 'macos'},
-        {'image': 'ubuntu-latest', 'target': 'linux'},
-        {'image': 'ubuntu-latest', 'target': 'android-aab'},
-        {'image': 'ubuntu-latest', 'target': 'android-apk'},
-        {'image': 'macos-15-intel', 'target': 'ios'},
-        {'image': 'ubuntu-latest', 'target': 'ohos'},
+        for (final package in [
+          'frb_example--flutter_via_create',
+          'frb_example--flutter_via_create_native_assets',
+        ])
+          for (final target in [
+            {'image': 'windows-2025', 'target': 'windows'},
+            {'image': 'windows-11-arm', 'target': 'windows'},
+            {'image': 'macos-15-intel', 'target': 'macos'},
+            {'image': 'ubuntu-latest', 'target': 'linux'},
+            {'image': 'ubuntu-latest', 'target': 'android-aab'},
+            {'image': 'ubuntu-latest', 'target': 'android-apk'},
+            {'image': 'macos-15-intel', 'target': 'ios'},
+          ])
+            {
+              ...target,
+              'package': package,
+              'package_path': package.replaceAll('--', '/'),
+            },
+        {
+          'image': 'ubuntu-latest',
+          'target': 'ohos',
+          'package': 'frb_example--flutter_via_create',
+          'package_path': 'frb_example/flutter_via_create',
+        },
       ])
         {'info': info},
     ]),
@@ -116,6 +140,7 @@ final kCiJobs = [
       for (final image in _githubHostedDesktopImages)
         for (final package in [
           'frb_dart',
+          'frb_hooks',
           'frb_utils',
           'tools--frb_internal',
           ..._exampleDartPackages,
@@ -168,6 +193,7 @@ final kCiJobs = [
           ..._flutterDesktopPackageEntries(package),
         ..._linuxFlutterDesktopPackageEntries([
           'frb_example--flutter_via_integrate',
+          'frb_example--flutter_via_integrate_native_assets',
           'frb_example--gallery',
           'frb_example--integrate_third_party',
         ]),
@@ -180,6 +206,7 @@ final kCiJobs = [
     matrix: CiMatrix([
       for (final package in [
         'frb_example--flutter_via_create',
+        'frb_example--flutter_via_create_native_assets',
         'frb_example--gallery',
       ])
         {'package': package},
@@ -189,49 +216,11 @@ final kCiJobs = [
     'test_flutter_quickstart_smoke',
     matrix: CiMatrix([
       for (final info in [
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'web',
-          'target': 'web',
-          'device': 'chrome',
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'android',
-          'target': 'android',
-          'device': 'pixel',
-          'api-level': 35,
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'macos-latest',
-          'platform': 'ios',
-          'target': 'ios',
-          'device': 'iPhone 16 Pro Max Simulator (18.6)',
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'linux',
-          'target': 'desktop',
-          'device': 'linux',
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'macos-15-intel',
-          'platform': 'macos',
-          'target': 'desktop',
-          'device': 'macos',
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'windows-2025',
-          'platform': 'windows',
-          'target': 'desktop',
-          'device': 'windows',
-          'package': 'frb_example--flutter_via_create',
-        },
+        for (final package in [
+          'frb_example--flutter_via_create',
+          'frb_example--flutter_via_create_native_assets',
+        ])
+          ..._quickstartSmokeEntries(package),
       ])
         {'info': info},
     ]),
@@ -248,6 +237,7 @@ bool _isExcludedGenerateCommandGenerate({
       'frb_example--deliberate_bad',
       'frb_example--integrate_third_party',
       'frb_example--flutter_via_integrate',
+      'frb_example--flutter_via_integrate_native_assets',
     }.contains(package);
 
 bool _isExcludedTestDartNative({
@@ -269,3 +259,58 @@ List<Map<String, Object?>> _linuxFlutterDesktopPackageEntries(
   for (final package in packages)
     {'image': 'ubuntu-latest', 'platform': 'linux', 'package': package},
 ];
+
+List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
+  final packagePath = package.replaceAll('--', '/');
+  return [
+    {
+      'image': 'ubuntu-latest',
+      'platform': 'web',
+      'target': 'web',
+      'device': 'chrome',
+      'package': package,
+      'package_path': packagePath,
+    },
+    {
+      'image': 'ubuntu-latest',
+      'platform': 'android',
+      'target': 'android',
+      'device': 'pixel',
+      'api-level': 35,
+      'package': package,
+      'package_path': packagePath,
+    },
+    {
+      'image': 'macos-latest',
+      'platform': 'ios',
+      'target': 'ios',
+      'device': 'iPhone 16 Pro Max Simulator (18.6)',
+      'package': package,
+      'package_path': packagePath,
+    },
+    {
+      'image': 'ubuntu-latest',
+      'platform': 'linux',
+      'target': 'desktop',
+      'device': 'linux',
+      'package': package,
+      'package_path': packagePath,
+    },
+    {
+      'image': 'macos-15-intel',
+      'platform': 'macos',
+      'target': 'desktop',
+      'device': 'macos',
+      'package': package,
+      'package_path': packagePath,
+    },
+    {
+      'image': 'windows-2025',
+      'platform': 'windows',
+      'target': 'desktop',
+      'device': 'windows',
+      'package': package,
+      'package_path': packagePath,
+    },
+  ];
+}

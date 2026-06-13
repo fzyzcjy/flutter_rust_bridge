@@ -9,6 +9,12 @@ pub enum Template {
     Plugin,
 }
 
+#[derive(Debug, Copy, Clone, Eq, PartialEq)]
+pub enum IntegrationBackend {
+    Cargokit,
+    NativeAssets,
+}
+
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Serialize, Deserialize)]
 pub enum FvmInstallMode {
     Normal,

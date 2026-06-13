@@ -626,12 +626,12 @@ jobs:
           echo "OHOS_SDK_HOME=${OHOS_NDK_HOME}/native" >> $GITHUB_ENV
 
       # execute
-      - run: ./frb_internal build-flutter --target ${{ matrix.info.target }}
+      - run: ./frb_internal build-flutter --package ${{ matrix.info.package }} --target ${{ matrix.info.target }}
 
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.job }}--${{ matrix.info.target }}--output
+          name: ${{ github.job }}--${{ matrix.info.package }}--${{ matrix.info.target }}--output
           path: target/build_flutter_output
 
   # ----------------------------------- test -----------------------------------
@@ -1222,7 +1222,7 @@ jobs:
         if: always()
         with:
           name: quickstart-smoke--${{ matrix.info.platform }}--${{ matrix.info.device }}--${{ matrix.info.package }}
-          path: frb_example/flutter_via_create/target/quickstart_smoke
+          path: ${{ matrix.info.package_path }}/target/quickstart_smoke
           if-no-files-found: warn
 
   # ----------------------------------- misc -----------------------------------

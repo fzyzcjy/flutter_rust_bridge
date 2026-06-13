@@ -12,7 +12,7 @@ use crate::library::commands::cargo::cargo_fetch;
 use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::library::commands::flutter::{platform_list_contains_ohos, resolve_flutter_platforms};
-use crate::misc::{FvmInstallMode, Template};
+use crate::misc::{FvmInstallMode, IntegrationBackend, Template};
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
@@ -31,6 +31,7 @@ pub struct IntegrateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub integration_backend: IntegrationBackend,
     pub platforms: Option<String>,
     pub fvm_install_mode: FvmInstallMode,
 }
@@ -40,7 +41,6 @@ pub struct IntegrateConfig {
 pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
-
     let dart_package_name = get_dart_package_name(&dart_root)?;
     let rust_crate_name = config
         .rust_crate_name
@@ -69,8 +69,10 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         add_publish_to_none(&dart_root)?;
     }
 
-    info!("Modify file permissions");
-    modify_permissions(&dart_root, &config.template)?;
+    if config.integration_backend == IntegrationBackend::Cargokit {
+        info!("Modify file permissions");
+        modify_permissions(&dart_root, &config.template)?;
+    }
 
     info!("Add pub dependencies");
     pub_add_dependencies(
@@ -78,13 +80,16 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         config.enable_local_dependency,
         &rust_crate_name,
         &config.template,
+        config.integration_backend,
         config.fvm_install_mode,
     )?;
 
-    info!("Setup cargokit dependencies");
-    setup_cargokit_dependencies(&dart_root, &config.template, config.fvm_install_mode)?;
+    if config.integration_backend == IntegrationBackend::Cargokit {
+        info!("Setup cargokit dependencies");
+        setup_cargokit_dependencies(&dart_root, &config.template, config.fvm_install_mode)?;
 
-    exclude_cargokit_from_outer_analyzer(&dart_root, &config.template)?;
+        exclude_cargokit_from_outer_analyzer(&dart_root, &config.template)?;
+    }
 
     if config.enable_dart_fix {
         info!("Apply Dart fixes");

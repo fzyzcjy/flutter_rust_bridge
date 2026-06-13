@@ -391,6 +391,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       config.coverage &&
       !const [
         'frb_dart',
+        'frb_hooks',
         'frb_utils',
         'tools/frb_internal',
       ].contains(config.package);
@@ -491,7 +492,7 @@ Future<void> _formatDartCoverage({required String package}) async {
 
   final reportOn = '${exec.pwd}/frb_dart';
   await exec(
-    'format_coverage --check-ignore --lcov --in=coverage --out=${getCoverageDir('dart')}/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
+    'dart pub global run coverage:format_coverage --check-ignore --lcov --in=coverage --out=${getCoverageDir('dart')}/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
     relativePwd: package,
   );
 }
@@ -668,10 +669,15 @@ String resolveBuildWebPackage(String package) =>
 Future<void> testFlutterQuickstartSmoke(
   TestFlutterQuickstartSmokeConfig config,
 ) async {
-  if (config.package != 'frb_example/flutter_via_create') {
+  const supportedPackages = {
+    'frb_example/flutter_via_create',
+    'frb_example/flutter_via_create_native_assets',
+  };
+  if (!supportedPackages.contains(config.package)) {
     throw Exception(
       'test-flutter-quickstart-smoke currently supports only '
-      '`frb_example/flutter_via_create`, but got `${config.package}`',
+      '${supportedPackages.map((package) => '`$package`').join(', ')}, '
+      'but got `${config.package}`',
     );
   }
 
