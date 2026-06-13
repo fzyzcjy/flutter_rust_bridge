@@ -96,6 +96,7 @@ Future<List<ReleasePackageStatus>> fetchReleasePackageStatuses({
       manifestVersion: dartVersion,
       releasedVersion: await fetchPubDevReleasedVersion(
         'flutter_rust_bridge',
+        targetVersion: targetVersion,
         fetcher: fetcher,
       ),
     ),
@@ -122,14 +123,30 @@ String? parseCratesIoReleasedVersion(Map<String, dynamic> json) =>
 
 Future<String?> fetchPubDevReleasedVersion(
   String package, {
+  String? targetVersion,
   ReleaseMetadataFetcher fetcher = _defaultReleaseMetadataFetcher,
 }) async {
   final json = await fetcher(Uri.https('pub.dev', '/api/packages/$package'));
-  return parsePubDevReleasedVersion(json);
+  return parsePubDevReleasedVersion(json, targetVersion: targetVersion);
 }
 
-String? parsePubDevReleasedVersion(Map<String, dynamic> json) =>
-    (json['latest'] as Map<String, dynamic>?)?['version'] as String?;
+String? parsePubDevReleasedVersion(
+  Map<String, dynamic> json, {
+  String? targetVersion,
+}) {
+  if (targetVersion != null && pubDevVersions(json).contains(targetVersion)) {
+    return targetVersion;
+  }
+
+  return (json['latest'] as Map<String, dynamic>?)?['version'] as String?;
+}
+
+Set<String> pubDevVersions(Map<String, dynamic> json) =>
+    ((json['versions'] as List<dynamic>?) ?? [])
+        .whereType<Map<String, dynamic>>()
+        .map((version) => version['version'])
+        .whereType<String>()
+        .toSet();
 
 Future<Map<String, dynamic>> _defaultReleaseMetadataFetcher(Uri uri) async {
   final response = await Dio().getUri<Map<String, dynamic>>(uri);
