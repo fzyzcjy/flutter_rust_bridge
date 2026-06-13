@@ -3,8 +3,8 @@ use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
 use crate::codegen::ir::mir::ty::dart_opaque::MirTypeDartOpaque;
 use crate::codegen::ir::mir::ty::delegate::{
-    MirTypeDelegate, MirTypeDelegateMap, MirTypeDelegateSet, MirTypeDelegateStreamSink,
-    MirTypeDelegateTime,
+    MirTypeDelegate, MirTypeDelegateBigInt, MirTypeDelegateDecimal, MirTypeDelegateMap,
+    MirTypeDelegateSet, MirTypeDelegateStreamSink, MirTypeDelegateTime,
 };
 use crate::codegen::ir::mir::ty::dynamic::MirTypeDynamic;
 use crate::codegen::ir::mir::ty::general_list::mir_list;
@@ -39,6 +39,24 @@ impl TypeParserWithContext<'_, '_, '_> {
             ("DateTime", args) if check_prefix("chrono") => self.parse_datetime(args)?,
 
             ("Uuid", []) if check_prefix("uuid") => Delegate(MirTypeDelegate::Uuid),
+            ("BigInt", []) if check_prefix("num_bigint") => {
+                Delegate(MirTypeDelegate::BigInt(MirTypeDelegateBigInt::NumBigintBigInt))
+            },
+            ("BigUint", []) if check_prefix("num_bigint") => {
+                Delegate(MirTypeDelegate::BigInt(MirTypeDelegateBigInt::NumBigintBigUint))
+            },
+            ("BigInt", []) if check_prefix("bigdecimal::num_bigint") => {
+                Delegate(MirTypeDelegate::BigInt(MirTypeDelegateBigInt::NumBigintBigInt))
+            },
+            ("BigUint", []) if check_prefix("bigdecimal::num_bigint") => {
+                Delegate(MirTypeDelegate::BigInt(MirTypeDelegateBigInt::NumBigintBigUint))
+            },
+            ("Decimal", []) if check_prefix("rust_decimal") => {
+                Delegate(MirTypeDelegate::Decimal(MirTypeDelegateDecimal::RustDecimal))
+            },
+            ("BigDecimal", []) if check_prefix("bigdecimal") => {
+                Delegate(MirTypeDelegate::Decimal(MirTypeDelegateDecimal::Bigdecimal))
+            },
             ("Value", []) if check_prefix("serde_json") => Delegate(MirTypeDelegate::SerdeJsonValue),
             ("String", []) | ("str", []) => Delegate(MirTypeDelegate::String),
             ("char", []) => Delegate(MirTypeDelegate::Char),

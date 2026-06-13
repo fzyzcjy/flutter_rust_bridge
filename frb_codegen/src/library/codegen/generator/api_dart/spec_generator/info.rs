@@ -88,6 +88,8 @@ impl ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'_> {
                 ApiDartGenerator::new(*mir.inner_ok.clone(), self.context).dart_api_type(),
             ),
             MirTypeDelegate::BigPrimitive(_) => "BigInt".to_owned(),
+            MirTypeDelegate::BigInt(_) => "BigInt".to_owned(),
+            MirTypeDelegate::Decimal(_) => "Decimal".to_owned(),
             MirTypeDelegate::CastedPrimitive(mir) => match mir.inner {
                 MirTypePrimitive::U64
                 | MirTypePrimitive::I64
@@ -121,6 +123,9 @@ impl ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'_> {
             }
             MirTypeDelegate::SerdeJsonValue => {
                 Some("import 'dart:convert';".to_owned())
+            }
+            MirTypeDelegate::Decimal(_) => {
+                Some("import 'package:decimal/decimal.dart';".to_owned())
             }
             _ => None,
         }

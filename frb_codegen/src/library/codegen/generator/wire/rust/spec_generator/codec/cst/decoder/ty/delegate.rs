@@ -107,6 +107,16 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                     "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
                 ),
             ),
+            MirTypeDelegate::BigInt(_) => Acc::distribute(
+                Some(
+                    "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+                ),
+            ),
+            MirTypeDelegate::Decimal(_) => Acc::distribute(
+                Some(
+                    "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+                ),
+            ),
             MirTypeDelegate::RustAutoOpaqueExplicit(_) => Acc {
                 io: Some("flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into()),
                 ..Default::default()
@@ -159,6 +169,8 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
             MirTypeDelegate::Set(mir) => generate_decode_set(mir).into(),
             MirTypeDelegate::StreamSink(_) => "StreamSink::deserialize(self.as_string().expect(\"should be a string\"))".into(),
             MirTypeDelegate::BigPrimitive(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+            MirTypeDelegate::BigInt(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
+            MirTypeDelegate::Decimal(_) => "CstDecode::<String>::cst_decode(self).parse().unwrap()".into(),
             MirTypeDelegate::RustAutoOpaqueExplicit(_) =>
                 "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(self.cst_decode())".into(),
             // Do not care about these unimplemented things

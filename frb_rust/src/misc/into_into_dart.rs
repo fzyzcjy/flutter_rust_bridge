@@ -204,6 +204,34 @@ impl_into_into_dart_by_self!(allo_isolate::ffi::DartCObject);
 impl_into_into_dart_by_self!(wasm_bindgen::JsValue);
 #[cfg(feature = "uuid")]
 impl_into_into_dart_by_self!(uuid::Uuid);
+#[cfg(feature = "num-bigint")]
+impl IntoIntoDart<String> for num_bigint::BigInt {
+    #[inline(always)]
+    fn into_into_dart(self) -> String {
+        self.to_string()
+    }
+}
+#[cfg(feature = "num-bigint")]
+impl IntoIntoDart<String> for num_bigint::BigUint {
+    #[inline(always)]
+    fn into_into_dart(self) -> String {
+        self.to_string()
+    }
+}
+#[cfg(feature = "rust_decimal")]
+impl IntoIntoDart<String> for rust_decimal::Decimal {
+    #[inline(always)]
+    fn into_into_dart(self) -> String {
+        self.to_string()
+    }
+}
+#[cfg(feature = "bigdecimal")]
+impl IntoIntoDart<String> for bigdecimal::BigDecimal {
+    #[inline(always)]
+    fn into_into_dart(self) -> String {
+        self.to_string()
+    }
+}
 #[cfg(feature = "serde_json")]
 impl IntoIntoDart<String> for serde_json::Value {
     #[inline(always)]

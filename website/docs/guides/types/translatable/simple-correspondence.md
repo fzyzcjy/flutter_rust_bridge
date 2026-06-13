@@ -25,6 +25,7 @@ pointing to more detailed explanations.
 | `Box<T>`                                                   | `T`                                                       |
 | comments                                                   | same                                                      |
 | `i8`, `u8`, .., `usize`, `i128`, `u128`                    | [`int`, `BigInt`](detailed/primitive)                     |
+| `num_bigint`, `rust_decimal`, `bigdecimal` types           | [`BigInt`, `Decimal`](detailed/big_number)                |
 | `f32`, `f64`                                               | `double`                                                  |
 | `bool`                                                     | `bool`                                                    |
 | `char`, `String`                                           | `String`                                                  |
@@ -35,6 +36,7 @@ pointing to more detailed explanations.
 Types from `chrono` crate are supported as a feature, see [here](detailed/chrono).
 Types from `uuid` crate are supported as a feature, see [here](detailed/uuid).
 Types from `serde_json` crate are supported as a feature, see [here](detailed/serde_json).
+Big number types from `num_bigint`, `rust_decimal`, and `bigdecimal` crates are supported as features, see [here](detailed/big_number).
 
 Raw strings are supported for struct field names. For example, you can have `struct S { r#type: i32 }`. In dart,
 the `r#` prefix will be correctly removed. They are not yet supported for function arguments.
