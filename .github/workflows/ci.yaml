@@ -773,9 +773,9 @@ jobs:
           path: target/coverage
 
   test_dart_web:
-    name: "Test :: Dart :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     needs: plan_ci
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_web.enable == true }}
+    name: "Test :: Dart :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -1037,9 +1037,9 @@ jobs:
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
 
   test_flutter_web:
-    name: "Test :: Flutter :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     needs: plan_ci
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_web.enable == true }}
+    name: "Test :: Flutter :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
