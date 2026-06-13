@@ -15,7 +15,7 @@ pub type DartAbi = wasm_bindgen::JsValue;
 pub struct SendableMessagePortHandle(String);
 
 thread_local! {
-    static BROADCAST_CHANNEL_CACHE: RefCell<HashMap<String, MessagePort>> = Default::default();
+    static BROADCAST_CHANNEL_OF_NAME: RefCell<HashMap<String, MessagePort>> = Default::default();
 }
 
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
@@ -27,9 +27,9 @@ pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
 }
 
 pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort {
-    BROADCAST_CHANNEL_CACHE.with(|cache| {
-        let mut cache = cache.borrow_mut();
-        cache
+    BROADCAST_CHANNEL_OF_NAME.with(|channel_of_name| {
+        let mut channel_of_name = channel_of_name.borrow_mut();
+        channel_of_name
             .entry(handle.0.clone())
             .or_insert_with(|| PortLike::broadcast(&handle.0))
             .clone()
@@ -37,8 +37,8 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
 }
 
 pub fn release_message_port_handle(handle: &SendableMessagePortHandle) {
-    BROADCAST_CHANNEL_CACHE.with(|cache| {
-        cache.borrow_mut().remove(&handle.0);
+    BROADCAST_CHANNEL_OF_NAME.with(|channel_of_name| {
+        channel_of_name.borrow_mut().remove(&handle.0);
     })
 }
 
