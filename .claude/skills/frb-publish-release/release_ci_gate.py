@@ -31,6 +31,7 @@ DEFAULT_ALLOWED_PATTERNS = (
     ".github/workflows/remove_labels.yml",
     ".github/workflows/stale.yml",
     "AGENTS.md",
+    "CHANGELOG.md",
     "CLAUDE.md",
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
