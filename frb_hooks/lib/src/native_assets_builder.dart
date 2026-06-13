@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:hooks/hooks.dart';
 import 'package:logging/logging.dart';
+import 'package:meta/meta.dart';
 import 'package:native_toolchain_rust/native_toolchain_rust.dart'
     as native_toolchain_rust;
 
@@ -57,14 +58,9 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
     Logger? logger,
   }) async {
     await _withOutputDirectoryBuildLock(input.outputDirectory, () async {
-      final effectiveInput = buildInputForHost(
+      final effectiveInput = await buildInputForHost(
         isWindows: Platform.isWindows,
         input: input,
-        windowsOutputDirectoryShared: Platform.isWindows
-            ? await _prepareShortWindowsOutputDirectoryShared(
-                input.outputDirectoryShared,
-              )
-            : null,
       );
       await native_toolchain_rust.RustBuilder(
         assetName: assetName,
@@ -85,14 +81,19 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
 }
 
 /// Returns a build input adjusted for host-specific Native Assets behavior.
-BuildInput buildInputForHost({
+@visibleForTesting
+Future<BuildInput> buildInputForHost({
   required bool isWindows,
   required BuildInput input,
-  required Uri? windowsOutputDirectoryShared,
-}) {
-  if (!isWindows || windowsOutputDirectoryShared == null) {
+}) async {
+  if (!isWindows) {
     return input;
   }
+
+  final windowsOutputDirectoryShared =
+      await _prepareShortWindowsOutputDirectoryShared(
+        input.outputDirectoryShared,
+      );
   // Keep Windows Native Assets output paths short. native_toolchain_rust places
   // Cargo artifacts under input.outputDirectory/target, and Flutter hook output
   // roots can otherwise make those paths exceed Windows toolchain limits.

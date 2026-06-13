@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_rust_bridge_hooks/flutter_rust_bridge_hooks.dart';
 import 'package:native_toolchain_rust/native_toolchain_rust.dart'
     as native_toolchain_rust;
@@ -23,40 +25,31 @@ void main() {
     expect(builder.buildMode, native_toolchain_rust.BuildMode.debug);
   });
 
-  test('buildInputForHost uses short Windows output directory', () {
+  test('buildInputForHost uses short Windows output directory', () async {
     final input = _createBuildInput(outputDirectoryShared: '/tmp/frb-long');
-    final expectedJson = {
-      ...input.json,
-      'out_dir_shared': Uri.directory('/tmp/frb-short/').toFilePath(),
-    };
-    final adjusted = buildInputForHost(
-      isWindows: true,
-      input: input,
-      windowsOutputDirectoryShared: Uri.directory('/tmp/frb-short/'),
-    );
+    final adjusted = await buildInputForHost(isWindows: true, input: input);
+    final shortOutputDirectoryShared = adjusted.outputDirectoryShared;
 
-    expect(adjusted.json, expectedJson);
-    expect(adjusted.outputDirectoryShared, Uri.directory('/tmp/frb-short/'));
-    expect(adjusted.outputDirectory.path, startsWith('/tmp/frb-short/'));
+    expect(
+      shortOutputDirectoryShared.path,
+      startsWith('${Directory.systemTemp.uri.path}frb_native_assets_'),
+    );
+    expect(shortOutputDirectoryShared, isNot(input.outputDirectoryShared));
+    expect(adjusted.json, {
+      ...input.json,
+      'out_dir_shared': Directory.fromUri(shortOutputDirectoryShared).path,
+    });
+    expect(
+      adjusted.outputDirectory.path,
+      startsWith(Directory.fromUri(shortOutputDirectoryShared).path),
+    );
   });
 
-  test('buildInputForHost keeps non-Windows input unchanged', () {
+  test('buildInputForHost keeps non-Windows input unchanged', () async {
     final input = _createBuildInput(outputDirectoryShared: '/tmp/frb-long');
 
     expect(
-      buildInputForHost(
-        isWindows: true,
-        input: input,
-        windowsOutputDirectoryShared: null,
-      ),
-      same(input),
-    );
-    expect(
-      buildInputForHost(
-        isWindows: false,
-        input: input,
-        windowsOutputDirectoryShared: Uri.directory('/tmp/frb-short/'),
-      ),
+      await buildInputForHost(isWindows: false, input: input),
       same(input),
     );
   });
