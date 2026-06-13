@@ -31,8 +31,9 @@ fn remove_example_ffi_plugin_registration(dart_root: &Path, dart_package_name: &
         }
 
         let text_raw = std::fs::read_to_string(&path)?;
-        let plugin_line = format!("  {dart_package_name}\n");
-        let text_output = text_raw.replace(&plugin_line, "");
+        let text_output = text_raw
+            .replace(&format!("  {dart_package_name}\r\n"), "")
+            .replace(&format!("  {dart_package_name}\n"), "");
         std::fs::write(&path, text_output)?;
     }
 
@@ -42,8 +43,8 @@ fn remove_example_ffi_plugin_registration(dart_root: &Path, dart_package_name: &
 fn remove_flutter_plugin_stanza(dart_root: &Path) -> Result<()> {
     let path = dart_root.join("pubspec.yaml");
     let text_raw = std::fs::read_to_string(&path)?;
-    let plugin_stanza = Regex::new(r"(?m)^  plugin:\n(?:    .*\n)+")?;
-    let orphan_hook_dependency = Regex::new(r"(?m)^  hooks: .*\n")?;
+    let plugin_stanza = Regex::new(r"(?m)^  plugin:\r?\n(?:    .*\r?\n)+")?;
+    let orphan_hook_dependency = Regex::new(r"(?m)^  hooks: .*\r?\n")?;
     let text_without_plugin = plugin_stanza.replace(&text_raw, "").to_string();
     let text_output = orphan_hook_dependency
         .replace(&text_without_plugin, "")
@@ -108,5 +109,54 @@ flutter:
         assert!(generated_plugins.contains("  other_plugin\n"));
         assert!(!dart_root.join("android").exists());
         assert!(!dart_root.join("ios").exists());
+    }
+
+    #[test]
+    fn test_remove_native_assets_plugin_scaffold_handles_crlf() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let dart_root = temp_dir.path();
+        fs::write(
+            dart_root.join("pubspec.yaml"),
+            concat!(
+                "name: sample\r\n",
+                "dependencies:\r\n",
+                "  flutter:\r\n",
+                "    sdk: flutter\r\n",
+                "  hooks: ^1.0.3\r\n",
+                "\r\n",
+                "flutter:\r\n",
+                "  plugin:\r\n",
+                "    platforms:\r\n",
+                "      windows:\r\n",
+                "        ffiPlugin: true\r\n",
+                "\r\n",
+                "  uses-material-design: true\r\n",
+            ),
+        )
+        .unwrap();
+        fs::create_dir_all(dart_root.join("example/windows/flutter")).unwrap();
+        fs::write(
+            dart_root.join("example/windows/flutter/generated_plugins.cmake"),
+            concat!(
+                "list(APPEND FLUTTER_FFI_PLUGIN_LIST\r\n",
+                "  sample\r\n",
+                "  other_plugin\r\n",
+                ")\r\n",
+            ),
+        )
+        .unwrap();
+
+        remove_native_assets_plugin_scaffold(dart_root).unwrap();
+
+        let text = fs::read_to_string(dart_root.join("pubspec.yaml")).unwrap();
+        let generated_plugins =
+            fs::read_to_string(dart_root.join("example/windows/flutter/generated_plugins.cmake"))
+                .unwrap();
+        assert!(!text.contains("hooks:"));
+        assert!(!text.contains("plugin:"));
+        assert!(text.contains("flutter:\r\n"));
+        assert!(text.contains("uses-material-design"));
+        assert!(!generated_plugins.contains("  sample\r\n"));
+        assert!(generated_plugins.contains("  other_plugin\r\n"));
     }
 }
