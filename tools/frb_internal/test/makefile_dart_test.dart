@@ -437,6 +437,7 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       final requirement = await resolveCodegenVersionRequirement(
         ReleaseChannel.unstable,
         fetcher: (_) async => {
+          'crate': {'max_stable_version': '2.12.0'},
           'versions': [
             {'num': '2.14.0-beta.1', 'yanked': true},
             {'num': '2.13.0-alpha.1', 'yanked': false},
@@ -447,6 +448,21 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       );
 
       expect(requirement, '=2.13.0-beta.1');
+    });
+
+    test('skips unstable channel when only old prereleases exist', () async {
+      final requirement = await resolveCodegenVersionRequirement(
+        ReleaseChannel.unstable,
+        fetcher: (_) async => {
+          'crate': {'max_stable_version': '2.12.0'},
+          'versions': [
+            {'num': '2.12.0', 'yanked': false},
+            {'num': '2.0.0-dev.42', 'yanked': false},
+          ],
+        },
+      );
+
+      expect(requirement, isNull);
     });
 
     test('parses release channel from CLI arguments', () {

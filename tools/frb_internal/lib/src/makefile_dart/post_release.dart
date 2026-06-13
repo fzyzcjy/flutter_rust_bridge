@@ -33,21 +33,32 @@ class PostReleaseConfig {
 }
 
 Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
-  final versionConstraint = await resolveCodegenVersionRequirement(
+  final versionRequirement = await resolveCodegenVersionRequirement(
     config.releaseChannel,
   );
+
+  if (versionRequirement == null) {
+    print(
+      'Post-release codegen install skipped: '
+      'release_channel=${config.releaseChannel.name} '
+      'codegen_install_mode=${config.codegenInstallMode.name} '
+      'package=$_codegenPackageName '
+      'reason=no newer unstable version',
+    );
+    return;
+  }
 
   print(
     'Post-release codegen install: '
     'release_channel=${config.releaseChannel.name} '
     'codegen_install_mode=${config.codegenInstallMode.name} '
     'package=$_codegenPackageName '
-    'version_requirement=$versionConstraint',
+    'version_requirement=$versionRequirement',
   );
 
   await quickstartStepInstall(
     config.codegenInstallMode,
-    versionConstraint: versionConstraint,
+    versionConstraint: versionRequirement,
   );
   await const MimicQuickstartTester(postRelease: true).test();
 }
@@ -61,7 +72,7 @@ typedef CratesIoMetadataFetcher =
 
 const _codegenPackageName = 'flutter_rust_bridge_codegen';
 
-Future<String> resolveCodegenVersionRequirement(
+Future<String?> resolveCodegenVersionRequirement(
   ReleaseChannel channel, {
   CratesIoMetadataFetcher fetcher = fetchCratesIoMetadata,
 }) async {
@@ -72,25 +83,49 @@ Future<String> resolveCodegenVersionRequirement(
       final version = parseLatestUnstableCodegenVersion(
         await fetcher(_codegenPackageName),
       );
-      return '=$version';
+      return version == null ? null : '=$version';
   }
 }
 
-String parseLatestUnstableCodegenVersion(Map<String, dynamic> metadata) {
+String? parseLatestUnstableCodegenVersion(Map<String, dynamic> metadata) {
   final versions = [
     for (final rawVersion in metadata['versions'] as List<dynamic>? ?? [])
       if (rawVersion is Map &&
           rawVersion['yanked'] != true &&
           rawVersion['num'] is String)
         Version.parse(rawVersion['num'] as String),
-  ].where((version) => version.isPreRelease).toList();
+  ];
 
-  if (versions.isEmpty) {
-    throw Exception('No unstable $_codegenPackageName version found');
+  final maxStableVersion = _parseMaxStableVersion(metadata, versions);
+  final newerUnstableVersions = versions
+      .where((version) => version.isPreRelease && version > maxStableVersion)
+      .toList();
+
+  if (newerUnstableVersions.isEmpty) {
+    return null;
   }
 
-  versions.sort();
-  return versions.last.toString();
+  newerUnstableVersions.sort();
+  return newerUnstableVersions.last.toString();
+}
+
+Version _parseMaxStableVersion(
+  Map<String, dynamic> metadata,
+  List<Version> versions,
+) {
+  final crate = metadata['crate'];
+  final rawMaxStableVersion = crate is Map
+      ? crate['max_stable_version'] as String?
+      : null;
+  if (rawMaxStableVersion != null) {
+    return Version.parse(rawMaxStableVersion);
+  }
+
+  final stableVersions = versions.where((version) => !version.isPreRelease);
+  if (stableVersions.isEmpty) {
+    throw Exception('No stable $_codegenPackageName version found');
+  }
+  return stableVersions.reduce((a, b) => a > b ? a : b);
 }
 
 Future<Map<String, dynamic>> fetchCratesIoMetadata(String package) async {
