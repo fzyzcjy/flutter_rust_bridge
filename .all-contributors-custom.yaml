@@ -133,3 +133,4 @@
 - escwxyz: Fix a typo.
 - eltociear: Fix a typo.
 - thesimplekid: Fix a typo.
+- rlch: Support serde_json Value.
