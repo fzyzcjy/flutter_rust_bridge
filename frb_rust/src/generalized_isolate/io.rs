@@ -12,3 +12,5 @@ pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
 pub fn handle_to_channel(handle: &SendableChannelHandle) -> Channel {
     handle.to_owned()
 }
+
+pub fn release_channel_handle(_handle: &SendableChannelHandle) {}
