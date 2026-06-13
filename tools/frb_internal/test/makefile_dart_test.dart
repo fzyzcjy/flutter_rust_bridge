@@ -424,9 +424,29 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
   });
 
   group('post-release config', () {
-    test('uses separate constraints for stable and unstable channels', () {
-      expect(ReleaseChannel.stable.versionConstraint, '^2.0.0');
-      expect(ReleaseChannel.unstable.versionConstraint, '^2.0.0-dev.0');
+    test('uses stable constraint without fetching crates.io', () async {
+      final requirement = await resolveCodegenVersionRequirement(
+        ReleaseChannel.stable,
+        fetcher: (_) => throw StateError('should not fetch'),
+      );
+
+      expect(requirement, '^2.0.0');
+    });
+
+    test('uses latest unstable exact constraint from crates.io', () async {
+      final requirement = await resolveCodegenVersionRequirement(
+        ReleaseChannel.unstable,
+        fetcher: (_) async => {
+          'versions': [
+            {'num': '2.14.0-beta.1', 'yanked': true},
+            {'num': '2.13.0-alpha.1', 'yanked': false},
+            {'num': '2.13.0-beta.1', 'yanked': false},
+            {'num': '2.12.0', 'yanked': false},
+          ],
+        },
+      );
+
+      expect(requirement, '=2.13.0-beta.1');
     });
 
     test('parses release channel from CLI arguments', () {

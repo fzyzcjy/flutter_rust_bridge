@@ -2,9 +2,11 @@
 
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 part 'post_release.g.dart';
 
@@ -31,9 +33,13 @@ class PostReleaseConfig {
 }
 
 Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
+  final versionConstraint = await resolveCodegenVersionRequirement(
+    config.releaseChannel,
+  );
+
   await quickstartStepInstall(
     config.codegenInstallMode,
-    versionConstraint: config.releaseChannel.versionConstraint,
+    versionConstraint: versionConstraint,
   );
   await const MimicQuickstartTester(postRelease: true).test();
 }
@@ -42,11 +48,52 @@ enum CodegenInstallMode { cargoInstall, cargoBinstall, scoop, homebrew }
 
 enum ReleaseChannel { stable, unstable }
 
-extension ReleaseChannelExtension on ReleaseChannel {
-  String get versionConstraint => switch (this) {
-    ReleaseChannel.stable => '^2.0.0',
-    ReleaseChannel.unstable => '^2.0.0-dev.0',
-  };
+typedef CratesIoMetadataFetcher =
+    Future<Map<String, dynamic>> Function(String package);
+
+const _codegenPackageName = 'flutter_rust_bridge_codegen';
+
+Future<String> resolveCodegenVersionRequirement(
+  ReleaseChannel channel, {
+  CratesIoMetadataFetcher fetcher = fetchCratesIoMetadata,
+}) async {
+  switch (channel) {
+    case ReleaseChannel.stable:
+      return '^2.0.0';
+    case ReleaseChannel.unstable:
+      final version = parseLatestUnstableCodegenVersion(
+        await fetcher(_codegenPackageName),
+      );
+      return '=$version';
+  }
+}
+
+String parseLatestUnstableCodegenVersion(Map<String, dynamic> metadata) {
+  final versions = [
+    for (final rawVersion in metadata['versions'] as List<dynamic>? ?? [])
+      if (rawVersion is Map &&
+          rawVersion['yanked'] != true &&
+          rawVersion['num'] is String)
+        Version.parse(rawVersion['num'] as String),
+  ].where((version) => version.isPreRelease).toList();
+
+  if (versions.isEmpty) {
+    throw Exception('No unstable $_codegenPackageName version found');
+  }
+
+  versions.sort();
+  return versions.last.toString();
+}
+
+Future<Map<String, dynamic>> fetchCratesIoMetadata(String package) async {
+  final response = await Dio().getUri<Map<String, dynamic>>(
+    Uri.https('crates.io', '/api/v1/crates/$package'),
+  );
+  final data = response.data;
+  if (data == null) {
+    throw Exception('No crates.io metadata returned for $package');
+  }
+  return data;
 }
 
 Future<void> quickstartStepInstall(
