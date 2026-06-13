@@ -25,6 +25,7 @@ def test_classify_release_ci_gate_allows_non_release_paths() -> None:
 
     result = release_ci_gate.classify_release_ci_gate(
         changed_paths=[
+            "CHANGELOG.md",
             ".claude/skills/frb-publish-release/SKILL.md",
             ".devcontainer/Dockerfile",
             ".github/workflows/publish_dev_docker.yaml",
@@ -39,11 +40,10 @@ def test_classify_release_ci_gate_allows_non_release_paths() -> None:
 
 
 def test_classify_release_ci_gate_blocks_release_surface_paths() -> None:
-    """Package, changelog, and release script changes still require normal CI."""
+    """Package and release script changes still require normal CI."""
 
     result = release_ci_gate.classify_release_ci_gate(
         changed_paths=[
-            "CHANGELOG.md",
             "Cargo.toml",
             "frb_dart/pubspec.yaml",
             "frb_rust/src/lib.rs",
@@ -55,7 +55,6 @@ def test_classify_release_ci_gate_blocks_release_surface_paths() -> None:
 
     assert result.allowed is False
     assert [path.path for path in result.blocked_paths] == [
-        "CHANGELOG.md",
         "Cargo.toml",
         "frb_dart/pubspec.yaml",
         "frb_rust/src/lib.rs",
