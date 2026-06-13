@@ -37,6 +37,14 @@ Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
     config.releaseChannel,
   );
 
+  print(
+    'Post-release codegen install: '
+    'release_channel=${config.releaseChannel.name} '
+    'codegen_install_mode=${config.codegenInstallMode.name} '
+    'package=$_codegenPackageName '
+    'version_requirement=$versionConstraint',
+  );
+
   await quickstartStepInstall(
     config.codegenInstallMode,
     versionConstraint: versionConstraint,
