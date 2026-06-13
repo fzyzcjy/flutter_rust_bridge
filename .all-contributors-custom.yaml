@@ -41,6 +41,7 @@
 - h3x4d3c1m4l: Fix when outside folder. Support publish tag.
 - Tienisto: Remove default enum case. Add mock init.
 - AadamZ5: Workspace root resolution logic.
+- rlch: Support serde_json Value.
 - dt-iohk: Support multi packages on web.
 - NathanKolbas: Crate name different from plugin. Update CI.
 - satvikpendem: 'Add json_serializable. Update CI. Little co-work #989.'
@@ -133,4 +134,3 @@
 - escwxyz: Fix a typo.
 - eltociear: Fix a typo.
 - thesimplekid: Fix a typo.
-- rlch: Support serde_json Value.
