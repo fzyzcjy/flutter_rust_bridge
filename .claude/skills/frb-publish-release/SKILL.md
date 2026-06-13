@@ -88,7 +88,7 @@ Wait until every package has `isReleased: true` and `allReleased: true`. If one 
 - Keep watching the release commit's normal CI until it is green.
 - After `./frb_internal get-released-version` reports `allReleased: true`, trigger `.github/workflows/post_release.yaml` for the release commit or `master`.
 - Babysit post-release CI until it is green. Use `gh-actions-live-logs` when reading GitHub Actions logs.
-- If post-release fails, classify the failure by install mode (`cargo-install`, `cargo-binstall`, `scoop`, or `homebrew`) before changing code or rerunning.
+- If post-release fails, classify the failure by release channel (`stable` or `unstable`) and install mode (`cargo-install`, `cargo-binstall`, `scoop`, or `homebrew`) before changing code or rerunning.
 
 ## Related Skills
 

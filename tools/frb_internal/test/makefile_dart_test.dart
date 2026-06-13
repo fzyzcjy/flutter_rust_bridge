@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
@@ -419,6 +420,45 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
         everyElement('9.9.9'),
       );
       expect(statuses.map((status) => status.isReleased), everyElement(true));
+    });
+  });
+
+  group('post-release config', () {
+    test('uses stable constraint without fetching crates.io', () async {
+      final requirement = await resolveCodegenVersionRequirement(
+        ReleaseChannel.stable,
+        fetcher: (_) => throw StateError('should not fetch'),
+      );
+
+      expect(requirement, '^2.0.0');
+    });
+
+    test('uses latest unstable exact constraint from crates.io', () async {
+      final requirement = await resolveCodegenVersionRequirement(
+        ReleaseChannel.unstable,
+        fetcher: (_) async => {
+          'versions': [
+            {'num': '2.14.0-beta.1', 'yanked': true},
+            {'num': '2.13.0-alpha.1', 'yanked': false},
+            {'num': '2.13.0-beta.1', 'yanked': false},
+            {'num': '2.12.0', 'yanked': false},
+          ],
+        },
+      );
+
+      expect(requirement, '=2.13.0-beta.1');
+    });
+
+    test('parses release channel from CLI arguments', () {
+      final config = parsePostReleaseConfig([
+        '--codegen-install-mode',
+        'cargo-install',
+        '--release-channel',
+        'unstable',
+      ]);
+
+      expect(config.codegenInstallMode, CodegenInstallMode.cargoInstall);
+      expect(config.releaseChannel, ReleaseChannel.unstable);
     });
   });
 
