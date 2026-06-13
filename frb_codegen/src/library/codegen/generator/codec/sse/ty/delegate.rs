@@ -41,6 +41,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     }
                 },
                 MirTypeDelegate::Uuid => "self.toBytes()".to_owned(),
+                MirTypeDelegate::Url | MirTypeDelegate::UriparseUri => "self.toString()".to_owned(),
                 MirTypeDelegate::SerdeJsonValue => "jsonEncode(self)".to_owned(),
                 MirTypeDelegate::StreamSink(mir) => {
                     generate_stream_sink_setup_and_serialize(mir, "self")
@@ -110,6 +111,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     }
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
+                MirTypeDelegate::Url | MirTypeDelegate::UriparseUri => "self.to_string()".to_owned(),
                 MirTypeDelegate::SerdeJsonValue => {
                     "serde_json::to_string(&self).expect(\"Failed to serialize serde_json::Value\")"
                         .to_owned()
@@ -180,6 +182,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                         }
                     },
                     MirTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
+                    MirTypeDelegate::Url | MirTypeDelegate::UriparseUri => "Uri.parse(inner)".to_owned(),
                     MirTypeDelegate::SerdeJsonValue => "jsonDecode(inner)".to_owned(),
                     MirTypeDelegate::StreamSink(_)
                     | MirTypeDelegate::ProxyVariant(_)
@@ -233,6 +236,12 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                 }
                 MirTypeDelegate::Uuid => {
                     r#"uuid::Uuid::from_slice(&inner).expect("fail to decode uuid")"#.to_owned()
+                }
+                MirTypeDelegate::Url => {
+                    r#"url::Url::parse(&inner).expect("Failed to deserialize url::Url")"#.to_owned()
+                }
+                MirTypeDelegate::UriparseUri => {
+                    r#"uriparse::URI::try_from(inner.as_str()).expect("Failed to deserialize uriparse::URI").into_owned()"#.to_owned()
                 }
                 MirTypeDelegate::SerdeJsonValue => {
                     r#"serde_json::from_str(&inner).expect("Failed to deserialize serde_json::Value")"#.to_owned()

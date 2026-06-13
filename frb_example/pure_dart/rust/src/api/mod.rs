@@ -60,6 +60,7 @@ pub mod stream_misc;
 pub mod structure;
 pub mod tuple;
 pub mod type_alias;
+pub mod url_type;
 pub mod uuid_type;
 
 pub fn function_at_api_mod_rs() {}

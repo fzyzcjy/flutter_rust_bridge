@@ -182,6 +182,10 @@ import 'api/pseudo_manual/type_alias_twin_rust_async_test.dart'
     as type_alias_twin_rust_async_test;
 import 'api/pseudo_manual/type_alias_twin_sync_test.dart'
     as type_alias_twin_sync_test;
+import 'api/pseudo_manual/url_type_twin_rust_async_test.dart'
+    as url_type_twin_rust_async_test;
+import 'api/pseudo_manual/url_type_twin_sync_test.dart'
+    as url_type_twin_sync_test;
 import 'api/pseudo_manual/uuid_type_twin_rust_async_test.dart'
     as uuid_type_twin_rust_async_test;
 import 'api/pseudo_manual/uuid_type_twin_sync_test.dart'
@@ -197,6 +201,7 @@ import 'api/stream_test.dart' as stream_test;
 import 'api/structure_test.dart' as structure_test;
 import 'api/tuple_test.dart' as tuple_test;
 import 'api/type_alias_test.dart' as type_alias_test;
+import 'api/url_type_test.dart' as url_type_test;
 import 'api/uuid_type_test.dart' as uuid_type_test;
 
 Future<void> main() async {
@@ -330,6 +335,8 @@ Future<void> callFileEntrypoints() async {
     tuple_twin_sync_test.main,
     type_alias_twin_rust_async_test.main,
     type_alias_twin_sync_test.main,
+    url_type_twin_rust_async_test.main,
+    url_type_twin_sync_test.main,
     uuid_type_twin_rust_async_test.main,
     uuid_type_twin_sync_test.main,
     raw_string_test.main,
@@ -343,6 +350,7 @@ Future<void> callFileEntrypoints() async {
     structure_test.main,
     tuple_test.main,
     type_alias_test.main,
+    url_type_test.main,
     uuid_type_test.main,
   ];
 

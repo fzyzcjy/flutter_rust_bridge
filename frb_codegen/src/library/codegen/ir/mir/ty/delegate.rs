@@ -25,6 +25,8 @@ pub enum MirTypeDelegate {
     // TimeList(MirTypeDelegateTime),// TODO avoid this special case?
     Uuid,
     // Uuids,// TODO avoid this special case?
+    Url,
+    UriparseUri,
     SerdeJsonValue,
     Backtrace,
     AnyhowException,
@@ -179,6 +181,8 @@ impl MirTypeTrait for MirTypeDelegate {
             // MirTypeDelegate::TimeList(mir) => format!("Chrono_{}List", mir),
             MirTypeDelegate::Uuid => "Uuid".to_owned(),
             // MirTypeDelegate::Uuids => "Uuids".to_owned(),
+            MirTypeDelegate::Url => "Url".to_owned(),
+            MirTypeDelegate::UriparseUri => "UriparseUri".to_owned(),
             MirTypeDelegate::SerdeJsonValue => "SerdeJsonValue".to_owned(),
             MirTypeDelegate::Backtrace => "Backtrace".to_owned(),
             MirTypeDelegate::AnyhowException => "AnyhowException".to_owned(),
@@ -267,6 +271,8 @@ impl MirTypeTrait for MirTypeDelegate {
             // .to_owned(),
             MirTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
             // MirTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
+            MirTypeDelegate::Url => "url::Url".to_owned(),
+            MirTypeDelegate::UriparseUri => "uriparse::URI<'static>".to_owned(),
             MirTypeDelegate::SerdeJsonValue => "serde_json::Value".to_owned(),
             MirTypeDelegate::Backtrace => "backtrace::Backtrace".to_owned(),
             MirTypeDelegate::AnyhowException => {
@@ -347,6 +353,8 @@ impl MirTypeTrait for MirTypeDelegate {
                 | MirTypeDelegate::Char
                 | MirTypeDelegate::PrimitiveEnum(_)
                 | MirTypeDelegate::BigPrimitive(_)
+                | MirTypeDelegate::Url
+                | MirTypeDelegate::UriparseUri
                 | MirTypeDelegate::SerdeJsonValue
                 | MirTypeDelegate::CastedPrimitive(_)
                 | MirTypeDelegate::RustAutoOpaqueExplicit(_)
@@ -381,6 +389,9 @@ impl MirTypeDelegate {
             // MirTypeDelegate::Uuids => MirType::PrimitiveList(MirTypePrimitiveList {
             //     primitive: MirTypePrimitive::U8,
             // }),
+            MirTypeDelegate::Url | MirTypeDelegate::UriparseUri => {
+                MirType::Delegate(MirTypeDelegate::String)
+            }
             MirTypeDelegate::SerdeJsonValue => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::Backtrace => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::AnyhowException => MirType::Delegate(MirTypeDelegate::String),
