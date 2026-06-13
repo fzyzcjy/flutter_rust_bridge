@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -463,7 +462,6 @@ Future<T> withLlvmCovReport<T>(
   if (envMap.containsKey('RUSTFLAGS')) {
     envMap['NIX_FRB_RUSTFLAGS'] = envMap['RUSTFLAGS']!;
   }
-  envMap['NIX_FRB_SIMPLE_BUILD_EXTRA_ENV'] = jsonEncode(envMap);
   print('envMap=$envMap');
 
   await exec(

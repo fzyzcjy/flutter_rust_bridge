@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print, implementation_imports
 
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
@@ -11,7 +10,6 @@ import 'package:hooks/hooks.dart';
 /// Environment variable mapping (using NIX_ prefix to bypass semi-hermetic environment):
 /// - `NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY` → use nightly cargo
 /// - `NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS` → extra cargo args (space-separated)
-/// - `NIX_FRB_SIMPLE_BUILD_EXTRA_ENV` → JSON-encoded extra cargo environment
 /// - `NIX_FRB_SIMPLE_BUILD_SKIP` → skip build
 /// - `NIX_FRB_RUSTFLAGS` → RUSTFLAGS (set in cargo command)
 ///
@@ -32,9 +30,6 @@ Future<void> simpleBuild(
               ' ',
             ) ??
             const <String>[];
-    final cargoExtraEnv = _decodeExtraEnv(
-      Platform.environment['NIX_FRB_SIMPLE_BUILD_EXTRA_ENV'],
-    );
     final skip = Platform.environment['NIX_FRB_SIMPLE_BUILD_SKIP'] == '1';
     final rustflags = Platform.environment['NIX_FRB_RUSTFLAGS'];
 
@@ -61,18 +56,11 @@ Future<void> simpleBuild(
       ],
       pwd: rustCrateDir.toFilePath(),
       printCommandInStderr: true,
-      env: {...cargoExtraEnv, if (rustflags != null) 'RUSTFLAGS': rustflags},
+      env: {if (rustflags != null) 'RUSTFLAGS': rustflags},
     );
 
     output.dependencies.add(rustCrateDir);
 
     print('dependencies: ${output.dependencies}');
   });
-}
-
-Map<String, String> _decodeExtraEnv(String? raw) {
-  if (raw == null) return const {};
-
-  final decoded = jsonDecode(raw) as Map<String, dynamic>;
-  return decoded.map((key, value) => MapEntry(key, value as String));
 }
