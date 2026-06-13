@@ -1,4 +1,6 @@
 use crate::generalized_isolate::PortLike;
+use std::cell::RefCell;
+use std::collections::HashMap;
 use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
@@ -12,6 +14,10 @@ pub type DartAbi = wasm_bindgen::JsValue;
 #[derive(Clone, Debug)]
 pub struct SendableMessagePortHandle(String);
 
+thread_local! {
+    static BROADCAST_CHANNEL_CACHE: RefCell<HashMap<String, MessagePort>> = Default::default();
+}
+
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
     SendableMessagePortHandle(
         port.dyn_ref::<BroadcastChannel>()
@@ -21,7 +27,13 @@ pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
 }
 
 pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort {
-    PortLike::broadcast(&handle.0)
+    BROADCAST_CHANNEL_CACHE.with(|cache| {
+        let mut cache = cache.borrow_mut();
+        cache
+            .entry(handle.0.clone())
+            .or_insert_with(|| PortLike::broadcast(&handle.0))
+            .clone()
+    })
 }
 
 pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessagePortHandle {

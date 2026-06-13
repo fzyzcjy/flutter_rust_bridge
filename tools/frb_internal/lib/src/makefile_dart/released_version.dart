@@ -7,9 +7,10 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart'
+    show getFrbDartVersion;
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:toml/toml.dart';
-import 'package:yaml/yaml.dart';
 
 part 'released_version.g.dart';
 
@@ -163,7 +164,3 @@ String getWorkspaceRustVersion() =>
 String parseWorkspaceRustVersion(String raw) =>
     TomlDocument.parse(raw).toMap()['workspace']['package']['version']
         as String;
-
-String getFrbDartVersion() => loadYaml(
-  File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync(),
-)['version'];
