@@ -29,8 +29,9 @@ void main() {
     final input = _createBuildInput(outputDirectoryShared: '/tmp/frb-long');
     final adjusted = await buildInputForHost(isWindows: true, input: input);
     final shortOutputDirectoryShared = adjusted.outputDirectoryShared;
-    final shortOutputDirectorySharedPath =
-        Directory.fromUri(shortOutputDirectoryShared).path;
+    final shortOutputDirectorySharedPath = Directory.fromUri(
+      shortOutputDirectoryShared,
+    ).path;
 
     expect(
       shortOutputDirectorySharedPath,
