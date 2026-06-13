@@ -21,6 +21,9 @@ const _kIntegrateAppleScaffoldSourceOfTruthPaths = <String, List<String>>{
   ],
 };
 
+List<String> integrateAppleScaffoldSourceOfTruthPackages() =>
+    List.unmodifiable(_kIntegrateAppleScaffoldSourceOfTruthPaths.keys);
+
 Future<void> applyCheckedInAppleScaffoldSourceOfTruth({
   required String package,
   required String generatedPackageDir,
@@ -38,9 +41,8 @@ Future<void> applyCheckedInAppleScaffoldSourceOfTruth({
   }
 }
 
-List<String> _integrateAppleScaffoldSourceOfTruthPaths(String package) {
-  return _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [];
-}
+List<String> _integrateAppleScaffoldSourceOfTruthPaths(String package) =>
+    _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [];
 
 String _integrateAppleScaffoldSourceOfTruthAssetPath({
   required String package,

@@ -27,6 +27,7 @@ import 'package:yaml/yaml.dart';
 part 'generate.g.dart';
 
 const _kRefreshCargoLockOrderingEnv = 'FRB_REFRESH_CARGO_LOCK_ORDERING';
+
 List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand(
@@ -98,6 +99,7 @@ List<Command<void>> createCommands() {
     ),
     SimpleCommand('generate-website-merge', generateWebsiteMerge),
     SimpleCommand('generate-website-serve', generateWebsiteServe),
+    SimpleCommand('generate-apple-scaffold', generateAppleScaffold),
   ];
 }
 
@@ -141,12 +143,15 @@ class GenerateIntegratePackageConfig implements GenerateConfig {
   final bool coverage;
   @CliOption(defaultsTo: false)
   final bool includeOhos;
+  @CliOption(defaultsTo: false)
+  final bool skipCheckedInAppleScaffold;
 
   const GenerateIntegratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
     required this.coverage,
     required this.includeOhos,
+    required this.skipCheckedInAppleScaffold,
   });
 }
 
@@ -385,6 +390,28 @@ Future<void> _formatPackageAfterGenerate(String package) async {
   }
 }
 
+Future<void> generateAppleScaffold() async {
+  if (!Platform.isMacOS) {
+    throw StateError(
+      'generate-apple-scaffold requires macOS because Flutter only generates Apple scaffolds on macOS.',
+    );
+  }
+
+  await wrapMaybeSetExitIfChangedRaw(true, () async {
+    for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
+      await generateRunFrbCodegenCommandIntegrate(
+        GenerateIntegratePackageConfig(
+          setExitIfChanged: false,
+          package: package,
+          coverage: false,
+          includeOhos: true,
+          skipCheckedInAppleScaffold: true,
+        ),
+      );
+    }
+  });
+}
+
 Future<void> generateRunFrbCodegenCommandIntegrate(
   GenerateIntegratePackageConfig config,
 ) async {
@@ -450,10 +477,12 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           );
       }
 
-      await applyCheckedInAppleScaffoldSourceOfTruth(
-        package: config.package,
-        generatedPackageDir: dirPackage,
-      );
+      if (!config.skipCheckedInAppleScaffold) {
+        await applyCheckedInAppleScaffoldSourceOfTruth(
+          package: config.package,
+          generatedPackageDir: dirPackage,
+        );
+      }
 
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {
