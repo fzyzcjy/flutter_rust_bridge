@@ -1,5 +1,5 @@
 use crate::generalized_isolate::PortLike;
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 use std::collections::HashMap;
 use wasm_bindgen::closure::Closure;
 use wasm_bindgen::prelude::*;
@@ -13,12 +13,15 @@ pub type MessagePort = crate::generalized_isolate::PortLike;
 
 pub type DartAbi = wasm_bindgen::JsValue;
 
+const BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS: i32 = 100;
+
 #[derive(Clone, Debug)]
 pub struct SendableMessagePortHandle(String);
 
 thread_local! {
     static BROADCAST_CHANNEL_OF_NAME: RefCell<HashMap<String, MessagePort>> = Default::default();
     static BROADCAST_CHANNELS_PENDING_CLOSE: RefCell<Vec<MessagePort>> = Default::default();
+    static BROADCAST_CHANNEL_CLOSE_SCHEDULED: Cell<bool> = const { Cell::new(false) };
     static BROADCAST_CHANNEL_CLOSE_CALLBACK: Closure<dyn FnMut()> = Closure::wrap(Box::new(close_pending_message_ports) as Box<dyn FnMut()>);
 }
 
@@ -66,15 +69,24 @@ pub type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
 fn close_message_port_later(port: MessagePort) {
     BROADCAST_CHANNELS_PENDING_CLOSE.with(|ports| ports.borrow_mut().push(port));
 
-    if let Err(error) = BROADCAST_CHANNEL_CLOSE_CALLBACK
-        .with(|callback| set_timeout(callback.as_ref().unchecked_ref(), 0))
-    {
+    if BROADCAST_CHANNEL_CLOSE_SCHEDULED.with(|scheduled| scheduled.replace(true)) {
+        return;
+    }
+
+    if let Err(error) = BROADCAST_CHANNEL_CLOSE_CALLBACK.with(|callback| {
+        set_timeout(
+            callback.as_ref().unchecked_ref(),
+            BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS,
+        )
+    }) {
         crate::console_error!("schedule broadcast channel close: {:?}", error);
         close_pending_message_ports();
     }
 }
 
 fn close_pending_message_ports() {
+    BROADCAST_CHANNEL_CLOSE_SCHEDULED.with(|scheduled| scheduled.set(false));
+
     let ports = BROADCAST_CHANNELS_PENDING_CLOSE
         .with(|ports| ports.borrow_mut().drain(..).collect::<Vec<_>>());
     for port in ports {
