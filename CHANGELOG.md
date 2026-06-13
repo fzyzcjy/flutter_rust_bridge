@@ -23,7 +23,7 @@
 * Split out @rlch's serde_json Value support #3077
 * Support multi-arch Docker development on Apple Silicon #3070
 * Remove outdated Dockerfile in favor of devcontainer up-to-date Dockerfile #3069
-* Support HarmonyOS #3065 (thanks @star4277)
+* Support HarmonyOS #3065
 * Fix threaded WASM build-web defaults for the website demo #3052
 * Introduce conversion between chrono::NaiveDate and DateTime avoiding RustOpaque #2968 (thanks @TrackerSB)
 * Fix Map/List/Set equality in generated Dart structs #2956 (thanks @nightscape)
