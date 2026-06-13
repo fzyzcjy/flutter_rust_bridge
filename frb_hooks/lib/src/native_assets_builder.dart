@@ -31,8 +31,7 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
   /// The Rust crate path, relative to the Dart package root.
   final String cratePath;
 
-  /// The Cargo build mode. When omitted, flutter_rust_bridge chooses from the
-  /// hook input config.
+  /// The Cargo build mode. When omitted, native_toolchain_rust chooses its default.
   final FlutterRustBridgeBuildMode? buildMode;
 
   /// Whether Cargo should enable default crate features.
@@ -67,23 +66,7 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
               )
             : null,
       );
-      final effectiveBuildMode =
-          buildMode ??
-          buildModeFromLinkingEnabled(
-            linkingEnabled: input.config.linkingEnabled,
-          );
-      final builder = native_toolchain_rust.RustBuilder(
-        assetName: assetName,
-        cratePath: cratePath,
-        buildMode: effectiveBuildMode,
-        enableDefaultFeatures: enableDefaultFeatures,
-        features: features,
-        extraCargoBuildArgs: extraCargoBuildArgs,
-        extraCargoEnvironmentVariables: defaultCargoEnvironmentVariablesForHost(
-          isWindows: Platform.isWindows,
-          userEnvironmentVariables: extraCargoEnvironmentVariables,
-        ),
-      );
+      final builder = _createRustBuilder(isWindows: Platform.isWindows);
       await builder.run(
         input: effectiveInput,
         output: output,
@@ -92,14 +75,37 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
       );
     });
   }
-}
 
-/// Returns the default Cargo build mode for a Dart/Flutter hook invocation.
-FlutterRustBridgeBuildMode buildModeFromLinkingEnabled({
-  required bool linkingEnabled,
-}) => linkingEnabled
-    ? native_toolchain_rust.BuildMode.release
-    : native_toolchain_rust.BuildMode.debug;
+  native_toolchain_rust.RustBuilder _createRustBuilder({
+    required bool isWindows,
+  }) {
+    final effectiveCargoEnvironmentVariables =
+        defaultCargoEnvironmentVariablesForHost(
+          isWindows: isWindows,
+          userEnvironmentVariables: extraCargoEnvironmentVariables,
+        );
+    if (buildMode != null) {
+      return native_toolchain_rust.RustBuilder(
+        assetName: assetName,
+        cratePath: cratePath,
+        buildMode: buildMode!,
+        enableDefaultFeatures: enableDefaultFeatures,
+        features: features,
+        extraCargoBuildArgs: extraCargoBuildArgs,
+        extraCargoEnvironmentVariables: effectiveCargoEnvironmentVariables,
+      );
+    }
+
+    return native_toolchain_rust.RustBuilder(
+      assetName: assetName,
+      cratePath: cratePath,
+      enableDefaultFeatures: enableDefaultFeatures,
+      features: features,
+      extraCargoBuildArgs: extraCargoBuildArgs,
+      extraCargoEnvironmentVariables: effectiveCargoEnvironmentVariables,
+    );
+  }
+}
 
 /// Returns Cargo environment variables that make FRB native-assets builds predictable.
 Map<String, String> defaultCargoEnvironmentVariablesForHost({

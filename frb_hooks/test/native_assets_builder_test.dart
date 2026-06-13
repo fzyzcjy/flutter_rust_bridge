@@ -4,25 +4,23 @@ import 'package:native_toolchain_rust/native_toolchain_rust.dart'
 import 'package:test/test.dart';
 
 void main() {
-  test('buildModeFromLinkingEnabled uses release when linking is enabled', () {
-    expect(
-      buildModeFromLinkingEnabled(linkingEnabled: true),
-      native_toolchain_rust.BuildMode.release,
+  test(
+    'builder defaults to generated IO asset, rust crate path, and upstream build mode',
+    () {
+      const builder = FlutterRustBridgeNativeAssetsBuilder();
+
+      expect(builder.assetName, 'src/rust/frb_generated.io.dart');
+      expect(builder.cratePath, 'rust');
+      expect(builder.buildMode, isNull);
+    },
+  );
+
+  test('builder keeps explicit build mode override', () {
+    const builder = FlutterRustBridgeNativeAssetsBuilder(
+      buildMode: native_toolchain_rust.BuildMode.debug,
     );
-  });
 
-  test('buildModeFromLinkingEnabled uses debug when linking is disabled', () {
-    expect(
-      buildModeFromLinkingEnabled(linkingEnabled: false),
-      native_toolchain_rust.BuildMode.debug,
-    );
-  });
-
-  test('builder defaults to the generated IO asset and rust crate path', () {
-    const builder = FlutterRustBridgeNativeAssetsBuilder();
-
-    expect(builder.assetName, 'src/rust/frb_generated.io.dart');
-    expect(builder.cratePath, 'rust');
+    expect(builder.buildMode, native_toolchain_rust.BuildMode.debug);
   });
 
   test('defaultCargoEnvironmentVariablesForHost limits Windows cargo jobs', () {
