@@ -741,11 +741,13 @@ Future<String?> _dockerChromeWrapperPath() async {
   if (!File('/.dockerenv').existsSync()) return null;
 
   final wrapper = File('${Directory.systemTemp.path}/frb-test-chrome.sh');
-  wrapper.writeAsStringSync('''
+  if (!wrapper.existsSync()) {
+    wrapper.writeAsStringSync('''
 #!/bin/sh
 exec /usr/bin/google-chrome --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage "\$@"
 ''');
-  await exec('chmod 755 ${wrapper.path}');
+    await exec('chmod 755 ${wrapper.path}');
+  }
 
   return wrapper.path;
 }
