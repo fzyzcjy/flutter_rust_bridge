@@ -66,7 +66,7 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
               )
             : null,
       );
-      final builder = _createRustBuilder(isWindows: Platform.isWindows);
+      final builder = _createRustBuilder();
       await builder.run(
         input: effectiveInput,
         output: output,
@@ -76,14 +76,7 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
     });
   }
 
-  native_toolchain_rust.RustBuilder _createRustBuilder({
-    required bool isWindows,
-  }) {
-    final effectiveCargoEnvironmentVariables =
-        defaultCargoEnvironmentVariablesForHost(
-          isWindows: isWindows,
-          userEnvironmentVariables: extraCargoEnvironmentVariables,
-        );
+  native_toolchain_rust.RustBuilder _createRustBuilder() {
     if (buildMode != null) {
       return native_toolchain_rust.RustBuilder(
         assetName: assetName,
@@ -92,7 +85,7 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
         enableDefaultFeatures: enableDefaultFeatures,
         features: features,
         extraCargoBuildArgs: extraCargoBuildArgs,
-        extraCargoEnvironmentVariables: effectiveCargoEnvironmentVariables,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
       );
     }
 
@@ -102,21 +95,10 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
       enableDefaultFeatures: enableDefaultFeatures,
       features: features,
       extraCargoBuildArgs: extraCargoBuildArgs,
-      extraCargoEnvironmentVariables: effectiveCargoEnvironmentVariables,
+      extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
     );
   }
 }
-
-/// Returns Cargo environment variables that make FRB native-assets builds predictable.
-Map<String, String> defaultCargoEnvironmentVariablesForHost({
-  required bool isWindows,
-  required Map<String, String> userEnvironmentVariables,
-}) => {
-  // Keep Windows native-assets builds from spawning multiple concurrent Cargo
-  // compile jobs inside the already serialized hook build.
-  if (isWindows) 'CARGO_BUILD_JOBS': '1',
-  ...userEnvironmentVariables,
-};
 
 /// Returns a build input adjusted for host-specific Native Assets behavior.
 BuildInput buildInputForHost({

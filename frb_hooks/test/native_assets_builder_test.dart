@@ -23,39 +23,6 @@ void main() {
     expect(builder.buildMode, native_toolchain_rust.BuildMode.debug);
   });
 
-  test('defaultCargoEnvironmentVariablesForHost limits Windows cargo jobs', () {
-    expect(
-      defaultCargoEnvironmentVariablesForHost(
-        isWindows: true,
-        userEnvironmentVariables: const {},
-      ),
-      const {'CARGO_BUILD_JOBS': '1'},
-    );
-  });
-
-  test('defaultCargoEnvironmentVariablesForHost allows user override', () {
-    expect(
-      defaultCargoEnvironmentVariablesForHost(
-        isWindows: true,
-        userEnvironmentVariables: const {'CARGO_BUILD_JOBS': '2'},
-      ),
-      const {'CARGO_BUILD_JOBS': '2'},
-    );
-  });
-
-  test(
-    'defaultCargoEnvironmentVariablesForHost keeps non-Windows unchanged',
-    () {
-      expect(
-        defaultCargoEnvironmentVariablesForHost(
-          isWindows: false,
-          userEnvironmentVariables: const {'RUSTFLAGS': '-C debuginfo=0'},
-        ),
-        const {'RUSTFLAGS': '-C debuginfo=0'},
-      );
-    },
-  );
-
   test('buildInputForHost uses short Windows output directory', () {
     final input = _createBuildInput(outputDirectoryShared: '/tmp/frb-long');
     final adjusted = buildInputForHost(
