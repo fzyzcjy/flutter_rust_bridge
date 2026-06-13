@@ -386,6 +386,19 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       );
     });
 
+    test('finds pub.dev prerelease target version outside latest', () {
+      expect(
+        parsePubDevReleasedVersion({
+          'latest': {'version': '2.12.0'},
+          'versions': [
+            {'version': '2.12.0'},
+            {'version': '2.13.0-beta.1'},
+          ],
+        }, targetVersion: '2.13.0-beta.1'),
+        '2.13.0-beta.1',
+      );
+    });
+
     test('summarizes whether every package is published', () {
       final output = buildReleasePackageStatusOutput([
         const ReleasePackageStatus(
@@ -432,6 +445,9 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
           }
           return {
             'latest': {'version': '9.9.9'},
+            'versions': [
+              {'version': '9.9.9'},
+            ],
           };
         },
       );
@@ -442,6 +458,36 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       );
       expect(statuses.map((status) => status.isReleased), everyElement(true));
     });
+
+    test(
+      'uses local Dart manifest version as pub.dev target version',
+      () async {
+        final rustVersion = getWorkspaceRustVersion();
+        final dartVersion = getFrbDartVersion();
+
+        final statuses = await fetchReleasePackageStatuses(
+          fetcher: (uri) async {
+            if (uri.host == 'crates.io') {
+              return {
+                'crate': {'max_version': rustVersion},
+              };
+            }
+            return {
+              'latest': {'version': '2.12.0'},
+              'versions': [
+                {'version': dartVersion},
+              ],
+            };
+          },
+        );
+
+        final pubDevStatus = statuses.singleWhere(
+          (status) => status.registry == 'pub.dev',
+        );
+        expect(pubDevStatus.releasedVersion, dartVersion);
+        expect(pubDevStatus.isReleased, true);
+      },
+    );
   });
 
   group('post-release config', () {

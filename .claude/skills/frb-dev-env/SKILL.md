@@ -84,19 +84,25 @@ The publish credential flag mounts these host credential sources when present:
 - Git config from `~/.gitconfig` and `~/.config/git`
 - Dart pub credentials from `PUB_CACHE`, `~/.pub-cache`, `~/.config/dart`, or `~/Library/Application Support/dart`
 
+Publish mode also prepares the container environment used by the release command:
+
+- Reuses the Docker image's Rust toolchain via `RUSTUP_HOME=/root/.rustup` even though `HOME` is changed to a temporary credential directory.
+- Rewrites copied Git/Cargo config proxy URLs from `localhost` or `127.0.0.1` to `host.docker.internal`, and forwards common proxy environment variables with the same rewrite. This lets a container use a host proxy such as `http://localhost:7897`.
+- Checks GitHub auth, GitHub network access, Cargo availability, crates.io search access, and Dart pub credential readability before running the requested command.
+
 Run the credential preflight before any irreversible release step:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- true
 ```
 
-Run release publishing through a temporary publish-credential container:
+Run release publishing through a temporary publish-credential container. Do not manually add `RUSTUP_HOME` or proxy environment overrides unless debugging the helper itself:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release
 ```
 
-The credential preflight fails before running release commands if host GitHub CLI auth is invalid, Cargo credentials are missing, or Dart pub credentials are missing. It then re-checks GitHub CLI auth inside the temporary container and runs `gh auth setup-git` there so HTTPS `git push` can use the mounted GitHub CLI auth.
+The credential preflight fails before running release commands if host GitHub CLI auth is invalid, Cargo credentials are missing, Dart pub credentials are missing, the image has no usable Cargo toolchain, or the container cannot reach GitHub/crates.io through the configured network path. It then re-checks GitHub CLI auth inside the temporary container and runs `gh auth setup-git` there so HTTPS `git push` can use the mounted GitHub CLI auth.
 
 ### Cleanup
 

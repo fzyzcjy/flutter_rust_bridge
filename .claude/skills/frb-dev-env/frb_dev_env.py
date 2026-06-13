@@ -15,6 +15,7 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Annotated
+from urllib.parse import urlsplit, urlunsplit
 
 import typer
 
@@ -57,8 +58,19 @@ PUBLISH_HOME = Path("/tmp/frb-publish-home")
 PUBLISH_CARGO_HOME = Path("/tmp/frb-publish-cargo-home")
 PUBLISH_PUB_CACHE = Path("/tmp/frb-publish-pub-cache")
 PUBLISH_XDG_CONFIG_HOME = Path("/tmp/frb-publish-config")
+PUBLISH_RUSTUP_HOME = Path("/root/.rustup")
 PUBLISH_GH_HOST = "github.com"
 PUBLISH_GH_TOKEN_ENV_NAMES = ["GH_TOKEN", "GITHUB_TOKEN"]
+PUBLISH_PROXY_ENV_NAMES = [
+    "http_proxy",
+    "https_proxy",
+    "all_proxy",
+    "HTTP_PROXY",
+    "HTTPS_PROXY",
+    "ALL_PROXY",
+    "CARGO_HTTP_PROXY",
+]
+PUBLISH_DOCKER_HOST_ALIAS = "host.docker.internal"
 
 
 # ========== Common ==========
@@ -286,10 +298,12 @@ def publish_container_environment_args() -> list[str]:
         "PUB_CACHE": str(PUBLISH_PUB_CACHE),
         "XDG_CONFIG_HOME": str(PUBLISH_XDG_CONFIG_HOME),
         "GH_CONFIG_DIR": str(PUBLISH_HOME / ".config" / "gh"),
+        "RUSTUP_HOME": str(PUBLISH_RUSTUP_HOME),
     }
     return [
         *docker_exec_env_args(env),
         *docker_env_passthrough_args(PUBLISH_GH_TOKEN_ENV_NAMES),
+        *docker_proxy_env_args(),
     ]
 
 
@@ -300,6 +314,30 @@ def docker_env_passthrough_args(names: list[str]) -> list[str]:
             result.extend(["--env", name])
 
     return result
+
+
+def docker_proxy_env_args() -> list[str]:
+    result = []
+    for name in PUBLISH_PROXY_ENV_NAMES:
+        value = os.environ.get(name)
+        if value:
+            result.extend(["--env", f"{name}={dockerize_host_proxy_url(value)}"])
+
+    return result
+
+
+def dockerize_host_proxy_url(value: str) -> str:
+    parsed = urlsplit(value)
+    if parsed.hostname not in {"localhost", "127.0.0.1"} or parsed.port is None:
+        return value
+
+    username = parsed.username or ""
+    password = f":{parsed.password}" if parsed.password else ""
+    auth = f"{username}{password}@" if username else ""
+    netloc = f"{auth}{PUBLISH_DOCKER_HOST_ALIAS}:{parsed.port}"
+    return urlunsplit(
+        (parsed.scheme, netloc, parsed.path, parsed.query, parsed.fragment)
+    )
 
 
 def publish_container_bootstrap_script() -> str:
@@ -317,6 +355,7 @@ def publish_container_bootstrap_script() -> str:
             f"export PUB_CACHE={shlex.quote(str(PUBLISH_PUB_CACHE))}",
             f"export XDG_CONFIG_HOME={shlex.quote(str(PUBLISH_XDG_CONFIG_HOME))}",
             f"export GH_CONFIG_DIR={shlex.quote(str(PUBLISH_HOME / '.config' / 'gh'))}",
+            f"export RUSTUP_HOME={shlex.quote(str(PUBLISH_RUSTUP_HOME))}",
             'mkdir -p "$HOME/.config" "$CARGO_HOME" "$PUB_CACHE" "$XDG_CONFIG_HOME/dart"',
             f"if [ -d {gh_credential_root} ]; then cp -a {gh_credential_root} \"$HOME/.config/gh\"; fi",
             f"if [ -f {gitconfig_path} ]; then cp {gitconfig_path} \"$HOME/.gitconfig\"; fi",
@@ -324,11 +363,19 @@ def publish_container_bootstrap_script() -> str:
             f"for name in credentials.toml credentials config.toml config; do if [ -f {cargo_credential_root}/$name ]; then cp {cargo_credential_root}/$name \"$CARGO_HOME/$name\"; fi; done",
             f"if [ -f {pub_cache_root}/credentials.json ]; then cp {pub_cache_root}/credentials.json \"$PUB_CACHE/credentials.json\"; fi",
             f"for name in pub-credentials.json credentials.json; do if [ -f {dart_config_root}/$name ]; then cp {dart_config_root}/$name \"$XDG_CONFIG_HOME/dart/$name\"; fi; done",
+            'chmod -R u+w "$HOME" "$CARGO_HOME" 2>/dev/null || true',
+            'for file in "$HOME/.gitconfig" "$HOME/.config/git/config" "$CARGO_HOME/config.toml" "$CARGO_HOME/config"; do if [ -f "$file" ]; then sed -i "s#://localhost:#://host.docker.internal:#g; s#://127\\.0\\.0\\.1:#://host.docker.internal:#g" "$file"; fi; done',
             'command -v gh >/dev/null || { echo "GitHub CLI (gh) is required in the Docker image" >&2; exit 1; }',
+            'command -v cargo >/dev/null || { echo "Cargo is required in the Docker image" >&2; exit 1; }',
+            'command -v dart >/dev/null || { echo "Dart is required in the Docker image" >&2; exit 1; }',
+            'cargo --version',
             f"gh auth status --hostname {shlex.quote(PUBLISH_GH_HOST)}",
             f"gh auth setup-git --hostname {shlex.quote(PUBLISH_GH_HOST)}",
             'test -s "$CARGO_HOME/credentials.toml" || test -s "$CARGO_HOME/credentials"',
             'test -s "$PUB_CACHE/credentials.json" || test -s "$XDG_CONFIG_HOME/dart/pub-credentials.json" || test -s "$XDG_CONFIG_HOME/dart/credentials.json"',
+            'git ls-remote --heads https://github.com/fzyzcjy/flutter_rust_bridge.git master >/dev/null',
+            'cargo search flutter_rust_bridge --limit 1 >/dev/null',
+            'dart pub token list >/dev/null',
             'exec "$@"',
         ]
     )

@@ -108,6 +108,8 @@ The command prints JSON:
 
 Wait until every package has `isReleased: true` and `allReleased: true`. If one registry lags, keep polling with bounded waits and record the mismatched package instead of assuming the publish failed. Do not add the target version option to the mutating `release-*` subcommands; they derive their version from `CHANGELOG.md` and checked-in manifests.
 
+For beta releases, `get-released-version --version <VERSION>` must verify the pub.dev `versions` list, not only pub.dev's `latest` field, because pub.dev keeps `latest` on the latest stable release when a prerelease is uploaded.
+
 ### 5. Babysit CI And Post-Release CI
 
 - Keep watching the release commit's normal CI until it is green.
