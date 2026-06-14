@@ -225,6 +225,25 @@ Inspect, create, start, and run light commands in the per-worktree VM:
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- sw_vers
 ```
 
+### Tart Guest Network Proxy
+
+When the Tart guest needs outbound network access through the host proxy, make the proxy listen on the host's Tart bridge address and pass that URL through the helper. Enable LAN access for the host proxy, keep the mixed proxy port at `7897`, and verify the host listens on `*:7897` rather than only `127.0.0.1:7897`.
+
+Tart guests normally reach the host on `192.168.64.1`, so the usual proxy URL is:
+
+```bash
+export FRB_TART_HOST_PROXY_URL=http://192.168.64.1:7897
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec -- curl -I https://pub.dev
+```
+
+You can also pass the proxy for a single command:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec \
+  --host-proxy-url http://192.168.64.1:7897 \
+  -- curl -I https://pub.dev
+```
+
 Delete the worktree VM when it is no longer needed:
 
 ```bash

@@ -5,6 +5,8 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH"
 export LANG="en_US.UTF-8"
 
 RUST_VERSION="1.93.1"
+FLUTTER_VERSION="${FRB_TART_FLUTTER_VERSION:-3.44.0}"
+FLUTTER_ROOT="$HOME/flutter"
 
 log() {
   printf '[frb-tart-base] %s\n' "$*"
@@ -37,18 +39,47 @@ configure_xcode() {
   sudo xcodebuild -runFirstLaunch
 }
 
-install_flutter_if_needed() {
+ensure_flutter_root() {
   if command -v flutter >/dev/null 2>&1; then
     return
   fi
 
-  if [ -x "$HOME/flutter/bin/flutter" ]; then
-    export PATH="$HOME/flutter/bin:$PATH"
+  if [ -x "$FLUTTER_ROOT/bin/flutter" ]; then
+    export PATH="$FLUTTER_ROOT/bin:$PATH"
     return
   fi
 
   printf 'Flutter was not found in the source Tart image. Use a source image with Flutter preinstalled, or extend this Packer template with a fast local Flutter archive upload.\n' >&2
   exit 1
+}
+
+ensure_flutter_version() {
+  require_command git
+
+  if [ ! -d "$FLUTTER_ROOT/.git" ]; then
+    printf 'Flutter root is not a git checkout: %s\n' "$FLUTTER_ROOT" >&2
+    exit 1
+  fi
+
+  export PATH="$FLUTTER_ROOT/bin:$PATH"
+  export FLUTTER_GIT_URL="file://$FLUTTER_ROOT"
+
+  local current_version
+  current_version="$(flutter --version --machine | python3 -c 'import json,sys; print(json.load(sys.stdin)["frameworkVersion"])')"
+  if [ "$current_version" = "$FLUTTER_VERSION" ]; then
+    log "Flutter is already ${FLUTTER_VERSION}"
+    return
+  fi
+
+  log "Switching Flutter from ${current_version} to ${FLUTTER_VERSION}"
+  git -C "$FLUTTER_ROOT" fetch origin "refs/tags/${FLUTTER_VERSION}:refs/tags/${FLUTTER_VERSION}"
+  git -C "$FLUTTER_ROOT" checkout --detach "$FLUTTER_VERSION"
+
+  current_version="$(flutter --version --machine | python3 -c 'import json,sys; print(json.load(sys.stdin)["frameworkVersion"])')"
+  if [ "$current_version" != "$FLUTTER_VERSION" ]; then
+    printf 'Expected Flutter %s, but found %s after checkout.\n' "$FLUTTER_VERSION" "$current_version" >&2
+    exit 1
+  fi
 }
 
 install_cocoapods_if_needed() {
@@ -81,9 +112,11 @@ log "Checking source image tools"
 require_command xcodebuild
 require_command xcrun
 require_command curl
+require_command python3
 
 configure_xcode
-install_flutter_if_needed
+ensure_flutter_root
+ensure_flutter_version
 install_cocoapods_if_needed
 install_rustup_if_needed
 persist_shell_path
@@ -100,9 +133,9 @@ rustup target add x86_64-apple-ios
 rustup target add --toolchain stable-aarch64-apple-darwin aarch64-apple-ios-sim
 rustup target add --toolchain stable-aarch64-apple-darwin x86_64-apple-ios
 
-log "Pre-caching Flutter iOS artifacts"
+log "Pre-caching Flutter iOS and macOS artifacts"
 flutter config --no-analytics
-flutter precache --ios
+flutter precache --ios --macos
 
 log "Disabling Spotlight indexing inside the VM"
 sudo mdutil -a -i off
@@ -111,6 +144,7 @@ log "Printing tool versions"
 sw_vers
 xcodebuild -version
 flutter --version
+flutter --version --machine | python3 -c 'import json,os,sys; version=json.load(sys.stdin)["frameworkVersion"]; expected=os.environ.get("FRB_TART_FLUTTER_VERSION", "3.44.0"); assert version == expected, f"Expected Flutter {expected}, found {version}"'
 pod --version
 rustc --version
 cargo --version
