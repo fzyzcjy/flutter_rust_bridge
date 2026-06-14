@@ -6,8 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `Extension`, `Triad`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 abstract class ToChordQuality {
   Future<Quality> toChordQuality();
@@ -45,6 +44,37 @@ class Change {
       other is Change &&
           runtimeType == other.runtimeType &&
           notes == other.notes;
+}
+
+enum Extension {
+  noChord,
+  majorSeventh,
+  five,
+  sixAddNine,
+  six,
+  majorSeven,
+  seven,
+  majorNine,
+  nine,
+  majorEleven,
+  eleven,
+  majorThirteen,
+  thirteen,
+  unison,
+  minorSecond,
+  majorSecond,
+  minorThird,
+  majorThird,
+  fourth,
+  augmentedFourth,
+  minorFifth,
+  fifth,
+  minorSixth,
+  majorSixth,
+  minorSeventh;
+
+  Future<void> name() =>
+      RustLib.instance.api.jazzChordExtensionName(that: this);
 }
 
 class KeySlashQuality {
@@ -101,4 +131,18 @@ class Quality {
       other is Quality &&
           runtimeType == other.runtimeType &&
           input == other.input;
+}
+
+enum Triad {
+  major,
+  minor,
+  diminished,
+  halfDiminished,
+  augmented,
+  susTwo,
+  susFlatTwo,
+  susFour,
+  susSharpFour;
+
+  Future<void> name() => RustLib.instance.api.jazzChordTriadName(that: this);
 }

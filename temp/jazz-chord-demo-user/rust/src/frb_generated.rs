@@ -40,7 +40,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.13.0-beta.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1098595244;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1137886256;
 
 // Section: executor
 
@@ -216,6 +216,41 @@ fn wire__jazz_chord__change_to_chord_quality_impl(
         },
     )
 }
+fn wire__jazz_chord__extension_name_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "extension_name",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <jazz_chord::Extension>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok({
+                        jazz_chord::Extension::name(&api_that);
+                    })?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
 fn wire__jazz_chord__key_slash_quality_from_string_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -378,6 +413,41 @@ fn wire__jazz_chord__quality_from_string_impl(
         },
     )
 }
+fn wire__jazz_chord__triad_name_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "triad_name",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <jazz_chord::Triad>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok({
+                        jazz_chord::Triad::name(&api_that);
+                    })?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
 
 // Section: static_checks
 
@@ -416,6 +486,48 @@ impl SseDecode for jazz_chord::Change {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_notes = <Vec<jazz_chord::Note>>::sse_decode(deserializer);
         return jazz_chord::Change { notes: var_notes };
+    }
+}
+
+impl SseDecode for jazz_chord::Extension {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => jazz_chord::Extension::NoChord,
+            1 => jazz_chord::Extension::MajorSeventh,
+            2 => jazz_chord::Extension::Five,
+            3 => jazz_chord::Extension::SixAddNine,
+            4 => jazz_chord::Extension::Six,
+            5 => jazz_chord::Extension::MajorSeven,
+            6 => jazz_chord::Extension::Seven,
+            7 => jazz_chord::Extension::MajorNine,
+            8 => jazz_chord::Extension::Nine,
+            9 => jazz_chord::Extension::MajorEleven,
+            10 => jazz_chord::Extension::Eleven,
+            11 => jazz_chord::Extension::MajorThirteen,
+            12 => jazz_chord::Extension::Thirteen,
+            13 => jazz_chord::Extension::Unison,
+            14 => jazz_chord::Extension::MinorSecond,
+            15 => jazz_chord::Extension::MajorSecond,
+            16 => jazz_chord::Extension::MinorThird,
+            17 => jazz_chord::Extension::MajorThird,
+            18 => jazz_chord::Extension::Fourth,
+            19 => jazz_chord::Extension::AugmentedFourth,
+            20 => jazz_chord::Extension::MinorFifth,
+            21 => jazz_chord::Extension::Fifth,
+            22 => jazz_chord::Extension::MinorSixth,
+            23 => jazz_chord::Extension::MajorSixth,
+            24 => jazz_chord::Extension::MinorSeventh,
+            _ => unreachable!("Invalid variant for Extension: {}", inner),
+        };
+    }
+}
+
+impl SseDecode for i32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
     }
 }
 
@@ -489,6 +601,25 @@ impl SseDecode for jazz_chord::Quality {
     }
 }
 
+impl SseDecode for jazz_chord::Triad {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => jazz_chord::Triad::Major,
+            1 => jazz_chord::Triad::Minor,
+            2 => jazz_chord::Triad::Diminished,
+            3 => jazz_chord::Triad::HalfDiminished,
+            4 => jazz_chord::Triad::Augmented,
+            5 => jazz_chord::Triad::SusTwo,
+            6 => jazz_chord::Triad::SusFlatTwo,
+            7 => jazz_chord::Triad::SusFour,
+            8 => jazz_chord::Triad::SusSharpFour,
+            _ => unreachable!("Invalid variant for Triad: {}", inner),
+        };
+    }
+}
+
 impl SseDecode for u8 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -499,13 +630,6 @@ impl SseDecode for u8 {
 impl SseDecode for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {}
-}
-
-impl SseDecode for i32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
-    }
 }
 
 impl SseDecode for bool {
@@ -529,11 +653,13 @@ fn pde_ffi_dispatcher_primary_impl(
         4 => wire__jazz_chord__change_join_impl(port, ptr, rust_vec_len, data_len),
         5 => wire__jazz_chord__change_new_impl(port, ptr, rust_vec_len, data_len),
         6 => wire__jazz_chord__change_to_chord_quality_impl(port, ptr, rust_vec_len, data_len),
-        7 => {
+        7 => wire__jazz_chord__extension_name_impl(port, ptr, rust_vec_len, data_len),
+        8 => {
             wire__jazz_chord__key_slash_quality_from_string_impl(port, ptr, rust_vec_len, data_len)
         }
-        8 => wire__jazz_chord__note_new_impl(port, ptr, rust_vec_len, data_len),
-        11 => wire__jazz_chord__quality_from_string_impl(port, ptr, rust_vec_len, data_len),
+        9 => wire__jazz_chord__note_new_impl(port, ptr, rust_vec_len, data_len),
+        12 => wire__jazz_chord__quality_from_string_impl(port, ptr, rust_vec_len, data_len),
+        13 => wire__jazz_chord__triad_name_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -546,8 +672,8 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        9 => wire__crate__api__simple__notes_to_chord_impl(ptr, rust_vec_len, data_len),
-        10 => wire__crate__api__simple__parse_chord_string_impl(ptr, rust_vec_len, data_len),
+        10 => wire__crate__api__simple__notes_to_chord_impl(ptr, rust_vec_len, data_len),
+        11 => wire__crate__api__simple__parse_chord_string_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -566,6 +692,50 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 }
 impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<jazz_chord::Change>> for jazz_chord::Change {
     fn into_into_dart(self) -> FrbWrapper<jazz_chord::Change> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<jazz_chord::Extension> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            jazz_chord::Extension::NoChord => 0.into_dart(),
+            jazz_chord::Extension::MajorSeventh => 1.into_dart(),
+            jazz_chord::Extension::Five => 2.into_dart(),
+            jazz_chord::Extension::SixAddNine => 3.into_dart(),
+            jazz_chord::Extension::Six => 4.into_dart(),
+            jazz_chord::Extension::MajorSeven => 5.into_dart(),
+            jazz_chord::Extension::Seven => 6.into_dart(),
+            jazz_chord::Extension::MajorNine => 7.into_dart(),
+            jazz_chord::Extension::Nine => 8.into_dart(),
+            jazz_chord::Extension::MajorEleven => 9.into_dart(),
+            jazz_chord::Extension::Eleven => 10.into_dart(),
+            jazz_chord::Extension::MajorThirteen => 11.into_dart(),
+            jazz_chord::Extension::Thirteen => 12.into_dart(),
+            jazz_chord::Extension::Unison => 13.into_dart(),
+            jazz_chord::Extension::MinorSecond => 14.into_dart(),
+            jazz_chord::Extension::MajorSecond => 15.into_dart(),
+            jazz_chord::Extension::MinorThird => 16.into_dart(),
+            jazz_chord::Extension::MajorThird => 17.into_dart(),
+            jazz_chord::Extension::Fourth => 18.into_dart(),
+            jazz_chord::Extension::AugmentedFourth => 19.into_dart(),
+            jazz_chord::Extension::MinorFifth => 20.into_dart(),
+            jazz_chord::Extension::Fifth => 21.into_dart(),
+            jazz_chord::Extension::MinorSixth => 22.into_dart(),
+            jazz_chord::Extension::MajorSixth => 23.into_dart(),
+            jazz_chord::Extension::MinorSeventh => 24.into_dart(),
+            _ => unreachable!(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<jazz_chord::Extension>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<jazz_chord::Extension>>
+    for jazz_chord::Extension
+{
+    fn into_into_dart(self) -> FrbWrapper<jazz_chord::Extension> {
         self.into()
     }
 }
@@ -613,6 +783,29 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<jazz_chord::Quality>> for jazz
         self.into()
     }
 }
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<jazz_chord::Triad> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            jazz_chord::Triad::Major => 0.into_dart(),
+            jazz_chord::Triad::Minor => 1.into_dart(),
+            jazz_chord::Triad::Diminished => 2.into_dart(),
+            jazz_chord::Triad::HalfDiminished => 3.into_dart(),
+            jazz_chord::Triad::Augmented => 4.into_dart(),
+            jazz_chord::Triad::SusTwo => 5.into_dart(),
+            jazz_chord::Triad::SusFlatTwo => 6.into_dart(),
+            jazz_chord::Triad::SusFour => 7.into_dart(),
+            jazz_chord::Triad::SusSharpFour => 8.into_dart(),
+            _ => unreachable!(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<jazz_chord::Triad> {}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<jazz_chord::Triad>> for jazz_chord::Triad {
+    fn into_into_dart(self) -> FrbWrapper<jazz_chord::Triad> {
+        self.into()
+    }
+}
 
 impl SseEncode for String {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -625,6 +818,52 @@ impl SseEncode for jazz_chord::Change {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<jazz_chord::Note>>::sse_encode(self.notes, serializer);
+    }
+}
+
+impl SseEncode for jazz_chord::Extension {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(
+            match self {
+                jazz_chord::Extension::NoChord => 0,
+                jazz_chord::Extension::MajorSeventh => 1,
+                jazz_chord::Extension::Five => 2,
+                jazz_chord::Extension::SixAddNine => 3,
+                jazz_chord::Extension::Six => 4,
+                jazz_chord::Extension::MajorSeven => 5,
+                jazz_chord::Extension::Seven => 6,
+                jazz_chord::Extension::MajorNine => 7,
+                jazz_chord::Extension::Nine => 8,
+                jazz_chord::Extension::MajorEleven => 9,
+                jazz_chord::Extension::Eleven => 10,
+                jazz_chord::Extension::MajorThirteen => 11,
+                jazz_chord::Extension::Thirteen => 12,
+                jazz_chord::Extension::Unison => 13,
+                jazz_chord::Extension::MinorSecond => 14,
+                jazz_chord::Extension::MajorSecond => 15,
+                jazz_chord::Extension::MinorThird => 16,
+                jazz_chord::Extension::MajorThird => 17,
+                jazz_chord::Extension::Fourth => 18,
+                jazz_chord::Extension::AugmentedFourth => 19,
+                jazz_chord::Extension::MinorFifth => 20,
+                jazz_chord::Extension::Fifth => 21,
+                jazz_chord::Extension::MinorSixth => 22,
+                jazz_chord::Extension::MajorSixth => 23,
+                jazz_chord::Extension::MinorSeventh => 24,
+                _ => {
+                    unimplemented!("");
+                }
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for i32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
     }
 }
 
@@ -689,6 +928,29 @@ impl SseEncode for jazz_chord::Quality {
     }
 }
 
+impl SseEncode for jazz_chord::Triad {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(
+            match self {
+                jazz_chord::Triad::Major => 0,
+                jazz_chord::Triad::Minor => 1,
+                jazz_chord::Triad::Diminished => 2,
+                jazz_chord::Triad::HalfDiminished => 3,
+                jazz_chord::Triad::Augmented => 4,
+                jazz_chord::Triad::SusTwo => 5,
+                jazz_chord::Triad::SusFlatTwo => 6,
+                jazz_chord::Triad::SusFour => 7,
+                jazz_chord::Triad::SusSharpFour => 8,
+                _ => {
+                    unimplemented!("");
+                }
+            },
+            serializer,
+        );
+    }
+}
+
 impl SseEncode for u8 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -699,13 +961,6 @@ impl SseEncode for u8 {
 impl SseEncode for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {}
-}
-
-impl SseEncode for i32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
-    }
 }
 
 impl SseEncode for bool {

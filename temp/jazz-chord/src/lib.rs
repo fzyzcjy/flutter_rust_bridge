@@ -13,6 +13,28 @@ pub enum Triad {
     SusSharpFour,
 }
 
+impl Triad {
+    pub const fn name(&self) -> &'static str {
+        match self {
+            Self::Major => "Major",
+            Self::Minor => "Minor",
+            Self::Diminished => "Diminished",
+            Self::HalfDiminished => "Half Diminished",
+            Self::Augmented => "Augmented",
+            Self::SusTwo => "Suspended 2nd",
+            Self::SusFlatTwo => "Suspended flat 2nd",
+            Self::SusFour => "Suspended 4th",
+            Self::SusSharpFour => "Suspended sharp 4th",
+        }
+    }
+}
+
+impl fmt::Display for Triad {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.name())
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Extension {
     NoChord,
@@ -40,6 +62,44 @@ pub enum Extension {
     MinorSixth,
     MajorSixth,
     MinorSeventh,
+}
+
+impl Extension {
+    pub const fn name(&self) -> &'static str {
+        match self {
+            Self::NoChord => "No Chord",
+            Self::MajorSeventh => "Major Seventh",
+            Self::Five => "Five",
+            Self::SixAddNine => "Six Add Nine",
+            Self::Six => "Major Six",
+            Self::MajorSeven => "Major Seven",
+            Self::Seven => "Dominant Seven",
+            Self::MajorNine => "Major Nine",
+            Self::Nine => "Nine",
+            Self::MajorEleven => "Major Eleven",
+            Self::Eleven => "Eleven",
+            Self::MajorThirteen => "Major Thirteen",
+            Self::Thirteen => "Thirteen",
+            Self::Unison => "Unison",
+            Self::MinorSecond => "Minor Second",
+            Self::MajorSecond => "Major Second",
+            Self::MinorThird => "Minor Third",
+            Self::MajorThird => "Major Third",
+            Self::Fourth => "Fourth",
+            Self::AugmentedFourth => "Augmented Fourth",
+            Self::MinorFifth => "Minor Fifth",
+            Self::Fifth => "Fifth",
+            Self::MinorSixth => "Minor Sixth",
+            Self::MajorSixth => "Major Sixth",
+            Self::MinorSeventh => "Minor Seventh",
+        }
+    }
+}
+
+impl fmt::Display for Extension {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.name())
+    }
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]

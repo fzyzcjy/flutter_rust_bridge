@@ -38,6 +38,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Change dco_decode_change(dynamic raw);
 
   @protected
+  Extension dco_decode_extension(dynamic raw);
+
+  @protected
+  int dco_decode_i_32(dynamic raw);
+
+  @protected
   KeySlashQuality dco_decode_key_slash_quality(dynamic raw);
 
   @protected
@@ -57,6 +63,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Quality dco_decode_quality(dynamic raw);
+
+  @protected
+  Triad dco_decode_triad(dynamic raw);
 
   @protected
   int dco_decode_u_8(dynamic raw);
@@ -82,6 +91,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Change sse_decode_change(SseDeserializer deserializer);
 
   @protected
+  Extension sse_decode_extension(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
   KeySlashQuality sse_decode_key_slash_quality(SseDeserializer deserializer);
 
   @protected
@@ -105,13 +120,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Quality sse_decode_quality(SseDeserializer deserializer);
 
   @protected
+  Triad sse_decode_triad(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
@@ -133,6 +148,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_change(Change self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_extension(Extension self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_key_slash_quality(
@@ -168,13 +189,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_quality(Quality self, SseSerializer serializer);
 
   @protected
+  void sse_encode_triad(Triad self, SseSerializer serializer);
+
+  @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
