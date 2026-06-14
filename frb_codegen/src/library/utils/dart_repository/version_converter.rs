@@ -150,6 +150,26 @@ mod tests {
     }
 
     #[test]
+    fn test_dart_prerelease_caret_version_satisfies_stable_upper_bound_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.1.0-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse("<2.0.0").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_does_not_satisfy_compound_upper_bound() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^2.0.0-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse(">=1.0.0, <2.0.0").unwrap();
+
+        assert!(!version.matches_requirement(&requirement));
+    }
+
+    #[test]
     fn test_dart_prerelease_caret_version_satisfies_stable_caret_requirement() {
         let version =
             DartPackageVersion::try_from(&DartDependencyVersion("^1.0.1-dev.3".to_owned()))

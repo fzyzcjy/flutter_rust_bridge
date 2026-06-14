@@ -318,10 +318,14 @@ fn prerelease_matches_stable_lower_bound(version: &Version, requirement: &Versio
         && requirement
             .comparators
             .iter()
-            .any(|comparator| prerelease_is_after_stable_lower_bound(version, comparator))
+            .all(|comparator| prerelease_is_after_stable_lower_bound(version, comparator))
 }
 
 fn prerelease_is_after_stable_lower_bound(version: &Version, comparator: &Comparator) -> bool {
+    if matches!(comparator.op, Op::Less | Op::LessEq) {
+        return true;
+    }
+
     let version_components = (version.major, version.minor, version.patch);
     let comparator_components = (
         comparator.major,
