@@ -43,6 +43,7 @@ packer init .
 packer build \
   -var 'source_vm=ghcr.io/cirruslabs/macos-sonoma-xcode:16.1' \
   -var 'target_vm=frb-tart-base-candidate' \
+  -var 'flutter_version=3.44.0' \
   -var 'allow_insecure=false' \
   .
 ```
@@ -147,11 +148,14 @@ packer init .
 packer build \
   -var 'source_vm=127.0.0.1:5000/cirruslabs/macos-sonoma-xcode:16.1' \
   -var 'target_vm=frb-tart-base-candidate' \
+  -var 'flutter_version=3.44.0' \
   -var 'allow_insecure=true' \
   .
 ```
 
-The Packer template clones the raw source VM, boots it as `admin/admin`, runs `scripts/provision-frb-tart-base.sh`, and leaves a stopped local VM named by `target_vm`. The current provision step initializes Xcode, uses the Flutter SDK already present in the source Tart image, installs CocoaPods with Homebrew, installs Rust matching the devcontainer, adds the `aarch64-apple-ios-sim` and `x86_64-apple-ios` Rust targets for both the pinned toolchain and the `stable-aarch64-apple-darwin` toolchain used by CargoKit, and pre-caches Flutter iOS artifacts. It also verifies the image contains Xcode and simulator tooling.
+The Packer template clones the raw source VM, boots it as `admin/admin`, runs `scripts/provision-frb-tart-base.sh`, and leaves a stopped local VM named by `target_vm`. The current provision step initializes Xcode, checks out the requested Flutter SDK version, installs CocoaPods with Homebrew, installs Rust matching the devcontainer, adds the `aarch64-apple-ios-sim` and `x86_64-apple-ios` Rust targets for both the pinned toolchain and the `stable-aarch64-apple-darwin` toolchain used by CargoKit, and pre-caches Flutter iOS and macOS artifacts. It also verifies the image contains Xcode and simulator tooling.
+
+Keep `flutter_version` in sync with `FRB_MAIN_FLUTTER_VERSION` in `.github/workflows/ci.yaml` and the Flutter version in `.devcontainer/Dockerfile`. Do not rely on the source Tart OCI image's preinstalled Flutter version, because Flutter template drift can change generated scaffold files.
 
 Verify the candidate:
 
@@ -166,7 +170,7 @@ Do not boot and mutate `frb-tart-base` during verification. If you need to inspe
 tart clone frb-tart-base-candidate frb-tart-probe
 tart run --no-graphics frb-tart-probe
 tart ip frb-tart-probe --wait 180
-tart exec frb-tart-probe /bin/zsh -lc 'sw_vers && xcodebuild -version && flutter --version && pod --version && rustc --version && cargo --version && rustup target list --installed | grep aarch64-apple-ios-sim && rustup target list --installed | grep x86_64-apple-ios && rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep aarch64-apple-ios-sim && rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep x86_64-apple-ios'
+tart exec frb-tart-probe /bin/zsh -lc 'sw_vers && xcodebuild -version && flutter --version && flutter --version --machine | python3 -c '"'"'import json,sys; assert json.load(sys.stdin)["frameworkVersion"] == "3.44.0"'"'"' && pod --version && rustc --version && cargo --version && rustup target list --installed | grep aarch64-apple-ios-sim && rustup target list --installed | grep x86_64-apple-ios && rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep aarch64-apple-ios-sim && rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep x86_64-apple-ios'
 tart stop frb-tart-probe
 tart delete frb-tart-probe
 ```
