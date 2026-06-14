@@ -218,6 +218,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
     relativePwd: relativePwd,
     extraEnv: {
       'NIX_FRB_RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
+      'RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
       'NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
       'NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
       // because we unconventionally specified the `--target` in cargo build
@@ -411,7 +412,7 @@ const _kAsanOptions =
     'disable_coredump=0:abort_on_error=1';
 const _kMsanOptions =
     'handle_segv=0:detect_leaks=1:detect_stack_use_after_return=0:'
-    'disable_coredump=0:abort_on_error=1';
+    'disable_coredump=0:abort_on_error=1:strict_memcmp=0';
 const _kLsanOptions =
     'handle_segv=0:detect_leaks=1:detect_stack_use_after_return=0:'
     'disable_coredump=0:abort_on_error=1';
