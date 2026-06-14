@@ -92,6 +92,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<Degree> dco_decode_list_degree(dynamic raw);
 
   @protected
+  List<Extension> dco_decode_list_extension(dynamic raw);
+
+  @protected
   List<Note> dco_decode_list_note(dynamic raw);
 
   @protected
@@ -101,6 +104,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<(Degree, Change)> dco_decode_list_record_degree_change(dynamic raw);
 
   @protected
+  List<Triad> dco_decode_list_triad(dynamic raw);
+
+  @protected
   Note dco_decode_note(dynamic raw);
 
   @protected
@@ -108,6 +114,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Quality? dco_decode_opt_box_autoadd_quality(dynamic raw);
+
+  @protected
+  List<Extension>? dco_decode_opt_list_extension(dynamic raw);
+
+  @protected
+  List<Triad>? dco_decode_opt_list_triad(dynamic raw);
 
   @protected
   Quality dco_decode_quality(dynamic raw);
@@ -199,6 +211,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<Degree> sse_decode_list_degree(SseDeserializer deserializer);
 
   @protected
+  List<Extension> sse_decode_list_extension(SseDeserializer deserializer);
+
+  @protected
   List<Note> sse_decode_list_note(SseDeserializer deserializer);
 
   @protected
@@ -210,6 +225,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  List<Triad> sse_decode_list_triad(SseDeserializer deserializer);
+
+  @protected
   Note sse_decode_note(SseDeserializer deserializer);
 
   @protected
@@ -219,6 +237,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Quality? sse_decode_opt_box_autoadd_quality(SseDeserializer deserializer);
+
+  @protected
+  List<Extension>? sse_decode_opt_list_extension(SseDeserializer deserializer);
+
+  @protected
+  List<Triad>? sse_decode_opt_list_triad(SseDeserializer deserializer);
 
   @protected
   Quality sse_decode_quality(SseDeserializer deserializer);
@@ -322,6 +346,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_list_degree(List<Degree> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_extension(
+    List<Extension> self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_list_note(List<Note> self, SseSerializer serializer);
 
   @protected
@@ -337,6 +367,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  void sse_encode_list_triad(List<Triad> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_note(Note self, SseSerializer serializer);
 
   @protected
@@ -350,6 +383,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     Quality? self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_opt_list_extension(
+    List<Extension>? self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_opt_list_triad(List<Triad>? self, SseSerializer serializer);
 
   @protected
   void sse_encode_quality(Quality self, SseSerializer serializer);

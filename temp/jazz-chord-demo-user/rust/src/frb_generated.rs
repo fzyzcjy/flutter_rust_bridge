@@ -41,7 +41,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.13.0-beta.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1005023073;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1302830207;
 
 // Section: executor
 
@@ -784,6 +784,64 @@ fn wire__jazz_chord__degree_possibilities_from_triad_impl(
         },
     )
 }
+fn wire__jazz_chord__degree_possibilities_from_triad_extension_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "degree_possibilities_from_triad_extension",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_triad_extension = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TriadExtension>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_triad_extension_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_triad_extension,
+                                0,
+                                false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => {
+                                api_triad_extension_guard =
+                                    Some(api_triad_extension.lockable_decode_sync_ref())
+                            }
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_triad_extension_guard = api_triad_extension_guard.unwrap();
+                    let output_ok = Result::<_, ()>::Ok(
+                        jazz_chord::DegreePossibilities::from_triad_extension(
+                            &*api_triad_extension_guard,
+                        ),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
 fn wire__jazz_chord__degree_possibilities_get_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -881,6 +939,146 @@ fn wire__jazz_chord__degree_possibilities_new_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok(jazz_chord::DegreePossibilities::new())?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__jazz_chord__degree_possibilities_possible_extensions_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "degree_possibilities_possible_extensions",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <jazz_chord::DegreePossibilities>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok(
+                        jazz_chord::DegreePossibilities::possible_extensions(&api_that),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__jazz_chord__degree_possibilities_possible_extensions_option_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "degree_possibilities_possible_extensions_option",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <jazz_chord::DegreePossibilities>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok(
+                        jazz_chord::DegreePossibilities::possible_extensions_option(&api_that),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__jazz_chord__degree_possibilities_possible_triads_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "degree_possibilities_possible_triads",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <jazz_chord::DegreePossibilities>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok(
+                        jazz_chord::DegreePossibilities::possible_triads(&api_that),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__jazz_chord__degree_possibilities_possible_triads_option_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "degree_possibilities_possible_triads_option",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <jazz_chord::DegreePossibilities>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok(
+                        jazz_chord::DegreePossibilities::possible_triads_option(&api_that),
+                    )?;
                     Ok(output_ok)
                 })())
             }
@@ -1651,6 +1849,18 @@ impl SseDecode for Vec<jazz_chord::Degree> {
     }
 }
 
+impl SseDecode for Vec<jazz_chord::Extension> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = Vec::with_capacity(len_ as usize);
+        for idx_ in 0..len_ {
+            ans_.push(<jazz_chord::Extension>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
 impl SseDecode for Vec<jazz_chord::Note> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -1689,6 +1899,18 @@ impl SseDecode for Vec<(jazz_chord::Degree, jazz_chord::Change)> {
     }
 }
 
+impl SseDecode for Vec<jazz_chord::Triad> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = Vec::with_capacity(len_ as usize);
+        for idx_ in 0..len_ {
+            ans_.push(<jazz_chord::Triad>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
 impl SseDecode for jazz_chord::Note {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -1713,6 +1935,28 @@ impl SseDecode for Option<jazz_chord::Quality> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         if (<bool>::sse_decode(deserializer)) {
             return Some(<jazz_chord::Quality>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<Vec<jazz_chord::Extension>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<Vec<jazz_chord::Extension>>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<Vec<jazz_chord::Triad>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<Vec<jazz_chord::Triad>>::sse_decode(deserializer));
         } else {
             return None;
         }
@@ -1826,39 +2070,69 @@ fn pde_ffi_dispatcher_primary_impl(
             rust_vec_len,
             data_len,
         ),
-        23 => wire__jazz_chord__degree_possibilities_get_impl(port, ptr, rust_vec_len, data_len),
-        24 => wire__jazz_chord__degree_possibilities_is_not_empty_impl(
+        23 => wire__jazz_chord__degree_possibilities_from_triad_extension_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        25 => wire__jazz_chord__degree_possibilities_new_impl(port, ptr, rust_vec_len, data_len),
-        26 => {
+        24 => wire__jazz_chord__degree_possibilities_get_impl(port, ptr, rust_vec_len, data_len),
+        25 => wire__jazz_chord__degree_possibilities_is_not_empty_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        26 => wire__jazz_chord__degree_possibilities_new_impl(port, ptr, rust_vec_len, data_len),
+        27 => wire__jazz_chord__degree_possibilities_possible_extensions_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        28 => wire__jazz_chord__degree_possibilities_possible_extensions_option_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        29 => wire__jazz_chord__degree_possibilities_possible_triads_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        30 => wire__jazz_chord__degree_possibilities_possible_triads_option_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        31 => {
             wire__jazz_chord__degree_possibilities_to_change_impl(port, ptr, rust_vec_len, data_len)
         }
-        27 => wire__jazz_chord__degree_preferred_notes_impl(port, ptr, rust_vec_len, data_len),
-        28 => wire__jazz_chord__degree_to_natural_extension_impl(port, ptr, rust_vec_len, data_len),
-        29 => wire__jazz_chord__degree_within_change_impl(port, ptr, rust_vec_len, data_len),
-        30 => {
+        32 => wire__jazz_chord__degree_preferred_notes_impl(port, ptr, rust_vec_len, data_len),
+        33 => wire__jazz_chord__degree_to_natural_extension_impl(port, ptr, rust_vec_len, data_len),
+        34 => wire__jazz_chord__degree_within_change_impl(port, ptr, rust_vec_len, data_len),
+        35 => {
             wire__jazz_chord__extension_contains_major_token_impl(port, ptr, rust_vec_len, data_len)
         }
-        31 => {
+        36 => {
             wire__jazz_chord__extension_contains_minor_token_impl(port, ptr, rust_vec_len, data_len)
         }
-        32 => {
+        37 => {
             wire__jazz_chord__extension_hides_ma_triad_str_impl(port, ptr, rust_vec_len, data_len)
         }
-        33 => wire__jazz_chord__extension_is_dominant_impl(port, ptr, rust_vec_len, data_len),
-        34 => wire__jazz_chord__extension_name_impl(port, ptr, rust_vec_len, data_len),
-        35 => wire__jazz_chord__extension_notes_impl(port, ptr, rust_vec_len, data_len),
-        36 => {
+        38 => wire__jazz_chord__extension_is_dominant_impl(port, ptr, rust_vec_len, data_len),
+        39 => wire__jazz_chord__extension_name_impl(port, ptr, rust_vec_len, data_len),
+        40 => wire__jazz_chord__extension_notes_impl(port, ptr, rust_vec_len, data_len),
+        41 => {
             wire__jazz_chord__key_slash_quality_from_string_impl(port, ptr, rust_vec_len, data_len)
         }
-        37 => wire__jazz_chord__note_new_impl(port, ptr, rust_vec_len, data_len),
-        40 => wire__jazz_chord__quality_from_string_impl(port, ptr, rust_vec_len, data_len),
-        41 => wire__jazz_chord__triad_is_sus_impl(port, ptr, rust_vec_len, data_len),
-        42 => wire__jazz_chord__triad_name_impl(port, ptr, rust_vec_len, data_len),
+        42 => wire__jazz_chord__note_new_impl(port, ptr, rust_vec_len, data_len),
+        45 => wire__jazz_chord__quality_from_string_impl(port, ptr, rust_vec_len, data_len),
+        46 => wire__jazz_chord__triad_is_sus_impl(port, ptr, rust_vec_len, data_len),
+        47 => wire__jazz_chord__triad_name_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -1871,8 +2145,8 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        38 => wire__crate__api__simple__notes_to_chord_impl(ptr, rust_vec_len, data_len),
-        39 => wire__crate__api__simple__parse_chord_string_impl(ptr, rust_vec_len, data_len),
+        43 => wire__crate__api__simple__notes_to_chord_impl(ptr, rust_vec_len, data_len),
+        44 => wire__crate__api__simple__parse_chord_string_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -2205,6 +2479,16 @@ impl SseEncode for Vec<jazz_chord::Degree> {
     }
 }
 
+impl SseEncode for Vec<jazz_chord::Extension> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <jazz_chord::Extension>::sse_encode(item, serializer);
+        }
+    }
+}
+
 impl SseEncode for Vec<jazz_chord::Note> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -2235,6 +2519,16 @@ impl SseEncode for Vec<(jazz_chord::Degree, jazz_chord::Change)> {
     }
 }
 
+impl SseEncode for Vec<jazz_chord::Triad> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <jazz_chord::Triad>::sse_encode(item, serializer);
+        }
+    }
+}
+
 impl SseEncode for jazz_chord::Note {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -2258,6 +2552,26 @@ impl SseEncode for Option<jazz_chord::Quality> {
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <jazz_chord::Quality>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<Vec<jazz_chord::Extension>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <Vec<jazz_chord::Extension>>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<Vec<jazz_chord::Triad>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <Vec<jazz_chord::Triad>>::sse_encode(value, serializer);
         }
     }
 }

@@ -133,6 +133,12 @@ class DegreePossibilities {
   static Future<DegreePossibilities> fromTriad({required Triad triad}) =>
       RustLib.instance.api.jazzChordDegreePossibilitiesFromTriad(triad: triad);
 
+  static Future<DegreePossibilities> fromTriadExtension({
+    required TriadExtension triadExtension,
+  }) => RustLib.instance.api.jazzChordDegreePossibilitiesFromTriadExtension(
+    triadExtension: triadExtension,
+  );
+
   Future<void> get_({required Degree key}) => RustLib.instance.api
       .jazzChordDegreePossibilitiesGet(that: this, key: key);
 
@@ -142,6 +148,18 @@ class DegreePossibilities {
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<DegreePossibilities> newInstance() =>
       RustLib.instance.api.jazzChordDegreePossibilitiesNew();
+
+  Future<List<Extension>> possibleExtensions() => RustLib.instance.api
+      .jazzChordDegreePossibilitiesPossibleExtensions(that: this);
+
+  Future<List<Extension>?> possibleExtensionsOption() => RustLib.instance.api
+      .jazzChordDegreePossibilitiesPossibleExtensionsOption(that: this);
+
+  Future<List<Triad>> possibleTriads() => RustLib.instance.api
+      .jazzChordDegreePossibilitiesPossibleTriads(that: this);
+
+  Future<List<Triad>?> possibleTriadsOption() => RustLib.instance.api
+      .jazzChordDegreePossibilitiesPossibleTriadsOption(that: this);
 
   Future<Change> toChange() =>
       RustLib.instance.api.jazzChordDegreePossibilitiesToChange(that: this);

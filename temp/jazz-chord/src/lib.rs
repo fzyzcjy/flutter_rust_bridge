@@ -637,6 +637,94 @@ impl DegreePossibilities {
         matrix
     }
 
+    pub fn from_triad_extension(triad_extension: &TriadExtension) -> Self {
+        let triad = triad_extension.triad.as_ref();
+        let extension = triad_extension.extension.as_ref();
+        let triad_matrix = if let Some(triad) = triad {
+            DegreePossibilities::from_triad(triad)
+        } else {
+            DegreePossibilities::new()
+        };
+        let extension_possibilities = if let Some(extension) = extension {
+            DegreePossibilities::from_extension(extension)
+        } else {
+            DegreePossibilities::new()
+        };
+        let mut possibilities = extension_possibilities.clone();
+
+        for degree in Degree::TRIADIC_ASCENDING_NO_ONE {
+            let triad_note = triad_matrix.intervals.get(&degree).unwrap();
+            if !triad_note.is_empty() {
+                *possibilities.intervals.get_mut(&degree).unwrap() = triad_note.clone();
+            }
+        }
+
+        let is_dim = triad == Some(&Triad::Diminished);
+        let sevenths = possibilities.intervals.get(&Degree::Sevenths).unwrap();
+        let has_flat_seven = !sevenths.is_empty() && sevenths.contains_note_text("b7");
+        if is_dim && has_flat_seven {
+            *possibilities.get_mut(&Degree::Sevenths) = Change::from_note_strings(&["bb7"]);
+        }
+
+        if extension != Some(&Extension::NoChord)
+            && !possibilities.to_change().contains_note_text("1")
+        {
+            possibilities
+                .intervals
+                .insert(Degree::Ones, Change::from_note(Note::new("1".to_owned())));
+        }
+        possibilities
+    }
+
+    pub fn possible_extensions_option(&self) -> Option<Vec<Extension>> {
+        let possible = self.possible_extensions();
+        (!possible.is_empty()).then_some(possible)
+    }
+
+    pub fn possible_extensions(&self) -> Vec<Extension> {
+        let mut possible_extensions = Vec::new();
+        for degree in self.intervals.keys() {
+            for note in self.intervals.get(degree).unwrap() {
+                if degree.preferred_notes().contains_note_text(&note.text) {
+                    for extension in degree.poss_exts_if_degree_at_end() {
+                        if !possible_extensions.contains(*extension) {
+                            possible_extensions.push((**extension).clone());
+                        }
+                    }
+                }
+            }
+        }
+        possible_extensions
+    }
+
+    pub fn possible_triads_option(&self) -> Option<Vec<Triad>> {
+        let possible_triads = self.possible_triads();
+        (!possible_triads.is_empty()).then_some(possible_triads)
+    }
+
+    pub fn possible_triads(&self) -> Vec<Triad> {
+        let mut possible_triads = Vec::new();
+        for triad in Triad::ALL {
+            let mut matches_at_least_one_degree = false;
+            for degree in Degree::TRIADIC_ASCENDING_NO_ONE {
+                if self.contains_notes_in_degree(&degree) {
+                    let degree_change = self.intervals.get(&degree).unwrap();
+                    if degree_change
+                        .notes
+                        .iter()
+                        .any(|degree_note| triad.notes().contains_note_text(&degree_note.text))
+                    {
+                        matches_at_least_one_degree = true;
+                    }
+                }
+            }
+            if matches_at_least_one_degree {
+                possible_triads.push((*triad).clone());
+            }
+        }
+        possible_triads
+    }
+
     pub fn get_mut(&mut self, key: &Degree) -> &mut Change {
         self.intervals.get_mut(key).unwrap()
     }
