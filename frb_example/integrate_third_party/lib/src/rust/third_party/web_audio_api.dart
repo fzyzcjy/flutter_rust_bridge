@@ -44,14 +44,6 @@ abstract class AudioBuffer implements RustOpaqueInterface {
   /// - the given channel number is greater than or equal to the given number of channels.
   Future<void> getChannelData({required int channelNumber});
 
-  /// Return a mutable slice of the underlying data of the channel
-  ///
-  /// # Panics
-  ///
-  /// This function will panic if:
-  /// - the given channel number is greater than or equal to the given number of channels.
-  Future<void> getChannelDataMut({required int channelNumber});
-
   /// Number of samples per channel in this `AudioBuffer`
   Future<int> length();
 

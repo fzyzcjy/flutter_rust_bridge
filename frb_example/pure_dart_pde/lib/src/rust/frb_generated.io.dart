@@ -1542,11 +1542,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyAudioParamTwinNormal
-      dco_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
-          dynamic raw);
-
-  @protected
-  MyAudioParamTwinNormal
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_one_twin_normal(
           dynamic raw);
 
@@ -6329,11 +6324,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Map<int, ApplicationMode> sse_decode_Map_u_8_application_mode_None(
       SseDeserializer deserializer);
-
-  @protected
-  MyAudioParamTwinNormal
-      sse_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
-          SseDeserializer deserializer);
 
   @protected
   MyAudioParamTwinNormal
@@ -11629,11 +11619,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_Map_u_8_application_mode_None(
       Map<int, ApplicationMode> self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
-          MyAudioParamTwinNormal self, SseSerializer serializer);
 
   @protected
   void

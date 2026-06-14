@@ -60,10 +60,6 @@ abstract class AnalyserNode
 
   Future<void> connect({required AudioNode dest});
 
-  Future<Uint8List> getByteTimeDomainData({required int len});
-
-  Future<Float32List> getFloatTimeDomainData({required int len});
-
   /// Number of bins in the FFT results, is half the FFT size
   ///
   /// # Panics
@@ -93,38 +89,8 @@ abstract class AnalyserNode
 
   Future<void> registration();
 
-  /// Set FFT size
-  ///
-  /// # Panics
-  ///
-  /// This function panics if fft_size is not a power of two or not in the range [32, 32768]
-  Future<void> setFftSize({required int fftSize});
-
-  /// Set max decibels
-  ///
-  /// # Panics
-  ///
-  /// This function panics if the value is set to a value less than or equal
-  /// to min decibels.
-  Future<void> setMaxDecibels({required double value});
-
-  /// Set min decibels
-  ///
-  /// # Panics
-  ///
-  /// This function panics if the value is set to a value more than or equal
-  /// to max decibels.
-  Future<void> setMinDecibels({required double value});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
-
-  /// Set smoothing time constant
-  ///
-  /// # Panics
-  ///
-  /// This function panics if the value is set to a value less than 0 or more than 1.
-  Future<void> setSmoothingTimeConstant({required double value});
 
   /// Time averaging parameter with the last analysis frame.
   /// A value from 0 -> 1 where 0 represents no time averaging with the last
@@ -184,8 +150,6 @@ abstract class AudioBufferSourceNode
 
   Future<void> connect({required AudioNode dest});
 
-  Future<void> setBuffer({required AudioBuffer audioBuffer});
-
   /// Defines if the playback the [`AudioBuffer`] should be looped
   Future<bool> loop();
 
@@ -217,42 +181,10 @@ abstract class AudioBufferSourceNode
 
   Future<void> registration();
 
-  Future<void> setLoop({required bool value});
-
-  Future<void> setLoopEnd({required double value});
-
-  Future<void> setLoopStart({required double value});
-
   Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
-
-  Future<void> start();
-
-  Future<void> startAt({required double when});
-
-  /// Start the playback at the given time and with a given offset
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> startAtWithOffset(
-      {required double start, required double offset});
-
-  /// Start the playback at the given time, with a given offset, for a given duration
-  ///
-  /// # Panics
-  ///
-  /// Panics if the source was already started
-  Future<void> startAtWithOffsetAndDuration(
-      {required double start,
-      required double offset,
-      required double duration});
-
-  Future<void> stop();
-
-  Future<void> stopAt({required double when});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioDestinationNode>>
@@ -356,13 +288,6 @@ abstract class BiquadFilterNode
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
-
-  /// biquad filter type setter
-  ///
-  /// # Arguments
-  ///
-  /// * `type_` - the biquad filter type (lowpass, highpass,...)
-  Future<void> setType({required BiquadFilterType type});
 
   /// Returns the biquad filter type
   Future<BiquadFilterType> type();
@@ -513,14 +438,6 @@ abstract class ConstantSourceNode
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
-
-  Future<void> start();
-
-  Future<void> startAt({required double when});
-
-  Future<void> stop();
-
-  Future<void> stopAt({required double when});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConvolverNode>>
@@ -564,17 +481,6 @@ abstract class ConvolverNode
   Future<int> numberOfOutputs();
 
   Future<void> registration();
-
-  /// Set or update the impulse response buffer
-  ///
-  /// # Panics
-  ///
-  /// Panics when the sample rate of the provided AudioBuffer differs from the audio context
-  /// sample rate.
-  Future<void> setBuffer({required AudioBuffer buffer});
-
-  /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
-  Future<void> setNormalize({required bool value});
 
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
@@ -1018,31 +924,6 @@ abstract class OscillatorNode
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 
-  /// Sets a `PeriodicWave` which describes a waveform to be used by the oscillator.
-  ///
-  /// Calling this sets the oscillator type to `custom`, once set to `custom`
-  /// the oscillator cannot be reverted back to a standard waveform.
-  Future<void> setPeriodicWave({required PeriodicWave periodicWave});
-
-  /// Set the oscillator type
-  ///
-  /// # Arguments
-  ///
-  /// * `type_` - oscillator type (sine, square, triangle, sawtooth)
-  ///
-  /// # Panics
-  ///
-  /// if `type_` is `OscillatorType::Custom`
-  Future<void> setType({required OscillatorType type});
-
-  Future<void> start();
-
-  Future<void> startAt({required double when});
-
-  Future<void> stop();
-
-  Future<void> stopAt({required double when});
-
   /// Returns the oscillator type
   Future<OscillatorType> type();
 }
@@ -1114,50 +995,14 @@ abstract class PannerNode
 
   Future<double> rolloffFactor();
 
-  Future<void> setConeInnerAngle({required double value});
-
-  Future<void> setConeOuterAngle({required double value});
-
-  /// Set the coneOuterGain attribute
-  ///
-  /// # Panics
-  ///
-  /// Panics if the provided value is not in the range [0, 1]
-  Future<void> setConeOuterGain({required double value});
-
-  Future<void> setDistanceModel({required DistanceModelType value});
-
-  /// Set the maxDistance attribute
-  ///
-  /// # Panics
-  ///
-  /// Panics if the provided value is negative.
-  Future<void> setMaxDistance({required double value});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
 
   Future<void> setOrientation(
       {required double x, required double y, required double z});
 
-  Future<void> setPanningModel({required PanningModelType value});
-
   Future<void> setPosition(
       {required double x, required double y, required double z});
-
-  /// Set the refDistance attribute
-  ///
-  /// # Panics
-  ///
-  /// Panics if the provided value is negative.
-  Future<void> setRefDistance({required double value});
-
-  /// Set the rolloffFactor attribute
-  ///
-  /// # Panics
-  ///
-  /// Panics if the provided value is negative.
-  Future<void> setRolloffFactor({required double value});
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ScriptProcessorNode>>
@@ -1309,27 +1154,8 @@ abstract class WaveShaperNode
 
   Future<void> registration();
 
-  /// Set the distortion `curve` of this node
-  ///
-  /// # Arguments
-  ///
-  /// * `curve` - the desired distortion `curve`
-  ///
-  /// # Panics
-  ///
-  /// Panics if a curve has already been given to the source (though `new` or through
-  /// `set_curve`)
-  Future<void> setCurve({required List<double> curve});
-
   Future<void> setOnProcessorError(
       {required FutureOr<void> Function(String) callback});
-
-  /// set the `oversample` factor of this node
-  ///
-  /// # Arguments
-  ///
-  /// * `oversample` - the desired `OversampleType` variant
-  Future<void> setOversample({required OverSampleType oversample});
 }
 
 abstract class AudioNode {
