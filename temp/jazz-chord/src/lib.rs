@@ -967,6 +967,41 @@ impl fmt::Display for DegreePossibilities {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
+pub enum ChangeEq {
+    PitchClass,
+    Deduplicated(NoteEq),
+    Equal(NoteEq),
+    Unordered(NoteEq),
+}
+
+impl ChangeEq {
+    pub fn eq(&self, left: &Change, right: &Change) -> bool {
+        match self {
+            Self::PitchClass => left.is_same_pitchclass_of_change(right),
+            Self::Deduplicated(note_eq) => left
+                .dedup(note_eq)
+                .is_same_pitchclass_of_change(&right.dedup(note_eq)),
+            Self::Equal(note_eq) => {
+                if left.len() != right.len() {
+                    return false;
+                }
+                left.notes
+                    .iter()
+                    .zip(right.notes.iter())
+                    .all(|(left_note, right_note)| left_note.eq_note(right_note, note_eq))
+            }
+            Self::Unordered(note_eq) => {
+                left.len() == right.len()
+                    && left
+                        .notes
+                        .iter()
+                        .all(|note| right.contains_note(note, note_eq))
+            }
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub enum NoteEq {
     Enharmonic,
     PitchClass,
@@ -1223,6 +1258,10 @@ impl Change {
             .map(|text| Note::new(text.to_owned()))
             .collect();
         Self { notes }
+    }
+
+    pub fn eq_change(&self, other: &Change, change_eq: &ChangeEq) -> bool {
+        change_eq.eq(self, other)
     }
 
     pub fn from_triad_extension(triad: Option<&Triad>, extension: Option<&Extension>) -> Self {
