@@ -114,6 +114,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   KeySlashQuality dco_decode_key_slash_quality(dynamic raw);
 
   @protected
+  List<TriadExtension>
+  dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
+    dynamic raw,
+  );
+
+  @protected
   List<Degree> dco_decode_list_degree(dynamic raw);
 
   @protected
@@ -261,6 +267,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   KeySlashQuality sse_decode_key_slash_quality(SseDeserializer deserializer);
+
+  @protected
+  List<TriadExtension>
+  sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
+    SseDeserializer deserializer,
+  );
 
   @protected
   List<Degree> sse_decode_list_degree(SseDeserializer deserializer);
@@ -427,6 +439,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_key_slash_quality(
     KeySlashQuality self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void
+  sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
+    List<TriadExtension> self,
     SseSerializer serializer,
   );
 

@@ -248,6 +248,9 @@ class DegreePossibilities {
   static Future<DegreePossibilities> newInstance() =>
       RustLib.instance.api.jazzChordDegreePossibilitiesNew();
 
+  Future<List<TriadExtension>> possTriadExtensions() => RustLib.instance.api
+      .jazzChordDegreePossibilitiesPossTriadExtensions(that: this);
+
   Future<List<Extension>> possibleExtensions() => RustLib.instance.api
       .jazzChordDegreePossibilitiesPossibleExtensions(that: this);
 

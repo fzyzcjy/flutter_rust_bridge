@@ -739,6 +739,26 @@ impl DegreePossibilities {
         possibilities
     }
 
+    pub fn poss_triad_extensions(&self) -> Vec<TriadExtension> {
+        let mut triad_extensions = Vec::new();
+        let possibilities = self.pick_ideal_notes();
+        let possible_triads = possibilities.possible_triads();
+        let possible_extensions = possibilities.possible_extensions();
+
+        for triad in possible_triads {
+            for extension in &possible_extensions {
+                let triad_extension =
+                    TriadExtension::from(&Some(&triad), &Some(&extension.clone()));
+                if triad_extension.is_legal() {
+                    triad_extensions.push(triad_extension);
+                }
+            }
+            triad_extensions.push(TriadExtension::from(&Some(&triad), &None));
+        }
+
+        triad_extensions
+    }
+
     pub fn possible_extensions_option(&self) -> Option<Vec<Extension>> {
         let possible = self.possible_extensions();
         (!possible.is_empty()).then_some(possible)
@@ -786,6 +806,131 @@ impl DegreePossibilities {
             }
         }
         possible_triads
+    }
+
+    fn remove_note_from_other_degrees(&mut self, note: &Note, degree: &Degree) {
+        for other_degree in Degree::TRIADIC_ASCENDING
+            .iter()
+            .filter(|other_degree| *other_degree != degree)
+        {
+            let other_degree_change = self.intervals.get(other_degree).unwrap().clone();
+            for other_degree_note in &other_degree_change {
+                if other_degree_note.eq_note(note, &NoteEq::PitchClass) {
+                    *self.intervals.get_mut(other_degree).unwrap() = self
+                        .intervals
+                        .get(other_degree)
+                        .unwrap()
+                        .remove_pitch_class_of_note(other_degree_note);
+                }
+            }
+        }
+    }
+
+    fn remove_note_from_all_degrees(&mut self, note: &Note) {
+        for degree in Degree::TRIADIC_ASCENDING {
+            *self.get_mut(&degree) = self.get(&degree).without_note(note, &NoteEq::PitchClass);
+        }
+    }
+
+    fn pick_note_for_degree(&mut self, note: &Note, degree: &Degree) {
+        let this_degree_change = self.get(degree).clone();
+        for this_degree_note in &this_degree_change {
+            if !this_degree_note.is_same_pitch_class(note) {
+                *self.intervals.get_mut(degree).unwrap() = self
+                    .get(degree)
+                    .clone()
+                    .remove_pitch_class_of_note(this_degree_note);
+            }
+        }
+
+        self.remove_note_from_other_degrees(note, degree);
+
+        if !this_degree_change.contains_note(note, &NoteEq::PitchClass) {
+            let allowed_note = degree
+                .allowed_notes()
+                .index_of_note(note, &NoteEq::PitchClass);
+            if let Some(allowed_note) = allowed_note {
+                self.intervals
+                    .get_mut(degree)
+                    .unwrap()
+                    .push_note(&degree.allowed_notes()[allowed_note]);
+            }
+        }
+    }
+
+    fn without(&self, other: &Self) -> Self {
+        let mut new = self.clone();
+        for (degree, other_change) in &other.intervals {
+            let mut new_change = self.intervals.get(degree).unwrap().clone();
+            for other_note in other_change {
+                if new_change.contains_pitch_class_of_note(other_note) {
+                    new_change = new_change.remove_pitch_class_of_note(other_note);
+                    new.remove_note_from_other_degrees(other_note, degree);
+                }
+            }
+            *new.intervals.get_mut(degree).unwrap() = new_change;
+        }
+        new
+    }
+
+    fn remove_triad(&self, triad: &Triad) -> Self {
+        let mut matrix = self.clone();
+        for note in triad.notes() {
+            for degree in [Degree::Thirds, Degree::Fifths] {
+                *matrix.intervals.get_mut(&degree).unwrap() = matrix
+                    .intervals
+                    .get(&degree)
+                    .unwrap()
+                    .remove_pitch_class_of_note(note);
+            }
+        }
+        matrix
+    }
+
+    fn clear_degree(&mut self, degree: &Degree) {
+        *self.get_mut(degree) = Change::new();
+    }
+
+    fn pick_ideal_notes(&self) -> Self {
+        let mut ideal = self.clone();
+        for degree in Degree::TRIADIC_ASCENDING_NO_ONE {
+            let degree_possibilities = ideal.intervals.get(&degree).unwrap().clone();
+            if degree_possibilities.is_empty() {
+                continue;
+            }
+
+            let preferred_note = degree_possibilities
+                .notes
+                .iter()
+                .find(|possibility| degree.preferred_notes().contains_pitch_class(*possibility))
+                .or_else(|| degree_possibilities.notes.first());
+
+            if let Some(preferred_note) = preferred_note {
+                ideal.pick_note_for_degree(preferred_note, &degree);
+            }
+        }
+
+        for note in &self.to_change() {
+            if ideal.contains_note(note, &NoteEq::PitchClass) {
+                continue;
+            }
+
+            let missing_note = Change::from_note(note.clone());
+            let all = DegreePossibilities::all_from_change_no_one(&missing_note);
+            for degree in all
+                .degrees_containing_notes()
+                .into_iter()
+                .filter(|degree| [Degree::Thirds, Degree::Fifths].contains(degree))
+            {
+                if ideal.get(&degree).is_empty() {
+                    ideal.get_mut(&degree).push_change(all.get(&degree));
+                    break;
+                }
+            }
+        }
+
+        *ideal.get_mut(&Degree::Ones) = self.get(&Degree::Ones).clone();
+        ideal
     }
 
     pub fn get_mut(&mut self, key: &Degree) -> &mut Change {
