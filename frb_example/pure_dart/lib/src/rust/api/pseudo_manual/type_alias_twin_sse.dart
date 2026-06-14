@@ -28,6 +28,17 @@ Future<TestModelTwinSse> handleTypeAliasModelTwinSse({required BigInt input}) =>
 Future<int> infallibleWithResultShadowTwinSse() => RustLib.instance.api
     .crateApiPseudoManualTypeAliasTwinSseInfallibleWithResultShadowTwinSse();
 
+Future<int> genericResultAliasOkTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasOkTwinSse();
+
+Future<int> genericResultAliasErrTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasErrTwinSse();
+
+enum GenericAliasErrorTwinSse {
+  deliberate,
+  ;
+}
+
 class TestModelTwinSse {
   final BigInt id;
   final String name;

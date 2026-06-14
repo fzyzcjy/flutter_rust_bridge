@@ -29,6 +29,17 @@ TestModelTwinSync handleTypeAliasModelTwinSync({required BigInt input}) =>
 int infallibleWithResultShadowTwinSync() => RustLib.instance.api
     .crateApiPseudoManualTypeAliasTwinSyncInfallibleWithResultShadowTwinSync();
 
+int genericResultAliasOkTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasOkTwinSync();
+
+int genericResultAliasErrTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasErrTwinSync();
+
+enum GenericAliasErrorTwinSync {
+  deliberate,
+  ;
+}
+
 class TestModelTwinSync {
   final BigInt id;
   final String name;

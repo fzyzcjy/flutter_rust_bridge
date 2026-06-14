@@ -3739,6 +3739,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FrbLogRecord dco_decode_frb_log_record(dynamic raw);
 
   @protected
+  GenericAliasErrorTwinNormal dco_decode_generic_alias_error_twin_normal(
+      dynamic raw);
+
+  @protected
+  GenericAliasErrorTwinRustAsync dco_decode_generic_alias_error_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  GenericAliasErrorTwinSync dco_decode_generic_alias_error_twin_sync(
+      dynamic raw);
+
+  @protected
   HashMapValue dco_decode_hash_map_value(dynamic raw);
 
   @protected
@@ -8729,6 +8741,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FrbLogRecord sse_decode_frb_log_record(SseDeserializer deserializer);
+
+  @protected
+  GenericAliasErrorTwinNormal sse_decode_generic_alias_error_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  GenericAliasErrorTwinRustAsync sse_decode_generic_alias_error_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  GenericAliasErrorTwinSync sse_decode_generic_alias_error_twin_sync(
+      SseDeserializer deserializer);
 
   @protected
   HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
@@ -13945,6 +13969,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_frb_log_record(FrbLogRecord self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_generic_alias_error_twin_normal(
+      GenericAliasErrorTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_generic_alias_error_twin_rust_async(
+      GenericAliasErrorTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_generic_alias_error_twin_sync(
+      GenericAliasErrorTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);

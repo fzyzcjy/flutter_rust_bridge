@@ -27,6 +27,17 @@ Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
 Future<int> infallibleWithResultShadowTwinNormal() => RustLib.instance.api
     .crateApiTypeAliasInfallibleWithResultShadowTwinNormal();
 
+Future<int> genericResultAliasOkTwinNormal() =>
+    RustLib.instance.api.crateApiTypeAliasGenericResultAliasOkTwinNormal();
+
+Future<int> genericResultAliasErrTwinNormal() =>
+    RustLib.instance.api.crateApiTypeAliasGenericResultAliasErrTwinNormal();
+
+enum GenericAliasErrorTwinNormal {
+  deliberate,
+  ;
+}
+
 class TestModelTwinNormal {
   final BigInt id;
   final String name;

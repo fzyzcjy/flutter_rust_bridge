@@ -30,6 +30,17 @@ Future<TestModelTwinRustAsyncSse> handleTypeAliasModelTwinRustAsyncSse(
 Future<int> infallibleWithResultShadowTwinRustAsyncSse() => RustLib.instance.api
     .crateApiPseudoManualTypeAliasTwinRustAsyncSseInfallibleWithResultShadowTwinRustAsyncSse();
 
+Future<int> genericResultAliasOkTwinRustAsyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncSseGenericResultAliasOkTwinRustAsyncSse();
+
+Future<int> genericResultAliasErrTwinRustAsyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncSseGenericResultAliasErrTwinRustAsyncSse();
+
+enum GenericAliasErrorTwinRustAsyncSse {
+  deliberate,
+  ;
+}
+
 class TestModelTwinRustAsyncSse {
   final BigInt id;
   final String name;

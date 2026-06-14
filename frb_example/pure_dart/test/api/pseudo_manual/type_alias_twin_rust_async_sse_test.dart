@@ -36,4 +36,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final value = await infallibleWithResultShadowTwinRustAsyncSse();
     expect(value, 42);
   });
+
+  test('generic type alias resolves to Ok value (#3071)', () async {
+    final value = await genericResultAliasOkTwinRustAsyncSse();
+    expect(value, 42);
+  });
+
+  test('generic type alias Err translates to a Dart exception (#3071)',
+      () async {
+    await expectLater(
+      () async => genericResultAliasErrTwinRustAsyncSse(),
+      throwsA(isA<GenericAliasErrorTwinRustAsyncSse>()),
+    );
+  });
 }

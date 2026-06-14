@@ -43,3 +43,22 @@ pub type Result<T> = std::result::Result<T, ResultShadowErrorTwinRustAsyncSse>;
 pub async fn infallible_with_result_shadow_twin_rust_async_sse() -> i32 {
     42
 }
+
+// Regression for #3071: a generic type alias used in an exported signature must
+// be expanded to its underlying `Result`, so the function is fallible and both
+// the value and the Dart exception path are available.
+pub enum GenericAliasErrorTwinRustAsyncSse {
+    Deliberate,
+}
+
+pub type AppResultTwinRustAsyncSse<T> = std::result::Result<T, GenericAliasErrorTwinRustAsyncSse>;
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn generic_result_alias_ok_twin_rust_async_sse() -> AppResultTwinRustAsyncSse<i32> {
+    Ok(42)
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn generic_result_alias_err_twin_rust_async_sse() -> AppResultTwinRustAsyncSse<i32> {
+    Err(GenericAliasErrorTwinRustAsyncSse::Deliberate)
+}

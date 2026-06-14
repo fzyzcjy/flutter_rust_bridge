@@ -7,13 +7,24 @@ use syn::Type;
 use topological_sort::TopologicalSort;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
-    let map_raw = (pack.types.iter())
+    // Generic aliases (those with type parameters) are substituted lazily at the
+    // use site in the MIR parser, so their templates must be preserved verbatim.
+    // Only non-generic aliases participate in the eager topological resolution.
+    let (generic, non_generic): (Vec<_>, Vec<_>) =
+        (pack.types.into_iter()).partition(|x| !x.type_params.is_empty());
+
+    let map_raw = (non_generic.iter())
         .map(|x| (x.ident.clone(), x.target.clone()))
         .collect();
     let map_transformed = resolve_type_aliases(map_raw);
-    let vec_transformed = (map_transformed.into_iter())
-        .map(|(ident, target)| HirFlatTypeAlias { ident, target })
+    let mut vec_transformed = (map_transformed.into_iter())
+        .map(|(ident, target)| HirFlatTypeAlias {
+            ident,
+            target,
+            type_params: vec![],
+        })
         .collect_vec();
+    vec_transformed.extend(generic);
 
     pack.types = vec_transformed;
 

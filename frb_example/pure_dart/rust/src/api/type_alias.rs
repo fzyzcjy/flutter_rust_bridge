@@ -35,3 +35,20 @@ pub type Result<T> = std::result::Result<T, ResultShadowErrorTwinNormal>;
 pub fn infallible_with_result_shadow_twin_normal() -> i32 {
     42
 }
+
+// Regression for #3071: a generic type alias used in an exported signature must
+// be expanded to its underlying `Result`, so the function is fallible and both
+// the value and the Dart exception path are available.
+pub enum GenericAliasErrorTwinNormal {
+    Deliberate,
+}
+
+pub type AppResultTwinNormal<T> = std::result::Result<T, GenericAliasErrorTwinNormal>;
+
+pub fn generic_result_alias_ok_twin_normal() -> AppResultTwinNormal<i32> {
+    Ok(42)
+}
+
+pub fn generic_result_alias_err_twin_normal() -> AppResultTwinNormal<i32> {
+    Err(GenericAliasErrorTwinNormal::Deliberate)
+}
