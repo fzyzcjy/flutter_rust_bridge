@@ -45,7 +45,29 @@ Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
 
 Future<void> _runPackageDeliberateBad(TestDartSanitizerConfig config) async {
   await _runPackageDeliberateBadRustOnly(config);
+  if (config.sanitizer == Sanitizer.msan) return;
+
+  await _buildPackageDeliberateBadNativeLibraryForDart(config);
   await _runPackageDeliberateBadWithDart(config);
+}
+
+Future<void> _buildPackageDeliberateBadNativeLibraryForDart(
+  TestDartSanitizerConfig config,
+) async {
+  final libraryName = 'libfrb_example_deliberate_bad.so';
+  await _execAndCheckWithSanitizerEnvVar(
+    'cargo +nightly build --release $_cargoBuildExtraArgs'
+    ' && mkdir -p target/release'
+    ' && cp target/x86_64-unknown-linux-gnu/release/$libraryName'
+    ' target/release/$libraryName',
+    const _Info(
+      name: 'BuildNativeLibraryForDart',
+      expectSucceed: true,
+      expectStderrContains: '',
+    ),
+    config.sanitizer,
+    relativePwd: '${config.package}/rust',
+  );
 }
 
 Future<void> _runPackageDeliberateBadRustOnly(

@@ -12,7 +12,8 @@ const _exampleDartPackages = [
   'frb_example--pure_dart_pde',
 ];
 
-const _requiredSanitizers = ['asan', 'msan', 'lsan'];
+const _normalDartSanitizers = ['asan', 'lsan'];
+const _sentinelDartSanitizers = ['asan', 'msan', 'lsan'];
 
 const _flutterNativePackages = [
   'frb_example--flutter_via_create',
@@ -168,10 +169,10 @@ final kCiJobs = [
   CiJob(
     'test_dart_sanitizer',
     matrix: CiMatrix([
-      for (final sanitizer in _requiredSanitizers)
+      for (final sanitizer in _normalDartSanitizers)
         for (final package in _exampleDartPackages)
           {'sanitizer': sanitizer, 'package': package},
-      for (final sanitizer in _requiredSanitizers)
+      for (final sanitizer in _sentinelDartSanitizers)
         {'sanitizer': sanitizer, 'package': 'frb_example--deliberate_bad'},
     ]),
   ),

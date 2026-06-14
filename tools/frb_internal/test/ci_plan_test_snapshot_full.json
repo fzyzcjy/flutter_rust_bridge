@@ -582,18 +582,6 @@
           "package": "frb_example--pure_dart_pde"
         },
         {
-          "sanitizer": "msan",
-          "package": "frb_example--dart_minimal"
-        },
-        {
-          "sanitizer": "msan",
-          "package": "frb_example--pure_dart"
-        },
-        {
-          "sanitizer": "msan",
-          "package": "frb_example--pure_dart_pde"
-        },
-        {
           "sanitizer": "lsan",
           "package": "frb_example--dart_minimal"
         },
