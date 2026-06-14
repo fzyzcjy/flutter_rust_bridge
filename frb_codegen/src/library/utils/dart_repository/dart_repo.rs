@@ -311,10 +311,16 @@ impl DartPackageVersion {
 fn prerelease_matches_stable_lower_bound(version: &Version, requirement: &VersionReq) -> bool {
     !version.pre.is_empty()
         && requirement.comparators.iter().all(|comparator| {
+            let version_components = (version.major, version.minor, version.patch);
+            let comparator_components = (
+                comparator.major,
+                comparator.minor.unwrap_or(0),
+                comparator.patch.unwrap_or(0),
+            );
+
             comparator.pre.is_empty()
-                && matches!(comparator.op, Op::GreaterEq)
-                && (version.major, Some(version.minor), Some(version.patch))
-                    > (comparator.major, comparator.minor, comparator.patch)
+                && matches!(comparator.op, Op::Greater | Op::GreaterEq)
+                && version_components > comparator_components
         })
 }
 
