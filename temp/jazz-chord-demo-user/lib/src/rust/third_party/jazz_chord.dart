@@ -7,7 +7,8 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `TriadExtension`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `hash`, `hash`, `hash`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
+// These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `from`
 
 abstract class ToChordQuality {
@@ -22,13 +23,21 @@ class Change {
   static Future<Change> default_() =>
       RustLib.instance.api.jazzChordChangeDefault();
 
+  static Future<Change> fromNotes({required List<Note> notes}) =>
+      RustLib.instance.api.jazzChordChangeFromNotes(notes: notes);
+
   static Future<Change> fromNotesString({required String notesString}) =>
       RustLib.instance.api.jazzChordChangeFromNotesString(
         notesString: notesString,
       );
 
+  Future<bool> isEmpty() =>
+      RustLib.instance.api.jazzChordChangeIsEmpty(that: this);
+
   Future<String> join({required String separator}) => RustLib.instance.api
       .jazzChordChangeJoin(that: this, separator: separator);
+
+  Future<BigInt> len() => RustLib.instance.api.jazzChordChangeLen(that: this);
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<Change> newInstance() =>

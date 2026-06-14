@@ -1,4 +1,6 @@
 use std::fmt;
+use std::slice;
+use std::vec::IntoIter;
 
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Triad {
@@ -264,9 +266,105 @@ pub struct Change {
     pub notes: Vec<Note>,
 }
 
+impl std::ops::Index<usize> for Change {
+    type Output = Note;
+
+    fn index(&self, index: usize) -> &Self::Output {
+        &self.notes[index]
+    }
+}
+
+impl std::ops::IndexMut<usize> for Change {
+    fn index_mut(&mut self, index: usize) -> &mut Self::Output {
+        &mut self.notes[index]
+    }
+}
+
+impl AsRef<[Note]> for Change {
+    fn as_ref(&self) -> &[Note] {
+        self.notes.as_slice()
+    }
+}
+
+impl IntoIterator for Change {
+    type Item = Note;
+    type IntoIter = IntoIter<Note>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.notes.into_iter()
+    }
+}
+
+impl<'a> IntoIterator for &'a Change {
+    type Item = &'a Note;
+    type IntoIter = slice::Iter<'a, Note>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.notes.iter()
+    }
+}
+
+impl<'a> IntoIterator for &'a mut Change {
+    type Item = &'a mut Note;
+    type IntoIter = slice::IterMut<'a, Note>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.notes.iter_mut()
+    }
+}
+
+impl<'a> FromIterator<&'a Note> for Change {
+    fn from_iter<T: IntoIterator<Item = &'a Note>>(iter: T) -> Self {
+        let mut change = Change::new();
+        for note in iter {
+            change.push_note(note);
+        }
+        change
+    }
+}
+
+impl FromIterator<Note> for Change {
+    fn from_iter<T: IntoIterator<Item = Note>>(iter: T) -> Self {
+        let mut change = Change::new();
+        for note in iter {
+            change.push_note(&note);
+        }
+        change
+    }
+}
+
+impl<'a> Extend<&'a Note> for Change {
+    fn extend<I: IntoIterator<Item = &'a Note>>(&mut self, iter: I) {
+        for note in iter {
+            self.push_note(note);
+        }
+    }
+}
+
 impl Change {
     pub fn new() -> Self {
         Self { notes: Vec::new() }
+    }
+
+    pub fn from_notes(notes: Vec<Note>) -> Self {
+        Self { notes }
+    }
+
+    pub fn from_changes(changes: &[&Change]) -> Self {
+        let mut change = changes[0].clone();
+        for other in changes.iter().skip(1) {
+            change.push_change(other);
+        }
+        change
+    }
+
+    pub fn from_note_strings(note_strings: &[&str]) -> Self {
+        Self::from_notes(
+            note_strings
+                .iter()
+                .map(|note| Note::new((*note).to_owned()))
+                .collect(),
+        )
     }
 
     pub fn from_notes_string(notes_string: &str) -> Self {
@@ -284,6 +382,22 @@ impl Change {
             .map(|note| note.text.as_str())
             .collect::<Vec<_>>()
             .join(separator)
+    }
+
+    pub fn len(&self) -> usize {
+        self.notes.len()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.notes.is_empty()
+    }
+
+    fn push_note(&mut self, note: &Note) {
+        self.notes.push(note.clone());
+    }
+
+    fn push_change(&mut self, change: &Change) {
+        self.notes.extend(change.notes.clone());
     }
 }
 
