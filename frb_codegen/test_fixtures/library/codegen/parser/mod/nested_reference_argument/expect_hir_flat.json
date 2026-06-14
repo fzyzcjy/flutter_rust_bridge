@@ -1,0 +1,120 @@
+{
+  "constants": [],
+  "enums": [
+    {
+      "mirror": false,
+      "name": "crate::api/NestedRefEnum",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    },
+    {
+      "mirror": false,
+      "name": "crate::api/RecursiveEnum",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    }
+  ],
+  "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
+  "extra_rust_output_code": "",
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=is_a, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": {
+        "StructOrEnum": {
+          "impl_ty": "NestedRefEnum",
+          "trait_def_name": null
+        }
+      },
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=from, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": {
+        "StructOrEnum": {
+          "impl_ty": "NestedRefOwner",
+          "trait_def_name": null
+        }
+      },
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=has_value, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": {
+        "StructOrEnum": {
+          "impl_ty": "NestedRefOwner",
+          "trait_def_name": null
+        }
+      },
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=accept_known_struct_mut, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=accept_recursive_enum, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=accept_two_nested_refs, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    }
+  ],
+  "skips": [
+    {
+      "name": "crate::api/clone",
+      "reason": "IgnoreBecauseNotDefinedTrait"
+    }
+  ],
+  "structs": [
+    {
+      "mirror": false,
+      "name": "crate::api/NestedRefOwner",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    }
+  ],
+  "trait_impls": [
+    {
+      "impl_ty": "NestedRefEnum",
+      "trait_name": "Clone"
+    }
+  ],
+  "traits": [],
+  "types": []
+}

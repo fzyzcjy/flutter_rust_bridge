@@ -11,6 +11,8 @@ import '../third_party/web_audio_api/worklet.dart';
 import 'media_element.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored (category: IgnoreBecauseType): `frb_override_get_byte_time_domain_data`, `frb_override_get_float_time_domain_data`, `frb_override_set_buffer`
+
 abstract class AnalyserNodeExt {
   Future<void> connect({required AudioNode dest});
 

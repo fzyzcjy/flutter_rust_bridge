@@ -3,9 +3,14 @@ use crate::codegen::ir::mir::func::{MirFuncInput, MirFuncOwnerInfo};
 use crate::codegen::ir::mir::func::{MirFuncOwnerInfoMethod, OwnershipMode};
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateProxyEnum};
-use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegate, MirTypeDelegateArrayMode, MirTypeDelegateProxyEnum,
+};
+use crate::codegen::ir::mir::ty::enumeration::MirEnumIdent;
+use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
+use crate::codegen::ir::mir::ty::structure::MirStructIdent;
 use crate::codegen::ir::mir::ty::MirType::Boxed;
+use crate::codegen::ir::mir::ty::{MirContext, MirType};
 use crate::codegen::ir::misc::skip::IrSkipReason;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::real::{FunctionParser, FunctionPartialInfo};
@@ -14,6 +19,7 @@ use crate::codegen::parser::mir::parser::ty::rust_auto_opaque_implicit::split_ow
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserParsingContext};
 use crate::if_then_some;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
+use crate::utils::namespace::NamespacedName;
 use anyhow::Context;
 use syn::*;
 
@@ -44,7 +50,7 @@ impl FunctionParser<'_, '_> {
 
         let ty = parse_maybe_proxy_enum(ty, self.type_parser)?;
 
-        if ty.should_ignore(self.type_parser) {
+        if should_ignore_ty(&ty, self.type_parser) {
             return Ok(FunctionPartialInfo {
                 ignore_func: Some(IrSkipReason::IgnoreBecauseType),
                 ..Default::default()
@@ -164,6 +170,96 @@ fn parse_attrs_from_fn_arg(fn_arg: &FnArg) -> &[Attribute] {
     match fn_arg {
         FnArg::Typed(inner) => &inner.attrs,
         FnArg::Receiver(inner) => &inner.attrs,
+    }
+}
+
+fn should_ignore_ty(ty: &MirType, type_parser: &TypeParser) -> bool {
+    should_ignore_ty_inner(ty, type_parser, true)
+}
+
+fn should_ignore_ty_inner(ty: &MirType, type_parser: &TypeParser, is_top_level_arg: bool) -> bool {
+    let should_check_self = !matches!(
+        ty,
+        MirType::RustAutoOpaqueImplicit(inner)
+            if is_top_level_arg && !is_known_struct_or_enum(inner, type_parser)
+    );
+    if should_check_self && ty.should_ignore(type_parser) {
+        return true;
+    }
+
+    match ty {
+        MirType::Boxed(inner) => should_ignore_ty_inner(&inner.inner, type_parser, false),
+        MirType::GeneralList(inner) => should_ignore_ty_inner(&inner.inner, type_parser, false),
+        MirType::Optional(inner) => should_ignore_ty_inner(&inner.inner, type_parser, false),
+        MirType::Record(inner) => inner
+            .values
+            .iter()
+            .any(|inner| should_ignore_ty_inner(inner, type_parser, false)),
+        MirType::Delegate(inner) => should_ignore_delegate_ty(inner, type_parser, is_top_level_arg),
+        _ => false,
+    }
+}
+
+fn is_known_struct_or_enum(ty: &MirTypeRustAutoOpaqueImplicit, type_parser: &TypeParser) -> bool {
+    let ident = NamespacedName::new(
+        ty.inner.namespace.clone(),
+        ty.raw.string.with_original_lifetime().to_owned(),
+    );
+    type_parser
+        .struct_pool()
+        .get(&MirStructIdent(ident.clone()))
+        .is_some_and(|inner| !inner.ignore)
+        || type_parser
+            .enum_pool()
+            .get(&MirEnumIdent(ident))
+            .is_some_and(|inner| !inner.ignore)
+}
+
+fn should_ignore_delegate_ty(
+    ty: &MirTypeDelegate,
+    type_parser: &TypeParser,
+    is_top_level_arg: bool,
+) -> bool {
+    match ty {
+        MirTypeDelegate::Array(inner) => match &inner.mode {
+            MirTypeDelegateArrayMode::General(inner) => {
+                should_ignore_ty_inner(inner, type_parser, false)
+            }
+            MirTypeDelegateArrayMode::Primitive(_) => false,
+        },
+        MirTypeDelegate::Map(inner) => {
+            should_ignore_ty_inner(&inner.key, type_parser, false)
+                || should_ignore_ty_inner(&inner.value, type_parser, false)
+        }
+        MirTypeDelegate::Set(inner) => should_ignore_ty_inner(&inner.inner, type_parser, false),
+        MirTypeDelegate::StreamSink(inner) => {
+            should_ignore_ty_inner(&inner.inner_ok, type_parser, false)
+                || should_ignore_ty_inner(&inner.inner_err, type_parser, false)
+        }
+        MirTypeDelegate::ProxyVariant(inner) => {
+            should_ignore_ty_inner(&inner.inner, type_parser, false)
+                || should_ignore_ty_inner(&inner.upstream, type_parser, false)
+        }
+        MirTypeDelegate::ProxyEnum(inner) => {
+            should_ignore_ty_inner(&inner.original, type_parser, false)
+                || inner.variants.iter().any(|variant| {
+                    should_ignore_ty_inner(&variant.inner, type_parser, false)
+                        || should_ignore_ty_inner(&variant.upstream, type_parser, false)
+                })
+        }
+        MirTypeDelegate::Lifetimeable(inner) => {
+            !is_top_level_arg
+                && should_ignore_ty_inner(
+                    &MirType::RustAutoOpaqueImplicit(inner.api_type.clone()),
+                    type_parser,
+                    false,
+                )
+        }
+        MirTypeDelegate::CustomSerDes(inner) => {
+            should_ignore_ty_inner(&inner.info.inner_type, type_parser, false)
+                || should_ignore_ty_inner(&inner.info.rust_api_type, type_parser, false)
+        }
+        _ => false,
     }
 }
 

@@ -1,0 +1,10 @@
+name: jazz_chord_demo_user
+description: Minimal flutter_rust_bridge third-party scanning reproduction for jazz-chord.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter_rust_bridge: ^2.12.0

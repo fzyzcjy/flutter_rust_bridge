@@ -556,19 +556,6 @@ abstract class OfflineAudioContext
   /// Panics if this method is called multiple times.
   Future<AudioBuffer> startRendering();
 
-  /// Given the current connections and scheduled changes, starts rendering audio.
-  ///
-  /// This function will block the current thread and returns the rendered `AudioBuffer`
-  /// synchronously.
-  ///
-  /// This method will only adhere to scheduled suspensions via [`Self::suspend_sync`] and
-  /// will ignore those provided via [`Self::suspend`].
-  ///
-  /// # Panics
-  ///
-  /// Panics if this method is called multiple times
-  Future<AudioBuffer> startRenderingSync();
-
   /// Returns state of current context
   Future<AudioContextState> state();
 

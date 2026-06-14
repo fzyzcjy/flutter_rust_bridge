@@ -1,0 +1,446 @@
+{
+  "dart_code_of_type": {},
+  "enum_pool": {
+    "crate::api/NestedRefEnum": {
+      "comments": [],
+      "ignore": false,
+      "mode": "Simple",
+      "name": "crate::api/NestedRefEnum",
+      "needs_json_serializable": false,
+      "variants": [
+        {
+          "comments": [],
+          "kind": "Value",
+          "name": {
+            "dart_style": null,
+            "rust_style": "A"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "NestedRefEnum_A"
+          }
+        },
+        {
+          "comments": [],
+          "kind": "Value",
+          "name": {
+            "dart_style": null,
+            "rust_style": "B"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "NestedRefEnum_B"
+          }
+        }
+      ],
+      "wrapper_name": null
+    },
+    "crate::api/RecursiveEnum": {
+      "comments": [],
+      "ignore": false,
+      "mode": "Complex",
+      "name": "crate::api/RecursiveEnum",
+      "needs_json_serializable": false,
+      "variants": [
+        {
+          "comments": [],
+          "kind": "Value",
+          "name": {
+            "dart_style": null,
+            "rust_style": "Empty"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "RecursiveEnum_Empty"
+          }
+        },
+        {
+          "comments": [],
+          "kind": {
+            "Struct": {
+              "comments": [],
+              "dart_collection_deep_equality": false,
+              "dart_metadata_raw": [],
+              "fields": [
+                {
+                  "comments": [],
+                  "default": null,
+                  "is_final": true,
+                  "is_rust_public": false,
+                  "name": {
+                    "dart_style": null,
+                    "rust_style": "field0"
+                  },
+                  "settings": {
+                    "is_in_mirrored_enum": false,
+                    "skip_auto_accessors": false
+                  },
+                  "ty": {
+                    "data": {
+                      "exist_in_real_api": true,
+                      "inner": {
+                        "data": {
+                          "ident": "crate::api/RecursiveEnum",
+                          "is_exception": false
+                        },
+                        "safe_ident": "recursive_enum",
+                        "type": "EnumRef"
+                      }
+                    },
+                    "safe_ident": "box_recursive_enum",
+                    "type": "Boxed"
+                  }
+                }
+              ],
+              "generate_eq": true,
+              "generate_hash": true,
+              "ignore": false,
+              "is_fields_named": false,
+              "name": "crate::api::RecursiveEnum/Nested",
+              "needs_json_serializable": false,
+              "ui_state": false,
+              "wrapper_name": null
+            }
+          },
+          "name": {
+            "dart_style": null,
+            "rust_style": "Nested"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "RecursiveEnum_Nested"
+          }
+        }
+      ],
+      "wrapper_name": null
+    }
+  },
+  "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
+  "extra_rust_output_code": "",
+  "extra_types_all": [],
+  "funcs_all": [
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "id": 1,
+      "impl_mode": "Normal",
+      "init_dart_code": null,
+      "initializer": false,
+      "inputs": [
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": {
+              "dart_style": null,
+              "rust_style": "value"
+            },
+            "settings": {
+              "is_in_mirrored_enum": false,
+              "skip_auto_accessors": false
+            },
+            "ty": {
+              "data": {
+                "exist_in_real_api": false,
+                "inner": {
+                  "data": {
+                    "ident": "crate::api/RecursiveEnum",
+                    "is_exception": false
+                  },
+                  "safe_ident": "recursive_enum",
+                  "type": "EnumRef"
+                }
+              },
+              "safe_ident": "box_autoadd_recursive_enum",
+              "type": "Boxed"
+            }
+          },
+          "needs_extend_lifetime": false,
+          "ownership_mode": "Owned"
+        }
+      ],
+      "mode": "Normal",
+      "name": {
+        "dart_style": null,
+        "rust_style": "accept_recursive_enum"
+      },
+      "namespace": "crate::api",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": {
+            "ident": "crate::api/RecursiveEnum",
+            "is_exception": false
+          },
+          "safe_ident": "recursive_enum",
+          "type": "EnumRef"
+        }
+      },
+      "owner": "Function",
+      "rust_aop_after": null,
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    },
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "id": 2,
+      "impl_mode": "Normal",
+      "init_dart_code": null,
+      "initializer": false,
+      "inputs": [
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": {
+              "dart_style": null,
+              "rust_style": "that"
+            },
+            "settings": {
+              "is_in_mirrored_enum": false,
+              "skip_auto_accessors": false
+            },
+            "ty": {
+              "data": {
+                "PrimitiveEnum": {
+                  "mir": {
+                    "ident": "crate::api/NestedRefEnum",
+                    "is_exception": false
+                  },
+                  "repr": "I32"
+                }
+              },
+              "safe_ident": "nested_ref_enum",
+              "type": "Delegate"
+            }
+          },
+          "needs_extend_lifetime": false,
+          "ownership_mode": "Ref"
+        }
+      ],
+      "mode": "Normal",
+      "name": {
+        "dart_style": null,
+        "rust_style": "nested_ref_enum_is_a"
+      },
+      "namespace": "crate::api",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": "Bool",
+          "safe_ident": "bool",
+          "type": "Primitive"
+        }
+      },
+      "owner": {
+        "Method": {
+          "actual_method_dart_name": null,
+          "actual_method_name": "is_a",
+          "mode": "Instance",
+          "owner_ty": {
+            "data": {
+              "PrimitiveEnum": {
+                "mir": {
+                  "ident": "crate::api/NestedRefEnum",
+                  "is_exception": false
+                },
+                "repr": "I32"
+              }
+            },
+            "safe_ident": "nested_ref_enum",
+            "type": "Delegate"
+          },
+          "owner_ty_raw": "NestedRefEnum",
+          "trait_def": null
+        }
+      },
+      "rust_aop_after": null,
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    },
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "id": 3,
+      "impl_mode": "Normal",
+      "init_dart_code": null,
+      "initializer": false,
+      "inputs": [
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": {
+              "dart_style": null,
+              "rust_style": "that"
+            },
+            "settings": {
+              "is_in_mirrored_enum": false,
+              "skip_auto_accessors": false
+            },
+            "ty": {
+              "data": {
+                "exist_in_real_api": false,
+                "inner": {
+                  "data": {
+                    "ident": "crate::api/NestedRefOwner",
+                    "is_exception": false
+                  },
+                  "safe_ident": "nested_ref_owner",
+                  "type": "StructRef"
+                }
+              },
+              "safe_ident": "box_autoadd_nested_ref_owner",
+              "type": "Boxed"
+            }
+          },
+          "needs_extend_lifetime": false,
+          "ownership_mode": "Ref"
+        }
+      ],
+      "mode": "Normal",
+      "name": {
+        "dart_style": null,
+        "rust_style": "nested_ref_owner_has_value"
+      },
+      "namespace": "crate::api",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": "Bool",
+          "safe_ident": "bool",
+          "type": "Primitive"
+        }
+      },
+      "owner": {
+        "Method": {
+          "actual_method_dart_name": null,
+          "actual_method_name": "has_value",
+          "mode": "Instance",
+          "owner_ty": {
+            "data": {
+              "ident": "crate::api/NestedRefOwner",
+              "is_exception": false
+            },
+            "safe_ident": "nested_ref_owner",
+            "type": "StructRef"
+          },
+          "owner_ty_raw": "NestedRefOwner",
+          "trait_def": null
+        }
+      },
+      "rust_aop_after": null,
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    }
+  ],
+  "skips": [
+    {
+      "name": "crate::api/clone",
+      "reason": "IgnoreBecauseNotDefinedTrait"
+    },
+    {
+      "name": "crate::api/from",
+      "reason": "IgnoreBecauseType"
+    },
+    {
+      "name": "crate::api/accept_known_struct_mut",
+      "reason": "IgnoreBecauseType"
+    },
+    {
+      "name": "crate::api/accept_two_nested_refs",
+      "reason": "IgnoreBecauseType"
+    }
+  ],
+  "struct_pool": {
+    "crate::api/NestedRefOwner": {
+      "comments": [],
+      "dart_collection_deep_equality": false,
+      "dart_metadata_raw": [],
+      "fields": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "is_rust_public": false,
+          "name": {
+            "dart_style": null,
+            "rust_style": "value"
+          },
+          "settings": {
+            "is_in_mirrored_enum": false,
+            "skip_auto_accessors": false
+          },
+          "ty": {
+            "data": {
+              "inner": {
+                "data": {
+                  "exist_in_real_api": false,
+                  "inner": {
+                    "data": {
+                      "PrimitiveEnum": {
+                        "mir": {
+                          "ident": "crate::api/NestedRefEnum",
+                          "is_exception": false
+                        },
+                        "repr": "I32"
+                      }
+                    },
+                    "safe_ident": "nested_ref_enum",
+                    "type": "Delegate"
+                  }
+                },
+                "safe_ident": "box_autoadd_nested_ref_enum",
+                "type": "Boxed"
+              }
+            },
+            "safe_ident": "opt_box_autoadd_nested_ref_enum",
+            "type": "Optional"
+          }
+        }
+      ],
+      "generate_eq": true,
+      "generate_hash": true,
+      "ignore": false,
+      "is_fields_named": true,
+      "name": "crate::api/NestedRefOwner",
+      "needs_json_serializable": false,
+      "ui_state": false,
+      "wrapper_name": null
+    }
+  },
+  "trait_impls": []
+}

@@ -338,10 +338,23 @@ impl FunctionPartialInfo {
             error_output: merge_option(self.error_output, other.error_output)
                 .context("error_output type")?,
             mode: merge_option(self.mode, other.mode).context("mode")?,
-            ignore_func: merge_option(self.ignore_func, other.ignore_func)
+            ignore_func: merge_ignore_func(self.ignore_func, other.ignore_func)
                 .context("ignore_func")?,
         })
     }
+}
+
+fn merge_ignore_func(
+    a: Option<IrSkipReason>,
+    b: Option<IrSkipReason>,
+) -> anyhow::Result<Option<IrSkipReason>> {
+    if a.is_some() && b.is_some() && a != b {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
+        bail!("Function has conflicting skip reasons: {a:?} and {b:?}");
+        // frb-coverage:ignore-end
+    }
+    Ok(a.or(b))
 }
 
 fn merge_option<T: Debug>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T>> {

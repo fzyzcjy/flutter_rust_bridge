@@ -64,7 +64,11 @@ impl MirTypeTrait for MirTypeStructRef {
     }
 
     fn should_ignore(&self, mir_context: &impl MirContext) -> bool {
-        self.get(mir_context).ignore
+        mir_context
+            .struct_pool()
+            .get(&self.ident)
+            .map(|st| st.ignore)
+            .unwrap_or(true)
     }
 }
 
