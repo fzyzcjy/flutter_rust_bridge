@@ -1,6 +1,6 @@
 use std::fmt;
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Triad {
     Major,
     Minor,
@@ -35,7 +35,7 @@ impl fmt::Display for Triad {
     }
 }
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Extension {
     NoChord,
     MajorSeventh,
@@ -99,6 +99,37 @@ impl Extension {
 impl fmt::Display for Extension {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}", self.name())
+    }
+}
+
+#[derive(Eq, PartialEq, Hash, Clone, Debug)]
+pub struct TriadExtension {
+    triad: Option<Triad>,
+    extension: Option<Extension>,
+}
+
+impl TriadExtension {
+    pub fn from(triad: &Option<&Triad>, extension: &Option<&Extension>) -> Self {
+        Self {
+            triad: triad.clone().cloned(),
+            extension: extension.clone().cloned(),
+        }
+    }
+}
+
+impl fmt::Display for TriadExtension {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let triad = if let Some(triad) = &self.triad {
+            format!("{:?}", triad)
+        } else {
+            String::new()
+        };
+        let extension = if let Some(extension) = &self.extension {
+            format!("{:?}", extension)
+        } else {
+            String::new()
+        };
+        write!(f, "{}_{}", triad, extension)
     }
 }
 

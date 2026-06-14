@@ -44,7 +44,7 @@ impl FunctionParser<'_, '_> {
 
         let ty = parse_maybe_proxy_enum(ty, self.type_parser)?;
 
-        if ty.should_ignore(self.type_parser) {
+        if should_ignore_ty(&ty, self.type_parser) {
             return Ok(FunctionPartialInfo {
                 ignore_func: Some(IrSkipReason::IgnoreBecauseType),
                 ..Default::default()
@@ -165,6 +165,18 @@ fn parse_attrs_from_fn_arg(fn_arg: &FnArg) -> &[Attribute] {
         FnArg::Typed(inner) => &inner.attrs,
         FnArg::Receiver(inner) => &inner.attrs,
     }
+}
+
+fn should_ignore_ty(ty: &MirType, type_parser: &TypeParser) -> bool {
+    let mut should_ignore = false;
+    ty.visit_types(
+        &mut |inner| {
+            should_ignore = inner.should_ignore(type_parser);
+            should_ignore
+        },
+        type_parser,
+    );
+    should_ignore
 }
 
 fn parse_maybe_proxy_enum(ty: MirType, type_parser: &TypeParser) -> anyhow::Result<MirType> {
