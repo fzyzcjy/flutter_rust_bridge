@@ -336,6 +336,14 @@ impl TriadExtension {
 
         true
     }
+
+    pub fn all() -> &'static [Self] {
+        &TRIAD_EXTENSIONS
+    }
+
+    pub fn all_legal() -> &'static [Self] {
+        &TRIAD_EXTENSIONS_LEGAL
+    }
 }
 
 impl fmt::Display for TriadExtension {
@@ -353,6 +361,33 @@ impl fmt::Display for TriadExtension {
         write!(f, "{}_{}", triad, extension)
     }
 }
+
+static TRIAD_EXTENSIONS: Lazy<Vec<TriadExtension>> = Lazy::new(|| {
+    let mut values = Vec::new();
+    for triad in Triad::ALL {
+        for extension in Extension::ALL {
+            values.push(TriadExtension::from(
+                &Some(&(*triad).clone()),
+                &Some(&(*extension).clone()),
+            ));
+        }
+    }
+    for triad in Triad::ALL {
+        values.push(TriadExtension::from(&Some(&(*triad).clone()), &None));
+    }
+    for extension in Extension::ALL {
+        values.push(TriadExtension::from(&None, &Some(&(*extension).clone())));
+    }
+    values
+});
+
+static TRIAD_EXTENSIONS_LEGAL: Lazy<Vec<TriadExtension>> = Lazy::new(|| {
+    TRIAD_EXTENSIONS
+        .clone()
+        .into_iter()
+        .filter(TriadExtension::is_legal)
+        .collect()
+});
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Note {

@@ -12,6 +12,12 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TriadExtension>>
 abstract class TriadExtension implements RustOpaqueInterface {
+  static Future<void> all() =>
+      RustLib.instance.api.jazzChordTriadExtensionAll();
+
+  static Future<void> allLegal() =>
+      RustLib.instance.api.jazzChordTriadExtensionAllLegal();
+
   Future<bool> isLegal();
 }
 
