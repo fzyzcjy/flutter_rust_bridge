@@ -161,8 +161,13 @@ class TestFlutterWebConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
   final bool coverage;
+  final bool wasm;
 
-  const TestFlutterWebConfig({required this.package, required this.coverage});
+  const TestFlutterWebConfig({
+    required this.package,
+    required this.coverage,
+    required this.wasm,
+  });
 }
 
 @CliOptions()
@@ -517,6 +522,13 @@ Future<void> testDartWeb(TestDartConfig config) async {
       relativePwd: package,
       // extraEnv: kEnvEnableRustBacktrace,
     );
+    // Cross-check the DCO codec under dart2wasm specifically. The rest of the
+    // suite stays on dart2js — only this targeted file exercises the boundary
+    // behavior the dart2wasm fix protects.
+    await exec(
+      'dart test -p chrome --compiler dart2wasm test/dco_codec_test.dart',
+      relativePwd: package,
+    );
   } else {
     final features = getRustFeaturesOfPackage(config.package);
     await exec(
@@ -653,6 +665,7 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
     '--driver=test_driver/integration_test.dart '
     '--target=integration_test/simple_test.dart '
     '-d web-server '
+    '${config.wasm ? '--wasm ' : ''}'
     '--verbose',
     relativePwd: config.package,
   );

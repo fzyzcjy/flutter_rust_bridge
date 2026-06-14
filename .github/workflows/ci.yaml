@@ -1070,7 +1070,7 @@ jobs:
   test_flutter_web:
     needs: plan_ci
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_web.enable == true }}
-    name: 'Test :: Flutter :: Web'
+    name: "Test :: Flutter :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -1114,10 +1114,11 @@ jobs:
           lsof -i :4444
 
       # execute
-      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
+      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} ${{ matrix.wasm && '--wasm' || '--coverage' }}
 
       # report
-      - uses: actions/upload-artifact@v4
+      - if: ${{ !matrix.wasm }}
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.package }}--coverage
           path: target/coverage
