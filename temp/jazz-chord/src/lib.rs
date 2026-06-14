@@ -300,6 +300,42 @@ impl TriadExtension {
             extension: extension.clone().cloned(),
         }
     }
+
+    pub fn is_legal(&self) -> bool {
+        if let Some(extension) = &self.extension {
+            if extension.notes().len() <= 2 {
+                if self.triad.is_none()
+                    && (*extension == Extension::Five || *extension == Extension::NoChord)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        if let (Some(triad), Some(extension)) = (&self.triad, &self.extension) {
+            if *triad == Triad::Diminished {
+                if [Extension::Thirteen, Extension::SixAddNine, Extension::Six].contains(extension)
+                {
+                    return false;
+                }
+            } else if *triad == Triad::HalfDiminished {
+                if !extension.notes().contains_note_text("b7") {
+                    return false;
+                }
+            } else if *triad == Triad::SusTwo {
+                if extension.notes().contains_note_text("2") {
+                    return false;
+                }
+            } else if *triad == Triad::SusFour {
+                if extension.notes().contains_note_text("4") {
+                    return false;
+                }
+            }
+        }
+
+        true
+    }
 }
 
 impl fmt::Display for TriadExtension {
@@ -458,6 +494,10 @@ impl Change {
 
     pub fn is_empty(&self) -> bool {
         self.notes.is_empty()
+    }
+
+    fn contains_note_text(&self, text: &str) -> bool {
+        self.notes.iter().any(|note| note.text == text)
     }
 
     fn push_note(&mut self, note: &Note) {

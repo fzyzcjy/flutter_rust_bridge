@@ -6,10 +6,14 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `TriadExtension`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
 // These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `from`
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TriadExtension>>
+abstract class TriadExtension implements RustOpaqueInterface {
+  Future<bool> isLegal();
+}
 
 abstract class ToChordQuality {
   Future<Quality> toChordQuality();
