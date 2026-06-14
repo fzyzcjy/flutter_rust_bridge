@@ -91,6 +91,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Quality dco_decode_box_autoadd_quality(dynamic raw);
 
   @protected
+  BigInt dco_decode_box_autoadd_usize(dynamic raw);
+
+  @protected
   Change dco_decode_change(dynamic raw);
 
   @protected
@@ -136,7 +139,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   KeySlashQuality? dco_decode_opt_box_autoadd_key_slash_quality(dynamic raw);
 
   @protected
+  Note? dco_decode_opt_box_autoadd_note(dynamic raw);
+
+  @protected
   Quality? dco_decode_opt_box_autoadd_quality(dynamic raw);
+
+  @protected
+  BigInt? dco_decode_opt_box_autoadd_usize(dynamic raw);
 
   @protected
   List<Extension>? dco_decode_opt_list_extension(dynamic raw);
@@ -229,6 +238,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Quality sse_decode_box_autoadd_quality(SseDeserializer deserializer);
 
   @protected
+  BigInt sse_decode_box_autoadd_usize(SseDeserializer deserializer);
+
+  @protected
   Change sse_decode_change(SseDeserializer deserializer);
 
   @protected
@@ -280,7 +292,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  Note? sse_decode_opt_box_autoadd_note(SseDeserializer deserializer);
+
+  @protected
   Quality? sse_decode_opt_box_autoadd_quality(SseDeserializer deserializer);
+
+  @protected
+  BigInt? sse_decode_opt_box_autoadd_usize(SseDeserializer deserializer);
 
   @protected
   List<Extension>? sse_decode_opt_list_extension(SseDeserializer deserializer);
@@ -384,6 +402,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_box_autoadd_quality(Quality self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_usize(BigInt self, SseSerializer serializer);
+
+  @protected
   void sse_encode_change(Change self, SseSerializer serializer);
 
   @protected
@@ -447,10 +468,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  void sse_encode_opt_box_autoadd_note(Note? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_quality(
     Quality? self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_opt_box_autoadd_usize(BigInt? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_list_extension(

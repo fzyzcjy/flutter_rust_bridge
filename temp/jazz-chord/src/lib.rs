@@ -896,6 +896,10 @@ impl Note {
         self.pitch_class_text() == other.pitch_class_text()
     }
 
+    pub fn eq_note(&self, other: &Note, eq: &NoteEq) -> bool {
+        eq.eq(self, other)
+    }
+
     fn degree_text(&self) -> &str {
         let text = self
             .text
@@ -1081,6 +1085,16 @@ impl Change {
         DegreePossibilities::from_triad_extension(&triad_extension).to_change()
     }
 
+    pub fn is_same_pitchclass_of_change(&self, other: &Change) -> bool {
+        self.notes
+            .iter()
+            .all(|note| other.contains_pitch_class(note))
+            && other
+                .notes
+                .iter()
+                .all(|note| self.contains_pitch_class(note))
+    }
+
     pub fn join(&self, separator: &str) -> String {
         self.notes
             .iter()
@@ -1095,6 +1109,48 @@ impl Change {
 
     pub fn is_empty(&self) -> bool {
         self.notes.is_empty()
+    }
+
+    pub fn index_of_note(&self, note: &Note, compare: &NoteEq) -> Option<usize> {
+        for (index, self_note) in self.notes.iter().enumerate() {
+            if compare.eq(note, self_note) {
+                return Some(index);
+            }
+        }
+        None
+    }
+
+    pub fn first_matching_note(&self, note: &Note, compare: &NoteEq) -> Option<Note> {
+        for self_note in self {
+            if compare.eq(self_note, note) {
+                return Some(self_note.clone());
+            }
+        }
+        None
+    }
+
+    pub fn without_notes(&self, notes: &Change, eq: &NoteEq) -> Self {
+        Change::from_notes(
+            self.notes
+                .iter()
+                .filter(|self_note| !notes.contains_note(self_note, eq))
+                .cloned()
+                .collect(),
+        )
+    }
+
+    pub fn without_note(&self, note: &Note, eq: &NoteEq) -> Self {
+        Change::from_notes(
+            self.notes
+                .iter()
+                .filter(|self_note| !self_note.eq_note(note, eq))
+                .cloned()
+                .collect(),
+        )
+    }
+
+    pub fn remove(&mut self, index: usize) {
+        self.notes.remove(index);
     }
 
     pub fn contains<N: Into<Note>>(&self, note: N) -> bool {
@@ -1128,6 +1184,47 @@ impl Change {
         self.notes
             .iter()
             .any(|note| note.is_same_pitch_class(&other))
+    }
+
+    pub fn dedup(&self, note_eq: &NoteEq) -> Change {
+        let mut notes = Change::new();
+        for note in self {
+            if !notes.contains_note(note, note_eq) {
+                notes.push_note(note);
+            }
+        }
+        notes
+    }
+
+    pub fn remove_exact_note<N: Into<Note>>(&self, note: N) -> Change {
+        let note = note.into();
+        Change::from_notes(
+            self.notes
+                .iter()
+                .filter(|current_note| current_note != &&note)
+                .cloned()
+                .collect(),
+        )
+    }
+
+    pub fn remove_equivalent_of_note(&self, note: &Note) -> Change {
+        Change::from_notes(
+            self.notes
+                .iter()
+                .filter(|current_note| !current_note.is_equivalent(note))
+                .cloned()
+                .collect(),
+        )
+    }
+
+    pub fn remove_pitch_class_of_note(&self, note: &Note) -> Change {
+        Change::from_notes(
+            self.notes
+                .iter()
+                .filter(|current_note| !current_note.is_same_pitch_class(note))
+                .cloned()
+                .collect(),
+        )
     }
 
     fn contains_note_text(&self, text: &str) -> bool {

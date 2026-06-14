@@ -6,9 +6,9 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they have generic arguments: `contains_enharmonic`, `contains_pitch_class`, `contains`
+// These functions are ignored because they have generic arguments: `contains_enharmonic`, `contains_pitch_class`, `contains`, `remove_exact_note`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `from`, `from`, `from`, `hash`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
-// These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`, `get_mut`
+// These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`, `get_mut`, `remove`
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `from_triad_extension`, `from`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NoteMatch>>
@@ -65,8 +65,20 @@ class Change {
   Future<bool> containsStrictNote({required Note note}) => RustLib.instance.api
       .jazzChordChangeContainsStrictNote(that: this, note: note);
 
+  Future<Change> dedup({required NoteEq noteEq}) =>
+      RustLib.instance.api.jazzChordChangeDedup(that: this, noteEq: noteEq);
+
   static Future<Change> default_() =>
       RustLib.instance.api.jazzChordChangeDefault();
+
+  Future<Note?> firstMatchingNote({
+    required Note note,
+    required NoteEq compare,
+  }) => RustLib.instance.api.jazzChordChangeFirstMatchingNote(
+    that: this,
+    note: note,
+    compare: compare,
+  );
 
   static Future<Change> fromNote({required Note note}) =>
       RustLib.instance.api.jazzChordChangeFromNote(note: note);
@@ -79,8 +91,20 @@ class Change {
         notesString: notesString,
       );
 
+  Future<BigInt?> indexOfNote({required Note note, required NoteEq compare}) =>
+      RustLib.instance.api.jazzChordChangeIndexOfNote(
+        that: this,
+        note: note,
+        compare: compare,
+      );
+
   Future<bool> isEmpty() =>
       RustLib.instance.api.jazzChordChangeIsEmpty(that: this);
+
+  Future<bool> isSamePitchclassOfChange({required Change other}) => RustLib
+      .instance
+      .api
+      .jazzChordChangeIsSamePitchclassOfChange(that: this, other: other);
 
   Future<String> join({required String separator}) => RustLib.instance.api
       .jazzChordChangeJoin(that: this, separator: separator);
@@ -91,8 +115,32 @@ class Change {
   static Future<Change> newInstance() =>
       RustLib.instance.api.jazzChordChangeNew();
 
+  Future<Change> removeEquivalentOfNote({required Note note}) => RustLib
+      .instance
+      .api
+      .jazzChordChangeRemoveEquivalentOfNote(that: this, note: note);
+
+  Future<Change> removePitchClassOfNote({required Note note}) => RustLib
+      .instance
+      .api
+      .jazzChordChangeRemovePitchClassOfNote(that: this, note: note);
+
   Future<Quality> toChordQuality() =>
       RustLib.instance.api.jazzChordChangeToChordQuality(that: this);
+
+  Future<Change> withoutNote({required Note note, required NoteEq eq}) =>
+      RustLib.instance.api.jazzChordChangeWithoutNote(
+        that: this,
+        note: note,
+        eq: eq,
+      );
+
+  Future<Change> withoutNotes({required Change notes, required NoteEq eq}) =>
+      RustLib.instance.api.jazzChordChangeWithoutNotes(
+        that: this,
+        notes: notes,
+        eq: eq,
+      );
 
   @override
   int get hashCode => notes.hashCode;
@@ -301,6 +349,11 @@ class Note {
   final String text;
 
   const Note({required this.text});
+
+  Future<bool> eqNote({required Note other, required NoteEq eq}) => RustLib
+      .instance
+      .api
+      .jazzChordNoteEqNote(that: this, other: other, eq: eq);
 
   Future<bool> isEquivalent({required Note other}) =>
       RustLib.instance.api.jazzChordNoteIsEquivalent(that: this, other: other);
