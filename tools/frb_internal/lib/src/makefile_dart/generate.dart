@@ -448,10 +448,11 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       );
       print('Pick temporary directory: $dirTemp');
       await Directory(dirTemp).create(recursive: true);
+      final dirTempOriginal = path.join(dirTemp, 'original');
 
       // We move instead of delete folder for extra safety of this script
       if (await Directory(dirPackage).exists()) {
-        await Directory(dirPackage).rename(path.join(dirTemp, 'original'));
+        await Directory(dirPackage).rename(dirTempOriginal);
       }
 
       final recipe = _integrateRecipeForPackage(config.package);
@@ -490,6 +491,13 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       if (!config.skipCheckedInAppleScaffold) {
         await applyCheckedInAppleScaffoldSourceOfTruth(
           package: config.package,
+          generatedPackageDir: dirPackage,
+        );
+      }
+      if (!config.includeOhos) {
+        await preserveCheckedInOhosScaffold(
+          package: config.package,
+          originalPackageDir: dirTempOriginal,
           generatedPackageDir: dirPackage,
         );
       }
