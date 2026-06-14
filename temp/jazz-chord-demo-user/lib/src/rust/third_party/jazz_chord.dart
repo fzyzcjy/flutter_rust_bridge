@@ -101,6 +101,9 @@ enum Extension {
 
   Future<void> name() =>
       RustLib.instance.api.jazzChordExtensionName(that: this);
+
+  Future<void> notes() =>
+      RustLib.instance.api.jazzChordExtensionNotes(that: this);
 }
 
 class KeySlashQuality {

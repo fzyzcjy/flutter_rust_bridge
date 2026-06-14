@@ -1,3 +1,5 @@
+use once_cell::sync::Lazy;
+use std::collections::HashMap;
 use std::fmt;
 use std::slice;
 use std::vec::IntoIter;
@@ -51,6 +53,10 @@ impl Triad {
 
     pub fn is_sus(&self) -> bool {
         Self::SUS_TRIADS.contains(&self)
+    }
+
+    fn notes(&self) -> &'static Change {
+        TRIAD_TO_NOTES.get(self).unwrap()
     }
 }
 
@@ -211,6 +217,10 @@ impl Extension {
     pub fn contains_minor_token(&self) -> bool {
         Self::CONTAINING_MINOR_TOKEN.contains(&self)
     }
+
+    pub fn notes(&self) -> &'static Change {
+        EXTENSION_TO_NOTES.get(self).unwrap()
+    }
 }
 
 impl fmt::Display for Extension {
@@ -218,6 +228,64 @@ impl fmt::Display for Extension {
         write!(f, "{}", self.name())
     }
 }
+
+static TRIAD_TO_NOTES: Lazy<HashMap<Triad, Change>> = Lazy::new(|| {
+    let mut map = HashMap::new();
+    for triad in Triad::ALL {
+        let change = match triad {
+            Triad::Major => Change::from_notes_string("1 3 5"),
+            Triad::Minor => Change::from_notes_string("1 b3 5"),
+            Triad::Diminished => Change::from_notes_string("1 b3 b5"),
+            Triad::HalfDiminished => Change::from_notes_string("1 b3 b5"),
+            Triad::Augmented => Change::from_notes_string("1 3 #5"),
+            Triad::SusTwo => Change::from_notes_string("1 2 5"),
+            Triad::SusFlatTwo => Change::from_notes_string("1 b2 5"),
+            Triad::SusFour => Change::from_notes_string("1 4 5"),
+            Triad::SusSharpFour => Change::from_notes_string("1 #4 5"),
+        };
+        map.insert((*triad).clone(), change);
+    }
+    map
+});
+
+static EXTENSION_TO_NOTES: Lazy<HashMap<Extension, Change>> = Lazy::new(|| {
+    let mut map = HashMap::new();
+    for extension in Extension::ALL {
+        let notes = match extension {
+            Extension::NoChord => Change::new(),
+            Extension::MajorSeventh => Change::from_note_strings(&["1", "7"]),
+            Extension::Five => Change::from_note_strings(&["1", "5"]),
+            Extension::SixAddNine => Change::from_note_strings(&["1", "3", "5", "6", "9"]),
+            Extension::Six => Change::from_note_strings(&["1", "3", "5", "6"]),
+            Extension::MajorSeven => Change::from_note_strings(&["1", "3", "5", "7"]),
+            Extension::Seven => Change::from_note_strings(&["1", "3", "5", "b7"]),
+            Extension::MajorNine => Change::from_note_strings(&["1", "3", "5", "7", "9"]),
+            Extension::Nine => Change::from_note_strings(&["1", "3", "5", "b7", "9"]),
+            Extension::MajorEleven => Change::from_note_strings(&["1", "3", "5", "7", "9", "11"]),
+            Extension::Eleven => Change::from_note_strings(&["1", "3", "5", "b7", "9", "11"]),
+            Extension::MajorThirteen => {
+                Change::from_note_strings(&["1", "3", "5", "7", "9", "11", "13"])
+            }
+            Extension::Thirteen => {
+                Change::from_note_strings(&["1", "3", "5", "b7", "9", "11", "13"])
+            }
+            Extension::Unison => Change::from_note_strings(&["1"]),
+            Extension::MinorSecond => Change::from_note_strings(&["1", "b2"]),
+            Extension::MajorSecond => Change::from_note_strings(&["1", "2"]),
+            Extension::MinorThird => Change::from_note_strings(&["1", "b3"]),
+            Extension::MajorThird => Change::from_note_strings(&["1", "3"]),
+            Extension::Fourth => Change::from_note_strings(&["1", "4"]),
+            Extension::AugmentedFourth => Change::from_note_strings(&["1", "#4"]),
+            Extension::MinorFifth => Change::from_note_strings(&["1", "b5"]),
+            Extension::Fifth => Change::from_note_strings(&["1", "5"]),
+            Extension::MinorSixth => Change::from_note_strings(&["1", "b6"]),
+            Extension::MajorSixth => Change::from_note_strings(&["1", "6"]),
+            Extension::MinorSeventh => Change::from_note_strings(&["1", "b7"]),
+        };
+        map.insert((*extension).clone(), notes);
+    }
+    map
+});
 
 #[derive(Eq, PartialEq, Hash, Clone, Debug)]
 pub struct TriadExtension {
