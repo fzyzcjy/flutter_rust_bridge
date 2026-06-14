@@ -32,7 +32,9 @@ For example, on Windows:
 $env:OHOS_SDK_HOME = "D:\Huawei\SDK\18\native"
 ```
 
-On macOS or Linux:
+On macOS or Linux, add this to your shell profile, such as `~/.bashrc`,
+`~/.zshrc`, or `~/.profile`, so the variable persists after restarting the
+terminal:
 
 ```shell
 export OHOS_SDK_HOME=/opt/Huawei/SDK/18/native
