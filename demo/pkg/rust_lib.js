@@ -241,6 +241,11 @@ let wasm_bindgen;
         wasm.frb_dart_fn_deliver_output(call_id, ptr_, rust_vec_len_, data_len_);
     };
 
+    function takeFromExternrefTable0(idx) {
+        const value = wasm.__wbindgen_export_2.get(idx);
+        wasm.__externref_table_dealloc(idx);
+        return value;
+    }
     /**
      * @param {number} ptr
      * @returns {any}
@@ -248,39 +253,6 @@ let wasm_bindgen;
     __exports.frb_dart_opaque_rust2dart_decode = function(ptr) {
         const ret = wasm.frb_dart_opaque_rust2dart_decode(ptr);
         return ret;
-    };
-
-    function passArrayJsValueToWasm0(array, malloc) {
-        const ptr = malloc(array.length * 4, 4) >>> 0;
-        for (let i = 0; i < array.length; i++) {
-            const add = addToExternrefTable0(array[i]);
-            getDataViewMemory0().setUint32(ptr + 4 * i, add, true);
-        }
-        WASM_VECTOR_LEN = array.length;
-        return ptr;
-    }
-
-    function takeFromExternrefTable0(idx) {
-        const value = wasm.__wbindgen_export_2.get(idx);
-        wasm.__externref_table_dealloc(idx);
-        return value;
-    }
-    /**
-     * ## Safety
-     * This function reclaims a raw pointer created by [`TransferClosure`], and therefore
-     * should **only** be used in conjunction with it.
-     * Furthermore, the WASM module in the worker must have been initialized with the shared
-     * memory from the host JS scope.
-     * @param {number} payload
-     * @param {any[]} transfer
-     */
-    __exports.receive_transfer_closure = function(payload, transfer) {
-        const ptr0 = passArrayJsValueToWasm0(transfer, wasm.__wbindgen_malloc);
-        const len0 = WASM_VECTOR_LEN;
-        const ret = wasm.receive_transfer_closure(payload, ptr0, len0);
-        if (ret[1]) {
-            throw takeFromExternrefTable0(ret[0]);
-        }
     };
 
     /**
@@ -307,16 +279,43 @@ let wasm_bindgen;
         wasm.wasm_start_callback();
     };
 
+    function passArrayJsValueToWasm0(array, malloc) {
+        const ptr = malloc(array.length * 4, 4) >>> 0;
+        for (let i = 0; i < array.length; i++) {
+            const add = addToExternrefTable0(array[i]);
+            getDataViewMemory0().setUint32(ptr + 4 * i, add, true);
+        }
+        WASM_VECTOR_LEN = array.length;
+        return ptr;
+    }
+    /**
+     * ## Safety
+     * This function reclaims a raw pointer created by [`TransferClosure`], and therefore
+     * should **only** be used in conjunction with it.
+     * Furthermore, the WASM module in the worker must have been initialized with the shared
+     * memory from the host JS scope.
+     * @param {number} payload
+     * @param {any[]} transfer
+     */
+    __exports.receive_transfer_closure = function(payload, transfer) {
+        const ptr0 = passArrayJsValueToWasm0(transfer, wasm.__wbindgen_malloc);
+        const len0 = WASM_VECTOR_LEN;
+        const ret = wasm.receive_transfer_closure(payload, ptr0, len0);
+        if (ret[1]) {
+            throw takeFromExternrefTable0(ret[0]);
+        }
+    };
+
     function __wbg_adapter_36(arg0, arg1, arg2) {
-        wasm.closure151_externref_shim(arg0, arg1, arg2);
+        wasm.closure148_externref_shim(arg0, arg1, arg2);
     }
 
     function __wbg_adapter_39(arg0, arg1, arg2) {
-        wasm.closure166_externref_shim(arg0, arg1, arg2);
+        wasm.closure169_externref_shim(arg0, arg1, arg2);
     }
 
     function __wbg_adapter_115(arg0, arg1, arg2, arg3) {
-        wasm.closure210_externref_shim(arg0, arg1, arg2, arg3);
+        wasm.closure213_externref_shim(arg0, arg1, arg2, arg3);
     }
 
     const WorkerPoolFinalization = (typeof FinalizationRegistry === 'undefined')
@@ -687,16 +686,16 @@ let wasm_bindgen;
             const ret = false;
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper390 = function(arg0, arg1, arg2) {
-            const ret = makeMutClosure(arg0, arg1, 152, __wbg_adapter_36);
+        imports.wbg.__wbindgen_closure_wrapper372 = function(arg0, arg1, arg2) {
+            const ret = makeMutClosure(arg0, arg1, 149, __wbg_adapter_36);
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper414 = function(arg0, arg1, arg2) {
-            const ret = makeMutClosure(arg0, arg1, 167, __wbg_adapter_39);
+        imports.wbg.__wbindgen_closure_wrapper416 = function(arg0, arg1, arg2) {
+            const ret = makeMutClosure(arg0, arg1, 170, __wbg_adapter_39);
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper424 = function(arg0, arg1, arg2) {
-            const ret = makeMutClosure(arg0, arg1, 167, __wbg_adapter_39);
+        imports.wbg.__wbindgen_closure_wrapper426 = function(arg0, arg1, arg2) {
+            const ret = makeMutClosure(arg0, arg1, 170, __wbg_adapter_39);
             return ret;
         };
         imports.wbg.__wbindgen_debug_string = function(arg0, arg1) {
