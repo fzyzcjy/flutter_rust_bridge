@@ -7,7 +7,7 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they have generic arguments: `contains_enharmonic`, `contains_pitch_class`, `contains`, `remove_exact_note`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `from`, `from`, `from`, `hash`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `from`, `from`, `from`, `hash`, `hash`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
 // These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`, `get_mut`, `remove`
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `from_triad_extension`, `from`
 
@@ -322,6 +322,16 @@ enum Extension {
   Future<bool> containsMinorToken() =>
       RustLib.instance.api.jazzChordExtensionContainsMinorToken(that: this);
 
+  Future<String?> extensionNumber() =>
+      RustLib.instance.api.jazzChordExtensionExtensionNumber(that: this);
+
+  Future<String?> extensionNumberWithOptions({
+    required QualityParams options,
+  }) => RustLib.instance.api.jazzChordExtensionExtensionNumberWithOptions(
+    that: this,
+    options: options,
+  );
+
   Future<bool> hidesMaTriadStr({required bool hideMajorSixTriad}) =>
       RustLib.instance.api.jazzChordExtensionHidesMaTriadStr(
         that: this,
@@ -339,6 +349,11 @@ enum Extension {
 
   Future<void> possibilities() =>
       RustLib.instance.api.jazzChordExtensionPossibilities(that: this);
+
+  Future<String> toChordString({required QualityParams options}) => RustLib
+      .instance
+      .api
+      .jazzChordExtensionToChordString(that: this, options: options);
 }
 
 class KeySlashQuality {
@@ -424,6 +439,64 @@ class Quality {
           input == other.input;
 }
 
+class QualityParams {
+  final bool useUnicode;
+  final bool useDoubleAccidentals;
+  final String strMajorTriad;
+  final String strMinorTriad;
+  final String strDimTriad;
+  final String strSusTriad;
+  final String strAugTriad;
+  final String strHalfDiminished;
+  final String strSixNines;
+
+  const QualityParams({
+    required this.useUnicode,
+    required this.useDoubleAccidentals,
+    required this.strMajorTriad,
+    required this.strMinorTriad,
+    required this.strDimTriad,
+    required this.strSusTriad,
+    required this.strAugTriad,
+    required this.strHalfDiminished,
+    required this.strSixNines,
+  });
+
+  static Future<QualityParams> default_() =>
+      RustLib.instance.api.jazzChordQualityParamsDefault();
+
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+  static Future<QualityParams> newInstance() =>
+      RustLib.instance.api.jazzChordQualityParamsNew();
+
+  @override
+  int get hashCode =>
+      useUnicode.hashCode ^
+      useDoubleAccidentals.hashCode ^
+      strMajorTriad.hashCode ^
+      strMinorTriad.hashCode ^
+      strDimTriad.hashCode ^
+      strSusTriad.hashCode ^
+      strAugTriad.hashCode ^
+      strHalfDiminished.hashCode ^
+      strSixNines.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is QualityParams &&
+          runtimeType == other.runtimeType &&
+          useUnicode == other.useUnicode &&
+          useDoubleAccidentals == other.useDoubleAccidentals &&
+          strMajorTriad == other.strMajorTriad &&
+          strMinorTriad == other.strMinorTriad &&
+          strDimTriad == other.strDimTriad &&
+          strSusTriad == other.strSusTriad &&
+          strAugTriad == other.strAugTriad &&
+          strHalfDiminished == other.strHalfDiminished &&
+          strSixNines == other.strSixNines;
+}
+
 enum Triad {
   major,
   minor,
@@ -438,4 +511,9 @@ enum Triad {
   Future<bool> isSus() => RustLib.instance.api.jazzChordTriadIsSus(that: this);
 
   Future<void> name() => RustLib.instance.api.jazzChordTriadName(that: this);
+
+  Future<String> toChordString({required QualityParams options}) => RustLib
+      .instance
+      .api
+      .jazzChordTriadToChordString(that: this, options: options);
 }

@@ -65,7 +65,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0-beta.1';
 
   @override
-  int get rustContentHash => -298284498;
+  int get rustContentHash => -255931332;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -282,6 +282,13 @@ abstract class RustLibApi extends BaseApi {
 
   Future<bool> jazzChordExtensionContainsMinorToken({required Extension that});
 
+  Future<String?> jazzChordExtensionExtensionNumber({required Extension that});
+
+  Future<String?> jazzChordExtensionExtensionNumberWithOptions({
+    required Extension that,
+    required QualityParams options,
+  });
+
   Future<bool> jazzChordExtensionHidesMaTriadStr({
     required Extension that,
     required bool hideMajorSixTriad,
@@ -294,6 +301,11 @@ abstract class RustLibApi extends BaseApi {
   Future<void> jazzChordExtensionNotes({required Extension that});
 
   Future<void> jazzChordExtensionPossibilities({required Extension that});
+
+  Future<String> jazzChordExtensionToChordString({
+    required Extension that,
+    required QualityParams options,
+  });
 
   Future<KeySlashQuality?> jazzChordKeySlashQualityFromString({
     required String input,
@@ -331,9 +343,18 @@ abstract class RustLibApi extends BaseApi {
 
   Future<Quality?> jazzChordQualityFromString({required String input});
 
+  Future<QualityParams> jazzChordQualityParamsDefault();
+
+  Future<QualityParams> jazzChordQualityParamsNew();
+
   Future<bool> jazzChordTriadIsSus({required Triad that});
 
   Future<void> jazzChordTriadName({required Triad that});
+
+  Future<String> jazzChordTriadToChordString({
+    required Triad that,
+    required QualityParams options,
+  });
 
   RustArcIncrementStrongCountFnType
   get rust_arc_increment_strong_count_ChangeEq;
@@ -2157,6 +2178,72 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<String?> jazzChordExtensionExtensionNumber({required Extension that}) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_extension(that, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 56,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_opt_String,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordExtensionExtensionNumberConstMeta,
+        argValues: [that],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordExtensionExtensionNumberConstMeta =>
+      const TaskConstMeta(
+        debugName: "extension_extension_number",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<String?> jazzChordExtensionExtensionNumberWithOptions({
+    required Extension that,
+    required QualityParams options,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_extension(that, serializer);
+          sse_encode_box_autoadd_quality_params(options, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 57,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_opt_String,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordExtensionExtensionNumberWithOptionsConstMeta,
+        argValues: [that, options],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordExtensionExtensionNumberWithOptionsConstMeta =>
+      const TaskConstMeta(
+        debugName: "extension_extension_number_with_options",
+        argNames: ["that", "options"],
+      );
+
+  @override
   Future<bool> jazzChordExtensionHidesMaTriadStr({
     required Extension that,
     required bool hideMajorSixTriad,
@@ -2170,7 +2257,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 56,
+            funcId: 58,
             port: port_,
           );
         },
@@ -2201,7 +2288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 57,
+            funcId: 59,
             port: port_,
           );
         },
@@ -2232,7 +2319,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 58,
+            funcId: 60,
             port: port_,
           );
         },
@@ -2260,7 +2347,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 59,
+            funcId: 61,
             port: port_,
           );
         },
@@ -2288,7 +2375,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 60,
+            funcId: 62,
             port: port_,
           );
         },
@@ -2310,6 +2397,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<String> jazzChordExtensionToChordString({
+    required Extension that,
+    required QualityParams options,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_extension(that, serializer);
+          sse_encode_box_autoadd_quality_params(options, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 63,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_String,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordExtensionToChordStringConstMeta,
+        argValues: [that, options],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordExtensionToChordStringConstMeta =>
+      const TaskConstMeta(
+        debugName: "extension_to_chord_string",
+        argNames: ["that", "options"],
+      );
+
+  @override
   Future<KeySlashQuality?> jazzChordKeySlashQualityFromString({
     required String input,
   }) {
@@ -2321,7 +2443,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 61,
+            funcId: 64,
             port: port_,
           );
         },
@@ -2358,7 +2480,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 62,
+            funcId: 65,
             port: port_,
           );
         },
@@ -2394,7 +2516,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 63,
+            funcId: 66,
             port: port_,
           );
         },
@@ -2428,7 +2550,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 64,
+            funcId: 67,
             port: port_,
           );
         },
@@ -2462,7 +2584,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 65,
+            funcId: 68,
             port: port_,
           );
         },
@@ -2493,7 +2615,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 66,
+            funcId: 69,
             port: port_,
           );
         },
@@ -2521,7 +2643,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 67,
+            funcId: 70,
             port: port_,
           );
         },
@@ -2546,7 +2668,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         callFfi: () {
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_String(input, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 68)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 71)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_String,
@@ -2569,7 +2691,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         callFfi: () {
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_String(input, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 69)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 72)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_String,
@@ -2595,7 +2717,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 70,
+            funcId: 73,
             port: port_,
           );
         },
@@ -2616,6 +2738,60 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   );
 
   @override
+  Future<QualityParams> jazzChordQualityParamsDefault() {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 74,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_quality_params,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordQualityParamsDefaultConstMeta,
+        argValues: [],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordQualityParamsDefaultConstMeta =>
+      const TaskConstMeta(debugName: "quality_params_default", argNames: []);
+
+  @override
+  Future<QualityParams> jazzChordQualityParamsNew() {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 75,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_quality_params,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordQualityParamsNewConstMeta,
+        argValues: [],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordQualityParamsNewConstMeta =>
+      const TaskConstMeta(debugName: "quality_params_new", argNames: []);
+
+  @override
   Future<bool> jazzChordTriadIsSus({required Triad that}) {
     return handler.executeNormal(
       NormalTask(
@@ -2625,7 +2801,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 71,
+            funcId: 76,
             port: port_,
           );
         },
@@ -2653,7 +2829,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 72,
+            funcId: 77,
             port: port_,
           );
         },
@@ -2670,6 +2846,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kJazzChordTriadNameConstMeta =>
       const TaskConstMeta(debugName: "triad_name", argNames: ["that"]);
+
+  @override
+  Future<String> jazzChordTriadToChordString({
+    required Triad that,
+    required QualityParams options,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_triad(that, serializer);
+          sse_encode_box_autoadd_quality_params(options, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 78,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_String,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordTriadToChordStringConstMeta,
+        argValues: [that, options],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordTriadToChordStringConstMeta =>
+      const TaskConstMeta(
+        debugName: "triad_to_chord_string",
+        argNames: ["that", "options"],
+      );
 
   RustArcIncrementStrongCountFnType
   get rust_arc_increment_strong_count_ChangeEq => wire
@@ -2835,6 +3046,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  QualityParams dco_decode_box_autoadd_quality_params(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_quality_params(raw);
+  }
+
+  @protected
   BigInt dco_decode_box_autoadd_usize(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_usize(raw);
@@ -2952,6 +3169,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  String? dco_decode_opt_String(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_String(raw);
+  }
+
+  @protected
   KeySlashQuality? dco_decode_opt_box_autoadd_key_slash_quality(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_box_autoadd_key_slash_quality(raw);
@@ -2994,6 +3217,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Quality(input: dco_decode_String(arr[0]));
+  }
+
+  @protected
+  QualityParams dco_decode_quality_params(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 9)
+      throw Exception('unexpected arr length: expect 9 but see ${arr.length}');
+    return QualityParams(
+      useUnicode: dco_decode_bool(arr[0]),
+      useDoubleAccidentals: dco_decode_bool(arr[1]),
+      strMajorTriad: dco_decode_String(arr[2]),
+      strMinorTriad: dco_decode_String(arr[3]),
+      strDimTriad: dco_decode_String(arr[4]),
+      strSusTriad: dco_decode_String(arr[5]),
+      strAugTriad: dco_decode_String(arr[6]),
+      strHalfDiminished: dco_decode_String(arr[7]),
+      strSixNines: dco_decode_String(arr[8]),
+    );
   }
 
   @protected
@@ -3195,6 +3437,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  QualityParams sse_decode_box_autoadd_quality_params(
+    SseDeserializer deserializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_quality_params(deserializer));
+  }
+
+  @protected
   BigInt sse_decode_box_autoadd_usize(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_usize(deserializer));
@@ -3346,6 +3596,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  String? sse_decode_opt_String(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_String(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   KeySlashQuality? sse_decode_opt_box_autoadd_key_slash_quality(
     SseDeserializer deserializer,
   ) {
@@ -3418,6 +3679,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_input = sse_decode_String(deserializer);
     return Quality(input: var_input);
+  }
+
+  @protected
+  QualityParams sse_decode_quality_params(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_useUnicode = sse_decode_bool(deserializer);
+    var var_useDoubleAccidentals = sse_decode_bool(deserializer);
+    var var_strMajorTriad = sse_decode_String(deserializer);
+    var var_strMinorTriad = sse_decode_String(deserializer);
+    var var_strDimTriad = sse_decode_String(deserializer);
+    var var_strSusTriad = sse_decode_String(deserializer);
+    var var_strAugTriad = sse_decode_String(deserializer);
+    var var_strHalfDiminished = sse_decode_String(deserializer);
+    var var_strSixNines = sse_decode_String(deserializer);
+    return QualityParams(
+      useUnicode: var_useUnicode,
+      useDoubleAccidentals: var_useDoubleAccidentals,
+      strMajorTriad: var_strMajorTriad,
+      strMinorTriad: var_strMinorTriad,
+      strDimTriad: var_strDimTriad,
+      strSusTriad: var_strSusTriad,
+      strAugTriad: var_strAugTriad,
+      strHalfDiminished: var_strHalfDiminished,
+      strSixNines: var_strSixNines,
+    );
   }
 
   @protected
@@ -3632,6 +3918,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_quality_params(
+    QualityParams self,
+    SseSerializer serializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_quality_params(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_usize(BigInt self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self, serializer);
@@ -3769,6 +4064,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_opt_String(String? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_String(self, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_opt_box_autoadd_key_slash_quality(
     KeySlashQuality? self,
     SseSerializer serializer,
@@ -3844,6 +4149,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_quality(Quality self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.input, serializer);
+  }
+
+  @protected
+  void sse_encode_quality_params(QualityParams self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_bool(self.useUnicode, serializer);
+    sse_encode_bool(self.useDoubleAccidentals, serializer);
+    sse_encode_String(self.strMajorTriad, serializer);
+    sse_encode_String(self.strMinorTriad, serializer);
+    sse_encode_String(self.strDimTriad, serializer);
+    sse_encode_String(self.strSusTriad, serializer);
+    sse_encode_String(self.strAugTriad, serializer);
+    sse_encode_String(self.strHalfDiminished, serializer);
+    sse_encode_String(self.strSixNines, serializer);
   }
 
   @protected

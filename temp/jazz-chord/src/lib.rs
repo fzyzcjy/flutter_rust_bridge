@@ -197,6 +197,24 @@ impl Triad {
         Self::SUS_TRIADS.contains(&self)
     }
 
+    pub fn to_chord_string(&self, options: &QualityParams) -> String {
+        match self {
+            Self::Major => options.str_major_triad.clone(),
+            Self::Minor => options.str_minor_triad.clone(),
+            Self::Diminished => options.str_dim_triad.clone(),
+            Self::HalfDiminished => options.str_half_diminished.clone(),
+            Self::Augmented => options.str_aug_triad.clone(),
+            Self::SusTwo => format!("{}2", options.str_sus_triad),
+            Self::SusFlatTwo => {
+                format!("{}{}2", options.str_sus_triad, options.accidental_text(-1))
+            }
+            Self::SusFour => format!("{}4", options.str_sus_triad),
+            Self::SusSharpFour => {
+                format!("{}{}4", options.str_sus_triad, options.accidental_text(1))
+            }
+        }
+    }
+
     fn notes(&self) -> &'static Change {
         TRIAD_TO_NOTES.get(self).unwrap()
     }
@@ -366,6 +384,42 @@ impl Extension {
 
     pub fn possibilities(&self) -> &'static DegreePossibilities {
         EXTENSION_TO_POSSIBILITIES.get(self).unwrap()
+    }
+
+    pub fn extension_number(&self) -> Option<String> {
+        self.extension_number_with_options(&QualityParams::default())
+    }
+
+    pub fn extension_number_with_options(&self, options: &QualityParams) -> Option<String> {
+        match self {
+            extension if [Self::Thirteen, Self::MajorThirteen].contains(extension) => {
+                Some("13".to_owned())
+            }
+            extension if [Self::Eleven, Self::MajorEleven].contains(extension) => {
+                Some("11".to_owned())
+            }
+            extension if [Self::Nine, Self::MajorNine].contains(extension) => Some("9".to_owned()),
+            extension if [Self::Seven, Self::MajorSeven].contains(extension) => {
+                Some("7".to_owned())
+            }
+            extension if [Self::Fifth, Self::Five].contains(extension) => Some("5".to_owned()),
+            Self::Six => Some("6".to_owned()),
+            Self::SixAddNine => Some(options.str_six_nines.clone()),
+            _ => Some(format!("{}oopsiedaisy", self)),
+        }
+    }
+
+    pub fn to_chord_string(&self, options: &QualityParams) -> String {
+        let mut chord_string = String::new();
+        if self.contains_major_token() {
+            chord_string.push_str(&options.str_major_triad);
+        } else if self.contains_minor_token() {
+            chord_string.push_str(&options.str_minor_triad);
+        }
+        if let Some(extension_number) = self.extension_number() {
+            chord_string.push_str(&extension_number);
+        }
+        chord_string
     }
 }
 
@@ -1433,6 +1487,57 @@ impl Default for Change {
 impl fmt::Display for Change {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}", self.join(" "))
+    }
+}
+
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
+pub struct QualityParams {
+    pub use_unicode: bool,
+    pub use_double_accidentals: bool,
+    pub str_major_triad: String,
+    pub str_minor_triad: String,
+    pub str_dim_triad: String,
+    pub str_sus_triad: String,
+    pub str_aug_triad: String,
+    pub str_half_diminished: String,
+    pub str_six_nines: String,
+}
+
+impl QualityParams {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    fn accidental_text(&self, distance: i32) -> &'static str {
+        match (self.use_unicode, self.use_double_accidentals, distance) {
+            (true, _, -1) => "♭",
+            (true, true, -2) => "𝄫",
+            (true, _, -2) => "♭♭",
+            (true, _, 1) => "♯",
+            (true, true, 2) => "𝄪",
+            (true, _, 2) => "♯♯",
+            (_, _, -1) => "b",
+            (_, _, -2) => "bb",
+            (_, _, 1) => "#",
+            (_, _, 2) => "##",
+            _ => "",
+        }
+    }
+}
+
+impl Default for QualityParams {
+    fn default() -> Self {
+        Self {
+            use_unicode: true,
+            use_double_accidentals: false,
+            str_major_triad: "ma".to_owned(),
+            str_minor_triad: "m".to_owned(),
+            str_dim_triad: "º".to_owned(),
+            str_sus_triad: "sus".to_owned(),
+            str_aug_triad: "+".to_owned(),
+            str_half_diminished: "ø".to_owned(),
+            str_six_nines: "69".to_owned(),
+        }
     }
 }
 
