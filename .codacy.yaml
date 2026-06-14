@@ -4,3 +4,4 @@ exclude_paths:
   - "**/cargokit/**"
   - "frb_example/*_native_assets/**"
   - "tools/frb_internal/assets/apple_scaffold/frb_example/*_native_assets/**"
+  - "temp/**"
