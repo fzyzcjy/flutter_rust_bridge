@@ -25,6 +25,12 @@ variable "allow_insecure" {
   default     = true
 }
 
+variable "flutter_version" {
+  type        = string
+  description = "Flutter SDK version to install in the Tart base. Keep this in sync with FRB_MAIN_FLUTTER_VERSION in CI."
+  default     = "3.44.0"
+}
+
 source "tart-cli" "frb_tart_base" {
   vm_base_name   = var.source_vm
   vm_name        = var.target_vm
@@ -44,7 +50,10 @@ build {
   sources = ["source.tart-cli.frb_tart_base"]
 
   provisioner "shell" {
-    script          = "scripts/provision-frb-tart-base.sh"
+    script = "scripts/provision-frb-tart-base.sh"
+    environment_vars = [
+      "FRB_TART_FLUTTER_VERSION=${var.flutter_version}",
+    ]
     execute_command = "chmod +x {{ .Path }}; {{ .Vars }} {{ .Path }}"
   }
 }
