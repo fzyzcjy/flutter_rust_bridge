@@ -57,10 +57,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   KeySlashQuality dco_decode_box_autoadd_key_slash_quality(dynamic raw);
 
   @protected
+  Note dco_decode_box_autoadd_note(dynamic raw);
+
+  @protected
   Quality dco_decode_box_autoadd_quality(dynamic raw);
 
   @protected
   Change dco_decode_change(dynamic raw);
+
+  @protected
+  Degree dco_decode_degree(dynamic raw);
 
   @protected
   Extension dco_decode_extension(dynamic raw);
@@ -70,6 +76,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   KeySlashQuality dco_decode_key_slash_quality(dynamic raw);
+
+  @protected
+  List<Degree> dco_decode_list_degree(dynamic raw);
 
   @protected
   List<Note> dco_decode_list_note(dynamic raw);
@@ -134,10 +143,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  Note sse_decode_box_autoadd_note(SseDeserializer deserializer);
+
+  @protected
   Quality sse_decode_box_autoadd_quality(SseDeserializer deserializer);
 
   @protected
   Change sse_decode_change(SseDeserializer deserializer);
+
+  @protected
+  Degree sse_decode_degree(SseDeserializer deserializer);
 
   @protected
   Extension sse_decode_extension(SseDeserializer deserializer);
@@ -147,6 +162,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   KeySlashQuality sse_decode_key_slash_quality(SseDeserializer deserializer);
+
+  @protected
+  List<Degree> sse_decode_list_degree(SseDeserializer deserializer);
 
   @protected
   List<Note> sse_decode_list_note(SseDeserializer deserializer);
@@ -217,10 +235,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  void sse_encode_box_autoadd_note(Note self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_quality(Quality self, SseSerializer serializer);
 
   @protected
   void sse_encode_change(Change self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_degree(Degree self, SseSerializer serializer);
 
   @protected
   void sse_encode_extension(Extension self, SseSerializer serializer);
@@ -233,6 +257,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     KeySlashQuality self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_list_degree(List<Degree> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_note(List<Note> self, SseSerializer serializer);

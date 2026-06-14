@@ -6,7 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `hash`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
 // These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `from`
 
@@ -65,6 +65,46 @@ class Change {
       other is Change &&
           runtimeType == other.runtimeType &&
           notes == other.notes;
+}
+
+enum Degree {
+  ones,
+  thirds,
+  fifths,
+  sevenths,
+  ninths,
+  elevenths,
+  thirteenths;
+
+  Future<void> allowedNotes() =>
+      RustLib.instance.api.jazzChordDegreeAllowedNotes(that: this);
+
+  static Future<void> fromNoteDegree({required Note note}) =>
+      RustLib.instance.api.jazzChordDegreeFromNoteDegree(note: note);
+
+  Future<void> intoString() =>
+      RustLib.instance.api.jazzChordDegreeIntoString(that: this);
+
+  static Future<List<Degree>> optionsForNote({required Note note}) =>
+      RustLib.instance.api.jazzChordDegreeOptionsForNote(note: note);
+
+  Future<void> possExtsIfDegreeAtEnd() =>
+      RustLib.instance.api.jazzChordDegreePossExtsIfDegreeAtEnd(that: this);
+
+  Future<void> preferredNotes() =>
+      RustLib.instance.api.jazzChordDegreePreferredNotes(that: this);
+
+  Future<void> toNaturalExtension() =>
+      RustLib.instance.api.jazzChordDegreeToNaturalExtension(that: this);
+
+  Future<Change> withinChange({
+    required Change change,
+    required bool stopOnPreferredNotes,
+  }) => RustLib.instance.api.jazzChordDegreeWithinChange(
+    that: this,
+    change: change,
+    stopOnPreferredNotes: stopOnPreferredNotes,
+  );
 }
 
 enum Extension {

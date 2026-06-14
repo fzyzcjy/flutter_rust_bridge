@@ -4,6 +4,148 @@ use std::fmt;
 use std::slice;
 use std::vec::IntoIter;
 
+#[derive(Clone, Debug, Copy, Eq, Hash, PartialEq)]
+pub enum Degree {
+    Ones,
+    Thirds,
+    Fifths,
+    Sevenths,
+    Ninths,
+    Elevenths,
+    Thirteenths,
+}
+
+impl Degree {
+    pub const TRIADIC_ASCENDING_NO_ONE: [Degree; 6] = [
+        Degree::Thirds,
+        Degree::Fifths,
+        Degree::Sevenths,
+        Degree::Ninths,
+        Degree::Elevenths,
+        Degree::Thirteenths,
+    ];
+
+    pub const TRIADIC_ASCENDING: [Degree; 7] = [
+        Degree::Ones,
+        Degree::Thirds,
+        Degree::Fifths,
+        Degree::Sevenths,
+        Degree::Ninths,
+        Degree::Elevenths,
+        Degree::Thirteenths,
+    ];
+
+    pub const TRIADIC_DESCENDING_NO_ONE: [Degree; 6] = [
+        Degree::Thirteenths,
+        Degree::Elevenths,
+        Degree::Ninths,
+        Degree::Sevenths,
+        Degree::Fifths,
+        Degree::Thirds,
+    ];
+
+    pub const TRIADIC_DESCENDING: [Degree; 7] = [
+        Degree::Thirteenths,
+        Degree::Elevenths,
+        Degree::Ninths,
+        Degree::Sevenths,
+        Degree::Fifths,
+        Degree::Thirds,
+        Degree::Ones,
+    ];
+
+    pub fn into_string(&self) -> &'static str {
+        match self {
+            Self::Ones => "Ones",
+            Self::Thirds => "Thirds",
+            Self::Fifths => "Fifths",
+            Self::Sevenths => "Sevenths",
+            Self::Ninths => "Ninths",
+            Self::Elevenths => "Elevenths",
+            Self::Thirteenths => "Thirteenths",
+        }
+    }
+
+    pub fn preferred_notes(&self) -> &'static Change {
+        DEGREE_PREFERRED_NOTES.get(self).unwrap()
+    }
+
+    pub fn allowed_notes(&self) -> &'static Change {
+        DEGREE_ALLOWED_NOTES.get(self).unwrap()
+    }
+
+    pub fn poss_exts_if_degree_at_end(&self) -> &'static [&'static Extension] {
+        match self {
+            Degree::Ones => &[&Extension::Unison],
+            Degree::Thirds => &[
+                &Extension::MinorSecond,
+                &Extension::MajorSecond,
+                &Extension::MinorThird,
+                &Extension::MajorThird,
+                &Extension::Fourth,
+                &Extension::AugmentedFourth,
+            ],
+            Degree::Fifths => &[&Extension::Five, &Extension::Fifth],
+            Degree::Sevenths => &[&Extension::Seven, &Extension::MajorSeven],
+            Degree::Ninths => &[&Extension::Nine, &Extension::MajorNine],
+            Degree::Elevenths => &[&Extension::Eleven, &Extension::MajorEleven],
+            Degree::Thirteenths => &[
+                &Extension::Thirteen,
+                &Extension::MajorThirteen,
+                &Extension::Six,
+            ],
+        }
+    }
+
+    pub fn to_natural_extension(&self) -> &'static Note {
+        DEGREE_TO_NATURAL_EXTENSION.get(self).unwrap()
+    }
+
+    pub fn options_for_note(note: &Note) -> Vec<Self> {
+        Degree::TRIADIC_ASCENDING_NO_ONE
+            .iter()
+            .copied()
+            .filter(|degree| degree.allowed_notes().contains_note_text(&note.text))
+            .collect()
+    }
+
+    pub fn from_note_degree(note: &Note) -> &'static Self {
+        match note.degree_text() {
+            "1" => &Self::Ones,
+            "2" => &Self::Ninths,
+            "3" => &Self::Thirds,
+            "4" => &Self::Elevenths,
+            "5" => &Self::Fifths,
+            "6" => &Self::Thirteenths,
+            "7" => &Self::Sevenths,
+            _ => &Self::Ones,
+        }
+    }
+
+    pub fn within_change(&self, change: &Change, stop_on_preferred_notes: bool) -> Change {
+        let mut notes = Vec::new();
+        for allowed_note in self.allowed_notes() {
+            if change.contains_note_text(&allowed_note.text) {
+                notes.push(allowed_note.clone());
+                if stop_on_preferred_notes
+                    && self
+                        .preferred_notes()
+                        .contains_note_text(&allowed_note.text)
+                {
+                    return Change::from_notes(notes);
+                }
+            }
+        }
+        Change::from_notes(notes)
+    }
+}
+
+impl fmt::Display for Degree {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.into_string())
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Triad {
     Major,
@@ -287,6 +429,57 @@ static EXTENSION_TO_NOTES: Lazy<HashMap<Extension, Change>> = Lazy::new(|| {
     map
 });
 
+static DEGREE_PREFERRED_NOTES: Lazy<HashMap<Degree, Change>> = Lazy::new(|| {
+    let mut map = HashMap::new();
+    map.insert(Degree::Ones, Change::from_note_strings(&["1"]));
+    map.insert(Degree::Thirds, Change::from_note_strings(&["3", "b3"]));
+    map.insert(Degree::Fifths, Change::from_note_strings(&["5"]));
+    map.insert(
+        Degree::Sevenths,
+        Change::from_note_strings(&["7", "b7", "bb7"]),
+    );
+    map.insert(Degree::Ninths, Change::from_note_strings(&["9"]));
+    map.insert(Degree::Elevenths, Change::from_note_strings(&["11"]));
+    map.insert(Degree::Thirteenths, Change::from_note_strings(&["13", "6"]));
+    map
+});
+
+static DEGREE_ALLOWED_NOTES: Lazy<HashMap<Degree, Change>> = Lazy::new(|| {
+    let mut map = HashMap::new();
+    map.insert(Degree::Ones, Change::from_note_strings(&["1", "b1", "#1"]));
+    map.insert(
+        Degree::Thirds,
+        Change::from_note_strings(&["3", "b3", "4", "2", "#4", "b2"]),
+    );
+    map.insert(
+        Degree::Fifths,
+        Change::from_note_strings(&["5", "b5", "#5"]),
+    );
+    map.insert(Degree::Sevenths, Change::from_note_strings(&["7", "b7"]));
+    map.insert(
+        Degree::Ninths,
+        Change::from_note_strings(&["9", "b9", "#9"]),
+    );
+    map.insert(Degree::Elevenths, Change::from_note_strings(&["11", "#11"]));
+    map.insert(
+        Degree::Thirteenths,
+        Change::from_note_strings(&["13", "b13", "#13"]),
+    );
+    map
+});
+
+static DEGREE_TO_NATURAL_EXTENSION: Lazy<HashMap<Degree, Note>> = Lazy::new(|| {
+    let mut map = HashMap::new();
+    map.insert(Degree::Ones, Note::new("1".to_owned()));
+    map.insert(Degree::Thirds, Note::new("3".to_owned()));
+    map.insert(Degree::Fifths, Note::new("5".to_owned()));
+    map.insert(Degree::Sevenths, Note::new("7".to_owned()));
+    map.insert(Degree::Ninths, Note::new("9".to_owned()));
+    map.insert(Degree::Elevenths, Note::new("11".to_owned()));
+    map.insert(Degree::Thirteenths, Note::new("13".to_owned()));
+    map
+});
+
 #[derive(Eq, PartialEq, Hash, Clone, Debug)]
 pub struct TriadExtension {
     triad: Option<Triad>,
@@ -397,6 +590,25 @@ pub struct Note {
 impl Note {
     pub fn new(text: String) -> Self {
         Self { text }
+    }
+
+    fn degree_text(&self) -> &str {
+        let text = self
+            .text
+            .trim_start_matches(['b', '#', '♭', '♯'])
+            .trim_start_matches("bb")
+            .trim_start_matches("##");
+
+        match text {
+            "8" | "15" => "1",
+            "9" => "2",
+            "10" => "3",
+            "11" => "4",
+            "12" => "5",
+            "13" => "6",
+            "14" => "7",
+            _ => text,
+        }
     }
 }
 
