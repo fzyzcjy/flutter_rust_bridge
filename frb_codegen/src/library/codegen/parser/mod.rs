@@ -100,6 +100,12 @@ mod tests {
 
     #[test]
     #[serial]
+    fn test_nested_reference_argument() -> anyhow::Result<()> {
+        body("library/codegen/parser/mod/nested_reference_argument", None)
+    }
+
+    #[test]
+    #[serial]
     fn test_multi_input_file() -> anyhow::Result<()> {
         body(
             "library/codegen/parser/mod/multi_input_file",
