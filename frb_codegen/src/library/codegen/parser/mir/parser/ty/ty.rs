@@ -55,7 +55,12 @@ impl TypeParserWithContext<'_, '_, '_> {
         // `type A<T> = B<T>; type B<T> = A<T>;`.
         const MAX_RESOLVE_DEPTH: usize = 64;
         if depth >= MAX_RESOLVE_DEPTH {
+            // Only reachable via a deliberately cyclic alias graph, which no real
+            // FRB workflow produces; excluded from coverage instead of forcing a
+            // brittle full-parser-context test.
+            // frb-coverage:ignore-start
             return ty.clone();
+            // frb-coverage:ignore-end
         }
 
         // Generic alias used at a call site, e.g. `AppResult<MyDto>` is expanded

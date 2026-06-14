@@ -146,6 +146,20 @@ mod tests {
     }
 
     #[test]
+    fn test_extract_generic_type_args_qualified_path() {
+        // Arguments live on the *last* segment of a qualified path.
+        let args = extract_generic_type_args(&parse("std::result::Result<MyDto>")).unwrap();
+        assert_eq!(args, vec![parse("MyDto")]);
+    }
+
+    #[test]
+    fn test_extract_generic_type_args_skips_non_type_args() {
+        // Lifetime (and const) arguments are not types and are filtered out.
+        let args = extract_generic_type_args(&parse("Cow<'a, str>")).unwrap();
+        assert_eq!(args, vec![parse("str")]);
+    }
+
+    #[test]
     fn test_reserved_ident() {
         assert!(is_reserved_generic_alias_ident("Result"));
         assert!(!is_reserved_generic_alias_ident("AppResult"));

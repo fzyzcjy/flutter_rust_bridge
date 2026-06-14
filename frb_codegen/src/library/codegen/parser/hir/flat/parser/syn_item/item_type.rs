@@ -72,4 +72,16 @@ mod tests {
         ))
         .is_none());
     }
+
+    #[test]
+    fn skips_alias_with_where_clause() {
+        // `where` clauses are not supported yet, so such aliases are skipped.
+        assert!(parse_syn_item_type(parse_quote!(
+            pub type Aliased<T>
+            where
+                T: Clone,
+            = Vec<T>;
+        ))
+        .is_none());
+    }
 }
