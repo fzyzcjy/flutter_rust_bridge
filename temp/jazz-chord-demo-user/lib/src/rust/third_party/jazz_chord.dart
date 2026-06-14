@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions are ignored because they have generic arguments: `contains_enharmonic`, `contains_pitch_class`, `contains`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `from`, `from`, `from`, `hash`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
 // These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`, `get_mut`
-// These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `from`
+// These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `from_triad_extension`, `from`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NoteMatch>>
 abstract class NoteMatch implements RustOpaqueInterface {

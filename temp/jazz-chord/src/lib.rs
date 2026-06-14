@@ -1028,6 +1028,11 @@ impl Change {
         Self { notes }
     }
 
+    pub fn from_triad_extension(triad: Option<&Triad>, extension: Option<&Extension>) -> Self {
+        let triad_extension = TriadExtension::from(&triad, &extension);
+        DegreePossibilities::from_triad_extension(&triad_extension).to_change()
+    }
+
     pub fn join(&self, separator: &str) -> String {
         self.notes
             .iter()
