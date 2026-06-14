@@ -36,6 +36,6 @@ we need to add a line `pub mod another;` inside `rust/src/api/mod.rs`.
 ## Remarks
 
 If you are interested:
-The `rust_builder` dummy package is likely to be able to be removed
-after the Dart "native assets" language feature is stabilized,
-which acts as a build hook similar to `build.dart` in the "native assets" feature.
+When using the default Cargokit backend, the `rust_builder` dummy package is glue
+for building Rust with Flutter.
+When using `--integration-backend native-assets`, this backend glue lives in `hook/build.dart` instead.

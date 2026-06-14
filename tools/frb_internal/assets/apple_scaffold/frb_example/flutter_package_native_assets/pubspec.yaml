@@ -1,0 +1,18 @@
+publish_to: none
+name: flutter_package_native_assets
+description: "A new Dart FFI package project."
+version: 0.0.1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter_rust_bridge:
+    path: ../../frb_dart
+  flutter_rust_bridge_hooks:
+    path: ../../frb_hooks
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  integration_test:
+    sdk: flutter

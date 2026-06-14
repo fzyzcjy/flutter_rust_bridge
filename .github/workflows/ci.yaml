@@ -348,6 +348,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
           path: target/coverage
@@ -415,9 +416,41 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--${{ matrix.platforms }}--coverage
           path: target/coverage
+
+  generate_apple_scaffold:
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_apple_scaffold.enable == true }}
+    name: 'Generate :: Apple Scaffold'
+    runs-on: macos-15-intel
+
+    steps:
+      # setup
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
+        with:
+          comment_on_pr: false
+          job_summary: false
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt, clippy
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          cache: true
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+
+      # execute
+      - run: ./frb_internal generate-apple-scaffold
 
   generate_internal:
     needs: plan_ci
@@ -455,6 +488,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--coverage
           path: target/coverage
@@ -595,12 +629,12 @@ jobs:
           echo "OHOS_SDK_HOME=${OHOS_NDK_HOME}/native" >> $GITHUB_ENV
 
       # execute
-      - run: ./frb_internal build-flutter --target ${{ matrix.info.target }}
+      - run: ./frb_internal build-flutter --package ${{ matrix.info.package }} --target ${{ matrix.info.target }}
 
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.job }}--${{ matrix.info.target }}--output
+          name: ${{ github.job }}--${{ matrix.info.package }}--${{ matrix.info.target }}--output
           path: target/build_flutter_output
 
   # ----------------------------------- test -----------------------------------
@@ -727,6 +761,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.info.image }}--${{ matrix.info.version }}--coverage
           path: target/coverage
@@ -768,6 +803,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
           path: target/coverage
@@ -1087,6 +1123,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.package }}--coverage
           path: target/coverage
@@ -1191,7 +1228,7 @@ jobs:
         if: always()
         with:
           name: quickstart-smoke--${{ matrix.info.platform }}--${{ matrix.info.device }}--${{ matrix.info.package }}
-          path: frb_example/flutter_via_create/target/quickstart_smoke
+          path: ${{ matrix.info.package_path }}/target/quickstart_smoke
           if-no-files-found: warn
 
   # ----------------------------------- misc -----------------------------------
@@ -1208,6 +1245,7 @@ jobs:
       - plan_ci
       - generate_run_frb_codegen_command_generate
       - generate_run_frb_codegen_command_integrate
+      - generate_apple_scaffold
       - generate_internal
       # - test_upgrade
       - test_rust

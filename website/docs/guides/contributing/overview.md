@@ -43,7 +43,8 @@ There is no need to read it word by word, since it serves as a reference to find
 - `frb_example`: Examples.
     - `pure_dart`: A pure-Dart example + contains most tests.
     - `dart_minimal`: Minimalist pure-Dart example. Suitable as a playground.
-    - `flutter_via_create` / `flutter_via_integrate`: Examples automatically generated via `flutter_rust_bridge_codegen create/integrate`.
+    - `flutter_via_create` / `flutter_via_integrate` / `flutter_package`: Checked-in examples generated via `flutter_rust_bridge_codegen create/integrate` with the default integration backend.
+    - `flutter_via_create_native_assets` / `flutter_via_integrate_native_assets` / `flutter_package_native_assets`: Checked-in examples generated via `flutter_rust_bridge_codegen create/integrate` with the native-assets integration backend.
     - `deliberate_bad`: Deliberately buggy code to check sanitizers catch them.
 - `frb_dart` (`flutter_rust_bridge` Dart package): Support library for Dart - to be imported by users.
 - `frb_rust` (`flutter_rust_bridge` Rust package): Support library for Rust - to be imported by users.

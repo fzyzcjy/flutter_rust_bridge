@@ -3,6 +3,7 @@ repository: https://github.com/fzyzcjy/flutter_rust_bridge
 
 packages:
   - frb_dart
+  - frb_hooks
   - frb_example/**
   - frb_utils
   - tools/frb_internal

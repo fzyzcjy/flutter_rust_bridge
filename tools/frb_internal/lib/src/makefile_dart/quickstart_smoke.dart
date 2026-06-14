@@ -233,8 +233,8 @@ Duration quickstartSmokeFlutterRunReadyTimeoutForTesting(
 ) => switch (target) {
   QuickstartSmokeTarget.web => const Duration(seconds: 120),
   QuickstartSmokeTarget.desktop ||
-  QuickstartSmokeTarget.android ||
-  QuickstartSmokeTarget.ios => const Duration(minutes: 5),
+  QuickstartSmokeTarget.android => const Duration(minutes: 5),
+  QuickstartSmokeTarget.ios => const Duration(minutes: 10),
 };
 
 @visibleForTesting
@@ -458,7 +458,7 @@ void _validateQuickstartSmokeResult({
   );
   if (failurePattern != null) {
     throw Exception(
-      'flutter_via_create ${context.targetName} quickstart smoke test failed '
+      '${context.package} ${context.targetName} quickstart smoke test failed '
       'with `$failurePattern`',
     );
   }
@@ -466,21 +466,21 @@ void _validateQuickstartSmokeResult({
   if (!context.screenshotFile.existsSync() ||
       context.screenshotFile.lengthSync() == 0) {
     throw Exception(
-      'flutter_via_create ${context.targetName} quickstart smoke test failed '
+      '${context.package} ${context.targetName} quickstart smoke test failed '
       'to capture a screenshot at `${context.screenshotFile.path}`',
     );
   }
 
   if (!screenshotEvidence.readyForScreenshot) {
     throw Exception(
-      'flutter_via_create ${context.targetName} quickstart smoke test did not '
+      '${context.package} ${context.targetName} quickstart smoke test did not '
       'observe Flutter run readiness before screenshot capture',
     );
   }
 
   if (!context.ocrOutputFile.existsSync()) {
     throw Exception(
-      'flutter_via_create ${context.targetName} quickstart smoke test did not '
+      '${context.package} ${context.targetName} quickstart smoke test did not '
       'produce OCR output at `${context.ocrOutputFile.path}`',
     );
   }
@@ -490,12 +490,13 @@ void _validateQuickstartSmokeResult({
     }
     checkQuickstartSmokeOcrTextForTesting(
       context.ocrOutputFile.readAsStringSync(),
+      package: context.package,
     );
   }
 
   if (!exitStatus.killedBySmoke && exitStatus.exitCode != 0) {
     throw Exception(
-      'flutter_via_create ${context.targetName} quickstart smoke test failed '
+      '${context.package} ${context.targetName} quickstart smoke test failed '
       'with unexpected exit code ${exitStatus.exitCode}',
     );
   }
@@ -735,13 +736,14 @@ String normalizeQuickstartSmokeOcrTextForTesting(String text) => text
     .trim();
 
 @visibleForTesting
-void checkQuickstartSmokeOcrTextForTesting(String text) {
+void checkQuickstartSmokeOcrTextForTesting(String text, {String? package}) {
+  final subject = package ?? 'quickstart smoke test';
   final normalized = normalizeQuickstartSmokeOcrTextForTesting(text);
   final hasExpectedText =
       normalized.contains('hello') && normalized.contains('tom');
   if (!hasExpectedText) {
     throw Exception(
-      'flutter_via_create quickstart smoke test screenshot OCR did not '
+      '$subject screenshot OCR did not '
       'contain expected text `Hello, Tom` (normalized OCR: `$normalized`)',
     );
   }

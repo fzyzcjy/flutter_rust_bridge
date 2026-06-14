@@ -27,6 +27,7 @@ import 'package:yaml/yaml.dart';
 part 'generate.g.dart';
 
 const _kRefreshCargoLockOrderingEnv = 'FRB_REFRESH_CARGO_LOCK_ORDERING';
+
 List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand(
@@ -98,6 +99,7 @@ List<Command<void>> createCommands() {
     ),
     SimpleCommand('generate-website-merge', generateWebsiteMerge),
     SimpleCommand('generate-website-serve', generateWebsiteServe),
+    SimpleCommand('generate-apple-scaffold', generateAppleScaffold),
   ];
 }
 
@@ -141,12 +143,15 @@ class GenerateIntegratePackageConfig implements GenerateConfig {
   final bool coverage;
   @CliOption(defaultsTo: false)
   final bool includeOhos;
+  @CliOption(defaultsTo: false)
+  final bool skipCheckedInAppleScaffold;
 
   const GenerateIntegratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
     required this.coverage,
     required this.includeOhos,
+    required this.skipCheckedInAppleScaffold,
   });
 }
 
@@ -234,9 +239,16 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
       );
       File(
         '${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx',
-      ).writeAsStringSync('```\n${resp.stdout}```');
+      ).writeAsStringSync(
+        '```\n${normalizeBookHelpForTesting(resp.stdout)}```\n',
+      );
     }
   });
+}
+
+String normalizeBookHelpForTesting(String text) {
+  final lines = text.split('\n');
+  return lines.map((line) => line.trimRight()).join('\n');
 }
 
 Future<void> generateInternalContributor(GenerateConfig config) async {
@@ -350,7 +362,7 @@ hide_title: true
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    for (final package in kDartNonExamplePackages) {
+    for (final package in kDartBuildRunnerPackages) {
       await runPubGetIfNotRunYet(package);
       await exec(
         'dart run build_runner build --delete-conflicting-outputs',
@@ -385,6 +397,28 @@ Future<void> _formatPackageAfterGenerate(String package) async {
   }
 }
 
+Future<void> generateAppleScaffold() async {
+  if (!Platform.isMacOS) {
+    throw StateError(
+      'generate-apple-scaffold requires macOS because Flutter only generates Apple scaffolds on macOS.',
+    );
+  }
+
+  await wrapMaybeSetExitIfChangedRaw(true, () async {
+    for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
+      await generateRunFrbCodegenCommandIntegrate(
+        GenerateIntegratePackageConfig(
+          setExitIfChanged: false,
+          package: package,
+          coverage: false,
+          includeOhos: true,
+          skipCheckedInAppleScaffold: true,
+        ),
+      );
+    }
+  });
+}
+
 Future<void> generateRunFrbCodegenCommandIntegrate(
   GenerateIntegratePackageConfig config,
 ) async {
@@ -414,46 +448,45 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         await Directory(dirPackage).rename(path.join(dirTemp, 'original'));
       }
 
-      switch (config.package) {
-        case 'frb_example/flutter_via_create':
+      final recipe = _integrateRecipeForPackage(config.package);
+      final packageName = path.basename(config.package);
+      final backendArgs = _integrateBackendArgs(recipe.backend);
+
+      switch (recipe.recipe) {
+        case IntegrateExampleRecipe.createApp:
           await executeFrbCodegen(
-            'create flutter_via_create --local',
+            'create $packageName --local$backendArgs',
             relativePwd: 'frb_example',
             coverage: config.coverage,
             coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
             extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
           );
 
-        case 'frb_example/flutter_via_integrate':
-          await exec(
-            'flutter create flutter_via_integrate',
-            relativePwd: 'frb_example',
-          );
+        case IntegrateExampleRecipe.integrateApp:
+          await exec('flutter create $packageName', relativePwd: 'frb_example');
           await executeFrbCodegen(
-            'integrate --local',
+            'integrate --local$backendArgs',
             relativePwd: config.package,
             coverage: config.coverage,
             coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
             extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
           );
-        case 'frb_example/flutter_package':
+        case IntegrateExampleRecipe.createPlugin:
           await executeFrbCodegen(
-            'create --local --template plugin flutter_package',
+            'create --local --template plugin $packageName$backendArgs',
             relativePwd: 'frb_example',
             coverage: config.coverage,
             coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
             extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
           );
-        default:
-          throw Exception(
-            'Do not know how to handle package ${config.package}',
-          );
       }
 
-      await applyCheckedInAppleScaffoldSourceOfTruth(
-        package: config.package,
-        generatedPackageDir: dirPackage,
-      );
+      if (!config.skipCheckedInAppleScaffold) {
+        await applyCheckedInAppleScaffoldSourceOfTruth(
+          package: config.package,
+          generatedPackageDir: dirPackage,
+        );
+      }
 
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {
@@ -462,6 +495,22 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       // }
     },
   );
+}
+
+IntegrateExamplePackage _integrateRecipeForPackage(String package) {
+  for (final config in kDartExampleIntegratePackageConfigs) {
+    if (config.package == package) return config;
+  }
+
+  throw Exception('Do not know how to handle package $package');
+}
+
+String _integrateBackendArgs(IntegrateExampleBackend backend) {
+  return switch (backend) {
+    IntegrateExampleBackend.cargokit => '',
+    IntegrateExampleBackend.nativeAssets =>
+      ' --integration-backend native-assets',
+  };
 }
 
 Future<RunCommandOutput> executeFrbCodegen(

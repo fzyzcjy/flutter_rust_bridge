@@ -1,8 +1,8 @@
-[submodule "frb_codegen/assets/integration_template/plugin/cargokit"]
-	path = frb_codegen/assets/integration_template/plugin/cargokit
+[submodule "frb_codegen/assets/integration_template/cargokit/plugin/cargokit"]
+	path = frb_codegen/assets/integration_template/cargokit/plugin/cargokit
 	url = https://github.com/fzyzcjy/cargokit
 	branch = main
-[submodule "frb_codegen/assets/integration_template/app/rust_builder/cargokit"]
-	path = frb_codegen/assets/integration_template/app/rust_builder/cargokit
+[submodule "frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit"]
+	path = frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit
 	url = https://github.com/fzyzcjy/cargokit
 	branch = main

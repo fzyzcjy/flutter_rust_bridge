@@ -5,23 +5,27 @@ import 'package:path/path.dart' as path;
 // Mirrors Cargokit's handling in frb_codegen's Rust integrator:
 // skip VCS/docs/test files, add the copied-file prelude, and keep scripts executable.
 //
-// Do not list `flutter_via_create`, `flutter_via_integrate`, or `flutter_package`
-// here; the integrate generation CI already recreates those examples from templates.
+// Do not list `flutter_via_create`, `flutter_via_integrate`, `flutter_package`,
+// or their native-assets variants here; the integrate generation CI already
+// recreates those examples from templates.
+const _kCargokitAppTemplatePath =
+    'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit';
+
 const _kCargokitCopyMappings = [
   _CargokitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
+    source: _kCargokitAppTemplatePath,
     target: 'frb_example/gallery/rust_builder/cargokit',
   ),
   _CargokitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
+    source: _kCargokitAppTemplatePath,
     target: 'frb_example/integrate_third_party/rust_builder/cargokit',
   ),
   _CargokitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
+    source: _kCargokitAppTemplatePath,
     target: 'frb_example/rust_ui_counter/ui/rust_builder/cargokit',
   ),
   _CargokitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
+    source: _kCargokitAppTemplatePath,
     target: 'frb_example/rust_ui_todo_list/ui/rust_builder/cargokit',
   ),
 ];
@@ -158,11 +162,21 @@ Future<void> _formatDartFiles(Directory target) async {
   final buildTool = Directory(path.join(target.path, 'build_tool'));
   if (!buildTool.existsSync()) return;
 
-  final result = await Process.run('dart', ['format', buildTool.path]);
-  if (result.exitCode != 0) {
-    throw Exception(
-      'Failed to format copied Cargokit Dart files: ${result.stderr}',
+  for (final command in const [
+    ['pub', 'get'],
+    ['format', '.'],
+  ]) {
+    final result = await Process.run(
+      'dart',
+      command,
+      workingDirectory: buildTool.path,
     );
+    if (result.exitCode != 0) {
+      throw Exception(
+        'Failed to run `dart ${command.join(' ')}` in `${buildTool.path}`: '
+        '${result.stderr}',
+      );
+    }
   }
 }
 
