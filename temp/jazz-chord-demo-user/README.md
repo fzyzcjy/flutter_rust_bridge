@@ -11,5 +11,6 @@ cargo check --manifest-path temp/jazz-chord-demo-user/rust/Cargo.toml
 
 Current state:
 
-- `generate` succeeds after the FRB missing-owner panic guard and the `#[frb(opaque)]` overrides for `Change`, `Extension`, and `Triad`.
-- `cargo check` still fails because whole-crate automatic scanning exposes additional unsuitable methods and private/external types. The next reduction step should ignore or wrap that surface until the generated Rust compiles.
+- `generate` succeeds after the FRB missing-owner panic guard.
+- `cargo check` succeeds for the currently reduced `../jazz-chord` fixture.
+- The current fixture intentionally keeps only a minimal bridgeable subset. The next step is to add back real `jazz-chord` code incrementally and either fix FRB or add targeted overrides whenever the scan fails again.
