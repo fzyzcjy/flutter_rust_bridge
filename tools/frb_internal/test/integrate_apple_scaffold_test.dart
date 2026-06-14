@@ -133,6 +133,67 @@ void main() {
     },
   );
 
+  test('preserved OHOS scaffold paths are explicit', () {
+    expect(
+      preservedOhosScaffoldPathsForTesting('frb_example/flutter_via_create'),
+      ['ohos', 'rust_builder/ohos', 'rust_builder/pubspec.yaml'],
+    );
+    expect(
+      preservedOhosScaffoldPathsForTesting(
+        'frb_example/flutter_via_create_native_assets',
+      ),
+      ['ohos'],
+    );
+    expect(
+      preservedOhosScaffoldPathsForTesting('frb_example/flutter_package'),
+      isEmpty,
+    );
+  });
+
+  test(
+    'preserveCheckedInOhosScaffold restores files and directories',
+    () async {
+      final tempDir = Directory.systemTemp.createTempSync('frb-preserve-ohos-');
+      addTearDown(() => tempDir.deleteSync(recursive: true));
+
+      final original = Directory('${tempDir.path}/original');
+      final generated = Directory('${tempDir.path}/generated');
+      Directory('${original.path}/ohos').createSync(recursive: true);
+      Directory(
+        '${original.path}/rust_builder/ohos',
+      ).createSync(recursive: true);
+      File('${original.path}/ohos/marker.txt').writeAsStringSync('root-ohos');
+      File(
+        '${original.path}/rust_builder/ohos/marker.txt',
+      ).writeAsStringSync('builder-ohos');
+      File(
+        '${original.path}/rust_builder/pubspec.yaml',
+      ).writeAsStringSync('plugin:\n  platforms:\n    ohos:\n');
+      Directory(generated.path).createSync(recursive: true);
+
+      await preserveCheckedInOhosScaffold(
+        package: 'frb_example/flutter_via_create',
+        originalPackageDir: original.path,
+        generatedPackageDir: generated.path,
+      );
+
+      expect(
+        File('${generated.path}/ohos/marker.txt').readAsStringSync(),
+        'root-ohos',
+      );
+      expect(
+        File(
+          '${generated.path}/rust_builder/ohos/marker.txt',
+        ).readAsStringSync(),
+        'builder-ohos',
+      );
+      expect(
+        File('${generated.path}/rust_builder/pubspec.yaml').readAsStringSync(),
+        'plugin:\n  platforms:\n    ohos:\n',
+      );
+    },
+  );
+
   test('copyDirectoryRecursive preserves dotfiles and nested workspace files', () {
     final tempDir = Directory.systemTemp.createTempSync('frb-copy-recursive-');
     addTearDown(() => tempDir.deleteSync(recursive: true));
