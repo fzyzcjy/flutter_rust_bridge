@@ -139,11 +139,10 @@ Future<void> _runPackageDeliberateBadWithDart(
     ),
     ...switch (config.sanitizer) {
       Sanitizer.asan => [
-        // NOTE ASAN does not report this as buggy...
         const _Info(
           name: 'DartOnly_HeapUseAfterFree',
-          expectSucceed: true,
-          expectStderrContains: '',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
         ),
       ],
       Sanitizer.msan => [
