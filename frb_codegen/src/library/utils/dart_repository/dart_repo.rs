@@ -3,6 +3,7 @@ use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
 use log::{debug, warn};
+use semver::Op;
 use serde::de::DeserializeOwned;
 use std::collections::HashMap;
 use std::convert::TryFrom;
@@ -187,7 +188,7 @@ impl DartRepository {
         };
 
         match version {
-            DartPackageVersion::Exact(ref v) if requirement.matches(v) => Ok(()),
+            DartPackageVersion::Exact(_) if version.matches_requirement(requirement) => Ok(()),
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
             DartPackageVersion::Range(_) => {
@@ -293,6 +294,28 @@ impl Display for DartPackageVersion {
         };
         write!(f, "{str}")
     }
+}
+
+impl DartPackageVersion {
+    pub(crate) fn matches_requirement(&self, requirement: &VersionReq) -> bool {
+        match self {
+            DartPackageVersion::Exact(version) => {
+                requirement.matches(version)
+                    || prerelease_matches_stable_lower_bound(version, requirement)
+            }
+            DartPackageVersion::Range(version_requirement) => version_requirement == requirement,
+        }
+    }
+}
+
+fn prerelease_matches_stable_lower_bound(version: &Version, requirement: &VersionReq) -> bool {
+    !version.pre.is_empty()
+        && requirement.comparators.iter().all(|comparator| {
+            comparator.pre.is_empty()
+                && matches!(comparator.op, Op::GreaterEq)
+                && (version.major, Some(version.minor), Some(version.patch))
+                    > (comparator.major, comparator.minor, comparator.patch)
+        })
 }
 
 fn read_file(at: &Path, filename: &str) -> anyhow::Result<String> {
