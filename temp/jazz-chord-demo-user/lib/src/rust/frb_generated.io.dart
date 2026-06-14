@@ -36,6 +36,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  Map<Degree, Change> dco_decode_Map_degree_change_None(dynamic raw);
+
+  @protected
   TriadExtension
   dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
     dynamic raw,
@@ -54,6 +57,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Change dco_decode_box_autoadd_change(dynamic raw);
 
   @protected
+  DegreePossibilities dco_decode_box_autoadd_degree_possibilities(dynamic raw);
+
+  @protected
   KeySlashQuality dco_decode_box_autoadd_key_slash_quality(dynamic raw);
 
   @protected
@@ -67,6 +73,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Degree dco_decode_degree(dynamic raw);
+
+  @protected
+  DegreePossibilities dco_decode_degree_possibilities(dynamic raw);
 
   @protected
   Extension dco_decode_extension(dynamic raw);
@@ -87,6 +96,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
 
   @protected
+  List<(Degree, Change)> dco_decode_list_record_degree_change(dynamic raw);
+
+  @protected
   Note dco_decode_note(dynamic raw);
 
   @protected
@@ -97,6 +109,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Quality dco_decode_quality(dynamic raw);
+
+  @protected
+  (Degree, Change) dco_decode_record_degree_change(dynamic raw);
 
   @protected
   Triad dco_decode_triad(dynamic raw);
@@ -123,6 +138,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  Map<Degree, Change> sse_decode_Map_degree_change_None(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   TriadExtension
   sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
     SseDeserializer deserializer,
@@ -136,6 +156,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Change sse_decode_box_autoadd_change(SseDeserializer deserializer);
+
+  @protected
+  DegreePossibilities sse_decode_box_autoadd_degree_possibilities(
+    SseDeserializer deserializer,
+  );
 
   @protected
   KeySlashQuality sse_decode_box_autoadd_key_slash_quality(
@@ -153,6 +178,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Degree sse_decode_degree(SseDeserializer deserializer);
+
+  @protected
+  DegreePossibilities sse_decode_degree_possibilities(
+    SseDeserializer deserializer,
+  );
 
   @protected
   Extension sse_decode_extension(SseDeserializer deserializer);
@@ -173,6 +203,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
 
   @protected
+  List<(Degree, Change)> sse_decode_list_record_degree_change(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   Note sse_decode_note(SseDeserializer deserializer);
 
   @protected
@@ -185,6 +220,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Quality sse_decode_quality(SseDeserializer deserializer);
+
+  @protected
+  (Degree, Change) sse_decode_record_degree_change(
+    SseDeserializer deserializer,
+  );
 
   @protected
   Triad sse_decode_triad(SseDeserializer deserializer);
@@ -213,6 +253,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  void sse_encode_Map_degree_change_None(
+    Map<Degree, Change> self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void
   sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
     TriadExtension self,
@@ -227,6 +273,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_box_autoadd_change(Change self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_degree_possibilities(
+    DegreePossibilities self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_key_slash_quality(
@@ -245,6 +297,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_degree(Degree self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_degree_possibilities(
+    DegreePossibilities self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_extension(Extension self, SseSerializer serializer);
@@ -271,6 +329,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
+  void sse_encode_list_record_degree_change(
+    List<(Degree, Change)> self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_note(Note self, SseSerializer serializer);
 
   @protected
@@ -287,6 +351,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_quality(Quality self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_degree_change(
+    (Degree, Change) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_triad(Triad self, SseSerializer serializer);

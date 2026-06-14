@@ -582,6 +582,94 @@ static TRIAD_EXTENSIONS_LEGAL: Lazy<Vec<TriadExtension>> = Lazy::new(|| {
         .collect()
 });
 
+#[derive(Clone, Debug)]
+pub struct DegreePossibilities {
+    pub intervals: HashMap<Degree, Change>,
+}
+
+impl DegreePossibilities {
+    pub fn new() -> Self {
+        let mut intervals = HashMap::new();
+        for degree in Degree::TRIADIC_ASCENDING {
+            intervals.insert(degree, Change::new());
+        }
+        Self { intervals }
+    }
+
+    pub fn to_change(&self) -> Change {
+        let mut notes = Change::new();
+        for interval_change in self.intervals.values() {
+            notes.extend(interval_change);
+        }
+        notes
+    }
+
+    pub fn contains_notes_in_degree(&self, degree: &Degree) -> bool {
+        self.intervals.get(degree).unwrap().len() > 0
+    }
+
+    pub fn is_not_empty(&self) -> bool {
+        for degree in self.intervals.keys() {
+            if self.contains_notes_in_degree(degree) {
+                return true;
+            }
+        }
+        false
+    }
+
+    pub fn from_triad(triad: &Triad) -> Self {
+        let mut matrix = DegreePossibilities::new();
+        *matrix.intervals.get_mut(&Degree::Ones).unwrap() =
+            Change::from_note(triad.notes()[0].clone());
+        *matrix.intervals.get_mut(&Degree::Thirds).unwrap() =
+            Change::from_note(triad.notes()[1].clone());
+        *matrix.intervals.get_mut(&Degree::Fifths).unwrap() =
+            Change::from_note(triad.notes()[2].clone());
+        matrix
+    }
+
+    pub fn from_extension(extension: &Extension) -> Self {
+        let mut matrix = DegreePossibilities::new();
+        for note in extension.notes() {
+            let degree = Degree::from_note_degree(note);
+            *matrix.intervals.get_mut(degree).unwrap() = Change::from_note(note.clone());
+        }
+        matrix
+    }
+
+    pub fn get_mut(&mut self, key: &Degree) -> &mut Change {
+        self.intervals.get_mut(key).unwrap()
+    }
+
+    pub fn get(&self, key: &Degree) -> &Change {
+        self.intervals.get(key).unwrap()
+    }
+
+    fn short_debug(&self) -> String {
+        format!(
+            "{{{}}}",
+            Degree::TRIADIC_ASCENDING
+                .iter()
+                .filter(|degree| self.contains_notes_in_degree(degree))
+                .map(|degree| format!("{}: {}", degree, self.get(degree)))
+                .collect::<Vec<_>>()
+                .join(", ")
+        )
+    }
+}
+
+impl Default for DegreePossibilities {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl fmt::Display for DegreePossibilities {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.short_debug())
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Note {
     pub text: String,
@@ -699,6 +787,10 @@ impl Change {
 
     pub fn from_notes(notes: Vec<Note>) -> Self {
         Self { notes }
+    }
+
+    pub fn from_note(note: Note) -> Self {
+        Self { notes: vec![note] }
     }
 
     pub fn from_changes(changes: &[&Change]) -> Self {

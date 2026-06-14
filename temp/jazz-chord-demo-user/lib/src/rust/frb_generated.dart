@@ -65,7 +65,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0-beta.1';
 
   @override
-  int get rustContentHash => -1068181116;
+  int get rustContentHash => 1005023073;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -84,6 +84,8 @@ abstract class RustLibApi extends BaseApi {
   Future<bool> jazzChordTriadExtensionIsLegal({required TriadExtension that});
 
   Future<Change> jazzChordChangeDefault();
+
+  Future<Change> jazzChordChangeFromNote({required Note note});
 
   Future<Change> jazzChordChangeFromNotes({required List<Note> notes});
 
@@ -111,6 +113,36 @@ abstract class RustLibApi extends BaseApi {
   Future<List<Degree>> jazzChordDegreeOptionsForNote({required Note note});
 
   Future<void> jazzChordDegreePossExtsIfDegreeAtEnd({required Degree that});
+
+  Future<bool> jazzChordDegreePossibilitiesContainsNotesInDegree({
+    required DegreePossibilities that,
+    required Degree degree,
+  });
+
+  Future<DegreePossibilities> jazzChordDegreePossibilitiesDefault();
+
+  Future<DegreePossibilities> jazzChordDegreePossibilitiesFromExtension({
+    required Extension extension_,
+  });
+
+  Future<DegreePossibilities> jazzChordDegreePossibilitiesFromTriad({
+    required Triad triad,
+  });
+
+  Future<void> jazzChordDegreePossibilitiesGet({
+    required DegreePossibilities that,
+    required Degree key,
+  });
+
+  Future<bool> jazzChordDegreePossibilitiesIsNotEmpty({
+    required DegreePossibilities that,
+  });
+
+  Future<DegreePossibilities> jazzChordDegreePossibilitiesNew();
+
+  Future<Change> jazzChordDegreePossibilitiesToChange({
+    required DegreePossibilities that,
+  });
 
   Future<void> jazzChordDegreePreferredNotes({required Degree that});
 
@@ -287,6 +319,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(debugName: "change_default", argNames: []);
 
   @override
+  Future<Change> jazzChordChangeFromNote({required Note note}) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_box_autoadd_note(note, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 6,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_change,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordChangeFromNoteConstMeta,
+        argValues: [note],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordChangeFromNoteConstMeta =>
+      const TaskConstMeta(debugName: "change_from_note", argNames: ["note"]);
+
+  @override
   Future<Change> jazzChordChangeFromNotes({required List<Note> notes}) {
     return handler.executeNormal(
       NormalTask(
@@ -296,7 +356,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 6,
+            funcId: 7,
             port: port_,
           );
         },
@@ -324,7 +384,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 7,
+            funcId: 8,
             port: port_,
           );
         },
@@ -355,7 +415,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 8,
+            funcId: 9,
             port: port_,
           );
         },
@@ -387,7 +447,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 9,
+            funcId: 10,
             port: port_,
           );
         },
@@ -417,7 +477,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 10,
+            funcId: 11,
             port: port_,
           );
         },
@@ -444,7 +504,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 11,
+            funcId: 12,
             port: port_,
           );
         },
@@ -472,7 +532,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 12,
+            funcId: 13,
             port: port_,
           );
         },
@@ -503,7 +563,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 13,
+            funcId: 14,
             port: port_,
           );
         },
@@ -534,7 +594,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 14,
+            funcId: 15,
             port: port_,
           );
         },
@@ -565,7 +625,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 15,
+            funcId: 16,
             port: port_,
           );
         },
@@ -593,7 +653,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 16,
+            funcId: 17,
             port: port_,
           );
         },
@@ -624,7 +684,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 17,
+            funcId: 18,
             port: port_,
           );
         },
@@ -646,6 +706,266 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<bool> jazzChordDegreePossibilitiesContainsNotesInDegree({
+    required DegreePossibilities that,
+    required Degree degree,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_box_autoadd_degree_possibilities(that, serializer);
+          sse_encode_degree(degree, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 19,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_bool,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordDegreePossibilitiesContainsNotesInDegreeConstMeta,
+        argValues: [that, degree],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta
+  get kJazzChordDegreePossibilitiesContainsNotesInDegreeConstMeta =>
+      const TaskConstMeta(
+        debugName: "degree_possibilities_contains_notes_in_degree",
+        argNames: ["that", "degree"],
+      );
+
+  @override
+  Future<DegreePossibilities> jazzChordDegreePossibilitiesDefault() {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 20,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_degree_possibilities,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordDegreePossibilitiesDefaultConstMeta,
+        argValues: [],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordDegreePossibilitiesDefaultConstMeta =>
+      const TaskConstMeta(
+        debugName: "degree_possibilities_default",
+        argNames: [],
+      );
+
+  @override
+  Future<DegreePossibilities> jazzChordDegreePossibilitiesFromExtension({
+    required Extension extension_,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_extension(extension_, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 21,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_degree_possibilities,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordDegreePossibilitiesFromExtensionConstMeta,
+        argValues: [extension_],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordDegreePossibilitiesFromExtensionConstMeta =>
+      const TaskConstMeta(
+        debugName: "degree_possibilities_from_extension",
+        argNames: ["extension_"],
+      );
+
+  @override
+  Future<DegreePossibilities> jazzChordDegreePossibilitiesFromTriad({
+    required Triad triad,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_triad(triad, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 22,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_degree_possibilities,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordDegreePossibilitiesFromTriadConstMeta,
+        argValues: [triad],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordDegreePossibilitiesFromTriadConstMeta =>
+      const TaskConstMeta(
+        debugName: "degree_possibilities_from_triad",
+        argNames: ["triad"],
+      );
+
+  @override
+  Future<void> jazzChordDegreePossibilitiesGet({
+    required DegreePossibilities that,
+    required Degree key,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_box_autoadd_degree_possibilities(that, serializer);
+          sse_encode_degree(key, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 23,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordDegreePossibilitiesGetConstMeta,
+        argValues: [that, key],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordDegreePossibilitiesGetConstMeta =>
+      const TaskConstMeta(
+        debugName: "degree_possibilities_get",
+        argNames: ["that", "key"],
+      );
+
+  @override
+  Future<bool> jazzChordDegreePossibilitiesIsNotEmpty({
+    required DegreePossibilities that,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_box_autoadd_degree_possibilities(that, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 24,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_bool,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordDegreePossibilitiesIsNotEmptyConstMeta,
+        argValues: [that],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordDegreePossibilitiesIsNotEmptyConstMeta =>
+      const TaskConstMeta(
+        debugName: "degree_possibilities_is_not_empty",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<DegreePossibilities> jazzChordDegreePossibilitiesNew() {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 25,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_degree_possibilities,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordDegreePossibilitiesNewConstMeta,
+        argValues: [],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordDegreePossibilitiesNewConstMeta =>
+      const TaskConstMeta(debugName: "degree_possibilities_new", argNames: []);
+
+  @override
+  Future<Change> jazzChordDegreePossibilitiesToChange({
+    required DegreePossibilities that,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_box_autoadd_degree_possibilities(that, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 26,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_change,
+          decodeErrorData: null,
+        ),
+        constMeta: kJazzChordDegreePossibilitiesToChangeConstMeta,
+        argValues: [that],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kJazzChordDegreePossibilitiesToChangeConstMeta =>
+      const TaskConstMeta(
+        debugName: "degree_possibilities_to_change",
+        argNames: ["that"],
+      );
+
+  @override
   Future<void> jazzChordDegreePreferredNotes({required Degree that}) {
     return handler.executeNormal(
       NormalTask(
@@ -655,7 +975,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 18,
+            funcId: 27,
             port: port_,
           );
         },
@@ -686,7 +1006,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 19,
+            funcId: 28,
             port: port_,
           );
         },
@@ -723,7 +1043,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 20,
+            funcId: 29,
             port: port_,
           );
         },
@@ -754,7 +1074,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 21,
+            funcId: 30,
             port: port_,
           );
         },
@@ -785,7 +1105,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 22,
+            funcId: 31,
             port: port_,
           );
         },
@@ -820,7 +1140,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 23,
+            funcId: 32,
             port: port_,
           );
         },
@@ -851,7 +1171,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 24,
+            funcId: 33,
             port: port_,
           );
         },
@@ -882,7 +1202,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 25,
+            funcId: 34,
             port: port_,
           );
         },
@@ -910,7 +1230,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 26,
+            funcId: 35,
             port: port_,
           );
         },
@@ -940,7 +1260,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 27,
+            funcId: 36,
             port: port_,
           );
         },
@@ -971,7 +1291,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 28,
+            funcId: 37,
             port: port_,
           );
         },
@@ -996,7 +1316,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         callFfi: () {
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_String(input, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 29)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 38)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_String,
@@ -1019,7 +1339,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         callFfi: () {
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_String(input, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 30)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 39)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_String,
@@ -1045,7 +1365,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 31,
+            funcId: 40,
             port: port_,
           );
         },
@@ -1075,7 +1395,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 32,
+            funcId: 41,
             port: port_,
           );
         },
@@ -1103,7 +1423,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 33,
+            funcId: 42,
             port: port_,
           );
         },
@@ -1148,6 +1468,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Map<Degree, Change> dco_decode_Map_degree_change_None(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return Map.fromEntries(
+      dco_decode_list_record_degree_change(
+        raw,
+      ).map((e) => MapEntry(e.$1, e.$2)),
+    );
+  }
+
+  @protected
   TriadExtension
   dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
     dynamic raw,
@@ -1181,6 +1511,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  DegreePossibilities dco_decode_box_autoadd_degree_possibilities(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_degree_possibilities(raw);
+  }
+
+  @protected
   KeySlashQuality dco_decode_box_autoadd_key_slash_quality(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_key_slash_quality(raw);
@@ -1211,6 +1547,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Degree dco_decode_degree(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Degree.values[raw as int];
+  }
+
+  @protected
+  DegreePossibilities dco_decode_degree_possibilities(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return DegreePossibilities(
+      intervals: dco_decode_Map_degree_change_None(arr[0]),
+    );
   }
 
   @protected
@@ -1253,6 +1600,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<(Degree, Change)> dco_decode_list_record_degree_change(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_record_degree_change).toList();
+  }
+
+  @protected
   Note dco_decode_note(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
@@ -1280,6 +1633,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Quality(input: dco_decode_String(arr[0]));
+  }
+
+  @protected
+  (Degree, Change) dco_decode_record_degree_change(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (dco_decode_degree(arr[0]), dco_decode_change(arr[1]));
   }
 
   @protected
@@ -1331,6 +1694,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Map<Degree, Change> sse_decode_Map_degree_change_None(
+    SseDeserializer deserializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_record_degree_change(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
   TriadExtension
   sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
     SseDeserializer deserializer,
@@ -1359,6 +1731,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Change sse_decode_box_autoadd_change(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_change(deserializer));
+  }
+
+  @protected
+  DegreePossibilities sse_decode_box_autoadd_degree_possibilities(
+    SseDeserializer deserializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_degree_possibilities(deserializer));
   }
 
   @protected
@@ -1393,6 +1773,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_i_32(deserializer);
     return Degree.values[inner];
+  }
+
+  @protected
+  DegreePossibilities sse_decode_degree_possibilities(
+    SseDeserializer deserializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_intervals = sse_decode_Map_degree_change_None(deserializer);
+    return DegreePossibilities(intervals: var_intervals);
   }
 
   @protected
@@ -1447,6 +1836,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<(Degree, Change)> sse_decode_list_record_degree_change(
+    SseDeserializer deserializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(Degree, Change)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_degree_change(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   Note sse_decode_note(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_text = sse_decode_String(deserializer);
@@ -1482,6 +1885,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_input = sse_decode_String(deserializer);
     return Quality(input: var_input);
+  }
+
+  @protected
+  (Degree, Change) sse_decode_record_degree_change(
+    SseDeserializer deserializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_field0 = sse_decode_degree(deserializer);
+    var var_field1 = sse_decode_change(deserializer);
+    return (var_field0, var_field1);
   }
 
   @protected
@@ -1535,6 +1948,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_Map_degree_change_None(
+    Map<Degree, Change> self,
+    SseSerializer serializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_record_degree_change(
+      self.entries.map((e) => (e.key, e.value)).toList(),
+      serializer,
+    );
+  }
+
+  @protected
   void
   sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
     TriadExtension self,
@@ -1563,6 +1988,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_box_autoadd_change(Change self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_change(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_degree_possibilities(
+    DegreePossibilities self,
+    SseSerializer serializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_degree_possibilities(self, serializer);
   }
 
   @protected
@@ -1596,6 +2030,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_degree(Degree self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
+  void sse_encode_degree_possibilities(
+    DegreePossibilities self,
+    SseSerializer serializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_Map_degree_change_None(self.intervals, serializer);
   }
 
   @protected
@@ -1648,6 +2091,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_record_degree_change(
+    List<(Degree, Change)> self,
+    SseSerializer serializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_degree_change(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_note(Note self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.text, serializer);
@@ -1683,6 +2138,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_quality(Quality self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.input, serializer);
+  }
+
+  @protected
+  void sse_encode_record_degree_change(
+    (Degree, Change) self,
+    SseSerializer serializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_degree(self.$1, serializer);
+    sse_encode_change(self.$2, serializer);
   }
 
   @protected

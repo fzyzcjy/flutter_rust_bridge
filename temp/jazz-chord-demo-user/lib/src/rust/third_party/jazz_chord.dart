@@ -6,8 +6,8 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `hash`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
-// These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `hash`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
+// These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`, `get_mut`
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `from`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TriadExtension>>
@@ -32,6 +32,9 @@ class Change {
 
   static Future<Change> default_() =>
       RustLib.instance.api.jazzChordChangeDefault();
+
+  static Future<Change> fromNote({required Note note}) =>
+      RustLib.instance.api.jazzChordChangeFromNote(note: note);
 
   static Future<Change> fromNotes({required List<Note> notes}) =>
       RustLib.instance.api.jazzChordChangeFromNotes(notes: notes);
@@ -105,6 +108,53 @@ enum Degree {
     change: change,
     stopOnPreferredNotes: stopOnPreferredNotes,
   );
+}
+
+class DegreePossibilities {
+  final Map<Degree, Change> intervals;
+
+  const DegreePossibilities({required this.intervals});
+
+  Future<bool> containsNotesInDegree({required Degree degree}) =>
+      RustLib.instance.api.jazzChordDegreePossibilitiesContainsNotesInDegree(
+        that: this,
+        degree: degree,
+      );
+
+  static Future<DegreePossibilities> default_() =>
+      RustLib.instance.api.jazzChordDegreePossibilitiesDefault();
+
+  static Future<DegreePossibilities> fromExtension({
+    required Extension extension_,
+  }) => RustLib.instance.api.jazzChordDegreePossibilitiesFromExtension(
+    extension_: extension_,
+  );
+
+  static Future<DegreePossibilities> fromTriad({required Triad triad}) =>
+      RustLib.instance.api.jazzChordDegreePossibilitiesFromTriad(triad: triad);
+
+  Future<void> get_({required Degree key}) => RustLib.instance.api
+      .jazzChordDegreePossibilitiesGet(that: this, key: key);
+
+  Future<bool> isNotEmpty() =>
+      RustLib.instance.api.jazzChordDegreePossibilitiesIsNotEmpty(that: this);
+
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+  static Future<DegreePossibilities> newInstance() =>
+      RustLib.instance.api.jazzChordDegreePossibilitiesNew();
+
+  Future<Change> toChange() =>
+      RustLib.instance.api.jazzChordDegreePossibilitiesToChange(that: this);
+
+  @override
+  int get hashCode => intervals.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DegreePossibilities &&
+          runtimeType == other.runtimeType &&
+          intervals == other.intervals;
 }
 
 enum Extension {
