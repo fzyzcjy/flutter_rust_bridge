@@ -3,8 +3,6 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/preludes.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:glob/glob.dart';
-import 'package:glob/list_local_fs.dart';
 import 'package:path/path.dart' as path;
 import 'package:recase/recase.dart';
 
@@ -94,9 +92,11 @@ class _Duplicator {
   _Duplicator(this.generator);
 
   void _generate() {
-    for (final file in Glob(
-      '${generator.interestDir.toFilePath()}/**.${generator.extension}',
-    ).listSync()) {
+    // Use `Directory.listSync` instead of `Glob`: glob patterns are POSIX-style
+    // and match nothing on Windows, where paths use backslash separators.
+    for (final file in Directory(
+      generator.interestDir.toFilePath(),
+    ).listSync(recursive: true)) {
       final fileName = path.basename(file.path);
       final fileStem = path.basenameWithoutExtension(file.path);
       if (file is! File ||
@@ -112,7 +112,7 @@ class _Duplicator {
         continue;
       }
 
-      final fileContent = (file as File).readAsStringSync();
+      final fileContent = file.readAsStringSync();
       final annotation = Annotation.parse(fileContent);
 
       final chosenModes = _computeModes(annotation);
