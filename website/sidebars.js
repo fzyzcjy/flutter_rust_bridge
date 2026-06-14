@@ -367,7 +367,7 @@ const sidebars = {
                         'guides/miscellaneous/expanding-macros',
                         'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/isolates',
-                        'guides/miscellaneous/harmonyos',
+                        'guides/miscellaneous/harmony-os',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',
                         'guides/miscellaneous/unreleased',
