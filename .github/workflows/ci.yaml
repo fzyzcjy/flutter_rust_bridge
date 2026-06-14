@@ -348,6 +348,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
           path: target/coverage
@@ -415,6 +416,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--${{ matrix.platforms }}--coverage
           path: target/coverage
@@ -486,6 +488,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--coverage
           path: target/coverage
@@ -758,6 +761,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.info.image }}--${{ matrix.info.version }}--coverage
           path: target/coverage
@@ -799,6 +803,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
           path: target/coverage
@@ -1118,6 +1123,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ github.job }}--${{ matrix.package }}--coverage
           path: target/coverage
