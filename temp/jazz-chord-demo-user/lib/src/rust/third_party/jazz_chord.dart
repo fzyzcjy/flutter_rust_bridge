@@ -6,9 +6,20 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `hash`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
+// These functions are ignored because they have generic arguments: `contains_enharmonic`, `contains_pitch_class`, `contains`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `as_ref`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `assert_receiver_is_total_eq`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `eq`, `extend`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `from_iter`, `from_iter`, `from`, `from`, `from`, `hash`, `hash`, `hash`, `hash`, `index_mut`, `index`, `into_iter`, `into_iter`, `into_iter`
 // These functions are ignored (category: IgnoreBecauseType): `from_changes`, `from_note_strings`, `get_mut`
 // These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details): `from`
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NoteMatch>>
+abstract class NoteMatch implements RustOpaqueInterface {
+  Future<bool> containsNotes({
+    required Change reference,
+    required Change target,
+  });
+
+  Future<void> noteEq();
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TriadExtension>>
 abstract class TriadExtension implements RustOpaqueInterface {
@@ -29,6 +40,30 @@ class Change {
   final List<Note> notes;
 
   const Change({required this.notes});
+
+  Future<bool> containsNote({required Note other, required NoteEq eq}) =>
+      RustLib.instance.api.jazzChordChangeContainsNote(
+        that: this,
+        other: other,
+        eq: eq,
+      );
+
+  Future<bool> containsNotes({
+    required Change notes,
+    required NoteMatch noteMatch,
+  }) => RustLib.instance.api.jazzChordChangeContainsNotes(
+    that: this,
+    notes: notes,
+    noteMatch: noteMatch,
+  );
+
+  Future<bool> containsPitchClassOfNote({required Note note}) => RustLib
+      .instance
+      .api
+      .jazzChordChangeContainsPitchClassOfNote(that: this, note: note);
+
+  Future<bool> containsStrictNote({required Note note}) => RustLib.instance.api
+      .jazzChordChangeContainsStrictNote(that: this, note: note);
 
   static Future<Change> default_() =>
       RustLib.instance.api.jazzChordChangeDefault();
@@ -114,6 +149,22 @@ class DegreePossibilities {
   final Map<Degree, Change> intervals;
 
   const DegreePossibilities({required this.intervals});
+
+  Future<bool> containsNote({required Note note, required NoteEq eq}) => RustLib
+      .instance
+      .api
+      .jazzChordDegreePossibilitiesContainsNote(that: this, note: note, eq: eq);
+
+  Future<bool> containsNoteInDegree({
+    required Note note,
+    required Degree degree,
+    required NoteEq eq,
+  }) => RustLib.instance.api.jazzChordDegreePossibilitiesContainsNoteInDegree(
+    that: this,
+    note: note,
+    degree: degree,
+    eq: eq,
+  );
 
   Future<bool> containsNotesInDegree({required Degree degree}) =>
       RustLib.instance.api.jazzChordDegreePossibilitiesContainsNotesInDegree(
@@ -248,9 +299,17 @@ class Note {
 
   const Note({required this.text});
 
+  Future<bool> isEquivalent({required Note other}) =>
+      RustLib.instance.api.jazzChordNoteIsEquivalent(that: this, other: other);
+
+  Future<bool> isSamePitchClass({required Note other}) => RustLib.instance.api
+      .jazzChordNoteIsSamePitchClass(that: this, other: other);
+
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<Note> newInstance({required String text}) =>
       RustLib.instance.api.jazzChordNoteNew(text: text);
+
+  Future<void> text() => RustLib.instance.api.jazzChordNoteText(that: this);
 
   @override
   int get hashCode => text.hashCode;
@@ -259,6 +318,20 @@ class Note {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Note && runtimeType == other.runtimeType && text == other.text;
+}
+
+enum NoteEq {
+  enharmonic,
+  pitchClass,
+  exact,
+  equivalent,
+  degree,
+  degreeEnharmonic;
+
+  Future<bool> eq({required Note note, required Note other}) => RustLib
+      .instance
+      .api
+      .jazzChordNoteEqEq(that: this, note: note, other: other);
 }
 
 class Quality {

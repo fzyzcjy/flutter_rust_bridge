@@ -608,9 +608,22 @@ impl DegreePossibilities {
         self.intervals.get(degree).unwrap().len() > 0
     }
 
+    pub fn contains_note_in_degree(&self, note: &Note, degree: &Degree, eq: &NoteEq) -> bool {
+        self.intervals.get(degree).unwrap().contains_note(note, eq)
+    }
+
     pub fn is_not_empty(&self) -> bool {
         for degree in self.intervals.keys() {
             if self.contains_notes_in_degree(degree) {
+                return true;
+            }
+        }
+        false
+    }
+
+    pub fn contains_note(&self, note: &Note, eq: &NoteEq) -> bool {
+        for change in self.intervals.values() {
+            if change.contains_note(note, eq) {
                 return true;
             }
         }
@@ -661,17 +674,19 @@ impl DegreePossibilities {
 
         let is_dim = triad == Some(&Triad::Diminished);
         let sevenths = possibilities.intervals.get(&Degree::Sevenths).unwrap();
-        let has_flat_seven = !sevenths.is_empty() && sevenths.contains_note_text("b7");
+        let has_flat_seven = !sevenths.is_empty()
+            && sevenths.contains_note(&Note::new("b7".to_owned()), &NoteEq::Equivalent);
         if is_dim && has_flat_seven {
             *possibilities.get_mut(&Degree::Sevenths) = Change::from_note_strings(&["bb7"]);
         }
 
+        let one = Note::new("1".to_owned());
         if extension != Some(&Extension::NoChord)
-            && !possibilities.to_change().contains_note_text("1")
+            && !possibilities.contains_note(&one, &NoteEq::Equivalent)
         {
             possibilities
                 .intervals
-                .insert(Degree::Ones, Change::from_note(Note::new("1".to_owned())));
+                .insert(Degree::Ones, Change::from_note(one));
         }
         possibilities
     }
@@ -712,7 +727,7 @@ impl DegreePossibilities {
                     if degree_change
                         .notes
                         .iter()
-                        .any(|degree_note| triad.notes().contains_note_text(&degree_note.text))
+                        .any(|degree_note| triad.notes().contains_pitch_class_of_note(degree_note))
                     {
                         matches_at_least_one_degree = true;
                     }
@@ -759,6 +774,57 @@ impl fmt::Display for DegreePossibilities {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
+pub enum NoteEq {
+    Enharmonic,
+    PitchClass,
+    Exact,
+    Equivalent,
+    Degree,
+    DegreeEnharmonic,
+}
+
+impl NoteEq {
+    pub fn eq(&self, note: &Note, other: &Note) -> bool {
+        match self {
+            Self::Exact => note.text == other.text,
+            Self::Equivalent => note.is_equivalent(other),
+            Self::Degree => note.degree_text() == other.degree_text(),
+            Self::Enharmonic | Self::PitchClass | Self::DegreeEnharmonic => {
+                note.pitch_class_text() == other.pitch_class_text()
+            }
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum NoteMatch {
+    First(NoteEq),
+    All(NoteEq),
+    Any(NoteEq),
+}
+
+impl NoteMatch {
+    pub fn contains_notes(&self, reference: &Change, target: &Change) -> bool {
+        match self {
+            Self::First(note_eq) | Self::Any(note_eq) => target
+                .notes
+                .iter()
+                .any(|right_note| reference.contains_note(right_note, note_eq)),
+            Self::All(note_eq) => target
+                .notes
+                .iter()
+                .all(|right_note| reference.contains_note(right_note, note_eq)),
+        }
+    }
+
+    pub fn note_eq(&self) -> &NoteEq {
+        match self {
+            Self::First(note_eq) | Self::All(note_eq) | Self::Any(note_eq) => note_eq,
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Note {
     pub text: String,
 }
@@ -766,6 +832,20 @@ pub struct Note {
 impl Note {
     pub fn new(text: String) -> Self {
         Self { text }
+    }
+
+    pub fn text(&self) -> &str {
+        &self.text
+    }
+
+    pub fn is_equivalent(&self, other: &Note) -> bool {
+        self.text == other.text
+            || (self.degree_text() == other.degree_text()
+                && self.accidental_count() == other.accidental_count())
+    }
+
+    pub fn is_same_pitch_class(&self, other: &Note) -> bool {
+        self.pitch_class_text() == other.pitch_class_text()
     }
 
     fn degree_text(&self) -> &str {
@@ -785,6 +865,47 @@ impl Note {
             "14" => "7",
             _ => text,
         }
+    }
+
+    fn pitch_class_text(&self) -> &str {
+        match self.degree_text() {
+            "8" | "15" => "1",
+            "9" => "2",
+            "10" => "3",
+            "11" => "4",
+            "12" => "5",
+            "13" => "6",
+            "14" => "7",
+            text => text,
+        }
+    }
+
+    fn accidental_count(&self) -> i32 {
+        self.text
+            .chars()
+            .fold(0, |count, character| match character {
+                'b' | '♭' => count - 1,
+                '#' | '♯' => count + 1,
+                _ => count,
+            })
+    }
+}
+
+impl From<&str> for Note {
+    fn from(value: &str) -> Self {
+        Self::new(value.to_owned())
+    }
+}
+
+impl From<String> for Note {
+    fn from(value: String) -> Self {
+        Self::new(value)
+    }
+}
+
+impl From<&Note> for Note {
+    fn from(value: &Note) -> Self {
+        value.clone()
     }
 }
 
@@ -921,6 +1042,39 @@ impl Change {
 
     pub fn is_empty(&self) -> bool {
         self.notes.is_empty()
+    }
+
+    pub fn contains<N: Into<Note>>(&self, note: N) -> bool {
+        self.notes.contains(&note.into())
+    }
+
+    pub fn contains_note(&self, other: &Note, eq: &NoteEq) -> bool {
+        self.notes.iter().any(|note| eq.eq(note, other))
+    }
+
+    pub fn contains_notes(&self, notes: &Change, note_match: &NoteMatch) -> bool {
+        note_match.contains_notes(self, notes)
+    }
+
+    pub fn contains_pitch_class<N: Into<Note>>(&self, note: N) -> bool {
+        self.contains_pitch_class_of_note(&note.into())
+    }
+
+    pub fn contains_pitch_class_of_note(&self, note: &Note) -> bool {
+        self.notes
+            .iter()
+            .any(|self_note| self_note.is_same_pitch_class(note))
+    }
+
+    pub fn contains_strict_note(&self, note: &Note) -> bool {
+        self.notes.contains(note)
+    }
+
+    pub fn contains_enharmonic<N: Into<Note>>(&self, other: N) -> bool {
+        let other = other.into();
+        self.notes
+            .iter()
+            .any(|note| note.is_same_pitch_class(&other))
     }
 
     fn contains_note_text(&self, text: &str) -> bool {

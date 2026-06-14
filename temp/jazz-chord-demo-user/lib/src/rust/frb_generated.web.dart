@@ -22,12 +22,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   CrossPlatformFinalizerArg
+  get rust_arc_decrement_strong_count_NoteMatchPtr => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch;
+
+  CrossPlatformFinalizerArg
   get rust_arc_decrement_strong_count_TriadExtensionPtr => wire
       .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension;
 
   @protected
+  NoteMatch
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    dynamic raw,
+  );
+
+  @protected
   TriadExtension
   dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
+    dynamic raw,
+  );
+
+  @protected
+  NoteMatch
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
     dynamic raw,
   );
 
@@ -39,6 +55,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Map<Degree, Change> dco_decode_Map_degree_change_None(dynamic raw);
+
+  @protected
+  NoteMatch
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    dynamic raw,
+  );
 
   @protected
   TriadExtension
@@ -110,6 +132,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Note dco_decode_note(dynamic raw);
 
   @protected
+  NoteEq dco_decode_note_eq(dynamic raw);
+
+  @protected
   KeySlashQuality? dco_decode_opt_box_autoadd_key_slash_quality(dynamic raw);
 
   @protected
@@ -140,8 +165,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BigInt dco_decode_usize(dynamic raw);
 
   @protected
+  NoteMatch
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   TriadExtension
   sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  NoteMatch
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
     SseDeserializer deserializer,
   );
 
@@ -153,6 +190,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Map<Degree, Change> sse_decode_Map_degree_change_None(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  NoteMatch
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
     SseDeserializer deserializer,
   );
 
@@ -231,6 +274,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Note sse_decode_note(SseDeserializer deserializer);
 
   @protected
+  NoteEq sse_decode_note_eq(SseDeserializer deserializer);
+
+  @protected
   KeySlashQuality? sse_decode_opt_box_autoadd_key_slash_quality(
     SseDeserializer deserializer,
   );
@@ -266,8 +312,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    NoteMatch self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void
   sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
     TriadExtension self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    NoteMatch self,
     SseSerializer serializer,
   );
 
@@ -281,6 +341,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_Map_degree_change_None(
     Map<Degree, Change> self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    NoteMatch self,
     SseSerializer serializer,
   );
 
@@ -373,6 +440,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_note(Note self, SseSerializer serializer);
 
   @protected
+  void sse_encode_note_eq(NoteEq self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_key_slash_quality(
     KeySlashQuality? self,
     SseSerializer serializer,
@@ -421,6 +491,22 @@ class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
   void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+        ptr,
+      );
+
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+        ptr,
+      );
+
+  void
   rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
     int ptr,
   ) => wasmModule
@@ -443,6 +529,16 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
+  external void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    int ptr,
+  );
+
+  external void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNoteMatch(
+    int ptr,
+  );
+
   external void
   rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTriadExtension(
     int ptr,
