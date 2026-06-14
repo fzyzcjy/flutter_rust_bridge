@@ -3,7 +3,7 @@ use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
 use log::{debug, warn};
-use semver::Op;
+use semver::{Comparator, Op};
 use serde::de::DeserializeOwned;
 use std::collections::HashMap;
 use std::convert::TryFrom;
@@ -309,19 +309,32 @@ impl DartPackageVersion {
 }
 
 fn prerelease_matches_stable_lower_bound(version: &Version, requirement: &VersionReq) -> bool {
-    !version.pre.is_empty()
-        && requirement.comparators.iter().all(|comparator| {
-            let version_components = (version.major, version.minor, version.patch);
-            let comparator_components = (
-                comparator.major,
-                comparator.minor.unwrap_or(0),
-                comparator.patch.unwrap_or(0),
-            );
+    if version.pre.is_empty() {
+        return false;
+    }
 
-            comparator.pre.is_empty()
-                && matches!(comparator.op, Op::Greater | Op::GreaterEq)
-                && version_components > comparator_components
-        })
+    let stable_version = Version::new(version.major, version.minor, version.patch);
+    requirement.matches(&stable_version)
+        && requirement
+            .comparators
+            .iter()
+            .any(|comparator| prerelease_is_after_stable_lower_bound(version, comparator))
+}
+
+fn prerelease_is_after_stable_lower_bound(version: &Version, comparator: &Comparator) -> bool {
+    let version_components = (version.major, version.minor, version.patch);
+    let comparator_components = (
+        comparator.major,
+        comparator.minor.unwrap_or(0),
+        comparator.patch.unwrap_or(0),
+    );
+
+    comparator.pre.is_empty()
+        && matches!(
+            comparator.op,
+            Op::Greater | Op::GreaterEq | Op::Caret | Op::Tilde
+        )
+        && version_components > comparator_components
 }
 
 fn read_file(at: &Path, filename: &str) -> anyhow::Result<String> {
