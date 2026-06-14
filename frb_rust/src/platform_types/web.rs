@@ -49,34 +49,42 @@ impl BroadcastChannelState {
         port
     }
 
-    fn release_message_port_name(&mut self, name: &str) -> Option<MessagePort> {
-        self.channel_of_name.remove(name)
-    }
-
-    fn push_pending_close(&mut self, port: MessagePort) -> bool {
-        self.pending_close.push(port);
-        if self.close_scheduled {
-            true
-        } else {
-            self.close_scheduled = true;
-            false
+    fn release_message_port_name(&mut self, name: &str) {
+        if let Some(port) = self.channel_of_name.remove(name) {
+            self.close_message_port_later(port);
         }
     }
 
-    fn close_callback_function(&self) -> &js_sys::Function {
-        self.close_callback.as_ref().unchecked_ref()
+    fn close_message_port_later(&mut self, port: MessagePort) {
+        self.pending_close.push(port);
+        if self.close_scheduled {
+            return;
+        }
+
+        self.close_scheduled = true;
+        if let Err(error) = js_set_timeout(
+            self.close_callback.as_ref().unchecked_ref(),
+            BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS,
+        ) {
+            crate::console_error!("schedule broadcast channel close: {:?}", error);
+            self.close_pending_message_ports();
+        }
     }
 
-    fn take_pending_close(&mut self) -> Vec<MessagePort> {
+    fn close_pending_message_ports(&mut self) {
         self.close_scheduled = false;
-        self.pending_close.drain(..).collect()
+        for port in self.pending_close.drain(..) {
+            if let Err(error) = port.close() {
+                crate::console_error!("close broadcast channel: {:?}", error);
+            }
+        }
     }
 }
 
 #[wasm_bindgen]
 extern "C" {
     #[wasm_bindgen(js_name = setTimeout, catch)]
-    fn set_timeout(handler: &js_sys::Function, timeout: i32) -> Result<JsValue, JsValue>;
+    fn js_set_timeout(handler: &js_sys::Function, timeout: i32) -> Result<JsValue, JsValue>;
 }
 
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
@@ -92,11 +100,7 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
 }
 
 pub fn release_message_port_handle(handle: &SendableMessagePortHandle) {
-    BROADCAST_CHANNEL_STATE.with(|state| {
-        if let Some(port) = state.borrow_mut().release_message_port_name(&handle.0) {
-            close_message_port_later(port);
-        }
-    })
+    BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().release_message_port_name(&handle.0))
 }
 
 pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessagePortHandle {
@@ -105,31 +109,6 @@ pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessageP
 
 pub type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
 
-fn close_message_port_later(port: MessagePort) {
-    if BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().push_pending_close(port)) {
-        return;
-    }
-
-    if let Err(error) = BROADCAST_CHANNEL_STATE.with(|state| {
-        set_timeout(
-            state.borrow().close_callback_function(),
-            BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS,
-        )
-    }) {
-        crate::console_error!("schedule broadcast channel close: {:?}", error);
-        close_pending_message_ports();
-    }
-}
-
 fn close_pending_message_ports() {
-    let ports = BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().take_pending_close());
-    for port in ports {
-        close_message_port(port);
-    }
-}
-
-fn close_message_port(port: MessagePort) {
-    if let Err(error) = port.close() {
-        crate::console_error!("close broadcast channel: {:?}", error);
-    }
+    BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().close_pending_message_ports())
 }
