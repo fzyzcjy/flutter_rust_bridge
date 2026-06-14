@@ -171,3 +171,57 @@ def test_build_docker_run_rm_command_without_credentials_is_plain() -> None:
         "./frb_internal",
         "--help",
     ]
+
+
+def test_build_tart_guest_proxy_env_from_argument(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Tart proxy env uses the explicit host proxy URL when provided."""
+
+    monkeypatch.setenv("FRB_TART_HOST_PROXY_URL", "http://ignored.example:7897")
+
+    env = frb_dev_env.build_tart_guest_proxy_env(
+        host_proxy_url="http://192.168.64.1:7897"
+    )
+
+    assert env["HTTP_PROXY"] == "http://192.168.64.1:7897"
+    assert env["http_proxy"] == "http://192.168.64.1:7897"
+    assert env["CARGO_HTTP_PROXY"] == "http://192.168.64.1:7897"
+    assert env["NO_PROXY"] == "localhost,127.0.0.1,::1"
+    assert env["no_proxy"] == "localhost,127.0.0.1,::1"
+
+
+def test_build_tart_guest_proxy_env_from_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Tart proxy env falls back to FRB_TART_HOST_PROXY_URL."""
+
+    monkeypatch.setenv("FRB_TART_HOST_PROXY_URL", "http://192.168.64.1:7897")
+
+    env = frb_dev_env.build_tart_guest_proxy_env(host_proxy_url=None)
+
+    assert env["HTTPS_PROXY"] == "http://192.168.64.1:7897"
+
+
+def test_build_tart_guest_proxy_env_rejects_host_without_scheme() -> None:
+    """Tart proxy env rejects ambiguous host proxy URLs."""
+
+    with pytest.raises(frb_dev_env.CommandError) as error:
+        frb_dev_env.build_tart_guest_proxy_env(host_proxy_url="192.168.64.1:7897")
+
+    assert "must include scheme and host" in str(error.value)
+
+
+def test_tart_shell_command_exports_proxy_env() -> None:
+    """Tart shell command exports guest env before running the command."""
+
+    command = frb_dev_env.tart_shell_command(
+        ["curl", "-I", "https://pub.dev"],
+        worktree_root=Path("/repo/flutter_rust_bridge"),
+        env={"HTTP_PROXY": "http://192.168.64.1:7897"},
+    )
+
+    assert command[:2] == ["/bin/zsh", "-lc"]
+    script = command[2]
+    assert "export HTTP_PROXY=http://192.168.64.1:7897" in script
+    assert "cd /repo/flutter_rust_bridge && exec curl -I https://pub.dev" in script
