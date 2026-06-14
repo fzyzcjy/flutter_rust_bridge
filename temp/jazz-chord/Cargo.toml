@@ -1,0 +1,31 @@
+[package]
+name = "jazz_chord"
+version = "0.1.4"
+edition = "2024"
+description = "Parse jazz chord symbols like ma7 or dim13(no 5)..."
+license = "AGPL-3.0-only"
+
+[profile.release]
+debug = true
+
+[dependencies]
+jazz-accidentals = { version = "0.1.4", path = "../jazz-accidentals" }
+ezstr = { version = "0.3.1", path = "../ezstr" }
+once_cell = "1.21.3"
+cached = "0.56.0"
+midi_file = "0.0.6"
+hotpath = { version = "0.2", optional = true }
+serde = { version = "1.0.228", features = ["derive"] }
+strum = "0.28.0"
+strum_macros = "0.28.0"
+memoize = "0.6.0"
+itertools = "0.14.0"
+concat-string = "1.0.1"
+bitvec = "1.0.1"
+
+[features]
+hotpath = ["dep:hotpath", "hotpath/hotpath"]
+hotpath-alloc-bytes-total = ["hotpath/hotpath-alloc-bytes-total"]
+hotpath-alloc-bytes-max = ["hotpath/hotpath-alloc-bytes-max"]
+hotpath-alloc-count-total= ["hotpath/hotpath-alloc-count-total"]
+hotpath-alloc-count-max= ["hotpath/hotpath-alloc-count-max"]
