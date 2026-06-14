@@ -65,16 +65,35 @@ echo $env:OHOS_SDK_HOME
 
 ## Creating an OHOS project
 
+:::warning
+If your project uses FVM to manage Flutter versions, always pass
+`--skip-fvm-install` when running flutter_rust_bridge commands for an OHOS
+project.
+
+HarmonyOS/OpenHarmony Flutter is a Huawei community fork of Flutter. Official
+Flutter does not support OHOS, but FVM installs Flutter from the official
+Flutter releases by default. Without `--skip-fvm-install`, FVM may try to fetch
+an official Flutter SDK, which can get stuck or leave the OHOS project unable to
+run.
+:::
+
 After the HarmonyOS toolchain is ready, create the project with OHOS enabled:
 
 ```shell
-flutter_rust_bridge_codegen create my_app --platforms ohos
+flutter_rust_bridge_codegen create my_app --platforms ohos --skip-fvm-install
 ```
 
 If you also want the usual Flutter mobile platforms, include them explicitly:
 
 ```shell
-flutter_rust_bridge_codegen create my_app --platforms android,ios,ohos
+flutter_rust_bridge_codegen create my_app --platforms android,ios,ohos --skip-fvm-install
+```
+
+Use the same flag when integrating flutter_rust_bridge into an existing OHOS
+project:
+
+```shell
+flutter_rust_bridge_codegen integrate --platforms ohos --skip-fvm-install
 ```
 
 Then build or run the generated Flutter project with the OHOS Flutter toolchain,
