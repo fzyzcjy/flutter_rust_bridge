@@ -145,7 +145,10 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
     }
 
     if !func.fallible() {
-        ans = format!("Result::<_,()>::Ok({ans})");
+        // Use the `Ok` variant (not `Result::<_, ()>::Ok`) so a user-defined
+        // `type Result<T>` shadowing std `Result` does not break this wire code
+        // (issue #1710). `Ok` is the prelude variant and is not shadowed.
+        ans = format!("Ok::<_, ()>({ans})");
     }
 
     ans = format!("let output_ok = {ans}?;");

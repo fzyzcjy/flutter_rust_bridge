@@ -72,7 +72,7 @@ fn wire__crate__api__simple__make_data_race_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::simple::make_data_race();
                     })?;
                     Ok(output_ok)
@@ -106,7 +106,7 @@ fn wire__crate__api__simple__make_heap_use_after_free_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::simple::make_heap_use_after_free();
                     })?;
                     Ok(output_ok)
@@ -140,7 +140,7 @@ fn wire__crate__api__simple__make_memory_leak_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::simple::make_memory_leak();
                     })?;
                     Ok(output_ok)
@@ -174,7 +174,7 @@ fn wire__crate__api__simple__make_stack_buffer_overflow_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::simple::make_stack_buffer_overflow();
                     })?;
                     Ok(output_ok)
@@ -208,7 +208,7 @@ fn wire__crate__api__simple__make_use_of_uninitialized_value_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::simple::make_use_of_uninitialized_value();
                     })?;
                     Ok(output_ok)

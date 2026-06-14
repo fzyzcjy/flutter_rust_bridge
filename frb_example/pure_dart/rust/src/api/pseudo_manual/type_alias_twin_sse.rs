@@ -30,3 +30,16 @@ pub fn handle_type_alias_model_twin_sse(input: Id) -> TestModelTwinSse {
         alias_struct: StructAlias { content: true },
     }
 }
+
+// Regression for #1710: user-defined `type Result<T>` must not shadow generated wire code.
+pub enum ResultShadowErrorTwinSse {
+    Dummy,
+}
+
+pub type Result<T> = std::result::Result<T, ResultShadowErrorTwinSse>;
+
+// Infallible API triggers generated `std::result::Result::<_, ()>::Ok` wrapper in wire code.
+#[flutter_rust_bridge::frb(serialize)]
+pub fn infallible_with_result_shadow_twin_sse() -> i32 {
+    42
+}

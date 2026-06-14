@@ -9,6 +9,8 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ResultShadowErrorTwinSyncSse`
+
 BigInt handleTypeAliasIdTwinSyncSse({required BigInt input}) => RustLib
     .instance.api
     .crateApiPseudoManualTypeAliasTwinSyncSseHandleTypeAliasIdTwinSyncSse(
@@ -23,6 +25,9 @@ TestModelTwinSyncSse handleTypeAliasModelTwinSyncSse({required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinSyncSseHandleTypeAliasModelTwinSyncSse(
             input: input);
+
+int infallibleWithResultShadowTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseInfallibleWithResultShadowTwinSyncSse();
 
 class TestModelTwinSyncSse {
   final BigInt id;

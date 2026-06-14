@@ -29,4 +29,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(testModel.aliasEnum, MyEnum.false_);
     expect(testModel.aliasStruct.content, true);
   });
+
+  test('infallible API compiles when user shadows std Result (#1710)',
+      () async {
+    final value = await infallibleWithResultShadowTwinRustAsync();
+    expect(value, 42);
+  });
 }

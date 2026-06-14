@@ -72,7 +72,7 @@ fn wire__crate__api__minimal__init_app_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::minimal::init_app();
                     })?;
                     Ok(output_ok)
@@ -108,8 +108,7 @@ fn wire__crate__api__minimal__minimal_adder_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))?;
+                    let output_ok = Ok::<_, ()>(crate::api::minimal::minimal_adder(api_a, api_b))?;
                     Ok(output_ok)
                 })())
             }

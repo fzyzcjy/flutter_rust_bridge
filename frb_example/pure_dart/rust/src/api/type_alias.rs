@@ -23,3 +23,15 @@ pub fn handle_type_alias_model_twin_normal(input: Id) -> TestModelTwinNormal {
         alias_struct: StructAlias { content: true },
     }
 }
+
+// Regression for #1710: user-defined `type Result<T>` must not shadow generated wire code.
+pub enum ResultShadowErrorTwinNormal {
+    Dummy,
+}
+
+pub type Result<T> = std::result::Result<T, ResultShadowErrorTwinNormal>;
+
+// Infallible API triggers generated `std::result::Result::<_, ()>::Ok` wrapper in wire code.
+pub fn infallible_with_result_shadow_twin_normal() -> i32 {
+    42
+}

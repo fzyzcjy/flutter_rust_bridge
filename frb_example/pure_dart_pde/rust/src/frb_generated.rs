@@ -75,7 +75,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.13.0-beta.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1020479450;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1924046625;
 
 // Section: executor
 
@@ -106,9 +106,8 @@ fn wire__crate__api__misc_no_twin_example_a__CONST_ARRAY_TWIN_NORMAL_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
-                    crate::api::misc_no_twin_example_a::CONST_ARRAY_TWIN_NORMAL,
-                )?;
+                let output_ok =
+                    Ok::<_, ()>(crate::api::misc_no_twin_example_a::CONST_ARRAY_TWIN_NORMAL)?;
                 Ok(output_ok)
             })())
         },
@@ -138,7 +137,7 @@ fn wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL_impl(
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::misc_no_twin_example_a::CONST_INT_TWIN_NORMAL)?;
+                    Ok::<_, ()>(crate::api::misc_no_twin_example_a::CONST_INT_TWIN_NORMAL)?;
                 Ok(output_ok)
             })())
         },
@@ -186,7 +185,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accesso
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -235,7 +234,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accesso
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.one = api_one;
                     };
@@ -287,7 +286,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_check_impl(
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::constructor::ConstructorOpaqueStructTwinNormal::check(
                         &*api_that_guard,
                     );
@@ -322,7 +321,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_new_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::constructor::ConstructorOpaqueStructTwinNormal::new(),
                     )?;
                     Ok(output_ok)
@@ -373,7 +372,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_acc
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -422,7 +421,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_auto_acc
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.one = api_one;
                     };
@@ -474,7 +473,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_check_im
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::constructor::ConstructorOpaqueSyncStructTwinNormal::check(
                         &*api_that_guard,
                     );
@@ -507,7 +506,7 @@ fn wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new_impl
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::constructor::ConstructorOpaqueSyncStructTwinNormal::new(),
                 )?;
                 Ok(output_ok)
@@ -558,7 +557,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.deliberate_bad_field_a.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.deliberate_bad_field_a.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -607,7 +606,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.deliberate_bad_field_b.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.deliberate_bad_field_b.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -656,7 +655,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.deliberate_bad_field_c.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.deliberate_bad_field_c.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -704,7 +703,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.good_field_a.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.good_field_a.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -752,7 +751,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.good_field_b.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.good_field_b.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -800,7 +799,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.good_field_c.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.good_field_c.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -850,7 +849,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.deliberate_bad_field_a = api_deliberate_bad_field_a;
                     };
@@ -904,7 +903,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.deliberate_bad_field_b = api_deliberate_bad_field_b;
                     };
@@ -959,7 +958,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.deliberate_bad_field_c = api_deliberate_bad_field_c;
                     };
@@ -1012,7 +1011,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.good_field_a = api_good_field_a;
                     };
@@ -1065,7 +1064,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.good_field_b = api_good_field_b;
                     };
@@ -1119,7 +1118,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.good_field_c = api_good_field_c;
                     };
@@ -1140,7 +1139,7 @@ fn wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::DeliberateFailSanityCheckTwinNormal::dummy_function_twin_normal(); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::DeliberateFailSanityCheckTwinNormal::dummy_function_twin_normal(); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1190,7 +1189,7 @@ fn wire__crate__api__dropping__DroppableTwinNormal_create_stream_impl(
                         }
                     }
                     let mut api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dropping::DroppableTwinNormal::create_stream(
                             &mut *api_that_guard,
                             api_sink,
@@ -1227,7 +1226,7 @@ fn wire__crate__api__dropping__DroppableTwinNormal_get_drop_count_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::dropping::DroppableTwinNormal::get_drop_count_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -1261,9 +1260,8 @@ fn wire__crate__api__dropping__DroppableTwinNormal_new_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::dropping::DroppableTwinNormal::new_twin_normal(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::dropping::DroppableTwinNormal::new_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -1312,7 +1310,7 @@ fn wire__crate__api__dropping__DroppableTwinNormal_simple_method_twin_normal_imp
                         }
                     }
                     let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dropping::DroppableTwinNormal::simple_method_twin_normal(
                             &*api_that_guard,
                         );
@@ -1344,7 +1342,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::create_stream_twin_rust_async(&mut *api_that_guard, api_sink).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::create_stream_twin_rust_async(&mut *api_that_guard, api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -1359,7 +1357,7 @@ fn wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustA
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::get_drop_count_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::get_drop_count_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -1374,7 +1372,7 @@ fn wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustA
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::new_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::new_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -1398,7 +1396,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::simple_method_twin_rust_async(&*api_that_guard).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dropping_twin_rust_async::DroppableTwinRustAsync::simple_method_twin_rust_async(&*api_that_guard).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -1422,7 +1420,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::create_stream_twin_sync(&mut *api_that_guard, api_sink); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::create_stream_twin_sync(&mut *api_that_guard, api_sink); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_get_drop_count_twin_sync_impl(
@@ -1435,7 +1433,7 @@ fn wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_get_dr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::get_drop_count_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::get_drop_count_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_new_twin_sync_impl(
@@ -1461,7 +1459,7 @@ fn wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_new_tw
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::new_twin_sync(
                     ),
                 )?;
@@ -1489,7 +1487,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::simple_method_twin_sync(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dropping_twin_sync::DroppableTwinSync::simple_method_twin_sync(&*api_that_guard); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_auto_accessor_get_name_impl(
@@ -1534,7 +1532,7 @@ fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.name.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.name.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -1583,7 +1581,7 @@ fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.name = api_name;
                     };
@@ -1604,7 +1602,7 @@ fn wire__crate__api__misc_no_twin_example_a__ItemContainerSolutionOneTwinNormal_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::ItemContainerSolutionOneTwinNormal::create_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_a::ItemContainerSolutionOneTwinNormal::create_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1628,7 +1626,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::ItemContainerSolutionOneTwinNormal::get_item_contents_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_a::ItemContainerSolutionOneTwinNormal::get_item_contents_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1652,7 +1650,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtNestedTypeWithLifetimeTwinNormal ::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtNestedTypeWithLifetimeTwinNormal ::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1676,7 +1674,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtNestedTypeWithLifetimeTwinNormal ::greet_borrow_self_twin_normal(&*&api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtNestedTypeWithLifetimeTwinNormal ::greet_borrow_self_twin_normal(&*&api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1699,7 +1697,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtNestedTypeWithLifetimeTwinSync ::greet_borrow_mut_self_twin_sync(&mut *api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtNestedTypeWithLifetimeTwinSync ::greet_borrow_mut_self_twin_sync(&mut *api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__lifetimeable_twin_sync__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinSyncstatic_greet_borrow_self_twin_sync_impl(
@@ -1721,7 +1719,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtNestedTypeWithLifetimeTwinSync ::greet_borrow_self_twin_sync(&*&api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtNestedTypeWithLifetimeTwinSync ::greet_borrow_self_twin_sync(&*&api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__lifetimeable__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic_compute_arg_generic_lifetime_twin_normal_impl(
@@ -1749,7 +1747,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_arg_guard = Arc::new(api_arg_guard);
                 let api_arg_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_arg_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtTypeWithLifetimeTwinNormal ::compute_arg_generic_lifetime_twin_normal(&*&api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtTypeWithLifetimeTwinNormal ::compute_arg_generic_lifetime_twin_normal(&*&api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_arg_guard.clone()),
                     Box::new(api_arg.clone()),
                 )]));  Ok(output_ok)
@@ -1781,7 +1779,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_that_guard = Arc::new(api_that_guard);
                 let api_that_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtTypeWithLifetimeTwinNormal ::compute_nested_type_with_lifetime_twin_normal(&*&api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtTypeWithLifetimeTwinNormal ::compute_nested_type_with_lifetime_twin_normal(&*&api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_that_guard.clone()),
                     Box::new(api_that.clone()),
                 )]));  Ok(output_ok)
@@ -1808,7 +1806,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtTypeWithLifetimeTwinNormal ::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtTypeWithLifetimeTwinNormal ::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1832,7 +1830,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtTypeWithLifetimeTwinNormal ::greet_borrow_self_twin_normal(&*&api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtTypeWithLifetimeTwinNormal ::greet_borrow_self_twin_normal(&*&api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -1861,7 +1859,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_arg_guard = Arc::new(api_arg_guard);
                 let api_arg_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_arg_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithLifetimeTwinSync ::compute_arg_generic_lifetime_twin_sync(&*&api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithLifetimeTwinSync ::compute_arg_generic_lifetime_twin_sync(&*&api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_arg_guard.clone()),
                     Box::new(api_arg.clone()),
                 )]));  Ok(output_ok)
@@ -1893,7 +1891,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_that_guard = Arc::new(api_that_guard);
                 let api_that_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithLifetimeTwinSync ::compute_nested_type_with_lifetime_twin_sync(&*&api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithLifetimeTwinSync ::compute_nested_type_with_lifetime_twin_sync(&*&api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_that_guard.clone()),
                     Box::new(api_that.clone()),
                 )]));  Ok(output_ok)
@@ -1919,7 +1917,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithLifetimeTwinSync ::greet_borrow_mut_self_twin_sync(&mut *api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithLifetimeTwinSync ::greet_borrow_mut_self_twin_sync(&mut *api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__lifetimeable_twin_sync__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinSyncstatic_greet_borrow_self_twin_sync_impl(
@@ -1941,7 +1939,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithLifetimeTwinSync ::greet_borrow_self_twin_sync(&*&api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithLifetimeTwinSync ::greet_borrow_self_twin_sync(&*&api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__lifetimeable__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic_compute_with_multi_arg_having_lifetime_twin_normal_impl(
@@ -1983,7 +1981,7 @@ let api_a_guard = Arc::new(api_a_guard);
         };let api_b_guard = Arc::new(api_b_guard);
                 let api_b_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_b_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtTypeWithMultiDepTwinNormal ::compute_with_multi_arg_having_lifetime_twin_normal(&*api_a_guard_illegal_static_ref, &*api_b_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtTypeWithMultiDepTwinNormal ::compute_with_multi_arg_having_lifetime_twin_normal(&*api_a_guard_illegal_static_ref, &*api_b_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_a_guard.clone()),
                     Box::new(api_a.clone()),
                 ), flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
@@ -2013,7 +2011,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtTypeWithMultiDepTwinNormal ::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtTypeWithMultiDepTwinNormal ::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2037,7 +2035,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtTypeWithMultiDepTwinNormal ::greet_borrow_self_twin_normal(&*&api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtTypeWithMultiDepTwinNormal ::greet_borrow_self_twin_normal(&*&api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2080,7 +2078,7 @@ let api_a_guard = Arc::new(api_a_guard);
         };let api_b_guard = Arc::new(api_b_guard);
                 let api_b_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_b_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithMultiDepTwinSync ::compute_with_multi_arg_having_lifetime_twin_sync(&*api_a_guard_illegal_static_ref, &*api_b_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithMultiDepTwinSync ::compute_with_multi_arg_having_lifetime_twin_sync(&*api_a_guard_illegal_static_ref, &*api_b_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_a_guard.clone()),
                     Box::new(api_a.clone()),
                 ), flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
@@ -2109,7 +2107,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithMultiDepTwinSync ::greet_borrow_mut_self_twin_sync(&mut *api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithMultiDepTwinSync ::greet_borrow_mut_self_twin_sync(&mut *api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__lifetimeable_twin_sync__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinSyncstatic_greet_borrow_self_twin_sync_impl(
@@ -2131,7 +2129,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithMultiDepTwinSync ::greet_borrow_self_twin_sync(&*&api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtTypeWithMultiDepTwinSync ::greet_borrow_self_twin_sync(&*&api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_compute_type_with_lifetime_twin_normal_impl(
@@ -2159,7 +2157,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_that_guard = Arc::new(api_that_guard);
                 let api_that_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtOwnedStructTwinNormal::compute_type_with_lifetime_twin_normal(&*api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtOwnedStructTwinNormal::compute_type_with_lifetime_twin_normal(&*api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_that_guard.clone()),
                     Box::new(api_that.clone()),
                 )]));  Ok(output_ok)
@@ -2196,7 +2194,7 @@ let api_unrelated_borrowed_guard = api_unrelated_borrowed_guard.unwrap();
 let api_that_guard = Arc::new(api_that_guard);
                 let api_that_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtOwnedStructTwinNormal::compute_with_unrelated_borrowed_arg_twin_normal(&*api_that_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtOwnedStructTwinNormal::compute_with_unrelated_borrowed_arg_twin_normal(&*api_that_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_that_guard.clone()),
                     Box::new(api_that.clone()),
                 )]));  Ok(output_ok)
@@ -2229,7 +2227,7 @@ fn wire__crate__api__lifetimeable__LtOwnedStructTwinNormal_create_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::lifetimeable::LtOwnedStructTwinNormal::create_twin_normal(
                             api_value,
                         ),
@@ -2261,7 +2259,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_logger_guard = api_logger_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtOwnedStructTwinNormal::create_with_logger_twin_normal(api_value, &*api_logger_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtOwnedStructTwinNormal::create_with_logger_twin_normal(api_value, &*api_logger_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2290,7 +2288,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_that_guard = Arc::new(api_that_guard);
                 let api_that_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtOwnedStructTwinSync::compute_type_with_lifetime_twin_sync(&*api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtOwnedStructTwinSync::compute_type_with_lifetime_twin_sync(&*api_that_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_that_guard.clone()),
                     Box::new(api_that.clone()),
                 )]));  Ok(output_ok)
@@ -2327,7 +2325,7 @@ let api_unrelated_borrowed_guard = api_unrelated_borrowed_guard.unwrap();
 let api_that_guard = Arc::new(api_that_guard);
                 let api_that_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_that_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtOwnedStructTwinSync::compute_with_unrelated_borrowed_arg_twin_sync(&*api_that_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtOwnedStructTwinSync::compute_with_unrelated_borrowed_arg_twin_sync(&*api_that_guard_illegal_static_ref, &*api_unrelated_borrowed_guard, api_unrelated_owned))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_that_guard.clone()),
                     Box::new(api_that.clone()),
                 )]));  Ok(output_ok)
@@ -2344,7 +2342,7 @@ fn wire__crate__api__pseudo_manual__lifetimeable_twin_sync__LtOwnedStructTwinSyn
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtOwnedStructTwinSync::create_twin_sync(api_value))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtOwnedStructTwinSync::create_twin_sync(api_value))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__lifetimeable_twin_sync__LtOwnedStructTwinSync_create_with_logger_twin_sync_impl(
@@ -2367,7 +2365,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_logger_guard = api_logger_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtOwnedStructTwinSync::create_with_logger_twin_sync(api_value, &*api_logger_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtOwnedStructTwinSync::create_with_logger_twin_sync(api_value, &*api_logger_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__lifetimeable__LtSubStructTwinNormal_greet_borrow_mut_self_twin_normal_impl(
@@ -2390,7 +2388,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtSubStructTwinNormal::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtSubStructTwinNormal::greet_borrow_mut_self_twin_normal(&mut *api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2414,7 +2412,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::LtSubStructTwinNormal::greet_borrow_self_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::lifetimeable::LtSubStructTwinNormal::greet_borrow_self_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2437,7 +2435,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtSubStructTwinSync::greet_borrow_mut_self_twin_sync(&mut *api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtSubStructTwinSync::greet_borrow_mut_self_twin_sync(&mut *api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__lifetimeable_twin_sync__LtSubStructTwinSync_greet_borrow_self_twin_sync_impl(
@@ -2459,7 +2457,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::LtSubStructTwinSync::greet_borrow_self_twin_sync(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::LtSubStructTwinSync::greet_borrow_self_twin_sync(&*api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__proxy__MyAudioParamTwinNormal_create_twin_normal_impl(
@@ -2488,7 +2486,7 @@ fn wire__crate__api__proxy__MyAudioParamTwinNormal_create_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::proxy::MyAudioParamTwinNormal::create_twin_normal(api_value),
                     )?;
                     Ok(output_ok)
@@ -2517,7 +2515,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::proxy::MyAudioParamTwinNormal::my_method_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::proxy::MyAudioParamTwinNormal::my_method_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2545,7 +2543,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_that_guard = api_that_guard.unwrap();
 let api_another_guard = api_another_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::impl_trait::MyImplTraitWithSelfTwinNormal::method_with_bad_self_twin_normal(&*api_that_guard, &*api_another_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::impl_trait::MyImplTraitWithSelfTwinNormal::method_with_bad_self_twin_normal(&*api_that_guard, &*api_another_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2569,7 +2567,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::impl_trait::MyImplTraitWithSelfTwinNormal::method_with_good_self_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::impl_trait::MyImplTraitWithSelfTwinNormal::method_with_good_self_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2597,7 +2595,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_that_guard = api_that_guard.unwrap();
 let api_another_guard = api_another_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::impl_trait_twin_sync::MyImplTraitWithSelfTwinSync::method_with_bad_self_twin_sync(&*api_that_guard, &*api_another_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::impl_trait_twin_sync::MyImplTraitWithSelfTwinSync::method_with_bad_self_twin_sync(&*api_that_guard, &*api_another_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2621,7 +2619,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::impl_trait_twin_sync::MyImplTraitWithSelfTwinSync::method_with_good_self_twin_sync(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::impl_trait_twin_sync::MyImplTraitWithSelfTwinSync::method_with_good_self_twin_sync(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2650,9 +2648,8 @@ fn wire__crate__api__proxy__MyNodeTwinNormal_create_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::proxy::MyNodeTwinNormal::create_twin_normal(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::proxy::MyNodeTwinNormal::create_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -2694,7 +2691,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::MyStructWithTryFromTwinNormal::value_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_a::MyStructWithTryFromTwinNormal::value_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2718,7 +2715,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_borrow_twin_normal(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_borrow_twin_normal(&*api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2742,7 +2739,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_mut_borrow_twin_normal(&mut *api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_mut_borrow_twin_normal(&mut *api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2757,7 +2754,7 @@ fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_instance_method_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <NonCloneSimpleTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_own_twin_normal(api_that); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_own_twin_normal(api_that); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2781,7 +2778,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_getter_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_getter_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2805,7 +2802,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_return_own_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_return_own_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2820,7 +2817,7 @@ fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_custom_name_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::new_custom_name_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::new_custom_name_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2849,7 +2846,7 @@ fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_new_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::new_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -2893,7 +2890,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_borrow_twin_normal(&*api_arg_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_borrow_twin_normal(&*api_arg_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2917,7 +2914,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_mut_borrow_twin_normal(&mut *api_arg_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_mut_borrow_twin_normal(&mut *api_arg_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2932,7 +2929,7 @@ fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_ar
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <NonCloneSimpleTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_own_twin_normal(api_arg); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_own_twin_normal(api_arg); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2947,7 +2944,7 @@ fn wire__crate__api__rust_auto_opaque__NonCloneSimpleTwinNormal_static_method_re
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_return_own_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_return_own_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -2971,7 +2968,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_arg_borrow_twin_rust_async(&*api_that_guard).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_arg_borrow_twin_rust_async(&*api_that_guard).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -2995,7 +2992,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_arg_mut_borrow_twin_rust_async(&mut *api_that_guard).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_arg_mut_borrow_twin_rust_async(&mut *api_that_guard).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3010,7 +3007,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <NonCloneSimpleTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_arg_own_twin_rust_async(api_that).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_arg_own_twin_rust_async(api_that).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3034,7 +3031,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_getter_twin_rust_async(&*api_that_guard).await)?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_getter_twin_rust_async(&*api_that_guard).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3058,7 +3055,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_return_own_twin_rust_async(&*api_that_guard).await)?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::instance_method_return_own_twin_rust_async(&*api_that_guard).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3073,7 +3070,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::new_custom_name_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::new_custom_name_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3088,7 +3085,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::new_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::new_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3127,7 +3124,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::static_method_arg_borrow_twin_rust_async(&*api_arg_guard).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::static_method_arg_borrow_twin_rust_async(&*api_arg_guard).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3151,7 +3148,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::static_method_arg_mut_borrow_twin_rust_async(&mut *api_arg_guard).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::static_method_arg_mut_borrow_twin_rust_async(&mut *api_arg_guard).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3166,7 +3163,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <NonCloneSimpleTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::static_method_arg_own_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::static_method_arg_own_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3181,7 +3178,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__NonCloneSi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::static_method_return_own_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::NonCloneSimpleTwinRustAsync::static_method_return_own_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3204,7 +3201,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_borrow_twin_sync(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_borrow_twin_sync(&*api_that_guard); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync_impl(
@@ -3226,7 +3223,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_mut_borrow_twin_sync(&mut *api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_mut_borrow_twin_sync(&mut *api_that_guard); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync_impl(
@@ -3239,7 +3236,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <NonCloneSimpleTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_own_twin_sync(api_that); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_own_twin_sync(api_that); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_getter_twin_sync_impl(
@@ -3261,7 +3258,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_getter_twin_sync(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_getter_twin_sync(&*api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_instance_method_return_own_twin_sync_impl(
@@ -3283,7 +3280,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_return_own_twin_sync(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_return_own_twin_sync(&*api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_custom_name_twin_sync_impl(
@@ -3296,7 +3293,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::new_custom_name_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::new_custom_name_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_twin_sync_impl(
@@ -3309,7 +3306,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::new_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::new_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_new_with_result_twin_sync_impl(
@@ -3344,7 +3341,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_arg_borrow_twin_sync(&*api_arg_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_arg_borrow_twin_sync(&*api_arg_guard); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync_impl(
@@ -3366,7 +3363,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_arg_mut_borrow_twin_sync(&mut *api_arg_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_arg_mut_borrow_twin_sync(&mut *api_arg_guard); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_arg_own_twin_sync_impl(
@@ -3379,7 +3376,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <NonCloneSimpleTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_arg_own_twin_sync(api_arg); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_arg_own_twin_sync(api_arg); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_sync_impl(
@@ -3392,7 +3389,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_return_own_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_return_own_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal_impl(
@@ -3415,7 +3412,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::dart_code::OpaqueStructWithDartCodeTwinNormal::normal_method_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::dart_code::OpaqueStructWithDartCodeTwinNormal::normal_method_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -3459,7 +3456,7 @@ fn wire__crate__api__misc_no_twin_example_a__SimpleLogger_get_and_reset_impl(
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::misc_no_twin_example_a::SimpleLogger::get_and_reset(
                         &*api_that_guard,
                     ),
@@ -3493,7 +3490,7 @@ fn wire__crate__api__misc_no_twin_example_a__SimpleLogger_new_impl(
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::misc_no_twin_example_a::SimpleLogger::new())?;
+                    Ok::<_, ()>(crate::api::misc_no_twin_example_a::SimpleLogger::new())?;
                 Ok(output_ok)
             })())
         },
@@ -3523,7 +3520,7 @@ fn wire__crate__api__external_impl__SimpleOpaqueExternalStructWithMethod_new_imp
             let api_a = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::external_impl::SimpleOpaqueExternalStructWithMethod::new(api_a),
                 )?;
                 Ok(output_ok)
@@ -3551,7 +3548,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::external_impl::SimpleOpaqueExternalStructWithMethod::simple_external_method(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::external_impl::SimpleOpaqueExternalStructWithMethod::simple_external_method(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -3580,7 +3577,7 @@ fn wire__crate__api__method__StaticGetterOnlyTwinNormal_static_getter_twin_norma
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::StaticGetterOnlyTwinNormal::static_getter_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -3600,7 +3597,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__StaticGetterOnlyTwin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::StaticGetterOnlyTwinRustAsync::static_getter_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::StaticGetterOnlyTwinRustAsync::static_getter_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3614,7 +3611,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__StaticGetterOnlyTwinSync_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::StaticGetterOnlyTwinSync::static_getter_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::StaticGetterOnlyTwinSync::static_getter_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_no_twin_example_a__StructInMiscNoTwinExampleA_sample_function_a_impl(
@@ -3637,7 +3634,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructInMiscNoTwinExampleA::sample_function_a(&*api_that_guard).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::StructInMiscNoTwinExampleA::sample_function_a(&*api_that_guard).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3661,7 +3658,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_b::StructInMiscNoTwinExampleB::get_struct_in_misc_no_twin_example_a(&*api_that_guard).await)?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_b::StructInMiscNoTwinExampleB::get_struct_in_misc_no_twin_example_a(&*api_that_guard).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3685,7 +3682,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_b::StructInMiscNoTwinExampleB::sample_function_b(&*api_that_guard).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_b::StructInMiscNoTwinExampleB::sample_function_b(&*api_that_guard).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -3731,7 +3728,7 @@ fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -3780,7 +3777,7 @@ fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_auto_accessor
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.one = api_one;
                     };
@@ -3801,7 +3798,7 @@ fn wire__crate__api__dyn_trait__StructOneWithTraitForDynTwinNormal_create_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_one = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::dyn_trait::StructOneWithTraitForDynTwinNormal::create_twin_normal(api_one))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::dyn_trait::StructOneWithTraitForDynTwinNormal::create_twin_normal(api_one))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -3825,7 +3822,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::dyn_trait::StructOneWithTraitForDynTwinNormal::simple_method_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::dyn_trait::StructOneWithTraitForDynTwinNormal::simple_method_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -3871,7 +3868,7 @@ fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_get_
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -3920,7 +3917,7 @@ fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_auto_accessor_set_
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.one = api_one;
                     };
@@ -3950,7 +3947,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::impl_trait::StructOneWithTraitTwinNormal::simple_trait_fn_receiver_borrow_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::impl_trait::StructOneWithTraitTwinNormal::simple_trait_fn_receiver_borrow_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -3965,7 +3962,7 @@ fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::impl_trait::StructOneWithTraitTwinNormal::simple_trait_fn_twin_normal(api_value))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::impl_trait::StructOneWithTraitTwinNormal::simple_trait_fn_twin_normal(api_value))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -3980,7 +3977,7 @@ fn wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_wi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::impl_trait::StructOneWithTraitTwinNormal::simple_trait_fn_with_default_impl_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::impl_trait::StructOneWithTraitTwinNormal::simple_trait_fn_with_default_impl_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4024,7 +4021,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwin
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.one.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.one.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -4071,7 +4068,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwin
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.one = api_one;
                     };
@@ -4101,7 +4098,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::impl_trait_twin_sync::StructOneWithTraitTwinSync::simple_trait_fn_receiver_borrow_twin_sync(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::impl_trait_twin_sync::StructOneWithTraitTwinSync::simple_trait_fn_receiver_borrow_twin_sync(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4116,7 +4113,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::impl_trait_twin_sync::StructOneWithTraitTwinSync::simple_trait_fn_twin_sync(api_value))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::impl_trait_twin_sync::StructOneWithTraitTwinSync::simple_trait_fn_twin_sync(api_value))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4131,7 +4128,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::impl_trait_twin_sync::StructOneWithTraitTwinSync::simple_trait_fn_with_default_impl_twin_sync())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::impl_trait_twin_sync::StructOneWithTraitTwinSync::simple_trait_fn_with_default_impl_twin_sync())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4177,7 +4174,7 @@ fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.two.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.two.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -4226,7 +4223,7 @@ fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_auto_accessor
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.two = api_two;
                     };
@@ -4247,7 +4244,7 @@ fn wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_two = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::dyn_trait::StructTwoWithTraitForDynTwinNormal::create_twin_normal(api_two))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::dyn_trait::StructTwoWithTraitForDynTwinNormal::create_twin_normal(api_two))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4271,7 +4268,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::dyn_trait::StructTwoWithTraitForDynTwinNormal::simple_method_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::dyn_trait::StructTwoWithTraitForDynTwinNormal::simple_method_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4317,7 +4314,7 @@ fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_get_
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.two.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.two.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -4366,7 +4363,7 @@ fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_auto_accessor_set_
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.two = api_two;
                     };
@@ -4396,7 +4393,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::impl_trait::StructTwoWithTraitTwinNormal::simple_trait_fn_receiver_borrow_twin_normal(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::impl_trait::StructTwoWithTraitTwinNormal::simple_trait_fn_receiver_borrow_twin_normal(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4411,7 +4408,7 @@ fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::impl_trait::StructTwoWithTraitTwinNormal::simple_trait_fn_twin_normal(api_value))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::impl_trait::StructTwoWithTraitTwinNormal::simple_trait_fn_twin_normal(api_value))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4426,7 +4423,7 @@ fn wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_wi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::impl_trait::StructTwoWithTraitTwinNormal::simple_trait_fn_with_default_impl_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::impl_trait::StructTwoWithTraitTwinNormal::simple_trait_fn_with_default_impl_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4470,7 +4467,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwin
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.two.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.two.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -4517,7 +4514,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwin
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.two = api_two;
                     };
@@ -4547,7 +4544,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::impl_trait_twin_sync::StructTwoWithTraitTwinSync::simple_trait_fn_receiver_borrow_twin_sync(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::impl_trait_twin_sync::StructTwoWithTraitTwinSync::simple_trait_fn_receiver_borrow_twin_sync(&*api_that_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4562,7 +4559,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::impl_trait_twin_sync::StructTwoWithTraitTwinSync::simple_trait_fn_twin_sync(api_value))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::impl_trait_twin_sync::StructTwoWithTraitTwinSync::simple_trait_fn_twin_sync(api_value))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4577,7 +4574,7 @@ fn wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::impl_trait_twin_sync::StructTwoWithTraitTwinSync::simple_trait_fn_with_default_impl_twin_sync())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::impl_trait_twin_sync::StructTwoWithTraitTwinSync::simple_trait_fn_with_default_impl_twin_sync())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4624,7 +4621,7 @@ fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOption
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.good.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.good.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -4674,7 +4671,7 @@ fn wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOption
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.good = api_good;
                     };
@@ -4727,7 +4724,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWith
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.good.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.good.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -4777,7 +4774,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__StructWith
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.good = api_good;
                     };
@@ -4829,7 +4826,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAn
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.good.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.good.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -4878,7 +4875,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__StructWithGoodAn
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.good = api_good;
                     };
@@ -4908,7 +4905,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructWithImplBlockInMultiFile::method_in_a(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::StructWithImplBlockInMultiFile::method_in_a(&*api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4932,7 +4929,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructWithImplBlockInMultiFile::method_in_b(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::StructWithImplBlockInMultiFile::method_in_b(&*api_that_guard); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4947,7 +4944,7 @@ fn wire__crate__api__misc_no_twin_example_a__StructWithRustAutoOpaqueFieldWithMa
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueFieldWithManyDeriveInner::default())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueFieldWithManyDeriveInner::default())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -4970,7 +4967,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::get_something(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::get_something(&*api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_new_impl(
@@ -4996,7 +4993,7 @@ fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_ne
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::new(),
                 )?;
                 Ok(output_ok)
@@ -5024,7 +5021,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::set_something(&mut *api_that_guard, api_value); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::set_something(&mut *api_that_guard, api_value); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_getter_impl(
@@ -5046,7 +5043,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::simple_getter(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::simple_getter(&*api_that_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter_impl(
@@ -5069,7 +5066,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::simple_setter(&mut *api_that_guard, api_value); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::StructWithSimpleSetterTwinNormal::simple_setter(&mut *api_that_guard, api_value); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_get_field_2_impl(
@@ -5112,7 +5109,7 @@ fn wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_get_
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.field_2.clone())?;
+                let output_ok = Ok::<_, ()>(api_that_guard.field_2.clone())?;
                 Ok(output_ok)
             })())
         },
@@ -5159,7 +5156,7 @@ fn wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_set_
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.field_2 = api_field_2;
                     };
@@ -5194,7 +5191,7 @@ fn wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_default_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_no_twin_example_a::TypeForIgnoreAll::default(),
                     )?;
                     Ok(output_ok)
@@ -5245,7 +5242,7 @@ fn wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_field_1_impl(
                         }
                     }
                     let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_no_twin_example_a::TypeForIgnoreAll::field_1(
                             &*api_that_guard,
                         ),
@@ -5281,9 +5278,8 @@ fn wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_new_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_no_twin_example_a::TypeForIgnoreAll::new(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_no_twin_example_a::TypeForIgnoreAll::new())?;
                     Ok(output_ok)
                 })())
             }
@@ -5315,9 +5311,8 @@ fn wire__crate__api__misc_no_twin_example_a__TypeForIgnore_default_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_no_twin_example_a::TypeForIgnore::default(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_no_twin_example_a::TypeForIgnore::default())?;
                     Ok(output_ok)
                 })())
             }
@@ -5366,11 +5361,10 @@ fn wire__crate__api__misc_no_twin_example_a__TypeForIgnore_field_1_impl(
                         }
                     }
                     let api_that_guard = api_that_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_no_twin_example_a::TypeForIgnore::field_1(
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_no_twin_example_a::TypeForIgnore::field_1(
                             &*api_that_guard,
-                        ),
-                    )?;
+                        ))?;
                     Ok(output_ok)
                 })())
             }
@@ -5402,9 +5396,8 @@ fn wire__crate__api__misc_no_twin_example_a__TypeForIgnore_new_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_no_twin_example_a::TypeForIgnore::new(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_no_twin_example_a::TypeForIgnore::new())?;
                     Ok(output_ok)
                 })())
             }
@@ -5436,9 +5429,8 @@ fn wire__crate__api__inside_macro__another_macro_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::inside_macro::another_macro_struct_twin_normal(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::inside_macro::another_macro_struct_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -5474,7 +5466,7 @@ fn wire__crate__api__mirror__app_settings_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::app_settings_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -5494,7 +5486,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__app_settings_stream_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<crate::api::mirror::ApplicationSettings,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5525,7 +5517,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__app_settings_stream_twin_s
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::mirror_twin_sync::app_settings_stream_twin_sync(
                         api_sink,
                     );
@@ -5564,7 +5556,7 @@ fn wire__crate__api__mirror__app_settings_vec_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::app_settings_vec_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -5584,7 +5576,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__app_settings_vec_str
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<Vec<crate::api::mirror::ApplicationSettings>,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_vec_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::app_settings_vec_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5615,7 +5607,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__app_settings_vec_stream_tw
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::mirror_twin_sync::app_settings_vec_stream_twin_sync(
                         api_sink,
                     );
@@ -5651,7 +5643,7 @@ fn wire__crate__api__dart_opaque__async_accept_dart_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::dart_opaque::async_accept_dart_opaque_twin_normal(api_opaque),
                     )?;
                     Ok(output_ok)
@@ -5671,7 +5663,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__async_accept_da
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::async_accept_dart_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_rust_async::async_accept_dart_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5685,7 +5677,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__async_accept_dart_opa
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::async_accept_dart_opaque_twin_sync(api_opaque))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_sync::async_accept_dart_opaque_twin_sync(api_opaque))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_json_twin_normal_impl(
@@ -5699,7 +5691,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_j
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_input_json_twin_normal(api_raw); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_input_json_twin_normal(api_raw); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -5714,7 +5706,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_bin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_input_json_twin_rust_async(api_raw).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_input_json_twin_rust_async(api_raw).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5728,7 +5720,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_input_json_twin_sync(api_raw); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_input_json_twin_sync(api_raw); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal_impl(
@@ -5742,7 +5734,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_p
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_input_protobuf_twin_normal(api_raw); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_input_protobuf_twin_normal(api_raw); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -5757,7 +5749,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_bin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_input_protobuf_twin_rust_async(api_raw).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_input_protobuf_twin_rust_async(api_raw).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5771,7 +5763,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_input_protobuf_twin_sync(api_raw); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_input_protobuf_twin_sync(api_raw); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_twin_normal_impl(
@@ -5785,7 +5777,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_tree = <crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_input_twin_normal(api_tree); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_input_twin_normal(api_tree); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -5800,7 +5792,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_bin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_tree = <crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_input_twin_rust_async(api_tree).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_input_twin_rust_async(api_tree).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5814,7 +5806,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_tree = <crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_input_twin_sync(api_tree); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_input_twin_sync(api_tree); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_json_twin_normal_impl(
@@ -5828,7 +5820,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_output_json_twin_normal(api_depth))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_output_json_twin_normal(api_depth))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -5843,7 +5835,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_bin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_output_json_twin_rust_async(api_depth).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_output_json_twin_rust_async(api_depth).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5857,7 +5849,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_output_json_twin_sync(api_depth))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_output_json_twin_sync(api_depth))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_protobuf_twin_normal_impl(
@@ -5871,7 +5863,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_output_protobuf_twin_normal(api_depth))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_output_protobuf_twin_normal(api_depth))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -5886,7 +5878,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_bin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_output_protobuf_twin_rust_async(api_depth).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_output_protobuf_twin_rust_async(api_depth).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5900,7 +5892,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_output_protobuf_twin_sync(api_depth))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_output_protobuf_twin_sync(api_depth))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_twin_normal_impl(
@@ -5914,7 +5906,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_output_twin_normal(api_depth))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api::benchmark_binary_tree_output_twin_normal(api_depth))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -5929,7 +5921,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_bin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_output_twin_rust_async(api_depth).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_output_twin_rust_async(api_depth).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5943,7 +5935,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_output_twin_sync(api_depth))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_output_twin_sync(api_depth))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_json_twin_normal_impl(
@@ -5957,7 +5949,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_json_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api::benchmark_blob_input_json_twin_normal(api_raw); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api::benchmark_blob_input_json_twin_normal(api_raw); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -5972,7 +5964,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blo
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_input_json_twin_rust_async(api_raw).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_input_json_twin_rust_async(api_raw).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -5986,7 +5978,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_inpu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_input_json_twin_sync(api_raw); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_input_json_twin_sync(api_raw); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal_impl(
@@ -6000,7 +5992,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api::benchmark_blob_input_protobuf_twin_normal(api_raw); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api::benchmark_blob_input_protobuf_twin_normal(api_raw); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -6015,7 +6007,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blo
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_input_protobuf_twin_rust_async(api_raw).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_input_protobuf_twin_rust_async(api_raw).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6029,7 +6021,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_inpu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_raw = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_input_protobuf_twin_sync(api_raw); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_input_protobuf_twin_sync(api_raw); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_twin_normal_impl(
@@ -6061,7 +6053,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_twin_nor
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::pseudo_manual::benchmark_api::benchmark_blob_input_twin_normal(
                             api_blob,
                         );
@@ -6083,7 +6075,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blo
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_blob = <crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_input_twin_rust_async(api_blob).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_input_twin_rust_async(api_blob).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6097,7 +6089,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_inpu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_blob = <crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_input_twin_sync(api_blob); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_input_twin_sync(api_blob); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_json_twin_normal_impl(
@@ -6111,7 +6103,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_json_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api::benchmark_blob_output_json_twin_normal(api_size))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api::benchmark_blob_output_json_twin_normal(api_size))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -6126,7 +6118,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blo
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_output_json_twin_rust_async(api_size).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_output_json_twin_rust_async(api_size).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6140,7 +6132,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_outp
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_output_json_twin_sync(api_size))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_output_json_twin_sync(api_size))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_protobuf_twin_normal_impl(
@@ -6154,7 +6146,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_protobu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api::benchmark_blob_output_protobuf_twin_normal(api_size))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api::benchmark_blob_output_protobuf_twin_normal(api_size))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -6169,7 +6161,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blo
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_output_protobuf_twin_rust_async(api_size).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_output_protobuf_twin_rust_async(api_size).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6183,7 +6175,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_outp
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_output_protobuf_twin_sync(api_size))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_output_protobuf_twin_sync(api_size))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_twin_normal_impl(
@@ -6212,7 +6204,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_twin_no
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::benchmark_api::benchmark_blob_output_twin_normal(
                             api_size,
                         ),
@@ -6234,7 +6226,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blo
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_output_twin_rust_async(api_size).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_output_twin_rust_async(api_size).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6248,7 +6240,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_outp
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_output_twin_sync(api_size))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_output_twin_sync(api_size))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal_impl(
@@ -6277,7 +6269,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_no
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::benchmark_api::benchmark_input_bytes_twin_normal(
                             api_bytes,
                         ),
@@ -6299,7 +6291,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_inp
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_bytes = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_input_bytes_twin_rust_async(api_bytes).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_input_bytes_twin_rust_async(api_bytes).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6313,7 +6305,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_byt
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_bytes = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_input_bytes_twin_sync(api_bytes))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_input_bytes_twin_sync(api_bytes))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_twin_normal_impl(
@@ -6327,7 +6319,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api::benchmark_output_bytes_twin_normal(api_size))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api::benchmark_output_bytes_twin_normal(api_size))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -6342,7 +6334,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_out
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_output_bytes_twin_rust_async(api_size).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_output_bytes_twin_rust_async(api_size).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6356,7 +6348,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_output_by
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_output_bytes_twin_sync(api_size))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_output_bytes_twin_sync(api_size))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__benchmark_misc__benchmark_void_semi_serialize_impl(
@@ -6382,7 +6374,7 @@ fn wire__crate__api__benchmark_misc__benchmark_void_semi_serialize_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::benchmark_misc::benchmark_void_semi_serialize();
                 })?;
                 Ok(output_ok)
@@ -6415,7 +6407,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api__benchmark_void_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::pseudo_manual::benchmark_api::benchmark_void_twin_normal();
                     })?;
                     Ok(output_ok)
@@ -6435,7 +6427,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_voi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_void_twin_rust_async().await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_void_twin_rust_async().await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6462,7 +6454,7 @@ fn wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_void_twin
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_void_twin_sync();
                 })?;
                 Ok(output_ok)
@@ -6496,9 +6488,8 @@ fn wire__crate__api__ownership__borrow_i32_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::ownership::borrow_i32_twin_normal(&api_arg),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::ownership::borrow_i32_twin_normal(&api_arg))?;
                     Ok(output_ok)
                 })())
             }
@@ -6516,7 +6507,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_i32_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_i32_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6544,7 +6535,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync_im
             let api_arg = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::ownership_twin_sync::borrow_i32_twin_sync(&api_arg),
                 )?;
                 Ok(output_ok)
@@ -6578,7 +6569,7 @@ fn wire__crate__api__ownership__borrow_slice_string_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::ownership::borrow_slice_string_twin_normal(&api_arg),
                     )?;
                     Ok(output_ok)
@@ -6598,7 +6589,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_stri
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_slice_string_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_slice_string_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6626,7 +6617,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_string_twi
             let api_arg = <Vec<String>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::ownership_twin_sync::borrow_slice_string_twin_sync(
                         &api_arg,
                     ),
@@ -6662,9 +6653,8 @@ fn wire__crate__api__ownership__borrow_slice_u8_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::ownership::borrow_slice_u8_twin_normal(&api_arg),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::ownership::borrow_slice_u8_twin_normal(&api_arg))?;
                     Ok(output_ok)
                 })())
             }
@@ -6682,7 +6672,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_slice_u8_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_slice_u8_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6710,7 +6700,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sy
             let api_arg = <Vec<u8>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::ownership_twin_sync::borrow_slice_u8_twin_sync(
                         &api_arg,
                     ),
@@ -6746,9 +6736,8 @@ fn wire__crate__api__ownership__borrow_str_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::ownership::borrow_str_twin_normal(&api_arg),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::ownership::borrow_str_twin_normal(&api_arg))?;
                     Ok(output_ok)
                 })())
             }
@@ -6766,7 +6755,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_str_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_str_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_str_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6794,7 +6783,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_str_twin_sync_im
             let api_arg = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::ownership_twin_sync::borrow_str_twin_sync(&api_arg),
                 )?;
                 Ok(output_ok)
@@ -6828,9 +6817,8 @@ fn wire__crate__api__ownership__borrow_string_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::ownership::borrow_string_twin_normal(&api_arg),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::ownership::borrow_string_twin_normal(&api_arg))?;
                     Ok(output_ok)
                 })())
             }
@@ -6848,7 +6836,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_string_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_string_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_string_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6876,7 +6864,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_string_twin_sync
             let api_arg = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::ownership_twin_sync::borrow_string_twin_sync(
                         &api_arg,
                     ),
@@ -6914,9 +6902,8 @@ fn wire__crate__api__ownership__borrow_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::ownership::borrow_struct_twin_normal(&api_arg),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::ownership::borrow_struct_twin_normal(&api_arg))?;
                     Ok(output_ok)
                 })())
             }
@@ -6934,7 +6921,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_struct_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::ownership_twin_rust_async::SimpleStructForBorrowTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_struct_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::ownership_twin_rust_async::borrow_struct_twin_rust_async(&api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -6948,7 +6935,7 @@ fn wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_struct_twin_sync
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::ownership_twin_sync::SimpleStructForBorrowTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::ownership_twin_sync::borrow_struct_twin_sync(&api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::ownership_twin_sync::borrow_struct_twin_sync(&api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__array__boxed_blob_twin_normal_impl(
@@ -6978,7 +6965,7 @@ fn wire__crate__api__array__boxed_blob_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::array::boxed_blob_twin_normal(api_blob))?;
+                        Ok::<_, ()>(crate::api::array::boxed_blob_twin_normal(api_blob))?;
                     Ok(output_ok)
                 })())
             }
@@ -6996,7 +6983,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__boxed_blob_twin_rust_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_blob = <Box<[u8; 1600]>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::boxed_blob_twin_rust_async(api_blob).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::boxed_blob_twin_rust_async(api_blob).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7024,7 +7011,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__boxed_blob_twin_sync_impl(
             let api_blob = <Box<[u8; 1600]>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::boxed_blob_twin_sync(api_blob),
                 )?;
                 Ok(output_ok)
@@ -7057,7 +7044,7 @@ fn wire__crate__api__external_type_in_crate__call_new_module_system_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::external_type_in_crate::call_new_module_system_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -7077,7 +7064,7 @@ fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__call
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::call_new_module_system_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::call_new_module_system_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7091,7 +7078,7 @@ fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__call_new_m
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync::call_new_module_system_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::external_type_in_crate_twin_sync::call_new_module_system_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__external_type_in_crate__call_old_module_system_twin_normal_impl(
@@ -7119,7 +7106,7 @@ fn wire__crate__api__external_type_in_crate__call_old_module_system_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::external_type_in_crate::call_old_module_system_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -7139,7 +7126,7 @@ fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__call
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::call_old_module_system_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::call_old_module_system_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7153,7 +7140,7 @@ fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__call_old_m
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync::call_old_module_system_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::external_type_in_crate_twin_sync::call_old_module_system_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal_impl(
@@ -7182,7 +7169,7 @@ fn wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::casted_primitive::casted_primitive_i64_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -7217,7 +7204,7 @@ fn wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::casted_primitive::casted_primitive_isize_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -7255,7 +7242,7 @@ fn wire__crate__api__casted_primitive__casted_primitive_multi_arg_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::casted_primitive::casted_primitive_multi_arg_twin_normal(
                             api_a, api_b, api_c, api_d,
                         );
@@ -7292,7 +7279,7 @@ fn wire__crate__api__casted_primitive__casted_primitive_u64_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::casted_primitive::casted_primitive_u64_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -7327,7 +7314,7 @@ fn wire__crate__api__casted_primitive__casted_primitive_usize_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::casted_primitive::casted_primitive_usize_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -7361,8 +7348,7 @@ fn wire__crate__api__customization__check_init_done_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::customization::check_init_done())?;
+                    let output_ok = Ok::<_, ()>(crate::api::customization::check_init_done())?;
                     Ok(output_ok)
                 })())
             }
@@ -7395,7 +7381,7 @@ fn wire__crate__api__dart_opaque__clone_dart_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::dart_opaque::clone_dart_opaque_twin_normal(api_opaque),
                     )?;
                     Ok(output_ok)
@@ -7415,7 +7401,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__clone_dart_opaq
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::clone_dart_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_rust_async::clone_dart_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7443,7 +7429,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__clone_dart_opaque_twi
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::dart_opaque_twin_sync::clone_dart_opaque_twin_sync(
                         api_opaque,
                     ),
@@ -7478,7 +7464,7 @@ fn wire__crate__api__event_listener__close_event_listener_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::event_listener::close_event_listener_twin_normal();
                     })?;
                     Ok(output_ok)
@@ -7498,7 +7484,7 @@ fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__close_event_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::event_listener_twin_rust_async::close_event_listener_twin_rust_async().await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::event_listener_twin_rust_async::close_event_listener_twin_rust_async().await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7514,7 +7500,7 @@ fn wire__crate__api__method__concatenate_with_twin_normal_concatenate_static_twi
             let api_a = <String>::sse_decode(&mut deserializer);
 let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::concatenate_static_twin_normal(api_a, api_b))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::method::ConcatenateWithTwinNormal::concatenate_static_twin_normal(api_a, api_b))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -7546,7 +7532,7 @@ fn wire__crate__api__method__concatenate_with_twin_normal_concatenate_twin_norma
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::ConcatenateWithTwinNormal::concatenate_twin_normal(
                             &api_that, api_b,
                         ),
@@ -7568,7 +7554,7 @@ fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_static_str
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<u32,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_single_arg_twin_normal(api_sink); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_single_arg_twin_normal(api_sink); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -7585,7 +7571,7 @@ fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_static_str
 let api_max = <u32>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<crate::api::method::Log2TwinNormal,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_twin_normal(api_key, api_max, api_sink); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_twin_normal(api_key, api_max, api_sink); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -7601,7 +7587,7 @@ fn wire__crate__api__method__concatenate_with_twin_normal_handle_some_stream_sin
             let api_that = <crate::api::method::ConcatenateWithTwinNormal>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<u32,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_at_1_twin_normal(&api_that, api_sink); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_at_1_twin_normal(&api_that, api_sink); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -7619,7 +7605,7 @@ let api_key = <u32>::sse_decode(&mut deserializer);
 let api_max = <u32>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<crate::api::method::Log2TwinNormal,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_twin_normal(&api_that, api_key, api_max, api_sink); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_twin_normal(&api_that, api_key, api_max, api_sink); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -7649,7 +7635,7 @@ fn wire__crate__api__method__concatenate_with_twin_normal_new_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::ConcatenateWithTwinNormal::new_twin_normal(api_a),
                     )?;
                     Ok(output_ok)
@@ -7685,7 +7671,7 @@ fn wire__crate__api__method__concatenate_with_twin_normal_simple_getter_twin_nor
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::ConcatenateWithTwinNormal::simple_getter_twin_normal(
                             &api_that,
                         ),
@@ -7708,7 +7694,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twi
             let api_a = <String>::sse_decode(&mut deserializer);
 let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::concatenate_static_twin_rust_async(api_a, api_b).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::concatenate_static_twin_rust_async(api_a, api_b).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7724,7 +7710,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twi
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>::sse_decode(&mut deserializer);
 let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::concatenate_twin_rust_async(&api_that, api_b).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::concatenate_twin_rust_async(&api_that, api_b).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7739,7 +7725,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<u32,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_static_stream_sink_single_arg_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_static_stream_sink_single_arg_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7756,7 +7742,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twi
 let api_max = <u32>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_static_stream_sink_twin_rust_async(api_key, api_max, api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_static_stream_sink_twin_rust_async(api_key, api_max, api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7772,7 +7758,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twi
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<u32,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_at_1_twin_rust_async(&api_that, api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_at_1_twin_rust_async(&api_that, api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7790,7 +7776,7 @@ let api_key = <u32>::sse_decode(&mut deserializer);
 let api_max = <u32>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_twin_rust_async(&api_that, api_key, api_max, api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_twin_rust_async(&api_that, api_key, api_max, api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7805,7 +7791,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::new_twin_rust_async(api_a).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::new_twin_rust_async(api_a).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7820,7 +7806,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::simple_getter_twin_rust_async(&api_that).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::simple_getter_twin_rust_async(&api_that).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -7835,7 +7821,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync
             let api_a = <String>::sse_decode(&mut deserializer);
 let api_b = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::concatenate_static_twin_sync(api_a, api_b))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::concatenate_static_twin_sync(api_a, api_b))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_concatenate_twin_sync_impl(
@@ -7849,7 +7835,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync
             let api_that = <crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>::sse_decode(&mut deserializer);
 let api_b = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::concatenate_twin_sync(&api_that, api_b))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::concatenate_twin_sync(&api_that, api_b))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_static_stream_sink_single_arg_twin_sync_impl(
@@ -7862,7 +7848,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<u32,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_single_arg_twin_sync(api_sink); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_single_arg_twin_sync(api_sink); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_static_stream_sink_twin_sync_impl(
@@ -7877,7 +7863,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync
 let api_max = <u32>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_twin_sync(api_key, api_max, api_sink); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_twin_sync(api_key, api_max, api_sink); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_at_1_twin_sync_impl(
@@ -7891,7 +7877,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync
             let api_that = <crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<u32,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_at_1_twin_sync(&api_that, api_sink); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_at_1_twin_sync(&api_that, api_sink); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_handle_some_stream_sink_twin_sync_impl(
@@ -7907,7 +7893,7 @@ let api_key = <u32>::sse_decode(&mut deserializer);
 let api_max = <u32>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_twin_sync(&api_that, api_key, api_max, api_sink); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_twin_sync(&api_that, api_key, api_max, api_sink); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_new_twin_sync_impl(
@@ -7920,7 +7906,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::new_twin_sync(api_a))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::new_twin_sync(api_a))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync_simple_getter_twin_sync_impl(
@@ -7933,7 +7919,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__concatenate_with_twin_sync
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::simple_getter_twin_sync(&api_that))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::simple_getter_twin_sync(&api_that))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__constructor__constructor_translatable_struct_twin_normal_new_impl(
@@ -7961,7 +7947,7 @@ fn wire__crate__api__constructor__constructor_translatable_struct_twin_normal_ne
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::constructor::ConstructorTranslatableStructTwinNormal::new(),
                     )?;
                     Ok(output_ok)
@@ -7993,7 +7979,7 @@ fn wire__crate__api__constructor__constructor_translatable_sync_struct_twin_norm
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::constructor::ConstructorTranslatableSyncStructTwinNormal::new(),
                 )?;
                 Ok(output_ok)
@@ -8026,7 +8012,7 @@ fn wire__crate__api__rust_opaque__create_array_opaque_enum_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_opaque::create_array_opaque_enum_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -8046,7 +8032,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_array_op
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::create_array_opaque_enum_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::create_array_opaque_enum_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -8060,7 +8046,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_array_opaque_e
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync::create_array_opaque_enum_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sync::create_array_opaque_enum_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__dart_opaque__create_enum_dart_opaque_twin_normal_impl(
@@ -8089,7 +8075,7 @@ fn wire__crate__api__dart_opaque__create_enum_dart_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::dart_opaque::create_enum_dart_opaque_twin_normal(api_opaque),
                     )?;
                     Ok(output_ok)
@@ -8109,7 +8095,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__create_enum_dar
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::create_enum_dart_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_rust_async::create_enum_dart_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -8123,7 +8109,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_enum_dart_opaq
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::create_enum_dart_opaque_twin_sync(api_opaque))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_sync::create_enum_dart_opaque_twin_sync(api_opaque))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__event_listener__create_event_sync_twin_normal_impl(
@@ -8151,7 +8137,7 @@ fn wire__crate__api__event_listener__create_event_sync_twin_normal_impl(
             let api_payload = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::event_listener::create_event_sync_twin_normal(
                         api_address,
                         api_payload,
@@ -8189,7 +8175,7 @@ fn wire__crate__api__event_listener__create_event_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::event_listener::create_event_twin_normal(
                             api_address,
                             api_payload,
@@ -8213,7 +8199,7 @@ fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__create_event
             let api_address = <String>::sse_decode(&mut deserializer);
 let api_payload = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::event_listener_twin_rust_async::create_event_twin_rust_async(api_address, api_payload).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::event_listener_twin_rust_async::create_event_twin_rust_async(api_address, api_payload).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -8244,7 +8230,7 @@ fn wire__crate__api__dart_opaque__create_nested_dart_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::dart_opaque::create_nested_dart_opaque_twin_normal(
                             api_opaque1,
                             api_opaque2,
@@ -8268,7 +8254,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__create_nested_d
             let api_opaque1 = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
 let api_opaque2 = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::create_nested_dart_opaque_twin_rust_async(api_opaque1, api_opaque2).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_rust_async::create_nested_dart_opaque_twin_rust_async(api_opaque1, api_opaque2).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -8283,7 +8269,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_nested_dart_op
             let api_opaque1 = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
 let api_opaque2 = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::create_nested_dart_opaque_twin_sync(api_opaque1, api_opaque2))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_sync::create_nested_dart_opaque_twin_sync(api_opaque1, api_opaque2))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_opaque__create_nested_opaque_twin_normal_impl(
@@ -8311,9 +8297,8 @@ fn wire__crate__api__rust_opaque__create_nested_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::rust_opaque::create_nested_opaque_twin_normal(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::rust_opaque::create_nested_opaque_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -8331,7 +8316,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_nested_o
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::create_nested_opaque_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::create_nested_opaque_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -8345,7 +8330,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_nested_opaque_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync::create_nested_opaque_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sync::create_nested_opaque_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_opaque__create_opaque_twin_normal_impl(
@@ -8374,7 +8359,7 @@ fn wire__crate__api__rust_opaque__create_opaque_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::rust_opaque::create_opaque_twin_normal())?;
+                        Ok::<_, ()>(crate::api::rust_opaque::create_opaque_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -8392,7 +8377,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_opaque_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::create_opaque_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::create_opaque_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -8419,7 +8404,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_opaque_twin_sy
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::rust_opaque_twin_sync::create_opaque_twin_sync(),
                 )?;
                 Ok(output_ok)
@@ -8454,7 +8439,7 @@ fn wire__crate__api__rust_opaque__create_option_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_opaque::create_option_opaque_twin_normal(api_opaque),
                     )?;
                     Ok(output_ok)
@@ -8474,7 +8459,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__create_option_o
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <Option<RustOpaqueMoi<HideDataTwinRustAsync>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::create_option_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::create_option_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -8488,7 +8473,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_option_opaque_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <Option<RustOpaqueMoi<HideDataTwinSync>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync::create_option_opaque_twin_sync(api_opaque))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sync::create_option_opaque_twin_sync(api_opaque))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__exception__custom_enum_error_panic_twin_normal_impl(
@@ -8844,7 +8829,7 @@ fn wire__crate__api__exception__custom_struct_twin_normal_new_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::exception::CustomStructTwinNormal::new_twin_normal(api_message),
                     )?;
                     Ok(output_ok)
@@ -8924,7 +8909,7 @@ fn wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_struct_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_message = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync::new_twin_rust_async(api_message).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync::new_twin_rust_async(api_message).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -8998,7 +8983,7 @@ fn wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_message = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync::new_twin_sync(api_message))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync::new_twin_sync(api_message))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__exception_twin_sync__custom_struct_twin_sync_nonstatic_return_custom_struct_error_twin_sync_impl(
@@ -9079,9 +9064,8 @@ fn wire__crate__api__chrono_type__datetime_local_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::chrono_type::datetime_local_twin_normal(api_d),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::chrono_type::datetime_local_twin_normal(api_d))?;
                     Ok(output_ok)
                 })())
             }
@@ -9099,7 +9083,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_local_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_d = <chrono::DateTime::<chrono::Local>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::datetime_local_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::datetime_local_twin_rust_async(api_d).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9127,7 +9111,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_local_twin_s
             let api_d = <chrono::DateTime<chrono::Local>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::chrono_type_twin_sync::datetime_local_twin_sync(
                         api_d,
                     ),
@@ -9163,9 +9147,8 @@ fn wire__crate__api__chrono_type__datetime_utc_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::chrono_type::datetime_utc_twin_normal(api_d),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::chrono_type::datetime_utc_twin_normal(api_d))?;
                     Ok(output_ok)
                 })())
             }
@@ -9183,7 +9166,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__datetime_utc_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_d = <chrono::DateTime::<chrono::Utc>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::datetime_utc_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::datetime_utc_twin_rust_async(api_d).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9211,7 +9194,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__datetime_utc_twin_syn
             let api_d = <chrono::DateTime<chrono::Utc>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::chrono_type_twin_sync::datetime_utc_twin_sync(api_d),
                 )?;
                 Ok(output_ok)
@@ -9245,7 +9228,7 @@ fn wire__crate__api__dart_opaque__drop_static_dart_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dart_opaque::drop_static_dart_opaque_twin_normal(api_id);
                     })?;
                     Ok(output_ok)
@@ -9265,7 +9248,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__drop_static_dar
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_id = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::drop_static_dart_opaque_twin_rust_async(api_id).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::drop_static_dart_opaque_twin_rust_async(api_id).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9279,7 +9262,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__drop_static_dart_opaq
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_id = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_sync::drop_static_dart_opaque_twin_sync(api_id); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_sync::drop_static_dart_opaque_twin_sync(api_id); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__chrono_type__duration_twin_normal_impl(
@@ -9309,7 +9292,7 @@ fn wire__crate__api__chrono_type__duration_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::chrono_type::duration_twin_normal(api_d))?;
+                        Ok::<_, ()>(crate::api::chrono_type::duration_twin_normal(api_d))?;
                     Ok(output_ok)
                 })())
             }
@@ -9327,7 +9310,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__duration_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_d = <chrono::Duration>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::duration_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::duration_twin_rust_async(api_d).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9355,7 +9338,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__duration_twin_sync_im
             let api_d = <chrono::Duration>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::chrono_type_twin_sync::duration_twin_sync(api_d),
                 )?;
                 Ok(output_ok)
@@ -9374,7 +9357,7 @@ fn wire__crate__api__collection_equality__echo_struct_with_deep_collection_equal
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <crate::api::collection_equality::StructWithDeepCollectionEqualityTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::collection_equality::echo_struct_with_deep_collection_equality_twin_normal(api_value))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::collection_equality::echo_struct_with_deep_collection_equality_twin_normal(api_value))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9389,7 +9372,7 @@ fn wire__crate__api__pseudo_manual__collection_equality_twin_rust_async__echo_st
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <crate::api::pseudo_manual::collection_equality_twin_rust_async::StructWithDeepCollectionEqualityTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::collection_equality_twin_rust_async::echo_struct_with_deep_collection_equality_twin_rust_async(api_value).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::collection_equality_twin_rust_async::echo_struct_with_deep_collection_equality_twin_rust_async(api_value).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9403,7 +9386,7 @@ fn wire__crate__api__pseudo_manual__collection_equality_twin_sync__echo_struct_w
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <crate::api::pseudo_manual::collection_equality_twin_sync::StructWithDeepCollectionEqualityTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::collection_equality_twin_sync::echo_struct_with_deep_collection_equality_twin_sync(api_value))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::collection_equality_twin_sync::echo_struct_with_deep_collection_equality_twin_sync(api_value))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__collection_equality__echo_struct_with_shallow_collection_equality_twin_normal_impl(
@@ -9417,7 +9400,7 @@ fn wire__crate__api__collection_equality__echo_struct_with_shallow_collection_eq
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <crate::api::collection_equality::StructWithShallowCollectionEqualityTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::collection_equality::echo_struct_with_shallow_collection_equality_twin_normal(api_value))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::collection_equality::echo_struct_with_shallow_collection_equality_twin_normal(api_value))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9432,7 +9415,7 @@ fn wire__crate__api__pseudo_manual__collection_equality_twin_rust_async__echo_st
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <crate::api::pseudo_manual::collection_equality_twin_rust_async::StructWithShallowCollectionEqualityTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::collection_equality_twin_rust_async::echo_struct_with_shallow_collection_equality_twin_rust_async(api_value).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::collection_equality_twin_rust_async::echo_struct_with_shallow_collection_equality_twin_rust_async(api_value).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9446,7 +9429,7 @@ fn wire__crate__api__pseudo_manual__collection_equality_twin_sync__echo_struct_w
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <crate::api::pseudo_manual::collection_equality_twin_sync::StructWithShallowCollectionEqualityTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::collection_equality_twin_sync::echo_struct_with_shallow_collection_equality_twin_sync(api_value))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::collection_equality_twin_sync::echo_struct_with_shallow_collection_equality_twin_sync(api_value))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__optional__element_twin_normal_default_impl(
@@ -9475,7 +9458,7 @@ fn wire__crate__api__optional__element_twin_normal_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::optional::ElementTwinNormal::default())?;
+                        Ok::<_, ()>(crate::api::optional::ElementTwinNormal::default())?;
                     Ok(output_ok)
                 })())
             }
@@ -9493,7 +9476,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_rust_async__element_twin_rust_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync::default())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync::default())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9522,7 +9505,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_sync__element_twin_sync_defaul
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync::default(),
                     )?;
                     Ok(output_ok)
@@ -9557,7 +9540,7 @@ fn wire__crate__api__frb_logging__emit_log_message_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::frb_logging::emit_log_message(api_message);
                     })?;
                     Ok(output_ok)
@@ -9592,9 +9575,8 @@ fn wire__crate__api__misc_type__empty_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_type::empty_struct_twin_normal(api_empty),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_type::empty_struct_twin_normal(api_empty))?;
                     Ok(output_ok)
                 })())
             }
@@ -9612,7 +9594,7 @@ fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__empty_struct_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_empty = <crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_type_twin_rust_async::empty_struct_twin_rust_async(api_empty).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_type_twin_rust_async::empty_struct_twin_rust_async(api_empty).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9643,7 +9625,7 @@ fn wire__crate__api__pseudo_manual__misc_type_twin_sync__empty_struct_twin_sync_
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::misc_type_twin_sync::empty_struct_twin_sync(
                         api_empty,
                     ),
@@ -9680,7 +9662,7 @@ fn wire__crate__api__event_listener__event_twin_normal_as_string_twin_normal_imp
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::event_listener::EventTwinNormal::as_string_twin_normal(
                             &api_that,
                         ),
@@ -9702,7 +9684,7 @@ fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__event_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync::as_string_twin_rust_async(&api_that).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync::as_string_twin_rust_async(&api_that).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9717,7 +9699,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_ge
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_basic_general_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_basic_general_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9732,7 +9714,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9746,7 +9728,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_basic_general_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_basic_general_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal_impl(
@@ -9760,7 +9742,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_pr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9775,7 +9757,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9789,7 +9771,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_struct_twin_normal_twin_normal_impl(
@@ -9803,7 +9785,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_basic_st
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::basic::BasicStructTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_basic_struct_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_basic_struct_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9818,7 +9800,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9832,7 +9814,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_basic_struct_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_basic_struct_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bool_twin_normal_impl(
@@ -9846,7 +9828,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bool_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<bool>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_bool_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_bool_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9861,7 +9843,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<bool>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_bool_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_bool_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9875,7 +9857,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<bool>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_bool_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_bool_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bytes_twin_normal_impl(
@@ -9889,7 +9871,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_bytes_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_bytes_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_bytes_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9904,7 +9886,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9918,7 +9900,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_bytes_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_bytes_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal_impl(
@@ -9932,7 +9914,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<f32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_f32_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_f32_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9947,7 +9929,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<f32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_f32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_f32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -9961,7 +9943,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<f32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_f32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_f32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal_impl(
@@ -9975,7 +9957,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<f64>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_f64_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_f64_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -9990,7 +9972,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<f64>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_f64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_f64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10004,7 +9986,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<f64>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_f64_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_f64_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal_impl(
@@ -10018,7 +10000,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i16>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_i16_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_i16_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10033,7 +10015,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i16>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_i16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_i16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10047,7 +10029,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i16>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_i16_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_i16_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal_impl(
@@ -10061,7 +10043,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_i32_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_i32_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10076,7 +10058,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10090,7 +10072,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_i32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_i32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal_impl(
@@ -10104,7 +10086,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i64>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_i64_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_i64_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10119,7 +10101,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i64>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_i64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_i64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10133,7 +10115,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i64>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_i64_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_i64_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal_impl(
@@ -10147,7 +10129,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i8>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_i8_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_i8_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10162,7 +10144,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_i8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_i8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10176,7 +10158,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<i8>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_i8_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_i8_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_twin_normal_impl(
@@ -10190,7 +10172,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_string_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_string_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_string_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10205,7 +10187,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10219,7 +10201,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<String>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_string_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_string_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal_impl(
@@ -10233,7 +10215,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u16>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_u16_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_u16_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10248,7 +10230,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u16>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_u16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_u16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10262,7 +10244,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u16>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_u16_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_u16_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal_impl(
@@ -10276,7 +10258,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_u32_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_u32_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10291,7 +10273,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_u32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_u32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10305,7 +10287,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_u32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_u32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal_impl(
@@ -10319,7 +10301,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u64>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_u64_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_u64_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10334,7 +10316,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u64>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_u64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_u64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10348,7 +10330,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u64>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_u64_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_u64_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal_impl(
@@ -10362,7 +10344,7 @@ fn wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_u8_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list::example_basic_list_type_u8_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10377,7 +10359,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_li
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_u8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_u8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10391,7 +10373,7 @@ fn wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_typ
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_u8_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_u8_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_general_enum_twin_normal_twin_normal_impl(
@@ -10405,7 +10387,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_gene
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_basic_general_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_basic_general_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10420,7 +10402,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10434,7 +10416,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_basic_general_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_basic_general_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal_impl(
@@ -10448,7 +10430,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_prim
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10463,7 +10445,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10477,7 +10459,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_struct_twin_normal_twin_normal_impl(
@@ -10491,7 +10473,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_basic_stru
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_basic_struct_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_basic_struct_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10506,7 +10488,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10520,7 +10502,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_basic_struct_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_basic_struct_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bool_twin_normal_impl(
@@ -10534,7 +10516,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bool_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, bool>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_bool_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_bool_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10549,7 +10531,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, bool>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_bool_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_bool_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10563,7 +10545,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, bool>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_bool_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_bool_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bytes_twin_normal_impl(
@@ -10577,7 +10559,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_bytes_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_bytes_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_bytes_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10592,7 +10574,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10606,7 +10588,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_bytes_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_bytes_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f32_twin_normal_impl(
@@ -10620,7 +10602,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f32_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, f32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_f32_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_f32_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10635,7 +10617,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, f32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_f32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_f32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10649,7 +10631,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, f32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_f32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_f32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f64_twin_normal_impl(
@@ -10663,7 +10645,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_f64_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, f64>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_f64_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_f64_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10678,7 +10660,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, f64>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_f64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_f64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10692,7 +10674,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, f64>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_f64_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_f64_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_twin_normal_impl(
@@ -10706,7 +10688,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i128_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i128>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_i128_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_i128_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10721,7 +10703,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i128>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i128_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i128_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10735,7 +10717,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i128>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i128_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i128_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i16_twin_normal_impl(
@@ -10749,7 +10731,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i16_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i16>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_i16_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_i16_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10764,7 +10746,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i16>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10778,7 +10760,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i16>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i16_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i16_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i32_twin_normal_impl(
@@ -10792,7 +10774,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i32_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_i32_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_i32_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10807,7 +10789,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10821,7 +10803,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i64_twin_normal_impl(
@@ -10835,7 +10817,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i64_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i64>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_i64_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_i64_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10850,7 +10832,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i64>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10864,7 +10846,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i64>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i64_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i64_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i8_twin_normal_impl(
@@ -10893,7 +10875,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_i8_twin_no
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic_map::example_basic_map_type_i8_twin_normal(
                             api_arg,
                         ),
@@ -10915,7 +10897,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_i8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10929,7 +10911,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i8>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i8_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_i8_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_isize_twin_normal_impl(
@@ -10943,7 +10925,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_isize_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, isize>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_isize_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_isize_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -10958,7 +10940,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, isize>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_isize_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_isize_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -10972,7 +10954,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, isize>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_isize_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_isize_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string_twin_normal_impl(
@@ -10986,7 +10968,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_string_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, String>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_string_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_string_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11001,7 +10983,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11015,7 +10997,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, String>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_string_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_string_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_twin_normal_impl(
@@ -11029,7 +11011,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u128_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u128>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_u128_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_u128_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11044,7 +11026,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u128>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u128_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u128_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11058,7 +11040,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u128>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u128_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u128_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u16_twin_normal_impl(
@@ -11072,7 +11054,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u16_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u16>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_u16_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_u16_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11087,7 +11069,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u16>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11101,7 +11083,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u16>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u16_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u16_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u32_twin_normal_impl(
@@ -11115,7 +11097,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u32_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_u32_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_u32_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11130,7 +11112,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11144,7 +11126,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u64_twin_normal_impl(
@@ -11158,7 +11140,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u64_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u64>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_u64_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_u64_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11173,7 +11155,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u64>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11187,7 +11169,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u64>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u64_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u64_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u8_twin_normal_impl(
@@ -11216,7 +11198,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_u8_twin_no
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic_map::example_basic_map_type_u8_twin_normal(
                             api_arg,
                         ),
@@ -11238,7 +11220,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_u8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11252,7 +11234,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, u8>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u8_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_u8_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_usize_twin_normal_impl(
@@ -11266,7 +11248,7 @@ fn wire__crate__api__pseudo_manual__basic_map__example_basic_map_type_usize_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, usize>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map::example_basic_map_type_usize_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map::example_basic_map_type_usize_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11281,7 +11263,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_rust_async__example_basic_map
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, usize>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_usize_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_rust_async::example_basic_map_type_usize_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11295,7 +11277,7 @@ fn wire__crate__api__pseudo_manual__basic_map_twin_sync__example_basic_map_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, usize>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_usize_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_map_twin_sync::example_basic_map_type_usize_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_general_enum_twin_normal_twin_normal_impl(
@@ -11309,7 +11291,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_basic_general_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_basic_general_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11324,7 +11306,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11338,7 +11320,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_basic_general_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_basic_general_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_primitive_enum_twin_normal_twin_normal_impl(
@@ -11352,7 +11334,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_basic_primitive_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_basic_primitive_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11367,7 +11349,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_basic_primitive_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_basic_primitive_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11381,7 +11363,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_basic_primitive_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_basic_primitive_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_basic_struct_twin_normal_twin_normal_impl(
@@ -11395,7 +11377,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<crate::api::pseudo_manual::basic::BasicStructTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_basic_struct_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_basic_struct_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11410,7 +11392,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_basic_struct_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_basic_struct_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11424,7 +11406,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_basic_struct_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_basic_struct_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bool_twin_normal_impl(
@@ -11438,7 +11420,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<bool>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_bool_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_bool_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11453,7 +11435,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<bool>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_bool_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_bool_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11467,7 +11449,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<bool>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_bool_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_bool_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_bytes_twin_normal_impl(
@@ -11481,7 +11463,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_bytes_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_bytes_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11496,7 +11478,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11510,7 +11492,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_bytes_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_bytes_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_f32_twin_normal_impl(
@@ -11524,7 +11506,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<f32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_f32_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_f32_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11539,7 +11521,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<f32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_f32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_f32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11553,7 +11535,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<f32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_f32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_f32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_f64_twin_normal_impl(
@@ -11567,7 +11549,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<f64>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_f64_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_f64_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11582,7 +11564,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<f64>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_f64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_f64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11596,7 +11578,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<f64>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_f64_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_f64_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i128_twin_normal_impl(
@@ -11610,7 +11592,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i128>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i128_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i128_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11625,7 +11607,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i128>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i128_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i128_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11639,7 +11621,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i128>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i128_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i128_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i16_twin_normal_impl(
@@ -11653,7 +11635,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i16>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i16_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i16_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11668,7 +11650,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i16>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11682,7 +11664,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i16>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i16_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i16_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i32_twin_normal_impl(
@@ -11696,7 +11678,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i32_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i32_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11711,7 +11693,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11725,7 +11707,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i64_twin_normal_impl(
@@ -11739,7 +11721,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i64>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i64_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i64_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11754,7 +11736,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i64>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11768,7 +11750,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i64>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i64_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i64_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_i8_twin_normal_impl(
@@ -11782,7 +11764,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i8>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i8_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_i8_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11797,7 +11779,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_i8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11811,7 +11793,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<i8>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i8_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_i8_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_isize_twin_normal_impl(
@@ -11825,7 +11807,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<isize>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_isize_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_isize_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11840,7 +11822,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<isize>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_isize_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_isize_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11854,7 +11836,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<isize>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_isize_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_isize_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_string_twin_normal_impl(
@@ -11868,7 +11850,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_string_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_string_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11883,7 +11865,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11897,7 +11879,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<String>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_string_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_string_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u128_twin_normal_impl(
@@ -11911,7 +11893,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u128>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u128_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u128_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11926,7 +11908,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u128>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u128_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u128_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11940,7 +11922,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u128>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u128_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u128_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u16_twin_normal_impl(
@@ -11954,7 +11936,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u16>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u16_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u16_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -11969,7 +11951,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u16>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u16_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -11983,7 +11965,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u16>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u16_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u16_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u32_twin_normal_impl(
@@ -11997,7 +11979,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u32_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u32_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -12012,7 +11994,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12026,7 +12008,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u64_twin_normal_impl(
@@ -12040,7 +12022,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u64>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u64_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u64_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -12055,7 +12037,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u64>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12069,7 +12051,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u64>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u64_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u64_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_u8_twin_normal_impl(
@@ -12083,7 +12065,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u8_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_u8_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -12098,7 +12080,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_u8_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12112,7 +12094,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<u8>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u8_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_u8_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_usize_twin_normal_impl(
@@ -12126,7 +12108,7 @@ fn wire__crate__api__pseudo_manual__basic_optional__example_basic_optional_type_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<usize>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_usize_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional::example_basic_optional_type_usize_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -12141,7 +12123,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_rust_async__example_basi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<usize>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_usize_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_rust_async::example_basic_optional_type_usize_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12155,7 +12137,7 @@ fn wire__crate__api__pseudo_manual__basic_optional_twin_sync__example_basic_opti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Option<usize>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_usize_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_optional_twin_sync::example_basic_optional_type_usize_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_general_enum_twin_normal_twin_normal_impl(
@@ -12169,7 +12151,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_general_enum
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic::example_basic_type_basic_general_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic::example_basic_type_basic_general_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -12184,7 +12166,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_ba
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_basic_general_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_basic_general_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12198,7 +12180,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_ge
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_sync::example_basic_type_basic_general_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_sync::example_basic_type_basic_general_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_primitive_enum_twin_normal_twin_normal_impl(
@@ -12212,7 +12194,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_primitive_en
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic::example_basic_type_basic_primitive_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic::example_basic_type_basic_primitive_enum_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -12227,7 +12209,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_ba
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_basic_primitive_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_basic_primitive_enum_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12241,7 +12223,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_pr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_sync::example_basic_type_basic_primitive_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_sync::example_basic_type_basic_primitive_enum_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_struct_twin_normal_twin_normal_impl(
@@ -12255,7 +12237,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_basic_struct_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::basic::BasicStructTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic::example_basic_type_basic_struct_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic::example_basic_type_basic_struct_twin_normal_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -12270,7 +12252,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_ba
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_basic_struct_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_basic_struct_twin_rust_async_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12284,7 +12266,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_basic_st
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_sync::example_basic_type_basic_struct_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_sync::example_basic_type_basic_struct_twin_sync_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_normal_impl(
@@ -12313,7 +12295,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_normal_i
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_bool_twin_normal(
                             api_arg,
                         ),
@@ -12335,7 +12317,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bo
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <bool>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_bool_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_bool_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12363,7 +12345,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bool_twi
             let api_arg = <bool>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_bool_twin_sync(
                         api_arg,
                     ),
@@ -12399,7 +12381,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_bytes_twin_normal(
                             api_arg,
                         ),
@@ -12421,7 +12403,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_by
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12449,7 +12431,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_tw
             let api_arg = <Vec<u8>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_bytes_twin_sync(
                         api_arg,
                     ),
@@ -12485,7 +12467,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_f32_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_f32_twin_normal(
                             api_arg,
                         ),
@@ -12507,7 +12489,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f3
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <f32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_f32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_f32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12535,7 +12517,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f32_twin
             let api_arg = <f32>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_f32_twin_sync(
                         api_arg,
                     ),
@@ -12571,7 +12553,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_f64_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_f64_twin_normal(
                             api_arg,
                         ),
@@ -12593,7 +12575,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f6
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <f64>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_f64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_f64_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12621,7 +12603,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_twin
             let api_arg = <f64>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_f64_twin_sync(
                         api_arg,
                     ),
@@ -12658,7 +12640,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i128_twin_normal_i
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_i128_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -12681,7 +12663,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i1
             let api_arg = <i128>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i128_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i128_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12710,7 +12692,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i128_twi
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i128_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -12747,7 +12729,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i16_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_i16_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -12770,7 +12752,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i1
             let api_arg = <i16>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i16_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i16_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12799,7 +12781,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i16_twin
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i16_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -12836,7 +12818,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i32_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_i32_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -12859,7 +12841,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i3
             let api_arg = <i32>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i32_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i32_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12888,7 +12870,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i32_twin
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i32_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -12925,7 +12907,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i64_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_i64_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -12948,7 +12930,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i6
             let api_arg = <i64>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i64_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i64_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -12977,7 +12959,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i64_twin
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i64_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -13014,7 +12996,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_i8_twin_normal_imp
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_i8_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -13037,7 +13019,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_i8
             let api_arg = <i8>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i8_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_i8_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13066,7 +13048,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_i8_twin_
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_i8_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -13103,7 +13085,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_isize_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_isize_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -13126,7 +13108,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_is
             let api_arg = <isize>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_isize_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_isize_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13155,7 +13137,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_isize_tw
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_isize_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -13191,7 +13173,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_string_twin_normal
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_string_twin_normal(
                             api_arg,
                         ),
@@ -13213,7 +13195,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_st
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13241,7 +13223,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_string_t
             let api_arg = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_string_twin_sync(
                         api_arg,
                     ),
@@ -13278,7 +13260,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u128_twin_normal_i
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_u128_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -13301,7 +13283,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u1
             let api_arg = <u128>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u128_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u128_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13330,7 +13312,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u128_twi
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u128_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -13367,7 +13349,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u16_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_u16_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -13390,7 +13372,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u1
             let api_arg = <u16>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u16_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u16_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13419,7 +13401,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u16_twin
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u16_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -13456,7 +13438,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u32_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_u32_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -13479,7 +13461,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u3
             let api_arg = <u32>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u32_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u32_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13508,7 +13490,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u32_twin
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u32_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -13545,7 +13527,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u64_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_u64_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -13568,7 +13550,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u6
             let api_arg = <u64>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u64_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u64_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13597,7 +13579,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u64_twin
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u64_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -13634,7 +13616,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_u8_twin_normal_imp
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_u8_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -13657,7 +13639,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_u8
             let api_arg = <u8>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u8_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_u8_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13686,7 +13668,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_u8_twin_
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_u8_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -13723,7 +13705,7 @@ fn wire__crate__api__pseudo_manual__basic__example_basic_type_usize_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::pseudo_manual::basic::example_basic_type_usize_twin_normal(
                             api_arg, api_expect,
                         ),
@@ -13746,7 +13728,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_us
             let api_arg = <usize>::sse_decode(&mut deserializer);
 let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_usize_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::basic_twin_rust_async::example_basic_type_usize_twin_rust_async(api_arg, api_expect).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13775,7 +13757,7 @@ fn wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_usize_tw
             let api_expect = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::basic_twin_sync::example_basic_type_usize_twin_sync(
                         api_arg, api_expect,
                     ),
@@ -13810,9 +13792,8 @@ fn wire__crate__api__misc_no_twin_example_a__feature_gated_function_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_no_twin_example_a::feature_gated_function(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_no_twin_example_a::feature_gated_function())?;
                     Ok(output_ok)
                 })())
             }
@@ -13845,9 +13826,8 @@ fn wire__crate__api__mirror__first_number_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::mirror::first_number_twin_normal(api_nums),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::mirror::first_number_twin_normal(api_nums))?;
                     Ok(output_ok)
                 })())
             }
@@ -13865,7 +13845,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_number_twin_ru
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_nums = <crate::api::mirror::Numbers>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::first_number_twin_rust_async(api_nums).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::first_number_twin_rust_async(api_nums).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13893,7 +13873,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__first_number_twin_sync_imp
             let api_nums = <crate::api::mirror::Numbers>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::mirror_twin_sync::first_number_twin_sync(api_nums),
                 )?;
                 Ok(output_ok)
@@ -13927,9 +13907,8 @@ fn wire__crate__api__mirror__first_sequence_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::mirror::first_sequence_twin_normal(api_seqs),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::mirror::first_sequence_twin_normal(api_seqs))?;
                     Ok(output_ok)
                 })())
             }
@@ -13947,7 +13926,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__first_sequence_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_seqs = <crate::api::mirror::Sequences>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::first_sequence_twin_rust_async(api_seqs).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::first_sequence_twin_rust_async(api_seqs).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -13975,7 +13954,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__first_sequence_twin_sync_i
             let api_seqs = <crate::api::mirror::Sequences>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::mirror_twin_sync::first_sequence_twin_sync(api_seqs),
                 )?;
                 Ok(output_ok)
@@ -14009,7 +13988,7 @@ fn wire__crate__api__misc_no_twin_example_a__for_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::misc_no_twin_example_a::r#for(api_type);
                     })?;
                     Ok(output_ok)
@@ -14043,9 +14022,8 @@ fn wire__crate__api__rust_opaque__frb_generator_test_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::rust_opaque::frb_generator_test_twin_normal(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::rust_opaque::frb_generator_test_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -14063,7 +14041,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__frb_generator_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::frb_generator_test_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::frb_generator_test_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14090,7 +14068,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__frb_generator_test_tw
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::rust_opaque_twin_sync::frb_generator_test_twin_sync(
                     ),
                 )?;
@@ -14122,7 +14100,7 @@ fn wire__crate__api__frb_logging__frb_internal_dispose_logger_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::frb_logging::frb_internal_dispose_logger();
                 })?;
                 Ok(output_ok)
@@ -14160,7 +14138,7 @@ fn wire__crate__api__frb_logging__frb_internal_init_logger_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::frb_logging::frb_internal_init_logger(api_sink, api_max_level);
                     })?;
                     Ok(output_ok)
@@ -14193,7 +14171,7 @@ fn wire__crate__api__frb_logging__frb_internal_logging_max_level_impl(
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::frb_logging::frb_internal_logging_max_level())?;
+                    Ok::<_, ()>(crate::api::frb_logging::frb_internal_logging_max_level())?;
                 Ok(output_ok)
             })())
         },
@@ -14222,7 +14200,7 @@ fn wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::frb_logging::frb_internal_logging_setup_dart_logging_output(),
                 )?;
                 Ok(output_ok)
@@ -14253,7 +14231,7 @@ fn wire__crate__api__rust_opaque_sync__frb_sync_generator_test_twin_normal_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::rust_opaque_sync::frb_sync_generator_test_twin_normal(),
                 )?;
                 Ok(output_ok)
@@ -14304,7 +14282,7 @@ fn wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal_impl(
                         }
                     }
                     let api_arg_guard = api_arg_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::dyn_trait::func_arg_dyn_trait_twin_normal(&*api_arg_guard),
                     )?;
                     Ok(output_ok)
@@ -14341,7 +14319,7 @@ fn wire__crate__api__async_misc__func_async_simple_add_twin_normal_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok(
+                        let output_ok = Ok::<_, ()>(
                             crate::api::async_misc::func_async_simple_add_twin_normal(api_a, api_b)
                                 .await,
                         )?;
@@ -14379,7 +14357,7 @@ fn wire__crate__api__async_misc__func_async_void_twin_normal_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok({
+                        let output_ok = Ok::<_, ()>({
                             crate::api::async_misc::func_async_void_twin_normal().await;
                         })?;
                         Ok(output_ok)
@@ -14417,7 +14395,7 @@ fn wire__crate__api__enumeration__func_enum_simple_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::enumeration::func_enum_simple_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -14437,7 +14415,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_simpl
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_simple_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_simple_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14468,7 +14446,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_simple_twin
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::enumeration_twin_sync::func_enum_simple_twin_sync(
                         api_arg,
                     ),
@@ -14506,7 +14484,7 @@ fn wire__crate__api__enumeration__func_enum_with_discriminant_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::enumeration::func_enum_with_discriminant_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -14526,7 +14504,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_with_discriminant_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_with_discriminant_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14540,7 +14518,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_discri
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_discriminant_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_discriminant_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal_impl(
@@ -14571,7 +14549,7 @@ fn wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::enumeration::func_enum_with_item_mixed_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -14591,7 +14569,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_with_item_mixed_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_with_item_mixed_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14605,7 +14583,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_m
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_item_mixed_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_item_mixed_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal_impl(
@@ -14636,7 +14614,7 @@ fn wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::enumeration::func_enum_with_item_struct_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -14656,7 +14634,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_with_item_struct_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_with_item_struct_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14670,7 +14648,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_item_struct_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_item_struct_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal_impl(
@@ -14701,7 +14679,7 @@ fn wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::enumeration::func_enum_with_item_tuple_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -14721,7 +14699,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_with_item_tuple_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_with_item_tuple_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14735,7 +14713,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_item_tuple_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_item_tuple_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__structure__func_for_struct_with_dart_keyword_field_twin_normal_impl(
@@ -14766,7 +14744,7 @@ fn wire__crate__api__structure__func_for_struct_with_dart_keyword_field_twin_nor
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::structure::func_for_struct_with_dart_keyword_field_twin_normal(
                             api_arg,
                         ),
@@ -14788,7 +14766,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_w
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_rust_async::StructWithDartKeywordFieldTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_rust_async::func_for_struct_with_dart_keyword_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_rust_async::func_for_struct_with_dart_keyword_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14802,7 +14780,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_da
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_sync::StructWithDartKeywordFieldTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_for_struct_with_dart_keyword_field_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_sync::func_for_struct_with_dart_keyword_field_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__structure__func_for_struct_with_field_rename_twin_normal_impl(
@@ -14833,7 +14811,7 @@ fn wire__crate__api__structure__func_for_struct_with_field_rename_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::structure::func_for_struct_with_field_rename_twin_normal(
                             api_arg,
                         ),
@@ -14855,7 +14833,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_for_struct_w
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_rust_async::StructWithFieldRenameTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_rust_async::func_for_struct_with_field_rename_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_rust_async::func_for_struct_with_field_rename_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14869,7 +14847,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_sync__func_for_struct_with_fi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_sync::StructWithFieldRenameTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_for_struct_with_field_rename_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_sync::func_for_struct_with_field_rename_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__map_and_set__func_hash_map_i32_i32_twin_normal_impl(
@@ -14898,7 +14876,7 @@ fn wire__crate__api__map_and_set__func_hash_map_i32_i32_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::map_and_set::func_hash_map_i32_i32_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -14918,7 +14896,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_i
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_i32_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_i32_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14932,7 +14910,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_i32_i32
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<i32, i32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_i32_i32_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_i32_i32_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__map_and_set__func_hash_map_string_bytes_twin_normal_impl(
@@ -14962,7 +14940,7 @@ fn wire__crate__api__map_and_set__func_hash_map_string_bytes_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::map_and_set::func_hash_map_string_bytes_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -14982,7 +14960,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_bytes_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -14996,7 +14974,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_bytes_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_bytes_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__map_and_set__func_hash_map_string_complex_enum_twin_normal_impl(
@@ -15028,7 +15006,7 @@ fn wire__crate__api__map_and_set__func_hash_map_string_complex_enum_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::map_and_set::func_hash_map_string_complex_enum_twin_normal(
                             api_arg,
                         ),
@@ -15050,7 +15028,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_complex_enum_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_complex_enum_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15064,7 +15042,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_complex_enum_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_complex_enum_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__map_and_set__func_hash_map_string_simple_enum_twin_normal_impl(
@@ -15096,7 +15074,7 @@ fn wire__crate__api__map_and_set__func_hash_map_string_simple_enum_twin_normal_i
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::map_and_set::func_hash_map_string_simple_enum_twin_normal(
                             api_arg,
                         ),
@@ -15118,7 +15096,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_simple_enum_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_simple_enum_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15132,7 +15110,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_simple_enum_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_simple_enum_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__map_and_set__func_hash_map_string_string_hasher_twin_normal_impl(
@@ -15164,7 +15142,7 @@ fn wire__crate__api__map_and_set__func_hash_map_string_string_hasher_twin_normal
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::map_and_set::func_hash_map_string_string_hasher_twin_normal(
                             api_arg,
                         ),
@@ -15186,7 +15164,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, String, CustomHasherTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_string_hasher_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_string_hasher_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15200,7 +15178,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, String, CustomHasherTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_string_hasher_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_string_hasher_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal_impl(
@@ -15230,7 +15208,7 @@ fn wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::map_and_set::func_hash_map_string_string_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -15250,7 +15228,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15264,7 +15242,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, String>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_string_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_string_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__map_and_set__func_hash_map_string_struct_twin_normal_impl(
@@ -15278,7 +15256,7 @@ fn wire__crate__api__map_and_set__func_hash_map_string_struct_twin_normal_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::map_and_set::func_hash_map_string_struct_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::map_and_set::func_hash_map_string_struct_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -15293,7 +15271,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_struct_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_string_struct_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15307,7 +15285,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_struct_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_struct_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__map_and_set__func_hash_set_i32_twin_normal_impl(
@@ -15336,7 +15314,7 @@ fn wire__crate__api__map_and_set__func_hash_set_i32_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::map_and_set::func_hash_set_i32_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -15356,7 +15334,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_i
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashSet<i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_set_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_set_i32_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15384,7 +15362,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_i32_twi
             let api_arg = <std::collections::HashSet<i32>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_set_i32_twin_sync(
                         api_arg,
                     ),
@@ -15422,7 +15400,7 @@ fn wire__crate__api__map_and_set__func_hash_set_string_hasher_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::map_and_set::func_hash_set_string_hasher_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -15442,7 +15420,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashSet<String, CustomHasherTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_set_string_hasher_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_set_string_hasher_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15456,7 +15434,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashSet<String, CustomHasherTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_set_string_hasher_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_set_string_hasher_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__map_and_set__func_hash_set_string_twin_normal_impl(
@@ -15485,7 +15463,7 @@ fn wire__crate__api__map_and_set__func_hash_set_string_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::map_and_set::func_hash_set_string_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -15505,7 +15483,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashSet<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_set_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_set_string_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15519,7 +15497,7 @@ fn wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <std::collections::HashSet<String>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_set_string_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_set_string_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__inside_macro__func_macro_struct_twin_normal_impl(
@@ -15548,7 +15526,7 @@ fn wire__crate__api__inside_macro__func_macro_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::inside_macro::func_macro_struct_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -15644,7 +15622,7 @@ fn wire__crate__api__misc_type__func_return_unit_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::misc_type::func_return_unit_twin_normal();
                     })?;
                     Ok(output_ok)
@@ -15664,7 +15642,7 @@ fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__func_return_unit_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::misc_type_twin_rust_async::func_return_unit_twin_rust_async().await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::misc_type_twin_rust_async::func_return_unit_twin_rust_async().await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15691,7 +15669,7 @@ fn wire__crate__api__pseudo_manual__misc_type_twin_sync__func_return_unit_twin_s
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::misc_type_twin_sync::func_return_unit_twin_sync();
                 })?;
                 Ok(output_ok)
@@ -15728,7 +15706,7 @@ fn wire__crate__api__stream__func_stream_add_value_and_error_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream::func_stream_add_value_and_error_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -15748,7 +15726,7 @@ fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_add_valu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<i32,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::stream_twin_rust_async::func_stream_add_value_and_error_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::stream_twin_rust_async::func_stream_add_value_and_error_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15782,7 +15760,7 @@ fn wire__crate__api__stream_misc__func_stream_realistic_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream_misc::func_stream_realistic_twin_normal(
                             api_sink, api_arg,
                         );
@@ -15931,7 +15909,7 @@ fn wire__crate__api__stream__func_stream_sink_arg_position_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream::func_stream_sink_arg_position_twin_normal(
                             api_a, api_b, api_c,
                         );
@@ -15955,7 +15933,7 @@ fn wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_sink_arg
 let api_b = <u32>::sse_decode(&mut deserializer);
 let api_c = <StreamSink<u32,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::stream_twin_rust_async::func_stream_sink_arg_position_twin_rust_async(api_a, api_b, api_c).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::stream_twin_rust_async::func_stream_sink_arg_position_twin_rust_async(api_a, api_b, api_c).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -15987,7 +15965,7 @@ fn wire__crate__api__structure__func_struct_with_one_field_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::structure::func_struct_with_one_field_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -16007,7 +15985,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_rust_async::func_struct_with_one_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_rust_async::func_struct_with_one_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16021,7 +15999,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_one_fi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_struct_with_one_field_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_sync::func_struct_with_one_field_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__structure__func_struct_with_two_field_twin_normal_impl(
@@ -16052,7 +16030,7 @@ fn wire__crate__api__structure__func_struct_with_two_field_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::structure::func_struct_with_two_field_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -16072,7 +16050,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_rust_async::func_struct_with_two_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_rust_async::func_struct_with_two_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16086,7 +16064,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_two_fi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_struct_with_two_field_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_sync::func_struct_with_two_field_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__structure__func_struct_with_zero_field_twin_normal_impl(
@@ -16117,7 +16095,7 @@ fn wire__crate__api__structure__func_struct_with_zero_field_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::structure::func_struct_with_zero_field_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -16137,7 +16115,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_struct_with_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_rust_async::func_struct_with_zero_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_rust_async::func_struct_with_zero_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16151,7 +16129,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_sync__func_struct_with_zero_f
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_struct_with_zero_field_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_sync::func_struct_with_zero_field_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__array__func_test_id_twin_normal_impl(
@@ -16181,7 +16159,7 @@ fn wire__crate__api__array__func_test_id_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::array::func_test_id_twin_normal(api_id))?;
+                        Ok::<_, ()>(crate::api::array::func_test_id_twin_normal(api_id))?;
                     Ok(output_ok)
                 })())
             }
@@ -16199,7 +16177,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__func_test_id_twin_rus
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_id = <crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::func_test_id_twin_rust_async(api_id).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::func_test_id_twin_rust_async(api_id).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16229,7 +16207,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__func_test_id_twin_sync_impl
             );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::func_test_id_twin_sync(api_id),
                 )?;
                 Ok(output_ok)
@@ -16265,7 +16243,7 @@ fn wire__crate__api__structure__func_tuple_struct_with_one_field_twin_normal_imp
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::structure::func_tuple_struct_with_one_field_twin_normal(
                             api_arg,
                         ),
@@ -16287,7 +16265,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_rust_async::func_tuple_struct_with_one_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_rust_async::func_tuple_struct_with_one_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16301,7 +16279,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_tuple_struct_with_one_field_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_sync::func_tuple_struct_with_one_field_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal_impl(
@@ -16332,7 +16310,7 @@ fn wire__crate__api__structure__func_tuple_struct_with_two_field_twin_normal_imp
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::structure::func_tuple_struct_with_two_field_twin_normal(
                             api_arg,
                         ),
@@ -16354,7 +16332,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_rust_async__func_tuple_struct
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_rust_async::func_tuple_struct_with_two_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_rust_async::func_tuple_struct_with_two_field_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16368,7 +16346,7 @@ fn wire__crate__api__pseudo_manual__structure_twin_sync__func_tuple_struct_with_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_tuple_struct_with_two_field_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::structure_twin_sync::func_tuple_struct_with_two_field_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__exception__func_type_fallible_panic_twin_normal_impl(
@@ -16459,7 +16437,7 @@ fn wire__crate__api__exception__func_type_infallible_panic_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::exception::func_type_infallible_panic_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -16479,7 +16457,7 @@ fn wire__crate__api__pseudo_manual__exception_twin_rust_async__func_type_infalli
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_rust_async::func_type_infallible_panic_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::exception_twin_rust_async::func_type_infallible_panic_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16493,7 +16471,7 @@ fn wire__crate__api__pseudo_manual__exception_twin_sync__func_type_infallible_pa
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_sync::func_type_infallible_panic_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::exception_twin_sync::func_type_infallible_panic_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__custom_ser_des__func_using_ipv4_addr_impl(
@@ -16522,9 +16500,8 @@ fn wire__crate__api__custom_ser_des__func_using_ipv4_addr_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::custom_ser_des::func_using_ipv4_addr(api_arg),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::custom_ser_des::func_using_ipv4_addr(api_arg))?;
                     Ok(output_ok)
                 })())
             }
@@ -16542,7 +16519,7 @@ fn wire__crate__api__custom_ser_des__func_using_non_opaque_struct_containing_ipv
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::custom_ser_des::NonOpaqueStructContainingIpv4Addr>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::custom_ser_des::func_using_non_opaque_struct_containing_ipv4_addr(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::custom_ser_des::func_using_non_opaque_struct_containing_ipv4_addr(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -16571,7 +16548,7 @@ fn wire__crate__api__function_at_api_mod_rs_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::function_at_api_mod_rs();
                     })?;
                     Ok(output_ok)
@@ -16591,7 +16568,7 @@ fn wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::casted_primitive::function_for_struct_with_casted_primitive_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::casted_primitive::function_for_struct_with_casted_primitive_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -16621,7 +16598,7 @@ fn wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::custom_ser_des::function_using_type_with_custom_serializer(
                             api_arg,
                         ),
@@ -16658,7 +16635,7 @@ fn wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_overrid
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::misc_no_twin_example_a::function_with_arg_type_name_override(
                             api_a,
                         );
@@ -16694,7 +16671,7 @@ fn wire__crate__api__comment__function_with_comments_slash_star_star_twin_normal
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::comment::function_with_comments_slash_star_star_twin_normal();
                     })?;
                     Ok(output_ok)
@@ -16714,7 +16691,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comme
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_rust_async::function_with_comments_slash_star_star_twin_rust_async().await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_rust_async::function_with_comments_slash_star_star_twin_rust_async().await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16728,7 +16705,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_sl
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_sync::function_with_comments_slash_star_star_twin_sync(); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_sync::function_with_comments_slash_star_star_twin_sync(); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__comment__function_with_comments_triple_slash_multi_line_twin_normal_impl(
@@ -16742,7 +16719,7 @@ fn wire__crate__api__comment__function_with_comments_triple_slash_multi_line_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::comment::function_with_comments_triple_slash_multi_line_twin_normal(); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::comment::function_with_comments_triple_slash_multi_line_twin_normal(); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -16757,7 +16734,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comme
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_rust_async::function_with_comments_triple_slash_multi_line_twin_rust_async().await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_rust_async::function_with_comments_triple_slash_multi_line_twin_rust_async().await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16771,7 +16748,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_tr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_sync::function_with_comments_triple_slash_multi_line_twin_sync(); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_sync::function_with_comments_triple_slash_multi_line_twin_sync(); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__comment__function_with_comments_triple_slash_single_line_twin_normal_impl(
@@ -16785,7 +16762,7 @@ fn wire__crate__api__comment__function_with_comments_triple_slash_single_line_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::comment::function_with_comments_triple_slash_single_line_twin_normal(); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::comment::function_with_comments_triple_slash_single_line_twin_normal(); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -16800,7 +16777,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comme
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_rust_async::function_with_comments_triple_slash_single_line_twin_rust_async().await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_rust_async::function_with_comments_triple_slash_single_line_twin_rust_async().await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16814,7 +16791,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_tr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_sync::function_with_comments_triple_slash_single_line_twin_sync(); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_sync::function_with_comments_triple_slash_single_line_twin_sync(); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal_impl(
@@ -16842,7 +16819,7 @@ fn wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_norm
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::misc_no_twin_example_a::function_with_custom_name_twin_normal();
                     })?;
                     Ok(output_ok)
@@ -16877,7 +16854,7 @@ fn wire__crate__api__mirror__get_app_settings_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::mirror::get_app_settings_twin_normal())?;
+                        Ok::<_, ()>(crate::api::mirror::get_app_settings_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -16895,7 +16872,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_app_settings_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::get_app_settings_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::get_app_settings_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -16922,7 +16899,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__get_app_settings_twin_sync
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::mirror_twin_sync::get_app_settings_twin_sync(),
                 )?;
                 Ok(output_ok)
@@ -16955,8 +16932,7 @@ fn wire__crate__api__array__get_array_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::array::get_array_twin_normal())?;
+                    let output_ok = Ok::<_, ()>(crate::api::array::get_array_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -16974,7 +16950,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__get_array_twin_rust_a
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::get_array_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::get_array_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17001,9 +16977,8 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__get_array_twin_sync_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
-                    crate::api::pseudo_manual::array_twin_sync::get_array_twin_sync(),
-                )?;
+                let output_ok =
+                    Ok::<_, ()>(crate::api::pseudo_manual::array_twin_sync::get_array_twin_sync())?;
                 Ok(output_ok)
             })())
         },
@@ -17035,7 +17010,7 @@ fn wire__crate__api__array__get_complex_array_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::array::get_complex_array_twin_normal())?;
+                        Ok::<_, ()>(crate::api::array::get_complex_array_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -17053,7 +17028,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__get_complex_array_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::get_complex_array_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::get_complex_array_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17080,7 +17055,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__get_complex_array_twin_sync
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::get_complex_array_twin_sync(),
                 )?;
                 Ok(output_ok)
@@ -17115,7 +17090,7 @@ fn wire__crate__api__dart_opaque__get_enum_dart_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dart_opaque::get_enum_dart_opaque_twin_normal(api_opaque);
                     })?;
                     Ok(output_ok)
@@ -17135,7 +17110,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_enum_dart_o
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::get_enum_dart_opaque_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::get_enum_dart_opaque_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17149,7 +17124,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_enum_dart_opaque_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_sync::get_enum_dart_opaque_twin_sync(api_opaque); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_sync::get_enum_dart_opaque_twin_sync(api_opaque); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__mirror__get_fallible_app_settings_twin_normal_impl(
@@ -17239,7 +17214,7 @@ fn wire__crate__api__init_dart_code__get_init_dart_code_messages_impl(
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::init_dart_code::get_init_dart_code_messages())?;
+                    Ok::<_, ()>(crate::api::init_dart_code::get_init_dart_code_messages())?;
                 Ok(output_ok)
             })())
         },
@@ -17270,8 +17245,7 @@ fn wire__crate__api__mirror__get_message_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::mirror::get_message_twin_normal())?;
+                    let output_ok = Ok::<_, ()>(crate::api::mirror::get_message_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -17289,7 +17263,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_message_twin_rus
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::get_message_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::get_message_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17316,7 +17290,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__get_message_twin_sync_impl
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::mirror_twin_sync::get_message_twin_sync(),
                 )?;
                 Ok(output_ok)
@@ -17352,7 +17326,7 @@ fn wire__crate__api__dart_opaque__get_nested_dart_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dart_opaque::get_nested_dart_opaque_twin_normal(api_opaque);
                     })?;
                     Ok(output_ok)
@@ -17372,7 +17346,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__get_nested_dart
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::get_nested_dart_opaque_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::get_nested_dart_opaque_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17386,7 +17360,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__get_nested_dart_opaqu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_sync::get_nested_dart_opaque_twin_sync(api_opaque); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_sync::get_nested_dart_opaque_twin_sync(api_opaque); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__method__get_sum_array_twin_normal_impl(
@@ -17417,9 +17391,9 @@ fn wire__crate__api__method__get_sum_array_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::method::get_sum_array_twin_normal(api_a, api_b, api_c),
-                    )?;
+                    let output_ok = Ok::<_, ()>(crate::api::method::get_sum_array_twin_normal(
+                        api_a, api_b, api_c,
+                    ))?;
                     Ok(output_ok)
                 })())
             }
@@ -17439,7 +17413,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__get_sum_array_twin_r
 let api_b = <u32>::sse_decode(&mut deserializer);
 let api_c = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::get_sum_array_twin_rust_async(api_a, api_b, api_c).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::get_sum_array_twin_rust_async(api_a, api_b, api_c).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17469,7 +17443,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__get_sum_array_twin_sync_im
             let api_c = <u32>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::method_twin_sync::get_sum_array_twin_sync(
                         api_a, api_b, api_c,
                     ),
@@ -17504,8 +17478,7 @@ fn wire__crate__api__method__get_sum_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::method::get_sum_struct_twin_normal())?;
+                    let output_ok = Ok::<_, ()>(crate::api::method::get_sum_struct_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -17523,7 +17496,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__get_sum_struct_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::get_sum_struct_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::get_sum_struct_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17550,7 +17523,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__get_sum_struct_twin_sync_i
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::method_twin_sync::get_sum_struct_twin_sync(),
                 )?;
                 Ok(output_ok)
@@ -17583,9 +17556,8 @@ fn wire__crate__api__misc_example__handle_big_buffers_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_example::handle_big_buffers_twin_normal(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_example::handle_big_buffers_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -17603,7 +17575,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_big_buf
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_big_buffers_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_big_buffers_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17630,7 +17602,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_big_buffers_t
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::misc_example_twin_sync::handle_big_buffers_twin_sync(
                     ),
                 )?;
@@ -17665,9 +17637,8 @@ fn wire__crate__api__misc_example__handle_char_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_example::handle_char_twin_normal(api_arg),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_example::handle_char_twin_normal(api_arg))?;
                     Ok(output_ok)
                 })())
             }
@@ -17685,7 +17656,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_char_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <char>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_char_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_char_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17713,7 +17684,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_char_twin_syn
             let api_arg = <char>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::misc_example_twin_sync::handle_char_twin_sync(
                         api_arg,
                     ),
@@ -17750,7 +17721,7 @@ fn wire__crate__api__misc_example__handle_complex_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_example::handle_complex_struct_twin_normal(api_s),
                     )?;
                     Ok(output_ok)
@@ -17770,7 +17741,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_complex
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_s = <crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_complex_struct_twin_rust_async(api_s).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_complex_struct_twin_rust_async(api_s).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17784,7 +17755,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_complex_struc
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_s = <crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::handle_complex_struct_twin_sync(api_s))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_sync::handle_complex_struct_twin_sync(api_s))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__attribute__handle_customized_struct_twin_normal_impl(
@@ -17814,7 +17785,7 @@ fn wire__crate__api__attribute__handle_customized_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::attribute::handle_customized_struct_twin_normal(api_val);
                     })?;
                     Ok(output_ok)
@@ -17834,7 +17805,7 @@ fn wire__crate__api__pseudo_manual__attribute_twin_rust_async__handle_customized
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_val = <crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::attribute_twin_rust_async::handle_customized_struct_twin_rust_async(api_val).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::attribute_twin_rust_async::handle_customized_struct_twin_rust_async(api_val).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17848,7 +17819,7 @@ fn wire__crate__api__pseudo_manual__attribute_twin_sync__handle_customized_struc
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_val = <crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::attribute_twin_sync::handle_customized_struct_twin_sync(api_val); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::attribute_twin_sync::handle_customized_struct_twin_sync(api_val); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__chrono_type__handle_durations_twin_normal_impl(
@@ -17878,12 +17849,11 @@ fn wire__crate__api__chrono_type__handle_durations_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::chrono_type::handle_durations_twin_normal(
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::chrono_type::handle_durations_twin_normal(
                             api_durations,
                             api_since,
-                        ),
-                    )?;
+                        ))?;
                     Ok(output_ok)
                 })())
             }
@@ -17902,7 +17872,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_duration
             let api_durations = <Vec<chrono::Duration>>::sse_decode(&mut deserializer);
 let api_since = <chrono::DateTime::<chrono::Local>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::handle_durations_twin_rust_async(api_durations, api_since).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::handle_durations_twin_rust_async(api_durations, api_since).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -17931,7 +17901,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin
             let api_since = <chrono::DateTime<chrono::Local>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::chrono_type_twin_sync::handle_durations_twin_sync(
                         api_durations,
                         api_since,
@@ -17969,7 +17939,7 @@ fn wire__crate__api__enumeration__handle_enum_parameter_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::enumeration::handle_enum_parameter_twin_normal(api_weekday),
                     )?;
                     Ok(output_ok)
@@ -17989,7 +17959,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_par
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_weekday = <crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::handle_enum_parameter_twin_rust_async(api_weekday).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::handle_enum_parameter_twin_rust_async(api_weekday).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18003,7 +17973,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_parameter
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_weekday = <crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::handle_enum_parameter_twin_sync(api_weekday))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_sync::handle_enum_parameter_twin_sync(api_weekday))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__enumeration__handle_enum_struct_twin_normal_impl(
@@ -18033,7 +18003,7 @@ fn wire__crate__api__enumeration__handle_enum_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::enumeration::handle_enum_struct_twin_normal(api_val),
                     )?;
                     Ok(output_ok)
@@ -18053,7 +18023,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_enum_str
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_val = <crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::handle_enum_struct_twin_rust_async(api_val).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::handle_enum_struct_twin_rust_async(api_val).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18084,7 +18054,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_enum_struct_tw
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::enumeration_twin_sync::handle_enum_struct_twin_sync(
                         api_val,
                     ),
@@ -18120,7 +18090,7 @@ fn wire__crate__api__optional__handle_increment_boxed_optional_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::optional::handle_increment_boxed_optional_twin_normal(api_opt),
                     )?;
                     Ok(output_ok)
@@ -18140,7 +18110,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_increment_b
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opt = <Option<Box<f64>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_increment_boxed_optional_twin_rust_async(api_opt).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_rust_async::handle_increment_boxed_optional_twin_rust_async(api_opt).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18154,7 +18124,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_sync__handle_increment_boxed_o
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opt = <Option<Box<f64>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_sync::handle_increment_boxed_optional_twin_sync(api_opt))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_sync::handle_increment_boxed_optional_twin_sync(api_opt))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_type__handle_list_of_struct_twin_normal_impl(
@@ -18184,7 +18154,7 @@ fn wire__crate__api__misc_type__handle_list_of_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_type::handle_list_of_struct_twin_normal(api_l),
                     )?;
                     Ok(output_ok)
@@ -18204,7 +18174,7 @@ fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_list_of_st
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_l = <Vec<crate::auxiliary::sample_types::MySize>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_type_twin_rust_async::handle_list_of_struct_twin_rust_async(api_l).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_type_twin_rust_async::handle_list_of_struct_twin_rust_async(api_l).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18233,7 +18203,7 @@ fn wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_list_of_struct_t
                 <Vec<crate::auxiliary::sample_types::MySize>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::misc_type_twin_sync::handle_list_of_struct_twin_sync(
                         api_l,
                     ),
@@ -18381,7 +18351,7 @@ fn wire__crate__api__misc_example__handle_nested_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_example::handle_nested_struct_twin_normal(api_s),
                     )?;
                     Ok(output_ok)
@@ -18401,7 +18371,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_nested_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_s = <crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_nested_struct_twin_rust_async(api_s).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_nested_struct_twin_rust_async(api_s).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18415,7 +18385,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_nested_struct
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_s = <crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::handle_nested_struct_twin_sync(api_s))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_sync::handle_nested_struct_twin_sync(api_s))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__uuid_type__handle_nested_uuids_twin_normal_impl(
@@ -18510,7 +18480,7 @@ fn wire__crate__api__newtype_pattern__handle_newtype_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::newtype_pattern::handle_newtype_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -18530,7 +18500,7 @@ fn wire__crate__api__pseudo_manual__newtype_pattern_twin_rust_async__handle_newt
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::newtype_pattern_twin_rust_async::handle_newtype_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::newtype_pattern_twin_rust_async::handle_newtype_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18544,7 +18514,7 @@ fn wire__crate__api__pseudo_manual__newtype_pattern_twin_sync__handle_newtype_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::newtype_pattern_twin_sync::handle_newtype_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::newtype_pattern_twin_sync::handle_newtype_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__optional__handle_option_box_arguments_twin_normal_impl(
@@ -18582,7 +18552,7 @@ fn wire__crate__api__optional__handle_option_box_arguments_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::optional::handle_option_box_arguments_twin_normal(
                             api_i8box,
                             api_u8box,
@@ -18616,7 +18586,7 @@ let api_f64box = <Option<Box<f64>>>::sse_decode(&mut deserializer);
 let api_boolbox = <Option<Box<bool>>>::sse_decode(&mut deserializer);
 let api_structbox = <Option<Box<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_option_box_arguments_twin_rust_async(api_i8box, api_u8box, api_i32box, api_i64box, api_f64box, api_boolbox, api_structbox).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_rust_async::handle_option_box_arguments_twin_rust_async(api_i8box, api_u8box, api_i32box, api_i64box, api_f64box, api_boolbox, api_structbox).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18636,7 +18606,7 @@ let api_f64box = <Option<Box<f64>>>::sse_decode(&mut deserializer);
 let api_boolbox = <Option<Box<bool>>>::sse_decode(&mut deserializer);
 let api_structbox = <Option<Box<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_sync::handle_option_box_arguments_twin_sync(api_i8box, api_u8box, api_i32box, api_i64box, api_f64box, api_boolbox, api_structbox))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_sync::handle_option_box_arguments_twin_sync(api_i8box, api_u8box, api_i32box, api_i64box, api_f64box, api_boolbox, api_structbox))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__serde_json_type__handle_option_serde_json_value_twin_normal_impl(
@@ -18710,7 +18680,7 @@ fn wire__crate__api__optional__handle_optional_increment_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::optional::handle_optional_increment_twin_normal(api_opt),
                     )?;
                     Ok(output_ok)
@@ -18730,7 +18700,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_in
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opt = <Option<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_optional_increment_twin_rust_async(api_opt).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_rust_async::handle_optional_increment_twin_rust_async(api_opt).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18744,7 +18714,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_incremen
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opt = <Option<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_sync::handle_optional_increment_twin_sync(api_opt))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_sync::handle_optional_increment_twin_sync(api_opt))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__optional__handle_optional_return_twin_normal_impl(
@@ -18774,11 +18744,10 @@ fn wire__crate__api__optional__handle_optional_return_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::optional::handle_optional_return_twin_normal(
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::optional::handle_optional_return_twin_normal(
                             api_left, api_right,
-                        ),
-                    )?;
+                        ))?;
                     Ok(output_ok)
                 })())
             }
@@ -18797,7 +18766,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_re
             let api_left = <f64>::sse_decode(&mut deserializer);
 let api_right = <f64>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_optional_return_twin_rust_async(api_left, api_right).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_rust_async::handle_optional_return_twin_rust_async(api_left, api_right).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18826,7 +18795,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_return_t
             let api_right = <f64>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::optional_twin_sync::handle_optional_return_twin_sync(
                         api_left, api_right,
                     ),
@@ -18862,7 +18831,7 @@ fn wire__crate__api__optional__handle_optional_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::optional::handle_optional_struct_twin_normal(api_document),
                     )?;
                     Ok(output_ok)
@@ -18882,7 +18851,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_optional_st
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_document = <Option<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_optional_struct_twin_rust_async(api_document).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_rust_async::handle_optional_struct_twin_rust_async(api_document).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18910,7 +18879,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_sync__handle_optional_struct_t
             let api_document = <Option<String>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::optional_twin_sync::handle_optional_struct_twin_sync(
                         api_document,
                     ),
@@ -18946,7 +18915,7 @@ fn wire__crate__api__enumeration__handle_return_enum_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::enumeration::handle_return_enum_twin_normal(api_input),
                     )?;
                     Ok(output_ok)
@@ -18966,7 +18935,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_return_e
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_input = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::handle_return_enum_twin_rust_async(api_input).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::handle_return_enum_twin_rust_async(api_input).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -18994,7 +18963,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_return_enum_tw
             let api_input = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::enumeration_twin_sync::handle_return_enum_twin_sync(
                         api_input,
                     ),
@@ -19099,7 +19068,7 @@ fn wire__crate__api__stream__handle_stream_of_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream::handle_stream_of_struct_twin_normal(api__sink);
                     })?;
                     Ok(output_ok)
@@ -19119,7 +19088,7 @@ fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_of_str
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api__sink = <StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_of_struct_twin_rust_async(api__sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_of_struct_twin_rust_async(api__sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19154,7 +19123,7 @@ fn wire__crate__api__stream__handle_stream_sink_at_1_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream::handle_stream_sink_at_1_twin_normal(
                             api_key, api_max, api_sink,
                         );
@@ -19178,7 +19147,7 @@ fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_a
 let api_max = <u32>::sse_decode(&mut deserializer);
 let api_sink = <StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_1_twin_rust_async(api_key, api_max, api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_1_twin_rust_async(api_key, api_max, api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19213,7 +19182,7 @@ fn wire__crate__api__stream__handle_stream_sink_at_2_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream::handle_stream_sink_at_2_twin_normal(
                             api_key, api_sink, api_max,
                         );
@@ -19237,7 +19206,7 @@ fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_a
 let api_sink = <StreamSink<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);
 let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_2_twin_rust_async(api_key, api_sink, api_max).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_2_twin_rust_async(api_key, api_sink, api_max).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19272,7 +19241,7 @@ fn wire__crate__api__stream__handle_stream_sink_at_3_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream::handle_stream_sink_at_3_twin_normal(
                             api_sink, api_key, api_max,
                         );
@@ -19296,7 +19265,7 @@ fn wire__crate__api__pseudo_manual__stream_twin_rust_async__handle_stream_sink_a
 let api_key = <u32>::sse_decode(&mut deserializer);
 let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_3_twin_rust_async(api_sink, api_key, api_max).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_3_twin_rust_async(api_sink, api_key, api_max).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19326,7 +19295,7 @@ fn wire__crate__api__misc_type__handle_string_list_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_type::handle_string_list_twin_normal(api_names),
                     )?;
                     Ok(output_ok)
@@ -19346,7 +19315,7 @@ fn wire__crate__api__pseudo_manual__misc_type_twin_rust_async__handle_string_lis
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_names = <Vec<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_type_twin_rust_async::handle_string_list_twin_rust_async(api_names).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_type_twin_rust_async::handle_string_list_twin_rust_async(api_names).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19374,7 +19343,7 @@ fn wire__crate__api__pseudo_manual__misc_type_twin_sync__handle_string_list_twin
             let api_names = <Vec<String>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::misc_type_twin_sync::handle_string_list_twin_sync(
                         api_names,
                     ),
@@ -19410,9 +19379,8 @@ fn wire__crate__api__misc_example__handle_string_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_example::handle_string_twin_normal(api_s),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_example::handle_string_twin_normal(api_s))?;
                     Ok(output_ok)
                 })())
             }
@@ -19430,7 +19398,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_s = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_string_twin_rust_async(api_s).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_string_twin_rust_async(api_s).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19458,7 +19426,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_string_twin_s
             let api_s = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::misc_example_twin_sync::handle_string_twin_sync(
                         api_s,
                     ),
@@ -19496,7 +19464,7 @@ fn wire__crate__api__misc_example__handle_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_example::handle_struct_twin_normal(api_arg, api_boxed),
                     )?;
                     Ok(output_ok)
@@ -19517,7 +19485,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_struct_
             let api_arg = <crate::auxiliary::sample_types::MySize>::sse_decode(&mut deserializer);
 let api_boxed = <Box<crate::auxiliary::sample_types::MySize>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_struct_twin_rust_async(api_arg, api_boxed).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_struct_twin_rust_async(api_arg, api_boxed).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19547,7 +19515,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_struct_twin_s
                 <Box<crate::auxiliary::sample_types::MySize>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::misc_example_twin_sync::handle_struct_twin_sync(
                         api_arg, api_boxed,
                     ),
@@ -19584,12 +19552,11 @@ fn wire__crate__api__chrono_type__handle_timestamps_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::chrono_type::handle_timestamps_twin_normal(
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::chrono_type::handle_timestamps_twin_normal(
                             api_timestamps,
                             api_epoch,
-                        ),
-                    )?;
+                        ))?;
                     Ok(output_ok)
                 })())
             }
@@ -19608,7 +19575,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestam
             let api_timestamps = <Vec<chrono::NaiveDateTime>>::sse_decode(&mut deserializer);
 let api_epoch = <chrono::NaiveDateTime>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::handle_timestamps_twin_rust_async(api_timestamps, api_epoch).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::handle_timestamps_twin_rust_async(api_timestamps, api_epoch).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19637,7 +19604,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twi
             let api_epoch = <chrono::NaiveDateTime>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::chrono_type_twin_sync::handle_timestamps_twin_sync(
                         api_timestamps,
                         api_epoch,
@@ -19674,7 +19641,7 @@ fn wire__crate__api__type_alias__handle_type_alias_id_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::type_alias::handle_type_alias_id_twin_normal(api_input),
                     )?;
                     Ok(output_ok)
@@ -19694,7 +19661,7 @@ fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alia
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_input = <u64>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_rust_async::handle_type_alias_id_twin_rust_async(api_input).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::type_alias_twin_rust_async::handle_type_alias_id_twin_rust_async(api_input).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19722,7 +19689,7 @@ fn wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_t
             let api_input = <u64>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::type_alias_twin_sync::handle_type_alias_id_twin_sync(
                         api_input,
                     ),
@@ -19758,7 +19725,7 @@ fn wire__crate__api__type_alias__handle_type_alias_model_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::type_alias::handle_type_alias_model_twin_normal(api_input),
                     )?;
                     Ok(output_ok)
@@ -19778,7 +19745,7 @@ fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alia
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_input = <u64>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_rust_async::handle_type_alias_model_twin_rust_async(api_input).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::type_alias_twin_rust_async::handle_type_alias_model_twin_rust_async(api_input).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19792,7 +19759,7 @@ fn wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_mode
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_input = <u64>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_sync::handle_type_alias_model_twin_sync(api_input))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::type_alias_twin_sync::handle_type_alias_model_twin_sync(api_input))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal_impl(
@@ -19821,7 +19788,7 @@ fn wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::type_alias::handle_type_nest_alias_id_twin_normal(api_input),
                     )?;
                     Ok(output_ok)
@@ -19841,7 +19808,7 @@ fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_input = <u64>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_rust_async::handle_type_nest_alias_id_twin_rust_async(api_input).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::type_alias_twin_rust_async::handle_type_nest_alias_id_twin_rust_async(api_input).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -19855,7 +19822,7 @@ fn wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_input = <u64>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_sync::handle_type_nest_alias_id_twin_sync(api_input))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::type_alias_twin_sync::handle_type_nest_alias_id_twin_sync(api_input))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__uuid_type__handle_uuid_twin_normal_impl(
@@ -20054,7 +20021,7 @@ fn wire__crate__api__optional__handle_vec_of_opts_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::optional::handle_vec_of_opts_twin_normal(api_opt),
                     )?;
                     Ok(output_ok)
@@ -20074,7 +20041,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_rust_async__handle_vec_of_opts
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opt = <crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_vec_of_opts_twin_rust_async(api_opt).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_twin_rust_async::handle_vec_of_opts_twin_rust_async(api_opt).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20105,7 +20072,7 @@ fn wire__crate__api__pseudo_manual__optional_twin_sync__handle_vec_of_opts_twin_
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::optional_twin_sync::handle_vec_of_opts_twin_sync(
                         api_opt,
                     ),
@@ -20141,7 +20108,7 @@ fn wire__crate__api__primitive_list_misc__handle_vec_of_primitive_twin_normal_im
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::primitive_list_misc::handle_vec_of_primitive_twin_normal(api_n),
                     )?;
                     Ok(output_ok)
@@ -20161,7 +20128,7 @@ fn wire__crate__api__pseudo_manual__primitive_list_misc_twin_rust_async__handle_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_n = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::handle_vec_of_primitive_twin_rust_async(api_n).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::handle_vec_of_primitive_twin_rust_async(api_n).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20175,7 +20142,7 @@ fn wire__crate__api__pseudo_manual__primitive_list_misc_twin_sync__handle_vec_of
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_n = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_misc_twin_sync::handle_vec_of_primitive_twin_sync(api_n))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::primitive_list_misc_twin_sync::handle_vec_of_primitive_twin_sync(api_n))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__serde_json_type__handle_vec_serde_json_value_twin_normal_impl(
@@ -20270,9 +20237,8 @@ fn wire__crate__api__misc_example__handle_vec_u8_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_example::handle_vec_u8_twin_normal(api_v),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_example::handle_vec_u8_twin_normal(api_v))?;
                     Ok(output_ok)
                 })())
             }
@@ -20290,7 +20256,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_v = <Vec<u8>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_vec_u8_twin_rust_async(api_v).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_vec_u8_twin_rust_async(api_v).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20318,7 +20284,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_s
             let api_v = <Vec<u8>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::misc_example_twin_sync::handle_vec_u8_twin_sync(
                         api_v,
                     ),
@@ -20393,6 +20359,68 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take
                      let output_ok = crate::api::pseudo_manual::chrono_type_twin_sync::how_long_does_it_take_twin_sync(api_mine)?;   Ok(output_ok)
                 })()) })
 }
+fn wire__crate__api__type_alias__infallible_with_result_shadow_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "infallible_with_result_shadow_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Ok::<_, ()>(
+                        crate::api::type_alias::infallible_with_result_shadow_twin_normal(),
+                    )?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__type_alias_twin_rust_async__infallible_with_result_shadow_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "infallible_with_result_shadow_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::type_alias_twin_rust_async::infallible_with_result_shadow_twin_rust_async().await)?;   Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__type_alias_twin_sync__infallible_with_result_shadow_twin_sync_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "infallible_with_result_shadow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::type_alias_twin_sync::infallible_with_result_shadow_twin_sync())?;   Ok(output_ok)
+                })()) })
+}
 fn wire__crate__api__customization__init_app_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -20418,7 +20446,7 @@ fn wire__crate__api__customization__init_app_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::customization::init_app();
                     })?;
                     Ok(output_ok)
@@ -20454,9 +20482,9 @@ fn wire__crate__api__mirror__is_app_embedded_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::mirror::is_app_embedded_twin_normal(api_app_settings),
-                    )?;
+                    let output_ok = Ok::<_, ()>(crate::api::mirror::is_app_embedded_twin_normal(
+                        api_app_settings,
+                    ))?;
                     Ok(output_ok)
                 })())
             }
@@ -20474,7 +20502,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__is_app_embedded_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_app_settings = <crate::api::mirror::ApplicationSettings>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::is_app_embedded_twin_rust_async(api_app_settings).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::is_app_embedded_twin_rust_async(api_app_settings).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20503,7 +20531,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__is_app_embedded_twin_sync_
                 <crate::api::mirror::ApplicationSettings>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::mirror_twin_sync::is_app_embedded_twin_sync(
                         api_app_settings,
                     ),
@@ -20524,7 +20552,7 @@ fn wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_no
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal::create_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal::create_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -20539,7 +20567,7 @@ fn wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_no
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal::get_item_contents_twin_normal(&api_that))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_a::ItemContainerSolutionTwoTwinNormal::get_item_contents_twin_normal(&api_that))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -20570,7 +20598,7 @@ fn wire__crate__api__array__last_number_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::array::last_number_twin_normal(api_array))?;
+                        Ok::<_, ()>(crate::api::array::last_number_twin_normal(api_array))?;
                     Ok(output_ok)
                 })())
             }
@@ -20588,7 +20616,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__last_number_twin_rust
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_array = <[f64; 16]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::last_number_twin_rust_async(api_array).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::last_number_twin_rust_async(api_array).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20616,7 +20644,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__last_number_twin_sync_impl(
             let api_array = <[f64; 16]>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::last_number_twin_sync(api_array),
                 )?;
                 Ok(output_ok)
@@ -20651,7 +20679,7 @@ fn wire__crate__api__misc_example__list_of_primitive_enums_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_example::list_of_primitive_enums_twin_normal(api_weekdays),
                     )?;
                     Ok(output_ok)
@@ -20671,7 +20699,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primit
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_weekdays = <Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::list_of_primitive_enums_twin_rust_async(api_weekdays).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::list_of_primitive_enums_twin_rust_async(api_weekdays).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20685,7 +20713,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_en
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_weekdays = <Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::list_of_primitive_enums_twin_sync(api_weekdays))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_sync::list_of_primitive_enums_twin_sync(api_weekdays))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__dart_opaque__loop_back_array_get_twin_normal_impl(
@@ -20714,7 +20742,7 @@ fn wire__crate__api__dart_opaque__loop_back_array_get_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dart_opaque::loop_back_array_get_twin_normal(api_opaque);
                     })?;
                     Ok(output_ok)
@@ -20734,7 +20762,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <[flutter_rust_bridge::DartOpaque; 1]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_array_get_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_array_get_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20762,7 +20790,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_get_t
             let api_opaque = <[flutter_rust_bridge::DartOpaque; 1]>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::dart_opaque_twin_sync::loop_back_array_get_twin_sync(
                         api_opaque,
                     );
@@ -20798,7 +20826,7 @@ fn wire__crate__api__dart_opaque__loop_back_array_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::dart_opaque::loop_back_array_twin_normal(api_opaque),
                     )?;
                     Ok(output_ok)
@@ -20818,7 +20846,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_array_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_array_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20846,7 +20874,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_twin_
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::dart_opaque_twin_sync::loop_back_array_twin_sync(
                         api_opaque,
                     ),
@@ -20883,7 +20911,7 @@ fn wire__crate__api__dart_opaque__loop_back_option_get_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dart_opaque::loop_back_option_get_twin_normal(api_opaque);
                     })?;
                     Ok(output_ok)
@@ -20903,7 +20931,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_optio
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <Option<flutter_rust_bridge::DartOpaque>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_option_get_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_option_get_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20917,7 +20945,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_get_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <Option<flutter_rust_bridge::DartOpaque>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_sync::loop_back_option_get_twin_sync(api_opaque); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_sync::loop_back_option_get_twin_sync(api_opaque); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__dart_opaque__loop_back_option_twin_normal_impl(
@@ -20946,7 +20974,7 @@ fn wire__crate__api__dart_opaque__loop_back_option_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::dart_opaque::loop_back_option_twin_normal(api_opaque),
                     )?;
                     Ok(output_ok)
@@ -20966,7 +20994,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_optio
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_option_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_option_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -20994,7 +21022,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_twin
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::dart_opaque_twin_sync::loop_back_option_twin_sync(
                         api_opaque,
                     ),
@@ -21030,9 +21058,8 @@ fn wire__crate__api__dart_opaque__loop_back_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::dart_opaque::loop_back_twin_normal(api_opaque),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::dart_opaque::loop_back_twin_normal(api_opaque))?;
                     Ok(output_ok)
                 })())
             }
@@ -21050,7 +21077,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21078,7 +21105,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_twin_sync_i
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::dart_opaque_twin_sync::loop_back_twin_sync(
                         api_opaque,
                     ),
@@ -21114,7 +21141,7 @@ fn wire__crate__api__dart_opaque__loop_back_vec_get_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dart_opaque::loop_back_vec_get_twin_normal(api_opaque);
                     })?;
                     Ok(output_ok)
@@ -21134,7 +21161,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_g
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <Vec<flutter_rust_bridge::DartOpaque>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_vec_get_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_vec_get_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21162,7 +21189,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_get_twi
             let api_opaque = <Vec<flutter_rust_bridge::DartOpaque>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::dart_opaque_twin_sync::loop_back_vec_get_twin_sync(
                         api_opaque,
                     );
@@ -21198,7 +21225,7 @@ fn wire__crate__api__dart_opaque__loop_back_vec_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::dart_opaque::loop_back_vec_twin_normal(api_opaque),
                     )?;
                     Ok(output_ok)
@@ -21218,7 +21245,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_vec_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_vec_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21246,7 +21273,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_twin_sy
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::dart_opaque_twin_sync::loop_back_vec_twin_sync(
                         api_opaque,
                     ),
@@ -21281,7 +21308,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_arg_guard = Arc::new(api_arg_guard);
                 let api_arg_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_arg_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::lifetimeable::lt_compute_with_lifetime_function_twin_normal(&*api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::lifetimeable::lt_compute_with_lifetime_function_twin_normal(&*api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_arg_guard.clone()),
                     Box::new(api_arg.clone()),
                 )]));  Ok(output_ok)
@@ -21313,7 +21340,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
 let api_arg_guard = Arc::new(api_arg_guard);
                 let api_arg_guard_illegal_static_ref = unsafe {
             flutter_rust_bridge::for_generated::ouroboros_change_lifetime(&api_arg_guard)
-        }; let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::lifetimeable_twin_sync::lt_compute_with_lifetime_function_twin_sync(&*api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+        }; let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::lifetimeable_twin_sync::lt_compute_with_lifetime_function_twin_sync(&*api_arg_guard_illegal_static_ref))?; let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
                     Box::new(api_arg_guard.clone()),
                     Box::new(api_arg.clone()),
                 )]));  Ok(output_ok)
@@ -21349,7 +21376,7 @@ fn wire__crate__api__mirror__mirror_array_enum_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::mirror_array_enum_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -21369,7 +21396,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_array_enum_st
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<[crate::api::mirror::ApplicationMode; 2],flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_array_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_array_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21400,7 +21427,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_array_enum_stream_t
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::mirror_twin_sync::mirror_array_enum_stream_twin_sync(
                         api_sink,
                     );
@@ -21439,7 +21466,7 @@ fn wire__crate__api__mirror__mirror_enum_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::mirror_enum_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -21459,7 +21486,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_enum_stream_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<crate::api::mirror::ApplicationMode,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21490,7 +21517,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_enum_stream_twin_sy
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::mirror_twin_sync::mirror_enum_stream_twin_sync(
                         api_sink,
                     );
@@ -21529,7 +21556,7 @@ fn wire__crate__api__mirror__mirror_map_enum_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::mirror_map_enum_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -21549,7 +21576,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_map_enum_stre
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<std::collections::HashMap<u8, crate::api::mirror::ApplicationMode>,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_map_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_map_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21580,7 +21607,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_map_enum_stream_twi
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::mirror_twin_sync::mirror_map_enum_stream_twin_sync(
                         api_sink,
                     );
@@ -21619,7 +21646,7 @@ fn wire__crate__api__mirror__mirror_option_enum_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::mirror_option_enum_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -21639,7 +21666,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_option_enum_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<Option<crate::api::mirror::ApplicationMode>,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_option_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_option_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21653,7 +21680,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_option_enum_stream_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<Option<crate::api::mirror::ApplicationMode>,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_sync::mirror_option_enum_stream_twin_sync(api_sink); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_sync::mirror_option_enum_stream_twin_sync(api_sink); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__mirror__mirror_set_enum_stream_twin_normal_impl(
@@ -21685,7 +21712,7 @@ fn wire__crate__api__mirror__mirror_set_enum_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::mirror_set_enum_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -21705,7 +21732,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_set_enum_stre
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<std::collections::HashSet<crate::api::mirror::ApplicationMode>,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_set_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_set_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21736,7 +21763,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_set_enum_stream_twi
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::mirror_twin_sync::mirror_set_enum_stream_twin_sync(
                         api_sink,
                     );
@@ -21775,7 +21802,7 @@ fn wire__crate__api__mirror__mirror_struct_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::mirror_struct_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -21795,7 +21822,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_struct_stream
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_struct_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_struct_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21826,7 +21853,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_struct_stream_twin_
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::mirror_twin_sync::mirror_struct_stream_twin_sync(
                         api_sink,
                     );
@@ -21868,7 +21895,7 @@ fn wire__crate__api__mirror__mirror_tuple_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::mirror_tuple_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -21888,7 +21915,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_tuple_stream_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<(crate::api::mirror::ApplicationSettings,crate::api::mirror::RawStringEnumMirrored,),flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_tuple_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_tuple_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -21922,7 +21949,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_tuple_stream_twin_s
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::mirror_twin_sync::mirror_tuple_stream_twin_sync(
                         api_sink,
                     );
@@ -21961,7 +21988,7 @@ fn wire__crate__api__mirror__mirror_vec_enum_stream_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::mirror::mirror_vec_enum_stream_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -21981,7 +22008,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_vec_enum_stre
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<Vec<crate::api::mirror::ApplicationMode>,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_vec_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_rust_async::mirror_vec_enum_stream_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22012,7 +22039,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_vec_enum_stream_twi
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::mirror_twin_sync::mirror_vec_enum_stream_twin_sync(
                         api_sink,
                     );
@@ -22049,7 +22076,7 @@ fn wire__crate__api__enumeration__multiply_by_ten_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::enumeration::multiply_by_ten_twin_normal(api_measure),
                     )?;
                     Ok(output_ok)
@@ -22069,7 +22096,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by_ten
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_measure = <crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::multiply_by_ten_twin_rust_async(api_measure).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::multiply_by_ten_twin_rust_async(api_measure).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22100,7 +22127,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::enumeration_twin_sync::multiply_by_ten_twin_sync(
                         api_measure,
                     ),
@@ -22138,9 +22165,9 @@ fn wire__crate__api__method__my_callable_twin_normal_call_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::method::MyCallableTwinNormal::call(&api_that, api_two),
-                    )?;
+                    let output_ok = Ok::<_, ()>(crate::api::method::MyCallableTwinNormal::call(
+                        &api_that, api_two,
+                    ))?;
                     Ok(output_ok)
                 })())
             }
@@ -22159,7 +22186,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__my_callable_twin_rus
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::MyCallableTwinRustAsync>::sse_decode(&mut deserializer);
 let api_two = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::MyCallableTwinRustAsync::call(&api_that, api_two).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::MyCallableTwinRustAsync::call(&api_that, api_two).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22191,7 +22218,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__my_callable_twin_sync_call
             let api_two = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::method_twin_sync::MyCallableTwinSync::call(
                         &api_that, api_two,
                     ),
@@ -22212,7 +22239,7 @@ fn wire__crate__api__misc_no_twin_example_a__my_enum_with_json_serializable_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::misc_no_twin_example_a::MyEnumWithJsonSerializableTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::MyEnumWithJsonSerializableTwinNormal::f(&api_that); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::MyEnumWithJsonSerializableTwinNormal::f(&api_that); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -22275,7 +22302,7 @@ fn wire__crate__api__customization__my_init_two_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::customization::my_init_two();
                     })?;
                     Ok(output_ok)
@@ -22295,7 +22322,7 @@ fn wire__crate__api__misc_no_twin_example_a__my_struct_with_json_serializable_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::misc_no_twin_example_a::MyStructWithJsonSerializableTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::MyStructWithJsonSerializableTwinNormal::f(&api_that); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::MyStructWithJsonSerializableTwinNormal::f(&api_that); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -22327,7 +22354,7 @@ fn wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::misc_no_twin_example_a::MyStructWithSync::sync(&api_that);
                     })?;
                     Ok(output_ok)
@@ -22363,7 +22390,7 @@ fn wire__crate__api__chrono_type__naivedate_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::chrono_type::naivedate_twin_normal(api_d))?;
+                        Ok::<_, ()>(crate::api::chrono_type::naivedate_twin_normal(api_d))?;
                     Ok(output_ok)
                 })())
             }
@@ -22381,7 +22408,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedate_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_d = <chrono::NaiveDate>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::naivedate_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::naivedate_twin_rust_async(api_d).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22409,7 +22436,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedate_twin_sync_i
             let api_d = <chrono::NaiveDate>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::chrono_type_twin_sync::naivedate_twin_sync(api_d),
                 )?;
                 Ok(output_ok)
@@ -22443,9 +22470,8 @@ fn wire__crate__api__chrono_type__naivedatetime_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::chrono_type::naivedatetime_twin_normal(api_d),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::chrono_type::naivedatetime_twin_normal(api_d))?;
                     Ok(output_ok)
                 })())
             }
@@ -22463,7 +22489,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_d = <chrono::NaiveDateTime>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::naivedatetime_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::naivedatetime_twin_rust_async(api_d).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22491,7 +22517,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sy
             let api_d = <chrono::NaiveDateTime>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::chrono_type_twin_sync::naivedatetime_twin_sync(
                         api_d,
                     ),
@@ -22527,8 +22553,7 @@ fn wire__crate__api__array__nested_id_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::array::nested_id_twin_normal(api_id))?;
+                    let output_ok = Ok::<_, ()>(crate::api::array::nested_id_twin_normal(api_id))?;
                     Ok(output_ok)
                 })())
             }
@@ -22546,7 +22571,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_rust_a
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_id = <[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::nested_id_twin_rust_async(api_id).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::nested_id_twin_rust_async(api_id).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22577,7 +22602,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync_impl(
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::nested_id_twin_sync(api_id),
                 )?;
                 Ok(output_ok)
@@ -22611,8 +22636,7 @@ fn wire__crate__api__array__new_msgid_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::array::new_msgid_twin_normal(api_id))?;
+                    let output_ok = Ok::<_, ()>(crate::api::array::new_msgid_twin_normal(api_id))?;
                     Ok(output_ok)
                 })())
             }
@@ -22630,7 +22654,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_rust_a
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_id = <[u8; 32]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::new_msgid_twin_rust_async(api_id).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::new_msgid_twin_rust_async(api_id).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22658,7 +22682,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync_impl(
             let api_id = <[u8; 32]>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::new_msgid_twin_sync(api_id),
                 )?;
                 Ok(output_ok)
@@ -22693,9 +22717,8 @@ fn wire__crate__api__attribute__next_user_id_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::attribute::next_user_id_twin_normal(api_user_id),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::attribute::next_user_id_twin_normal(api_user_id))?;
                     Ok(output_ok)
                 })())
             }
@@ -22713,7 +22736,7 @@ fn wire__crate__api__pseudo_manual__attribute_twin_rust_async__next_user_id_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_user_id = <crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::attribute_twin_rust_async::next_user_id_twin_rust_async(api_user_id).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::attribute_twin_rust_async::next_user_id_twin_rust_async(api_user_id).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22744,7 +22767,7 @@ fn wire__crate__api__pseudo_manual__attribute_twin_sync__next_user_id_twin_sync_
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::attribute_twin_sync::next_user_id_twin_sync(
                         api_user_id,
                     ),
@@ -22780,7 +22803,7 @@ fn wire__crate__api__rust_opaque__opaque_array_run_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_opaque::opaque_array_run_twin_normal(api_data);
                     })?;
                     Ok(output_ok)
@@ -22800,7 +22823,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_ru
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_data = <[RustOpaqueMoi<HideDataTwinRustAsync>; 2]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_array_run_twin_rust_async(api_data).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_array_run_twin_rust_async(api_data).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22828,7 +22851,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin
             let api_data = <[RustOpaqueMoi<HideDataTwinSync>; 2]>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::rust_opaque_twin_sync::opaque_array_run_twin_sync(
                         api_data,
                     );
@@ -22864,7 +22887,7 @@ fn wire__crate__api__rust_opaque__opaque_array_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::rust_opaque::opaque_array_twin_normal())?;
+                        Ok::<_, ()>(crate::api::rust_opaque::opaque_array_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -22882,7 +22905,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_array_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_array_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22909,7 +22932,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_twin_syn
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::rust_opaque_twin_sync::opaque_array_twin_sync(),
                 )?;
                 Ok(output_ok)
@@ -22943,7 +22966,7 @@ fn wire__crate__api__rust_opaque__opaque_vec_run_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_opaque::opaque_vec_run_twin_normal(api_data);
                     })?;
                     Ok(output_ok)
@@ -22963,7 +22986,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_data = <Vec<RustOpaqueMoi<HideDataTwinRustAsync>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_vec_run_twin_rust_async(api_data).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_vec_run_twin_rust_async(api_data).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -22991,7 +23014,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_s
             let api_data = <Vec<RustOpaqueMoi<HideDataTwinSync>>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::rust_opaque_twin_sync::opaque_vec_run_twin_sync(
                         api_data,
                     );
@@ -23026,8 +23049,7 @@ fn wire__crate__api__rust_opaque__opaque_vec_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::rust_opaque::opaque_vec_twin_normal())?;
+                    let output_ok = Ok::<_, ()>(crate::api::rust_opaque::opaque_vec_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -23045,7 +23067,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_vec_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_vec_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23072,7 +23094,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_twin_sync_
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::rust_opaque_twin_sync::opaque_vec_twin_sync(),
                 )?;
                 Ok(output_ok)
@@ -23106,7 +23128,7 @@ fn wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::chrono_type::optional_empty_datetime_utc_twin_normal(api_d),
                     )?;
                     Ok(output_ok)
@@ -23126,7 +23148,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_empty_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_d = <Option<chrono::DateTime::<chrono::Utc>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::optional_empty_datetime_utc_twin_rust_async(api_d).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::optional_empty_datetime_utc_twin_rust_async(api_d).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23140,7 +23162,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_dateti
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_d = <Option<chrono::DateTime::<chrono::Utc>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_sync::optional_empty_datetime_utc_twin_sync(api_d))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_sync::optional_empty_datetime_utc_twin_sync(api_d))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__dart_opaque__panic_unwrap_dart_opaque_twin_normal_impl(
@@ -23169,7 +23191,7 @@ fn wire__crate__api__dart_opaque__panic_unwrap_dart_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dart_opaque::panic_unwrap_dart_opaque_twin_normal(api_opaque);
                     })?;
                     Ok(output_ok)
@@ -23189,7 +23211,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__panic_unwrap_da
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::panic_unwrap_dart_opaque_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::panic_unwrap_dart_opaque_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23203,7 +23225,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__panic_unwrap_dart_opa
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_sync::panic_unwrap_dart_opaque_twin_sync(api_opaque); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_sync::panic_unwrap_dart_opaque_twin_sync(api_opaque); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__exception__panic_with_custom_result_twin_normal_impl(
@@ -23296,7 +23318,7 @@ fn wire__crate__api__misc_example__positional_arguments_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_example::positional_arguments_twin_normal(api_a, api_b),
                     )?;
                     Ok(output_ok)
@@ -23317,7 +23339,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arg
             let api_a = <i32>::sse_decode(&mut deserializer);
 let api_b = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::positional_arguments_twin_rust_async(api_a, api_b).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::positional_arguments_twin_rust_async(api_a, api_b).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23332,7 +23354,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments
             let api_a = <i32>::sse_decode(&mut deserializer);
 let api_b = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::positional_arguments_twin_sync(api_a, api_b))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_sync::positional_arguments_twin_sync(api_a, api_b))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_normal_impl(
@@ -23364,7 +23386,7 @@ fn wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_norm
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::optional_primitive_misc::primitive_optional_types_twin_normal(
                             api_my_i32,
                             api_my_i64,
@@ -23392,7 +23414,7 @@ let api_my_i64 = <Option<i64>>::sse_decode(&mut deserializer);
 let api_my_f64 = <Option<f64>>::sse_decode(&mut deserializer);
 let api_my_bool = <Option<bool>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_misc_twin_rust_async::primitive_optional_types_twin_rust_async(api_my_i32, api_my_i64, api_my_f64, api_my_bool).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_primitive_misc_twin_rust_async::primitive_optional_types_twin_rust_async(api_my_i32, api_my_i64, api_my_f64, api_my_bool).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23409,7 +23431,7 @@ let api_my_i64 = <Option<i64>>::sse_decode(&mut deserializer);
 let api_my_f64 = <Option<f64>>::sse_decode(&mut deserializer);
 let api_my_bool = <Option<bool>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_misc_twin_sync::primitive_optional_types_twin_sync(api_my_i32, api_my_i64, api_my_f64, api_my_bool))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::optional_primitive_misc_twin_sync::primitive_optional_types_twin_sync(api_my_i32, api_my_i64, api_my_f64, api_my_bool))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__primitive_misc__primitive_types_twin_normal_impl(
@@ -23441,14 +23463,13 @@ fn wire__crate__api__primitive_misc__primitive_types_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::primitive_misc::primitive_types_twin_normal(
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::primitive_misc::primitive_types_twin_normal(
                             api_my_i32,
                             api_my_i64,
                             api_my_f64,
                             api_my_bool,
-                        ),
-                    )?;
+                        ))?;
                     Ok(output_ok)
                 })())
             }
@@ -23469,7 +23490,7 @@ let api_my_i64 = <i64>::sse_decode(&mut deserializer);
 let api_my_f64 = <f64>::sse_decode(&mut deserializer);
 let api_my_bool = <bool>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async::primitive_types_twin_rust_async(api_my_i32, api_my_i64, api_my_f64, api_my_bool).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::primitive_misc_twin_rust_async::primitive_types_twin_rust_async(api_my_i32, api_my_i64, api_my_f64, api_my_bool).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23500,7 +23521,7 @@ fn wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_tw
             let api_my_bool = <bool>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::primitive_misc_twin_sync::primitive_types_twin_sync(
                         api_my_i32,
                         api_my_i64,
@@ -23539,7 +23560,7 @@ fn wire__crate__api__primitive_misc__primitive_u32_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::primitive_misc::primitive_u32_twin_normal(api_my_u32),
                     )?;
                     Ok(output_ok)
@@ -23559,7 +23580,7 @@ fn wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u3
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_my_u32 = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async::primitive_u32_twin_rust_async(api_my_u32).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::primitive_misc_twin_rust_async::primitive_u32_twin_rust_async(api_my_u32).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23587,7 +23608,7 @@ fn wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin
             let api_my_u32 = <u32>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::primitive_misc_twin_sync::primitive_u32_twin_sync(
                         api_my_u32,
                     ),
@@ -23623,9 +23644,8 @@ fn wire__crate__api__enumeration__print_note_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::enumeration::print_note_twin_normal(api_note),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::enumeration::print_note_twin_normal(api_note))?;
                     Ok(output_ok)
                 })())
             }
@@ -23643,7 +23663,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_note = <crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::print_note_twin_rust_async(api_note).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::enumeration_twin_rust_async::print_note_twin_rust_async(api_note).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23674,7 +23694,7 @@ fn wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync_
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::enumeration_twin_sync::print_note_twin_sync(
                         api_note,
                     ),
@@ -23709,7 +23729,7 @@ fn wire__crate__api__frb_logging__print_to_console_smoke_test_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::frb_logging::print_to_console_smoke_test();
                     })?;
                     Ok(output_ok)
@@ -23742,7 +23762,7 @@ fn wire__crate__api__init_dart_code__record_init_dart_code_message_impl(
             let api_message = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::init_dart_code::record_init_dart_code_message(api_message);
                 })?;
                 Ok(output_ok)
@@ -23833,9 +23853,9 @@ fn wire__crate__api__mirror__repeat_number_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::mirror::repeat_number_twin_normal(api_num, api_times),
-                    )?;
+                    let output_ok = Ok::<_, ()>(crate::api::mirror::repeat_number_twin_normal(
+                        api_num, api_times,
+                    ))?;
                     Ok(output_ok)
                 })())
             }
@@ -23854,7 +23874,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_twin_r
             let api_num = <i32>::sse_decode(&mut deserializer);
 let api_times = <usize>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::repeat_number_twin_rust_async(api_num, api_times).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::repeat_number_twin_rust_async(api_num, api_times).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23883,7 +23903,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync_im
             let api_times = <usize>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::mirror_twin_sync::repeat_number_twin_sync(
                         api_num, api_times,
                     ),
@@ -23920,9 +23940,9 @@ fn wire__crate__api__mirror__repeat_sequence_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::mirror::repeat_sequence_twin_normal(api_seq, api_times),
-                    )?;
+                    let output_ok = Ok::<_, ()>(crate::api::mirror::repeat_sequence_twin_normal(
+                        api_seq, api_times,
+                    ))?;
                     Ok(output_ok)
                 })())
             }
@@ -23941,7 +23961,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_twin
             let api_seq = <i32>::sse_decode(&mut deserializer);
 let api_times = <usize>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::repeat_sequence_twin_rust_async(api_seq, api_times).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::repeat_sequence_twin_rust_async(api_seq, api_times).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -23970,7 +23990,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync_
             let api_times = <usize>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::mirror_twin_sync::repeat_sequence_twin_sync(
                         api_seq, api_times,
                     ),
@@ -24005,7 +24025,7 @@ fn wire__crate__api__init_dart_code__request_init_dart_code_message_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::init_dart_code::request_init_dart_code_message();
                     })?;
                     Ok(output_ok)
@@ -24040,9 +24060,8 @@ fn wire__crate__api__array__return_boxed_feed_id_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::array::return_boxed_feed_id_twin_normal(api_id),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::array::return_boxed_feed_id_twin_normal(api_id))?;
                     Ok(output_ok)
                 })())
             }
@@ -24060,7 +24079,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_feed_id_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_id = <[u8; 8]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::return_boxed_feed_id_twin_rust_async(api_id).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::return_boxed_feed_id_twin_rust_async(api_id).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -24088,7 +24107,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_feed_id_twin_s
             let api_id = <[u8; 8]>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::return_boxed_feed_id_twin_sync(
                         api_id,
                     ),
@@ -24124,7 +24143,7 @@ fn wire__crate__api__array__return_boxed_raw_feed_id_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::array::return_boxed_raw_feed_id_twin_normal(api_id),
                     )?;
                     Ok(output_ok)
@@ -24144,7 +24163,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_feed
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_id = <crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::return_boxed_raw_feed_id_twin_rust_async(api_id).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::return_boxed_raw_feed_id_twin_rust_async(api_id).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -24174,7 +24193,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_tw
             );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::return_boxed_raw_feed_id_twin_sync(
                         api_id,
                     ),
@@ -24677,9 +24696,8 @@ fn wire__crate__api__tuple__return_optional_f_32_tuple_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::tuple::return_optional_f_32_tuple_twin_normal(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::tuple::return_optional_f_32_tuple_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -24697,7 +24715,7 @@ fn wire__crate__api__pseudo_manual__tuple_twin_rust_async__return_optional_f_32_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::tuple_twin_rust_async::return_optional_f_32_tuple_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::tuple_twin_rust_async::return_optional_f_32_tuple_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -24711,7 +24729,7 @@ fn wire__crate__api__pseudo_manual__tuple_twin_sync__return_optional_f_32_tuple_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::tuple_twin_sync::return_optional_f_32_tuple_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::tuple_twin_sync::return_optional_f_32_tuple_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_opaque__run_enum_opaque_twin_normal_impl(
@@ -24741,7 +24759,7 @@ fn wire__crate__api__rust_opaque__run_enum_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_opaque::run_enum_opaque_twin_normal(api_opaque),
                     )?;
                     Ok(output_ok)
@@ -24761,7 +24779,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_enum_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_enum_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -24792,7 +24810,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::rust_opaque_twin_sync::run_enum_opaque_twin_sync(
                         api_opaque,
                     ),
@@ -24829,7 +24847,7 @@ fn wire__crate__api__rust_opaque__run_nested_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_opaque::run_nested_opaque_twin_normal(api_opaque);
                     })?;
                     Ok(output_ok)
@@ -24849,7 +24867,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaq
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_nested_opaque_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_nested_opaque_twin_rust_async(api_opaque).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -24863,7 +24881,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_opaque_twin_sync::run_nested_opaque_twin_sync(api_opaque); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_sync::run_nested_opaque_twin_sync(api_opaque); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_opaque__run_non_clone_twin_normal_impl(
@@ -24892,7 +24910,7 @@ fn wire__crate__api__rust_opaque__run_non_clone_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_opaque::run_non_clone_twin_normal(api_clone),
                     )?;
                     Ok(output_ok)
@@ -24912,7 +24930,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clone_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_clone = <RustOpaqueMoi<NonCloneDataTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_non_clone_twin_rust_async(api_clone).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_non_clone_twin_rust_async(api_clone).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -24940,7 +24958,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sy
             let api_clone = <RustOpaqueMoi<NonCloneDataTwinSync>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::rust_opaque_twin_sync::run_non_clone_twin_sync(
                         api_clone,
                     ),
@@ -24976,9 +24994,8 @@ fn wire__crate__api__rust_opaque__run_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::rust_opaque::run_opaque_twin_normal(api_opaque),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::rust_opaque::run_opaque_twin_normal(api_opaque))?;
                     Ok(output_ok)
                 })())
             }
@@ -24996,7 +25013,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <RustOpaqueMoi<HideDataTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_opaque_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25024,7 +25041,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_twin_sync_
             let api_opaque = <RustOpaqueMoi<HideDataTwinSync>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::rust_opaque_twin_sync::run_opaque_twin_sync(
                         api_opaque,
                     ),
@@ -25060,7 +25077,7 @@ fn wire__crate__api__rust_opaque__run_opaque_with_delay_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_opaque::run_opaque_with_delay_twin_normal(api_opaque),
                     )?;
                     Ok(output_ok)
@@ -25080,7 +25097,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_with
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <RustOpaqueMoi<HideDataTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_opaque_with_delay_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_opaque_with_delay_twin_rust_async(api_opaque).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25094,7 +25111,7 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_with_delay
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_opaque = <RustOpaqueMoi<HideDataTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync::run_opaque_with_delay_twin_sync(api_opaque))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sync::run_opaque_with_delay_twin_sync(api_opaque))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal_impl(
@@ -25140,7 +25157,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal_i
                         }
                     }
                     let api_arg_guard = api_arg_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_arg_borrow_twin_normal(
                             &*api_arg_guard,
                             api_expect,
@@ -25173,7 +25190,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_borrow_twin_rust_async(&*api_arg_guard, api_expect).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_borrow_twin_rust_async(&*api_arg_guard, api_expect).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25197,7 +25214,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_borrow_twin_sync(&*api_arg_guard, api_expect); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_borrow_twin_sync(&*api_arg_guard, api_expect); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_normal_impl(
@@ -25244,7 +25261,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_norm
                         }
                     }
                     let mut api_arg_guard = api_arg_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_arg_mut_borrow_twin_normal(
                             &mut *api_arg_guard,
                             api_expect,
@@ -25279,7 +25296,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_mut_borrow_twin_rust_async(&mut *api_arg_guard, api_expect, api_adder).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_mut_borrow_twin_rust_async(&mut *api_arg_guard, api_expect, api_adder).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25304,7 +25321,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_mut_borrow_twin_sync(&mut *api_arg_guard, api_expect, api_adder); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_mut_borrow_twin_sync(&mut *api_arg_guard, api_expect, api_adder); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(
@@ -25318,7 +25335,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_own_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <NonCloneSimpleTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_arg_own_and_return_own_twin_normal(api_arg))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::rust_auto_opaque_arg_own_and_return_own_twin_normal(api_arg))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -25333,7 +25350,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <NonCloneSimpleTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_own_and_return_own_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_own_and_return_own_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25347,7 +25364,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <NonCloneSimpleTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_own_and_return_own_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_own_and_return_own_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_twin_normal_impl(
@@ -25377,7 +25394,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_twin_normal_impl
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_arg_own_twin_normal(
                             api_arg, api_expect,
                         );
@@ -25400,7 +25417,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let api_arg = <NonCloneSimpleTwinRustAsync>::sse_decode(&mut deserializer);
 let api_expect = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_own_twin_rust_async(api_arg, api_expect).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_own_twin_rust_async(api_arg, api_expect).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25415,7 +25432,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let api_arg = <NonCloneSimpleTwinSync>::sse_decode(&mut deserializer);
 let api_expect = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_own_twin_sync(api_arg, api_expect); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_own_twin_sync(api_arg, api_expect); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal_impl(
@@ -25445,7 +25462,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_arg_vec_own_twin_normal(
                             api_arg, api_expect,
                         );
@@ -25468,7 +25485,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let api_arg = <Vec<NonCloneSimpleTwinRustAsync>>::sse_decode(&mut deserializer);
 let api_expect = <Vec<i32>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_vec_own_twin_rust_async(api_arg, api_expect).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_arg_vec_own_twin_rust_async(api_arg, api_expect).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25483,7 +25500,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let api_arg = <Vec<NonCloneSimpleTwinSync>>::sse_decode(&mut deserializer);
 let api_expect = <Vec<i32>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_vec_own_twin_sync(api_arg, api_expect); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_vec_own_twin_sync(api_arg, api_expect); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_borrow_twin_normal_impl(
@@ -25510,7 +25527,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_a_guard = api_a_guard.unwrap();
 let api_b_guard = api_b_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_borrow_and_borrow_twin_normal(&*api_a_guard, &*api_b_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::rust_auto_opaque_borrow_and_borrow_twin_normal(&*api_a_guard, &*api_b_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -25538,7 +25555,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_a_guard = api_a_guard.unwrap();
 let api_b_guard = api_b_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_borrow_and_borrow_twin_rust_async(&*api_a_guard, &*api_b_guard).await)?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_borrow_and_borrow_twin_rust_async(&*api_a_guard, &*api_b_guard).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25565,7 +25582,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_a_guard = api_a_guard.unwrap();
 let api_b_guard = api_b_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_borrow_and_borrow_twin_sync(&*api_a_guard, &*api_b_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_borrow_and_borrow_twin_sync(&*api_a_guard, &*api_b_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_mut_borrow_twin_normal_impl(
@@ -25592,7 +25609,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_borrow_guard = api_borrow_guard.unwrap();
 let mut api_mut_borrow_guard = api_mut_borrow_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_borrow_and_mut_borrow_twin_normal(&*api_borrow_guard, &mut *api_mut_borrow_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::rust_auto_opaque_borrow_and_mut_borrow_twin_normal(&*api_borrow_guard, &mut *api_mut_borrow_guard))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -25620,7 +25637,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_borrow_guard = api_borrow_guard.unwrap();
 let mut api_mut_borrow_guard = api_mut_borrow_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(&*api_borrow_guard, &mut *api_mut_borrow_guard).await)?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(&*api_borrow_guard, &mut *api_mut_borrow_guard).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25647,7 +25664,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_borrow_guard = api_borrow_guard.unwrap();
 let mut api_mut_borrow_guard = api_mut_borrow_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_borrow_and_mut_borrow_twin_sync(&*api_borrow_guard, &mut *api_mut_borrow_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_borrow_and_mut_borrow_twin_sync(&*api_borrow_guard, &mut *api_mut_borrow_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_arg_twin_normal_impl(
@@ -25677,7 +25694,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_arg_twin_normal
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_callable_arg_twin_normal(
                             api_arg,
                         );
@@ -25699,7 +25716,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Box < dyn Fn (String) -> String + Send + Sync >>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_callable_arg_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_callable_arg_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25713,7 +25730,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Box < dyn Fn (String) -> String + Send + Sync >>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_callable_arg_twin_sync(api_arg); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_callable_arg_twin_sync(api_arg); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_return_twin_normal_impl(
@@ -25741,7 +25758,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_return_twin_nor
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_auto_opaque::rust_auto_opaque_callable_return_twin_normal(
                         ),
                     )?;
@@ -25762,7 +25779,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_callable_return_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_callable_return_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25776,7 +25793,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_callable_return_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_callable_return_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_dummy_twin_normal_impl(
@@ -25809,7 +25826,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_dummy_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_dummy_twin_normal(
                             api_a, api_b,
                         );
@@ -25832,7 +25849,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let api_a = <StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync>::sse_decode(&mut deserializer);
 let api_b = <EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_dummy_twin_rust_async(api_a, api_b).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_dummy_twin_rust_async(api_a, api_b).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25847,7 +25864,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let api_a = <StructWithGoodAndOpaqueFieldWithoutOptionTwinSync>::sse_decode(&mut deserializer);
 let api_b = <EnumWithGoodAndOpaqueWithoutOptionTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_dummy_twin_sync(api_a, api_b); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_dummy_twin_sync(api_a, api_b); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_arg_borrow_twin_normal_impl(
@@ -25894,7 +25911,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_arg_borrow_twin_nor
                         }
                     }
                     let api_arg_guard = api_arg_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_enum_arg_borrow_twin_normal(
                             &*api_arg_guard,
                         );
@@ -25925,7 +25942,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_arg_borrow_twin_rust_async(&*api_arg_guard).await; })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_arg_borrow_twin_rust_async(&*api_arg_guard).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -25948,7 +25965,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_arg_borrow_twin_sync(&*api_arg_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_arg_borrow_twin_sync(&*api_arg_guard); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_return_own_twin_normal_impl(
@@ -25976,7 +25993,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_return_own_twin_nor
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_auto_opaque::rust_auto_opaque_enum_return_own_twin_normal(
                         ),
                     )?;
@@ -25997,7 +26014,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_return_own_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_return_own_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26011,7 +26028,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_return_own_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_return_own_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal_impl(
@@ -26025,7 +26042,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaqu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::rust_auto_opaque::EnumWithGoodAndOpaqueTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(api_arg); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal(api_arg); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -26040,7 +26057,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::EnumWithGoodAndOpaqueTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26054,7 +26071,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::rust_auto_opaque_twin_sync::EnumWithGoodAndOpaqueTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(api_arg); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync(api_arg); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal_impl(
@@ -26068,7 +26085,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaqu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -26083,7 +26100,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26097,7 +26114,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal_impl(
@@ -26111,7 +26128,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaqu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -26126,7 +26143,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26140,7 +26157,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_arg_twin_normal_impl(
@@ -26171,7 +26188,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_arg_twin_normal
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_explicit_arg_twin_normal(
                             api_arg, api_expect,
                         );
@@ -26194,7 +26211,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let api_arg = <RustAutoOpaqueMoi<NonCloneSimpleTwinRustAsync>>::sse_decode(&mut deserializer);
 let api_expect = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_explicit_arg_twin_rust_async(api_arg, api_expect).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_explicit_arg_twin_rust_async(api_arg, api_expect).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26209,7 +26226,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let api_arg = <RustAutoOpaqueMoi<NonCloneSimpleTwinSync>>::sse_decode(&mut deserializer);
 let api_expect = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_explicit_arg_twin_sync(api_arg, api_expect); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_explicit_arg_twin_sync(api_arg, api_expect); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal_impl(
@@ -26223,7 +26240,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_explicit_return_struct_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::rust_auto_opaque_explicit_return_struct_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -26238,7 +26255,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_explicit_return_struct_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_explicit_return_struct_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26252,7 +26269,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_explicit_return_struct_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_explicit_return_struct_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal_impl(
@@ -26281,7 +26298,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_nor
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_auto_opaque::rust_auto_opaque_explicit_return_twin_normal(
                             api_initial,
                         ),
@@ -26303,7 +26320,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_initial = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_explicit_return_twin_rust_async(api_initial).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_explicit_return_twin_rust_async(api_initial).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26317,7 +26334,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_initial = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_explicit_return_twin_sync(api_initial))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_explicit_return_twin_sync(api_initial))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal_impl(
@@ -26331,7 +26348,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_nor
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::rust_auto_opaque::StructWithExplicitAutoOpaqueFieldTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::rust_auto_opaque_explicit_struct_twin_normal(api_arg); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::rust_auto_opaque_explicit_struct_twin_normal(api_arg); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -26346,7 +26363,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithExplicitAutoOpaqueFieldTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_explicit_struct_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_explicit_struct_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26360,7 +26377,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithExplicitAutoOpaqueFieldTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_explicit_struct_twin_sync(api_arg); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_explicit_struct_twin_sync(api_arg); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(
@@ -26375,7 +26392,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_arg_tw
             let api_a = <NonCloneSimpleTwinNormal>::sse_decode(&mut deserializer);
 let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::rust_auto_opaque_normal_and_opaque_arg_twin_normal(api_a, api_b); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::rust_auto_opaque_normal_and_opaque_arg_twin_normal(api_a, api_b); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -26391,7 +26408,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let api_a = <NonCloneSimpleTwinRustAsync>::sse_decode(&mut deserializer);
 let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(api_a, api_b).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(api_a, api_b).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26406,7 +26423,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let api_a = <NonCloneSimpleTwinSync>::sse_decode(&mut deserializer);
 let api_b = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_normal_and_opaque_arg_twin_sync(api_a, api_b); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_normal_and_opaque_arg_twin_sync(api_a, api_b); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_normal_impl(
@@ -26435,7 +26452,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_norma
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_plus_sign_arg_twin_normal(
                             api_arg,
                         );
@@ -26457,7 +26474,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Box < dyn MyTraitTwinRustAsync + Send + Sync >>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_plus_sign_arg_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_plus_sign_arg_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26471,7 +26488,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Box < dyn MyTraitTwinSync + Send + Sync >>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_plus_sign_arg_twin_sync(api_arg); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_plus_sign_arg_twin_sync(api_arg); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_return_twin_normal_impl(
@@ -26499,7 +26516,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_return_twin_no
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_auto_opaque::rust_auto_opaque_plus_sign_return_twin_normal(
                         ),
                     )?;
@@ -26520,7 +26537,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_plus_sign_return_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_plus_sign_return_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26534,7 +26551,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_plus_sign_return_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_plus_sign_return_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_one_and_two_twin_normal_impl(
@@ -26548,7 +26565,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_one_and_tw
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_return_opaque_one_and_two_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::rust_auto_opaque_return_opaque_one_and_two_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -26563,7 +26580,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_return_opaque_one_and_two_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_return_opaque_one_and_two_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26577,7 +26594,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_opaque_one_and_two_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_opaque_one_and_two_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_two_twin_normal_impl(
@@ -26591,7 +26608,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_two_twin_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_return_opaque_two_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::rust_auto_opaque_return_opaque_two_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -26606,7 +26623,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_return_opaque_two_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_return_opaque_two_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26620,7 +26637,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_opaque_two_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_opaque_two_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_own_twin_normal_impl(
@@ -26649,7 +26666,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_own_twin_normal_i
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_auto_opaque::rust_auto_opaque_return_own_twin_normal(
                             api_initial,
                         ),
@@ -26671,7 +26688,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_initial = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_return_own_twin_rust_async(api_initial).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_return_own_twin_rust_async(api_initial).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26685,7 +26702,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_initial = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_own_twin_sync(api_initial))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_own_twin_sync(api_initial))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_vec_own_twin_normal_impl(
@@ -26713,7 +26730,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_vec_own_twin_norm
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_auto_opaque::rust_auto_opaque_return_vec_own_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -26733,7 +26750,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_return_vec_own_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_return_vec_own_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26747,7 +26764,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_vec_own_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_vec_own_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_sleep_twin_normal_impl(
@@ -26803,7 +26820,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_sleep_twin_normal_impl(
                     }
                     let mut api_apple_guard = api_apple_guard.unwrap();
                     let mut api_orange_guard = api_orange_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::rust_auto_opaque::rust_auto_opaque_sleep_twin_normal(
                             &mut *api_apple_guard,
                             &mut *api_orange_guard,
@@ -26839,7 +26856,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let mut api_apple_guard = api_apple_guard.unwrap();
 let mut api_orange_guard = api_orange_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_sleep_twin_rust_async(&mut *api_apple_guard, &mut *api_orange_guard).await)?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_sleep_twin_rust_async(&mut *api_apple_guard, &mut *api_orange_guard).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26866,7 +26883,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let mut api_apple_guard = api_apple_guard.unwrap();
 let mut api_orange_guard = api_orange_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_sleep_twin_sync(&mut *api_apple_guard, &mut *api_orange_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_sleep_twin_sync(&mut *api_apple_guard, &mut *api_orange_guard))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(
@@ -26898,7 +26915,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_stream_sink_twin_normal(
                             api_sink,
                         );
@@ -26920,7 +26937,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<NonCloneSimpleTwinRustAsync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_stream_sink_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_stream_sink_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26934,7 +26951,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<NonCloneSimpleTwinSync,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_stream_sink_twin_sync(api_sink); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_stream_sink_twin_sync(api_sink); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(
@@ -26948,7 +26965,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opa
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(api_arg); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(api_arg); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -26963,7 +26980,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithGoodAndOpaqueFieldTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -26977,7 +26994,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithGoodAndOpaqueFieldTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(api_arg); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(api_arg); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(
@@ -26991,7 +27008,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opa
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -27006,7 +27023,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27020,7 +27037,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(
@@ -27050,7 +27067,7 @@ fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_imp
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_two_args_twin_normal(
                             api_a, api_b,
                         );
@@ -27073,7 +27090,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_
             let api_a = <NonCloneSimpleTwinRustAsync>::sse_decode(&mut deserializer);
 let api_b = <NonCloneSimpleTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_two_args_twin_rust_async(api_a, api_b).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_two_args_twin_rust_async(api_a, api_b).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27088,7 +27105,7 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque
             let api_a = <NonCloneSimpleTwinSync>::sse_decode(&mut deserializer);
 let api_b = <NonCloneSimpleTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_two_args_twin_sync(api_a, api_b); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_two_args_twin_sync(api_a, api_b); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__dart_fn__rust_call_dart_loopback_twin_normal_impl(
@@ -27102,7 +27119,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_loopback_twin_normal_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::dart_fn::rust_call_dart_loopback_twin_normal(api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::dart_fn::rust_call_dart_loopback_twin_normal(api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27117,7 +27134,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_loop
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_loopback_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_loopback_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27151,7 +27168,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_multi_times_twin_normal_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok({
+                        let output_ok = Ok::<_, ()>({
                             crate::api::dart_fn::rust_call_dart_multi_times_twin_normal(
                                 api_callback,
                                 api_num_times,
@@ -27178,7 +27195,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_mult
             let api_callback = decode_DartFn_Inputs__Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_num_times = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_multi_times_twin_rust_async(api_callback, api_num_times).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_multi_times_twin_rust_async(api_callback, api_num_times).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27211,7 +27228,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_one_arg_twin_normal_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok({
+                        let output_ok = Ok::<_, ()>({
                             crate::api::dart_fn::rust_call_dart_one_arg_twin_normal(api_callback)
                                 .await;
                         })?;
@@ -27234,7 +27251,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_one_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs_String_Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_one_arg_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_one_arg_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27268,7 +27285,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok({
+                        let output_ok = Ok::<_, ()>({
                             crate::api::dart_fn::rust_call_dart_return_result_twin_normal(
                                 api_callback,
                                 api_expect_output,
@@ -27295,7 +27312,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_retu
             let api_callback = decode_DartFn_Inputs_String_Output_String_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_expect_output = <Option<String>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_return_result_twin_rust_async(api_callback, api_expect_output).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_return_result_twin_rust_async(api_callback, api_expect_output).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27328,7 +27345,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_return_twin_normal_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok({
+                        let output_ok = Ok::<_, ()>({
                             crate::api::dart_fn::rust_call_dart_return_twin_normal(api_callback)
                                 .await;
                         })?;
@@ -27351,7 +27368,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_retu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs__Output_String_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_return_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_return_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27384,7 +27401,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_simple_twin_normal_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok({
+                        let output_ok = Ok::<_, ()>({
                             crate::api::dart_fn::rust_call_dart_simple_twin_normal(api_callback)
                                 .await;
                         })?;
@@ -27407,7 +27424,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_simp
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs__Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_simple_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_simple_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27422,7 +27439,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_two_args_twin_normal_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::dart_fn::rust_call_dart_two_args_twin_normal(api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::dart_fn::rust_call_dart_two_args_twin_normal(api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27437,7 +27454,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_two_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_two_args_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_two_args_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27452,7 +27469,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_using_ipv4_addr_twin_normal_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::dart_fn::rust_call_dart_using_ipv4_addr_twin_normal(api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::dart_fn::rust_call_dart_using_ipv4_addr_twin_normal(api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27467,7 +27484,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_usin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_using_ipv4_addr_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_using_ipv4_addr_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27501,7 +27518,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_arg_twin_normal_im
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok({
+                        let output_ok = Ok::<_, ()>({
                             crate::api::dart_fn::rust_call_dart_with_dart_opaque_arg_twin_normal(
                                 api_input,
                                 api_callback,
@@ -27528,7 +27545,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with
             let api_input = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
 let api_callback = decode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_with_dart_opaque_arg_twin_rust_async(api_input, api_callback).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_with_dart_opaque_arg_twin_rust_async(api_input, api_callback).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27543,7 +27560,7 @@ fn wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_result_twin_normal
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs__Output_DartOpaque_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::dart_fn::rust_call_dart_with_dart_opaque_result_twin_normal(api_callback).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::dart_fn::rust_call_dart_with_dart_opaque_result_twin_normal(api_callback).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27558,7 +27575,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback = decode_DartFn_Inputs__Output_DartOpaque_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_with_dart_opaque_result_twin_rust_async(api_callback).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_with_dart_opaque_result_twin_rust_async(api_callback).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27587,7 +27604,7 @@ fn wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_fil
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::misc_no_twin_example_a::same_function_name_in_different_files();
                     })?;
                     Ok(output_ok)
@@ -27621,7 +27638,7 @@ fn wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_fil
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::misc_no_twin_example_b::same_function_name_in_different_files();
                     })?;
                     Ok(output_ok)
@@ -27657,7 +27674,7 @@ fn wire__crate__api__dart_opaque__set_static_dart_opaque_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::dart_opaque::set_static_dart_opaque_twin_normal(
                             api_id, api_opaque,
                         );
@@ -27680,7 +27697,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__set_static_dart
             let api_id = <i32>::sse_decode(&mut deserializer);
 let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::set_static_dart_opaque_twin_rust_async(api_id, api_opaque).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_rust_async::set_static_dart_opaque_twin_rust_async(api_id, api_opaque).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27695,7 +27712,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__set_static_dart_opaqu
             let api_id = <i32>::sse_decode(&mut deserializer);
 let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_opaque_twin_sync::set_static_dart_opaque_twin_sync(api_id, api_opaque); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::dart_opaque_twin_sync::set_static_dart_opaque_twin_sync(api_id, api_opaque); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__simple__simple_adder_twin_normal_impl(
@@ -27725,9 +27742,8 @@ fn wire__crate__api__simple__simple_adder_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::simple::simple_adder_twin_normal(api_a, api_b),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::simple::simple_adder_twin_normal(api_a, api_b))?;
                     Ok(output_ok)
                 })())
             }
@@ -27746,7 +27762,7 @@ fn wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_ru
             let api_a = <i32>::sse_decode(&mut deserializer);
 let api_b = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::simple_twin_rust_async::simple_adder_twin_rust_async(api_a, api_b).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::simple_twin_rust_async::simple_adder_twin_rust_async(api_a, api_b).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27775,7 +27791,7 @@ fn wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync_imp
             let api_b = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::simple_twin_sync::simple_adder_twin_sync(
                         api_a, api_b,
                     ),
@@ -27811,7 +27827,7 @@ fn wire__crate__api__method__simple_enum_twin_normal_return_self_twin_normal_imp
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::SimpleEnumTwinNormal::return_self_twin_normal(api_one),
                     )?;
                     Ok(output_ok)
@@ -27847,7 +27863,7 @@ fn wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal_i
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::SimpleEnumTwinNormal::simple_method_twin_normal(
                             &api_that,
                         ),
@@ -27869,7 +27885,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rus
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_one = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimpleEnumTwinRustAsync::return_self_twin_rust_async(api_one).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::SimpleEnumTwinRustAsync::return_self_twin_rust_async(api_one).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27884,7 +27900,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rus
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::SimpleEnumTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimpleEnumTwinRustAsync::simple_method_twin_rust_async(&api_that).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::SimpleEnumTwinRustAsync::simple_method_twin_rust_async(&api_that).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27898,7 +27914,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_retu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_one = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimpleEnumTwinSync::return_self_twin_sync(api_one))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::SimpleEnumTwinSync::return_self_twin_sync(api_one))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync_impl(
@@ -27911,7 +27927,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simp
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_sync::SimpleEnumTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimpleEnumTwinSync::simple_method_twin_sync(&api_that))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::SimpleEnumTwinSync::simple_method_twin_sync(&api_that))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal_impl(
@@ -27925,7 +27941,7 @@ fn wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::method::SimplePrimitiveEnumTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::method::SimplePrimitiveEnumTwinNormal::simple_method_twin_normal(&api_that))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::method::SimplePrimitiveEnumTwinNormal::simple_method_twin_normal(&api_that))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -27940,7 +27956,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::SimplePrimitiveEnumTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimplePrimitiveEnumTwinRustAsync::simple_method_twin_rust_async(&api_that).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::SimplePrimitiveEnumTwinRustAsync::simple_method_twin_rust_async(&api_that).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -27954,7 +27970,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_sync::SimplePrimitiveEnumTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimplePrimitiveEnumTwinSync::simple_method_twin_sync(&api_that))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::SimplePrimitiveEnumTwinSync::simple_method_twin_sync(&api_that))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal_impl(
@@ -27984,7 +28000,7 @@ fn wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal_impl
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::SimpleStructTwinNormal::arg_self_twin_normal(
                             api_a, api_b,
                         ),
@@ -28022,7 +28038,7 @@ fn wire__crate__api__method__simple_struct_twin_normal_receiver_borrow_twin_norm
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::SimpleStructTwinNormal::receiver_borrow_twin_normal(
                             &api_that,
                         ),
@@ -28060,7 +28076,7 @@ fn wire__crate__api__method__simple_struct_twin_normal_receiver_own_twin_normal_
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::SimpleStructTwinNormal::receiver_own_twin_normal(
                             api_that,
                         ),
@@ -28097,7 +28113,7 @@ fn wire__crate__api__method__simple_struct_twin_normal_return_self_twin_normal_i
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::SimpleStructTwinNormal::return_self_twin_normal(
                             api_one,
                         ),
@@ -28135,7 +28151,7 @@ fn wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal_impl
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::SimpleStructTwinNormal::vec_self_twin_normal(api_arg),
                     )?;
                     Ok(output_ok)
@@ -28156,7 +28172,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_r
             let api_a = <crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync>::sse_decode(&mut deserializer);
 let api_b = <crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::arg_self_twin_rust_async(api_a, api_b).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::arg_self_twin_rust_async(api_a, api_b).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28171,7 +28187,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::receiver_borrow_twin_rust_async(&api_that).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::receiver_borrow_twin_rust_async(&api_that).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28186,7 +28202,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::receiver_own_twin_rust_async(api_that).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::receiver_own_twin_rust_async(api_that).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28201,7 +28217,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_one = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::return_self_twin_rust_async(api_one).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::return_self_twin_rust_async(api_one).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28216,7 +28232,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::vec_self_twin_rust_async(api_arg).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync::vec_self_twin_rust_async(api_arg).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28231,7 +28247,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_ar
             let api_a = <crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync>::sse_decode(&mut deserializer);
 let api_b = <crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::arg_self_twin_sync(api_a, api_b))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::arg_self_twin_sync(api_a, api_b))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_borrow_twin_sync_impl(
@@ -28244,7 +28260,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_re
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::receiver_borrow_twin_sync(&api_that))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::receiver_borrow_twin_sync(&api_that))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_own_twin_sync_impl(
@@ -28257,7 +28273,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_re
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::receiver_own_twin_sync(api_that))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::receiver_own_twin_sync(api_that))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_return_self_twin_sync_impl(
@@ -28270,7 +28286,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_re
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_one = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::return_self_twin_sync(api_one))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::return_self_twin_sync(api_one))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_vec_self_twin_sync_impl(
@@ -28283,7 +28299,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_ve
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::vec_self_twin_sync(api_arg))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync::vec_self_twin_sync(api_arg))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__external_impl__simple_translatable_external_struct_with_method_simple_external_method_impl(
@@ -28297,7 +28313,7 @@ fn wire__crate__api__external_impl__simple_translatable_external_struct_with_met
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::external_impl::SimpleTranslatableExternalStructWithMethod>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::external_impl::SimpleTranslatableExternalStructWithMethod::simple_external_method(&api_that))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::external_impl::SimpleTranslatableExternalStructWithMethod::simple_external_method(&api_that))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -28328,7 +28344,7 @@ fn wire__crate__api__async_spawn__simple_use_async_spawn_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok(
+                        let output_ok = Ok::<_, ()>(
                             crate::api::async_spawn::simple_use_async_spawn(api_arg).await,
                         )?;
                         Ok(output_ok)
@@ -28366,7 +28382,7 @@ fn wire__crate__api__async_spawn__simple_use_async_spawn_blocking_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok(
+                        let output_ok = Ok::<_, ()>(
                             crate::api::async_spawn::simple_use_async_spawn_blocking(api_arg).await,
                         )?;
                         Ok(output_ok)
@@ -28408,7 +28424,7 @@ fn wire__crate__api__async_spawn__simple_use_async_spawn_local_impl(
             move |context| async move {
                 transform_result_sse::<_, ()>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok({
+                        let output_ok = Ok::<_, ()>({
                             crate::api::async_spawn::simple_use_async_spawn_local(
                                 api_arg, api_sink,
                             )
@@ -28448,7 +28464,7 @@ fn wire__crate__api__exception__some_struct_twin_normal_new_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::exception::SomeStructTwinNormal::new_twin_normal(api_value),
                     )?;
                     Ok(output_ok)
@@ -28528,7 +28544,7 @@ fn wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync::new_twin_rust_async(api_value).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync::new_twin_rust_async(api_value).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28602,7 +28618,7 @@ fn wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <u32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync::new_twin_sync(api_value))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync::new_twin_sync(api_value))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_err_custom_error_twin_sync_impl(
@@ -28683,7 +28699,7 @@ fn wire__crate__api__method__static_only_twin_normal_static_method_twin_normal_i
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::method::StaticOnlyTwinNormal::static_method_twin_normal(api_a),
                     )?;
                     Ok(output_ok)
@@ -28703,7 +28719,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rus
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::StaticOnlyTwinRustAsync::static_method_twin_rust_async(api_a).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::StaticOnlyTwinRustAsync::static_method_twin_rust_async(api_a).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28717,7 +28733,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_stat
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::StaticOnlyTwinSync::static_method_twin_sync(api_a))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_sync::StaticOnlyTwinSync::static_method_twin_sync(api_a))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(
@@ -28749,7 +28765,7 @@ fn wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream_misc::stream_sink_dart_async_twin_normal(api_sink);
                     })?;
                     Ok(output_ok)
@@ -28787,7 +28803,7 @@ fn wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_normal
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream::stream_sink_fixed_sized_primitive_array_twin_normal(
                             api_sink,
                         );
@@ -28809,7 +28825,7 @@ fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixed_si
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_sink = <StreamSink<[u8; 2],flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::stream_twin_rust_async::stream_sink_fixed_sized_primitive_array_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::stream_twin_rust_async::stream_sink_fixed_sized_primitive_array_twin_rust_async(api_sink).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28841,7 +28857,7 @@ fn wire__crate__api__stream__stream_sink_inside_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream::stream_sink_inside_struct_twin_normal(api_arg);
                     })?;
                     Ok(output_ok)
@@ -28861,7 +28877,7 @@ fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::pseudo_manual::stream_twin_rust_async::MyStructContainingStreamSinkTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::stream_twin_rust_async::stream_sink_inside_struct_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::stream_twin_rust_async::stream_sink_inside_struct_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28894,7 +28910,7 @@ fn wire__crate__api__stream__stream_sink_inside_vec_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::stream::stream_sink_inside_vec_twin_normal(api_arg);
                     })?;
                     Ok(output_ok)
@@ -28914,7 +28930,7 @@ fn wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_v
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<StreamSink<i32,flutter_rust_bridge::for_generated::SseCodec>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::stream_twin_rust_async::stream_sink_inside_vec_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::stream_twin_rust_async::stream_sink_inside_vec_twin_rust_async(api_arg).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -28996,7 +29012,7 @@ fn wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_t
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::comment::StructWithCommentsTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::comment::StructWithCommentsTwinNormal::instance_method_twin_normal(&api_that); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::comment::StructWithCommentsTwinNormal::instance_method_twin_normal(&api_that); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -29011,7 +29027,7 @@ fn wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::comment::StructWithCommentsTwinNormal::static_method_twin_normal(); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::comment::StructWithCommentsTwinNormal::static_method_twin_normal(); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -29026,7 +29042,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comment
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync::instance_method_twin_rust_async(&api_that).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync::instance_method_twin_rust_async(&api_that).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -29041,7 +29057,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comment
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync::static_method_twin_rust_async().await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync::static_method_twin_rust_async().await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -29055,7 +29071,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync::instance_method_twin_sync(&api_that); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync::instance_method_twin_sync(&api_that); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync_impl(
@@ -29068,7 +29084,7 @@ fn wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync::static_method_twin_sync(); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync::static_method_twin_sync(); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal_impl(
@@ -29081,7 +29097,7 @@ fn wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal::method_with_custom_name_twin_normal(&api_that); })?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::StructWithCustomNameMethodTwinNormal::method_with_custom_name_twin_normal(&api_that); })?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f_impl(
@@ -29095,7 +29111,7 @@ fn wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_f
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <crate::api::misc_no_twin_example_b::StructWithImplBlockInAnotherFileDependency>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructWithImplBlockInAnotherFile::f(api_arg); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::StructWithImplBlockInAnotherFile::f(api_arg); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -29124,7 +29140,7 @@ fn wire__crate__api__misc_no_twin_example_a__struct_with_raw_name_field_dummy_fu
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::misc_no_twin_example_a::StructWithRawNameField::dummy_function(
                         );
                     })?;
@@ -29145,7 +29161,7 @@ fn wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueFieldWithManyDerive::default())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueFieldWithManyDerive::default())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -29160,7 +29176,7 @@ fn wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueFieldWithManyDerive>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueFieldWithManyDerive::f(&api_that); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueFieldWithManyDerive::f(&api_that); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -29175,7 +29191,7 @@ fn wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_with_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueWithNonCloneData>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueWithNonCloneData::f(&api_that); })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::misc_no_twin_example_a::StructWithRustAutoOpaqueWithNonCloneData::f(&api_that); })?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -29207,11 +29223,10 @@ fn wire__crate__api__method__sum_with_twin_normal_sum_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::method::SumWithTwinNormal::sum_twin_normal(
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::method::SumWithTwinNormal::sum_twin_normal(
                             &api_that, api_y, api_z,
-                        ),
-                    )?;
+                        ))?;
                     Ok(output_ok)
                 })())
             }
@@ -29231,7 +29246,7 @@ fn wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_rust_a
 let api_y = <u32>::sse_decode(&mut deserializer);
 let api_z = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync::sum_twin_rust_async(&api_that, api_y, api_z).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync::sum_twin_rust_async(&api_that, api_y, api_z).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -29264,7 +29279,7 @@ fn wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twi
             let api_z = <u32>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync::sum_twin_sync(
                         &api_that, api_y, api_z,
                     ),
@@ -29298,7 +29313,7 @@ fn wire__crate__api__dart_opaque_sync__sync_accept_dart_opaque_twin_normal_impl(
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::dart_opaque_sync::sync_accept_dart_opaque_twin_normal(api_opaque),
                 )?;
                 Ok(output_ok)
@@ -29329,9 +29344,8 @@ fn wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
-                    crate::api::rust_opaque_sync::sync_create_non_clone_twin_normal(),
-                )?;
+                let output_ok =
+                    Ok::<_, ()>(crate::api::rust_opaque_sync::sync_create_non_clone_twin_normal())?;
                 Ok(output_ok)
             })())
         },
@@ -29360,9 +29374,8 @@ fn wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
-                    crate::api::rust_opaque_sync::sync_create_opaque_twin_normal(),
-                )?;
+                let output_ok =
+                    Ok::<_, ()>(crate::api::rust_opaque_sync::sync_create_opaque_twin_normal())?;
                 Ok(output_ok)
             })())
         },
@@ -29392,7 +29405,7 @@ fn wire__crate__api__dart_opaque_sync__sync_loopback_twin_normal_impl(
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::dart_opaque_sync::sync_loopback_twin_normal(api_opaque),
                 )?;
                 Ok(output_ok)
@@ -29460,7 +29473,7 @@ fn wire__crate__api__dart_opaque_sync__sync_option_loopback_twin_normal_impl(
                 <Option<flutter_rust_bridge::DartOpaque>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::dart_opaque_sync::sync_option_loopback_twin_normal(api_opaque),
                 )?;
                 Ok(output_ok)
@@ -29526,9 +29539,8 @@ fn wire__crate__api__misc_example__test_abc_enum_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::misc_example::test_abc_enum_twin_normal(api_abc),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::misc_example::test_abc_enum_twin_normal(api_abc))?;
                     Ok(output_ok)
                 })())
             }
@@ -29546,7 +29558,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_abc = <crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::test_abc_enum_twin_rust_async(api_abc).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::test_abc_enum_twin_rust_async(api_abc).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -29577,7 +29589,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_s
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::misc_example_twin_sync::test_abc_enum_twin_sync(
                         api_abc,
                     ),
@@ -29613,7 +29625,7 @@ fn wire__crate__api__chrono_type__test_chrono_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::chrono_type::test_chrono_twin_normal())?;
+                        Ok::<_, ()>(crate::api::chrono_type::test_chrono_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -29631,7 +29643,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono_twi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::test_chrono_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::test_chrono_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -29658,7 +29670,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::chrono_type_twin_sync::test_chrono_twin_sync(),
                 )?;
                 Ok(output_ok)
@@ -29691,7 +29703,7 @@ fn wire__crate__api__mirror__test_contains_mirrored_sub_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::mirror::test_contains_mirrored_sub_struct_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -29711,7 +29723,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_contains_mirror
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::test_contains_mirrored_sub_struct_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::test_contains_mirrored_sub_struct_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -29725,7 +29737,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__test_contains_mirrored_sub
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::test_contains_mirrored_sub_struct_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_sync::test_contains_mirrored_sub_struct_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__deliberate_name_conflict__test_duplicated_module_names_impl(
@@ -29756,7 +29768,7 @@ fn wire__crate__api__deliberate_name_conflict__test_duplicated_module_names_impl
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::deliberate_name_conflict::test_duplicated_module_names(api_s),
                     )?;
                     Ok(output_ok)
@@ -29853,7 +29865,7 @@ fn wire__crate__api__mirror__test_hashmap_with_mirrored_value_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::mirror::test_hashmap_with_mirrored_value_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -29873,7 +29885,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_hashmap_with_mi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::test_hashmap_with_mirrored_value_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::test_hashmap_with_mirrored_value_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -29887,7 +29899,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__test_hashmap_with_mirrored
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::test_hashmap_with_mirrored_value_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_sync::test_hashmap_with_mirrored_value_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__mirror__test_list_of_nested_enums_mirrored_twin_normal_impl(
@@ -29915,7 +29927,7 @@ fn wire__crate__api__mirror__test_list_of_nested_enums_mirrored_twin_normal_impl
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::mirror::test_list_of_nested_enums_mirrored_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -29935,7 +29947,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_nested_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::test_list_of_nested_enums_mirrored_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::test_list_of_nested_enums_mirrored_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -29949,7 +29961,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_nested_enums_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::test_list_of_nested_enums_mirrored_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_sync::test_list_of_nested_enums_mirrored_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__mirror__test_list_of_raw_nested_string_mirrored_twin_normal_impl(
@@ -29977,7 +29989,7 @@ fn wire__crate__api__mirror__test_list_of_raw_nested_string_mirrored_twin_normal
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::mirror::test_list_of_raw_nested_string_mirrored_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -29997,7 +30009,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_raw_nes
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::test_list_of_raw_nested_string_mirrored_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::test_list_of_raw_nested_string_mirrored_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30011,7 +30023,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_raw_nested_st
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::test_list_of_raw_nested_string_mirrored_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_sync::test_list_of_raw_nested_string_mirrored_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_normal_impl(
@@ -30025,7 +30037,7 @@ fn wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::raw_string::test_more_than_just_one_raw_string_struct_twin_normal())?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::raw_string::test_more_than_just_one_raw_string_struct_twin_normal())?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -30040,7 +30052,7 @@ fn wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_more_than_j
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::raw_string_twin_rust_async::test_more_than_just_one_raw_string_struct_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::raw_string_twin_rust_async::test_more_than_just_one_raw_string_struct_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30054,7 +30066,7 @@ fn wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_on
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::raw_string_twin_sync::test_more_than_just_one_raw_string_struct_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::raw_string_twin_sync::test_more_than_just_one_raw_string_struct_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__mirror__test_nested_raw_string_mirrored_twin_normal_impl(
@@ -30082,7 +30094,7 @@ fn wire__crate__api__mirror__test_nested_raw_string_mirrored_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::mirror::test_nested_raw_string_mirrored_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -30102,7 +30114,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_nested_raw_stri
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::test_nested_raw_string_mirrored_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::test_nested_raw_string_mirrored_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30116,7 +30128,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__test_nested_raw_string_mir
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::test_nested_raw_string_mirrored_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_sync::test_nested_raw_string_mirrored_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__chrono_type__test_precise_chrono_twin_normal_impl(
@@ -30144,9 +30156,8 @@ fn wire__crate__api__chrono_type__test_precise_chrono_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::chrono_type::test_precise_chrono_twin_normal(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::chrono_type::test_precise_chrono_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -30164,7 +30175,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_precise_ch
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::test_precise_chrono_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::chrono_type_twin_rust_async::test_precise_chrono_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30191,7 +30202,7 @@ fn wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_precise_chrono_t
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::chrono_type_twin_sync::test_precise_chrono_twin_sync(
                     ),
                 )?;
@@ -30226,7 +30237,7 @@ fn wire__crate__api__mirror__test_raw_string_enum_mirrored_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::mirror::test_raw_string_enum_mirrored_twin_normal(api_nested),
                     )?;
                     Ok(output_ok)
@@ -30246,7 +30257,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_enum
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_nested = <bool>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::test_raw_string_enum_mirrored_twin_rust_async(api_nested).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::test_raw_string_enum_mirrored_twin_rust_async(api_nested).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30260,7 +30271,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_enum_mirro
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_nested = <bool>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::test_raw_string_enum_mirrored_twin_sync(api_nested))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_sync::test_raw_string_enum_mirrored_twin_sync(api_nested))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__raw_string__test_raw_string_item_enum_twin_normal_impl(
@@ -30288,7 +30299,7 @@ fn wire__crate__api__raw_string__test_raw_string_item_enum_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::raw_string::test_raw_string_item_enum_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -30308,7 +30319,7 @@ fn wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::raw_string_twin_rust_async::test_raw_string_item_enum_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::raw_string_twin_rust_async::test_raw_string_item_enum_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30322,7 +30333,7 @@ fn wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_e
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::raw_string_twin_sync::test_raw_string_item_enum_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::raw_string_twin_sync::test_raw_string_item_enum_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(
@@ -30350,7 +30361,7 @@ fn wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::raw_string::test_raw_string_item_struct_twin_normal(),
                     )?;
                     Ok(output_ok)
@@ -30370,7 +30381,7 @@ fn wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::raw_string_twin_rust_async::test_raw_string_item_struct_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::raw_string_twin_rust_async::test_raw_string_item_struct_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30384,7 +30395,7 @@ fn wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_s
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::raw_string_twin_sync::test_raw_string_item_struct_twin_sync())?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::raw_string_twin_sync::test_raw_string_item_struct_twin_sync())?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__mirror__test_raw_string_mirrored_twin_normal_impl(
@@ -30412,9 +30423,8 @@ fn wire__crate__api__mirror__test_raw_string_mirrored_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::mirror::test_raw_string_mirrored_twin_normal(),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::mirror::test_raw_string_mirrored_twin_normal())?;
                     Ok(output_ok)
                 })())
             }
@@ -30432,7 +30442,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_mirr
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::test_raw_string_mirrored_twin_rust_async().await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::mirror_twin_rust_async::test_raw_string_mirrored_twin_rust_async().await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30459,7 +30469,7 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_mirrored_t
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::mirror_twin_sync::test_raw_string_mirrored_twin_sync(
                     ),
                 )?;
@@ -30495,7 +30505,7 @@ fn wire__crate__api__misc_example__test_struct_with_enum_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::misc_example::test_struct_with_enum_twin_normal(api_se),
                     )?;
                     Ok(output_ok)
@@ -30515,7 +30525,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_wi
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_se = <crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::test_struct_with_enum_twin_rust_async(api_se).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_rust_async::test_struct_with_enum_twin_rust_async(api_se).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30529,7 +30539,7 @@ fn wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enu
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_se = <crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::test_struct_with_enum_twin_sync(api_se))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::misc_example_twin_sync::test_struct_with_enum_twin_sync(api_se))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__tuple__test_tuple_2_twin_normal_impl(
@@ -30558,7 +30568,7 @@ fn wire__crate__api__tuple__test_tuple_2_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::tuple::test_tuple_2_twin_normal(api_value);
                     })?;
                     Ok(output_ok)
@@ -30578,7 +30588,7 @@ fn wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rus
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <Vec<(String,i32,)>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::tuple_twin_rust_async::test_tuple_2_twin_rust_async(api_value).await; })?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::tuple_twin_rust_async::test_tuple_2_twin_rust_async(api_value).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30606,7 +30616,7 @@ fn wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync_impl
             let api_value = <Vec<(String, i32)>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::api::pseudo_manual::tuple_twin_sync::test_tuple_2_twin_sync(api_value);
                 })?;
                 Ok(output_ok)
@@ -30641,7 +30651,7 @@ fn wire__crate__api__tuple__test_tuple_twin_normal_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
-                        Result::<_, ()>::Ok(crate::api::tuple::test_tuple_twin_normal(api_value))?;
+                        Ok::<_, ()>(crate::api::tuple::test_tuple_twin_normal(api_value))?;
                     Ok(output_ok)
                 })())
             }
@@ -30659,7 +30669,7 @@ fn wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_value = <Option<(String,i32,)>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::tuple_twin_rust_async::test_tuple_twin_rust_async(api_value).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::tuple_twin_rust_async::test_tuple_twin_rust_async(api_value).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30687,7 +30697,7 @@ fn wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync_impl(
             let api_value = <Option<(String, i32)>>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::tuple_twin_sync::test_tuple_twin_sync(api_value),
                 )?;
                 Ok(output_ok)
@@ -30787,7 +30797,7 @@ fn wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_n
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Result::<_,()>::Ok(crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal::normal_method_twin_normal(&api_that))?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal::normal_method_twin_normal(&api_that))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -30815,7 +30825,7 @@ fn wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal_impl(
             let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::dart_opaque_sync::unwrap_dart_opaque_twin_normal(api_opaque),
                 )?;
                 Ok(output_ok)
@@ -30913,9 +30923,8 @@ fn wire__crate__api__array__use_boxed_blob_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::array::use_boxed_blob_twin_normal(api_blob),
-                    )?;
+                    let output_ok =
+                        Ok::<_, ()>(crate::api::array::use_boxed_blob_twin_normal(api_blob))?;
                     Ok(output_ok)
                 })())
             }
@@ -30933,7 +30942,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_r
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_blob = <Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::use_boxed_blob_twin_rust_async(api_blob).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::use_boxed_blob_twin_rust_async(api_blob).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -30964,7 +30973,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync_im
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::use_boxed_blob_twin_sync(api_blob),
                 )?;
                 Ok(output_ok)
@@ -30999,7 +31008,7 @@ fn wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::external_type_in_crate::use_imported_enum_twin_normal(
                             api_my_enum,
                         ),
@@ -31021,7 +31030,7 @@ fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_my_enum = <crate::auxiliary::sample_types::MyEnum>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::use_imported_enum_twin_rust_async(api_my_enum).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::use_imported_enum_twin_rust_async(api_my_enum).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -31035,7 +31044,7 @@ fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_import
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_my_enum = <crate::auxiliary::sample_types::MyEnum>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync::use_imported_enum_twin_sync(api_my_enum))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::external_type_in_crate_twin_sync::use_imported_enum_twin_sync(api_my_enum))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_impl(
@@ -31065,7 +31074,7 @@ fn wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_imp
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
+                    let output_ok = Ok::<_, ()>(
                         crate::api::external_type_in_crate::use_imported_struct_twin_normal(
                             api_my_struct,
                         ),
@@ -31087,7 +31096,7 @@ fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_my_struct = <crate::auxiliary::sample_types::MyStruct>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::use_imported_struct_twin_rust_async(api_my_struct).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::use_imported_struct_twin_rust_async(api_my_struct).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -31101,7 +31110,7 @@ fn wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_import
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_my_struct = <crate::auxiliary::sample_types::MyStruct>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync::use_imported_struct_twin_sync(api_my_struct))?;   Ok(output_ok)
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::external_type_in_crate_twin_sync::use_imported_struct_twin_sync(api_my_struct))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__array__use_msgid_twin_normal_impl(
@@ -31130,8 +31139,7 @@ fn wire__crate__api__array__use_msgid_twin_normal_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::array::use_msgid_twin_normal(api_id))?;
+                    let output_ok = Ok::<_, ()>(crate::api::array::use_msgid_twin_normal(api_id))?;
                     Ok(output_ok)
                 })())
             }
@@ -31149,7 +31157,7 @@ fn wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_a
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_id = <crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::use_msgid_twin_rust_async(api_id).await)?;   Ok(output_ok)
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::array_twin_rust_async::use_msgid_twin_rust_async(api_id).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
@@ -31180,7 +31188,7 @@ fn wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync_impl(
                 );
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
+                let output_ok = Ok::<_, ()>(
                     crate::api::pseudo_manual::array_twin_sync::use_msgid_twin_sync(api_id),
                 )?;
                 Ok(output_ok)
@@ -43963,318 +43971,320 @@ fn pde_ffi_dispatcher_primary_impl(
 881 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 883 => wire__crate__api__chrono_type__how_long_does_it_take_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 884 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_does_it_take_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-886 => wire__crate__api__customization__init_app_impl(port, ptr, rust_vec_len, data_len),
-887 => wire__crate__api__mirror__is_app_embedded_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-888 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__is_app_embedded_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-890 => wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-891 => wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-892 => wire__crate__api__array__last_number_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-893 => wire__crate__api__pseudo_manual__array_twin_rust_async__last_number_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-895 => wire__crate__api__misc_example__list_of_primitive_enums_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-896 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-898 => wire__crate__api__dart_opaque__loop_back_array_get_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-899 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_get_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-901 => wire__crate__api__dart_opaque__loop_back_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-902 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-904 => wire__crate__api__dart_opaque__loop_back_option_get_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-905 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_option_get_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-907 => wire__crate__api__dart_opaque__loop_back_option_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-908 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_option_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-910 => wire__crate__api__dart_opaque__loop_back_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-911 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-913 => wire__crate__api__dart_opaque__loop_back_vec_get_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-914 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_get_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-916 => wire__crate__api__dart_opaque__loop_back_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-917 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-919 => wire__crate__api__lifetimeable__lt_compute_with_lifetime_function_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-920 => wire__crate__api__pseudo_manual__lifetimeable_twin_sync__lt_compute_with_lifetime_function_twin_sync_impl(port, ptr, rust_vec_len, data_len),
-921 => wire__crate__api__mirror__mirror_array_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-922 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_array_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-924 => wire__crate__api__mirror__mirror_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-925 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-927 => wire__crate__api__mirror__mirror_map_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-928 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_map_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-930 => wire__crate__api__mirror__mirror_option_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-931 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_option_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-933 => wire__crate__api__mirror__mirror_set_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-934 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_set_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-936 => wire__crate__api__mirror__mirror_struct_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-937 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_struct_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-939 => wire__crate__api__mirror__mirror_tuple_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-940 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_tuple_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-942 => wire__crate__api__mirror__mirror_vec_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-943 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_vec_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-945 => wire__crate__api__enumeration__multiply_by_ten_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-946 => wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by_ten_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-948 => wire__crate__api__method__my_callable_twin_normal_call_impl(port, ptr, rust_vec_len, data_len),
-949 => wire__crate__api__pseudo_manual__method_twin_rust_async__my_callable_twin_rust_async_call_impl(port, ptr, rust_vec_len, data_len),
-951 => wire__crate__api__misc_no_twin_example_a__my_enum_with_json_serializable_twin_normal_f_impl(port, ptr, rust_vec_len, data_len),
-952 => wire__crate__api__customization__my_init_one_impl(port, ptr, rust_vec_len, data_len),
-953 => wire__crate__api__customization__my_init_two_impl(port, ptr, rust_vec_len, data_len),
-954 => wire__crate__api__misc_no_twin_example_a__my_struct_with_json_serializable_twin_normal_f_impl(port, ptr, rust_vec_len, data_len),
-955 => wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync_impl(port, ptr, rust_vec_len, data_len),
-956 => wire__crate__api__chrono_type__naivedate_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-957 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedate_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-959 => wire__crate__api__chrono_type__naivedatetime_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-960 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-962 => wire__crate__api__array__nested_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-963 => wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-965 => wire__crate__api__array__new_msgid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-966 => wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-968 => wire__crate__api__attribute__next_user_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-969 => wire__crate__api__pseudo_manual__attribute_twin_rust_async__next_user_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-971 => wire__crate__api__rust_opaque__opaque_array_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-972 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-974 => wire__crate__api__rust_opaque__opaque_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-975 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-977 => wire__crate__api__rust_opaque__opaque_vec_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-978 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-980 => wire__crate__api__rust_opaque__opaque_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-981 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-983 => wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-984 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_empty_datetime_utc_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-986 => wire__crate__api__dart_opaque__panic_unwrap_dart_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-987 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__panic_unwrap_dart_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-989 => wire__crate__api__exception__panic_with_custom_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-990 => wire__crate__api__pseudo_manual__exception_twin_rust_async__panic_with_custom_result_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-992 => wire__crate__api__misc_example__positional_arguments_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-993 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-995 => wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-996 => wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async__primitive_optional_types_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-998 => wire__crate__api__primitive_misc__primitive_types_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-999 => wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1001 => wire__crate__api__primitive_misc__primitive_u32_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1002 => wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u32_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1004 => wire__crate__api__enumeration__print_note_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1005 => wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1007 => wire__crate__api__frb_logging__print_to_console_smoke_test_impl(port, ptr, rust_vec_len, data_len),
-1009 => wire__crate__api__event_listener__register_event_listener_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1010 => wire__crate__api__pseudo_manual__event_listener_twin_rust_async__register_event_listener_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1011 => wire__crate__api__mirror__repeat_number_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1012 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1014 => wire__crate__api__mirror__repeat_sequence_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1015 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1017 => wire__crate__api__init_dart_code__request_init_dart_code_message_impl(port, ptr, rust_vec_len, data_len),
-1018 => wire__crate__api__array__return_boxed_feed_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1019 => wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_feed_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1021 => wire__crate__api__array__return_boxed_raw_feed_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1022 => wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_feed_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1024 => wire__crate__api__exception__return_custom_nested_error_1_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1025 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_1_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1027 => wire__crate__api__exception__return_custom_nested_error_1_variant1_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1028 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_1_variant1_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1030 => wire__crate__api__exception__return_custom_nested_error_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1031 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1033 => wire__crate__api__exception__return_custom_struct_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1034 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_struct_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1036 => wire__crate__api__exception__return_custom_struct_ok_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1037 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_struct_ok_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1039 => wire__crate__api__exception__return_err_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1040 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_err_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1042 => wire__crate__api__exception__return_error_variant_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1043 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_error_variant_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1045 => wire__crate__api__exception__return_ok_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1046 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_ok_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1048 => wire__crate__api__tuple__return_optional_f_32_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1049 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__return_optional_f_32_tuple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1051 => wire__crate__api__rust_opaque__run_enum_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1052 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1054 => wire__crate__api__rust_opaque__run_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1055 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1057 => wire__crate__api__rust_opaque__run_non_clone_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1058 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clone_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1060 => wire__crate__api__rust_opaque__run_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1061 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1063 => wire__crate__api__rust_opaque__run_opaque_with_delay_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1064 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_with_delay_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1066 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1067 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1069 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1070 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1072 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1073 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_and_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1075 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1076 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1078 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1079 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1081 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1082 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1084 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1085 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1087 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1088 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1090 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1091 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1093 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_dummy_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1094 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_dummy_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1096 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1097 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1099 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1100 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1102 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1103 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1105 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1106 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1108 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1109 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1111 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1112 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1114 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1115 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1117 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1118 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1120 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1121 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1123 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1124 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1126 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1127 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1129 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1130 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1132 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_one_and_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1133 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1135 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1136 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1138 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1139 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1141 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1142 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_vec_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1144 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_sleep_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1145 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_sleep_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1147 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1148 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1150 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1151 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1153 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1154 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1156 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1157 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_two_args_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1159 => wire__crate__api__dart_fn__rust_call_dart_loopback_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1160 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_loopback_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1161 => wire__crate__api__dart_fn__rust_call_dart_multi_times_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1162 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_multi_times_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1163 => wire__crate__api__dart_fn__rust_call_dart_one_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1164 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_one_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1165 => wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1166 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_result_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1167 => wire__crate__api__dart_fn__rust_call_dart_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1168 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1169 => wire__crate__api__dart_fn__rust_call_dart_simple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1170 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_simple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1171 => wire__crate__api__dart_fn__rust_call_dart_two_args_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1172 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_two_args_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1173 => wire__crate__api__dart_fn__rust_call_dart_using_ipv4_addr_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1174 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_using_ipv4_addr_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1175 => wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1176 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1177 => wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1178 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_result_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1179 => wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files_impl(port, ptr, rust_vec_len, data_len),
-1180 => wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_files_impl(port, ptr, rust_vec_len, data_len),
-1181 => wire__crate__api__dart_opaque__set_static_dart_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1182 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__set_static_dart_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1184 => wire__crate__api__simple__simple_adder_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1185 => wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1187 => wire__crate__api__method__simple_enum_twin_normal_return_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1188 => wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1189 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_return_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1190 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_simple_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1193 => wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1194 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1196 => wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1197 => wire__crate__api__method__simple_struct_twin_normal_receiver_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1198 => wire__crate__api__method__simple_struct_twin_normal_receiver_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1199 => wire__crate__api__method__simple_struct_twin_normal_return_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1200 => wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1201 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_arg_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1202 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1203 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1204 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_return_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1205 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_vec_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1211 => wire__crate__api__external_impl__simple_translatable_external_struct_with_method_simple_external_method_impl(port, ptr, rust_vec_len, data_len),
-1212 => wire__crate__api__async_spawn__simple_use_async_spawn_impl(port, ptr, rust_vec_len, data_len),
-1213 => wire__crate__api__async_spawn__simple_use_async_spawn_blocking_impl(port, ptr, rust_vec_len, data_len),
-1214 => wire__crate__api__async_spawn__simple_use_async_spawn_local_impl(port, ptr, rust_vec_len, data_len),
-1215 => wire__crate__api__exception__some_struct_twin_normal_new_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1216 => wire__crate__api__exception__some_struct_twin_normal_non_static_return_err_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1217 => wire__crate__api__exception__some_struct_twin_normal_non_static_return_ok_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1218 => wire__crate__api__exception__some_struct_twin_normal_static_return_err_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1219 => wire__crate__api__exception__some_struct_twin_normal_static_return_ok_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1220 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_new_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1221 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_err_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1222 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_ok_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1223 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_err_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1224 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_ok_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1230 => wire__crate__api__method__static_only_twin_normal_static_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1231 => wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1233 => wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1234 => wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1235 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1236 => wire__crate__api__stream__stream_sink_inside_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1237 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1238 => wire__crate__api__stream__stream_sink_inside_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1239 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1240 => wire__crate__api__exception__stream_sink_throw_anyhow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1241 => wire__crate__api__pseudo_manual__exception_twin_rust_async__stream_sink_throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1243 => wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1244 => wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1245 => wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_instance_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1246 => wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1250 => wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f_impl(port, ptr, rust_vec_len, data_len),
-1251 => wire__crate__api__misc_no_twin_example_a__struct_with_raw_name_field_dummy_function_impl(port, ptr, rust_vec_len, data_len),
-1252 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_with_many_derive_default_impl(port, ptr, rust_vec_len, data_len),
-1253 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_with_many_derive_f_impl(port, ptr, rust_vec_len, data_len),
-1254 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_with_non_clone_data_f_impl(port, ptr, rust_vec_len, data_len),
-1255 => wire__crate__api__method__sum_with_twin_normal_sum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1256 => wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_rust_async_sum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1265 => wire__crate__api__misc_example__test_abc_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1266 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1268 => wire__crate__api__chrono_type__test_chrono_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1269 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1271 => wire__crate__api__mirror__test_contains_mirrored_sub_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1272 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_contains_mirrored_sub_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1274 => wire__crate__api__deliberate_name_conflict__test_duplicated_module_names_impl(port, ptr, rust_vec_len, data_len),
-1275 => wire__crate__api__mirror__test_fallible_of_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1276 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_fallible_of_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1278 => wire__crate__api__mirror__test_hashmap_with_mirrored_value_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1279 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_hashmap_with_mirrored_value_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1281 => wire__crate__api__mirror__test_list_of_nested_enums_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1282 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_nested_enums_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1284 => wire__crate__api__mirror__test_list_of_raw_nested_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1285 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_raw_nested_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1287 => wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1288 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_more_than_just_one_raw_string_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1290 => wire__crate__api__mirror__test_nested_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1291 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_nested_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1293 => wire__crate__api__chrono_type__test_precise_chrono_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1294 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_precise_chrono_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1296 => wire__crate__api__mirror__test_raw_string_enum_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1297 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_enum_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1299 => wire__crate__api__raw_string__test_raw_string_item_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1300 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1302 => wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1303 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1305 => wire__crate__api__mirror__test_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1306 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1308 => wire__crate__api__misc_example__test_struct_with_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1309 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1311 => wire__crate__api__tuple__test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1312 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1314 => wire__crate__api__tuple__test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1315 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1317 => wire__crate__api__exception__throw_anyhow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1318 => wire__crate__api__pseudo_manual__exception_twin_rust_async__throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1320 => wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1322 => wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1323 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1325 => wire__crate__api__array__use_boxed_blob_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1326 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1328 => wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1329 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1331 => wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1332 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1334 => wire__crate__api__array__use_msgid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1335 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+886 => wire__crate__api__type_alias__infallible_with_result_shadow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+887 => wire__crate__api__pseudo_manual__type_alias_twin_rust_async__infallible_with_result_shadow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+889 => wire__crate__api__customization__init_app_impl(port, ptr, rust_vec_len, data_len),
+890 => wire__crate__api__mirror__is_app_embedded_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+891 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__is_app_embedded_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+893 => wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+894 => wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+895 => wire__crate__api__array__last_number_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+896 => wire__crate__api__pseudo_manual__array_twin_rust_async__last_number_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+898 => wire__crate__api__misc_example__list_of_primitive_enums_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+899 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__list_of_primitive_enums_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+901 => wire__crate__api__dart_opaque__loop_back_array_get_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+902 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_get_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+904 => wire__crate__api__dart_opaque__loop_back_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+905 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+907 => wire__crate__api__dart_opaque__loop_back_option_get_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+908 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_option_get_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+910 => wire__crate__api__dart_opaque__loop_back_option_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+911 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_option_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+913 => wire__crate__api__dart_opaque__loop_back_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+914 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+916 => wire__crate__api__dart_opaque__loop_back_vec_get_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+917 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_get_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+919 => wire__crate__api__dart_opaque__loop_back_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+920 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__loop_back_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+922 => wire__crate__api__lifetimeable__lt_compute_with_lifetime_function_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+923 => wire__crate__api__pseudo_manual__lifetimeable_twin_sync__lt_compute_with_lifetime_function_twin_sync_impl(port, ptr, rust_vec_len, data_len),
+924 => wire__crate__api__mirror__mirror_array_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+925 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_array_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+927 => wire__crate__api__mirror__mirror_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+928 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+930 => wire__crate__api__mirror__mirror_map_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+931 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_map_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+933 => wire__crate__api__mirror__mirror_option_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+934 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_option_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+936 => wire__crate__api__mirror__mirror_set_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+937 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_set_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+939 => wire__crate__api__mirror__mirror_struct_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+940 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_struct_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+942 => wire__crate__api__mirror__mirror_tuple_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+943 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_tuple_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+945 => wire__crate__api__mirror__mirror_vec_enum_stream_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+946 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__mirror_vec_enum_stream_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+948 => wire__crate__api__enumeration__multiply_by_ten_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+949 => wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by_ten_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+951 => wire__crate__api__method__my_callable_twin_normal_call_impl(port, ptr, rust_vec_len, data_len),
+952 => wire__crate__api__pseudo_manual__method_twin_rust_async__my_callable_twin_rust_async_call_impl(port, ptr, rust_vec_len, data_len),
+954 => wire__crate__api__misc_no_twin_example_a__my_enum_with_json_serializable_twin_normal_f_impl(port, ptr, rust_vec_len, data_len),
+955 => wire__crate__api__customization__my_init_one_impl(port, ptr, rust_vec_len, data_len),
+956 => wire__crate__api__customization__my_init_two_impl(port, ptr, rust_vec_len, data_len),
+957 => wire__crate__api__misc_no_twin_example_a__my_struct_with_json_serializable_twin_normal_f_impl(port, ptr, rust_vec_len, data_len),
+958 => wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync_impl(port, ptr, rust_vec_len, data_len),
+959 => wire__crate__api__chrono_type__naivedate_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+960 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedate_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+962 => wire__crate__api__chrono_type__naivedatetime_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+963 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+965 => wire__crate__api__array__nested_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+966 => wire__crate__api__pseudo_manual__array_twin_rust_async__nested_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+968 => wire__crate__api__array__new_msgid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+969 => wire__crate__api__pseudo_manual__array_twin_rust_async__new_msgid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+971 => wire__crate__api__attribute__next_user_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+972 => wire__crate__api__pseudo_manual__attribute_twin_rust_async__next_user_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+974 => wire__crate__api__rust_opaque__opaque_array_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+975 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+977 => wire__crate__api__rust_opaque__opaque_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+978 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+980 => wire__crate__api__rust_opaque__opaque_vec_run_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+981 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+983 => wire__crate__api__rust_opaque__opaque_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+984 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+986 => wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+987 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_empty_datetime_utc_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+989 => wire__crate__api__dart_opaque__panic_unwrap_dart_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+990 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__panic_unwrap_dart_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+992 => wire__crate__api__exception__panic_with_custom_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+993 => wire__crate__api__pseudo_manual__exception_twin_rust_async__panic_with_custom_result_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+995 => wire__crate__api__misc_example__positional_arguments_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+996 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+998 => wire__crate__api__optional_primitive_misc__primitive_optional_types_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+999 => wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async__primitive_optional_types_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1001 => wire__crate__api__primitive_misc__primitive_types_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1002 => wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1004 => wire__crate__api__primitive_misc__primitive_u32_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1005 => wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u32_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1007 => wire__crate__api__enumeration__print_note_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1008 => wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1010 => wire__crate__api__frb_logging__print_to_console_smoke_test_impl(port, ptr, rust_vec_len, data_len),
+1012 => wire__crate__api__event_listener__register_event_listener_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1013 => wire__crate__api__pseudo_manual__event_listener_twin_rust_async__register_event_listener_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1014 => wire__crate__api__mirror__repeat_number_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1015 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_number_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1017 => wire__crate__api__mirror__repeat_sequence_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1018 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__repeat_sequence_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1020 => wire__crate__api__init_dart_code__request_init_dart_code_message_impl(port, ptr, rust_vec_len, data_len),
+1021 => wire__crate__api__array__return_boxed_feed_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1022 => wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_feed_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1024 => wire__crate__api__array__return_boxed_raw_feed_id_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1025 => wire__crate__api__pseudo_manual__array_twin_rust_async__return_boxed_raw_feed_id_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1027 => wire__crate__api__exception__return_custom_nested_error_1_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1028 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_1_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1030 => wire__crate__api__exception__return_custom_nested_error_1_variant1_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1031 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_1_variant1_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1033 => wire__crate__api__exception__return_custom_nested_error_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1034 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_nested_error_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1036 => wire__crate__api__exception__return_custom_struct_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1037 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_struct_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1039 => wire__crate__api__exception__return_custom_struct_ok_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1040 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_custom_struct_ok_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1042 => wire__crate__api__exception__return_err_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1043 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_err_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1045 => wire__crate__api__exception__return_error_variant_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1046 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_error_variant_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1048 => wire__crate__api__exception__return_ok_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1049 => wire__crate__api__pseudo_manual__exception_twin_rust_async__return_ok_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1051 => wire__crate__api__tuple__return_optional_f_32_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1052 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__return_optional_f_32_tuple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1054 => wire__crate__api__rust_opaque__run_enum_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1055 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1057 => wire__crate__api__rust_opaque__run_nested_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1058 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1060 => wire__crate__api__rust_opaque__run_non_clone_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1061 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clone_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1063 => wire__crate__api__rust_opaque__run_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1064 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1066 => wire__crate__api__rust_opaque__run_opaque_with_delay_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1067 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_with_delay_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1069 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1070 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1072 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1073 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1075 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1076 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_and_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1078 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1079 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1081 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1082 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_arg_vec_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1084 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1085 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1087 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_borrow_and_mut_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1088 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1090 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1091 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1093 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_callable_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1094 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_callable_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1096 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_dummy_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1097 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_dummy_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1099 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_arg_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1100 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_arg_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1102 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1103 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1105 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1106 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1108 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1109 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1111 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1112 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1114 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1115 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1117 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1118 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1120 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1121 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1123 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1124 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_explicit_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1126 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1127 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1129 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1130 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1132 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1133 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_plus_sign_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1135 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_one_and_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1136 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1138 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_opaque_two_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1139 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_opaque_two_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1141 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1142 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1144 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_return_vec_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1145 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_return_vec_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1147 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_sleep_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1148 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_sleep_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1150 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1151 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1153 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1154 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1156 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1157 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1159 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1160 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_two_args_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1162 => wire__crate__api__dart_fn__rust_call_dart_loopback_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1163 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_loopback_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1164 => wire__crate__api__dart_fn__rust_call_dart_multi_times_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1165 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_multi_times_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1166 => wire__crate__api__dart_fn__rust_call_dart_one_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1167 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_one_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1168 => wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1169 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_result_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1170 => wire__crate__api__dart_fn__rust_call_dart_return_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1171 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1172 => wire__crate__api__dart_fn__rust_call_dart_simple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1173 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_simple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1174 => wire__crate__api__dart_fn__rust_call_dart_two_args_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1175 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_two_args_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1176 => wire__crate__api__dart_fn__rust_call_dart_using_ipv4_addr_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1177 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_using_ipv4_addr_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1178 => wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_arg_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1179 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1180 => wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1181 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_result_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1182 => wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files_impl(port, ptr, rust_vec_len, data_len),
+1183 => wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_files_impl(port, ptr, rust_vec_len, data_len),
+1184 => wire__crate__api__dart_opaque__set_static_dart_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1185 => wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__set_static_dart_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1187 => wire__crate__api__simple__simple_adder_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1188 => wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1190 => wire__crate__api__method__simple_enum_twin_normal_return_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1191 => wire__crate__api__method__simple_enum_twin_normal_simple_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1192 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_return_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1193 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_enum_twin_rust_async_simple_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1196 => wire__crate__api__method__simple_primitive_enum_twin_normal_simple_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1197 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_primitive_enum_twin_rust_async_simple_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1199 => wire__crate__api__method__simple_struct_twin_normal_arg_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1200 => wire__crate__api__method__simple_struct_twin_normal_receiver_borrow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1201 => wire__crate__api__method__simple_struct_twin_normal_receiver_own_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1202 => wire__crate__api__method__simple_struct_twin_normal_return_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1203 => wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1204 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_arg_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1205 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_borrow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1206 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_receiver_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1207 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_return_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1208 => wire__crate__api__pseudo_manual__method_twin_rust_async__simple_struct_twin_rust_async_vec_self_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1214 => wire__crate__api__external_impl__simple_translatable_external_struct_with_method_simple_external_method_impl(port, ptr, rust_vec_len, data_len),
+1215 => wire__crate__api__async_spawn__simple_use_async_spawn_impl(port, ptr, rust_vec_len, data_len),
+1216 => wire__crate__api__async_spawn__simple_use_async_spawn_blocking_impl(port, ptr, rust_vec_len, data_len),
+1217 => wire__crate__api__async_spawn__simple_use_async_spawn_local_impl(port, ptr, rust_vec_len, data_len),
+1218 => wire__crate__api__exception__some_struct_twin_normal_new_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1219 => wire__crate__api__exception__some_struct_twin_normal_non_static_return_err_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1220 => wire__crate__api__exception__some_struct_twin_normal_non_static_return_ok_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1221 => wire__crate__api__exception__some_struct_twin_normal_static_return_err_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1222 => wire__crate__api__exception__some_struct_twin_normal_static_return_ok_custom_error_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1223 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_new_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1224 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_err_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1225 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_non_static_return_ok_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1226 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_err_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1227 => wire__crate__api__pseudo_manual__exception_twin_rust_async__some_struct_twin_rust_async_static_return_ok_custom_error_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1233 => wire__crate__api__method__static_only_twin_normal_static_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1234 => wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1236 => wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1237 => wire__crate__api__stream__stream_sink_fixed_sized_primitive_array_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1238 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_fixed_sized_primitive_array_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1239 => wire__crate__api__stream__stream_sink_inside_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1240 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1241 => wire__crate__api__stream__stream_sink_inside_vec_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1242 => wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_inside_vec_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1243 => wire__crate__api__exception__stream_sink_throw_anyhow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1244 => wire__crate__api__pseudo_manual__exception_twin_rust_async__stream_sink_throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1246 => wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1247 => wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1248 => wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_instance_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1249 => wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1253 => wire__crate__api__misc_no_twin_example_a__struct_with_impl_block_in_another_file_f_impl(port, ptr, rust_vec_len, data_len),
+1254 => wire__crate__api__misc_no_twin_example_a__struct_with_raw_name_field_dummy_function_impl(port, ptr, rust_vec_len, data_len),
+1255 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_with_many_derive_default_impl(port, ptr, rust_vec_len, data_len),
+1256 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_field_with_many_derive_f_impl(port, ptr, rust_vec_len, data_len),
+1257 => wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_with_non_clone_data_f_impl(port, ptr, rust_vec_len, data_len),
+1258 => wire__crate__api__method__sum_with_twin_normal_sum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1259 => wire__crate__api__pseudo_manual__method_twin_rust_async__sum_with_twin_rust_async_sum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1268 => wire__crate__api__misc_example__test_abc_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1269 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_abc_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1271 => wire__crate__api__chrono_type__test_chrono_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1272 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1274 => wire__crate__api__mirror__test_contains_mirrored_sub_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1275 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_contains_mirrored_sub_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1277 => wire__crate__api__deliberate_name_conflict__test_duplicated_module_names_impl(port, ptr, rust_vec_len, data_len),
+1278 => wire__crate__api__mirror__test_fallible_of_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1279 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_fallible_of_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1281 => wire__crate__api__mirror__test_hashmap_with_mirrored_value_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1282 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_hashmap_with_mirrored_value_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1284 => wire__crate__api__mirror__test_list_of_nested_enums_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1285 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_nested_enums_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1287 => wire__crate__api__mirror__test_list_of_raw_nested_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1288 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_list_of_raw_nested_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1290 => wire__crate__api__raw_string__test_more_than_just_one_raw_string_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1291 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_more_than_just_one_raw_string_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1293 => wire__crate__api__mirror__test_nested_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1294 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_nested_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1296 => wire__crate__api__chrono_type__test_precise_chrono_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1297 => wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_precise_chrono_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1299 => wire__crate__api__mirror__test_raw_string_enum_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1300 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_enum_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1302 => wire__crate__api__raw_string__test_raw_string_item_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1303 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1305 => wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1306 => wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1308 => wire__crate__api__mirror__test_raw_string_mirrored_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1309 => wire__crate__api__pseudo_manual__mirror_twin_rust_async__test_raw_string_mirrored_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1311 => wire__crate__api__misc_example__test_struct_with_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1312 => wire__crate__api__pseudo_manual__misc_example_twin_rust_async__test_struct_with_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1314 => wire__crate__api__tuple__test_tuple_2_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1315 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_2_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1317 => wire__crate__api__tuple__test_tuple_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1318 => wire__crate__api__pseudo_manual__tuple_twin_rust_async__test_tuple_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1320 => wire__crate__api__exception__throw_anyhow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1321 => wire__crate__api__pseudo_manual__exception_twin_rust_async__throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1323 => wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1325 => wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1326 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1328 => wire__crate__api__array__use_boxed_blob_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1329 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1331 => wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1332 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1334 => wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1335 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1337 => wire__crate__api__array__use_msgid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1338 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
@@ -44585,145 +44595,146 @@ fn pde_ffi_dispatcher_sync_impl(
 879 => wire__crate__api__pseudo_manual__serde_json_type_twin_sync__handle_vec_serde_json_value_twin_sync_impl(ptr, rust_vec_len, data_len),
 882 => wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync_impl(ptr, rust_vec_len, data_len),
 885 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take_twin_sync_impl(ptr, rust_vec_len, data_len),
-889 => wire__crate__api__pseudo_manual__mirror_twin_sync__is_app_embedded_twin_sync_impl(ptr, rust_vec_len, data_len),
-894 => wire__crate__api__pseudo_manual__array_twin_sync__last_number_twin_sync_impl(ptr, rust_vec_len, data_len),
-897 => wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync_impl(ptr, rust_vec_len, data_len),
-900 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_get_twin_sync_impl(ptr, rust_vec_len, data_len),
-903 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_twin_sync_impl(ptr, rust_vec_len, data_len),
-906 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_get_twin_sync_impl(ptr, rust_vec_len, data_len),
-909 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_twin_sync_impl(ptr, rust_vec_len, data_len),
-912 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_twin_sync_impl(ptr, rust_vec_len, data_len),
-915 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_get_twin_sync_impl(ptr, rust_vec_len, data_len),
-918 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_twin_sync_impl(ptr, rust_vec_len, data_len),
-923 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_array_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
-926 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
-929 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_map_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
-932 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_option_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
-935 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_set_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
-938 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_struct_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
-941 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_tuple_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
-944 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_vec_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
-947 => wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_sync_impl(ptr, rust_vec_len, data_len),
-950 => wire__crate__api__pseudo_manual__method_twin_sync__my_callable_twin_sync_call_impl(ptr, rust_vec_len, data_len),
-958 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedate_twin_sync_impl(ptr, rust_vec_len, data_len),
-961 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync_impl(ptr, rust_vec_len, data_len),
-964 => wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync_impl(ptr, rust_vec_len, data_len),
-967 => wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync_impl(ptr, rust_vec_len, data_len),
-970 => wire__crate__api__pseudo_manual__attribute_twin_sync__next_user_id_twin_sync_impl(ptr, rust_vec_len, data_len),
-973 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync_impl(ptr, rust_vec_len, data_len),
-976 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_twin_sync_impl(ptr, rust_vec_len, data_len),
-979 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync_impl(ptr, rust_vec_len, data_len),
-982 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_twin_sync_impl(ptr, rust_vec_len, data_len),
-985 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_datetime_utc_twin_sync_impl(ptr, rust_vec_len, data_len),
-988 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__panic_unwrap_dart_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-991 => wire__crate__api__pseudo_manual__exception_twin_sync__panic_with_custom_result_twin_sync_impl(ptr, rust_vec_len, data_len),
-994 => wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync_impl(ptr, rust_vec_len, data_len),
-997 => wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync__primitive_optional_types_twin_sync_impl(ptr, rust_vec_len, data_len),
-1000 => wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync_impl(ptr, rust_vec_len, data_len),
-1003 => wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync_impl(ptr, rust_vec_len, data_len),
-1006 => wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync_impl(ptr, rust_vec_len, data_len),
-1008 => wire__crate__api__init_dart_code__record_init_dart_code_message_impl(ptr, rust_vec_len, data_len),
-1013 => wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync_impl(ptr, rust_vec_len, data_len),
-1016 => wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync_impl(ptr, rust_vec_len, data_len),
-1020 => wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_feed_id_twin_sync_impl(ptr, rust_vec_len, data_len),
-1023 => wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_twin_sync_impl(ptr, rust_vec_len, data_len),
-1026 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_twin_sync_impl(ptr, rust_vec_len, data_len),
-1029 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_variant1_twin_sync_impl(ptr, rust_vec_len, data_len),
-1032 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_2_twin_sync_impl(ptr, rust_vec_len, data_len),
-1035 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_error_twin_sync_impl(ptr, rust_vec_len, data_len),
-1038 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_ok_twin_sync_impl(ptr, rust_vec_len, data_len),
-1041 => wire__crate__api__pseudo_manual__exception_twin_sync__return_err_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
-1044 => wire__crate__api__pseudo_manual__exception_twin_sync__return_error_variant_twin_sync_impl(ptr, rust_vec_len, data_len),
-1047 => wire__crate__api__pseudo_manual__exception_twin_sync__return_ok_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
-1050 => wire__crate__api__pseudo_manual__tuple_twin_sync__return_optional_f_32_tuple_twin_sync_impl(ptr, rust_vec_len, data_len),
-1053 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1056 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1059 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sync_impl(ptr, rust_vec_len, data_len),
-1062 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1065 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_with_delay_twin_sync_impl(ptr, rust_vec_len, data_len),
-1068 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1071 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1074 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_and_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1077 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1080 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1083 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1086 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1089 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
-1092 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_return_twin_sync_impl(ptr, rust_vec_len, data_len),
-1095 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_dummy_twin_sync_impl(ptr, rust_vec_len, data_len),
-1098 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1101 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1104 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1107 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_impl(ptr, rust_vec_len, data_len),
-1110 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1113 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
-1116 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1119 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_twin_sync_impl(ptr, rust_vec_len, data_len),
-1122 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1125 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_normal_and_opaque_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
-1128 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
-1131 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_return_twin_sync_impl(ptr, rust_vec_len, data_len),
-1134 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_one_and_two_twin_sync_impl(ptr, rust_vec_len, data_len),
-1137 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_two_twin_sync_impl(ptr, rust_vec_len, data_len),
-1140 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1143 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_vec_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1146 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_sleep_twin_sync_impl(ptr, rust_vec_len, data_len),
-1149 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync_impl(ptr, rust_vec_len, data_len),
-1152 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1155 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1158 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_two_args_twin_sync_impl(ptr, rust_vec_len, data_len),
-1183 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__set_static_dart_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1186 => wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync_impl(ptr, rust_vec_len, data_len),
-1191 => wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_return_self_twin_sync_impl(ptr, rust_vec_len, data_len),
-1192 => wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync_impl(ptr, rust_vec_len, data_len),
-1195 => wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync_impl(ptr, rust_vec_len, data_len),
-1206 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync_impl(ptr, rust_vec_len, data_len),
-1207 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1208 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_own_twin_sync_impl(ptr, rust_vec_len, data_len),
-1209 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_return_self_twin_sync_impl(ptr, rust_vec_len, data_len),
-1210 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_vec_self_twin_sync_impl(ptr, rust_vec_len, data_len),
-1225 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_new_twin_sync_impl(ptr, rust_vec_len, data_len),
-1226 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_err_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
-1227 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_ok_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
-1228 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_err_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
-1229 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_ok_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
-1232 => wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync_impl(ptr, rust_vec_len, data_len),
-1242 => wire__crate__api__pseudo_manual__exception_twin_sync__stream_sink_throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1247 => wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync_impl(ptr, rust_vec_len, data_len),
-1248 => wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync_impl(ptr, rust_vec_len, data_len),
-1249 => wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal_impl(ptr, rust_vec_len, data_len),
-1257 => wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1258 => wire__crate__api__dart_opaque_sync__sync_accept_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1259 => wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal_impl(ptr, rust_vec_len, data_len),
-1260 => wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1261 => wire__crate__api__dart_opaque_sync__sync_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
-1262 => wire__crate__api__dart_opaque_sync__sync_option_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1263 => wire__crate__api__dart_opaque_sync__sync_option_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
-1264 => wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1267 => wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1270 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync_impl(ptr, rust_vec_len, data_len),
-1273 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_contains_mirrored_sub_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1277 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_fallible_of_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1280 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_hashmap_with_mirrored_value_twin_sync_impl(ptr, rust_vec_len, data_len),
-1283 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_nested_enums_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1286 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_raw_nested_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1289 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_one_raw_string_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1292 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_nested_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1295 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_precise_chrono_twin_sync_impl(ptr, rust_vec_len, data_len),
-1298 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_enum_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1301 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1304 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1307 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
-1310 => wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1313 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync_impl(ptr, rust_vec_len, data_len),
-1316 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync_impl(ptr, rust_vec_len, data_len),
-1319 => wire__crate__api__pseudo_manual__exception_twin_sync__throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1321 => wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1324 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1327 => wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync_impl(ptr, rust_vec_len, data_len),
-1330 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1333 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1336 => wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync_impl(ptr, rust_vec_len, data_len),
+888 => wire__crate__api__pseudo_manual__type_alias_twin_sync__infallible_with_result_shadow_twin_sync_impl(ptr, rust_vec_len, data_len),
+892 => wire__crate__api__pseudo_manual__mirror_twin_sync__is_app_embedded_twin_sync_impl(ptr, rust_vec_len, data_len),
+897 => wire__crate__api__pseudo_manual__array_twin_sync__last_number_twin_sync_impl(ptr, rust_vec_len, data_len),
+900 => wire__crate__api__pseudo_manual__misc_example_twin_sync__list_of_primitive_enums_twin_sync_impl(ptr, rust_vec_len, data_len),
+903 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_get_twin_sync_impl(ptr, rust_vec_len, data_len),
+906 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_array_twin_sync_impl(ptr, rust_vec_len, data_len),
+909 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_get_twin_sync_impl(ptr, rust_vec_len, data_len),
+912 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_option_twin_sync_impl(ptr, rust_vec_len, data_len),
+915 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_twin_sync_impl(ptr, rust_vec_len, data_len),
+918 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_get_twin_sync_impl(ptr, rust_vec_len, data_len),
+921 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__loop_back_vec_twin_sync_impl(ptr, rust_vec_len, data_len),
+926 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_array_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+929 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+932 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_map_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+935 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_option_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+938 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_set_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+941 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_struct_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+944 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_tuple_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+947 => wire__crate__api__pseudo_manual__mirror_twin_sync__mirror_vec_enum_stream_twin_sync_impl(ptr, rust_vec_len, data_len),
+950 => wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_sync_impl(ptr, rust_vec_len, data_len),
+953 => wire__crate__api__pseudo_manual__method_twin_sync__my_callable_twin_sync_call_impl(ptr, rust_vec_len, data_len),
+961 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedate_twin_sync_impl(ptr, rust_vec_len, data_len),
+964 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync_impl(ptr, rust_vec_len, data_len),
+967 => wire__crate__api__pseudo_manual__array_twin_sync__nested_id_twin_sync_impl(ptr, rust_vec_len, data_len),
+970 => wire__crate__api__pseudo_manual__array_twin_sync__new_msgid_twin_sync_impl(ptr, rust_vec_len, data_len),
+973 => wire__crate__api__pseudo_manual__attribute_twin_sync__next_user_id_twin_sync_impl(ptr, rust_vec_len, data_len),
+976 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync_impl(ptr, rust_vec_len, data_len),
+979 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_twin_sync_impl(ptr, rust_vec_len, data_len),
+982 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync_impl(ptr, rust_vec_len, data_len),
+985 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_twin_sync_impl(ptr, rust_vec_len, data_len),
+988 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_datetime_utc_twin_sync_impl(ptr, rust_vec_len, data_len),
+991 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__panic_unwrap_dart_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+994 => wire__crate__api__pseudo_manual__exception_twin_sync__panic_with_custom_result_twin_sync_impl(ptr, rust_vec_len, data_len),
+997 => wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync_impl(ptr, rust_vec_len, data_len),
+1000 => wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sync__primitive_optional_types_twin_sync_impl(ptr, rust_vec_len, data_len),
+1003 => wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync_impl(ptr, rust_vec_len, data_len),
+1006 => wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync_impl(ptr, rust_vec_len, data_len),
+1009 => wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync_impl(ptr, rust_vec_len, data_len),
+1011 => wire__crate__api__init_dart_code__record_init_dart_code_message_impl(ptr, rust_vec_len, data_len),
+1016 => wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_number_twin_sync_impl(ptr, rust_vec_len, data_len),
+1019 => wire__crate__api__pseudo_manual__mirror_twin_sync__repeat_sequence_twin_sync_impl(ptr, rust_vec_len, data_len),
+1023 => wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_feed_id_twin_sync_impl(ptr, rust_vec_len, data_len),
+1026 => wire__crate__api__pseudo_manual__array_twin_sync__return_boxed_raw_feed_id_twin_sync_impl(ptr, rust_vec_len, data_len),
+1029 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_twin_sync_impl(ptr, rust_vec_len, data_len),
+1032 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_1_variant1_twin_sync_impl(ptr, rust_vec_len, data_len),
+1035 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_nested_error_2_twin_sync_impl(ptr, rust_vec_len, data_len),
+1038 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_error_twin_sync_impl(ptr, rust_vec_len, data_len),
+1041 => wire__crate__api__pseudo_manual__exception_twin_sync__return_custom_struct_ok_twin_sync_impl(ptr, rust_vec_len, data_len),
+1044 => wire__crate__api__pseudo_manual__exception_twin_sync__return_err_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
+1047 => wire__crate__api__pseudo_manual__exception_twin_sync__return_error_variant_twin_sync_impl(ptr, rust_vec_len, data_len),
+1050 => wire__crate__api__pseudo_manual__exception_twin_sync__return_ok_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
+1053 => wire__crate__api__pseudo_manual__tuple_twin_sync__return_optional_f_32_tuple_twin_sync_impl(ptr, rust_vec_len, data_len),
+1056 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1059 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1062 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sync_impl(ptr, rust_vec_len, data_len),
+1065 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1068 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_with_delay_twin_sync_impl(ptr, rust_vec_len, data_len),
+1071 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1074 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1077 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_and_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1080 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1083 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_arg_vec_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1086 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1089 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_borrow_and_mut_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1092 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
+1095 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_callable_return_twin_sync_impl(ptr, rust_vec_len, data_len),
+1098 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_dummy_twin_sync_impl(ptr, rust_vec_len, data_len),
+1101 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_arg_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1104 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1107 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1110 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_impl(ptr, rust_vec_len, data_len),
+1113 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1116 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
+1119 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1122 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_return_twin_sync_impl(ptr, rust_vec_len, data_len),
+1125 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_explicit_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1128 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_normal_and_opaque_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
+1131 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_arg_twin_sync_impl(ptr, rust_vec_len, data_len),
+1134 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_plus_sign_return_twin_sync_impl(ptr, rust_vec_len, data_len),
+1137 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_one_and_two_twin_sync_impl(ptr, rust_vec_len, data_len),
+1140 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_opaque_two_twin_sync_impl(ptr, rust_vec_len, data_len),
+1143 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1146 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_return_vec_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1149 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_sleep_twin_sync_impl(ptr, rust_vec_len, data_len),
+1152 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync_impl(ptr, rust_vec_len, data_len),
+1155 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1158 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1161 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_two_args_twin_sync_impl(ptr, rust_vec_len, data_len),
+1186 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__set_static_dart_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1189 => wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync_impl(ptr, rust_vec_len, data_len),
+1194 => wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_return_self_twin_sync_impl(ptr, rust_vec_len, data_len),
+1195 => wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_simple_method_twin_sync_impl(ptr, rust_vec_len, data_len),
+1198 => wire__crate__api__pseudo_manual__method_twin_sync__simple_primitive_enum_twin_sync_simple_method_twin_sync_impl(ptr, rust_vec_len, data_len),
+1209 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_arg_self_twin_sync_impl(ptr, rust_vec_len, data_len),
+1210 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_borrow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1211 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_receiver_own_twin_sync_impl(ptr, rust_vec_len, data_len),
+1212 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_return_self_twin_sync_impl(ptr, rust_vec_len, data_len),
+1213 => wire__crate__api__pseudo_manual__method_twin_sync__simple_struct_twin_sync_vec_self_twin_sync_impl(ptr, rust_vec_len, data_len),
+1228 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_new_twin_sync_impl(ptr, rust_vec_len, data_len),
+1229 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_err_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
+1230 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_non_static_return_ok_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
+1231 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_err_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
+1232 => wire__crate__api__pseudo_manual__exception_twin_sync__some_struct_twin_sync_static_return_ok_custom_error_twin_sync_impl(ptr, rust_vec_len, data_len),
+1235 => wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync_impl(ptr, rust_vec_len, data_len),
+1245 => wire__crate__api__pseudo_manual__exception_twin_sync__stream_sink_throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1250 => wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_instance_method_twin_sync_impl(ptr, rust_vec_len, data_len),
+1251 => wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync_impl(ptr, rust_vec_len, data_len),
+1252 => wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal_impl(ptr, rust_vec_len, data_len),
+1260 => wire__crate__api__pseudo_manual__method_twin_sync__sum_with_twin_sync_sum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1261 => wire__crate__api__dart_opaque_sync__sync_accept_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1262 => wire__crate__api__rust_opaque_sync__sync_create_non_clone_twin_normal_impl(ptr, rust_vec_len, data_len),
+1263 => wire__crate__api__rust_opaque_sync__sync_create_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1264 => wire__crate__api__dart_opaque_sync__sync_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
+1265 => wire__crate__api__dart_opaque_sync__sync_option_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1266 => wire__crate__api__dart_opaque_sync__sync_option_loopback_twin_normal_impl(ptr, rust_vec_len, data_len),
+1267 => wire__crate__api__rust_opaque_sync__sync_option_rust_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1270 => wire__crate__api__pseudo_manual__misc_example_twin_sync__test_abc_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1273 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync_impl(ptr, rust_vec_len, data_len),
+1276 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_contains_mirrored_sub_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1280 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_fallible_of_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1283 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_hashmap_with_mirrored_value_twin_sync_impl(ptr, rust_vec_len, data_len),
+1286 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_nested_enums_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1289 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_list_of_raw_nested_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1292 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_more_than_just_one_raw_string_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1295 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_nested_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1298 => wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_precise_chrono_twin_sync_impl(ptr, rust_vec_len, data_len),
+1301 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_enum_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1304 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1307 => wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1310 => wire__crate__api__pseudo_manual__mirror_twin_sync__test_raw_string_mirrored_twin_sync_impl(ptr, rust_vec_len, data_len),
+1313 => wire__crate__api__pseudo_manual__misc_example_twin_sync__test_struct_with_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1316 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync_impl(ptr, rust_vec_len, data_len),
+1319 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync_impl(ptr, rust_vec_len, data_len),
+1322 => wire__crate__api__pseudo_manual__exception_twin_sync__throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
+1324 => wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1327 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1330 => wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync_impl(ptr, rust_vec_len, data_len),
+1333 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1336 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1339 => wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync_impl(ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
