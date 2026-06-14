@@ -25,12 +25,11 @@ In addition to the variables required by the OpenHarmony Flutter guide,
 flutter_rust_bridge needs `OHOS_SDK_HOME` when CargoKit cross-compiles Rust code
 for OHOS. Set it to the SDK's `native` directory, not to the SDK root.
 
-For example, on Windows:
-
-```powershell
-[Environment]::SetEnvironmentVariable("OHOS_SDK_HOME", "D:\Huawei\SDK\18\native", "User")
-$env:OHOS_SDK_HOME = "D:\Huawei\SDK\18\native"
-```
+On Windows, add or update an environment variable named `OHOS_SDK_HOME`.
+It can be either a user environment variable or a system environment variable,
+as long as the terminal and IDE used for building can read it. Its value should
+be the SDK `native` directory, for example
+`D:\Huawei\SDK\18\native`.
 
 On macOS or Linux, add this to your shell profile, such as `~/.bashrc`,
 `~/.zshrc`, or `~/.profile`, so the variable persists after restarting the
