@@ -10,7 +10,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'pseudo_manual/stream_twin_rust_async.dart';
 
 // These functions are ignored because they are not marked as `pub`: `handle_stream_inner`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `deref`, `fmt`, `initialize`
 
 Future<Stream<String>> funcStreamReturnErrorTwinNormal() =>
     RustLib.instance.api.crateApiStreamFuncStreamReturnErrorTwinNormal();
@@ -56,6 +56,38 @@ Future<void> streamSinkInsideStructTwinNormal(
 
 Stream<int> funcStreamAddValueAndErrorTwinNormal() =>
     RustLib.instance.api.crateApiStreamFuncStreamAddValueAndErrorTwinNormal();
+
+Stream<int> streamSinkEmitRangeTwinNormal({required int count}) =>
+    RustLib.instance.api
+        .crateApiStreamStreamSinkEmitRangeTwinNormal(count: count);
+
+Stream<int> streamSinkEmitRangeThenHoldTwinNormal(
+        {required int count, required BigInt holdMillis}) =>
+    RustLib.instance.api.crateApiStreamStreamSinkEmitRangeThenHoldTwinNormal(
+        count: count, holdMillis: holdMillis);
+
+Stream<int> streamSinkEmitManyTwinNormal({required int count}) =>
+    RustLib.instance.api
+        .crateApiStreamStreamSinkEmitManyTwinNormal(count: count);
+
+Stream<int> storeStreamSinkTwinNormal() =>
+    RustLib.instance.api.crateApiStreamStoreStreamSinkTwinNormal();
+
+Future<void> clearStoredStreamSinkTwinNormal() =>
+    RustLib.instance.api.crateApiStreamClearStoredStreamSinkTwinNormal();
+
+Future<void> storedStreamSinkEmitManyTwinNormal({required int count}) =>
+    RustLib.instance.api
+        .crateApiStreamStoredStreamSinkEmitManyTwinNormal(count: count);
+
+Future<void> storedStreamSinkStartSpamTwinNormal(
+        {required int total, required BigInt intervalMillis}) =>
+    RustLib.instance.api.crateApiStreamStoredStreamSinkStartSpamTwinNormal(
+        total: total, intervalMillis: intervalMillis);
+
+Future<void> storedStreamSinkEmitErrorTwinNormal({required String message}) =>
+    RustLib.instance.api
+        .crateApiStreamStoredStreamSinkEmitErrorTwinNormal(message: message);
 
 class LogTwinNormal {
   final int key;

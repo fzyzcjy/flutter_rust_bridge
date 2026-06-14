@@ -10,7 +10,8 @@ import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they are not marked as `pub`: `handle_stream_inner`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `STORED_STREAM_SINK_TWIN_NORMAL`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `deref`, `fmt`, `initialize`
 
 Future<Stream<String>> funcStreamReturnErrorTwinRustAsync() => RustLib
     .instance.api
@@ -66,6 +67,45 @@ Future<void> streamSinkInsideStructTwinRustAsync(
 
 Stream<int> funcStreamAddValueAndErrorTwinRustAsync() => RustLib.instance.api
     .crateApiPseudoManualStreamTwinRustAsyncFuncStreamAddValueAndErrorTwinRustAsync();
+
+Stream<int> streamSinkEmitRangeTwinRustAsync({required int count}) => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeTwinRustAsync(
+        count: count);
+
+Stream<int> streamSinkEmitRangeThenHoldTwinRustAsync(
+        {required int count, required BigInt holdMillis}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeThenHoldTwinRustAsync(
+            count: count, holdMillis: holdMillis);
+
+Stream<int> streamSinkEmitManyTwinRustAsync({required int count}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitManyTwinRustAsync(
+            count: count);
+
+Stream<int> storeStreamSinkTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncStoreStreamSinkTwinRustAsync();
+
+Future<void> clearStoredStreamSinkTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncClearStoredStreamSinkTwinRustAsync();
+
+Future<void> storedStreamSinkEmitManyTwinRustAsync({required int count}) => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitManyTwinRustAsync(
+        count: count);
+
+Future<void> storedStreamSinkStartSpamTwinRustAsync(
+        {required int total, required BigInt intervalMillis}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkStartSpamTwinRustAsync(
+            total: total, intervalMillis: intervalMillis);
+
+Future<void> storedStreamSinkEmitErrorTwinRustAsync(
+        {required String message}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitErrorTwinRustAsync(
+            message: message);
 
 class LogTwinRustAsync {
   final int key;
