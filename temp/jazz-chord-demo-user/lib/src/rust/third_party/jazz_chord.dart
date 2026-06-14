@@ -75,6 +75,21 @@ enum Extension {
   majorSixth,
   minorSeventh;
 
+  Future<bool> containsMajorToken() =>
+      RustLib.instance.api.jazzChordExtensionContainsMajorToken(that: this);
+
+  Future<bool> containsMinorToken() =>
+      RustLib.instance.api.jazzChordExtensionContainsMinorToken(that: this);
+
+  Future<bool> hidesMaTriadStr({required bool hideMajorSixTriad}) =>
+      RustLib.instance.api.jazzChordExtensionHidesMaTriadStr(
+        that: this,
+        hideMajorSixTriad: hideMajorSixTriad,
+      );
+
+  Future<bool> isDominant() =>
+      RustLib.instance.api.jazzChordExtensionIsDominant(that: this);
+
   Future<void> name() =>
       RustLib.instance.api.jazzChordExtensionName(that: this);
 }

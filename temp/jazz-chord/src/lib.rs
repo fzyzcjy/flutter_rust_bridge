@@ -88,6 +88,68 @@ pub enum Extension {
 }
 
 impl Extension {
+    pub const ALL: &'static [&'static Self] = &[
+        &Self::NoChord,
+        &Self::MajorSeventh,
+        &Self::Five,
+        &Self::SixAddNine,
+        &Self::Six,
+        &Self::MajorSeven,
+        &Self::Seven,
+        &Self::MajorNine,
+        &Self::Nine,
+        &Self::MajorEleven,
+        &Self::Eleven,
+        &Self::MajorThirteen,
+        &Self::Thirteen,
+        &Self::Unison,
+        &Self::MinorSecond,
+        &Self::MajorSecond,
+        &Self::MinorThird,
+        &Self::MajorThird,
+        &Self::Fourth,
+        &Self::AugmentedFourth,
+        &Self::MinorFifth,
+        &Self::Fifth,
+        &Self::MinorSixth,
+        &Self::MajorSixth,
+        &Self::MinorSeventh,
+    ];
+
+    pub const ADD_MAJ_TO_EXTENSION: &'static [&'static Self] = &[
+        &Self::MajorSeventh,
+        &Self::MajorSeven,
+        &Self::MajorNine,
+        &Self::MajorEleven,
+        &Self::MajorThirteen,
+        &Self::MajorSecond,
+        &Self::MajorThird,
+        &Self::MajorSixth,
+    ];
+
+    pub const CONTAINING_MINOR_TOKEN: &'static [&'static Self] = &[
+        &Self::MinorSecond,
+        &Self::MinorThird,
+        &Self::MinorFifth,
+        &Self::MinorSixth,
+        &Self::MinorSeventh,
+    ];
+
+    pub const INTERVALS: &'static [&'static Self] = &[
+        &Self::MinorSecond,
+        &Self::MajorSecond,
+        &Self::MinorThird,
+        &Self::MajorThird,
+        &Self::Fourth,
+        &Self::AugmentedFourth,
+        &Self::MinorFifth,
+        &Self::Fifth,
+        &Self::MinorSixth,
+        &Self::MajorSixth,
+        &Self::MinorSeventh,
+        &Self::MajorSeventh,
+    ];
+
     pub const fn name(&self) -> &'static str {
         match self {
             Self::NoChord => "No Chord",
@@ -116,6 +178,36 @@ impl Extension {
             Self::MajorSixth => "Major Sixth",
             Self::MinorSeventh => "Minor Seventh",
         }
+    }
+
+    pub fn hides_ma_triad_str(&self, hide_major_six_triad: bool) -> bool {
+        match self {
+            Self::MajorThirteen
+            | Self::Thirteen
+            | Self::Eleven
+            | Self::MajorEleven
+            | Self::Nine
+            | Self::MajorNine
+            | Self::Seven
+            | Self::MajorSeven => true,
+            Self::MajorSixth => hide_major_six_triad,
+            _ => false,
+        }
+    }
+
+    pub fn is_dominant(&self) -> bool {
+        matches!(
+            self,
+            Self::Seven | Self::Nine | Self::Eleven | Self::Thirteen
+        )
+    }
+
+    pub fn contains_major_token(&self) -> bool {
+        Self::ADD_MAJ_TO_EXTENSION.contains(&self)
+    }
+
+    pub fn contains_minor_token(&self) -> bool {
+        Self::CONTAINING_MINOR_TOKEN.contains(&self)
     }
 }
 
