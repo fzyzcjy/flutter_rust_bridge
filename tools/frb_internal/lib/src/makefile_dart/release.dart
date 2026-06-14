@@ -10,7 +10,6 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:meta/meta.dart';
-import 'package:pub_semver/pub_semver.dart';
 import 'package:yaml/yaml.dart';
 
 List<Command<void>> createCommands() {
@@ -172,12 +171,9 @@ String githubReleaseCreateCommand({
   required String version,
   required String notesFile,
 }) {
-  final parsedVersion = Version.parse(version);
-
   return [
     'gh release create v$version',
     '--notes-file $notesFile',
-    if (parsedVersion.isPreRelease) '--prerelease',
     '--title v$version',
   ].join(' ');
 }

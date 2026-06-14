@@ -57,13 +57,13 @@ void main() {
     );
   });
 
-  test('GitHub release create command labels prerelease versions', () {
+  test('GitHub release create command does not label prerelease versions', () {
     expect(
       githubReleaseCreateCommand(
         version: '2.13.0-beta.1',
         notesFile: 'temp.txt',
       ),
-      'gh release create v2.13.0-beta.1 --notes-file temp.txt --prerelease --title v2.13.0-beta.1',
+      'gh release create v2.13.0-beta.1 --notes-file temp.txt --title v2.13.0-beta.1',
     );
   });
 
