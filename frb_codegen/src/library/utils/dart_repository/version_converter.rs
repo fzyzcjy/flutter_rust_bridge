@@ -158,4 +158,24 @@ mod tests {
 
         assert!(version.matches_requirement(&requirement));
     }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_satisfies_prerelease_greater_eq_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.0.1-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse(">=1.0.0-dev.1").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_satisfies_prerelease_caret_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.0.1-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse("^1.0.0-dev.1").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
 }

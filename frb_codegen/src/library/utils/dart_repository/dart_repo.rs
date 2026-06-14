@@ -329,12 +329,10 @@ fn prerelease_is_after_stable_lower_bound(version: &Version, comparator: &Compar
         comparator.patch.unwrap_or(0),
     );
 
-    comparator.pre.is_empty()
-        && matches!(
-            comparator.op,
-            Op::Greater | Op::GreaterEq | Op::Caret | Op::Tilde
-        )
-        && version_components > comparator_components
+    matches!(
+        comparator.op,
+        Op::Greater | Op::GreaterEq | Op::Caret | Op::Tilde
+    ) && version_components > comparator_components
 }
 
 fn read_file(at: &Path, filename: &str) -> anyhow::Result<String> {
