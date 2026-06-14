@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:test/test.dart';
 
@@ -13,6 +14,18 @@ void main() {
       'frb_example/flutter_package',
       'frb_example/flutter_package_native_assets',
     ]);
+  });
+
+  test('integrate apple scaffold generation does not compare OHOS', () {
+    final config = generateAppleScaffoldPackageConfigForTesting(
+      'frb_example/flutter_via_create',
+    );
+
+    expect(config.setExitIfChanged, isFalse);
+    expect(config.package, 'frb_example/flutter_via_create');
+    expect(config.coverage, isFalse);
+    expect(config.includeOhos, isFalse);
+    expect(config.skipCheckedInAppleScaffold, isTrue);
   });
 
   test(
