@@ -7,7 +7,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:path/path.dart' as path;
 
-const kDefaultSanitizedDartReleaseName = 'Build_2025.02.09_04-28-46';
+const kDefaultSanitizedDartReleaseName = 'Build_2026.06.14_09-47-42';
 const _kSanitizedDartReleaseNameEnv = 'FRB_SANITIZED_DART_RELEASE_NAME';
 
 // for rust san also ref
@@ -222,6 +222,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
       'NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
+      ...sanitizer.runtimeEnv,
       ...kEnvEnableRustBacktrace,
     },
     checkExitCode: false,
@@ -254,8 +255,15 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   final baseName = '${config.sanitizer.dartSdkBuildOutDir}_dart-sdk';
   final fileNameTarGz = '$baseName.tar.gz';
 
-  final pathTarGz = path.join(Directory.systemTemp.path, fileNameTarGz);
-  final pathUnzippedDir = path.join(Directory.systemTemp.path, baseName);
+  final pathCacheRoot = path.join(
+    Directory.systemTemp.path,
+    'frb_sanitized_dart',
+    releaseName,
+  );
+  await Directory(pathCacheRoot).create(recursive: true);
+
+  final pathTarGz = path.join(pathCacheRoot, fileNameTarGz);
+  final pathUnzippedDir = path.join(pathCacheRoot, baseName);
   final pathBin = path.join(
     pathUnzippedDir,
     'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart',
@@ -387,4 +395,24 @@ extension on Sanitizer {
       Sanitizer.tsan => 'ReleaseTSANX64',
     };
   }
+
+  Map<String, String> get runtimeEnv {
+    return switch (this) {
+      Sanitizer.asan => {'ASAN_OPTIONS': _kAsanOptions},
+      Sanitizer.msan => {'MSAN_OPTIONS': _kMsanOptions},
+      Sanitizer.lsan => {'ASAN_OPTIONS': _kLsanOptions},
+      Sanitizer.tsan => {'TSAN_OPTIONS': _kTsanOptions},
+    };
+  }
 }
+
+const _kAsanOptions =
+    'handle_segv=0:detect_leaks=1:detect_stack_use_after_return=0:'
+    'disable_coredump=0:abort_on_error=1';
+const _kMsanOptions =
+    'handle_segv=0:detect_leaks=1:detect_stack_use_after_return=0:'
+    'disable_coredump=0:abort_on_error=1';
+const _kLsanOptions =
+    'handle_segv=0:detect_leaks=1:detect_stack_use_after_return=0:'
+    'disable_coredump=0:abort_on_error=1';
+const _kTsanOptions = 'handle_segv=0:disable_coredump=0:abort_on_error=1';
