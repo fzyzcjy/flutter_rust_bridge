@@ -146,5 +146,7 @@ enum Triad {
   susFour,
   susSharpFour;
 
+  Future<bool> isSus() => RustLib.instance.api.jazzChordTriadIsSus(that: this);
+
   Future<void> name() => RustLib.instance.api.jazzChordTriadName(that: this);
 }

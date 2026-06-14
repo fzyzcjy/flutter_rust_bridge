@@ -14,6 +14,25 @@ pub enum Triad {
 }
 
 impl Triad {
+    pub const ALL: &'static [&'static Triad] = &[
+        &Self::Major,
+        &Self::Minor,
+        &Self::Diminished,
+        &Self::HalfDiminished,
+        &Self::Augmented,
+        &Self::SusTwo,
+        &Self::SusFlatTwo,
+        &Self::SusFour,
+        &Self::SusSharpFour,
+    ];
+
+    pub const SUS_TRIADS: &'static [&'static Triad] = &[
+        &Self::SusFour,
+        &Self::SusTwo,
+        &Self::SusFlatTwo,
+        &Self::SusSharpFour,
+    ];
+
     pub const fn name(&self) -> &'static str {
         match self {
             Self::Major => "Major",
@@ -26,6 +45,10 @@ impl Triad {
             Self::SusFour => "Suspended 4th",
             Self::SusSharpFour => "Suspended sharp 4th",
         }
+    }
+
+    pub fn is_sus(&self) -> bool {
+        Self::SUS_TRIADS.contains(&self)
     }
 }
 
