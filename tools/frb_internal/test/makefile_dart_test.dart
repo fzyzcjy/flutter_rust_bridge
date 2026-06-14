@@ -10,6 +10,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
+import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -31,6 +32,22 @@ void main() {
     expect(
       dartValgrindOutputExecutablePathForTesting(),
       'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint',
+    );
+  });
+
+  test('sanitized Dart release defaults to checked-in artifact tag', () {
+    expect(
+      sanitizedDartReleaseName(environment: {}),
+      kDefaultSanitizedDartReleaseName,
+    );
+  });
+
+  test('sanitized Dart release can be overridden by environment', () {
+    expect(
+      sanitizedDartReleaseName(
+        environment: {'FRB_SANITIZED_DART_RELEASE_NAME': ' Build_test '},
+      ),
+      'Build_test',
     );
   });
 

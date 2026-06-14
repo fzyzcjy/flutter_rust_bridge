@@ -1,20 +1,19 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:path/path.dart' as path;
-import 'package:yaml/yaml.dart';
+
+const kDefaultSanitizedDartReleaseName = 'Build_2025.02.09_04-28-46';
+const _kSanitizedDartReleaseNameEnv = 'FRB_SANITIZED_DART_RELEASE_NAME';
 
 // for rust san also ref
 // * https://doc.rust-lang.org/beta/unstable-book/compiler-flags/sanitizer.html
 // * https://github.com/japaric/rust-san
 Future<void> run(TestDartSanitizerConfig config) async {
-  await _lowerSdkMinVersion(package: config.package);
-
   await runPubGet(config.package, kDartModeOfPackage[config.package]!);
 
   // Otherwise it seems the sanitized dart binary does not compile native assets
@@ -28,27 +27,6 @@ Future<void> run(TestDartSanitizerConfig config) async {
   } else {
     await _runEntrypoint(config);
   }
-}
-
-Future<void> _lowerSdkMinVersion({required String package}) async {
-  await _modifySdkMinVersion(path: '${exec.pwd}$package/pubspec.yaml');
-  await _modifySdkMinVersion(path: '${exec.pwd}frb_dart/pubspec.yaml');
-}
-
-Future<void> _modifySdkMinVersion({required String path}) async {
-  print('modifySdkMinVersion(path=$path)');
-
-  final file = File(path);
-
-  final contentRaw = loadYaml(file.readAsStringSync());
-  final content = jsonDecode(jsonEncode(contentRaw));
-
-  // Lower the version since the custom compiled Dart SDK is done before,
-  // and we do not really need new sdk version when on native platform.
-  content['environment']['sdk'] = '>=3.2.0';
-  file.writeAsStringSync(jsonEncode(content));
-
-  print('modifySdkMinVersion path=$path content=${file.readAsStringSync()}');
 }
 
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
@@ -266,11 +244,13 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
 
 Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   if (config.useLocalSanitizedDartBinary) {
-    return '~/dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart';
+    final path =
+        '~/dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart';
+    await _printSanitizedDartVersion(path);
+    return path;
   }
 
-  // const releaseName = 'Build_2023.12.01_09-42-01';
-  const releaseName = 'Build_2025.02.09_04-28-46';
+  final releaseName = sanitizedDartReleaseName();
   final baseName = '${config.sanitizer.dartSdkBuildOutDir}_dart-sdk';
   final fileNameTarGz = '$baseName.tar.gz';
 
@@ -290,7 +270,7 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   }
 
   if (!await File(pathBin).exists()) {
-    await exec('mkdir $pathUnzippedDir');
+    await exec('mkdir -p $pathUnzippedDir');
     await exec('tar -xvzf $pathTarGz -C $pathUnzippedDir');
   }
 
@@ -298,7 +278,25 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
     throw Exception('$pathBin still not exist');
   }
 
+  await _printSanitizedDartVersion(pathBin);
   return pathBin;
+}
+
+String sanitizedDartReleaseName({Map<String, String>? environment}) {
+  final value =
+      (environment ?? Platform.environment)[_kSanitizedDartReleaseNameEnv];
+  if (value == null || value.trim().isEmpty) {
+    return kDefaultSanitizedDartReleaseName;
+  }
+  return value.trim();
+}
+
+Future<void> _printSanitizedDartVersion(String sanitizedDart) async {
+  final output = await exec('$sanitizedDart --version', checkExitCode: false);
+  print(
+    'sanitized Dart version: '
+    'stdout=${output.stdout.trim()} stderr=${output.stderr.trim()}',
+  );
 }
 
 Future<void> _downloadSanitizedDartBinaryArtifact({
