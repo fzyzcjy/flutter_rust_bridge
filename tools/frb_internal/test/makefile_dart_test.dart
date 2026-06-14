@@ -51,6 +51,36 @@ void main() {
     );
   });
 
+  test('sanitized Dart version check is skipped without main Dart env', () {
+    checkSanitizedDartVersionForTesting(
+      versionOutput: 'Dart SDK version: 3.11.0 (stable)',
+      environment: {},
+    );
+  });
+
+  test('sanitized Dart version check accepts matching main Dart env', () {
+    checkSanitizedDartVersionForTesting(
+      versionOutput: 'Dart SDK version: 3.11.0 (stable)',
+      environment: {'FRB_MAIN_DART_VERSION': '3.11.0'},
+    );
+  });
+
+  test('sanitized Dart version check rejects stale artifact version', () {
+    expect(
+      () => checkSanitizedDartVersionForTesting(
+        versionOutput: 'Dart SDK version: 3.10.0 (stable)',
+        environment: {'FRB_MAIN_DART_VERSION': '3.11.0'},
+      ),
+      throwsA(
+        isA<Exception>().having(
+          (error) => error.toString(),
+          'message',
+          contains('Build a new sanitized Dart artifact'),
+        ),
+      ),
+    );
+  });
+
   test('linux build bundle path follows the current machine architecture', () {
     expect(
       linuxBuildBundlePathForTesting(machineArchitecture: 'x86_64'),

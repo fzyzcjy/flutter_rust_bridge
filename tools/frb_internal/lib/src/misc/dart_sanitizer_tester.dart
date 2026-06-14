@@ -9,11 +9,13 @@ import 'package:path/path.dart' as path;
 
 const kDefaultSanitizedDartReleaseName = 'Build_2026.06.14_09-47-42';
 const _kSanitizedDartReleaseNameEnv = 'FRB_SANITIZED_DART_RELEASE_NAME';
+const _kMainDartVersionEnv = 'FRB_MAIN_DART_VERSION';
 
 // for rust san also ref
 // * https://doc.rust-lang.org/beta/unstable-book/compiler-flags/sanitizer.html
 // * https://github.com/japaric/rust-san
 Future<void> run(TestDartSanitizerConfig config) async {
+  await _printSanitizerToolchainInfo(config);
   await runPubGet(config.package, kDartModeOfPackage[config.package]!);
 
   // Otherwise it seems the sanitized dart binary does not compile native assets
@@ -323,10 +325,62 @@ String sanitizedDartReleaseName({Map<String, String>? environment}) {
 
 Future<void> _printSanitizedDartVersion(String sanitizedDart) async {
   final output = await exec('$sanitizedDart --version', checkExitCode: false);
+  final versionOutput = '${output.stdout}\n${output.stderr}';
   print(
     'sanitized Dart version: '
     'stdout=${output.stdout.trim()} stderr=${output.stderr.trim()}',
   );
+  checkSanitizedDartVersionForTesting(
+    versionOutput: versionOutput,
+    environment: Platform.environment,
+  );
+}
+
+Future<void> _printSanitizerToolchainInfo(
+  TestDartSanitizerConfig config,
+) async {
+  final releaseName = config.useLocalSanitizedDartBinary
+      ? '<local-sanitized-dart>'
+      : sanitizedDartReleaseName();
+  print(
+    'sanitizer config: sanitizer=${config.sanitizer.name} '
+    'package=${config.package} sanitizedDartReleaseName=$releaseName',
+  );
+
+  final rustcOutput = await exec(
+    'rustc +nightly --version',
+    checkExitCode: false,
+  );
+  print(
+    'Rust nightly version: '
+    'stdout=${rustcOutput.stdout.trim()} stderr=${rustcOutput.stderr.trim()}',
+  );
+}
+
+void checkSanitizedDartVersionForTesting({
+  required String versionOutput,
+  required Map<String, String> environment,
+}) {
+  final expectedVersion = environment[_kMainDartVersionEnv]?.trim();
+  if (expectedVersion == null || expectedVersion.isEmpty) return;
+
+  final match = RegExp(
+    r'Dart SDK version:\s*([0-9]+\.[0-9]+\.[0-9]+)',
+  ).firstMatch(versionOutput);
+  if (match == null) {
+    throw Exception(
+      'Cannot parse sanitized Dart version from output: $versionOutput',
+    );
+  }
+
+  final actualVersion = match.group(1);
+  if (actualVersion != expectedVersion) {
+    throw Exception(
+      'Sanitized Dart version $actualVersion does not match '
+      '$_kMainDartVersionEnv=$expectedVersion. Build a new sanitized Dart '
+      'artifact instead of lowering pubspec SDK constraints.',
+    );
+  }
 }
 
 Future<void> _downloadSanitizedDartBinaryArtifact({
