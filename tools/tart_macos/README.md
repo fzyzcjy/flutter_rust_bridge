@@ -57,6 +57,11 @@ Leave `host_proxy_url` empty when the Tart guest has reliable direct network acc
 tart exec <vm-name> /bin/zsh -lc 'curl -I --proxy http://192.168.64.1:7897 --max-time 10 https://pub.dev'
 ```
 
+There are two separate network paths during a base rebuild:
+
+- Source VM clone: Tart/Packer runs on the host and fetches `source_vm`. Use the local registry path below when `tart clone ghcr.io/...` is unreliable.
+- Guest provisioning: `scripts/provision-frb-tart-base.sh` runs inside the candidate VM. `host_proxy_url` only applies to this guest provisioning phase, including Flutter, Homebrew, Rust, Cargo, and Dart downloads.
+
 ## Controlled Local Registry Path
 
 Use this path when direct `tart clone ghcr.io/...` is slow, unreliable, or hard to route through the desired proxy. The idea is:
