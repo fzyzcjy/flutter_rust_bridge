@@ -363,6 +363,10 @@ impl Extension {
     pub fn notes(&self) -> &'static Change {
         EXTENSION_TO_NOTES.get(self).unwrap()
     }
+
+    pub fn possibilities(&self) -> &'static DegreePossibilities {
+        EXTENSION_TO_POSSIBILITIES.get(self).unwrap()
+    }
 }
 
 impl fmt::Display for Extension {
@@ -479,6 +483,18 @@ static DEGREE_TO_NATURAL_EXTENSION: Lazy<HashMap<Degree, Note>> = Lazy::new(|| {
     map.insert(Degree::Thirteenths, Note::new("13".to_owned()));
     map
 });
+
+static EXTENSION_TO_POSSIBILITIES: Lazy<HashMap<Extension, DegreePossibilities>> =
+    Lazy::new(|| {
+        let mut map = HashMap::new();
+        for extension in Extension::ALL {
+            map.insert(
+                (*extension).clone(),
+                DegreePossibilities::all_from_change_no_one(extension.notes()),
+            );
+        }
+        map
+    });
 
 #[derive(Eq, PartialEq, Hash, Clone, Debug)]
 pub struct TriadExtension {
@@ -648,6 +664,38 @@ impl DegreePossibilities {
             *matrix.intervals.get_mut(degree).unwrap() = Change::from_note(note.clone());
         }
         matrix
+    }
+
+    fn all_from_change_no_one(change: &Change) -> Self {
+        let mut result = DegreePossibilities::new();
+        for scale_degree in Degree::TRIADIC_ASCENDING_NO_ONE {
+            let possibilities = scale_degree.within_change(change, false);
+            *result.get_mut(&scale_degree) = possibilities;
+        }
+        result
+    }
+
+    fn all_from_change(change: &Change) -> Self {
+        let mut result = DegreePossibilities::new();
+        for scale_degree in Degree::TRIADIC_ASCENDING_NO_ONE {
+            let possibilities = scale_degree.within_change(change, false);
+            *result.get_mut(&scale_degree) = possibilities;
+        }
+
+        let the_one = Note::new("1".to_owned());
+        if change.contains_note(&the_one, &NoteEq::Equivalent) {
+            *result.get_mut(&Degree::Ones) = Change::from_note(the_one);
+        }
+
+        result
+    }
+
+    fn degrees_containing_notes(&self) -> Vec<Degree> {
+        self.intervals
+            .keys()
+            .filter(|degree| self.intervals.get(degree).unwrap().len() > 0)
+            .copied()
+            .collect()
     }
 
     pub fn from_triad_extension(triad_extension: &TriadExtension) -> Self {
