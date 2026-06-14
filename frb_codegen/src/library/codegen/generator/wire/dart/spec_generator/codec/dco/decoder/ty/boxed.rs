@@ -21,13 +21,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerator<'_
             | RustAutoOpaqueImplicit(_)
             | EnumRef(_)
             | Primitive(
-                MirTypePrimitive::I8
-                | MirTypePrimitive::I16
-                | MirTypePrimitive::I32
-                | MirTypePrimitive::U8
-                | MirTypePrimitive::U16
-                | MirTypePrimitive::U32
-                | MirTypePrimitive::I64
+                MirTypePrimitive::I64
                 | MirTypePrimitive::Isize
                 | MirTypePrimitive::U64
                 | MirTypePrimitive::Usize,

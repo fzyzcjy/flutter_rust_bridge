@@ -40,21 +40,17 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
                 gen_decode_simple_type_cast(self.mir.clone().into(), self.context)
             }
             MirTypeDelegate::Char => {
-                // `String.fromCharCode` is strictly typed as `int`; on dart2wasm
-                // `dartify()` hands us `double`, so route via `(raw as num).toInt()`.
-                "return String.fromCharCode((raw as num).toInt());".to_owned()
+                "return String.fromCharCode(raw);".to_owned()
             }
             // MirTypeDelegate::StringList => {
             //     "return (raw as List<dynamic>).cast<String>();".to_owned()
             // }
             MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) => {
-                // `(raw as num).toInt()` keeps us safe on dart2wasm, where
-                // `dartify()` produces `double` for JS numbers.
                 format!(
-                    "return {}.values[(raw as num).toInt()];",
+                    "return {}.values[raw as int];",
                     ApiDartGenerator::new(mir.clone(), self.context.as_api_dart_context())
                         .dart_api_type()
-                )
+                ) // here `as int` is neccessary in strict dynamic mode
             }
             MirTypeDelegate::Time(mir) => {
                 if mir == &MirTypeDelegateTime::Duration {

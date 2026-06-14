@@ -20561,13 +20561,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   AudioContextRenderSizeCategory dco_decode_audio_context_render_size_category(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioContextRenderSizeCategory.values[(raw as num).toInt()];
+    return AudioContextRenderSizeCategory.values[raw as int];
   }
 
   @protected
   AudioContextState dco_decode_audio_context_state(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioContextState.values[(raw as num).toInt()];
+    return AudioContextState.values[raw as int];
   }
 
   @protected
@@ -20924,7 +20924,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AutomationRate dco_decode_automation_rate(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AutomationRate.values[(raw as num).toInt()];
+    return AutomationRate.values[raw as int];
   }
 
   @protected
@@ -20946,7 +20946,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BiquadFilterType dco_decode_biquad_filter_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BiquadFilterType.values[(raw as num).toInt()];
+    return BiquadFilterType.values[raw as int];
   }
 
   @protected
@@ -21041,13 +21041,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ChannelCountMode dco_decode_channel_count_mode(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelCountMode.values[(raw as num).toInt()];
+    return ChannelCountMode.values[raw as int];
   }
 
   @protected
   ChannelInterpretation dco_decode_channel_interpretation(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelInterpretation.values[(raw as num).toInt()];
+    return ChannelInterpretation.values[raw as int];
   }
 
   @protected
@@ -21116,7 +21116,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   DistanceModelType dco_decode_distance_model_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DistanceModelType.values[(raw as num).toInt()];
+    return DistanceModelType.values[raw as int];
   }
 
   @protected
@@ -21163,7 +21163,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as num).toInt();
+    return raw as int;
   }
 
   @protected
@@ -21233,7 +21233,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MediaStreamTrackState dco_decode_media_stream_track_state(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamTrackState.values[(raw as num).toInt()];
+    return MediaStreamTrackState.values[raw as int];
   }
 
   @protected
@@ -21290,13 +21290,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OscillatorType dco_decode_oscillator_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OscillatorType.values[(raw as num).toInt()];
+    return OscillatorType.values[raw as int];
   }
 
   @protected
   OverSampleType dco_decode_over_sample_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OverSampleType.values[(raw as num).toInt()];
+    return OverSampleType.values[raw as int];
   }
 
   @protected
@@ -21327,7 +21327,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PanningModelType dco_decode_panning_model_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PanningModelType.values[(raw as num).toInt()];
+    return PanningModelType.values[raw as int];
   }
 
   @protected
@@ -21377,7 +21377,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as num).toInt();
+    return raw as int;
   }
 
   @protected

@@ -156,13 +156,11 @@ TestFlutterWebConfig _$parseTestFlutterWebConfigResult(ArgResults result) =>
     TestFlutterWebConfig(
       package: convertConfigPackage(result['package'] as String),
       coverage: result['coverage'] as bool,
-      wasm: result['wasm'] as bool,
     );
 
 ArgParser _$populateTestFlutterWebConfigParser(ArgParser parser) => parser
   ..addOption('package')
-  ..addFlag('coverage')
-  ..addFlag('wasm');
+  ..addFlag('coverage');
 
 final _$parserForTestFlutterWebConfig = _$populateTestFlutterWebConfigParser(
   ArgParser(),
