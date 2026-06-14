@@ -1,6 +1,48 @@
 use std::fmt;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
+pub enum Triad {
+    Major,
+    Minor,
+    Diminished,
+    HalfDiminished,
+    Augmented,
+    SusTwo,
+    SusFlatTwo,
+    SusFour,
+    SusSharpFour,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum Extension {
+    NoChord,
+    MajorSeventh,
+    Five,
+    SixAddNine,
+    Six,
+    MajorSeven,
+    Seven,
+    MajorNine,
+    Nine,
+    MajorEleven,
+    Eleven,
+    MajorThirteen,
+    Thirteen,
+    Unison,
+    MinorSecond,
+    MajorSecond,
+    MinorThird,
+    MajorThird,
+    Fourth,
+    AugmentedFourth,
+    MinorFifth,
+    Fifth,
+    MinorSixth,
+    MajorSixth,
+    MinorSeventh,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Note {
     pub text: String,
 }
