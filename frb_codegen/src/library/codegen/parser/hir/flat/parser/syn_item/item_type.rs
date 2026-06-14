@@ -20,7 +20,7 @@ pub(crate) fn parse_syn_item_type(item_type: ItemType) -> Option<HirFlatTypeAlia
     // expanding such an alias would silently drop information and emit wrong
     // code. Lifetime-only / const-only aliases are skipped for the same reason.
     let all_params_are_type_params = type_params.len() == item_type.generics.params.len();
-    if item_type.generics.lt_token.is_some() && !all_params_are_type_params {
+    if !all_params_are_type_params {
         return None;
     }
 

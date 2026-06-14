@@ -38,12 +38,12 @@ pub(crate) fn substitute_type_params(
     Some(output)
 }
 
-/// Extract the angle-bracketed generic type arguments of a single-segment path
-/// type, e.g. `[MyDto]` for `AppResult<MyDto>`. Returns `None` if the type is not
-/// a path or has no angle-bracketed arguments.
+/// Extract the angle-bracketed generic type arguments from the last segment of a
+/// path type, e.g. `[MyDto]` for `AppResult<MyDto>`. Returns `None` if the type
+/// is not a path or has no angle-bracketed arguments.
 pub(crate) fn extract_generic_type_args(ty: &Type) -> Option<Vec<Type>> {
     if let Type::Path(TypePath { qself: None, path }) = ty {
-        if let Some(segment) = path.segments.first() {
+        if let Some(segment) = path.segments.last() {
             if let PathArguments::AngleBracketed(angle_bracketed) = &segment.arguments {
                 let types = (angle_bracketed.args.iter())
                     .filter_map(|arg| match arg {
