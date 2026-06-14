@@ -1,0 +1,10 @@
+[package]
+name = "jazz-accidentals"
+version = "0.1.4"
+edition = "2024"
+description = "A package for converting musical accidentals to semitone distances and back again. Basically supports using: ♭,♯,𝄫,𝄪,♮ or b,#,bb,nat,x "
+license = "MIT"
+
+[dependencies]
+once_cell = "1.21.3"
+ezstr = { version = "0.2.1", path="../ezstr" }

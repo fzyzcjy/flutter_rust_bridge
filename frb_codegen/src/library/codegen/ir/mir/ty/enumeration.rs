@@ -82,7 +82,11 @@ impl MirTypeTrait for MirTypeEnumRef {
     }
 
     fn should_ignore(&self, mir_context: &impl MirContext) -> bool {
-        self.get(mir_context).ignore
+        mir_context
+            .enum_pool()
+            .get(&self.ident)
+            .map(|enu| enu.ignore)
+            .unwrap_or(true)
     }
 }
 
