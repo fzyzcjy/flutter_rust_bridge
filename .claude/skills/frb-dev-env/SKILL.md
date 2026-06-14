@@ -227,7 +227,7 @@ Inspect, create, start, and run light commands in the per-worktree VM:
 
 ### Tart Guest Network Proxy
 
-When the Tart guest needs outbound network access through the host proxy, make the proxy listen on the host's Tart bridge address and pass that URL through the helper. For Clash Verge, enable the Clash setting named "LAN connections" / `allow-lan`, keep the mixed port at `7897`, and verify the host listens on `*:7897` rather than only `127.0.0.1:7897`.
+When the Tart guest needs outbound network access through the host proxy, make the proxy listen on the host's Tart bridge address and pass that URL through the helper. Enable LAN access for the host proxy, keep the mixed proxy port at `7897`, and verify the host listens on `*:7897` rather than only `127.0.0.1:7897`.
 
 Tart guests normally reach the host on `192.168.64.1`, so the usual proxy URL is:
 

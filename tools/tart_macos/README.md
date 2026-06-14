@@ -51,7 +51,7 @@ packer build \
 
 Use this only when the direct download path is acceptable. Packer delegates the source VM clone to Tart, so shell proxy environment variables may not control it the way they control CLI tools like `curl` or `crane`.
 
-Leave `host_proxy_url` empty when the Tart guest has reliable direct network access. On macOS hosts running Clash Verge, enable the Clash setting named "LAN connections" so the mixed port listens on `*:7897`, then use `http://192.168.64.1:7897` from Tart guests. Verify it from a running Tart VM before a long base build:
+Leave `host_proxy_url` empty when the Tart guest has reliable direct network access. When using a host proxy, enable LAN access so the mixed proxy port listens on `*:7897`, then use `http://192.168.64.1:7897` from Tart guests. Verify it from a running Tart VM before a long base build:
 
 ```bash
 tart exec <vm-name> /bin/zsh -lc 'curl -I --proxy http://192.168.64.1:7897 --max-time 10 https://pub.dev'
