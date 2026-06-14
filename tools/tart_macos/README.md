@@ -44,11 +44,18 @@ packer build \
   -var 'source_vm=ghcr.io/cirruslabs/macos-sonoma-xcode:16.1' \
   -var 'target_vm=frb-tart-base-candidate' \
   -var 'flutter_version=3.44.0' \
+  -var 'host_proxy_url=http://192.168.64.1:7897' \
   -var 'allow_insecure=false' \
   .
 ```
 
 Use this only when the direct download path is acceptable. Packer delegates the source VM clone to Tart, so shell proxy environment variables may not control it the way they control CLI tools like `curl` or `crane`.
+
+Leave `host_proxy_url` empty when the Tart guest has reliable direct network access. On macOS hosts running Clash Verge, enable the Clash setting named "LAN connections" so the mixed port listens on `*:7897`, then use `http://192.168.64.1:7897` from Tart guests. Verify it from a running Tart VM before a long base build:
+
+```bash
+tart exec <vm-name> /bin/zsh -lc 'curl -I --proxy http://192.168.64.1:7897 --max-time 10 https://pub.dev'
+```
 
 ## Controlled Local Registry Path
 
@@ -149,11 +156,12 @@ packer build \
   -var 'source_vm=127.0.0.1:5000/cirruslabs/macos-sonoma-xcode:16.1' \
   -var 'target_vm=frb-tart-base-candidate' \
   -var 'flutter_version=3.44.0' \
+  -var 'host_proxy_url=http://192.168.64.1:7897' \
   -var 'allow_insecure=true' \
   .
 ```
 
-The Packer template clones the raw source VM, boots it as `admin/admin`, runs `scripts/provision-frb-tart-base.sh`, and leaves a stopped local VM named by `target_vm`. The current provision step initializes Xcode, checks out the requested Flutter SDK version, installs CocoaPods with Homebrew, installs Rust matching the devcontainer, adds the `aarch64-apple-ios-sim` and `x86_64-apple-ios` Rust targets for both the pinned toolchain and the `stable-aarch64-apple-darwin` toolchain used by CargoKit, and pre-caches Flutter iOS and macOS artifacts. It also verifies the image contains Xcode and simulator tooling.
+The Packer template clones the raw source VM, boots it as `admin/admin`, runs `scripts/provision-frb-tart-base.sh`, and leaves a stopped local VM named by `target_vm`. The current provision step initializes Xcode, checks out the requested Flutter SDK version, installs CocoaPods with Homebrew, installs Rust matching the devcontainer, adds the `aarch64-apple-ios-sim` and `x86_64-apple-ios` Rust targets for both the pinned toolchain and the `stable-aarch64-apple-darwin` toolchain used by CargoKit, and pre-caches Flutter iOS and macOS artifacts. If `host_proxy_url` is set, the provision step receives standard `HTTP_PROXY` / `HTTPS_PROXY` / `ALL_PROXY` / `CARGO_HTTP_PROXY` environment variables. It also verifies the image contains Xcode and simulator tooling.
 
 Keep `flutter_version` in sync with `FRB_MAIN_FLUTTER_VERSION` in `.github/workflows/ci.yaml` and the Flutter version in `.devcontainer/Dockerfile`. Do not rely on the source Tart OCI image's preinstalled Flutter version, because Flutter template drift can change generated scaffold files.
 
