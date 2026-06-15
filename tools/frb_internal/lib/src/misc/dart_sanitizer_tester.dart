@@ -56,7 +56,7 @@ Future<void> _runPackageDeliberateBad(TestDartSanitizerConfig config) async {
 Future<void> _buildPackageDeliberateBadNativeLibraryForDart(
   TestDartSanitizerConfig config,
 ) async {
-  final libraryName = 'libfrb_example_deliberate_bad.so';
+  const libraryName = 'libfrb_example_deliberate_bad.so';
   await _execAndCheckWithSanitizerEnvVar(
     'cargo +nightly build --release $_cargoBuildExtraArgs'
     ' && mkdir -p target/release'
