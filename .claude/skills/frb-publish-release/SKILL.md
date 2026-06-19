@@ -11,8 +11,9 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 ### 1. Preflight
 
-- Work from the repository root on the intended release branch, normally fresh `master`.
+- Work from the repository root on the intended release branch, normally fresh `master`. If the checkout is detached but already points at the intended release commit, switch or create a local release branch from that commit before running mutating release commands; do not treat detached HEAD itself as a release blocker.
 - Check `git status --short --branch` and do not start publishing from a dirty tree.
+- Treat `master` as a moving branch. Before each irreversible release phase, fetch `origin master`, confirm the current release branch or detached checkout still points at the intended latest `origin/master` commit, and re-run `git status --short --branch` to confirm there are no unexpected local changes.
 - Confirm the target version in `CHANGELOG.md`, root `Cargo.toml`, and `frb_dart/pubspec.yaml`.
 - Compute the release versions the same way `./frb_internal release` does: the top `CHANGELOG.md` version is the new version and the next release section is the old version.
 - Verify both old and new versions are legal before running any mutating release command. The only allowed shapes are stable SemVer `MAJOR.MINOR.PATCH` such as `2.0.0`, or beta SemVer `MAJOR.MINOR.PATCH-beta.N` such as `2.0.0-beta.1`. Use exactly `^\d+\.\d+\.\d+(-beta\.\d+)?$`.
@@ -64,7 +65,7 @@ Do not split the normal release into separate `release-update-*` or publish comm
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all
 ```
 
-For beta versions such as `2.13.0-beta.1`, verify the GitHub release is labeled as a pre-release before treating the release as complete.
+For beta versions such as `2.13.0-beta.1`, do not require the GitHub release to be labeled as a pre-release. FRB intentionally publishes beta GitHub releases as normal GitHub releases while the package version itself remains a SemVer prerelease.
 
 `release-publish-all` publishes these packages:
 
