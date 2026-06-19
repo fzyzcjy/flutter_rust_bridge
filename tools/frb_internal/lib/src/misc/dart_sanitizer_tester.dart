@@ -7,7 +7,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:path/path.dart' as path;
 
-const kDefaultSanitizedDartReleaseName = 'Build_2026.06.14_09-47-42';
+const kDefaultSanitizedDartReleaseName = 'Build_2026.06.19_13-45-18';
 const _kSanitizedDartReleaseNameEnv = 'FRB_SANITIZED_DART_RELEASE_NAME';
 const _kMainDartVersionEnv = 'FRB_MAIN_DART_VERSION';
 
@@ -491,4 +491,6 @@ const _kMsanOptions =
 const _kLsanOptions =
     'handle_segv=0:detect_leaks=1:detect_stack_use_after_return=0:'
     'disable_coredump=0:abort_on_error=1';
-const _kTsanOptions = 'handle_segv=0:disable_coredump=0:abort_on_error=1';
+const _kTsanOptions =
+    'handle_segv=0:disable_coredump=0:abort_on_error=1:'
+    'report_thread_leaks=0';
