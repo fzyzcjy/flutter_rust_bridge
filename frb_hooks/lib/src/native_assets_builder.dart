@@ -6,11 +6,11 @@ import 'package:meta/meta.dart';
 import 'package:native_toolchain_rust/native_toolchain_rust.dart'
     as native_toolchain_rust;
 
+export 'package:native_toolchain_rust/native_toolchain_rust.dart'
+    show RustBuildException;
+
 /// The mode used for `cargo build`.
 typedef FlutterRustBridgeBuildMode = native_toolchain_rust.BuildMode;
-
-/// An exception thrown when the Rust toolchain build fails.
-typedef RustBuildException = native_toolchain_rust.RustBuildException;
 
 /// Builds flutter_rust_bridge Rust code through Dart/Flutter Native Assets.
 final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
