@@ -54,6 +54,8 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 ### 3. Write Changelog
 
 - Use `frb-write-changelog` to create or refresh the target release section in `CHANGELOG.md`.
+- When reviewing the release section, explicitly check every third-party human-authored PR in the release range, including docs, CI, chore, and tooling PRs. Each must either have `(thanks @username)` in the matching changelog entry or a documented reason for omission.
+- Be careful with grouped entries: if a local maintainer PR and a third-party PR are summarized together, the grouped entry still needs the third-party thanks attribution.
 - Review the release section manually before publishing. The top `CHANGELOG.md` version is the source used by `frb_internal release`.
 - If changelog or version files changed, commit that release preparation before publishing.
 

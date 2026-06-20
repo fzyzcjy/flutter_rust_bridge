@@ -3,8 +3,8 @@
 ## 2.13.0-beta.2
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Improve OHOS and HarmonyOS docs and tooling #3246 #3236 (thanks @star4277)
 * Support native assets integration backend #3181
-* Improve OHOS and HarmonyOS docs and tooling #3246 #3236
 * Sync frb_hooks release version #3256
 * Improve native assets, Apple scaffold, and integration template tooling #3240 #3237 #3208 #3206 #3205
 * Improve Tart, VMware, and local development environment tooling #3245 #3244 #3243 #3190
