@@ -12,15 +12,17 @@ Required PR CI coverage:
 
 - ASAN normal examples: `frb_example--dart_minimal`, `frb_example--pure_dart`, and `frb_example--pure_dart_pde`.
 - LSAN normal examples: `frb_example--dart_minimal`, `frb_example--pure_dart`, and `frb_example--pure_dart_pde`.
+- UBSAN normal examples: `frb_example--dart_minimal`, `frb_example--pure_dart`, and `frb_example--pure_dart_pde`.
 - ASAN deliberate-bad sentinel: `frb_example--deliberate_bad`.
 - MSAN deliberate-bad sentinel: `frb_example--deliberate_bad`.
 - LSAN deliberate-bad sentinel: `frb_example--deliberate_bad`.
+- TSAN deliberate-bad sentinel: `frb_example--deliberate_bad`.
 - Valgrind normal examples: `frb_example--dart_minimal`, `frb_example--pure_dart`, and `frb_example--pure_dart_pde`.
 
 Experimental or manual coverage:
 
-- TSAN is experimental until `ReleaseTSANX64_dart-sdk.tar.gz` is produced reliably and a focused FRB run proves that the sentinel is stable.
-- UBSAN is not part of FRB required CI while Rust nightly rejects `-Zsanitizer=undefined`. A Dart VM UBSAN artifact alone is not enough to enable FRB's Rust-side sanitizer pipeline.
+- TSAN normal examples are not required while Dart VM/runtime reports ThreadSanitizer noise on otherwise normal examples. The required TSAN coverage is the Rust-only deliberate-bad sentinel.
+- UBSAN has normal-example required coverage only. It does not have a Rust-side deliberate-bad sentinel while Rust nightly rejects `-Zsanitizer=undefined`; a Dart VM UBSAN artifact alone is not enough to prove FRB's Rust-side undefined behavior cases.
 - MSAN normal examples are not required while Dart/Rust initialization produces the known `MemcmpInterceptorCommon` false positive.
 
 ## Artifact Refresh
@@ -42,6 +44,10 @@ ReleaseMSANX64_dart-sdk.tar.gz
 ReleaseMSANX64_dart-sdk.tar.gz.sha256
 ReleaseLSANX64_dart-sdk.tar.gz
 ReleaseLSANX64_dart-sdk.tar.gz.sha256
+ReleaseTSANX64_dart-sdk.tar.gz
+ReleaseTSANX64_dart-sdk.tar.gz.sha256
+ReleaseUBSANX64_dart-sdk.tar.gz
+ReleaseUBSANX64_dart-sdk.tar.gz.sha256
 ```
 
 Do not lower package `sdk:` constraints to keep old sanitizer artifacts working. Build a new artifact release for the Dart version used by FRB CI.
