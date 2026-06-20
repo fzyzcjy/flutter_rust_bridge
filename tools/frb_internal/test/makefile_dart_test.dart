@@ -587,10 +587,39 @@ plain
         'cargo-install',
         '--release-channel',
         'unstable',
+        '--integration-backend',
+        'native-assets',
       ]);
 
       expect(config.codegenInstallMode, CodegenInstallMode.cargoInstall);
       expect(config.releaseChannel, ReleaseChannel.unstable);
+      expect(config.integrationBackend, IntegrateExampleBackend.nativeAssets);
+    });
+
+    test('defaults post-release backend to cargokit', () {
+      final config = parsePostReleaseConfig([
+        '--codegen-install-mode',
+        'cargo-install',
+        '--release-channel',
+        'unstable',
+      ]);
+
+      expect(config.integrationBackend, IntegrateExampleBackend.cargokit);
+    });
+
+    test('parses mimic quickstart backend from CLI arguments', () {
+      final config = parseTestMimicQuickstartConfig([
+        '--integration-backend',
+        'native-assets',
+      ]);
+
+      expect(config.integrationBackend, IntegrateExampleBackend.nativeAssets);
+    });
+
+    test('defaults mimic quickstart backend to cargokit', () {
+      final config = parseTestMimicQuickstartConfig([]);
+
+      expect(config.integrationBackend, IntegrateExampleBackend.cargokit);
     });
   });
 
