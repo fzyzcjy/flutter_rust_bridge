@@ -106,10 +106,7 @@ const kDartNonExamplePackages = [
 
 const kDartPublishedPackages = ['frb_dart', 'frb_hooks'];
 
-const kDartPanaExitCodeThresholdByPackage = {
-  'frb_dart': 0,
-  'frb_hooks': 10,
-};
+const kDartPanaExitCodeThresholdByPackage = {'frb_dart': 0, 'frb_hooks': 10};
 
 const kDartBuildRunnerPackages = [
   'frb_dart',
