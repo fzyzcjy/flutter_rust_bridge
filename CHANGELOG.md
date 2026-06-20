@@ -3,7 +3,6 @@
 ## 2.13.0-beta.2
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
-* Fix DCO codec under dart2wasm #3125 (thanks @djx-y-z)
 * Improve OHOS and HarmonyOS docs and tooling #3246 #3236 (thanks @star4277)
 * Support native assets integration backend #3181
 * Sync frb_hooks release version #3256
