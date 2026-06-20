@@ -192,8 +192,8 @@ class TestFlutterQuickstartSmokeConfig {
   });
 }
 
-Future<void> testMimicQuickstart(TestMimicQuickstartConfig config) async =>
-    await MimicQuickstartTester(
+Future<void> testMimicQuickstart(TestMimicQuickstartConfig config) =>
+    MimicQuickstartTester(
       postRelease: false,
       integrationBackend: config.integrationBackend,
     ).test();
@@ -242,8 +242,8 @@ class MimicQuickstartTester {
         'create',
         _kMimicQuickstartPackageName,
         if (!postRelease) '--local',
-        _mimicQuickstartBackendArg,
-      ].where((arg) => arg.isNotEmpty).join(' '),
+        if (_mimicQuickstartBackendArg.isNotEmpty) _mimicQuickstartBackendArg,
+      ].join(' '),
       relativePwd: 'frb_example',
       coverage: coverage,
       postRelease: postRelease,
