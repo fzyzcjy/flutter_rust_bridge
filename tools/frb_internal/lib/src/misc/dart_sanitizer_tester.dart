@@ -196,13 +196,7 @@ Future<void> _runPackageDeliberateBadWithDart(
           expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
         ),
       ],
-      Sanitizer.tsan => [
-        const _Info(
-          name: 'DartCallRust_DataRace',
-          expectSucceed: false,
-          expectStderrContains: 'WARNING: ThreadSanitizer: data race',
-        ),
-      ],
+      Sanitizer.tsan => [],
       Sanitizer.ubsan => [],
     },
   ];

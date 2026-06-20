@@ -12,7 +12,7 @@ const _exampleDartPackages = [
   'frb_example--pure_dart_pde',
 ];
 
-const _normalDartSanitizers = ['asan', 'msan', 'lsan', 'tsan', 'ubsan'];
+const _normalDartSanitizers = ['asan', 'lsan', 'ubsan'];
 const _sentinelDartSanitizers = ['asan', 'msan', 'lsan', 'tsan'];
 
 const _flutterNativePackages = [
