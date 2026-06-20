@@ -45,6 +45,8 @@ jobs:
           - { image: ubuntu-latest, codegen_install_mode: homebrew }
           - { image: ubuntu-latest, codegen_install_mode: scoop }
           - { image: macos-15-intel, integration_backend: native-assets }
+          # Remove after a stable release includes the native-assets backend flag.
+          - { release_channel: stable, integration_backend: native-assets }
 
     steps:
       # setup
