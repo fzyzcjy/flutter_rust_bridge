@@ -124,9 +124,13 @@ void main() {
           {'sanitizer': 'tsan', 'package': 'frb_example--dart_minimal'},
           {'sanitizer': 'tsan', 'package': 'frb_example--pure_dart'},
           {'sanitizer': 'tsan', 'package': 'frb_example--pure_dart_pde'},
+          {'sanitizer': 'ubsan', 'package': 'frb_example--dart_minimal'},
+          {'sanitizer': 'ubsan', 'package': 'frb_example--pure_dart'},
+          {'sanitizer': 'ubsan', 'package': 'frb_example--pure_dart_pde'},
           {'sanitizer': 'asan', 'package': 'frb_example--deliberate_bad'},
           {'sanitizer': 'msan', 'package': 'frb_example--deliberate_bad'},
           {'sanitizer': 'lsan', 'package': 'frb_example--deliberate_bad'},
+          {'sanitizer': 'tsan', 'package': 'frb_example--deliberate_bad'},
         ],
       });
     });

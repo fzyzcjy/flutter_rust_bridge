@@ -118,12 +118,13 @@ const _$SanitizerEnumMapBuildCli = <Sanitizer, String>{
   Sanitizer.msan: 'msan',
   Sanitizer.lsan: 'lsan',
   Sanitizer.tsan: 'tsan',
+  Sanitizer.ubsan: 'ubsan',
 };
 
 ArgParser _$populateTestDartSanitizerConfigParser(ArgParser parser) => parser
   ..addOption('package')
   ..addFlag('use-local-sanitized-dart-binary')
-  ..addOption('sanitizer', allowed: ['asan', 'msan', 'lsan', 'tsan']);
+  ..addOption('sanitizer', allowed: ['asan', 'msan', 'lsan', 'tsan', 'ubsan']);
 
 final _$parserForTestDartSanitizerConfig =
     _$populateTestDartSanitizerConfigParser(ArgParser());

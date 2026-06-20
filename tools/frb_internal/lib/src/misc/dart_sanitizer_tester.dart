@@ -117,6 +117,7 @@ Future<void> _runPackageDeliberateBadRustOnly(
           expectStderrContains: 'WARNING: ThreadSanitizer: data race',
         ),
       ],
+      Sanitizer.ubsan => [],
     },
   ];
 
@@ -160,6 +161,7 @@ Future<void> _runPackageDeliberateBadWithDart(
       Sanitizer.tsan => [
         // Pure-dart almost cannot have data race
       ],
+      Sanitizer.ubsan => [],
     },
   ];
 
@@ -201,6 +203,7 @@ Future<void> _runPackageDeliberateBadWithDart(
           expectStderrContains: 'WARNING: ThreadSanitizer: data race',
         ),
       ],
+      Sanitizer.ubsan => [],
     },
   ];
 
@@ -236,14 +239,20 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
 }) async {
   print('====== execAndCheckWithSanitizerEnvVar name=${info.name} ======');
 
+  final rustSanitizerEnv = sanitizer.rustflagValue == null
+      ? <String, String>{}
+      : {
+          'NIX_FRB_RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
+          'RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
+          'NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
+          'NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
+        };
+
   final output = await exec(
     cmd,
     relativePwd: relativePwd,
     extraEnv: {
-      'NIX_FRB_RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
-      'RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
-      'NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
-      'NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
+      ...rustSanitizerEnv,
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
       ...sanitizer.runtimeEnv,
@@ -454,12 +463,13 @@ Future<int> _findGitHubReleaseAssetId({
 const _cargoBuildExtraArgs = '-Zbuild-std --target x86_64-unknown-linux-gnu';
 
 extension on Sanitizer {
-  String get rustflagValue {
+  String? get rustflagValue {
     return switch (this) {
       Sanitizer.asan => 'address',
       Sanitizer.msan => 'memory',
       Sanitizer.lsan => 'leak',
       Sanitizer.tsan => 'thread',
+      Sanitizer.ubsan => null,
     };
   }
 
@@ -469,6 +479,7 @@ extension on Sanitizer {
       Sanitizer.msan => 'ReleaseMSANX64',
       Sanitizer.lsan => 'ReleaseLSANX64',
       Sanitizer.tsan => 'ReleaseTSANX64',
+      Sanitizer.ubsan => 'ReleaseUBSANX64',
     };
   }
 
@@ -478,6 +489,7 @@ extension on Sanitizer {
       Sanitizer.msan => {'MSAN_OPTIONS': _kMsanOptions},
       Sanitizer.lsan => {'ASAN_OPTIONS': _kLsanOptions},
       Sanitizer.tsan => {'TSAN_OPTIONS': _kTsanOptions},
+      Sanitizer.ubsan => {'UBSAN_OPTIONS': _kUbsanOptions},
     };
   }
 }
@@ -494,3 +506,5 @@ const _kLsanOptions =
 const _kTsanOptions =
     'handle_segv=0:disable_coredump=0:abort_on_error=1:'
     'report_thread_leaks=0';
+const _kUbsanOptions =
+    'handle_segv=0:disable_coredump=0:abort_on_error=1:print_stacktrace=1';
