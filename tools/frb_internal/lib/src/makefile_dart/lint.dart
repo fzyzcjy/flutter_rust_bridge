@@ -183,10 +183,15 @@ Future<void> lintDartAnalyze(LintConfig config) async {
 
 Future<void> lintDartPana(LintConfig config) async {
   await exec('flutter pub global activate pana');
-  await exec(
-    'dart pub global run pana --no-warning --exit-code-threshold 0',
-    relativePwd: 'frb_dart',
-  );
+  for (final package in kDartPublishedPackages) {
+    final exitCodeThreshold = kDartPanaExitCodeThresholdByPackage[package]!;
+    await exec(
+      'dart pub global run pana '
+      '--no-warning '
+      '--exit-code-threshold $exitCodeThreshold',
+      relativePwd: package,
+    );
+  }
 }
 
 Future<void> lintRustFeatureFlag() async {

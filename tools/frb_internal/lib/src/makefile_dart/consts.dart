@@ -104,6 +104,13 @@ const kDartNonExamplePackages = [
   'tools/frb_internal',
 ];
 
+const kDartPublishedPackages = ['frb_dart', 'frb_hooks'];
+
+const kDartPanaExitCodeThresholdByPackage = {
+  'frb_dart': 0,
+  'frb_hooks': 10,
+};
+
 const kDartBuildRunnerPackages = [
   'frb_dart',
   'frb_utils',
