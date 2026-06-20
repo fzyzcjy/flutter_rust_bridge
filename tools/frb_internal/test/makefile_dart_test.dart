@@ -77,6 +77,10 @@ void main() {
     },
   );
 
+  test('release Cargo lock template path exists', () {
+    expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
+  });
+
   test(
     'pure dart generator resolves package from repo root instead of cwd',
     () {
