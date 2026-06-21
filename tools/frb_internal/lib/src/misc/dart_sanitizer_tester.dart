@@ -233,11 +233,12 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
 }) async {
   print('====== execAndCheckWithSanitizerEnvVar name=${info.name} ======');
 
-  final rustSanitizerEnv = sanitizer.rustflagValue == null
+  final rustflags = sanitizer.rustflags;
+  final rustSanitizerEnv = rustflags == null
       ? <String, String>{}
       : {
-          'NIX_FRB_RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
-          'RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
+          'NIX_FRB_RUSTFLAGS': rustflags,
+          'RUSTFLAGS': rustflags,
           'NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
           'NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
         };
@@ -458,6 +459,16 @@ Future<int> _findGitHubReleaseAssetId({
 const _cargoBuildExtraArgs = '-Zbuild-std --target x86_64-unknown-linux-gnu';
 
 extension on Sanitizer {
+  String? get rustflags {
+    final value = rustflagValue;
+    if (value == null) return null;
+
+    return switch (this) {
+      Sanitizer.msan => '-Zsanitizer=$value --cfg frb_sanitize_memory',
+      _ => '-Zsanitizer=$value',
+    };
+  }
+
   String? get rustflagValue {
     return switch (this) {
       Sanitizer.asan => 'address',
