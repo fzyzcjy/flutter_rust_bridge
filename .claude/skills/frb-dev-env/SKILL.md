@@ -25,6 +25,18 @@ Do not use the Tart macOS VM as the Android emulator strategy. macOS Tart guests
 - Prefer repository tooling such as `./frb_internal` over ad hoc direct invocations.
 - Do not manually edit generated files (`frb_generated.*`, `*.freezed.dart`, `*.g.dart`) as the final fix.
 
+## PATH Bootstrap
+
+Before using this skill's helper or FRB tooling, make sure common local tool locations are in `PATH`. Codex shells may start with a reduced `PATH`, which can hide `uv`, Docker, Dart, Flutter, or Homebrew-installed tools even when they exist on the machine.
+
+Use this prefix when a command reports `env: uv: No such file or directory`, `docker: command not found`, `dart: command not found`, or similar:
+
+```bash
+export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+```
+
+Then retry the same command. Prefer fixing `PATH` over bypassing the helper, because `frb_dev_env.py` uses the configured per-worktree container and release credential handling.
+
 ## First Checks
 
 Before running tests, lint, code generation, or setup:

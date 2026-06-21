@@ -405,13 +405,24 @@
       "id": "test_mimic_quickstart",
       "matrix": [
         {
-          "image": "windows-2025"
+          "image": "windows-2025",
+          "integration_backend": "cargokit"
         },
         {
-          "image": "macos-15-intel"
+          "image": "windows-2025",
+          "integration_backend": "native-assets"
         },
         {
-          "image": "ubuntu-latest"
+          "image": "macos-15-intel",
+          "integration_backend": "cargokit"
+        },
+        {
+          "image": "ubuntu-latest",
+          "integration_backend": "cargokit"
+        },
+        {
+          "image": "ubuntu-latest",
+          "integration_backend": "native-assets"
         }
       ]
     },

@@ -96,7 +96,7 @@ void _updateVersionInText() {
 
   for (final package in ['flutter_rust_bridge', 'flutter_rust_bridge_macros']) {
     simpleReplaceFile(
-      '${exec.pwd}frb_codegen/assets/integration_template/shared/REPLACE_ME_RUST_CRATE_DIR/Cargo.lock.template',
+      releaseCargoLockTemplatePathForTesting(),
       '[[package]]\nname = "$package"\nversion = "${versionInfo.oldVersion}"',
       '[[package]]\nname = "$package"\nversion = "${versionInfo.newVersion}"',
     );
@@ -177,6 +177,10 @@ String githubReleaseCreateCommand({
     '--title v$version',
   ].join(' ');
 }
+
+@visibleForTesting
+String releaseCargoLockTemplatePathForTesting() =>
+    '${exec.pwd}frb_codegen/assets/integration_template/shared/shared/REPLACE_ME_RUST_CRATE_DIR/Cargo.lock.template';
 
 Future<void> releasePublishAll() async {
   await exec('cd frb_codegen && cargo publish');
