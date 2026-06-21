@@ -318,14 +318,23 @@ plain
     },
   );
 
-  test('quickstart smoke gives iOS cold builds more readiness time', () {
-    expect(
-      quickstartSmokeFlutterRunReadyTimeoutForTesting(
-        QuickstartSmokeTarget.ios,
-      ),
-      const Duration(minutes: 10),
-    );
-  });
+  test(
+    'quickstart smoke gives cold desktop and iOS builds more readiness time',
+    () {
+      expect(
+        quickstartSmokeFlutterRunReadyTimeoutForTesting(
+          QuickstartSmokeTarget.desktop,
+        ),
+        const Duration(minutes: 10),
+      );
+      expect(
+        quickstartSmokeFlutterRunReadyTimeoutForTesting(
+          QuickstartSmokeTarget.ios,
+        ),
+        const Duration(minutes: 10),
+      );
+    },
+  );
 
   test('quickstart smoke does not capture while Flutter is still building', () {
     expect(
