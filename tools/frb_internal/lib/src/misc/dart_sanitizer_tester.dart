@@ -32,6 +32,8 @@ Future<void> run(TestDartSanitizerConfig config) async {
 }
 
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
+  await _buildPackageNativeLibraryForDart(config);
+
   final sanitizedDart = await _getSanitizedDartBinary(config);
   await _execAndCheckWithSanitizerEnvVar(
     '$sanitizedDart run test/dart_valgrind_test_entrypoint.dart',
@@ -56,7 +58,14 @@ Future<void> _runPackageDeliberateBad(TestDartSanitizerConfig config) async {
 Future<void> _buildPackageDeliberateBadNativeLibraryForDart(
   TestDartSanitizerConfig config,
 ) async {
-  const libraryName = 'libfrb_example_deliberate_bad.so';
+  await _buildPackageNativeLibraryForDart(config);
+}
+
+Future<void> _buildPackageNativeLibraryForDart(
+  TestDartSanitizerConfig config,
+) async {
+  final crateName = path.basename(config.package);
+  final libraryName = 'libfrb_example_$crateName.so';
   await _execAndCheckWithSanitizerEnvVar(
     'cargo +nightly build --release $_cargoBuildExtraArgs'
     ' && mkdir -p target/release'
