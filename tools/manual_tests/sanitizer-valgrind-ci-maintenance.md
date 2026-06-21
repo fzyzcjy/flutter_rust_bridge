@@ -25,7 +25,7 @@ Experimental or manual coverage:
 
 - UBSAN has normal-example required coverage only. It does not have a Rust-side deliberate-bad sentinel while Rust nightly rejects `-Zsanitizer=undefined`; a Dart VM UBSAN artifact alone is not enough to prove FRB's Rust-side undefined behavior cases.
 
-MSAN and TSAN normal-example jobs set `FRB_SYNC_THREAD_POOL=1` through `dart_sanitizer_tester.dart`. This keeps the Dart entrypoint, dynamic library load, generated bindings, Rust call, and sanitizer runtime active while avoiding known false positives in the default cross-thread `threadpool` executor path.
+MSAN and TSAN normal-example jobs must run through the same Dart entrypoint and default FRB runtime path as ordinary tests. Do not use sanitizer-only entrypoint skips or `FRB_SYNC_THREAD_POOL` overrides to hide Dart VM/runtime sanitizer noise; keep the real workload active and fix noise with targeted sanitizer runtime configuration.
 
 ## Artifact Refresh
 
