@@ -1,6 +1,5 @@
-use std::env;
-
 use build_target::Family;
+use std::env;
 
 fn main() {
     println!("cargo:rustc-check-cfg=cfg(frb_sanitize_memory)");
