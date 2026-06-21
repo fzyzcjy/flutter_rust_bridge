@@ -39,11 +39,3 @@ BigInt jsBigIntToDartBigInt(Object? raw) {
     'jsBigIntToDartBigInt see unexpected type=${raw.runtimeType} value=$raw',
   );
 }
-
-/// {@macro flutter_rust_bridge.internal}
-Object? maybeDartify(Object? object) {
-  if (object is JSAny) {
-    return object.dartify();
-  }
-  return object;
-}
