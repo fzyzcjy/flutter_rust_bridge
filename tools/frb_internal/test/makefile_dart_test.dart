@@ -116,6 +116,13 @@ void main() {
     );
   });
 
+  test('sanitizer rustflags normalize Rust package working directories', () {
+    expect(
+      packageForRustflagsForTesting('frb_example/pure_dart_pde/rust'),
+      'frb_example/pure_dart_pde',
+    );
+  });
+
   test('linux build bundle path follows the current machine architecture', () {
     expect(
       linuxBuildBundlePathForTesting(machineArchitecture: 'x86_64'),

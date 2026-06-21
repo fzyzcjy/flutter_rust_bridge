@@ -252,7 +252,9 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
 }) async {
   print('====== execAndCheckWithSanitizerEnvVar name=${info.name} ======');
 
-  final rustflags = sanitizer.rustflagsForPackage(relativePwd);
+  final rustflags = sanitizer.rustflagsForPackage(
+    _packageForRustflags(relativePwd),
+  );
   final runtimeEnv = await sanitizer.runtimeEnv();
   final rustSanitizerEnv = rustflags == null
       ? <String, String>{}
@@ -412,6 +414,13 @@ String? sanitizerRustflagsForTesting(
   Sanitizer sanitizer, {
   required String package,
 }) => sanitizer.rustflagsForPackage(package);
+
+String packageForRustflagsForTesting(String relativePwd) =>
+    _packageForRustflags(relativePwd);
+
+String _packageForRustflags(String relativePwd) => relativePwd.endsWith('/rust')
+    ? relativePwd.substring(0, relativePwd.length - '/rust'.length)
+    : relativePwd;
 
 Future<Map<String, String>> sanitizerRuntimeEnvForTesting(
   Sanitizer sanitizer,
