@@ -196,9 +196,9 @@ Future<void> _executeWasmPack(
   );
 }
 
-/// Resolved `RUSTFLAGS` output for a `wasm-pack` invocation.
+/// Resolved rustflags output for a `wasm-pack` invocation.
 class WasmPackRustflagsResolution {
-  /// The `RUSTFLAGS` value that will be passed to `wasm-pack`.
+  /// The rustflags value that will be passed to the wasm target.
   final String rustflags;
 
   /// Optional warning shown when user-provided overrides drop required defaults.
@@ -232,6 +232,13 @@ final buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
 const buildWebWasmPackTargetRustflagsEnvKey =
     'CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUSTFLAGS';
 
+/// Host rustflags environment keys that should not leak into `wasm-pack`.
+const buildWebWasmPackHostRustflagsEnvKeys = [
+  'RUSTFLAGS',
+  'CARGO_ENCODED_RUSTFLAGS',
+  'CARGO_BUILD_RUSTFLAGS',
+];
+
 bool _containsDefaultWasmPackRustflags(String rustflags) {
   return buildWebDefaultWasmPackRustflagSegments.every(rustflags.contains);
 }
@@ -245,6 +252,7 @@ Map<String, String> computeWasmPackEnvironment({
 }) {
   return {
     'RUSTUP_TOOLCHAIN': rustupToolchain,
+    for (final key in buildWebWasmPackHostRustflagsEnvKeys) key: '',
     buildWebWasmPackTargetRustflagsEnvKey: rustflags,
     if (supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
   };
