@@ -58,7 +58,7 @@ Future<void> _generateDartValgrindTestEntrypoint(
   ];
   final entrypoints = [
     for (final file in files) //
-      '${path.basenameWithoutExtension(file)}.main,\n',
+      "    '${path.relative(file, from: dirTest.toFilePath())}': ${path.basenameWithoutExtension(file)}.main,\n",
   ];
 
   final code =
@@ -92,11 +92,21 @@ Future<void> main() async {
 }
 
 Future<void> callFileEntrypoints() async {
-  final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
-    ${entrypoints.join("")}
-  ];
+  final skipEntryPointNames =
+      Platform.environment['FRB_DART_TEST_SKIP_ENTRYPOINTS']
+          ?.split(',')
+          .where((item) => item.isNotEmpty)
+          .toSet() ??
+      const <String>{};
+  final entrypoints = <String, Future<void> Function({bool skipRustLibInit})>{
+${entrypoints.join("")}
+  };
 
-  for (final entrypoint in entrypoints) {
+  for (final MapEntry(key: name, value: entrypoint) in entrypoints.entries) {
+    if (skipEntryPointNames.contains(name)) {
+      print('Skip test entrypoint: \$name');
+      continue;
+    }
     await entrypoint(skipRustLibInit: true);
   }
 }
