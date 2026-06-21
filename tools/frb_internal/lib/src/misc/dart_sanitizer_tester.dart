@@ -273,6 +273,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
       ...sanitizer.threadPoolEnv,
       ...extraEnv,
       ...kEnvEnableRustBacktrace,
+      ...sanitizer.backtraceEnv,
     },
     checkExitCode: false,
   );
@@ -521,7 +522,14 @@ extension on Sanitizer {
 
   Map<String, String> get threadPoolEnv {
     return switch (this) {
-      Sanitizer.msan || Sanitizer.tsan => {'FRB_SYNC_THREAD_POOL': '1'},
+      Sanitizer.tsan => {'FRB_SYNC_THREAD_POOL': '1'},
+      _ => {},
+    };
+  }
+
+  Map<String, String> get backtraceEnv {
+    return switch (this) {
+      Sanitizer.asan => {'RUST_BACKTRACE': '0'},
       _ => {},
     };
   }
