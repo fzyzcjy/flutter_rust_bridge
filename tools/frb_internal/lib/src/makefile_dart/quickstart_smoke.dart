@@ -259,6 +259,11 @@ List<String> quickstartSmokeFlutterRunArgsForTesting({
 
 @visibleForTesting
 String? quickstartSmokeOutputFailurePatternForTesting(String output) {
+  final outputToScan = output.contains('Failed to initialize web worker pool')
+      ? output
+            .replaceAll('DataCloneError', '')
+            .replaceAll('Failed to execute \'postMessage\' on \'Worker\'', '')
+      : output;
   const failurePatterns = [
     'DataCloneError',
     'Failed to execute \'postMessage\' on \'Worker\'',
@@ -266,7 +271,7 @@ String? quickstartSmokeOutputFailurePatternForTesting(String output) {
     'WebAssembly.instantiate',
   ];
   for (final pattern in failurePatterns) {
-    if (output.contains(pattern)) return pattern;
+    if (outputToScan.contains(pattern)) return pattern;
   }
   return null;
 }

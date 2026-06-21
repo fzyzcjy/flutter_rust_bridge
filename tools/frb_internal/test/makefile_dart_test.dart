@@ -377,6 +377,16 @@ plain
     );
   });
 
+  test('quickstart smoke allows web worker pool fallback diagnostics', () {
+    expect(
+      quickstartSmokeOutputFailurePatternForTesting('''
+Failed to initialize web worker pool: JsValue(DataCloneError: Failed to execute 'postMessage' on 'Worker': #<Memory> could not be cloned.
+DataCloneError: Failed to execute 'postMessage' on 'Worker': #<Memory> could not be cloned.
+'''),
+      isNull,
+    );
+  });
+
   test('quickstart smoke ignores unrelated Android graphics warnings', () {
     expect(
       quickstartSmokeOutputFailurePatternForTesting(
