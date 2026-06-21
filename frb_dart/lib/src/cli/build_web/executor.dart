@@ -188,11 +188,11 @@ Future<void> _executeWasmPack(
       // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
       // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
     ],
-    env: {
-      'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
-      'RUSTFLAGS': rustflagsResolution.rustflags,
-      if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
-    },
+    env: computeWasmPackEnvironment(
+      rustupToolchain: args.wasmPackRustupToolchain ?? 'nightly',
+      rustflags: rustflagsResolution.rustflags,
+      supportsAnsiEscapes: stdout.supportsAnsiEscapes,
+    ),
   );
 }
 
@@ -228,8 +228,26 @@ const buildWebDefaultWasmPackRustflagSegments = [
 final buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
     .join(' ');
 
+/// Cargo target-specific environment key for wasm32 rustflags.
+const buildWebWasmPackTargetRustflagsEnvKey =
+    'CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUSTFLAGS';
+
 bool _containsDefaultWasmPackRustflags(String rustflags) {
   return buildWebDefaultWasmPackRustflagSegments.every(rustflags.contains);
+}
+
+@visibleForTesting
+/// Builds the environment for a `wasm-pack` invocation.
+Map<String, String> computeWasmPackEnvironment({
+  required String rustupToolchain,
+  required String rustflags,
+  required bool supportsAnsiEscapes,
+}) {
+  return {
+    'RUSTUP_TOOLCHAIN': rustupToolchain,
+    buildWebWasmPackTargetRustflagsEnvKey: rustflags,
+    if (supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
+  };
 }
 
 @visibleForTesting
