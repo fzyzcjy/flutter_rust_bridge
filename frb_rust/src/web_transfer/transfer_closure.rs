@@ -50,6 +50,11 @@ impl TransferClosure<JsValue> {
                 err
             })
     }
+
+    pub fn run_inline(self) {
+        let data = self.data;
+        (self.closure)(&data);
+    }
 }
 
 // Copied and modified from the wasm_bindgen raytrace-parallel example
