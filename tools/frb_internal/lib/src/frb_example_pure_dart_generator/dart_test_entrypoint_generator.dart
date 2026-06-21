@@ -96,7 +96,7 @@ Future<void> callFileEntrypoints() async {
 ${entrypoints.join("")}
   };
 
-  for (final MapEntry(key: name, value: entrypoint) in entrypoints.entries) {
+  for (final entrypoint in entrypoints.values) {
     await entrypoint(skipRustLibInit: true);
   }
 }

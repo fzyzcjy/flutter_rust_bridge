@@ -903,7 +903,7 @@ Future<void> callFileEntrypoints() async {
     'api/uuid_type_test.dart': uuid_type_test.main,
   };
 
-  for (final MapEntry(key: name, value: entrypoint) in entrypoints.entries) {
+  for (final entrypoint in entrypoints.values) {
     await entrypoint(skipRustLibInit: true);
   }
 }
