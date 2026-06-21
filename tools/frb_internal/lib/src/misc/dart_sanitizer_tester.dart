@@ -252,7 +252,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
 }) async {
   print('====== execAndCheckWithSanitizerEnvVar name=${info.name} ======');
 
-  final rustflags = sanitizer.rustflags;
+  final rustflags = sanitizer.rustflagsForPackage(relativePwd);
   final runtimeEnv = await sanitizer.runtimeEnv();
   final rustSanitizerEnv = rustflags == null
       ? <String, String>{}
@@ -408,8 +408,10 @@ void checkSanitizedDartVersionForTesting({
   }
 }
 
-String? sanitizerRustflagsForTesting(Sanitizer sanitizer) =>
-    sanitizer.rustflags;
+String? sanitizerRustflagsForTesting(
+  Sanitizer sanitizer, {
+  required String package,
+}) => sanitizer.rustflagsForPackage(package);
 
 Future<Map<String, String>> sanitizerRuntimeEnvForTesting(
   Sanitizer sanitizer,
@@ -486,17 +488,22 @@ Future<int> _findGitHubReleaseAssetId({
 const _cargoBuildExtraArgs = '-Zbuild-std --target x86_64-unknown-linux-gnu';
 
 extension on Sanitizer {
-  String? get rustflags {
+  String? rustflagsForPackage(String package) {
     final value = rustflagValue;
     if (value == null) return null;
 
     return switch (this) {
       Sanitizer.asan =>
-        '-Zsanitizer=$value -Cllvm-args=-asan-use-after-scope=0',
+        '-Zsanitizer=$value -Cllvm-args=-asan-use-after-scope=0'
+            '${_needsAsanStackFalsePositiveWorkaround(package) ? ' -Cllvm-args=-asan-stack=0' : ''}',
       Sanitizer.msan => '-Zsanitizer=$value --cfg frb_sanitize_memory',
       _ => '-Zsanitizer=$value',
     };
   }
+
+  bool _needsAsanStackFalsePositiveWorkaround(String package) =>
+      this == Sanitizer.asan &&
+      {'frb_example/pure_dart', 'frb_example/pure_dart_pde'}.contains(package);
 
   String? get rustflagValue {
     return switch (this) {

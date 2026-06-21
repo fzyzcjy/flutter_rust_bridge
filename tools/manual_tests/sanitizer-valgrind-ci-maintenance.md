@@ -27,6 +27,8 @@ Experimental or manual coverage:
 
 MSAN and TSAN normal-example jobs must run through the same Dart entrypoint and default FRB runtime path as ordinary tests. Do not use sanitizer-only entrypoint skips or `FRB_SYNC_THREAD_POOL` overrides to hide Dart VM/runtime sanitizer noise; keep the real workload active and fix noise with targeted sanitizer runtime configuration.
 
+ASAN normal `pure_dart` and `pure_dart_pde` jobs disable Rust-side ASAN stack instrumentation with `-Cllvm-args=-asan-stack=0` because the sanitized Dart VM reports a stack-buffer-underflow false positive while Rust panic/backtrace paths cross the Dart VM custom unwind boundary. Keep `deliberate_bad` ASAN stack instrumentation enabled so the Rust-only stack-buffer-overflow sentinel remains covered.
+
 ## Artifact Refresh
 
 The FRB sanitizer jobs consume Dart SDK artifacts from `fzyzcjy/dart_lang_ci` releases. The default release tag lives in `kDefaultSanitizedDartReleaseName`, and CI can override it with `FRB_SANITIZED_DART_RELEASE_NAME`.

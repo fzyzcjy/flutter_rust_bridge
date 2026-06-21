@@ -91,8 +91,28 @@ void main() {
 
   test('sanitizer rustflags disable ASAN use-after-scope false positives', () {
     expect(
-      sanitizerRustflagsForTesting(Sanitizer.asan),
+      sanitizerRustflagsForTesting(
+        Sanitizer.asan,
+        package: 'frb_example/dart_minimal',
+      ),
       contains('-Cllvm-args=-asan-use-after-scope=0'),
+    );
+  });
+
+  test('sanitizer rustflags keep ASAN stack sentinel coverage', () {
+    expect(
+      sanitizerRustflagsForTesting(
+        Sanitizer.asan,
+        package: 'frb_example/pure_dart',
+      ),
+      contains('-Cllvm-args=-asan-stack=0'),
+    );
+    expect(
+      sanitizerRustflagsForTesting(
+        Sanitizer.asan,
+        package: 'frb_example/deliberate_bad',
+      ),
+      isNot(contains('-Cllvm-args=-asan-stack=0')),
     );
   });
 
