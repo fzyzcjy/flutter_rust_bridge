@@ -15,6 +15,16 @@ void main() {
     ]);
   });
 
+  test('generate apple scaffold diff excludes non-Apple OHOS output', () {
+    expect(
+      generateAppleScaffoldDiffExclusionArgs(),
+      "':(exclude)frb_example/flutter_via_create/ohos/' "
+      "':(exclude)frb_example/flutter_via_create/rust_builder/ohos/' "
+      "':(exclude)frb_example/flutter_via_create/rust_builder/pubspec.yaml' "
+      "':(exclude)frb_example/flutter_via_create_native_assets/ohos/'",
+    );
+  });
+
   test(
     'integrate apple scaffold source of truth is explicit for flutter_via_create',
     () {

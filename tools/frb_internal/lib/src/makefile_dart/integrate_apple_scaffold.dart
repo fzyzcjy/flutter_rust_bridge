@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
@@ -37,8 +38,18 @@ const _kIntegrateAppleScaffoldSourceOfTruthPaths = <String, List<String>>{
   ],
 };
 
+const _kGenerateAppleScaffoldDiffExcludedPaths = <String>[
+  'frb_example/flutter_via_create/ohos/',
+  'frb_example/flutter_via_create/rust_builder/ohos/',
+  'frb_example/flutter_via_create/rust_builder/pubspec.yaml',
+  'frb_example/flutter_via_create_native_assets/ohos/',
+];
+
 List<String> integrateAppleScaffoldSourceOfTruthPackages() =>
     List.unmodifiable(_kIntegrateAppleScaffoldSourceOfTruthPaths.keys);
+
+String generateAppleScaffoldDiffExclusionArgs() =>
+    gitExcludePathspecArgs(_kGenerateAppleScaffoldDiffExcludedPaths);
 
 Future<void> applyCheckedInAppleScaffoldSourceOfTruth({
   required String package,

@@ -416,7 +416,7 @@ Future<void> generateAppleScaffold() async {
         ),
       );
     }
-  });
+  }, extraArgs: generateAppleScaffoldDiffExclusionArgs());
 }
 
 Future<void> generateRunFrbCodegenCommandIntegrate(
