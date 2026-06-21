@@ -253,6 +253,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
   print('====== execAndCheckWithSanitizerEnvVar name=${info.name} ======');
 
   final rustflags = sanitizer.rustflags;
+  final runtimeEnv = await sanitizer.runtimeEnv();
   final rustSanitizerEnv = rustflags == null
       ? <String, String>{}
       : {
@@ -269,11 +270,9 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
       ...rustSanitizerEnv,
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
-      ...sanitizer.runtimeEnv,
-      ...sanitizer.threadPoolEnv,
+      ...runtimeEnv,
       ...extraEnv,
       ...kEnvEnableRustBacktrace,
-      ...sanitizer.backtraceEnv,
     },
     checkExitCode: false,
   );
@@ -409,6 +408,13 @@ void checkSanitizedDartVersionForTesting({
   }
 }
 
+String? sanitizerRustflagsForTesting(Sanitizer sanitizer) =>
+    sanitizer.rustflags;
+
+Future<Map<String, String>> sanitizerRuntimeEnvForTesting(
+  Sanitizer sanitizer,
+) => sanitizer.runtimeEnv();
+
 Future<void> _downloadSanitizedDartBinaryArtifact({
   required String releaseName,
   required String fileNameTarGz,
@@ -485,6 +491,8 @@ extension on Sanitizer {
     if (value == null) return null;
 
     return switch (this) {
+      Sanitizer.asan =>
+        '-Zsanitizer=$value -Cllvm-args=-asan-use-after-scope=0',
       Sanitizer.msan => '-Zsanitizer=$value --cfg frb_sanitize_memory',
       _ => '-Zsanitizer=$value',
     };
@@ -510,28 +518,25 @@ extension on Sanitizer {
     };
   }
 
-  Map<String, String> get runtimeEnv {
+  Future<Map<String, String>> runtimeEnv() async {
     return switch (this) {
       Sanitizer.asan => {'ASAN_OPTIONS': _kAsanOptions},
       Sanitizer.msan => {'MSAN_OPTIONS': _kMsanOptions},
       Sanitizer.lsan => {'ASAN_OPTIONS': _kLsanOptions},
-      Sanitizer.tsan => {'TSAN_OPTIONS': _kTsanOptions},
+      Sanitizer.tsan => {
+        'TSAN_OPTIONS':
+            '$_kTsanOptions:suppressions=${await _writeTsanSuppressions()}',
+      },
       Sanitizer.ubsan => {'UBSAN_OPTIONS': _kUbsanOptions},
     };
   }
 
-  Map<String, String> get threadPoolEnv {
-    return switch (this) {
-      Sanitizer.tsan => {'FRB_SYNC_THREAD_POOL': '1'},
-      _ => {},
-    };
-  }
-
-  Map<String, String> get backtraceEnv {
-    return switch (this) {
-      Sanitizer.asan => {'RUST_BACKTRACE': '0'},
-      _ => {},
-    };
+  Future<String> _writeTsanSuppressions() async {
+    final file = File(
+      path.join(Directory.systemTemp.path, 'frb_tsan_suppressions.txt'),
+    );
+    await file.writeAsString(_kTsanSuppressions);
+    return file.path;
   }
 }
 
@@ -549,3 +554,8 @@ const _kTsanOptions =
     'report_thread_leaks=0';
 const _kUbsanOptions =
     'handle_segv=0:disable_coredump=0:abort_on_error=1:print_stacktrace=1';
+
+const _kTsanSuppressions = '''
+race:Dart_RunLoop
+race:std::_d::__libcpp_verbose_abort
+''';

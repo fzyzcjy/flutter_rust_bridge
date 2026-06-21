@@ -81,6 +81,21 @@ void main() {
     );
   });
 
+  test('sanitizer env keeps TSAN on the normal thread pool', () async {
+    final runtimeEnv = await sanitizerRuntimeEnvForTesting(Sanitizer.tsan);
+
+    expect(runtimeEnv, isNot(contains('FRB_SYNC_THREAD_POOL')));
+    expect(runtimeEnv['TSAN_OPTIONS'], contains('report_thread_leaks=0'));
+    expect(runtimeEnv['TSAN_OPTIONS'], contains('suppressions='));
+  });
+
+  test('sanitizer rustflags disable ASAN use-after-scope false positives', () {
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.asan),
+      contains('-Cllvm-args=-asan-use-after-scope=0'),
+    );
+  });
+
   test('linux build bundle path follows the current machine architecture', () {
     expect(
       linuxBuildBundlePathForTesting(machineArchitecture: 'x86_64'),
