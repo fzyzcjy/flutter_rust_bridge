@@ -250,6 +250,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
       ...sanitizer.runtimeEnv,
+      ...sanitizer.threadPoolEnv,
       ...kEnvEnableRustBacktrace,
     },
     checkExitCode: false,
@@ -484,6 +485,13 @@ extension on Sanitizer {
       Sanitizer.lsan => {'ASAN_OPTIONS': _kLsanOptions},
       Sanitizer.tsan => {'TSAN_OPTIONS': _kTsanOptions},
       Sanitizer.ubsan => {'UBSAN_OPTIONS': _kUbsanOptions},
+    };
+  }
+
+  Map<String, String> get threadPoolEnv {
+    return switch (this) {
+      Sanitizer.msan || Sanitizer.tsan => {'FRB_SYNC_THREAD_POOL': '1'},
+      _ => {},
     };
   }
 }

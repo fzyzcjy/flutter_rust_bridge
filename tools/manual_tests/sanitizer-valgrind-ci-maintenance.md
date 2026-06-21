@@ -11,7 +11,9 @@ Run this checklist after changing `.github/workflows/ci.yaml`, `tools/frb_intern
 Required PR CI coverage:
 
 - ASAN normal examples: `frb_example--dart_minimal`, `frb_example--pure_dart`, and `frb_example--pure_dart_pde`.
+- MSAN normal examples: `frb_example--dart_minimal`, `frb_example--pure_dart`, and `frb_example--pure_dart_pde`.
 - LSAN normal examples: `frb_example--dart_minimal`, `frb_example--pure_dart`, and `frb_example--pure_dart_pde`.
+- TSAN normal examples: `frb_example--dart_minimal`, `frb_example--pure_dart`, and `frb_example--pure_dart_pde`.
 - UBSAN normal examples: `frb_example--dart_minimal`, `frb_example--pure_dart`, and `frb_example--pure_dart_pde`.
 - ASAN deliberate-bad sentinel: `frb_example--deliberate_bad`.
 - MSAN deliberate-bad sentinel: `frb_example--deliberate_bad`.
@@ -21,9 +23,9 @@ Required PR CI coverage:
 
 Experimental or manual coverage:
 
-- TSAN normal examples are not required while Dart VM/runtime reports ThreadSanitizer noise on otherwise normal examples. The required TSAN coverage is the Rust-only deliberate-bad sentinel.
 - UBSAN has normal-example required coverage only. It does not have a Rust-side deliberate-bad sentinel while Rust nightly rejects `-Zsanitizer=undefined`; a Dart VM UBSAN artifact alone is not enough to prove FRB's Rust-side undefined behavior cases.
-- MSAN normal examples are not required while Dart/Rust initialization produces the known `MemcmpInterceptorCommon` false positive.
+
+MSAN and TSAN normal-example jobs set `FRB_SYNC_THREAD_POOL=1` through `dart_sanitizer_tester.dart`. This keeps the Dart entrypoint, dynamic library load, generated bindings, Rust call, and sanitizer runtime active while avoiding known false positives in the default cross-thread `threadpool` executor path.
 
 ## Artifact Refresh
 
