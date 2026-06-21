@@ -131,15 +131,10 @@ class _QuickstartSmokeContext {
     return context;
   }
 
-  List<String> get flutterRunArgs => [
-    'run',
-    '-d',
-    resolvedDeviceId,
-    if (target == QuickstartSmokeTarget.web) ...[
-      '--web-header=Cross-Origin-Opener-Policy=same-origin',
-      '--web-header=Cross-Origin-Embedder-Policy=require-corp',
-    ],
-  ];
+  List<String> get flutterRunArgs => quickstartSmokeFlutterRunArgsForTesting(
+    target: target,
+    deviceId: resolvedDeviceId,
+  );
 
   Map<String, String> get environment => {
     if (Platform.isLinux) 'DISPLAY': Platform.environment['DISPLAY'] ?? ':99',
@@ -246,6 +241,21 @@ Duration quickstartSmokeVisibleTextTimeoutForTesting(
   QuickstartSmokeTarget.android ||
   QuickstartSmokeTarget.ios => const Duration(seconds: 90),
 };
+
+@visibleForTesting
+List<String> quickstartSmokeFlutterRunArgsForTesting({
+  required QuickstartSmokeTarget target,
+  required String deviceId,
+}) => [
+  'run',
+  '-d',
+  deviceId,
+  if (target == QuickstartSmokeTarget.web) ...[
+    '--web-header=Cross-Origin-Opener-Policy=same-origin',
+    '--web-header=Cross-Origin-Embedder-Policy=require-corp',
+    '--web-browser-flag=--enable-features=SharedArrayBuffer',
+  ],
+];
 
 @visibleForTesting
 String? quickstartSmokeOutputFailurePatternForTesting(String output) {

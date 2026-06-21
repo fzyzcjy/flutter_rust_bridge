@@ -318,6 +318,23 @@ plain
     },
   );
 
+  test('quickstart web smoke enables browser shared buffers', () {
+    expect(
+      quickstartSmokeFlutterRunArgsForTesting(
+        target: QuickstartSmokeTarget.web,
+        deviceId: 'chrome',
+      ),
+      containsAllInOrder([
+        'run',
+        '-d',
+        'chrome',
+        '--web-header=Cross-Origin-Opener-Policy=same-origin',
+        '--web-header=Cross-Origin-Embedder-Policy=require-corp',
+        '--web-browser-flag=--enable-features=SharedArrayBuffer',
+      ]),
+    );
+  });
+
   test(
     'quickstart smoke gives cold desktop and iOS builds more readiness time',
     () {
