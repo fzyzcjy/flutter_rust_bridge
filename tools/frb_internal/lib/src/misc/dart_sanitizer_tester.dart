@@ -66,8 +66,9 @@ Future<void> _buildPackageNativeLibraryForDart(
 ) async {
   final crateName = path.basename(config.package);
   final libraryName = 'libfrb_example_$crateName.so';
+  final featureArgs = _cargoFeatureArgs(config);
   await _execAndCheckWithSanitizerEnvVar(
-    'cargo +nightly build --release $_cargoBuildExtraArgs'
+    'cargo +nightly build --release $_cargoBuildExtraArgs$featureArgs'
     ' && mkdir -p target/release'
     ' && cp target/x86_64-unknown-linux-gnu/release/$libraryName'
     ' target/release/$libraryName',
@@ -79,6 +80,14 @@ Future<void> _buildPackageNativeLibraryForDart(
     config.sanitizer,
     relativePwd: '${config.package}/rust',
   );
+}
+
+String _cargoFeatureArgs(TestDartSanitizerConfig config) {
+  return switch (config.package) {
+    'frb_example/pure_dart' ||
+    'frb_example/pure_dart_pde' => ' --features internal_feature_for_testing',
+    _ => '',
+  };
 }
 
 Future<void> _runPackageDeliberateBadRustOnly(
