@@ -43,7 +43,6 @@ Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
       expectStderrContains: '',
     ),
     config.sanitizer,
-    extraEnv: _dartTestSkipEnv(config),
     relativePwd: config.package,
   );
 }
@@ -291,46 +290,6 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
   }
 
   print('Pass check for ${info.name}');
-}
-
-Map<String, String> _dartTestSkipEnv(TestDartSanitizerConfig config) {
-  if (config.package != 'frb_example/pure_dart' &&
-      config.package != 'frb_example/pure_dart_pde') {
-    return {};
-  }
-
-  final skipEntryPoints = switch (config.sanitizer) {
-    Sanitizer.asan || Sanitizer.msan || Sanitizer.tsan => [
-      'api/dart_opaque_sync_test.dart',
-      'api/exception_test.dart',
-      'api/pseudo_manual/exception_twin_rust_async_test.dart',
-      'api/pseudo_manual/exception_twin_rust_async_sse_test.dart',
-      'api/pseudo_manual/exception_twin_sse_test.dart',
-      'api/pseudo_manual/exception_twin_sync_test.dart',
-      'api/pseudo_manual/exception_twin_sync_sse_test.dart',
-      'api/pseudo_manual/dart_opaque_sync_twin_sse_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_moi_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_rust_async_moi_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_rust_async_sse_moi_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_rust_async_sse_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_rust_async_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_sse_moi_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_sse_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_sync_moi_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_sync_sse_moi_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_sync_sse_test.dart',
-      'api/pseudo_manual/rust_auto_opaque_twin_sync_test.dart',
-      'api/pseudo_manual/stream_twin_rust_async_test.dart',
-      'api/pseudo_manual/stream_twin_rust_async_sse_test.dart',
-      'api/pseudo_manual/stream_twin_sse_test.dart',
-      'api/rust_auto_opaque_test.dart',
-      'api/stream_test.dart',
-    ],
-    _ => <String>[],
-  };
-  if (skipEntryPoints.isEmpty) return {};
-
-  return {'FRB_DART_TEST_SKIP_ENTRYPOINTS': skipEntryPoints.join(',')};
 }
 
 Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {

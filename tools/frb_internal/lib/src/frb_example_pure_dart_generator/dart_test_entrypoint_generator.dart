@@ -33,40 +33,9 @@ Future<void> main() async {
   await dartWebTestEntrypoint(() async {
     await RustLib.init();
 
-    await dart_valgrind_test_entrypoint.callFileEntrypoints(
-      skipEntryPointNames: _webSkipEntryPointNames,
-    );
+    await dart_valgrind_test_entrypoint.callFileEntrypoints();
   });
 }
-
-const _webSkipEntryPointNames = <String>{
-  'api/dart_opaque_sync_test.dart',
-  'api/exception_test.dart',
-  'api/pseudo_manual/exception_twin_rust_async_test.dart',
-  'api/pseudo_manual/exception_twin_rust_async_sse_test.dart',
-  'api/pseudo_manual/exception_twin_sse_test.dart',
-  'api/pseudo_manual/exception_twin_sync_test.dart',
-  'api/pseudo_manual/exception_twin_sync_sse_test.dart',
-  'api/pseudo_manual/dart_opaque_sync_twin_sse_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_moi_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_rust_async_moi_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_rust_async_sse_moi_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_rust_async_sse_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_rust_async_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_sse_moi_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_sse_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_sync_moi_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_sync_sse_moi_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_sync_sse_test.dart',
-  'api/pseudo_manual/rust_auto_opaque_twin_sync_test.dart',
-  'api/pseudo_manual/stream_twin_rust_async_test.dart',
-  'api/pseudo_manual/stream_twin_rust_async_sse_test.dart',
-  'api/pseudo_manual/stream_misc_twin_sse_test.dart',
-  'api/pseudo_manual/stream_twin_sse_test.dart',
-  'api/rust_auto_opaque_test.dart',
-  'api/stream_misc_test.dart',
-  'api/stream_test.dart',
-};
   ''';
 
   await _writeToFile(dartRoot, 'test/dart_web_test_entrypoint.dart', code);
@@ -108,14 +77,8 @@ ${imports.join("")}
 Future<void> main() async {
   await RustLib.init();
 
-  final skipEntryPointNames =
-      Platform.environment['FRB_DART_TEST_SKIP_ENTRYPOINTS']
-          ?.split(',')
-          .where((item) => item.isNotEmpty)
-          .toSet() ??
-      const <String>{};
   final success = await directRunTests(
-    () async => callFileEntrypoints(skipEntryPointNames: skipEntryPointNames),
+    callFileEntrypoints,
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
@@ -128,18 +91,12 @@ Future<void> main() async {
   exit(success ? 0 : 1);
 }
 
-Future<void> callFileEntrypoints({
-  Set<String> skipEntryPointNames = const <String>{},
-}) async {
+Future<void> callFileEntrypoints() async {
   final entrypoints = <String, Future<void> Function({bool skipRustLibInit})>{
 ${entrypoints.join("")}
   };
 
   for (final MapEntry(key: name, value: entrypoint) in entrypoints.entries) {
-    if (skipEntryPointNames.contains(name)) {
-      print('Skip test entrypoint: \$name');
-      continue;
-    }
     await entrypoint(skipRustLibInit: true);
   }
 }

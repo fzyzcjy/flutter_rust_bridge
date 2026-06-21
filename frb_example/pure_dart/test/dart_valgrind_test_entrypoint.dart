@@ -448,14 +448,8 @@ import 'api/uuid_type_test.dart' as uuid_type_test;
 Future<void> main() async {
   await RustLib.init();
 
-  final skipEntryPointNames = Platform
-          .environment['FRB_DART_TEST_SKIP_ENTRYPOINTS']
-          ?.split(',')
-          .where((item) => item.isNotEmpty)
-          .toSet() ??
-      const <String>{};
   final success = await directRunTests(
-    () async => callFileEntrypoints(skipEntryPointNames: skipEntryPointNames),
+    callFileEntrypoints,
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
@@ -468,9 +462,7 @@ Future<void> main() async {
   exit(success ? 0 : 1);
 }
 
-Future<void> callFileEntrypoints({
-  Set<String> skipEntryPointNames = const <String>{},
-}) async {
+Future<void> callFileEntrypoints() async {
   final entrypoints = <String, Future<void> Function({bool skipRustLibInit})>{
     'api/array_test.dart': array_test.main,
     'api/async_misc_test.dart': async_misc_test.main,
@@ -912,10 +904,6 @@ Future<void> callFileEntrypoints({
   };
 
   for (final MapEntry(key: name, value: entrypoint) in entrypoints.entries) {
-    if (skipEntryPointNames.contains(name)) {
-      print('Skip test entrypoint: $name');
-      continue;
-    }
     await entrypoint(skipRustLibInit: true);
   }
 }
