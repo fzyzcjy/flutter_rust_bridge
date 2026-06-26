@@ -242,7 +242,11 @@ patch_har() {
   else
     (
       cd "$temp_dir"
-      tar -cf - . | gzip -n > "$temp_har"
+      if [[ -e package ]]; then
+        tar -cf - package | gzip -n > "$temp_har"
+      else
+        tar -cf - * | gzip -n > "$temp_har"
+      fi
     )
   fi
   mv "$temp_har" "$har_path"
