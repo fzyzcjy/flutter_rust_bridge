@@ -165,9 +165,6 @@ void rustAutoOpaqueArgMutBorrowSyncTwinNormal(
         .crateApiRustAutoOpaqueRustAutoOpaqueArgMutBorrowSyncTwinNormal(
             arg: arg, expect: expect, adder: adder);
 
-Future<bool> rustAutoOpaqueDetectLockedWriteTwinNormal() => RustLib.instance.api
-    .crateApiRustAutoOpaqueRustAutoOpaqueDetectLockedWriteTwinNormal();
-
 Future<void> rustAutoOpaqueHoldMutBorrowForeverTwinNormal(
         {required NonCloneSimpleTwinNormal arg}) =>
     RustLib.instance.api

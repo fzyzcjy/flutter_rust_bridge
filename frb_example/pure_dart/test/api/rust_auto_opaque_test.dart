@@ -447,7 +447,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test(
       'web detects a locked mut borrow without blocking',
       () async {
-        expect(await rustAutoOpaqueDetectLockedWriteTwinNormal(), true);
+        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+
+        final _ = rustAutoOpaqueHoldMutBorrowForeverTwinNormal(arg: obj);
+        await Future<void>.delayed(const Duration(milliseconds: 100));
+
+        expect(
+          () => rustAutoOpaqueArgMutBorrowSyncTwinNormal(
+            arg: obj,
+            expect: 100,
+            adder: 1,
+          ),
+          throwsA(anything),
+        );
       },
       skip: !kIsWeb ? 'Web-only regression coverage' : null,
     );

@@ -386,13 +386,6 @@ pub fn rust_auto_opaque_arg_mut_borrow_sync_twin_normal(
     arg.inner += adder;
 }
 
-pub async fn rust_auto_opaque_detect_locked_write_twin_normal() -> bool {
-    let arg = RustAutoOpaque::new(NonCloneSimpleTwinNormal { inner: 100 });
-    let _guard = arg.write().await;
-    let is_locked = arg.try_write().is_err();
-    is_locked
-}
-
 pub async fn rust_auto_opaque_hold_mut_borrow_forever_twin_normal(
     _arg: &mut NonCloneSimpleTwinNormal,
 ) {

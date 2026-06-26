@@ -57741,12 +57741,6 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_callable_return_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_auto_opaque__rust_auto_opaque_detect_locked_write_twin_normal(
-          NativePortType port_) =>
-      wasmModule
-          .wire__crate__api__rust_auto_opaque__rust_auto_opaque_detect_locked_write_twin_normal(
-              port_);
-
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_dummy_twin_moi(
           NativePortType port_, int a, int b) =>
       wasmModule
@@ -76746,10 +76740,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external void
-      wire__crate__api__rust_auto_opaque__rust_auto_opaque_detect_locked_write_twin_normal(
-          NativePortType port_);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_dummy_twin_moi(
