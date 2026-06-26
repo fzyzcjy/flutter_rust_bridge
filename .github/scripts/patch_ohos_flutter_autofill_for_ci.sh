@@ -245,7 +245,13 @@ patch_har() {
       if [[ -e package ]]; then
         tar -cf - package | gzip -n > "$temp_har"
       else
-        tar -cf - * | gzip -n > "$temp_har"
+        shopt -s nullglob dotglob
+        entries=(*)
+        if [[ "${#entries[@]}" -eq 0 ]]; then
+          echo "No files found while repacking OHOS Flutter HAR: $har_path" >&2
+          exit 1
+        fi
+        tar -cf - -- "${entries[@]}" | gzip -n > "$temp_har"
       fi
     )
   fi
