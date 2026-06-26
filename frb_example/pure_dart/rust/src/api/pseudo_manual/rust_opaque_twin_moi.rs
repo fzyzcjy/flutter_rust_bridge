@@ -10,6 +10,7 @@ use crate::frb_generated::{RustOpaque, RustOpaqueMoi};
 use anyhow::Result;
 #[allow(unused_imports)]
 use flutter_rust_bridge::{opaque_dyn, RustOpaqueNom};
+use std::any::Any;
 use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
@@ -45,6 +46,16 @@ pub struct OpaqueNestedTwinMoi {
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub fn create_opaque_twin_moi() -> crate::frb_generated::RustOpaqueMoi<HideDataTwinMoi> {
     crate::frb_generated::RustOpaqueMoi::new(HideDataTwinMoi(HideDataRaw::new()))
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn create_any_opaque_twin_moi() -> Box<dyn Any + Send + Sync + 'static> {
+    Box::new("content".to_owned())
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn run_any_opaque_twin_moi(opaque: Box<dyn Any + Send + Sync + 'static>) -> bool {
+    opaque.is::<String>()
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]

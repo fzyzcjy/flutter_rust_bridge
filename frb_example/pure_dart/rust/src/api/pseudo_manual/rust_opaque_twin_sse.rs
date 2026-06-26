@@ -10,6 +10,7 @@ use crate::frb_generated::{RustOpaque, RustOpaqueMoi};
 use anyhow::Result;
 #[allow(unused_imports)]
 use flutter_rust_bridge::{opaque_dyn, RustOpaqueNom};
+use std::any::Any;
 use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
@@ -45,6 +46,16 @@ pub struct OpaqueNestedTwinSse {
 #[flutter_rust_bridge::frb(serialize)]
 pub fn create_opaque_twin_sse() -> RustOpaque<HideDataTwinSse> {
     RustOpaque::new(HideDataTwinSse(HideDataRaw::new()))
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn create_any_opaque_twin_sse() -> Box<dyn Any + Send + Sync + 'static> {
+    Box::new("content".to_owned())
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn run_any_opaque_twin_sse(opaque: Box<dyn Any + Send + Sync + 'static>) -> bool {
+    opaque.is::<String>()
 }
 
 #[flutter_rust_bridge::frb(serialize)]

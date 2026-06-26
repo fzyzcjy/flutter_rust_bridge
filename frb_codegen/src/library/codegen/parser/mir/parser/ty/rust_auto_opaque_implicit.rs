@@ -109,7 +109,7 @@ fn parse_type_rust_auto_opaque_common_raw(
     codec: RustOpaqueCodecMode,
     dart_api_type: Option<String>,
 ) -> Result<(MirRustAutoOpaqueRaw, MirTypeRustOpaque)> {
-    let inner_str = remove_ty_path_prefix(&inner.to_token_stream().to_string());
+    let inner_str = normalize_ty_path_prefix(&inner.to_token_stream().to_string());
 
     let raw_segments = match inner {
         Type::Path(inner) => extract_path_data(&inner.path)?,
@@ -142,4 +142,63 @@ fn remove_ty_path_prefix(raw: &str) -> String {
         static ref REGEX: Regex = Regex::new(r"[a-zA-Z0-9_ ]+::").unwrap();
     }
     REGEX.replace_all(raw, "").to_string()
+}
+
+fn normalize_ty_path_prefix(raw: &str) -> String {
+    restore_std_any_type_path(&remove_ty_path_prefix(&mark_std_any_type_path(raw)))
+}
+
+fn mark_std_any_type_path(raw: &str) -> String {
+    lazy_static! {
+        static ref REGEX: Regex =
+            Regex::new(r"\bdyn\s+(?:Any\b|(?:::)?\s*(?:(?:std|core)\s*::\s*)?any\s*::\s*Any\b)")
+                .unwrap();
+    }
+    REGEX.replace_all(raw, "dyn FRB_STD_ANY_MARKER").to_string()
+}
+
+fn restore_std_any_type_path(raw: &str) -> String {
+    raw.replace("FRB_STD_ANY_MARKER", "std::any::Any")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn normalize_ty_path_prefix_qualifies_any_trait_object() {
+        assert_eq!(
+            normalize_ty_path_prefix("Box < dyn Any + Send + Sync + 'static >"),
+            "Box < dyn std::any::Any + Send + Sync + 'static >"
+        );
+    }
+
+    #[test]
+    fn normalize_ty_path_prefix_preserves_qualified_any_trait_object() {
+        assert_eq!(
+            normalize_ty_path_prefix("Box < dyn std :: any :: Any + Send + Sync + 'static >"),
+            "Box < dyn std::any::Any + Send + Sync + 'static >"
+        );
+    }
+
+    #[test]
+    fn normalize_ty_path_prefix_supports_absolute_any_trait_object() {
+        assert_eq!(
+            normalize_ty_path_prefix("Box < dyn :: core :: any :: Any + Send + Sync + 'static >"),
+            "Box < dyn std::any::Any + Send + Sync + 'static >"
+        );
+    }
+
+    #[test]
+    fn normalize_ty_path_prefix_supports_any_module_trait_object() {
+        assert_eq!(
+            normalize_ty_path_prefix("Box < dyn any :: Any + Send + Sync + 'static >"),
+            "Box < dyn std::any::Any + Send + Sync + 'static >"
+        );
+    }
+
+    #[test]
+    fn normalize_ty_path_prefix_still_removes_other_prefixes() {
+        assert_eq!(normalize_ty_path_prefix("crate::a::Foo"), "Foo");
+    }
 }

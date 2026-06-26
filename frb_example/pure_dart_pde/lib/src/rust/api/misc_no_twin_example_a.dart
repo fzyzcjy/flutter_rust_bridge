@@ -42,7 +42,7 @@ int get constIntTwinNormal =>
 F32Array3 get constArrayTwinNormal =>
     RustLib.instance.api.crateApiMiscNoTwinExampleAConstArrayTwinNormal();
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn std::any::Any + Send + Sync + 'static >>>
 abstract class BoxAnyMyDartTypeRename implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>

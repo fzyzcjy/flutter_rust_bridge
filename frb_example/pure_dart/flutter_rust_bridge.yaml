@@ -6,7 +6,7 @@ parse_const: true
 
 # this config, together with usage of that type, tests the feature of type rename
 dart_type_rename:
-  Box<dyn Any + Send + Sync + 'static>: BoxAnyMyDartTypeRename
+  Box<dyn std::any::Any + Send + Sync + 'static>: BoxAnyMyDartTypeRename
 
 rust_preamble: "// test for rust_preamble"
 dart_preamble: "import 'dart:io';"
