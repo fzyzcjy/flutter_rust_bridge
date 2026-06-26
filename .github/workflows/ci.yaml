@@ -28,6 +28,8 @@ env:
   FRB_MAIN_RUST_VERSION: 1.93.1
   FRB_MAIN_DART_VERSION: 3.11.0
   FRB_MAIN_FLUTTER_VERSION: 3.44.0
+  FRB_OHOS_SDK_VERSION: 5.1.0.840
+  FRB_OHOS_FLUTTER_BRANCH: oh-3.41.9-dev
   FRB_RUSTFMT_NIGHTLY_VERSION: nightly-2025-02-01
 
 concurrency:
@@ -391,7 +393,7 @@ jobs:
         name: Setup HarmonyOS toolchain
         uses: ErBWs/setup-ohos@v1
         with:
-          version: latest
+          version: ${{ env.FRB_OHOS_SDK_VERSION }}
           cache: true
       - if: matrix.platforms == 'ohos'
         name: Setup JDK17
@@ -402,7 +404,7 @@ jobs:
       - if: matrix.platforms == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b oh-3.41.9-dev https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git clone -b "$FRB_OHOS_FLUTTER_BRANCH" https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.platforms == 'ohos'
         name: Export OHOS_SDK_HOME
@@ -609,7 +611,7 @@ jobs:
         name: Setup HarmonyOS toolchain
         uses: ErBWs/setup-ohos@v1
         with:
-          version: latest
+          version: ${{ env.FRB_OHOS_SDK_VERSION }}
           cache: true
       - if: matrix.info.target == 'ohos'
         name: Setup JDK17
@@ -620,7 +622,7 @@ jobs:
       - if: matrix.info.target == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b oh-3.41.9-dev https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git clone -b "$FRB_OHOS_FLUTTER_BRANCH" https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.info.target == 'ohos'
         name: Export OHOS_SDK_HOME
