@@ -64,11 +64,17 @@ fn ensure_safe_dart_output(
     let dart_lib = dart_root.join("lib");
     let dart_lib_src = dart_lib.join("src");
     let protected_dart_dirs = [
+        dart_root.join("android"),
+        dart_root.join("build"),
         dart_lib,
         dart_root.join("bin"),
         dart_root.join("example"),
+        dart_root.join("ios"),
+        dart_root.join("linux"),
+        dart_root.join("macos"),
         dart_root.join("test"),
         dart_root.join("web"),
+        dart_root.join("windows"),
     ];
 
     if dart_output.parent().is_none()
