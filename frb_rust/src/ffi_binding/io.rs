@@ -44,8 +44,11 @@ extern "C" {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn frb_init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> isize {
+    // This is compiled only for MSAN-specific sanitizer builds; regular coverage does not see that cfg.
+    // frb-coverage:ignore-start
     #[cfg(frb_sanitize_memory)]
     unpoison_dart_api_dl_data_for_msan(data);
+    // frb-coverage:ignore-end
 
     #[cfg(feature = "dart-opaque")]
     return dart_sys::Dart_InitializeApiDL(data);

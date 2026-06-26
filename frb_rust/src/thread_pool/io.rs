@@ -12,11 +12,7 @@ impl BaseThreadPool for SimpleThreadPool {
     where
         F: FnOnce() + Send + 'static,
     {
-        if std::env::var_os("FRB_SYNC_THREAD_POOL").is_some() {
-            job()
-        } else {
-            self.0.execute(job)
-        }
+        self.0.execute(job)
     }
 }
 
