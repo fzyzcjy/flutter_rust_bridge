@@ -3,6 +3,7 @@ use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
 use log::{debug, warn};
+use semver::{Comparator, Op};
 use serde::de::DeserializeOwned;
 use std::collections::HashMap;
 use std::convert::TryFrom;
@@ -187,7 +188,7 @@ impl DartRepository {
         };
 
         match version {
-            DartPackageVersion::Exact(ref v) if requirement.matches(v) => Ok(()),
+            DartPackageVersion::Exact(_) if version.matches_requirement(requirement) => Ok(()),
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
             DartPackageVersion::Range(_) => {
@@ -293,6 +294,49 @@ impl Display for DartPackageVersion {
         };
         write!(f, "{str}")
     }
+}
+
+impl DartPackageVersion {
+    pub(crate) fn matches_requirement(&self, requirement: &VersionReq) -> bool {
+        match self {
+            DartPackageVersion::Exact(version) => {
+                requirement.matches(version)
+                    || prerelease_matches_stable_lower_bound(version, requirement)
+            }
+            DartPackageVersion::Range(version_requirement) => version_requirement == requirement,
+        }
+    }
+}
+
+fn prerelease_matches_stable_lower_bound(version: &Version, requirement: &VersionReq) -> bool {
+    if version.pre.is_empty() {
+        return false;
+    }
+
+    let stable_version = Version::new(version.major, version.minor, version.patch);
+    requirement.matches(&stable_version)
+        && requirement
+            .comparators
+            .iter()
+            .all(|comparator| prerelease_is_after_stable_lower_bound(version, comparator))
+}
+
+fn prerelease_is_after_stable_lower_bound(version: &Version, comparator: &Comparator) -> bool {
+    if matches!(comparator.op, Op::Less | Op::LessEq) {
+        return true;
+    }
+
+    let version_components = (version.major, version.minor, version.patch);
+    let comparator_components = (
+        comparator.major,
+        comparator.minor.unwrap_or(0),
+        comparator.patch.unwrap_or(0),
+    );
+
+    matches!(
+        comparator.op,
+        Op::Greater | Op::GreaterEq | Op::Caret | Op::Tilde
+    ) && version_components > comparator_components
 }
 
 fn read_file(at: &Path, filename: &str) -> anyhow::Result<String> {

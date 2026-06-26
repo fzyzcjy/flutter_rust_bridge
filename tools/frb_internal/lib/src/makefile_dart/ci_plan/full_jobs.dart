@@ -121,7 +121,10 @@ final kCiJobs = [
     'test_mimic_quickstart',
     matrix: CiMatrix([
       for (final image in ['windows-2025', 'macos-15-intel', 'ubuntu-latest'])
-        {'image': image},
+        for (final integrationBackend in ['cargokit', 'native-assets'])
+          if (!(image == 'macos-15-intel' &&
+              integrationBackend == 'native-assets'))
+            {'image': image, 'integration_backend': integrationBackend},
     ]),
   ),
   CiJob(

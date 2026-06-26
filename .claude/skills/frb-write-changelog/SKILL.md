@@ -41,9 +41,10 @@ Keep all PRs in merged status that belong to the release range.
 
 - Exclude unmerged PRs.
 - Exclude PRs outside the release range.
+- When refreshing an already-published release, use both the previous release timestamp and the target release tag timestamp so later post-release PRs are not pulled into the published section.
 - Do not filter by target branch.
 - Keep docs, CI, and chore PRs if they are merged in the range.
-- Exclude all-contributors PRs such as `docs: add <name> as a contributor for code/doc`.
+- Exclude only all-contributors PRs such as `docs: add <name> as a contributor for code/doc`; do not exclude ordinary documentation PRs whose titles start with `docs: add`.
 
 Normalize titles before writing.
 
@@ -56,7 +57,9 @@ Normalize titles before writing.
 Match the existing changelog style.
 
 - Write each item as `* Summary #1234`.
-- Append `(thanks @username)` when attribution is appropriate.
+- Append `(thanks @username)` for every third-party human-authored PR in the release range, including docs, CI, chore, tooling, and feature PRs.
+- When a changelog entry combines local maintainer PRs with a third-party PR, append the third-party thanks to that combined entry.
+- If multiple third-party authors appear in one combined entry, include each author in the same entry.
 - Place entries with `(thanks @username)` before entries without thanks.
 - Within the thanks group and the no-thanks group, keep items in merge order from newest to oldest unless the surrounding section clearly uses another order.
 
@@ -79,13 +82,14 @@ gh pr list --state merged --limit 200 --json number,title,author,mergedAt,baseRe
 uv run --script .claude/skills/frb-write-changelog/verify_changelog.py \
   --version <VERSION> \
   --previous-release-time <PREVIOUS_RELEASE_TIMESTAMP> \
+  --release-time <TARGET_RELEASE_TIMESTAMP> \
   --merged-prs-json /tmp/frb-merged-prs.json
 ```
 
 The verifier checks that:
 
 - PR numbers in the target section are complete, not duplicated, and not unexpected.
-- Third-party thanks authors are complete and not unexpected. The same author may be thanked on multiple entries.
+- Third-party thanks authors are complete and not unexpected, including ordinary documentation PR authors. The same author may be thanked on multiple entries.
 - Entries with third-party thanks appear before entries without thanks.
 - `docs: add <name> as a contributor ...` all-contributors PRs are ignored.
 

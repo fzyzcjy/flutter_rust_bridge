@@ -21,6 +21,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
 
@@ -407,17 +408,22 @@ Future<void> generateAppleScaffold() async {
   await wrapMaybeSetExitIfChangedRaw(true, () async {
     for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
       await generateRunFrbCodegenCommandIntegrate(
-        GenerateIntegratePackageConfig(
-          setExitIfChanged: false,
-          package: package,
-          coverage: false,
-          includeOhos: true,
-          skipCheckedInAppleScaffold: true,
-        ),
+        generateAppleScaffoldPackageConfigForTesting(package),
       );
     }
-  }, extraArgs: generateAppleScaffoldDiffExclusionArgs());
+  });
 }
+
+@visibleForTesting
+GenerateIntegratePackageConfig generateAppleScaffoldPackageConfigForTesting(
+  String package,
+) => GenerateIntegratePackageConfig(
+  setExitIfChanged: false,
+  package: package,
+  coverage: false,
+  includeOhos: false,
+  skipCheckedInAppleScaffold: true,
+);
 
 Future<void> generateRunFrbCodegenCommandIntegrate(
   GenerateIntegratePackageConfig config,
@@ -442,10 +448,11 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       );
       print('Pick temporary directory: $dirTemp');
       await Directory(dirTemp).create(recursive: true);
+      final dirTempOriginal = path.join(dirTemp, 'original');
 
       // We move instead of delete folder for extra safety of this script
       if (await Directory(dirPackage).exists()) {
-        await Directory(dirPackage).rename(path.join(dirTemp, 'original'));
+        await Directory(dirPackage).rename(dirTempOriginal);
       }
 
       final recipe = _integrateRecipeForPackage(config.package);
@@ -484,6 +491,13 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       if (!config.skipCheckedInAppleScaffold) {
         await applyCheckedInAppleScaffoldSourceOfTruth(
           package: config.package,
+          generatedPackageDir: dirPackage,
+        );
+      }
+      if (!config.includeOhos) {
+        await preserveCheckedInOhosScaffold(
+          package: config.package,
+          originalPackageDir: dirTempOriginal,
           generatedPackageDir: dirPackage,
         );
       }

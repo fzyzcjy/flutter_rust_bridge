@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
@@ -38,18 +37,17 @@ const _kIntegrateAppleScaffoldSourceOfTruthPaths = <String, List<String>>{
   ],
 };
 
-const _kGenerateAppleScaffoldDiffExcludedPaths = <String>[
-  'frb_example/flutter_via_create/ohos/',
-  'frb_example/flutter_via_create/rust_builder/ohos/',
-  'frb_example/flutter_via_create/rust_builder/pubspec.yaml',
-  'frb_example/flutter_via_create_native_assets/ohos/',
-];
+const _kPreservedOhosScaffoldPaths = <String, List<String>>{
+  'frb_example/flutter_via_create': [
+    'ohos',
+    'rust_builder/ohos',
+    'rust_builder/pubspec.yaml',
+  ],
+  'frb_example/flutter_via_create_native_assets': ['ohos'],
+};
 
 List<String> integrateAppleScaffoldSourceOfTruthPackages() =>
     List.unmodifiable(_kIntegrateAppleScaffoldSourceOfTruthPaths.keys);
-
-String generateAppleScaffoldDiffExclusionArgs() =>
-    gitExcludePathspecArgs(_kGenerateAppleScaffoldDiffExcludedPaths);
 
 Future<void> applyCheckedInAppleScaffoldSourceOfTruth({
   required String package,
@@ -68,8 +66,24 @@ Future<void> applyCheckedInAppleScaffoldSourceOfTruth({
   }
 }
 
+Future<void> preserveCheckedInOhosScaffold({
+  required String package,
+  required String originalPackageDir,
+  required String generatedPackageDir,
+}) async {
+  for (final relativePath in _preservedOhosScaffoldPaths(package)) {
+    _restorePathIfExists(
+      source: path.join(originalPackageDir, relativePath),
+      destination: path.join(generatedPackageDir, relativePath),
+    );
+  }
+}
+
 List<String> _integrateAppleScaffoldSourceOfTruthPaths(String package) =>
     _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [];
+
+List<String> _preservedOhosScaffoldPaths(String package) =>
+    _kPreservedOhosScaffoldPaths[package] ?? const [];
 
 String _integrateAppleScaffoldSourceOfTruthAssetPath({
   required String package,
@@ -102,6 +116,10 @@ String _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot({
 List<String> integrateAppleScaffoldSourceOfTruthPathsForTesting(
   String package,
 ) => List.unmodifiable(_integrateAppleScaffoldSourceOfTruthPaths(package));
+
+@visibleForTesting
+List<String> preservedOhosScaffoldPathsForTesting(String package) =>
+    List.unmodifiable(_preservedOhosScaffoldPaths(package));
 
 @visibleForTesting
 List<String> integrateAppleScaffoldSourceOfTruthAssetPathsForTesting({
@@ -143,6 +161,7 @@ void _restorePathIfExists({
 
   switch (sourceEntity) {
     case FileSystemEntityType.file:
+      File(destination).parent.createSync(recursive: true);
       File(source).copySync(destination);
     case FileSystemEntityType.directory:
       _copyDirectoryRecursive(

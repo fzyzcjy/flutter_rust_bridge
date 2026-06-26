@@ -53,10 +53,10 @@ packages:
     dependency: transitive
     description:
       name: code_assets
-      sha256: "83ccdaa064c980b5596c35dd64a8d3ecc68620174ab9b90b6343b753aa721687"
+      sha256: bf394f466ba9205f1812a0433b392d6af280f155f56651eda7c18cc32ed493b8
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.2.1"
   collection:
     dependency: transitive
     description:
@@ -128,14 +128,14 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "2.13.0-beta.1"
+    version: "2.13.0-beta.2"
   flutter_rust_bridge_hooks:
     dependency: transitive
     description:
       path: "../../../frb_hooks"
       relative: true
     source: path
-    version: "2.12.0"
+    version: "2.13.0-beta.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -150,10 +150,10 @@ packages:
     dependency: transitive
     description:
       name: hooks
-      sha256: "025f060e86d2d4c3c47b56e33caf7f93bf9283340f26d23424ebcfccf34f621e"
+      sha256: "9a62a50b50b769a737bc0a8ff381f333529df3ab746b2f6b02e83760231455ba"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "2.0.2"
   integration_test:
     dependency: "direct dev"
     description: flutter
@@ -227,10 +227,10 @@ packages:
     dependency: transitive
     description:
       name: native_toolchain_rust
-      sha256: "26d4dcae954328af4ebfa8fc56cca0bf74b9ae8b4a6132de5da2071ac3d237b3"
+      sha256: faa57d2258a3b0fd2a634054f54e4496c9fcbd971977e7d2b7e6916d56892857
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.4+0"
   path:
     dependency: transitive
     description:
