@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.13.0-beta.3
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix Dart prerelease caret dependency checks #3249
+* Improve frb_hooks pub score checks #3259
+* Improve native assets post-release validation #3260 #3258
+* Improve release changelog and development environment guidance #3261 #3257
+
 ## 2.13.0-beta.2
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
