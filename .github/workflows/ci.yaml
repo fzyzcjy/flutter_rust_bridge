@@ -405,6 +405,7 @@ jobs:
         name: Setup flutter-ohos
         run: |
           git clone -b "$FRB_OHOS_FLUTTER_BRANCH" https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          bash .github/scripts/patch_ohos_flutter_autofill_for_ci.sh "$GITHUB_WORKSPACE/flutter"
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.platforms == 'ohos'
         name: Export OHOS_SDK_HOME
@@ -623,6 +624,7 @@ jobs:
         name: Setup flutter-ohos
         run: |
           git clone -b "$FRB_OHOS_FLUTTER_BRANCH" https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          bash .github/scripts/patch_ohos_flutter_autofill_for_ci.sh "$GITHUB_WORKSPACE/flutter"
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.info.target == 'ohos'
         name: Export OHOS_SDK_HOME
