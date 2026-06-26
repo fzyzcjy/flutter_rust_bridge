@@ -35,8 +35,9 @@ fn clean_dart_output(
 
     ensure_safe_dart_output(dart_output, dart_root, rust_crate_dir)?;
     for entry in fs::read_dir(dart_output)? {
-        let path = entry?.path();
-        if path.is_dir() {
+        let entry = entry?;
+        let path = entry.path();
+        if entry.file_type()?.is_dir() {
             fs::remove_dir_all(&path)?;
         } else {
             fs::remove_file(&path)?;
