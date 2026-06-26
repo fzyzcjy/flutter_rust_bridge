@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-flutter_root="${1:?flutter root is required}"
-helper_path="$flutter_root/engine/src/flutter/shell/platform/ohos/flutter_embedding/flutter/src/main/ets/plugin/editing/OhosAutoFillHelper.ets"
+flutter_root="${1:-}"
+package_ohos_dir="${2:-}"
 
-test -f "$helper_path"
-
-cat > "$helper_path" <<'EOF'
+patch_helper() {
+  local helper_path="$1"
+  test -f "$helper_path"
+  cat > "$helper_path" <<'EOF'
 import { Autofill, Configuration } from '../../embedding/engine/systemchannels/TextInputChannel';
 import common from '@ohos.app.ability.common';
 
@@ -168,3 +169,23 @@ export class OhosAutoFillHelper {
   }
 }
 EOF
+}
+
+patch_count=0
+
+if [[ -n "$flutter_root" ]]; then
+  patch_helper "$flutter_root/engine/src/flutter/shell/platform/ohos/flutter_embedding/flutter/src/main/ets/plugin/editing/OhosAutoFillHelper.ets"
+  patch_count=$((patch_count + 1))
+fi
+
+if [[ -n "$package_ohos_dir" ]]; then
+  while IFS= read -r -d '' helper_path; do
+    patch_helper "$helper_path"
+    patch_count=$((patch_count + 1))
+  done < <(find "$package_ohos_dir/oh_modules" -path '*/@ohos/flutter_ohos/src/main/ets/plugin/editing/OhosAutoFillHelper.ets' -print0)
+fi
+
+if [[ "$patch_count" -eq 0 ]]; then
+  echo "No OHOS Flutter autofill helper was patched" >&2
+  exit 1
+fi

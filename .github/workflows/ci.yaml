@@ -634,6 +634,10 @@ jobs:
 
       # execute
       - run: ./frb_internal build-flutter --package ${{ matrix.info.package }} --target ${{ matrix.info.target }}
+        env:
+          FRB_OHOS_PATCH_FLUTTER_AUTOFILL_FOR_CI: ${{ matrix.info.target == 'ohos' && '1' || '0' }}
+          FRB_OHOS_FLUTTER_AUTOFILL_PATCH_SCRIPT: .github/scripts/patch_ohos_flutter_autofill_for_ci.sh
+          FRB_OHOS_FLUTTER_ROOT: ${{ github.workspace }}/flutter
 
       # report
       - uses: actions/upload-artifact@v4
