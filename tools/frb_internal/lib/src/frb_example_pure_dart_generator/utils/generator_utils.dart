@@ -168,7 +168,7 @@ String handleDisabledDuplicatorContent(String content) {
   return content
       .replaceAll(
         RegExp(
-          r'// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START.*// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END',
+          r'// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START.*?// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END',
           multiLine: true,
           dotAll: true,
         ),
@@ -186,7 +186,7 @@ String handleDisabledDuplicatorContent(String content) {
 String handleDisabledPdeContent(String content) {
   return content.replaceAll(
     RegExp(
-      r'// FRB_INTERNAL_GENERATOR_DISABLE_PDE_START.*// FRB_INTERNAL_GENERATOR_DISABLE_PDE_END',
+      r'// FRB_INTERNAL_GENERATOR_DISABLE_PDE_START.*?// FRB_INTERNAL_GENERATOR_DISABLE_PDE_END',
       multiLine: true,
       dotAll: true,
     ),
