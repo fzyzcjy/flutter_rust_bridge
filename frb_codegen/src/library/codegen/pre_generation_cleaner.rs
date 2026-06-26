@@ -54,8 +54,16 @@ fn ensure_safe_dart_output(
     let dart_output = dart_output.canonicalize()?;
     let dart_root = dart_root.canonicalize()?;
     let rust_crate_dir = rust_crate_dir.canonicalize()?;
+    let dart_lib = dart_root.join("lib");
+    let dart_lib_src = dart_lib.join("src");
 
-    if dart_output.parent().is_none() || dart_output == dart_root || dart_output == rust_crate_dir {
+    if dart_output.parent().is_none()
+        || !dart_output.starts_with(&dart_root)
+        || dart_output == dart_root
+        || dart_output == dart_lib
+        || dart_output == dart_lib_src
+        || dart_output == rust_crate_dir
+    {
         bail!("pre_generation_cleanup refuses to clean unsafe dart_output path: {dart_output:?}");
     }
 
@@ -116,6 +124,52 @@ mod tests {
         let temp_dir = tempfile::tempdir()?;
         let mut config = create_config(temp_dir.path(), true)?;
         config.dart_output = config.dart_root.clone();
+
+        let result = clean(&config);
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_rejects_dart_output_outside_dart_root() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        config.dart_output = temp_dir.path().join("external");
+        fs::create_dir_all(&config.dart_output)?;
+
+        let result = clean(&config);
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_rejects_lib_output() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        config.dart_output = config.dart_root.join("lib");
+
+        let result = clean(&config);
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_rejects_lib_src_output() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        config.dart_output = config.dart_root.join("lib").join("src");
 
         let result = clean(&config);
 
