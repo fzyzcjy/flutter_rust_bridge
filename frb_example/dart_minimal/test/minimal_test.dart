@@ -15,5 +15,8 @@ Future<void> main() async {
     expect(await minimalAdder(a: 100, b: 200), 300);
     print('Action: Call rust (after)');
   });
+  test('dart call describeAny with ordinary Dart object', () async {
+    expect(await describeAny(a: 'hello'), 'string');
+  });
   print('Action: Configure tests (end)');
 }
