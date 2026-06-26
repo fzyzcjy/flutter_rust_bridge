@@ -52,9 +52,15 @@ fn ensure_safe_dart_output(
     dart_root: &Path,
     rust_crate_dir: &Path,
 ) -> anyhow::Result<()> {
-    let dart_output = dart_output.canonicalize()?;
-    let dart_root = dart_root.canonicalize()?;
-    let rust_crate_dir = rust_crate_dir.canonicalize()?;
+    let dart_output = dart_output
+        .canonicalize()
+        .with_context(|| format!("Failed to canonicalize dart_output path {dart_output:?}"))?;
+    let dart_root = dart_root
+        .canonicalize()
+        .with_context(|| format!("Failed to canonicalize dart_root path {dart_root:?}"))?;
+    let rust_crate_dir = rust_crate_dir.canonicalize().with_context(|| {
+        format!("Failed to canonicalize rust_crate_dir path {rust_crate_dir:?}")
+    })?;
     let dart_lib = dart_root.join("lib");
     let dart_lib_src = dart_lib.join("src");
     let protected_dart_dirs = [
@@ -70,7 +76,7 @@ fn ensure_safe_dart_output(
         || dart_output == dart_root
         || protected_dart_dirs.contains(&dart_output)
         || dart_output == dart_lib_src
-        || dart_output.starts_with(&rust_crate_dir)
+        || (dart_output.starts_with(&rust_crate_dir) && !dart_root.starts_with(&rust_crate_dir))
     {
         bail!("pre_generation_cleanup refuses to clean unsafe dart_output path: {dart_output:?}");
     }
@@ -202,6 +208,31 @@ mod tests {
             .unwrap_err()
             .to_string()
             .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_allows_dart_root_inside_rust_crate() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        config.rust_crate_dir = temp_dir.path().join("rust");
+        config.dart_root = config.rust_crate_dir.join("dart");
+        config.dart_output = config.dart_root.join("lib").join("src").join("rust");
+        fs::create_dir_all(config.dart_output.join("nested"))?;
+        fs::write(config.dart_output.join("stale.dart"), "stale")?;
+        fs::write(
+            config.dart_output.join("nested").join("stale.dart"),
+            "stale",
+        )?;
+
+        clean(&config)?;
+
+        assert!(!config.dart_output.join("stale.dart").exists());
+        assert!(!config
+            .dart_output
+            .join("nested")
+            .join("stale.dart")
+            .exists());
         Ok(())
     }
 
