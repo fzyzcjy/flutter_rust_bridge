@@ -34,8 +34,8 @@ fn clean_dart_output(
     }
 
     ensure_safe_dart_output(dart_output, dart_root, rust_crate_dir)?;
-    for entry in fs::read_dir(dart_output)? {
-        let entry = entry?;
+    let entries = fs::read_dir(dart_output)?.collect::<Result<Vec<_>, _>>()?;
+    for entry in entries {
         let path = entry.path();
         if entry.file_type()?.is_dir() {
             fs::remove_dir_all(&path)?;
@@ -57,13 +57,20 @@ fn ensure_safe_dart_output(
     let rust_crate_dir = rust_crate_dir.canonicalize()?;
     let dart_lib = dart_root.join("lib");
     let dart_lib_src = dart_lib.join("src");
+    let protected_dart_dirs = [
+        dart_lib,
+        dart_root.join("bin"),
+        dart_root.join("example"),
+        dart_root.join("test"),
+        dart_root.join("web"),
+    ];
 
     if dart_output.parent().is_none()
         || !dart_output.starts_with(&dart_root)
         || dart_output == dart_root
-        || dart_output == dart_lib
+        || protected_dart_dirs.contains(&dart_output)
         || dart_output == dart_lib_src
-        || dart_output == rust_crate_dir
+        || dart_output.starts_with(&rust_crate_dir)
     {
         bail!("pre_generation_cleanup refuses to clean unsafe dart_output path: {dart_output:?}");
     }
@@ -171,6 +178,23 @@ mod tests {
         let temp_dir = tempfile::tempdir()?;
         let mut config = create_config(temp_dir.path(), true)?;
         config.dart_output = config.dart_root.join("lib").join("src");
+
+        let result = clean(&config);
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_rejects_dart_output_inside_rust_crate() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        config.rust_crate_dir = config.dart_root.join("rust");
+        config.dart_output = config.rust_crate_dir.join("generated");
+        fs::create_dir_all(&config.dart_output)?;
 
         let result = clean(&config);
 
