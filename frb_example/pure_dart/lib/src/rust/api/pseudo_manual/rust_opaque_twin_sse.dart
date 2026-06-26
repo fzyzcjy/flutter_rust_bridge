@@ -6,6 +6,7 @@ import 'dart:io';
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import '../misc_no_twin_example_a.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
@@ -15,6 +16,14 @@ part 'rust_opaque_twin_sse.freezed.dart';
 
 Future<HideDataTwinSse> createOpaqueTwinSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSseCreateOpaqueTwinSse();
+
+Future<BoxAnyMyDartTypeRename> createAnyOpaqueTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSseCreateAnyOpaqueTwinSse();
+
+Future<bool> runAnyOpaqueTwinSse({required BoxAnyMyDartTypeRename opaque}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinSseRunAnyOpaqueTwinSse(
+            opaque: opaque);
 
 Future<HideDataTwinSse?> createOptionOpaqueTwinSse({HideDataTwinSse? opaque}) =>
     RustLib.instance.api

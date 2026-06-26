@@ -38,6 +38,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     opaque.dispose();
   });
 
+  test('std any opaque call', () async {
+    final opaque = await createAnyOpaqueTwinSseMoi();
+    expect(await runAnyOpaqueTwinSseMoi(opaque: opaque), true);
+  });
+
   test('double Call', () async {
     var data = await createOpaqueTwinSseMoi();
     expect(

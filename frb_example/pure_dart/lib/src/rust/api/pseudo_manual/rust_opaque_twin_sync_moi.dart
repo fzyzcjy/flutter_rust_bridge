@@ -6,6 +6,7 @@ import 'dart:io';
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import '../misc_no_twin_example_a.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
@@ -14,6 +15,14 @@ part 'rust_opaque_twin_sync_moi.freezed.dart';
 
 HideDataTwinSyncMoi createOpaqueTwinSyncMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncMoiCreateOpaqueTwinSyncMoi();
+
+BoxAnyMyDartTypeRename createAnyOpaqueTwinSyncMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncMoiCreateAnyOpaqueTwinSyncMoi();
+
+bool runAnyOpaqueTwinSyncMoi({required BoxAnyMyDartTypeRename opaque}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinSyncMoiRunAnyOpaqueTwinSyncMoi(
+            opaque: opaque);
 
 HideDataTwinSyncMoi? createOptionOpaqueTwinSyncMoi(
         {HideDataTwinSyncMoi? opaque}) =>
