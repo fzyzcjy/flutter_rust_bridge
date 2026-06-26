@@ -7,7 +7,7 @@ repo_url="https://gitcode.com/CPF-Flutter/flutter_flutter.git"
 
 for attempt in 1 2 3; do
   rm -rf "$destination"
-  if git clone --depth 1 --branch "$branch" "$repo_url" "$destination"; then
+  if git clone --branch "$branch" "$repo_url" "$destination"; then
     exit 0
   fi
 
