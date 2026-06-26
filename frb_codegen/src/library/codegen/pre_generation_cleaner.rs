@@ -91,9 +91,7 @@ fn ensure_safe_dart_output(
     if dart_output.parent().is_none()
         || !dart_output.starts_with(&dart_root)
         || dart_output == dart_root
-        || protected_dart_dirs
-            .iter()
-            .any(|protected_dir| dart_output == *protected_dir)
+        || protected_dart_dirs.contains(&dart_output)
         || protected_dart_dir_prefixes
             .iter()
             .any(|protected_dir| dart_output.starts_with(protected_dir))
