@@ -176,7 +176,7 @@ String handleDisabledDuplicatorContent(String content) {
       )
       .replaceAll(
         RegExp(
-          r'// FRB_INTERNAL_GENERATOR_DISABLE_PDE_(START|END)\n?',
+          r'// FRB_INTERNAL_GENERATOR_DISABLE_PDE_(START|END)\r?\n?',
           multiLine: true,
         ),
         '',
