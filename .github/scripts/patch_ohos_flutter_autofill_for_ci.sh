@@ -205,10 +205,55 @@ patch_embedding_root() {
   echo "Patched OHOS Flutter SDK 5.1 compatibility files under $embedding_root"
 }
 
+patch_har() {
+  local har_path="$1"
+  local temp_dir
+  temp_dir="$(mktemp -d)"
+  unzip -q "$har_path" -d "$temp_dir"
+  local har_patch_count=0
+  while IFS= read -r -d '' embedding_root; do
+    patch_embedding_root "$embedding_root"
+    har_patch_count=$((har_patch_count + 1))
+  done < <(find "$temp_dir" -path '*/src/main/ets' -type d -print0)
+  if [[ "$har_patch_count" -eq 0 ]]; then
+    echo "No OHOS Flutter embedding root was found in $har_path" >&2
+    rm -rf "$temp_dir"
+    exit 1
+  fi
+  local temp_har
+  temp_har="$(mktemp)"
+  rm -f "$temp_har"
+  (
+    cd "$temp_dir"
+    zip -qr "$temp_har" .
+  )
+  mv "$temp_har" "$har_path"
+  rm -rf "$temp_dir"
+  echo "Patched OHOS Flutter HAR $har_path"
+}
+
+patch_flutter_hars() {
+  local flutter_root="$1"
+  local engine_cache_dir="$flutter_root/bin/cache/artifacts/engine"
+  if [[ ! -d "$engine_cache_dir" ]]; then
+    echo "OHOS Flutter engine cache does not exist yet: $engine_cache_dir"
+    return
+  fi
+  local har_count=0
+  while IFS= read -r -d '' har_path; do
+    patch_har "$har_path"
+    har_count=$((har_count + 1))
+  done < <(find "$engine_cache_dir" -path '*/flutter_embedding_*.har' -type f -print0)
+  if [[ "$har_count" -eq 0 ]]; then
+    echo "No OHOS Flutter embedding HAR was patched under $engine_cache_dir"
+  fi
+}
+
 patch_count=0
 
 if [[ -n "$flutter_root" ]]; then
   patch_embedding_root "$flutter_root/engine/src/flutter/shell/platform/ohos/flutter_embedding/flutter/src/main/ets"
+  patch_flutter_hars "$flutter_root"
   patch_count=$((patch_count + 1))
 fi
 
@@ -220,8 +265,7 @@ if [[ -n "$package_ohos_dir" ]]; then
     patch_count=$((patch_count + 1))
   done < <(find "$package_ohos_dir/oh_modules" -path '*/@ohos/flutter_ohos/src/main/ets' -type d -print0)
   if [[ "$package_patch_count" -eq 0 ]]; then
-    echo "No OHOS Flutter package embedding root was patched under $package_ohos_dir/oh_modules" >&2
-    exit 1
+    echo "No OHOS Flutter package embedding root was patched under $package_ohos_dir/oh_modules"
   fi
 fi
 
