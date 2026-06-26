@@ -440,6 +440,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await future2, 300);
     });
 
+    // FRB_INTERNAL_GENERATOR_DISABLE_PDE_START
     // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
     test(
       'web sync mut borrow fails fast while async mut borrow is running',
@@ -461,5 +462,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       skip: !kIsWeb ? 'Web-only regression coverage' : null,
     );
     // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
+    // FRB_INTERNAL_GENERATOR_DISABLE_PDE_END
   });
 }

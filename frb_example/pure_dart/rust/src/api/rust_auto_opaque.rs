@@ -374,6 +374,7 @@ pub fn rust_auto_opaque_sleep_twin_normal(
     apple.inner + orange.inner
 }
 
+// FRB_INTERNAL_GENERATOR_DISABLE_PDE_START
 // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
 #[frb(sync)]
 pub fn rust_auto_opaque_arg_mut_borrow_sync_twin_normal(
@@ -391,6 +392,7 @@ pub async fn rust_auto_opaque_hold_mut_borrow_forever_twin_normal(
     futures::future::pending::<()>().await;
 }
 // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
+// FRB_INTERNAL_GENERATOR_DISABLE_PDE_END
 
 // ================ misc ===================
 
