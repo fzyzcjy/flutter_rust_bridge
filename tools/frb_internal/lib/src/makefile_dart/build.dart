@@ -96,6 +96,7 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
     case BuildTarget.ohos:
       if (_shouldPatchOhosFlutterAutofillForCi()) {
         await exec('flutter pub get --verbose', relativePwd: config.package);
+        await exec('ohpm install', relativePwd: '${config.package}/ohos');
         await _patchOhosFlutterAutofillForCi(config.package);
         await exec(
           'flutter build hap --no-pub --no-codesign --verbose',

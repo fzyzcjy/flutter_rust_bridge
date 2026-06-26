@@ -4,6 +4,13 @@ set -euo pipefail
 flutter_root="${1:-}"
 package_ohos_dir="${2:-}"
 
+patch_text_if_present() {
+  local file_path="$1"
+  local pattern="$2"
+  local replacement="$3"
+  perl -0pi -e "s/$pattern/$replacement/g" "$file_path"
+}
+
 patch_helper() {
   local helper_path="$1"
   test -f "$helper_path"
@@ -171,18 +178,51 @@ export class OhosAutoFillHelper {
 EOF
 }
 
+patch_key_event_handler() {
+  local handler_path="$1"
+  test -f "$handler_path"
+  patch_text_if_present \
+    "$handler_path" \
+    'const isCapsLockOn = event\.isCapsLockOn !== undefined \? event\.isCapsLockOn : false;' \
+    'const isCapsLockOn = false;'
+  patch_text_if_present \
+    "$handler_path" \
+    'const isNumLockOn = event\.isNumLockOn !== undefined \? event\.isNumLockOn : true;' \
+    'const isNumLockOn = true;'
+}
+
+patch_pip_visibility_bridge() {
+  local bridge_path="$1"
+  test -f "$bridge_path"
+  perl -0pi -e 's/private async queryPipMode\(\): Promise<boolean> \{\n    if \(this\.shownCount > 0\) \{\n      return false;\n    \}\n\n    try \{\n      const mode = await window\.getGlobalWindowMode\(\);\n      return \(mode & window\.GlobalWindowMode\.PIP\) !== 0;\n    \} catch \(error\) \{\n      Log\.w\(TAG, "getGlobalWindowMode failed: " \+ JSON\.stringify\(error\)\);\n      return false;\n    \}\n  \}/private async queryPipMode(): Promise<boolean> {\n    return false;\n  \}/g' "$bridge_path"
+}
+
+patch_embedding_root() {
+  local embedding_root="$1"
+  patch_helper "$embedding_root/plugin/editing/OhosAutoFillHelper.ets"
+  patch_key_event_handler "$embedding_root/embedding/ohos/KeyEventHandler.ets"
+  patch_pip_visibility_bridge "$embedding_root/embedding/ohos/PiPVisibilityBridge.ets"
+  echo "Patched OHOS Flutter SDK 5.1 compatibility files under $embedding_root"
+}
+
 patch_count=0
 
 if [[ -n "$flutter_root" ]]; then
-  patch_helper "$flutter_root/engine/src/flutter/shell/platform/ohos/flutter_embedding/flutter/src/main/ets/plugin/editing/OhosAutoFillHelper.ets"
+  patch_embedding_root "$flutter_root/engine/src/flutter/shell/platform/ohos/flutter_embedding/flutter/src/main/ets"
   patch_count=$((patch_count + 1))
 fi
 
 if [[ -n "$package_ohos_dir" ]]; then
-  while IFS= read -r -d '' helper_path; do
-    patch_helper "$helper_path"
+  package_patch_count=0
+  while IFS= read -r -d '' embedding_root; do
+    patch_embedding_root "$embedding_root"
+    package_patch_count=$((package_patch_count + 1))
     patch_count=$((patch_count + 1))
-  done < <(find "$package_ohos_dir/oh_modules" -path '*/@ohos/flutter_ohos/src/main/ets/plugin/editing/OhosAutoFillHelper.ets' -print0)
+  done < <(find "$package_ohos_dir/oh_modules" -path '*/@ohos/flutter_ohos/src/main/ets' -type d -print0)
+  if [[ "$package_patch_count" -eq 0 ]]; then
+    echo "No OHOS Flutter package embedding root was patched under $package_ohos_dir/oh_modules" >&2
+    exit 1
+  fi
 fi
 
 if [[ "$patch_count" -eq 0 ]]; then
