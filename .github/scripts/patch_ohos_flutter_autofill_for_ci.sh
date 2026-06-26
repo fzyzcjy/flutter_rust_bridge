@@ -209,7 +209,18 @@ patch_har() {
   local har_path="$1"
   local temp_dir
   temp_dir="$(mktemp -d)"
-  unzip -q "$har_path" -d "$temp_dir"
+  local har_format
+  if unzip -tq "$har_path" >/dev/null 2>&1; then
+    har_format="zip"
+    unzip -q "$har_path" -d "$temp_dir"
+  elif gzip -t "$har_path" >/dev/null 2>&1 && gzip -dc "$har_path" | tar -tf - >/dev/null 2>&1; then
+    har_format="tar_gzip"
+    gzip -dc "$har_path" | tar -xf - -C "$temp_dir"
+  else
+    echo "Unsupported OHOS Flutter HAR format: $har_path" >&2
+    rm -rf "$temp_dir"
+    exit 1
+  fi
   local har_patch_count=0
   while IFS= read -r -d '' embedding_root; do
     patch_embedding_root "$embedding_root"
@@ -223,10 +234,17 @@ patch_har() {
   local temp_har
   temp_har="$(mktemp)"
   rm -f "$temp_har"
-  (
-    cd "$temp_dir"
-    zip -qr "$temp_har" .
-  )
+  if [[ "$har_format" == "zip" ]]; then
+    (
+      cd "$temp_dir"
+      zip -qr "$temp_har" .
+    )
+  else
+    (
+      cd "$temp_dir"
+      tar -cf - . | gzip -n > "$temp_har"
+    )
+  fi
   mv "$temp_har" "$har_path"
   rm -rf "$temp_dir"
   echo "Patched OHOS Flutter HAR $har_path"
