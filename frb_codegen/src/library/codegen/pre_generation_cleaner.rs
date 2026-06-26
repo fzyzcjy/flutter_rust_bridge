@@ -63,10 +63,10 @@ fn ensure_safe_dart_output(
     })?;
     let dart_lib = dart_root.join("lib");
     let dart_lib_src = dart_lib.join("src");
-    let protected_dart_dirs = [
+    let protected_dart_dirs = [dart_lib, dart_lib_src];
+    let protected_dart_dir_prefixes = [
         dart_root.join("android"),
         dart_root.join("build"),
-        dart_lib,
         dart_root.join("bin"),
         dart_root.join("example"),
         dart_root.join("ios"),
@@ -80,8 +80,12 @@ fn ensure_safe_dart_output(
     if dart_output.parent().is_none()
         || !dart_output.starts_with(&dart_root)
         || dart_output == dart_root
-        || protected_dart_dirs.contains(&dart_output)
-        || dart_output == dart_lib_src
+        || protected_dart_dirs
+            .iter()
+            .any(|protected_dir| dart_output == *protected_dir)
+        || protected_dart_dir_prefixes
+            .iter()
+            .any(|protected_dir| dart_output.starts_with(protected_dir))
         || (dart_output.starts_with(&rust_crate_dir) && !dart_root.starts_with(&rust_crate_dir))
     {
         bail!("pre_generation_cleanup refuses to clean unsafe dart_output path: {dart_output:?}");
@@ -190,6 +194,22 @@ mod tests {
         let temp_dir = tempfile::tempdir()?;
         let mut config = create_config(temp_dir.path(), true)?;
         config.dart_output = config.dart_root.join("lib").join("src");
+
+        let result = clean(&config);
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_rejects_platform_subdirectory_output() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        config.dart_output = config.dart_root.join("ios").join("Runner");
+        fs::create_dir_all(&config.dart_output)?;
 
         let result = clean(&config);
 
