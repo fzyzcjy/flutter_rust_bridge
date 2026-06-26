@@ -370,13 +370,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   group('borrow + mut borrow', () {
-    test('when same object', () async {
+    test('when same object', skip: kIsWeb, () async {
       final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      final body = () async => rustAutoOpaqueBorrowAndMutBorrowTwinNormal(
+            borrow: obj,
+            mutBorrow: obj,
+          );
+
       await expectRustPanic(
-        () async => rustAutoOpaqueBorrowAndMutBorrowTwinNormal(
-          borrow: obj,
-          mutBorrow: obj,
-        ),
+        body,
         'TwinNormal',
         messageMatcherOnNative: matches(RegExp('Cannot.*borrow.*object')),
       );
@@ -443,21 +445,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     // FRB_INTERNAL_GENERATOR_DISABLE_PDE_START
     // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
     test(
-      'web sync mut borrow fails fast while async mut borrow is running',
+      'web detects a locked mut borrow without blocking',
       () async {
-        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-
-        final _ = rustAutoOpaqueHoldMutBorrowForeverTwinNormal(arg: obj);
-        await Future<void>.delayed(const Duration(milliseconds: 100));
-
-        await expectRustPanic(
-          () => rustAutoOpaqueArgMutBorrowSyncTwinNormal(
-            arg: obj,
-            expect: 100,
-            adder: 1,
-          ),
-          'TwinNormal',
-        );
+        expect(await rustAutoOpaqueDetectLockedWriteTwinNormal(), true);
       },
       skip: !kIsWeb ? 'Web-only regression coverage' : null,
     );

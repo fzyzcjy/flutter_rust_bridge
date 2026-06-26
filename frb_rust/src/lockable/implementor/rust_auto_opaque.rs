@@ -23,7 +23,9 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
         #[cfg(target_family = "wasm")]
         {
-            self.data.try_read().expect("cannot synchronously read RustAutoOpaque while it is locked on Web; use an async API instead")
+            self.data
+                .try_read()
+                .unwrap_or_else(|error| web_throw_lock_error("read", error))
         }
         #[cfg(not(target_family = "wasm"))]
         {
@@ -34,7 +36,9 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
         #[cfg(target_family = "wasm")]
         {
-            self.data.try_write().expect("cannot synchronously write RustAutoOpaque while it is locked on Web; use an async API instead")
+            self.data
+                .try_write()
+                .unwrap_or_else(|error| web_throw_lock_error("write", error))
         }
         #[cfg(not(target_family = "wasm"))]
         {
@@ -59,4 +63,11 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     {
         Box::pin(async move { self.data.write().await })
     }
+}
+
+#[cfg(target_family = "wasm")]
+fn web_throw_lock_error(action: &str, error: tokio::sync::TryLockError) -> ! {
+    wasm_bindgen::throw_str(&format!(
+        "cannot synchronously {action} RustAutoOpaque while it is locked on Web; use an async API instead: {error:?}"
+    ))
 }

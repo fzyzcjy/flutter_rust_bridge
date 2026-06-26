@@ -15,7 +15,8 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn blocking_read(&self) -> RwLockReadGuard<'_, T> {
         #[cfg(target_family = "wasm")]
         {
-            self.try_read().expect("cannot synchronously read RustAutoOpaque while it is locked on Web; use an async API instead")
+            self.try_read()
+                .unwrap_or_else(|error| web_throw_lock_error("read", error))
         }
         #[cfg(not(target_family = "wasm"))]
         {
@@ -26,7 +27,8 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn blocking_write(&self) -> RwLockWriteGuard<'_, T> {
         #[cfg(target_family = "wasm")]
         {
-            self.try_write().expect("cannot synchronously write RustAutoOpaque while it is locked on Web; use an async API instead")
+            self.try_write()
+                .unwrap_or_else(|error| web_throw_lock_error("write", error))
         }
         #[cfg(not(target_family = "wasm"))]
         {
@@ -49,6 +51,13 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn try_write(&self) -> Result<RwLockWriteGuard<'_, T>, TryLockError> {
         self.0.data.try_write()
     }
+}
+
+#[cfg(target_family = "wasm")]
+fn web_throw_lock_error(action: &str, error: tokio::sync::TryLockError) -> ! {
+    wasm_bindgen::throw_str(&format!(
+        "cannot synchronously {action} RustAutoOpaque while it is locked on Web; use an async API instead: {error:?}"
+    ))
 }
 
 #[cfg(test)]
