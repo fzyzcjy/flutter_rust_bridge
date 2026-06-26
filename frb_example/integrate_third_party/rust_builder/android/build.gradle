@@ -11,7 +11,7 @@ buildscript {
 
     dependencies {
         // The Android Gradle Plugin knows how to build native code with the NDK.
-        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath 'com.android.tools.build:gradle:9.2.1'
     }
 }
 
@@ -25,9 +25,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    if (project.android.hasProperty("namespace")) {
-        namespace 'com.flutter_rust_bridge.rust_lib_frb_example_integrate_third_party'
-    }
+    namespace 'com.flutter_rust_bridge.rust_lib_frb_example_integrate_third_party'
 
     // Bumping the plugin compileSdkVersion requires all clients of this plugin
     // to bump the version in their app.
@@ -45,7 +43,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 19
+        minSdk 19
     }
 }
 

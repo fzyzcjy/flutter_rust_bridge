@@ -12,11 +12,13 @@ dependencies:
     path: ../../frb_utils
   hooks: ^2.0.2
   code_assets: ^1.2.1
-  freezed_annotation: ^3.1.0
+  freezed_annotation:
+    git: https://github.com/kumsumit/freezed_annotation.git
   json_annotation: ^4.12.0
 dev_dependencies:
   test: ^1.31.1
-  freezed: ^3.2.5
+  freezed:
+    git: https://github.com/kumsumit/freezed.git
   build_runner: ^2.15.0
   ffigen: ^20.1.1
   json_serializable: ^6.14.0

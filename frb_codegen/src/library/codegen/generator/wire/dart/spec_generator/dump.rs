@@ -28,14 +28,14 @@ pub(super) fn generate_dump_info(
             .distinct_types
             .iter()
             .map(|ty| {
-                let gen = WireDartCodecCstGenerator::new(
+                let generator = WireDartCodecCstGenerator::new(
                     ty.clone(),
                     context.as_wire_dart_codec_cst_context(),
                 );
                 WireDartDumpInfoType {
                     safe_ident: ty.safe_ident(),
                     dart_wire_type: Target::iter()
-                        .map(|target| (target, gen.dart_wire_type(target)))
+                        .map(|target| (target, generator.dart_wire_type(target)))
                         .collect(),
                 }
             })

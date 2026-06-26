@@ -33,7 +33,7 @@ pub(super) fn generate_dump_info(
             .distinct_types
             .iter()
             .map(|ty| {
-                let gen = WireRustGenerator::new(ty.clone(), context);
+                let generator = WireRustGenerator::new(ty.clone(), context);
                 let cst_gen = WireRustCodecCstGenerator::new(
                     ty.clone(),
                     context.as_wire_rust_codec_cst_context(),
@@ -46,7 +46,7 @@ pub(super) fn generate_dump_info(
                     rust_wire_modifier: Target::iter()
                         .map(|target| (target, cst_gen.rust_wire_modifier(target)))
                         .collect(),
-                    wrapper_struct_name: gen.wrapper_struct_name(),
+                    wrapper_struct_name: generator.wrapper_struct_name(),
                 }
             })
             .collect(),

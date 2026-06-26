@@ -7,7 +7,7 @@ use crate::rust_opaque::RustOpaqueNom;
 // NOTE: We require `T: Send+Sync`, because for example, the Arc may `into_raw` in one thread
 // and then `from_raw` in another one or multiple threads. Though this is often enforced in other places automatically.
 pub unsafe fn decode_rust_opaque_nom<T: Send + Sync>(ptr: usize) -> RustOpaqueNom<T> {
-    RustOpaqueNom::from_arc(StdArc::<T>::from_raw(ptr))
+    RustOpaqueNom::from_arc(unsafe { StdArc::<T>::from_raw(ptr) })
 }
 
 #[doc(hidden)]

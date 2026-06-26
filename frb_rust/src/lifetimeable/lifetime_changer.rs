@@ -4,7 +4,7 @@
 ///
 /// Please refer to their doc
 pub unsafe fn ouroboros_change_lifetime<'old, 'new: 'old, T: 'new>(data: &'old T) -> &'new T {
-    &*(data as *const _)
+    unsafe { &*(data as *const _) }
 }
 
 /// # Safety
@@ -13,5 +13,5 @@ pub unsafe fn ouroboros_change_lifetime<'old, 'new: 'old, T: 'new>(data: &'old T
 pub unsafe fn ouroboros_change_lifetime_mut<'old, 'new: 'old, T: 'new>(
     data: &'old mut T,
 ) -> &'new mut T {
-    &mut *(data as *mut _)
+    unsafe { &mut *(data as *mut _) }
 }

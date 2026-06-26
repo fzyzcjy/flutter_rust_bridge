@@ -37,7 +37,8 @@ dependencies:
     path: rust_builder
   flutter_rust_bridge:
     path: ../../frb_dart
-  freezed_annotation: ^3.0.0
+  freezed_annotation:
+    git: https://github.com/kumsumit/freezed_annotation.git
   json_annotation: ^4.9.0
 
 dev_dependencies:
@@ -47,7 +48,8 @@ dev_dependencies:
   integration_test:
     sdk: flutter
   build_runner: ^2.4.10
-  freezed: ^3.0.6
+  freezed:
+    git: https://github.com/kumsumit/freezed.git
   test: ^1.25.2
   json_serializable: ^6.9.0
 

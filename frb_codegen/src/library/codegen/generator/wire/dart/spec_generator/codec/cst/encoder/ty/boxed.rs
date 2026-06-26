@@ -117,7 +117,7 @@ impl WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'_
 // frb-coverage:ignore-start
 fn is_empty_struct(ty: &BoxedWireDartCodecCstGenerator) -> bool {
     // frb-coverage:ignore-end
-    if let StructRef(ref s) = ty.mir.inner.as_ref() {
+    if let StructRef(s) = ty.mir.inner.as_ref() {
         s.get(ty.context.mir_pack).fields.is_empty()
     } else {
         false

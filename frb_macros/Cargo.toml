@@ -10,10 +10,10 @@ categories.workspace = true
 
 [dependencies]
 hex = "0.4.3"
-syn = { version = "2.0.26", features = ["full", "extra-traits"] }
+syn = { version = "2.0.118", features = ["full", "extra-traits"] }
 quote = "1.0"
-proc-macro2 = "1.0.70"
-md-5 = "0.10.6"
+proc-macro2 = "1.0.106"
+md-5 = "0.11.0"
 
 [lib]
 proc-macro = true

@@ -60,11 +60,11 @@ impl DartOpaque {
     /// # Safety
     ///
     /// This should never be called manually.
-    pub unsafe fn from_raw(raw: *const std::ffi::c_void) -> Self {
+    pub unsafe fn from_raw(raw: *const std::ffi::c_void) -> Self { unsafe {
         Self {
             arc: Arc::from_raw(raw as _),
         }
-    }
+    }}
 
     pub(crate) fn dart_handler_port(&self) -> &SendableMessagePortHandle {
         self.arc.dart_handler_port()

@@ -20,16 +20,16 @@ pub unsafe fn cst_decode_dart_opaque(raw: wasm_bindgen::JsValue) -> DartOpaque {
 ///
 /// This should never be called manually.
 #[cfg(not(target_family = "wasm"))]
-pub unsafe fn cst_decode_dart_opaque(raw: usize) -> DartOpaque {
+pub unsafe fn cst_decode_dart_opaque(raw: usize) -> DartOpaque { unsafe {
     DartOpaque::from_raw(raw as _)
-}
+}}
 
 /// # Safety
 ///
 /// This should never be called manually.
-pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
+pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque { unsafe {
     DartOpaque::from_raw(raw as _)
-}
+}}
 
 /// # Safety
 ///
@@ -47,13 +47,13 @@ pub unsafe fn frb_dart_opaque_dart2rust_encode(
 ///
 /// This should never be called manually.
 #[cfg(not(target_family = "wasm"))]
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub unsafe extern "C" fn frb_dart_opaque_dart2rust_encode(
     handle: GeneralizedDartHandle,
     dart_handler_port: MessagePort,
-) -> *const std::ffi::c_void {
+) -> *const std::ffi::c_void { unsafe {
     frb_dart_opaque_dart2rust_encode_inner(handle, dart_handler_port)
-}
+}}
 
 unsafe fn frb_dart_opaque_dart2rust_encode_inner(
     handle: GeneralizedDartHandle,

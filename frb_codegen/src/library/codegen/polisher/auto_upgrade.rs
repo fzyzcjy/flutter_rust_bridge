@@ -111,7 +111,7 @@ impl<'a> RustUpgrader<'a> {
 
 impl Upgrader for RustUpgrader<'_> {
     fn check(&self) -> Result<bool> {
-        Ok(self.dependency.req() == concat!("=", env!("CARGO_PKG_VERSION")))
+        Ok(self.dependency.req().to_string() == concat!("=", env!("CARGO_PKG_VERSION")))
     }
 
     fn upgrade(&self) -> Result<()> {

@@ -16,7 +16,8 @@ dependencies:
   code_assets: ^1.2.1
   mocktail: ^1.0.4
   vm_service: ^15.2.0
-  freezed_annotation: ^3.1.0
+  freezed_annotation:
+    git: https://github.com/kumsumit/freezed_annotation.git
   web: ^1.1.1
   test: ^1.31.1
   uuid: ^4.5.3
@@ -25,6 +26,7 @@ dependencies:
   json_annotation: ^4.12.0
 dev_dependencies:
   build_runner: ^2.15.0
-  freezed: ^3.2.5
+  freezed:
+    git: https://github.com/kumsumit/freezed.git
   ffigen: ^20.1.1
   json_serializable: ^6.14.0

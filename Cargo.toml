@@ -20,7 +20,7 @@ resolver = "2"
 
 [workspace.package]
 version = "2.12.0"
-edition = "2021"
+edition = "2024"
 license = "MIT"
 description = "Flutter/Dart <-> Rust binding generator, feature-rich, but seamless and simple"
 repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
@@ -30,13 +30,13 @@ categories = ["development-tools::ffi"]
 [workspace.dependencies]
 allo-isolate = { version = "0.1.26", features = ["anyhow"] }
 #allo-isolate = { git = "https://github.com/shekohex/allo-isolate", features = ["anyhow"] }
-anyhow = "1.0.64"
-chrono = "0.4.23"
-lazy_static = "1.4.0"
+anyhow = "1.0.103"
+chrono = "0.4.45"
+lazy_static = "1.5.0"
 serde_json = "1.0"
-uuid = "1.1.2"
+uuid = "1.23.4"
 thiserror = "1.0"
-backtrace = "0.3.68"
+backtrace = "0.3.75"
 
 flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.12.0" }
 flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.12.0" }

@@ -188,10 +188,10 @@ pub(crate) struct ResultTypeInfo {
 
 fn set_is_exception_flag(mut ty: MirType) -> MirType {
     match &mut ty {
-        StructRef(ref mut inner) => {
+        StructRef(inner) => {
             inner.is_exception = true;
         }
-        EnumRef(ref mut inner) => {
+        EnumRef(inner) => {
             inner.is_exception = true;
         }
         _ => {}

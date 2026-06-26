@@ -3,7 +3,7 @@ description: flutter rust bridge example
 version: 1.0.0
 publish_to: none
 environment:
-  sdk: ">=3.11.0 <4.0.0"
+  sdk: ">=3.12.0 <4.0.0"
 dependencies:
   flutter:
     sdk: flutter
@@ -12,11 +12,13 @@ dependencies:
     path: rust_builder
   flutter_rust_bridge:
     path: ../../frb_dart
-  freezed_annotation: ^3.0.0
+  freezed_annotation:
+    git: https://github.com/kumsumit/freezed_annotation.git
   json_annotation: ^4.11.0
 dev_dependencies:
   test: ^1.24.0
-  freezed: ^3.2.5
+  freezed:
+    git: https://github.com/kumsumit/freezed.git
   build_runner: ^2.13.1
   ffigen: ^20.1.1
   flutter_test:

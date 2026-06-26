@@ -17,7 +17,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 impl WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator<'_> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         match &self.mir {
-            MirTypeDelegate::Array(ref array) => match &array.mode {
+            MirTypeDelegate::Array(array) => match &array.mode {
                 MirTypeDelegateArrayMode::General(_) => Acc::distribute(Some(format!(
                     "return cst_encode_{}(raw);",
                     array.get_delegate().safe_ident(),
@@ -76,7 +76,7 @@ impl WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator
             //     web: Some("return raw;".into()),
             //     ..Default::default()
             // },
-            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { ref repr, .. }) => {
+            MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { repr, .. }) => {
                 format!("return cst_encode_{}(raw.index);", repr.safe_ident()).into()
             }
             MirTypeDelegate::Time(mir) => match mir {

@@ -58,7 +58,7 @@ impl<T: ?Sized + 'static> StdArc<T> {
         T: Sized,
     {
         assert!(raw != 0);
-        Self(Arc::from_raw(raw as *const T))
+        Self(unsafe { Arc::from_raw(raw as *const T) })
     }
 
     /// # Safety
@@ -68,7 +68,7 @@ impl<T: ?Sized + 'static> StdArc<T> {
     where
         T: Sized,
     {
-        Arc::increment_strong_count(raw as *const T)
+        unsafe { Arc::increment_strong_count(raw as *const T) }
     }
 
     /// # Safety
@@ -78,7 +78,7 @@ impl<T: ?Sized + 'static> StdArc<T> {
     where
         T: Sized,
     {
-        Arc::decrement_strong_count(raw as *const T)
+        unsafe { Arc::decrement_strong_count(raw as *const T) }
     }
 }
 

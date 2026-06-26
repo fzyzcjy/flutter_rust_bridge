@@ -13,34 +13,34 @@ use std::sync::atomic::Ordering;
 /// # Safety
 ///
 /// This function should never be called manually.
-#[no_mangle]
-pub unsafe extern "C" fn frb_init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> isize {
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn frb_init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> isize { unsafe {
     #[cfg(feature = "dart-opaque")]
     return dart_sys::Dart_InitializeApiDL(data);
     #[cfg(not(feature = "dart-opaque"))]
     return 0;
-}
+}}
 
 /// # Safety
 ///
 /// This function should never be called manually.
-#[no_mangle]
-pub unsafe extern "C" fn frb_free_wire_sync_rust2dart_dco(value: WireSyncRust2DartDco) {
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn frb_free_wire_sync_rust2dart_dco(value: WireSyncRust2DartDco) { unsafe {
     let _ = Rust2DartMessageDco::from_raw_wire_sync(value);
-}
+}}
 
 /// # Safety
 ///
 /// This function should never be called manually.
-#[no_mangle]
-pub unsafe extern "C" fn frb_free_wire_sync_rust2dart_sse(value: WireSyncRust2DartSse) {
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn frb_free_wire_sync_rust2dart_sse(value: WireSyncRust2DartSse) { unsafe {
     let _ = Rust2DartMessageSse::from_raw_wire_sync(value);
-}
+}}
 
 /// # Safety
 ///
 /// This function should never be called manually.
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub unsafe extern "C" fn frb_create_shutdown_callback() -> unsafe extern "C" fn(*mut c_void) {
     /// Counter for how many active shutdown callbacks there are.
     ///
@@ -51,7 +51,7 @@ pub unsafe extern "C" fn frb_create_shutdown_callback() -> unsafe extern "C" fn(
     _ = ISOLATES_NUM.fetch_add(1, Ordering::SeqCst);
 
     /// Called by Dart's `NativeFinalizer` on isolate group shutdown.
-    unsafe extern "C" fn frb_shutdown_callback(_: *mut c_void) {
+    unsafe extern "C" fn frb_shutdown_callback(_: *mut c_void) { unsafe {
         unsafe extern "C" fn devnull(_: DartPort, _: *mut DartCObject) -> bool {
             // Returning true is wrong since message is not enqueued and this
             // might cause memory leaks. But since application is shutting down
@@ -73,7 +73,7 @@ pub unsafe extern "C" fn frb_create_shutdown_callback() -> unsafe extern "C" fn(
             // https://github.com/dart-lang/native/issues/2079
             store_dart_post_cobject(devnull);
         };
-    }
+    }}
 
     frb_shutdown_callback
 }

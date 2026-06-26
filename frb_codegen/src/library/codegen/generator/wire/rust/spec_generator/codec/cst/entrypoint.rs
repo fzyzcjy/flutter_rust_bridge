@@ -92,12 +92,12 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
         func.inputs
             .iter()
             .map(|field| {
-                let gen = WireRustGenerator::new(field.inner.ty.clone(), context);
+                let generator = WireRustGenerator::new(field.inner.ty.clone(), context);
 
                 let name_non_stripped = field.inner.name.rust_style(false);
                 let name_stripped = field.inner.name.rust_style(true);
                 let mut expr = format!("{name_non_stripped}.cst_decode()");
-                if let Some(wrapper) = gen.generate_wire_func_call_decode_wrapper() {
+                if let Some(wrapper) = generator.generate_wire_func_call_decode_wrapper() {
                     expr = format!("{wrapper}({expr})");
                 }
 

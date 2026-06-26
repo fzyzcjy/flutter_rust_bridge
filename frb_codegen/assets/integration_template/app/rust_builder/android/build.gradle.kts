@@ -1,7 +1,7 @@
 // The Android Gradle Plugin builds the native code with the Android NDK.
 
-group 'com.flutter_rust_bridge.REPLACE_ME_RUST_CRATE_NAME'
-version '1.0'
+group = "com.flutter_rust_bridge.REPLACE_ME_RUST_CRATE_NAME"
+version = "1.0"
 
 buildscript {
     repositories {
@@ -11,7 +11,7 @@ buildscript {
 
     dependencies {
         // The Android Gradle Plugin knows how to build native code with the NDK.
-        classpath 'com.android.tools.build:gradle:8.13.2'
+        classpath("com.android.tools.build:gradle:9.2.1")
     }
 }
 
@@ -22,35 +22,33 @@ rootProject.allprojects {
     }
 }
 
-apply plugin: 'com.android.library'
+apply(plugin = "com.android.library")
 
 android {
-    if (project.android.hasProperty("namespace")) {
-        namespace 'com.flutter_rust_bridge.REPLACE_ME_RUST_CRATE_NAME'
-    }
+    namespace = "com.flutter_rust_bridge.REPLACE_ME_RUST_CRATE_NAME"
 
     // Bumping the plugin compileSdkVersion requires all clients of this plugin
     // to bump the version in their app.
-    compileSdk 37
+    compileSdk = 37
 
     // Use the NDK version
     // declared in /android/app/build.gradle file of the Flutter project.
-    // Replace it with a version number if this plugin requires a specfic NDK version.
-    // (e.g. ndkVersion "23.1.7779620")
-    ndkVersion android.ndkVersion
+    // Replace it with a version number if this plugin requires a specific NDK version.
+    // (e.g. ndkVersion = "23.1.7779620")
+    ndkVersion = android.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_21
-        targetCompatibility JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     defaultConfig {
-        minSdk 24
+        minSdk = 24
     }
 }
 
-apply from: "../cargokit/gradle/plugin.gradle"
-cargokit {
-    manifestDir = "../../REPLACE_ME_RUST_CRATE_DIR"
-    libname = "REPLACE_ME_RUST_CRATE_NAME"
+apply(from = "../cargokit/gradle/plugin.gradle")
+(extensions.getByName("cargokit") as groovy.lang.GroovyObject).apply {
+    setProperty("manifestDir", "../../REPLACE_ME_RUST_CRATE_DIR")
+    setProperty("libname", "REPLACE_ME_RUST_CRATE_NAME")
 }

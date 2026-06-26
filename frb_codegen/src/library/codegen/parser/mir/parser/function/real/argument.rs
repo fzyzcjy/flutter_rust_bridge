@@ -80,8 +80,8 @@ pub(crate) fn parse_argument_ty_and_name(
     owner: &MirFuncOwnerInfo,
 ) -> anyhow::Result<(Type, String)> {
     Ok(match sig_input {
-        FnArg::Typed(ref pat_type) => (*pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?),
-        FnArg::Receiver(ref receiver) => {
+        FnArg::Typed(pat_type) => (*pat_type.ty.clone(), parse_name_from_pat_type(pat_type)?),
+        FnArg::Receiver(receiver) => {
             let method = if_then_some!(let MirFuncOwnerInfo::Method(method) = owner, method)
                 .context("`self` must happen within methods")?;
             (

@@ -62,7 +62,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
         self.0.into_dart()
     }
 
-    unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self {
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self { unsafe {
         #[cfg(not(target_family = "wasm"))]
         {
             let WireSyncRust2DartSse { ptr, len } = raw;
@@ -71,7 +71,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
 
         #[cfg(target_family = "wasm")]
         Self(js_sys::Uint8Array::new(&raw).to_vec())
-    }
+    }}
 
     fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType {
         #[cfg(not(target_family = "wasm"))]
@@ -100,14 +100,14 @@ impl Dart2RustMessageSse {
         ptr: PlatformGeneralizedUint8ListPtr,
         rust_vec_len: i32,
         data_len: i32,
-    ) -> Self {
+    ) -> Self { unsafe {
         #[cfg(not(target_family = "wasm"))]
         let vec = crate::for_generated::vec_from_leak_ptr(ptr, rust_vec_len);
         #[cfg(target_family = "wasm")]
         let vec = js_sys::Uint8Array::new(&ptr).to_vec();
 
         Self { vec, data_len }
-    }
+    }}
 }
 
 // TODO maybe move
