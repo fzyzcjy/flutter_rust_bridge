@@ -73,6 +73,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
             dart_type_rename: compute_dart_type_rename(config)?,
             use_oxidized,
+            dart_collection_deep_equality: config.dart_collection_deep_equality.unwrap_or(false),
         },
         wire: GeneratorWireInternalConfig {
             dart: GeneratorWireDartInternalConfig {

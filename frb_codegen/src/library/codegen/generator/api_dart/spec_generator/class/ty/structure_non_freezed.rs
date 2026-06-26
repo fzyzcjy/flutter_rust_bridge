@@ -32,14 +32,16 @@ impl StructRefApiDartGenerator<'_> {
         let maybe_const = if const_capable { "const " } else { "" };
         let implements_exception = generate_dart_maybe_implements_exception(self.mir.is_exception);
         let methods_str = &methods.code;
+        let dart_collection_deep_equality =
+            self.context.config.dart_collection_deep_equality || src.dart_collection_deep_equality;
 
         let hashcode = if src.generate_hash {
-            generate_hashcode(&src.fields)
+            generate_hashcode(&src.fields, dart_collection_deep_equality)
         } else {
             "".to_owned()
         };
         let equals = if src.generate_eq {
-            generate_equals(&src.fields, class_name)
+            generate_equals(&src.fields, class_name, dart_collection_deep_equality)
         } else {
             "".to_owned()
         };
@@ -58,6 +60,9 @@ impl StructRefApiDartGenerator<'_> {
                 {equals}
             }}"
         )
+        .lines()
+        .map(str::trim_end)
+        .join("\n")
     }
 
     fn generate_field_declarations(&self, src: &MirStruct) -> String {
@@ -101,7 +106,7 @@ impl StructRefApiDartGenerator<'_> {
     }
 }
 
-fn generate_hashcode(fields: &[MirField]) -> String {
+fn generate_hashcode(fields: &[MirField], dart_collection_deep_equality: bool) -> String {
     let body = if fields.is_empty() {
         "0".to_owned()
     } else {
@@ -109,7 +114,7 @@ fn generate_hashcode(fields: &[MirField]) -> String {
             .iter()
             .map(|f| {
                 let name = f.name.dart_style();
-                if needs_deep_equality(&f.ty) {
+                if dart_collection_deep_equality && needs_deep_equality(&f.ty) {
                     format!("const DeepCollectionEquality().hash({name})")
                 } else {
                     format!("{name}.hashCode")
@@ -126,12 +131,16 @@ fn generate_hashcode(fields: &[MirField]) -> String {
     )
 }
 
-fn generate_equals(fields: &[MirField], struct_name: &str) -> String {
+fn generate_equals(
+    fields: &[MirField],
+    struct_name: &str,
+    dart_collection_deep_equality: bool,
+) -> String {
     let cmp = fields
         .iter()
         .map(|f| {
             let name = f.name.dart_style();
-            if needs_deep_equality(&f.ty) {
+            if dart_collection_deep_equality && needs_deep_equality(&f.ty) {
                 format!("&& const DeepCollectionEquality().equals({name}, other.{name})")
             } else {
                 format!("&& {name} == other.{name}")
@@ -153,9 +162,13 @@ fn generate_equals(fields: &[MirField], struct_name: &str) -> String {
 
 fn needs_deep_equality(ty: &MirType) -> bool {
     match ty {
-        MirType::GeneralList(_) => true,
+        MirType::Boxed(boxed) => needs_deep_equality(&boxed.inner),
+        MirType::GeneralList(_) | MirType::PrimitiveList(_) => true,
         MirType::Delegate(delegate) => {
-            matches!(delegate, MirTypeDelegate::Map(_) | MirTypeDelegate::Set(_))
+            matches!(
+                delegate,
+                MirTypeDelegate::Array(_) | MirTypeDelegate::Map(_) | MirTypeDelegate::Set(_)
+            )
         }
         MirType::Optional(opt) => needs_deep_equality(&opt.inner),
         _ => false,

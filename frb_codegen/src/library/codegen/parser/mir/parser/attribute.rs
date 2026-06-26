@@ -242,6 +242,22 @@ impl FrbAttributes {
     pub(crate) fn ui_mutation(&self) -> bool {
         self.any_eq(&FrbAttribute::UiMutation)
     }
+
+    pub(crate) fn dart_collection_deep_equality(&self) -> bool {
+        self.any_eq(&FrbAttribute::DartCollectionDeepEquality)
+    }
+
+    pub(crate) fn init_dart_code(&self) -> Option<String> {
+        let ans = self
+            .0
+            .iter()
+            .filter_map(
+                |item| if_then_some!(let FrbAttribute::InitDartCode(inner) = item, inner.0.clone()),
+            )
+            .join("\n\n");
+
+        (!ans.is_empty()).then_some(ans)
+    }
 }
 
 fn transform_doc_comment(attr: &Attribute) -> anyhow::Result<Attribute> {
@@ -312,6 +328,8 @@ mod frb_keyword {
     syn::custom_keyword!(ui_state);
     syn::custom_keyword!(ui_mutation);
     syn::custom_keyword!(oxidized);
+    syn::custom_keyword!(dart_collection_deep_equality);
+    syn::custom_keyword!(init_dart_code);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -369,6 +387,8 @@ enum FrbAttribute {
     UiState,
     UiMutation,
     Oxidized,
+    DartCollectionDeepEquality,
+    InitDartCode(FrbAttributeInitDartCode),
 }
 
 impl Parse for FrbAttribute {
@@ -435,7 +455,15 @@ impl Parse for FrbAttribute {
             })
             .or_else(|| parse_keyword::<ui_state, _>(input, &lookahead, ui_state, UiState))
             .or_else(|| parse_keyword::<ui_mutation, _>(input, &lookahead, ui_mutation, UiMutation))
-            .or_else(|| parse_keyword::<oxidized, _>(input, &lookahead, oxidized, Oxidized));
+            .or_else(|| parse_keyword::<oxidized, _>(input, &lookahead, oxidized, Oxidized))
+            .or_else(|| {
+                parse_keyword::<dart_collection_deep_equality, _>(
+                    input,
+                    &lookahead,
+                    dart_collection_deep_equality,
+                    DartCollectionDeepEquality,
+                )
+            });
         if let Some(keyword_output) = keyword_output {
             return keyword_output;
         }
@@ -463,6 +491,10 @@ impl Parse for FrbAttribute {
         } else if lookahead.peek(frb_keyword::rust2dart) {
             input.parse::<frb_keyword::rust2dart>()?;
             input.parse().map(Rust2Dart)?
+        } else if lookahead.peek(init_dart_code) {
+            input.parse::<init_dart_code>()?;
+            input.parse::<Token![=]>()?;
+            input.parse().map(InitDartCode)?
         } else {
             return Err(lookahead.error());
         })
@@ -679,6 +711,15 @@ fn serialize_punctuated<S: Serializer>(
 struct FrbAttributeDartCode(String);
 
 impl Parse for FrbAttributeDartCode {
+    fn parse(input: ParseStream) -> Result<Self> {
+        input.parse::<syn::LitStr>().map(|x| Self(x.value()))
+    }
+}
+
+#[derive(Clone, Serialize, Eq, PartialEq, Debug)]
+struct FrbAttributeInitDartCode(String);
+
+impl Parse for FrbAttributeInitDartCode {
     fn parse(input: ParseStream) -> Result<Self> {
         input.parse::<syn::LitStr>().map(|x| Self(x.value()))
     }

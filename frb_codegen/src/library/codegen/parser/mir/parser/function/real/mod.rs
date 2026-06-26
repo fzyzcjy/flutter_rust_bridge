@@ -253,6 +253,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             stream_dart_await,
             rust_async: func.item_fn.sig().asyncness.is_some(),
             initializer: attributes.init(),
+            init_dart_code: attributes.init_dart_code(),
             accessor,
             arg_mode: if attributes.positional() {
                 MirFuncArgMode::Positional

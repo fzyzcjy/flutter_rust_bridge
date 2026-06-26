@@ -25,6 +25,7 @@ pub struct MirStruct {
     pub needs_json_serializable: bool,
     pub generate_hash: bool,
     pub generate_eq: bool,
+    pub dart_collection_deep_equality: bool,
     pub ui_state: bool,
     pub comments: Vec<MirComment>,
 }

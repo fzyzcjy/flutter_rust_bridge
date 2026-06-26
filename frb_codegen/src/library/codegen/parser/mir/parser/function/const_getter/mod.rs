@@ -76,6 +76,7 @@ fn parse_constant(
         stream_dart_await: false,
         rust_async: false,
         initializer: false,
+        init_dart_code: None,
         arg_mode: MirFuncArgMode::Positional,
         accessor: Some(MirFuncAccessorMode::Getter),
         comments: vec![],

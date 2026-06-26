@@ -121,6 +121,13 @@ fn generate_boilerplate(
             )
         })
         .join("");
+    let execute_dart_initializers = generate_execute_dart_initializers(
+        context
+            .mir_pack
+            .funcs_with_impl()
+            .iter()
+            .filter_map(|f| f.init_dart_code.as_deref()),
+    );
 
     let codegen_version = env!("CARGO_PKG_VERSION");
 
@@ -186,6 +193,7 @@ fn generate_boilerplate(
                   @override
                   Future<void> executeRustInitializers() async {{
                     {execute_rust_initializers}
+                    {execute_dart_initializers}
                   }}
 
                   @override
@@ -242,6 +250,12 @@ fn generate_boilerplate(
             ..Default::default()
         }],
     })
+}
+
+fn generate_execute_dart_initializers<'a>(
+    init_dart_codes: impl Iterator<Item = &'a str>,
+) -> String {
+    init_dart_codes.map(|code| format!("{code}\n")).join("")
 }
 
 fn file_stem(p: &Path) -> String {

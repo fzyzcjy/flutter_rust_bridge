@@ -15,4 +15,5 @@ pub(crate) struct GeneratorApiDartInternalConfig {
     /// Whether oxidized package is available (auto-detected from pubspec.yaml).
     /// When true, fallible functions return Result<T, E> instead of throwing.
     pub use_oxidized: bool,
+    pub dart_collection_deep_equality: bool,
 }
