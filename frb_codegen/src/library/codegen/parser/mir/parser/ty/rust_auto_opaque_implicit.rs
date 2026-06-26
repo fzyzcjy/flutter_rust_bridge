@@ -150,8 +150,10 @@ fn normalize_ty_path_prefix(raw: &str) -> String {
 
 fn mark_std_any_type_path(raw: &str) -> String {
     lazy_static! {
-        static ref REGEX: Regex =
-            Regex::new(r"\bdyn\s+(?:(?:std|core)\s*::\s*any\s*::\s*)?Any\b").unwrap();
+        static ref REGEX: Regex = Regex::new(
+            r"\bdyn\s+(?:(?:::)\s*(?:(?:std|core)\s*::\s*)?any\s*::\s*|(?:(?:std|core)\s*::\s*)?any\s*::\s*)?Any\b"
+        )
+        .unwrap();
     }
     REGEX.replace_all(raw, "dyn FRB_STD_ANY_MARKER").to_string()
 }
@@ -176,6 +178,22 @@ mod tests {
     fn normalize_ty_path_prefix_preserves_qualified_any_trait_object() {
         assert_eq!(
             normalize_ty_path_prefix("Box < dyn std :: any :: Any + Send + Sync + 'static >"),
+            "Box < dyn std::any::Any + Send + Sync + 'static >"
+        );
+    }
+
+    #[test]
+    fn normalize_ty_path_prefix_supports_absolute_any_trait_object() {
+        assert_eq!(
+            normalize_ty_path_prefix("Box < dyn :: core :: any :: Any + Send + Sync + 'static >"),
+            "Box < dyn std::any::Any + Send + Sync + 'static >"
+        );
+    }
+
+    #[test]
+    fn normalize_ty_path_prefix_supports_any_module_trait_object() {
+        assert_eq!(
+            normalize_ty_path_prefix("Box < dyn any :: Any + Send + Sync + 'static >"),
             "Box < dyn std::any::Any + Send + Sync + 'static >"
         );
     }
