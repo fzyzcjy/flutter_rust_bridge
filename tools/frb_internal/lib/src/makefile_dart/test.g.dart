@@ -19,6 +19,47 @@ TestConfig parseTestConfig(List<String> args) {
   return _$parseTestConfigResult(result);
 }
 
+T _$enumValueHelper<T>(Map<T, String> enumValues, String source) => enumValues
+    .entries
+    .singleWhere(
+      (e) => e.value == source,
+      orElse: () => throw ArgumentError(
+        '`$source` is not one of the supported values: '
+        '${enumValues.values.join(', ')}',
+      ),
+    )
+    .key;
+
+TestMimicQuickstartConfig _$parseTestMimicQuickstartConfigResult(
+  ArgResults result,
+) => TestMimicQuickstartConfig(
+  integrationBackend: _$enumValueHelper(
+    _$IntegrateExampleBackendEnumMapBuildCli,
+    result['integration-backend'] as String,
+  ),
+);
+
+const _$IntegrateExampleBackendEnumMapBuildCli =
+    <IntegrateExampleBackend, String>{
+      IntegrateExampleBackend.cargokit: 'cargokit',
+      IntegrateExampleBackend.nativeAssets: 'native-assets',
+    };
+
+ArgParser _$populateTestMimicQuickstartConfigParser(ArgParser parser) => parser
+  ..addOption(
+    'integration-backend',
+    defaultsTo: 'cargokit',
+    allowed: ['cargokit', 'native-assets'],
+  );
+
+final _$parserForTestMimicQuickstartConfig =
+    _$populateTestMimicQuickstartConfigParser(ArgParser());
+
+TestMimicQuickstartConfig parseTestMimicQuickstartConfig(List<String> args) {
+  final result = _$parserForTestMimicQuickstartConfig.parse(args);
+  return _$parseTestMimicQuickstartConfigResult(result);
+}
+
 TestRustConfig _$parseTestRustConfigResult(ArgResults result) => TestRustConfig(
   updateGoldens: result['update-goldens'] as bool,
   coverage: result['coverage'] as bool,
@@ -92,17 +133,6 @@ TestDartNativeConfig parseTestDartNativeConfig(List<String> args) {
   final result = _$parserForTestDartNativeConfig.parse(args);
   return _$parseTestDartNativeConfigResult(result);
 }
-
-T _$enumValueHelper<T>(Map<T, String> enumValues, String source) => enumValues
-    .entries
-    .singleWhere(
-      (e) => e.value == source,
-      orElse: () => throw ArgumentError(
-        '`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}',
-      ),
-    )
-    .key;
 
 TestDartSanitizerConfig _$parseTestDartSanitizerConfigResult(
   ArgResults result,

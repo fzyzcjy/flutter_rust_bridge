@@ -2,7 +2,8 @@ use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
 use crate::library::commands::fvm::command_arg_maybe_fvm;
-use crate::misc::{FvmInstallMode, Template};
+use crate::misc::{FvmInstallMode, IntegrationBackend, Template};
+use anyhow::ensure;
 use log::info;
 use std::path::Path;
 
@@ -11,6 +12,7 @@ pub fn flutter_create(
     name: &str,
     org: &Option<String>,
     template: Template,
+    integration_backend: IntegrationBackend,
     platforms: Option<String>,
     fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<()> {
@@ -21,27 +23,60 @@ pub fn flutter_create(
         "create".to_owned(),
         name.to_owned(),
     ]);
-    let platforms = resolve_flutter_platforms(template, platforms)?;
     if let Some(o) = org {
         full_args.extend(["--org".to_owned(), o.to_owned()]);
     }
-    match template {
-        Template::App => full_args.extend([
+    match flutter_create_template_arg(template, integration_backend, platforms.as_ref())? {
+        FlutterCreateTemplateArg::App { platforms } => full_args.extend([
             "--template".to_owned(),
             "app".to_owned(),
             "--platforms".to_owned(),
             platforms,
         ]),
-        Template::Plugin => full_args.extend([
+        FlutterCreateTemplateArg::PluginFfi { platforms } => full_args.extend([
             "--template".to_owned(),
             "plugin_ffi".to_owned(),
             "--platforms".to_owned(),
             platforms,
         ]),
+        FlutterCreateTemplateArg::PackageFfi => {
+            full_args.extend(["--template".to_owned(), "package_ffi".to_owned()])
+        }
     }
 
     info!("Execute `{}` (this may take a while)", full_args.join(" "));
     check_exit_code(&command_run!(call_shell[None, None], *full_args)?)
+}
+
+#[derive(Debug)]
+enum FlutterCreateTemplateArg {
+    App { platforms: String },
+    PluginFfi { platforms: String },
+    PackageFfi,
+}
+
+fn flutter_create_template_arg(
+    template: Template,
+    integration_backend: IntegrationBackend,
+    platforms: Option<&String>,
+) -> anyhow::Result<FlutterCreateTemplateArg> {
+    match (template, integration_backend) {
+        (Template::App, _) => Ok(FlutterCreateTemplateArg::App {
+            platforms: resolve_flutter_platforms(template, platforms.cloned())?,
+        }),
+        (Template::Plugin, IntegrationBackend::Cargokit) => {
+            Ok(FlutterCreateTemplateArg::PluginFfi {
+                platforms: resolve_flutter_platforms(template, platforms.cloned())?,
+            })
+        }
+        (Template::Plugin, IntegrationBackend::NativeAssets) => {
+            ensure!(
+                platforms.is_none(),
+                "--platforms is not supported for --template plugin --integration-backend native-assets because Flutter's package_ffi template does not accept platform filtering",
+            );
+            Ok(FlutterCreateTemplateArg::PackageFfi)
+        }
+    }
 }
 
 #[allow(clippy::vec_init_then_push)]
@@ -170,9 +205,9 @@ fn text_contains_platform_token(text: &str, platform: &str) -> bool {
 mod tests {
     use super::{
         default_flutter_platforms, flutter_create_help_supports_platform,
-        platform_list_contains_ohos,
+        flutter_create_template_arg, platform_list_contains_ohos, FlutterCreateTemplateArg,
     };
-    use crate::misc::Template;
+    use crate::misc::{IntegrationBackend, Template};
 
     #[test]
     fn test_platform_list_contains_ohos_with_whitespace() {
@@ -213,6 +248,44 @@ mod tests {
             default_flutter_platforms(Template::Plugin, true),
             "android,ios,linux,macos,windows,ohos"
         );
+    }
+
+    #[test]
+    fn test_flutter_create_template_arg_for_cargokit_plugin_uses_plugin_ffi() {
+        let arg = flutter_create_template_arg(
+            Template::Plugin,
+            IntegrationBackend::Cargokit,
+            Some(&"android,ios".to_owned()),
+        )
+        .unwrap();
+
+        match arg {
+            FlutterCreateTemplateArg::PluginFfi { platforms } => {
+                assert_eq!(platforms, "android,ios");
+            }
+            _ => panic!("expected plugin_ffi template"),
+        }
+    }
+
+    #[test]
+    fn test_flutter_create_template_arg_for_native_assets_plugin_uses_package_ffi() {
+        let arg =
+            flutter_create_template_arg(Template::Plugin, IntegrationBackend::NativeAssets, None)
+                .unwrap();
+
+        assert!(matches!(arg, FlutterCreateTemplateArg::PackageFfi));
+    }
+
+    #[test]
+    fn test_flutter_create_template_arg_for_native_assets_plugin_rejects_platforms() {
+        let err = flutter_create_template_arg(
+            Template::Plugin,
+            IntegrationBackend::NativeAssets,
+            Some(&"android".to_owned()),
+        )
+        .unwrap_err();
+
+        assert!(err.to_string().contains("package_ffi"));
     }
 
     #[test]

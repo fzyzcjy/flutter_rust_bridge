@@ -267,6 +267,7 @@ void main() {
               'target': 'web',
               'device': 'chrome',
               'package': 'frb_example--flutter_via_create',
+              'package_path': 'frb_example/flutter_via_create',
             },
           },
         ],

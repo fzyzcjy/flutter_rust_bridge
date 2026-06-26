@@ -10,7 +10,6 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:meta/meta.dart';
-import 'package:pub_semver/pub_semver.dart';
 import 'package:yaml/yaml.dart';
 
 List<Command<void>> createCommands() {
@@ -65,6 +64,11 @@ Future<void> releaseUpdateVersion() async {
     '\nversion: ${versionInfo.oldVersion}\n',
     '\nversion: ${versionInfo.newVersion}\n',
   );
+  simpleReplaceFile(
+    '${exec.pwd}frb_hooks/pubspec.yaml',
+    '\nversion: ${versionInfo.oldVersion}\n',
+    '\nversion: ${versionInfo.newVersion}\n',
+  );
 }
 
 Future<void> releaseUpdateCode() async {
@@ -92,7 +96,7 @@ void _updateVersionInText() {
 
   for (final package in ['flutter_rust_bridge', 'flutter_rust_bridge_macros']) {
     simpleReplaceFile(
-      '${exec.pwd}frb_codegen/assets/integration_template/shared/REPLACE_ME_RUST_CRATE_DIR/Cargo.lock.template',
+      releaseCargoLockTemplatePathForTesting(),
       '[[package]]\nname = "$package"\nversion = "${versionInfo.oldVersion}"',
       '[[package]]\nname = "$package"\nversion = "${versionInfo.newVersion}"',
     );
@@ -167,15 +171,16 @@ String githubReleaseCreateCommand({
   required String version,
   required String notesFile,
 }) {
-  final parsedVersion = Version.parse(version);
-
   return [
     'gh release create v$version',
     '--notes-file $notesFile',
-    if (parsedVersion.isPreRelease) '--prerelease',
     '--title v$version',
   ].join(' ');
 }
+
+@visibleForTesting
+String releaseCargoLockTemplatePathForTesting() =>
+    '${exec.pwd}frb_codegen/assets/integration_template/shared/shared/REPLACE_ME_RUST_CRATE_DIR/Cargo.lock.template';
 
 Future<void> releasePublishAll() async {
   await exec('cd frb_codegen && cargo publish');
@@ -183,6 +188,9 @@ Future<void> releasePublishAll() async {
   await exec('cd frb_rust && cargo publish');
   await exec(
     'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org',
+  );
+  await exec(
+    'cd frb_hooks && dart pub publish --force --server=https://pub.dartlang.org',
   );
 }
 

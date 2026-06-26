@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
@@ -57,13 +58,13 @@ void main() {
     );
   });
 
-  test('GitHub release create command labels prerelease versions', () {
+  test('GitHub release create command does not label prerelease versions', () {
     expect(
       githubReleaseCreateCommand(
         version: '2.13.0-beta.1',
         notesFile: 'temp.txt',
       ),
-      'gh release create v2.13.0-beta.1 --notes-file temp.txt --prerelease --title v2.13.0-beta.1',
+      'gh release create v2.13.0-beta.1 --notes-file temp.txt --title v2.13.0-beta.1',
     );
   });
 
@@ -76,6 +77,10 @@ void main() {
       );
     },
   );
+
+  test('release Cargo lock template path exists', () {
+    expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
+  });
 
   test(
     'pure dart generator resolves package from repo root instead of cwd',
@@ -142,6 +147,14 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
           'frb_example/flutter_via_integrate/rust/Cargo.lock',
           'rust_lib_flutter_via_integrate',
         ),
+        (
+          'frb_example/flutter_via_create_native_assets/rust/Cargo.lock',
+          'rust_lib_flutter_via_create_native_assets',
+        ),
+        (
+          'frb_example/flutter_via_integrate_native_assets/rust/Cargo.lock',
+          'rust_lib_flutter_via_integrate_native_assets',
+        ),
       ]) {
         final content = File('../../$package').readAsStringSync();
         final localCrateIndex = content.indexOf('name = "$crateName"');
@@ -161,6 +174,12 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
         resolveBuildWebPackage('frb_example/flutter_package/example'),
         'frb_example/flutter_package',
       );
+      expect(
+        resolveBuildWebPackage(
+          'frb_example/flutter_package_native_assets/example',
+        ),
+        'frb_example/flutter_package_native_assets',
+      );
     },
   );
 
@@ -169,6 +188,50 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       resolveBuildWebPackage('frb_example/gallery'),
       'frb_example/gallery',
     );
+  });
+
+  test('book help normalization removes trailing line whitespace', () {
+    expect(
+      normalizeBookHelpForTesting(
+        'line with spaces   \n'
+        '          \n'
+        'plain\n',
+      ),
+      '''
+line with spaces
+
+plain
+''',
+    );
+  });
+
+  test('pub get guard refreshes stale package config roots', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_pub_get_guard_');
+    try {
+      final packageConfig = File(
+        '${tempDir.path}/package/.dart_tool/package_config.json',
+      );
+      await packageConfig.parent.create(recursive: true);
+      await packageConfig.writeAsString('''
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "missing_lints",
+      "rootUri": "file://${tempDir.path}/missing_lints",
+      "packageUri": "lib/"
+    }
+  ]
+}
+''');
+
+      expect(await shouldRunPubGetForTesting('${tempDir.path}/package'), true);
+
+      await Directory('${tempDir.path}/missing_lints').create();
+      expect(await shouldRunPubGetForTesting('${tempDir.path}/package'), false);
+    } finally {
+      await tempDir.delete(recursive: true);
+    }
   });
 
   test('quickstart smoke OCR normalization ignores punctuation', () {
@@ -197,29 +260,6 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
-  test('quickstart smoke screenshots target the requested device', () {
-    expect(quickstartSmokeAndroidScreenshotArgsForTesting('emulator-5556'), [
-      '-s',
-      'emulator-5556',
-      'exec-out',
-      'screencap',
-      '-p',
-    ]);
-    expect(
-      quickstartSmokeIosScreenshotArgsForTesting(
-        deviceId: 'IPHONE-UDID',
-        screenshotPath: '/tmp/quickstart.png',
-      ),
-      ['simctl', 'io', 'IPHONE-UDID', 'screenshot', '/tmp/quickstart.png'],
-    );
-    expect(quickstartSmokeMacosScreenshotArgsForTesting('/tmp/smoke.png'), [
-      '-x',
-      '-T',
-      '1',
-      '/tmp/smoke.png',
-    ]);
-  });
-
   test(
     'quickstart smoke waits for Flutter run readiness before screenshot',
     () {
@@ -235,6 +275,15 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       );
     },
   );
+
+  test('quickstart smoke gives iOS cold builds more readiness time', () {
+    expect(
+      quickstartSmokeFlutterRunReadyTimeoutForTesting(
+        QuickstartSmokeTarget.ios,
+      ),
+      const Duration(minutes: 10),
+    );
+  });
 
   test('quickstart smoke does not capture while Flutter is still building', () {
     expect(
@@ -539,10 +588,39 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
         'cargo-install',
         '--release-channel',
         'unstable',
+        '--integration-backend',
+        'native-assets',
       ]);
 
       expect(config.codegenInstallMode, CodegenInstallMode.cargoInstall);
       expect(config.releaseChannel, ReleaseChannel.unstable);
+      expect(config.integrationBackend, IntegrateExampleBackend.nativeAssets);
+    });
+
+    test('defaults post-release backend to cargokit', () {
+      final config = parsePostReleaseConfig([
+        '--codegen-install-mode',
+        'cargo-install',
+        '--release-channel',
+        'unstable',
+      ]);
+
+      expect(config.integrationBackend, IntegrateExampleBackend.cargokit);
+    });
+
+    test('parses mimic quickstart backend from CLI arguments', () {
+      final config = parseTestMimicQuickstartConfig([
+        '--integration-backend',
+        'native-assets',
+      ]);
+
+      expect(config.integrationBackend, IntegrateExampleBackend.nativeAssets);
+    });
+
+    test('defaults mimic quickstart backend to cargokit', () {
+      final config = parseTestMimicQuickstartConfig([]);
+
+      expect(config.integrationBackend, IntegrateExampleBackend.cargokit);
     });
   });
 

@@ -204,6 +204,7 @@ Future<void> precommitIntegrate() async {
           package: package,
           coverage: false,
           includeOhos: false,
+          skipCheckedInAppleScaffold: false,
         ),
       ),
   ]);

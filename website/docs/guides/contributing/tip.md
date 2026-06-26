@@ -61,6 +61,8 @@ Note that we need `--profile` to get stack traces.
 (cd frb_utils && dart run flutter_rust_bridge_utils serve-web --web-root ../frb_example/flutter_via_create/build/web)
 ```
 
+For the native-assets backend, replace `frb_example/flutter_via_create` with `frb_example/flutter_via_create_native_assets`.
+
 ## Print missing stack traces
 
 This script quickly print out every uncaught exception with stack traces.

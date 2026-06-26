@@ -2,3 +2,5 @@ exclude_paths:
   - "tools/vmware_windows/**"
   - "website/**"
   - "**/cargokit/**"
+  - "frb_example/*_native_assets/**"
+  - "tools/frb_internal/assets/apple_scaffold/frb_example/*_native_assets/**"

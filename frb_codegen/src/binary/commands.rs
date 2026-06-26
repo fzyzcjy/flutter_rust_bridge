@@ -1,6 +1,9 @@
 use crate::codegen::ConfigDumpContent;
 use clap::{Args, Parser, Subcommand, ValueEnum};
-use lib_flutter_rust_bridge_codegen::{codegen::RustOpaqueCodecMode, misc::Template};
+use lib_flutter_rust_bridge_codegen::{
+    codegen::RustOpaqueCodecMode,
+    misc::{IntegrationBackend, Template},
+};
 use std::path::PathBuf;
 
 // The name `Cli`, `Commands` come from https://docs.rs/clap/latest/clap/_derive/_tutorial/chapter_0/index.html
@@ -230,6 +233,10 @@ pub(crate) struct CreateCommandArgs {
     #[clap(short, long, value_enum, default_value = "app")]
     pub template: TemplateArg,
 
+    /// The integration backend used to compile and bundle Rust.
+    #[clap(long, value_enum, default_value = "cargokit")]
+    pub integration_backend: IntegrationBackendArg,
+
     /// Specify the platforms to be supported.
     #[clap(long)]
     pub platforms: Option<String>,
@@ -265,6 +272,10 @@ pub(crate) struct IntegrateCommandArgs {
     #[clap(short, long, value_enum, default_value = "app")]
     pub template: TemplateArg,
 
+    /// The integration backend used to compile and bundle Rust.
+    #[clap(long, value_enum, default_value = "cargokit")]
+    pub integration_backend: IntegrationBackendArg,
+
     /// Specify the platforms to be supported.
     #[clap(long)]
     pub platforms: Option<String>,
@@ -280,6 +291,14 @@ pub(crate) enum TemplateArg {
     App,
     /// A shareable Flutter project that can be used across multiple Flutter applications.
     Plugin,
+}
+
+#[derive(Debug, Copy, Clone, Eq, PartialEq, ValueEnum)]
+pub(crate) enum IntegrationBackendArg {
+    /// (default) Use Cargokit and generated platform scaffold.
+    Cargokit,
+    /// Use Dart/Flutter Native Assets build hooks.
+    NativeAssets,
 }
 
 #[derive(Debug, Copy, Clone, Eq, PartialEq, ValueEnum)]
@@ -337,6 +356,15 @@ impl From<TemplateArg> for Template {
     }
 }
 
+impl From<IntegrationBackendArg> for IntegrationBackend {
+    fn from(value: IntegrationBackendArg) -> Self {
+        match value {
+            IntegrationBackendArg::Cargokit => IntegrationBackend::Cargokit,
+            IntegrationBackendArg::NativeAssets => IntegrationBackend::NativeAssets,
+        }
+    }
+}
+
 impl From<RustOpaqueCodecModeArg> for RustOpaqueCodecMode {
     fn from(value: RustOpaqueCodecModeArg) -> Self {
         match value {
@@ -348,7 +376,7 @@ impl From<RustOpaqueCodecModeArg> for RustOpaqueCodecMode {
 
 #[cfg(test)]
 mod tests {
-    use super::{Cli, Commands};
+    use super::{Cli, Commands, IntegrationBackendArg};
     use clap::Parser;
 
     #[test]
@@ -366,6 +394,7 @@ mod tests {
         };
 
         assert_eq!(args.platforms, Some("android,ios".to_owned()));
+        assert_eq!(args.integration_backend, IntegrationBackendArg::Cargokit);
     }
 
     #[test]
@@ -382,5 +411,51 @@ mod tests {
         };
 
         assert_eq!(args.platforms, Some("android,ohos".to_owned()));
+        assert_eq!(args.integration_backend, IntegrationBackendArg::Cargokit);
+    }
+
+    #[test]
+    fn test_create_command_parses_native_assets_backend() {
+        let cli = Cli::parse_from([
+            "",
+            "create",
+            "demo",
+            "--integration-backend",
+            "native-assets",
+            "--skip-fvm-install",
+        ]);
+        let Commands::Create(args) = cli.command else {
+            // The assertion branch only guards the test setup.
+            // frb-coverage:ignore-start
+            panic!("expected create command");
+            // frb-coverage:ignore-end
+        };
+
+        assert_eq!(
+            args.integration_backend,
+            IntegrationBackendArg::NativeAssets
+        );
+    }
+
+    #[test]
+    fn test_integrate_command_parses_native_assets_backend() {
+        let cli = Cli::parse_from([
+            "",
+            "integrate",
+            "--integration-backend",
+            "native-assets",
+            "--skip-fvm-install",
+        ]);
+        let Commands::Integrate(args) = cli.command else {
+            // The assertion branch only guards the test setup.
+            // frb-coverage:ignore-start
+            panic!("expected integrate command");
+            // frb-coverage:ignore-end
+        };
+
+        assert_eq!(
+            args.integration_backend,
+            IntegrationBackendArg::NativeAssets
+        );
     }
 }

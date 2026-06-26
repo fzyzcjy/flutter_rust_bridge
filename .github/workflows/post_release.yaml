@@ -36,11 +36,17 @@ jobs:
         release_channel:
           - stable
           - unstable
+        integration_backend:
+          - cargokit
+          - native-assets
         exclude:
           - { image: windows-2022, codegen_install_mode: homebrew }
           - { image: macos-15-intel, codegen_install_mode: scoop }
           - { image: ubuntu-latest, codegen_install_mode: homebrew }
           - { image: ubuntu-latest, codegen_install_mode: scoop }
+          - { image: macos-15-intel, integration_backend: native-assets }
+          # Remove after a stable release includes the native-assets backend flag.
+          - { release_channel: stable, integration_backend: native-assets }
 
     steps:
       # setup
@@ -73,4 +79,4 @@ jobs:
         uses: pyvista/setup-headless-display-action@v4
 
       # execute
-      - run: ./frb_internal post-release-mimic-quickstart --codegen-install-mode ${{ matrix.codegen_install_mode }} --release-channel ${{ matrix.release_channel }}
+      - run: ./frb_internal post-release-mimic-quickstart --codegen-install-mode ${{ matrix.codegen_install_mode }} --release-channel ${{ matrix.release_channel }} --integration-backend ${{ matrix.integration_backend }}

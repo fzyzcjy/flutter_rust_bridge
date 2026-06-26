@@ -25,6 +25,18 @@ Do not use the Tart macOS VM as the Android emulator strategy. macOS Tart guests
 - Prefer repository tooling such as `./frb_internal` over ad hoc direct invocations.
 - Do not manually edit generated files (`frb_generated.*`, `*.freezed.dart`, `*.g.dart`) as the final fix.
 
+## PATH Bootstrap
+
+Before using this skill's helper or FRB tooling, make sure common local tool locations are in `PATH`. Codex shells may start with a reduced `PATH`, which can hide `uv`, Docker, Dart, Flutter, or Homebrew-installed tools even when they exist on the machine.
+
+Use this prefix when a command reports `env: uv: No such file or directory`, `docker: command not found`, `dart: command not found`, or similar:
+
+```bash
+export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+```
+
+Then retry the same command. Prefer fixing `PATH` over bypassing the helper, because `frb_dev_env.py` uses the configured per-worktree container and release credential handling.
+
 ## First Checks
 
 Before running tests, lint, code generation, or setup:
@@ -223,6 +235,25 @@ Inspect, create, start, and run light commands in the per-worktree VM:
 .claude/skills/frb-dev-env/frb_dev_env.py tart start
 .claude/skills/frb-dev-env/frb_dev_env.py tart ip --wait 180
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- sw_vers
+```
+
+### Tart Guest Network Proxy
+
+When the Tart guest needs outbound network access through the host proxy, make the proxy listen on the host's Tart bridge address and pass that URL through the helper. Enable LAN access for the host proxy, keep the mixed proxy port at `7897`, and verify the host listens on `*:7897` rather than only `127.0.0.1:7897`.
+
+Tart guests normally reach the host on `192.168.64.1`, so the usual proxy URL is:
+
+```bash
+export FRB_TART_HOST_PROXY_URL=http://192.168.64.1:7897
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec -- curl -I https://pub.dev
+```
+
+You can also pass the proxy for a single command:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec \
+  --host-proxy-url http://192.168.64.1:7897 \
+  -- curl -I https://pub.dev
 ```
 
 Delete the worktree VM when it is no longer needed:
