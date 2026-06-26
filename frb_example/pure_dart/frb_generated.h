@@ -5628,6 +5628,8 @@ void frbgen_frb_example_pure_dart_wire__crate__api__constructor__constructor_tra
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new(void);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__create_any_opaque_twin_normal(int64_t port_);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_array_opaque_enum_twin_moi(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__create_array_opaque_enum_twin_normal(int64_t port_);
@@ -11170,6 +11172,9 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                                  int32_t rust_vec_len_,
                                                                                                                                                  int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__run_any_opaque_twin_normal(int64_t port_,
+                                                                                            uintptr_t opaque);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi(int64_t port_,
                                                                                                                   struct wire_cst_enum_opaque_twin_moi *opaque);
 
@@ -14386,10 +14391,6 @@ void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_RwL
 
 void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSseMoi(const void *ptr);
 
-void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(const void *ptr);
-
-void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(const void *ptr);
-
 void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(const void *ptr);
 
 void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(const void *ptr);
@@ -14441,6 +14442,10 @@ void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flu
 void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(const void *ptr);
 
 void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(const void *ptr);
+
+void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(const void *ptr);
+
+void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(const void *ptr);
 
 void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(const void *ptr);
 
@@ -16377,7 +16382,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSseMoi);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinMoiSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync);
@@ -16391,6 +16395,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseMoiSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal);
@@ -16606,7 +16611,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSyncMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSyncSseMoi);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinMoiSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync);
@@ -16620,6 +16624,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseMoiSendSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal);
@@ -19561,6 +19566,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__create_any_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__create_array_opaque_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__create_nested_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__create_opaque_twin_normal);
@@ -19570,6 +19576,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__opaque_array_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__opaque_vec_run_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__opaque_vec_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__run_any_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__run_enum_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__run_nested_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__run_non_clone_twin_normal);

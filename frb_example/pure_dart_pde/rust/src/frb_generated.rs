@@ -16654,7 +16654,8 @@ fn wire__crate__api__misc_no_twin_example_a__function_with_arg_type_name_overrid
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_a = <Box<dyn Any + Send + Sync + 'static>>::sse_decode(&mut deserializer);
+            let api_a =
+                <Box<dyn std::any::Any + Send + Sync + 'static>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
@@ -31682,9 +31683,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinNormal
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinRustAsync>);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinSync>);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn Any + Send + Sync + 'static>>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
         Box<dyn Fn(String) -> String + Send + Sync>,
     >
@@ -31701,6 +31699,11 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box<dyn MyTraitTwinSync + Send + Sync>>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+        Box<dyn std::any::Any + Send + Sync + 'static>,
+    >
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueStructTwinNormal>
@@ -32397,18 +32400,6 @@ impl SseDecode for RustAutoOpaqueMoi<StructWithRustAutoOpaqueFieldWithManyDerive
     }
 }
 
-impl SseDecode for Box<dyn Any + Send + Sync + 'static> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                Box<dyn Any + Send + Sync + 'static>,
-            >,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
-    }
-}
-
 impl SseDecode for Box<dyn Fn(String) -> String + Send + Sync> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -32451,6 +32442,18 @@ impl SseDecode for Box<dyn MyTraitTwinSync + Send + Sync> {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
+            >,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
+    }
+}
+
+impl SseDecode for Box<dyn std::any::Any + Send + Sync + 'static> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn std::any::Any + Send + Sync + 'static>,
             >,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
@@ -33795,20 +33798,6 @@ impl SseDecode for RustOpaqueMoi<RwLock<HideDataTwinSync>> {
 impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            Box<dyn Any + Send + Sync + 'static>,
-        >,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             Box<dyn Fn(String) -> String + Send + Sync>,
         >,
     >
@@ -33852,6 +33841,20 @@ impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             Box<dyn MyTraitTwinSync + Send + Sync>,
+        >,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Box<dyn std::any::Any + Send + Sync + 'static>,
         >,
     >
 {
@@ -44731,26 +44734,6 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<Box<dyn Any + Send + Sync + 'static>> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
-            .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<Box<dyn Any + Send + Sync + 'static>>
-{
-}
-
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<Box<dyn Any + Send + Sync + 'static>>>
-    for Box<dyn Any + Send + Sync + 'static>
-{
-    fn into_into_dart(self) -> FrbWrapper<Box<dyn Any + Send + Sync + 'static>> {
-        self.into()
-    }
-}
-
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<Box<dyn Fn(String) -> String + Send + Sync>> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
@@ -44826,6 +44809,26 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<Box<dyn MyTraitTwinSync + Send
     for Box<dyn MyTraitTwinSync + Send + Sync>
 {
     fn into_into_dart(self) -> FrbWrapper<Box<dyn MyTraitTwinSync + Send + Sync>> {
+        self.into()
+    }
+}
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<Box<dyn std::any::Any + Send + Sync + 'static>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<Box<dyn std::any::Any + Send + Sync + 'static>>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<Box<dyn std::any::Any + Send + Sync + 'static>>>
+    for Box<dyn std::any::Any + Send + Sync + 'static>
+{
+    fn into_into_dart(self) -> FrbWrapper<Box<dyn std::any::Any + Send + Sync + 'static>> {
         self.into()
     }
 }
@@ -53741,20 +53744,6 @@ impl SseEncode for RustAutoOpaqueMoi<StructWithRustAutoOpaqueFieldWithManyDerive
     }
 }
 
-impl SseEncode for Box<dyn Any + Send + Sync + 'static> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                Box<dyn Any + Send + Sync + 'static>,
-            >,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
-            serializer,
-        );
-    }
-}
-
 impl SseEncode for Box<dyn Fn(String) -> String + Send + Sync> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -53803,6 +53792,20 @@ impl SseEncode for Box<dyn MyTraitTwinSync + Send + Sync> {
         <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
+            >,
+        >>::sse_encode(
+            flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for Box<dyn std::any::Any + Send + Sync + 'static> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn std::any::Any + Send + Sync + 'static>,
             >,
         >>::sse_encode(
             flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
@@ -55206,21 +55209,6 @@ impl SseEncode for RustOpaqueMoi<RwLock<HideDataTwinSync>> {
 impl SseEncode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-            Box<dyn Any + Send + Sync + 'static>,
-        >,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             Box<dyn Fn(String) -> String + Send + Sync>,
         >,
     >
@@ -55267,6 +55255,21 @@ impl SseEncode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             Box<dyn MyTraitTwinSync + Send + Sync>,
+        >,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            Box<dyn std::any::Any + Send + Sync + 'static>,
         >,
     >
 {
@@ -63773,28 +63776,6 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                Box<dyn Any + Send + Sync + 'static>,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                Box<dyn Any + Send + Sync + 'static>,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-
-    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
         ptr: *const std::ffi::c_void,
     ) {
@@ -63878,6 +63859,28 @@ mod io {
         MoiArc::<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn std::any::Any + Send + Sync + 'static>,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn std::any::Any + Send + Sync + 'static>,
             >,
         >::decrement_strong_count(ptr as _);
     }
@@ -65353,28 +65356,6 @@ mod web {
     }
 
     #[wasm_bindgen]
-    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                Box<dyn Any + Send + Sync + 'static>,
-            >,
-        >::increment_strong_count(ptr as _);
-    }
-
-    #[wasm_bindgen]
-    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                Box<dyn Any + Send + Sync + 'static>,
-            >,
-        >::decrement_strong_count(ptr as _);
-    }
-
-    #[wasm_bindgen]
     pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
         ptr: *const std::ffi::c_void,
     ) {
@@ -65458,6 +65439,28 @@ mod web {
         MoiArc::<
             flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+
+    #[wasm_bindgen]
+    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn std::any::Any + Send + Sync + 'static>,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+
+    #[wasm_bindgen]
+    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                Box<dyn std::any::Any + Send + Sync + 'static>,
             >,
         >::decrement_strong_count(ptr as _);
     }

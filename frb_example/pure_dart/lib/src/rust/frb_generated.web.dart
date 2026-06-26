@@ -618,10 +618,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSseMoi;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxAnyMyDartTypeRenamePtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync;
 
@@ -672,6 +668,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSsePtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxAnyMyDartTypeRenamePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_ConstructorOpaqueStructTwinNormalPtr =>
@@ -1335,11 +1335,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  BoxAnyMyDartTypeRename
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          dynamic raw);
-
-  @protected
   BoxFnStringString
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           dynamic raw);
@@ -1402,6 +1397,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  BoxAnyMyDartTypeRename
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
           dynamic raw);
 
   @protected
@@ -3440,11 +3440,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_RustOpaque_RwLockHideDataTwinSyncSseMoi(dynamic raw);
 
   @protected
-  BoxAnyMyDartTypeRename
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          dynamic raw);
-
-  @protected
   BoxFnStringString
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           dynamic raw);
@@ -3507,6 +3502,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  BoxAnyMyDartTypeRename
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
           dynamic raw);
 
   @protected
@@ -10795,11 +10795,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  BoxAnyMyDartTypeRename
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          SseDeserializer deserializer);
-
-  @protected
   BoxFnStringString
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           SseDeserializer deserializer);
@@ -10862,6 +10857,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  BoxAnyMyDartTypeRename
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
           SseDeserializer deserializer);
 
   @protected
@@ -12896,11 +12896,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  BoxAnyMyDartTypeRename
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          SseDeserializer deserializer);
-
-  @protected
   BoxFnStringString
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           SseDeserializer deserializer);
@@ -12963,6 +12958,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  BoxAnyMyDartTypeRename
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
           SseDeserializer deserializer);
 
   @protected
@@ -29519,10 +29519,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-      BoxAnyMyDartTypeRename raw);
-
-  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
       BoxFnStringString raw);
 
@@ -29549,6 +29545,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
       BoxMyTraitTwinSync raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+      BoxAnyMyDartTypeRename raw);
 
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
@@ -30447,10 +30447,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RwLockHideDataTwinSyncMoi raw);
 
   @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-      BoxAnyMyDartTypeRename raw);
-
-  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
       BoxFnStringString raw);
 
@@ -30477,6 +30473,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
       BoxMyTraitTwinSync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+      BoxAnyMyDartTypeRename raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
@@ -31032,11 +31032,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          BoxAnyMyDartTypeRename self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           BoxFnStringString self, SseSerializer serializer);
 
@@ -31099,6 +31094,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(
           BoxMyTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+          BoxAnyMyDartTypeRename self, SseSerializer serializer);
 
   @protected
   void
@@ -33237,11 +33237,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          BoxAnyMyDartTypeRename self, SseSerializer serializer);
-
-  @protected
-  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           BoxFnStringString self, SseSerializer serializer);
 
@@ -33304,6 +33299,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(
           BoxMyTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+          BoxAnyMyDartTypeRename self, SseSerializer serializer);
 
   @protected
   void
@@ -45134,6 +45134,11 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new();
 
+  void wire__crate__api__rust_opaque__create_any_opaque_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__rust_opaque__create_any_opaque_twin_normal(port_);
+
   void wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_array_opaque_enum_twin_moi(
           NativePortType port_) =>
       wasmModule
@@ -56454,6 +56459,11 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__tuple_twin_sync_sse__return_optional_f_32_tuple_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__rust_opaque__run_any_opaque_twin_normal(
+          NativePortType port_, int opaque) =>
+      wasmModule.wire__crate__api__rust_opaque__run_any_opaque_twin_normal(
+          port_, opaque);
+
   void wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi(
           NativePortType port_, JSAny opaque) =>
       wasmModule
@@ -63280,18 +63290,6 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSseMoi(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           int ptr) =>
       wasmModule
@@ -63446,6 +63444,18 @@ class RustLibWire implements BaseWire {
           int ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
@@ -67945,6 +67955,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new();
+
+  external void wire__crate__api__rust_opaque__create_any_opaque_twin_normal(
+      NativePortType port_);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_moi__create_array_opaque_enum_twin_moi(
@@ -75834,6 +75847,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external void wire__crate__api__rust_opaque__run_any_opaque_twin_normal(
+      NativePortType port_, int opaque);
+
   external void
       wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi(
           NativePortType port_, JSAny opaque);
@@ -80561,14 +80577,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int ptr);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          int ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
-          int ptr);
-
-  external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           int ptr);
 
@@ -80670,6 +80678,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSseSendSync(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynstdanyAnySendSyncstatic(
           int ptr);
 
   external void
