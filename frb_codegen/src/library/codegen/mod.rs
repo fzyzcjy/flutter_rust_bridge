@@ -8,6 +8,7 @@ pub(crate) mod ir;
 mod misc;
 pub(crate) mod parser;
 mod polisher;
+mod pre_generation_cleaner;
 mod preparer;
 
 use crate::codegen::config::internal_config::InternalConfig;
@@ -59,6 +60,8 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     dumper
         .with_content(ContentConfig)
         .dump("internal_config.json", &internal_config)?;
+
+    pre_generation_cleaner::clean(&internal_config.polisher)?;
 
     preparer::prepare(&internal_config.preparer)?;
 

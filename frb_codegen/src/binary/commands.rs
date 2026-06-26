@@ -204,6 +204,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub stop_on_error: bool,
 
+    /// Clean generated output paths before generating
+    #[arg(long)]
+    pub pre_generation_cleanup: bool,
+
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
     pub dump: Option<Vec<ConfigDumpContent>>,

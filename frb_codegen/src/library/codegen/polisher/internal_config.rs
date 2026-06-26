@@ -19,4 +19,5 @@ pub(crate) struct PolisherInternalConfig {
     pub c_output_path: Option<PathBuf>,
     pub enable_auto_upgrade: bool,
     pub fvm_install_mode: FvmInstallMode,
+    pub pre_generation_cleanup: bool,
 }

@@ -7,4 +7,4 @@ flutter_rust_bridge:
   dart_output: hello.dart
   c_output: hello.h
   dart3: false
-
+  pre_generation_cleanup: true
