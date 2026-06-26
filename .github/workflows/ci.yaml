@@ -404,7 +404,7 @@ jobs:
       - if: matrix.platforms == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b "$FRB_OHOS_FLUTTER_BRANCH" https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          bash .github/scripts/clone_ohos_flutter_for_ci.sh "$FRB_OHOS_FLUTTER_BRANCH" "$GITHUB_WORKSPACE/flutter"
           bash .github/scripts/patch_ohos_flutter_autofill_for_ci.sh "$GITHUB_WORKSPACE/flutter"
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.platforms == 'ohos'
@@ -623,7 +623,7 @@ jobs:
       - if: matrix.info.target == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b "$FRB_OHOS_FLUTTER_BRANCH" https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          bash .github/scripts/clone_ohos_flutter_for_ci.sh "$FRB_OHOS_FLUTTER_BRANCH" "$GITHUB_WORKSPACE/flutter"
           bash .github/scripts/patch_ohos_flutter_autofill_for_ci.sh "$GITHUB_WORKSPACE/flutter"
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.info.target == 'ohos'
