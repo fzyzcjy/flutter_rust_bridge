@@ -37,7 +37,8 @@ fn clean_dart_output(
     let entries = fs::read_dir(dart_output)?.collect::<Result<Vec<_>, _>>()?;
     for entry in entries {
         let path = entry.path();
-        if entry.file_type()?.is_dir() {
+        let file_type = entry.file_type()?;
+        if file_type.is_dir() || (file_type.is_symlink() && path.is_dir()) {
             fs::remove_dir_all(&path)?;
         } else {
             fs::remove_file(&path)?;
@@ -78,6 +79,7 @@ fn ensure_safe_dart_output(
         dart_root.join("linux"),
         dart_root.join("macos"),
         dart_root.join("test"),
+        dart_root.join("tool"),
         dart_root.join("web"),
         dart_root.join("windows"),
     ];
@@ -231,6 +233,22 @@ mod tests {
         let temp_dir = tempfile::tempdir()?;
         let mut config = create_config(temp_dir.path(), true)?;
         config.dart_output = config.dart_root.join(".dart_tool").join("flutter_build");
+        fs::create_dir_all(&config.dart_output)?;
+
+        let result = clean(&config);
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_rejects_tool_subdirectory_output() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        config.dart_output = config.dart_root.join("tool").join("build_scripts");
         fs::create_dir_all(&config.dart_output)?;
 
         let result = clean(&config);
