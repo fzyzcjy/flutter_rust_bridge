@@ -63,12 +63,17 @@ fn ensure_safe_dart_output(
     })?;
     let dart_lib = dart_root.join("lib");
     let dart_lib_src = dart_lib.join("src");
+    let rust_src = rust_crate_dir.join("src");
     let protected_dart_dirs = [dart_lib, dart_lib_src];
     let protected_dart_dir_prefixes = [
+        dart_root.join(".dart_tool"),
+        dart_root.join(".git"),
+        dart_root.join(".github"),
         dart_root.join("android"),
-        dart_root.join("build"),
         dart_root.join("bin"),
+        dart_root.join("build"),
         dart_root.join("example"),
+        dart_root.join("integration_test"),
         dart_root.join("ios"),
         dart_root.join("linux"),
         dart_root.join("macos"),
@@ -86,6 +91,7 @@ fn ensure_safe_dart_output(
         || protected_dart_dir_prefixes
             .iter()
             .any(|protected_dir| dart_output.starts_with(protected_dir))
+        || dart_output.starts_with(&rust_src)
         || (dart_output.starts_with(&rust_crate_dir) && !dart_root.starts_with(&rust_crate_dir))
     {
         bail!("pre_generation_cleanup refuses to clean unsafe dart_output path: {dart_output:?}");
@@ -221,11 +227,45 @@ mod tests {
     }
 
     #[test]
+    fn test_clean_rejects_project_metadata_subdirectory_output() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        config.dart_output = config.dart_root.join(".dart_tool").join("flutter_build");
+        fs::create_dir_all(&config.dart_output)?;
+
+        let result = clean(&config);
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
     fn test_clean_rejects_dart_output_inside_rust_crate() -> anyhow::Result<()> {
         let temp_dir = tempfile::tempdir()?;
         let mut config = create_config(temp_dir.path(), true)?;
         config.rust_crate_dir = config.dart_root.join("rust");
         config.dart_output = config.rust_crate_dir.join("generated");
+        fs::create_dir_all(&config.dart_output)?;
+
+        let result = clean(&config);
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_rejects_rust_src_output_when_dart_root_is_rust_crate() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        config.rust_crate_dir = temp_dir.path().join("app");
+        config.dart_root = config.rust_crate_dir.clone();
+        config.dart_output = config.rust_crate_dir.join("src").join("generated");
         fs::create_dir_all(&config.dart_output)?;
 
         let result = clean(&config);
