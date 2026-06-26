@@ -13,11 +13,25 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     }
 
     pub fn blocking_read(&self) -> RwLockReadGuard<'_, T> {
-        self.0.data.blocking_read()
+        #[cfg(target_family = "wasm")]
+        {
+            self.try_read().expect("cannot synchronously read RustAutoOpaque while it is locked on Web; use an async API instead")
+        }
+        #[cfg(not(target_family = "wasm"))]
+        {
+            self.0.data.blocking_read()
+        }
     }
 
     pub fn blocking_write(&self) -> RwLockWriteGuard<'_, T> {
-        self.0.data.blocking_write()
+        #[cfg(target_family = "wasm")]
+        {
+            self.try_write().expect("cannot synchronously write RustAutoOpaque while it is locked on Web; use an async API instead")
+        }
+        #[cfg(not(target_family = "wasm"))]
+        {
+            self.0.data.blocking_write()
+        }
     }
 
     pub async fn read(&self) -> RwLockReadGuard<'_, T> {

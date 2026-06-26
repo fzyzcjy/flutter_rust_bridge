@@ -57002,6 +57002,13 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_sync_twin_normal(
+              int arg, int expect, int adder) =>
+          wasmModule
+              .wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_sync_twin_normal(
+                  arg, expect, adder);
+
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_mut_borrow_twin_moi(
           NativePortType port_, int arg, int expect, int adder) =>
       wasmModule
@@ -58637,6 +58644,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_struct_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__rust_auto_opaque__rust_auto_opaque_hold_mut_borrow_forever_twin_normal(
+          NativePortType port_, int _arg) =>
+      wasmModule
+          .wire__crate__api__rust_auto_opaque__rust_auto_opaque_hold_mut_borrow_forever_twin_normal(
+              port_, _arg);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_normal_and_opaque_arg_twin_moi(
           NativePortType port_, int a, String b) =>
@@ -76214,6 +76227,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_sync_twin_normal(
+          int arg, int expect, int adder);
+
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_mut_borrow_twin_moi(
           NativePortType port_, int arg, int expect, int adder);
@@ -77355,6 +77372,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external void
+      wire__crate__api__rust_auto_opaque__rust_auto_opaque_hold_mut_borrow_forever_twin_normal(
+          NativePortType port_, int _arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_normal_and_opaque_arg_twin_moi(

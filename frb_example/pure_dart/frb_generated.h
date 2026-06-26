@@ -11440,6 +11440,10 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                                                      int32_t rust_vec_len_,
                                                                                                                                                                      int32_t data_len_);
 
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_sync_twin_normal(uintptr_t arg,
+                                                                                                                                       int32_t expect,
+                                                                                                                                       int32_t adder);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_arg_mut_borrow_twin_moi(int64_t port_,
                                                                                                                                        uintptr_t arg,
                                                                                                                                        int32_t expect,
@@ -12259,6 +12263,9 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_explicit_struct_twin_sync_sse_moi(uint8_t *ptr_,
                                                                                                                                                                           int32_t rust_vec_len_,
                                                                                                                                                                           int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_hold_mut_borrow_forever_twin_normal(int64_t port_,
+                                                                                                                           uintptr_t _arg);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_normal_and_opaque_arg_twin_moi(int64_t port_,
                                                                                                                                               uintptr_t a,
@@ -19531,6 +19538,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_get_good);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal_auto_accessor_set_good);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_sync_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_mut_borrow_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_and_return_own_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_arg_own_twin_normal);
@@ -19549,6 +19557,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_return_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_explicit_struct_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_hold_mut_borrow_forever_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_normal_and_opaque_arg_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_arg_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_plus_sign_return_twin_normal);

@@ -14,6 +14,10 @@
 - As a consequence, `panic::catch_unwind` does not work on the Web. As of writing, the implementation to
   catch these errors resides within the bodies of the workers, i.e. it is not straightforward enough to
   generalize for other use-cases.
+- Synchronous Rust calls on the Web cannot wait for an async Rust task to release a `RustAutoOpaque`
+  borrow, because both run on the browser event loop. For example, avoid calling a `#[frb(sync)]`
+  function that takes `&T` or `&mut T` while an async Rust function is still borrowing the same object.
+  Such calls fail immediately; use an async API and `await` it instead.
 - `Int64List` and `Uint64List` throws when used on Web platforms. They are left intentionally
   unimplemented by the Dart language developers, perhaps due to the differences between `int` and `BigInt`.
   This library provides a barebones pure Dart shim whose behavior may differ from the specifications,

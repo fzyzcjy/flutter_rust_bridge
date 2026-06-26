@@ -21,11 +21,25 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     }
 
     fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        self.data.blocking_read()
+        #[cfg(target_family = "wasm")]
+        {
+            self.data.try_read().expect("cannot synchronously read RustAutoOpaque while it is locked on Web; use an async API instead")
+        }
+        #[cfg(not(target_family = "wasm"))]
+        {
+            self.data.blocking_read()
+        }
     }
 
     fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        self.data.blocking_write()
+        #[cfg(target_family = "wasm")]
+        {
+            self.data.try_write().expect("cannot synchronously write RustAutoOpaque while it is locked on Web; use an async API instead")
+        }
+        #[cfg(not(target_family = "wasm"))]
+        {
+            self.data.blocking_write()
+        }
     }
 
     fn lockable_decode_async_ref<'a>(
