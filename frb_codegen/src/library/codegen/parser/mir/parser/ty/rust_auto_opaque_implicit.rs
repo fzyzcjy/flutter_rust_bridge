@@ -150,10 +150,9 @@ fn normalize_ty_path_prefix(raw: &str) -> String {
 
 fn mark_std_any_type_path(raw: &str) -> String {
     lazy_static! {
-        static ref REGEX: Regex = Regex::new(
-            r"\bdyn\s+(?:(?:::)\s*(?:(?:std|core)\s*::\s*)?any\s*::\s*|(?:(?:std|core)\s*::\s*)?any\s*::\s*)?Any\b"
-        )
-        .unwrap();
+        static ref REGEX: Regex =
+            Regex::new(r"\bdyn\s+(?:Any\b|(?:::)?\s*(?:(?:std|core)\s*::\s*)?any\s*::\s*Any\b)")
+                .unwrap();
     }
     REGEX.replace_all(raw, "dyn FRB_STD_ANY_MARKER").to_string()
 }
