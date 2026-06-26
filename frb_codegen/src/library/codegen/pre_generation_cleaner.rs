@@ -1,7 +1,7 @@
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use anyhow::{bail, Context};
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 pub(crate) fn clean(config: &PolisherInternalConfig) -> anyhow::Result<()> {
     if !config.pre_generation_cleanup {
@@ -64,8 +64,11 @@ fn ensure_safe_dart_output(
     })?;
     let dart_lib = dart_root.join("lib");
     let dart_lib_src = dart_lib.join("src");
-    let rust_src = rust_crate_dir.join("src");
-    let protected_dart_dirs = [dart_lib, dart_lib_src];
+    let rust_src = canonicalize_if_exists(rust_crate_dir.join("src"));
+    let protected_dart_dirs = [
+        canonicalize_if_exists(dart_lib),
+        canonicalize_if_exists(dart_lib_src),
+    ];
     let protected_dart_dir_prefixes = [
         dart_root.join(".dart_tool"),
         dart_root.join(".git"),
@@ -82,7 +85,8 @@ fn ensure_safe_dart_output(
         dart_root.join("tool"),
         dart_root.join("web"),
         dart_root.join("windows"),
-    ];
+    ]
+    .map(canonicalize_if_exists);
 
     if dart_output.parent().is_none()
         || !dart_output.starts_with(&dart_root)
@@ -100,6 +104,10 @@ fn ensure_safe_dart_output(
     }
 
     Ok(())
+}
+
+fn canonicalize_if_exists(path: PathBuf) -> PathBuf {
+    path.canonicalize().unwrap_or(path)
 }
 
 fn remove_file_if_exists(path: &Path) -> anyhow::Result<()> {
@@ -218,6 +226,25 @@ mod tests {
         let mut config = create_config(temp_dir.path(), true)?;
         config.dart_output = config.dart_root.join("ios").join("Runner");
         fs::create_dir_all(&config.dart_output)?;
+
+        let result = clean(&config);
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn test_clean_rejects_canonicalized_platform_symlink_output() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let mut config = create_config(temp_dir.path(), true)?;
+        let real_ios = config.dart_root.join("real_ios");
+        fs::create_dir_all(real_ios.join("Runner"))?;
+        std::os::unix::fs::symlink(&real_ios, config.dart_root.join("ios"))?;
+        config.dart_output = config.dart_root.join("ios").join("Runner");
 
         let result = clean(&config);
 
