@@ -3,22 +3,22 @@ description: flutter rust bridge example
 version: 1.0.0
 publish_to: none
 environment:
-  sdk: ">=3.11.0 <4.0.0"
+  sdk: ">=3.12.0 <4.0.0"
 dependencies:
   lints: ^6.1.0
   flutter_rust_bridge:
     path: ../../frb_dart
   flutter_rust_bridge_utils:
     path: ../../frb_utils
-  hooks: ^1.0.2
-  code_assets: ^1.0.0
+  hooks: ^2.0.2
+  code_assets: ^1.2.1
   freezed_annotation: ^3.1.0
-  json_annotation: ^4.11.0
+  json_annotation: ^4.12.0
   oxidized: ^6.2.0
   uuid: ^4.5.2
 dev_dependencies:
-  test: ^1.24.0
+  test: ^1.31.1
   freezed: ^3.2.5
-  build_runner: ^2.13.1
+  build_runner: ^2.15.0
   ffigen: ^20.1.1
-  json_serializable: ^6.13.1
+  json_serializable: ^6.14.0
