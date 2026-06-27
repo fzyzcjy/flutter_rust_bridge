@@ -119,6 +119,8 @@ import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_sync.dart';
 import 'api/pseudo_manual/rust_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sync.dart';
+import 'api/pseudo_manual/rust_opaque_web_locking_twin_rust_async.dart';
+import 'api/pseudo_manual/rust_opaque_web_locking_twin_sync.dart';
 import 'api/pseudo_manual/serde_json_type_twin_rust_async.dart';
 import 'api/pseudo_manual/serde_json_type_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_rust_async.dart';
@@ -136,6 +138,7 @@ import 'api/raw_string.dart';
 import 'api/rust_auto_opaque.dart';
 import 'api/rust_opaque.dart';
 import 'api/rust_opaque_sync.dart';
+import 'api/rust_opaque_web_locking.dart';
 import 'api/serde_json_type.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
@@ -434,6 +437,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_SimpleLoggerPtr => wire
@@ -806,6 +813,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  RustOpaqueWebLockingData
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+          dynamic raw);
+
+  @protected
   SimpleLogger
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           dynamic raw);
@@ -968,6 +980,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  RustOpaqueWebLockingData
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
           dynamic raw);
 
   @protected
@@ -1138,6 +1155,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustOpaqueWebLockingData
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
           dynamic raw);
 
   @protected
@@ -1884,6 +1906,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
+          dynamic raw);
+
+  @protected
+  RustOpaqueWebLockingData
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
           dynamic raw);
 
   @protected
@@ -5630,6 +5657,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  RustOpaqueWebLockingData
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+          SseDeserializer deserializer);
+
+  @protected
   SimpleLogger
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           SseDeserializer deserializer);
@@ -5792,6 +5824,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSync
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RustOpaqueWebLockingData
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
           SseDeserializer deserializer);
 
   @protected
@@ -5962,6 +5999,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RustOpaqueWebLockingData
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
           SseDeserializer deserializer);
 
   @protected
@@ -6680,6 +6722,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSync
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RustOpaqueWebLockingData
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
           SseDeserializer deserializer);
 
   @protected
@@ -10859,6 +10906,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+          RustOpaqueWebLockingData self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           SimpleLogger self, SseSerializer serializer);
 
@@ -11025,6 +11077,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+          RustOpaqueWebLockingData self, SseSerializer serializer);
 
   @protected
   void
@@ -11198,6 +11255,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
           OpaqueStructWithDartCodeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+          RustOpaqueWebLockingData self, SseSerializer serializer);
 
   @protected
   void
@@ -11981,6 +12043,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
           OpaqueTwoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+          RustOpaqueWebLockingData self, SseSerializer serializer);
 
   @protected
   void
@@ -16551,6 +16618,18 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           int ptr) =>
       wasmModule
@@ -17348,6 +17427,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingData(
           int ptr);
 
   external void

@@ -441,29 +441,5 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await future1, 300);
       expect(await future2, 300);
     });
-
-    // FRB_INTERNAL_GENERATOR_DISABLE_PDE_START
-    // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
-    test(
-      'web detects a locked mut borrow without blocking',
-      () async {
-        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-
-        final _ = rustAutoOpaqueHoldMutBorrowForeverTwinNormal(arg: obj);
-        await Future<void>.delayed(const Duration(milliseconds: 100));
-
-        expect(
-          () => rustAutoOpaqueArgMutBorrowSyncTwinNormal(
-            arg: obj,
-            expect: 100,
-            adder: 1,
-          ),
-          throwsA(anything),
-        );
-      },
-      skip: !kIsWeb ? 'Web-only regression coverage' : null,
-    );
-    // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
-    // FRB_INTERNAL_GENERATOR_DISABLE_PDE_END
   });
 }

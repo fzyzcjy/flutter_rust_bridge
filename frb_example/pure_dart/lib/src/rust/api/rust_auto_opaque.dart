@@ -157,20 +157,6 @@ Future<int> rustAutoOpaqueSleepTwinNormal(
     RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueSleepTwinNormal(
         apple: apple, orange: orange);
 
-void rustAutoOpaqueArgMutBorrowSyncTwinNormal(
-        {required NonCloneSimpleTwinNormal arg,
-        required int expect,
-        required int adder}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueArgMutBorrowSyncTwinNormal(
-            arg: arg, expect: expect, adder: adder);
-
-Future<void> rustAutoOpaqueHoldMutBorrowForeverTwinNormal(
-        {required NonCloneSimpleTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueHoldMutBorrowForeverTwinNormal(
-            arg: arg);
-
 Future<(OpaqueOneTwinNormal, OpaqueTwoTwinNormal)>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal() => RustLib.instance.api
         .crateApiRustAutoOpaqueRustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal();

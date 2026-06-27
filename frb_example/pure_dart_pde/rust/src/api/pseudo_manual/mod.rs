@@ -66,6 +66,8 @@ pub mod rust_auto_opaque_twin_rust_async;
 pub mod rust_auto_opaque_twin_sync;
 pub mod rust_opaque_twin_rust_async;
 pub mod rust_opaque_twin_sync;
+pub mod rust_opaque_web_locking_twin_rust_async;
+pub mod rust_opaque_web_locking_twin_sync;
 pub mod serde_json_type_twin_rust_async;
 pub mod serde_json_type_twin_sync;
 pub mod simple_twin_rust_async;
