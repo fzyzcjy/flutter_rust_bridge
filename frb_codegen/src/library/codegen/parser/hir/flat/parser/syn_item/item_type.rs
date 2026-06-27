@@ -4,7 +4,6 @@ use syn::ItemType;
 pub(crate) fn parse_syn_item_type(item_type: ItemType) -> Option<HirFlatTypeAlias> {
     // debug!("parse_syn_item_type item_type={item_type:?}");
 
-    // Aliases with a `where` clause are not supported yet.
     if item_type.generics.where_clause.is_some() {
         return None;
     }
