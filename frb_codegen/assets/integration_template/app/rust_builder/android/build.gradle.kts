@@ -47,8 +47,9 @@ android {
     }
 }
 
-apply(from = "../cargokit/gradle/plugin.gradle")
-(extensions.getByName("cargokit") as groovy.lang.GroovyObject).apply {
-    setProperty("manifestDir", "../../REPLACE_ME_RUST_CRATE_DIR")
-    setProperty("libname", "REPLACE_ME_RUST_CRATE_NAME")
+apply(from = "../cargokit/gradle/plugin.gradle.kts")
+
+cargokit {
+    manifestDir = "../../REPLACE_ME_RUST_CRATE_DIR"
+    libname = "REPLACE_ME_RUST_CRATE_NAME"
 }
