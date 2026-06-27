@@ -31,6 +31,7 @@ import 'api/dropping.dart';
 import 'api/dyn_trait.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
+import 'api/event_listener_sync.dart';
 import 'api/exception.dart';
 import 'api/external_impl.dart';
 import 'api/external_type_in_crate.dart';
@@ -241,7 +242,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0-beta.2';
 
   @override
-  int get rustContentHash => 571131265;
+  int get rustContentHash => -1386741065;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -1339,7 +1340,7 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualDartOpaqueTwinSyncCreateEnumDartOpaqueTwinSync(
           {required Object opaque});
 
-  void crateApiEventListenerCreateEventSyncTwinNormal(
+  void crateApiEventListenerSyncCreateEventSyncTwinNormal(
       {required String address, required String payload});
 
   Future<void> crateApiEventListenerCreateEventTwinNormal(
@@ -14547,7 +14548,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  void crateApiEventListenerCreateEventSyncTwinNormal(
+  void crateApiEventListenerSyncCreateEventSyncTwinNormal(
       {required String address, required String payload}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -14560,17 +14561,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiEventListenerCreateEventSyncTwinNormalConstMeta,
+      constMeta: kCrateApiEventListenerSyncCreateEventSyncTwinNormalConstMeta,
       argValues: [address, payload],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiEventListenerCreateEventSyncTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "create_event_sync_twin_normal",
-        argNames: ["address", "payload"],
-      );
+  TaskConstMeta
+      get kCrateApiEventListenerSyncCreateEventSyncTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "create_event_sync_twin_normal",
+            argNames: ["address", "payload"],
+          );
 
   @override
   Future<void> crateApiEventListenerCreateEventTwinNormal(

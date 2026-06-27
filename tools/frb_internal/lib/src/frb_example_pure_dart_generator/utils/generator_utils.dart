@@ -126,7 +126,7 @@ class _Duplicator {
             computeDuplicatorPrelude(' from `$fileName`') +
             (annotation.addCode ?? '') +
             generator.generateDuplicateCode(
-              handleDisabledDuplicatorContent(fileContent),
+              fileContent,
               mode,
             );
         for (final entry in annotation.replaceCode.entries) {
@@ -162,36 +162,6 @@ class _Duplicator {
 
     return modes;
   }
-}
-
-String handleDisabledDuplicatorContent(String content) {
-  return content
-      .replaceAll(
-        RegExp(
-          r'// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START.*?// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END',
-          multiLine: true,
-          dotAll: true,
-        ),
-        '',
-      )
-      .replaceAll(
-        RegExp(
-          r'// FRB_INTERNAL_GENERATOR_DISABLE_PDE_(START|END)\r?\n?',
-          multiLine: true,
-        ),
-        '',
-      );
-}
-
-String handleDisabledPdeContent(String content) {
-  return content.replaceAll(
-    RegExp(
-      r'// FRB_INTERNAL_GENERATOR_DISABLE_PDE_START.*?// FRB_INTERNAL_GENERATOR_DISABLE_PDE_END',
-      multiLine: true,
-      dotAll: true,
-    ),
-    '',
-  );
 }
 
 class Annotation {

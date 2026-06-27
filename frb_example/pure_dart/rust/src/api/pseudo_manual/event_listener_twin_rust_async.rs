@@ -13,7 +13,8 @@ use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 lazy_static! {
-    static ref EVENTS: Mutex<Option<StreamSink<EventTwinRustAsync>>> = Default::default();
+    pub(crate) static ref EVENTS: Mutex<Option<StreamSink<EventTwinRustAsync>>> =
+        Default::default();
 }
 
 #[frb(dart_metadata = ("freezed"))]

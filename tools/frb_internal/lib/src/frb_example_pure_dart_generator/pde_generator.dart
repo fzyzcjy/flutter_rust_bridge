@@ -102,7 +102,7 @@ deliberate_compile_error;
             _ => '',
           };
           return prelude +
-              handleDisabledPdeContent(text)
+              text
                   .replaceAll(
                     'package:frb_example_pure_dart',
                     'package:frb_example_pure_dart_pde',

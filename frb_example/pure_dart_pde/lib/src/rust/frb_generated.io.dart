@@ -27,6 +27,7 @@ import 'api/dropping.dart';
 import 'api/dyn_trait.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
+import 'api/event_listener_sync.dart';
 import 'api/exception.dart';
 import 'api/external_impl.dart';
 import 'api/external_type_in_crate.dart';

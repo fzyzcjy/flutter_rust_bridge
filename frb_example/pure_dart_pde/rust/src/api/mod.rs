@@ -25,6 +25,7 @@ pub mod dropping;
 pub mod dyn_trait;
 pub mod enumeration;
 pub mod event_listener;
+pub mod event_listener_sync;
 pub mod exception;
 pub mod external_impl;
 pub mod external_type_in_crate;

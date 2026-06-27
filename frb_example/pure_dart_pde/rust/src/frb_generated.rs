@@ -76,7 +76,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.13.0-beta.2";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 571131265;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1386741065;
 
 // Section: executor
 
@@ -8127,7 +8127,7 @@ fn wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_enum_dart_opaq
                      let output_ok = Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::create_enum_dart_opaque_twin_sync(api_opaque))?;   Ok(output_ok)
                 })()) })
 }
-fn wire__crate__api__event_listener__create_event_sync_twin_normal_impl(
+fn wire__crate__api__event_listener_sync__create_event_sync_twin_normal_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8153,7 +8153,7 @@ fn wire__crate__api__event_listener__create_event_sync_twin_normal_impl(
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::api::event_listener::create_event_sync_twin_normal(
+                    crate::api::event_listener_sync::create_event_sync_twin_normal(
                         api_address,
                         api_payload,
                     );
@@ -44701,7 +44701,7 @@ fn pde_ffi_dispatcher_sync_impl(
 310 => wire__crate__api__constructor__constructor_translatable_sync_struct_twin_normal_new_impl(ptr, rust_vec_len, data_len),
 313 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_array_opaque_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
 316 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_enum_dart_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-317 => wire__crate__api__event_listener__create_event_sync_twin_normal_impl(ptr, rust_vec_len, data_len),
+317 => wire__crate__api__event_listener_sync__create_event_sync_twin_normal_impl(ptr, rust_vec_len, data_len),
 322 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__create_nested_dart_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
 325 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_nested_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
 328 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__create_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),

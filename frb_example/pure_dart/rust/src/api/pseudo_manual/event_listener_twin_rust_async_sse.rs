@@ -13,7 +13,7 @@ use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 lazy_static! {
-    static ref EVENTS: Mutex<Option<StreamSink<EventTwinRustAsyncSse, flutter_rust_bridge::SseCodec>>> =
+    pub(crate) static ref EVENTS: Mutex<Option<StreamSink<EventTwinRustAsyncSse, flutter_rust_bridge::SseCodec>>> =
         Default::default();
 }
 
