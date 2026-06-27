@@ -76,6 +76,9 @@ impl TypeParserWithContext<'_, '_, '_> {
 
     fn substitute_generic_alias(&self, ty: &Type) -> Option<Type> {
         let key = convert_ident_str(ty)?;
+        if key == "Result" {
+            return None;
+        }
         let template = self.inner.src_generic_type_aliases.get(&key)?;
         let args = extract_generic_type_args(ty)?;
         substitute_type_params(&template.type_params, &template.target, &args)

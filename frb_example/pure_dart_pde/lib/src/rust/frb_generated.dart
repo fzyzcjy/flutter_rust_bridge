@@ -25149,7 +25149,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiExceptionFuncReturnErrorTwinNormalConstMeta,
       argValues: [],
@@ -25174,7 +25174,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta:
           kCrateApiPseudoManualExceptionTwinRustAsyncFuncReturnErrorTwinRustAsyncConstMeta,
@@ -25199,7 +25199,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta:
           kCrateApiPseudoManualExceptionTwinSyncFuncReturnErrorTwinSyncConstMeta,
@@ -26089,7 +26089,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiExceptionFuncTypeFalliblePanicTwinNormalConstMeta,
       argValues: [],
@@ -26115,7 +26115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta:
           kCrateApiPseudoManualExceptionTwinRustAsyncFuncTypeFalliblePanicTwinRustAsyncConstMeta,
@@ -26140,7 +26140,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta:
           kCrateApiPseudoManualExceptionTwinSyncFuncTypeFalliblePanicTwinSyncConstMeta,
@@ -34794,7 +34794,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiEventListenerRegisterEventListenerTwinNormalConstMeta,
       argValues: [listener],
@@ -34823,7 +34823,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta:
           kCrateApiPseudoManualEventListenerTwinRustAsyncRegisterEventListenerTwinRustAsyncConstMeta,
@@ -41416,7 +41416,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiExceptionStreamSinkThrowAnyhowTwinNormalConstMeta,
       argValues: [sink],
@@ -41445,7 +41445,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta:
           kCrateApiPseudoManualExceptionTwinRustAsyncStreamSinkThrowAnyhowTwinRustAsyncConstMeta,
@@ -41474,7 +41474,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta:
           kCrateApiPseudoManualExceptionTwinSyncStreamSinkThrowAnyhowTwinSyncConstMeta,
@@ -42089,7 +42089,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       codec: SseCodec(
         decodeSuccessData:
             sse_decode_opt_box_autoadd_RustOpaque_HideDataAnotherTwinNormal,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiRustOpaqueSyncSyncOptionRustOpaqueTwinNormalConstMeta,
       argValues: [],
@@ -43643,7 +43643,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiRustOpaqueUnwrapRustOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -43670,7 +43670,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta:
           kCrateApiPseudoManualRustOpaqueTwinRustAsyncUnwrapRustOpaqueTwinRustAsyncConstMeta,
@@ -43697,7 +43697,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
-        decodeErrorData: sse_decode_result_shadow_error_twin_normal,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta:
           kCrateApiPseudoManualRustOpaqueTwinSyncUnwrapRustOpaqueTwinSyncConstMeta,
@@ -55470,13 +55470,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_u_8(arr[0]),
       dco_decode_application_mode(arr[1]),
     );
-  }
-
-  @protected
-  ResultShadowErrorTwinNormal dco_decode_result_shadow_error_twin_normal(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ResultShadowErrorTwinNormal.values[raw as int];
   }
 
   @protected
@@ -67947,14 +67940,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  ResultShadowErrorTwinNormal sse_decode_result_shadow_error_twin_normal(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner = sse_decode_i_32(deserializer);
-    return ResultShadowErrorTwinNormal.values[inner];
-  }
-
-  @protected
   Sequences sse_decode_sequences(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
@@ -79724,13 +79709,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_u_8(self.$1, serializer);
     sse_encode_application_mode(self.$2, serializer);
-  }
-
-  @protected
-  void sse_encode_result_shadow_error_twin_normal(
-      ResultShadowErrorTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.index, serializer);
   }
 
   @protected

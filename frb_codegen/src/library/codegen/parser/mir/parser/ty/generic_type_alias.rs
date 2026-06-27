@@ -150,5 +150,4 @@ mod tests {
         let args = extract_generic_type_args(&parse("Cow<'a, str>")).unwrap();
         assert_eq!(args, vec![parse("str")]);
     }
-
 }

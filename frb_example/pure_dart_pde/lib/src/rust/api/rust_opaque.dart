@@ -10,7 +10,6 @@ import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_opaque_twin_rust_async.dart';
-import 'type_alias.dart';
 part 'rust_opaque.freezed.dart';
 
 Future<HideDataTwinNormal> createOpaqueTwinNormal() =>

@@ -4944,10 +4944,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   (int, ApplicationMode) dco_decode_record_u_8_application_mode(dynamic raw);
 
   @protected
-  ResultShadowErrorTwinNormal dco_decode_result_shadow_error_twin_normal(
-      dynamic raw);
-
-  @protected
   Sequences dco_decode_sequences(dynamic raw);
 
   @protected
@@ -10110,10 +10106,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   (int, ApplicationMode) sse_decode_record_u_8_application_mode(
-      SseDeserializer deserializer);
-
-  @protected
-  ResultShadowErrorTwinNormal sse_decode_result_shadow_error_twin_normal(
       SseDeserializer deserializer);
 
   @protected
@@ -15320,10 +15312,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_record_u_8_application_mode(
       (int, ApplicationMode) self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_result_shadow_error_twin_normal(
-      ResultShadowErrorTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
