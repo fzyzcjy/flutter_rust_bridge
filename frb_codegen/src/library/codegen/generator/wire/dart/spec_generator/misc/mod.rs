@@ -237,7 +237,7 @@ fn generate_boilerplate(
         }],
         web: vec![WireDartOutputCode {
             header: DartHeaderCode {
-                file_top: format!("{file_top}\n\n// Static analysis wrongly picks the IO variant, thus ignore this\n// ignore_for_file: argument_type_not_assignable\n"),
+                file_top,
                 import: format!(
                     "
                     {universal_imports}
