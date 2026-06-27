@@ -16,6 +16,13 @@ class DeviceQuery:
     version: Optional[str]
 
 
+@dataclass(frozen=True)
+class SimulatorDevice:
+    name: str
+    version: str
+    udid: str
+
+
 def main() -> int:
     device_label, simctl_json_path = _parse_args(args=sys.argv[1:])
     query = _parse_device_label(label=device_label)
@@ -79,18 +86,76 @@ def _find_matching_udids(
     query: DeviceQuery,
     devices: dict[str, Any],
 ) -> list[str]:
-    matches: list[str] = []
+    simulator_devices = _parse_simulator_devices(devices=devices)
+    matches = [
+        device.udid
+        for device in simulator_devices
+        if device.name == query.name
+        and (query.version is None or device.version == query.version)
+    ]
+    if matches or query.version is None:
+        return matches
+
+    fallback = _find_fallback_device(query=query, devices=simulator_devices)
+    return [] if fallback is None else [fallback.udid]
+
+
+def _parse_simulator_devices(devices: dict[str, Any]) -> list[SimulatorDevice]:
+    result: list[SimulatorDevice] = []
     for runtime, runtime_devices in devices.get("devices", {}).items():
-        if query.version is not None and not runtime.endswith(
-            f"iOS-{query.version.replace('.', '-')}"
-        ):
+        version = _parse_ios_runtime_version(runtime=runtime)
+        if version is None:
             continue
 
         for runtime_device in runtime_devices:
-            if runtime_device.get("name") == query.name:
-                matches.append(runtime_device["udid"])
+            result.append(
+                SimulatorDevice(
+                    name=runtime_device["name"],
+                    version=version,
+                    udid=runtime_device["udid"],
+                )
+            )
 
-    return matches
+    return result
+
+
+def _parse_ios_runtime_version(runtime: str) -> Optional[str]:
+    match = re.search(r"iOS-([0-9-]+)$", runtime)
+    if match is None:
+        return None
+
+    return match.group(1).replace("-", ".")
+
+
+def _find_fallback_device(
+    query: DeviceQuery,
+    devices: list[SimulatorDevice],
+) -> Optional[SimulatorDevice]:
+    family_pattern = _build_fallback_family_pattern(name=query.name)
+    if family_pattern is None:
+        return None
+
+    candidates = [
+        device
+        for device in devices
+        if re.fullmatch(family_pattern, device.name) is not None
+    ]
+    if not candidates:
+        return None
+
+    return max(candidates, key=lambda device: (_version_key(device.version), device.name))
+
+
+def _build_fallback_family_pattern(name: str) -> Optional[str]:
+    match = re.fullmatch(r"(iPhone) \d+(.*)", name)
+    if match is None:
+        return None
+
+    return rf"{re.escape(match.group(1))} \d+{re.escape(match.group(2))}"
+
+
+def _version_key(version: str) -> tuple[int, ...]:
+    return tuple(int(part) for part in version.split("."))
 
 
 if __name__ == "__main__":
