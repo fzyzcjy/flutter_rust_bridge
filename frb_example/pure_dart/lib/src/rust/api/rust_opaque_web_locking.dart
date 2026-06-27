@@ -7,7 +7,7 @@ import 'dart:io';
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'pseudo_manual/rust_opaque_web_locking_twin_rust_async.dart';
+import 'pseudo_manual/rust_opaque_web_locking_twin_sse.dart';
 
 // These functions are ignored because they are not marked as `pub`: `yield_once`
 
@@ -44,4 +44,41 @@ Future<void> rustOpaqueWebLockingHoldMutBorrowForever(
         {required RustOpaqueWebLockingData arg}) =>
     RustLib.instance.api
         .crateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForever(
+            arg: arg);
+
+Future<RustAutoOpaqueWebLockingData> rustAutoOpaqueWebLockingCreate(
+        {required int initial}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreate(
+            initial: initial);
+
+Future<int> rustAutoOpaqueWebLockingGet(
+        {required RustAutoOpaqueWebLockingData arg}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGet(arg: arg);
+
+int rustAutoOpaqueWebLockingSyncAdd(
+        {required RustAutoOpaqueWebLockingData arg, required int adder}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAdd(
+            arg: arg, adder: adder);
+
+Future<int> rustAutoOpaqueWebLockingWorkerAdd(
+        {required RustAutoOpaqueWebLockingData arg,
+        required int adder,
+        required int delayMillis}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAdd(
+            arg: arg, adder: adder, delayMillis: delayMillis);
+
+Future<int> rustAutoOpaqueWebLockingAsyncAdd(
+        {required RustAutoOpaqueWebLockingData arg, required int adder}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAdd(
+            arg: arg, adder: adder);
+
+Future<void> rustAutoOpaqueWebLockingHoldMutBorrowForever(
+        {required RustAutoOpaqueWebLockingData arg}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForever(
             arg: arg);

@@ -7,7 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'rust_opaque_web_locking_twin_rust_async.dart';
 
 // These functions are ignored because they are not marked as `pub`: `yield_once`
 
@@ -48,3 +47,47 @@ Future<void> rustOpaqueWebLockingHoldMutBorrowForeverTwinSse(
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueWebLockingTwinSseRustOpaqueWebLockingHoldMutBorrowForeverTwinSse(
             arg: arg);
+
+Future<RustAutoOpaqueWebLockingData> rustAutoOpaqueWebLockingCreateTwinSse(
+        {required int initial}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueWebLockingTwinSseRustAutoOpaqueWebLockingCreateTwinSse(
+            initial: initial);
+
+Future<int> rustAutoOpaqueWebLockingGetTwinSse(
+        {required RustAutoOpaqueWebLockingData arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueWebLockingTwinSseRustAutoOpaqueWebLockingGetTwinSse(
+            arg: arg);
+
+int rustAutoOpaqueWebLockingSyncAddTwinSse(
+        {required RustAutoOpaqueWebLockingData arg, required int adder}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueWebLockingTwinSseRustAutoOpaqueWebLockingSyncAddTwinSse(
+            arg: arg, adder: adder);
+
+Future<int> rustAutoOpaqueWebLockingWorkerAddTwinSse(
+        {required RustAutoOpaqueWebLockingData arg,
+        required int adder,
+        required int delayMillis}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueWebLockingTwinSseRustAutoOpaqueWebLockingWorkerAddTwinSse(
+            arg: arg, adder: adder, delayMillis: delayMillis);
+
+Future<int> rustAutoOpaqueWebLockingAsyncAddTwinSse(
+        {required RustAutoOpaqueWebLockingData arg, required int adder}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueWebLockingTwinSseRustAutoOpaqueWebLockingAsyncAddTwinSse(
+            arg: arg, adder: adder);
+
+Future<void> rustAutoOpaqueWebLockingHoldMutBorrowForeverTwinSse(
+        {required RustAutoOpaqueWebLockingData arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueWebLockingTwinSseRustAutoOpaqueWebLockingHoldMutBorrowForeverTwinSse(
+            arg: arg);
+
+// Rust type: RustOpaqueNom<RustOpaqueWebLockingData>
+abstract class RustOpaqueWebLockingData implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>>
+abstract class RustAutoOpaqueWebLockingData implements RustOpaqueInterface {}

@@ -369,16 +369,8 @@ import 'api/pseudo_manual/rust_opaque_twin_sync_sse_test.dart'
     as rust_opaque_twin_sync_sse_test;
 import 'api/pseudo_manual/rust_opaque_twin_sync_test.dart'
     as rust_opaque_twin_sync_test;
-import 'api/pseudo_manual/rust_opaque_web_locking_twin_rust_async_sse_test.dart'
-    as rust_opaque_web_locking_twin_rust_async_sse_test;
-import 'api/pseudo_manual/rust_opaque_web_locking_twin_rust_async_test.dart'
-    as rust_opaque_web_locking_twin_rust_async_test;
 import 'api/pseudo_manual/rust_opaque_web_locking_twin_sse_test.dart'
     as rust_opaque_web_locking_twin_sse_test;
-import 'api/pseudo_manual/rust_opaque_web_locking_twin_sync_sse_test.dart'
-    as rust_opaque_web_locking_twin_sync_sse_test;
-import 'api/pseudo_manual/rust_opaque_web_locking_twin_sync_test.dart'
-    as rust_opaque_web_locking_twin_sync_test;
 import 'api/pseudo_manual/serde_json_type_twin_rust_async_sse_test.dart'
     as serde_json_type_twin_rust_async_sse_test;
 import 'api/pseudo_manual/serde_json_type_twin_rust_async_test.dart'
@@ -683,11 +675,7 @@ Future<void> callFileEntrypoints() async {
     rust_opaque_twin_sync_sse_moi_test.main,
     rust_opaque_twin_sync_sse_test.main,
     rust_opaque_twin_sync_test.main,
-    rust_opaque_web_locking_twin_rust_async_sse_test.main,
-    rust_opaque_web_locking_twin_rust_async_test.main,
     rust_opaque_web_locking_twin_sse_test.main,
-    rust_opaque_web_locking_twin_sync_sse_test.main,
-    rust_opaque_web_locking_twin_sync_test.main,
     serde_json_type_twin_rust_async_sse_test.main,
     serde_json_type_twin_rust_async_test.main,
     serde_json_type_twin_sse_test.main,
