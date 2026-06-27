@@ -23,12 +23,25 @@ pub(crate) fn web_throw_lock_error(action: &str, error: tokio::sync::TryLockErro
 }
 
 #[cfg(target_family = "wasm")]
+thread_local! {
+    static WEB_IS_DEDICATED_WORKER_CONTEXT: std::cell::Cell<Option<bool>> =
+        std::cell::Cell::new(None);
+}
+
+#[cfg(target_family = "wasm")]
 pub(crate) fn web_is_dedicated_worker_context() -> bool {
     use wasm_bindgen::JsCast;
 
-    js_sys::global()
-        .dyn_ref::<web_sys::DedicatedWorkerGlobalScope>()
-        .is_some()
+    WEB_IS_DEDICATED_WORKER_CONTEXT.with(|cached| match cached.get() {
+        Some(value) => value,
+        None => {
+            let value = js_sys::global()
+                .dyn_ref::<web_sys::DedicatedWorkerGlobalScope>()
+                .is_some();
+            cached.set(Some(value));
+            value
+        }
+    })
 }
 
 /// Please refer to `RustAutoOpaque` for doc.
