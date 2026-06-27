@@ -28,7 +28,7 @@ macro_rules! frb_generated_io_cst_codec {
 #[macro_export]
 macro_rules! frb_generated_io_content_hash {
     () => {
-        #[no_mangle]
+        #[unsafe(no_mangle)]
         pub extern "C" fn frb_get_rust_content_hash() -> i32 {
             FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH
         }

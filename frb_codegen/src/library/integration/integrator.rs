@@ -6,7 +6,7 @@ use crate::misc::Template;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
-use include_dir::{include_dir, Dir};
+use include_dir::{Dir, include_dir};
 use itertools::Itertools;
 use log::{debug, info, warn};
 use std::collections::HashMap;
@@ -242,8 +242,10 @@ fn modify_file(
     }
 
     if target_path.iter().contains(&OsStr::new("cargokit")) {
-        if let Some(comments) = compute_cargokit_comments(&target_path) {
-            return Some((target_path, [comments.as_bytes(), &src].concat()));
+        if !has_cargokit_prelude(&src) {
+            if let Some(comments) = compute_cargokit_comments(&target_path) {
+                return Some((target_path, [comments.as_bytes(), &src].concat()));
+            }
         }
     }
 
@@ -280,7 +282,18 @@ fn comment_out_existing_file_and_write_template(
 
 fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: bool) -> bool {
     if path.iter().contains(&OsStr::new("cargokit")) {
-        return ![".git", ".github", "docs", "test"].contains(&file_name(path));
+        return ![
+            ".DS_Store",
+            ".dart_tool",
+            ".git",
+            ".github",
+            ".idea",
+            "build",
+            "docs",
+            "test",
+        ]
+        .iter()
+        .any(|excluded| path.iter().contains(&OsStr::new(excluded)));
     }
 
     if !enable_write_lib {
@@ -321,6 +334,7 @@ fn compute_cargokit_comments(path: &Path) -> Option<String> {
 
     let comment_leading = match file_extension(path) {
         "dart" | "md" | "gradle" | "" => "///",
+        "kts" => "//",
         "yaml" | "toml" => "#",
         // Do not add prelude for `sh`, since it can contain things like `#!/bin/bash`
         // which must be at first line
@@ -350,6 +364,13 @@ const CARGOKIT_PRELUDE: &[&str] = &[
     "This is copied from Cargokit (which is the official way to use it currently)", //
     "Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin",
 ];
+
+fn has_cargokit_prelude(content: &[u8]) -> bool {
+    String::from_utf8_lossy(content)
+        .lines()
+        .take(5)
+        .any(|line| line.contains("This is copied from Cargokit"))
+}
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
