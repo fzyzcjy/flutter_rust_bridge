@@ -229,13 +229,20 @@ String quickstartSmokeDefaultDeviceIdForTesting(QuickstartSmokeTarget target) {
 
 @visibleForTesting
 Duration quickstartSmokeFlutterRunReadyTimeoutForTesting(
-  QuickstartSmokeTarget target,
-) => switch (target) {
-  QuickstartSmokeTarget.web => const Duration(seconds: 120),
-  QuickstartSmokeTarget.desktop ||
-  QuickstartSmokeTarget.android => const Duration(minutes: 5),
-  QuickstartSmokeTarget.ios => const Duration(minutes: 10),
-};
+  QuickstartSmokeTarget target, {
+  bool? isMacOS,
+}) {
+  final effectiveIsMacOS = isMacOS ?? Platform.isMacOS;
+  return switch (target) {
+    QuickstartSmokeTarget.web => const Duration(seconds: 120),
+    QuickstartSmokeTarget.desktop when effectiveIsMacOS => const Duration(
+      minutes: 10,
+    ),
+    QuickstartSmokeTarget.desktop ||
+    QuickstartSmokeTarget.android => const Duration(minutes: 5),
+    QuickstartSmokeTarget.ios => const Duration(minutes: 10),
+  };
+}
 
 @visibleForTesting
 Duration quickstartSmokeVisibleTextTimeoutForTesting(
@@ -331,6 +338,7 @@ Future<bool> _waitForQuickstartSmokeFlutterRunReady({
 }) async {
   final timeout = quickstartSmokeFlutterRunReadyTimeoutForTesting(
     context.target,
+    isMacOS: Platform.isMacOS,
   );
   final deadline = DateTime.now().add(timeout);
   print('Waiting up to $timeout for flutter run readiness');
