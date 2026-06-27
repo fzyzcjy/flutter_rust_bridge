@@ -81,12 +81,12 @@ void main() {
     expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
   });
 
-  test('release guard rejects missing CargoKit submodule files', () {
-    final dir = Directory.systemTemp.createTempSync('frb_release_guard_');
-    addTearDown(() => dir.deleteSync(recursive: true));
-
+  test('release guard rejects uninitialized CargoKit submodules', () {
     expect(
-      () => verifyCargokitReleaseInputs(repoRoot: '${dir.path}/'),
+      () => verifyCargokitReleaseInputs(
+        submoduleStatus:
+            '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+      ),
       throwsA(
         isA<Exception>().having(
           (error) => error.toString(),
@@ -97,19 +97,27 @@ void main() {
     );
   });
 
-  test('release guard accepts initialized CargoKit submodule files', () {
-    final dir = Directory.systemTemp.createTempSync('frb_release_guard_');
-    addTearDown(() => dir.deleteSync(recursive: true));
-
-    for (final path in cargokitReleaseRequiredPathsForTesting()) {
-      final file = File('${dir.path}/$path');
-      file.parent.createSync(recursive: true);
-      file.writeAsStringSync('content');
-    }
-
+  test('release guard accepts initialized CargoKit submodules', () {
     expect(
-      () => verifyCargokitReleaseInputs(repoRoot: '${dir.path}/'),
+      () => verifyCargokitReleaseInputs(
+        submoduleStatus:
+            ' 6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit (heads/main)\n'
+            ' 6f7144d frb_codegen/assets/integration_template/cargokit/plugin/cargokit (heads/main)',
+      ),
       returnsNormally,
+    );
+  });
+
+  test('release guard reports only uninitialized CargoKit submodules', () {
+    expect(
+      uninitializedCargokitSubmodulePathsForTesting(
+        '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit\n'
+        ' 6f7144d frb_codegen/assets/integration_template/cargokit/plugin/cargokit\n'
+        '-1234567 unrelated/submodule',
+      ),
+      [
+        'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+      ],
     );
   });
 

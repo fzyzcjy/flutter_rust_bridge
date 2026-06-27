@@ -185,7 +185,6 @@ String releaseCargoLockTemplatePathForTesting() =>
 
 Future<void> releasePublishAll() async {
   verifyCargokitReleaseInputs();
-  await verifyCargokitCodegenPackageContents();
   await exec('cd frb_codegen && cargo publish');
   await exec('cd frb_macros && cargo publish');
   await exec('cd frb_rust && cargo publish');
@@ -197,45 +196,42 @@ Future<void> releasePublishAll() async {
   );
 }
 
+void verifyCargokitReleaseInputs({String? repoRoot, String? submoduleStatus}) {
+  final status =
+      submoduleStatus ?? _gitSubmoduleStatus(repoRoot ?? '${exec.pwd}');
+  final uninitializedPaths = _uninitializedCargokitSubmodulePaths(status);
+
+  if (uninitializedPaths.isNotEmpty) {
+    throw Exception(
+      [
+        'CargoKit submodules are uninitialized. Run `git submodule update --init --recursive` before publishing.',
+        ...uninitializedPaths.map((path) => '- $path'),
+      ].join('\n'),
+    );
+  }
+}
+
+String _gitSubmoduleStatus(String repoRoot) {
+  final result = Process.runSync('git', [
+    'submodule',
+    'status',
+    '--recursive',
+  ], workingDirectory: repoRoot);
+  if (result.exitCode != 0) {
+    throw Exception('Failed to check git submodule status: ${result.stderr}');
+  }
+  return result.stdout as String;
+}
+
 @visibleForTesting
-List<String> cargokitReleaseRequiredPathsForTesting() =>
-    List.unmodifiable(_kCargokitReleaseRequiredPaths);
+List<String> uninitializedCargokitSubmodulePathsForTesting(String status) =>
+    _uninitializedCargokitSubmodulePaths(status);
 
-void verifyCargokitReleaseInputs({String? repoRoot}) {
-  final root = repoRoot ?? exec.pwd;
-  final missingPaths = _kCargokitReleaseRequiredPaths
-      .where((path) => !File('$root$path').existsSync())
-      .toList();
-
-  if (missingPaths.isNotEmpty) {
-    throw Exception(
-      [
-        'CargoKit release inputs are missing. Run `git submodule update --init --recursive` before publishing.',
-        ...missingPaths.map((path) => '- $path'),
-      ].join('\n'),
-    );
-  }
-}
-
-Future<void> verifyCargokitCodegenPackageContents() async {
-  final output = await exec(
-    'cargo package --list --allow-dirty',
-    relativePwd: 'frb_codegen',
-  );
-  final packageFiles = output.stdout.split('\n').toSet();
-  final missingPaths = _kCargokitCodegenPackageRequiredPaths
-      .where((path) => !packageFiles.contains(path))
-      .toList();
-
-  if (missingPaths.isNotEmpty) {
-    throw Exception(
-      [
-        'CargoKit release files are missing from flutter_rust_bridge_codegen package output.',
-        ...missingPaths.map((path) => '- $path'),
-      ].join('\n'),
-    );
-  }
-}
+List<String> _uninitializedCargokitSubmodulePaths(String status) => status
+    .split('\n')
+    .where((line) => line.startsWith('-') && line.contains('/cargokit'))
+    .map((line) => line.trim().split(RegExp(r'\s+'))[1])
+    .toList();
 
 String getFrbDartVersion() => loadYaml(
   File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync(),
@@ -264,24 +260,6 @@ VersionInfo computeVersionInfo() => _extractChangelog().$1;
     lines.sublist(newVersion.$1 + 1, oldVersion.$1).join("\n").trim(),
   );
 }
-
-const _kCargokitCodegenPackageRequiredPaths = [
-  'assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/bin/build_tool.dart',
-  'assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/lib/build_tool.dart',
-  'assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/pubspec.yaml',
-  'assets/integration_template/cargokit/plugin/cargokit/build_tool/bin/build_tool.dart',
-  'assets/integration_template/cargokit/plugin/cargokit/build_tool/lib/build_tool.dart',
-  'assets/integration_template/cargokit/plugin/cargokit/build_tool/pubspec.yaml',
-];
-
-const _kCargokitReleaseRequiredPaths = [
-  'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/bin/build_tool.dart',
-  'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/lib/build_tool.dart',
-  'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/pubspec.yaml',
-  'frb_codegen/assets/integration_template/cargokit/plugin/cargokit/build_tool/bin/build_tool.dart',
-  'frb_codegen/assets/integration_template/cargokit/plugin/cargokit/build_tool/lib/build_tool.dart',
-  'frb_codegen/assets/integration_template/cargokit/plugin/cargokit/build_tool/pubspec.yaml',
-];
 
 String simpleReplaceSection(
   String raw, {
