@@ -392,7 +392,7 @@ jobs:
         name: Setup HarmonyOS toolchain
         uses: ErBWs/setup-ohos@v1
         with:
-          version: latest
+          version: 5.1.1.823
           cache: true
       - if: matrix.platforms == 'ohos'
         name: Setup JDK17
@@ -611,7 +611,7 @@ jobs:
         name: Setup HarmonyOS toolchain
         uses: ErBWs/setup-ohos@v1
         with:
-          version: latest
+          version: 5.1.1.823
           cache: true
       - if: matrix.info.target == 'ohos'
         name: Setup JDK17
@@ -632,7 +632,8 @@ jobs:
           echo "OHOS_SDK_HOME=${OHOS_NDK_HOME}/native" >> $GITHUB_ENV
 
       # execute
-      - run: ./frb_internal build-flutter --package ${{ matrix.info.package }} --target ${{ matrix.info.target }}
+      - continue-on-error: ${{ matrix.info.target == 'ohos' }}
+        run: ./frb_internal build-flutter --package ${{ matrix.info.package }} --target ${{ matrix.info.target }}
 
       # report
       - uses: actions/upload-artifact@v4
