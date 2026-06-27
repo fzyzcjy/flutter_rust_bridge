@@ -35,6 +35,27 @@ int genericResultAliasOkTwinSync() => RustLib.instance.api
 int genericResultAliasErrTwinSync() => RustLib.instance.api
     .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasErrTwinSync();
 
+int genericResultAliasChainedOkTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasChainedOkTwinSync();
+
+int genericResultAliasChainedErrTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasChainedErrTwinSync();
+
+int genericResultAliasTwoParamsOkTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasTwoParamsOkTwinSync();
+
+int genericResultAliasTwoParamsErrTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasTwoParamsErrTwinSync();
+
+int? genericOptionAliasReturnTwinSync({required int input}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinSyncGenericOptionAliasReturnTwinSync(
+            input: input);
+
+int genericOptionAliasArgTwinSync({int? input}) => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericOptionAliasArgTwinSync(
+        input: input);
+
 enum GenericAliasErrorTwinSync {
   deliberate,
   ;

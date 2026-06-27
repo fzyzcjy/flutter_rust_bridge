@@ -58,3 +58,45 @@ pub async fn generic_result_alias_ok_twin_rust_async() -> AppResultTwinRustAsync
 pub async fn generic_result_alias_err_twin_rust_async() -> AppResultTwinRustAsync<i32> {
     Err(GenericAliasErrorTwinRustAsync::Deliberate)
 }
+
+pub type ChainedAppResultTwinRustAsync<T> = AppResultTwinRustAsync<T>;
+
+pub async fn generic_result_alias_chained_ok_twin_rust_async() -> ChainedAppResultTwinRustAsync<i32>
+{
+    Ok(43)
+}
+
+pub async fn generic_result_alias_chained_err_twin_rust_async() -> ChainedAppResultTwinRustAsync<i32>
+{
+    Err(GenericAliasErrorTwinRustAsync::Deliberate)
+}
+
+pub type FlexibleResultTwinRustAsync<T, E> = std::result::Result<T, E>;
+
+pub async fn generic_result_alias_two_params_ok_twin_rust_async(
+) -> FlexibleResultTwinRustAsync<i32, GenericAliasErrorTwinRustAsync> {
+    Ok(44)
+}
+
+pub async fn generic_result_alias_two_params_err_twin_rust_async(
+) -> FlexibleResultTwinRustAsync<i32, GenericAliasErrorTwinRustAsync> {
+    Err(GenericAliasErrorTwinRustAsync::Deliberate)
+}
+
+pub type OptionalAliasTwinRustAsync<T> = Option<T>;
+
+pub async fn generic_option_alias_return_twin_rust_async(
+    input: i32,
+) -> OptionalAliasTwinRustAsync<i32> {
+    if input >= 0 {
+        Some(input)
+    } else {
+        None
+    }
+}
+
+pub async fn generic_option_alias_arg_twin_rust_async(
+    input: OptionalAliasTwinRustAsync<i32>,
+) -> i32 {
+    input.unwrap_or(-1)
+}

@@ -34,6 +34,27 @@ Future<int> genericResultAliasOkTwinSse() => RustLib.instance.api
 Future<int> genericResultAliasErrTwinSse() => RustLib.instance.api
     .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasErrTwinSse();
 
+Future<int> genericResultAliasChainedOkTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasChainedOkTwinSse();
+
+Future<int> genericResultAliasChainedErrTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasChainedErrTwinSse();
+
+Future<int> genericResultAliasTwoParamsOkTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasTwoParamsOkTwinSse();
+
+Future<int> genericResultAliasTwoParamsErrTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasTwoParamsErrTwinSse();
+
+Future<int?> genericOptionAliasReturnTwinSse({required int input}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinSseGenericOptionAliasReturnTwinSse(
+            input: input);
+
+Future<int> genericOptionAliasArgTwinSse({int? input}) => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericOptionAliasArgTwinSse(
+        input: input);
+
 enum GenericAliasErrorTwinSse {
   deliberate,
   ;

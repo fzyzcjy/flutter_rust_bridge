@@ -62,3 +62,51 @@ pub async fn generic_result_alias_ok_twin_rust_async_sse() -> AppResultTwinRustA
 pub async fn generic_result_alias_err_twin_rust_async_sse() -> AppResultTwinRustAsyncSse<i32> {
     Err(GenericAliasErrorTwinRustAsyncSse::Deliberate)
 }
+
+pub type ChainedAppResultTwinRustAsyncSse<T> = AppResultTwinRustAsyncSse<T>;
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn generic_result_alias_chained_ok_twin_rust_async_sse(
+) -> ChainedAppResultTwinRustAsyncSse<i32> {
+    Ok(43)
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn generic_result_alias_chained_err_twin_rust_async_sse(
+) -> ChainedAppResultTwinRustAsyncSse<i32> {
+    Err(GenericAliasErrorTwinRustAsyncSse::Deliberate)
+}
+
+pub type FlexibleResultTwinRustAsyncSse<T, E> = std::result::Result<T, E>;
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn generic_result_alias_two_params_ok_twin_rust_async_sse(
+) -> FlexibleResultTwinRustAsyncSse<i32, GenericAliasErrorTwinRustAsyncSse> {
+    Ok(44)
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn generic_result_alias_two_params_err_twin_rust_async_sse(
+) -> FlexibleResultTwinRustAsyncSse<i32, GenericAliasErrorTwinRustAsyncSse> {
+    Err(GenericAliasErrorTwinRustAsyncSse::Deliberate)
+}
+
+pub type OptionalAliasTwinRustAsyncSse<T> = Option<T>;
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn generic_option_alias_return_twin_rust_async_sse(
+    input: i32,
+) -> OptionalAliasTwinRustAsyncSse<i32> {
+    if input >= 0 {
+        Some(input)
+    } else {
+        None
+    }
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn generic_option_alias_arg_twin_rust_async_sse(
+    input: OptionalAliasTwinRustAsyncSse<i32>,
+) -> i32 {
+    input.unwrap_or(-1)
+}

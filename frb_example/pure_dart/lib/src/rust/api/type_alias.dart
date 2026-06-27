@@ -9,8 +9,6 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ResultShadowErrorTwinNormal`
-
 Future<BigInt> handleTypeAliasIdTwinNormal({required BigInt input}) =>
     RustLib.instance.api
         .crateApiTypeAliasHandleTypeAliasIdTwinNormal(input: input);
@@ -33,8 +31,33 @@ Future<int> genericResultAliasOkTwinNormal() =>
 Future<int> genericResultAliasErrTwinNormal() =>
     RustLib.instance.api.crateApiTypeAliasGenericResultAliasErrTwinNormal();
 
+Future<int> genericResultAliasChainedOkTwinNormal() => RustLib.instance.api
+    .crateApiTypeAliasGenericResultAliasChainedOkTwinNormal();
+
+Future<int> genericResultAliasChainedErrTwinNormal() => RustLib.instance.api
+    .crateApiTypeAliasGenericResultAliasChainedErrTwinNormal();
+
+Future<int> genericResultAliasTwoParamsOkTwinNormal() => RustLib.instance.api
+    .crateApiTypeAliasGenericResultAliasTwoParamsOkTwinNormal();
+
+Future<int> genericResultAliasTwoParamsErrTwinNormal() => RustLib.instance.api
+    .crateApiTypeAliasGenericResultAliasTwoParamsErrTwinNormal();
+
+Future<int?> genericOptionAliasReturnTwinNormal({required int input}) =>
+    RustLib.instance.api
+        .crateApiTypeAliasGenericOptionAliasReturnTwinNormal(input: input);
+
+Future<int> genericOptionAliasArgTwinNormal({int? input}) =>
+    RustLib.instance.api
+        .crateApiTypeAliasGenericOptionAliasArgTwinNormal(input: input);
+
 enum GenericAliasErrorTwinNormal {
   deliberate,
+  ;
+}
+
+enum ResultShadowErrorTwinNormal {
+  dummy,
   ;
 }
 
