@@ -25,7 +25,7 @@ pub(crate) fn web_throw_lock_error(action: &str, error: tokio::sync::TryLockErro
 #[cfg(target_family = "wasm")]
 thread_local! {
     static WEB_IS_DEDICATED_WORKER_CONTEXT: std::cell::Cell<Option<bool>> =
-        std::cell::Cell::new(None);
+        const { std::cell::Cell::new(None) };
 }
 
 #[cfg(target_family = "wasm")]
