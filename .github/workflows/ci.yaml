@@ -391,7 +391,7 @@ jobs:
         name: Setup HarmonyOS toolchain
         uses: ErBWs/setup-ohos@v1
         with:
-          version: latest
+          version: 5.1.0.840
           cache: true
       - if: matrix.platforms == 'ohos'
         name: Setup JDK17
@@ -609,7 +609,7 @@ jobs:
         name: Setup HarmonyOS toolchain
         uses: ErBWs/setup-ohos@v1
         with:
-          version: latest
+          version: 5.1.0.840
           cache: true
       - if: matrix.info.target == 'ohos'
         name: Setup JDK17
