@@ -16,12 +16,11 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 - Check CargoKit submodules before publishing:
 
   ```bash
-  git submodule status --recursive
   git submodule update --init --recursive
-  cd frb_codegen && cargo package --list --allow-dirty | rg 'assets/integration_template/cargokit/.*/build_tool/(pubspec.yaml|bin/build_tool.dart|lib/build_tool.dart)'
+  git submodule status --recursive
   ```
 
-  Stop if either CargoKit submodule path is uninitialized, if the package list omits the app or plugin CargoKit `build_tool` files, or if the command does not show both `app/rust_builder/cargokit/build_tool` and `plugin/cargokit/build_tool`. A release built without initialized CargoKit submodules publishes a broken `flutter_rust_bridge_codegen` crate.
+  Stop if either CargoKit submodule path remains uninitialized. A release built without initialized CargoKit submodules publishes a broken `flutter_rust_bridge_codegen` crate. The release script also verifies the packaged CargoKit files before `cargo publish`, so the skill preflight does not need to enumerate individual files.
 - Treat `master` as a moving branch. Before each irreversible release phase, fetch `origin master`, confirm the current release branch or detached checkout still points at the intended latest `origin/master` commit, and re-run `git status --short --branch` to confirm there are no unexpected local changes.
 - Confirm the target version in `CHANGELOG.md`, root `Cargo.toml`, and `frb_dart/pubspec.yaml`.
 - Compute the release versions the same way `./frb_internal release` does: the top `CHANGELOG.md` version is the new version and the next release section is the old version.
