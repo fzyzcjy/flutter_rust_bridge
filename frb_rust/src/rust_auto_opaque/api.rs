@@ -2,7 +2,7 @@ use crate::generalized_arc::base_arc::BaseArc;
 use crate::rust_async::{RwLockReadGuard, RwLockWriteGuard};
 use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
 #[cfg(target_family = "wasm")]
-use crate::rust_auto_opaque::web_can_block_on_lock;
+use crate::rust_auto_opaque::web_is_dedicated_worker_context;
 #[cfg(target_family = "wasm")]
 use crate::rust_auto_opaque::web_throw_lock_error;
 use crate::rust_auto_opaque::RustAutoOpaqueBase;
@@ -19,7 +19,7 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn blocking_read(&self) -> RwLockReadGuard<'_, T> {
         #[cfg(target_family = "wasm")]
         {
-            if web_can_block_on_lock() {
+            if web_is_dedicated_worker_context() {
                 self.0.data.blocking_read()
             } else {
                 self.try_read()
@@ -35,7 +35,7 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn blocking_write(&self) -> RwLockWriteGuard<'_, T> {
         #[cfg(target_family = "wasm")]
         {
-            if web_can_block_on_lock() {
+            if web_is_dedicated_worker_context() {
                 self.0.data.blocking_write()
             } else {
                 self.try_write()

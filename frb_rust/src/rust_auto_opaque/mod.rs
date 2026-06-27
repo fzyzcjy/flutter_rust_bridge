@@ -23,7 +23,7 @@ pub(crate) fn web_throw_lock_error(action: &str, error: tokio::sync::TryLockErro
 }
 
 #[cfg(target_family = "wasm")]
-pub(crate) fn web_can_block_on_lock() -> bool {
+pub(crate) fn web_is_dedicated_worker_context() -> bool {
     use wasm_bindgen::JsCast;
 
     js_sys::global()

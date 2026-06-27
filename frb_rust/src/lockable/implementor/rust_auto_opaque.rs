@@ -2,7 +2,7 @@ use crate::for_generated::{BaseArc, RustAutoOpaqueInner, RustOpaqueBase};
 use crate::lockable::base::Lockable;
 use crate::lockable::order::LockableOrder;
 #[cfg(target_family = "wasm")]
-use crate::rust_auto_opaque::web_can_block_on_lock;
+use crate::rust_auto_opaque::web_is_dedicated_worker_context;
 #[cfg(target_family = "wasm")]
 use crate::rust_auto_opaque::web_throw_lock_error;
 use std::future::Future;
@@ -27,7 +27,7 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
         #[cfg(target_family = "wasm")]
         {
-            if web_can_block_on_lock() {
+            if web_is_dedicated_worker_context() {
                 self.data.blocking_read()
             } else {
                 self.data
@@ -44,7 +44,7 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
         #[cfg(target_family = "wasm")]
         {
-            if web_can_block_on_lock() {
+            if web_is_dedicated_worker_context() {
                 self.data.blocking_write()
             } else {
                 self.data
