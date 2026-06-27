@@ -27,6 +27,7 @@ A (very brief) overview of the approaches are as follows:
 - [`flutter_rust_bridge_codegen create/integrate` command](builtin): High automation level, and (for library instead of app) no prebuilt binaries. By default, it uses the Cargokit backend. It can also generate the Native Assets backend when `--integration-backend native-assets` is specified.
 - [Native assets](native-assets): Dart/Flutter build hooks backend. High automation level, possibly the preferred way in the future.
 - [Cargokit](cargokit): High automation level, (for library instead of app) no prebuilt binaries.
+- [Migrate from Cargokit to Native Assets](migrate-cargokit-to-native-assets): Steps for existing projects that want to move from the default Cargokit backend to the Native Assets backend.
 - [flutter_rust_bridge_template](template): Fine-grained control to compilation process.
 - [BrickHub brick](existing): Similar to the line above.
 - [Create libraries](library): Fine-grained control to compilation process, create CI and prebuilt binaries.
