@@ -190,7 +190,7 @@ final kCiJobs = [
     'test_flutter_native_ios',
     matrix: CiMatrix([
       for (final package in _flutterNativePackages)
-        {'package': package, 'device': 'iPhone Simulator'},
+        {'package': package, 'device': 'iPhone 17 Pro Max Simulator (26.5)'},
     ]),
   ),
   CiJob(
@@ -292,7 +292,7 @@ List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
       'image': 'macos-latest',
       'platform': 'ios',
       'target': 'ios',
-      'device': 'iPhone Simulator',
+      'device': 'iPhone 17 Pro Max Simulator (26.5)',
       'package': package,
       'package_path': packagePath,
     },
