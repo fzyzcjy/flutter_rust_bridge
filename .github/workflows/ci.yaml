@@ -1027,34 +1027,7 @@ jobs:
       - name: "Start Simulator"
         run: |
           xcrun xctrace list devices
-          UDID=$(DEVICE='${{ matrix.device }}' /usr/bin/python3 - <<'PY'
-          import json
-          import os
-          import re
-          import subprocess
-          import sys
-
-          device = os.environ['DEVICE']
-          match = re.fullmatch(r'(.+) Simulator \(([^()]+)\)', device)
-          name = match.group(1) if match else device
-          version = match.group(2) if match else None
-          devices = json.loads(subprocess.check_output(
-              ['xcrun', 'simctl', 'list', 'devices', 'available', '-j'],
-              text=True,
-          ))
-          matches = []
-          for runtime, runtime_devices in devices.get('devices', {}).items():
-              if version and not runtime.endswith(f'iOS-{version.replace(".", "-")}'):
-                  continue
-              for runtime_device in runtime_devices:
-                  if runtime_device.get('name') == name:
-                      matches.append(runtime_device['udid'])
-          if len(matches) != 1:
-              print(f'Expected exactly one simulator for {device}, found {len(matches)}', file=sys.stderr)
-              sys.exit(1)
-          print(matches[0])
-          PY
-          )
+          UDID=$(/usr/bin/python3 tools/find_ios_simulator_udid.py '${{ matrix.device }}')
           echo UDID=$UDID
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
       - uses: flutter-actions/setup-flutter@v4
@@ -1223,34 +1196,7 @@ jobs:
         name: Start Simulator
         run: |
           xcrun xctrace list devices
-          UDID=$(DEVICE='${{ matrix.info.device }}' /usr/bin/python3 - <<'PY'
-          import json
-          import os
-          import re
-          import subprocess
-          import sys
-
-          device = os.environ['DEVICE']
-          match = re.fullmatch(r'(.+) Simulator \(([^()]+)\)', device)
-          name = match.group(1) if match else device
-          version = match.group(2) if match else None
-          devices = json.loads(subprocess.check_output(
-              ['xcrun', 'simctl', 'list', 'devices', 'available', '-j'],
-              text=True,
-          ))
-          matches = []
-          for runtime, runtime_devices in devices.get('devices', {}).items():
-              if version and not runtime.endswith(f'iOS-{version.replace(".", "-")}'):
-                  continue
-              for runtime_device in runtime_devices:
-                  if runtime_device.get('name') == name:
-                      matches.append(runtime_device['udid'])
-          if len(matches) != 1:
-              print(f'Expected exactly one simulator for {device}, found {len(matches)}', file=sys.stderr)
-              sys.exit(1)
-          print(matches[0])
-          PY
-          )
+          UDID=$(/usr/bin/python3 tools/find_ios_simulator_udid.py '${{ matrix.info.device }}')
           echo UDID=$UDID
           echo "UDID=$UDID" >> "$GITHUB_ENV"
           echo "QUICKSTART_SMOKE_DEVICE_ID=$UDID" >> "$GITHUB_ENV"
