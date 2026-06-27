@@ -9,14 +9,26 @@ part of 'test_web_command.dart';
 TestWebConfig _$parseTestWebConfigResult(ArgResults result) => TestWebConfig()
   ..entrypoint = result['entrypoint'] as String
   ..headless = result['headless'] as bool
-  ..rustFeatures = result['rust-features'] as List<String>;
+  ..rustFeatures = result['rust-features'] as List<String>
+  ..wasm = result['wasm'] as bool;
 
 ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
-  ..addOption('entrypoint', help: 'Dart file to be tested')
-  ..addFlag('headless', help: 'Make the browser headless', defaultsTo: true)
+  ..addOption(
+    'entrypoint',
+    help: 'Dart file to be tested',
+  )
+  ..addFlag(
+    'headless',
+    help: 'Make the browser headless',
+    defaultsTo: true,
+  )
   ..addMultiOption(
     'rust-features',
     help: 'Rust feature flags to set during build',
+  )
+  ..addFlag(
+    'wasm',
+    help: 'Compile the Dart test entrypoint with dart2wasm',
   );
 
 final _$parserForTestWebConfig = _$populateTestWebConfigParser(ArgParser());

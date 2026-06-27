@@ -7,6 +7,34 @@ import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:meta/meta.dart';
 
+const _cargoLlvmCovEnvKeys = [
+  'LLVM_PROFILE_FILE',
+  '__CARGO_LLVM_COV_RUSTC_WRAPPER',
+  '__CARGO_LLVM_COV_RUSTC_WRAPPER_RUSTFLAGS',
+  '__CARGO_LLVM_COV_RUSTC_WRAPPER_CRATE_NAMES',
+  'RUSTC_WRAPPER',
+  'CARGO_LLVM_COV',
+  'CARGO_LLVM_COV_SHOW_ENV',
+  'CARGO_LLVM_COV_TARGET_DIR',
+  'CARGO_LLVM_COV_BUILD_DIR',
+];
+
+/// Command runner used by build-web, injectable by tests.
+@visibleForTesting
+typedef BuildWebCommandRunner =
+    Future<RunCommandOutput> Function(
+      String command,
+      List<String> arguments, {
+      String? pwd,
+      Map<String, String>? env,
+      bool shell,
+      bool silent,
+      bool? checkExitCode,
+      bool printCommandInStderr,
+      List<String> removedParentEnvKeys,
+      Duration? timeout,
+    });
+
 /// {@macro flutter_rust_bridge.cli}
 class BuildWebArgs {
   /// {@macro flutter_rust_bridge.cli}
@@ -37,6 +65,9 @@ class BuildWebArgs {
   final String? dartCompileJsEntrypoint;
 
   /// {@macro flutter_rust_bridge.cli}
+  final String? dartCompileWasmEntrypoint;
+
+  /// {@macro flutter_rust_bridge.cli}
   final List<String> features;
 
   /// {@macro flutter_rust_bridge.cli}
@@ -50,6 +81,7 @@ class BuildWebArgs {
     required this.wasmPackRustupToolchain,
     required this.wasmPackRustflags,
     required this.dartCompileJsEntrypoint,
+    this.dartCompileWasmEntrypoint,
     this.features = const [],
   });
 }
@@ -60,47 +92,71 @@ extension on BuildWebArgs {
   String get outputWasm => '$output/pkg';
 
   String get outputDart => '$output/main.dart.js';
+
+  String get outputDartWasm => '$output/main.dart.wasm';
 }
 
 /// {@macro flutter_rust_bridge.cli}
-Future<void> executeBuildWeb(BuildWebArgs args) async {
-  await _sanityChecks(args);
+Future<void> executeBuildWeb(
+  BuildWebArgs args, {
+  @visibleForTesting BuildWebCommandRunner runCommandImpl = runCommand,
+}) async {
+  await _sanityChecks(args, runCommandImpl: runCommandImpl);
 
   final rustCrateName = await _getRustCreateName(
     rustCrateDir: args.rustCrateDir,
+    runCommandImpl: runCommandImpl,
   );
 
-  await _executeWasmPack(args, rustCrateName: rustCrateName);
+  await _executeWasmPack(
+    args,
+    rustCrateName: rustCrateName,
+    runCommandImpl: runCommandImpl,
+  );
 
   if (args.enableWasmBindgen) {
-    await _executeWasmBindgen(args, rustCrateName: rustCrateName);
+    await _executeWasmBindgen(
+      args,
+      rustCrateName: rustCrateName,
+      runCommandImpl: runCommandImpl,
+    );
   }
 
   if (args.dartCompileJsEntrypoint != null) {
-    await _executeDartCompile(args);
+    await _executeDartCompileJs(args, runCommandImpl: runCommandImpl);
+  }
+
+  if (args.dartCompileWasmEntrypoint != null) {
+    await _executeDartCompileWasm(args, runCommandImpl: runCommandImpl);
   }
 }
 
 final _commandWhich = Platform.isWindows ? 'where.exe' : 'which';
 
-Future<void> _sanityChecks(BuildWebArgs args) async {
+Future<void> _sanityChecks(
+  BuildWebArgs args, {
+  required BuildWebCommandRunner runCommandImpl,
+}) async {
   await _ensurePackageInstalled(
     binaryName: 'wasm-pack',
-    install: () async => await runCommand('cargo', ['install', 'wasm-pack']),
+    install: () async =>
+        await runCommandImpl('cargo', ['install', 'wasm-pack']),
     hint:
         'wasm-pack is required, but not found in the path.\n'
         'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
         'or running `cargo install wasm-pack`.',
+    runCommandImpl: runCommandImpl,
   );
 
   if (args.enableWasmBindgen) {
     await _ensurePackageInstalled(
       binaryName: 'wasm-bindgen',
       install: () async =>
-          await runCommand('cargo', ['install', '-f', 'wasm-bindgen-cli']),
+          await runCommandImpl('cargo', ['install', '-f', 'wasm-bindgen-cli']),
       hint:
           'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
           'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
+      runCommandImpl: runCommandImpl,
     );
   }
 
@@ -117,10 +173,11 @@ Future<void> _ensurePackageInstalled({
   required String binaryName,
   required Future<void> Function() install,
   required String hint,
+  required BuildWebCommandRunner runCommandImpl,
 }) async {
   Future<bool> isBinaryInstalled() async {
     try {
-      await runCommand(_commandWhich, [binaryName]);
+      await runCommandImpl(_commandWhich, [binaryName]);
       return true;
     } catch (_) {
       return false;
@@ -137,9 +194,12 @@ Future<void> _ensurePackageInstalled({
   }
 }
 
-Future<String> _getRustCreateName({required String rustCrateDir}) async {
+Future<String> _getRustCreateName({
+  required String rustCrateDir,
+  required BuildWebCommandRunner runCommandImpl,
+}) async {
   final manifest = jsonDecode(
-    (await runCommand(
+    (await runCommandImpl(
       'cargo',
       ['read-manifest'],
       pwd: rustCrateDir,
@@ -158,6 +218,7 @@ Future<String> _getRustCreateName({required String rustCrateDir}) async {
 Future<void> _executeWasmPack(
   BuildWebArgs args, {
   required String rustCrateName,
+  required BuildWebCommandRunner runCommandImpl,
 }) async {
   final rustflagsResolution = computeWasmPackRustflagsResolution(
     argsOverride: args.wasmPackRustflags,
@@ -166,7 +227,7 @@ Future<void> _executeWasmPack(
     print(rustflagsResolution.warning);
   }
 
-  await runCommand(
+  await runCommandImpl(
     'wasm-pack',
     [
       'build',
@@ -193,6 +254,7 @@ Future<void> _executeWasmPack(
       'RUSTFLAGS': rustflagsResolution.rustflags,
       if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
     },
+    removedParentEnvKeys: _cargoLlvmCovEnvKeys,
   );
 }
 
@@ -253,8 +315,9 @@ WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
 Future<void> _executeWasmBindgen(
   BuildWebArgs args, {
   required String rustCrateName,
+  required BuildWebCommandRunner runCommandImpl,
 }) async {
-  await runCommand('wasm-bindgen', [
+  await runCommandImpl('wasm-bindgen', [
     '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
     '--out-dir',
     args.outputWasm,
@@ -268,8 +331,11 @@ Future<void> _executeWasmBindgen(
   ]);
 }
 
-Future<void> _executeDartCompile(BuildWebArgs args) async {
-  await runCommand('dart', [
+Future<void> _executeDartCompileJs(
+  BuildWebArgs args, {
+  required BuildWebCommandRunner runCommandImpl,
+}) async {
+  await runCommandImpl('dart', [
     'compile',
     'js',
     '-o',
@@ -278,5 +344,19 @@ Future<void> _executeDartCompile(BuildWebArgs args) async {
     if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
     if (args.verbose) '--verbose',
     args.dartCompileJsEntrypoint!,
+  ]);
+}
+
+Future<void> _executeDartCompileWasm(
+  BuildWebArgs args, {
+  required BuildWebCommandRunner runCommandImpl,
+}) async {
+  await runCommandImpl('dart', [
+    'compile',
+    'wasm',
+    '-o',
+    args.outputDartWasm,
+    if (args.verbose) '--verbose',
+    args.dartCompileWasmEntrypoint!,
   ]);
 }

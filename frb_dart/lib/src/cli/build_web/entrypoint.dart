@@ -1,6 +1,7 @@
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge/src/cli/build_web/executor.dart';
+import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
 part 'entrypoint.g.dart';
@@ -15,7 +16,7 @@ class BuildWebCommand extends _$ConfigCommand<void> {
 
   @override
   Future<void> run() async {
-    await executeBuildWeb(_parseConfigToArgs(_options));
+    await executeBuildWeb(parseBuildWebConfigToArgs(_options));
   }
 }
 
@@ -76,6 +77,13 @@ class Config {
   )
   late String? dartCompileJsEntrypoint;
 
+  /// {@macro flutter_rust_bridge.cli}
+  @CliOption(
+    help:
+        'If specified, compile Dart into WebAssembly and use this option as entrypoint',
+  )
+  late String? dartCompileWasmEntrypoint;
+
   // migrate to `wasmPackArgs`
   // /// {@macro flutter_rust_bridge.cli}
   // @CliOption(
@@ -106,9 +114,11 @@ class Config {
   // late bool referenceTypes;
 }
 
-BuildWebArgs _parseConfigToArgs(Config config) {
+/// Converts parsed CLI configuration to executor arguments.
+@visibleForTesting
+BuildWebArgs parseBuildWebConfigToArgs(Config config) {
   return BuildWebArgs(
-    output: config.output ?? _fallbackOutput(dartRoot: config.dartRoot),
+    output: config.output ?? _fallbackOutput(dartRoot: config.dartRoot ?? '.'),
     release: config.release,
     verbose: config.verbose,
     rustCrateDir: config.rustRoot,
@@ -117,8 +127,9 @@ BuildWebArgs _parseConfigToArgs(Config config) {
     wasmPackRustupToolchain: config.wasmPackRustupToolchain,
     wasmPackRustflags: config.wasmPackRustflags,
     dartCompileJsEntrypoint: config.dartCompileJsEntrypoint,
+    dartCompileWasmEntrypoint: config.dartCompileWasmEntrypoint,
   );
 }
 
-String _fallbackOutput({required String? dartRoot}) =>
-    path.join(dartRoot!, 'web');
+String _fallbackOutput({required String dartRoot}) =>
+    path.join(dartRoot, 'web');

@@ -8,7 +8,7 @@ import 'package:web/web.dart' as web;
 typedef NativePortType = web.EventTarget;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef WireSyncRust2DartDco = List<dynamic>;
+typedef WireSyncRust2DartDco = Object?;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef WireSyncRust2DartSse = JSUint8Array;

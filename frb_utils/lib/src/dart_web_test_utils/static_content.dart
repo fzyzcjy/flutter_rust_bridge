@@ -1,4 +1,10 @@
-const kTestEntrypointHtmlContent = r'''
+String testEntrypointHtmlContent(String entrypointScript) =>
+    _kTestEntrypointHtmlContentTemplate.replaceFirst(
+      '@@ENTRYPOINT_SCRIPT@@',
+      entrypointScript,
+    );
+
+const _kTestEntrypointHtmlContentTemplate = r'''
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,6 +72,16 @@ const kTestEntrypointHtmlContent = r'''
     };
     const href = window.location.href.replace("http", "ws");
     const channel = new WebSocket(href);
+    globalThis.sendTestResult = (result) =>
+      new Promise((resolve, reject) => {
+        console.log(`sendResult result=${result} to url=${href}`);
+        const resultChannel = new WebSocket(href);
+        resultChannel.onopen = () => {
+          resultChannel.send(JSON.stringify({ __result__: result }));
+          resolve(null);
+        };
+        resultChannel.onerror = reject;
+      });
     console.log = (...args) => {
       for (const a of args) {
         output.appendChild(colorize(a));
@@ -82,6 +98,21 @@ const kTestEntrypointHtmlContent = r'''
       error(...args);
     };
   </script>
-  <script src="main.dart.js" async></script>
+  @@ENTRYPOINT_SCRIPT@@
 </html>
+''';
+
+const kJsEntrypointScript = r'''
+  <script src="main.dart.js" async></script>
+''';
+
+const kWasmEntrypointScript = r'''
+  <script type="module">
+    import { compile } from "./main.dart.mjs";
+
+    const response = await fetch("./main.dart.wasm");
+    const app = await compile(await response.arrayBuffer());
+    const instance = await app.instantiate({});
+    instance.invokeMain();
+  </script>
 ''';

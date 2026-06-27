@@ -37,7 +37,8 @@ Future<void> executeTestWeb(TestWebConfig config) async {
       rustCrateDir: '$dartRoot/rust',
       cargoBuildArgs: cargoArgs,
       wasmBindgenArgs: [],
-      dartCompileJsEntrypoint: config.entrypoint,
+      dartCompileJsEntrypoint: config.wasm ? null : config.entrypoint,
+      dartCompileWasmEntrypoint: config.wasm ? config.entrypoint : null,
       // TODO make this configurable later
       wasmPackRustupToolchain: 'nightly-2025-02-01',
       wasmPackRustflags: null,
@@ -60,7 +61,7 @@ Future<void> executeTestWeb(TestWebConfig config) async {
           await browser?.close();
         },
       ),
-      _createIndexFileHandler(),
+      _createIndexFileHandler(wasm: config.wasm),
     ],
   );
 
@@ -90,10 +91,12 @@ Handler _createWebSocketHandler({
 
 const _kTestEntrypointHttpName = 'test_entrypoint.html';
 
-Handler _createIndexFileHandler() => (request) {
+Handler _createIndexFileHandler({required bool wasm}) => (request) {
       if (request.url.path == _kTestEntrypointHttpName) {
         return Response.ok(
-          kTestEntrypointHtmlContent,
+          testEntrypointHtmlContent(
+            wasm ? kWasmEntrypointScript : kJsEntrypointScript,
+          ),
           headers: {HttpHeaders.contentTypeHeader: 'text/html'},
         );
       }

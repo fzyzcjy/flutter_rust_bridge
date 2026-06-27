@@ -72,9 +72,11 @@ void debugPrint(String message) {
 
 Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
-/// borrowed from flutter foundation [kIsWeb](https://api.flutter.dev/flutter/foundation/kIsWeb-constant.html),
-/// but allows for using it in a Dart context alike
-const bool kIsWeb = identical(0, 0.0);
+/// Whether the current Dart compilation target is Web.
+const bool kIsWeb = bool.fromEnvironment('dart.library.js_interop');
+
+/// Whether these tests were compiled by `dart compile wasm`.
+const bool kIsDartWasm = kIsWeb && !identical(0, 0.0);
 
 String? skipWeb([String reason = 'unspecified']) =>
     kIsWeb ? 'Skipped on web (reason: $reason)' : null;
@@ -120,7 +122,11 @@ Future<void> expectRustPanicRaw(
   String mode,
   Matcher matcher,
 ) async {
-  if (kIsWeb && mode.contains('RustAsync')) {
+  if (kIsDartWasm) {
+    markTestSkipped(
+      'Skipped because Rust panics abort the WebAssembly module when tests run with dart2wasm.',
+    );
+  } else if (kIsWeb && mode.contains('RustAsync')) {
     print('expectRustPanicRaw check it should have no response');
     // expect it timeouts (hangs), instead of throws
     var bodyCompleted = false;

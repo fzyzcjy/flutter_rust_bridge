@@ -550,16 +550,36 @@
       "id": "test_dart_web",
       "matrix": [
         {
-          "package": "frb_dart"
+          "package": "frb_dart",
+          "wasm": false
         },
         {
-          "package": "frb_example--dart_minimal"
+          "package": "frb_dart",
+          "wasm": true
         },
         {
-          "package": "frb_example--pure_dart"
+          "package": "frb_example--dart_minimal",
+          "wasm": false
         },
         {
-          "package": "frb_example--pure_dart_pde"
+          "package": "frb_example--dart_minimal",
+          "wasm": true
+        },
+        {
+          "package": "frb_example--pure_dart",
+          "wasm": false
+        },
+        {
+          "package": "frb_example--pure_dart",
+          "wasm": true
+        },
+        {
+          "package": "frb_example--pure_dart_pde",
+          "wasm": false
+        },
+        {
+          "package": "frb_example--pure_dart_pde",
+          "wasm": true
         }
       ]
     },
@@ -833,13 +853,28 @@
       "id": "test_flutter_web",
       "matrix": [
         {
-          "package": "frb_example--flutter_via_create"
+          "package": "frb_example--flutter_via_create",
+          "wasm": false
         },
         {
-          "package": "frb_example--flutter_via_create_native_assets"
+          "package": "frb_example--flutter_via_create",
+          "wasm": true
         },
         {
-          "package": "frb_example--gallery"
+          "package": "frb_example--flutter_via_create_native_assets",
+          "wasm": false
+        },
+        {
+          "package": "frb_example--flutter_via_create_native_assets",
+          "wasm": true
+        },
+        {
+          "package": "frb_example--gallery",
+          "wasm": false
+        },
+        {
+          "package": "frb_example--gallery",
+          "wasm": true
         }
       ]
     },

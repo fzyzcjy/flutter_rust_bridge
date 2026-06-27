@@ -811,7 +811,7 @@ jobs:
   test_dart_web:
     needs: plan_ci
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_web.enable == true }}
-    name: 'Test :: Dart :: Web'
+    name: "Test :: Dart :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -861,7 +861,7 @@ jobs:
           wasm-bindgen --version | grep '0.2.100' || cargo +nightly-2025-02-01 install wasm-bindgen-cli --version 0.2.100 --locked --force
 
       # execute
-      - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
+      - run: ./frb_internal test-dart-web --package ${{ matrix.package }} ${{ matrix.wasm && '--wasm' || '' }}
 
   test_dart_valgrind:
     needs: plan_ci
@@ -1075,7 +1075,7 @@ jobs:
   test_flutter_web:
     needs: plan_ci
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_web.enable == true }}
-    name: 'Test :: Flutter :: Web'
+    name: "Test :: Flutter :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -1105,8 +1105,8 @@ jobs:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
       - run: cargo install cargo-llvm-cov --version 0.6.24 --locked
       - run: |-
-          rustup toolchain install nightly
-          rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+          rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}
+          rustup component add rust-src --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}
       - uses: nanasess/setup-chromedriver@v2
       # ref https://github.com/dewbambs/flutter_github_actions/blob/dev/.github/workflows/e2e_test.yml
       - run: |-
@@ -1119,13 +1119,13 @@ jobs:
           lsof -i :4444
 
       # execute
-      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
+      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage ${{ matrix.wasm && '--wasm' || '' }}
 
       # report
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ${{ github.job }}--${{ matrix.package }}--coverage
+          name: ${{ github.job }}--${{ matrix.package }}--${{ matrix.wasm && 'dart2wasm' || 'dart2js' }}--coverage
           path: target/coverage
 
   test_flutter_quickstart_smoke:

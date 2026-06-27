@@ -1,5 +1,6 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
+import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/utils/base_lazy_port_manager.dart';
 
@@ -37,11 +38,11 @@ class DartHandlerPortManager extends BaseLazyPortManager {
 
   @override
   void onData(covariant List<dynamic> message) {
-    switch (message[0]) {
+    switch (dcoDecodePrimitiveInt(message[0])) {
       case _DartHandlerPortAction.dartOpaqueDrop:
         assert(message.length == 2);
         _generalizedFrbRustBinding.dartOpaqueDropThreadBoxPersistentHandle(
-          message[1],
+          dcoDecodePrimitiveInt(message[1]),
         );
       case _DartHandlerPortAction.dartFnInvoke:
         _handler.dartFnInvoke(message.sublist(1), _generalizedFrbRustBinding);

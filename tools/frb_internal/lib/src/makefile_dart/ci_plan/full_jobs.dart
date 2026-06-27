@@ -157,7 +157,7 @@ final kCiJobs = [
     'test_dart_web',
     matrix: CiMatrix([
       for (final package in ['frb_dart', ..._exampleDartPackages])
-        {'package': package},
+        for (final wasm in [false, true]) {'package': package, 'wasm': wasm},
     ]),
   ),
   CiJob(
@@ -212,7 +212,7 @@ final kCiJobs = [
         'frb_example--flutter_via_create_native_assets',
         'frb_example--gallery',
       ])
-        {'package': package},
+        for (final wasm in [false, true]) {'package': package, 'wasm': wasm},
     ]),
   ),
   CiJob(
