@@ -6,6 +6,7 @@ It does not replace the core bridge code generator.
 
 :::info
 The flutter_rust_bridge Native Assets backend is available through `--integration-backend native-assets`.
+Use `flutter_rust_bridge_codegen >= 2.13.0-beta.2` and a Flutter/Dart SDK that supports build hooks and code assets.
 :::
 
 ## Usage
