@@ -15,7 +15,7 @@ backtrace = { version = "0.3.75", optional = true }
 byteorder = "1.5.0"
 chrono = { version = "0.4.45", optional = true }
 delegate-attr = "0.3.0"
-flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.13.0" }
+flutter_rust_bridge_macros = { path = "../frb_macros", version = "=2.13.0" }
 futures = { version = "0.3.31", optional = true }
 lazy_static = "1.5.0"
 log = { version = "0.4", optional = true }
