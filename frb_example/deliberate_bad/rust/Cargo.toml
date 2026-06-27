@@ -7,7 +7,7 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [[bin]]
-name = "frb_example_deliberate_bad_rust"
+name = "frb_example_deliberate_bad_bin"
 path = "src/main.rs"
 
 [dependencies]
