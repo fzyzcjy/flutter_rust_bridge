@@ -391,15 +391,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   group('borrow + mut borrow', () {
-    test('when same object', skip: kIsWeb, () async {
+    test('when same object', () async {
       final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
-      final body = () async => rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSse(
-            borrow: obj,
-            mutBorrow: obj,
-          );
-
       await expectRustPanic(
-        body,
+        () async => rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSse(
+          borrow: obj,
+          mutBorrow: obj,
+        ),
         'TwinRustAsyncSse',
         messageMatcherOnNative: matches(RegExp('Cannot.*borrow.*object')),
       );
