@@ -92,13 +92,13 @@ fn wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::frb_generated::BaseRustState::create_notify_ui_stream(
                         &mut *api_that_guard,
                         api_sink,
                     );
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -126,8 +126,8 @@ fn wire__crate__frb_generated__BaseRustState_empty_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::frb_generated::BaseRustState::empty())?;
-                Ok(output_ok)
+                let output_ok = Ok::<_, ()>(crate::frb_generated::BaseRustState::empty())?;
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -172,11 +172,11 @@ fn wire__crate__app__RustState_add_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::app::RustState::add(&mut *api_that_guard);
                 })?;
                 api_that_guard.base_state.on_mutation();
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -221,8 +221,8 @@ fn wire__crate__app__RustState_auto_accessor_get_filter_impl(
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.filter.clone())?;
-                Ok(output_ok)
+                let output_ok = Ok::<_, ()>(api_that_guard.filter.clone())?;
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -267,8 +267,8 @@ fn wire__crate__app__RustState_auto_accessor_get_input_text_impl(
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.input_text.clone())?;
-                Ok(output_ok)
+                let output_ok = Ok::<_, ()>(api_that_guard.input_text.clone())?;
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -314,13 +314,13 @@ fn wire__crate__app__RustState_auto_accessor_set_filter_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.filter = api_filter;
                     };
                 })?;
                 api_that_guard.base_state.on_mutation();
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -366,13 +366,13 @@ fn wire__crate__app__RustState_auto_accessor_set_input_text_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.input_text = api_input_text;
                     };
                 })?;
                 api_that_guard.base_state.on_mutation();
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -418,8 +418,8 @@ fn wire__crate__app__RustState_filtered_items_impl(
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::app::RustState::filtered_items(&*api_that_guard))?;
-                Ok(output_ok)
+                    Ok::<_, ()>(crate::app::RustState::filtered_items(&*api_that_guard))?;
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -447,8 +447,8 @@ fn wire__crate__app__RustState_new_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::app::RustState::new())?;
-                Ok(output_ok)
+                let output_ok = Ok::<_, ()>(crate::app::RustState::new())?;
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -494,11 +494,11 @@ fn wire__crate__app__RustState_remove_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::app::RustState::remove(&mut *api_that_guard, api_id);
                 })?;
                 api_that_guard.base_state.on_mutation();
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -544,10 +544,10 @@ fn wire__crate__app__RustState_set_base_state_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::app::RustState::set_base_state(&mut *api_that_guard, api_base_state);
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -593,11 +593,11 @@ fn wire__crate__app__RustState_toggle_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::app::RustState::toggle(&mut *api_that_guard, api_id);
                 })?;
                 api_that_guard.base_state.on_mutation();
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )

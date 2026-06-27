@@ -5,8 +5,6 @@ import 'package:collection/collection.dart';
 // ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
-import 'package:glob/glob.dart';
-import 'package:glob/list_local_fs.dart';
 import 'package:path/path.dart' as path;
 
 Future<void> generateDartTestEntrypoints(
@@ -48,13 +46,15 @@ Future<void> _generateDartValgrindTestEntrypoint(
   final dirTest = dartRoot.resolve('test/');
   final dirInterest = dirTest.resolve('api/');
   final files = [
-    for (final file in Glob('${dirInterest.toFilePath()}**.dart').listSync())
-      file.path,
+    for (final file in Directory(
+      dirInterest.toFilePath(),
+    ).listSync(recursive: true))
+      if (file is File && path.extension(file.path) == '.dart') file.path,
   ].sorted();
 
   final imports = [
     for (final file in files) //
-      "import '${path.relative(file, from: dirTest.toFilePath())}' as ${path.basenameWithoutExtension(file)};\n",
+      "import '${path.relative(file, from: dirTest.toFilePath()).replaceAll(r'\', '/')}' as ${path.basenameWithoutExtension(file)};\n",
   ];
   final entrypoints = [
     for (final file in files) //

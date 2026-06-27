@@ -1,4 +1,7 @@
 use crate::codegen::ir::mir::ty::MirType;
+use crate::codegen::parser::mir::parser::ty::generic_type_alias::{
+    extract_generic_type_args, substitute_type_params,
+};
 use crate::codegen::parser::mir::parser::ty::misc::convert_ident_str;
 use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypeParserWithContext};
 use crate::utils::syn_utils::ty_to_string;
@@ -44,7 +47,41 @@ impl TypeParserWithContext<'_, '_, '_> {
     }
 
     fn resolve_alias(&self, ty: &Type) -> Type {
+        self.resolve_alias_inner(ty, 0)
+    }
+
+    fn resolve_alias_inner(&self, ty: &Type, depth: usize) -> Type {
+        // Guard against pathological or cyclic generic aliases, such as
+        // `type A<T> = B<T>; type B<T> = A<T>;`.
+        const MAX_RESOLVE_DEPTH: usize = 64;
+        if depth >= MAX_RESOLVE_DEPTH {
+            // Only reachable via a deliberately cyclic alias graph, which no real
+            // FRB workflow produces; excluded from coverage instead of forcing a
+            // brittle full-parser-context test.
+            // frb-coverage:ignore-start
+            return ty.clone();
+            // frb-coverage:ignore-end
+        }
+
+        // Generic alias used at a call site, e.g. `AppResult<MyDto>` is expanded
+        // to `Result<MyDto, AppError>`. Recurse so chained generic aliases expand
+        // to a fixed point before the normal type parsing kicks in.
+        if let Some(substituted) = self.substitute_generic_alias(ty) {
+            return self.resolve_alias_inner(&substituted, depth + 1);
+        }
+
+        // Plain (non-generic) alias, already pre-resolved by the HIR transformer.
         self.get_alias_type(ty).unwrap_or(ty).clone()
+    }
+
+    fn substitute_generic_alias(&self, ty: &Type) -> Option<Type> {
+        let key = convert_ident_str(ty)?;
+        if key == "Result" {
+            return None;
+        }
+        let template = self.inner.src_generic_type_aliases.get(&key)?;
+        let args = extract_generic_type_args(ty)?;
+        substitute_type_params(&template.type_params, &template.target, &args)
     }
 
     fn get_alias_type(&self, ty: &Type) -> Option<&Type> {

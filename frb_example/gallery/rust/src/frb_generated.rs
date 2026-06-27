@@ -84,7 +84,7 @@ fn wire__crate__api__mandelbrot__draw_mandelbrot_impl(
                             api_num_threads,
                         )
                         .await?;
-                        Ok(output_ok)
+                        std::result::Result::Ok(output_ok)
                     })()
                     .await,
                 )

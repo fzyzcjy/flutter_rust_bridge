@@ -9,6 +9,8 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ResultShadowErrorTwinSse`
+
 Future<BigInt> handleTypeAliasIdTwinSse({required BigInt input}) => RustLib
     .instance.api
     .crateApiPseudoManualTypeAliasTwinSseHandleTypeAliasIdTwinSse(input: input);
@@ -22,6 +24,41 @@ Future<TestModelTwinSse> handleTypeAliasModelTwinSse({required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinSseHandleTypeAliasModelTwinSse(
             input: input);
+
+Future<int> infallibleWithResultShadowTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseInfallibleWithResultShadowTwinSse();
+
+Future<int> genericResultAliasOkTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasOkTwinSse();
+
+Future<int> genericResultAliasErrTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasErrTwinSse();
+
+Future<int> genericResultAliasChainedOkTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasChainedOkTwinSse();
+
+Future<int> genericResultAliasChainedErrTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasChainedErrTwinSse();
+
+Future<int> genericResultAliasTwoParamsOkTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasTwoParamsOkTwinSse();
+
+Future<int> genericResultAliasTwoParamsErrTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericResultAliasTwoParamsErrTwinSse();
+
+Future<int?> genericOptionAliasReturnTwinSse({required int input}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinSseGenericOptionAliasReturnTwinSse(
+            input: input);
+
+Future<int> genericOptionAliasArgTwinSse({int? input}) => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSseGenericOptionAliasArgTwinSse(
+        input: input);
+
+enum GenericAliasErrorTwinSse {
+  deliberate,
+  ;
+}
 
 class TestModelTwinSse {
   final BigInt id;
