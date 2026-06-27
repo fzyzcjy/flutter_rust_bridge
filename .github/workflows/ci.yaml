@@ -403,9 +403,8 @@ jobs:
       - if: matrix.platforms == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git init $GITHUB_WORKSPACE/flutter
-          git -C $GITHUB_WORKSPACE/flutter fetch --depth 1 https://gitcode.com/CPF-Flutter/flutter_flutter.git $FRB_OHOS_FLUTTER_REF
-          git -C $GITHUB_WORKSPACE/flutter checkout FETCH_HEAD
+          git clone -b oh-3.41.9-dev --single-branch https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git -C $GITHUB_WORKSPACE/flutter checkout -B oh-3.41.9-dev $FRB_OHOS_FLUTTER_REF
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.platforms == 'ohos'
         name: Export OHOS_SDK_HOME
@@ -623,9 +622,8 @@ jobs:
       - if: matrix.info.target == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git init $GITHUB_WORKSPACE/flutter
-          git -C $GITHUB_WORKSPACE/flutter fetch --depth 1 https://gitcode.com/CPF-Flutter/flutter_flutter.git $FRB_OHOS_FLUTTER_REF
-          git -C $GITHUB_WORKSPACE/flutter checkout FETCH_HEAD
+          git clone -b oh-3.41.9-dev --single-branch https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git -C $GITHUB_WORKSPACE/flutter checkout -B oh-3.41.9-dev $FRB_OHOS_FLUTTER_REF
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.info.target == 'ohos'
         name: Export OHOS_SDK_HOME
