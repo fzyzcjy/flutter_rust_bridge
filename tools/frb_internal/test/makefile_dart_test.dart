@@ -81,9 +81,9 @@ void main() {
     expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
   });
 
-  test('release guard rejects uninitialized CargoKit submodules', () {
+  test('release guard rejects uninitialized submodules', () {
     expect(
-      () => verifyCargokitReleaseInputs(
+      () => verifyReleaseSubmodules(
         submoduleStatus:
             '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
       ),
@@ -97,9 +97,9 @@ void main() {
     );
   });
 
-  test('release guard accepts initialized CargoKit submodules', () {
+  test('release guard accepts initialized submodules', () {
     expect(
-      () => verifyCargokitReleaseInputs(
+      () => verifyReleaseSubmodules(
         submoduleStatus:
             ' 6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit (heads/main)\n'
             ' 6f7144d frb_codegen/assets/integration_template/cargokit/plugin/cargokit (heads/main)',
@@ -108,15 +108,16 @@ void main() {
     );
   });
 
-  test('release guard reports only uninitialized CargoKit submodules', () {
+  test('release guard reports all uninitialized submodules', () {
     expect(
-      uninitializedCargokitSubmodulePathsForTesting(
+      uninitializedSubmodulePathsForTesting(
         '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit\n'
         ' 6f7144d frb_codegen/assets/integration_template/cargokit/plugin/cargokit\n'
         '-1234567 unrelated/submodule',
       ),
       [
         'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+        'unrelated/submodule',
       ],
     );
   });

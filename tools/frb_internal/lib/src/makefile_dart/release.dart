@@ -37,7 +37,7 @@ class VersionInfo {
 
 Future<void> release() async {
   print('Version info: ${computeVersionInfo()}');
-  verifyCargokitReleaseInputs();
+  verifyReleaseSubmodules();
   await releaseUpdateVersion();
   await releaseUpdateCode();
   await releaseUpdateScoop();
@@ -184,7 +184,7 @@ String releaseCargoLockTemplatePathForTesting() =>
     '${exec.pwd}frb_codegen/assets/integration_template/shared/shared/REPLACE_ME_RUST_CRATE_DIR/Cargo.lock.template';
 
 Future<void> releasePublishAll() async {
-  verifyCargokitReleaseInputs();
+  verifyReleaseSubmodules();
   await exec('cd frb_codegen && cargo publish');
   await exec('cd frb_macros && cargo publish');
   await exec('cd frb_rust && cargo publish');
@@ -196,15 +196,15 @@ Future<void> releasePublishAll() async {
   );
 }
 
-void verifyCargokitReleaseInputs({String? repoRoot, String? submoduleStatus}) {
+void verifyReleaseSubmodules({String? repoRoot, String? submoduleStatus}) {
   final status =
       submoduleStatus ?? _gitSubmoduleStatus(repoRoot ?? '${exec.pwd}');
-  final uninitializedPaths = _uninitializedCargokitSubmodulePaths(status);
+  final uninitializedPaths = _uninitializedSubmodulePaths(status);
 
   if (uninitializedPaths.isNotEmpty) {
     throw Exception(
       [
-        'CargoKit submodules are uninitialized. Run `git submodule update --init --recursive` before publishing.',
+        'Release submodules are uninitialized. Run `git submodule update --init --recursive` before publishing.',
         ...uninitializedPaths.map((path) => '- $path'),
       ].join('\n'),
     );
@@ -224,12 +224,12 @@ String _gitSubmoduleStatus(String repoRoot) {
 }
 
 @visibleForTesting
-List<String> uninitializedCargokitSubmodulePathsForTesting(String status) =>
-    _uninitializedCargokitSubmodulePaths(status);
+List<String> uninitializedSubmodulePathsForTesting(String status) =>
+    _uninitializedSubmodulePaths(status);
 
-List<String> _uninitializedCargokitSubmodulePaths(String status) => status
+List<String> _uninitializedSubmodulePaths(String status) => status
     .split('\n')
-    .where((line) => line.startsWith('-') && line.contains('/cargokit'))
+    .where((line) => line.startsWith('-'))
     .map((line) => line.trim().split(RegExp(r'\s+'))[1])
     .toList();
 
