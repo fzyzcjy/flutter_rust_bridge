@@ -10,80 +10,90 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they are not marked as `pub`: `yield_once`
 
-Future<RustOpaqueWebLockingData> rustOpaqueWebLockingCreate(
-        {required int initial}) =>
-    RustLib.instance.api.crateApiRustOpaqueWebLockingRustOpaqueWebLockingCreate(
-        initial: initial);
-
-Future<int> rustOpaqueWebLockingGet({required RustOpaqueWebLockingData arg}) =>
-    RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingGet(arg: arg);
-
-int rustOpaqueWebLockingSyncAdd(
-        {required RustOpaqueWebLockingData arg, required int adder}) =>
-    RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAdd(
-            arg: arg, adder: adder);
-
-Future<int> rustOpaqueWebLockingWorkerAdd(
-        {required RustOpaqueWebLockingData arg,
-        required int adder,
-        required int delayMillis}) =>
-    RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAdd(
-            arg: arg, adder: adder, delayMillis: delayMillis);
-
-Future<int> rustOpaqueWebLockingAsyncAdd(
-        {required RustOpaqueWebLockingData arg, required int adder}) =>
-    RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAdd(
-            arg: arg, adder: adder);
-
-Future<void> rustOpaqueWebLockingHoldMutBorrowForever(
-        {required RustOpaqueWebLockingData arg}) =>
-    RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForever(
-            arg: arg);
-
-Future<RustAutoOpaqueWebLockingData> rustAutoOpaqueWebLockingCreate(
+Future<RustOpaqueWebLockingDataTwinNormal> rustOpaqueWebLockingCreateTwinNormal(
         {required int initial}) =>
     RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreate(
+        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingCreateTwinNormal(
             initial: initial);
 
-Future<int> rustAutoOpaqueWebLockingGet(
-        {required RustAutoOpaqueWebLockingData arg}) =>
+Future<int> rustOpaqueWebLockingGetTwinNormal(
+        {required RustOpaqueWebLockingDataTwinNormal arg}) =>
     RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGet(arg: arg);
+        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingGetTwinNormal(
+            arg: arg);
 
-int rustAutoOpaqueWebLockingSyncAdd(
-        {required RustAutoOpaqueWebLockingData arg, required int adder}) =>
+int rustOpaqueWebLockingSyncAddTwinNormal(
+        {required RustOpaqueWebLockingDataTwinNormal arg,
+        required int adder}) =>
     RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAdd(
+        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAddTwinNormal(
             arg: arg, adder: adder);
 
-Future<int> rustAutoOpaqueWebLockingWorkerAdd(
-        {required RustAutoOpaqueWebLockingData arg,
+Future<int> rustOpaqueWebLockingWorkerAddTwinNormal(
+        {required RustOpaqueWebLockingDataTwinNormal arg,
         required int adder,
         required int delayMillis}) =>
     RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAdd(
+        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAddTwinNormal(
             arg: arg, adder: adder, delayMillis: delayMillis);
 
-Future<int> rustAutoOpaqueWebLockingAsyncAdd(
-        {required RustAutoOpaqueWebLockingData arg, required int adder}) =>
+Future<int> rustOpaqueWebLockingAsyncAddTwinNormal(
+        {required RustOpaqueWebLockingDataTwinNormal arg,
+        required int adder}) =>
     RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAdd(
+        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAddTwinNormal(
             arg: arg, adder: adder);
 
-Future<void> rustAutoOpaqueWebLockingHoldMutBorrowForever(
-        {required RustAutoOpaqueWebLockingData arg}) =>
+Future<void> rustOpaqueWebLockingHoldMutBorrowForeverTwinNormal(
+        {required RustOpaqueWebLockingDataTwinNormal arg}) =>
     RustLib.instance.api
-        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForever(
+        .crateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForeverTwinNormal(
             arg: arg);
 
-// Rust type: RustOpaqueMoi<RustOpaqueWebLockingData>
-abstract class RustOpaqueWebLockingData implements RustOpaqueInterface {}
+Future<RustAutoOpaqueWebLockingDataTwinNormal>
+    rustAutoOpaqueWebLockingCreateTwinNormal({required int initial}) => RustLib
+        .instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreateTwinNormal(
+            initial: initial);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>>
-abstract class RustAutoOpaqueWebLockingData implements RustOpaqueInterface {}
+Future<int> rustAutoOpaqueWebLockingGetTwinNormal(
+        {required RustAutoOpaqueWebLockingDataTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGetTwinNormal(
+            arg: arg);
+
+int rustAutoOpaqueWebLockingSyncAddTwinNormal(
+        {required RustAutoOpaqueWebLockingDataTwinNormal arg,
+        required int adder}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAddTwinNormal(
+            arg: arg, adder: adder);
+
+Future<int> rustAutoOpaqueWebLockingWorkerAddTwinNormal(
+        {required RustAutoOpaqueWebLockingDataTwinNormal arg,
+        required int adder,
+        required int delayMillis}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAddTwinNormal(
+            arg: arg, adder: adder, delayMillis: delayMillis);
+
+Future<int> rustAutoOpaqueWebLockingAsyncAddTwinNormal(
+        {required RustAutoOpaqueWebLockingDataTwinNormal arg,
+        required int adder}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAddTwinNormal(
+            arg: arg, adder: adder);
+
+Future<void> rustAutoOpaqueWebLockingHoldMutBorrowForeverTwinNormal(
+        {required RustAutoOpaqueWebLockingDataTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForeverTwinNormal(
+            arg: arg);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingDataTwinNormal>>
+abstract class RustAutoOpaqueWebLockingDataTwinNormal
+    implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustOpaqueWebLockingDataTwinNormal>>
+abstract class RustOpaqueWebLockingDataTwinNormal
+    implements RustOpaqueInterface {}

@@ -1,105 +1,111 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse"]}
 
-use crate::frb_generated::RustOpaque;
+use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 use std::future::poll_fn;
 use std::task::Poll;
 use std::time::Duration;
 
-pub struct RustOpaqueWebLockingData {
-    value: i32,
-}
-
 #[frb(opaque)]
-pub struct RustAutoOpaqueWebLockingData {
+pub struct RustOpaqueWebLockingDataTwinNormal {
     value: i32,
 }
 
-pub fn rust_opaque_web_locking_create(initial: i32) -> RustOpaque<RustOpaqueWebLockingData> {
-    RustOpaque::new(RustOpaqueWebLockingData { value: initial })
+pub struct RustAutoOpaqueWebLockingDataTwinNormal {
+    value: i32,
 }
 
-pub fn rust_opaque_web_locking_get(arg: RustOpaque<RustOpaqueWebLockingData>) -> i32 {
-    arg.read().unwrap().value
+pub fn rust_opaque_web_locking_create_twin_normal(
+    initial: i32,
+) -> RustOpaqueWebLockingDataTwinNormal {
+    RustOpaqueWebLockingDataTwinNormal { value: initial }
+}
+
+pub fn rust_opaque_web_locking_get_twin_normal(arg: &RustOpaqueWebLockingDataTwinNormal) -> i32 {
+    arg.value
 }
 
 #[frb(sync)]
-pub fn rust_opaque_web_locking_sync_add(
-    arg: RustOpaque<RustOpaqueWebLockingData>,
+pub fn rust_opaque_web_locking_sync_add_twin_normal(
+    arg: &mut RustOpaqueWebLockingDataTwinNormal,
     adder: i32,
 ) -> i32 {
-    let mut arg = arg.write().unwrap();
     arg.value += adder;
     arg.value
 }
 
-pub fn rust_opaque_web_locking_worker_add(
-    arg: RustOpaque<RustOpaqueWebLockingData>,
+pub fn rust_opaque_web_locking_worker_add_twin_normal(
+    arg: &mut RustOpaqueWebLockingDataTwinNormal,
     adder: i32,
     delay_millis: u32,
 ) -> i32 {
     std::thread::sleep(Duration::from_millis(delay_millis.into()));
-    let mut arg = arg.write().unwrap();
     arg.value += adder;
     arg.value
 }
 
-pub async fn rust_opaque_web_locking_async_add(
-    arg: RustOpaque<RustOpaqueWebLockingData>,
+pub async fn rust_opaque_web_locking_async_add_twin_normal(
+    arg: &mut RustOpaqueWebLockingDataTwinNormal,
     adder: i32,
 ) -> i32 {
     yield_once().await;
-    let mut arg = arg.write().unwrap();
     arg.value += adder;
     arg.value
 }
 
-pub async fn rust_opaque_web_locking_hold_mut_borrow_forever(
-    arg: RustOpaque<RustOpaqueWebLockingData>,
+pub async fn rust_opaque_web_locking_hold_mut_borrow_forever_twin_normal(
+    _arg: &mut RustOpaqueWebLockingDataTwinNormal,
 ) {
-    let _arg = arg.write().unwrap();
     futures::future::pending::<()>().await;
 }
 
-pub fn rust_auto_opaque_web_locking_create(initial: i32) -> RustAutoOpaqueWebLockingData {
-    RustAutoOpaqueWebLockingData { value: initial }
+pub fn rust_auto_opaque_web_locking_create_twin_normal(
+    initial: i32,
+) -> RustAutoOpaque<RustAutoOpaqueWebLockingDataTwinNormal> {
+    RustAutoOpaque::new(RustAutoOpaqueWebLockingDataTwinNormal { value: initial })
 }
 
-pub fn rust_auto_opaque_web_locking_get(arg: &RustAutoOpaqueWebLockingData) -> i32 {
-    arg.value
+pub fn rust_auto_opaque_web_locking_get_twin_normal(
+    arg: RustAutoOpaque<RustAutoOpaqueWebLockingDataTwinNormal>,
+) -> i32 {
+    arg.blocking_read().value
 }
 
 #[frb(sync)]
-pub fn rust_auto_opaque_web_locking_sync_add(
-    arg: &mut RustAutoOpaqueWebLockingData,
+pub fn rust_auto_opaque_web_locking_sync_add_twin_normal(
+    arg: RustAutoOpaque<RustAutoOpaqueWebLockingDataTwinNormal>,
     adder: i32,
 ) -> i32 {
+    let mut arg = arg.blocking_write();
     arg.value += adder;
     arg.value
 }
 
-pub fn rust_auto_opaque_web_locking_worker_add(
-    arg: &mut RustAutoOpaqueWebLockingData,
+pub fn rust_auto_opaque_web_locking_worker_add_twin_normal(
+    arg: RustAutoOpaque<RustAutoOpaqueWebLockingDataTwinNormal>,
     adder: i32,
     delay_millis: u32,
 ) -> i32 {
     std::thread::sleep(Duration::from_millis(delay_millis.into()));
+    let mut arg = arg.blocking_write();
     arg.value += adder;
     arg.value
 }
 
-pub async fn rust_auto_opaque_web_locking_async_add(
-    arg: &mut RustAutoOpaqueWebLockingData,
+pub async fn rust_auto_opaque_web_locking_async_add_twin_normal(
+    arg: RustAutoOpaque<RustAutoOpaqueWebLockingDataTwinNormal>,
     adder: i32,
 ) -> i32 {
     yield_once().await;
+    let mut arg = arg.write().await;
     arg.value += adder;
     arg.value
 }
 
-pub async fn rust_auto_opaque_web_locking_hold_mut_borrow_forever(
-    _arg: &mut RustAutoOpaqueWebLockingData,
+pub async fn rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_normal(
+    arg: RustAutoOpaque<RustAutoOpaqueWebLockingDataTwinNormal>,
 ) {
+    let _arg = arg.write().await;
     futures::future::pending::<()>().await;
 }
 

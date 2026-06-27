@@ -231,10 +231,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           ._rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingDataPtr;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockHideDataTwinNormalPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinNormalPtr;
 
@@ -439,8 +435,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataPtr;
+      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinNormalPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataTwinNormalPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormalPtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_SimpleLoggerPtr => wire
@@ -590,6 +590,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueItemTwinNormal
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustAutoOpaqueWebLockingDataTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           dynamic raw);
 
   @protected
@@ -813,8 +818,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw);
 
   @protected
@@ -983,8 +988,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw);
 
   @protected
@@ -1158,8 +1163,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw);
 
   @protected
@@ -1657,10 +1662,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneDataTwinSync dco_decode_RustOpaque_NonCloneDataTwinSync(dynamic raw);
 
   @protected
-  RustOpaqueWebLockingData dco_decode_RustOpaque_RustOpaqueWebLockingData(
-      dynamic raw);
-
-  @protected
   RwLockHideDataTwinNormal dco_decode_RustOpaque_RwLockHideDataTwinNormal(
       dynamic raw);
 
@@ -1913,8 +1914,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustAutoOpaqueWebLockingDataTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw);
 
   @protected
@@ -5441,6 +5447,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  RustAutoOpaqueWebLockingDataTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
   StructOneWithTraitForDynTwinNormal
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
           SseDeserializer deserializer);
@@ -5661,8 +5672,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -5831,8 +5842,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -6006,8 +6017,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -6477,10 +6488,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  RustOpaqueWebLockingData sse_decode_RustOpaque_RustOpaqueWebLockingData(
-      SseDeserializer deserializer);
-
-  @protected
   RwLockHideDataTwinNormal sse_decode_RustOpaque_RwLockHideDataTwinNormal(
       SseDeserializer deserializer);
 
@@ -6733,8 +6740,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustAutoOpaqueWebLockingDataTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -10690,6 +10702,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
           StructOneWithTraitForDynTwinNormal self, SseSerializer serializer);
 
@@ -10914,8 +10932,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer);
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -11088,8 +11106,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer);
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -11266,8 +11284,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer);
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -11798,10 +11816,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneDataTwinSync self, SseSerializer serializer);
 
   @protected
-  void sse_encode_RustOpaque_RustOpaqueWebLockingData(
-      RustOpaqueWebLockingData self, SseSerializer serializer);
-
-  @protected
   void sse_encode_RustOpaque_RwLockHideDataTwinNormal(
       RwLockHideDataTwinNormal self, SseSerializer serializer);
 
@@ -12058,8 +12072,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer);
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
 
   @protected
   void
@@ -16343,36 +16363,6 @@ class RustLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  void rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingDataPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData');
-  late final _rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData =
-      _rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingDataPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingDataPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData');
-  late final _rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData =
-      _rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingDataPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
   void rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -18000,35 +17990,67 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
       ptr,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData');
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataPtr
+          'frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
       ptr,
     );
   }
 
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData');
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataPtr
+          'frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void

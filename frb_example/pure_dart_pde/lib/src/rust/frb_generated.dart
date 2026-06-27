@@ -241,7 +241,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0-beta.2';
 
   @override
-  int get rustContentHash => -1725555872;
+  int get rustContentHash => 571131265;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -4258,27 +4258,31 @@ abstract class RustLibApi extends BaseApi {
   void crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTwoArgsTwinSync(
       {required NonCloneSimpleTwinSync a, required NonCloneSimpleTwinSync b});
 
-  Future<int> crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAdd(
-      {required RustAutoOpaqueWebLockingData arg, required int adder});
+  Future<int>
+      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAddTwinNormal(
+          {required RustAutoOpaqueWebLockingDataTwinNormal arg,
+          required int adder});
 
-  Future<RustAutoOpaqueWebLockingData>
-      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreate(
+  Future<RustAutoOpaqueWebLockingDataTwinNormal>
+      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreateTwinNormal(
           {required int initial});
 
-  Future<int> crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGet(
-      {required RustAutoOpaqueWebLockingData arg});
+  Future<int> crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGetTwinNormal(
+      {required RustAutoOpaqueWebLockingDataTwinNormal arg});
 
   Future<void>
-      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForever(
-          {required RustAutoOpaqueWebLockingData arg});
+      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForeverTwinNormal(
+          {required RustAutoOpaqueWebLockingDataTwinNormal arg});
 
-  int crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAdd(
-      {required RustAutoOpaqueWebLockingData arg, required int adder});
+  int crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAddTwinNormal(
+      {required RustAutoOpaqueWebLockingDataTwinNormal arg,
+      required int adder});
 
-  Future<int> crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAdd(
-      {required RustAutoOpaqueWebLockingData arg,
-      required int adder,
-      required int delayMillis});
+  Future<int>
+      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAddTwinNormal(
+          {required RustAutoOpaqueWebLockingDataTwinNormal arg,
+          required int adder,
+          required int delayMillis});
 
   Future<void> crateApiDartFnRustCallDartLoopbackTwinNormal(
       {required FutureOr<DemoStructForRustCallDartTwinNormal> Function(
@@ -4363,27 +4367,30 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualDartFnTwinRustAsyncRustCallDartWithDartOpaqueResultTwinRustAsync(
           {required FutureOr<Object> Function() callback});
 
-  Future<int> crateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAdd(
-      {required RustOpaqueWebLockingData arg, required int adder});
+  Future<int>
+      crateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAddTwinNormal(
+          {required RustOpaqueWebLockingDataTwinNormal arg,
+          required int adder});
 
-  Future<RustOpaqueWebLockingData>
-      crateApiRustOpaqueWebLockingRustOpaqueWebLockingCreate(
+  Future<RustOpaqueWebLockingDataTwinNormal>
+      crateApiRustOpaqueWebLockingRustOpaqueWebLockingCreateTwinNormal(
           {required int initial});
 
-  Future<int> crateApiRustOpaqueWebLockingRustOpaqueWebLockingGet(
-      {required RustOpaqueWebLockingData arg});
+  Future<int> crateApiRustOpaqueWebLockingRustOpaqueWebLockingGetTwinNormal(
+      {required RustOpaqueWebLockingDataTwinNormal arg});
 
   Future<void>
-      crateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForever(
-          {required RustOpaqueWebLockingData arg});
+      crateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForeverTwinNormal(
+          {required RustOpaqueWebLockingDataTwinNormal arg});
 
-  int crateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAdd(
-      {required RustOpaqueWebLockingData arg, required int adder});
+  int crateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAddTwinNormal(
+      {required RustOpaqueWebLockingDataTwinNormal arg, required int adder});
 
-  Future<int> crateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAdd(
-      {required RustOpaqueWebLockingData arg,
-      required int adder,
-      required int delayMillis});
+  Future<int>
+      crateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAddTwinNormal(
+          {required RustOpaqueWebLockingDataTwinNormal arg,
+          required int adder,
+          required int delayMillis});
 
   Future<void> crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
 
@@ -5042,15 +5049,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_NonCloneDataTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RustOpaqueWebLockingData;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RustOpaqueWebLockingData;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockHideDataTwinNormal;
 
   RustArcDecrementStrongCountFnType
@@ -5510,13 +5508,22 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RustAutoOpaqueWebLockingData;
+      get rust_arc_increment_strong_count_RustAutoOpaqueWebLockingDataTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingData;
+      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataPtr;
+      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RustOpaqueWebLockingDataTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_SimpleLogger;
@@ -38362,12 +38369,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<int> crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAdd(
-      {required RustAutoOpaqueWebLockingData arg, required int adder}) {
+  Future<int>
+      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAddTwinNormal(
+          {required RustAutoOpaqueWebLockingDataTwinNormal arg,
+          required int adder}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
             arg, serializer);
         sse_encode_i_32(adder, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -38378,22 +38387,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAddConstMeta,
+          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAddTwinNormalConstMeta,
       argValues: [arg, adder],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAddConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingAsyncAddTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_auto_opaque_web_locking_async_add",
+            debugName: "rust_auto_opaque_web_locking_async_add_twin_normal",
             argNames: ["arg", "adder"],
           );
 
   @override
-  Future<RustAutoOpaqueWebLockingData>
-      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreate(
+  Future<RustAutoOpaqueWebLockingDataTwinNormal>
+      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreateTwinNormal(
           {required int initial}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -38404,30 +38413,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData,
+            sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal,
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreateConstMeta,
+          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreateTwinNormalConstMeta,
       argValues: [initial],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreateConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingCreateTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_auto_opaque_web_locking_create",
+            debugName: "rust_auto_opaque_web_locking_create_twin_normal",
             argNames: ["initial"],
           );
 
   @override
-  Future<int> crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGet(
-      {required RustAutoOpaqueWebLockingData arg}) {
+  Future<int> crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGetTwinNormal(
+      {required RustAutoOpaqueWebLockingDataTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1161, port: port_);
@@ -38437,27 +38446,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGetConstMeta,
+          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGetTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGetConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingGetTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_auto_opaque_web_locking_get",
+            debugName: "rust_auto_opaque_web_locking_get_twin_normal",
             argNames: ["arg"],
           );
 
   @override
   Future<void>
-      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForever(
-          {required RustAutoOpaqueWebLockingData arg}) {
+      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForeverTwinNormal(
+          {required RustAutoOpaqueWebLockingDataTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1162, port: port_);
@@ -38467,26 +38476,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForeverConstMeta,
+          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForeverTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForeverConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingHoldMutBorrowForeverTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_auto_opaque_web_locking_hold_mut_borrow_forever",
+            debugName:
+                "rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_normal",
             argNames: ["arg"],
           );
 
   @override
-  int crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAdd(
-      {required RustAutoOpaqueWebLockingData arg, required int adder}) {
+  int crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAddTwinNormal(
+      {required RustAutoOpaqueWebLockingDataTwinNormal arg,
+      required int adder}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
             arg, serializer);
         sse_encode_i_32(adder, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1163)!;
@@ -38496,28 +38507,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAddConstMeta,
+          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAddTwinNormalConstMeta,
       argValues: [arg, adder],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAddConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingSyncAddTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_auto_opaque_web_locking_sync_add",
+            debugName: "rust_auto_opaque_web_locking_sync_add_twin_normal",
             argNames: ["arg", "adder"],
           );
 
   @override
-  Future<int> crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAdd(
-      {required RustAutoOpaqueWebLockingData arg,
-      required int adder,
-      required int delayMillis}) {
+  Future<int>
+      crateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAddTwinNormal(
+          {required RustAutoOpaqueWebLockingDataTwinNormal arg,
+          required int adder,
+          required int delayMillis}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+        sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
             arg, serializer);
         sse_encode_i_32(adder, serializer);
         sse_encode_u_32(delayMillis, serializer);
@@ -38529,16 +38541,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAddConstMeta,
+          kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAddTwinNormalConstMeta,
       argValues: [arg, adder, delayMillis],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAddConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustAutoOpaqueWebLockingWorkerAddTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_auto_opaque_web_locking_worker_add",
+            debugName: "rust_auto_opaque_web_locking_worker_add_twin_normal",
             argNames: ["arg", "adder", "delayMillis"],
           );
 
@@ -39139,12 +39151,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<int> crateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAdd(
-      {required RustOpaqueWebLockingData arg, required int adder}) {
+  Future<int>
+      crateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAddTwinNormal(
+          {required RustOpaqueWebLockingDataTwinNormal arg,
+          required int adder}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_RustOpaqueWebLockingData(arg, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg, serializer);
         sse_encode_i_32(adder, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1185, port: port_);
@@ -39154,22 +39169,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAddConstMeta,
+          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAddTwinNormalConstMeta,
       argValues: [arg, adder],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAddConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingAsyncAddTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_opaque_web_locking_async_add",
+            debugName: "rust_opaque_web_locking_async_add_twin_normal",
             argNames: ["arg", "adder"],
           );
 
   @override
-  Future<RustOpaqueWebLockingData>
-      crateApiRustOpaqueWebLockingRustOpaqueWebLockingCreate(
+  Future<RustOpaqueWebLockingDataTwinNormal>
+      crateApiRustOpaqueWebLockingRustOpaqueWebLockingCreateTwinNormal(
           {required int initial}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -39179,30 +39194,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             funcId: 1186, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_RustOpaqueWebLockingData,
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal,
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingCreateConstMeta,
+          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingCreateTwinNormalConstMeta,
       argValues: [initial],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingCreateConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingCreateTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_opaque_web_locking_create",
+            debugName: "rust_opaque_web_locking_create_twin_normal",
             argNames: ["initial"],
           );
 
   @override
-  Future<int> crateApiRustOpaqueWebLockingRustOpaqueWebLockingGet(
-      {required RustOpaqueWebLockingData arg}) {
+  Future<int> crateApiRustOpaqueWebLockingRustOpaqueWebLockingGetTwinNormal(
+      {required RustOpaqueWebLockingDataTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_RustOpaqueWebLockingData(arg, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1187, port: port_);
       },
@@ -39210,27 +39227,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingGetConstMeta,
+      constMeta:
+          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingGetTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingGetConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingGetTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_opaque_web_locking_get",
+            debugName: "rust_opaque_web_locking_get_twin_normal",
             argNames: ["arg"],
           );
 
   @override
   Future<void>
-      crateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForever(
-          {required RustOpaqueWebLockingData arg}) {
+      crateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForeverTwinNormal(
+          {required RustOpaqueWebLockingDataTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_RustOpaqueWebLockingData(arg, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1188, port: port_);
       },
@@ -39239,26 +39258,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForeverConstMeta,
+          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForeverTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForeverConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingHoldMutBorrowForeverTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_opaque_web_locking_hold_mut_borrow_forever",
+            debugName:
+                "rust_opaque_web_locking_hold_mut_borrow_forever_twin_normal",
             argNames: ["arg"],
           );
 
   @override
-  int crateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAdd(
-      {required RustOpaqueWebLockingData arg, required int adder}) {
+  int crateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAddTwinNormal(
+      {required RustOpaqueWebLockingDataTwinNormal arg, required int adder}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_RustOpaqueWebLockingData(arg, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg, serializer);
         sse_encode_i_32(adder, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1189)!;
       },
@@ -39267,28 +39288,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAddConstMeta,
+          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAddTwinNormalConstMeta,
       argValues: [arg, adder],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAddConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingSyncAddTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_opaque_web_locking_sync_add",
+            debugName: "rust_opaque_web_locking_sync_add_twin_normal",
             argNames: ["arg", "adder"],
           );
 
   @override
-  Future<int> crateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAdd(
-      {required RustOpaqueWebLockingData arg,
-      required int adder,
-      required int delayMillis}) {
+  Future<int>
+      crateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAddTwinNormal(
+          {required RustOpaqueWebLockingDataTwinNormal arg,
+          required int adder,
+          required int delayMillis}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_RustOpaqueWebLockingData(arg, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg, serializer);
         sse_encode_i_32(adder, serializer);
         sse_encode_u_32(delayMillis, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -39299,16 +39322,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta:
-          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAddConstMeta,
+          kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAddTwinNormalConstMeta,
       argValues: [arg, adder, delayMillis],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAddConstMeta =>
+      get kCrateApiRustOpaqueWebLockingRustOpaqueWebLockingWorkerAddTwinNormalConstMeta =>
           const TaskConstMeta(
-            debugName: "rust_opaque_web_locking_worker_add",
+            debugName: "rust_opaque_web_locking_worker_add_twin_normal",
             argNames: ["arg", "adder", "delayMillis"],
           );
 
@@ -44205,14 +44228,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RustOpaqueWebLockingData => wire
-          .rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RustOpaqueWebLockingData => wire
-          .rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockHideDataTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinNormal;
 
@@ -44621,12 +44636,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RustAutoOpaqueWebLockingData => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData;
+      get rust_arc_increment_strong_count_RustAutoOpaqueWebLockingDataTwinNormal =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingData => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData;
+      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinNormal =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RustOpaqueWebLockingDataTwinNormal =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataTwinNormal =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_SimpleLogger => wire
@@ -44913,6 +44936,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+        raw);
+  }
+
+  @protected
+  RustAutoOpaqueWebLockingDataTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
         raw);
   }
 
@@ -45298,11 +45330,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustAutoOpaqueWebLockingDataImpl.frbInternalDcoDecode(
+    return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -45597,11 +45629,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustAutoOpaqueWebLockingDataImpl.frbInternalDcoDecode(
+    return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -45905,11 +45937,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustAutoOpaqueWebLockingDataImpl.frbInternalDcoDecode(
+    return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -46879,14 +46911,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustOpaqueWebLockingData dco_decode_RustOpaque_RustOpaqueWebLockingData(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustOpaqueWebLockingDataImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
-  }
-
-  @protected
   RwLockHideDataTwinNormal dco_decode_RustOpaque_RwLockHideDataTwinNormal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -47327,11 +47351,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustAutoOpaqueWebLockingDataTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustAutoOpaqueWebLockingDataImpl.frbInternalDcoDecode(
+    return RustAutoOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -56661,6 +56694,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  RustAutoOpaqueWebLockingDataTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner =
+        sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+            deserializer);
+    return inner;
+  }
+
+  @protected
   StructOneWithTraitForDynTwinNormal
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
           SseDeserializer deserializer) {
@@ -57065,11 +57109,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return RustAutoOpaqueWebLockingDataImpl.frbInternalSseDecode(
+    return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -57375,11 +57419,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return RustAutoOpaqueWebLockingDataImpl.frbInternalSseDecode(
+    return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -57693,11 +57737,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return RustAutoOpaqueWebLockingDataImpl.frbInternalSseDecode(
+    return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -58649,14 +58693,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustOpaqueWebLockingData sse_decode_RustOpaque_RustOpaqueWebLockingData(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return RustOpaqueWebLockingDataImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   RwLockHideDataTwinNormal sse_decode_RustOpaque_RwLockHideDataTwinNormal(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -59115,11 +59151,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustAutoOpaqueWebLockingDataTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return RustAutoOpaqueWebLockingDataImpl.frbInternalSseDecode(
+    return RustAutoOpaqueWebLockingDataTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -68987,6 +69032,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+        self, serializer);
+  }
+
+  @protected
+  void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
           StructOneWithTraitForDynTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -69445,11 +69500,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RustAutoOpaqueWebLockingDataImpl)
+        (self as RustOpaqueWebLockingDataTwinNormalImpl)
             .frbInternalSseEncode(move: true),
         serializer);
   }
@@ -69814,11 +69869,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer) {
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RustAutoOpaqueWebLockingDataImpl)
+        (self as RustOpaqueWebLockingDataTwinNormalImpl)
             .frbInternalSseEncode(move: false),
         serializer);
   }
@@ -70192,11 +70247,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer) {
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RustAutoOpaqueWebLockingDataImpl)
+        (self as RustOpaqueWebLockingDataTwinNormalImpl)
             .frbInternalSseEncode(move: false),
         serializer);
   }
@@ -71292,15 +71347,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_RustOpaque_RustOpaqueWebLockingData(
-      RustOpaqueWebLockingData self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as RustOpaqueWebLockingDataImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
   void sse_encode_RustOpaque_RwLockHideDataTwinNormal(
       RwLockHideDataTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -71836,11 +71882,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer) {
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal self,
+          SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RustAutoOpaqueWebLockingDataImpl)
+        (self as RustAutoOpaqueWebLockingDataTwinNormalImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as RustOpaqueWebLockingDataTwinNormalImpl)
             .frbInternalSseEncode(move: null),
         serializer);
   }
@@ -82274,46 +82332,48 @@ class OpaqueTwoTwinSyncImpl extends RustOpaque implements OpaqueTwoTwinSync {
 }
 
 @sealed
-class RustAutoOpaqueWebLockingDataImpl extends RustOpaque
-    implements RustAutoOpaqueWebLockingData {
+class RustAutoOpaqueWebLockingDataTwinNormalImpl extends RustOpaque
+    implements RustAutoOpaqueWebLockingDataTwinNormal {
   // Not to be used by end users
-  RustAutoOpaqueWebLockingDataImpl.frbInternalDcoDecode(List<dynamic> wire)
+  RustAutoOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  RustAutoOpaqueWebLockingDataImpl.frbInternalSseDecode(
+  RustAutoOpaqueWebLockingDataTwinNormalImpl.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_RustAutoOpaqueWebLockingData,
+        .rust_arc_increment_strong_count_RustAutoOpaqueWebLockingDataTwinNormal,
     rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingData,
+        .rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataPtr,
+        .rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinNormalPtr,
   );
 }
 
 @sealed
-class RustOpaqueWebLockingDataImpl extends RustOpaque
-    implements RustOpaqueWebLockingData {
+class RustOpaqueWebLockingDataTwinNormalImpl extends RustOpaque
+    implements RustOpaqueWebLockingDataTwinNormal {
   // Not to be used by end users
-  RustOpaqueWebLockingDataImpl.frbInternalDcoDecode(List<dynamic> wire)
+  RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  RustOpaqueWebLockingDataImpl.frbInternalSseDecode(
+  RustOpaqueWebLockingDataTwinNormalImpl.frbInternalSseDecode(
       BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_RustOpaqueWebLockingData,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RustOpaqueWebLockingData,
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_RustOpaqueWebLockingDataTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_RustOpaqueWebLockingDataTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RustOpaqueWebLockingDataPtr,
+        .rust_arc_decrement_strong_count_RustOpaqueWebLockingDataTwinNormalPtr,
   );
 }
 

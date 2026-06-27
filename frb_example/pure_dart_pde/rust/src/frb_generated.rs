@@ -76,7 +76,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.13.0-beta.2";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1725555872;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 571131265;
 
 // Section: executor
 
@@ -27092,224 +27092,95 @@ let api_b = <NonCloneSimpleTwinSync>::sse_decode(&mut deserializer);deserializer
                      let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_two_args_twin_sync(api_a, api_b); })?;   Ok(output_ok)
                 })()) })
 }
-fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add_impl(
+fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_web_locking_async_add", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_web_locking_async_add_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>>>::sse_decode(&mut deserializer);
+            let api_arg = <RustAutoOpaqueMoi<RustAutoOpaqueWebLockingDataTwinNormal>>::sse_decode(&mut deserializer);
 let api_adder = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                        let mut api_arg_guard = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_arg, 0, true)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api_arg_guard = Some(api_arg.lockable_decode_async_ref_mut().await),
-                _ => unreachable!(),
-            }
-        }
-        let mut api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_async_add(&mut *api_arg_guard, api_adder).await)?;   Ok(output_ok)
+                         let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_async_add_twin_normal(api_arg, api_adder).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
-fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create_impl(
+fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_auto_opaque_web_locking_create",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_initial = <i32>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_create(
-                            api_initial,
-                        ),
-                    )?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_auto_opaque_web_locking_get",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    RustAutoOpaqueWebLockingData,
-                >,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let mut api_arg_guard = None;
-                    let decode_indices_ =
-                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                &api_arg, 0, false,
-                            ),
-                        ]);
-                    for i in decode_indices_ {
-                        match i {
-                            0 => api_arg_guard = Some(api_arg.lockable_decode_sync_ref()),
-                            _ => unreachable!(),
-                        }
-                    }
-                    let api_arg_guard = api_arg_guard.unwrap();
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_get(
-                            &*api_arg_guard,
-                        ),
-                    )?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_web_locking_hold_mut_borrow_forever", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_web_locking_create_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api__arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_initial = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                         let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_create_twin_normal(api_initial))?;   Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_web_locking_get_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <RustAutoOpaqueMoi<RustAutoOpaqueWebLockingDataTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                         let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_get_twin_normal(api_arg))?;   Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <RustAutoOpaqueMoi<RustAutoOpaqueWebLockingDataTwinNormal>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                        let mut api__arg_guard = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api__arg, 0, true)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api__arg_guard = Some(api__arg.lockable_decode_async_ref_mut().await),
-                _ => unreachable!(),
-            }
-        }
-        let mut api__arg_guard = api__arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok({ crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_hold_mut_borrow_forever(&mut *api__arg_guard).await; })?;   Ok(output_ok)
+                         let output_ok = Result::<_,()>::Ok({ crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_normal(api_arg).await; })?;   Ok(output_ok)
                     })().await)
                 } })
 }
-fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add_impl(
+fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add_twin_normal_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_auto_opaque_web_locking_sync_add",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
-                    RustAutoOpaqueWebLockingData,
-                >,
-            >>::sse_decode(&mut deserializer);
-            let api_adder = <i32>::sse_decode(&mut deserializer);
-            deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let mut api_arg_guard = None;
-                let decode_indices_ =
-                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                            &api_arg, 0, true,
-                        ),
-                    ]);
-                for i in decode_indices_ {
-                    match i {
-                        0 => api_arg_guard = Some(api_arg.lockable_decode_sync_ref_mut()),
-                        _ => unreachable!(),
-                    }
-                }
-                let mut api_arg_guard = api_arg_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(
-                    crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_sync_add(
-                        &mut *api_arg_guard,
-                        api_adder,
-                    ),
-                )?;
-                Ok(output_ok)
-            })())
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_web_locking_sync_add_twin_normal", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <RustAutoOpaqueMoi<RustAutoOpaqueWebLockingDataTwinNormal>>::sse_decode(&mut deserializer);
+let api_adder = <i32>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_sync_add_twin_normal(api_arg, api_adder))?;   Ok(output_ok)
+                })()) })
 }
-fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add_impl(
+fn wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_web_locking_worker_add", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_web_locking_worker_add_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>>>::sse_decode(&mut deserializer);
+            let api_arg = <RustAutoOpaqueMoi<RustAutoOpaqueWebLockingDataTwinNormal>>::sse_decode(&mut deserializer);
 let api_adder = <i32>::sse_decode(&mut deserializer);
 let api_delay_millis = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse::<_, ()>((move ||  {
-                        let mut api_arg_guard = None;
-let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_arg, 0, true)]);
-        for i in decode_indices_ {
-            match i {
-                0 => api_arg_guard = Some(api_arg.lockable_decode_sync_ref_mut()),
-                _ => unreachable!(),
-            }
-        }
-        let mut api_arg_guard = api_arg_guard.unwrap();
- let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_worker_add(&mut *api_arg_guard, api_adder, api_delay_millis))?;   Ok(output_ok)
+                         let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_auto_opaque_web_locking_worker_add_twin_normal(api_arg, api_adder, api_delay_millis))?;   Ok(output_ok)
                     })())
                 } })
 }
@@ -27784,210 +27655,142 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with
                     })().await)
                 } })
 }
-fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add_impl(
+fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_opaque_web_locking_async_add",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<RustOpaqueWebLockingData>>::sse_decode(&mut deserializer);
-            let api_adder = <i32>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| async move {
-                transform_result_sse::<_, ()>(
-                    (move || async move {
-                        let output_ok = Result::<_, ()>::Ok(
-                            crate::api::rust_opaque_web_locking::rust_opaque_web_locking_async_add(
-                                api_arg, api_adder,
-                            )
-                            .await,
-                        )?;
-                        Ok(output_ok)
-                    })()
-                    .await,
-                )
-            }
-        },
-    )
-}
-fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_opaque_web_locking_create",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_initial = <i32>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::rust_opaque_web_locking::rust_opaque_web_locking_create(
-                            api_initial,
-                        ),
-                    )?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_opaque_web_locking_get",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<RustOpaqueWebLockingData>>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::rust_opaque_web_locking::rust_opaque_web_locking_get(api_arg),
-                    )?;
-                    Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_opaque_web_locking_hold_mut_borrow_forever", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_opaque_web_locking_async_add_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<RustOpaqueWebLockingData>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustOpaqueWebLockingDataTwinNormal>>>::sse_decode(&mut deserializer);
+let api_adder = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Result::<_,()>::Ok({ crate::api::rust_opaque_web_locking::rust_opaque_web_locking_hold_mut_borrow_forever(api_arg).await; })?;   Ok(output_ok)
+                        let mut api_arg_guard = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_arg, 0, true)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api_arg_guard = Some(api_arg.lockable_decode_async_ref_mut().await),
+                _ => unreachable!(),
+            }
+        }
+        let mut api_arg_guard = api_arg_guard.unwrap();
+ let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_opaque_web_locking_async_add_twin_normal(&mut *api_arg_guard, api_adder).await)?;   Ok(output_ok)
                     })().await)
                 } })
 }
-fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add_impl(
+fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_opaque_web_locking_create_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_initial = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                         let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_opaque_web_locking_create_twin_normal(api_initial))?;   Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_opaque_web_locking_get_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustOpaqueWebLockingDataTwinNormal>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                        let mut api_arg_guard = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_arg, 0, false)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api_arg_guard = Some(api_arg.lockable_decode_sync_ref()),
+                _ => unreachable!(),
+            }
+        }
+        let api_arg_guard = api_arg_guard.unwrap();
+ let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_opaque_web_locking_get_twin_normal(&*api_arg_guard))?;   Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_opaque_web_locking_hold_mut_borrow_forever_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api__arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustOpaqueWebLockingDataTwinNormal>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                        let mut api__arg_guard = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api__arg, 0, true)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api__arg_guard = Some(api__arg.lockable_decode_async_ref_mut().await),
+                _ => unreachable!(),
+            }
+        }
+        let mut api__arg_guard = api__arg_guard.unwrap();
+ let output_ok = Result::<_,()>::Ok({ crate::api::rust_opaque_web_locking::rust_opaque_web_locking_hold_mut_borrow_forever_twin_normal(&mut *api__arg_guard).await; })?;   Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add_twin_normal_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_opaque_web_locking_sync_add",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<RustOpaqueWebLockingData>>::sse_decode(&mut deserializer);
-            let api_adder = <i32>::sse_decode(&mut deserializer);
-            deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(
-                    crate::api::rust_opaque_web_locking::rust_opaque_web_locking_sync_add(
-                        api_arg, api_adder,
-                    ),
-                )?;
-                Ok(output_ok)
-            })())
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_opaque_web_locking_sync_add_twin_normal", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustOpaqueWebLockingDataTwinNormal>>>::sse_decode(&mut deserializer);
+let api_adder = <i32>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                    let mut api_arg_guard = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_arg, 0, true)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api_arg_guard = Some(api_arg.lockable_decode_sync_ref_mut()),
+                _ => unreachable!(),
+            }
+        }
+        let mut api_arg_guard = api_arg_guard.unwrap();
+ let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_opaque_web_locking_sync_add_twin_normal(&mut *api_arg_guard, api_adder))?;   Ok(output_ok)
+                })()) })
 }
-fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add_impl(
+fn wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_opaque_web_locking_worker_add",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <RustOpaqueMoi<RustOpaqueWebLockingData>>::sse_decode(&mut deserializer);
-            let api_adder = <i32>::sse_decode(&mut deserializer);
-            let api_delay_millis = <u32>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::rust_opaque_web_locking::rust_opaque_web_locking_worker_add(
-                            api_arg,
-                            api_adder,
-                            api_delay_millis,
-                        ),
-                    )?;
-                    Ok(output_ok)
-                })())
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_opaque_web_locking_worker_add_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustOpaqueWebLockingDataTwinNormal>>>::sse_decode(&mut deserializer);
+let api_adder = <i32>::sse_decode(&mut deserializer);
+let api_delay_millis = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                        let mut api_arg_guard = None;
+let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(&api_arg, 0, true)]);
+        for i in decode_indices_ {
+            match i {
+                0 => api_arg_guard = Some(api_arg.lockable_decode_sync_ref_mut()),
+                _ => unreachable!(),
             }
-        },
-    )
+        }
+        let mut api_arg_guard = api_arg_guard.unwrap();
+ let output_ok = Result::<_,()>::Ok(crate::api::rust_opaque_web_locking::rust_opaque_web_locking_worker_add_twin_normal(&mut *api_arg_guard, api_adder, api_delay_millis))?;   Ok(output_ok)
+                    })())
+                } })
 }
 fn wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -32105,7 +31908,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(Mutex<HideDataTwinSync>);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(NonCloneDataTwinNormal);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(NonCloneDataTwinRustAsync);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(NonCloneDataTwinSync);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RustOpaqueWebLockingData);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinNormal>);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinRustAsync>);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinSync>);
@@ -32278,7 +32080,10 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSync>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingDataTwinNormal>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustOpaqueWebLockingDataTwinNormal>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>
@@ -32792,6 +32597,18 @@ impl SseDecode for RustAutoOpaqueMoi<OpaqueItemTwinNormal> {
     }
 }
 
+impl SseDecode for RustAutoOpaqueMoi<RustAutoOpaqueWebLockingDataTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustAutoOpaqueWebLockingDataTwinNormal,
+            >,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner);
+    }
+}
+
 impl SseDecode for RustAutoOpaqueMoi<StructOneWithTraitForDynTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -33266,11 +33083,13 @@ impl SseDecode for OpaqueTwoTwinSync {
     }
 }
 
-impl SseDecode for RustAutoOpaqueWebLockingData {
+impl SseDecode for RustOpaqueWebLockingDataTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustOpaqueWebLockingDataTwinNormal,
+            >,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
     }
@@ -34209,14 +34028,6 @@ impl SseDecode for RustOpaqueMoi<NonCloneDataTwinSync> {
     }
 }
 
-impl SseDecode for RustOpaqueMoi<RustOpaqueWebLockingData> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
 impl SseDecode for RustOpaqueMoi<RwLock<HideDataTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -34829,7 +34640,21 @@ impl SseDecode
 
 impl SseDecode
     for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>,
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            RustAutoOpaqueWebLockingDataTwinNormal,
+        >,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustOpaqueWebLockingDataTwinNormal>,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -44610,11 +44435,11 @@ fn pde_ffi_dispatcher_primary_impl(
 1154 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 1156 => wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 1157 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_two_args_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1159 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add_impl(port, ptr, rust_vec_len, data_len),
-1160 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create_impl(port, ptr, rust_vec_len, data_len),
-1161 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get_impl(port, ptr, rust_vec_len, data_len),
-1162 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever_impl(port, ptr, rust_vec_len, data_len),
-1164 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add_impl(port, ptr, rust_vec_len, data_len),
+1159 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1160 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1161 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1162 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1164 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 1165 => wire__crate__api__dart_fn__rust_call_dart_loopback_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 1166 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_loopback_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 1167 => wire__crate__api__dart_fn__rust_call_dart_multi_times_twin_normal_impl(port, ptr, rust_vec_len, data_len),
@@ -44635,11 +44460,11 @@ fn pde_ffi_dispatcher_primary_impl(
 1182 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_arg_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 1183 => wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_result_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 1184 => wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_result_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1185 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add_impl(port, ptr, rust_vec_len, data_len),
-1186 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create_impl(port, ptr, rust_vec_len, data_len),
-1187 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get_impl(port, ptr, rust_vec_len, data_len),
-1188 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever_impl(port, ptr, rust_vec_len, data_len),
-1190 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add_impl(port, ptr, rust_vec_len, data_len),
+1185 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1186 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1187 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1188 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1190 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 1191 => wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files_impl(port, ptr, rust_vec_len, data_len),
 1192 => wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_files_impl(port, ptr, rust_vec_len, data_len),
 1193 => wire__crate__api__dart_opaque__set_static_dart_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
@@ -45143,8 +44968,8 @@ fn pde_ffi_dispatcher_sync_impl(
 1152 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(ptr, rust_vec_len, data_len),
 1155 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_impl(ptr, rust_vec_len, data_len),
 1158 => wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_two_args_twin_sync_impl(ptr, rust_vec_len, data_len),
-1163 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add_impl(ptr, rust_vec_len, data_len),
-1189 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add_impl(ptr, rust_vec_len, data_len),
+1163 => wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add_twin_normal_impl(ptr, rust_vec_len, data_len),
+1189 => wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add_twin_normal_impl(ptr, rust_vec_len, data_len),
 1195 => wire__crate__api__pseudo_manual__dart_opaque_twin_sync__set_static_dart_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
 1198 => wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync_impl(ptr, rust_vec_len, data_len),
 1203 => wire__crate__api__pseudo_manual__method_twin_sync__simple_enum_twin_sync_return_self_twin_sync_impl(ptr, rust_vec_len, data_len),
@@ -45992,21 +45817,21 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<OpaqueTwoTwinSync>> for Opaque
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<RustAutoOpaqueWebLockingData> {
+impl flutter_rust_bridge::IntoDart for FrbWrapper<RustOpaqueWebLockingDataTwinNormal> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
             .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<RustAutoOpaqueWebLockingData>
+    for FrbWrapper<RustOpaqueWebLockingDataTwinNormal>
 {
 }
 
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<RustAutoOpaqueWebLockingData>>
-    for RustAutoOpaqueWebLockingData
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<RustOpaqueWebLockingDataTwinNormal>>
+    for RustOpaqueWebLockingDataTwinNormal
 {
-    fn into_into_dart(self) -> FrbWrapper<RustAutoOpaqueWebLockingData> {
+    fn into_into_dart(self) -> FrbWrapper<RustOpaqueWebLockingDataTwinNormal> {
         self.into()
     }
 }
@@ -54192,6 +54017,20 @@ impl SseEncode for RustAutoOpaqueMoi<OpaqueItemTwinNormal> {
     }
 }
 
+impl SseEncode for RustAutoOpaqueMoi<RustAutoOpaqueWebLockingDataTwinNormal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustAutoOpaqueWebLockingDataTwinNormal,
+            >,
+        >>::sse_encode(
+            flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self),
+            serializer,
+        );
+    }
+}
+
 impl SseEncode for RustAutoOpaqueMoi<StructOneWithTraitForDynTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -54714,11 +54553,13 @@ impl SseEncode for OpaqueTwoTwinSync {
     }
 }
 
-impl SseEncode for RustAutoOpaqueWebLockingData {
+impl SseEncode for RustOpaqueWebLockingDataTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustOpaqueWebLockingDataTwinNormal,
+            >,
         >>::sse_encode(
             flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
             serializer,
@@ -55681,15 +55522,6 @@ impl SseEncode for RustOpaqueMoi<NonCloneDataTwinSync> {
     }
 }
 
-impl SseEncode for RustOpaqueMoi<RustOpaqueWebLockingData> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
 impl SseEncode for RustOpaqueMoi<RwLock<HideDataTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -56353,7 +56185,22 @@ impl SseEncode
 
 impl SseEncode
     for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>,
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+            RustAutoOpaqueWebLockingDataTwinNormal,
+        >,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustOpaqueWebLockingDataTwinNormal>,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -64259,20 +64106,6 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<RustOpaqueWebLockingData>::increment_strong_count(ptr as _);
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<RustOpaqueWebLockingData>::decrement_strong_count(ptr as _);
-    }
-
-    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinNormal(
         ptr: *const std::ffi::c_void,
     ) {
@@ -65167,20 +65000,46 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
         ptr: *const std::ffi::c_void,
     ) {
         MoiArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustAutoOpaqueWebLockingDataTwinNormal,
+            >,
         >::increment_strong_count(ptr as _);
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
         ptr: *const std::ffi::c_void,
     ) {
         MoiArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustAutoOpaqueWebLockingDataTwinNormal,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustOpaqueWebLockingDataTwinNormal,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_pde_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustOpaqueWebLockingDataTwinNormal,
+            >,
         >::decrement_strong_count(ptr as _);
     }
 
@@ -65869,20 +65728,6 @@ mod web {
         ptr: *const std::ffi::c_void,
     ) {
         MoiArc::<NonCloneDataTwinSync>::decrement_strong_count(ptr as _);
-    }
-
-    #[wasm_bindgen]
-    pub fn rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<RustOpaqueWebLockingData>::increment_strong_count(ptr as _);
-    }
-
-    #[wasm_bindgen]
-    pub fn rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<RustOpaqueWebLockingData>::decrement_strong_count(ptr as _);
     }
 
     #[wasm_bindgen]
@@ -66780,20 +66625,46 @@ mod web {
     }
 
     #[wasm_bindgen]
-    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
         ptr: *const std::ffi::c_void,
     ) {
         MoiArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustAutoOpaqueWebLockingDataTwinNormal,
+            >,
         >::increment_strong_count(ptr as _);
     }
 
     #[wasm_bindgen]
-    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
         ptr: *const std::ffi::c_void,
     ) {
         MoiArc::<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustAutoOpaqueWebLockingData>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustAutoOpaqueWebLockingDataTwinNormal,
+            >,
+        >::decrement_strong_count(ptr as _);
+    }
+
+    #[wasm_bindgen]
+    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustOpaqueWebLockingDataTwinNormal,
+            >,
+        >::increment_strong_count(ptr as _);
+    }
+
+    #[wasm_bindgen]
+    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                RustOpaqueWebLockingDataTwinNormal,
+            >,
         >::decrement_strong_count(ptr as _);
     }
 

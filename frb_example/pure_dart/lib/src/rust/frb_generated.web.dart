@@ -572,10 +572,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinSyncSseMoi;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockHideDataTwinMoiPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinMoi;
 
@@ -1064,8 +1060,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData;
+      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinNormalPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinSsePtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataTwinNormalPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RustOpaqueWebLockingDataTwinSsePtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_SimpleLoggerPtr => wire
@@ -1327,6 +1335,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueItemTwinNormal
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustAutoOpaqueWebLockingDataTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustAutoOpaqueWebLockingDataTwinSse
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
           dynamic raw);
 
   @protected
@@ -1860,8 +1878,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustOpaqueWebLockingDataTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
           dynamic raw);
 
   @protected
@@ -2170,8 +2193,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustOpaqueWebLockingDataTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
           dynamic raw);
 
   @protected
@@ -2525,8 +2553,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustOpaqueWebLockingDataTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
           dynamic raw);
 
   @protected
@@ -3417,10 +3450,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  RustOpaqueWebLockingData dco_decode_RustOpaque_RustOpaqueWebLockingData(
-      dynamic raw);
-
-  @protected
   RwLockHideDataTwinMoi dco_decode_RustOpaque_RwLockHideDataTwinMoi(
       dynamic raw);
 
@@ -4019,8 +4048,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustAutoOpaqueWebLockingDataTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustAutoOpaqueWebLockingDataTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+          dynamic raw);
+
+  @protected
+  RustOpaqueWebLockingDataTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          dynamic raw);
+
+  @protected
+  RustOpaqueWebLockingDataTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
           dynamic raw);
 
   @protected
@@ -10814,6 +10858,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  RustAutoOpaqueWebLockingDataTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RustAutoOpaqueWebLockingDataTwinSse
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
   StructOneWithTraitForDynTwinNormal
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
           SseDeserializer deserializer);
@@ -11344,8 +11398,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RustOpaqueWebLockingDataTwinSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
           SseDeserializer deserializer);
 
   @protected
@@ -11654,8 +11713,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RustOpaqueWebLockingDataTwinSse
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
           SseDeserializer deserializer);
 
   @protected
@@ -12009,8 +12073,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RustOpaqueWebLockingDataTwinSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
           SseDeserializer deserializer);
 
   @protected
@@ -12893,10 +12962,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  RustOpaqueWebLockingData sse_decode_RustOpaque_RustOpaqueWebLockingData(
-      SseDeserializer deserializer);
-
-  @protected
   RwLockHideDataTwinMoi sse_decode_RustOpaque_RwLockHideDataTwinMoi(
       SseDeserializer deserializer);
 
@@ -13499,8 +13564,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  RustAutoOpaqueWebLockingData
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  RustAutoOpaqueWebLockingDataTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RustAutoOpaqueWebLockingDataTwinSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RustOpaqueWebLockingDataTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RustOpaqueWebLockingDataTwinSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
           SseDeserializer deserializer);
 
   @protected
@@ -21044,6 +21124,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueItemTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+        raw);
+  }
+
+  @protected
+  int cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+      RustAutoOpaqueWebLockingDataTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
         raw);
   }
 
@@ -29797,8 +29885,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueTwoTwinSyncMoi raw);
 
   @protected
-  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-      RustAutoOpaqueWebLockingData raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+      RustOpaqueWebLockingDataTwinNormal raw);
 
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
@@ -29989,8 +30077,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneSimpleTwinSyncMoi raw);
 
   @protected
-  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-      RustAutoOpaqueWebLockingData raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+      RustOpaqueWebLockingDataTwinNormal raw);
 
   @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
@@ -30189,8 +30277,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueStructWithDartCodeTwinNormal raw);
 
   @protected
-  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-      RustAutoOpaqueWebLockingData raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+      RustOpaqueWebLockingDataTwinNormal raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
@@ -30495,10 +30583,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneDataTwinSyncMoi raw);
 
   @protected
-  int cst_encode_RustOpaque_RustOpaqueWebLockingData(
-      RustOpaqueWebLockingData raw);
-
-  @protected
   int cst_encode_RustOpaque_RwLockHideDataTwinMoi(RwLockHideDataTwinMoi raw);
 
   @protected
@@ -30749,8 +30833,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueTwoTwinSyncMoi raw);
 
   @protected
-  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-      RustAutoOpaqueWebLockingData raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+      RustAutoOpaqueWebLockingDataTwinNormal raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+      RustOpaqueWebLockingDataTwinNormal raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
@@ -31091,6 +31179,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           OpaqueItemTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+          RustAutoOpaqueWebLockingDataTwinSse self, SseSerializer serializer);
 
   @protected
   void
@@ -31637,8 +31736,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer);
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
+          RustOpaqueWebLockingDataTwinSse self, SseSerializer serializer);
 
   @protected
   void
@@ -31960,8 +32064,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer);
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
+          RustOpaqueWebLockingDataTwinSse self, SseSerializer serializer);
 
   @protected
   void
@@ -32327,8 +32436,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer);
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
+          RustOpaqueWebLockingDataTwinSse self, SseSerializer serializer);
 
   @protected
   void
@@ -33281,10 +33395,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneDataTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
-  void sse_encode_RustOpaque_RustOpaqueWebLockingData(
-      RustOpaqueWebLockingData self, SseSerializer serializer);
-
-  @protected
   void sse_encode_RustOpaque_RwLockHideDataTwinMoi(
       RwLockHideDataTwinMoi self, SseSerializer serializer);
 
@@ -33896,8 +34006,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
-          RustAutoOpaqueWebLockingData self, SseSerializer serializer);
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+          RustAutoOpaqueWebLockingDataTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
+          RustOpaqueWebLockingDataTwinSse self, SseSerializer serializer);
 
   @protected
   void
@@ -59824,10 +59950,10 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_two_args_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add(
+  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add_twin_normal(
           NativePortType port_, int arg, int adder) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add(
+          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add_twin_normal(
               port_, arg, adder);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_async_add_twin_sse(
@@ -59839,10 +59965,10 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_async_add_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create(
+  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create_twin_normal(
           NativePortType port_, int initial) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create(
+          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create_twin_normal(
               port_, initial);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_create_twin_sse(
@@ -59854,10 +59980,10 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_create_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get(
+  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get_twin_normal(
           NativePortType port_, int arg) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get(
+          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_get_twin_sse(
@@ -59869,11 +59995,11 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_get_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever(
-          NativePortType port_, int _arg) =>
+  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_normal(
+          NativePortType port_, int arg) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever(
-              port_, _arg);
+          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_normal(
+              port_, arg);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_sse(
           NativePortType port_,
@@ -59885,10 +60011,10 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add(
+      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add_twin_normal(
               int arg, int adder) =>
           wasmModule
-              .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add(
+              .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add_twin_normal(
                   arg, adder);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -59900,10 +60026,10 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_sync_add_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add(
+  void wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add_twin_normal(
           NativePortType port_, int arg, int adder, int delay_millis) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add(
+          .wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add_twin_normal(
               port_, arg, adder, delay_millis);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_worker_add_twin_sse(
@@ -60218,10 +60344,10 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_with_dart_opaque_result_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add(
+  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add_twin_normal(
           NativePortType port_, int arg, int adder) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add(
+          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add_twin_normal(
               port_, arg, adder);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_async_add_twin_sse(
@@ -60233,10 +60359,10 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_async_add_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create(
+  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create_twin_normal(
           NativePortType port_, int initial) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create(
+          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create_twin_normal(
               port_, initial);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_create_twin_sse(
@@ -60248,10 +60374,10 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_create_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get(
+  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get_twin_normal(
           NativePortType port_, int arg) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get(
+          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get_twin_normal(
               port_, arg);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_get_twin_sse(
@@ -60263,11 +60389,11 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_get_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever(
-          NativePortType port_, int arg) =>
+  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever_twin_normal(
+          NativePortType port_, int _arg) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever(
-              port_, arg);
+          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever_twin_normal(
+              port_, _arg);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_hold_mut_borrow_forever_twin_sse(
           NativePortType port_,
@@ -60279,10 +60405,10 @@ class RustLibWire implements BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add(
+      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add_twin_normal(
               int arg, int adder) =>
           wasmModule
-              .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add(
+              .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add_twin_normal(
                   arg, adder);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -60294,10 +60420,10 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_sync_add_twin_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add(
+  void wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add_twin_normal(
           NativePortType port_, int arg, int adder, int delay_millis) =>
       wasmModule
-          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add(
+          .wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add_twin_normal(
               port_, arg, adder, delay_millis);
 
   void wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_worker_add_twin_sse(
@@ -63420,18 +63546,6 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_NonCloneDataTwinSyncSseMoi(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinMoi(
           int ptr) =>
       wasmModule
@@ -64896,16 +65010,52 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           int ptr) =>
       wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
               ptr);
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           int ptr) =>
       wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
@@ -78423,7 +78573,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add(
+      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_async_add_twin_normal(
           NativePortType port_, int arg, int adder);
 
   external void
@@ -78434,7 +78584,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create(
+      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_create_twin_normal(
           NativePortType port_, int initial);
 
   external void
@@ -78445,7 +78595,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get(
+      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_get_twin_normal(
           NativePortType port_, int arg);
 
   external void
@@ -78456,8 +78606,8 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever(
-          NativePortType port_, int _arg);
+      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_normal(
+          NativePortType port_, int arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_auto_opaque_web_locking_hold_mut_borrow_forever_twin_sse(
@@ -78467,7 +78617,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add(
+      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_sync_add_twin_normal(
           int arg, int adder);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -78477,7 +78627,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add(
+      wire__crate__api__rust_opaque_web_locking__rust_auto_opaque_web_locking_worker_add_twin_normal(
           NativePortType port_, int arg, int adder, int delay_millis);
 
   external void
@@ -78711,7 +78861,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add(
+      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_async_add_twin_normal(
           NativePortType port_, int arg, int adder);
 
   external void
@@ -78722,7 +78872,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create(
+      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_create_twin_normal(
           NativePortType port_, int initial);
 
   external void
@@ -78733,7 +78883,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get(
+      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_get_twin_normal(
           NativePortType port_, int arg);
 
   external void
@@ -78744,8 +78894,8 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever(
-          NativePortType port_, int arg);
+      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_hold_mut_borrow_forever_twin_normal(
+          NativePortType port_, int _arg);
 
   external void
       wire__crate__api__pseudo_manual__rust_opaque_web_locking_twin_sse__rust_opaque_web_locking_hold_mut_borrow_forever_twin_sse(
@@ -78755,7 +78905,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add(
+      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_sync_add_twin_normal(
           int arg, int adder);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -78765,7 +78915,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add(
+      wire__crate__api__rust_opaque_web_locking__rust_opaque_web_locking_worker_add_twin_normal(
           NativePortType port_, int arg, int adder, int delay_millis);
 
   external void
@@ -80907,14 +81057,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int ptr);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_RustOpaqueWebLockingData(
-          int ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_RustOpaqueWebLockingData(
-          int ptr);
-
-  external void
       rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinMoi(int ptr);
 
   external void
@@ -81887,11 +82029,35 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int ptr);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           int ptr);
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingData(
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinSse(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinSse(
           int ptr);
 
   external void
