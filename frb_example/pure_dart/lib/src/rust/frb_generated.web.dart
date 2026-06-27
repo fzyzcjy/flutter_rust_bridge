@@ -31,7 +31,6 @@ import 'api/dropping.dart';
 import 'api/dyn_trait.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
-import 'api/event_listener_sync.dart';
 import 'api/exception.dart';
 import 'api/external_impl.dart';
 import 'api/external_type_in_crate.dart';
@@ -45498,10 +45497,10 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__event_listener_sync__create_event_sync_twin_normal(
+      wire__crate__api__event_listener__create_event_sync_twin_normal(
               String address, String payload) =>
           wasmModule
-              .wire__crate__api__event_listener_sync__create_event_sync_twin_normal(
+              .wire__crate__api__event_listener__create_event_sync_twin_normal(
                   address, payload);
 
   void wire__crate__api__event_listener__create_event_twin_normal(
@@ -68500,7 +68499,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__event_listener_sync__create_event_sync_twin_normal(
+      wire__crate__api__event_listener__create_event_sync_twin_normal(
           String address, String payload);
 
   external void wire__crate__api__event_listener__create_event_twin_normal(

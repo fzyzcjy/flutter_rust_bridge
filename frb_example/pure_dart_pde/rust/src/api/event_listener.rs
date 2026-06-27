@@ -11,7 +11,7 @@ use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 lazy_static! {
-    pub(crate) static ref EVENTS: Mutex<Option<StreamSink<EventTwinNormal>>> = Default::default();
+    static ref EVENTS: Mutex<Option<StreamSink<EventTwinNormal>>> = Default::default();
 }
 
 #[frb(dart_metadata = ("freezed"))]
@@ -49,3 +49,15 @@ pub fn create_event_twin_normal(address: String, payload: String) {
         }
     }
 }
+
+// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
+// #1836
+#[frb(sync)]
+pub fn create_event_sync_twin_normal(address: String, payload: String) {
+    if let Ok(mut guard) = EVENTS.lock() {
+        if let Some(sink) = guard.as_mut() {
+            sink.add(EventTwinNormal { address, payload }).unwrap();
+        }
+    }
+}
+// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END

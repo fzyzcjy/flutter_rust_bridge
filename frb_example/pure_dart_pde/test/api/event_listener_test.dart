@@ -41,4 +41,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     expect(logs, ['one', 'two']);
   });
+
+  // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
+  // #1836
+  test('when Rust send event after Dart close stream', () async {
+    final stream = await registerEventListenerTwinNormal();
+    await Future.delayed(Duration.zero);
+    final subscription = stream.listen((_) {});
+    await Future.delayed(Duration.zero);
+    unawaited(subscription.cancel());
+    createEventSyncTwinNormal(address: '1', payload: '');
+  });
+  // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
 }

@@ -24,7 +24,6 @@ import 'api/dart_opaque_sync_test.dart' as dart_opaque_sync_test;
 import 'api/dart_opaque_test.dart' as dart_opaque_test;
 import 'api/dyn_trait_test.dart' as dyn_trait_test;
 import 'api/enumeration_test.dart' as enumeration_test;
-import 'api/event_listener_sync_test.dart' as event_listener_sync_test;
 import 'api/event_listener_test.dart' as event_listener_test;
 import 'api/exception_test.dart' as exception_test;
 import 'api/external_impl_test.dart' as external_impl_test;
@@ -237,7 +236,6 @@ Future<void> callFileEntrypoints() async {
     dart_opaque_test.main,
     dyn_trait_test.main,
     enumeration_test.main,
-    event_listener_sync_test.main,
     event_listener_test.main,
     exception_test.main,
     external_impl_test.main,
