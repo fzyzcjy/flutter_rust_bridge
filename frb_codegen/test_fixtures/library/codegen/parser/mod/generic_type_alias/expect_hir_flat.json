@@ -11,7 +11,7 @@
     },
     {
       "mirror": false,
-      "name": "crate::api/ResultAliasError",
+      "name": "crate::api/MyErrorToTestResultAlias",
       "sources": [
         "Normal"
       ],
@@ -68,7 +68,7 @@
     },
     {
       "ident": "Result",
-      "target": "std :: result :: Result < T , ResultAliasError >",
+      "target": "std :: result :: Result < T , MyErrorToTestResultAlias >",
       "type_params": [
         "T"
       ]

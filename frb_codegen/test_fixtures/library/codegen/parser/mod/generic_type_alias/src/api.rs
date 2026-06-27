@@ -10,11 +10,11 @@ pub fn generic_alias_result(input: i32) -> AppResult<i32> {
     Ok(input)
 }
 
-pub enum ResultAliasError {
+pub enum MyErrorToTestResultAlias {
     Shadowed,
 }
 
-pub type Result<T> = std::result::Result<T, ResultAliasError>;
+pub type Result<T> = std::result::Result<T, MyErrorToTestResultAlias>;
 
 pub fn generic_alias_named_result(input: i32) -> Result<i32> {
     Ok(input)

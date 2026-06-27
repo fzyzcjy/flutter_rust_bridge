@@ -23,11 +23,11 @@
       ],
       "wrapper_name": null
     },
-    "crate::api/ResultAliasError": {
+    "crate::api/MyErrorToTestResultAlias": {
       "comments": [],
       "ignore": false,
       "mode": "Simple",
-      "name": "crate::api/ResultAliasError",
+      "name": "crate::api/MyErrorToTestResultAlias",
       "needs_json_serializable": false,
       "variants": [
         {
@@ -39,7 +39,7 @@
           },
           "wrapper_name": {
             "dart_style": null,
-            "rust_style": "ResultAliasError_Shadowed"
+            "rust_style": "MyErrorToTestResultAlias_Shadowed"
           }
         }
       ],
@@ -106,7 +106,7 @@
           "data": {
             "PrimitiveEnum": {
               "mir": {
-                "ident": "crate::api/ResultAliasError",
+                "ident": "crate::api/MyErrorToTestResultAlias",
                 "is_exception": false
               },
               "repr": "I32"
