@@ -204,7 +204,7 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub stop_on_error: bool,
 
-    /// Clean generated output paths before generating
+    /// Clean generated output paths before generating, keeping Dart output backups under .dart_tool
     #[arg(long)]
     pub pre_generation_cleanup: bool,
 

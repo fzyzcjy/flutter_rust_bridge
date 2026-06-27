@@ -1,5 +1,7 @@
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use anyhow::{bail, Context};
+use chrono::Local;
+use log::warn;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -35,17 +37,50 @@ fn clean_dart_output(
 
     ensure_safe_dart_output(dart_output, dart_root, rust_crate_dir)?;
     let entries = fs::read_dir(dart_output)?.collect::<Result<Vec<_>, _>>()?;
+    if entries.is_empty() {
+        return Ok(());
+    }
+    let trash_dir = create_trash_dir(dart_root)?;
     for entry in entries {
         let path = entry.path();
-        let file_type = entry.file_type()?;
-        if file_type.is_dir() || (file_type.is_symlink() && path.is_dir()) {
-            fs::remove_dir_all(&path)?;
-        } else {
-            fs::remove_file(&path)?;
+        fs::rename(&path, trash_dir.join(entry.file_name())).with_context(|| {
+            format!("Failed to move stale generated Dart output {path:?} to {trash_dir:?}")
+        })?;
+    }
+    warn!(
+        "pre_generation_cleanup moved existing Dart output contents to: {}",
+        trash_dir.display()
+    );
+    warn!("These files are kept as a temporary safety backup and can be removed manually after verifying the generated output.");
+
+    Ok(())
+}
+
+fn create_trash_dir(dart_root: &Path) -> anyhow::Result<PathBuf> {
+    let trash_root = dart_root
+        .join(".dart_tool")
+        .join("flutter_rust_bridge")
+        .join("pre_generation_cleanup");
+    fs::create_dir_all(&trash_root).with_context(|| {
+        format!("Failed to create pre_generation_cleanup trash root {trash_root:?}")
+    })?;
+
+    let timestamp = Local::now().format("%Y%m%d-%H%M%S");
+    let process_id = std::process::id();
+    for index in 0..1000 {
+        let trash_dir = trash_root.join(format!("{timestamp}-{process_id}-{index}"));
+        match fs::create_dir(&trash_dir) {
+            Ok(()) => return Ok(trash_dir),
+            Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => {}
+            Err(error) => {
+                return Err(error).with_context(|| {
+                    format!("Failed to create pre_generation_cleanup trash directory {trash_dir:?}")
+                });
+            }
         }
     }
 
-    Ok(())
+    bail!("Failed to create unique pre_generation_cleanup trash directory under {trash_root:?}");
 }
 
 fn ensure_safe_dart_output(
@@ -122,7 +157,7 @@ mod tests {
     use crate::codegen::polisher::internal_config::PolisherInternalConfig;
     use crate::misc::FvmInstallMode;
     use std::fs;
-    use std::path::Path;
+    use std::path::{Path, PathBuf};
 
     #[test]
     fn test_clean_skips_when_disabled() -> anyhow::Result<()> {
@@ -154,6 +189,9 @@ mod tests {
         assert!(!config.c_output_path.as_ref().unwrap().exists());
         assert!(!duplicated_c_output_path.exists());
         assert!(config.dart_output.exists());
+        let trash_dir = single_trash_dir(&config.dart_root)?;
+        assert!(trash_dir.join("stale.dart").exists());
+        assert!(trash_dir.join("nested").join("stale.dart").exists());
         Ok(())
     }
 
@@ -342,7 +380,21 @@ mod tests {
             .join("nested")
             .join("stale.dart")
             .exists());
+        let trash_dir = single_trash_dir(&config.dart_root)?;
+        assert!(trash_dir.join("stale.dart").exists());
+        assert!(trash_dir.join("nested").join("stale.dart").exists());
         Ok(())
+    }
+
+    fn single_trash_dir(dart_root: &Path) -> anyhow::Result<PathBuf> {
+        let trash_root = dart_root
+            .join(".dart_tool")
+            .join("flutter_rust_bridge")
+            .join("pre_generation_cleanup");
+        let entries = fs::read_dir(trash_root)?.collect::<Result<Vec<_>, _>>()?;
+
+        assert_eq!(entries.len(), 1);
+        Ok(entries[0].path())
     }
 
     fn create_config(
