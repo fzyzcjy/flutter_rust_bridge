@@ -15,6 +15,22 @@ pub struct RustAutoOpaqueBase<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<
     pub(crate) RustOpaqueBase<inner::RustAutoOpaqueInner<T>, A>,
 );
 
+#[cfg(target_family = "wasm")]
+pub(crate) fn web_throw_lock_error(action: &str, error: tokio::sync::TryLockError) -> ! {
+    wasm_bindgen::throw_str(&format!(
+        "cannot synchronously {action} RustAutoOpaque while it is locked on Web; use an async API instead: {error:?}"
+    ))
+}
+
+#[cfg(target_family = "wasm")]
+pub(crate) fn web_can_block_on_lock() -> bool {
+    use wasm_bindgen::JsCast;
+
+    js_sys::global()
+        .dyn_ref::<web_sys::DedicatedWorkerGlobalScope>()
+        .is_some()
+}
+
 /// Please refer to `RustAutoOpaque` for doc.
 pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<inner::RustAutoOpaqueInner<T>>>;
 

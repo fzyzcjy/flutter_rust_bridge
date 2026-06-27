@@ -1,6 +1,10 @@
 use crate::for_generated::{BaseArc, RustAutoOpaqueInner, RustOpaqueBase};
 use crate::lockable::base::Lockable;
 use crate::lockable::order::LockableOrder;
+#[cfg(target_family = "wasm")]
+use crate::rust_auto_opaque::web_can_block_on_lock;
+#[cfg(target_family = "wasm")]
+use crate::rust_auto_opaque::web_throw_lock_error;
 use std::future::Future;
 use std::pin::Pin;
 
@@ -23,9 +27,13 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
         #[cfg(target_family = "wasm")]
         {
-            self.data
-                .try_read()
-                .unwrap_or_else(|error| web_throw_lock_error("read", error))
+            if web_can_block_on_lock() {
+                self.data.blocking_read()
+            } else {
+                self.data
+                    .try_read()
+                    .unwrap_or_else(|error| web_throw_lock_error("read", error))
+            }
         }
         #[cfg(not(target_family = "wasm"))]
         {
@@ -36,9 +44,13 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
         #[cfg(target_family = "wasm")]
         {
-            self.data
-                .try_write()
-                .unwrap_or_else(|error| web_throw_lock_error("write", error))
+            if web_can_block_on_lock() {
+                self.data.blocking_write()
+            } else {
+                self.data
+                    .try_write()
+                    .unwrap_or_else(|error| web_throw_lock_error("write", error))
+            }
         }
         #[cfg(not(target_family = "wasm"))]
         {
@@ -63,11 +75,4 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     {
         Box::pin(async move { self.data.write().await })
     }
-}
-
-#[cfg(target_family = "wasm")]
-fn web_throw_lock_error(action: &str, error: tokio::sync::TryLockError) -> ! {
-    wasm_bindgen::throw_str(&format!(
-        "cannot synchronously {action} RustAutoOpaque while it is locked on Web; use an async API instead: {error:?}"
-    ))
 }

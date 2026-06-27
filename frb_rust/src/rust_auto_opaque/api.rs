@@ -1,6 +1,10 @@
 use crate::generalized_arc::base_arc::BaseArc;
 use crate::rust_async::{RwLockReadGuard, RwLockWriteGuard};
 use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
+#[cfg(target_family = "wasm")]
+use crate::rust_auto_opaque::web_can_block_on_lock;
+#[cfg(target_family = "wasm")]
+use crate::rust_auto_opaque::web_throw_lock_error;
 use crate::rust_auto_opaque::RustAutoOpaqueBase;
 use crate::rust_opaque::RustOpaqueBase;
 use tokio::sync::{RwLock, TryLockError};
@@ -15,8 +19,12 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn blocking_read(&self) -> RwLockReadGuard<'_, T> {
         #[cfg(target_family = "wasm")]
         {
-            self.try_read()
-                .unwrap_or_else(|error| web_throw_lock_error("read", error))
+            if web_can_block_on_lock() {
+                self.0.data.blocking_read()
+            } else {
+                self.try_read()
+                    .unwrap_or_else(|error| web_throw_lock_error("read", error))
+            }
         }
         #[cfg(not(target_family = "wasm"))]
         {
@@ -27,8 +35,12 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn blocking_write(&self) -> RwLockWriteGuard<'_, T> {
         #[cfg(target_family = "wasm")]
         {
-            self.try_write()
-                .unwrap_or_else(|error| web_throw_lock_error("write", error))
+            if web_can_block_on_lock() {
+                self.0.data.blocking_write()
+            } else {
+                self.try_write()
+                    .unwrap_or_else(|error| web_throw_lock_error("write", error))
+            }
         }
         #[cfg(not(target_family = "wasm"))]
         {
@@ -51,13 +63,6 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn try_write(&self) -> Result<RwLockWriteGuard<'_, T>, TryLockError> {
         self.0.data.try_write()
     }
-}
-
-#[cfg(target_family = "wasm")]
-fn web_throw_lock_error(action: &str, error: tokio::sync::TryLockError) -> ! {
-    wasm_bindgen::throw_str(&format!(
-        "cannot synchronously {action} RustAutoOpaque while it is locked on Web; use an async API instead: {error:?}"
-    ))
 }
 
 #[cfg(test)]
