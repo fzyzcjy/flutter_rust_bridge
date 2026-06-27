@@ -247,7 +247,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "2.13.0-beta.2"
+    version: "2.13.0-beta.4"
   flutter_rust_bridge_internal:
     dependency: "direct main"
     description:

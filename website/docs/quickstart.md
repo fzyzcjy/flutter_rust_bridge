@@ -89,6 +89,22 @@ flutter_rust_bridge_codegen integrate
 
 </TabItem>
 
+<TabItem value="Native assets">
+
+Use the Native Assets backend when you want Dart/Flutter build hooks to build and bundle the Rust library. This requires `flutter_rust_bridge_codegen >= 2.13.0-beta.2` and a Flutter/Dart SDK that supports build hooks and code assets.
+
+```shell
+flutter_rust_bridge_codegen create my_app --integration-backend native-assets
+```
+
+Or, in the root folder of an existing Flutter project:
+
+```shell
+flutter_rust_bridge_codegen integrate --integration-backend native-assets
+```
+
+</TabItem>
+
 <TabItem value="Pure dart">
 
 Please refer to [this page](guides/miscellaneous/pure-dart).

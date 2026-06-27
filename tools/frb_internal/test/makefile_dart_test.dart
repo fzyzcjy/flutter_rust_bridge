@@ -285,6 +285,26 @@ plain
     );
   });
 
+  test(
+    'quickstart smoke gives macOS desktop cold builds more readiness time',
+    () {
+      expect(
+        quickstartSmokeFlutterRunReadyTimeoutForTesting(
+          QuickstartSmokeTarget.desktop,
+          isMacOS: true,
+        ),
+        const Duration(minutes: 10),
+      );
+      expect(
+        quickstartSmokeFlutterRunReadyTimeoutForTesting(
+          QuickstartSmokeTarget.desktop,
+          isMacOS: false,
+        ),
+        const Duration(minutes: 5),
+      );
+    },
+  );
+
   test('quickstart smoke does not capture while Flutter is still building', () {
     expect(
       quickstartSmokeFlutterRunIsReadyForTesting(
