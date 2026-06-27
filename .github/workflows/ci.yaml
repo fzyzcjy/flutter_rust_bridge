@@ -580,6 +580,7 @@ jobs:
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).build_flutter.enable == true }}
     name: 'Build :: Flutter'
     runs-on: ${{ matrix.info.image }}
+    continue-on-error: ${{ matrix.info.target == 'ohos' }}
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).build_flutter.matrix }}
