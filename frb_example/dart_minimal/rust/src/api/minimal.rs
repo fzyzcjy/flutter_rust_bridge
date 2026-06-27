@@ -8,3 +8,7 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+pub fn minimal_u128() -> u128 {
+    18446744073709551616
+}
