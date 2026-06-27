@@ -190,6 +190,7 @@ import 'api/raw_string_test.dart' as raw_string_test;
 import 'api/rust_auto_opaque_test.dart' as rust_auto_opaque_test;
 import 'api/rust_opaque_sync_test.dart' as rust_opaque_sync_test;
 import 'api/rust_opaque_test.dart' as rust_opaque_test;
+import 'api/rust_opaque_web_locking_test.dart' as rust_opaque_web_locking_test;
 import 'api/serde_json_type_test.dart' as serde_json_type_test;
 import 'api/simple_test.dart' as simple_test;
 import 'api/stream_misc_test.dart' as stream_misc_test;
@@ -336,6 +337,7 @@ Future<void> callFileEntrypoints() async {
     rust_auto_opaque_test.main,
     rust_opaque_sync_test.main,
     rust_opaque_test.main,
+    rust_opaque_web_locking_test.main,
     serde_json_type_test.main,
     simple_test.main,
     stream_misc_test.main,
