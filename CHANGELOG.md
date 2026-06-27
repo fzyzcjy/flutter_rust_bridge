@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.13.0-beta.4
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix CargoKit integration template packaging in the codegen crate
+
 ## 2.13.0-beta.3
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
