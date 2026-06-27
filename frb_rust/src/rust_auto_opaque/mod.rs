@@ -18,7 +18,7 @@ pub struct RustAutoOpaqueBase<T: 'static, A: BaseArc<inner::RustAutoOpaqueInner<
 #[cfg(target_family = "wasm")]
 pub(crate) fn web_throw_lock_error(action: &str, error: tokio::sync::TryLockError) -> ! {
     wasm_bindgen::throw_str(&format!(
-        "cannot synchronously {action} RustAutoOpaque while it is locked on Web; use an async API instead: {error:?}"
+        "cannot synchronously {action} rust opaque objects while it is locked on Web: {error:?}"
     ))
 }
 
