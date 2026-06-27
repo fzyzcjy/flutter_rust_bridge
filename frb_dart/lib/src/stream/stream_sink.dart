@@ -16,7 +16,17 @@ class RustStreamSink<T> {
   }
 
   /// The Dart stream for the Rust sink
-  Stream<T> get stream => _state!.stream;
+  Stream<T> get stream {
+    final state = _state;
+    if (state == null) {
+      throw StateError(
+        'RustStreamSink.stream is not ready yet. Pass this RustStreamSink to a '
+        'generated flutter_rust_bridge API before accessing stream. Listening '
+        'before setup is not supported yet.',
+      );
+    }
+    return state.stream;
+  }
 }
 
 class _State<T> {

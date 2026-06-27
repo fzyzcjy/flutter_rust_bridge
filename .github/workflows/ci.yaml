@@ -676,7 +676,7 @@ jobs:
         uses: pyvista/setup-headless-display-action@v4
 
       # execute
-      - run: ./frb_internal test-mimic-quickstart
+      - run: ./frb_internal test-mimic-quickstart --integration-backend ${{ matrix.integration_backend }}
 
   # TODO re-enable after next release (since need old_version != new_version)
   # test_upgrade:
