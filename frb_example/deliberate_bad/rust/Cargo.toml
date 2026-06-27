@@ -6,6 +6,10 @@ edition = "2021"
 [lib]
 crate-type = ["cdylib"]
 
+[[bin]]
+name = "frb_example_deliberate_bad_rust"
+path = "src/main.rs"
+
 [dependencies]
 anyhow = { version = "1.0.64", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust" }
