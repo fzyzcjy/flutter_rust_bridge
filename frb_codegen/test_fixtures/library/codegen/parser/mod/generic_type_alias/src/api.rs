@@ -10,6 +10,16 @@ pub fn generic_alias_result(input: i32) -> AppResult<i32> {
     Ok(input)
 }
 
+pub enum ResultAliasError {
+    Shadowed,
+}
+
+pub type Result<T> = std::result::Result<T, ResultAliasError>;
+
+pub fn generic_alias_named_result(input: i32) -> Result<i32> {
+    Ok(input)
+}
+
 // Generic alias over a non-`Result` type: `Wrapper<i32>` must expand to
 // `Option<i32>` at the use site.
 pub type Wrapper<T> = Option<T>;

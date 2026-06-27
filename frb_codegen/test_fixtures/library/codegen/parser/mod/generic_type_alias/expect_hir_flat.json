@@ -8,6 +8,14 @@
         "Normal"
       ],
       "visibility": "Public"
+    },
+    {
+      "mirror": false,
+      "name": "crate::api/ResultAliasError",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
     }
   ],
   "existing_handler": null,
@@ -21,6 +29,14 @@
   },
   "extra_rust_output_code": "",
   "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=generic_alias_named_result, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    },
     {
       "item_fn": "GeneralizedItemFn(name=generic_alias_option, vis=Some(Visibility::Public(Pub)), attrs=[])",
       "namespace": "crate::api",
@@ -46,6 +62,13 @@
     {
       "ident": "AppResult",
       "target": "std :: result :: Result < T , AppError >",
+      "type_params": [
+        "T"
+      ]
+    },
+    {
+      "ident": "Result",
+      "target": "std :: result :: Result < T , ResultAliasError >",
       "type_params": [
         "T"
       ]

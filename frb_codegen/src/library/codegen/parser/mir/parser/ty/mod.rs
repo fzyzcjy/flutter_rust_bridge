@@ -18,7 +18,6 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::ty::array::ArrayParserInfo;
 use crate::codegen::parser::mir::parser::ty::enum_or_struct::EnumOrStructParserInfo;
-use crate::codegen::parser::mir::parser::ty::generic_type_alias::is_reserved_generic_alias_ident;
 use crate::codegen::parser::mir::parser::ty::rust_auto_opaque_implicit::RustAutoOpaqueParserInfo;
 use crate::codegen::parser::mir::parser::ty::rust_opaque::RustOpaqueParserInfo;
 use crate::codegen::parser::mir::ParseMode;
@@ -96,11 +95,6 @@ impl<'a> TypeParser<'a> {
         proxied_types: Vec<IrEarlyGeneratorProxiedType>,
         trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     ) -> Self {
-        // `Result` is reserved for the built-in fallible-return detection and is
-        // never expanded as a generic alias (keeps the #1710 shadow working).
-        let src_generic_type_aliases = (src_generic_type_aliases.into_iter())
-            .filter(|(ident, _)| !is_reserved_generic_alias_ident(ident))
-            .collect();
         TypeParser {
             src_structs,
             src_enums,

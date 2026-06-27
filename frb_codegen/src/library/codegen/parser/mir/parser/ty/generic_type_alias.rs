@@ -2,14 +2,6 @@ use std::collections::HashMap;
 use syn::visit_mut::VisitMut;
 use syn::{GenericArgument, PathArguments, Type, TypePath};
 
-/// Identifiers that are handled specially by the code generator and therefore
-/// must never be treated as substitutable generic aliases. In particular a
-/// user-defined `type Result<T> = ...` (see #1710) must keep flowing through the
-/// built-in fallible-return detection instead of being expanded here.
-pub(crate) fn is_reserved_generic_alias_ident(ident: &str) -> bool {
-    ident == "Result"
-}
-
 /// Substitute the type parameters of a generic alias template with the concrete
 /// arguments found at a use site.
 ///
@@ -159,9 +151,4 @@ mod tests {
         assert_eq!(args, vec![parse("str")]);
     }
 
-    #[test]
-    fn test_reserved_ident() {
-        assert!(is_reserved_generic_alias_ident("Result"));
-        assert!(!is_reserved_generic_alias_ident("AppResult"));
-    }
 }
