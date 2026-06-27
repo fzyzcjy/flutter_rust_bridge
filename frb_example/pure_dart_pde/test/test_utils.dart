@@ -127,10 +127,17 @@ Future<void> expectRustPanicRaw(
     unawaited(Future.value(body()).whenComplete(() => bodyCompleted = true));
     await Future.delayed(const Duration(milliseconds: 300));
     expect(bodyCompleted, false);
+  } else if (kIsWeb) {
+    await expectLater(body, throwsA(_isWebRustPanic));
   } else {
     await expectLater(body, matcher);
   }
 }
+
+final _isWebRustPanic = predicate<Object?>(
+  (error) => error.toString().contains('RuntimeError: unreachable'),
+  'WASM RuntimeError: unreachable',
+);
 
 /// Hack to make generated pseudo-manual tests be happy about async and sync
 Future<void> futurizeVoidTwinNormal(Future<void> x) async => x;

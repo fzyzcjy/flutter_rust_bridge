@@ -188,17 +188,17 @@ Future<void> _executeWasmPack(
       // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
       // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
     ],
-    env: {
-      'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
-      'RUSTFLAGS': rustflagsResolution.rustflags,
-      if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
-    },
+    env: computeWasmPackEnvironment(
+      rustupToolchain: args.wasmPackRustupToolchain ?? 'nightly',
+      rustflags: rustflagsResolution.rustflags,
+      supportsAnsiEscapes: stdout.supportsAnsiEscapes,
+    ),
   );
 }
 
-/// Resolved `RUSTFLAGS` output for a `wasm-pack` invocation.
+/// Resolved rustflags output for a `wasm-pack` invocation.
 class WasmPackRustflagsResolution {
-  /// The `RUSTFLAGS` value that will be passed to `wasm-pack`.
+  /// The rustflags value that will be passed to the wasm target.
   final String rustflags;
 
   /// Optional warning shown when user-provided overrides drop required defaults.
@@ -228,8 +228,34 @@ const buildWebDefaultWasmPackRustflagSegments = [
 final buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
     .join(' ');
 
+/// Cargo target-specific environment key for wasm32 rustflags.
+const buildWebWasmPackTargetRustflagsEnvKey =
+    'CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUSTFLAGS';
+
+/// Host rustflags environment keys that should not leak into `wasm-pack`.
+const buildWebWasmPackHostRustflagsEnvKeys = [
+  'RUSTFLAGS',
+  'CARGO_ENCODED_RUSTFLAGS',
+  'CARGO_BUILD_RUSTFLAGS',
+];
+
 bool _containsDefaultWasmPackRustflags(String rustflags) {
   return buildWebDefaultWasmPackRustflagSegments.every(rustflags.contains);
+}
+
+@visibleForTesting
+/// Builds the environment for a `wasm-pack` invocation.
+Map<String, String> computeWasmPackEnvironment({
+  required String rustupToolchain,
+  required String rustflags,
+  required bool supportsAnsiEscapes,
+}) {
+  return {
+    'RUSTUP_TOOLCHAIN': rustupToolchain,
+    for (final key in buildWebWasmPackHostRustflagsEnvKeys) key: '',
+    buildWebWasmPackTargetRustflagsEnvKey: rustflags,
+    if (supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
+  };
 }
 
 @visibleForTesting
