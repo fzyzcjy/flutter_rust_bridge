@@ -137,7 +137,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AnalyserNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -188,7 +188,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::AnalyserNode::channel_count(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -239,7 +239,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AnalyserNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -290,7 +290,7 @@ fn wire__web_audio_api__node__AnalyserNode_channel_interpretation_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AnalyserNode::channel_interpretation(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -341,7 +341,7 @@ fn wire__web_audio_api__node__AnalyserNode_clear_onprocessorerror_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AnalyserNode::clear_onprocessorerror(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -392,7 +392,7 @@ fn wire__web_audio_api__node__AnalyserNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AnalyserNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -447,7 +447,7 @@ fn wire__web_audio_api__node__AnalyserNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -498,7 +498,7 @@ fn wire__web_audio_api__node__AnalyserNode_fft_size_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::AnalyserNode::fft_size(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -560,7 +560,7 @@ fn wire__web_audio_api__node__AnalyserNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -587,7 +587,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::node::AnalyserNode::frb_override_get_byte_time_domain_data(&mut *api_that_guard, api_len))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::node::AnalyserNode::frb_override_get_byte_time_domain_data(&mut *api_that_guard, api_len))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -612,7 +612,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::node::AnalyserNode::frb_override_get_float_time_domain_data(&mut *api_that_guard, api_len))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::node::AnalyserNode::frb_override_get_float_time_domain_data(&mut *api_that_guard, api_len))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -661,7 +661,7 @@ fn wire__web_audio_api__node__AnalyserNode_frequency_bin_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AnalyserNode::frequency_bin_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -712,7 +712,7 @@ fn wire__web_audio_api__node__AnalyserNode_max_decibels_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::AnalyserNode::max_decibels(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -763,7 +763,7 @@ fn wire__web_audio_api__node__AnalyserNode_min_decibels_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::AnalyserNode::min_decibels(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -814,7 +814,7 @@ fn wire__web_audio_api__node__AnalyserNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AnalyserNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -865,7 +865,7 @@ fn wire__web_audio_api__node__AnalyserNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AnalyserNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -916,7 +916,7 @@ fn wire__web_audio_api__node__AnalyserNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AnalyserNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -971,7 +971,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_fft_size_impl(
                             api_fft_size,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1026,7 +1026,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_max_decibels_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1081,7 +1081,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_min_decibels_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1138,7 +1138,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1193,7 +1193,7 @@ fn wire__web_audio_api__node__AnalyserNode_set_smoothing_time_constant_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1245,7 +1245,7 @@ fn wire__web_audio_api__node__AnalyserNode_smoothing_time_constant_impl(
                         Ok::<_, ()>(web_audio_api::node::AnalyserNode::smoothing_time_constant(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1298,7 +1298,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_config_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1349,7 +1349,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AudioBufferSourceNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1402,7 +1402,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_count_mode_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1455,7 +1455,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_channel_interpretation_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1506,7 +1506,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_clear_onended_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AudioBufferSourceNode::clear_onended(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1559,7 +1559,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1610,7 +1610,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AudioBufferSourceNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1665,7 +1665,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1727,7 +1727,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1795,7 +1795,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_frb_override_set_buffer_impl
                             &*api_audio_buffer_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1846,7 +1846,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_loop__impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AudioBufferSourceNode::loop_(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1897,7 +1897,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_loop_end_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AudioBufferSourceNode::loop_end(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -1948,7 +1948,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_loop_start_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AudioBufferSourceNode::loop_start(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2001,7 +2001,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_number_of_inputs_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2054,7 +2054,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_number_of_outputs_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2105,7 +2105,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_position_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AudioBufferSourceNode::position(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2156,7 +2156,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AudioBufferSourceNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2211,7 +2211,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2266,7 +2266,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_end_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2321,7 +2321,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_loop_start_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2348,7 +2348,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::node::AudioBufferSourceNode::set_on_ended(&*api_that_guard, api_callback); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::node::AudioBufferSourceNode::set_on_ended(&*api_that_guard, api_callback); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -2403,7 +2403,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2454,7 +2454,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AudioBufferSourceNode::start(&mut *api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2509,7 +2509,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_impl(
                             api_when,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2566,7 +2566,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_start_at_with_offset_impl(
                             api_offset,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2595,7 +2595,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let mut api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::node::AudioBufferSourceNode::start_at_with_offset_and_duration(&mut *api_that_guard, api_start, api_offset, api_duration); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::node::AudioBufferSourceNode::start_at_with_offset_and_duration(&mut *api_that_guard, api_start, api_offset, api_duration); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -2644,7 +2644,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_stop_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AudioBufferSourceNode::stop(&mut *api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2699,7 +2699,7 @@ fn wire__web_audio_api__node__AudioBufferSourceNode_stop_at_impl(
                             api_when,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2749,7 +2749,7 @@ fn wire__web_audio_api__AudioBuffer_duration_impl(
                     let api_that_guard = api_that_guard.unwrap();
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::AudioBuffer::duration(&*api_that_guard))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2786,7 +2786,7 @@ fn wire__web_audio_api__AudioBuffer_from_impl(
                         api_samples,
                         api_sample_rate,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2841,7 +2841,7 @@ fn wire__web_audio_api__AudioBuffer_get_channel_data_impl(
                             api_channel_number,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2896,7 +2896,7 @@ fn wire__web_audio_api__AudioBuffer_get_channel_data_mut_impl(
                             api_channel_number,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2946,7 +2946,7 @@ fn wire__web_audio_api__AudioBuffer_length_impl(
                     let api_that_guard = api_that_guard.unwrap();
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::AudioBuffer::length(&*api_that_guard))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -2979,7 +2979,7 @@ fn wire__web_audio_api__AudioBuffer_new_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::AudioBuffer::new(api_options))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3030,7 +3030,7 @@ fn wire__web_audio_api__AudioBuffer_number_of_channels_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::AudioBuffer::number_of_channels(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3080,7 +3080,7 @@ fn wire__web_audio_api__AudioBuffer_sample_rate_impl(
                     let api_that_guard = api_that_guard.unwrap();
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::AudioBuffer::sample_rate(&*api_that_guard))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3131,7 +3131,7 @@ fn wire__web_audio_api__context__AudioContext_base_latency_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::base_latency(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3182,7 +3182,7 @@ fn wire__web_audio_api__context__AudioContext_clear_onsinkchange_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::context::AudioContext::clear_onsinkchange(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3233,7 +3233,7 @@ fn wire__web_audio_api__context__AudioContext_clear_onstatechange_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::context::AudioContext::clear_onstatechange(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3288,7 +3288,7 @@ fn wire__web_audio_api__context__AudioContext_close_impl(
                         let output_ok = Ok::<_, ()>({
                             web_audio_api::context::AudioContext::close(&*api_that_guard).await;
                         })?;
-                        Ok(output_ok)
+                        std::result::Result::Ok(output_ok)
                     })()
                     .await,
                 )
@@ -3341,7 +3341,7 @@ fn wire__web_audio_api__context__AudioContext_close_sync_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::context::AudioContext::close_sync(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3392,7 +3392,7 @@ fn wire__web_audio_api__context__AudioContext_create_analyser_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::create_analyser(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3456,7 +3456,7 @@ fn wire__web_audio_api__context__AudioContext_create_audio_param_impl(
                             api_opts,
                             &*api_dest_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3508,7 +3508,7 @@ fn wire__web_audio_api__context__AudioContext_create_biquad_filter_impl(
                         Ok::<_, ()>(web_audio_api::context::AudioContext::create_biquad_filter(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3566,7 +3566,7 @@ fn wire__web_audio_api__context__AudioContext_create_buffer_impl(
                             api_length,
                             api_sample_rate,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3618,7 +3618,7 @@ fn wire__web_audio_api__context__AudioContext_create_buffer_source_impl(
                         Ok::<_, ()>(web_audio_api::context::AudioContext::create_buffer_source(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3672,7 +3672,7 @@ fn wire__web_audio_api__context__AudioContext_create_channel_merger_impl(
                             &*api_that_guard,
                             api_number_of_inputs,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3727,7 +3727,7 @@ fn wire__web_audio_api__context__AudioContext_create_channel_splitter_impl(
                             api_number_of_outputs,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3780,7 +3780,7 @@ fn wire__web_audio_api__context__AudioContext_create_constant_source_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3831,7 +3831,7 @@ fn wire__web_audio_api__context__AudioContext_create_convolver_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::create_convolver(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3885,7 +3885,7 @@ fn wire__web_audio_api__context__AudioContext_create_delay_impl(
                             &*api_that_guard,
                             api_max_delay_time,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3938,7 +3938,7 @@ fn wire__web_audio_api__context__AudioContext_create_dynamics_compressor_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -3989,7 +3989,7 @@ fn wire__web_audio_api__context__AudioContext_create_gain_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::create_gain(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4045,7 +4045,7 @@ fn wire__web_audio_api__context__AudioContext_create_iir_filter_impl(
                             api_feedforward,
                             api_feedback,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4098,7 +4098,7 @@ fn wire__web_audio_api__context__AudioContext_create_media_stream_destination_im
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4128,7 +4128,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_that_guard = api_that_guard.unwrap();
 let api_media_guard = api_media_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::context::AudioContext::create_media_stream_source(&*api_that_guard, &*api_media_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::context::AudioContext::create_media_stream_source(&*api_that_guard, &*api_media_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -4189,7 +4189,7 @@ fn wire__web_audio_api__context__AudioContext_create_media_stream_track_source_i
                             &*api_media_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4240,7 +4240,7 @@ fn wire__web_audio_api__context__AudioContext_create_oscillator_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::create_oscillator(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4291,7 +4291,7 @@ fn wire__web_audio_api__context__AudioContext_create_panner_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::create_panner(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4345,7 +4345,7 @@ fn wire__web_audio_api__context__AudioContext_create_periodic_wave_impl(
                             &*api_that_guard,
                             api_options,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4404,7 +4404,7 @@ fn wire__web_audio_api__context__AudioContext_create_script_processor_impl(
                             api_number_of_output_channels,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4456,7 +4456,7 @@ fn wire__web_audio_api__context__AudioContext_create_stereo_panner_impl(
                         Ok::<_, ()>(web_audio_api::context::AudioContext::create_stereo_panner(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4507,7 +4507,7 @@ fn wire__web_audio_api__context__AudioContext_create_wave_shaper_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::create_wave_shaper(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4558,7 +4558,7 @@ fn wire__web_audio_api__context__AudioContext_current_time_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::current_time(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4590,7 +4590,7 @@ fn wire__web_audio_api__context__AudioContext_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::context::AudioContext::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4641,7 +4641,7 @@ fn wire__web_audio_api__context__AudioContext_destination_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::destination(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4671,7 +4671,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_that_guard = api_that_guard.unwrap();
 let mut api_media_element_guard = api_media_element_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::context::AudioContext::frb_override_create_media_element_source(&*api_that_guard, &mut *api_media_element_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::context::AudioContext::frb_override_create_media_element_source(&*api_that_guard, &mut *api_media_element_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -4696,7 +4696,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = web_audio_api::context::AudioContext::frb_override_decode_audio_data_sync(&*api_that_guard, api_input_path)?;   Ok(output_ok)
+ let output_ok = web_audio_api::context::AudioContext::frb_override_decode_audio_data_sync(&*api_that_guard, api_input_path)?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -4745,7 +4745,7 @@ fn wire__web_audio_api__context__AudioContext_listener_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::context::AudioContext::listener(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4778,7 +4778,7 @@ fn wire__web_audio_api__context__AudioContext_new_impl(
             transform_result_sse::<_, ()>((move || {
                 let output_ok =
                     Ok::<_, ()>(web_audio_api::context::AudioContext::new(api_options))?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -4828,7 +4828,7 @@ fn wire__web_audio_api__context__AudioContext_output_latency_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::output_latency(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4879,7 +4879,7 @@ fn wire__web_audio_api__context__AudioContext_render_capacity_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::context::AudioContext::render_capacity(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4930,7 +4930,7 @@ fn wire__web_audio_api__context__AudioContext_resume_sync_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::context::AudioContext::resume_sync(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -4981,7 +4981,7 @@ fn wire__web_audio_api__context__AudioContext_sample_rate_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContext::sample_rate(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5008,7 +5008,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::context::AudioContext::set_on_state_change(&*api_that_guard, api_callback); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::context::AudioContext::set_on_state_change(&*api_that_guard, api_callback); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -5060,7 +5060,7 @@ fn wire__web_audio_api__context__AudioContext_set_sink_id_impl(
                             &*api_that_guard,
                             api_sink_id,
                         )?;
-                        Ok(output_ok)
+                        std::result::Result::Ok(output_ok)
                     })(),
                 )
             }
@@ -5112,7 +5112,7 @@ fn wire__web_audio_api__context__AudioContext_sink_id_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::context::AudioContext::sink_id(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5163,7 +5163,7 @@ fn wire__web_audio_api__context__AudioContext_state_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::context::AudioContext::state(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5218,7 +5218,7 @@ fn wire__web_audio_api__context__AudioContext_suspend_impl(
                         let output_ok = Ok::<_, ()>({
                             web_audio_api::context::AudioContext::suspend(&*api_that_guard).await;
                         })?;
-                        Ok(output_ok)
+                        std::result::Result::Ok(output_ok)
                     })()
                     .await,
                 )
@@ -5271,7 +5271,7 @@ fn wire__web_audio_api__context__AudioContext_suspend_sync_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::context::AudioContext::suspend_sync(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5322,7 +5322,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AudioDestinationNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5373,7 +5373,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::AudioDestinationNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5426,7 +5426,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_count_mode_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5479,7 +5479,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_channel_interpretation_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5532,7 +5532,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5583,7 +5583,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AudioDestinationNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5638,7 +5638,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5700,7 +5700,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5753,7 +5753,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_max_channel_count_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5805,7 +5805,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_number_of_inputs_impl(
                         Ok::<_, ()>(web_audio_api::node::AudioDestinationNode::number_of_inputs(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5858,7 +5858,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_number_of_outputs_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5909,7 +5909,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::AudioDestinationNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5966,7 +5966,7 @@ fn wire__web_audio_api__node__AudioDestinationNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -5992,7 +5992,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::automation_rate(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::automation_rate(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6017,7 +6017,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::cancel_and_hold_at_time(&*api_that_guard, api_cancel_time); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::cancel_and_hold_at_time(&*api_that_guard, api_cancel_time); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6042,7 +6042,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::cancel_scheduled_values(&*api_that_guard, api_cancel_time); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::cancel_scheduled_values(&*api_that_guard, api_cancel_time); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6066,7 +6066,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::channel_config(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::channel_config(&*api_that_guard); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6090,7 +6090,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::channel_count(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::channel_count(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6114,7 +6114,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::channel_count_mode(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::channel_count_mode(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6138,7 +6138,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::channel_interpretation(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::channel_interpretation(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6162,7 +6162,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::clear_onprocessorerror(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::clear_onprocessorerror(&*api_that_guard); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6186,7 +6186,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::default_value(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::default_value(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6210,7 +6210,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::disconnect(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::disconnect(&*api_that_guard); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6235,7 +6235,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::disconnect_output(&*api_that_guard, api_output); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::disconnect_output(&*api_that_guard, api_output); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6261,7 +6261,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::exponential_ramp_to_value_at_time(&*api_that_guard, api_value, api_end_time); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::exponential_ramp_to_value_at_time(&*api_that_guard, api_value, api_end_time); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6289,7 +6289,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
         }
         let api_that_guard = api_that_guard.unwrap();
 let api_dest_guard = api_dest_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::frb_override_connect(&*api_that_guard, &*api_dest_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::frb_override_connect(&*api_that_guard, &*api_dest_guard); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6315,7 +6315,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::linear_ramp_to_value_at_time(&*api_that_guard, api_value, api_end_time); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::linear_ramp_to_value_at_time(&*api_that_guard, api_value, api_end_time); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6339,7 +6339,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::max_value(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::max_value(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6363,7 +6363,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::min_value(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::min_value(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6387,7 +6387,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::number_of_inputs(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::number_of_inputs(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6411,7 +6411,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::number_of_outputs(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::number_of_outputs(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6435,7 +6435,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::registration(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::registration(&*api_that_guard); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6460,7 +6460,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_automation_rate(&*api_that_guard, api_value); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_automation_rate(&*api_that_guard, api_value); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6485,7 +6485,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_on_processor_error(&*api_that_guard, api_callback); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_on_processor_error(&*api_that_guard, api_callback); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6512,7 +6512,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_target_at_time(&*api_that_guard, api_value, api_start_time, api_time_constant); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_target_at_time(&*api_that_guard, api_value, api_start_time, api_time_constant); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6536,7 +6536,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_value(&*api_that_guard, api_value); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_value(&*api_that_guard, api_value); })?;   std::result::Result::Ok(output_ok)
                 })()) })
 }
 fn wire__web_audio_api__AudioParam_set_value_at_time_impl(
@@ -6561,7 +6561,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_value_at_time(&*api_that_guard, api_value, api_start_time); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_value_at_time(&*api_that_guard, api_value, api_start_time); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6588,7 +6588,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_value_curve_at_time(&*api_that_guard, &api_values, api_start_time, api_duration); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::AudioParam::set_value_curve_at_time(&*api_that_guard, &api_values, api_start_time, api_duration); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -6611,7 +6611,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::value(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::AudioParam::value(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                 })()) })
 }
 fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_input_buffer_impl(
@@ -6655,7 +6655,7 @@ fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_input_buffer_impl
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.input_buffer.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -6701,7 +6701,7 @@ fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_output_buffer_imp
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.output_buffer.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -6747,7 +6747,7 @@ fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_get_playback_time_imp
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.playback_time.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -6798,7 +6798,7 @@ fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_input_buffer_impl
                         api_that_guard.input_buffer = api_input_buffer;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -6849,7 +6849,7 @@ fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_output_buffer_imp
                         api_that_guard.output_buffer = api_output_buffer;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -6900,7 +6900,7 @@ fn wire__web_audio_api__AudioProcessingEvent_auto_accessor_set_playback_time_imp
                         api_that_guard.playback_time = api_playback_time;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -6946,7 +6946,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_average_load_
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.average_load.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -6992,7 +6992,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_event_impl(
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.event.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -7038,7 +7038,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_peak_load_imp
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.peak_load.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -7084,7 +7084,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_timestamp_imp
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.timestamp.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -7130,7 +7130,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_get_underrun_rati
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.underrun_ratio.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -7181,7 +7181,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_average_load_
                         api_that_guard.average_load = api_average_load;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -7232,7 +7232,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_event_impl(
                         api_that_guard.event = api_event;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -7283,7 +7283,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_peak_load_imp
                         api_that_guard.peak_load = api_peak_load;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -7334,7 +7334,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_timestamp_imp
                         api_that_guard.timestamp = api_timestamp;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -7385,7 +7385,7 @@ fn wire__web_audio_api__AudioRenderCapacityEvent_auto_accessor_set_underrun_rati
                         api_that_guard.underrun_ratio = api_underrun_ratio;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -7435,7 +7435,7 @@ fn wire__web_audio_api__AudioRenderCapacity_clear_onupdate_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::AudioRenderCapacity::clear_onupdate(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7488,7 +7488,7 @@ fn wire__web_audio_api__AudioRenderCapacity_start_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::AudioRenderCapacity::start(&*api_that_guard, api_options);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7539,7 +7539,7 @@ fn wire__web_audio_api__AudioRenderCapacity_stop_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::AudioRenderCapacity::stop(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7590,7 +7590,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::worklet::AudioWorkletNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7641,7 +7641,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::worklet::AudioWorkletNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7694,7 +7694,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_count_mode_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7747,7 +7747,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_channel_interpretation_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7800,7 +7800,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7851,7 +7851,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::worklet::AudioWorkletNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7906,7 +7906,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -7958,7 +7958,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_number_of_inputs_impl(
                         Ok::<_, ()>(web_audio_api::worklet::AudioWorkletNode::number_of_inputs(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8010,7 +8010,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_number_of_outputs_impl(
                         Ok::<_, ()>(web_audio_api::worklet::AudioWorkletNode::number_of_outputs(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8061,7 +8061,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_parameters_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::worklet::AudioWorkletNode::parameters(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8112,7 +8112,7 @@ fn wire__web_audio_api__worklet__AudioWorkletNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::worklet::AudioWorkletNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8163,7 +8163,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::BiquadFilterNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8214,7 +8214,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::BiquadFilterNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8265,7 +8265,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::BiquadFilterNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8318,7 +8318,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_channel_interpretation_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8371,7 +8371,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8422,7 +8422,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::BiquadFilterNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8477,7 +8477,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8539,7 +8539,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8590,7 +8590,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::BiquadFilterNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8641,7 +8641,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::BiquadFilterNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8692,7 +8692,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::BiquadFilterNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8749,7 +8749,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8804,7 +8804,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_set_type_impl(
                             api_type_,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8855,7 +8855,7 @@ fn wire__web_audio_api__node__BiquadFilterNode_type__impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::BiquadFilterNode::type_(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -8902,7 +8902,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_get_blob_impl(
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.blob.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -8948,7 +8948,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_get_event_impl(
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.event.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -8994,7 +8994,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_get_timecode_imp
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.timecode.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -9045,7 +9045,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_set_blob_impl(
                         api_that_guard.blob = api_blob;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -9096,7 +9096,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_set_event_impl(
                         api_that_guard.event = api_event;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -9147,7 +9147,7 @@ fn wire__web_audio_api__media_recorder__BlobEvent_auto_accessor_set_timecode_imp
                         api_that_guard.timecode = api_timecode;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -9178,7 +9178,7 @@ fn wire__web_audio_api__node__ChannelConfig_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::ChannelConfig::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9229,7 +9229,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ChannelMergerNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9280,7 +9280,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ChannelMergerNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9332,7 +9332,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_count_mode_impl(
                         Ok::<_, ()>(web_audio_api::node::ChannelMergerNode::channel_count_mode(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9385,7 +9385,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_channel_interpretation_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9438,7 +9438,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9489,7 +9489,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ChannelMergerNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9544,7 +9544,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9606,7 +9606,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9657,7 +9657,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ChannelMergerNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9708,7 +9708,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ChannelMergerNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9759,7 +9759,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ChannelMergerNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9816,7 +9816,7 @@ fn wire__web_audio_api__node__ChannelMergerNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9867,7 +9867,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ChannelSplitterNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9918,7 +9918,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ChannelSplitterNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -9971,7 +9971,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_count_mode_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10024,7 +10024,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_channel_interpretation_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10077,7 +10077,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10128,7 +10128,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ChannelSplitterNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10183,7 +10183,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10245,7 +10245,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10297,7 +10297,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_number_of_inputs_impl(
                         Ok::<_, ()>(web_audio_api::node::ChannelSplitterNode::number_of_inputs(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10349,7 +10349,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_number_of_outputs_impl(
                         Ok::<_, ()>(web_audio_api::node::ChannelSplitterNode::number_of_outputs(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10400,7 +10400,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ChannelSplitterNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10457,7 +10457,7 @@ fn wire__web_audio_api__node__ChannelSplitterNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10510,7 +10510,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_clear_onstatechange_im
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10563,7 +10563,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_analyser_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10628,7 +10628,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_audio_param_imp
                             &*api_dest_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10681,7 +10681,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_biquad_filter_i
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10740,7 +10740,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_buffer_impl(
                             api_sample_rate,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10793,7 +10793,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_buffer_source_i
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10848,7 +10848,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_channel_merger_
                             api_number_of_inputs,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10903,7 +10903,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_channel_splitte
                             api_number_of_outputs,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -10956,7 +10956,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_constant_source
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11009,7 +11009,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_convolver_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11064,7 +11064,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_delay_impl(
                             api_max_delay_time,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11090,7 +11090,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::context::ConcreteBaseAudioContext::create_dynamics_compressor(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::context::ConcreteBaseAudioContext::create_dynamics_compressor(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -11141,7 +11141,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_gain_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11198,7 +11198,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_iir_filter_impl
                             api_feedback,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11251,7 +11251,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_oscillator_impl
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11304,7 +11304,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_panner_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11359,7 +11359,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_periodic_wave_i
                             api_options,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11418,7 +11418,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_script_processo
                             api_number_of_output_channels,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11471,7 +11471,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_stereo_panner_i
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11524,7 +11524,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_create_wave_shaper_imp
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11577,7 +11577,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_current_time_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11630,7 +11630,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_destination_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11682,7 +11682,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_listener_impl(
                         Ok::<_, ()>(web_audio_api::context::ConcreteBaseAudioContext::listener(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11745,7 +11745,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_mark_cycle_breaker_imp
                             &*api_reg_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11798,7 +11798,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_sample_rate_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11849,7 +11849,7 @@ fn wire__web_audio_api__context__ConcreteBaseAudioContext_state_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::ConcreteBaseAudioContext::state(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11900,7 +11900,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ConstantSourceNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -11951,7 +11951,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ConstantSourceNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12003,7 +12003,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_count_mode_impl(
                         Ok::<_, ()>(web_audio_api::node::ConstantSourceNode::channel_count_mode(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12056,7 +12056,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_channel_interpretation_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12107,7 +12107,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_clear_onended_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ConstantSourceNode::clear_onended(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12160,7 +12160,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12211,7 +12211,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ConstantSourceNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12266,7 +12266,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12328,7 +12328,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12379,7 +12379,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ConstantSourceNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12431,7 +12431,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_number_of_outputs_impl(
                         Ok::<_, ()>(web_audio_api::node::ConstantSourceNode::number_of_outputs(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12482,7 +12482,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ConstantSourceNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12509,7 +12509,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::node::ConstantSourceNode::set_on_ended(&*api_that_guard, api_callback); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::node::ConstantSourceNode::set_on_ended(&*api_that_guard, api_callback); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -12564,7 +12564,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12615,7 +12615,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_start_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ConstantSourceNode::start(&mut *api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12670,7 +12670,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_start_at_impl(
                             api_when,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12721,7 +12721,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_stop_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ConstantSourceNode::stop(&mut *api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12776,7 +12776,7 @@ fn wire__web_audio_api__node__ConstantSourceNode_stop_at_impl(
                             api_when,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12827,7 +12827,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ConvolverNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12878,7 +12878,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ConvolverNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12929,7 +12929,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ConvolverNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -12981,7 +12981,7 @@ fn wire__web_audio_api__node__ConvolverNode_channel_interpretation_impl(
                         Ok::<_, ()>(web_audio_api::node::ConvolverNode::channel_interpretation(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13034,7 +13034,7 @@ fn wire__web_audio_api__node__ConvolverNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13085,7 +13085,7 @@ fn wire__web_audio_api__node__ConvolverNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ConvolverNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13140,7 +13140,7 @@ fn wire__web_audio_api__node__ConvolverNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13202,7 +13202,7 @@ fn wire__web_audio_api__node__ConvolverNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13253,7 +13253,7 @@ fn wire__web_audio_api__node__ConvolverNode_normalize_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::ConvolverNode::normalize(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13304,7 +13304,7 @@ fn wire__web_audio_api__node__ConvolverNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ConvolverNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13355,7 +13355,7 @@ fn wire__web_audio_api__node__ConvolverNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ConvolverNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13406,7 +13406,7 @@ fn wire__web_audio_api__node__ConvolverNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ConvolverNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13461,7 +13461,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_buffer_impl(
                             api_buffer,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13516,7 +13516,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_normalize_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13573,7 +13573,7 @@ fn wire__web_audio_api__node__ConvolverNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13624,7 +13624,7 @@ fn wire__web_audio_api__node__DelayNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::DelayNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13675,7 +13675,7 @@ fn wire__web_audio_api__node__DelayNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::DelayNode::channel_count(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13726,7 +13726,7 @@ fn wire__web_audio_api__node__DelayNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::DelayNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13777,7 +13777,7 @@ fn wire__web_audio_api__node__DelayNode_channel_interpretation_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::DelayNode::channel_interpretation(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13828,7 +13828,7 @@ fn wire__web_audio_api__node__DelayNode_clear_onprocessorerror_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::DelayNode::clear_onprocessorerror(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13879,7 +13879,7 @@ fn wire__web_audio_api__node__DelayNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::DelayNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13934,7 +13934,7 @@ fn wire__web_audio_api__node__DelayNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -13996,7 +13996,7 @@ fn wire__web_audio_api__node__DelayNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14047,7 +14047,7 @@ fn wire__web_audio_api__node__DelayNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::DelayNode::number_of_inputs(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14098,7 +14098,7 @@ fn wire__web_audio_api__node__DelayNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::DelayNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14149,7 +14149,7 @@ fn wire__web_audio_api__node__DelayNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::DelayNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14206,7 +14206,7 @@ fn wire__web_audio_api__node__DelayNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14259,7 +14259,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_config_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14311,7 +14311,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_count_impl(
                         Ok::<_, ()>(web_audio_api::node::DynamicsCompressorNode::channel_count(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14364,7 +14364,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_count_mode_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14417,7 +14417,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_channel_interpretation_impl
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14470,7 +14470,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_clear_onprocessorerror_impl
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14521,7 +14521,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::DynamicsCompressorNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14576,7 +14576,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14638,7 +14638,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14691,7 +14691,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_number_of_inputs_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14744,7 +14744,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_number_of_outputs_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14795,7 +14795,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_reduction_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::DynamicsCompressorNode::reduction(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14846,7 +14846,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::DynamicsCompressorNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14903,7 +14903,7 @@ fn wire__web_audio_api__node__DynamicsCompressorNode_set_on_processor_error_impl
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -14950,7 +14950,7 @@ fn wire__web_audio_api__Event_type__impl(
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(web_audio_api::Event::type_(&*api_that_guard))?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -15000,7 +15000,7 @@ fn wire__web_audio_api__node__GainNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::GainNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15051,7 +15051,7 @@ fn wire__web_audio_api__node__GainNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::GainNode::channel_count(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15102,7 +15102,7 @@ fn wire__web_audio_api__node__GainNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::GainNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15153,7 +15153,7 @@ fn wire__web_audio_api__node__GainNode_channel_interpretation_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::GainNode::channel_interpretation(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15204,7 +15204,7 @@ fn wire__web_audio_api__node__GainNode_clear_onprocessorerror_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::GainNode::clear_onprocessorerror(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15255,7 +15255,7 @@ fn wire__web_audio_api__node__GainNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::GainNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15310,7 +15310,7 @@ fn wire__web_audio_api__node__GainNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15372,7 +15372,7 @@ fn wire__web_audio_api__node__GainNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15423,7 +15423,7 @@ fn wire__web_audio_api__node__GainNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::GainNode::number_of_inputs(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15474,7 +15474,7 @@ fn wire__web_audio_api__node__GainNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::GainNode::number_of_outputs(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15525,7 +15525,7 @@ fn wire__web_audio_api__node__GainNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::GainNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15582,7 +15582,7 @@ fn wire__web_audio_api__node__GainNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15633,7 +15633,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::IIRFilterNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15684,7 +15684,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::IIRFilterNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15735,7 +15735,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::IIRFilterNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15787,7 +15787,7 @@ fn wire__web_audio_api__node__IirFilterNode_channel_interpretation_impl(
                         Ok::<_, ()>(web_audio_api::node::IIRFilterNode::channel_interpretation(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15840,7 +15840,7 @@ fn wire__web_audio_api__node__IirFilterNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15891,7 +15891,7 @@ fn wire__web_audio_api__node__IirFilterNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::IIRFilterNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -15946,7 +15946,7 @@ fn wire__web_audio_api__node__IirFilterNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16008,7 +16008,7 @@ fn wire__web_audio_api__node__IirFilterNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16059,7 +16059,7 @@ fn wire__web_audio_api__node__IirFilterNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::IIRFilterNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16110,7 +16110,7 @@ fn wire__web_audio_api__node__IirFilterNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::IIRFilterNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16161,7 +16161,7 @@ fn wire__web_audio_api__node__IirFilterNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::IIRFilterNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16218,7 +16218,7 @@ fn wire__web_audio_api__node__IirFilterNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16248,7 +16248,7 @@ fn wire__web_audio_api__MAX_CHANNELS_impl(
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let output_ok = Ok::<_, ()>(web_audio_api::MAX_CHANNELS)?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -16302,7 +16302,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_config_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16357,7 +16357,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_count_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16412,7 +16412,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_count_mode_imp
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16467,7 +16467,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_channel_interpretation
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16522,7 +16522,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_clear_onprocessorerror
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16577,7 +16577,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_disconnect_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16634,7 +16634,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_disconnect_output_impl
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16698,7 +16698,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_frb_override_connect_i
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16753,7 +16753,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_number_of_inputs_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16808,7 +16808,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_number_of_outputs_impl
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16863,7 +16863,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_registration_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16922,7 +16922,7 @@ fn wire__web_audio_api__node__MediaElementAudioSourceNode_set_on_processor_error
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -16975,7 +16975,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_clear_ondataavailable_impl
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17028,7 +17028,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_clear_onerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17081,7 +17081,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_clear_onstop_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17107,7 +17107,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_stream_guard = api_stream_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::media_recorder::MediaRecorder::new(&*api_stream_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::media_recorder::MediaRecorder::new(&*api_stream_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -17156,7 +17156,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_start_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::media_recorder::MediaRecorder::start(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17207,7 +17207,7 @@ fn wire__web_audio_api__media_recorder__MediaRecorder_stop_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::media_recorder::MediaRecorder::stop(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17262,7 +17262,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_config_imp
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17317,7 +17317,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_count_impl
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17372,7 +17372,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_channel_count_mode
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17398,7 +17398,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::node::MediaStreamAudioDestinationNode::channel_interpretation(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::node::MediaStreamAudioDestinationNode::channel_interpretation(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -17422,7 +17422,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::node::MediaStreamAudioDestinationNode::clear_onprocessorerror(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::node::MediaStreamAudioDestinationNode::clear_onprocessorerror(&*api_that_guard); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -17475,7 +17475,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_disconnect_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17532,7 +17532,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_disconnect_output_
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17596,7 +17596,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_frb_override_conne
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17651,7 +17651,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_number_of_inputs_i
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17706,7 +17706,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_number_of_outputs_
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17761,7 +17761,7 @@ fn wire__web_audio_api__node__MediaStreamAudioDestinationNode_registration_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17788,7 +17788,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::node::MediaStreamAudioDestinationNode::set_on_processor_error(&*api_that_guard, api_callback); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::node::MediaStreamAudioDestinationNode::set_on_processor_error(&*api_that_guard, api_callback); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -17839,7 +17839,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_config_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17892,7 +17892,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_count_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17945,7 +17945,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_count_mode_impl
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -17998,7 +17998,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_channel_interpretation_
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18051,7 +18051,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_clear_onprocessorerror_
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18104,7 +18104,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_disconnect_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18159,7 +18159,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18221,7 +18221,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_frb_override_connect_im
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18274,7 +18274,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_number_of_inputs_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18327,7 +18327,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_number_of_outputs_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18380,7 +18380,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_registration_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18437,7 +18437,7 @@ fn wire__web_audio_api__node__MediaStreamAudioSourceNode_set_on_processor_error_
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18492,7 +18492,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_config_imp
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18547,7 +18547,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_count_impl
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18602,7 +18602,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_channel_count_mode
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18628,7 +18628,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::node::MediaStreamTrackAudioSourceNode::channel_interpretation(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::node::MediaStreamTrackAudioSourceNode::channel_interpretation(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -18652,7 +18652,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::node::MediaStreamTrackAudioSourceNode::clear_onprocessorerror(&*api_that_guard); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::node::MediaStreamTrackAudioSourceNode::clear_onprocessorerror(&*api_that_guard); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -18705,7 +18705,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_disconnect_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18762,7 +18762,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_disconnect_output_
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18826,7 +18826,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_frb_override_conne
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18881,7 +18881,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_number_of_inputs_i
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18936,7 +18936,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_number_of_outputs_
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -18991,7 +18991,7 @@ fn wire__web_audio_api__node__MediaStreamTrackAudioSourceNode_registration_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19018,7 +19018,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_on_processor_error(&*api_that_guard, api_callback); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::node::MediaStreamTrackAudioSourceNode::set_on_processor_error(&*api_that_guard, api_callback); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -19067,7 +19067,7 @@ fn wire__web_audio_api__media_streams__MediaStreamTrack_close_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::media_streams::MediaStreamTrack::close(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19119,7 +19119,7 @@ fn wire__web_audio_api__media_streams__MediaStreamTrack_ready_state_impl(
                         Ok::<_, ()>(web_audio_api::media_streams::MediaStreamTrack::ready_state(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19145,7 +19145,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>(web_audio_api::media_streams::MediaStream::frb_override_get_tracks(&*api_that_guard))?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>(web_audio_api::media_streams::MediaStream::frb_override_get_tracks(&*api_that_guard))?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -19178,7 +19178,7 @@ fn wire__web_audio_api__media_streams__MediaStream_from_tracks_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::media_streams::MediaStream::from_tracks(api_tracks),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19229,7 +19229,7 @@ fn wire__crate__api__media_element__MyMediaElement_current_time_impl(
                     let output_ok = Ok::<_, ()>(
                         crate::api::media_element::MyMediaElement::current_time(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19280,7 +19280,7 @@ fn wire__crate__api__media_element__MyMediaElement_loop__impl(
                     let output_ok = Ok::<_, ()>(crate::api::media_element::MyMediaElement::loop_(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19312,7 +19312,7 @@ fn wire__crate__api__media_element__MyMediaElement_new_impl(
             transform_result_sse::<_, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
                     let output_ok = crate::api::media_element::MyMediaElement::new(api_file)?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })(),
             )
         },
@@ -19363,7 +19363,7 @@ fn wire__crate__api__media_element__MyMediaElement_pause_impl(
                     let output_ok = Ok::<_, ()>({
                         crate::api::media_element::MyMediaElement::pause(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19414,7 +19414,7 @@ fn wire__crate__api__media_element__MyMediaElement_paused_impl(
                     let output_ok = Ok::<_, ()>(
                         crate::api::media_element::MyMediaElement::paused(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19465,7 +19465,7 @@ fn wire__crate__api__media_element__MyMediaElement_play_impl(
                     let output_ok = Ok::<_, ()>({
                         crate::api::media_element::MyMediaElement::play(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19516,7 +19516,7 @@ fn wire__crate__api__media_element__MyMediaElement_playback_rate_impl(
                     let output_ok = Ok::<_, ()>(
                         crate::api::media_element::MyMediaElement::playback_rate(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19571,7 +19571,7 @@ fn wire__crate__api__media_element__MyMediaElement_set_current_time_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19626,7 +19626,7 @@ fn wire__crate__api__media_element__MyMediaElement_set_loop_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19681,7 +19681,7 @@ fn wire__crate__api__media_element__MyMediaElement_set_playback_rate_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19730,7 +19730,7 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_get_event_impl
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.event.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -19778,7 +19778,7 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_get_rendered_b
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.rendered_buffer.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -19831,7 +19831,7 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_set_event_impl
                         api_that_guard.event = api_event;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -19884,7 +19884,7 @@ fn wire__web_audio_api__OfflineAudioCompletionEvent_auto_accessor_set_rendered_b
                         api_that_guard.rendered_buffer = api_rendered_buffer;
                     };
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -19936,7 +19936,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_clear_oncomplete_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -19989,7 +19989,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_clear_onstatechange_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20042,7 +20042,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_analyser_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20107,7 +20107,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_audio_param_impl(
                             &*api_dest_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20160,7 +20160,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_biquad_filter_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20218,7 +20218,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_buffer_impl(
                             api_length,
                             api_sample_rate,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20271,7 +20271,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_buffer_source_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20326,7 +20326,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_channel_merger_impl(
                             api_number_of_inputs,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20381,7 +20381,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_channel_splitter_imp
                             api_number_of_outputs,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20434,7 +20434,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_constant_source_impl
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20487,7 +20487,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_convolver_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20541,7 +20541,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_delay_impl(
                             &*api_that_guard,
                             api_max_delay_time,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20594,7 +20594,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_dynamics_compressor_
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20645,7 +20645,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_gain_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::OfflineAudioContext::create_gain(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20702,7 +20702,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_iir_filter_impl(
                             api_feedback,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20755,7 +20755,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_oscillator_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20807,7 +20807,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_panner_impl(
                         Ok::<_, ()>(web_audio_api::context::OfflineAudioContext::create_panner(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20862,7 +20862,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_periodic_wave_impl(
                             api_options,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20921,7 +20921,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_script_processor_imp
                             api_number_of_output_channels,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -20974,7 +20974,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_stereo_panner_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21027,7 +21027,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_create_wave_shaper_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21078,7 +21078,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_current_time_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::OfflineAudioContext::current_time(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21129,7 +21129,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_destination_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::OfflineAudioContext::destination(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21180,7 +21180,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_length_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::OfflineAudioContext::length(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21231,7 +21231,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_listener_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::OfflineAudioContext::listener(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21270,7 +21270,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_new_impl(
                         api_length,
                         api_sample_rate,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21326,7 +21326,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_resume_impl(
                             web_audio_api::context::OfflineAudioContext::resume(&*api_that_guard)
                                 .await;
                         })?;
-                        Ok(output_ok)
+                        std::result::Result::Ok(output_ok)
                     })()
                     .await,
                 )
@@ -21379,7 +21379,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_sample_rate_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::OfflineAudioContext::sample_rate(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21406,7 +21406,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::context::OfflineAudioContext::set_on_complete(&*api_that_guard, api_callback); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::context::OfflineAudioContext::set_on_complete(&*api_that_guard, api_callback); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -21462,7 +21462,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_start_rendering_impl(
                             )
                             .await,
                         )?;
-                        Ok(output_ok)
+                        std::result::Result::Ok(output_ok)
                     })()
                     .await,
                 )
@@ -21517,7 +21517,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_start_rendering_sync_impl(
                             &mut *api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21568,7 +21568,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_state_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::OfflineAudioContext::state(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21628,7 +21628,7 @@ fn wire__web_audio_api__context__OfflineAudioContext_suspend_impl(
                             )
                             .await;
                         })?;
-                        Ok(output_ok)
+                        std::result::Result::Ok(output_ok)
                     })()
                     .await,
                 )
@@ -21681,7 +21681,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::OscillatorNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21732,7 +21732,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::OscillatorNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21783,7 +21783,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::OscillatorNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21835,7 +21835,7 @@ fn wire__web_audio_api__node__OscillatorNode_channel_interpretation_impl(
                         Ok::<_, ()>(web_audio_api::node::OscillatorNode::channel_interpretation(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21886,7 +21886,7 @@ fn wire__web_audio_api__node__OscillatorNode_clear_onended_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::OscillatorNode::clear_onended(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21939,7 +21939,7 @@ fn wire__web_audio_api__node__OscillatorNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -21990,7 +21990,7 @@ fn wire__web_audio_api__node__OscillatorNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::OscillatorNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22045,7 +22045,7 @@ fn wire__web_audio_api__node__OscillatorNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22107,7 +22107,7 @@ fn wire__web_audio_api__node__OscillatorNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22158,7 +22158,7 @@ fn wire__web_audio_api__node__OscillatorNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::OscillatorNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22209,7 +22209,7 @@ fn wire__web_audio_api__node__OscillatorNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::OscillatorNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22260,7 +22260,7 @@ fn wire__web_audio_api__node__OscillatorNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::OscillatorNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22287,7 +22287,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::node::OscillatorNode::set_on_ended(&*api_that_guard, api_callback); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::node::OscillatorNode::set_on_ended(&*api_that_guard, api_callback); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -22342,7 +22342,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22397,7 +22397,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_periodic_wave_impl(
                             api_periodic_wave,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22452,7 +22452,7 @@ fn wire__web_audio_api__node__OscillatorNode_set_type_impl(
                             api_type_,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22503,7 +22503,7 @@ fn wire__web_audio_api__node__OscillatorNode_start_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::OscillatorNode::start(&mut *api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22558,7 +22558,7 @@ fn wire__web_audio_api__node__OscillatorNode_start_at_impl(
                             api_when,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22609,7 +22609,7 @@ fn wire__web_audio_api__node__OscillatorNode_stop_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::OscillatorNode::stop(&mut *api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22664,7 +22664,7 @@ fn wire__web_audio_api__node__OscillatorNode_stop_at_impl(
                             api_when,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22714,7 +22714,7 @@ fn wire__web_audio_api__node__OscillatorNode_type__impl(
                     let api_that_guard = api_that_guard.unwrap();
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::node::OscillatorNode::type_(&*api_that_guard))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22765,7 +22765,7 @@ fn wire__web_audio_api__node__PannerNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::PannerNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22816,7 +22816,7 @@ fn wire__web_audio_api__node__PannerNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::PannerNode::channel_count(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22867,7 +22867,7 @@ fn wire__web_audio_api__node__PannerNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::PannerNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22918,7 +22918,7 @@ fn wire__web_audio_api__node__PannerNode_channel_interpretation_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::PannerNode::channel_interpretation(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -22969,7 +22969,7 @@ fn wire__web_audio_api__node__PannerNode_clear_onprocessorerror_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::PannerNode::clear_onprocessorerror(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23020,7 +23020,7 @@ fn wire__web_audio_api__node__PannerNode_cone_inner_angle_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::PannerNode::cone_inner_angle(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23071,7 +23071,7 @@ fn wire__web_audio_api__node__PannerNode_cone_outer_angle_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::PannerNode::cone_outer_angle(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23122,7 +23122,7 @@ fn wire__web_audio_api__node__PannerNode_cone_outer_gain_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::PannerNode::cone_outer_gain(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23173,7 +23173,7 @@ fn wire__web_audio_api__node__PannerNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::PannerNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23228,7 +23228,7 @@ fn wire__web_audio_api__node__PannerNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23279,7 +23279,7 @@ fn wire__web_audio_api__node__PannerNode_distance_model_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::PannerNode::distance_model(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23341,7 +23341,7 @@ fn wire__web_audio_api__node__PannerNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23392,7 +23392,7 @@ fn wire__web_audio_api__node__PannerNode_max_distance_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::PannerNode::max_distance(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23443,7 +23443,7 @@ fn wire__web_audio_api__node__PannerNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::PannerNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23494,7 +23494,7 @@ fn wire__web_audio_api__node__PannerNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::PannerNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23545,7 +23545,7 @@ fn wire__web_audio_api__node__PannerNode_panning_model_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::PannerNode::panning_model(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23596,7 +23596,7 @@ fn wire__web_audio_api__node__PannerNode_ref_distance_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::PannerNode::ref_distance(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23647,7 +23647,7 @@ fn wire__web_audio_api__node__PannerNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::PannerNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23698,7 +23698,7 @@ fn wire__web_audio_api__node__PannerNode_rolloff_factor_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::PannerNode::rolloff_factor(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23753,7 +23753,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_inner_angle_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23808,7 +23808,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_outer_angle_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23863,7 +23863,7 @@ fn wire__web_audio_api__node__PannerNode_set_cone_outer_gain_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23918,7 +23918,7 @@ fn wire__web_audio_api__node__PannerNode_set_distance_model_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -23973,7 +23973,7 @@ fn wire__web_audio_api__node__PannerNode_set_max_distance_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24030,7 +24030,7 @@ fn wire__web_audio_api__node__PannerNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24089,7 +24089,7 @@ fn wire__web_audio_api__node__PannerNode_set_orientation_impl(
                             api_z,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24144,7 +24144,7 @@ fn wire__web_audio_api__node__PannerNode_set_panning_model_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24203,7 +24203,7 @@ fn wire__web_audio_api__node__PannerNode_set_position_impl(
                             api_z,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24258,7 +24258,7 @@ fn wire__web_audio_api__node__PannerNode_set_ref_distance_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24313,7 +24313,7 @@ fn wire__web_audio_api__node__PannerNode_set_rolloff_factor_impl(
                             api_value,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24345,7 +24345,7 @@ fn wire__web_audio_api__PeriodicWave_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::PeriodicWave::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24396,7 +24396,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_buffer_size_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ScriptProcessorNode::buffer_size(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24447,7 +24447,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ScriptProcessorNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24498,7 +24498,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::ScriptProcessorNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24551,7 +24551,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_count_mode_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24604,7 +24604,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_channel_interpretation_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24657,7 +24657,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_clear_onaudioprocess_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24710,7 +24710,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24761,7 +24761,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ScriptProcessorNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24816,7 +24816,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24878,7 +24878,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -24905,7 +24905,7 @@ let decode_indices_ = flutter_rust_bridge::for_generated::lockable_compute_decod
             }
         }
         let api_that_guard = api_that_guard.unwrap();
- let output_ok = Ok::<_, ()>({ web_audio_api::node::ScriptProcessorNode::frb_override_set_onaudioprocess(&*api_that_guard, api_callback); })?;   Ok(output_ok)
+ let output_ok = Ok::<_, ()>({ web_audio_api::node::ScriptProcessorNode::frb_override_set_onaudioprocess(&*api_that_guard, api_callback); })?;   std::result::Result::Ok(output_ok)
                     })())
                 } })
 }
@@ -24955,7 +24955,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_number_of_inputs_impl(
                         Ok::<_, ()>(web_audio_api::node::ScriptProcessorNode::number_of_inputs(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25007,7 +25007,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_number_of_outputs_impl(
                         Ok::<_, ()>(web_audio_api::node::ScriptProcessorNode::number_of_outputs(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25058,7 +25058,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::ScriptProcessorNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25115,7 +25115,7 @@ fn wire__web_audio_api__node__ScriptProcessorNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25166,7 +25166,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::StereoPannerNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25217,7 +25217,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::StereoPannerNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25268,7 +25268,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::StereoPannerNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25321,7 +25321,7 @@ fn wire__web_audio_api__node__StereoPannerNode_channel_interpretation_impl(
                             &*api_that_guard,
                         ),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25374,7 +25374,7 @@ fn wire__web_audio_api__node__StereoPannerNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25425,7 +25425,7 @@ fn wire__web_audio_api__node__StereoPannerNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::StereoPannerNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25480,7 +25480,7 @@ fn wire__web_audio_api__node__StereoPannerNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25542,7 +25542,7 @@ fn wire__web_audio_api__node__StereoPannerNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25593,7 +25593,7 @@ fn wire__web_audio_api__node__StereoPannerNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::StereoPannerNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25644,7 +25644,7 @@ fn wire__web_audio_api__node__StereoPannerNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::StereoPannerNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25695,7 +25695,7 @@ fn wire__web_audio_api__node__StereoPannerNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::StereoPannerNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25752,7 +25752,7 @@ fn wire__web_audio_api__node__StereoPannerNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25803,7 +25803,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_config_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::WaveShaperNode::channel_config(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25854,7 +25854,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_count_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::WaveShaperNode::channel_count(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25905,7 +25905,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_count_mode_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::WaveShaperNode::channel_count_mode(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -25957,7 +25957,7 @@ fn wire__web_audio_api__node__WaveShaperNode_channel_interpretation_impl(
                         Ok::<_, ()>(web_audio_api::node::WaveShaperNode::channel_interpretation(
                             &*api_that_guard,
                         ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26010,7 +26010,7 @@ fn wire__web_audio_api__node__WaveShaperNode_clear_onprocessorerror_impl(
                             &*api_that_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26061,7 +26061,7 @@ fn wire__web_audio_api__node__WaveShaperNode_disconnect_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::WaveShaperNode::disconnect(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26116,7 +26116,7 @@ fn wire__web_audio_api__node__WaveShaperNode_disconnect_output_impl(
                             api_output,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26178,7 +26178,7 @@ fn wire__web_audio_api__node__WaveShaperNode_frb_override_connect_impl(
                             &*api_dest_guard,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26229,7 +26229,7 @@ fn wire__web_audio_api__node__WaveShaperNode_frb_override_curve_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::WaveShaperNode::frb_override_curve(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26280,7 +26280,7 @@ fn wire__web_audio_api__node__WaveShaperNode_number_of_inputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::WaveShaperNode::number_of_inputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26331,7 +26331,7 @@ fn wire__web_audio_api__node__WaveShaperNode_number_of_outputs_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::node::WaveShaperNode::number_of_outputs(&*api_that_guard),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26382,7 +26382,7 @@ fn wire__web_audio_api__node__WaveShaperNode_oversample_impl(
                     let output_ok = Ok::<_, ()>(web_audio_api::node::WaveShaperNode::oversample(
                         &*api_that_guard,
                     ))?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26433,7 +26433,7 @@ fn wire__web_audio_api__node__WaveShaperNode_registration_impl(
                     let output_ok = Ok::<_, ()>({
                         web_audio_api::node::WaveShaperNode::registration(&*api_that_guard);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26488,7 +26488,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_curve_impl(
                             api_curve,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26545,7 +26545,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_on_processor_error_impl(
                             api_callback,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26601,7 +26601,7 @@ fn wire__web_audio_api__node__WaveShaperNode_set_oversample_impl(
                             api_oversample,
                         );
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26633,7 +26633,7 @@ fn wire__web_audio_api__node__analyser_options_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::AnalyserOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26666,7 +26666,7 @@ fn wire__web_audio_api__node__audio_buffer_source_options_default_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::node::AudioBufferSourceOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26700,7 +26700,7 @@ fn wire__web_audio_api__context__audio_context_latency_category_default_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::context::AudioContextLatencyCategory::default(),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26733,7 +26733,7 @@ fn wire__web_audio_api__context__audio_context_options_default_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::context::AudioContextOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26765,7 +26765,7 @@ fn wire__web_audio_api__node__audio_node_options_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::AudioNodeOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26798,7 +26798,7 @@ fn wire__web_audio_api__audio_render_capacity_options_default_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::AudioRenderCapacityOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26831,7 +26831,7 @@ fn wire__web_audio_api__node__biquad_filter_options_default_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::node::BiquadFilterOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26863,7 +26863,7 @@ fn wire__web_audio_api__node__biquad_filter_type_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::BiquadFilterType::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26896,7 +26896,7 @@ fn wire__web_audio_api__node__channel_merger_options_default_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::node::ChannelMergerOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26929,7 +26929,7 @@ fn wire__web_audio_api__node__channel_splitter_options_default_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::node::ChannelSplitterOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26962,7 +26962,7 @@ fn wire__web_audio_api__node__constant_source_options_default_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::node::ConstantSourceOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -26994,7 +26994,7 @@ fn wire__web_audio_api__node__convolver_options_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::ConvolverOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27026,7 +27026,7 @@ fn wire__web_audio_api__node__delay_options_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::DelayOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27058,7 +27058,7 @@ fn wire__web_audio_api__node__distance_model_type_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::DistanceModelType::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27091,7 +27091,7 @@ fn wire__web_audio_api__node__dynamics_compressor_options_default_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::node::DynamicsCompressorOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27126,7 +27126,7 @@ fn wire__crate__api__simple__f_impl(
                     let output_ok = Ok::<_, ()>({
                         crate::api::simple::f(api_a);
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27158,7 +27158,7 @@ fn wire__web_audio_api__node__gain_options_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::GainOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27193,7 +27193,7 @@ fn wire__web_audio_api__media_devices__get_user_media_sync_impl(
                     let output_ok = Ok::<_, ()>(
                         web_audio_api::media_devices::get_user_media_sync(api_constraints),
                     )?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27227,7 +27227,7 @@ fn wire__crate__api__simple__init_app_impl(
                     let output_ok = Ok::<_, ()>({
                         crate::api::simple::init_app();
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27259,7 +27259,7 @@ fn wire__web_audio_api__node__oscillator_options_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::OscillatorOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27291,7 +27291,7 @@ fn wire__web_audio_api__node__oscillator_type_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::OscillatorType::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27323,7 +27323,7 @@ fn wire__web_audio_api__node__over_sample_type_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::OverSampleType::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27355,7 +27355,7 @@ fn wire__web_audio_api__node__panner_options_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::PannerOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27387,7 +27387,7 @@ fn wire__web_audio_api__node__panning_model_type_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::PanningModelType::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27419,7 +27419,7 @@ fn wire__web_audio_api__periodic_wave_options_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::PeriodicWaveOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27452,7 +27452,7 @@ fn wire__web_audio_api__node__stereo_panner_options_default_impl(
                 transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Ok::<_, ()>(web_audio_api::node::StereoPannerOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },
@@ -27484,7 +27484,7 @@ fn wire__web_audio_api__node__wave_shaper_options_default_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>(web_audio_api::node::WaveShaperOptions::default())?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },

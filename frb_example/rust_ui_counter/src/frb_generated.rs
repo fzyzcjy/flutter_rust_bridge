@@ -98,7 +98,7 @@ fn wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
                         api_sink,
                     );
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -127,7 +127,7 @@ fn wire__crate__frb_generated__BaseRustState_empty_impl(
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let output_ok = Ok::<_, ()>(crate::frb_generated::BaseRustState::empty())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -173,7 +173,7 @@ fn wire__crate__app__RustState_auto_accessor_get_count_impl(
                 }
                 let api_that_guard = api_that_guard.unwrap();
                 let output_ok = Ok::<_, ()>(api_that_guard.count.clone())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -225,7 +225,7 @@ fn wire__crate__app__RustState_auto_accessor_set_count_impl(
                     };
                 })?;
                 api_that_guard.base_state.on_mutation();
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -274,7 +274,7 @@ fn wire__crate__app__RustState_increment_impl(
                     crate::app::RustState::increment(&mut *api_that_guard);
                 })?;
                 api_that_guard.base_state.on_mutation();
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -303,7 +303,7 @@ fn wire__crate__app__RustState_new_impl(
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let output_ok = Ok::<_, ()>(crate::app::RustState::new())?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -352,7 +352,7 @@ fn wire__crate__app__RustState_set_base_state_impl(
                 let output_ok = Ok::<_, ()>({
                     crate::app::RustState::set_base_state(&mut *api_that_guard, api_base_state);
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )

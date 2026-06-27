@@ -72,7 +72,7 @@ fn wire__crate__api__simple__greet_impl(
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
                 let output_ok = Ok::<_, ()>(crate::api::simple::greet(api_name))?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -105,7 +105,7 @@ fn wire__crate__api__simple__init_app_impl(
                     let output_ok = Ok::<_, ()>({
                         crate::api::simple::init_app();
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },

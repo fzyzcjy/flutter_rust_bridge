@@ -22,28 +22,6 @@
         }
       ],
       "wrapper_name": null
-    },
-    "crate::api/MyErrorToTestResultAlias": {
-      "comments": [],
-      "ignore": false,
-      "mode": "Simple",
-      "name": "crate::api/MyErrorToTestResultAlias",
-      "needs_json_serializable": false,
-      "variants": [
-        {
-          "comments": [],
-          "kind": "Value",
-          "name": {
-            "dart_style": null,
-            "rust_style": "Shadowed"
-          },
-          "wrapper_name": {
-            "dart_style": null,
-            "rust_style": "MyErrorToTestResultAlias_Shadowed"
-          }
-        }
-      ],
-      "wrapper_name": null
     }
   },
   "existing_handler": null,
@@ -103,16 +81,8 @@
       "namespace": "crate::api",
       "output": {
         "error": {
-          "data": {
-            "PrimitiveEnum": {
-              "mir": {
-                "ident": "crate::api/MyErrorToTestResultAlias",
-                "is_exception": false
-              },
-              "repr": "I32"
-            }
-          },
-          "safe_ident": "result_alias_error",
+          "data": "AnyhowException",
+          "safe_ident": "AnyhowException",
           "type": "Delegate"
         },
         "normal": {
@@ -267,7 +237,12 @@
       "stream_dart_await": false
     }
   ],
-  "skips": [],
+  "skips": [
+    {
+      "name": "crate::api/MyErrorToTestResultAlias",
+      "reason": "IgnoreBecauseTypeNotUsedByPub"
+    }
+  ],
   "struct_pool": {},
   "trait_impls": []
 }
