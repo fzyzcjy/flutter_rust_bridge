@@ -33,7 +33,7 @@ Future<void> main() async {
     expect(simpleAdderTwinSync(a: 42, b: 100), 142);
 
     await emitLogMessage(message: firstMessage);
-    await pumpEventQueue();
+    await _waitForLogMessage(receivedRecords, firstMessage);
 
     expect(_countLogMessage(receivedRecords, firstMessage), 1);
     expect(_countLogMessage(receivedRecords, secondMessage), 0);
@@ -48,7 +48,7 @@ Future<void> main() async {
     expect(simpleAdderTwinSync(a: 42, b: 100), 142);
 
     await emitLogMessage(message: secondMessage);
-    await pumpEventQueue();
+    await _waitForLogMessage(receivedRecords, secondMessage);
 
     // Step 4: Exercise the platform console fallback path without asserting
     // platform-specific output capture.
@@ -66,3 +66,14 @@ int _countLogMessage(List<LogRecord> records, String message) =>
 
 bool _hasLogRecord(List<LogRecord> records, String message, Level level) =>
     records.any((record) => record.message == message && record.level == level);
+
+Future<void> _waitForLogMessage(
+  List<LogRecord> records,
+  String message,
+) async {
+  final deadline = DateTime.now().add(const Duration(seconds: 5));
+  while (DateTime.now().isBefore(deadline)) {
+    if (_countLogMessage(records, message) > 0) return;
+    await Future<void>.delayed(const Duration(milliseconds: 50));
+  }
+}

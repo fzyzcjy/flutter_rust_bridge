@@ -31,6 +31,7 @@ env:
   FRB_OHOS_SDK_VERSION: 5.1.0.840
   FRB_OHOS_FLUTTER_BRANCH: oh-3.41.9-dev
   FRB_RUSTFMT_NIGHTLY_VERSION: nightly-2025-02-01
+  FRB_OHOS_FLUTTER_REF: 6d7e5b43fb43bb85ba0a59e3469299ebcf45a637
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -1031,7 +1032,8 @@ jobs:
           submodules: recursive
       - name: "Start Simulator"
         run: |
-          UDID=$(bash .github/scripts/select_ios_simulator_for_ci.sh '${{ matrix.device }}')
+          xcrun xctrace list devices
+          UDID=$(/usr/bin/python3 tools/find_ios_simulator_udid.py '${{ matrix.device }}')
           echo UDID=$UDID
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
       - uses: flutter-actions/setup-flutter@v4
@@ -1199,7 +1201,8 @@ jobs:
       - if: ${{ matrix.info.target == 'ios' }}
         name: Start Simulator
         run: |
-          UDID=$(bash .github/scripts/select_ios_simulator_for_ci.sh '${{ matrix.info.device }}')
+          xcrun xctrace list devices
+          UDID=$(/usr/bin/python3 tools/find_ios_simulator_udid.py '${{ matrix.info.device }}')
           echo UDID=$UDID
           echo "UDID=$UDID" >> "$GITHUB_ENV"
           echo "QUICKSTART_SMOKE_DEVICE_ID=$UDID" >> "$GITHUB_ENV"

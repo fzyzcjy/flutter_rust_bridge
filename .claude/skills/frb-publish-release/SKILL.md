@@ -13,6 +13,14 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 - Work from the repository root on the intended release branch, normally fresh `master`. If the checkout is detached but already points at the intended release commit, switch or create a local release branch from that commit before running mutating release commands; do not treat detached HEAD itself as a release blocker.
 - Check `git status --short --branch` and do not start publishing from a dirty tree.
+- Check submodules before publishing:
+
+  ```bash
+  git submodule update --init --recursive
+  git submodule status --recursive
+  ```
+
+  Stop if any submodule path remains uninitialized. A release built without initialized submodules can publish incomplete package contents. The release script performs the same submodule-status guard before publishing.
 - Treat `master` as a moving branch. Before each irreversible release phase, fetch `origin master`, confirm the current release branch or detached checkout still points at the intended latest `origin/master` commit, and re-run `git status --short --branch` to confirm there are no unexpected local changes.
 - Confirm the target version in `CHANGELOG.md`, root `Cargo.toml`, and `frb_dart/pubspec.yaml`.
 - Compute the release versions the same way `./frb_internal release` does: the top `CHANGELOG.md` version is the new version and the next release section is the old version.
