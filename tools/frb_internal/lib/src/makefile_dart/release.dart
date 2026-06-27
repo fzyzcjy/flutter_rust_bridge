@@ -37,6 +37,7 @@ class VersionInfo {
 
 Future<void> release() async {
   print('Version info: ${computeVersionInfo()}');
+  verifyCargokitReleaseInputs();
   await releaseUpdateVersion();
   await releaseUpdateCode();
   await releaseUpdateScoop();
@@ -183,6 +184,8 @@ String releaseCargoLockTemplatePathForTesting() =>
     '${exec.pwd}frb_codegen/assets/integration_template/shared/shared/REPLACE_ME_RUST_CRATE_DIR/Cargo.lock.template';
 
 Future<void> releasePublishAll() async {
+  verifyCargokitReleaseInputs();
+  await verifyCargokitCodegenPackageContents();
   await exec('cd frb_codegen && cargo publish');
   await exec('cd frb_macros && cargo publish');
   await exec('cd frb_rust && cargo publish');
@@ -192,6 +195,46 @@ Future<void> releasePublishAll() async {
   await exec(
     'cd frb_hooks && dart pub publish --force --server=https://pub.dartlang.org',
   );
+}
+
+@visibleForTesting
+List<String> cargokitReleaseRequiredPathsForTesting() =>
+    List.unmodifiable(_kCargokitReleaseRequiredPaths);
+
+void verifyCargokitReleaseInputs({String? repoRoot}) {
+  final root = repoRoot ?? exec.pwd;
+  final missingPaths = _kCargokitReleaseRequiredPaths
+      .where((path) => !File('$root$path').existsSync())
+      .toList();
+
+  if (missingPaths.isNotEmpty) {
+    throw Exception(
+      [
+        'CargoKit release inputs are missing. Run `git submodule update --init --recursive` before publishing.',
+        ...missingPaths.map((path) => '- $path'),
+      ].join('\n'),
+    );
+  }
+}
+
+Future<void> verifyCargokitCodegenPackageContents() async {
+  final output = await exec(
+    'cargo package --list --allow-dirty',
+    relativePwd: 'frb_codegen',
+  );
+  final packageFiles = output.stdout.split('\n').toSet();
+  final missingPaths = _kCargokitCodegenPackageRequiredPaths
+      .where((path) => !packageFiles.contains(path))
+      .toList();
+
+  if (missingPaths.isNotEmpty) {
+    throw Exception(
+      [
+        'CargoKit release files are missing from flutter_rust_bridge_codegen package output.',
+        ...missingPaths.map((path) => '- $path'),
+      ].join('\n'),
+    );
+  }
 }
 
 String getFrbDartVersion() => loadYaml(
@@ -221,6 +264,24 @@ VersionInfo computeVersionInfo() => _extractChangelog().$1;
     lines.sublist(newVersion.$1 + 1, oldVersion.$1).join("\n").trim(),
   );
 }
+
+const _kCargokitCodegenPackageRequiredPaths = [
+  'assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/bin/build_tool.dart',
+  'assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/lib/build_tool.dart',
+  'assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/pubspec.yaml',
+  'assets/integration_template/cargokit/plugin/cargokit/build_tool/bin/build_tool.dart',
+  'assets/integration_template/cargokit/plugin/cargokit/build_tool/lib/build_tool.dart',
+  'assets/integration_template/cargokit/plugin/cargokit/build_tool/pubspec.yaml',
+];
+
+const _kCargokitReleaseRequiredPaths = [
+  'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/bin/build_tool.dart',
+  'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/lib/build_tool.dart',
+  'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit/build_tool/pubspec.yaml',
+  'frb_codegen/assets/integration_template/cargokit/plugin/cargokit/build_tool/bin/build_tool.dart',
+  'frb_codegen/assets/integration_template/cargokit/plugin/cargokit/build_tool/lib/build_tool.dart',
+  'frb_codegen/assets/integration_template/cargokit/plugin/cargokit/build_tool/pubspec.yaml',
+];
 
 String simpleReplaceSection(
   String raw, {

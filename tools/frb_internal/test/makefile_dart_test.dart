@@ -81,6 +81,38 @@ void main() {
     expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
   });
 
+  test('release guard rejects missing CargoKit submodule files', () {
+    final dir = Directory.systemTemp.createTempSync('frb_release_guard_');
+    addTearDown(() => dir.deleteSync(recursive: true));
+
+    expect(
+      () => verifyCargokitReleaseInputs(repoRoot: '${dir.path}/'),
+      throwsA(
+        isA<Exception>().having(
+          (error) => error.toString(),
+          'message',
+          contains('git submodule update --init --recursive'),
+        ),
+      ),
+    );
+  });
+
+  test('release guard accepts initialized CargoKit submodule files', () {
+    final dir = Directory.systemTemp.createTempSync('frb_release_guard_');
+    addTearDown(() => dir.deleteSync(recursive: true));
+
+    for (final path in cargokitReleaseRequiredPathsForTesting()) {
+      final file = File('${dir.path}/$path');
+      file.parent.createSync(recursive: true);
+      file.writeAsStringSync('content');
+    }
+
+    expect(
+      () => verifyCargokitReleaseInputs(repoRoot: '${dir.path}/'),
+      returnsNormally,
+    );
+  });
+
   test(
     'pure dart generator resolves package from repo root instead of cwd',
     () {
