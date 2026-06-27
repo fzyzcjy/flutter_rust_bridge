@@ -7,6 +7,8 @@ use cargo_metadata::semver::VersionReq;
 use cargo_toml::{Dependency, Manifest};
 use std::path::Path;
 
+const RUST_FRB_GIT_URL: &str = "https://github.com/kumsumit/flutter_rust_bridge_rust.git";
+
 pub(super) fn execute(
     progress_bar_pack: &GeneratorProgressBarPack,
     dart_root: &Path,
@@ -111,13 +113,13 @@ impl<'a> RustUpgrader<'a> {
 
 impl Upgrader for RustUpgrader<'_> {
     fn check(&self) -> Result<bool> {
-        Ok(self.dependency.req().to_string() == concat!("=", env!("CARGO_PKG_VERSION")))
+        Ok(self.dependency.git() == Some(RUST_FRB_GIT_URL))
     }
 
     fn upgrade(&self) -> Result<()> {
         log::info!("Auto upgrade Rust dependency");
 
-        let mut args = vec![concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))];
+        let mut args = vec!["flutter_rust_bridge", "--git", RUST_FRB_GIT_URL];
 
         let target = self
             .target_name

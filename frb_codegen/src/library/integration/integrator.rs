@@ -14,6 +14,10 @@ use std::env;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
 
+const DART_FRB_GIT_DESCRIPTOR: &str =
+    "flutter_rust_bridge@{git:{url: https://github.com/kumsumit/flutter_rust_bridge_dart.git}}";
+const RUST_FRB_GIT_DEPENDENCY: &str = r#"{ git = "https://github.com/kumsumit/flutter_rust_bridge_rust.git", package = "flutter_rust_bridge" }"#;
+
 pub struct IntegrateConfig {
     pub enable_write_lib: bool,
     pub enable_integration_test: bool,
@@ -146,7 +150,7 @@ fn compute_replacements<'a>(
     let rust_frb_dependency = if config.enable_local_dependency {
         r#"{ path = "../../../frb_rust" }"#
     } else {
-        concat!(r#""="#, env!("CARGO_PKG_VERSION"), r#"""#)
+        RUST_FRB_GIT_DEPENDENCY
     };
     replacements.insert("REPLACE_ME_RUST_FRB_DEPENDENCY", rust_frb_dependency);
 
@@ -386,10 +390,7 @@ pub(crate) fn pub_add_dependency_frb(
     if enable_local_dependency {
         flutter_pub_add(&["flutter_rust_bridge", "--path=../../frb_dart"], pwd)?;
     } else {
-        flutter_pub_add(
-            &[concat!("flutter_rust_bridge:", env!("CARGO_PKG_VERSION"))],
-            pwd,
-        )?;
+        flutter_pub_add(&[DART_FRB_GIT_DESCRIPTOR], pwd)?;
     };
 
     Ok(())

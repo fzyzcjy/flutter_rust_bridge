@@ -1,0 +1,22 @@
+[package]
+name = "flutter_rust_bridge_macros"
+version = "2.13.0"
+edition = "2024"
+description = "Supporting procedural macros for flutter_rust_bridge"
+license = "MIT"
+repository = "https://github.com/kumsumit/flutter_rust_bridge_rust"
+keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
+categories = ["development-tools::ffi"]
+
+[dependencies]
+hex = "0.4.3"
+syn = { version = "2.0.118", features = ["full", "extra-traits"] }
+quote = "1.0"
+proc-macro2 = "1.0.106"
+md-5 = "0.11.0"
+
+[lib]
+proc-macro = true
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

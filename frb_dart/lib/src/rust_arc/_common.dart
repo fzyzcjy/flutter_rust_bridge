@@ -1,6 +1,9 @@
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
+// Public constructor parameter names intentionally assign to private fields.
+// ignore_for_file: prefer_initializing_formals
+
 /// The Rust `std::sync::Arc` on the Dart side.
 // Note: Use `extends`, instead of making the `_Droppable` a field,
 // in order to ensure the `ffi.Finalizable` works well.

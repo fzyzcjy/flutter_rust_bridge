@@ -19,7 +19,7 @@ dependencies:
   freezed_annotation:
     git: https://github.com/kumsumit/freezed_annotation.git
   web: ^1.1.1
-  test: ^1.31.1
+  test: ^1.31.2
   uuid: ^4.5.3
   collection: ^1.17.0
   protobuf: ^6.0.0 # `protobuf` is only used for comparison
