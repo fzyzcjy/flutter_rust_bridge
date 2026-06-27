@@ -1027,6 +1027,9 @@ jobs:
           xcrun xctrace list devices
           # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (16.2) + Apple Watch Series 5 - 44mm (8.0)"
           UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
+          if [[ -z "$UDID" ]]; then
+            UDID=$(xcrun xctrace list devices | grep 'iPhone .* Pro Max Simulator (.*) (' | tail -n 1 | awk '{print $NF}' | tr -d '()')
+          fi
           echo UDID=$UDID
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
       - uses: flutter-actions/setup-flutter@v4
@@ -1196,6 +1199,9 @@ jobs:
         run: |
           xcrun xctrace list devices
           UDID=$(xcrun xctrace list devices | grep '${{ matrix.info.device }} (' | awk '{print $NF}' | tr -d '()')
+          if [[ -z "$UDID" ]]; then
+            UDID=$(xcrun xctrace list devices | grep 'iPhone .* Pro Max Simulator (.*) (' | tail -n 1 | awk '{print $NF}' | tr -d '()')
+          fi
           echo UDID=$UDID
           echo "UDID=$UDID" >> "$GITHUB_ENV"
           echo "QUICKSTART_SMOKE_DEVICE_ID=$UDID" >> "$GITHUB_ENV"
