@@ -67,8 +67,13 @@ fn create_trash_dir(dart_root: &Path) -> anyhow::Result<PathBuf> {
 
     let timestamp = Local::now().format("%Y%m%d-%H%M%S");
     let process_id = std::process::id();
+    let label = format!("{timestamp}-{process_id}");
+    create_unique_trash_dir(&trash_root, &label)
+}
+
+fn create_unique_trash_dir(trash_root: &Path, label: &str) -> anyhow::Result<PathBuf> {
     for index in 0..1000 {
-        let trash_dir = trash_root.join(format!("{timestamp}-{process_id}-{index}"));
+        let trash_dir = trash_root.join(format!("{label}-{index}"));
         match fs::create_dir(&trash_dir) {
             Ok(()) => return Ok(trash_dir),
             Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => {}
@@ -153,7 +158,7 @@ fn remove_file_if_exists(path: &Path) -> anyhow::Result<()> {
 
 #[cfg(test)]
 mod tests {
-    use super::clean;
+    use super::{clean, create_unique_trash_dir};
     use crate::codegen::polisher::internal_config::PolisherInternalConfig;
     use crate::misc::FvmInstallMode;
     use std::fs;
@@ -192,6 +197,59 @@ mod tests {
         let trash_dir = single_trash_dir(&config.dart_root)?;
         assert!(trash_dir.join("stale.dart").exists());
         assert!(trash_dir.join("nested").join("stale.dart").exists());
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_skips_missing_dart_output() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let config = create_config(temp_dir.path(), true)?;
+
+        fs::remove_dir_all(&config.dart_output)?;
+        clean(&config)?;
+
+        assert!(!config.dart_output.exists());
+        assert!(!config.rust_output_path.exists());
+        assert!(!config.c_output_path.as_ref().unwrap().exists());
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_skips_empty_dart_output() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let config = create_config(temp_dir.path(), true)?;
+
+        fs::remove_file(config.dart_output.join("stale.dart"))?;
+        fs::remove_dir_all(config.dart_output.join("nested"))?;
+        clean(&config)?;
+
+        assert!(config.dart_output.exists());
+        assert!(!config
+            .dart_root
+            .join(".dart_tool")
+            .join("flutter_rust_bridge")
+            .join("pre_generation_cleanup")
+            .exists());
+        assert!(!config.rust_output_path.exists());
+        assert!(!config.c_output_path.as_ref().unwrap().exists());
+        Ok(())
+    }
+
+    #[test]
+    fn test_clean_ignores_missing_rust_and_c_outputs() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let config = create_config(temp_dir.path(), true)?;
+
+        fs::remove_file(&config.rust_output_path)?;
+        fs::remove_file(config.c_output_path.as_ref().unwrap())?;
+        fs::remove_file(&config.duplicated_c_output_path[0])?;
+        clean(&config)?;
+
+        assert!(!config.rust_output_path.exists());
+        assert!(!config.c_output_path.as_ref().unwrap().exists());
+        assert!(!config.duplicated_c_output_path[0].exists());
+        let trash_dir = single_trash_dir(&config.dart_root)?;
+        assert!(trash_dir.join("stale.dart").exists());
         Ok(())
     }
 
@@ -355,6 +413,53 @@ mod tests {
             .unwrap_err()
             .to_string()
             .contains("unsafe dart_output path"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_create_unique_trash_dir_skips_existing_candidate() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let trash_root = temp_dir.path().join("trash");
+        fs::create_dir_all(&trash_root)?;
+        fs::create_dir(trash_root.join("label-0"))?;
+
+        let trash_dir = create_unique_trash_dir(&trash_root, "label")?;
+
+        assert_eq!(trash_dir, trash_root.join("label-1"));
+        assert!(trash_dir.exists());
+        Ok(())
+    }
+
+    #[test]
+    fn test_create_unique_trash_dir_reports_create_error() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let trash_root = temp_dir.path().join("trash-root-file");
+        fs::write(&trash_root, "not a directory")?;
+
+        let result = create_unique_trash_dir(&trash_root, "label");
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("Failed to create pre_generation_cleanup trash directory"));
+        Ok(())
+    }
+
+    #[test]
+    fn test_create_unique_trash_dir_reports_exhausted_candidates() -> anyhow::Result<()> {
+        let temp_dir = tempfile::tempdir()?;
+        let trash_root = temp_dir.path().join("trash");
+        fs::create_dir_all(&trash_root)?;
+        for index in 0..1000 {
+            fs::create_dir(trash_root.join(format!("label-{index}")))?;
+        }
+
+        let result = create_unique_trash_dir(&trash_root, "label");
+
+        assert!(result
+            .unwrap_err()
+            .to_string()
+            .contains("Failed to create unique pre_generation_cleanup trash directory"));
         Ok(())
     }
 
