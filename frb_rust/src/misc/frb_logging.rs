@@ -180,12 +180,14 @@ macro_rules! enable_frb_rust_to_dart_logging {
         #[doc(hidden)]
         #[flutter_rust_bridge::frb(sync)]
         pub fn frb_internal_logging_allocate_sink_id() -> u64 {
-            FRB_DART_LOGGER
-                .get_or_init(|| FrbDartLogger {
-                    sinks: std::sync::RwLock::new(std::collections::BTreeMap::new()),
-                    next_sink_id: std::sync::atomic::AtomicU64::new(1),
-                })
-                .allocate_sink_id()
+            // This lazy allocation is exercised through generated Dart init, but llvm-cov misses the OnceLock closure line.
+            // frb-coverage:ignore-start
+            let logger = FRB_DART_LOGGER.get_or_init(|| FrbDartLogger {
+                sinks: std::sync::RwLock::new(std::collections::BTreeMap::new()),
+                next_sink_id: std::sync::atomic::AtomicU64::new(1),
+            });
+            // frb-coverage:ignore-end
+            logger.allocate_sink_id()
         }
 
         fn frb_parse_logging_max_level(max_level: &str) -> log::LevelFilter {
