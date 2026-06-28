@@ -86,7 +86,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
             ),
             MirTypeDelegate::StreamSink(_) | MirTypeDelegate::DynTrait(_) => "throw UnimplementedError();".to_owned(),
             MirTypeDelegate::BigPrimitive(_) => {
-                "return BigInt.parse(raw);".to_owned()
+                "return BigInt.parse(raw as String);".to_owned()
             }
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => format!(r"return dco_decode_{}(raw);", mir.inner.safe_ident()),
             MirTypeDelegate::CustomSerDes(inner) => {
