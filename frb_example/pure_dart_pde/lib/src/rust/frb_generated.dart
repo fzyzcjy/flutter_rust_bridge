@@ -23401,13 +23401,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<FrbLogRecord> crateApiFrbLoggingFrbInternalInitLogger(
       {required String maxLevel}) {
     final sink = RustStreamSink<FrbLogRecord>();
-    unawaited(handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_frb_log_record_Sse(sink, serializer);
         sse_encode_String(maxLevel, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 629, port: port_);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 629)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -23416,7 +23415,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       constMeta: kCrateApiFrbLoggingFrbInternalInitLoggerConstMeta,
       argValues: [sink, maxLevel],
       apiImpl: this,
-    )));
+    ));
     return sink.stream;
   }
 
