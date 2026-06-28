@@ -251,7 +251,7 @@ void main() {
     test('values containing spaces are accepted verbatim', () {
       final plan = buildCiPlan(
         filter:
-            'test_flutter_native_ios[device=iPhone 16 Pro Max Simulator (18.6),package=frb_example--rust_ui_counter--ui]',
+            'test_flutter_native_ios[device=iPhone 17 Pro Max Simulator (26.5),package=frb_example--rust_ui_counter--ui]',
         automaticCiDisabled: false,
       );
 
@@ -260,7 +260,7 @@ void main() {
         'include': [
           {
             'package': 'frb_example--rust_ui_counter--ui',
-            'device': 'iPhone 16 Pro Max Simulator (18.6)',
+            'device': 'iPhone 17 Pro Max Simulator (26.5)',
           },
         ],
       });
@@ -499,14 +499,14 @@ void main() {
       ),
       const _CiFilterExample(
         filter:
-            'test_flutter_native_ios[device=iPhone 16 Pro Max Simulator (18.6),package=frb_example--rust_ui_counter--ui]',
+            'test_flutter_native_ios[device=iPhone 17 Pro Max Simulator (26.5),package=frb_example--rust_ui_counter--ui]',
         enabledJobs: {'test_flutter_native_ios'},
         matrixByJob: {
           'test_flutter_native_ios': {
             'include': [
               {
                 'package': 'frb_example--rust_ui_counter--ui',
-                'device': 'iPhone 16 Pro Max Simulator (18.6)',
+                'device': 'iPhone 17 Pro Max Simulator (26.5)',
               },
             ],
           },
