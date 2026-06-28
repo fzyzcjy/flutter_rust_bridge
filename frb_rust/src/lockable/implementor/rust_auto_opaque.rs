@@ -25,6 +25,8 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     }
 
     fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
+        // Web integration tests cover this, but Rust llvm coverage does not observe wasm.
+        // frb-coverage:ignore-start
         #[cfg(target_family = "wasm")]
         {
             if web_is_dedicated_worker_context() {
@@ -35,6 +37,7 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
                     .unwrap_or_else(|error| web_throw_lock_error("read", error))
             }
         }
+        // frb-coverage:ignore-end
         #[cfg(not(target_family = "wasm"))]
         {
             self.data.blocking_read()
@@ -42,6 +45,8 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     }
 
     fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
+        // Web integration tests cover this, but Rust llvm coverage does not observe wasm.
+        // frb-coverage:ignore-start
         #[cfg(target_family = "wasm")]
         {
             if web_is_dedicated_worker_context() {
@@ -52,6 +57,7 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
                     .unwrap_or_else(|error| web_throw_lock_error("write", error))
             }
         }
+        // frb-coverage:ignore-end
         #[cfg(not(target_family = "wasm"))]
         {
             self.data.blocking_write()
