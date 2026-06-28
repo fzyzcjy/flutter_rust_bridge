@@ -203,7 +203,7 @@ Future<void> main() async {
   await RustLib.init();
 
   final success = await directRunTests(
-    () async => callFileEntrypoints(),
+    callFileEntrypoints,
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
@@ -217,136 +217,201 @@ Future<void> main() async {
 }
 
 Future<void> callFileEntrypoints() async {
-  final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
-    array_test.main,
-    async_misc_test.main,
-    async_spawn_test.main,
-    attribute_test.main,
-    casted_primitive_test.main,
-    chrono_type_test.main,
-    collection_equality_test.main,
-    comment_test.main,
-    constructor_test.main,
-    custom_ser_des_test.main,
-    customization_test.main,
-    dart_code_test.main,
-    dart_fn_test.main,
-    dart_opaque_sync_test.main,
-    dart_opaque_test.main,
-    dyn_trait_test.main,
-    enumeration_test.main,
-    event_listener_test.main,
-    exception_test.main,
-    external_impl_test.main,
-    external_type_in_crate_test.main,
-    impl_trait_test.main,
-    init_dart_code_test.main,
-    inside_macro_test.main,
-    lifetimeable_test.main,
-    map_and_set_test.main,
-    method_test.main,
-    mirror_test.main,
-    misc_example_test.main,
-    misc_no_twin_example_a_test.main,
-    misc_no_twin_example_b_test.main,
-    misc_type_test.main,
-    newtype_pattern_test.main,
-    optional_primitive_misc_test.main,
-    optional_test.main,
-    ownership_test.main,
-    primitive_list_misc_test.main,
-    primitive_misc_test.main,
-    proxy_test.main,
-    array_twin_rust_async_test.main,
-    array_twin_sync_test.main,
-    attribute_twin_rust_async_test.main,
-    attribute_twin_sync_test.main,
-    basic_list_test.main,
-    basic_list_twin_rust_async_test.main,
-    basic_list_twin_sync_test.main,
-    basic_map_test.main,
-    basic_map_twin_rust_async_test.main,
-    basic_map_twin_sync_test.main,
-    basic_optional_test.main,
-    basic_optional_twin_rust_async_test.main,
-    basic_optional_twin_sync_test.main,
-    basic_test.main,
-    basic_twin_rust_async_test.main,
-    basic_twin_sync_test.main,
-    chrono_type_twin_rust_async_test.main,
-    chrono_type_twin_sync_test.main,
-    collection_equality_twin_rust_async_test.main,
-    collection_equality_twin_sync_test.main,
-    comment_twin_rust_async_test.main,
-    comment_twin_sync_test.main,
-    dart_fn_twin_rust_async_test.main,
-    dart_opaque_twin_rust_async_test.main,
-    dart_opaque_twin_sync_test.main,
-    enumeration_twin_rust_async_test.main,
-    enumeration_twin_sync_test.main,
-    event_listener_twin_rust_async_test.main,
-    exception_twin_rust_async_test.main,
-    exception_twin_sync_test.main,
-    external_type_in_crate_twin_rust_async_test.main,
-    external_type_in_crate_twin_sync_test.main,
-    impl_trait_twin_sync_test.main,
-    lifetimeable_twin_sync_test.main,
-    map_and_set_twin_rust_async_test.main,
-    map_and_set_twin_sync_test.main,
-    method_twin_rust_async_test.main,
-    method_twin_sync_test.main,
-    mirror_twin_rust_async_test.main,
-    mirror_twin_sync_test.main,
-    misc_example_twin_rust_async_test.main,
-    misc_example_twin_sync_test.main,
-    misc_type_twin_rust_async_test.main,
-    misc_type_twin_sync_test.main,
-    newtype_pattern_twin_rust_async_test.main,
-    newtype_pattern_twin_sync_test.main,
-    optional_primitive_misc_twin_rust_async_test.main,
-    optional_primitive_misc_twin_sync_test.main,
-    optional_twin_rust_async_test.main,
-    optional_twin_sync_test.main,
-    ownership_twin_rust_async_test.main,
-    ownership_twin_sync_test.main,
-    primitive_list_misc_twin_rust_async_test.main,
-    primitive_list_misc_twin_sync_test.main,
-    primitive_misc_twin_rust_async_test.main,
-    primitive_misc_twin_sync_test.main,
-    raw_string_twin_rust_async_test.main,
-    raw_string_twin_sync_test.main,
-    rust_auto_opaque_twin_rust_async_test.main,
-    rust_auto_opaque_twin_sync_test.main,
-    rust_opaque_twin_rust_async_test.main,
-    rust_opaque_twin_sync_test.main,
-    serde_json_type_twin_rust_async_test.main,
-    serde_json_type_twin_sync_test.main,
-    simple_twin_rust_async_test.main,
-    simple_twin_sync_test.main,
-    stream_twin_rust_async_test.main,
-    structure_twin_rust_async_test.main,
-    structure_twin_sync_test.main,
-    tuple_twin_rust_async_test.main,
-    tuple_twin_sync_test.main,
-    type_alias_twin_rust_async_test.main,
-    type_alias_twin_sync_test.main,
-    uuid_type_twin_rust_async_test.main,
-    uuid_type_twin_sync_test.main,
-    raw_string_test.main,
-    rust_auto_opaque_test.main,
-    rust_opaque_sync_test.main,
-    rust_opaque_test.main,
-    serde_json_type_test.main,
-    simple_test.main,
-    stream_misc_test.main,
-    stream_test.main,
-    structure_test.main,
-    tuple_test.main,
-    type_alias_test.main,
-    uuid_type_test.main,
-  ];
+  final entrypoints = <String, Future<void> Function({bool skipRustLibInit})>{
+    'api/array_test.dart': array_test.main,
+    'api/async_misc_test.dart': async_misc_test.main,
+    'api/async_spawn_test.dart': async_spawn_test.main,
+    'api/attribute_test.dart': attribute_test.main,
+    'api/casted_primitive_test.dart': casted_primitive_test.main,
+    'api/chrono_type_test.dart': chrono_type_test.main,
+    'api/collection_equality_test.dart': collection_equality_test.main,
+    'api/comment_test.dart': comment_test.main,
+    'api/constructor_test.dart': constructor_test.main,
+    'api/custom_ser_des_test.dart': custom_ser_des_test.main,
+    'api/customization_test.dart': customization_test.main,
+    'api/dart_code_test.dart': dart_code_test.main,
+    'api/dart_fn_test.dart': dart_fn_test.main,
+    'api/dart_opaque_sync_test.dart': dart_opaque_sync_test.main,
+    'api/dart_opaque_test.dart': dart_opaque_test.main,
+    'api/dyn_trait_test.dart': dyn_trait_test.main,
+    'api/enumeration_test.dart': enumeration_test.main,
+    'api/event_listener_test.dart': event_listener_test.main,
+    'api/exception_test.dart': exception_test.main,
+    'api/external_impl_test.dart': external_impl_test.main,
+    'api/external_type_in_crate_test.dart': external_type_in_crate_test.main,
+    'api/impl_trait_test.dart': impl_trait_test.main,
+    'api/init_dart_code_test.dart': init_dart_code_test.main,
+    'api/inside_macro_test.dart': inside_macro_test.main,
+    'api/lifetimeable_test.dart': lifetimeable_test.main,
+    'api/map_and_set_test.dart': map_and_set_test.main,
+    'api/method_test.dart': method_test.main,
+    'api/mirror_test.dart': mirror_test.main,
+    'api/misc_example_test.dart': misc_example_test.main,
+    'api/misc_no_twin_example_a_test.dart': misc_no_twin_example_a_test.main,
+    'api/misc_no_twin_example_b_test.dart': misc_no_twin_example_b_test.main,
+    'api/misc_type_test.dart': misc_type_test.main,
+    'api/newtype_pattern_test.dart': newtype_pattern_test.main,
+    'api/optional_primitive_misc_test.dart': optional_primitive_misc_test.main,
+    'api/optional_test.dart': optional_test.main,
+    'api/ownership_test.dart': ownership_test.main,
+    'api/primitive_list_misc_test.dart': primitive_list_misc_test.main,
+    'api/primitive_misc_test.dart': primitive_misc_test.main,
+    'api/proxy_test.dart': proxy_test.main,
+    'api/pseudo_manual/array_twin_rust_async_test.dart':
+        array_twin_rust_async_test.main,
+    'api/pseudo_manual/array_twin_sync_test.dart': array_twin_sync_test.main,
+    'api/pseudo_manual/attribute_twin_rust_async_test.dart':
+        attribute_twin_rust_async_test.main,
+    'api/pseudo_manual/attribute_twin_sync_test.dart':
+        attribute_twin_sync_test.main,
+    'api/pseudo_manual/basic_list_test.dart': basic_list_test.main,
+    'api/pseudo_manual/basic_list_twin_rust_async_test.dart':
+        basic_list_twin_rust_async_test.main,
+    'api/pseudo_manual/basic_list_twin_sync_test.dart':
+        basic_list_twin_sync_test.main,
+    'api/pseudo_manual/basic_map_test.dart': basic_map_test.main,
+    'api/pseudo_manual/basic_map_twin_rust_async_test.dart':
+        basic_map_twin_rust_async_test.main,
+    'api/pseudo_manual/basic_map_twin_sync_test.dart':
+        basic_map_twin_sync_test.main,
+    'api/pseudo_manual/basic_optional_test.dart': basic_optional_test.main,
+    'api/pseudo_manual/basic_optional_twin_rust_async_test.dart':
+        basic_optional_twin_rust_async_test.main,
+    'api/pseudo_manual/basic_optional_twin_sync_test.dart':
+        basic_optional_twin_sync_test.main,
+    'api/pseudo_manual/basic_test.dart': basic_test.main,
+    'api/pseudo_manual/basic_twin_rust_async_test.dart':
+        basic_twin_rust_async_test.main,
+    'api/pseudo_manual/basic_twin_sync_test.dart': basic_twin_sync_test.main,
+    'api/pseudo_manual/chrono_type_twin_rust_async_test.dart':
+        chrono_type_twin_rust_async_test.main,
+    'api/pseudo_manual/chrono_type_twin_sync_test.dart':
+        chrono_type_twin_sync_test.main,
+    'api/pseudo_manual/collection_equality_twin_rust_async_test.dart':
+        collection_equality_twin_rust_async_test.main,
+    'api/pseudo_manual/collection_equality_twin_sync_test.dart':
+        collection_equality_twin_sync_test.main,
+    'api/pseudo_manual/comment_twin_rust_async_test.dart':
+        comment_twin_rust_async_test.main,
+    'api/pseudo_manual/comment_twin_sync_test.dart':
+        comment_twin_sync_test.main,
+    'api/pseudo_manual/dart_fn_twin_rust_async_test.dart':
+        dart_fn_twin_rust_async_test.main,
+    'api/pseudo_manual/dart_opaque_twin_rust_async_test.dart':
+        dart_opaque_twin_rust_async_test.main,
+    'api/pseudo_manual/dart_opaque_twin_sync_test.dart':
+        dart_opaque_twin_sync_test.main,
+    'api/pseudo_manual/enumeration_twin_rust_async_test.dart':
+        enumeration_twin_rust_async_test.main,
+    'api/pseudo_manual/enumeration_twin_sync_test.dart':
+        enumeration_twin_sync_test.main,
+    'api/pseudo_manual/event_listener_twin_rust_async_test.dart':
+        event_listener_twin_rust_async_test.main,
+    'api/pseudo_manual/exception_twin_rust_async_test.dart':
+        exception_twin_rust_async_test.main,
+    'api/pseudo_manual/exception_twin_sync_test.dart':
+        exception_twin_sync_test.main,
+    'api/pseudo_manual/external_type_in_crate_twin_rust_async_test.dart':
+        external_type_in_crate_twin_rust_async_test.main,
+    'api/pseudo_manual/external_type_in_crate_twin_sync_test.dart':
+        external_type_in_crate_twin_sync_test.main,
+    'api/pseudo_manual/impl_trait_twin_sync_test.dart':
+        impl_trait_twin_sync_test.main,
+    'api/pseudo_manual/lifetimeable_twin_sync_test.dart':
+        lifetimeable_twin_sync_test.main,
+    'api/pseudo_manual/map_and_set_twin_rust_async_test.dart':
+        map_and_set_twin_rust_async_test.main,
+    'api/pseudo_manual/map_and_set_twin_sync_test.dart':
+        map_and_set_twin_sync_test.main,
+    'api/pseudo_manual/method_twin_rust_async_test.dart':
+        method_twin_rust_async_test.main,
+    'api/pseudo_manual/method_twin_sync_test.dart': method_twin_sync_test.main,
+    'api/pseudo_manual/mirror_twin_rust_async_test.dart':
+        mirror_twin_rust_async_test.main,
+    'api/pseudo_manual/mirror_twin_sync_test.dart': mirror_twin_sync_test.main,
+    'api/pseudo_manual/misc_example_twin_rust_async_test.dart':
+        misc_example_twin_rust_async_test.main,
+    'api/pseudo_manual/misc_example_twin_sync_test.dart':
+        misc_example_twin_sync_test.main,
+    'api/pseudo_manual/misc_type_twin_rust_async_test.dart':
+        misc_type_twin_rust_async_test.main,
+    'api/pseudo_manual/misc_type_twin_sync_test.dart':
+        misc_type_twin_sync_test.main,
+    'api/pseudo_manual/newtype_pattern_twin_rust_async_test.dart':
+        newtype_pattern_twin_rust_async_test.main,
+    'api/pseudo_manual/newtype_pattern_twin_sync_test.dart':
+        newtype_pattern_twin_sync_test.main,
+    'api/pseudo_manual/optional_primitive_misc_twin_rust_async_test.dart':
+        optional_primitive_misc_twin_rust_async_test.main,
+    'api/pseudo_manual/optional_primitive_misc_twin_sync_test.dart':
+        optional_primitive_misc_twin_sync_test.main,
+    'api/pseudo_manual/optional_twin_rust_async_test.dart':
+        optional_twin_rust_async_test.main,
+    'api/pseudo_manual/optional_twin_sync_test.dart':
+        optional_twin_sync_test.main,
+    'api/pseudo_manual/ownership_twin_rust_async_test.dart':
+        ownership_twin_rust_async_test.main,
+    'api/pseudo_manual/ownership_twin_sync_test.dart':
+        ownership_twin_sync_test.main,
+    'api/pseudo_manual/primitive_list_misc_twin_rust_async_test.dart':
+        primitive_list_misc_twin_rust_async_test.main,
+    'api/pseudo_manual/primitive_list_misc_twin_sync_test.dart':
+        primitive_list_misc_twin_sync_test.main,
+    'api/pseudo_manual/primitive_misc_twin_rust_async_test.dart':
+        primitive_misc_twin_rust_async_test.main,
+    'api/pseudo_manual/primitive_misc_twin_sync_test.dart':
+        primitive_misc_twin_sync_test.main,
+    'api/pseudo_manual/raw_string_twin_rust_async_test.dart':
+        raw_string_twin_rust_async_test.main,
+    'api/pseudo_manual/raw_string_twin_sync_test.dart':
+        raw_string_twin_sync_test.main,
+    'api/pseudo_manual/rust_auto_opaque_twin_rust_async_test.dart':
+        rust_auto_opaque_twin_rust_async_test.main,
+    'api/pseudo_manual/rust_auto_opaque_twin_sync_test.dart':
+        rust_auto_opaque_twin_sync_test.main,
+    'api/pseudo_manual/rust_opaque_twin_rust_async_test.dart':
+        rust_opaque_twin_rust_async_test.main,
+    'api/pseudo_manual/rust_opaque_twin_sync_test.dart':
+        rust_opaque_twin_sync_test.main,
+    'api/pseudo_manual/serde_json_type_twin_rust_async_test.dart':
+        serde_json_type_twin_rust_async_test.main,
+    'api/pseudo_manual/serde_json_type_twin_sync_test.dart':
+        serde_json_type_twin_sync_test.main,
+    'api/pseudo_manual/simple_twin_rust_async_test.dart':
+        simple_twin_rust_async_test.main,
+    'api/pseudo_manual/simple_twin_sync_test.dart': simple_twin_sync_test.main,
+    'api/pseudo_manual/stream_twin_rust_async_test.dart':
+        stream_twin_rust_async_test.main,
+    'api/pseudo_manual/structure_twin_rust_async_test.dart':
+        structure_twin_rust_async_test.main,
+    'api/pseudo_manual/structure_twin_sync_test.dart':
+        structure_twin_sync_test.main,
+    'api/pseudo_manual/tuple_twin_rust_async_test.dart':
+        tuple_twin_rust_async_test.main,
+    'api/pseudo_manual/tuple_twin_sync_test.dart': tuple_twin_sync_test.main,
+    'api/pseudo_manual/type_alias_twin_rust_async_test.dart':
+        type_alias_twin_rust_async_test.main,
+    'api/pseudo_manual/type_alias_twin_sync_test.dart':
+        type_alias_twin_sync_test.main,
+    'api/pseudo_manual/uuid_type_twin_rust_async_test.dart':
+        uuid_type_twin_rust_async_test.main,
+    'api/pseudo_manual/uuid_type_twin_sync_test.dart':
+        uuid_type_twin_sync_test.main,
+    'api/raw_string_test.dart': raw_string_test.main,
+    'api/rust_auto_opaque_test.dart': rust_auto_opaque_test.main,
+    'api/rust_opaque_sync_test.dart': rust_opaque_sync_test.main,
+    'api/rust_opaque_test.dart': rust_opaque_test.main,
+    'api/serde_json_type_test.dart': serde_json_type_test.main,
+    'api/simple_test.dart': simple_test.main,
+    'api/stream_misc_test.dart': stream_misc_test.main,
+    'api/stream_test.dart': stream_test.main,
+    'api/structure_test.dart': structure_test.main,
+    'api/tuple_test.dart': tuple_test.main,
+    'api/type_alias_test.dart': type_alias_test.main,
+    'api/uuid_type_test.dart': uuid_type_test.main,
+  };
 
-  for (final entrypoint in entrypoints) {
+  for (final entrypoint in entrypoints.values) {
     await entrypoint(skipRustLibInit: true);
   }
 }

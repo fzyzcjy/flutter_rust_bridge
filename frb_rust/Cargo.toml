@@ -87,4 +87,4 @@ uuid = ["dep:uuid", "allo-isolate/uuid"]
 wasm-start = ["console_error_panic_hook"]
 
 [lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)', 'cfg(frb_sanitize_memory)'] }

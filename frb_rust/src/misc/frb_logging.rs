@@ -39,7 +39,8 @@ macro_rules! enable_frb_rust_to_dart_logging {
         type FrbLogSink = crate::frb_generated::StreamSink<FrbLogRecord>;
 
         struct FrbDartLogger {
-            sink: std::sync::RwLock<Option<std::sync::Arc<FrbLogSink>>>,
+            sinks: std::sync::RwLock<std::collections::BTreeMap<u64, std::sync::Arc<FrbLogSink>>>,
+            next_sink_id: std::sync::atomic::AtomicU64,
         }
 
         impl log::Log for FrbDartLogger {
@@ -52,22 +53,35 @@ macro_rules! enable_frb_rust_to_dart_logging {
                     return;
                 }
 
-                let Some(sink) = self.load_sink() else {
+                let sinks = self.load_sinks();
+                if sinks.is_empty() {
                     frb_log_record_to_console(record);
                     return;
-                };
+                }
 
-                if let Err(error) = sink.add(FrbLogRecord {
-                    level: record.level().to_string(),
-                    message: record.args().to_string(),
-                    target: record.target().to_owned(),
-                    module_path: record.module_path().map(ToOwned::to_owned),
-                    file: record.file().map(ToOwned::to_owned),
-                    line: record.line(),
-                }) {
+                let mut failed_sink_ids = Vec::new();
+                let mut first_error = None;
+                for (sink_id, sink) in sinks {
+                    if let Err(error) = sink.add(FrbLogRecord {
+                        level: record.level().to_string(),
+                        message: record.args().to_string(),
+                        target: record.target().to_owned(),
+                        module_path: record.module_path().map(ToOwned::to_owned),
+                        file: record.file().map(ToOwned::to_owned),
+                        line: record.line(),
+                    }) {
+                        first_error.get_or_insert_with(|| format!("{error:?}"));
+                        failed_sink_ids.push(sink_id);
+                    }
+                }
+                if let Some(first_error) = first_error {
                     $crate::for_generated::print_to_console(&format!(
-                        "Failed to forward Rust log to Dart: {error:?}",
+                        "Failed to forward Rust log to {} Dart sink(s): {first_error}",
+                        failed_sink_ids.len(),
                     ));
+                }
+                for failed_sink_id in failed_sink_ids {
+                    self.clear_sink(failed_sink_id);
                 }
             }
 
@@ -75,21 +89,36 @@ macro_rules! enable_frb_rust_to_dart_logging {
         }
 
         impl FrbDartLogger {
-            fn load_sink(&self) -> Option<std::sync::Arc<FrbLogSink>> {
-                self.sink
+            fn load_sinks(&self) -> Vec<(u64, std::sync::Arc<FrbLogSink>)> {
+                self.sinks
                     .read()
                     .unwrap_or_else(|poisoned| poisoned.into_inner())
-                    .clone()
+                    .iter()
+                    .map(|(&id, sink)| (id, sink.clone()))
+                    .collect()
             }
 
-            fn swap_sink(&self, sink: Option<FrbLogSink>) {
-                let old_sink = {
-                    let mut sink_guard = self
-                        .sink
-                        .write()
-                        .unwrap_or_else(|poisoned| poisoned.into_inner());
-                    std::mem::replace(&mut *sink_guard, sink.map(std::sync::Arc::new))
-                };
+            fn allocate_sink_id(&self) -> u64 {
+                self.next_sink_id
+                    .fetch_add(1, std::sync::atomic::Ordering::Relaxed)
+            }
+
+            fn insert_sink(&self, id: u64, sink: FrbLogSink) {
+                let old_sink = self
+                    .sinks
+                    .write()
+                    .unwrap_or_else(|poisoned| poisoned.into_inner())
+                    .insert(id, std::sync::Arc::new(sink));
+
+                drop(old_sink);
+            }
+
+            fn clear_sink(&self, id: u64) {
+                let old_sink = self
+                    .sinks
+                    .write()
+                    .unwrap_or_else(|poisoned| poisoned.into_inner())
+                    .remove(&id);
 
                 drop(old_sink);
             }
@@ -104,9 +133,11 @@ macro_rules! enable_frb_rust_to_dart_logging {
         }
 
         #[doc(hidden)]
+        #[flutter_rust_bridge::frb(sync)]
         #[flutter_rust_bridge::frb(init_dart_code = r#"
+                    final rustLoggerId = frbInternalLoggingAllocateSinkId();
                     kFrbDartLogging.init(
-                      rustLogStream: frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
+                      rustLogStream: frbInternalInitLogger(id: rustLoggerId, maxLevel: frbInternalLoggingMaxLevel()),
                       mapRecord: (record) => FrbLogRecordData(
                         level: record.level,
                         message: record.message,
@@ -116,33 +147,48 @@ macro_rules! enable_frb_rust_to_dart_logging {
                         line: record.line,
                       ),
                       setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
-                      disposeRustLogger: frbInternalDisposeLogger,
+                      disposeRustLogger: () => frbInternalDisposeLogger(id: rustLoggerId),
                     );
 "#)]
         pub fn frb_internal_init_logger(
             sink: crate::frb_generated::StreamSink<FrbLogRecord>,
+            id: u64,
             max_level: String,
         ) {
             let max_level = frb_parse_logging_max_level(&max_level);
             let logger = FRB_DART_LOGGER.get_or_init(|| FrbDartLogger {
-                sink: std::sync::RwLock::new(None),
+                sinks: std::sync::RwLock::new(std::collections::BTreeMap::new()),
+                next_sink_id: std::sync::atomic::AtomicU64::new(1),
             });
 
             let _ = log::set_logger(logger);
             log::set_max_level(max_level);
 
-            logger.swap_sink(Some(sink));
+            logger.insert_sink(id, sink);
         }
 
         #[doc(hidden)]
         #[flutter_rust_bridge::frb(sync)]
-        pub fn frb_internal_dispose_logger() {
+        pub fn frb_internal_dispose_logger(id: u64) {
             if let Some(logger) = FRB_DART_LOGGER.get() {
-                logger.swap_sink(None);
+                logger.clear_sink(id);
             }
         }
 
         static FRB_DART_LOGGER: std::sync::OnceLock<FrbDartLogger> = std::sync::OnceLock::new();
+
+        #[doc(hidden)]
+        #[flutter_rust_bridge::frb(sync)]
+        pub fn frb_internal_logging_allocate_sink_id() -> u64 {
+            // This lazy allocation is exercised through generated Dart init, but llvm-cov misses the OnceLock closure line.
+            // frb-coverage:ignore-start
+            let logger = FRB_DART_LOGGER.get_or_init(|| FrbDartLogger {
+                sinks: std::sync::RwLock::new(std::collections::BTreeMap::new()),
+                next_sink_id: std::sync::atomic::AtomicU64::new(1),
+            });
+            // frb-coverage:ignore-end
+            logger.allocate_sink_id()
+        }
 
         fn frb_parse_logging_max_level(max_level: &str) -> log::LevelFilter {
             match max_level.to_uppercase().as_str() {

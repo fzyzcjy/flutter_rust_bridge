@@ -103,6 +103,38 @@ void main() {
       });
     });
 
+    test('dart sanitizer full matrix keeps required coverage levels', () {
+      final plan = buildCiPlan(
+        filter: 'test_dart_sanitizer',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'test_dart_sanitizer'});
+      expect(plan.matrixByJob['test_dart_sanitizer'], {
+        'include': [
+          {'sanitizer': 'asan', 'package': 'frb_example--dart_minimal'},
+          {'sanitizer': 'asan', 'package': 'frb_example--pure_dart'},
+          {'sanitizer': 'asan', 'package': 'frb_example--pure_dart_pde'},
+          {'sanitizer': 'msan', 'package': 'frb_example--dart_minimal'},
+          {'sanitizer': 'msan', 'package': 'frb_example--pure_dart'},
+          {'sanitizer': 'msan', 'package': 'frb_example--pure_dart_pde'},
+          {'sanitizer': 'lsan', 'package': 'frb_example--dart_minimal'},
+          {'sanitizer': 'lsan', 'package': 'frb_example--pure_dart'},
+          {'sanitizer': 'lsan', 'package': 'frb_example--pure_dart_pde'},
+          {'sanitizer': 'tsan', 'package': 'frb_example--dart_minimal'},
+          {'sanitizer': 'tsan', 'package': 'frb_example--pure_dart'},
+          {'sanitizer': 'tsan', 'package': 'frb_example--pure_dart_pde'},
+          {'sanitizer': 'ubsan', 'package': 'frb_example--dart_minimal'},
+          {'sanitizer': 'ubsan', 'package': 'frb_example--pure_dart'},
+          {'sanitizer': 'ubsan', 'package': 'frb_example--pure_dart_pde'},
+          {'sanitizer': 'asan', 'package': 'frb_example--deliberate_bad'},
+          {'sanitizer': 'msan', 'package': 'frb_example--deliberate_bad'},
+          {'sanitizer': 'lsan', 'package': 'frb_example--deliberate_bad'},
+          {'sanitizer': 'tsan', 'package': 'frb_example--deliberate_bad'},
+        ],
+      });
+    });
+
     test('single package filter selects one dart web entry', () {
       final plan = buildCiPlan(
         filter: 'test_dart_web[package=frb_example--pure_dart_pde]',

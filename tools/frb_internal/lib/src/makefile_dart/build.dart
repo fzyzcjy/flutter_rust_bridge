@@ -94,12 +94,41 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       copyArtifacts(['build/ios/archive']);
 
     case BuildTarget.ohos:
-      await exec(
-        'flutter build hap --no-codesign --verbose',
-        relativePwd: config.package,
-      );
+      if (_shouldPatchOhosFlutterAutofillForCi()) {
+        await exec('flutter pub get --verbose', relativePwd: config.package);
+        await exec(
+          'flutter precache --ohos --force --verbose',
+          relativePwd: config.package,
+        );
+        await _patchOhosFlutterAutofillForCi(config.package);
+        await exec(
+          'flutter build hap --no-pub --no-codesign --verbose',
+          relativePwd: config.package,
+        );
+      } else {
+        await exec(
+          'flutter build hap --no-codesign --verbose',
+          relativePwd: config.package,
+        );
+      }
       copyArtifacts(['build/ohos/hap']);
   }
+}
+
+bool _shouldPatchOhosFlutterAutofillForCi() =>
+    Platform.environment['FRB_OHOS_PATCH_FLUTTER_AUTOFILL_FOR_CI'] == '1';
+
+Future<void> _patchOhosFlutterAutofillForCi(String package) async {
+  final script = Platform.environment['FRB_OHOS_FLUTTER_AUTOFILL_PATCH_SCRIPT'];
+  final flutterRoot = Platform.environment['FRB_OHOS_FLUTTER_ROOT'];
+  if (script == null || script.isEmpty) {
+    throw StateError('FRB_OHOS_FLUTTER_AUTOFILL_PATCH_SCRIPT is not set');
+  }
+  if (flutterRoot == null || flutterRoot.isEmpty) {
+    throw StateError('FRB_OHOS_FLUTTER_ROOT is not set');
+  }
+
+  await exec('bash "$script" "$flutterRoot" "${exec.pwd}$package/ohos"');
 }
 
 String linuxBuildBundlePathForTesting({required String machineArchitecture}) =>

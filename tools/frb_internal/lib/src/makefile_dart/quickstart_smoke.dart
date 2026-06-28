@@ -131,15 +131,10 @@ class _QuickstartSmokeContext {
     return context;
   }
 
-  List<String> get flutterRunArgs => [
-    'run',
-    '-d',
-    resolvedDeviceId,
-    if (target == QuickstartSmokeTarget.web) ...[
-      '--web-header=Cross-Origin-Opener-Policy=same-origin',
-      '--web-header=Cross-Origin-Embedder-Policy=require-corp',
-    ],
-  ];
+  List<String> get flutterRunArgs => quickstartSmokeFlutterRunArgsForTesting(
+    target: target,
+    deviceId: resolvedDeviceId,
+  );
 
   Map<String, String> get environment => {
     if (Platform.isLinux) 'DISPLAY': Platform.environment['DISPLAY'] ?? ':99',
@@ -255,7 +250,27 @@ Duration quickstartSmokeVisibleTextTimeoutForTesting(
 };
 
 @visibleForTesting
+List<String> quickstartSmokeFlutterRunArgsForTesting({
+  required QuickstartSmokeTarget target,
+  required String deviceId,
+}) => [
+  'run',
+  '-d',
+  deviceId,
+  if (target == QuickstartSmokeTarget.web) ...[
+    '--web-header=Cross-Origin-Opener-Policy=same-origin',
+    '--web-header=Cross-Origin-Embedder-Policy=require-corp',
+    '--web-browser-flag=--enable-features=SharedArrayBuffer',
+  ],
+];
+
+@visibleForTesting
 String? quickstartSmokeOutputFailurePatternForTesting(String output) {
+  final outputToScan = output.contains('Failed to initialize web worker pool')
+      ? output
+            .replaceAll('DataCloneError', '')
+            .replaceAll('Failed to execute \'postMessage\' on \'Worker\'', '')
+      : output;
   const failurePatterns = [
     'DataCloneError',
     'Failed to execute \'postMessage\' on \'Worker\'',
@@ -263,7 +278,7 @@ String? quickstartSmokeOutputFailurePatternForTesting(String output) {
     'WebAssembly.instantiate',
   ];
   for (final pattern in failurePatterns) {
-    if (output.contains(pattern)) return pattern;
+    if (outputToScan.contains(pattern)) return pattern;
   }
   return null;
 }

@@ -76,4 +76,22 @@ void main() {
       expect(resolution.warning, isNull);
     },
   );
+
+  test('wasm-pack environment isolates host and target rustflags', () {
+    final environment = computeWasmPackEnvironment(
+      rustupToolchain: 'nightly',
+      rustflags: buildWebDefaultWasmPackRustflags,
+      supportsAnsiEscapes: true,
+    );
+
+    expect(environment['RUSTUP_TOOLCHAIN'], 'nightly');
+    expect(
+      environment[buildWebWasmPackTargetRustflagsEnvKey],
+      buildWebDefaultWasmPackRustflags,
+    );
+    expect(environment['CARGO_TERM_COLOR'], 'always');
+    for (final key in buildWebWasmPackHostRustflagsEnvKeys) {
+      expect(environment[key], '');
+    }
+  });
 }
