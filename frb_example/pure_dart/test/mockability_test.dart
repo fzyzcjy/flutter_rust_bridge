@@ -24,10 +24,14 @@ Future<void> main() async {
     () => mockApi.crateApiFrbLoggingFrbInternalLoggingMaxLevel(),
   ).thenReturn('WARN');
   when(
+    () => mockApi.crateApiFrbLoggingFrbInternalLoggingAllocateSinkId(),
+  ).thenReturn(BigInt.one);
+  when(
     () => mockApi.crateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutput(),
   ).thenReturn(false);
   when(
     () => mockApi.crateApiFrbLoggingFrbInternalInitLogger(
+      id: BigInt.one,
       maxLevel: any(named: 'maxLevel'),
     ),
   ).thenAnswer((_) => Stream<FrbLogRecord>.empty());

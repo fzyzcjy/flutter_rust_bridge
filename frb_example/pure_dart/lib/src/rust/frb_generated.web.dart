@@ -50147,14 +50147,20 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__frb_logging__frb_internal_dispose_logger() => wasmModule
-          .wire__crate__api__frb_logging__frb_internal_dispose_logger();
+      wire__crate__api__frb_logging__frb_internal_dispose_logger(JSAny id) =>
+          wasmModule
+              .wire__crate__api__frb_logging__frb_internal_dispose_logger(id);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__frb_logging__frb_internal_init_logger(
-              String sink, String max_level) =>
+              String sink, JSAny id, String max_level) =>
           wasmModule.wire__crate__api__frb_logging__frb_internal_init_logger(
-              sink, max_level);
+              sink, id, max_level);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_internal_logging_allocate_sink_id() =>
+          wasmModule
+              .wire__crate__api__frb_logging__frb_internal_logging_allocate_sink_id();
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__frb_logging__frb_internal_logging_max_level() =>
@@ -71437,11 +71443,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__frb_logging__frb_internal_dispose_logger();
+      wire__crate__api__frb_logging__frb_internal_dispose_logger(JSAny id);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__frb_logging__frb_internal_init_logger(
-          String sink, String max_level);
+          String sink, JSAny id, String max_level);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_internal_logging_allocate_sink_id();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__frb_logging__frb_internal_logging_max_level();
