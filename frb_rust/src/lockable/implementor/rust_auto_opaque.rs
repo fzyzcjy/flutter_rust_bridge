@@ -1,6 +1,10 @@
 use crate::for_generated::{BaseArc, RustAutoOpaqueInner, RustOpaqueBase};
 use crate::lockable::base::Lockable;
 use crate::lockable::order::LockableOrder;
+#[cfg(target_family = "wasm")]
+use crate::rust_auto_opaque::web_is_dedicated_worker_context;
+#[cfg(target_family = "wasm")]
+use crate::rust_auto_opaque::web_throw_lock_error;
 use std::future::Future;
 use std::pin::Pin;
 
@@ -21,11 +25,43 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     }
 
     fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        self.data.blocking_read()
+        // Web integration tests cover this, but Rust llvm coverage does not observe wasm.
+        // frb-coverage:ignore-start
+        #[cfg(target_family = "wasm")]
+        {
+            if web_is_dedicated_worker_context() {
+                self.data.blocking_read()
+            } else {
+                self.data
+                    .try_read()
+                    .unwrap_or_else(|error| web_throw_lock_error("read", error))
+            }
+        }
+        // frb-coverage:ignore-end
+        #[cfg(not(target_family = "wasm"))]
+        {
+            self.data.blocking_read()
+        }
     }
 
     fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        self.data.blocking_write()
+        // Web integration tests cover this, but Rust llvm coverage does not observe wasm.
+        // frb-coverage:ignore-start
+        #[cfg(target_family = "wasm")]
+        {
+            if web_is_dedicated_worker_context() {
+                self.data.blocking_write()
+            } else {
+                self.data
+                    .try_write()
+                    .unwrap_or_else(|error| web_throw_lock_error("write", error))
+            }
+        }
+        // frb-coverage:ignore-end
+        #[cfg(not(target_family = "wasm"))]
+        {
+            self.data.blocking_write()
+        }
     }
 
     fn lockable_decode_async_ref<'a>(
