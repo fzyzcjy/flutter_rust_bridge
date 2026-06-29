@@ -19,22 +19,7 @@ impl WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenera
                 }}
                 return ans;
                 ",
-                if self.mir.inner.is_primitive()
-                    || matches!(
-                        *self.mir.inner,
-                        MirType::Optional(_)
-                            | MirType::RustAutoOpaqueImplicit(_)
-                            | MirType::RustOpaque(_)
-                            | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
-                            | MirType::DartOpaque(_)
-                            | MirType::PrimitiveList(_)
-                            | MirType::Delegate(MirTypeDelegate::String)
-                            | MirType::Delegate(MirTypeDelegate::StreamSink(_))
-                            | MirType::Delegate(MirTypeDelegate::Time(_))
-                            | MirType::Delegate(MirTypeDelegate::Uuid)
-                            | MirType::Delegate(MirTypeDelegate::SerdeJsonValue)
-                    )
-                {
+                if general_list_inner_uses_direct_assignment(&self.mir.inner) {
                     format!("ans.ref.ptr[i] = cst_encode_{inner}(raw[i]);")
                 } else {
                     format!("cst_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
@@ -56,4 +41,25 @@ impl WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenera
             Target::Web => "JSAny".into(),
         }
     }
+}
+
+fn general_list_inner_uses_direct_assignment(inner: &MirType) -> bool {
+    inner.is_primitive()
+        || matches!(
+            inner,
+            MirType::Optional(_)
+                | MirType::RustAutoOpaqueImplicit(_)
+                | MirType::RustOpaque(_)
+                | MirType::Delegate(
+                    MirTypeDelegate::CastedPrimitive(_)
+                        | MirTypeDelegate::RustAutoOpaqueExplicit(_)
+                        | MirTypeDelegate::String
+                        | MirTypeDelegate::StreamSink(_)
+                        | MirTypeDelegate::Time(_)
+                        | MirTypeDelegate::Uuid
+                        | MirTypeDelegate::SerdeJsonValue
+                )
+                | MirType::DartOpaque(_)
+                | MirType::PrimitiveList(_)
+        )
 }

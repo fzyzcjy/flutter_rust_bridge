@@ -143,9 +143,14 @@ impl WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator
                 "return cst_encode_{}(raw);",
                 self.mir.get_delegate().safe_ident(),
             ))),
+            MirTypeDelegate::CastedPrimitive(mir) => format!(
+                "return cst_encode_{}({});",
+                mir.inner.safe_ident(),
+                casted_primitive_inner_encoder_arg(&mir.inner)
+            )
+            .into(),
             MirTypeDelegate::ProxyVariant(_)
             | MirTypeDelegate::ProxyEnum(_)
-            | MirTypeDelegate::CastedPrimitive(_)
             | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) =>
                 Acc::distribute(Some("throw UnimplementedError('Not implemented in this codec, please use the other one');".to_string()))
@@ -163,6 +168,13 @@ impl WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator
             _ => WireDartCodecCstGenerator::new(self.mir.get_delegate(), self.context)
                 .dart_wire_type(target),
         }
+    }
+}
+
+fn casted_primitive_inner_encoder_arg(inner: &MirTypePrimitive) -> &'static str {
+    match inner {
+        MirTypePrimitive::U64 | MirTypePrimitive::Usize => "BigInt.from(raw)",
+        _ => "raw",
     }
 }
 
