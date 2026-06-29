@@ -67,9 +67,17 @@ mod tests {
     #[serial]
     fn test_no_web_fixture_omits_web_outputs_and_references() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
+        let original_dir = env::current_dir()?;
+        struct RestoreDir(std::path::PathBuf);
+        impl Drop for RestoreDir {
+            fn drop(&mut self) {
+                let _ = env::set_current_dir(&self.0);
+            }
+        }
         let test_fixture_dir =
             get_test_fixture_dir("library/codegen/generator/wire/dart/mod/no_web");
         env::set_current_dir(&test_fixture_dir)?;
+        let _restore_dir = RestoreDir(original_dir);
 
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
