@@ -39,7 +39,8 @@ impl TypeParserWithContext<'_, '_, '_> {
                     | DartFn(..)
                     | Primitive(..)
                     | Record(..)
-                    | Delegate(MirTypeDelegate::PrimitiveEnum(..)) => {
+                    | Delegate(MirTypeDelegate::PrimitiveEnum(..))
+                    | Delegate(MirTypeDelegate::CastedPrimitive(..)) => {
                         MirTypeOptional::new_with_boxed_wrapper(inner.clone())
                     }
                     Delegate(MirTypeDelegate::Time(..)) => {
@@ -56,5 +57,40 @@ impl TypeParserWithContext<'_, '_, '_> {
 
             _ => return Ok(None),
         }))
+    }
+}
+
+#[cfg(test)]
+fn optional_inner_needs_boxed_wrapper(inner: &MirType) -> bool {
+    matches!(
+        inner,
+        StructRef(..)
+            | EnumRef(..)
+            | RustAutoOpaqueImplicit(..)
+            | RustOpaque(..)
+            | DartOpaque(..)
+            | DartFn(..)
+            | Primitive(..)
+            | Record(..)
+            | Delegate(MirTypeDelegate::PrimitiveEnum(..))
+            | Delegate(MirTypeDelegate::CastedPrimitive(..))
+    )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateCastedPrimitive;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    #[test]
+    fn casted_primitive_optional_uses_boxed_wrapper() {
+        let inner = Delegate(MirTypeDelegate::CastedPrimitive(
+            MirTypeDelegateCastedPrimitive {
+                inner: MirTypePrimitive::I64,
+            },
+        ));
+
+        assert!(optional_inner_needs_boxed_wrapper(&inner));
     }
 }

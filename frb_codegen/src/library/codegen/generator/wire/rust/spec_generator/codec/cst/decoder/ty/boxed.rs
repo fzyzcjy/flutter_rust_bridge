@@ -61,15 +61,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
             return Acc::default();
         }
         let func_name = format!("cst_new_{}", self.mir.safe_ident());
-        if self.mir.inner.is_primitive()
-            || matches!(
-                *self.mir.inner,
-                MirType::RustOpaque(_)
-                    | MirType::RustAutoOpaqueImplicit(_)
-                    | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
-                    | MirType::DartOpaque(_)
-            )
-        {
+        if boxed_inner_uses_value_allocator(&self.mir.inner) {
             Acc {
                 io: ExternFunc {
                     partial_func_name: func_name,
@@ -131,5 +123,38 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
             || !is_js_value(&self.mir.inner)
                 && !self.mir.inner.is_array()
                 && !self.mir.inner.is_primitive()
+    }
+}
+
+fn boxed_inner_uses_value_allocator(inner: &MirType) -> bool {
+    inner.is_primitive()
+        || matches!(
+            inner,
+            MirType::Delegate(MirTypeDelegate::CastedPrimitive(_))
+        )
+        || matches!(
+            inner,
+            MirType::RustOpaque(_)
+                | MirType::RustAutoOpaqueImplicit(_)
+                | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                | MirType::DartOpaque(_)
+        )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateCastedPrimitive;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    #[test]
+    fn casted_primitive_box_uses_value_allocator() {
+        let inner = MirType::Delegate(MirTypeDelegate::CastedPrimitive(
+            MirTypeDelegateCastedPrimitive {
+                inner: MirTypePrimitive::I64,
+            },
+        ));
+
+        assert!(boxed_inner_uses_value_allocator(&inner));
     }
 }
