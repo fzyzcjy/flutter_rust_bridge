@@ -131,6 +131,12 @@ fn generate_boilerplate(
 
     let codegen_version = env!("CARGO_PKG_VERSION");
 
+    let platform_import = generate_platform_import(context.config.web_enabled);
+    let default_external_library_loader_config = generate_default_external_library_loader_config(
+        &context.config.default_external_library_loader,
+        context.config.web_enabled,
+    );
+
     Ok(Acc {
         common: vec![WireDartOutputCode {
             header: DartHeaderCode {
@@ -139,7 +145,7 @@ fn generate_boilerplate(
                     "
                     {universal_imports}
                     import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-                    import 'frb_generated.io.dart' if (dart.library.js_interop) 'frb_generated.web.dart';
+                    {platform_import}
                     "
                 ),
                 ..Default::default()
@@ -205,18 +211,10 @@ fn generate_boilerplate(
                   @override
                   int get rustContentHash => {rust_content_hash};
 
-                  static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
-                    stem: '{stem}',
-                    ioDirectory: '{io_directory}',
-                    webPrefix: '{web_prefix}',
-                    wasmBindgenName: '{wasm_bindgen_name}',
-                  );
+                  static const kDefaultExternalLibraryLoaderConfig = {default_external_library_loader_config};
                 }}
                 "#,
-                stem = context.config.default_external_library_loader.stem,
-                io_directory = context.config.default_external_library_loader.io_directory,
-                web_prefix = context.config.default_external_library_loader.web_prefix,
-                wasm_bindgen_name = context.config.default_external_library_loader.wasm_bindgen_name
+                default_external_library_loader_config = default_external_library_loader_config,
             ),
             body: "".to_owned(),
             ..Default::default()
@@ -258,6 +256,39 @@ fn generate_execute_dart_initializers<'a>(
     init_dart_codes.map(|code| format!("{code}\n")).join("")
 }
 
+fn generate_platform_import(web_enabled: bool) -> &'static str {
+    if web_enabled {
+        "import 'frb_generated.io.dart' if (dart.library.js_interop) 'frb_generated.web.dart';"
+    } else {
+        "import 'frb_generated.io.dart';"
+    }
+}
+
+fn generate_default_external_library_loader_config(
+    config: &crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
+    web_enabled: bool,
+) -> String {
+    if web_enabled {
+        format!(
+            "ExternalLibraryLoaderConfig(
+                    stem: '{}',
+                    ioDirectory: '{}',
+                    webPrefix: '{}',
+                    wasmBindgenName: '{}',
+                  )",
+            config.stem, config.io_directory, config.web_prefix, config.wasm_bindgen_name
+        )
+    } else {
+        format!(
+            "ExternalLibraryLoaderConfig(
+                    stem: '{}',
+                    ioDirectory: '{}',
+                  )",
+            config.stem, config.io_directory
+        )
+    }
+}
+
 fn file_stem(p: &Path) -> String {
     p.file_stem().unwrap().to_str().unwrap().into()
 }
@@ -281,7 +312,11 @@ fn generate_import_dart_api_layer(
 
 #[cfg(test)]
 mod tests {
-    use super::generate_execute_dart_initializers;
+    use super::{
+        generate_default_external_library_loader_config, generate_execute_dart_initializers,
+        generate_platform_import,
+    };
+    use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig;
 
     #[test]
     fn test_generate_execute_dart_initializers() {
@@ -293,6 +328,32 @@ mod tests {
             actual,
             "api.firstInit();\napi.secondInit(\n  value: 42,\n);\n"
         );
+    }
+
+    #[test]
+    fn test_generate_platform_import_without_web() {
+        assert_eq!(
+            generate_platform_import(false),
+            "import 'frb_generated.io.dart';"
+        );
+    }
+
+    #[test]
+    fn test_generate_default_external_library_loader_config_without_web() {
+        let actual = generate_default_external_library_loader_config(
+            &GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
+                stem: "demo".into(),
+                io_directory: "target/release/".into(),
+                web_prefix: "pkg/".into(),
+                wasm_bindgen_name: "wasm_bindgen".into(),
+            },
+            false,
+        );
+
+        assert!(!actual.contains("webPrefix"));
+        assert!(!actual.contains("wasmBindgenName"));
+        assert!(actual.contains("stem: 'demo'"));
+        assert!(actual.contains("ioDirectory: 'target/release/'"));
     }
 }
 
