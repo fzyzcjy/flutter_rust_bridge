@@ -74,6 +74,7 @@ fn optional_inner_needs_boxed_wrapper(inner: &MirType) -> bool {
             | Record(..)
             | Delegate(MirTypeDelegate::PrimitiveEnum(..))
             | Delegate(MirTypeDelegate::CastedPrimitive(..))
+            | Delegate(MirTypeDelegate::Time(..))
     )
 }
 

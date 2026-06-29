@@ -130,13 +130,10 @@ fn boxed_inner_uses_value_allocator(inner: &MirType) -> bool {
     inner.is_primitive()
         || matches!(
             inner,
-            MirType::Delegate(MirTypeDelegate::CastedPrimitive(_))
-        )
-        || matches!(
-            inner,
-            MirType::RustOpaque(_)
+            MirType::Delegate(
+                MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::RustAutoOpaqueExplicit(_)
+            ) | MirType::RustOpaque(_)
                 | MirType::RustAutoOpaqueImplicit(_)
-                | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
                 | MirType::DartOpaque(_)
         )
 }

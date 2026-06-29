@@ -144,14 +144,11 @@ fn general_list_inner_uses_default_initializer(inner: &MirType) -> bool {
     inner.is_primitive()
         || matches!(
             inner,
-            MirType::Delegate(MirTypeDelegate::CastedPrimitive(_))
+            MirType::Delegate(
+                MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::RustAutoOpaqueExplicit(_)
+            ) | MirType::RustOpaque(_)
+                | MirType::RustAutoOpaqueImplicit(_)
         )
-        || matches!(inner, MirType::RustOpaque(_))
-        || matches!(
-            inner,
-            MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
-        )
-        || matches!(inner, MirType::RustAutoOpaqueImplicit(_))
 }
 
 #[cfg(test)]
