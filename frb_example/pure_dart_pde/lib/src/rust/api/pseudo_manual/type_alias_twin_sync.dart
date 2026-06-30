@@ -9,6 +9,8 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ResultShadowErrorTwinSync`
+
 BigInt handleTypeAliasIdTwinSync({required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasIdTwinSync(
@@ -23,6 +25,41 @@ TestModelTwinSync handleTypeAliasModelTwinSync({required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasModelTwinSync(
             input: input);
+
+int infallibleWithResultShadowTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncInfallibleWithResultShadowTwinSync();
+
+int genericResultAliasOkTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasOkTwinSync();
+
+int genericResultAliasErrTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasErrTwinSync();
+
+int genericResultAliasChainedOkTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasChainedOkTwinSync();
+
+int genericResultAliasChainedErrTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasChainedErrTwinSync();
+
+int genericResultAliasTwoParamsOkTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasTwoParamsOkTwinSync();
+
+int genericResultAliasTwoParamsErrTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericResultAliasTwoParamsErrTwinSync();
+
+int? genericOptionAliasReturnTwinSync({required int input}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinSyncGenericOptionAliasReturnTwinSync(
+            input: input);
+
+int genericOptionAliasArgTwinSync({int? input}) => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncGenericOptionAliasArgTwinSync(
+        input: input);
+
+enum GenericAliasErrorTwinSync {
+  deliberate,
+  ;
+}
 
 class TestModelTwinSync {
   final BigInt id;

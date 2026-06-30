@@ -92,13 +92,13 @@ fn wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::frb_generated::BaseRustState::create_notify_ui_stream(
                         &mut *api_that_guard,
                         api_sink,
                     );
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -126,8 +126,8 @@ fn wire__crate__frb_generated__BaseRustState_empty_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::frb_generated::BaseRustState::empty())?;
-                Ok(output_ok)
+                let output_ok = Ok::<_, ()>(crate::frb_generated::BaseRustState::empty())?;
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -172,8 +172,8 @@ fn wire__crate__app__RustState_auto_accessor_get_count_impl(
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(api_that_guard.count.clone())?;
-                Ok(output_ok)
+                let output_ok = Ok::<_, ()>(api_that_guard.count.clone())?;
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -219,13 +219,13 @@ fn wire__crate__app__RustState_auto_accessor_set_count_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     {
                         api_that_guard.count = api_count;
                     };
                 })?;
                 api_that_guard.base_state.on_mutation();
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -270,11 +270,11 @@ fn wire__crate__app__RustState_increment_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::app::RustState::increment(&mut *api_that_guard);
                 })?;
                 api_that_guard.base_state.on_mutation();
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -302,8 +302,8 @@ fn wire__crate__app__RustState_new_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::app::RustState::new())?;
-                Ok(output_ok)
+                let output_ok = Ok::<_, ()>(crate::app::RustState::new())?;
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -349,10 +349,10 @@ fn wire__crate__app__RustState_set_base_state_impl(
                     }
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
+                let output_ok = Ok::<_, ()>({
                     crate::app::RustState::set_base_state(&mut *api_that_guard, api_base_state);
                 })?;
-                Ok(output_ok)
+                std::result::Result::Ok(output_ok)
             })())
         },
     )

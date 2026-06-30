@@ -9,6 +9,8 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ResultShadowErrorTwinRustAsync`
+
 Future<BigInt> handleTypeAliasIdTwinRustAsync({required BigInt input}) => RustLib
     .instance.api
     .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasIdTwinRustAsync(
@@ -24,6 +26,43 @@ Future<TestModelTwinRustAsync> handleTypeAliasModelTwinRustAsync(
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasModelTwinRustAsync(
             input: input);
+
+Future<int> infallibleWithResultShadowTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncInfallibleWithResultShadowTwinRustAsync();
+
+Future<int> genericResultAliasOkTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncGenericResultAliasOkTwinRustAsync();
+
+Future<int> genericResultAliasErrTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncGenericResultAliasErrTwinRustAsync();
+
+Future<int> genericResultAliasChainedOkTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncGenericResultAliasChainedOkTwinRustAsync();
+
+Future<int> genericResultAliasChainedErrTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncGenericResultAliasChainedErrTwinRustAsync();
+
+Future<int> genericResultAliasTwoParamsOkTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncGenericResultAliasTwoParamsOkTwinRustAsync();
+
+Future<int> genericResultAliasTwoParamsErrTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncGenericResultAliasTwoParamsErrTwinRustAsync();
+
+Future<int?> genericOptionAliasReturnTwinRustAsync({required int input}) => RustLib
+    .instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncGenericOptionAliasReturnTwinRustAsync(
+        input: input);
+
+Future<int> genericOptionAliasArgTwinRustAsync({int? input}) => RustLib
+    .instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncGenericOptionAliasArgTwinRustAsync(
+        input: input);
+
+enum GenericAliasErrorTwinRustAsync {
+  deliberate,
+  ;
+}
 
 class TestModelTwinRustAsync {
   final BigInt id;

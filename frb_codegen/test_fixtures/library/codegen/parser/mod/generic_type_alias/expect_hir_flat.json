@@ -1,0 +1,84 @@
+{
+  "constants": [],
+  "enums": [
+    {
+      "mirror": false,
+      "name": "crate::api/AppError",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    },
+    {
+      "mirror": false,
+      "name": "crate::api/MyErrorToTestResultAlias",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    }
+  ],
+  "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
+  "extra_rust_output_code": "",
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=generic_alias_named_result, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=generic_alias_option, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    },
+    {
+      "item_fn": "GeneralizedItemFn(name=generic_alias_result, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    }
+  ],
+  "skips": [],
+  "structs": [],
+  "trait_impls": [],
+  "traits": [],
+  "types": [
+    {
+      "ident": "AppResult",
+      "target": "std :: result :: Result < T , AppError >",
+      "type_params": [
+        "T"
+      ]
+    },
+    {
+      "ident": "Result",
+      "target": "std :: result :: Result < T , MyErrorToTestResultAlias >",
+      "type_params": [
+        "T"
+      ]
+    },
+    {
+      "ident": "Wrapper",
+      "target": "Option < T >",
+      "type_params": [
+        "T"
+      ]
+    }
+  ]
+}
