@@ -35,10 +35,9 @@ pub fn load_data() -> AppResult<MyData> {...}
 
 The substitution is applied recursively, so aliases built on top of other generic
 aliases (for example `pub type Wrapper<T> = Option<T>`) work as well.
-This also works when the project-level shortcut itself is named `Result`, such as
-`pub type Result<T> = std::result::Result<T, AppError>`.
 
 ## Limitation
 
 - The `ItemType` inside Generic is not supported yet, such as `SyncReturn<Id>`. The nested `ItemType` may also not be supported. This also applies to generic aliases nested inside such wrappers (e.g. `SyncReturn<AppResult<T>>`).
 - Generic type aliases with lifetime parameters, const parameters, or a `where` clause are not yet supported.
+- A generic alias literally named `Result` (e.g. `pub type Result<T> = std::result::Result<T, AppError>`) is intentionally **not** expanded. `Result` is reserved for the built-in fallible-return detection, so such an alias keeps the standard fallible-return behavior instead of being substituted to carry its concrete error type. Use a differently-named alias such as `AppResult<T>` if you want the concrete error type to flow through.
