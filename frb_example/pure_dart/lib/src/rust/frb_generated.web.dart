@@ -46,6 +46,8 @@ import 'api/misc_example.dart';
 import 'api/misc_no_twin_example_a.dart';
 import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
+import 'api/namespaced_type.dart';
+import 'api/namespaced_type/second_store.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
@@ -172,6 +174,16 @@ import 'api/pseudo_manual/misc_type_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/misc_type_twin_sse.dart';
 import 'api/pseudo_manual/misc_type_twin_sync.dart';
 import 'api/pseudo_manual/misc_type_twin_sync_sse.dart';
+import 'api/pseudo_manual/namespaced_type_twin_rust_async.dart';
+import 'api/pseudo_manual/namespaced_type_twin_rust_async/second_store.dart';
+import 'api/pseudo_manual/namespaced_type_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/namespaced_type_twin_rust_async_sse/second_store.dart';
+import 'api/pseudo_manual/namespaced_type_twin_sse.dart';
+import 'api/pseudo_manual/namespaced_type_twin_sse/second_store.dart';
+import 'api/pseudo_manual/namespaced_type_twin_sync.dart';
+import 'api/pseudo_manual/namespaced_type_twin_sync/second_store.dart';
+import 'api/pseudo_manual/namespaced_type_twin_sync_sse.dart';
+import 'api/pseudo_manual/namespaced_type_twin_sync_sse/second_store.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_rust_async.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sse.dart';
@@ -8100,6 +8112,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<Uint8List> dco_decode_list_list_prim_u_8_strict(dynamic raw);
 
   @protected
+  List<ModelTwinNormal> dco_decode_list_model_twin_normal(dynamic raw);
+
+  @protected
+  List<ModelTwinRustAsync> dco_decode_list_model_twin_rust_async(dynamic raw);
+
+  @protected
+  List<ModelTwinRustAsyncSse> dco_decode_list_model_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<ModelTwinSse> dco_decode_list_model_twin_sse(dynamic raw);
+
+  @protected
+  List<ModelTwinSync> dco_decode_list_model_twin_sync(dynamic raw);
+
+  @protected
+  List<ModelTwinSyncSse> dco_decode_list_model_twin_sync_sse(dynamic raw);
+
+  @protected
   List<MyEnum> dco_decode_list_my_enum(dynamic raw);
 
   @protected
@@ -8649,6 +8680,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MirrorStructTwinSyncSse dco_decode_mirror_struct_twin_sync_sse(dynamic raw);
+
+  @protected
+  ModelTwinNormal dco_decode_model_twin_normal(dynamic raw);
+
+  @protected
+  ModelTwinRustAsync dco_decode_model_twin_rust_async(dynamic raw);
+
+  @protected
+  ModelTwinRustAsyncSse dco_decode_model_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ModelTwinSse dco_decode_model_twin_sse(dynamic raw);
+
+  @protected
+  ModelTwinSync dco_decode_model_twin_sync(dynamic raw);
+
+  @protected
+  ModelTwinSyncSse dco_decode_model_twin_sync_sse(dynamic raw);
 
   @protected
   MoreThanJustOneRawStringStructTwinNormal
@@ -17980,6 +18029,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<ModelTwinNormal> sse_decode_list_model_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ModelTwinRustAsync> sse_decode_list_model_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ModelTwinRustAsyncSse> sse_decode_list_model_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ModelTwinSse> sse_decode_list_model_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ModelTwinSync> sse_decode_list_model_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ModelTwinSyncSse> sse_decode_list_model_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   List<MyEnum> sse_decode_list_my_enum(SseDeserializer deserializer);
 
   @protected
@@ -18617,6 +18690,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MirrorStructTwinSyncSse sse_decode_mirror_struct_twin_sync_sse(
       SseDeserializer deserializer);
+
+  @protected
+  ModelTwinNormal sse_decode_model_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  ModelTwinRustAsync sse_decode_model_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ModelTwinRustAsyncSse sse_decode_model_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ModelTwinSse sse_decode_model_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  ModelTwinSync sse_decode_model_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  ModelTwinSyncSse sse_decode_model_twin_sync_sse(SseDeserializer deserializer);
 
   @protected
   MoreThanJustOneRawStringStructTwinNormal
@@ -26143,6 +26236,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_list_model_twin_normal(List<ModelTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_model_twin_normal).toList().jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_model_twin_rust_async(List<ModelTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_model_twin_rust_async).toList().jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_model_twin_sync(List<ModelTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_model_twin_sync).toList().jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_list_my_enum(List<MyEnum> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_my_enum).toList().jsify()!;
@@ -26912,6 +27023,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_my_enum(raw.c),
       cst_encode_list_application_settings(raw.d)
     ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_model_twin_normal(ModelTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.value)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_model_twin_rust_async(ModelTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.value)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_model_twin_sync(ModelTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.value)].jsify()!;
   }
 
   @protected
@@ -38113,6 +38242,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<Uint8List> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_model_twin_normal(
+      List<ModelTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_model_twin_rust_async(
+      List<ModelTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_model_twin_rust_async_sse(
+      List<ModelTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_model_twin_sse(
+      List<ModelTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_model_twin_sync(
+      List<ModelTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_model_twin_sync_sse(
+      List<ModelTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer);
 
   @protected
@@ -38739,6 +38892,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_mirror_struct_twin_sync_sse(
       MirrorStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_model_twin_normal(
+      ModelTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_model_twin_rust_async(
+      ModelTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_model_twin_rust_async_sse(
+      ModelTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_model_twin_sse(ModelTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_model_twin_sync(ModelTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_model_twin_sync_sse(
+      ModelTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_more_than_just_one_raw_string_struct_twin_normal(
@@ -46207,6 +46382,50 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__drop_static_dart_opaque_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__namespaced_type__duplicate_named_models_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__namespaced_type__duplicate_named_models_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__namespaced_type_twin_rust_async__duplicate_named_models_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__namespaced_type_twin_rust_async__duplicate_named_models_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__namespaced_type_twin_rust_async_sse__duplicate_named_models_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__namespaced_type_twin_rust_async_sse__duplicate_named_models_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__namespaced_type_twin_sse__duplicate_named_models_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__namespaced_type_twin_sse__duplicate_named_models_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__namespaced_type_twin_sync__duplicate_named_models_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__namespaced_type_twin_sync__duplicate_named_models_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__namespaced_type_twin_sync_sse__duplicate_named_models_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__namespaced_type_twin_sync_sse__duplicate_named_models_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__chrono_type__duration_twin_normal(
@@ -68692,6 +68911,37 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__drop_static_dart_opaque_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__namespaced_type__duplicate_named_models_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__namespaced_type_twin_rust_async__duplicate_named_models_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__namespaced_type_twin_rust_async_sse__duplicate_named_models_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__namespaced_type_twin_sse__duplicate_named_models_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__namespaced_type_twin_sync__duplicate_named_models_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__namespaced_type_twin_sync_sse__duplicate_named_models_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

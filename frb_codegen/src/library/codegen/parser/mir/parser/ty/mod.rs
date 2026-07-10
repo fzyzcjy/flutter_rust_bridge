@@ -22,6 +22,7 @@ use crate::codegen::parser::mir::parser::ty::rust_opaque::RustOpaqueParserInfo;
 use crate::codegen::parser::mir::ParseMode;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::Namespace;
+use crate::utils::namespace::NamespacedName;
 use std::collections::HashMap;
 use syn::Type;
 
@@ -55,7 +56,9 @@ pub(crate) mod unencodable;
 
 pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a HirFlatStruct>,
+    src_structs_namespaced: HashMap<NamespacedName, &'a HirFlatStruct>,
     src_enums: HashMap<String, &'a HirFlatEnum>,
+    src_enums_namespaced: HashMap<NamespacedName, &'a HirFlatEnum>,
     pub(super) src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
     pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
@@ -74,7 +77,9 @@ impl<'a> TypeParser<'a> {
     pub(crate) fn new_from_pack(ir_pack: &'a IrEarlyGeneratorPack) -> Self {
         Self::new(
             ir_pack.hir_flat_pack.structs_map(),
+            ir_pack.hir_flat_pack.structs_namespaced_map(),
             ir_pack.hir_flat_pack.enums_map(),
+            ir_pack.hir_flat_pack.enums_namespaced_map(),
             ir_pack.hir_flat_pack.traits_map(),
             ir_pack.hir_flat_pack.types_map(),
             ir_pack.proxied_types.clone(),
@@ -82,9 +87,12 @@ impl<'a> TypeParser<'a> {
         )
     }
 
+    #[allow(clippy::too_many_arguments)]
     fn new(
         src_structs: HashMap<String, &'a HirFlatStruct>,
+        src_structs_namespaced: HashMap<NamespacedName, &'a HirFlatStruct>,
         src_enums: HashMap<String, &'a HirFlatEnum>,
+        src_enums_namespaced: HashMap<NamespacedName, &'a HirFlatEnum>,
         src_traits: HashMap<String, &'a HirFlatTrait>,
         src_types: HashMap<String, Type>,
         proxied_types: Vec<IrEarlyGeneratorProxiedType>,
@@ -92,7 +100,9 @@ impl<'a> TypeParser<'a> {
     ) -> Self {
         TypeParser {
             src_structs,
+            src_structs_namespaced,
             src_enums,
+            src_enums_namespaced,
             src_traits,
             src_types,
             proxied_types,

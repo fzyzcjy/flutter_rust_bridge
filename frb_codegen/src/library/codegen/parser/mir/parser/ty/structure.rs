@@ -136,6 +136,10 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &self.0.inner.src_structs
     }
 
+    fn src_objects_namespaced(&self) -> &HashMap<NamespacedName, &HirFlatStruct> {
+        &self.0.inner.src_structs_namespaced
+    }
+
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<MirStructIdent, MirStruct> {
         &mut self.0.inner.struct_parser_info
     }

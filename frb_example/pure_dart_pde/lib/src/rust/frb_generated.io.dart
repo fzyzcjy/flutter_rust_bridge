@@ -42,6 +42,8 @@ import 'api/misc_example.dart';
 import 'api/misc_no_twin_example_a.dart';
 import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
+import 'api/namespaced_type.dart';
+import 'api/namespaced_type/second_store.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
@@ -98,6 +100,10 @@ import 'api/pseudo_manual/misc_example_twin_rust_async.dart';
 import 'api/pseudo_manual/misc_example_twin_sync.dart';
 import 'api/pseudo_manual/misc_type_twin_rust_async.dart';
 import 'api/pseudo_manual/misc_type_twin_sync.dart';
+import 'api/pseudo_manual/namespaced_type_twin_rust_async.dart';
+import 'api/pseudo_manual/namespaced_type_twin_rust_async/second_store.dart';
+import 'api/pseudo_manual/namespaced_type_twin_sync.dart';
+import 'api/pseudo_manual/namespaced_type_twin_sync/second_store.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_rust_async.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
@@ -3913,6 +3919,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<Uint8List> dco_decode_list_list_prim_u_8_strict(dynamic raw);
 
   @protected
+  List<ModelTwinNormal> dco_decode_list_model_twin_normal(dynamic raw);
+
+  @protected
+  List<ModelTwinRustAsync> dco_decode_list_model_twin_rust_async(dynamic raw);
+
+  @protected
+  List<ModelTwinSync> dco_decode_list_model_twin_sync(dynamic raw);
+
+  @protected
   List<MyEnum> dco_decode_list_my_enum(dynamic raw);
 
   @protected
@@ -4266,6 +4281,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MirrorStructTwinSync dco_decode_mirror_struct_twin_sync(dynamic raw);
+
+  @protected
+  ModelTwinNormal dco_decode_model_twin_normal(dynamic raw);
+
+  @protected
+  ModelTwinRustAsync dco_decode_model_twin_rust_async(dynamic raw);
+
+  @protected
+  ModelTwinSync dco_decode_model_twin_sync(dynamic raw);
 
   @protected
   MoreThanJustOneRawStringStructTwinNormal
@@ -8926,6 +8950,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<ModelTwinNormal> sse_decode_list_model_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ModelTwinRustAsync> sse_decode_list_model_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ModelTwinSync> sse_decode_list_model_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
   List<MyEnum> sse_decode_list_my_enum(SseDeserializer deserializer);
 
   @protected
@@ -9335,6 +9371,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MirrorStructTwinSync sse_decode_mirror_struct_twin_sync(
       SseDeserializer deserializer);
+
+  @protected
+  ModelTwinNormal sse_decode_model_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  ModelTwinRustAsync sse_decode_model_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ModelTwinSync sse_decode_model_twin_sync(SseDeserializer deserializer);
 
   @protected
   MoreThanJustOneRawStringStructTwinNormal
@@ -14139,6 +14185,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<Uint8List> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_model_twin_normal(
+      List<ModelTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_model_twin_rust_async(
+      List<ModelTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_model_twin_sync(
+      List<ModelTwinSync> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer);
 
   @protected
@@ -14550,6 +14608,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_mirror_struct_twin_sync(
       MirrorStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_model_twin_normal(
+      ModelTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_model_twin_rust_async(
+      ModelTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_model_twin_sync(ModelTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_more_than_just_one_raw_string_struct_twin_normal(

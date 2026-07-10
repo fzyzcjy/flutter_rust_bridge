@@ -15,5 +15,9 @@ Future<void> main() async {
     expect(await minimalAdder(a: 100, b: 200), 300);
     print('Action: Call rust (after)');
   });
+  test('dart call duplicateNamedModels', () async {
+    final models = await duplicateNamedModels();
+    expect(models.single.value, 'second');
+  });
   print('Action: Configure tests (end)');
 }

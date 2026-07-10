@@ -13,12 +13,13 @@ use crate::utils::basic_code::parser::parse_dart_code;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use log::debug;
+use quote::ToTokens;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Type, TypePath};
 
-pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
+pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum + ToTokens>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
 {
@@ -42,11 +43,33 @@ where
         let (name, _) = last_segment;
         // let name = external_impl::parse_name_or_original(name)?;
 
-        if let Some(src_object) = self.src_objects().get(*name) {
+        let namespaced_name = self.resolve_namespaced_name(path, name);
+        let bare_src_object = self.src_objects().get(*name);
+        let namespaced_src_object = self.src_objects_namespaced().get(&namespaced_name);
+        let src_object = match (
+            path.segments.len() > 1,
+            bare_src_object,
+            namespaced_src_object,
+        ) {
+            (true, Some(bare), Some(namespaced))
+                if bare.src.to_token_stream().to_string()
+                    != namespaced.src.to_token_stream().to_string() =>
+            {
+                Some(namespaced)
+            }
+            (_, Some(bare), _) => Some(bare),
+            (_, None, Some(namespaced)) => Some(namespaced),
+            (_, None, None) => None,
+        };
+
+        if let Some(src_object) = src_object {
             let src_object = (*src_object).clone();
 
-            let namespace = self.parse_namespace(name).unwrap();
-            let namespaced_name = NamespacedName::new(namespace, name.to_string());
+            let namespaced_name = if path.segments.len() > 1 {
+                namespaced_name
+            } else {
+                src_object.name.clone()
+            };
 
             let attrs = FrbAttributes::parse(src_object.src.attrs())?;
             let attrs_opaque = override_opaque.or(attrs.opaque());
@@ -101,6 +124,37 @@ where
             .map(|object| object.name.namespace.clone())
     }
 
+    fn resolve_namespaced_name(&self, path: &syn::Path, name: &str) -> NamespacedName {
+        let mut namespace = self
+            .context()
+            .initiated_namespace
+            .path()
+            .into_iter()
+            .map(ToOwned::to_owned)
+            .collect::<Vec<_>>();
+        let segments = path
+            .segments
+            .iter()
+            .map(|segment| segment.ident.to_string())
+            .collect::<Vec<_>>();
+        let prefix = &segments[..segments.len().saturating_sub(1)];
+        if prefix.first().is_some_and(|segment| segment == "crate") {
+            namespace = prefix.to_vec();
+        } else {
+            for segment in prefix {
+                if segment == "self" {
+                    continue;
+                }
+                if segment == "super" {
+                    namespace.pop();
+                } else {
+                    namespace.push(segment.to_owned());
+                }
+            }
+        }
+        NamespacedName::new(Namespace::new(namespace), name.to_owned())
+    }
+
     fn handle_dart_code(&mut self, raw_output: &Option<(MirType, FrbAttributes)>) {
         if let Some((ty, attrs)) = &raw_output {
             let dart_code = attrs.dart_code();
@@ -153,6 +207,8 @@ where
     fn construct_output(&self, ident: Id) -> anyhow::Result<MirType>;
 
     fn src_objects(&self) -> &HashMap<String, &HirFlatStructOrEnum<Item>>;
+
+    fn src_objects_namespaced(&self) -> &HashMap<NamespacedName, &HirFlatStructOrEnum<Item>>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 

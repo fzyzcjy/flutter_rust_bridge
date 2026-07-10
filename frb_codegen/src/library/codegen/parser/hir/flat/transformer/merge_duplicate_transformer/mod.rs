@@ -9,6 +9,7 @@ use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer:
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::function_frb_override_merger::FunctionFrbOverrideMerger;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::third_party_override_merger::ThirdPartyOverrideMerger;
 use crate::codegen::parser::hir::flat::transformer::merge_duplicate_transformer::trait_def_default_impl_merger::TraitDefDefaultImplMerger;
+use quote::ToTokens;
 
 pub(crate) mod base;
 pub(crate) mod function_frb_override_merger;
@@ -23,12 +24,12 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     );
     transform_component(
         &mut pack.structs,
-        |x| x.name.name.clone(),
+        |x| (x.name.name.clone(), x.src.to_token_stream().to_string()),
         |merger, a, b| merger.merge_structs(a, b),
     );
     transform_component(
         &mut pack.enums,
-        |x| x.name.name.clone(),
+        |x| (x.name.name.clone(), x.src.to_token_stream().to_string()),
         |merger, a, b| merger.merge_enums(a, b),
     );
     transform_component(
