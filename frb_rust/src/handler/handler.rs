@@ -64,7 +64,8 @@ pub trait Handler {
     ) where
         PrepareFn: FnOnce() -> TaskFn,
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
-        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
+        TaskRetFut:
+            Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
         Rust2DartCodec: BaseCodec;
 
     #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]

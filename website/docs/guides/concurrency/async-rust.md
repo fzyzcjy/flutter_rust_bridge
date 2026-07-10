@@ -5,6 +5,15 @@ Just write normal Rust code, and flutter_rust_bridge code generator will recogni
 and generate proper bindings.
 Under the hood, async runtime is utilized to run those functions.
 
+On native platforms, the default runtime moves async tasks between worker threads, so their futures must implement `Send`. When a dependency exposes a non-`Send` future, annotate the exported async function with `#[frb(local)]`:
+
+```rust
+#[frb(local)]
+async fn f() { ... }
+```
+
+This keeps the future on the FFI calling thread and still exposes a Dart `Future`. It is intended for thread-affine dependencies and can block that calling thread until the Rust future completes, so use it only when that trade-off is acceptable.
+
 As for when to use asynchronous vs synchronous Rust,
 there are already many articles on the Internet,
 for example, by searching "Rust async vs thread pool", "why async Rust", etc.

@@ -136,14 +136,15 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         });
     }
 
-    #[cfg(feature = "rust-async")]
+    #[cfg(all(feature = "rust-async", not(target_family = "wasm")))]
     fn execute_async_local<Rust2DartCodec, TaskFn, TaskRetFut>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
     ) where
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
-        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
+        TaskRetFut:
+            Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
         Rust2DartCodec: BaseCodec,
     {
         let el = self.error_listener;
@@ -172,6 +173,45 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             let err = CatchUnwindWithBacktrace::new(err, PanicBacktrace::take_last());
             handle_non_sync_panic_error::<Rust2DartCodec>(el, port, err);
         }
+    }
+
+    #[cfg(all(feature = "rust-async", target_family = "wasm"))]
+    fn execute_async_local<Rust2DartCodec, TaskFn, TaskRetFut>(
+        &self,
+        task_info: TaskInfo,
+        task: TaskFn,
+    ) where
+        TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
+        TaskRetFut:
+            Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
+        Rust2DartCodec: BaseCodec,
+    {
+        let el = self.error_listener;
+        let el2 = self.error_listener;
+
+        self.async_runtime.spawn(async move {
+            let TaskInfo { port, .. } = task_info;
+            let port = port.unwrap();
+            #[allow(clippy::clone_on_copy)]
+            let port2 = port.clone();
+
+            let async_result = AssertUnwindSafe(async {
+                #[allow(clippy::clone_on_copy)]
+                let sender = Rust2DartSender::new(Channel::new(port2.clone()));
+                let task_context = TaskContext::new();
+
+                let ret = task(task_context).await;
+
+                ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(ret, sender, el2);
+            })
+            .catch_unwind()
+            .await;
+
+            if let Err(err) = async_result {
+                let err = CatchUnwindWithBacktrace::new(err, PanicBacktrace::take_last());
+                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, err);
+            }
+        });
     }
 }
 

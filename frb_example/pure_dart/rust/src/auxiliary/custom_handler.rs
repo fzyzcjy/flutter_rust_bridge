@@ -97,7 +97,8 @@ impl Executor for MyCustomExecutor {
         task: TaskFn,
     ) where
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
-        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
+        TaskRetFut:
+            Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
         Rust2DartCodec: BaseCodec,
     {
         unimplemented!()
@@ -156,7 +157,8 @@ impl Handler for MyFullyCustomHandler {
     ) where
         PrepareFn: FnOnce() -> TaskFn,
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
-        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
+        TaskRetFut:
+            Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
         Rust2DartCodec: BaseCodec,
     {
         unimplemented!()

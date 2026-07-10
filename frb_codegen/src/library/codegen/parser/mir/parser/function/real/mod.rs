@@ -227,6 +227,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let dart_async = compute_dart_async(func, &attributes, default_dart_async);
         let mode = compute_func_mode(dart_async, &info);
+
+        if attributes.local() && !func.item_fn.sig().asyncness.is_some() {
+            bail!("`#[frb(local)]` can only be used on an `async fn`");
+        }
+
         let stream_dart_await = attributes.stream_dart_await() && dart_async;
         let namespace_refined = refine_namespace(&owner).unwrap_or(func.namespace.clone());
         let accessor = attributes.accessor();

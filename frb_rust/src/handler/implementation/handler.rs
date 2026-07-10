@@ -140,7 +140,8 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
     ) where
         PrepareFn: FnOnce() -> TaskFn,
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
-        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
+        TaskRetFut:
+            Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
         Rust2DartCodec: BaseCodec,
     {
         self.wrap_normal_or_async::<Rust2DartCodec, _, _, _, _>(

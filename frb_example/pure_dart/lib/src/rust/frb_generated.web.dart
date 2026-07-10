@@ -50201,6 +50201,21 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__async_misc__func_async_local_non_send_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__async_misc__func_async_local_non_send_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_local_non_send_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_local_non_send_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__async_misc__func_async_simple_add_twin_normal(
           NativePortType port_, int a, int b) =>
       wasmModule
@@ -71470,6 +71485,17 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
       int data_len_);
+
+  external void
+      wire__crate__api__async_misc__func_async_local_non_send_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_local_non_send_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire__crate__api__async_misc__func_async_simple_add_twin_normal(
       NativePortType port_, int a, int b);

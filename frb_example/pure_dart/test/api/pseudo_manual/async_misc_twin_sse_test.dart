@@ -18,4 +18,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('dart call funcAsyncSimpleAdd', () async {
     expect(await funcAsyncSimpleAddTwinSse(a: 10, b: 20), 30);
   });
+
+  test('dart call funcAsyncLocalNonSend', () async {
+    expect(await funcAsyncLocalNonSendTwinSse(), 42);
+  });
 }
