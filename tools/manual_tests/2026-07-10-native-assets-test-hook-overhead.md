@@ -88,6 +88,7 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
      rm -rf .dart_tool hook-invocations.log
      flutter pub get
      flutter test $test_args | tee "flutter-test-$(echo "$test_args" | tr ' /' '__').log"
+     test -f hook-invocations.log
      wc -l hook-invocations.log
      cp hook-invocations.log "hook-invocations-$(echo "$test_args" | tr ' /' '__').log"
    done
@@ -100,9 +101,19 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
    git clone https://github.com/GregoryConrad/native_toolchain_rust.git /tmp/native_toolchain_rust-hook-overhead
    git -C /tmp/native_toolchain_rust-hook-overhead checkout aeda048b2581317cad0051cf1e061ba6327a1c67
    cd /tmp/native_toolchain_rust-hook-overhead/examples/flutter
-   # Add `import 'dart:io';` before the existing imports. Inside main(), before build(), add:
-   # File('hook-invocations.log').writeAsStringSync('$pid\n', mode: FileMode.append);
-   # Add the same a_test.dart and b_test.dart files, then run the loop from step 3.
+   sed -i "1i import 'dart:io';" hook/build.dart
+   sed -i "/void main(List<String> args) async {/a\\  File('hook-invocations.log').writeAsStringSync('\$pid\\n', mode: FileMode.append);" hook/build.dart
+   mkdir -p test
+   printf "import 'package:flutter_test/flutter_test.dart'; void main() => test('a', () {});\n" > test/a_test.dart
+   printf "import 'package:flutter_test/flutter_test.dart'; void main() => test('b', () {});\n" > test/b_test.dart
+   for test_args in 'test/a_test.dart' 'test/a_test.dart test/b_test.dart'; do
+     rm -rf .dart_tool hook-invocations.log
+     flutter pub get
+     flutter test $test_args | tee "flutter-test-$(echo "$test_args" | tr ' /' '__').log"
+     test -f hook-invocations.log
+     wc -l hook-invocations.log
+     cp hook-invocations.log "hook-invocations-$(echo "$test_args" | tr ' /' '__').log"
+   done
    ```
 
 ## Expected Result
