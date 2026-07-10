@@ -6,8 +6,8 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/namespaced_type
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-Future<void> main() async {
-  await RustLib.init();
+Future<void> main({bool skipRustLibInit = false}) async {
+  if (!skipRustLibInit) await RustLib.init();
 
   test('returns a model from its namespaced module', () async {
     final models = await duplicateNamedModelsTwinRustAsync();
