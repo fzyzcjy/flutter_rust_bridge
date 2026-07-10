@@ -42,13 +42,6 @@ impl BaseAsyncRuntime for MyCustomAsyncRuntime {
     {
         unimplemented!()
     }
-
-    fn block_on_local<F>(&self, future: F) -> F::Output
-    where
-        F: Future,
-    {
-        unimplemented!()
-    }
 }
 
 pub type MyCustomSimpleHandler = SimpleHandler<
@@ -86,19 +79,6 @@ impl Executor for MyCustomExecutor {
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + 'static,
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait,
-        Rust2DartCodec: BaseCodec,
-    {
-        unimplemented!()
-    }
-
-    fn execute_async_local<Rust2DartCodec, TaskFn, TaskRetFut>(
-        &self,
-        task_info: TaskInfo,
-        task: TaskFn,
-    ) where
-        TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
-        TaskRetFut:
-            Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
         Rust2DartCodec: BaseCodec,
     {
         unimplemented!()
@@ -145,20 +125,6 @@ impl Handler for MyFullyCustomHandler {
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + 'static,
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait,
-        Rust2DartCodec: BaseCodec,
-    {
-        unimplemented!()
-    }
-
-    fn wrap_async_local<Rust2DartCodec, PrepareFn, TaskFn, TaskRetFut>(
-        &self,
-        task_info: TaskInfo,
-        prepare: PrepareFn,
-    ) where
-        PrepareFn: FnOnce() -> TaskFn,
-        TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
-        TaskRetFut:
-            Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
         Rust2DartCodec: BaseCodec,
     {
         unimplemented!()

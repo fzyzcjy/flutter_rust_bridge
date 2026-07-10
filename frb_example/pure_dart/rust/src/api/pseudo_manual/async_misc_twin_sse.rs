@@ -17,7 +17,8 @@ pub async fn func_async_simple_add_twin_sse(a: i32, b: i32) -> i32 {
 #[flutter_rust_bridge::frb(local)]
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn func_async_local_non_send_twin_sse() -> i32 {
-    let value = Rc::new(42);
-    std::future::ready(()).await;
-    *value
+    let value = Rc::new(41);
+    let local_task = flutter_rust_bridge::spawn_local(async { 1 });
+    tokio::task::yield_now().await;
+    *value + local_task.await.unwrap()
 }

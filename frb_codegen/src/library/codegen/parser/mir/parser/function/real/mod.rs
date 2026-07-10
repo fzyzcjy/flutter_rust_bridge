@@ -228,7 +228,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let dart_async = compute_dart_async(func, &attributes, default_dart_async);
         let mode = compute_func_mode(dart_async, &info);
 
-        if attributes.local() && !func.item_fn.sig().asyncness.is_some() {
+        if attributes.local() && func.item_fn.sig().asyncness.is_none() {
             bail!("`#[frb(local)]` can only be used on an `async fn`");
         }
 

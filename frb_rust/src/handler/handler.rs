@@ -59,14 +59,17 @@ pub trait Handler {
     #[cfg(feature = "rust-async")]
     fn wrap_async_local<Rust2DartCodec, PrepareFn, TaskFn, TaskRetFut>(
         &self,
-        task_info: TaskInfo,
-        prepare: PrepareFn,
+        _task_info: TaskInfo,
+        _prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn,
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
         TaskRetFut:
             Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
-        Rust2DartCodec: BaseCodec;
+        Rust2DartCodec: BaseCodec,
+    {
+        panic!("`#[frb(local)]` requires a handler that implements `wrap_async_local`")
+    }
 
     #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
     fn dart_fn_invoke(

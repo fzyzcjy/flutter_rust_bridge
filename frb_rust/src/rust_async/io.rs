@@ -11,9 +11,12 @@ pub trait BaseAsyncRuntime {
         F: Future + Send + 'static,
         F::Output: Send + 'static;
 
-    fn block_on_local<F>(&self, future: F) -> F::Output
+    fn block_on_local<F>(&self, _future: F) -> F::Output
     where
-        F: Future;
+        F: Future,
+    {
+        panic!("`#[frb(local)]` requires an async runtime that implements `block_on_local`")
+    }
 }
 
 // Why AssertUnwindSafe: https://github.com/tokio-rs/tokio/issues/6188
@@ -39,7 +42,7 @@ impl BaseAsyncRuntime for SimpleAsyncRuntime {
     where
         F: Future,
     {
-        self.0.block_on(future)
+        tokio::task::LocalSet::new().block_on(&self.0, future)
     }
 }
 

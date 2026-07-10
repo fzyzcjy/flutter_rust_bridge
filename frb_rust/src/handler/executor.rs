@@ -38,11 +38,14 @@ pub trait Executor {
     #[cfg(feature = "rust-async")]
     fn execute_async_local<Rust2DartCodec, TaskFn, TaskRetFut>(
         &self,
-        task_info: TaskInfo,
-        task: TaskFn,
+        _task_info: TaskInfo,
+        _task: TaskFn,
     ) where
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
         TaskRetFut:
             Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
-        Rust2DartCodec: BaseCodec;
+        Rust2DartCodec: BaseCodec,
+    {
+        panic!("`#[frb(local)]` requires an executor that implements `execute_async_local`")
+    }
 }
