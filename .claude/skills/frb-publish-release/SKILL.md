@@ -27,6 +27,13 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 - Verify both old and new versions are legal before running any mutating release command. The only allowed shapes are stable SemVer `MAJOR.MINOR.PATCH` such as `2.0.0`, or beta SemVer `MAJOR.MINOR.PATCH-beta.N` such as `2.0.0-beta.1`. Use exactly `^\d+\.\d+\.\d+(-beta\.\d+)?$`.
 - Reject versions with any other prerelease label, build metadata, missing numeric components, leading `v`, or loose text. Stop if either old or new version fails this check.
 - Confirm the new version is different from the old version.
+- Check whether the target version was already released before publishing. FRB GitHub release tags use a `v` prefix even though package manifests and `CHANGELOG.md` do not:
+
+  ```bash
+  gh release view "v<NEW_VERSION>" --repo fzyzcjy/flutter_rust_bridge
+  ```
+
+  The expected result for a new release is "release not found". Stop instead of publishing again if the release exists. Do not query `<NEW_VERSION>` without the `v` prefix: that produces a false "not found" result for an already released version. A missing local tag is not evidence either; use GitHub or fetch tags first with `git fetch origin --tags`.
 - Run the publish container credential preflight before starting irreversible publish steps:
 
   ```bash
@@ -34,7 +41,15 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
   ```
 
   Stop if the preflight fails. It checks GitHub CLI auth, Cargo credentials, and Dart pub credentials inside the same temporary credential layout used by release publishing.
-- Confirm normal CI is green for the release commit before publishing. This is the default hard gate.
+- Confirm normal CI is green for the release commit before publishing. This is the default hard gate. Check the `CI` workflow conclusion for the exact release SHA, rather than inferring it from a mixed check list:
+
+  ```bash
+  gh run list --repo fzyzcjy/flutter_rust_bridge --workflow CI --commit <RELEASE_SHA> \
+    --limit 10 --json databaseId,status,conclusion,url,headSha
+  ```
+
+  Require a completed `success` run for `<RELEASE_SHA>`.
+- Classify red checks precisely. Codecov `codecov/patch` and `codecov/project` failures are external coverage gates, not failed test or lint jobs in the `CI` workflow. Do not describe a commit with failing Codecov checks as simply "CI green" or "CI failed". State both facts, and use `frb-fix-codecov` to investigate the coverage result before the release owner decides whether it is acceptable to proceed.
 
   A narrow exception is allowed only when all of these are true:
 
