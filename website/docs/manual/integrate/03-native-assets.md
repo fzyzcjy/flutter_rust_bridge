@@ -26,6 +26,8 @@ flutter_rust_bridge_codegen integrate --integration-backend native-assets
 The generated `hook/build.dart` uses `flutter_rust_bridge_hooks`.
 That package currently wraps [`native_toolchain_rust`](https://pub.dev/packages/native_toolchain_rust), which compiles the Rust crate with Cargo and registers the result as a Dart/Flutter code asset.
 
+If the project already has `hook/build.dart`, `integrate` preserves it and prints a warning instead of modifying it. Add `FlutterRustBridgeNativeAssetsBuilder` to the existing hook manually; see the generated hook from a new Native Assets project for the required call.
+
 ## Rust crate requirements
 
 The Rust crate must be buildable by Cargo for the requested target platform.
