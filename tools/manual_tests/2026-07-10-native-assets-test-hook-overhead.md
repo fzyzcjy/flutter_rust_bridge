@@ -29,7 +29,7 @@ Run before diagnosing or closing a Native Assets test-startup regression, and af
 
 ## Preparation
 
-Run all commands in the per-worktree FRB Docker container. Use a disposable copy of the fixture; do not leave marker code or generated test files in the repository.
+Run all commands in the per-worktree FRB Docker container. Use a disposable fixture under `frb_example/native_assets_hook_overhead_fixture`; do not commit its marker code, generated test files, or `.dart_tool` output.
 
 ## Test Data
 
@@ -41,16 +41,15 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable copy
 1. Create a disposable FRB fixture and record tool versions.
 
    ```bash
-   rm -rf /tmp/frb-native-assets-hook-overhead
-   cp -a frb_example/flutter_package_native_assets /tmp/frb-native-assets-hook-overhead
-   cd /tmp/frb-native-assets-hook-overhead
+   rm -rf frb_example/native_assets_hook_overhead_fixture
+   cp -a frb_example/flutter_package_native_assets frb_example/native_assets_hook_overhead_fixture
+   cd frb_example/native_assets_hook_overhead_fixture
    flutter --version
    dart --version
    rustc --version
-   flutter pub add --dev flutter_test
    ```
 
-2. Replace `hook/build.dart` temporarily with the following equivalent wrapper, create two test files, and run them in one `flutter test` invocation.
+2. Add `flutter_test` from the Flutter SDK to `dev_dependencies` in `pubspec.yaml`; add an empty `[workspace]` table to `rust/Cargo.toml` so the temporary crate is isolated from the repository Cargo workspace. Then replace `hook/build.dart` temporarily with the following equivalent wrapper, create two test files, and run them in one `flutter test` invocation.
 
    ```bash
    cat > hook/build.dart <<'EOF'
@@ -104,7 +103,7 @@ The test fails or is blocked if any of the following happens:
 ## Cleanup
 
 ```bash
-rm -rf /tmp/frb-native-assets-hook-overhead /tmp/native_toolchain_rust-hook-overhead
+   rm -rf frb_example/native_assets_hook_overhead_fixture /tmp/native_toolchain_rust-hook-overhead
 ```
 
 No repository files, simulators, or external account state should remain changed.
