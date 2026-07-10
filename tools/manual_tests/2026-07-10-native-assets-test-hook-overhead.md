@@ -49,15 +49,23 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
    rustc --version
    ```
 
-2. Add `flutter_test` from the Flutter SDK to `dev_dependencies` in `pubspec.yaml`; add an empty `[workspace]` table to `rust/Cargo.toml` so the temporary crate is isolated from the repository Cargo workspace. Then replace `hook/build.dart` temporarily with the following equivalent wrapper, create two test files, and run them in one `flutter test` invocation.
+2. Add the following `flutter_test` SDK dependency to `pubspec.yaml`, append an empty `[workspace]` table to `rust/Cargo.toml`, then replace `hook/build.dart` temporarily with the following equivalent wrapper.
 
    ```bash
+   # pubspec.yaml
+   dev_dependencies:
+     flutter_test:
+       sdk: flutter
+
+   # rust/Cargo.toml
+   [workspace]
+
    cat > hook/build.dart <<'EOF'
    import 'dart:io';
    import 'package:flutter_rust_bridge_hooks/flutter_rust_bridge_hooks.dart';
 
    void main(List<String> args) async {
-     File('hook-invocations.log').writeAsStringSync('\${pid}\n', mode: FileMode.append);
+     File('hook-invocations.log').writeAsStringSync('$pid\n', mode: FileMode.append);
      await build(args, (input, output) async {
        await const FlutterRustBridgeNativeAssetsBuilder(cratePath: 'rust').run(
          input: input,
@@ -69,15 +77,35 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
    mkdir test
    printf "import 'package:flutter_test/flutter_test.dart'; void main() => test('a', () {});\n" > test/a_test.dart
    printf "import 'package:flutter_test/flutter_test.dart'; void main() => test('b', () {});\n" > test/b_test.dart
-   flutter test test/a_test.dart test/b_test.dart | tee flutter-test.log
-   sort -u hook-invocations.log | tee hook-invocations-unique.log
    ```
 
-3. Repeat the same marker-and-two-tests procedure in a vanilla `native_toolchain_rust` Flutter example at its recorded Git revision. Preserve the full command log and invocation marker file.
+3. Run a clean one-file control and a clean two-file comparison. Preserve each marker file and its count.
+
+   ```bash
+   for test_args in 'test/a_test.dart' 'test/a_test.dart test/b_test.dart'; do
+     rm -rf .dart_tool hook-invocations.log
+     flutter pub get
+     flutter test $test_args | tee "flutter-test-$(echo "$test_args" | tr ' /' '__').log"
+     wc -l hook-invocations.log
+     cp hook-invocations.log "hook-invocations-$(echo "$test_args" | tr ' /' '__').log"
+   done
+   ```
+
+4. Run the equivalent vanilla comparison at the pinned upstream revision. Its Flutter fixture is `examples/flutter`.
+
+   ```bash
+   rm -rf /tmp/native_toolchain_rust-hook-overhead
+   git clone https://github.com/GregoryConrad/native_toolchain_rust.git /tmp/native_toolchain_rust-hook-overhead
+   git -C /tmp/native_toolchain_rust-hook-overhead checkout aeda048b2581317cad0051cf1e061ba6327a1c67
+   cd /tmp/native_toolchain_rust-hook-overhead/examples/flutter
+   # Add `import 'dart:io';` before the existing imports. Inside main(), before build(), add:
+   # File('hook-invocations.log').writeAsStringSync('$pid\n', mode: FileMode.append);
+   # Add the same a_test.dart and b_test.dart files, then run the loop from step 3.
+   ```
 
 ## Expected Result
 
-`flutter test` exits `0`, both test names pass, and the marker has a count that can be compared with the number of selected files. Two or more distinct marker entries for the two-file run demonstrate per-file hook execution; one entry demonstrates per-invocation execution.
+All commands exit `0` and both tests pass. Compare the raw marker counts from clean one-file and two-file runs: an increase matching the added test file is evidence consistent with per-file hook execution; identical counts only show that this invocation did not add an observable hook process. Report the counts without claiming a root cause, and compare the FRB and vanilla deltas.
 
 ## Failure Criteria
 
@@ -86,6 +114,7 @@ The test fails or is blocked if any of the following happens:
 - `flutter test` exits non-zero unexpectedly.
 - `hook-invocations.log` is absent, so the build-hook invocation cannot be observed.
 - The vanilla fixture cannot be prepared; mark that comparison as blocked rather than inferring a result.
+- The one-file and two-file runs are not both captured from clean state.
 
 ## Results To Capture
 
