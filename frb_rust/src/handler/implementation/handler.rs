@@ -132,6 +132,27 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         )
     }
 
+    #[cfg(feature = "rust-async")]
+    fn wrap_async_local<Rust2DartCodec, PrepareFn, TaskFn, TaskRetFut>(
+        &self,
+        task_info: TaskInfo,
+        prepare: PrepareFn,
+    ) where
+        PrepareFn: FnOnce() -> TaskFn,
+        TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
+        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
+        Rust2DartCodec: BaseCodec,
+    {
+        self.wrap_normal_or_async::<Rust2DartCodec, _, _, _, _>(
+            task_info,
+            prepare,
+            |task_info, task| {
+                self.executor
+                    .execute_async_local::<Rust2DartCodec, _, _>(task_info, task)
+            },
+        )
+    }
+
     #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
     fn dart_fn_invoke(
         &self,

@@ -10,6 +10,10 @@ pub trait BaseAsyncRuntime {
     where
         F: Future + Send + 'static,
         F::Output: Send + 'static;
+
+    fn block_on_local<F>(&self, future: F) -> F::Output
+    where
+        F: Future;
 }
 
 // Why AssertUnwindSafe: https://github.com/tokio-rs/tokio/issues/6188
@@ -29,6 +33,13 @@ impl BaseAsyncRuntime for SimpleAsyncRuntime {
         F::Output: Send + 'static,
     {
         self.0.spawn(future)
+    }
+
+    fn block_on_local<F>(&self, future: F) -> F::Output
+    where
+        F: Future,
+    {
+        self.0.block_on(future)
     }
 }
 

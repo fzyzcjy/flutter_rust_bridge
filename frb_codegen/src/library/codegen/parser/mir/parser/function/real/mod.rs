@@ -252,6 +252,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             mode,
             stream_dart_await,
             rust_async: func.item_fn.sig().asyncness.is_some(),
+            local: attributes.local(),
             initializer: attributes.init(),
             init_dart_code: attributes.init_dart_code(),
             accessor,

@@ -34,4 +34,14 @@ pub trait Executor {
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec;
+
+    #[cfg(feature = "rust-async")]
+    fn execute_async_local<Rust2DartCodec, TaskFn, TaskRetFut>(
+        &self,
+        task_info: TaskInfo,
+        task: TaskFn,
+    ) where
+        TaskFn: FnOnce(TaskContext) -> TaskRetFut + 'static,
+        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>> + 'static,
+        Rust2DartCodec: BaseCodec;
 }

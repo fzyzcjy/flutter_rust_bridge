@@ -24,6 +24,7 @@ pub struct MirFunc {
     pub mode: MirFuncMode,
     pub stream_dart_await: bool,
     pub rust_async: bool,
+    pub local: bool,
     pub initializer: bool,
     pub init_dart_code: Option<String>,
     pub arg_mode: MirFuncArgMode,
