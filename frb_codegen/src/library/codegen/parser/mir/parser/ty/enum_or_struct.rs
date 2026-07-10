@@ -112,15 +112,31 @@ where
     }
 
     fn resolve_namespaced_name(&self, path: &syn::Path, name: &str) -> NamespacedName {
-        let mut namespace = self.context().initiated_namespace.path().into_iter().map(ToOwned::to_owned).collect::<Vec<_>>();
-        let segments = path.segments.iter().map(|segment| segment.ident.to_string()).collect::<Vec<_>>();
+        let mut namespace = self
+            .context()
+            .initiated_namespace
+            .path()
+            .into_iter()
+            .map(ToOwned::to_owned)
+            .collect::<Vec<_>>();
+        let segments = path
+            .segments
+            .iter()
+            .map(|segment| segment.ident.to_string())
+            .collect::<Vec<_>>();
         let prefix = &segments[..segments.len().saturating_sub(1)];
         if prefix.first().is_some_and(|segment| segment == "crate") {
             namespace = prefix.to_vec();
         } else {
             for segment in prefix {
-                if segment == "self" { continue; }
-                if segment == "super" { namespace.pop(); } else { namespace.push(segment.to_owned()); }
+                if segment == "self" {
+                    continue;
+                }
+                if segment == "super" {
+                    namespace.pop();
+                } else {
+                    namespace.push(segment.to_owned());
+                }
             }
         }
         NamespacedName::new(Namespace::new(namespace), name.to_owned())
