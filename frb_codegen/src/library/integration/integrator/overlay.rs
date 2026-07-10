@@ -315,7 +315,7 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::filter_file;
+    use super::{existing_native_assets_build_hook_warning, filter_file};
     use std::path::Path;
 
     #[test]
@@ -381,5 +381,15 @@ mod tests {
             true,
             true,
         ));
+    }
+
+    #[test]
+    fn existing_native_assets_build_hook_has_actionable_warning() {
+        assert_eq!(
+            existing_native_assets_build_hook_warning(Path::new("hook/build.dart")),
+            Some(
+                "Native Assets integration did not modify the existing hook/build.dart. Add FlutterRustBridgeNativeAssetsBuilder to your build hook manually; see https://cjycode.com/flutter_rust_bridge/manual/integrate/03-native-assets/.".to_owned(),
+            ),
+        );
     }
 }
