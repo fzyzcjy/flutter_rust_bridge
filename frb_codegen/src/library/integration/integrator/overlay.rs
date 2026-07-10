@@ -330,8 +330,10 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::{existing_native_assets_build_hook_warning, filter_file};
-    use std::path::Path;
+    use super::{existing_native_assets_build_hook_warning, filter_file, modify_file};
+    use crate::misc::IntegrationBackend;
+    use std::collections::HashMap;
+    use std::path::{Path, PathBuf};
 
     #[test]
     fn test_filter_file_excludes_ohos_when_not_enabled() {
@@ -405,6 +407,22 @@ mod tests {
             Some(
                 "Native Assets integration did not modify the existing hook/build.dart. Add FlutterRustBridgeNativeAssetsBuilder to your build hook manually; see https://cjycode.com/flutter_rust_bridge/manual/integrate/03-native-assets/.",
             ),
+        );
+    }
+
+    #[test]
+    fn existing_native_assets_build_hook_is_preserved() {
+        assert_eq!(
+            modify_file(
+                PathBuf::from("hook/build.dart"),
+                b"generated hook",
+                Some(b"existing hook".to_vec()),
+                &HashMap::new(),
+                false,
+                IntegrationBackend::NativeAssets,
+                None,
+            ),
+            None,
         );
     }
 
