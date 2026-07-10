@@ -87,6 +87,7 @@ impl<'a> TypeParser<'a> {
         )
     }
 
+    #[allow(clippy::too_many_arguments)]
     fn new(
         src_structs: HashMap<String, &'a HirFlatStruct>,
         src_structs_namespaced: HashMap<NamespacedName, &'a HirFlatStruct>,
