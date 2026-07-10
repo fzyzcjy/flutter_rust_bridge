@@ -40,6 +40,7 @@ pub mod misc_example;
 pub mod misc_no_twin_example_a;
 pub mod misc_no_twin_example_b;
 pub mod misc_type;
+pub mod namespaced_type;
 pub mod newtype_pattern;
 pub mod optional;
 pub mod optional_primitive_misc;

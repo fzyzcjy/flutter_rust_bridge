@@ -23,17 +23,17 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     );
     transform_component(
         &mut pack.structs,
-        |x| x.name.name.clone(),
+        |x| x.name.clone(),
         |merger, a, b| merger.merge_structs(a, b),
     );
     transform_component(
         &mut pack.enums,
-        |x| x.name.name.clone(),
+        |x| x.name.clone(),
         |merger, a, b| merger.merge_enums(a, b),
     );
     transform_component(
         &mut pack.traits,
-        |x| x.name.name.clone(),
+        |x| x.name.clone(),
         |merger, a, b| merger.merge_traits(a, b),
     );
 
