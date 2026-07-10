@@ -13,12 +13,13 @@ use crate::utils::basic_code::parser::parse_dart_code;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use log::debug;
+use quote::ToTokens;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Type, TypePath};
 
-pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
+pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum + ToTokens>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
 {
@@ -43,10 +44,22 @@ where
         // let name = external_impl::parse_name_or_original(name)?;
 
         let namespaced_name = self.resolve_namespaced_name(path, name);
-        let src_object = if path.segments.len() > 1 {
-            self.src_objects_namespaced().get(&namespaced_name)
-        } else {
-            self.src_objects().get(*name)
+        let bare_src_object = self.src_objects().get(*name);
+        let namespaced_src_object = self.src_objects_namespaced().get(&namespaced_name);
+        let src_object = match (
+            path.segments.len() > 1,
+            bare_src_object,
+            namespaced_src_object,
+        ) {
+            (true, Some(bare), Some(namespaced))
+                if bare.src.to_token_stream().to_string()
+                    != namespaced.src.to_token_stream().to_string() =>
+            {
+                Some(namespaced)
+            }
+            (_, Some(bare), _) => Some(bare),
+            (_, None, Some(namespaced)) => Some(namespaced),
+            (_, None, None) => None,
         };
 
         if let Some(src_object) = src_object {
