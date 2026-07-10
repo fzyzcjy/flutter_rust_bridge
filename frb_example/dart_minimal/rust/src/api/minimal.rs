@@ -8,3 +8,21 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+pub mod first_store {
+    pub struct Model {
+        pub value: i32,
+    }
+}
+
+pub mod second_store {
+    pub struct Model {
+        pub value: String,
+    }
+}
+
+pub fn duplicate_named_models() -> Vec<second_store::Model> {
+    vec![second_store::Model {
+        value: "second".to_owned(),
+    }]
+}
