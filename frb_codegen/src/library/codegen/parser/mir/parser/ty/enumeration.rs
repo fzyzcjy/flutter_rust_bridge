@@ -201,6 +201,10 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         &self.0.inner.src_enums
     }
 
+    fn src_objects_namespaced(&self) -> &HashMap<NamespacedName, &HirFlatEnum> {
+        &self.0.inner.src_enums_namespaced
+    }
+
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<MirEnumIdent, MirEnum> {
         &mut self.0.inner.enum_parser_info
     }
