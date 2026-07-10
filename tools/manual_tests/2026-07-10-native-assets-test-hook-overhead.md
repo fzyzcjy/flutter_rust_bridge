@@ -51,15 +51,17 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
 
 2. Add the following `flutter_test` SDK dependency to `pubspec.yaml`, append an empty `[workspace]` table to `rust/Cargo.toml`, then replace `hook/build.dart` temporarily with the following equivalent wrapper.
 
-   ```bash
-   # pubspec.yaml
+   ```yaml
    dev_dependencies:
      flutter_test:
        sdk: flutter
+   ```
 
-   # rust/Cargo.toml
+   ```toml
    [workspace]
+   ```
 
+   ```bash
    cat > hook/build.dart <<'EOF'
    import 'dart:io';
    import 'package:flutter_rust_bridge_hooks/flutter_rust_bridge_hooks.dart';
@@ -119,7 +121,7 @@ The test fails or is blocked if any of the following happens:
 ## Results To Capture
 
 - Full terminal logs for the FRB and vanilla runs.
-- `hook-invocations.log` and `hook-invocations-unique.log` from each fixture.
+- Each `hook-invocations-*.log` marker file from the clean one-file and two-file runs.
 - Flutter, Dart, and Rust version output.
 - The exact vanilla upstream commit.
 
