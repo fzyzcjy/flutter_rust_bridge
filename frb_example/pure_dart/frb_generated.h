@@ -8083,6 +8083,13 @@ void frbgen_frb_example_pure_dart_wire__crate__api__dyn_trait__func_arg_dyn_trai
                                                                                               int32_t rust_vec_len_,
                                                                                               int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__async_misc__func_async_local_non_send_twin_normal(int64_t port_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_local_non_send_twin_sse(int64_t port_,
+                                                                                                                           uint8_t *ptr_,
+                                                                                                                           int32_t rust_vec_len_,
+                                                                                                                           int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__async_misc__func_async_simple_add_twin_normal(int64_t port_,
                                                                                                   int32_t a,
                                                                                                   int32_t b);
@@ -16766,6 +16773,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__array__return_boxed_raw_feed_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__array__use_boxed_blob_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__array__use_msgid_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__async_misc__func_async_local_non_send_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__async_misc__func_async_simple_add_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__async_misc__func_async_void_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__async_spawn__simple_use_async_spawn);
@@ -17162,6 +17170,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__array_twin_sync_sse__return_boxed_raw_feed_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__array_twin_sync_sse__use_boxed_blob_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__array_twin_sync_sse__use_msgid_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_local_non_send_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_simple_add_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_void_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__attribute_twin_rust_async__handle_customized_struct_twin_rust_async);

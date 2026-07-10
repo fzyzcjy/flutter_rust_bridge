@@ -75,6 +75,7 @@ fn parse_constant(
         mode: MirFuncMode::Sync,
         stream_dart_await: false,
         rust_async: false,
+        local: false,
         initializer: false,
         init_dart_code: None,
         arg_mode: MirFuncArgMode::Positional,

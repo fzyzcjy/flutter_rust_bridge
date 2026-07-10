@@ -1,4 +1,5 @@
 use flutter_rust_bridge::frb;
+use std::rc::Rc;
 
 #[frb(init)]
 pub fn init_app() {
@@ -7,4 +8,11 @@ pub fn init_app() {
 
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
+}
+
+#[frb(local)]
+pub async fn minimal_non_send_async() -> i32 {
+    let value = Rc::new(42);
+    std::future::ready(()).await;
+    *value
 }

@@ -166,7 +166,9 @@ fn generate_handler_func_name(func: &MirFunc) -> String {
     match func.mode {
         MirFuncMode::Sync => format!("wrap_sync::<{codec},_>"),
         MirFuncMode::Normal => {
-            let name = if func.rust_async {
+            let name = if func.local {
+                "wrap_async_local"
+            } else if func.rust_async {
                 "wrap_async"
             } else {
                 "wrap_normal"

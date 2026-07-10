@@ -15,3 +15,6 @@ Future<int> funcAsyncSimpleAddTwinSse({required int a, required int b}) =>
     RustLib.instance.api
         .crateApiPseudoManualAsyncMiscTwinSseFuncAsyncSimpleAddTwinSse(
             a: a, b: b);
+
+Future<int> funcAsyncLocalNonSendTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualAsyncMiscTwinSseFuncAsyncLocalNonSendTwinSse();

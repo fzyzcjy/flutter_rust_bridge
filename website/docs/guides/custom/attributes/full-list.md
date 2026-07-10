@@ -12,6 +12,7 @@ For example, seldomly used feature may appear near the top.
 * `#[frb(ignore_all)]`: Ignore all fields on the object annotated.
 * `#[frb(init)]`: Mark function to be executed at startup.
 * `#[frb(init_dart_code = ..)]`: Inject Dart code to be executed during startup.
+* `#[frb(local)]`: Run an async function on the FFI calling thread, allowing non-`Send` futures.
 * `#[frb(mirror)]`: Manually mirror external types (can use auto mode instead).
 * `#[frb(name)]`: Rename the object.
 * `#[frb(non_eq)]`: Disable generating `equals`.
