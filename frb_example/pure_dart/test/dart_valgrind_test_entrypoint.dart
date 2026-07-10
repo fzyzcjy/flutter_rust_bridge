@@ -40,6 +40,7 @@ import 'api/misc_example_test.dart' as misc_example_test;
 import 'api/misc_no_twin_example_a_test.dart' as misc_no_twin_example_a_test;
 import 'api/misc_no_twin_example_b_test.dart' as misc_no_twin_example_b_test;
 import 'api/misc_type_test.dart' as misc_type_test;
+import 'api/namespaced_type_test.dart' as namespaced_type_test;
 import 'api/newtype_pattern_test.dart' as newtype_pattern_test;
 import 'api/optional_primitive_misc_test.dart' as optional_primitive_misc_test;
 import 'api/optional_test.dart' as optional_test;
@@ -249,6 +250,16 @@ import 'api/pseudo_manual/misc_type_twin_sync_sse_test.dart'
     as misc_type_twin_sync_sse_test;
 import 'api/pseudo_manual/misc_type_twin_sync_test.dart'
     as misc_type_twin_sync_test;
+import 'api/pseudo_manual/namespaced_type_twin_rust_async_sse_test.dart'
+    as namespaced_type_twin_rust_async_sse_test;
+import 'api/pseudo_manual/namespaced_type_twin_rust_async_test.dart'
+    as namespaced_type_twin_rust_async_test;
+import 'api/pseudo_manual/namespaced_type_twin_sse_test.dart'
+    as namespaced_type_twin_sse_test;
+import 'api/pseudo_manual/namespaced_type_twin_sync_sse_test.dart'
+    as namespaced_type_twin_sync_sse_test;
+import 'api/pseudo_manual/namespaced_type_twin_sync_test.dart'
+    as namespaced_type_twin_sync_test;
 import 'api/pseudo_manual/newtype_pattern_twin_rust_async_sse_test.dart'
     as newtype_pattern_twin_rust_async_sse_test;
 import 'api/pseudo_manual/newtype_pattern_twin_rust_async_test.dart'
@@ -497,6 +508,7 @@ Future<void> callFileEntrypoints() async {
     misc_no_twin_example_a_test.main,
     misc_no_twin_example_b_test.main,
     misc_type_test.main,
+    namespaced_type_test.main,
     newtype_pattern_test.main,
     optional_primitive_misc_test.main,
     optional_test.main,
@@ -612,6 +624,11 @@ Future<void> callFileEntrypoints() async {
     misc_type_twin_sse_test.main,
     misc_type_twin_sync_sse_test.main,
     misc_type_twin_sync_test.main,
+    namespaced_type_twin_rust_async_sse_test.main,
+    namespaced_type_twin_rust_async_test.main,
+    namespaced_type_twin_sse_test.main,
+    namespaced_type_twin_sync_sse_test.main,
+    namespaced_type_twin_sync_test.main,
     newtype_pattern_twin_rust_async_sse_test.main,
     newtype_pattern_twin_rust_async_test.main,
     newtype_pattern_twin_sse_test.main,
