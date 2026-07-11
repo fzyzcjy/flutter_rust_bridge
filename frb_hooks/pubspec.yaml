@@ -1,6 +1,6 @@
 name: flutter_rust_bridge_hooks
 description: Build hook support for flutter_rust_bridge Native Assets integration
-version: 2.13.0-beta.4
+version: 2.13.0-beta.5
 repository: https://github.com/fzyzcjy/flutter_rust_bridge
 environment:
   sdk: ">=3.9.2 <4.0.0"

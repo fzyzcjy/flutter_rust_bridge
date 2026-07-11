@@ -52,6 +52,7 @@
 - ethicnology: Fix fvm install.
 - ganeshrvel: Fix name conflict.
 - xuxiaocheng0201: Support skipping in integrate.
+- ShuttleSpace: Stream listen vs await usage.
 - ski0090: Fix folder creation.
 - khangah: Dart fn output extra handling.
 - marcmcd: Windows 10 build-web.
