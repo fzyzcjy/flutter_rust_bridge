@@ -81,7 +81,13 @@ where
                 )));
             }
 
-            let ident: Id = namespaced_name.clone().into();
+            let has_duplicate_name = self
+                .src_objects_namespaced()
+                .values()
+                .filter(|object| object.name.name == src_object.name.name)
+                .nth(1)
+                .is_some();
+            let ident = self.construct_ident(namespaced_name.clone(), has_duplicate_name);
 
             if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
                 let (name, wrapper_name) = compute_name_and_wrapper_name(
@@ -203,6 +209,8 @@ where
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<Obj>;
+
+    fn construct_ident(&self, name: NamespacedName, has_duplicate_name: bool) -> Id;
 
     fn construct_output(&self, ident: Id) -> anyhow::Result<MirType>;
 

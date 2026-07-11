@@ -34,7 +34,10 @@ impl TypeParserWithContext<'_, '_, '_> {
         );
 
         self.inner.struct_parser_info.object_pool.insert(
-            MirStructIdent(NamespacedName::new(namespace.clone(), safe_ident.clone())),
+            MirStructIdent(
+                NamespacedName::new(namespace.clone(), safe_ident.clone()),
+                false,
+            ),
             MirStruct {
                 name: NamespacedName::new(namespace.clone(), safe_ident.clone()),
                 wrapper_name: None,
@@ -68,7 +71,7 @@ impl TypeParserWithContext<'_, '_, '_> {
                 // name: safe_ident,
                 // freezed: false,
                 // empty: false,
-                ident: MirStructIdent(NamespacedName::new(namespace, safe_ident)),
+                ident: MirStructIdent(NamespacedName::new(namespace, safe_ident), false),
                 is_exception: false,
             },
             values: values.into_boxed_slice(),

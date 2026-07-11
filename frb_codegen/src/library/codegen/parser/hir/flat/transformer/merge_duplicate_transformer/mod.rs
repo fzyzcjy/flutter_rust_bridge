@@ -1,5 +1,5 @@
 use itertools::Itertools;
-use std::collections::HashSet;
+use quote::ToTokens;
 use serde::Serialize;
 use std::fmt::Debug;
 use std::hash::Hash;
@@ -22,8 +22,16 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
         |x| x.owner_and_name_for_dedup(),
         |merger, a, b| merger.merge_functions(a, b),
     );
-    transform_structs_or_enums(&mut pack.structs, |merger, a, b| merger.merge_structs(a, b));
-    transform_structs_or_enums(&mut pack.enums, |merger, a, b| merger.merge_enums(a, b));
+    transform_component(
+        &mut pack.structs,
+        |x| (x.name.name.clone(), x.src.to_token_stream().to_string()),
+        |merger, a, b| merger.merge_structs(a, b),
+    );
+    transform_component(
+        &mut pack.enums,
+        |x| (x.name.name.clone(), x.src.to_token_stream().to_string()),
+        |merger, a, b| merger.merge_enums(a, b),
+    );
     transform_component(
         &mut pack.traits,
         |x| x.name.name.clone(),
@@ -31,46 +39,6 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     );
 
     Ok(pack)
-}
-
-fn transform_structs_or_enums<T>(
-    items: &mut Vec<T>,
-    merge: impl Fn(&dyn BaseMerger, &T, &T) -> Option<T>,
-) where
-    T: Debug + Clone + Serialize + StructOrEnumName,
-{
-    let names_with_pseudo_manual = items
-        .iter()
-        .filter(|item| item.namespace().path().contains(&"pseudo_manual"))
-        .map(|item| item.name().to_owned())
-        .collect::<HashSet<_>>();
-    transform_component(
-        items,
-        |item| {
-            if names_with_pseudo_manual.contains(item.name()) {
-                (true, item.name().to_owned(), String::new())
-            } else {
-                (false, item.name().to_owned(), item.namespace().to_string())
-            }
-        },
-        merge,
-    );
-}
-
-trait StructOrEnumName {
-    fn name(&self) -> &str;
-    fn namespace(&self) -> &crate::utils::namespace::Namespace;
-}
-
-impl<T: crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum>
-    StructOrEnumName for crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStructOrEnum<T>
-{
-    fn name(&self) -> &str {
-        &self.name.name
-    }
-    fn namespace(&self) -> &crate::utils::namespace::Namespace {
-        &self.name.namespace
-    }
 }
 
 fn transform_component<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(

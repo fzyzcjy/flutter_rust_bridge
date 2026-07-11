@@ -14,7 +14,8 @@ pub struct MirTypeEnumRef {
     pub is_exception: bool,
 }
 
-pub struct MirEnumIdent(pub NamespacedName);
+#[no_serde]
+pub struct MirEnumIdent(pub NamespacedName, pub bool);
 
 pub struct MirEnum {
     pub name: NamespacedName,
@@ -70,7 +71,12 @@ impl MirTypeTrait for MirTypeEnumRef {
     }
 
     fn safe_ident(&self) -> String {
-        self.ident.0.name.to_case(Case::Snake)
+        let name = self.ident.0.name.to_case(Case::Snake);
+        if self.ident.1 {
+            format!("{}_{}", self.ident.0.namespace.safe_ident(), name)
+        } else {
+            name
+        }
     }
 
     fn rust_api_type(&self) -> String {
@@ -103,6 +109,12 @@ impl MirVariantKind {
 
 impl From<NamespacedName> for MirEnumIdent {
     fn from(value: NamespacedName) -> Self {
-        Self(value)
+        Self(value, false)
+    }
+}
+
+impl serde::Serialize for MirEnumIdent {
+    fn serialize<S: serde::Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
+        self.0.serialize(serializer)
     }
 }

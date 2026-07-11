@@ -443,10 +443,10 @@ impl MirTypeDelegateArray {
 impl MirTypeDelegateProxyEnum {
     pub(crate) fn get_delegate(&self) -> MirType {
         MirType::EnumRef(MirTypeEnumRef {
-            ident: MirEnumIdent(NamespacedName::new(
-                self.delegate_namespace.clone(),
-                self.delegate_enum_name(),
-            )),
+            ident: MirEnumIdent(
+                NamespacedName::new(self.delegate_namespace.clone(), self.delegate_enum_name()),
+                false,
+            ),
             is_exception: false,
         })
     }
@@ -464,10 +464,10 @@ impl MirTypeDelegateDynTrait {
     pub fn get_delegate(&self) -> MirType {
         if let Some(data) = &self.data {
             MirType::EnumRef(MirTypeEnumRef {
-                ident: MirEnumIdent(NamespacedName::new(
-                    data.delegate_namespace.clone(),
-                    self.delegate_enum_name(),
-                )),
+                ident: MirEnumIdent(
+                    NamespacedName::new(data.delegate_namespace.clone(), self.delegate_enum_name()),
+                    false,
+                ),
                 is_exception: false,
             })
         } else {
