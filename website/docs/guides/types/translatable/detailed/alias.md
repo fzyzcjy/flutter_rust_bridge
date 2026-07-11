@@ -40,4 +40,3 @@ aliases (for example `pub type Wrapper<T> = Option<T>`) work as well.
 
 - The `ItemType` inside Generic is not supported yet, such as `SyncReturn<Id>`. The nested `ItemType` may also not be supported. This also applies to generic aliases nested inside such wrappers (e.g. `SyncReturn<AppResult<T>>`).
 - Generic type aliases with lifetime parameters, const parameters, or a `where` clause are not yet supported.
-- A generic alias literally named `Result` (e.g. `pub type Result<T> = std::result::Result<T, AppError>`) is not yet expanded. `Result` is reserved for the built-in fallible-return detection, and use a differently-named alias such as `AppResult<T>` currently if you want the concrete error type to flow through.
