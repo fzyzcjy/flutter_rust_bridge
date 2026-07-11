@@ -12,13 +12,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call useImportedStruct()', () async {
     expect(
-      await useImportedStructTwinRustAsyncSse(
-          myStruct: MyStruct(content: false)),
+      await useImportedStructTwinRustAsyncSse(myStruct: MyStruct(content: false)),
       false,
     );
     expect(
-      await useImportedStructTwinRustAsyncSse(
-          myStruct: MyStruct(content: true)),
+      await useImportedStructTwinRustAsyncSse(myStruct: MyStruct(content: true)),
       true,
     );
   });

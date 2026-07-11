@@ -10,8 +10,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('ConcatenateWith test', () async {
-    final ConcatenateWithTwinRustAsync concatenateWith =
-        ConcatenateWithTwinRustAsync(
+    final ConcatenateWithTwinRustAsync concatenateWith = ConcatenateWithTwinRustAsync(
       a: "hello ",
     );
     final String concatenated = await concatenateWith.concatenateTwinRustAsync(
@@ -46,8 +45,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('return SumWith array test', () async {
-    final List<SumWithTwinRustAsync> sumWithList =
-        await getSumArrayTwinRustAsync(
+    final List<SumWithTwinRustAsync> sumWithList = await getSumArrayTwinRustAsync(
       a: 12,
       b: 23,
       c: 67,
@@ -58,8 +56,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ConcatenateWith stream sink test', () async {
-    final ConcatenateWithTwinRustAsync concatenateWith =
-        ConcatenateWithTwinRustAsync(
+    final ConcatenateWithTwinRustAsync concatenateWith = ConcatenateWithTwinRustAsync(
       a: "hello ",
     );
     final int key = 10;
@@ -113,8 +110,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('SimpleStruct', () {
     test('returnSelf', () async {
       expect(
-        (await SimpleStructTwinRustAsync.returnSelfTwinRustAsync(one: 'One'))
-            .one,
+        (await SimpleStructTwinRustAsync.returnSelfTwinRustAsync(one: 'One')).one,
         'One',
       );
     });
@@ -132,15 +128,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('argSelf', () async {
       final a = SimpleStructTwinRustAsync(one: 'a');
       final b = SimpleStructTwinRustAsync(one: 'b');
-      expect(await SimpleStructTwinRustAsync.argSelfTwinRustAsync(a: a, b: b),
-          'ab');
+      expect(await SimpleStructTwinRustAsync.argSelfTwinRustAsync(a: a, b: b), 'ab');
     });
 
     test('vecSelf', () async {
       final a = SimpleStructTwinRustAsync(one: 'a');
       final b = SimpleStructTwinRustAsync(one: 'b');
-      expect(
-          await SimpleStructTwinRustAsync.vecSelfTwinRustAsync(arg: [a, b]), [
+      expect(await SimpleStructTwinRustAsync.vecSelfTwinRustAsync(arg: [a, b]), [
         'a',
         'b',
       ]);

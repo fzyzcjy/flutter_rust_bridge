@@ -77,7 +77,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
-    final stream = ConcatenateWithTwinSync.handleSomeStaticStreamSinkTwinSync(
+    final stream =
+        ConcatenateWithTwinSync.handleSomeStaticStreamSinkTwinSync(
       key: key,
       max: max,
     );
@@ -91,8 +92,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream =
-        ConcatenateWithTwinSync.handleSomeStaticStreamSinkSingleArgTwinSync();
+    final stream = ConcatenateWithTwinSync
+        .handleSomeStaticStreamSinkSingleArgTwinSync();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 

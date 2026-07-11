@@ -93,7 +93,7 @@ The verifier checks that:
 - Entries with third-party thanks appear before entries without thanks.
 - `docs: add <name> as a contributor ...` all-contributors PRs are ignored.
 
-Use `--ignore-pr <NUMBER>` only for a documented intentional exclusion. Use `--extra-local-pr <NUMBER>` for a stacked local maintainer PR that belongs in the changelog but is not present in the merged PR JSON yet.
+Use `--ignore-pr <NUMBER>` only for a documented intentional exclusion. Use `--extra-local-pr <NUMBER>` for a stacked local maintainer PR that belongs in the changelog but is not present in the merged PR JSON yet. Use `--extra-thanks-author <LOGIN>` only for a verified co-author or contributor credited by a release-range PR even though their source PR falls outside the release range; record the source PR and reason in the release journal.
 
 Apply any confirmed fixes, then re-run the verifier.
 

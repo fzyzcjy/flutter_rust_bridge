@@ -2,7 +2,7 @@
 // and is auto-generated from `array_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-import 'package:frb_example_pure_dart/src/rust/api/array.dart'; // FRB_INTERNAL_GENERATOR: {"addCode": "import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/array_twin_rust_async_sse.dart';"}
+import 'package:frb_example_pure_dart/src/rust/api/array.dart';// FRB_INTERNAL_GENERATOR: {"addCode": "import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/array_twin_rust_async_sse.dart';"}
 
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/array_twin_rust_async_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -35,8 +35,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('BlobId', () async {
     final inner = U8Array1600.init();
     inner[14] = 99;
-    final BlobTwinRustAsyncSse blob =
-        await boxedBlobTwinRustAsyncSse(blob: inner);
+    final BlobTwinRustAsyncSse blob = await boxedBlobTwinRustAsyncSse(blob: inner);
     expect(blob.field0[14], 99);
     blob.field0[10] = 100;
     final unboxed = await useBoxedBlobTwinRustAsyncSse(blob: blob);
@@ -47,8 +46,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('FeedId', () async {
     final inner = U8Array8.init();
     inner[3] = 3;
-    final FeedIdTwinRustAsyncSse feedId =
-        await returnBoxedFeedIdTwinRustAsyncSse(
+    final FeedIdTwinRustAsyncSse feedId = await returnBoxedFeedIdTwinRustAsyncSse(
       id: inner,
     );
     expect(feedId.field0[3], 3);

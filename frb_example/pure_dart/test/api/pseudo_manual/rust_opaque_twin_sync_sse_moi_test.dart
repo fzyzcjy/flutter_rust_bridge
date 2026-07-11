@@ -175,8 +175,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('opaque field', () async {
     var data = await createNestedOpaqueTwinSyncSseMoi();
-    await futurizeVoidTwinSyncSseMoi(
-        runNestedOpaqueTwinSyncSseMoi(opaque: data));
+    await futurizeVoidTwinSyncSseMoi(runNestedOpaqueTwinSyncSseMoi(opaque: data));
 
     expect(
       await runOpaqueTwinSyncSseMoi(opaque: data.first),

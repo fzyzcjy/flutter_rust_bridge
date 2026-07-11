@@ -236,7 +236,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // });
 
   test('static method', () async {
-    final obj = await NonCloneSimpleTwinSync.staticMethodReturnOwnTwinSync();
+    final obj =
+        await NonCloneSimpleTwinSync.staticMethodReturnOwnTwinSync();
     await futurizeVoidTwinSync(
       NonCloneSimpleTwinSync.staticMethodArgBorrowTwinSync(arg: obj),
     );

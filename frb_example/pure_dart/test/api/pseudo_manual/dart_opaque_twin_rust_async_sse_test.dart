@@ -20,8 +20,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       ),
     );
     await futurizeVoidTwinRustAsyncSse(
-      loopBackVecGetTwinRustAsyncSse(
-          opaque: await loopBackVecTwinRustAsyncSse(opaque: f)),
+      loopBackVecGetTwinRustAsyncSse(opaque: await loopBackVecTwinRustAsyncSse(opaque: f)),
     );
     await futurizeVoidTwinRustAsyncSse(
       loopBackOptionGetTwinRustAsyncSse(
@@ -31,44 +30,36 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     var back1 = await loopBackTwinRustAsyncSse(opaque: f) as String Function();
     expect(back1(), 'Test_String');
-    var back2 =
-        await loopBackTwinRustAsyncSse(opaque: back1) as String Function();
+    var back2 = await loopBackTwinRustAsyncSse(opaque: back1) as String Function();
     expect(back2(), 'Test_String');
     if (!kIsWeb) expect(identical(back2, f), isTrue);
   });
 
   test('drop', () async {
     expect(
-      await asyncAcceptDartOpaqueTwinRustAsyncSse(
-          opaque: createLargeList(mb: 200)),
+      await asyncAcceptDartOpaqueTwinRustAsyncSse(opaque: createLargeList(mb: 200)),
       'async test',
     );
   });
 
   test('nested', () async {
-    var str =
-        await createNestedDartOpaqueTwinRustAsyncSse(opaque1: f, opaque2: f);
-    await futurizeVoidTwinRustAsyncSse(
-        getNestedDartOpaqueTwinRustAsyncSse(opaque: str));
+    var str = await createNestedDartOpaqueTwinRustAsyncSse(opaque1: f, opaque2: f);
+    await futurizeVoidTwinRustAsyncSse(getNestedDartOpaqueTwinRustAsyncSse(opaque: str));
   });
 
   test('enum', () async {
     var en = await createEnumDartOpaqueTwinRustAsyncSse(opaque: f);
-    await futurizeVoidTwinRustAsyncSse(
-        getEnumDartOpaqueTwinRustAsyncSse(opaque: en));
+    await futurizeVoidTwinRustAsyncSse(getEnumDartOpaqueTwinRustAsyncSse(opaque: en));
   });
 
   test('nested', () async {
-    var str =
-        await createNestedDartOpaqueTwinRustAsyncSse(opaque1: f, opaque2: f);
-    await futurizeVoidTwinRustAsyncSse(
-        getNestedDartOpaqueTwinRustAsyncSse(opaque: str));
+    var str = await createNestedDartOpaqueTwinRustAsyncSse(opaque1: f, opaque2: f);
+    await futurizeVoidTwinRustAsyncSse(getNestedDartOpaqueTwinRustAsyncSse(opaque: str));
   });
 
   test('enum', () async {
     var en = await createEnumDartOpaqueTwinRustAsyncSse(opaque: f);
-    await futurizeVoidTwinRustAsyncSse(
-        getEnumDartOpaqueTwinRustAsyncSse(opaque: en));
+    await futurizeVoidTwinRustAsyncSse(getEnumDartOpaqueTwinRustAsyncSse(opaque: en));
   });
 
   test('clone DartOpaque at rust side', () async {

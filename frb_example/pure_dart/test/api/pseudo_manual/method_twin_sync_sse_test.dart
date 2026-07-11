@@ -10,8 +10,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('ConcatenateWith test', () async {
-    final ConcatenateWithTwinSyncSse concatenateWith =
-        ConcatenateWithTwinSyncSse(
+    final ConcatenateWithTwinSyncSse concatenateWith = ConcatenateWithTwinSyncSse(
       a: "hello ",
     );
     final String concatenated = await concatenateWith.concatenateTwinSyncSse(
@@ -57,8 +56,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ConcatenateWith stream sink test', () async {
-    final ConcatenateWithTwinSyncSse concatenateWith =
-        ConcatenateWithTwinSyncSse(
+    final ConcatenateWithTwinSyncSse concatenateWith = ConcatenateWithTwinSyncSse(
       a: "hello ",
     );
     final int key = 10;
@@ -130,8 +128,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('argSelf', () async {
       final a = SimpleStructTwinSyncSse(one: 'a');
       final b = SimpleStructTwinSyncSse(one: 'b');
-      expect(
-          await SimpleStructTwinSyncSse.argSelfTwinSyncSse(a: a, b: b), 'ab');
+      expect(await SimpleStructTwinSyncSse.argSelfTwinSyncSse(a: a, b: b), 'ab');
     });
 
     test('vecSelf', () async {

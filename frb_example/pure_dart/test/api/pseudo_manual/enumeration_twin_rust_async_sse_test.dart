@@ -60,8 +60,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dart call handleEnumStruct', () async {
       expect(
-        await handleEnumStructTwinRustAsyncSse(
-            val: KitchenSinkTwinRustAsyncSse_Empty()),
+        await handleEnumStructTwinRustAsyncSse(val: KitchenSinkTwinRustAsyncSse_Empty()),
         KitchenSinkTwinRustAsyncSse_Empty(),
       );
       expect(
@@ -72,8 +71,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
             boolean: false,
           ),
         ),
-        KitchenSinkTwinRustAsyncSse_Primitives(
-            int32: 1, float64: 2, boolean: true),
+        KitchenSinkTwinRustAsyncSse_Primitives(int32: 1, float64: 2, boolean: true),
       );
       expect(
         await handleEnumStructTwinRustAsyncSse(
@@ -89,8 +87,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
       expect(
         await handleEnumStructTwinRustAsyncSse(
-          val: KitchenSinkTwinRustAsyncSse_Enums(
-              WeekdaysTwinRustAsyncSse.monday),
+          val: KitchenSinkTwinRustAsyncSse_Enums(WeekdaysTwinRustAsyncSse.monday),
         ),
         KitchenSinkTwinRustAsyncSse_Enums(WeekdaysTwinRustAsyncSse.tuesday),
       );
@@ -101,23 +98,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
             KitchenSinkTwinRustAsyncSse.empty(),
           ),
         ),
-        const KitchenSinkTwinRustAsyncSse.nested(
-            1, KitchenSinkTwinRustAsyncSse.empty()),
+        const KitchenSinkTwinRustAsyncSse.nested(1, KitchenSinkTwinRustAsyncSse.empty()),
       );
     });
 
     test('dart call multiplyByTen()', () async {
       expect(
         await multiplyByTenTwinRustAsyncSse(
-          measure:
-              MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_GPS(10.0)),
+          measure: MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_GPS(10.0)),
         ),
         MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_GPS(100.0)),
       );
       expect(
         await multiplyByTenTwinRustAsyncSse(
-          measure:
-              MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_Unknown()),
+          measure: MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_Unknown()),
         ),
         null,
       );
