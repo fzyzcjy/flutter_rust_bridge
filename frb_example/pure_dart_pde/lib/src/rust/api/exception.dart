@@ -8,6 +8,7 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'type_alias.dart';
 part 'exception.freezed.dart';
 
 Future<int> funcReturnErrorTwinNormal() =>
