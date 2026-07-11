@@ -67,9 +67,8 @@ fn transform_component_raw<T: Debug + Clone, K: Eq + Hash + Debug>(
             }
             assert!(!items_of_key.is_empty());
 
-            items_of_key.sort_by_key(|item| format!("{item:?}"));
-
             if items_of_key.len() > 1 {
+                items_of_key.sort_by_key(|item| format!("{item:?}"));
                 log::info!(
                     "There are still multiple objects with same key after merging, \
                     thus randomly pick one. This is an issue only if the object is indeed used. \

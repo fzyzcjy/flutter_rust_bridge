@@ -133,7 +133,7 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
     }
 
     fn has_duplicate_name(&self, name: &str) -> bool {
-        self.0.inner.duplicate_struct_names.contains(name)
+        self.0.inner.duplicate_names.contains(name)
     }
 
     fn construct_output(&self, ident: MirStructIdent) -> anyhow::Result<MirType> {

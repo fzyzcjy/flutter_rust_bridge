@@ -183,7 +183,7 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
     }
 
     fn has_duplicate_name(&self, name: &str) -> bool {
-        self.0.inner.duplicate_enum_names.contains(name)
+        self.0.inner.duplicate_names.contains(name)
     }
 
     fn construct_output(&self, ident: MirEnumIdent) -> anyhow::Result<MirType> {

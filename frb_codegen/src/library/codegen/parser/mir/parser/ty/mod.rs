@@ -59,8 +59,7 @@ pub(crate) struct TypeParser<'a> {
     src_structs_namespaced: HashMap<NamespacedName, &'a HirFlatStruct>,
     src_enums: HashMap<String, &'a HirFlatEnum>,
     src_enums_namespaced: HashMap<NamespacedName, &'a HirFlatEnum>,
-    duplicate_struct_names: HashSet<String>,
-    duplicate_enum_names: HashSet<String>,
+    duplicate_names: HashSet<String>,
     pub(super) src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
     pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
@@ -100,18 +99,23 @@ impl<'a> TypeParser<'a> {
         proxied_types: Vec<IrEarlyGeneratorProxiedType>,
         trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     ) -> Self {
-        let duplicate_struct_names =
-            duplicate_names(&src_structs_namespaced, |object| &object.name.name);
-        let duplicate_enum_names =
-            duplicate_names(&src_enums_namespaced, |object| &object.name.name);
+        let duplicate_names = duplicate_names(
+            src_structs_namespaced
+                .values()
+                .map(|object| &object.name.name)
+                .chain(
+                    src_enums_namespaced
+                        .values()
+                        .map(|object| &object.name.name),
+                ),
+        );
 
         TypeParser {
             src_structs,
             src_structs_namespaced,
             src_enums,
             src_enums_namespaced,
-            duplicate_struct_names,
-            duplicate_enum_names,
+            duplicate_names,
             src_traits,
             src_types,
             proxied_types,
@@ -153,13 +157,10 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-fn duplicate_names<T>(
-    objects: &HashMap<NamespacedName, &T>,
-    name: impl Fn(&T) -> &String,
-) -> HashSet<String> {
+fn duplicate_names<'a>(names: impl Iterator<Item = &'a String>) -> HashSet<String> {
     let mut counts = HashMap::<&str, usize>::new();
-    for object in objects.values() {
-        *counts.entry(name(object)).or_default() += 1;
+    for name in names {
+        *counts.entry(name).or_default() += 1;
     }
     counts
         .into_iter()
