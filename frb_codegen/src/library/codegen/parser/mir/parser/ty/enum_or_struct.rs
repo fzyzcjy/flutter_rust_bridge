@@ -51,12 +51,7 @@ where
             bare_src_object,
             namespaced_src_object,
         ) {
-            (true, Some(bare), Some(namespaced))
-                if bare.src.to_token_stream().to_string()
-                    != namespaced.src.to_token_stream().to_string() =>
-            {
-                Some(namespaced)
-            }
+            (true, _, Some(namespaced)) => Some(namespaced),
             (_, Some(bare), _) => Some(bare),
             (_, None, Some(namespaced)) => Some(namespaced),
             (_, None, None) => None,
