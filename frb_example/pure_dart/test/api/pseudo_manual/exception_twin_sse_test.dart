@@ -184,8 +184,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomError static method', () async {
         await expectLater(
-          () async =>
-              SomeStructTwinSse.staticReturnErrCustomErrorTwinSse(),
+          () async => SomeStructTwinSse.staticReturnErrCustomErrorTwinSse(),
           throwsA(isA<CustomErrorTwinSse>()),
         );
       });
@@ -194,8 +193,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         'Throw CustomError static method, verifies implements Frb',
         () async {
           await expectLater(
-            () async =>
-                SomeStructTwinSse.staticReturnErrCustomErrorTwinSse(),
+            () async => SomeStructTwinSse.staticReturnErrCustomErrorTwinSse(),
             throwsA(isA<FrbException>()),
           );
         },

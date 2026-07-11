@@ -46,7 +46,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     {'a'},
     {'a', 'b'},
   ]);
-  addTestsIdentityFunctionCall(funcHashSetStringHasherTwinSyncSse, <Set<String>>[
+  addTestsIdentityFunctionCall(
+      funcHashSetStringHasherTwinSyncSse, <Set<String>>[
     {},
     {'a'},
     {'a', 'b'},

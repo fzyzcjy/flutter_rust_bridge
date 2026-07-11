@@ -20,7 +20,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       ),
     );
     await futurizeVoidTwinSyncSse(
-      loopBackVecGetTwinSyncSse(opaque: await loopBackVecTwinSyncSse(opaque: f)),
+      loopBackVecGetTwinSyncSse(
+          opaque: await loopBackVecTwinSyncSse(opaque: f)),
     );
     await futurizeVoidTwinSyncSse(
       loopBackOptionGetTwinSyncSse(

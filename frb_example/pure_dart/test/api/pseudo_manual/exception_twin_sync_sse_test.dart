@@ -126,8 +126,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomStructError static method', () async {
         await expectLater(
-          () async =>
-              CustomStructTwinSyncSse.staticReturnCustomStructErrorTwinSyncSse(),
+          () async => CustomStructTwinSyncSse
+              .staticReturnCustomStructErrorTwinSyncSse(),
           throwsA(isA<CustomStructErrorAnotherTwinSyncSse>()),
         );
       });

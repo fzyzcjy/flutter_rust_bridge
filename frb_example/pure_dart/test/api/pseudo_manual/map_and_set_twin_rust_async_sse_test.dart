@@ -14,7 +14,8 @@ import '../../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  addTestsIdentityFunctionCall(funcHashMapI32I32TwinRustAsyncSse, <Map<int, int>>[
+  addTestsIdentityFunctionCall(
+      funcHashMapI32I32TwinRustAsyncSse, <Map<int, int>>[
     {},
     {10: 20},
     {10: 20, 30: 40},
@@ -46,7 +47,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     {'a'},
     {'a', 'b'},
   ]);
-  addTestsIdentityFunctionCall(funcHashSetStringHasherTwinRustAsyncSse, <Set<String>>[
+  addTestsIdentityFunctionCall(
+      funcHashSetStringHasherTwinRustAsyncSse, <Set<String>>[
     {},
     {'a'},
     {'a', 'b'},
