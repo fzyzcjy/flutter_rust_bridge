@@ -23,16 +23,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
+  Model dco_decode_crate__api__minimal__second_store_model(dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
-  List<Model> dco_decode_list_model(dynamic raw);
+  List<Model> dco_decode_list_crate__api__minimal__second_store_model(
+      dynamic raw);
 
   @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  Model dco_decode_model(dynamic raw);
 
   @protected
   int dco_decode_u_8(dynamic raw);
@@ -44,16 +45,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
+  Model sse_decode_crate__api__minimal__second_store_model(
+      SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
-  List<Model> sse_decode_list_model(SseDeserializer deserializer);
+  List<Model> sse_decode_list_crate__api__minimal__second_store_model(
+      SseDeserializer deserializer);
 
   @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  Model sse_decode_model(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -68,17 +71,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
+  void sse_encode_crate__api__minimal__second_store_model(
+      Model self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_model(List<Model> self, SseSerializer serializer);
+  void sse_encode_list_crate__api__minimal__second_store_model(
+      List<Model> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8_strict(
       Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_model(Model self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
