@@ -24,6 +24,38 @@ TestModelTwinSyncSse handleTypeAliasModelTwinSyncSse({required BigInt input}) =>
         .crateApiPseudoManualTypeAliasTwinSyncSseHandleTypeAliasModelTwinSyncSse(
             input: input);
 
+int genericResultAliasOkTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseGenericResultAliasOkTwinSyncSse();
+
+int genericResultAliasErrTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseGenericResultAliasErrTwinSyncSse();
+
+int genericResultAliasChainedOkTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseGenericResultAliasChainedOkTwinSyncSse();
+
+int genericResultAliasChainedErrTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseGenericResultAliasChainedErrTwinSyncSse();
+
+int genericResultAliasTwoParamsOkTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseGenericResultAliasTwoParamsOkTwinSyncSse();
+
+int genericResultAliasTwoParamsErrTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseGenericResultAliasTwoParamsErrTwinSyncSse();
+
+int? genericOptionAliasReturnTwinSyncSse({required int input}) => RustLib
+    .instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseGenericOptionAliasReturnTwinSyncSse(
+        input: input);
+
+int genericOptionAliasArgTwinSyncSse({int? input}) => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseGenericOptionAliasArgTwinSyncSse(
+        input: input);
+
+enum GenericAliasErrorTwinSyncSse {
+  deliberate,
+  ;
+}
+
 class TestModelTwinSyncSse {
   final BigInt id;
   final String name;

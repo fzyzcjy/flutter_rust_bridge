@@ -71,8 +71,8 @@ fn wire__crate__api__simple__greet_impl(
             let api_name = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::api::simple::greet(api_name))?;
-                Ok(output_ok)
+                let output_ok = Ok::<_, ()>(crate::api::simple::greet(api_name))?;
+                std::result::Result::Ok(output_ok)
             })())
         },
     )
@@ -102,10 +102,10 @@ fn wire__crate__api__simple__init_app_impl(
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok({
+                    let output_ok = Ok::<_, ()>({
                         crate::api::simple::init_app();
                     })?;
-                    Ok(output_ok)
+                    std::result::Result::Ok(output_ok)
                 })())
             }
         },

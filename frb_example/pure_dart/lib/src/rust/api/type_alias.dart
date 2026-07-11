@@ -22,6 +22,37 @@ Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
     RustLib.instance.api
         .crateApiTypeAliasHandleTypeAliasModelTwinNormal(input: input);
 
+Future<int> genericResultAliasOkTwinNormal() =>
+    RustLib.instance.api.crateApiTypeAliasGenericResultAliasOkTwinNormal();
+
+Future<int> genericResultAliasErrTwinNormal() =>
+    RustLib.instance.api.crateApiTypeAliasGenericResultAliasErrTwinNormal();
+
+Future<int> genericResultAliasChainedOkTwinNormal() => RustLib.instance.api
+    .crateApiTypeAliasGenericResultAliasChainedOkTwinNormal();
+
+Future<int> genericResultAliasChainedErrTwinNormal() => RustLib.instance.api
+    .crateApiTypeAliasGenericResultAliasChainedErrTwinNormal();
+
+Future<int> genericResultAliasTwoParamsOkTwinNormal() => RustLib.instance.api
+    .crateApiTypeAliasGenericResultAliasTwoParamsOkTwinNormal();
+
+Future<int> genericResultAliasTwoParamsErrTwinNormal() => RustLib.instance.api
+    .crateApiTypeAliasGenericResultAliasTwoParamsErrTwinNormal();
+
+Future<int?> genericOptionAliasReturnTwinNormal({required int input}) =>
+    RustLib.instance.api
+        .crateApiTypeAliasGenericOptionAliasReturnTwinNormal(input: input);
+
+Future<int> genericOptionAliasArgTwinNormal({int? input}) =>
+    RustLib.instance.api
+        .crateApiTypeAliasGenericOptionAliasArgTwinNormal(input: input);
+
+enum GenericAliasErrorTwinNormal {
+  deliberate,
+  ;
+}
+
 class TestModelTwinNormal {
   final BigInt id;
   final String name;

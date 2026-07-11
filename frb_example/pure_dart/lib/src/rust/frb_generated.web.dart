@@ -7820,6 +7820,29 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FrbLogRecord dco_decode_frb_log_record(dynamic raw);
 
   @protected
+  GenericAliasErrorTwinNormal dco_decode_generic_alias_error_twin_normal(
+      dynamic raw);
+
+  @protected
+  GenericAliasErrorTwinRustAsync dco_decode_generic_alias_error_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  GenericAliasErrorTwinRustAsyncSse
+      dco_decode_generic_alias_error_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  GenericAliasErrorTwinSse dco_decode_generic_alias_error_twin_sse(dynamic raw);
+
+  @protected
+  GenericAliasErrorTwinSync dco_decode_generic_alias_error_twin_sync(
+      dynamic raw);
+
+  @protected
+  GenericAliasErrorTwinSyncSse dco_decode_generic_alias_error_twin_sync_sse(
+      dynamic raw);
+
+  @protected
   HashMapValue dco_decode_hash_map_value(dynamic raw);
 
   @protected
@@ -17714,6 +17737,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FrbLogRecord sse_decode_frb_log_record(SseDeserializer deserializer);
+
+  @protected
+  GenericAliasErrorTwinNormal sse_decode_generic_alias_error_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  GenericAliasErrorTwinRustAsync sse_decode_generic_alias_error_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  GenericAliasErrorTwinRustAsyncSse
+      sse_decode_generic_alias_error_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  GenericAliasErrorTwinSse sse_decode_generic_alias_error_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  GenericAliasErrorTwinSync sse_decode_generic_alias_error_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  GenericAliasErrorTwinSyncSse sse_decode_generic_alias_error_twin_sync_sse(
+      SseDeserializer deserializer);
 
   @protected
   HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
@@ -31027,6 +31075,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   double cst_encode_f_64(double raw);
 
   @protected
+  int cst_encode_generic_alias_error_twin_normal(
+      GenericAliasErrorTwinNormal raw);
+
+  @protected
+  int cst_encode_generic_alias_error_twin_rust_async(
+      GenericAliasErrorTwinRustAsync raw);
+
+  @protected
+  int cst_encode_generic_alias_error_twin_sync(GenericAliasErrorTwinSync raw);
+
+  @protected
   int cst_encode_i_16(int raw);
 
   @protected
@@ -37951,6 +38010,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_frb_log_record(FrbLogRecord self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_generic_alias_error_twin_normal(
+      GenericAliasErrorTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_generic_alias_error_twin_rust_async(
+      GenericAliasErrorTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_generic_alias_error_twin_rust_async_sse(
+      GenericAliasErrorTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_generic_alias_error_twin_sse(
+      GenericAliasErrorTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_generic_alias_error_twin_sync(
+      GenericAliasErrorTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_generic_alias_error_twin_sync_sse(
+      GenericAliasErrorTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
@@ -52005,6 +52088,362 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
               port_);
+
+  void wire__crate__api__type_alias__generic_option_alias_arg_twin_normal(
+          NativePortType port_, int? input) =>
+      wasmModule
+          .wire__crate__api__type_alias__generic_option_alias_arg_twin_normal(
+              port_, input);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_option_alias_arg_twin_rust_async(
+          NativePortType port_, int? input) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_option_alias_arg_twin_rust_async(
+              port_, input);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_option_alias_arg_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_option_alias_arg_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_option_alias_arg_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_option_alias_arg_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_option_alias_arg_twin_sync(
+              int? input) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_option_alias_arg_twin_sync(
+                  input);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_option_alias_arg_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_option_alias_arg_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__type_alias__generic_option_alias_return_twin_normal(
+          NativePortType port_, int input) =>
+      wasmModule
+          .wire__crate__api__type_alias__generic_option_alias_return_twin_normal(
+              port_, input);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_option_alias_return_twin_rust_async(
+          NativePortType port_, int input) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_option_alias_return_twin_rust_async(
+              port_, input);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_option_alias_return_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_option_alias_return_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_option_alias_return_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_option_alias_return_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_option_alias_return_twin_sync(
+              int input) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_option_alias_return_twin_sync(
+                  input);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_option_alias_return_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_option_alias_return_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__type_alias__generic_result_alias_chained_err_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__type_alias__generic_result_alias_chained_err_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_chained_err_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_chained_err_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_chained_err_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_chained_err_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_chained_err_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_chained_err_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_chained_err_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_chained_err_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_chained_err_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_chained_err_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__type_alias__generic_result_alias_chained_ok_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__type_alias__generic_result_alias_chained_ok_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_chained_ok_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_chained_ok_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_chained_ok_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_chained_ok_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_chained_ok_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_chained_ok_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_chained_ok_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_chained_ok_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_chained_ok_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_chained_ok_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__type_alias__generic_result_alias_err_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__type_alias__generic_result_alias_err_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_err_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_err_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_err_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_err_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_err_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_err_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_err_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_err_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_err_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_err_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__type_alias__generic_result_alias_ok_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__type_alias__generic_result_alias_ok_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_ok_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_ok_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_ok_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_ok_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_ok_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_ok_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_ok_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_ok_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_ok_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_ok_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__type_alias__generic_result_alias_two_params_err_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__type_alias__generic_result_alias_two_params_err_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_two_params_err_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_two_params_err_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_two_params_err_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_two_params_err_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_two_params_err_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_two_params_err_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_two_params_err_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_two_params_err_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_two_params_err_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_two_params_err_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__type_alias__generic_result_alias_two_params_ok_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__type_alias__generic_result_alias_two_params_ok_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_two_params_ok_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_two_params_ok_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_two_params_ok_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_two_params_ok_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_two_params_ok_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_two_params_ok_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_two_params_ok_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_two_params_ok_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_two_params_ok_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_two_params_ok_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__mirror__get_app_settings_twin_normal(
           NativePortType port_) =>
@@ -73032,6 +73471,256 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
           NativePortType port_);
+
+  external void
+      wire__crate__api__type_alias__generic_option_alias_arg_twin_normal(
+          NativePortType port_, int? input);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_option_alias_arg_twin_rust_async(
+          NativePortType port_, int? input);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_option_alias_arg_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_option_alias_arg_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_option_alias_arg_twin_sync(
+          int? input);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_option_alias_arg_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__type_alias__generic_option_alias_return_twin_normal(
+          NativePortType port_, int input);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_option_alias_return_twin_rust_async(
+          NativePortType port_, int input);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_option_alias_return_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_option_alias_return_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_option_alias_return_twin_sync(
+          int input);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_option_alias_return_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__type_alias__generic_result_alias_chained_err_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_chained_err_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_chained_err_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_chained_err_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_chained_err_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_chained_err_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__type_alias__generic_result_alias_chained_ok_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_chained_ok_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_chained_ok_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_chained_ok_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_chained_ok_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_chained_ok_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__type_alias__generic_result_alias_err_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_err_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_err_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_err_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_err_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_err_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__type_alias__generic_result_alias_ok_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_ok_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_ok_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_ok_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_ok_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_ok_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__type_alias__generic_result_alias_two_params_err_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_two_params_err_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_two_params_err_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_two_params_err_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_two_params_err_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_two_params_err_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__type_alias__generic_result_alias_two_params_ok_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__generic_result_alias_two_params_ok_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__generic_result_alias_two_params_ok_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_sse__generic_result_alias_two_params_ok_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__generic_result_alias_two_params_ok_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__generic_result_alias_two_params_ok_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire__crate__api__mirror__get_app_settings_twin_normal(
       NativePortType port_);
