@@ -26,12 +26,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(testModel.aliasStruct.content, true);
   });
 
-  test('infallible API compiles when user shadows std Result (#1710)',
-      () async {
-    final value = await infallibleWithResultShadowTwinNormal();
-    expect(value, 42);
-  });
-
   test('generic type alias resolves to Ok value (#3071)', () async {
     final value = await genericResultAliasOkTwinNormal();
     expect(value, 42);

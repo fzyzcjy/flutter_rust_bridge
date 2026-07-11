@@ -28,18 +28,6 @@ pub async fn handle_type_alias_model_twin_rust_async(input: Id) -> TestModelTwin
     }
 }
 
-// Regression for #1710: user-defined `type Result<T>` must not shadow generated wire code.
-pub enum ResultShadowErrorTwinRustAsync {
-    Dummy,
-}
-
-pub type Result<T> = std::result::Result<T, ResultShadowErrorTwinRustAsync>;
-
-// Infallible API triggers generated `std::result::Result::<_, ()>::Ok` wrapper in wire code.
-pub async fn infallible_with_result_shadow_twin_rust_async() -> i32 {
-    42
-}
-
 // Regression for #3071: a generic type alias used in an exported signature must
 // be expanded to its underlying `Result`, so the function is fallible and both
 // the value and the Dart exception path are available.

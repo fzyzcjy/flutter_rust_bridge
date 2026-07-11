@@ -250,7 +250,7 @@ class _$CustomEnumErrorTwinRustAsyncSse_OneImpl
 }
 
 abstract class CustomEnumErrorTwinRustAsyncSse_One
-    extends CustomEnumErrorTwinRustAsyncSse implements InvalidType {
+    extends CustomEnumErrorTwinRustAsyncSse implements FrbBacktracedException {
   const factory CustomEnumErrorTwinRustAsyncSse_One(
           {required final String message, required final String backtrace}) =
       _$CustomEnumErrorTwinRustAsyncSse_OneImpl;
@@ -418,7 +418,7 @@ class _$CustomEnumErrorTwinRustAsyncSse_TwoImpl
 }
 
 abstract class CustomEnumErrorTwinRustAsyncSse_Two
-    extends CustomEnumErrorTwinRustAsyncSse implements InvalidType {
+    extends CustomEnumErrorTwinRustAsyncSse implements FrbBacktracedException {
   const factory CustomEnumErrorTwinRustAsyncSse_Two(
           {required final int message, required final String backtrace}) =
       _$CustomEnumErrorTwinRustAsyncSse_TwoImpl;
@@ -674,7 +674,7 @@ class _$CustomErrorTwinRustAsyncSse_Error0Impl
 }
 
 abstract class CustomErrorTwinRustAsyncSse_Error0
-    extends CustomErrorTwinRustAsyncSse implements InvalidType {
+    extends CustomErrorTwinRustAsyncSse implements FrbBacktracedException {
   const factory CustomErrorTwinRustAsyncSse_Error0(
           {required final String e, required final String backtrace}) =
       _$CustomErrorTwinRustAsyncSse_Error0Impl;
@@ -842,7 +842,7 @@ class _$CustomErrorTwinRustAsyncSse_Error1Impl
 }
 
 abstract class CustomErrorTwinRustAsyncSse_Error1
-    extends CustomErrorTwinRustAsyncSse implements InvalidType {
+    extends CustomErrorTwinRustAsyncSse implements FrbBacktracedException {
   const factory CustomErrorTwinRustAsyncSse_Error1(
           {required final int e, required final String backtrace}) =
       _$CustomErrorTwinRustAsyncSse_Error1Impl;

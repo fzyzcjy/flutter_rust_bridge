@@ -9969,10 +9969,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   (int, ApplicationMode) dco_decode_record_u_8_application_mode(dynamic raw);
 
   @protected
-  ResultShadowErrorTwinNormal dco_decode_result_shadow_error_twin_normal(
-      dynamic raw);
-
-  @protected
   Sequences dco_decode_sequences(dynamic raw);
 
   @protected
@@ -20170,10 +20166,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   (int, ApplicationMode) sse_decode_record_u_8_application_mode(
-      SseDeserializer deserializer);
-
-  @protected
-  ResultShadowErrorTwinNormal sse_decode_result_shadow_error_twin_normal(
       SseDeserializer deserializer);
 
   @protected
@@ -31106,10 +31098,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_my_enum(MyEnum raw);
 
   @protected
-  int cst_encode_result_shadow_error_twin_normal(
-      ResultShadowErrorTwinNormal raw);
-
-  @protected
   int cst_encode_simple_primitive_enum_twin_normal(
       SimplePrimitiveEnumTwinNormal raw);
 
@@ -40345,10 +40333,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_record_u_8_application_mode(
       (int, ApplicationMode) self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_result_shadow_error_twin_normal(
-      ResultShadowErrorTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
@@ -54579,50 +54563,6 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__how_long_does_it_take_twin_sync_sse(
-                  ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__type_alias__infallible_with_result_shadow_twin_normal(
-          NativePortType port_) =>
-      wasmModule
-          .wire__crate__api__type_alias__infallible_with_result_shadow_twin_normal(
-              port_);
-
-  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__infallible_with_result_shadow_twin_rust_async(
-          NativePortType port_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__infallible_with_result_shadow_twin_rust_async(
-              port_);
-
-  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__infallible_with_result_shadow_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__infallible_with_result_shadow_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__type_alias_twin_sse__infallible_with_result_shadow_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__type_alias_twin_sse__infallible_with_result_shadow_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__type_alias_twin_sync__infallible_with_result_shadow_twin_sync() =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__type_alias_twin_sync__infallible_with_result_shadow_twin_sync();
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__infallible_with_result_shadow_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__infallible_with_result_shadow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__customization__init_app(NativePortType port_) =>
@@ -75259,37 +75199,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__how_long_does_it_take_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__type_alias__infallible_with_result_shadow_twin_normal(
-          NativePortType port_);
-
-  external void
-      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__infallible_with_result_shadow_twin_rust_async(
-          NativePortType port_);
-
-  external void
-      wire__crate__api__pseudo_manual__type_alias_twin_rust_async_sse__infallible_with_result_shadow_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__type_alias_twin_sse__infallible_with_result_shadow_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__type_alias_twin_sync__infallible_with_result_shadow_twin_sync();
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__infallible_with_result_shadow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

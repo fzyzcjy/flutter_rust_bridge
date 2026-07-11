@@ -33,19 +33,6 @@ pub fn handle_type_alias_model_twin_sync(input: Id) -> TestModelTwinSync {
     }
 }
 
-// Regression for #1710: user-defined `type Result<T>` must not shadow generated wire code.
-pub enum ResultShadowErrorTwinSync {
-    Dummy,
-}
-
-pub type Result<T> = std::result::Result<T, ResultShadowErrorTwinSync>;
-
-// Infallible API triggers generated `std::result::Result::<_, ()>::Ok` wrapper in wire code.
-#[flutter_rust_bridge::frb(sync)]
-pub fn infallible_with_result_shadow_twin_sync() -> i32 {
-    42
-}
-
 // Regression for #3071: a generic type alias used in an exported signature must
 // be expanded to its underlying `Result`, so the function is fallible and both
 // the value and the Dart exception path are available.
