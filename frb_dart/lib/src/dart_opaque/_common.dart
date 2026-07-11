@@ -8,6 +8,8 @@ Object decodeDartOpaqueCommon(
 ) {
   if (raw is BigInt) {
     raw = raw.toInt();
+  } else if (raw is double && raw.isFinite && raw == raw.truncateToDouble()) {
+    raw = raw.toInt();
   }
   return generalizedFrbRustBinding.dartOpaqueRust2DartDecode(raw);
 }

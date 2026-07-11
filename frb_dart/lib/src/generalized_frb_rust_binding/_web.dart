@@ -79,13 +79,13 @@ class GeneralizedFrbRustBinding {
     Object object,
     NativePortType dartHandlerPort,
   ) => _wasmBindgen.frb_dart_opaque_dart2rust_encode(
-    object.jsify()!,
+    object.toExternalReference,
     dartHandlerPort,
   );
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>
-      _wasmBindgen.frb_dart_opaque_rust2dart_decode(ptr).dartify()!;
+      _wasmBindgen.frb_dart_opaque_rust2dart_decode(ptr).toDartObject!;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dartOpaqueDropThreadBoxPersistentHandle(int ptr) =>
@@ -141,13 +141,15 @@ extension type _JSWasmBindgen(JSObject _) implements JSObject {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @JS("frb_dart_opaque_dart2rust_encode")
   external int frb_dart_opaque_dart2rust_encode(
-    JSAny object,
+    ExternalDartReference<Object?> object,
     NativePortType dartHandlerPort,
   );
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @JS("frb_dart_opaque_rust2dart_decode")
-  external JSAny frb_dart_opaque_rust2dart_decode(int ptr);
+  external ExternalDartReference<Object?> frb_dart_opaque_rust2dart_decode(
+    int ptr,
+  );
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @JS("frb_dart_opaque_drop_thread_box_persistent_handle")

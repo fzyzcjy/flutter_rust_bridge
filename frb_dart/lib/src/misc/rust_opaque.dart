@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge/src/rust_arc/_common.dart';
+import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:meta/meta.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -27,8 +28,8 @@ abstract class RustOpaque implements RustOpaqueInterface {
     List<dynamic> wire,
     RustArcStaticData staticData,
   ) : this._fromRaw(
-        ptr: wire[0],
-        externalSizeOnNative: wire[1],
+        ptr: dcoDecodePrimitiveInt(wire[0]),
+        externalSizeOnNative: dcoDecodePrimitiveInt(wire[1]),
         staticData: staticData,
       );
 

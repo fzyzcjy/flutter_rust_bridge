@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/run_test.dart';
+import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/static_content.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -44,6 +45,26 @@ void main() {
         }, isInContainer: true),
         '/tmp/chrome-bin',
       );
+    });
+  });
+
+  group('testEntrypointHtmlContent', () {
+    test('uses JavaScript entrypoint for dart2js runs', () {
+      final html = testEntrypointHtmlContent(kJsEntrypointScript);
+
+      expect(html, contains('sendTestResult'));
+      expect(html, contains('main.dart.js'));
+      expect(html, isNot(contains('main.dart.mjs')));
+    });
+
+    test('uses module loader for dart2wasm runs', () {
+      final html = testEntrypointHtmlContent(kWasmEntrypointScript);
+
+      expect(html, contains('sendTestResult'));
+      expect(html, contains('type="module"'));
+      expect(html, contains('main.dart.mjs'));
+      expect(html, contains('main.dart.wasm'));
+      expect(html, isNot(contains('main.dart.js')));
     });
   });
 }

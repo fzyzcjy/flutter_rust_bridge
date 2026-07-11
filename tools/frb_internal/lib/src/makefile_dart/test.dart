@@ -13,6 +13,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
     as dart_sanitizer_tester;
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
 import 'package:retry/retry.dart';
@@ -125,8 +126,9 @@ class TestRustPackageConfig {
 class TestDartConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
+  final bool wasm;
 
-  const TestDartConfig({required this.package});
+  const TestDartConfig({required this.package, required this.wasm});
 }
 
 @CliOptions()
@@ -174,8 +176,13 @@ class TestFlutterWebConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
   final bool coverage;
+  final bool wasm;
 
-  const TestFlutterWebConfig({required this.package, required this.coverage});
+  const TestFlutterWebConfig({
+    required this.package,
+    required this.coverage,
+    required this.wasm,
+  });
 }
 
 @CliOptions()
@@ -544,18 +551,30 @@ Future<void> testDartWeb(TestDartConfig config) async {
   final package = config.package;
   if (package == 'frb_dart') {
     await exec(
-      'dart test -p chrome',
+      'dart test -p chrome ${config.wasm ? "--compiler dart2wasm" : ""}',
       relativePwd: package,
-      // extraEnv: kEnvEnableRustBacktrace,
+      extraEnv: await _dartTestChromeExtraEnv(),
     );
   } else {
     final features = getRustFeaturesOfPackage(config.package);
     await exec(
-      'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart ${features != null ? "--rust-features $features" : ""}',
+      'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart ${features != null ? "--rust-features $features" : ""} ${config.wasm ? "--wasm" : ""}',
       relativePwd: 'frb_utils',
       // extraEnv: kEnvEnableRustBacktrace,
     );
   }
+}
+
+Future<Map<String, String>?> _dartTestChromeExtraEnv() async {
+  final customChromeExecutable = Platform.environment['CHROME_EXECUTABLE'];
+  if (customChromeExecutable != null && customChromeExecutable.isNotEmpty) {
+    return null;
+  }
+
+  final wrapperPath = await _dockerChromeWrapperPath();
+  if (wrapperPath == null) return null;
+
+  return {'CHROME_EXECUTABLE': wrapperPath};
 }
 
 /// ref https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
@@ -669,11 +688,15 @@ Future<void> flutterIntegrationTestRaw({
 Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
-  await _installDartCoverage();
+  if (config.coverage) {
+    await _installDartCoverage();
+  }
 
   final buildWebPackage = resolveBuildWebPackage(config.package);
   await executeFrbCodegen(
-    'build-web --dart-coverage',
+    'build-web '
+    '${config.coverage ? "--dart-coverage" : ""} '
+    '--wasm-pack-rustup-toolchain $kPinnedRustfmtNightly',
     relativePwd: buildWebPackage,
     coverage: config.coverage,
     coverageName: 'TestFlutterWeb',
@@ -684,6 +707,8 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
     '--driver=test_driver/integration_test.dart '
     '--target=integration_test/simple_test.dart '
     '-d web-server '
+    '${await _flutterWebChromeBinaryArg()}'
+    '${config.wasm ? '--wasm ' : ''}'
     '--verbose',
     relativePwd: config.package,
   );
@@ -737,6 +762,31 @@ Future<void> _runFlutterDoctor() async {
   }
 
   await exec('flutter doctor -v');
+}
+
+Future<String> _flutterWebChromeBinaryArg() async {
+  final chromeBinary = Platform.environment['CHROME_EXECUTABLE'];
+  if (chromeBinary != null && chromeBinary.isNotEmpty) {
+    return '--chrome-binary=$chromeBinary ';
+  }
+
+  final wrapperPath = await _dockerChromeWrapperPath();
+  return wrapperPath == null ? '' : '--chrome-binary=$wrapperPath ';
+}
+
+Future<String?> _dockerChromeWrapperPath() async {
+  if (!File('/.dockerenv').existsSync()) return null;
+
+  final wrapper = File('${Directory.systemTemp.path}/frb-test-chrome.sh');
+  if (!wrapper.existsSync()) {
+    wrapper.writeAsStringSync('''
+#!/bin/sh
+exec /usr/bin/google-chrome --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage "\$@"
+''');
+    await exec('chmod 755 ${wrapper.path}');
+  }
+
+  return wrapper.path;
 }
 
 const kEnvEnableRustBacktrace = {'RUST_BACKTRACE': 'full'};
