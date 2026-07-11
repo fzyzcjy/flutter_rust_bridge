@@ -8,10 +8,21 @@ pub fn lockable_compute_decode_order(infos: Vec<LockableOrderInfo>) -> Vec<usize
         x
     };
 
-    assert!(
-        check_no_immediate_invalid_borrow(&sorted_infos),
-        "Cannot borrow an object mutably, and at the same time borrow again in another argument"
-    );
+    if !check_no_immediate_invalid_borrow(&sorted_infos) {
+        panic_or_web_throw(
+            "Cannot borrow an object mutably, and at the same time borrow again in another argument",
+        );
+    }
 
     sorted_infos.into_iter().map(|info| info.index).collect()
+}
+
+#[cfg(not(target_family = "wasm"))]
+fn panic_or_web_throw(message: &str) -> ! {
+    panic!("{message}")
+}
+
+#[cfg(target_family = "wasm")]
+fn panic_or_web_throw(message: &str) -> ! {
+    wasm_bindgen::throw_str(message)
 }
