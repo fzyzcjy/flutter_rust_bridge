@@ -69,6 +69,8 @@ fn transform_component_raw<T: Debug + Clone + Serialize, K: Eq + Hash + Debug>(
             }
             assert!(!items_of_key.is_empty());
 
+            items_of_key.sort_by_key(|item| serde_json::to_string(item).unwrap());
+
             if items_of_key.len() > 1 {
                 log::info!(
                     "There are still multiple objects with same key after merging, \
