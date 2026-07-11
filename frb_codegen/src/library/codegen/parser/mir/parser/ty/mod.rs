@@ -157,13 +157,13 @@ fn duplicate_names<T>(
     objects: &HashMap<NamespacedName, &T>,
     name: impl Fn(&T) -> &String,
 ) -> HashSet<String> {
-    let mut counts = HashMap::<String, usize>::new();
+    let mut counts = HashMap::<&str, usize>::new();
     for object in objects.values() {
-        *counts.entry(name(object).clone()).or_default() += 1;
+        *counts.entry(name(object)).or_default() += 1;
     }
     counts
         .into_iter()
-        .filter_map(|(name, count)| (count > 1).then_some(name))
+        .filter_map(|(name, count)| (count > 1).then_some(name.to_owned()))
         .collect()
 }
 

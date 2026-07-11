@@ -24,7 +24,7 @@ fn handle_type(pack: &MirPack, ty: MirType) -> Vec<String> {
     match ty {
         MirType::StructRef(ty) => {
             let st = ty.get(pack);
-            handle_struct(st, &ty.ident.0.rust_style())
+            handle_struct(st, &ty.ident.name.rust_style())
         }
         MirType::EnumRef(ty) => {
             let en = ty.get(pack);
@@ -36,7 +36,7 @@ fn handle_type(pack: &MirPack, ty: MirType) -> Vec<String> {
                         st,
                         &format!(
                             "{}.{}",
-                            ty.ident.0.rust_style(),
+                            ty.ident.name.rust_style(),
                             variant.name.rust_style(true)
                         ),
                     ),

@@ -21,7 +21,7 @@ impl ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'_> {
             &self.context.mir_pack.funcs_with_impl(),
             self.context,
         );
-        let class_name = &self.mir.ident.0.name;
+        let class_name = &self.mir.ident.name.name;
 
         let methods = generate_api_methods(
             &MirType::StructRef(self.mir.clone()),

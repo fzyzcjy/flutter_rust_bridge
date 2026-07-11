@@ -22,7 +22,7 @@ impl StructRefApiDartGenerator<'_> {
         class_name: &str,
     ) -> String {
         let private_constructor = if methods.num_methods > 0 {
-            format!("const {}._();", self.mir.ident.0.name)
+            format!("const {}._();", self.mir.ident.name.name)
         } else {
             "".to_owned()
         };

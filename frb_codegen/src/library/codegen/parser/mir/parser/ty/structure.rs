@@ -126,7 +126,10 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
     }
 
     fn construct_ident(&self, name: NamespacedName, has_duplicate_name: bool) -> MirStructIdent {
-        MirStructIdent(name, has_duplicate_name)
+        MirStructIdent {
+            name,
+            has_duplicate_name,
+        }
     }
 
     fn has_duplicate_name(&self, name: &str) -> bool {

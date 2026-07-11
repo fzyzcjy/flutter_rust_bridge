@@ -47,7 +47,12 @@ where
         let namespaced_src_object = self.src_objects_namespaced().get(&namespaced_name);
         let src_object = match (namespaced_src_object, bare_src_object) {
             (Some(namespaced), _) => Some(namespaced),
-            (None, Some(bare)) => Some(bare),
+            (None, Some(bare)) => {
+                if self.has_duplicate_name(name) {
+                    log::warn!("Ambiguous resolution for duplicate name `{name}`");
+                }
+                Some(bare)
+            }
             (None, None) => None,
         };
 
@@ -111,13 +116,16 @@ where
     }
 
     fn resolve_namespaced_name(&self, path: &syn::Path, name: &str) -> NamespacedName {
-        let mut namespace = self
-            .context()
-            .initiated_namespace
-            .path()
-            .into_iter()
-            .map(ToOwned::to_owned)
-            .collect::<Vec<_>>();
+        let mut namespace = if path.leading_colon.is_some() {
+            vec![]
+        } else {
+            self.context()
+                .initiated_namespace
+                .path()
+                .into_iter()
+                .map(ToOwned::to_owned)
+                .collect::<Vec<_>>()
+        };
         let segments = path
             .segments
             .iter()

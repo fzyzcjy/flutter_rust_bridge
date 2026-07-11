@@ -3,6 +3,7 @@ use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::utils::namespace::NamespacedName;
 use log::debug;
+use std::collections::hash_map::Entry;
 use std::collections::HashMap;
 use std::fmt::Debug;
 use std::hash::Hash;
@@ -41,10 +42,15 @@ fn vec_to_map_with_warn<'a, T, K: Eq + Hash + Debug, V: Debug + 'a>(
     let mut ans = HashMap::new();
     for item in items {
         let (key, value) = extract_entry(item);
-        if let Some(old_value) = ans.get(&key) {
-            debug!("Same key={key:?} has multiple values: {old_value:?} (thrown away) and {value:?} (used). This may or may not be a problem.");
+        match ans.entry(key) {
+            Entry::Occupied(mut entry) => {
+                let old_value = entry.insert(value);
+                debug!("Same key={:?} has multiple values: {old_value:?} (thrown away) and {:?} (used). This may or may not be a problem.", entry.key(), entry.get());
+            }
+            Entry::Vacant(entry) => {
+                entry.insert(value);
+            }
         }
-        ans.insert(key, value);
     }
     ans
 }

@@ -22,7 +22,7 @@ impl EnumRefApiDartGenerator<'_> {
             .collect_vec()
             .join("\n");
 
-        let name = &self.mir.ident.0.name;
+        let name = &self.mir.ident.name.name;
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),

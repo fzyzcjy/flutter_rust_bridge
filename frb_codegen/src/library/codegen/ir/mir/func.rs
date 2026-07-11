@@ -211,12 +211,12 @@ impl MirFuncOwnerInfoMethod {
 
 pub(crate) fn compute_interest_name_of_owner_ty(owner_ty: &MirType) -> Option<NamespacedName> {
     Some(match owner_ty {
-        MirType::StructRef(ty) => ty.ident.0.clone(),
-        MirType::EnumRef(ty) => ty.ident.0.clone(),
+        MirType::StructRef(ty) => ty.ident.name.clone(),
+        MirType::EnumRef(ty) => ty.ident.name.clone(),
         MirType::Delegate(MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum {
             mir,
             ..
-        })) => mir.ident.0.clone(),
+        })) => mir.ident.name.clone(),
         MirType::RustAutoOpaqueImplicit(ty) => {
             NamespacedName::new(ty.self_namespace().unwrap(), ty.rust_api_type())
         }
