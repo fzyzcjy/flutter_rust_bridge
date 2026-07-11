@@ -13,13 +13,12 @@ use crate::utils::basic_code::parser::parse_dart_code;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use log::debug;
-use quote::ToTokens;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Type, TypePath};
 
-pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum + ToTokens>
+pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
 {
@@ -46,15 +45,10 @@ where
         let namespaced_name = self.resolve_namespaced_name(path, name);
         let bare_src_object = self.src_objects().get(*name);
         let namespaced_src_object = self.src_objects_namespaced().get(&namespaced_name);
-        let src_object = match (
-            path.segments.len() > 1,
-            bare_src_object,
-            namespaced_src_object,
-        ) {
-            (true, _, Some(namespaced)) => Some(namespaced),
-            (_, Some(bare), _) => Some(bare),
-            (_, None, Some(namespaced)) => Some(namespaced),
-            (_, None, None) => None,
+        let src_object = match (namespaced_src_object, bare_src_object) {
+            (Some(namespaced), _) => Some(namespaced),
+            (None, Some(bare)) => Some(bare),
+            (None, None) => None,
         };
 
         if let Some(src_object) = src_object {
@@ -76,12 +70,7 @@ where
                 )));
             }
 
-            let has_duplicate_name = self
-                .src_objects_namespaced()
-                .values()
-                .filter(|object| object.name.name == src_object.name.name)
-                .nth(1)
-                .is_some();
+            let has_duplicate_name = self.has_duplicate_name(&src_object.name.name);
             let ident = self.construct_ident(namespaced_name.clone(), has_duplicate_name);
 
             if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
@@ -206,6 +195,8 @@ where
     ) -> anyhow::Result<Obj>;
 
     fn construct_ident(&self, name: NamespacedName, has_duplicate_name: bool) -> Id;
+
+    fn has_duplicate_name(&self, name: &str) -> bool;
 
     fn construct_output(&self, ident: Id) -> anyhow::Result<MirType>;
 

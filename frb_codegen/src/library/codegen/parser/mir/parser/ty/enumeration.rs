@@ -179,6 +179,10 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         MirEnumIdent(name, has_duplicate_name)
     }
 
+    fn has_duplicate_name(&self, name: &str) -> bool {
+        self.0.inner.duplicate_enum_names.contains(name)
+    }
+
     fn construct_output(&self, ident: MirEnumIdent) -> anyhow::Result<MirType> {
         let enum_ref = MirTypeEnumRef {
             ident: ident.clone(),

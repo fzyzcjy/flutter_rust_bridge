@@ -129,6 +129,10 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         MirStructIdent(name, has_duplicate_name)
     }
 
+    fn has_duplicate_name(&self, name: &str) -> bool {
+        self.0.inner.duplicate_struct_names.contains(name)
+    }
+
     fn construct_output(&self, ident: MirStructIdent) -> anyhow::Result<MirType> {
         Ok(StructRef(MirTypeStructRef {
             ident,

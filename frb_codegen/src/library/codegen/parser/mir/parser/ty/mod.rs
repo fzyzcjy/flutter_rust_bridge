@@ -23,7 +23,7 @@ use crate::codegen::parser::mir::ParseMode;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::Namespace;
 use crate::utils::namespace::NamespacedName;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use syn::Type;
 
 pub(crate) mod array;
@@ -59,6 +59,8 @@ pub(crate) struct TypeParser<'a> {
     src_structs_namespaced: HashMap<NamespacedName, &'a HirFlatStruct>,
     src_enums: HashMap<String, &'a HirFlatEnum>,
     src_enums_namespaced: HashMap<NamespacedName, &'a HirFlatEnum>,
+    duplicate_struct_names: HashSet<String>,
+    duplicate_enum_names: HashSet<String>,
     pub(super) src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
     pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
@@ -98,11 +100,18 @@ impl<'a> TypeParser<'a> {
         proxied_types: Vec<IrEarlyGeneratorProxiedType>,
         trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     ) -> Self {
+        let duplicate_struct_names =
+            duplicate_names(&src_structs_namespaced, |object| &object.name.name);
+        let duplicate_enum_names =
+            duplicate_names(&src_enums_namespaced, |object| &object.name.name);
+
         TypeParser {
             src_structs,
             src_structs_namespaced,
             src_enums,
             src_enums_namespaced,
+            duplicate_struct_names,
+            duplicate_enum_names,
             src_traits,
             src_types,
             proxied_types,
@@ -142,6 +151,20 @@ impl<'a> TypeParser<'a> {
     ) -> anyhow::Result<MirType> {
         TypeParserWithContext::new(self, context).transform_rust_auto_opaque(ty_raw, transform)
     }
+}
+
+fn duplicate_names<T>(
+    objects: &HashMap<NamespacedName, &T>,
+    name: impl Fn(&T) -> &String,
+) -> HashSet<String> {
+    let mut counts = HashMap::<String, usize>::new();
+    for object in objects.values() {
+        *counts.entry(name(object).clone()).or_default() += 1;
+    }
+    counts
+        .into_iter()
+        .filter_map(|(name, count)| (count > 1).then_some(name))
+        .collect()
 }
 
 pub(crate) struct TypeParserWithContext<'a, 'b, 'c> {
