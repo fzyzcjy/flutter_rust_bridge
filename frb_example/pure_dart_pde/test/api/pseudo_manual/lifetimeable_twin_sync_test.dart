@@ -19,7 +19,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('when to dispose and the dispose order', () {
     test('dispose ownedStruct', () async {
       final simpleLogger = SimpleLogger();
-      final ownedStruct = await LtOwnedStructTwinSync.createWithLoggerTwinSync(
+      final ownedStruct =
+          await LtOwnedStructTwinSync.createWithLoggerTwinSync(
         value: 'a',
         logger: simpleLogger,
       );
@@ -34,7 +35,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dispose ownedStruct - dispose typeWithLifetime', () async {
       final simpleLogger = SimpleLogger();
-      final ownedStruct = await LtOwnedStructTwinSync.createWithLoggerTwinSync(
+      final ownedStruct =
+          await LtOwnedStructTwinSync.createWithLoggerTwinSync(
         value: 'a',
         logger: simpleLogger,
       );
@@ -57,7 +59,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dispose typeWithLifetime - dispose ownedStruct', () async {
       final simpleLogger = SimpleLogger();
-      final ownedStruct = await LtOwnedStructTwinSync.createWithLoggerTwinSync(
+      final ownedStruct =
+          await LtOwnedStructTwinSync.createWithLoggerTwinSync(
         value: 'a',
         logger: simpleLogger,
       );
@@ -78,7 +81,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dispose ownedStruct - dispose typeWithLifetime', () async {
       final simpleLogger = SimpleLogger();
-      final ownedStruct = await LtOwnedStructTwinSync.createWithLoggerTwinSync(
+      final ownedStruct =
+          await LtOwnedStructTwinSync.createWithLoggerTwinSync(
         value: 'a',
         logger: simpleLogger,
       );
@@ -192,8 +196,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
       final typeWithLifetime =
           await ownedStruct.computeTypeWithLifetimeTwinSync();
-      final anotherTypeWithLifetime =
-          await LtTypeWithLifetimeTwinSync.computeArgGenericLifetimeTwinSync(
+      final anotherTypeWithLifetime = await LtTypeWithLifetimeTwinSync
+          .computeArgGenericLifetimeTwinSync(
         arg: typeWithLifetime,
       );
 
