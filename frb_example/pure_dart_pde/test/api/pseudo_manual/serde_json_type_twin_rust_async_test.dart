@@ -85,7 +85,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       'nested': {'a': 1}
     };
     final wrapper = FeatureSerdeJsonTwinRustAsync(data: data);
-    final output = await handleNestedSerdeJsonValueTwinRustAsync(wrapper: wrapper);
+    final output =
+        await handleNestedSerdeJsonValueTwinRustAsync(wrapper: wrapper);
     expect(output.data, data);
   });
 }

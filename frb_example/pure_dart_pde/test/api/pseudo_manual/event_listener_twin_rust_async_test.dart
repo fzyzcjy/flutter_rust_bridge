@@ -45,6 +45,4 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     expect(logs, ['one', 'two']);
   });
-
-  
 }
