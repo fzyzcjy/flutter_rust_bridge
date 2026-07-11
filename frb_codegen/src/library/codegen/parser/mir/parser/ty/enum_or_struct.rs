@@ -54,11 +54,7 @@ where
         if let Some(src_object) = src_object {
             let src_object = (*src_object).clone();
 
-            let namespaced_name = if path.segments.len() > 1 {
-                namespaced_name
-            } else {
-                src_object.name.clone()
-            };
+            let namespaced_name = src_object.name.clone();
 
             let attrs = FrbAttributes::parse(src_object.src.attrs())?;
             let attrs_opaque = override_opaque.or(attrs.opaque());
