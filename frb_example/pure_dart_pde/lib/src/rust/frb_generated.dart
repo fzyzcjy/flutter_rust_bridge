@@ -46980,7 +46980,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt dco_decode_I128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BigInt.parse(raw);
+    return BigInt.parse(raw as String);
   }
 
   @protected
@@ -48568,7 +48568,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt dco_decode_U128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BigInt.parse(raw);
+    return BigInt.parse(raw as String);
   }
 
   @protected
