@@ -28,6 +28,7 @@ fn execute_overlay_dir(
                 existing_content,
                 replacements,
                 config.enable_local_dependency,
+                config.integration_backend,
                 comment_out_files,
             )
         },
@@ -147,6 +148,7 @@ fn modify_file(
     existing_content: Option<Vec<u8>>,
     replacements: &HashMap<&str, &str>,
     enable_local_dependency: bool,
+    integration_backend: IntegrationBackend,
     comment_out_files: Option<&[String]>,
 ) -> Option<(PathBuf, Vec<u8>)> {
     let src = replace_file_content(reference_content, replacements);
@@ -166,10 +168,13 @@ fn modify_file(
         }
         // We do not care about this warning
         // frb-coverage:ignore-start
-        warn!(
-            "Skip writing to {target_path:?} because file already exists. \
-            It is suggested to remove that file before running this command to apply the full template."
-        );
+        if integration_backend == IntegrationBackend::NativeAssets {
+            if let Some(message) = existing_native_assets_build_hook_warning(&target_path) {
+                warn!("{message}");
+                return None;
+            }
+        }
+        warn!("Skip writing to {target_path:?} because file already exists. It is suggested to remove that file before running this command to apply the full template.");
         return None;
         // frb-coverage:ignore-end
     }
@@ -209,6 +214,16 @@ fn comment_out_existing_file_and_write_template(
         })
         .unwrap_or_default();
     Some((path, [commented_existing_content.as_bytes(), src].concat()))
+}
+
+fn existing_native_assets_build_hook_warning(path: &Path) -> Option<&'static str> {
+    if path.ends_with("hook/build.dart") {
+        Some(
+            "Native Assets integration did not modify the existing hook/build.dart. Add FlutterRustBridgeNativeAssetsBuilder to your build hook manually; see https://cjycode.com/flutter_rust_bridge/manual/integrate/03-native-assets/.",
+        )
+    } else {
+        None
+    }
 }
 
 fn filter_file(
@@ -315,8 +330,10 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::filter_file;
-    use std::path::Path;
+    use super::{existing_native_assets_build_hook_warning, filter_file, modify_file};
+    use crate::misc::IntegrationBackend;
+    use std::collections::HashMap;
+    use std::path::{Path, PathBuf};
 
     #[test]
     fn test_filter_file_excludes_ohos_when_not_enabled() {
@@ -381,5 +398,39 @@ mod tests {
             true,
             true,
         ));
+    }
+
+    #[test]
+    fn existing_native_assets_build_hook_has_actionable_warning() {
+        assert_eq!(
+            existing_native_assets_build_hook_warning(Path::new("hook/build.dart")),
+            Some(
+                "Native Assets integration did not modify the existing hook/build.dart. Add FlutterRustBridgeNativeAssetsBuilder to your build hook manually; see https://cjycode.com/flutter_rust_bridge/manual/integrate/03-native-assets/.",
+            ),
+        );
+    }
+
+    #[test]
+    fn existing_native_assets_build_hook_is_preserved() {
+        assert_eq!(
+            modify_file(
+                PathBuf::from("hook/build.dart"),
+                b"generated hook",
+                Some(b"existing hook".to_vec()),
+                &HashMap::new(),
+                false,
+                IntegrationBackend::NativeAssets,
+                None,
+            ),
+            None,
+        );
+    }
+
+    #[test]
+    fn other_native_assets_files_do_not_have_build_hook_warning() {
+        assert_eq!(
+            existing_native_assets_build_hook_warning(Path::new("lib/main.dart")),
+            None,
+        );
     }
 }
