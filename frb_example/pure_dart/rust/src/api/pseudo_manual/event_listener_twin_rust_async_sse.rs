@@ -54,8 +54,9 @@ pub async fn close_event_listener_twin_rust_async_sse() {
 pub async fn create_event_twin_rust_async_sse(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
-            sink.add(EventTwinRustAsyncSse { address, payload })
-                .unwrap();
+            // The Dart subscription may already be cancelled (which now closes the
+            // receive port promptly), so a failed `add` is expected, not a bug.
+            let _ = sink.add(EventTwinRustAsyncSse { address, payload });
         }
     }
 }

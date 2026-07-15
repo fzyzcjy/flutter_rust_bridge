@@ -45,7 +45,9 @@ pub fn close_event_listener_twin_normal() {
 pub fn create_event_twin_normal(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
-            sink.add(EventTwinNormal { address, payload }).unwrap();
+            // The Dart subscription may already be cancelled (which now closes the
+            // receive port promptly), so a failed `add` is expected, not a bug.
+            let _ = sink.add(EventTwinNormal { address, payload });
         }
     }
 }
@@ -56,7 +58,9 @@ pub fn create_event_twin_normal(address: String, payload: String) {
 pub fn create_event_sync_twin_normal(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
-            sink.add(EventTwinNormal { address, payload }).unwrap();
+            // The Dart subscription may already be cancelled (which now closes the
+            // receive port promptly), so a failed `add` is expected, not a bug.
+            let _ = sink.add(EventTwinNormal { address, payload });
         }
     }
 }
