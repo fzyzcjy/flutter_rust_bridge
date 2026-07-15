@@ -1,0 +1,8 @@
+rust_input: crate::api
+rust_root: .
+dart_output: .
+rust_output: src/frb_generated.rs
+c_output: frb_generated.h
+web: false
+full_dep: true
+type_64bit_int: true

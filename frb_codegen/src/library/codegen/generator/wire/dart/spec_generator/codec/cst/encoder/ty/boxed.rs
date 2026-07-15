@@ -17,34 +17,22 @@ impl WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'_
         let empty_struct = is_empty_struct(self);
 
         Acc {
-            io: Some(
-                if self.mir.inner.is_primitive()
-                    || matches!(
-                        *self.mir.inner,
-                        MirType::RustOpaque(_)
-                            | MirType::RustAutoOpaqueImplicit(_)
-                            | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
-                            | MirType::DartOpaque(_)
-                    )
-                {
-                    format!(
-                        "return wire.cst_new_{mir_safe_ident}(cst_encode_{inner_safe_ident}(raw));"
-                    )
-                } else if self.mir.inner.is_array() {
-                    format!("return cst_encode_{inner_safe_ident}(raw);")
-                } else {
-                    format!(
-                        "final ptr = wire.cst_new_{mir_safe_ident}();
+            io: Some(if boxed_inner_uses_value_allocator(&self.mir.inner) {
+                format!("return wire.cst_new_{mir_safe_ident}(cst_encode_{inner_safe_ident}(raw));")
+            } else if self.mir.inner.is_array() {
+                format!("return cst_encode_{inner_safe_ident}(raw);")
+            } else {
+                format!(
+                    "final ptr = wire.cst_new_{mir_safe_ident}();
                     {}
                     return ptr;",
-                        if empty_struct {
-                            "".to_owned()
-                        } else {
-                            format!("cst_api_fill_to_wire_{inner_safe_ident}(raw, ptr.ref);")
-                        }
-                    )
-                },
-            ),
+                    if empty_struct {
+                        "".to_owned()
+                    } else {
+                        format!("cst_api_fill_to_wire_{inner_safe_ident}(raw, ptr.ref);")
+                    }
+                )
+            }),
             web: Some(format!("return cst_encode_{inner_safe_ident}(raw);")),
             ..Default::default()
         }
@@ -55,16 +43,7 @@ impl WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'_
 
         if self.mir.inner.is_array() {
             Some(format!("wireObj = cst_encode_{inner_safe_ident}(apiObj);"))
-        } else if !self.mir.inner.is_primitive()
-            && !matches!(
-                *self.mir.inner,
-                MirType::RustOpaque(_)
-                    | MirType::RustAutoOpaqueImplicit(_)
-                    | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
-                    | MirType::DartOpaque(_)
-            )
-            && !is_empty_struct(self)
-        {
+        } else if !boxed_inner_uses_value_allocator(&self.mir.inner) && !is_empty_struct(self) {
             Some(format!(
                 "cst_api_fill_to_wire_{inner_safe_ident}(apiObj, wireObj.ref);"
             ))
@@ -98,19 +77,38 @@ impl WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'_
                     return WireDartCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                         .dart_wire_type(Target::Io);
                 }
-                let wire_type = self
-                    .mir
-                    .inner
-                    .as_primitive()
-                    .map(|prim| dart_native_type_of_primitive(prim).to_owned())
-                    .unwrap_or_else(|| {
-                        WireDartCodecCstGenerator::new(self.mir.inner.clone(), self.context)
-                            .dart_wire_type(target)
-                    });
+                let wire_type = boxed_inner_native_type(&self.mir.inner).unwrap_or_else(|| {
+                    WireDartCodecCstGenerator::new(self.mir.inner.clone(), self.context)
+                        .dart_wire_type(target)
+                });
                 format!("ffi.Pointer<{wire_type}>")
             }
         }
     }
+}
+
+fn boxed_inner_uses_value_allocator(inner: &MirType) -> bool {
+    inner.is_primitive()
+        || matches!(
+            inner,
+            MirType::Delegate(
+                MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::RustAutoOpaqueExplicit(_)
+            ) | MirType::RustOpaque(_)
+                | MirType::RustAutoOpaqueImplicit(_)
+                | MirType::DartOpaque(_)
+        )
+}
+
+fn boxed_inner_native_type(inner: &MirType) -> Option<String> {
+    inner
+        .as_primitive()
+        .map(|prim| dart_native_type_of_primitive(prim).to_owned())
+        .or_else(|| match inner {
+            MirType::Delegate(MirTypeDelegate::CastedPrimitive(mir)) => {
+                Some(dart_native_type_of_primitive(&mir.inner).to_owned())
+            }
+            _ => None,
+        })
 }
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
