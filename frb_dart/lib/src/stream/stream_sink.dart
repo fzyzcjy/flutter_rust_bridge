@@ -85,8 +85,12 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
   );
 
   controller
-    ..onPause = portSubscription.pause
-    ..onResume = portSubscription.resume
+    ..onPause = () {
+      if (!terminated) portSubscription.pause();
+    }
+    ..onResume = () {
+      if (!terminated) portSubscription.resume();
+    }
     ..onCancel = () {
       terminated = true;
       receivePort.close();
