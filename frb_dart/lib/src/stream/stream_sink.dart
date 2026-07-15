@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
+import 'package:meta/meta.dart';
 
 /// The Rust `StreamSink<T>` on the Dart side.
 class RustStreamSink<T> {
@@ -13,6 +14,10 @@ class RustStreamSink<T> {
     _state ??= _setup(codec);
     return serializeNativePort(_state!.receivePort.sendPort.nativePort);
   }
+
+  /// {@macro flutter_rust_bridge.internal}
+  @visibleForTesting
+  dynamic get debugSendPort => _state?.receivePort.sendPort;
 
   /// The Dart stream for the Rust sink
   Stream<T> get stream {

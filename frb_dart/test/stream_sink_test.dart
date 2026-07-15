@@ -71,6 +71,23 @@ void main() {
     await subscription.cancel().timeout(const Duration(seconds: 1));
   });
 
+  test('data sent to the port arrives through the stream', () async {
+    // dart:isolate.SendPort.send() is VM-only; on web (JS) int and double
+    // share identity, so this detects the platform without importing dart:io.
+    if (identical(0, 0.0)) return;
+
+    final sink = createSink();
+    final items = <int>[];
+    final subscription = sink.stream.listen(items.add);
+
+    // DcoCodec wire format: [action, payload]. Action 0 = success.
+    (sink.debugSendPort as dynamic).send([0, 42]);
+    await Future<void>.delayed(const Duration(milliseconds: 50));
+
+    expect(items, [42]);
+    await subscription.cancel().timeout(const Duration(seconds: 1));
+  });
+
   test('pause then resume then cancel completes', () async {
     final sink = createSink();
     final subscription = sink.stream.listen((_) {});
