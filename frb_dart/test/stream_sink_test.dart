@@ -70,4 +70,15 @@ void main() {
 
     await subscription.cancel().timeout(const Duration(seconds: 1));
   });
+
+  test('pause then resume then cancel completes', () async {
+    final sink = createSink();
+    final subscription = sink.stream.listen((_) {});
+    subscription.pause();
+    await Future<void>.delayed(const Duration(milliseconds: 10));
+    subscription.resume();
+    await Future<void>.delayed(const Duration(milliseconds: 10));
+
+    await subscription.cancel().timeout(const Duration(seconds: 1));
+  });
 }

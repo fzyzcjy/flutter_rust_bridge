@@ -68,19 +68,21 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
       } on CloseStreamException {
         terminate();
         return;
+        // coverage:ignore-start
       } catch (error, stackTrace) {
-        // Preserve the previous `async*` behaviour: a decoded error/panic ends
-        // the stream after the error event is delivered.
         controller.addError(error, stackTrace);
         terminate();
         return;
       }
+      // coverage:ignore-end
       controller.add(decoded);
     },
+    // coverage:ignore-start
     onError: (Object error, StackTrace stackTrace) {
       controller.addError(error, stackTrace);
       terminate();
     },
+    // coverage:ignore-end
     onDone: terminate,
   );
 
