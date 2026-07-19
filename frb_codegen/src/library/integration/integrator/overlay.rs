@@ -89,7 +89,7 @@ fn backend_shared_template_dir(
     integration_backend: IntegrationBackend,
 ) -> Option<&'static Dir<'static>> {
     match integration_backend {
-        IntegrationBackend::Cargokit => None,
+        IntegrationBackend::Cargokit => Some(&TemplateDirs::CARGOKIT_SHARED),
         IntegrationBackend::NativeAssets => Some(&TemplateDirs::NATIVE_ASSETS_SHARED),
     }
 }
@@ -118,6 +118,12 @@ pub(super) fn compute_replacements<'a>(
     replacements.insert("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name);
     replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name);
     replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir.as_str());
+    let (cargokit_hook_dir, cargokit_crate_prefix) = match config.template {
+        Template::App => ("rust_builder/hook", "../"),
+        Template::Plugin => ("hook", ""),
+    };
+    replacements.insert("REPLACE_ME_CARGOKIT_HOOK_DIR", cargokit_hook_dir);
+    replacements.insert("REPLACE_ME_CARGOKIT_CRATE_PREFIX", cargokit_crate_prefix);
     replacements.insert("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION"));
 
     let rust_frb_dependency = if config.enable_local_dependency {
@@ -305,6 +311,8 @@ impl TemplateDirs {
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/plugin");
     const CARGOKIT_APP: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/app");
+    const CARGOKIT_SHARED: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/shared");
     const CARGOKIT_PLUGIN: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/plugin");
     const NATIVE_ASSETS_SHARED: Dir<'static> =
@@ -315,8 +323,85 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::filter_file;
-    use std::path::Path;
+    use super::{compute_replacements, execute_overlay_templates, filter_file, IntegrateConfig};
+    use crate::misc::{FvmInstallMode, IntegrationBackend, Template};
+    use std::{fs, path::Path};
+
+    #[test]
+    fn test_cargokit_apple_templates_support_swiftpm_and_cocoapods() {
+        const DART_PACKAGE_NAME: &str = "example_plugin";
+        const RUST_CRATE_NAME: &str = "example_crate";
+
+        for template in [Template::App, Template::Plugin] {
+            let output = tempfile::tempdir().unwrap();
+            let config = IntegrateConfig {
+                enable_write_lib: true,
+                enable_integration_test: false,
+                enable_dart_fix: false,
+                enable_dart_format: false,
+                enable_local_dependency: false,
+                rust_crate_name: Some(RUST_CRATE_NAME.to_owned()),
+                rust_crate_dir: "rust".to_owned(),
+                template,
+                integration_backend: IntegrationBackend::Cargokit,
+                platforms: Some("ios,macos".to_owned()),
+                fvm_install_mode: FvmInstallMode::Skip,
+            };
+            let replacements =
+                compute_replacements(&config, DART_PACKAGE_NAME, RUST_CRATE_NAME, false);
+            execute_overlay_templates(
+                &replacements,
+                output.path(),
+                &config,
+                false,
+                DART_PACKAGE_NAME,
+            )
+            .unwrap();
+
+            let (hook_path, platform_root, swift_package_name, expected_crate_path) = match template
+            {
+                Template::App => (
+                    output.path().join("rust_builder/hook/build.dart"),
+                    output.path().join("rust_builder"),
+                    RUST_CRATE_NAME,
+                    "../rust",
+                ),
+                Template::Plugin => (
+                    output.path().join("hook/build.dart"),
+                    output.path().to_owned(),
+                    DART_PACKAGE_NAME,
+                    "rust",
+                ),
+            };
+            let hook = fs::read_to_string(hook_path).unwrap();
+            assert!(!hook.contains("REPLACE_ME_"));
+            assert!(hook.contains(&format!("const _cratePath = '{expected_crate_path}'")));
+            assert!(hook.contains("FlutterRustBridgeNativeAssetsBuilder"));
+            assert!(hook.contains("FlutterGeneratedPluginSwiftPackage"));
+            assert!(hook.contains(".flutter-plugins-dependencies"));
+            assert!(hook.contains("['Cargo.toml', 'Cargo.lock', 'build.rs']"));
+
+            for platform in ["ios", "macos"] {
+                let package_dir = platform_root.join(platform).join(swift_package_name);
+                let manifest = fs::read_to_string(package_dir.join("Package.swift")).unwrap();
+                assert!(!manifest.contains("REPLACE_ME_"));
+                assert!(!manifest.contains("BuildToolPlugin"));
+                assert!(!manifest.contains("unsafeFlags"));
+                assert!(manifest.contains(&format!("let productName = \"{swift_package_name}\"")));
+                assert!(manifest.contains(".split(separator: \"_\")"));
+                assert!(manifest.contains(".joined(separator: \"-\")"));
+                assert!(manifest.contains(&format!("name: \"{RUST_CRATE_NAME}\"")));
+                assert!(manifest.contains("name: productName"));
+                assert!(manifest.contains(&format!("targets: [\"{RUST_CRATE_NAME}\"]")));
+                assert!(package_dir.with_extension("podspec").is_file());
+                assert!(package_dir
+                    .join("Sources")
+                    .join(RUST_CRATE_NAME)
+                    .join("dummy.swift")
+                    .is_file());
+            }
+        }
+    }
 
     #[test]
     fn test_filter_file_excludes_ohos_when_not_enabled() {

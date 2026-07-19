@@ -15,13 +15,28 @@ pub(super) fn pub_add_dependencies(
 ) -> Result<()> {
     // frb-coverage:ignore-end
     if integration_backend == IntegrationBackend::Cargokit {
-        match template {
-            Template::App => flutter_pub_add(
+        let (dependency_working_directory, hooks_local_path) = match template {
+            Template::App => (Some(Path::new("rust_builder")), "../../../frb_hooks"),
+            Template::Plugin => (None, "../../frb_hooks"),
+        };
+        flutter_pub_add(
+            &["code_assets:^1.0.0"],
+            dependency_working_directory,
+            fvm_install_mode,
+        )?;
+        pub_add_dependency(
+            "flutter_rust_bridge_hooks",
+            hooks_local_path,
+            enable_local_dependency,
+            dependency_working_directory,
+            fvm_install_mode,
+        )?;
+        if matches!(template, Template::App) {
+            flutter_pub_add(
                 &[rust_crate_name, "--path=rust_builder"],
                 None,
                 fvm_install_mode,
-            )?,
-            Template::Plugin => {}
+            )?;
         }
     }
 
