@@ -30,9 +30,13 @@ void main(List<String> args) async {
       cratePath: _cratePath,
       targetTriple: _targetTriple(codeConfig),
       addDependency: output.dependencies.add,
-      action: () => const FlutterRustBridgeNativeAssetsBuilder(
+      action: () => FlutterRustBridgeNativeAssetsBuilder(
         assetName: 'REPLACE_ME_RUST_CRATE_NAME.dylib',
         cratePath: _cratePath,
+        extraCargoEnvironmentVariables: {
+          if (codeConfig.targetOS == OS.iOS)
+            'IPHONEOS_DEPLOYMENT_TARGET': '${codeConfig.iOS.targetVersion}.0',
+        },
       ).run(input: input, output: output),
     );
   });
