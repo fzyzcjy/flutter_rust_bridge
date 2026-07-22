@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:code_assets/code_assets.dart';
 import 'package:flutter_rust_bridge_hooks/flutter_rust_bridge_hooks.dart';
 
-const _cratePath = 'REPLACE_ME_CARGOKIT_CRATE_PREFIXREPLACE_ME_RUST_CRATE_DIR';
+const _cratePath = 'rust';
 const _temporaryToolchainMarker =
     '# Generated temporarily by flutter_rust_bridge Apple build hook.';
 
@@ -31,7 +31,7 @@ void main(List<String> args) async {
       targetTriple: _targetTriple(codeConfig),
       addDependency: output.dependencies.add,
       action: () => FlutterRustBridgeNativeAssetsBuilder(
-        assetName: 'REPLACE_ME_RUST_CRATE_NAME.dylib',
+        assetName: 'flutter_package.dylib',
         cratePath: _cratePath,
         extraCargoEnvironmentVariables: {
           if (codeConfig.targetOS == OS.iOS)

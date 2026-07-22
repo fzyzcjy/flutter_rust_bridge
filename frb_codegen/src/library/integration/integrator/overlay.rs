@@ -383,6 +383,9 @@ mod tests {
             assert!(
                 hook.contains("'IPHONEOS_DEPLOYMENT_TARGET': '${codeConfig.iOS.targetVersion}.0'")
             );
+            assert!(hook.contains("on FormatException"));
+            assert!(hook.contains("on ProcessException"));
+            assert!(hook.contains("line.substring(prefix.length).trim()"));
 
             for platform in ["ios", "macos"] {
                 let package_dir = platform_root.join(platform).join(swift_package_name);

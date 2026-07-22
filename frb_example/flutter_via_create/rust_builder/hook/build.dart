@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:code_assets/code_assets.dart';
 import 'package:flutter_rust_bridge_hooks/flutter_rust_bridge_hooks.dart';
 
-const _cratePath = 'REPLACE_ME_CARGOKIT_CRATE_PREFIXREPLACE_ME_RUST_CRATE_DIR';
+const _cratePath = '../rust';
 const _temporaryToolchainMarker =
     '# Generated temporarily by flutter_rust_bridge Apple build hook.';
 
@@ -31,7 +31,7 @@ void main(List<String> args) async {
       targetTriple: _targetTriple(codeConfig),
       addDependency: output.dependencies.add,
       action: () => FlutterRustBridgeNativeAssetsBuilder(
-        assetName: 'REPLACE_ME_RUST_CRATE_NAME.dylib',
+        assetName: 'rust_lib_flutter_via_create.dylib',
         cratePath: _cratePath,
         extraCargoEnvironmentVariables: {
           if (codeConfig.targetOS == OS.iOS)
@@ -52,9 +52,9 @@ String _targetTriple(CodeConfig config) {
     (OS.iOS, Architecture.arm64) => 'aarch64-apple-ios',
     (OS.iOS, Architecture.x64) => 'x86_64-apple-ios',
     _ => throw UnsupportedError(
-      'Unsupported Apple target: ${config.targetOS} '
-      'on ${config.targetArchitecture}',
-    ),
+        'Unsupported Apple target: ${config.targetOS} '
+        'on ${config.targetArchitecture}',
+      ),
   };
 }
 
@@ -120,9 +120,10 @@ bool? _swiftPackageManagerEnabled(File stateFile, String platformDirectory) {
   }
   try {
     final state = jsonDecode(stateFile.readAsStringSync());
-    if (state case {
-      'swift_package_manager_enabled': final Map<String, dynamic> platforms,
-    }) {
+    if (state
+        case {
+          'swift_package_manager_enabled': final Map<String, dynamic> platforms,
+        }) {
       return platforms[platformDirectory] as bool?;
     }
   } on FormatException {
@@ -163,8 +164,7 @@ Future<void> _withTemporaryRustToolchain({
 
     await _addBuildDependencies(crateDirectory, addDependency);
     final channel = await _currentRustToolchainChannel(crateDirectory);
-    final generated =
-        '$_temporaryToolchainMarker\n'
+    final generated = '$_temporaryToolchainMarker\n'
         '[toolchain]\n'
         'channel = "$channel"\n'
         'targets = ["$targetTriple"]\n';
@@ -209,10 +209,13 @@ Future<void> _addBuildDependencies(
   }
 
   try {
-    final result = await Process.run('rustup', [
-      'which',
-      'rustc',
-    ], workingDirectory: crateDirectory.path);
+    final result = await Process.run(
+        'rustup',
+        [
+          'which',
+          'rustc',
+        ],
+        workingDirectory: crateDirectory.path);
     if (result.exitCode == 0) {
       final rustc = File(result.stdout.toString().trim());
       if (await rustc.exists()) {
@@ -241,10 +244,13 @@ File? _findRustToolchain(Directory start) {
 }
 
 Future<String> _currentRustToolchainChannel(Directory crateDirectory) async {
-  final result = await Process.run('rustc', [
-    '--version',
-    '--verbose',
-  ], workingDirectory: crateDirectory.path);
+  final result = await Process.run(
+      'rustc',
+      [
+        '--version',
+        '--verbose',
+      ],
+      workingDirectory: crateDirectory.path);
   if (result.exitCode != 0) {
     throw ProcessException(
       'rustc',
