@@ -379,6 +379,7 @@ mod tests {
             assert!(hook.contains("FlutterRustBridgeNativeAssetsBuilder"));
             assert!(hook.contains("FlutterGeneratedPluginSwiftPackage"));
             assert!(hook.contains(".flutter-plugins-dependencies"));
+            assert!(hook.contains("if (!Platform.isMacOS)"));
             assert!(hook.contains("['Cargo.toml', 'Cargo.lock', 'build.rs']"));
             assert!(
                 hook.contains("'IPHONEOS_DEPLOYMENT_TARGET': '${codeConfig.iOS.targetVersion}.0'")

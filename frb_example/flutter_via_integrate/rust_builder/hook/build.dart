@@ -10,6 +10,12 @@ const _temporaryToolchainMarker =
 
 void main(List<String> args) async {
   await build(args, (input, output) async {
+    // Apple builds are only supported on macOS. Avoid parsing the code asset
+    // configuration on other hosts, where CargoKit remains the active builder.
+    if (!Platform.isMacOS) {
+      return;
+    }
+
     if (!input.config.buildCodeAssets) {
       return;
     }
