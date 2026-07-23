@@ -411,7 +411,7 @@ Future<void> generateAppleScaffold() async {
         generateAppleScaffoldPackageConfigForTesting(package),
       );
     }
-  });
+  }, extraArgs: gitExcludePathspecArgs(kIntegrateDiffExcludedPaths));
 }
 
 @visibleForTesting

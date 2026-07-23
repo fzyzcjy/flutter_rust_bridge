@@ -8,8 +8,11 @@ environment:
   flutter: '>=3.3.0'
 
 dependencies:
+  code_assets: ^1.0.0
   flutter:
     sdk: flutter
+  flutter_rust_bridge_hooks:
+    path: ../../../frb_hooks
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
