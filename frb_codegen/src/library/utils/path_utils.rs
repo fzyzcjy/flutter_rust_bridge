@@ -20,7 +20,7 @@ pub(crate) fn find_parent_dir_with_file(
     path_start: &Path,
     probe_file_name: &str,
 ) -> Option<PathBuf> {
-    let mut path = path_start.to_owned();
+    let mut path = path_start.to_path_buf();
     loop {
         if path.join(probe_file_name).is_file() {
             return Some(path);

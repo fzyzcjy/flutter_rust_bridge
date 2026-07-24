@@ -12,8 +12,11 @@ use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig
 use lib_flutter_rust_bridge_codegen::misc::FvmInstallMode;
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
-use log::{debug, warn};
+use log::{debug, error, warn};
+use std::env::set_current_dir;
+use std::fs::canonicalize;
 use std::path::Path;
+use std::process::exit;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
@@ -26,8 +29,18 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
     debug!("cli={cli:?}");
     match cli.command {
         Commands::Generate(args) => {
+            if let Some(config_path) = args.primary.config_file.as_deref() {
+                if let Some(parent) = canonicalize(Path::new(config_path))?.parent() {
+                    set_current_dir(parent)?;
+                } else {
+                    error!("Couldn't switch current working directory to the specified config path's parent");
+                    exit(1);
+                }
+            }
+
             let meta_config = compute_codegen_meta_config(&args);
             let config = compute_codegen_config(args.primary)?;
+
             codegen::generate_with_fvm_install_mode(
                 config,
                 meta_config,

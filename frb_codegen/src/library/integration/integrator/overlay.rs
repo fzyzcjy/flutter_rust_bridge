@@ -5,6 +5,7 @@ use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::warn;
+use std::borrow::Cow;
 use std::collections::HashMap;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
@@ -14,7 +15,7 @@ fn execute_overlay_dir(
     replacements: &HashMap<&'static str, &str>,
     dart_root: &Path,
     config: &IntegrateConfig,
-    comment_out_files: Option<&[String]>,
+    comment_out_files: Option<&[Cow<'_, str>]>,
     include_ohos: bool,
 ) -> Result<()> {
     overlay_dir(
@@ -59,10 +60,13 @@ pub(super) fn execute_overlay_templates(
     )?;
 
     let (shared_template_dir, comment_out_files) = match &config.template {
-        Template::App => (&TemplateDirs::SHARED_APP, vec!["main.dart".to_string()]),
+        Template::App => (
+            &TemplateDirs::SHARED_APP,
+            vec!["main.dart".into(), "CMakeLists.txt".into()],
+        ),
         Template::Plugin => (
             &TemplateDirs::SHARED_PLUGIN,
-            vec![format!("{dart_package_name}.dart")],
+            vec![format!("{dart_package_name}.dart").into()],
         ),
     };
     execute_overlay_dir(
@@ -70,7 +74,7 @@ pub(super) fn execute_overlay_templates(
         replacements,
         dart_root,
         config,
-        Some(&comment_out_files),
+        Some(comment_out_files.as_slice()),
         include_ohos,
     )?;
 
@@ -147,7 +151,7 @@ fn modify_file(
     existing_content: Option<Vec<u8>>,
     replacements: &HashMap<&str, &str>,
     enable_local_dependency: bool,
-    comment_out_files: Option<&[String]>,
+    comment_out_files: Option<&[Cow<'_, str>]>,
 ) -> Option<(PathBuf, Vec<u8>)> {
     let src = replace_file_content(reference_content, replacements);
 
@@ -156,7 +160,7 @@ fn modify_file(
             target_path.file_name().and_then(|e| e.to_str()),
             comment_out_files,
         ) {
-            if files.contains(&file_name.to_owned()) {
+            if files.contains(&Cow::Borrowed(file_name)) {
                 return comment_out_existing_file_and_write_template(
                     existing_content,
                     target_path,
@@ -222,7 +226,10 @@ fn filter_file(
     }
 
     if path.iter().contains(&OsStr::new("cargokit")) {
-        return ![".git", ".github", "docs", "test"].contains(&file_name(path));
+        const CARGOKIT_GIT_PATHS: &[&str] = &[".git", ".github", "docs", "test"];
+        return !CARGOKIT_GIT_PATHS
+            .iter()
+            .contains(&file_name(path).as_ref());
     }
 
     if !enable_write_lib {
@@ -258,11 +265,11 @@ fn filter_file(
 }
 
 fn compute_cargokit_comments(path: &Path) -> Option<String> {
-    if [".gitignore"].contains(&file_name(path)) {
+    if ".gitignore" == file_name(path) {
         return None;
     }
 
-    let comment_leading = match file_extension(path) {
+    let comment_leading = match file_extension(path).as_ref() {
         "dart" | "md" | "gradle" | "" => "///",
         "yaml" | "toml" => "#",
         // Do not add prelude for `sh`, since it can contain things like `#!/bin/bash`
@@ -281,12 +288,12 @@ fn compute_cargokit_comments(path: &Path) -> Option<String> {
     )
 }
 
-fn file_name(p: &Path) -> &str {
-    p.file_name().unwrap().to_str().unwrap()
+fn file_name(p: &Path) -> Cow<'_, str> {
+    p.file_name().unwrap().to_string_lossy()
 }
 
-fn file_extension(p: &Path) -> &str {
-    p.extension().unwrap_or_default().to_str().unwrap()
+fn file_extension(p: &Path) -> Cow<'_, str> {
+    p.extension().unwrap_or_default().to_string_lossy()
 }
 
 const CARGOKIT_PRELUDE: &[&str] = &[
@@ -299,16 +306,22 @@ struct TemplateDirs;
 impl TemplateDirs {
     const SHARED_SHARED: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/shared");
+
     const SHARED_APP: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/app");
+
     const SHARED_PLUGIN: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/plugin");
+
     const CARGOKIT_APP: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/app");
+
     const CARGOKIT_PLUGIN: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/plugin");
+
     const NATIVE_ASSETS_SHARED: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/native_assets/shared");
+
     const NATIVE_ASSETS_PLUGIN: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/native_assets/plugin");
 }

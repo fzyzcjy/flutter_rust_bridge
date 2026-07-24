@@ -46,7 +46,7 @@ impl Config {
         Ok(None)
     }
 
-    pub fn from_config_file(location: &str) -> anyhow::Result<Option<Self>> {
+    fn from_config_file(location: &str) -> anyhow::Result<Option<Self>> {
         if let Ok(file) = fs::File::open(location) {
             debug!("Found config file {location}");
             let raw: Config = serde_yaml::from_reader(file)
