@@ -1,17 +1,37 @@
 use crate::binary::commands::{GenerateCommandArgs, GenerateCommandArgsPrimary};
 use anyhow::Result;
 use lib_flutter_rust_bridge_codegen::codegen::{Config, MetaConfig, RustOpaqueCodecMode};
-use log::info;
+use log::warn;
 
 pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result<Config> {
-    let config_from_file = match Config::from_files_auto_option()? {
-        Some(config) => config,
-        None => {
-            info!(
-                "Could not find any configuration file at known paths and --config-file is not set. Falling back to default configuration"
-            );
+    let config_from_file = if let Some(path) = args.config_file.as_deref() {
+        match Config::from_config_file(path)? {
+            Some(config) => config,
+            None => {
+                warn!("Couldn't parse the passed config file. Trying other options");
 
-            Config::default()
+                match Config::from_files_auto_option()? {
+                    Some(config) => config,
+                    None => {
+                        warn!(
+                            "Could not find any configuration file at known paths. Falling back to default configuration"
+                        );
+
+                        Config::default()
+                    }
+                }
+            }
+        }
+    } else {
+        match Config::from_files_auto_option()? {
+            Some(config) => config,
+            None => {
+                warn!(
+                    "Could not find any configuration file at known paths and --config-file is not set. Falling back to default configuration"
+                );
+
+                Config::default()
+            }
         }
     };
 
