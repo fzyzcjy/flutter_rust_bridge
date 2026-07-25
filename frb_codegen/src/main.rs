@@ -5,7 +5,9 @@
 
 mod binary;
 
-use crate::binary::commands::{Cli, Commands, CreateOrIntegrateCommandCommonArgs};
+use crate::binary::commands::{
+    Cli, Commands, CreateOrIntegrateCommandCommonArgs, GenerateCommandArgs,
+};
 use crate::binary::commands_parser::{compute_codegen_config, compute_codegen_meta_config};
 use clap::Parser;
 use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
@@ -15,6 +17,7 @@ use lib_flutter_rust_bridge_codegen::*;
 use log::{debug, error, warn};
 use std::env::set_current_dir;
 use std::fs::canonicalize;
+use std::io;
 use std::path::Path;
 use std::process::exit;
 
@@ -29,13 +32,8 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
     debug!("cli={cli:?}");
     match cli.command {
         Commands::Generate(args) => {
-            if let Some(config_path) = args.primary.config_file.as_deref() {
-                if let Some(parent) = canonicalize(Path::new(config_path))?.parent() {
-                    set_current_dir(parent)?;
-                } else {
-                    error!("Couldn't switch current working directory to the specified config path's parent");
-                    exit(1);
-                }
+            if args.primary.switch_to_config_parent {
+                switch_to_config_parent_directory(&args)?;
             }
 
             let meta_config = compute_codegen_meta_config(&args);
@@ -89,6 +87,21 @@ fn compute_rust_crate_dir(config: &CreateOrIntegrateCommandCommonArgs) -> String
         warn!("Argument given to --rust-crate-dir was an absolute Path. It will still be interpreted as relative to the new project root.")
     }
     rust_crate_dir
+}
+
+fn switch_to_config_parent_directory(args: &GenerateCommandArgs) -> Result<(), io::Error> {
+    if let Some(config_path) = args.primary.config_file.as_deref() {
+        if let Some(parent) = canonicalize(Path::new(config_path))?.parent() {
+            set_current_dir(parent)?;
+        } else {
+            error!(
+                "Couldn't switch current working directory to the specified config path's parent"
+            );
+            exit(1);
+        }
+    }
+
+    Ok(())
 }
 
 #[cfg(test)]
