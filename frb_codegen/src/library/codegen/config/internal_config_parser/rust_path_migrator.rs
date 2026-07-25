@@ -12,8 +12,8 @@ pub(super) fn migrate_rust_input_config<'a>(
 ) -> anyhow::Result<ConfigRustRootAndRustInput<'a>> {
     if raw_rust_input == "rust/src/api/**/*.rs" {
         return Ok(ConfigRustRootAndRustInput {
-            rust_root: "rust/".into(),
-            rust_input: "crate::api".into(),
+            rust_root: "rust/",
+            rust_input: "crate::api",
         });
     }
 
@@ -55,16 +55,16 @@ mod tests {
         assert_eq!(
             migrate_rust_input_config(None, "crate::apple").unwrap(),
             ConfigRustRootAndRustInput {
-                rust_root: "rust/".into(),
-                rust_input: "crate::apple".into()
+                rust_root: "rust/",
+                rust_input: "crate::apple"
             }
         );
 
         assert_eq!(
             migrate_rust_input_config(Some("native/"), "crate::orange").unwrap(),
             ConfigRustRootAndRustInput {
-                rust_root: "native/".into(),
-                rust_input: "crate::orange".into()
+                rust_root: "native/",
+                rust_input: "crate::orange"
             }
         );
     }
