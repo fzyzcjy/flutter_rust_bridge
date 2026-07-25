@@ -57,7 +57,7 @@ pub(crate) fn compute_effective_path(path: &Path, replacements: &HashMap<&str, &
 }
 
 pub(crate) fn replace_file_content(content: &[u8], replacements: &HashMap<&str, &str>) -> Vec<u8> {
-    match str::from_utf8(content) {
+    match std::str::from_utf8(content) {
         Ok(string_content) => replace_string_content(string_content, replacements).into_bytes(),
         Err(_) => content.to_vec(),
     }
