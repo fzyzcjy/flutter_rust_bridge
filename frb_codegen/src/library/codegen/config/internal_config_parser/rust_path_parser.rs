@@ -20,9 +20,9 @@ pub(super) fn compute_rust_path_info(
     config_rust_output: &Option<String>,
 ) -> anyhow::Result<RustInputInfo> {
     let rust_input_namespace_prefixes_raw =
-        compute_rust_input_namespace_prefixes_raw(&migrated_rust_input.rust_input);
+        compute_rust_input_namespace_prefixes_raw(migrated_rust_input.rust_input);
     sanity_check_rust_input_namespace_prefixes(&rust_input_namespace_prefixes_raw);
-    let rust_crate_dir = compute_rust_crate_dir(base_dir, &migrated_rust_input.rust_root)?;
+    let rust_crate_dir = compute_rust_crate_dir(base_dir, migrated_rust_input.rust_root)?;
     let rust_output_path = compute_rust_output_path(config_rust_output, base_dir, &rust_crate_dir)?;
 
     let rust_output_path_namespace =

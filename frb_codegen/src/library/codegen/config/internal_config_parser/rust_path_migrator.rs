@@ -24,7 +24,7 @@ pub(super) fn migrate_rust_input_config<'a>(
     );
 
     Ok(ConfigRustRootAndRustInput {
-        rust_root: raw_rust_root.unwrap_or_else(|| "rust/"),
+        rust_root: raw_rust_root.unwrap_or("rust/"),
         rust_input: raw_rust_input,
     })
 }
@@ -39,8 +39,8 @@ mod tests {
         assert_eq!(
             actual,
             ConfigRustRootAndRustInput {
-                rust_root: "rust/".into(),
-                rust_input: "crate::api".into()
+                rust_root: "rust/",
+                rust_input: "crate::api"
             }
         );
     }

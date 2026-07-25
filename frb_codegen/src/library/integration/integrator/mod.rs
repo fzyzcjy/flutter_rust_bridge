@@ -46,7 +46,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let rust_crate_name = config
         .rust_crate_name
         .as_deref()
-        .map(|crate_name| Cow::Borrowed(crate_name))
+        .map(Cow::Borrowed)
         .unwrap_or(match &config.template {
             Template::App => Cow::Owned(format!("rust_lib_{dart_package_name}")),
             Template::Plugin => Cow::Borrowed(dart_package_name.as_str()),
