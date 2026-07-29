@@ -205,6 +205,20 @@ final kCiJobs = [
     ]),
   ),
   CiJob(
+    'test_flutter_native_nix',
+    matrix: CiMatrix([
+      for (final info in [
+        ..._linuxFlutterDesktopPackageEntries([
+          'frb_example--flutter_via_create',
+          'frb_example--flutter_via_create_native_assets',
+          'frb_example--flutter_via_integrate',
+          'frb_example--flutter_via_integrate_native_assets',
+        ], useNix: true),
+      ])
+        {'info': info},
+    ]),
+  ),
+  CiJob(
     'test_flutter_web',
     matrix: CiMatrix([
       for (final package in [
@@ -257,10 +271,15 @@ List<Map<String, Object?>> _flutterDesktopPackageEntries(String package) => [
 ];
 
 List<Map<String, Object?>> _linuxFlutterDesktopPackageEntries(
-  List<String> packages,
-) => [
+  List<String> packages, {
+  bool useNix = false,
+}) => [
   for (final package in packages)
-    {'image': 'ubuntu-latest', 'platform': 'linux', 'package': package},
+    {
+      'image': useNix ? "nixos/nix" : 'ubuntu-latest',
+      'platform': 'linux',
+      'package': package,
+    },
 ];
 
 List<Map<String, Object?>> _quickstartSmokeEntries(String package) {

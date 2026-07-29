@@ -15,20 +15,11 @@
       system:
       let
         pkgs = import nixpkgs { inherit system; };
+
       in
       {
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            flutter
-            glib
-            libepoxy
-            pango
-            pkg-config
-            ninja
-            at-spi2-core
-            gtk3
-            rustup
-          ];
+          buildInputs = import ./nix/inputs.nix { inherit pkgs; };
         };
       }
     );
