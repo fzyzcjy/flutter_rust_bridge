@@ -213,7 +213,7 @@ final kCiJobs = [
           'frb_example--flutter_via_create_native_assets',
           'frb_example--flutter_via_integrate',
           'frb_example--flutter_via_integrate_native_assets',
-        ], useNix: true),
+        ]),
       ])
         {'info': info},
     ]),
@@ -271,12 +271,10 @@ List<Map<String, Object?>> _flutterDesktopPackageEntries(String package) => [
 ];
 
 List<Map<String, Object?>> _linuxFlutterDesktopPackageEntries(
-  List<String> packages, {
-  bool useNix = false,
-}) => [
+  List<String> packages) => [
   for (final package in packages)
     {
-      'image': useNix ? "nixos/nix" : 'ubuntu-latest',
+      'image': 'ubuntu-latest',
       'platform': 'linux',
       'package': package,
     },
