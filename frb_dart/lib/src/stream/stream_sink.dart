@@ -12,12 +12,8 @@ class RustStreamSink<T> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   String setupAndSerialize({required BaseCodec<T, dynamic, dynamic> codec}) {
     _state ??= _setup(codec);
-    return serializeNativePort(_state!.receivePort.sendPort.nativePort);
+    return serializeNativePort(_state!.receivePort!.sendPort.nativePort);
   }
-
-  /// {@macro flutter_rust_bridge.internal}
-  @visibleForTesting
-  dynamic get debugSendPort => _state?.receivePort.sendPort;
 
   /// The Dart stream for the Rust sink
   Stream<T> get stream {
@@ -31,10 +27,33 @@ class RustStreamSink<T> {
     }
     return state.stream;
   }
+
+  /// Creates an uninitialized sink; call [setupAndSerialize] before use.
+  RustStreamSink();
+
+  RustStreamSink._withState(this._state);
+}
+
+/// Test-only constructor that binds [RustStreamSink] to an injectable raw
+/// event [source] instead of a platform receive port.
+///
+/// Kept as a top-level symbol (not a member of [RustStreamSink]) so package
+/// entrypoints that `show RustStreamSink` do not expose it to consumers.
+/// Tests import this library via `package:flutter_rust_bridge/src/...`.
+@visibleForTesting
+RustStreamSink<T> rustStreamSinkWithRawSourceForTest<T>({
+  required BaseCodec<T, dynamic, dynamic> codec,
+  required Stream<dynamic> source,
+  void Function()? closeSource,
+}) {
+  return RustStreamSink._withState(
+    _State(null, _bindDecodedStream(codec, source, closeSource: closeSource)),
+  );
 }
 
 class _State<T> {
-  final ReceivePort receivePort;
+  /// Non-null for production sinks created via [RustStreamSink.setupAndSerialize].
+  final ReceivePort? receivePort;
   final Stream<T> stream;
 
   const _State(this.receivePort, this.stream);
@@ -43,29 +62,39 @@ class _State<T> {
 _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
   final portName = ExecuteStreamPortGenerator.create('RustStreamSink');
   final receivePort = broadcastPort(portName);
+  return _State(
+    receivePort,
+    _bindDecodedStream(codec, receivePort, closeSource: receivePort.close),
+  );
+}
 
-  // Listen to the port directly instead of wrapping it in an `async*` generator
-  // that does `await for (receivePort)`. A generator suspended in `await for`
-  // cannot be interrupted by cancelling its subscription, so if Rust stays idle
-  // (never sends another message and never closes the stream) then
-  // `StreamSubscription.cancel()` would hang forever. Closing the port only
-  // wakes such a generator on native (where `ReceivePort.close()` delivers a
-  // done event) but not on web (where closing a `BroadcastChannel` delivers
-  // nothing), so `await for` is fundamentally unsafe here. A plain subscription
-  // can always be cancelled immediately and identically on every platform.
+/// Listen to [source] directly instead of wrapping it in an `async*` generator
+/// that does `await for`. A generator suspended in `await for` cannot be
+/// interrupted by cancelling its subscription, so if the producer stays idle
+/// (never sends another message and never closes the stream) then
+/// `StreamSubscription.cancel()` would hang forever. Closing a receive port
+/// only wakes such a generator on native (where `ReceivePort.close()` delivers
+/// a done event) but not on web (where closing a `BroadcastChannel` delivers
+/// nothing), so `await for` is fundamentally unsafe here. A plain subscription
+/// can always be cancelled immediately and identically on every platform.
+Stream<T> _bindDecodedStream<T>(
+  BaseCodec<T, dynamic, dynamic> codec,
+  Stream<dynamic> source, {
+  void Function()? closeSource,
+}) {
   final controller = StreamController<T>(sync: true);
-  late final StreamSubscription<dynamic> portSubscription;
+  late final StreamSubscription<dynamic> sourceSubscription;
 
   var terminated = false;
   void terminate() {
     if (terminated) return;
     terminated = true;
-    receivePort.close();
-    portSubscription.cancel();
+    closeSource?.call();
+    sourceSubscription.cancel();
     controller.close();
   }
 
-  portSubscription = receivePort.listen(
+  sourceSubscription = source.listen(
     (raw) {
       final T decoded;
       try {
@@ -73,17 +102,19 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
       } on CloseStreamException {
         terminate();
         return;
-        // coverage:ignore-start
       } catch (error, stackTrace) {
+        // Preserve the previous `async*` behaviour: a decoded error/panic ends
+        // the stream after the error event is delivered.
         controller.addError(error, stackTrace);
         terminate();
         return;
       }
-      // coverage:ignore-end
       controller.add(decoded);
     },
     // coverage:ignore-start
     onError: (Object error, StackTrace stackTrace) {
+      // Platform receive ports do not surface stream-level errors; this is a
+      // defensive path for injectable sources / future transport changes.
       controller.addError(error, stackTrace);
       terminate();
     },
@@ -93,16 +124,16 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
 
   controller
     ..onPause = () {
-      if (!terminated) portSubscription.pause();
+      if (!terminated) sourceSubscription.pause();
     }
     ..onResume = () {
-      if (!terminated) portSubscription.resume();
+      if (!terminated) sourceSubscription.resume();
     }
     ..onCancel = () {
       terminated = true;
-      receivePort.close();
-      return portSubscription.cancel();
+      closeSource?.call();
+      return sourceSubscription.cancel();
     };
 
-  return _State(receivePort, controller.stream);
+  return controller.stream;
 }
