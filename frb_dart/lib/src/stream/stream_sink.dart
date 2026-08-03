@@ -12,7 +12,7 @@ class RustStreamSink<T> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   String setupAndSerialize({required BaseCodec<T, dynamic, dynamic> codec}) {
     _state ??= _setup(codec);
-    return serializeNativePort(_state!.receivePort!.sendPort.nativePort);
+    return serializeNativePort(_state!.receivePort.sendPort.nativePort);
   }
 
   /// The Dart stream for the Rust sink
@@ -27,33 +27,10 @@ class RustStreamSink<T> {
     }
     return state.stream;
   }
-
-  /// Creates an uninitialized sink; call [setupAndSerialize] before use.
-  RustStreamSink();
-
-  RustStreamSink._withState(this._state);
-}
-
-/// Test-only constructor that binds [RustStreamSink] to an injectable raw
-/// event [source] instead of a platform receive port.
-///
-/// Kept as a top-level symbol (not a member of [RustStreamSink]) so package
-/// entrypoints that `show RustStreamSink` do not expose it to consumers.
-/// Tests import this library via `package:flutter_rust_bridge/src/...`.
-@visibleForTesting
-RustStreamSink<T> rustStreamSinkWithRawSourceForTest<T>({
-  required BaseCodec<T, dynamic, dynamic> codec,
-  required Stream<dynamic> source,
-  void Function()? closeSource,
-}) {
-  return RustStreamSink._withState(
-    _State(null, _bindDecodedStream(codec, source, closeSource: closeSource)),
-  );
 }
 
 class _State<T> {
-  /// Non-null for production sinks created via [RustStreamSink.setupAndSerialize].
-  final ReceivePort? receivePort;
+  final ReceivePort receivePort;
   final Stream<T> stream;
 
   const _State(this.receivePort, this.stream);
@@ -68,6 +45,19 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
   );
 }
 
+/// Test-only seam exposing [_bindDecodedStream] over an injectable raw event
+/// [source] instead of a platform receive port.
+///
+/// Kept as a top-level symbol (not a member of [RustStreamSink]) so that
+/// entrypoints exporting `show RustStreamSink` do not leak it to consumers.
+/// Tests reach it via `package:flutter_rust_bridge/src/...`.
+@visibleForTesting
+Stream<T> bindDecodedStreamForTest<T>({
+  required BaseCodec<T, dynamic, dynamic> codec,
+  required Stream<dynamic> source,
+  required void Function() closeSource,
+}) => _bindDecodedStream(codec, source, closeSource: closeSource);
+
 /// Listen to [source] directly instead of wrapping it in an `async*` generator
 /// that does `await for`. A generator suspended in `await for` cannot be
 /// interrupted by cancelling its subscription, so if the producer stays idle
@@ -80,17 +70,21 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
 Stream<T> _bindDecodedStream<T>(
   BaseCodec<T, dynamic, dynamic> codec,
   Stream<dynamic> source, {
-  void Function()? closeSource,
+  required void Function() closeSource,
 }) {
   final controller = StreamController<T>(sync: true);
-  late final StreamSubscription<dynamic> sourceSubscription;
 
+  // Nullable rather than `late`: a source is allowed to report done or error
+  // before `listen` returns, so `terminate` can run while the subscription
+  // does not exist yet. The `if (terminated)` check below closes that window.
+  StreamSubscription<dynamic>? sourceSubscription;
   var terminated = false;
+
   void terminate() {
     if (terminated) return;
     terminated = true;
-    closeSource?.call();
-    sourceSubscription.cancel();
+    closeSource();
+    sourceSubscription?.cancel();
     controller.close();
   }
 
@@ -111,28 +105,27 @@ Stream<T> _bindDecodedStream<T>(
       }
       controller.add(decoded);
     },
-    // coverage:ignore-start
     onError: (Object error, StackTrace stackTrace) {
-      // Platform receive ports do not surface stream-level errors; this is a
-      // defensive path for injectable sources / future transport changes.
+      // Receive ports never surface stream-level errors, but an arbitrary
+      // source may, and silently dropping them would hide failures.
       controller.addError(error, stackTrace);
       terminate();
     },
-    // coverage:ignore-end
     onDone: terminate,
   );
+  if (terminated) sourceSubscription.cancel();
 
   controller
     ..onPause = () {
-      if (!terminated) sourceSubscription.pause();
+      if (!terminated) sourceSubscription!.pause();
     }
     ..onResume = () {
-      if (!terminated) sourceSubscription.resume();
+      if (!terminated) sourceSubscription!.resume();
     }
     ..onCancel = () {
       terminated = true;
-      closeSource?.call();
-      return sourceSubscription.cancel();
+      closeSource();
+      return sourceSubscription!.cancel();
     };
 
   return controller.stream;
