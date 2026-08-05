@@ -119,13 +119,9 @@ void main() {
     () async {
       final harness = createInjected();
       final items = <int>[];
-      Object? error;
       var done = false;
       harness.stream.listen(
         items.add,
-        onError: (Object e, StackTrace _) {
-          error = e;
-        },
         onDone: () {
           done = true;
         },
@@ -138,7 +134,6 @@ void main() {
       await Future<void>.delayed(Duration.zero);
 
       expect(items, [7]);
-      expect(error, isNull);
       expect(done, isTrue);
       expect(harness.source.isClosed, isTrue);
     },
@@ -169,7 +164,7 @@ void main() {
     Object? error;
     var done = false;
     final subscription = harness.stream.listen(
-      (_) {},
+      null,
       onError: (Object e, StackTrace _) {
         error = e;
       },
@@ -192,7 +187,7 @@ void main() {
     Object? error;
     var done = false;
     harness.stream.listen(
-      (_) {},
+      null,
       onError: (Object e, StackTrace _) {
         error = e;
       },
