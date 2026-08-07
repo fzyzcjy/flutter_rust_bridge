@@ -10,6 +10,12 @@ In addition, Rust has `panic` in addition to Result error, thus:
 
 * When Rust panic occurs, a `PanicException` will be thrown in Dart.
 
+:::note
+This is the behavior under Rust's default `panic = "unwind"`, which is what almost all projects use.
+If your project opts into `panic = "abort"` instead, panics cannot be turned into Dart exceptions —
+see [below](#panic-abort).
+:::
+
 If you want to see stack traces (backtraces), [this doc page](../../how-to/stack-trace) discusses how to configure it.
 
 ## Example
@@ -75,3 +81,36 @@ pub enum CustomStructError {
 ```
 
 As for how to fill it in or use it, you can refer to `thiserror` crate for some hints.
+
+## Projects using `panic = "abort"` {#panic-abort}
+
+Turning a Rust panic into a Dart `PanicException` requires catching the unwind. If your project opts out of unwinding:
+
+```toml
+[profile.release]
+panic = "abort"
+```
+
+then there is nothing to catch — the process is terminated at the panic site, before anything on the Rust
+or the Dart side can react, and the app exits without a Dart-visible error.
+This is standard Rust behavior rather than something specific to flutter_rust_bridge,
+but it does change the contract described above, so it seems worth saying explicitly.
+
+Besides panics in your own Rust code, the generated `frb_generated.rs` contains a few `.unwrap()` calls on the
+decoding path (UTF-8 validation, integer parsing, allocating a `Vec` with a decoded length).
+**In normal use these are never reached.** The generated Dart encoder and the generated Rust decoder are two
+halves of the same codec, so the decoder only ever sees input that the encoder just produced, and Dart's own
+type invariants already guarantee properties such as valid UTF-8 before anything is encoded.
+
+They become reachable only in abnormal situations, such as:
+
+* a bug in a particular codegen version,
+* hand-editing one side of the bridge without regenerating the other,
+* a caller invoking the native symbols directly and bypassing the generated Dart code — for example, someone attacking your shipped binary.
+
+So, unless you have a specific reason to use `panic = "abort"`, keeping the default `unwind` means
+flutter_rust_bridge behaves exactly as described above.
+If you do keep `abort` — say, to bound what a panic can leave behind in memory —
+then it is worth treating those generated call sites as invariants your app relies on,
+and giving them a look when upgrading flutter_rust_bridge, the same way you would review
+any other security-relevant dependency change.
