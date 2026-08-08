@@ -29,13 +29,13 @@ Run before diagnosing or closing a Native Assets test-startup regression, and af
 
 ## Preparation
 
-Run all commands in the per-worktree FRB Docker container. Use a disposable fixture under `frb_example/native_assets_hook_overhead_fixture`; do not commit its marker code, generated test files, or `.dart_tool` output.
+Run all command blocks in the same shell in the per-worktree FRB Docker container. Before starting, set `EVIDENCE_ROOT` to a new, run-specific absolute path outside the repository, such as `/frb-manual-test-evidence/issue-3296-20260710T120000Z`. Use disposable fixtures under `frb_example`; do not commit their marker code, generated test files, or `.dart_tool` output.
 
 ## Test Data
 
 - Input files: two independent lightweight test files and a temporary hook marker that appends its timestamp and process ID to `hook-invocations.log`.
-- Cold cases: one explicitly selected file, two explicitly selected files, and default discovery with no file arguments.
-- Warm case: repeat the one-file command without deleting `.dart_tool`, `build`, or `hook-invocations.log`.
+- Native Assets hook-cache cold cases: one explicitly selected file, two explicitly selected files, and default discovery with no file arguments. Rust compilation caches are not reset between cases, so wall times must not be compared across fixtures as a Rust build benchmark.
+- Warm case: immediately repeat the one-file command without deleting `.dart_tool`, `build`, or `hook-invocations.log`.
 - Reset procedure before each cold case: remove the fixture's `.dart_tool`, `build`, and `hook-invocations.log` files.
 
 ## Steps
@@ -43,8 +43,18 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
 1. Create a disposable FRB fixture and record tool versions.
 
    ```bash
+   set -euo pipefail
+   repo_root="$(git rev-parse --show-toplevel)"
+   evidence_root_input="${EVIDENCE_ROOT:?Set EVIDENCE_ROOT to a new absolute run-specific path}"
+   case "$evidence_root_input" in /*) ;; *) echo 'EVIDENCE_ROOT must be absolute' >&2; exit 1;; esac
+   evidence_root="$(realpath -m -- "$evidence_root_input")"
+   case "$evidence_root" in "$repo_root"|"$repo_root"/*) echo 'EVIDENCE_ROOT must be outside the repository' >&2; exit 1;; esac
+   test ! -e "$evidence_root"
+   mkdir -p "$evidence_root/frb" "$evidence_root/vanilla"
+   cd "$repo_root"
    rm -rf frb_example/native_assets_hook_overhead_fixture
    cp -a frb_example/flutter_package_native_assets frb_example/native_assets_hook_overhead_fixture
+   rm -rf frb_example/native_assets_hook_overhead_fixture/rust/target
    cd frb_example/native_assets_hook_overhead_fixture
    flutter --version
    dart --version
@@ -90,7 +100,7 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
 
    ```bash
    set -euo pipefail
-   mkdir -p evidence
+   evidence_dir="$evidence_root/frb"
    TIMEFORMAT='real %3R s user %3U s sys %3S s'
 
    run_cold_case() {
@@ -98,28 +108,29 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
      shift
      rm -rf .dart_tool build hook-invocations.log
      flutter pub get
-     { time flutter test "$@"; } 2>&1 | tee "evidence/$case_name.log"
+     { time flutter test "$@"; } 2>&1 | tee "$evidence_dir/$case_name.log"
      test -f hook-invocations.log
-     cp hook-invocations.log "evidence/$case_name-hook-invocations.log"
-     wc -l hook-invocations.log | tee "evidence/$case_name-hook-count.log"
+     cp hook-invocations.log "$evidence_dir/$case_name-hook-invocations.log"
+     wc -l hook-invocations.log | tee "$evidence_dir/$case_name-hook-count.log"
    }
 
    run_cold_case single-file test/a_test.dart
-   run_cold_case explicit-two-files test/a_test.dart test/b_test.dart
-   run_cold_case default-discovery
-
    before_count="$(wc -l < hook-invocations.log)"
-   { time flutter test test/a_test.dart; } 2>&1 | tee evidence/warm-repeat.log
+   { time flutter test test/a_test.dart; } 2>&1 | tee "$evidence_dir/warm-repeat.log"
    after_count="$(wc -l < hook-invocations.log)"
    printf 'before=%s after=%s delta=%s\n' \
      "$before_count" "$after_count" "$((after_count - before_count))" \
-     | tee evidence/warm-repeat-hook-count.log
-   cp hook-invocations.log evidence/warm-repeat-hook-invocations.log
+     | tee "$evidence_dir/warm-repeat-hook-count.log"
+   cp hook-invocations.log "$evidence_dir/warm-repeat-hook-invocations.log"
+
+   run_cold_case explicit-two-files test/a_test.dart test/b_test.dart
+   run_cold_case default-discovery
    ```
 
 4. Run the equivalent vanilla comparison at the pinned upstream revision. Its Flutter fixture is `examples/flutter`; default discovery also includes the existing `widget_test.dart`.
 
    ```bash
+   cd "$repo_root"
    rm -rf frb_example/native_toolchain_rust_hook_overhead_fixture
    git clone https://github.com/GregoryConrad/native_toolchain_rust.git \
      frb_example/native_toolchain_rust_hook_overhead_fixture
@@ -149,7 +160,7 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
    printf "import 'package:flutter_test/flutter_test.dart'; void main() => test('a', () {});\n" > test/a_test.dart
    printf "import 'package:flutter_test/flutter_test.dart'; void main() => test('b', () {});\n" > test/b_test.dart
    set -euo pipefail
-   mkdir -p evidence
+   evidence_dir="$evidence_root/vanilla"
    TIMEFORMAT='real %3R s user %3U s sys %3S s'
 
    run_cold_case() {
@@ -157,23 +168,23 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
      shift
      rm -rf .dart_tool build hook-invocations.log
      flutter pub get
-     { time flutter test "$@"; } 2>&1 | tee "evidence/$case_name.log"
+     { time flutter test "$@"; } 2>&1 | tee "$evidence_dir/$case_name.log"
      test -f hook-invocations.log
-     cp hook-invocations.log "evidence/$case_name-hook-invocations.log"
-     wc -l hook-invocations.log | tee "evidence/$case_name-hook-count.log"
+     cp hook-invocations.log "$evidence_dir/$case_name-hook-invocations.log"
+     wc -l hook-invocations.log | tee "$evidence_dir/$case_name-hook-count.log"
    }
 
    run_cold_case single-file test/a_test.dart
-   run_cold_case explicit-two-files test/a_test.dart test/b_test.dart
-   run_cold_case default-discovery
-
    before_count="$(wc -l < hook-invocations.log)"
-   { time flutter test test/a_test.dart; } 2>&1 | tee evidence/warm-repeat.log
+   { time flutter test test/a_test.dart; } 2>&1 | tee "$evidence_dir/warm-repeat.log"
    after_count="$(wc -l < hook-invocations.log)"
    printf 'before=%s after=%s delta=%s\n' \
      "$before_count" "$after_count" "$((after_count - before_count))" \
-     | tee evidence/warm-repeat-hook-count.log
-   cp hook-invocations.log evidence/warm-repeat-hook-invocations.log
+     | tee "$evidence_dir/warm-repeat-hook-count.log"
+   cp hook-invocations.log "$evidence_dir/warm-repeat-hook-invocations.log"
+
+   run_cold_case explicit-two-files test/a_test.dart test/b_test.dart
+   run_cold_case default-discovery
    ```
 
 ## Expected Result
@@ -197,6 +208,7 @@ The test fails or is blocked if any of the following happens:
 - Wall time for every `flutter test` command.
 - Flutter, Dart, and Rust version output.
 - The exact vanilla upstream commit.
+- Copy the complete `EVIDENCE_ROOT` directory from the container to a new durable artifact directory before the final evidence cleanup, then verify the copied file list and marker counts.
 
 ## Troubleshooting
 
@@ -207,12 +219,17 @@ The test fails or is blocked if any of the following happens:
 ## Cleanup
 
 ```bash
-   rm -rf \
-     frb_example/native_assets_hook_overhead_fixture \
-     frb_example/native_toolchain_rust_hook_overhead_fixture
+cd "$repo_root"
+rm -rf \
+  frb_example/native_assets_hook_overhead_fixture \
+  frb_example/native_toolchain_rust_hook_overhead_fixture
 ```
 
-No repository files, simulators, or external account state should remain changed.
+No repository files, simulators, or external account state should remain changed. After copying the evidence to durable storage and verifying the copy, remove the container-local staging directory:
+
+```bash
+rm -rf "$evidence_root"
+```
 
 ## Future Automation
 
