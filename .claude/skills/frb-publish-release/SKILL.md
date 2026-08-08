@@ -55,9 +55,9 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 ### 2. Reconcile Contributors
 
-- Before writing the release changelog, use `frb-add-contributor` to identify contributors from the target release range who may need all-contributors credit.
-- Follow `frb-add-contributor` exactly. In particular, after determining which contributors may need to be added, stop for human confirmation before editing contributor files, posting GitHub comments, triggering all-contributors, opening PRs, or merging contributor PRs.
-- Do not continue to changelog preparation until contributor reconciliation is either complete, confirmed unnecessary because all contributors are already credited, or explicitly deferred by the human release owner.
+- Before writing the release changelog, use `frb-add-contributor` to identify contributors from the target release range who may need all-contributors credit or whose human-written custom description does not cover every release-range PR.
+- Follow `frb-add-contributor` exactly. In particular, after determining which contributors may need to be added or have their custom descriptions extended, stop for human confirmation before editing contributor files, posting GitHub comments, triggering all-contributors, opening PRs, or merging contributor PRs.
+- Do not continue to changelog preparation until contributor reconciliation is complete, or confirmed unnecessary because all contributors are credited and their custom descriptions cover every third-party PR in the release range.
 
 ### 3. Write Changelog
 
