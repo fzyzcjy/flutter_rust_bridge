@@ -271,7 +271,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
     expect(
       await obj.readTwinMoi(),
-      'private/private/private/private/private',
+      'private/private/private/private/private/private/private',
     );
     obj.dispose();
   });

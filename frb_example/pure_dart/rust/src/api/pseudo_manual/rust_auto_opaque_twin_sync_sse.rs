@@ -294,9 +294,14 @@ mod private_opaque_field_module_twin_sync_sse {
     pub struct PrivateModuleOpaqueFieldInnerTwinSyncSse {
         pub value: String,
     }
+
+    pub type PrivateModuleOpaqueFieldAliasTwinSyncSse = PrivateModuleOpaqueFieldInnerTwinSyncSse;
 }
 
-use private_opaque_field_module_twin_sync_sse::PrivateModuleOpaqueFieldInnerTwinSyncSse;
+use private_opaque_field_module_twin_sync_sse::{
+    PrivateModuleOpaqueFieldAliasTwinSyncSse, PrivateModuleOpaqueFieldInnerTwinSyncSse,
+    PrivateModuleOpaqueFieldInnerTwinSyncSse as RenamedPrivateModuleOpaqueFieldInnerTwinSyncSse,
+};
 
 type PrivateOpaqueFieldAliasTwinSyncSse = PrivateOpaqueFieldInnerTwinSyncSse;
 
@@ -310,6 +315,8 @@ pub struct OpaqueWithPrivateFieldTwinSyncSse {
         RwLock<private_opaque_field_module_twin_sync_sse::PrivateModuleOpaqueFieldInnerTwinSyncSse>,
     >,
     pub imported_private_module_field: Arc<RwLock<PrivateModuleOpaqueFieldInnerTwinSyncSse>>,
+    pub renamed_private_module_field: Arc<RwLock<RenamedPrivateModuleOpaqueFieldInnerTwinSyncSse>>,
+    pub imported_alias_field: Arc<RwLock<PrivateModuleOpaqueFieldAliasTwinSyncSse>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinSyncSse>>,
 }
 
@@ -334,6 +341,14 @@ impl OpaqueWithPrivateFieldTwinSyncSse {
                     value: value.clone(),
                 },
             )),
+            renamed_private_module_field: Arc::new(RwLock::new(
+                RenamedPrivateModuleOpaqueFieldInnerTwinSyncSse {
+                    value: value.clone(),
+                },
+            )),
+            imported_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinSyncSse {
+                value: value.clone(),
+            })),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSyncSse { value })),
         }
     }
@@ -342,11 +357,13 @@ impl OpaqueWithPrivateFieldTwinSyncSse {
     #[flutter_rust_bridge::frb(sync)]
     pub fn read_twin_sync_sse(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
             self.imported_private_module_field.read().unwrap().value,
+            self.renamed_private_module_field.read().unwrap().value,
+            self.imported_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

@@ -259,9 +259,14 @@ mod private_opaque_field_module_twin_moi {
     pub struct PrivateModuleOpaqueFieldInnerTwinMoi {
         pub value: String,
     }
+
+    pub type PrivateModuleOpaqueFieldAliasTwinMoi = PrivateModuleOpaqueFieldInnerTwinMoi;
 }
 
-use private_opaque_field_module_twin_moi::PrivateModuleOpaqueFieldInnerTwinMoi;
+use private_opaque_field_module_twin_moi::{
+    PrivateModuleOpaqueFieldAliasTwinMoi, PrivateModuleOpaqueFieldInnerTwinMoi,
+    PrivateModuleOpaqueFieldInnerTwinMoi as RenamedPrivateModuleOpaqueFieldInnerTwinMoi,
+};
 
 type PrivateOpaqueFieldAliasTwinMoi = PrivateOpaqueFieldInnerTwinMoi;
 
@@ -274,6 +279,8 @@ pub struct OpaqueWithPrivateFieldTwinMoi {
     pub private_module_field:
         Arc<RwLock<private_opaque_field_module_twin_moi::PrivateModuleOpaqueFieldInnerTwinMoi>>,
     pub imported_private_module_field: Arc<RwLock<PrivateModuleOpaqueFieldInnerTwinMoi>>,
+    pub renamed_private_module_field: Arc<RwLock<RenamedPrivateModuleOpaqueFieldInnerTwinMoi>>,
+    pub imported_alias_field: Arc<RwLock<PrivateModuleOpaqueFieldAliasTwinMoi>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinMoi>>,
 }
 
@@ -297,6 +304,14 @@ impl OpaqueWithPrivateFieldTwinMoi {
                     value: value.clone(),
                 },
             )),
+            renamed_private_module_field: Arc::new(RwLock::new(
+                RenamedPrivateModuleOpaqueFieldInnerTwinMoi {
+                    value: value.clone(),
+                },
+            )),
+            imported_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinMoi {
+                value: value.clone(),
+            })),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinMoi { value })),
         }
     }
@@ -304,11 +319,13 @@ impl OpaqueWithPrivateFieldTwinMoi {
     #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
     pub fn read_twin_moi(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
             self.imported_private_module_field.read().unwrap().value,
+            self.renamed_private_module_field.read().unwrap().value,
+            self.imported_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

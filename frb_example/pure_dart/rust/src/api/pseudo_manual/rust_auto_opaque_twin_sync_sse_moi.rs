@@ -320,9 +320,15 @@ mod private_opaque_field_module_twin_sync_sse_moi {
     pub struct PrivateModuleOpaqueFieldInnerTwinSyncSseMoi {
         pub value: String,
     }
+
+    pub type PrivateModuleOpaqueFieldAliasTwinSyncSseMoi =
+        PrivateModuleOpaqueFieldInnerTwinSyncSseMoi;
 }
 
-use private_opaque_field_module_twin_sync_sse_moi::PrivateModuleOpaqueFieldInnerTwinSyncSseMoi;
+use private_opaque_field_module_twin_sync_sse_moi::{
+    PrivateModuleOpaqueFieldAliasTwinSyncSseMoi, PrivateModuleOpaqueFieldInnerTwinSyncSseMoi,
+    PrivateModuleOpaqueFieldInnerTwinSyncSseMoi as RenamedPrivateModuleOpaqueFieldInnerTwinSyncSseMoi,
+};
 
 type PrivateOpaqueFieldAliasTwinSyncSseMoi = PrivateOpaqueFieldInnerTwinSyncSseMoi;
 
@@ -336,6 +342,8 @@ pub struct OpaqueWithPrivateFieldTwinSyncSseMoi {
         RwLock<private_opaque_field_module_twin_sync_sse_moi::PrivateModuleOpaqueFieldInnerTwinSyncSseMoi>,
     >,
     pub imported_private_module_field: Arc<RwLock<PrivateModuleOpaqueFieldInnerTwinSyncSseMoi>>,
+    pub renamed_private_module_field: Arc<RwLock<RenamedPrivateModuleOpaqueFieldInnerTwinSyncSseMoi>>,
+    pub imported_alias_field: Arc<RwLock<PrivateModuleOpaqueFieldAliasTwinSyncSseMoi>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinSyncSseMoi>>,
 }
 
@@ -361,6 +369,14 @@ impl OpaqueWithPrivateFieldTwinSyncSseMoi {
                     value: value.clone(),
                 },
             )),
+            renamed_private_module_field: Arc::new(RwLock::new(
+                RenamedPrivateModuleOpaqueFieldInnerTwinSyncSseMoi {
+                    value: value.clone(),
+                },
+            )),
+            imported_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinSyncSseMoi {
+                value: value.clone(),
+            })),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSyncSseMoi { value })),
         }
     }
@@ -370,11 +386,13 @@ impl OpaqueWithPrivateFieldTwinSyncSseMoi {
     #[flutter_rust_bridge::frb(sync)]
     pub fn read_twin_sync_sse_moi(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
             self.imported_private_module_field.read().unwrap().value,
+            self.renamed_private_module_field.read().unwrap().value,
+            self.imported_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

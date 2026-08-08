@@ -59,7 +59,13 @@ impl TypeParserWithContext<'_, '_, '_> {
             .iter()
             .enumerate()
             .map(|(idx, field)| {
-                self.parse_struct_field(idx, field, &attributes, &src_struct.imports)
+                self.parse_struct_field(
+                    idx,
+                    field,
+                    &attributes,
+                    &src_struct.name.namespace,
+                    &src_struct.imports,
+                )
             })
             .collect::<anyhow::Result<Vec<_>>>()?;
 
@@ -92,6 +98,7 @@ impl TypeParserWithContext<'_, '_, '_> {
         idx: usize,
         field: &Field,
         struct_attributes: &FrbAttributes,
+        struct_namespace: &Namespace,
         imports: &[ItemUse],
     ) -> anyhow::Result<MirField> {
         let field_name = field
@@ -102,9 +109,8 @@ impl TypeParserWithContext<'_, '_, '_> {
             c.with_struct_or_enum_attributes(struct_attributes.clone())
         })?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
-        let resolved_field_type = self.resolve_alias(&field.ty);
         let contains_inaccessible_private_type =
-            self.contains_inaccessible_private_type(&resolved_field_type, imports);
+            self.contains_inaccessible_private_type(&field.ty, struct_namespace, imports);
         Ok(MirField {
             name: MirIdent::new(field_name, attributes.name()),
             ty: field_type,
@@ -121,13 +127,21 @@ impl TypeParserWithContext<'_, '_, '_> {
         })
     }
 
-    fn contains_inaccessible_private_type(&self, ty: &Type, imports: &[ItemUse]) -> bool {
+    fn contains_inaccessible_private_type(
+        &self,
+        ty: &Type,
+        struct_namespace: &Namespace,
+        imports: &[ItemUse],
+    ) -> bool {
         let mut ty = ty.clone();
         let mut visitor = InaccessiblePrivateTypeVisitor {
             src_structs: &self.inner.src_structs,
             src_enums: &self.inner.src_enums,
-            initiated_namespace: &self.context.initiated_namespace,
+            src_types: &self.inner.src_types,
+            src_generic_type_aliases: &self.inner.src_generic_type_aliases,
+            initiated_namespace: struct_namespace,
             imports,
+            alias_depth: 0,
             found: false,
         };
         visitor.visit_type_mut(&mut ty);
@@ -138,8 +152,12 @@ impl TypeParserWithContext<'_, '_, '_> {
 struct InaccessiblePrivateTypeVisitor<'a, 'b> {
     src_structs: &'a HashMap<String, &'b HirFlatStruct>,
     src_enums: &'a HashMap<String, &'b crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum>,
+    src_types: &'a HashMap<String, Type>,
+    src_generic_type_aliases:
+        &'a HashMap<String, crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias>,
     initiated_namespace: &'a Namespace,
     imports: &'a [ItemUse],
+    alias_depth: usize,
     found: bool,
 }
 
@@ -149,116 +167,179 @@ impl VisitMut for InaccessiblePrivateTypeVisitor<'_, '_> {
             return;
         }
 
-        if let Some(name) = node.path.segments.last().map(|x| x.ident.to_string()) {
-            self.found = self.src_structs.get(&name).is_some_and(|item| {
-                !item.is_accessible_from_rust_output
-                    && type_path_targets_item(
-                        &node.path,
-                        &item.name,
-                        self.initiated_namespace,
-                        self.imports,
-                    )
-            }) || self.src_enums.get(&name).is_some_and(|item| {
-                !item.is_accessible_from_rust_output
-                    && type_path_targets_item(
-                        &node.path,
-                        &item.name,
-                        self.initiated_namespace,
-                        self.imports,
-                    )
-            });
+        let candidates = type_path_candidates(&node.path, self.initiated_namespace, self.imports);
+        self.found = candidates.iter().any(|candidate| {
+            self.src_structs.get(&candidate.name).is_some_and(|item| {
+                !item.is_accessible_from_rust_output && item.name == *candidate
+            }) || self.src_enums.get(&candidate.name).is_some_and(|item| {
+                !item.is_accessible_from_rust_output && item.name == *candidate
+            })
+        });
+
+        if !self.found && self.alias_depth < 64 {
+            for candidate in candidates {
+                let alias_target = self
+                    .src_types
+                    .get(&candidate.name)
+                    .or_else(|| {
+                        self.src_generic_type_aliases
+                            .get(&candidate.name)
+                            .map(|alias| &alias.target)
+                    })
+                    .cloned();
+                if let Some(mut alias_target) = alias_target {
+                    let mut alias_visitor = InaccessiblePrivateTypeVisitor {
+                        src_structs: self.src_structs,
+                        src_enums: self.src_enums,
+                        src_types: self.src_types,
+                        src_generic_type_aliases: self.src_generic_type_aliases,
+                        initiated_namespace: &candidate.namespace,
+                        imports: &[],
+                        alias_depth: self.alias_depth + 1,
+                        found: false,
+                    };
+                    alias_visitor.visit_type_mut(&mut alias_target);
+                    if alias_visitor.found {
+                        self.found = true;
+                        break;
+                    }
+                }
+            }
         }
 
         syn::visit_mut::visit_type_path_mut(self, node);
     }
 }
 
+#[cfg(test)]
 fn type_path_targets_item(
     path: &syn::Path,
     item_name: &NamespacedName,
     initiated_namespace: &Namespace,
     imports: &[ItemUse],
 ) -> bool {
+    type_path_candidates(path, initiated_namespace, imports).contains(item_name)
+}
+
+fn type_path_candidates(
+    path: &syn::Path,
+    initiated_namespace: &Namespace,
+    imports: &[ItemUse],
+) -> Vec<NamespacedName> {
     let segments = path
         .segments
         .iter()
         .map(|segment| segment.ident.to_string())
         .collect::<Vec<_>>();
     if segments.len() == 1 {
-        return item_name.namespace == *initiated_namespace
-            || imports.iter().any(|item_use| {
-                import_targets_item(item_use, &segments[0], item_name, initiated_namespace)
-            });
+        let mut output = vec![NamespacedName::new(
+            initiated_namespace.clone(),
+            segments[0].clone(),
+        )];
+        for item_use in imports {
+            collect_import_targets(
+                &item_use.tree,
+                &[],
+                &segments[0],
+                initiated_namespace,
+                &mut output,
+            );
+        }
+        output.sort();
+        output.dedup();
+        return output;
     }
 
     let type_namespace_segments = &segments[..segments.len() - 1];
-    resolve_relative_namespace(type_namespace_segments, initiated_namespace)
-        .is_some_and(|namespace| namespace == item_name.namespace)
-        || Namespace::new(type_namespace_segments.to_vec()) == item_name.namespace
+    let mut output = vec![];
+    if let Some(namespace) =
+        resolve_relative_namespace(type_namespace_segments, initiated_namespace)
+    {
+        output.push(NamespacedName::new(namespace, segments.last().unwrap().clone()));
+    }
+    output.push(NamespacedName::new(
+        Namespace::new(type_namespace_segments.to_vec()),
+        segments.last().unwrap().clone(),
+    ));
+    output.sort();
+    output.dedup();
+    output
 }
 
-fn import_targets_item(
-    item_use: &ItemUse,
-    local_name: &str,
-    item_name: &NamespacedName,
-    initiated_namespace: &Namespace,
-) -> bool {
-    use_tree_targets_item(
-        &item_use.tree,
-        &[],
-        local_name,
-        item_name,
-        initiated_namespace,
-    )
-}
-
-fn use_tree_targets_item(
+fn collect_import_targets(
     tree: &UseTree,
     prefix: &[String],
     local_name: &str,
-    item_name: &NamespacedName,
     initiated_namespace: &Namespace,
-) -> bool {
+    output: &mut Vec<NamespacedName>,
+) {
     match tree {
         UseTree::Path(inner) => {
             let mut child_prefix = prefix.to_vec();
             child_prefix.push(inner.ident.to_string());
-            use_tree_targets_item(
+            collect_import_targets(
                 &inner.tree,
                 &child_prefix,
                 local_name,
-                item_name,
                 initiated_namespace,
+                output,
             )
         }
         UseTree::Name(inner) => {
-            inner.ident == local_name
-                && inner.ident == item_name.name
-                && import_namespace_targets_item(prefix, item_name, initiated_namespace)
+            if inner.ident == local_name {
+                push_import_targets(
+                    prefix,
+                    inner.ident.to_string(),
+                    initiated_namespace,
+                    output,
+                );
+            }
         }
         UseTree::Rename(inner) => {
-            inner.rename == local_name
-                && inner.ident == item_name.name
-                && import_namespace_targets_item(prefix, item_name, initiated_namespace)
+            if inner.rename == local_name {
+                push_import_targets(
+                    prefix,
+                    inner.ident.to_string(),
+                    initiated_namespace,
+                    output,
+                );
+            }
         }
         UseTree::Glob(_) => {
-            item_name.name == local_name
-                && import_namespace_targets_item(prefix, item_name, initiated_namespace)
+            push_import_targets(
+                prefix,
+                local_name.to_owned(),
+                initiated_namespace,
+                output,
+            );
         }
-        UseTree::Group(inner) => inner.items.iter().any(|tree| {
-            use_tree_targets_item(tree, prefix, local_name, item_name, initiated_namespace)
-        }),
+        UseTree::Group(inner) => {
+            for tree in &inner.items {
+                collect_import_targets(
+                    tree,
+                    prefix,
+                    local_name,
+                    initiated_namespace,
+                    output,
+                );
+            }
+        }
     }
 }
 
-fn import_namespace_targets_item(
+fn push_import_targets(
     prefix: &[String],
-    item_name: &NamespacedName,
+    item_name: String,
     initiated_namespace: &Namespace,
-) -> bool {
-    resolve_relative_namespace(prefix, initiated_namespace)
-        .is_some_and(|namespace| namespace == item_name.namespace)
-        || Namespace::new(prefix.to_vec()) == item_name.namespace
+    output: &mut Vec<NamespacedName>,
+) {
+    if let Some(namespace) = resolve_relative_namespace(prefix, initiated_namespace) {
+        output.push(NamespacedName::new(namespace, item_name.clone()));
+    }
+    output.push(NamespacedName::new(
+        Namespace::new(prefix.to_vec()),
+        item_name,
+    ));
 }
 
 fn resolve_relative_namespace(
@@ -340,6 +421,29 @@ mod inaccessible_private_type_tests {
             &other_name,
             &initiated_namespace,
             &[private_import],
+        ));
+
+        let renamed_import =
+            syn::parse_str::<ItemUse>("use super::other::String as Renamed;").unwrap();
+        assert!(type_path_targets_item(
+            &syn::parse_str::<TypePath>("Renamed").unwrap().path,
+            &other_name,
+            &initiated_namespace,
+            &[renamed_import],
+        ));
+
+        let struct_namespace = Namespace::new_self_crate("api::models".to_owned());
+        let nested_name = NamespacedName::new(
+            Namespace::new_self_crate("api::models::hidden".to_owned()),
+            "Inner".to_owned(),
+        );
+        assert!(type_path_targets_item(
+            &syn::parse_str::<TypePath>("hidden::Inner")
+                .unwrap()
+                .path,
+            &nested_name,
+            &struct_namespace,
+            &[],
         ));
     }
 }

@@ -10,9 +10,152 @@ pub(crate) fn transform(
     rust_output_path_namespace: &Namespace,
 ) -> anyhow::Result<HirTreePack> {
     for hir_crate in pack.crates.iter_mut() {
-        transform_module(&mut hir_crate.root_module, rust_output_path_namespace)?;
+        if hir_crate.name.is_self_crate() {
+            transform_self_crate(&mut hir_crate.root_module, rust_output_path_namespace)?;
+        } else {
+            transform_module(&mut hir_crate.root_module, rust_output_path_namespace)?;
+        }
     }
     Ok(pack)
+}
+
+#[derive(Clone)]
+struct SelfCratePubUse {
+    destination_namespace: Namespace,
+    info: PubUseInfo,
+}
+
+fn transform_self_crate(
+    root_module: &mut HirTreeModule,
+    rust_output_path_namespace: &Namespace,
+) -> anyhow::Result<()> {
+    let mut directives = vec![];
+    collect_self_crate_pub_uses(
+        root_module,
+        rust_output_path_namespace,
+        &mut directives,
+    );
+    for _ in 0..=directives.len() {
+        let mut changed = false;
+        for directive in &directives {
+            changed |= transform_self_crate_pub_use(
+                root_module,
+                directive,
+                rust_output_path_namespace,
+            )?;
+        }
+        if !changed {
+            break;
+        }
+    }
+    Ok(())
+}
+
+fn collect_self_crate_pub_uses(
+    module: &HirTreeModule,
+    rust_output_path_namespace: &Namespace,
+    output: &mut Vec<SelfCratePubUse>,
+) {
+    for child_module in &module.modules {
+        collect_self_crate_pub_uses(child_module, rust_output_path_namespace, output);
+    }
+    if !module.meta.is_accessible_from_rust_output {
+        return;
+    }
+    for mut info in parse_pub_use_from_items(
+        &module.items,
+        &module.meta.namespace,
+        rust_output_path_namespace,
+    ) {
+        if let Some(namespace) =
+            resolve_pub_use_namespace(&info.namespace, &module.meta.namespace)
+        {
+            info.namespace = namespace;
+            output.push(SelfCratePubUse {
+                destination_namespace: module.meta.namespace.clone(),
+                info,
+            });
+        }
+    }
+}
+
+fn transform_self_crate_pub_use(
+    root_module: &mut HirTreeModule,
+    directive: &SelfCratePubUse,
+    rust_output_path_namespace: &Namespace,
+) -> anyhow::Result<bool> {
+    let root_namespace = root_module.meta.namespace.clone();
+    if directive.info.namespace == directive.destination_namespace
+        || !root_namespace.is_prefix_of(&directive.info.namespace)
+        || !root_namespace.is_prefix_of(&directive.destination_namespace)
+    {
+        return Ok(false);
+    }
+    let source_path = directive.info.namespace.strip_prefix(&root_namespace);
+    let destination_path = directive
+        .destination_namespace
+        .strip_prefix(&root_namespace);
+    let moved_items = {
+        let Some(source_module) = root_module.get_module_nested_mut(&source_path.path()) else {
+            return Ok(false);
+        };
+        if source_module.meta.is_accessible_from_rust_output {
+            return Ok(false);
+        }
+        let source_namespace = source_module.meta.namespace.clone();
+        let (moved_items, remaining_items) = std::mem::take(&mut source_module.items)
+            .into_iter()
+            .partition(|item| {
+                is_interest_item(
+                    item,
+                    &directive.info,
+                    Some((&source_namespace, rust_output_path_namespace)),
+                )
+            });
+        source_module.items = remaining_items;
+        moved_items
+    };
+    if moved_items.is_empty() {
+        return Ok(false);
+    }
+    let Some(destination_module) = root_module.get_module_nested_mut(&destination_path.path()) else {
+        return Ok(false);
+    };
+    destination_module.items.extend(moved_items);
+    Ok(true)
+}
+
+fn resolve_pub_use_namespace(
+    namespace: &Namespace,
+    declaration_namespace: &Namespace,
+) -> Option<Namespace> {
+    let segments = namespace
+        .path()
+        .into_iter()
+        .map(ToString::to_string)
+        .collect_vec();
+    let mut output = declaration_namespace
+        .path()
+        .into_iter()
+        .map(ToString::to_string)
+        .collect_vec();
+    let mut index = 0;
+    match segments.first().map(String::as_str) {
+        Some("crate") => {
+            output = vec!["crate".to_owned()];
+            index = 1;
+        }
+        Some("self") => index = 1,
+        Some("super") => {
+            while segments.get(index).map(String::as_str) == Some("super") {
+                output.pop()?;
+                index += 1;
+            }
+        }
+        _ => {}
+    }
+    output.extend(segments[index..].iter().cloned());
+    Some(Namespace::new(output))
 }
 
 fn transform_module(
@@ -130,7 +273,7 @@ impl PubUseInfo {
     fn is_interest_name(&self, name: &str) -> bool {
         // frb-coverage:ignore-end
         if let Some(name_filters) = &self.name_filter {
-            name_filters.contains(&name.to_owned())
+            name_filters == name
         } else {
             true
         }
@@ -362,9 +505,10 @@ mod tests {
                 is_accessible_from_rust_output: false,
             },
             modules: vec![],
-            items: vec![syn::parse_str(
-                "pub(crate) struct Thing { pub value: String }",
-            )?],
+            items: vec![
+                syn::parse_str("pub(crate) struct Thing { pub value: String }")?,
+                syn::parse_str("pub(crate) struct ThingExtra { pub value: String }")?,
+            ],
         };
         let root_module = HirTreeModule {
             meta: HirTreeModuleMeta {
@@ -374,7 +518,9 @@ mod tests {
                 is_accessible_from_rust_output: true,
             },
             modules: vec![hidden_module],
-            items: vec![syn::parse_str("pub(crate) use hidden::Thing;")?],
+            items: vec![syn::parse_str(
+                "pub(crate) use crate::hidden::ThingExtra;",
+            )?],
         };
         let pack = HirTreePack {
             crates: vec![HirTreeCrate {
@@ -389,11 +535,38 @@ mod tests {
         assert!(root
             .items
             .iter()
+            .any(|item| name_for_use_stmt(item).as_deref() == Some("ThingExtra")));
+        assert!(root.modules[0]
+            .items
+            .iter()
             .any(|item| name_for_use_stmt(item).as_deref() == Some("Thing")));
         assert!(!root.modules[0]
             .items
             .iter()
-            .any(|item| name_for_use_stmt(item).as_deref() == Some("Thing")));
+            .any(|item| name_for_use_stmt(item).as_deref() == Some("ThingExtra")));
         Ok(())
+    }
+
+    /// Resolves self and parent re-export module paths from their declaration module.
+    #[test]
+    fn test_resolve_self_crate_pub_use_namespace() {
+        let declaration = Namespace::new_self_crate("api::exports".to_owned());
+
+        assert_eq!(
+            resolve_pub_use_namespace(
+                &Namespace::new_raw("self::hidden".to_owned()),
+                &declaration,
+            ),
+            Some(Namespace::new_self_crate(
+                "api::exports::hidden".to_owned(),
+            )),
+        );
+        assert_eq!(
+            resolve_pub_use_namespace(
+                &Namespace::new_raw("super::hidden".to_owned()),
+                &declaration,
+            ),
+            Some(Namespace::new_self_crate("api::hidden".to_owned())),
+        );
     }
 }

@@ -270,7 +270,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
     expect(
       await obj.readTwinNormal(),
-      'private/private/private/private/private',
+      'private/private/private/private/private/private/private',
     );
     obj.dispose();
   });

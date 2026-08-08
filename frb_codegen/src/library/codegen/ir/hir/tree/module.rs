@@ -34,20 +34,6 @@ impl HirTreeModule {
             .next()
     }
 
-    pub(crate) fn get_module_by_name(&self, mod_name: &str) -> Option<&HirTreeModule> {
-        self.get_module_index_by_name(mod_name)
-            .map(|i| &self.modules[i])
-    }
-
-    pub(crate) fn get_module_nested(&self, mod_names: &[&str]) -> Option<&HirTreeModule> {
-        if mod_names.is_empty() {
-            Some(self)
-        } else {
-            let m = self.get_module_by_name(mod_names[0])?;
-            m.get_module_nested(&mod_names[1..])
-        }
-    }
-
     pub(crate) fn get_module_nested_mut(
         &mut self,
         mod_names: &[&str],
