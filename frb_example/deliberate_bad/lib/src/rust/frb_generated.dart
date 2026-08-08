@@ -103,13 +103,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiSimpleMakeDataRace() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+        pdeCall1(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiSimpleMakeDataRaceConstMeta,
       argValues: [],
@@ -126,13 +126,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiSimpleMakeHeapUseAfterFree() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+        pdeCall2(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiSimpleMakeHeapUseAfterFreeConstMeta,
       argValues: [],
@@ -150,13 +150,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiSimpleMakeMemoryLeak() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+        pdeCall3(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiSimpleMakeMemoryLeakConstMeta,
       argValues: [],
@@ -174,13 +174,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiSimpleMakeStackBufferOverflow() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+        pdeCall4(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiSimpleMakeStackBufferOverflowConstMeta,
       argValues: [],
@@ -198,13 +198,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiSimpleMakeUseOfUninitializedValue() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 5, port: port_);
+        pdeCall5(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiSimpleMakeUseOfUninitializedValueConstMeta,
       argValues: [],

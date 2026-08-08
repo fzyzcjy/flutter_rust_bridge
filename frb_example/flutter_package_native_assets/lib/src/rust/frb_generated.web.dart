@@ -51,6 +51,29 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  int cst_encode_u_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_u_8_strict(Uint8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  dynamic pdeCall2(NativePortType port_) {
+    return wire.wire__crate__api__simple__init_app(port_);
+  }
+
+  @protected
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
@@ -76,6 +99,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void wire__crate__api__simple__init_app(NativePortType port_) =>
+      wasmModule.wire__crate__api__simple__init_app(port_);
 }
 
 @JS('wasm_bindgen')
@@ -83,4 +109,6 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-extension type RustLibWasmModule._(JSObject _) implements JSObject {}
+extension type RustLibWasmModule._(JSObject _) implements JSObject {
+  external void wire__crate__api__simple__init_app(NativePortType port_);
+}

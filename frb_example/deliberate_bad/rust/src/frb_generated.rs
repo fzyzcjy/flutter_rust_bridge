@@ -45,179 +45,6 @@ pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1494891319;
 
 flutter_rust_bridge::frb_generated_default_handler!();
 
-// Section: wire_funcs
-
-fn wire__crate__api__simple__make_data_race_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "make_data_race",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Ok::<_, ()>({
-                        crate::api::simple::make_data_race();
-                    })?;
-                    std::result::Result::Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__simple__make_heap_use_after_free_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "make_heap_use_after_free",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Ok::<_, ()>({
-                        crate::api::simple::make_heap_use_after_free();
-                    })?;
-                    std::result::Result::Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__simple__make_memory_leak_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "make_memory_leak",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Ok::<_, ()>({
-                        crate::api::simple::make_memory_leak();
-                    })?;
-                    std::result::Result::Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__simple__make_stack_buffer_overflow_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "make_stack_buffer_overflow",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Ok::<_, ()>({
-                        crate::api::simple::make_stack_buffer_overflow();
-                    })?;
-                    std::result::Result::Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__simple__make_use_of_uninitialized_value_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "make_use_of_uninitialized_value",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Ok::<_, ()>({
-                        crate::api::simple::make_use_of_uninitialized_value();
-                    })?;
-                    std::result::Result::Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-
 // Section: dart2rust
 
 impl SseDecode for () {
@@ -236,51 +63,6 @@ impl SseDecode for bool {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_u8().unwrap() != 0
-    }
-}
-
-fn pde_ffi_dispatcher_primary_impl(
-    func_id: i32,
-    port: flutter_rust_bridge::for_generated::MessagePort,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        1 => wire__crate__api__simple__make_data_race_impl(port, ptr, rust_vec_len, data_len),
-        2 => wire__crate__api__simple__make_heap_use_after_free_impl(
-            port,
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        3 => wire__crate__api__simple__make_memory_leak_impl(port, ptr, rust_vec_len, data_len),
-        4 => wire__crate__api__simple__make_stack_buffer_overflow_impl(
-            port,
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        5 => wire__crate__api__simple__make_use_of_uninitialized_value_impl(
-            port,
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        _ => unreachable!(),
-    }
-}
-
-fn pde_ffi_dispatcher_sync_impl(
-    func_id: i32,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        _ => unreachable!(),
     }
 }
 
@@ -322,6 +104,231 @@ mod io {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_io!();
+
+    // Section: wire_funcs
+
+    fn wire__crate__api__simple__make_data_race_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_data_race",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    let message = unsafe {
+                        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                            ptr_,
+                            rust_vec_len_,
+                            data_len_,
+                        )
+                    };
+                    let mut deserializer =
+                        flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+                    deserializer.end();
+                    move |context| {
+                        transform_result_sse::<_, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_data_race();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__simple__make_heap_use_after_free_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_heap_use_after_free",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    let message = unsafe {
+                        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                            ptr_,
+                            rust_vec_len_,
+                            data_len_,
+                        )
+                    };
+                    let mut deserializer =
+                        flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+                    deserializer.end();
+                    move |context| {
+                        transform_result_sse::<_, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_heap_use_after_free();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__simple__make_memory_leak_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_memory_leak",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    let message = unsafe {
+                        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                            ptr_,
+                            rust_vec_len_,
+                            data_len_,
+                        )
+                    };
+                    let mut deserializer =
+                        flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+                    deserializer.end();
+                    move |context| {
+                        transform_result_sse::<_, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_memory_leak();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__simple__make_stack_buffer_overflow_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_stack_buffer_overflow",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    let message = unsafe {
+                        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                            ptr_,
+                            rust_vec_len_,
+                            data_len_,
+                        )
+                    };
+                    let mut deserializer =
+                        flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+                    deserializer.end();
+                    move |context| {
+                        transform_result_sse::<_, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_stack_buffer_overflow();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__simple__make_use_of_uninitialized_value_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_use_of_uninitialized_value",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    let message = unsafe {
+                        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                            ptr_,
+                            rust_vec_len_,
+                            data_len_,
+                        )
+                    };
+                    let mut deserializer =
+                        flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+                    deserializer.end();
+                    move |context| {
+                        transform_result_sse::<_, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_use_of_uninitialized_value();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+
+    // Section: dart2rust
+
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            1 => wire__crate__api__simple__make_data_race_impl(port, ptr, rust_vec_len, data_len),
+            2 => wire__crate__api__simple__make_heap_use_after_free_impl(
+                port,
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            3 => wire__crate__api__simple__make_memory_leak_impl(port, ptr, rust_vec_len, data_len),
+            4 => wire__crate__api__simple__make_stack_buffer_overflow_impl(
+                port,
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            5 => wire__crate__api__simple__make_use_of_uninitialized_value_impl(
+                port,
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
 }
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
@@ -346,6 +353,181 @@ mod web {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_web!();
+
+    // Section: wire_funcs
+
+    fn wire__crate__api__simple__make_data_race_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_data_race",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    move |context| {
+                        transform_result_dco::<_, _, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_data_race();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__simple__make_heap_use_after_free_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_heap_use_after_free",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    move |context| {
+                        transform_result_dco::<_, _, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_heap_use_after_free();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__simple__make_memory_leak_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_memory_leak",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    move |context| {
+                        transform_result_dco::<_, _, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_memory_leak();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__simple__make_stack_buffer_overflow_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_stack_buffer_overflow",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    move |context| {
+                        transform_result_dco::<_, _, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_stack_buffer_overflow();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__simple__make_use_of_uninitialized_value_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "make_use_of_uninitialized_value",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    move |context| {
+                        transform_result_dco::<_, _, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::simple::make_use_of_uninitialized_value();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+
+    // Section: dart2rust
+
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__simple__make_data_race(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__simple__make_data_race_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__simple__make_heap_use_after_free(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__simple__make_heap_use_after_free_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__simple__make_memory_leak(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__simple__make_memory_leak_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__simple__make_stack_buffer_overflow(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__simple__make_stack_buffer_overflow_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__simple__make_use_of_uninitialized_value(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__simple__make_use_of_uninitialized_value_impl(port_)
+    }
 }
 #[cfg(target_family = "wasm")]
 pub use web::*;
