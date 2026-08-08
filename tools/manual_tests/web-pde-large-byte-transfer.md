@@ -112,7 +112,7 @@ The test fails if any of the following happens:
 - Either browser run returns a byte length other than 67,108,864.
 - Either run times out, crashes, or exits non-zero after the environment is prepared.
 - Generated codec selection does not match the active `full_dep` setting.
-- The PDE/SSE baseline is not measurably slower than the CST/DCO control on a reproduction branch.
+- The PDE/SSE baseline is less than ten times slower than the CST/DCO control on a reproduction branch.
 
 Mark the run blocked if Docker or Chrome cannot start, required Wasm dependencies are unavailable, or port 8080 is occupied by a process not owned by the executor.
 
