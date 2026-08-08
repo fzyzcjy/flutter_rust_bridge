@@ -321,7 +321,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('stream sink', () async {
     final stream = rustAutoOpaqueStreamSinkTwinRustAsyncMoi();
-    final obj = (await stream.toList()).single;
+    final obj = await stream.first;
     await futurizeVoidTwinRustAsyncMoi(
       rustAutoOpaqueArgBorrowTwinRustAsyncMoi(arg: obj, expect: 42),
     );
