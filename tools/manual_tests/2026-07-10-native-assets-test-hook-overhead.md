@@ -1,3 +1,5 @@
+# Native Assets Test Hook Overhead
+
 ## Purpose
 
 Verify whether Flutter invokes a Native Assets build hook once per `flutter test` invocation or once for every selected test file, including default test discovery, and whether an unchanged warm invocation skips the hook. The procedure records hook invocations and wall time for FRB's wrapper and a vanilla `native_toolchain_rust` fixture.
