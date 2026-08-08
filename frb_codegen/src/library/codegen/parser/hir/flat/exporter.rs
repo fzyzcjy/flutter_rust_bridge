@@ -6,7 +6,6 @@ use log::debug;
 use std::collections::HashMap;
 use std::fmt::{Debug, Display};
 use std::hash::Hash;
-use syn::Type;
 
 impl HirFlatPack {
     pub(crate) fn structs_map(&self) -> HashMap<String, &HirFlatStruct> {

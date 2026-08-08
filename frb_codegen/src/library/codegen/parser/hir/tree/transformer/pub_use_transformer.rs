@@ -595,9 +595,7 @@ mod tests {
                 is_accessible_from_rust_output: false,
             },
             modules: vec![],
-            items: vec![syn::parse_str(
-                "pub(crate) use super::hidden::Thing;",
-            )?],
+            items: vec![syn::parse_str("pub(crate) use super::hidden::Thing;")?],
             item_contexts: vec![None],
         };
         let root_module = HirTreeModule {

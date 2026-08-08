@@ -152,10 +152,7 @@ impl TypeParserWithContext<'_, '_, '_> {
 struct InaccessiblePrivateTypeVisitor<'a, 'b> {
     src_structs: &'a HashMap<String, &'b HirFlatStruct>,
     src_enums: &'a HashMap<String, &'b crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum>,
-    src_types: &'a HashMap<
-        String,
-        crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias,
-    >,
+    src_types: &'a HashMap<String, crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias>,
     src_generic_type_aliases:
         &'a HashMap<String, crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias>,
     initiated_namespace: &'a Namespace,
@@ -185,10 +182,7 @@ impl VisitMut for InaccessiblePrivateTypeVisitor<'_, '_> {
                 let alias = self
                     .src_types
                     .get(&candidate.name)
-                    .or_else(|| {
-                        self.src_generic_type_aliases
-                            .get(&candidate.name)
-                    })
+                    .or_else(|| self.src_generic_type_aliases.get(&candidate.name))
                     .filter(|alias| alias.namespace == candidate.namespace);
                 if let Some(alias) = alias {
                     let mut alias_target = alias.target.clone();
@@ -453,9 +447,7 @@ mod inaccessible_private_type_tests {
         let renamed_module_import =
             syn::parse_str::<ItemUse>("use super::other as renamed;").unwrap();
         assert!(type_path_targets_item(
-            &syn::parse_str::<TypePath>("renamed::String")
-                .unwrap()
-                .path,
+            &syn::parse_str::<TypePath>("renamed::String").unwrap().path,
             &other_name,
             &initiated_namespace,
             &[renamed_module_import],
