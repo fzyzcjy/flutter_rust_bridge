@@ -1,5 +1,6 @@
 use crate::codegen::ir::mir::func::MirFunc;
 use crate::codegen::ir::mir::pack::MirPackComputedCache;
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumIter, EnumString};
@@ -135,17 +136,26 @@ pub(crate) fn pde_web_direct_codec(func: &MirFunc) -> bool {
 }
 
 fn pde_web_direct_type(ty: &MirType) -> bool {
-    matches!(ty, MirType::Primitive(_) | MirType::PrimitiveList(_))
+    match ty {
+        MirType::Primitive(_) => true,
+        MirType::PrimitiveList(list) => !matches!(
+            list.primitive,
+            MirTypePrimitive::Bool
+                | MirTypePrimitive::Unit
+                | MirTypePrimitive::Usize
+                | MirTypePrimitive::Isize
+        ),
+        _ => false,
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
     use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
-    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
     use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
 
-    /// Verifies that Web PDE directly handles only primitives and primitive lists.
+    /// Verifies that Web PDE direct calls exclude unsupported primitive lists.
     #[test]
     fn pde_web_direct_type_accepts_supported_types_only() {
         assert!(pde_web_direct_type(&MirType::Primitive(
@@ -157,6 +167,19 @@ mod tests {
                 strict_dart_type: true,
             }
         )));
+        for primitive in [
+            MirTypePrimitive::Bool,
+            MirTypePrimitive::Unit,
+            MirTypePrimitive::Usize,
+            MirTypePrimitive::Isize,
+        ] {
+            assert!(!pde_web_direct_type(&MirType::PrimitiveList(
+                MirTypePrimitiveList {
+                    primitive,
+                    strict_dart_type: true,
+                }
+            )));
+        }
         assert!(!pde_web_direct_type(&MirType::Delegate(
             MirTypeDelegate::String
         )));

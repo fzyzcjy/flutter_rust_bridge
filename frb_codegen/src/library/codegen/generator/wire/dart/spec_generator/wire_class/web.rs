@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
+use crate::utils::dart_keywords;
 use itertools::Itertools;
 
 pub(super) fn generate(
@@ -96,7 +97,7 @@ fn generate_method(func: &ExternFunc) -> MethodInfo {
 }
 
 fn dart_param_name(rust_name: &str) -> String {
-    rust_name.strip_prefix("r#").unwrap_or(rust_name).to_owned()
+    dart_keywords::escape(rust_name.strip_prefix("r#").unwrap_or(rust_name).to_owned())
 }
 
 /// Since there exists no toolchain that can generate Dart bindings
@@ -127,6 +128,7 @@ mod tests {
     #[test]
     fn dart_param_name_removes_rust_raw_identifier_prefix() {
         assert_eq!(dart_param_name("r#type"), "type");
+        assert_eq!(dart_param_name("r#async"), "async_");
         assert_eq!(dart_param_name("value"), "value");
     }
 }
