@@ -5816,12 +5816,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int crateApiMiscNoTwinExampleAConstIntTwinNormal() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
+        return pdeCall2();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiMiscNoTwinExampleAConstIntTwinNormalConstMeta,
       argValues: [],
@@ -6449,13 +6450,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 23, port: port_);
+        pdeCall23(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormalConstMeta,
@@ -6506,13 +6507,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> crateApiDroppingDroppableTwinNormalGetDropCountTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 25, port: port_);
+        pdeCall25(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiDroppingDroppableTwinNormalGetDropCountTwinNormalConstMeta,
@@ -6622,13 +6623,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncGetDropCountTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 29, port: port_);
+        pdeCall29(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncGetDropCountTwinRustAsyncConstMeta,
@@ -6738,12 +6739,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 33)!;
+        return pdeCall33();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSyncConstMeta,
@@ -9388,13 +9390,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> crateApiMethodStaticGetterOnlyTwinNormalStaticGetterTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 122, port: port_);
+        pdeCall122(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiMethodStaticGetterOnlyTwinNormalStaticGetterTwinNormalConstMeta,
@@ -9415,13 +9417,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualMethodTwinRustAsyncStaticGetterOnlyTwinRustAsyncStaticGetterTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 123, port: port_);
+        pdeCall123(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMethodTwinRustAsyncStaticGetterOnlyTwinRustAsyncStaticGetterTwinRustAsyncConstMeta,
@@ -9442,12 +9444,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int crateApiPseudoManualMethodTwinSyncStaticGetterOnlyTwinSyncStaticGetterTwinSync() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 124)!;
+        return pdeCall124();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMethodTwinSyncStaticGetterOnlyTwinSyncStaticGetterTwinSyncConstMeta,
@@ -9799,13 +9802,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 136, port: port_);
+        pdeCall136(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta,
@@ -9946,13 +9949,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 141, port: port_);
+        pdeCall141(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSyncConstMeta,
@@ -10213,13 +10216,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 150, port: port_);
+        pdeCall150(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormalConstMeta,
@@ -10360,13 +10363,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 155, port: port_);
+        pdeCall155(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSyncConstMeta,
@@ -11388,14 +11391,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> raw}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 204, port: port_);
+        pdeCall204(port_, raw);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputProtobufTwinNormalConstMeta,
@@ -11417,14 +11419,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> raw}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 205, port: port_);
+        pdeCall205(port_, raw);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinRustAsyncBenchmarkBinaryTreeInputProtobufTwinRustAsyncConstMeta,
@@ -11446,13 +11447,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> raw}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 206)!;
+        return pdeCall206(raw);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeInputProtobufTwinSyncConstMeta,
@@ -11648,14 +11649,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int depth}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(depth, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 213, port: port_);
+        pdeCall213(port_, depth);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputProtobufTwinNormalConstMeta,
@@ -11677,14 +11677,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int depth}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(depth, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 214, port: port_);
+        pdeCall214(port_, depth);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinRustAsyncBenchmarkBinaryTreeOutputProtobufTwinRustAsyncConstMeta,
@@ -11706,13 +11705,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int depth}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(depth, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 215)!;
+        return pdeCall215(depth);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeOutputProtobufTwinSyncConstMeta,
@@ -11904,14 +11903,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> raw}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 222, port: port_);
+        pdeCall222(port_, raw);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiBenchmarkBlobInputProtobufTwinNormalConstMeta,
@@ -11933,14 +11931,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> raw}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 223, port: port_);
+        pdeCall223(port_, raw);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinRustAsyncBenchmarkBlobInputProtobufTwinRustAsyncConstMeta,
@@ -11962,13 +11959,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> raw}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 224)!;
+        return pdeCall224(raw);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobInputProtobufTwinSyncConstMeta,
@@ -12160,14 +12157,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int size}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(size, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 231, port: port_);
+        pdeCall231(port_, size);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiBenchmarkBlobOutputProtobufTwinNormalConstMeta,
@@ -12189,14 +12185,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int size}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(size, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 232, port: port_);
+        pdeCall232(port_, size);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinRustAsyncBenchmarkBlobOutputProtobufTwinRustAsyncConstMeta,
@@ -12218,13 +12213,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int size}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(size, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 233)!;
+        return pdeCall233(size);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobOutputProtobufTwinSyncConstMeta,
@@ -12331,14 +12326,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> bytes}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(bytes, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 237, port: port_);
+        pdeCall237(port_, bytes);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiBenchmarkInputBytesTwinNormalConstMeta,
@@ -12360,14 +12354,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> bytes}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(bytes, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 238, port: port_);
+        pdeCall238(port_, bytes);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinRustAsyncBenchmarkInputBytesTwinRustAsyncConstMeta,
@@ -12388,13 +12381,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> bytes}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(bytes, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 239)!;
+        return pdeCall239(bytes);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinSyncBenchmarkInputBytesTwinSyncConstMeta,
@@ -12416,14 +12409,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int size}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(size, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 240, port: port_);
+        pdeCall240(port_, size);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiBenchmarkOutputBytesTwinNormalConstMeta,
@@ -12445,14 +12437,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int size}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(size, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 241, port: port_);
+        pdeCall241(port_, size);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinRustAsyncBenchmarkOutputBytesTwinRustAsyncConstMeta,
@@ -12474,13 +12465,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int size}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(size, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 242)!;
+        return pdeCall242(size);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinSyncBenchmarkOutputBytesTwinSyncConstMeta,
@@ -12500,12 +12491,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void crateApiBenchmarkMiscBenchmarkVoidSemiSerialize() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 243)!;
+        return pdeCall243();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiBenchmarkMiscBenchmarkVoidSemiSerializeConstMeta,
       argValues: [],
@@ -12523,13 +12515,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiPseudoManualBenchmarkApiBenchmarkVoidTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 244, port: port_);
+        pdeCall244(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiBenchmarkVoidTwinNormalConstMeta,
@@ -12550,13 +12542,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualBenchmarkApiTwinRustAsyncBenchmarkVoidTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 245, port: port_);
+        pdeCall245(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinRustAsyncBenchmarkVoidTwinRustAsyncConstMeta,
@@ -12576,12 +12568,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkVoidTwinSync() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 246)!;
+        return pdeCall246();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBenchmarkApiTwinSyncBenchmarkVoidTwinSyncConstMeta,
@@ -12601,14 +12594,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> crateApiOwnershipBorrowI32TwinNormal({required int arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 247, port: port_);
+        pdeCall247(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiOwnershipBorrowI32TwinNormalConstMeta,
       argValues: [arg],
@@ -12627,14 +12619,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 248, port: port_);
+        pdeCall248(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualOwnershipTwinRustAsyncBorrowI32TwinRustAsyncConstMeta,
@@ -12655,13 +12646,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 249)!;
+        return pdeCall249(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualOwnershipTwinSyncBorrowI32TwinSyncConstMeta,
@@ -12764,14 +12755,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 253, port: port_);
+        pdeCall253(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiOwnershipBorrowSliceU8TwinNormalConstMeta,
       argValues: [arg],
@@ -12791,14 +12781,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 254, port: port_);
+        pdeCall254(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualOwnershipTwinRustAsyncBorrowSliceU8TwinRustAsyncConstMeta,
@@ -12819,13 +12808,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 255)!;
+        return pdeCall255(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualOwnershipTwinSyncBorrowSliceU8TwinSyncConstMeta,
@@ -13477,13 +13466,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<bool> crateApiCustomizationCheckInitDone() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 279, port: port_);
+        pdeCall279(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_bool,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_bool,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiCustomizationCheckInitDoneConstMeta,
       argValues: [],
@@ -13583,13 +13572,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiEventListenerCloseEventListenerTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 283, port: port_);
+        pdeCall283(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiEventListenerCloseEventListenerTwinNormalConstMeta,
       argValues: [],
@@ -13609,13 +13598,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualEventListenerTwinRustAsyncCloseEventListenerTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 284, port: port_);
+        pdeCall284(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualEventListenerTwinRustAsyncCloseEventListenerTwinRustAsyncConstMeta,
@@ -16029,14 +16018,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int id}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(id, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 368, port: port_);
+        pdeCall368(port_, id);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiDartOpaqueDropStaticDartOpaqueTwinNormalConstMeta,
       argValues: [id],
@@ -16057,14 +16045,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int id}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(id, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 369, port: port_);
+        pdeCall369(port_, id);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualDartOpaqueTwinRustAsyncDropStaticDartOpaqueTwinRustAsyncConstMeta,
@@ -16085,13 +16072,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int id}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(id, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 370)!;
+        return pdeCall370(id);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualDartOpaqueTwinSyncDropStaticDartOpaqueTwinSyncConstMeta,
@@ -17062,14 +17049,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<double> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_32_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 404, port: port_);
+        pdeCall404(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_32_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_f_32_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_f_32_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeF32TwinNormalConstMeta,
@@ -17091,14 +17077,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<double> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_32_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 405, port: port_);
+        pdeCall405(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_32_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_f_32_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_f_32_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeF32TwinRustAsyncConstMeta,
@@ -17120,13 +17105,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<double> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_32_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 406)!;
+        return pdeCall406(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_32_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_f_32_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_f_32_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeF32TwinSyncConstMeta,
@@ -17148,14 +17133,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<double> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_64_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 407, port: port_);
+        pdeCall407(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_64_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_f_64_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_f_64_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeF64TwinNormalConstMeta,
@@ -17177,14 +17161,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<double> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_64_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 408, port: port_);
+        pdeCall408(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_64_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_f_64_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_f_64_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeF64TwinRustAsyncConstMeta,
@@ -17206,13 +17189,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<double> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_64_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 409)!;
+        return pdeCall409(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_64_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_f_64_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_f_64_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeF64TwinSyncConstMeta,
@@ -17234,14 +17217,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_16_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 410, port: port_);
+        pdeCall410(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_16_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_16_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_16_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeI16TwinNormalConstMeta,
@@ -17263,14 +17245,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_16_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 411, port: port_);
+        pdeCall411(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_16_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_16_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_16_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI16TwinRustAsyncConstMeta,
@@ -17292,13 +17273,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_16_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 412)!;
+        return pdeCall412(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_16_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_16_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_16_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeI16TwinSyncConstMeta,
@@ -17320,14 +17301,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_32_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 413, port: port_);
+        pdeCall413(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_32_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_32_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeI32TwinNormalConstMeta,
@@ -17349,14 +17329,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_32_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 414, port: port_);
+        pdeCall414(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_32_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_32_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI32TwinRustAsyncConstMeta,
@@ -17378,13 +17357,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_32_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 415)!;
+        return pdeCall415(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_32_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_32_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeI32TwinSyncConstMeta,
@@ -17406,14 +17385,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required Int64List arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_64_strict(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 416, port: port_);
+        pdeCall416(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_64_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_64_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_64_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeI64TwinNormalConstMeta,
@@ -17435,14 +17413,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required Int64List arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_64_strict(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 417, port: port_);
+        pdeCall417(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_64_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_64_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_64_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI64TwinRustAsyncConstMeta,
@@ -17464,13 +17441,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required Int64List arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_64_strict(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 418)!;
+        return pdeCall418(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_64_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_64_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_64_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeI64TwinSyncConstMeta,
@@ -17492,14 +17469,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_8_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 419, port: port_);
+        pdeCall419(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeI8TwinNormalConstMeta,
@@ -17521,14 +17497,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_8_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 420, port: port_);
+        pdeCall420(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI8TwinRustAsyncConstMeta,
@@ -17549,13 +17524,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_8_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 421)!;
+        return pdeCall421(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_i_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_i_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeI8TwinSyncConstMeta,
@@ -17663,14 +17638,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_16_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 425, port: port_);
+        pdeCall425(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_16_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_16_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_16_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeU16TwinNormalConstMeta,
@@ -17692,14 +17666,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_16_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 426, port: port_);
+        pdeCall426(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_16_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_16_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_16_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU16TwinRustAsyncConstMeta,
@@ -17721,13 +17694,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_16_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 427)!;
+        return pdeCall427(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_16_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_16_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_16_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeU16TwinSyncConstMeta,
@@ -17749,14 +17722,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_32_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 428, port: port_);
+        pdeCall428(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_32_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_32_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_32_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeU32TwinNormalConstMeta,
@@ -17778,14 +17750,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_32_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 429, port: port_);
+        pdeCall429(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_32_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_32_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_32_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU32TwinRustAsyncConstMeta,
@@ -17807,13 +17778,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_32_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 430)!;
+        return pdeCall430(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_32_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_32_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_32_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeU32TwinSyncConstMeta,
@@ -17835,14 +17806,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required Uint64List arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_strict(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 431, port: port_);
+        pdeCall431(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_64_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_64_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeU64TwinNormalConstMeta,
@@ -17864,14 +17834,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required Uint64List arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_strict(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 432, port: port_);
+        pdeCall432(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_64_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_64_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU64TwinRustAsyncConstMeta,
@@ -17893,13 +17862,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required Uint64List arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_strict(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 433)!;
+        return pdeCall433(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_64_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_64_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeU64TwinSyncConstMeta,
@@ -17921,14 +17890,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 434, port: port_);
+        pdeCall434(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListExampleBasicListTypeU8TwinNormalConstMeta,
@@ -17950,14 +17918,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 435, port: port_);
+        pdeCall435(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU8TwinRustAsyncConstMeta,
@@ -17978,13 +17945,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 436)!;
+        return pdeCall436(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicListTwinSyncExampleBasicListTypeU8TwinSyncConstMeta,
@@ -21756,14 +21723,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required bool arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_bool(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 566, port: port_);
+        pdeCall566(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_bool,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_bool,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeBoolTwinNormalConstMeta,
@@ -21785,14 +21751,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required bool arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_bool(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 567, port: port_);
+        pdeCall567(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_bool,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_bool,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeBoolTwinRustAsyncConstMeta,
@@ -21813,13 +21778,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required bool arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_bool(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 568)!;
+        return pdeCall568(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_bool,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_bool,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeBoolTwinSyncConstMeta,
@@ -21840,14 +21805,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 569, port: port_);
+        pdeCall569(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeBytesTwinNormalConstMeta,
@@ -21869,14 +21833,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 570, port: port_);
+        pdeCall570(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeBytesTwinRustAsyncConstMeta,
@@ -21897,13 +21860,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 571)!;
+        return pdeCall571(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeBytesTwinSyncConstMeta,
@@ -21924,14 +21887,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required double arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_32(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 572, port: port_);
+        pdeCall572(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_f_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_f_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeF32TwinNormalConstMeta,
@@ -21953,14 +21915,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required double arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_32(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 573, port: port_);
+        pdeCall573(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_f_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_f_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeF32TwinRustAsyncConstMeta,
@@ -21981,13 +21942,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required double arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_32(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 574)!;
+        return pdeCall574(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_f_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_f_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeF32TwinSyncConstMeta,
@@ -22008,14 +21969,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required double arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_64(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 575, port: port_);
+        pdeCall575(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_64,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_f_64,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_f_64,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicExampleBasicTypeF64TwinNormalConstMeta,
@@ -22037,14 +21997,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required double arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_64(arg, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 576, port: port_);
+        pdeCall576(port_, arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_64,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_f_64,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_f_64,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinRustAsyncExampleBasicTypeF64TwinRustAsyncConstMeta,
@@ -22065,13 +22024,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required double arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_64(arg, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 577)!;
+        return pdeCall577(arg);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_64,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_f_64,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_f_64,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualBasicTwinSyncExampleBasicTypeF64TwinSyncConstMeta,
@@ -23509,12 +23468,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void crateApiFrbLoggingFrbInternalDisposeLogger() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 628)!;
+        return pdeCall628();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiFrbLoggingFrbInternalDisposeLoggerConstMeta,
       argValues: [],
@@ -23584,12 +23544,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   bool crateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutput() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 631)!;
+        return pdeCall631();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_bool,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_bool,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutputConstMeta,
@@ -23661,15 +23622,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 636, port: port_);
+        pdeCall636(port_, a, b);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiAsyncMiscFuncAsyncSimpleAddTwinNormalConstMeta,
       argValues: [a, b],
@@ -23687,13 +23646,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiAsyncMiscFuncAsyncVoidTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 637, port: port_);
+        pdeCall637(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiAsyncMiscFuncAsyncVoidTwinNormalConstMeta,
       argValues: [],
@@ -25282,13 +25241,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiMiscTypeFuncReturnUnitTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 693, port: port_);
+        pdeCall693(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiMiscTypeFuncReturnUnitTwinNormalConstMeta,
       argValues: [],
@@ -25307,13 +25266,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualMiscTypeTwinRustAsyncFuncReturnUnitTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 694, port: port_);
+        pdeCall694(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMiscTypeTwinRustAsyncFuncReturnUnitTwinRustAsyncConstMeta,
@@ -25333,12 +25292,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void crateApiPseudoManualMiscTypeTwinSyncFuncReturnUnitTwinSync() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 695)!;
+        return pdeCall695();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMiscTypeTwinSyncFuncReturnUnitTwinSyncConstMeta,
@@ -26223,13 +26183,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> crateApiExceptionFuncTypeInfalliblePanicTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 726, port: port_);
+        pdeCall726(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiExceptionFuncTypeInfalliblePanicTwinNormalConstMeta,
       argValues: [],
@@ -26249,13 +26209,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualExceptionTwinRustAsyncFuncTypeInfalliblePanicTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 727, port: port_);
+        pdeCall727(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualExceptionTwinRustAsyncFuncTypeInfalliblePanicTwinRustAsyncConstMeta,
@@ -26275,12 +26235,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int crateApiPseudoManualExceptionTwinSyncFuncTypeInfalliblePanicTwinSync() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 728)!;
+        return pdeCall728();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualExceptionTwinSyncFuncTypeInfalliblePanicTwinSyncConstMeta,
@@ -26358,13 +26319,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiFunctionAtApiModRs() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 731, port: port_);
+        pdeCall731(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiFunctionAtApiModRsConstMeta,
       argValues: [],
@@ -26470,13 +26431,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiCommentFunctionWithCommentsSlashStarStarTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 735, port: port_);
+        pdeCall735(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiCommentFunctionWithCommentsSlashStarStarTwinNormalConstMeta,
@@ -26497,13 +26458,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsSlashStarStarTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 736, port: port_);
+        pdeCall736(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsSlashStarStarTwinRustAsyncConstMeta,
@@ -26524,12 +26485,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualCommentTwinSyncFunctionWithCommentsSlashStarStarTwinSync() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 737)!;
+        return pdeCall737();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualCommentTwinSyncFunctionWithCommentsSlashStarStarTwinSyncConstMeta,
@@ -26550,13 +26512,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiCommentFunctionWithCommentsTripleSlashMultiLineTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 738, port: port_);
+        pdeCall738(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiCommentFunctionWithCommentsTripleSlashMultiLineTwinNormalConstMeta,
@@ -26578,13 +26540,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashMultiLineTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 739, port: port_);
+        pdeCall739(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashMultiLineTwinRustAsyncConstMeta,
@@ -26606,12 +26568,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualCommentTwinSyncFunctionWithCommentsTripleSlashMultiLineTwinSync() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 740)!;
+        return pdeCall740();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualCommentTwinSyncFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta,
@@ -26633,13 +26596,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiCommentFunctionWithCommentsTripleSlashSingleLineTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 741, port: port_);
+        pdeCall741(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiCommentFunctionWithCommentsTripleSlashSingleLineTwinNormalConstMeta,
@@ -26661,13 +26624,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashSingleLineTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 742, port: port_);
+        pdeCall742(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashSingleLineTwinRustAsyncConstMeta,
@@ -26689,12 +26652,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualCommentTwinSyncFunctionWithCommentsTripleSlashSingleLineTwinSync() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 743)!;
+        return pdeCall743();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualCommentTwinSyncFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta,
@@ -26715,13 +26679,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 744, port: port_);
+        pdeCall744(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormalConstMeta,
@@ -30513,14 +30477,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BigInt input}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(input, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 880, port: port_);
+        pdeCall880(port_, input);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_u_64,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_u_64,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiTypeAliasHandleTypeAliasIdTwinNormalConstMeta,
       argValues: [input],
@@ -30540,14 +30503,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BigInt input}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(input, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 881, port: port_);
+        pdeCall881(port_, input);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_u_64,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_u_64,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasIdTwinRustAsyncConstMeta,
@@ -30568,13 +30530,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BigInt input}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(input, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 882)!;
+        return pdeCall882(input);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_u_64,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_u_64,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasIdTwinSyncConstMeta,
@@ -30678,14 +30640,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BigInt input}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(input, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 886, port: port_);
+        pdeCall886(port_, input);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_u_64,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_u_64,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiTypeAliasHandleTypeNestAliasIdTwinNormalConstMeta,
       argValues: [input],
@@ -30706,14 +30667,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BigInt input}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(input, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 887, port: port_);
+        pdeCall887(port_, input);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_u_64,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_u_64,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeNestAliasIdTwinRustAsyncConstMeta,
@@ -30734,13 +30694,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BigInt input}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(input, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 888)!;
+        return pdeCall888(input);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_u_64,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_u_64,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualTypeAliasTwinSyncHandleTypeNestAliasIdTwinSyncConstMeta,
@@ -31178,14 +31138,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> v}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(v, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 904, port: port_);
+        pdeCall904(port_, v);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiMiscExampleHandleVecU8TwinNormalConstMeta,
       argValues: [v],
@@ -31205,14 +31164,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<int> v}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(v, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 905, port: port_);
+        pdeCall905(port_, v);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMiscExampleTwinRustAsyncHandleVecU8TwinRustAsyncConstMeta,
@@ -31233,13 +31191,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> v}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(v, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 906)!;
+        return pdeCall906(v);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_list_prim_u_8_strict,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_list_prim_u_8_strict,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMiscExampleTwinSyncHandleVecU8TwinSyncConstMeta,
@@ -31341,13 +31299,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiCustomizationInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 910, port: port_);
+        pdeCall910(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiCustomizationInitAppConstMeta,
       argValues: [],
@@ -33227,13 +33185,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiCustomizationMyInitTwo() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 977, port: port_);
+        pdeCall977(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiCustomizationMyInitTwoConstMeta,
       argValues: [],
@@ -34278,15 +34236,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1016, port: port_);
+        pdeCall1016(port_, a, b);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiMiscExamplePositionalArgumentsTwinNormalConstMeta,
       argValues: [a, b],
@@ -34307,15 +34263,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1017, port: port_);
+        pdeCall1017(port_, a, b);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMiscExampleTwinRustAsyncPositionalArgumentsTwinRustAsyncConstMeta,
@@ -34336,14 +34290,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a, required int b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1018)!;
+        return pdeCall1018(a, b);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMiscExampleTwinSyncPositionalArgumentsTwinSyncConstMeta,
@@ -34461,17 +34414,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required bool myBool}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(myI32, serializer);
-        sse_encode_i_64(myI64, serializer);
-        sse_encode_f_64(myF64, serializer);
-        sse_encode_bool(myBool, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1022, port: port_);
+        pdeCall1022(port_, myI32, myI64, myF64, myBool);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiPrimitiveMiscPrimitiveTypesTwinNormalConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
@@ -34494,17 +34443,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required bool myBool}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(myI32, serializer);
-        sse_encode_i_64(myI64, serializer);
-        sse_encode_f_64(myF64, serializer);
-        sse_encode_bool(myBool, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1023, port: port_);
+        pdeCall1023(port_, myI32, myI64, myF64, myBool);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualPrimitiveMiscTwinRustAsyncPrimitiveTypesTwinRustAsyncConstMeta,
@@ -34528,16 +34473,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required bool myBool}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(myI32, serializer);
-        sse_encode_i_64(myI64, serializer);
-        sse_encode_f_64(myF64, serializer);
-        sse_encode_bool(myBool, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1024)!;
+        return pdeCall1024(myI32, myI64, myF64, myBool);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualPrimitiveMiscTwinSyncPrimitiveTypesTwinSyncConstMeta,
@@ -34558,14 +34500,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int myU32}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_32(myU32, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1025, port: port_);
+        pdeCall1025(port_, myU32);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_u_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_u_32,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiPrimitiveMiscPrimitiveU32TwinNormalConstMeta,
       argValues: [myU32],
@@ -34585,14 +34526,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int myU32}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_32(myU32, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1026, port: port_);
+        pdeCall1026(port_, myU32);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_u_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_u_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualPrimitiveMiscTwinRustAsyncPrimitiveU32TwinRustAsyncConstMeta,
@@ -34613,13 +34553,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int myU32}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_32(myU32, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1027)!;
+        return pdeCall1027(myU32);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_u_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_u_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualPrimitiveMiscTwinSyncPrimitiveU32TwinSyncConstMeta,
@@ -34721,13 +34661,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiFrbLoggingPrintToConsoleSmokeTest() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1031, port: port_);
+        pdeCall1031(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiFrbLoggingPrintToConsoleSmokeTestConstMeta,
       argValues: [],
@@ -34999,13 +34939,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiInitDartCodeRequestInitDartCodeMessage() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1041, port: port_);
+        pdeCall1041(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiInitDartCodeRequestInitDartCodeMessageConstMeta,
       argValues: [],
@@ -40030,13 +39970,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1215, port: port_);
+        pdeCall1215(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiMiscNoTwinExampleASameFunctionNameInDifferentFilesConstMeta,
@@ -40056,13 +39996,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiMiscNoTwinExampleBSameFunctionNameInDifferentFiles() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1216, port: port_);
+        pdeCall1216(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiMiscNoTwinExampleBSameFunctionNameInDifferentFilesConstMeta,
@@ -40168,15 +40108,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1220, port: port_);
+        pdeCall1220(port_, a, b);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiSimpleSimpleAdderTwinNormalConstMeta,
       argValues: [a, b],
@@ -40195,15 +40133,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1221, port: port_);
+        pdeCall1221(port_, a, b);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualSimpleTwinRustAsyncSimpleAdderTwinRustAsyncConstMeta,
@@ -40224,14 +40160,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a, required int b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1222)!;
+        return pdeCall1222(a, b);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualSimpleTwinSyncSimpleAdderTwinSyncConstMeta,
@@ -41479,14 +41414,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1266, port: port_);
+        pdeCall1266(port_, a);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiMethodStaticOnlyTwinNormalStaticMethodTwinNormalConstMeta,
@@ -41508,14 +41442,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required int a}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1267, port: port_);
+        pdeCall1267(port_, a);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMethodTwinRustAsyncStaticOnlyTwinRustAsyncStaticMethodTwinRustAsyncConstMeta,
@@ -41537,13 +41470,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1268)!;
+        return pdeCall1268(a);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualMethodTwinSyncStaticOnlyTwinSyncStaticMethodTwinSyncConstMeta,
@@ -41883,13 +41816,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiCommentStructWithCommentsTwinNormalStaticMethodTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1280, port: port_);
+        pdeCall1280(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiCommentStructWithCommentsTwinNormalStaticMethodTwinNormalConstMeta,
@@ -41942,13 +41875,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualCommentTwinRustAsyncStructWithCommentsTwinRustAsyncStaticMethodTwinRustAsync() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1282, port: port_);
+        pdeCall1282(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualCommentTwinRustAsyncStructWithCommentsTwinRustAsyncStaticMethodTwinRustAsyncConstMeta,
@@ -41999,12 +41932,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       crateApiPseudoManualCommentTwinSyncStructWithCommentsTwinSyncStaticMethodTwinSync() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1284)!;
+        return pdeCall1284();
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiPseudoManualCommentTwinSyncStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta,
@@ -42083,13 +42017,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiMiscNoTwinExampleAStructWithRawNameFieldDummyFunction() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1287, port: port_);
+        pdeCall1287(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta:
           kCrateApiMiscNoTwinExampleAStructWithRawNameFieldDummyFunctionConstMeta,

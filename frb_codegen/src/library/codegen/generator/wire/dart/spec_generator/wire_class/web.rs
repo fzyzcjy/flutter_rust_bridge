@@ -82,17 +82,21 @@ fn generate_method(func: &ExternFunc) -> MethodInfo {
         .unwrap_or_else(|| "void".to_owned());
 
     let input_params = (func.params.iter())
-        .map(|param| format!("{} {}", param.dart_type, param.name))
+        .map(|param| format!("{} {}", param.dart_type, dart_param_name(&param.name)))
         .join(",");
 
     let forward_args = (func.params.iter())
-        .map(|param| param.name.to_string())
+        .map(|param| dart_param_name(&param.name))
         .join(",");
 
     MethodInfo {
         declaration: format!("{return_type} {func_name}({input_params})"),
         implementation: format!("wasmModule.{func_name}({forward_args})"),
     }
+}
+
+fn dart_param_name(rust_name: &str) -> String {
+    rust_name.strip_prefix("r#").unwrap_or(rust_name).to_owned()
 }
 
 /// Since there exists no toolchain that can generate Dart bindings
@@ -113,4 +117,16 @@ fn reconstruct_dart_wire_type_from_raw_repr(ty: &str) -> String {
 
 fn is_rust_pointer(ty: &str) -> bool {
     ty.starts_with("*mut") || ty.starts_with("*const")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Verifies that Rust raw identifiers become valid Dart parameter names.
+    #[test]
+    fn dart_param_name_removes_rust_raw_identifier_prefix() {
+        assert_eq!(dart_param_name("r#type"), "type");
+        assert_eq!(dart_param_name("value"), "value");
+    }
 }

@@ -10663,6 +10663,1279 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   WeekdaysTwinSync sse_decode_weekdays_twin_sync(SseDeserializer deserializer);
 
   @protected
+  bool cst_encode_bool(bool raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  double cst_encode_f_32(double raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  double cst_encode_f_64(double raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_i_16(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_i_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_u_16(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_u_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_u_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  JSAny cst_encode_i_64(PlatformInt64 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  JSAny cst_encode_isize(PlatformInt64 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_f_32_loose(List<double> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_f_32_strict(Float32List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_f_64_loose(List<double> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_f_64_strict(Float64List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_i_16_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_i_16_strict(Int16List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_i_32_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_i_32_strict(Int32List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_i_64_strict(Int64List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.inner.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_i_8_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_i_8_strict(Int8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_u_16_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_u_16_strict(Uint16List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_u_32_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_u_32_strict(Uint32List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_u_64_strict(Uint64List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.inner.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_u_8_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_u_8_strict(Uint8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_u_64(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  JSAny cst_encode_usize(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  dynamic pdeCall2() {
+    return wire
+        .wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL();
+  }
+
+  @protected
+  dynamic pdeCall23(NativePortType port_) {
+    return wire
+        .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall25(NativePortType port_) {
+    return wire
+        .wire__crate__api__dropping__DroppableTwinNormal_get_drop_count_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall29(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_get_drop_count_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall33() {
+    return wire
+        .wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_get_drop_count_twin_sync();
+  }
+
+  @protected
+  dynamic pdeCall122(NativePortType port_) {
+    return wire
+        .wire__crate__api__method__StaticGetterOnlyTwinNormal_static_getter_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall123(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__method_twin_rust_async__StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall124() {
+    return wire
+        .wire__crate__api__pseudo_manual__method_twin_sync__StaticGetterOnlyTwinSync_static_getter_twin_sync();
+  }
+
+  @protected
+  dynamic pdeCall136(NativePortType port_) {
+    return wire
+        .wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall141(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall150(NativePortType port_) {
+    return wire
+        .wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall155(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall204(NativePortType port_, dynamic raw) {
+    var arg0 = cst_encode_list_prim_u_8_loose(raw);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall205(NativePortType port_, dynamic raw) {
+    var arg0 = cst_encode_list_prim_u_8_loose(raw);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_protobuf_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall206(dynamic raw) {
+    var arg0 = cst_encode_list_prim_u_8_loose(raw);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall213(NativePortType port_, dynamic depth) {
+    var arg0 = cst_encode_i_32(depth);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_protobuf_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall214(NativePortType port_, dynamic depth) {
+    var arg0 = cst_encode_i_32(depth);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_protobuf_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall215(dynamic depth) {
+    var arg0 = cst_encode_i_32(depth);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_protobuf_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall222(NativePortType port_, dynamic raw) {
+    var arg0 = cst_encode_list_prim_u_8_loose(raw);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall223(NativePortType port_, dynamic raw) {
+    var arg0 = cst_encode_list_prim_u_8_loose(raw);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_protobuf_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall224(dynamic raw) {
+    var arg0 = cst_encode_list_prim_u_8_loose(raw);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall231(NativePortType port_, dynamic size) {
+    var arg0 = cst_encode_i_32(size);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_protobuf_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall232(NativePortType port_, dynamic size) {
+    var arg0 = cst_encode_i_32(size);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_protobuf_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall233(dynamic size) {
+    var arg0 = cst_encode_i_32(size);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_protobuf_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall237(NativePortType port_, dynamic bytes) {
+    var arg0 = cst_encode_list_prim_u_8_loose(bytes);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall238(NativePortType port_, dynamic bytes) {
+    var arg0 = cst_encode_list_prim_u_8_loose(bytes);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_input_bytes_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall239(dynamic bytes) {
+    var arg0 = cst_encode_list_prim_u_8_loose(bytes);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall240(NativePortType port_, dynamic size) {
+    var arg0 = cst_encode_i_32(size);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall241(NativePortType port_, dynamic size) {
+    var arg0 = cst_encode_i_32(size);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_output_bytes_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall242(dynamic size) {
+    var arg0 = cst_encode_i_32(size);
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_output_bytes_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall243() {
+    return wire
+        .wire__crate__api__benchmark_misc__benchmark_void_semi_serialize();
+  }
+
+  @protected
+  dynamic pdeCall244(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api__benchmark_void_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall245(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_void_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall246() {
+    return wire
+        .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_void_twin_sync();
+  }
+
+  @protected
+  dynamic pdeCall247(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_i_32(arg);
+    return wire.wire__crate__api__ownership__borrow_i32_twin_normal(
+        port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall248(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_i_32(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall249(dynamic arg) {
+    var arg0 = cst_encode_i_32(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall253(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_8_loose(arg);
+    return wire.wire__crate__api__ownership__borrow_slice_u8_twin_normal(
+        port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall254(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall255(dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall279(NativePortType port_) {
+    return wire.wire__crate__api__customization__check_init_done(port_);
+  }
+
+  @protected
+  dynamic pdeCall283(NativePortType port_) {
+    return wire
+        .wire__crate__api__event_listener__close_event_listener_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall284(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__event_listener_twin_rust_async__close_event_listener_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall368(NativePortType port_, dynamic id) {
+    var arg0 = cst_encode_i_32(id);
+    return wire
+        .wire__crate__api__dart_opaque__drop_static_dart_opaque_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall369(NativePortType port_, dynamic id) {
+    var arg0 = cst_encode_i_32(id);
+    return wire
+        .wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__drop_static_dart_opaque_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall370(dynamic id) {
+    var arg0 = cst_encode_i_32(id);
+    return wire
+        .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__drop_static_dart_opaque_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall404(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_f_32_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall405(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_f_32_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall406(dynamic arg) {
+    var arg0 = cst_encode_list_prim_f_32_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall407(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_f_64_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall408(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_f_64_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f64_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall409(dynamic arg) {
+    var arg0 = cst_encode_list_prim_f_64_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall410(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_16_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall411(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_16_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i16_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall412(dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_16_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall413(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_32_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall414(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_32_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i32_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall415(dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_32_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall416(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_64_strict(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall417(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_64_strict(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i64_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall418(dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_64_strict(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall419(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall420(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall421(dynamic arg) {
+    var arg0 = cst_encode_list_prim_i_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall425(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_16_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall426(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_16_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall427(dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_16_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall428(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_32_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall429(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_32_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u32_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall430(dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_32_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall431(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_64_strict(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall432(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_64_strict(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u64_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall433(dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_64_strict(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall434(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall435(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall436(dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall566(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_bool(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall567(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_bool(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bool_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall568(dynamic arg) {
+    var arg0 = cst_encode_bool(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bool_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall569(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall570(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bytes_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall571(dynamic arg) {
+    var arg0 = cst_encode_list_prim_u_8_loose(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall572(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_f_32(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic__example_basic_type_f32_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall573(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_f_32(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f32_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall574(dynamic arg) {
+    var arg0 = cst_encode_f_32(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f32_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall575(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_f_64(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic__example_basic_type_f64_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall576(NativePortType port_, dynamic arg) {
+    var arg0 = cst_encode_f_64(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f64_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall577(dynamic arg) {
+    var arg0 = cst_encode_f_64(arg);
+    return wire
+        .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall628() {
+    return wire.wire__crate__api__frb_logging__frb_internal_dispose_logger();
+  }
+
+  @protected
+  dynamic pdeCall631() {
+    return wire
+        .wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output();
+  }
+
+  @protected
+  dynamic pdeCall636(NativePortType port_, dynamic a, dynamic b) {
+    var arg0 = cst_encode_i_32(a);
+    var arg1 = cst_encode_i_32(b);
+    return wire.wire__crate__api__async_misc__func_async_simple_add_twin_normal(
+        port_, arg0, arg1);
+  }
+
+  @protected
+  dynamic pdeCall637(NativePortType port_) {
+    return wire
+        .wire__crate__api__async_misc__func_async_void_twin_normal(port_);
+  }
+
+  @protected
+  dynamic pdeCall693(NativePortType port_) {
+    return wire
+        .wire__crate__api__misc_type__func_return_unit_twin_normal(port_);
+  }
+
+  @protected
+  dynamic pdeCall694(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__misc_type_twin_rust_async__func_return_unit_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall695() {
+    return wire
+        .wire__crate__api__pseudo_manual__misc_type_twin_sync__func_return_unit_twin_sync();
+  }
+
+  @protected
+  dynamic pdeCall726(NativePortType port_) {
+    return wire
+        .wire__crate__api__exception__func_type_infallible_panic_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall727(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__exception_twin_rust_async__func_type_infallible_panic_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall728() {
+    return wire
+        .wire__crate__api__pseudo_manual__exception_twin_sync__func_type_infallible_panic_twin_sync();
+  }
+
+  @protected
+  dynamic pdeCall731(NativePortType port_) {
+    return wire.wire__crate__api__function_at_api_mod_rs(port_);
+  }
+
+  @protected
+  dynamic pdeCall735(NativePortType port_) {
+    return wire
+        .wire__crate__api__comment__function_with_comments_slash_star_star_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall736(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_slash_star_star_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall737() {
+    return wire
+        .wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_slash_star_star_twin_sync();
+  }
+
+  @protected
+  dynamic pdeCall738(NativePortType port_) {
+    return wire
+        .wire__crate__api__comment__function_with_comments_triple_slash_multi_line_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall739(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_multi_line_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall740() {
+    return wire
+        .wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_multi_line_twin_sync();
+  }
+
+  @protected
+  dynamic pdeCall741(NativePortType port_) {
+    return wire
+        .wire__crate__api__comment__function_with_comments_triple_slash_single_line_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall742(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_single_line_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall743() {
+    return wire
+        .wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_single_line_twin_sync();
+  }
+
+  @protected
+  dynamic pdeCall744(NativePortType port_) {
+    return wire
+        .wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall880(NativePortType port_, dynamic input) {
+    var arg0 = cst_encode_u_64(input);
+    return wire.wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
+        port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall881(NativePortType port_, dynamic input) {
+    var arg0 = cst_encode_u_64(input);
+    return wire
+        .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall882(dynamic input) {
+    var arg0 = cst_encode_u_64(input);
+    return wire
+        .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall886(NativePortType port_, dynamic input) {
+    var arg0 = cst_encode_u_64(input);
+    return wire
+        .wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall887(NativePortType port_, dynamic input) {
+    var arg0 = cst_encode_u_64(input);
+    return wire
+        .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall888(dynamic input) {
+    var arg0 = cst_encode_u_64(input);
+    return wire
+        .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall904(NativePortType port_, dynamic v) {
+    var arg0 = cst_encode_list_prim_u_8_loose(v);
+    return wire.wire__crate__api__misc_example__handle_vec_u8_twin_normal(
+        port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall905(NativePortType port_, dynamic v) {
+    var arg0 = cst_encode_list_prim_u_8_loose(v);
+    return wire
+        .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall906(dynamic v) {
+    var arg0 = cst_encode_list_prim_u_8_loose(v);
+    return wire
+        .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall910(NativePortType port_) {
+    return wire.wire__crate__api__customization__init_app(port_);
+  }
+
+  @protected
+  dynamic pdeCall977(NativePortType port_) {
+    return wire.wire__crate__api__customization__my_init_two(port_);
+  }
+
+  @protected
+  dynamic pdeCall1016(NativePortType port_, dynamic a, dynamic b) {
+    var arg0 = cst_encode_i_32(a);
+    var arg1 = cst_encode_i_32(b);
+    return wire
+        .wire__crate__api__misc_example__positional_arguments_twin_normal(
+            port_, arg0, arg1);
+  }
+
+  @protected
+  dynamic pdeCall1017(NativePortType port_, dynamic a, dynamic b) {
+    var arg0 = cst_encode_i_32(a);
+    var arg1 = cst_encode_i_32(b);
+    return wire
+        .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async(
+            port_, arg0, arg1);
+  }
+
+  @protected
+  dynamic pdeCall1018(dynamic a, dynamic b) {
+    var arg0 = cst_encode_i_32(a);
+    var arg1 = cst_encode_i_32(b);
+    return wire
+        .wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync(
+            arg0, arg1);
+  }
+
+  @protected
+  dynamic pdeCall1022(NativePortType port_, dynamic myI32, dynamic myI64,
+      dynamic myF64, dynamic myBool) {
+    var arg0 = cst_encode_i_32(myI32);
+    var arg1 = cst_encode_i_64(myI64);
+    var arg2 = cst_encode_f_64(myF64);
+    var arg3 = cst_encode_bool(myBool);
+    return wire.wire__crate__api__primitive_misc__primitive_types_twin_normal(
+        port_, arg0, arg1, arg2, arg3);
+  }
+
+  @protected
+  dynamic pdeCall1023(NativePortType port_, dynamic myI32, dynamic myI64,
+      dynamic myF64, dynamic myBool) {
+    var arg0 = cst_encode_i_32(myI32);
+    var arg1 = cst_encode_i_64(myI64);
+    var arg2 = cst_encode_f_64(myF64);
+    var arg3 = cst_encode_bool(myBool);
+    return wire
+        .wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async(
+            port_, arg0, arg1, arg2, arg3);
+  }
+
+  @protected
+  dynamic pdeCall1024(
+      dynamic myI32, dynamic myI64, dynamic myF64, dynamic myBool) {
+    var arg0 = cst_encode_i_32(myI32);
+    var arg1 = cst_encode_i_64(myI64);
+    var arg2 = cst_encode_f_64(myF64);
+    var arg3 = cst_encode_bool(myBool);
+    return wire
+        .wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
+            arg0, arg1, arg2, arg3);
+  }
+
+  @protected
+  dynamic pdeCall1025(NativePortType port_, dynamic myU32) {
+    var arg0 = cst_encode_u_32(myU32);
+    return wire.wire__crate__api__primitive_misc__primitive_u32_twin_normal(
+        port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall1026(NativePortType port_, dynamic myU32) {
+    var arg0 = cst_encode_u_32(myU32);
+    return wire
+        .wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u32_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall1027(dynamic myU32) {
+    var arg0 = cst_encode_u_32(myU32);
+    return wire
+        .wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall1031(NativePortType port_) {
+    return wire
+        .wire__crate__api__frb_logging__print_to_console_smoke_test(port_);
+  }
+
+  @protected
+  dynamic pdeCall1041(NativePortType port_) {
+    return wire
+        .wire__crate__api__init_dart_code__request_init_dart_code_message(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall1215(NativePortType port_) {
+    return wire
+        .wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall1216(NativePortType port_) {
+    return wire
+        .wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_files(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall1220(NativePortType port_, dynamic a, dynamic b) {
+    var arg0 = cst_encode_i_32(a);
+    var arg1 = cst_encode_i_32(b);
+    return wire.wire__crate__api__simple__simple_adder_twin_normal(
+        port_, arg0, arg1);
+  }
+
+  @protected
+  dynamic pdeCall1221(NativePortType port_, dynamic a, dynamic b) {
+    var arg0 = cst_encode_i_32(a);
+    var arg1 = cst_encode_i_32(b);
+    return wire
+        .wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_rust_async(
+            port_, arg0, arg1);
+  }
+
+  @protected
+  dynamic pdeCall1222(dynamic a, dynamic b) {
+    var arg0 = cst_encode_i_32(a);
+    var arg1 = cst_encode_i_32(b);
+    return wire
+        .wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync(
+            arg0, arg1);
+  }
+
+  @protected
+  dynamic pdeCall1266(NativePortType port_, dynamic a) {
+    var arg0 = cst_encode_i_32(a);
+    return wire
+        .wire__crate__api__method__static_only_twin_normal_static_method_twin_normal(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall1267(NativePortType port_, dynamic a) {
+    var arg0 = cst_encode_i_32(a);
+    return wire
+        .wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async(
+            port_, arg0);
+  }
+
+  @protected
+  dynamic pdeCall1268(dynamic a) {
+    var arg0 = cst_encode_i_32(a);
+    return wire
+        .wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
+            arg0);
+  }
+
+  @protected
+  dynamic pdeCall1280(NativePortType port_) {
+    return wire
+        .wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall1282(NativePortType port_) {
+    return wire
+        .wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async(
+            port_);
+  }
+
+  @protected
+  dynamic pdeCall1284() {
+    return wire
+        .wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync();
+  }
+
+  @protected
+  dynamic pdeCall1287(NativePortType port_) {
+    return wire
+        .wire__crate__api__misc_no_twin_example_a__struct_with_raw_name_field_dummy_function(
+            port_);
+  }
+
+  @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer);
 
@@ -15882,6 +17155,867 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL() =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL();
+
+  void wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
+              port_);
+
+  void wire__crate__api__dropping__DroppableTwinNormal_get_drop_count_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__dropping__DroppableTwinNormal_get_drop_count_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_get_drop_count_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_get_drop_count_twin_rust_async(
+              port_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_get_drop_count_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_get_drop_count_twin_sync();
+
+  void wire__crate__api__method__StaticGetterOnlyTwinNormal_static_getter_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__method__StaticGetterOnlyTwinNormal_static_getter_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__method_twin_rust_async__StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__method_twin_rust_async__StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async(
+              port_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__method_twin_sync__StaticGetterOnlyTwinSync_static_getter_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__method_twin_sync__StaticGetterOnlyTwinSync_static_getter_twin_sync();
+
+  void wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
+              port_);
+
+  void wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
+              port_);
+
+  void wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal(
+          NativePortType port_, JSAny raw) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal(
+              port_, raw);
+
+  void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_protobuf_twin_rust_async(
+          NativePortType port_, JSAny raw) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_protobuf_twin_rust_async(
+              port_, raw);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
+              JSAny raw) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
+                  raw);
+
+  void wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_protobuf_twin_normal(
+          NativePortType port_, int depth) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_protobuf_twin_normal(
+              port_, depth);
+
+  void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_protobuf_twin_rust_async(
+          NativePortType port_, int depth) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_protobuf_twin_rust_async(
+              port_, depth);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_protobuf_twin_sync(
+              int depth) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_protobuf_twin_sync(
+                  depth);
+
+  void wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal(
+          NativePortType port_, JSAny raw) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal(
+              port_, raw);
+
+  void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_protobuf_twin_rust_async(
+          NativePortType port_, JSAny raw) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_protobuf_twin_rust_async(
+              port_, raw);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
+              JSAny raw) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
+                  raw);
+
+  void wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_protobuf_twin_normal(
+          NativePortType port_, int size) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_protobuf_twin_normal(
+              port_, size);
+
+  void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_protobuf_twin_rust_async(
+          NativePortType port_, int size) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_protobuf_twin_rust_async(
+              port_, size);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_protobuf_twin_sync(
+              int size) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_protobuf_twin_sync(
+                  size);
+
+  void wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal(
+          NativePortType port_, JSAny bytes) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal(
+              port_, bytes);
+
+  void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_input_bytes_twin_rust_async(
+          NativePortType port_, JSAny bytes) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_input_bytes_twin_rust_async(
+              port_, bytes);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
+              JSAny bytes) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
+                  bytes);
+
+  void wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_twin_normal(
+          NativePortType port_, int size) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_twin_normal(
+              port_, size);
+
+  void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_output_bytes_twin_rust_async(
+          NativePortType port_, int size) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_output_bytes_twin_rust_async(
+              port_, size);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_output_bytes_twin_sync(
+              int size) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_output_bytes_twin_sync(
+                  size);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__benchmark_misc__benchmark_void_semi_serialize() =>
+          wasmModule
+              .wire__crate__api__benchmark_misc__benchmark_void_semi_serialize();
+
+  void wire__crate__api__pseudo_manual__benchmark_api__benchmark_void_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api__benchmark_void_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_void_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_void_twin_rust_async(
+              port_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_void_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_void_twin_sync();
+
+  void wire__crate__api__ownership__borrow_i32_twin_normal(
+          NativePortType port_, int arg) =>
+      wasmModule.wire__crate__api__ownership__borrow_i32_twin_normal(
+          port_, arg);
+
+  void wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync(
+              int arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync(
+                  arg);
+
+  void wire__crate__api__ownership__borrow_slice_u8_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule.wire__crate__api__ownership__borrow_slice_u8_twin_normal(
+          port_, arg);
+
+  void wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
+                  arg);
+
+  void wire__crate__api__customization__check_init_done(NativePortType port_) =>
+      wasmModule.wire__crate__api__customization__check_init_done(port_);
+
+  void wire__crate__api__event_listener__close_event_listener_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__event_listener__close_event_listener_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__event_listener_twin_rust_async__close_event_listener_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__event_listener_twin_rust_async__close_event_listener_twin_rust_async(
+              port_);
+
+  void wire__crate__api__dart_opaque__drop_static_dart_opaque_twin_normal(
+          NativePortType port_, int id) =>
+      wasmModule
+          .wire__crate__api__dart_opaque__drop_static_dart_opaque_twin_normal(
+              port_, id);
+
+  void wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__drop_static_dart_opaque_twin_rust_async(
+          NativePortType port_, int id) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__drop_static_dart_opaque_twin_rust_async(
+              port_, id);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__dart_opaque_twin_sync__drop_static_dart_opaque_twin_sync(
+              int id) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__dart_opaque_twin_sync__drop_static_dart_opaque_twin_sync(
+                  id);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f64_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f64_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i16_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i16_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i32_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i32_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i64_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i64_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u32_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u32_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u64_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u64_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_normal(
+          NativePortType port_, bool arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bool_twin_rust_async(
+          NativePortType port_, bool arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bool_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bool_twin_sync(
+              bool arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bool_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bytes_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bytes_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic__example_basic_type_f32_twin_normal(
+          NativePortType port_, double arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic__example_basic_type_f32_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f32_twin_rust_async(
+          NativePortType port_, double arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f32_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f32_twin_sync(
+              double arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f32_twin_sync(
+                  arg);
+
+  void wire__crate__api__pseudo_manual__basic__example_basic_type_f64_twin_normal(
+          NativePortType port_, double arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic__example_basic_type_f64_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f64_twin_rust_async(
+          NativePortType port_, double arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f64_twin_rust_async(
+              port_, arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_twin_sync(
+              double arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_twin_sync(
+                  arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_internal_dispose_logger() => wasmModule
+          .wire__crate__api__frb_logging__frb_internal_dispose_logger();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output() =>
+          wasmModule
+              .wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output();
+
+  void wire__crate__api__async_misc__func_async_simple_add_twin_normal(
+          NativePortType port_, int a, int b) =>
+      wasmModule
+          .wire__crate__api__async_misc__func_async_simple_add_twin_normal(
+              port_, a, b);
+
+  void wire__crate__api__async_misc__func_async_void_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__async_misc__func_async_void_twin_normal(port_);
+
+  void wire__crate__api__misc_type__func_return_unit_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_type__func_return_unit_twin_normal(port_);
+
+  void wire__crate__api__pseudo_manual__misc_type_twin_rust_async__func_return_unit_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_type_twin_rust_async__func_return_unit_twin_rust_async(
+              port_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_type_twin_sync__func_return_unit_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_type_twin_sync__func_return_unit_twin_sync();
+
+  void wire__crate__api__exception__func_type_infallible_panic_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__exception__func_type_infallible_panic_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__exception_twin_rust_async__func_type_infallible_panic_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__exception_twin_rust_async__func_type_infallible_panic_twin_rust_async(
+              port_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__exception_twin_sync__func_type_infallible_panic_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__exception_twin_sync__func_type_infallible_panic_twin_sync();
+
+  void wire__crate__api__function_at_api_mod_rs(NativePortType port_) =>
+      wasmModule.wire__crate__api__function_at_api_mod_rs(port_);
+
+  void wire__crate__api__comment__function_with_comments_slash_star_star_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__comment__function_with_comments_slash_star_star_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_slash_star_star_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_slash_star_star_twin_rust_async(
+              port_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_slash_star_star_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_slash_star_star_twin_sync();
+
+  void wire__crate__api__comment__function_with_comments_triple_slash_multi_line_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__comment__function_with_comments_triple_slash_multi_line_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_multi_line_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_multi_line_twin_rust_async(
+              port_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_multi_line_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_multi_line_twin_sync();
+
+  void wire__crate__api__comment__function_with_comments_triple_slash_single_line_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__comment__function_with_comments_triple_slash_single_line_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_single_line_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_single_line_twin_rust_async(
+              port_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_single_line_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_single_line_twin_sync();
+
+  void wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
+              port_);
+
+  void wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
+          NativePortType port_, JSAny input) =>
+      wasmModule.wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
+          port_, input);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async(
+          NativePortType port_, JSAny input) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async(
+              port_, input);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
+              JSAny input) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
+                  input);
+
+  void wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
+          NativePortType port_, JSAny input) =>
+      wasmModule
+          .wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
+              port_, input);
+
+  void wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async(
+          NativePortType port_, JSAny input) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async(
+              port_, input);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
+              JSAny input) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
+                  input);
+
+  void wire__crate__api__misc_example__handle_vec_u8_twin_normal(
+          NativePortType port_, JSAny v) =>
+      wasmModule.wire__crate__api__misc_example__handle_vec_u8_twin_normal(
+          port_, v);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
+          NativePortType port_, JSAny v) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
+              port_, v);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
+              JSAny v) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
+                  v);
+
+  void wire__crate__api__customization__init_app(NativePortType port_) =>
+      wasmModule.wire__crate__api__customization__init_app(port_);
+
+  void wire__crate__api__customization__my_init_two(NativePortType port_) =>
+      wasmModule.wire__crate__api__customization__my_init_two(port_);
+
+  void wire__crate__api__misc_example__positional_arguments_twin_normal(
+          NativePortType port_, int a, int b) =>
+      wasmModule
+          .wire__crate__api__misc_example__positional_arguments_twin_normal(
+              port_, a, b);
+
+  void wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async(
+          NativePortType port_, int a, int b) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async(
+              port_, a, b);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync(
+              int a, int b) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync(
+                  a, b);
+
+  void wire__crate__api__primitive_misc__primitive_types_twin_normal(
+          NativePortType port_,
+          int my_i32,
+          JSAny my_i64,
+          double my_f64,
+          bool my_bool) =>
+      wasmModule.wire__crate__api__primitive_misc__primitive_types_twin_normal(
+          port_, my_i32, my_i64, my_f64, my_bool);
+
+  void wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async(
+          NativePortType port_,
+          int my_i32,
+          JSAny my_i64,
+          double my_f64,
+          bool my_bool) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async(
+              port_, my_i32, my_i64, my_f64, my_bool);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
+              int my_i32, JSAny my_i64, double my_f64, bool my_bool) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
+                  my_i32, my_i64, my_f64, my_bool);
+
+  void wire__crate__api__primitive_misc__primitive_u32_twin_normal(
+          NativePortType port_, int my_u32) =>
+      wasmModule.wire__crate__api__primitive_misc__primitive_u32_twin_normal(
+          port_, my_u32);
+
+  void wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u32_twin_rust_async(
+          NativePortType port_, int my_u32) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u32_twin_rust_async(
+              port_, my_u32);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync(
+              int my_u32) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync(
+                  my_u32);
+
+  void wire__crate__api__frb_logging__print_to_console_smoke_test(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__frb_logging__print_to_console_smoke_test(port_);
+
+  void wire__crate__api__init_dart_code__request_init_dart_code_message(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__init_dart_code__request_init_dart_code_message(
+              port_);
+
+  void wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
+              port_);
+
+  void wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_files(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_files(
+              port_);
+
+  void wire__crate__api__simple__simple_adder_twin_normal(
+          NativePortType port_, int a, int b) =>
+      wasmModule.wire__crate__api__simple__simple_adder_twin_normal(
+          port_, a, b);
+
+  void wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_rust_async(
+          NativePortType port_, int a, int b) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_rust_async(
+              port_, a, b);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync(
+              int a, int b) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync(
+                  a, b);
+
+  void wire__crate__api__method__static_only_twin_normal_static_method_twin_normal(
+          NativePortType port_, int a) =>
+      wasmModule
+          .wire__crate__api__method__static_only_twin_normal_static_method_twin_normal(
+              port_, a);
+
+  void wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async(
+          NativePortType port_, int a) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async(
+              port_, a);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
+              int a) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
+                  a);
+
+  void wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async(
+              port_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync();
+
+  void wire__crate__api__misc_no_twin_example_a__struct_with_raw_name_field_dummy_function(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__struct_with_raw_name_field_dummy_function(
+              port_);
+
   void rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
           int ptr) =>
       wasmModule
@@ -16977,6 +19111,556 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL();
+
+  external void
+      wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_dummy_function_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__dropping__DroppableTwinNormal_get_drop_count_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__dropping_twin_rust_async__DroppableTwinRustAsync_get_drop_count_twin_rust_async(
+          NativePortType port_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__dropping_twin_sync__DroppableTwinSync_get_drop_count_twin_sync();
+
+  external void
+      wire__crate__api__method__StaticGetterOnlyTwinNormal_static_getter_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__method_twin_rust_async__StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async(
+          NativePortType port_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__method_twin_sync__StaticGetterOnlyTwinSync_static_getter_twin_sync();
+
+  external void
+      wire__crate__api__impl_trait__StructOneWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructOneWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__impl_trait_twin_sync__StructTwoWithTraitTwinSync_simple_trait_fn_with_default_impl_twin_sync(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_input_protobuf_twin_normal(
+          NativePortType port_, JSAny raw);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_input_protobuf_twin_rust_async(
+          NativePortType port_, JSAny raw);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_input_protobuf_twin_sync(
+          JSAny raw);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api__benchmark_binary_tree_output_protobuf_twin_normal(
+          NativePortType port_, int depth);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_binary_tree_output_protobuf_twin_rust_async(
+          NativePortType port_, int depth);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_binary_tree_output_protobuf_twin_sync(
+          int depth);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_input_protobuf_twin_normal(
+          NativePortType port_, JSAny raw);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_input_protobuf_twin_rust_async(
+          NativePortType port_, JSAny raw);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_input_protobuf_twin_sync(
+          JSAny raw);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api__benchmark_blob_output_protobuf_twin_normal(
+          NativePortType port_, int size);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_blob_output_protobuf_twin_rust_async(
+          NativePortType port_, int size);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_blob_output_protobuf_twin_sync(
+          int size);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api__benchmark_input_bytes_twin_normal(
+          NativePortType port_, JSAny bytes);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_input_bytes_twin_rust_async(
+          NativePortType port_, JSAny bytes);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_input_bytes_twin_sync(
+          JSAny bytes);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api__benchmark_output_bytes_twin_normal(
+          NativePortType port_, int size);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_output_bytes_twin_rust_async(
+          NativePortType port_, int size);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_output_bytes_twin_sync(
+          int size);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__benchmark_misc__benchmark_void_semi_serialize();
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api__benchmark_void_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__benchmark_api_twin_rust_async__benchmark_void_twin_rust_async(
+          NativePortType port_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__benchmark_api_twin_sync__benchmark_void_twin_sync();
+
+  external void wire__crate__api__ownership__borrow_i32_twin_normal(
+      NativePortType port_, int arg);
+
+  external void
+      wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_i32_twin_rust_async(
+          NativePortType port_, int arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_i32_twin_sync(
+          int arg);
+
+  external void wire__crate__api__ownership__borrow_slice_u8_twin_normal(
+      NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__ownership_twin_rust_async__borrow_slice_u8_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__ownership_twin_sync__borrow_slice_u8_twin_sync(
+          JSAny arg);
+
+  external void wire__crate__api__customization__check_init_done(
+      NativePortType port_);
+
+  external void
+      wire__crate__api__event_listener__close_event_listener_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__event_listener_twin_rust_async__close_event_listener_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__dart_opaque__drop_static_dart_opaque_twin_normal(
+          NativePortType port_, int id);
+
+  external void
+      wire__crate__api__pseudo_manual__dart_opaque_twin_rust_async__drop_static_dart_opaque_twin_rust_async(
+          NativePortType port_, int id);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__dart_opaque_twin_sync__drop_static_dart_opaque_twin_sync(
+          int id);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f32_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f32_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f32_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_f64_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_f64_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_f64_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i16_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i16_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i16_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i32_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i32_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i32_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i64_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i64_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i64_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_i8_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_i8_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_i8_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u16_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u16_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u16_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u32_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u32_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u32_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u64_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u64_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u64_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list__example_basic_list_type_u8_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_list_twin_rust_async__example_basic_list_type_u8_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_list_twin_sync__example_basic_list_type_u8_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic__example_basic_type_bool_twin_normal(
+          NativePortType port_, bool arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bool_twin_rust_async(
+          NativePortType port_, bool arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bool_twin_sync(
+          bool arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic__example_basic_type_bytes_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_bytes_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_bytes_twin_sync(
+          JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic__example_basic_type_f32_twin_normal(
+          NativePortType port_, double arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f32_twin_rust_async(
+          NativePortType port_, double arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f32_twin_sync(
+          double arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic__example_basic_type_f64_twin_normal(
+          NativePortType port_, double arg);
+
+  external void
+      wire__crate__api__pseudo_manual__basic_twin_rust_async__example_basic_type_f64_twin_rust_async(
+          NativePortType port_, double arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__basic_twin_sync__example_basic_type_f64_twin_sync(
+          double arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_internal_dispose_logger();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output();
+
+  external void wire__crate__api__async_misc__func_async_simple_add_twin_normal(
+      NativePortType port_, int a, int b);
+
+  external void wire__crate__api__async_misc__func_async_void_twin_normal(
+      NativePortType port_);
+
+  external void wire__crate__api__misc_type__func_return_unit_twin_normal(
+      NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_type_twin_rust_async__func_return_unit_twin_rust_async(
+          NativePortType port_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_type_twin_sync__func_return_unit_twin_sync();
+
+  external void
+      wire__crate__api__exception__func_type_infallible_panic_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__exception_twin_rust_async__func_type_infallible_panic_twin_rust_async(
+          NativePortType port_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__exception_twin_sync__func_type_infallible_panic_twin_sync();
+
+  external void wire__crate__api__function_at_api_mod_rs(NativePortType port_);
+
+  external void
+      wire__crate__api__comment__function_with_comments_slash_star_star_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_slash_star_star_twin_rust_async(
+          NativePortType port_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_slash_star_star_twin_sync();
+
+  external void
+      wire__crate__api__comment__function_with_comments_triple_slash_multi_line_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_multi_line_twin_rust_async(
+          NativePortType port_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_multi_line_twin_sync();
+
+  external void
+      wire__crate__api__comment__function_with_comments_triple_slash_single_line_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__comment_twin_rust_async__function_with_comments_triple_slash_single_line_twin_rust_async(
+          NativePortType port_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__comment_twin_sync__function_with_comments_triple_slash_single_line_twin_sync();
+
+  external void
+      wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal(
+          NativePortType port_);
+
+  external void wire__crate__api__type_alias__handle_type_alias_id_twin_normal(
+      NativePortType port_, JSAny input);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_alias_id_twin_rust_async(
+          NativePortType port_, JSAny input);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_alias_id_twin_sync(
+          JSAny input);
+
+  external void
+      wire__crate__api__type_alias__handle_type_nest_alias_id_twin_normal(
+          NativePortType port_, JSAny input);
+
+  external void
+      wire__crate__api__pseudo_manual__type_alias_twin_rust_async__handle_type_nest_alias_id_twin_rust_async(
+          NativePortType port_, JSAny input);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__type_alias_twin_sync__handle_type_nest_alias_id_twin_sync(
+          JSAny input);
+
+  external void wire__crate__api__misc_example__handle_vec_u8_twin_normal(
+      NativePortType port_, JSAny v);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async__handle_vec_u8_twin_rust_async(
+          NativePortType port_, JSAny v);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__handle_vec_u8_twin_sync(
+          JSAny v);
+
+  external void wire__crate__api__customization__init_app(NativePortType port_);
+
+  external void wire__crate__api__customization__my_init_two(
+      NativePortType port_);
+
+  external void
+      wire__crate__api__misc_example__positional_arguments_twin_normal(
+          NativePortType port_, int a, int b);
+
+  external void
+      wire__crate__api__pseudo_manual__misc_example_twin_rust_async__positional_arguments_twin_rust_async(
+          NativePortType port_, int a, int b);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__misc_example_twin_sync__positional_arguments_twin_sync(
+          int a, int b);
+
+  external void wire__crate__api__primitive_misc__primitive_types_twin_normal(
+      NativePortType port_,
+      int my_i32,
+      JSAny my_i64,
+      double my_f64,
+      bool my_bool);
+
+  external void
+      wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_types_twin_rust_async(
+          NativePortType port_,
+          int my_i32,
+          JSAny my_i64,
+          double my_f64,
+          bool my_bool);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_types_twin_sync(
+          int my_i32, JSAny my_i64, double my_f64, bool my_bool);
+
+  external void wire__crate__api__primitive_misc__primitive_u32_twin_normal(
+      NativePortType port_, int my_u32);
+
+  external void
+      wire__crate__api__pseudo_manual__primitive_misc_twin_rust_async__primitive_u32_twin_rust_async(
+          NativePortType port_, int my_u32);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__primitive_misc_twin_sync__primitive_u32_twin_sync(
+          int my_u32);
+
+  external void wire__crate__api__frb_logging__print_to_console_smoke_test(
+      NativePortType port_);
+
+  external void
+      wire__crate__api__init_dart_code__request_init_dart_code_message(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__misc_no_twin_example_b__same_function_name_in_different_files(
+          NativePortType port_);
+
+  external void wire__crate__api__simple__simple_adder_twin_normal(
+      NativePortType port_, int a, int b);
+
+  external void
+      wire__crate__api__pseudo_manual__simple_twin_rust_async__simple_adder_twin_rust_async(
+          NativePortType port_, int a, int b);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__simple_twin_sync__simple_adder_twin_sync(
+          int a, int b);
+
+  external void
+      wire__crate__api__method__static_only_twin_normal_static_method_twin_normal(
+          NativePortType port_, int a);
+
+  external void
+      wire__crate__api__pseudo_manual__method_twin_rust_async__static_only_twin_rust_async_static_method_twin_rust_async(
+          NativePortType port_, int a);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(
+          int a);
+
+  external void
+      wire__crate__api__comment__struct_with_comments_twin_normal_static_method_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__comment_twin_rust_async__struct_with_comments_twin_rust_async_static_method_twin_rust_async(
+          NativePortType port_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__comment_twin_sync__struct_with_comments_twin_sync_static_method_twin_sync();
+
+  external void
+      wire__crate__api__misc_no_twin_example_a__struct_with_raw_name_field_dummy_function(
+          NativePortType port_);
+
   external void
       rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinNormal(
           int ptr);

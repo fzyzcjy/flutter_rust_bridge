@@ -10661,6 +10661,994 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   WeekdaysTwinSync sse_decode_weekdays_twin_sync(SseDeserializer deserializer);
 
   @protected
+  dynamic pdeCall2() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
+  }
+
+  @protected
+  dynamic pdeCall23(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 23, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall25(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 25, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall29(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 29, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall33() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 33)!;
+  }
+
+  @protected
+  dynamic pdeCall122(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 122, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall123(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 123, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall124() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 124)!;
+  }
+
+  @protected
+  dynamic pdeCall136(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 136, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall141(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 141, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall150(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 150, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall155(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 155, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall204(NativePortType port_, dynamic raw) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(raw, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 204, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall205(NativePortType port_, dynamic raw) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(raw, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 205, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall206(dynamic raw) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(raw, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 206)!;
+  }
+
+  @protected
+  dynamic pdeCall213(NativePortType port_, dynamic depth) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(depth, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 213, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall214(NativePortType port_, dynamic depth) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(depth, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 214, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall215(dynamic depth) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(depth, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 215)!;
+  }
+
+  @protected
+  dynamic pdeCall222(NativePortType port_, dynamic raw) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(raw, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 222, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall223(NativePortType port_, dynamic raw) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(raw, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 223, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall224(dynamic raw) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(raw, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 224)!;
+  }
+
+  @protected
+  dynamic pdeCall231(NativePortType port_, dynamic size) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(size, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 231, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall232(NativePortType port_, dynamic size) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(size, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 232, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall233(dynamic size) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(size, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 233)!;
+  }
+
+  @protected
+  dynamic pdeCall237(NativePortType port_, dynamic bytes) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(bytes, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 237, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall238(NativePortType port_, dynamic bytes) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(bytes, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 238, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall239(dynamic bytes) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(bytes, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 239)!;
+  }
+
+  @protected
+  dynamic pdeCall240(NativePortType port_, dynamic size) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(size, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 240, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall241(NativePortType port_, dynamic size) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(size, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 241, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall242(dynamic size) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(size, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 242)!;
+  }
+
+  @protected
+  dynamic pdeCall243() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 243)!;
+  }
+
+  @protected
+  dynamic pdeCall244(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 244, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall245(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 245, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall246() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 246)!;
+  }
+
+  @protected
+  dynamic pdeCall247(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 247, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall248(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 248, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall249(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 249)!;
+  }
+
+  @protected
+  dynamic pdeCall253(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 253, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall254(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 254, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall255(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 255)!;
+  }
+
+  @protected
+  dynamic pdeCall279(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 279, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall283(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 283, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall284(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 284, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall368(NativePortType port_, dynamic id) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(id, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 368, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall369(NativePortType port_, dynamic id) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(id, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 369, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall370(dynamic id) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(id, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 370)!;
+  }
+
+  @protected
+  dynamic pdeCall404(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_f_32_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 404, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall405(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_f_32_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 405, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall406(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_f_32_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 406)!;
+  }
+
+  @protected
+  dynamic pdeCall407(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_f_64_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 407, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall408(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_f_64_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 408, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall409(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_f_64_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 409)!;
+  }
+
+  @protected
+  dynamic pdeCall410(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_16_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 410, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall411(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_16_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 411, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall412(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_16_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 412)!;
+  }
+
+  @protected
+  dynamic pdeCall413(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_32_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 413, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall414(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_32_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 414, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall415(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_32_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 415)!;
+  }
+
+  @protected
+  dynamic pdeCall416(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_64_strict(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 416, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall417(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_64_strict(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 417, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall418(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_64_strict(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 418)!;
+  }
+
+  @protected
+  dynamic pdeCall419(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_8_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 419, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall420(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_8_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 420, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall421(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_i_8_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 421)!;
+  }
+
+  @protected
+  dynamic pdeCall425(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_16_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 425, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall426(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_16_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 426, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall427(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_16_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 427)!;
+  }
+
+  @protected
+  dynamic pdeCall428(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_32_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 428, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall429(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_32_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 429, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall430(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_32_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 430)!;
+  }
+
+  @protected
+  dynamic pdeCall431(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_64_strict(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 431, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall432(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_64_strict(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 432, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall433(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_64_strict(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 433)!;
+  }
+
+  @protected
+  dynamic pdeCall434(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 434, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall435(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 435, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall436(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 436)!;
+  }
+
+  @protected
+  dynamic pdeCall566(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_bool(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 566, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall567(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_bool(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 567, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall568(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_bool(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 568)!;
+  }
+
+  @protected
+  dynamic pdeCall569(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 569, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall570(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 570, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall571(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 571)!;
+  }
+
+  @protected
+  dynamic pdeCall572(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_f_32(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 572, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall573(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_f_32(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 573, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall574(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_f_32(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 574)!;
+  }
+
+  @protected
+  dynamic pdeCall575(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_f_64(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 575, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall576(NativePortType port_, dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_f_64(arg, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 576, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall577(dynamic arg) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_f_64(arg, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 577)!;
+  }
+
+  @protected
+  dynamic pdeCall628() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 628)!;
+  }
+
+  @protected
+  dynamic pdeCall631() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 631)!;
+  }
+
+  @protected
+  dynamic pdeCall636(NativePortType port_, dynamic a, dynamic b) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    sse_encode_i_32(b, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 636, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall637(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 637, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall693(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 693, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall694(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 694, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall695() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 695)!;
+  }
+
+  @protected
+  dynamic pdeCall726(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 726, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall727(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 727, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall728() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 728)!;
+  }
+
+  @protected
+  dynamic pdeCall731(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 731, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall735(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 735, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall736(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 736, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall737() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 737)!;
+  }
+
+  @protected
+  dynamic pdeCall738(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 738, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall739(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 739, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall740() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 740)!;
+  }
+
+  @protected
+  dynamic pdeCall741(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 741, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall742(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 742, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall743() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 743)!;
+  }
+
+  @protected
+  dynamic pdeCall744(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 744, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall880(NativePortType port_, dynamic input) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_u_64(input, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 880, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall881(NativePortType port_, dynamic input) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_u_64(input, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 881, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall882(dynamic input) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_u_64(input, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 882)!;
+  }
+
+  @protected
+  dynamic pdeCall886(NativePortType port_, dynamic input) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_u_64(input, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 886, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall887(NativePortType port_, dynamic input) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_u_64(input, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 887, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall888(dynamic input) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_u_64(input, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 888)!;
+  }
+
+  @protected
+  dynamic pdeCall904(NativePortType port_, dynamic v) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(v, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 904, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall905(NativePortType port_, dynamic v) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(v, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 905, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall906(dynamic v) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_list_prim_u_8_loose(v, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 906)!;
+  }
+
+  @protected
+  dynamic pdeCall910(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 910, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall977(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 977, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1016(NativePortType port_, dynamic a, dynamic b) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    sse_encode_i_32(b, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1016, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1017(NativePortType port_, dynamic a, dynamic b) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    sse_encode_i_32(b, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1017, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1018(dynamic a, dynamic b) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    sse_encode_i_32(b, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1018)!;
+  }
+
+  @protected
+  dynamic pdeCall1022(NativePortType port_, dynamic myI32, dynamic myI64,
+      dynamic myF64, dynamic myBool) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(myI32, serializer);
+    sse_encode_i_64(myI64, serializer);
+    sse_encode_f_64(myF64, serializer);
+    sse_encode_bool(myBool, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1022, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1023(NativePortType port_, dynamic myI32, dynamic myI64,
+      dynamic myF64, dynamic myBool) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(myI32, serializer);
+    sse_encode_i_64(myI64, serializer);
+    sse_encode_f_64(myF64, serializer);
+    sse_encode_bool(myBool, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1023, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1024(
+      dynamic myI32, dynamic myI64, dynamic myF64, dynamic myBool) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(myI32, serializer);
+    sse_encode_i_64(myI64, serializer);
+    sse_encode_f_64(myF64, serializer);
+    sse_encode_bool(myBool, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1024)!;
+  }
+
+  @protected
+  dynamic pdeCall1025(NativePortType port_, dynamic myU32) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_u_32(myU32, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1025, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1026(NativePortType port_, dynamic myU32) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_u_32(myU32, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1026, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1027(dynamic myU32) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_u_32(myU32, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1027)!;
+  }
+
+  @protected
+  dynamic pdeCall1031(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1031, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1041(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1041, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1215(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1215, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1216(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1216, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1220(NativePortType port_, dynamic a, dynamic b) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    sse_encode_i_32(b, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1220, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1221(NativePortType port_, dynamic a, dynamic b) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    sse_encode_i_32(b, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1221, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1222(dynamic a, dynamic b) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    sse_encode_i_32(b, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1222)!;
+  }
+
+  @protected
+  dynamic pdeCall1266(NativePortType port_, dynamic a) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1266, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1267(NativePortType port_, dynamic a) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1267, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1268(dynamic a) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    sse_encode_i_32(a, serializer);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1268)!;
+  }
+
+  @protected
+  dynamic pdeCall1280(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1280, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1282(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1282, port: port_);
+  }
+
+  @protected
+  dynamic pdeCall1284() {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1284)!;
+  }
+
+  @protected
+  dynamic pdeCall1287(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer,
+        funcId: 1287, port: port_);
+  }
+
+  @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer);
 
