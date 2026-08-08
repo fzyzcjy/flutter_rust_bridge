@@ -14,6 +14,11 @@ use log::warn;
 use std::fs;
 use std::path::{Path, PathBuf};
 
+lazy_static! {
+    static ref ANY_REQUIREMENT: VersionReq = VersionReq::parse(">= 1.0.0").unwrap();
+    static ref BUILD_RUNNER_REQUIREMENT: VersionReq = VersionReq::parse(">= 1.7.0").unwrap();
+}
+
 pub(crate) mod add_mod_to_lib;
 mod auto_upgrade;
 pub(crate) mod internal_config;
@@ -67,10 +72,6 @@ fn ensure_dependencies(
     needs_freezed: bool,
     needs_json_serializable: bool,
 ) -> anyhow::Result<()> {
-    lazy_static! {
-        pub(crate) static ref ANY_REQUIREMENT: VersionReq = VersionReq::parse(">= 1.0.0").unwrap();
-    }
-
     if needs_freezed {
         let repo = DartRepository::from_path(&config.dart_root)?;
         repo.has_specified_and_installed("freezed", DartDependencyMode::Dev, &ANY_REQUIREMENT)?;
@@ -82,7 +83,7 @@ fn ensure_dependencies(
         repo.has_specified_and_installed(
             "build_runner",
             DartDependencyMode::Dev,
-            &ANY_REQUIREMENT,
+            &BUILD_RUNNER_REQUIREMENT,
         )?;
     }
 
@@ -185,4 +186,17 @@ fn execute_duplicate_c_output(config: &PolisherInternalConfig) -> anyhow::Result
         )?;
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::BUILD_RUNNER_REQUIREMENT;
+    use cargo_metadata::Version;
+
+    /// Requires the first build_runner release that supports output filters.
+    #[test]
+    fn test_build_runner_requirement_supports_output_filters() {
+        assert!(!BUILD_RUNNER_REQUIREMENT.matches(&Version::parse("1.6.9").unwrap()));
+        assert!(BUILD_RUNNER_REQUIREMENT.matches(&Version::parse("1.7.0").unwrap()));
+    }
 }

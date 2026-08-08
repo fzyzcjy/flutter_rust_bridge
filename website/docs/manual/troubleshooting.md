@@ -66,7 +66,7 @@ You can install llvm using `brew install llvm` and it will be installed at `/usr
 
 ## Freezed file is sometimes not generated when it should be
 
-Code generation automatically runs `build_runner` for `.freezed.dart` and `.g.dart` outputs under the configured `dart_output` directory. If those files seem outdated, ensure `build_runner`, `freezed`, and the corresponding annotations are installed.
+Code generation automatically runs `build_runner` 1.7.0 or newer for `.freezed.dart` and `.g.dart` outputs under the configured `dart_output` directory. If those files seem outdated, ensure `build_runner`, `freezed`, and the corresponding annotations are installed.
 
 Run `build_runner` separately when the Dart package contains unrelated builders whose outputs live outside `dart_output`. The automatic invocation is intentionally scoped to FRB-generated outputs so unrelated builders do not slow down Rust-to-Dart code generation.
 
