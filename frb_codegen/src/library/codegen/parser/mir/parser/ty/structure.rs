@@ -169,11 +169,12 @@ impl VisitMut for InaccessiblePrivateTypeVisitor<'_, '_> {
 
         let candidates = type_path_candidates(&node.path, self.initiated_namespace, self.imports);
         self.found = candidates.iter().any(|candidate| {
-            self.src_structs.get(&candidate.name).is_some_and(|item| {
-                !item.is_accessible_from_rust_output && item.name == *candidate
-            }) || self.src_enums.get(&candidate.name).is_some_and(|item| {
-                !item.is_accessible_from_rust_output && item.name == *candidate
-            })
+            self.src_structs
+                .get(&candidate.name)
+                .is_some_and(|item| !item.is_accessible_from_rust_output && item.name == *candidate)
+                || self.src_enums.get(&candidate.name).is_some_and(|item| {
+                    !item.is_accessible_from_rust_output && item.name == *candidate
+                })
         });
 
         if !self.found && self.alias_depth < 64 {
@@ -255,7 +256,10 @@ fn type_path_candidates(
     if let Some(namespace) =
         resolve_relative_namespace(type_namespace_segments, initiated_namespace)
     {
-        output.push(NamespacedName::new(namespace, segments.last().unwrap().clone()));
+        output.push(NamespacedName::new(
+            namespace,
+            segments.last().unwrap().clone(),
+        ));
     }
     output.push(NamespacedName::new(
         Namespace::new(type_namespace_segments.to_vec()),
@@ -287,41 +291,20 @@ fn collect_import_targets(
         }
         UseTree::Name(inner) => {
             if inner.ident == local_name {
-                push_import_targets(
-                    prefix,
-                    inner.ident.to_string(),
-                    initiated_namespace,
-                    output,
-                );
+                push_import_targets(prefix, inner.ident.to_string(), initiated_namespace, output);
             }
         }
         UseTree::Rename(inner) => {
             if inner.rename == local_name {
-                push_import_targets(
-                    prefix,
-                    inner.ident.to_string(),
-                    initiated_namespace,
-                    output,
-                );
+                push_import_targets(prefix, inner.ident.to_string(), initiated_namespace, output);
             }
         }
         UseTree::Glob(_) => {
-            push_import_targets(
-                prefix,
-                local_name.to_owned(),
-                initiated_namespace,
-                output,
-            );
+            push_import_targets(prefix, local_name.to_owned(), initiated_namespace, output);
         }
         UseTree::Group(inner) => {
             for tree in &inner.items {
-                collect_import_targets(
-                    tree,
-                    prefix,
-                    local_name,
-                    initiated_namespace,
-                    output,
-                );
+                collect_import_targets(tree, prefix, local_name, initiated_namespace, output);
             }
         }
     }
@@ -438,9 +421,7 @@ mod inaccessible_private_type_tests {
             "Inner".to_owned(),
         );
         assert!(type_path_targets_item(
-            &syn::parse_str::<TypePath>("hidden::Inner")
-                .unwrap()
-                .path,
+            &syn::parse_str::<TypePath>("hidden::Inner").unwrap().path,
             &nested_name,
             &struct_namespace,
             &[],

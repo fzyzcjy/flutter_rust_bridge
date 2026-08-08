@@ -30,19 +30,12 @@ fn transform_self_crate(
     rust_output_path_namespace: &Namespace,
 ) -> anyhow::Result<()> {
     let mut directives = vec![];
-    collect_self_crate_pub_uses(
-        root_module,
-        rust_output_path_namespace,
-        &mut directives,
-    );
+    collect_self_crate_pub_uses(root_module, rust_output_path_namespace, &mut directives);
     for _ in 0..=directives.len() {
         let mut changed = false;
         for directive in &directives {
-            changed |= transform_self_crate_pub_use(
-                root_module,
-                directive,
-                rust_output_path_namespace,
-            )?;
+            changed |=
+                transform_self_crate_pub_use(root_module, directive, rust_output_path_namespace)?;
         }
         if !changed {
             break;
@@ -67,8 +60,7 @@ fn collect_self_crate_pub_uses(
         &module.meta.namespace,
         rust_output_path_namespace,
     ) {
-        if let Some(namespace) =
-            resolve_pub_use_namespace(&info.namespace, &module.meta.namespace)
+        if let Some(namespace) = resolve_pub_use_namespace(&info.namespace, &module.meta.namespace)
         {
             info.namespace = namespace;
             output.push(SelfCratePubUse {
@@ -118,7 +110,8 @@ fn transform_self_crate_pub_use(
     if moved_items.is_empty() {
         return Ok(false);
     }
-    let Some(destination_module) = root_module.get_module_nested_mut(&destination_path.path()) else {
+    let Some(destination_module) = root_module.get_module_nested_mut(&destination_path.path())
+    else {
         return Ok(false);
     };
     destination_module.items.extend(moved_items);
@@ -173,11 +166,7 @@ fn transform_module(
         rust_output_path_namespace,
     );
     for pub_use_info in pub_use_infos {
-        transform_module_by_pub_use_single(
-            module,
-            &pub_use_info,
-            rust_output_path_namespace,
-        )?;
+        transform_module_by_pub_use_single(module, &pub_use_info, rust_output_path_namespace)?;
     }
     Ok(())
 }
@@ -353,22 +342,19 @@ fn is_interest_item(
     self_crate_namespaces: Option<(&Namespace, &Namespace)>,
 ) -> bool {
     let name_for_use_stmt = name_for_use_stmt(item).unwrap_or_else(|| "NOT_EXIST_NAME".to_owned());
-    let is_visible = if let Some((declaration_namespace, rust_output_path_namespace)) =
-        self_crate_namespaces
-    {
-        item_visibility(item).is_none_or(|visibility| {
-            is_visibility_accessible_from(
-                visibility,
-                declaration_namespace,
-                rust_output_path_namespace,
-            )
-        })
-    } else {
-        is_item_public(item).unwrap_or(true)
-    };
-    pub_use_info.is_interest_name(&name_for_use_stmt)
-        && is_visible
-        && is_localized_definition(item)
+    let is_visible =
+        if let Some((declaration_namespace, rust_output_path_namespace)) = self_crate_namespaces {
+            item_visibility(item).is_none_or(|visibility| {
+                is_visibility_accessible_from(
+                    visibility,
+                    declaration_namespace,
+                    rust_output_path_namespace,
+                )
+            })
+        } else {
+            is_item_public(item).unwrap_or(true)
+        };
+    pub_use_info.is_interest_name(&name_for_use_stmt) && is_visible && is_localized_definition(item)
 }
 
 fn name_for_use_stmt(item: &syn::Item) -> Option<String> {
@@ -518,9 +504,7 @@ mod tests {
                 is_accessible_from_rust_output: true,
             },
             modules: vec![hidden_module],
-            items: vec![syn::parse_str(
-                "pub(crate) use crate::hidden::ThingExtra;",
-            )?],
+            items: vec![syn::parse_str("pub(crate) use crate::hidden::ThingExtra;")?],
         };
         let pack = HirTreePack {
             crates: vec![HirTreeCrate {
@@ -553,13 +537,8 @@ mod tests {
         let declaration = Namespace::new_self_crate("api::exports".to_owned());
 
         assert_eq!(
-            resolve_pub_use_namespace(
-                &Namespace::new_raw("self::hidden".to_owned()),
-                &declaration,
-            ),
-            Some(Namespace::new_self_crate(
-                "api::exports::hidden".to_owned(),
-            )),
+            resolve_pub_use_namespace(&Namespace::new_raw("self::hidden".to_owned()), &declaration,),
+            Some(Namespace::new_self_crate("api::exports::hidden".to_owned(),)),
         );
         assert_eq!(
             resolve_pub_use_namespace(
