@@ -46,7 +46,7 @@ impl TypeParserWithContext<'_, '_, '_> {
         })
     }
 
-    fn resolve_alias(&self, ty: &Type) -> Type {
+    pub(crate) fn resolve_alias(&self, ty: &Type) -> Type {
         self.resolve_alias_inner(ty, 0)
     }
 

@@ -240,6 +240,8 @@ mod private_opaque_field_module_twin_normal {
     }
 }
 
+type PrivateOpaqueFieldAliasTwinNormal = Arc<RwLock<PrivateOpaqueFieldInnerTwinNormal>>;
+
 #[allow(private_interfaces)]
 #[derive(Clone, Debug)]
 #[frb(opaque)]
@@ -249,6 +251,7 @@ pub struct OpaqueWithPrivateFieldTwinNormal {
     pub private_module_field: Arc<
         RwLock<private_opaque_field_module_twin_normal::PrivateModuleOpaqueFieldInnerTwinNormal>,
     >,
+    pub alias_field: PrivateOpaqueFieldAliasTwinNormal,
 }
 
 impl OpaqueWithPrivateFieldTwinNormal {
@@ -262,18 +265,20 @@ impl OpaqueWithPrivateFieldTwinNormal {
             })),
             private_module_field: Arc::new(RwLock::new(
                 private_opaque_field_module_twin_normal::PrivateModuleOpaqueFieldInnerTwinNormal {
-                    value,
+                    value: value.clone(),
                 },
             )),
+            alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinNormal { value })),
         }
     }
 
     pub fn read_twin_normal(&self) -> String {
         format!(
-            "{}/{}/{}",
+            "{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
+            self.alias_field.read().unwrap().value,
         )
     }
 }

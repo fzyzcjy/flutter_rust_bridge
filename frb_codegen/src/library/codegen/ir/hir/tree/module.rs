@@ -47,6 +47,18 @@ impl HirTreeModule {
             m.get_module_nested(&mod_names[1..])
         }
     }
+
+    pub(crate) fn get_module_nested_mut(
+        &mut self,
+        mod_names: &[&str],
+    ) -> Option<&mut HirTreeModule> {
+        if mod_names.is_empty() {
+            Some(self)
+        } else {
+            let index = self.get_module_index_by_name(mod_names[0])?;
+            self.modules[index].get_module_nested_mut(&mod_names[1..])
+        }
+    }
 }
 
 impl HirTreeModuleMeta {

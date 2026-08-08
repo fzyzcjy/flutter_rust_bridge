@@ -17,11 +17,6 @@ fn transform_module(module: &mut HirTreeModule) -> anyhow::Result<()> {
         transform_module(child_module)?;
     }
 
-    // Only apply to third party crate currently, since in self crate usually no need to care about this
-    if module.meta.namespace.crate_name().is_self_crate() {
-        return Ok(());
-    }
-
     let pub_use_infos = parse_pub_use_from_items(&module.items);
     for pub_use_info in pub_use_infos {
         transform_module_by_pub_use_single(module, &pub_use_info)?;
@@ -120,7 +115,10 @@ fn transform_module_by_pub_use_single(
     pub_use_info: &PubUseInfo,
 ) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
-    if let Some(src_mod) = module.get_module_nested(&pub_use_info.namespace.path()) {
+    let is_self_crate = module.meta.namespace.crate_name().is_self_crate();
+    let src_mod_interest_items = if let Some(src_mod) =
+        module.get_module_nested_mut(&pub_use_info.namespace.path())
+    {
         // Codecov seems to be buggy by saying this line is not covered (while lines above/below) are
         // frb-coverage:ignore-start
         log::debug!(
@@ -129,26 +127,31 @@ fn transform_module_by_pub_use_single(
         );
         // frb-coverage:ignore-end
 
-        if src_mod.meta.is_public() {
+        if if is_self_crate {
+            src_mod.meta.is_accessible_from_rust_output
+        } else {
+            src_mod.meta.is_public()
+        } {
             log::debug!("transform_module_by_pub_use_single skip `{pub_use_info:?}` since src mod already public");
             return Ok(());
         }
 
         // let self_namespace = &module.meta.namespace;
 
-        let src_mod_interest_items = (src_mod.items.iter())
-            .filter(|x| {
-                let name_for_use_stmt =
-                    name_for_use_stmt(x).unwrap_or_else(|| "NOT_EXIST_NAME".to_owned());
-                let is_interest_name = pub_use_info.is_interest_name(&name_for_use_stmt);
-                let is_public_enough = is_item_public(x).unwrap_or(true);
-
-                is_interest_name && is_public_enough && is_localized_definition(x)
-            })
-            .cloned()
-            .collect_vec();
-
-        module.items.extend(src_mod_interest_items);
+        if is_self_crate {
+            let (interest_items, remaining_items) = std::mem::take(&mut src_mod.items)
+                .into_iter()
+                .partition(|item| is_interest_item(item, pub_use_info));
+            src_mod.items = remaining_items;
+            interest_items
+        } else {
+            src_mod
+                .items
+                .iter()
+                .filter(|item| is_interest_item(item, pub_use_info))
+                .cloned()
+                .collect_vec()
+        }
     } else {
         // Codecov seems to be buggy by saying this line is not covered (while lines above/below) are
         // frb-coverage:ignore-start
@@ -156,9 +159,19 @@ fn transform_module_by_pub_use_single(
             "transform_module_by_pub_use_single skip `{pub_use_info:?}` since cannot find mod"
         );
         // frb-coverage:ignore-end
-    }
+        vec![]
+    };
+
+    module.items.extend(src_mod_interest_items);
 
     Ok(())
+}
+
+fn is_interest_item(item: &syn::Item, pub_use_info: &PubUseInfo) -> bool {
+    let name_for_use_stmt = name_for_use_stmt(item).unwrap_or_else(|| "NOT_EXIST_NAME".to_owned());
+    pub_use_info.is_interest_name(&name_for_use_stmt)
+        && is_item_public(item).unwrap_or(true)
+        && is_localized_definition(item)
 }
 
 fn name_for_use_stmt(item: &syn::Item) -> Option<String> {
@@ -200,6 +213,10 @@ pub(crate) fn is_localized_definition(item: &syn::Item) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::codegen::ir::hir::misc::visibility::HirVisibility;
+    use crate::codegen::ir::hir::tree::crates::HirTreeCrate;
+    use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
+    use crate::utils::crate_name::CrateName;
 
     #[test]
     pub fn test_parse_pub_use_from_item() {
@@ -262,5 +279,49 @@ mod tests {
                 },
             ],
         );
+    }
+
+    /// Moves a self-crate re-exported definition out of its inaccessible module.
+    #[test]
+    pub fn test_transform_self_crate_pub_use() -> anyhow::Result<()> {
+        let hidden_module = HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis: vec![HirVisibility::Public],
+                vis: HirVisibility::Inherited,
+                namespace: Namespace::new_self_crate("hidden".to_owned()),
+                is_accessible_from_rust_output: false,
+            },
+            modules: vec![],
+            items: vec![syn::parse_str("pub struct Thing { pub value: String }")?],
+        };
+        let root_module = HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis: vec![],
+                vis: HirVisibility::Public,
+                namespace: CrateName::self_crate().namespace(),
+                is_accessible_from_rust_output: true,
+            },
+            modules: vec![hidden_module],
+            items: vec![syn::parse_str("pub use hidden::Thing;")?],
+        };
+        let pack = HirTreePack {
+            crates: vec![HirTreeCrate {
+                name: CrateName::self_crate(),
+                root_module,
+            }],
+        };
+
+        let output = transform(pack)?;
+        let root = &output.crates[0].root_module;
+
+        assert!(root
+            .items
+            .iter()
+            .any(|item| name_for_use_stmt(item).as_deref() == Some("Thing")));
+        assert!(!root.modules[0]
+            .items
+            .iter()
+            .any(|item| name_for_use_stmt(item).as_deref() == Some("Thing")));
+        Ok(())
     }
 }

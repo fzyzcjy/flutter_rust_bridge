@@ -96,7 +96,9 @@ impl TypeParserWithContext<'_, '_, '_> {
             c.with_struct_or_enum_attributes(struct_attributes.clone())
         })?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
-        let contains_inaccessible_private_type = self.contains_inaccessible_private_type(&field.ty);
+        let resolved_field_type = self.resolve_alias(&field.ty);
+        let contains_inaccessible_private_type =
+            self.contains_inaccessible_private_type(&resolved_field_type);
         Ok(MirField {
             name: MirIdent::new(field_name, attributes.name()),
             ty: field_type,
@@ -118,6 +120,7 @@ impl TypeParserWithContext<'_, '_, '_> {
         let mut visitor = InaccessiblePrivateTypeVisitor {
             src_structs: &self.inner.src_structs,
             src_enums: &self.inner.src_enums,
+            initiated_namespace: &self.context.initiated_namespace,
             found: false,
         };
         visitor.visit_type_mut(&mut ty);
@@ -128,6 +131,7 @@ impl TypeParserWithContext<'_, '_, '_> {
 struct InaccessiblePrivateTypeVisitor<'a, 'b> {
     src_structs: &'a HashMap<String, &'b HirFlatStruct>,
     src_enums: &'a HashMap<String, &'b crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum>,
+    initiated_namespace: &'a Namespace,
     found: bool,
 }
 
@@ -137,23 +141,108 @@ impl VisitMut for InaccessiblePrivateTypeVisitor<'_, '_> {
             return;
         }
 
-        if let Some(name) = node
-            .path
-            .segments
-            .last()
-            .map(|segment| segment.ident.to_string())
-        {
-            self.found = self
-                .src_structs
-                .get(&name)
-                .is_some_and(|item| !item.is_accessible_from_rust_output)
-                || self
-                    .src_enums
-                    .get(&name)
-                    .is_some_and(|item| !item.is_accessible_from_rust_output);
+        if let Some(name) = node.path.segments.last().map(|x| x.ident.to_string()) {
+            self.found = self.src_structs.get(&name).is_some_and(|item| {
+                !item.is_accessible_from_rust_output
+                    && type_path_targets_item(&node.path, &item.name, self.initiated_namespace)
+            }) || self.src_enums.get(&name).is_some_and(|item| {
+                !item.is_accessible_from_rust_output
+                    && type_path_targets_item(&node.path, &item.name, self.initiated_namespace)
+            });
         }
 
         syn::visit_mut::visit_type_path_mut(self, node);
+    }
+}
+
+fn type_path_targets_item(
+    path: &syn::Path,
+    item_name: &NamespacedName,
+    initiated_namespace: &Namespace,
+) -> bool {
+    let segments = path
+        .segments
+        .iter()
+        .map(|segment| segment.ident.to_string())
+        .collect::<Vec<_>>();
+    if segments.len() == 1 {
+        return item_name.namespace == *initiated_namespace;
+    }
+
+    let type_namespace_segments = &segments[..segments.len() - 1];
+    resolve_relative_namespace(type_namespace_segments, initiated_namespace)
+        .is_some_and(|namespace| namespace == item_name.namespace)
+        || Namespace::new(type_namespace_segments.to_vec()) == item_name.namespace
+}
+
+fn resolve_relative_namespace(
+    type_namespace_segments: &[String],
+    initiated_namespace: &Namespace,
+) -> Option<Namespace> {
+    let mut output = initiated_namespace
+        .path()
+        .into_iter()
+        .map(ToString::to_string)
+        .collect::<Vec<_>>();
+    let mut index = 0;
+
+    match type_namespace_segments.first().map(String::as_str) {
+        Some("crate") => {
+            output = vec!["crate".to_owned()];
+            index = 1;
+        }
+        Some("self") => index = 1,
+        Some("super") => {
+            while type_namespace_segments.get(index).map(String::as_str) == Some("super") {
+                output.pop()?;
+                index += 1;
+            }
+        }
+        _ => {}
+    }
+
+    output.extend(type_namespace_segments[index..].iter().cloned());
+    Some(Namespace::new(output))
+}
+
+#[cfg(test)]
+mod inaccessible_private_type_tests {
+    use super::*;
+
+    /// Resolves local and qualified type paths without matching unrelated names.
+    #[test]
+    fn test_type_path_targets_item_by_namespace() {
+        let initiated_namespace = Namespace::new_self_crate("api::current".to_owned());
+        let local_name = NamespacedName::new(initiated_namespace.clone(), "String".to_owned());
+        let other_name = NamespacedName::new(
+            Namespace::new_self_crate("api::other".to_owned()),
+            "String".to_owned(),
+        );
+
+        assert!(type_path_targets_item(
+            &syn::parse_str::<TypePath>("String").unwrap().path,
+            &local_name,
+            &initiated_namespace,
+        ));
+        assert!(!type_path_targets_item(
+            &syn::parse_str::<TypePath>("String").unwrap().path,
+            &other_name,
+            &initiated_namespace,
+        ));
+        assert!(type_path_targets_item(
+            &syn::parse_str::<TypePath>("crate::api::other::String")
+                .unwrap()
+                .path,
+            &other_name,
+            &initiated_namespace,
+        ));
+        assert!(!type_path_targets_item(
+            &syn::parse_str::<TypePath>("std::string::String")
+                .unwrap()
+                .path,
+            &other_name,
+            &initiated_namespace,
+        ));
     }
 }
 
