@@ -10,12 +10,6 @@ In addition, Rust has `panic` in addition to Result error, thus:
 
 * When Rust panic occurs, a `PanicException` will be thrown in Dart.
 
-:::note
-This is the behavior under Rust's default `panic = "unwind"`, which is what almost all projects use.
-If your project opts into `panic = "abort"` instead, panics cannot be turned into Dart exceptions —
-see [below](#panic-abort).
-:::
-
 If you want to see stack traces (backtraces), [this doc page](../../how-to/stack-trace) discusses how to configure it.
 
 ## Example
