@@ -55,12 +55,9 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 ### 2. Reconcile Contributors
 
-- Before writing the release changelog, use `frb-add-contributor` to identify contributors from the target release range who may need all-contributors credit.
-- Freeze one merged-PR list and the previous/target release timestamp bounds, then reuse that exact input for both contributor reconciliation and `frb-write-changelog`.
-- For every third-party human-authored PR in the release range, verify that the contributor's human-written `.all-contributors-custom.yaml` summary covers that PR's contribution. Being present in `.all-contributorsrc` or `README.md` is not sufficient.
-- Follow `frb-add-contributor` exactly. In particular, after determining which contributors or custom descriptions need reconciliation, stop for human confirmation before editing contributor files, posting GitHub comments, triggering all-contributors, opening PRs, or merging contributor PRs.
-- Treat an existing contributor with an incomplete custom summary as requiring reconciliation. Follow the `TODO(#<pr-number>)` and mandatory human-description flow in `frb-add-contributor`; do not invent the missing description.
-- Do not continue to changelog preparation until contributor reconciliation is either complete or confirmed unnecessary because all contributors are credited and every release-range contribution is covered by their custom descriptions. Do not defer or waive missing human-written descriptions for a release.
+- Before writing the release changelog, use `frb-add-contributor` to identify contributors from the target release range who may need all-contributors credit or whose human-written custom description does not cover every release-range PR.
+- Follow `frb-add-contributor` exactly. In particular, after determining which contributors may need to be added or have their custom descriptions extended, stop for human confirmation before editing contributor files, posting GitHub comments, triggering all-contributors, opening PRs, or merging contributor PRs.
+- Do not continue to changelog preparation until contributor reconciliation is complete, or confirmed unnecessary because all contributors are credited and their custom descriptions cover every third-party PR in the release range.
 
 ### 3. Write Changelog
 
