@@ -2,6 +2,7 @@
   "constants": [],
   "enums": [
     {
+      "is_accessible_from_rust_output": true,
       "mirror": false,
       "name": "crate::another_file/EnumInAnotherFile",
       "sources": [
@@ -33,6 +34,7 @@
   "skips": [],
   "structs": [
     {
+      "is_accessible_from_rust_output": true,
       "mirror": false,
       "name": "crate::another_file/StructInAnotherFile",
       "sources": [

@@ -2,6 +2,7 @@
   "constants": [],
   "enums": [
     {
+      "is_accessible_from_rust_output": true,
       "mirror": false,
       "name": "crate::api/UnusedEnum",
       "sources": [
@@ -24,6 +25,7 @@
   "skips": [],
   "structs": [
     {
+      "is_accessible_from_rust_output": true,
       "mirror": false,
       "name": "crate::api/UnusedStruct",
       "sources": [
