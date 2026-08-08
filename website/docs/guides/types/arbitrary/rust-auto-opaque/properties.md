@@ -49,6 +49,10 @@ When using `ignore_all` you can allow accessors from being generated only for
 specific fields by annotating those fields with the `unignore` attribute.
 The names are experimental and may change in the future.
 
+Automatic accessors are also skipped when a field type contains a private Rust
+type that is not accessible from the generated module. Add explicit methods to
+the opaque struct when Dart needs to interact with such a field.
+
 ## Caveats
 
 :::tip

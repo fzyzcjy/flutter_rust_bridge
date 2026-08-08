@@ -265,6 +265,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.instanceMethodGetterTwinMoi, 42);
   });
 
+  test('opaque struct with an inaccessible private field type', () async {
+    final obj = await OpaqueWithPrivateFieldTwinMoi.newTwinMoi(
+      value: 'private',
+    );
+    expect(await obj.readTwinMoi(), 'private');
+    obj.dispose();
+  });
+
   test('structs with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinMoi();

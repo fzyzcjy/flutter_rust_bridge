@@ -376,7 +376,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0-beta.6';
 
   @override
-  int get rustContentHash => -1730785095;
+  int get rustContentHash => 1865991121;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -1280,6 +1280,102 @@ abstract class RustLibApi extends BaseApi {
   Future<int>
       crateApiDartCodeOpaqueStructWithDartCodeTwinNormalNormalMethodTwinNormal(
           {required OpaqueStructWithDartCodeTwinNormal that});
+
+  Future<OpaqueWithPrivateFieldTwinMoi>
+      crateApiPseudoManualRustAutoOpaqueTwinMoiOpaqueWithPrivateFieldTwinMoiNewTwinMoi(
+          {required String value});
+
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinMoiOpaqueWithPrivateFieldTwinMoiReadTwinMoi(
+          {required OpaqueWithPrivateFieldTwinMoi that});
+
+  Future<OpaqueWithPrivateFieldTwinNormal>
+      crateApiRustAutoOpaqueOpaqueWithPrivateFieldTwinNormalNewTwinNormal(
+          {required String value});
+
+  Future<String>
+      crateApiRustAutoOpaqueOpaqueWithPrivateFieldTwinNormalReadTwinNormal(
+          {required OpaqueWithPrivateFieldTwinNormal that});
+
+  Future<OpaqueWithPrivateFieldTwinRustAsyncMoi>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiOpaqueWithPrivateFieldTwinRustAsyncMoiNewTwinRustAsyncMoi(
+          {required String value});
+
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiOpaqueWithPrivateFieldTwinRustAsyncMoiReadTwinRustAsyncMoi(
+          {required OpaqueWithPrivateFieldTwinRustAsyncMoi that});
+
+  Future<OpaqueWithPrivateFieldTwinRustAsyncSseMoi>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiNewTwinRustAsyncSseMoi(
+          {required String value});
+
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiReadTwinRustAsyncSseMoi(
+          {required OpaqueWithPrivateFieldTwinRustAsyncSseMoi that});
+
+  Future<OpaqueWithPrivateFieldTwinRustAsyncSse>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseOpaqueWithPrivateFieldTwinRustAsyncSseNewTwinRustAsyncSse(
+          {required String value});
+
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseOpaqueWithPrivateFieldTwinRustAsyncSseReadTwinRustAsyncSse(
+          {required OpaqueWithPrivateFieldTwinRustAsyncSse that});
+
+  Future<OpaqueWithPrivateFieldTwinRustAsync>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncOpaqueWithPrivateFieldTwinRustAsyncNewTwinRustAsync(
+          {required String value});
+
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncOpaqueWithPrivateFieldTwinRustAsyncReadTwinRustAsync(
+          {required OpaqueWithPrivateFieldTwinRustAsync that});
+
+  Future<OpaqueWithPrivateFieldTwinSseMoi>
+      crateApiPseudoManualRustAutoOpaqueTwinSseMoiOpaqueWithPrivateFieldTwinSseMoiNewTwinSseMoi(
+          {required String value});
+
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinSseMoiOpaqueWithPrivateFieldTwinSseMoiReadTwinSseMoi(
+          {required OpaqueWithPrivateFieldTwinSseMoi that});
+
+  Future<OpaqueWithPrivateFieldTwinSse>
+      crateApiPseudoManualRustAutoOpaqueTwinSseOpaqueWithPrivateFieldTwinSseNewTwinSse(
+          {required String value});
+
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinSseOpaqueWithPrivateFieldTwinSseReadTwinSse(
+          {required OpaqueWithPrivateFieldTwinSse that});
+
+  OpaqueWithPrivateFieldTwinSyncMoi
+      crateApiPseudoManualRustAutoOpaqueTwinSyncMoiOpaqueWithPrivateFieldTwinSyncMoiNewTwinSyncMoi(
+          {required String value});
+
+  String
+      crateApiPseudoManualRustAutoOpaqueTwinSyncMoiOpaqueWithPrivateFieldTwinSyncMoiReadTwinSyncMoi(
+          {required OpaqueWithPrivateFieldTwinSyncMoi that});
+
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiOpaqueWithPrivateFieldTwinSyncSseMoiNewTwinSyncSseMoi(
+          {required String value});
+
+  String
+      crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiOpaqueWithPrivateFieldTwinSyncSseMoiReadTwinSyncSseMoi(
+          {required OpaqueWithPrivateFieldTwinSyncSseMoi that});
+
+  OpaqueWithPrivateFieldTwinSyncSse
+      crateApiPseudoManualRustAutoOpaqueTwinSyncSseOpaqueWithPrivateFieldTwinSyncSseNewTwinSyncSse(
+          {required String value});
+
+  String
+      crateApiPseudoManualRustAutoOpaqueTwinSyncSseOpaqueWithPrivateFieldTwinSyncSseReadTwinSyncSse(
+          {required OpaqueWithPrivateFieldTwinSyncSse that});
+
+  OpaqueWithPrivateFieldTwinSync
+      crateApiPseudoManualRustAutoOpaqueTwinSyncOpaqueWithPrivateFieldTwinSyncNewTwinSync(
+          {required String value});
+
+  String
+      crateApiPseudoManualRustAutoOpaqueTwinSyncOpaqueWithPrivateFieldTwinSyncReadTwinSync(
+          {required OpaqueWithPrivateFieldTwinSync that});
 
   List<String> crateApiMiscNoTwinExampleASimpleLoggerGetAndReset(
       {required SimpleLogger that});
@@ -12583,6 +12679,114 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RustAutoOpaqueWebLockingDataTwinNormal;
 
   RustArcDecrementStrongCountFnType
@@ -20564,6 +20768,766 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<OpaqueWithPrivateFieldTwinMoi>
+      crateApiPseudoManualRustAutoOpaqueTwinMoiOpaqueWithPrivateFieldTwinMoiNewTwinMoi(
+          {required String value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(value);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__OpaqueWithPrivateFieldTwinMoi_new_twin_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinMoiOpaqueWithPrivateFieldTwinMoiNewTwinMoiConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinMoiOpaqueWithPrivateFieldTwinMoiNewTwinMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinMoi_new_twin_moi",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinMoiOpaqueWithPrivateFieldTwinMoiReadTwinMoi(
+          {required OpaqueWithPrivateFieldTwinMoi that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+                that);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__OpaqueWithPrivateFieldTwinMoi_read_twin_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinMoiOpaqueWithPrivateFieldTwinMoiReadTwinMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinMoiOpaqueWithPrivateFieldTwinMoiReadTwinMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinMoi_read_twin_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<OpaqueWithPrivateFieldTwinNormal>
+      crateApiRustAutoOpaqueOpaqueWithPrivateFieldTwinNormalNewTwinNormal(
+          {required String value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(value);
+        return wire
+            .wire__crate__api__rust_auto_opaque__OpaqueWithPrivateFieldTwinNormal_new_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiRustAutoOpaqueOpaqueWithPrivateFieldTwinNormalNewTwinNormalConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiRustAutoOpaqueOpaqueWithPrivateFieldTwinNormalNewTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinNormal_new_twin_normal",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<String>
+      crateApiRustAutoOpaqueOpaqueWithPrivateFieldTwinNormalReadTwinNormal(
+          {required OpaqueWithPrivateFieldTwinNormal that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+                that);
+        return wire
+            .wire__crate__api__rust_auto_opaque__OpaqueWithPrivateFieldTwinNormal_read_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiRustAutoOpaqueOpaqueWithPrivateFieldTwinNormalReadTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiRustAutoOpaqueOpaqueWithPrivateFieldTwinNormalReadTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinNormal_read_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<OpaqueWithPrivateFieldTwinRustAsyncMoi>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiOpaqueWithPrivateFieldTwinRustAsyncMoiNewTwinRustAsyncMoi(
+          {required String value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(value);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__OpaqueWithPrivateFieldTwinRustAsyncMoi_new_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiOpaqueWithPrivateFieldTwinRustAsyncMoiNewTwinRustAsyncMoiConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiOpaqueWithPrivateFieldTwinRustAsyncMoiNewTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinRustAsyncMoi_new_twin_rust_async_moi",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiOpaqueWithPrivateFieldTwinRustAsyncMoiReadTwinRustAsyncMoi(
+          {required OpaqueWithPrivateFieldTwinRustAsyncMoi that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+                that);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__OpaqueWithPrivateFieldTwinRustAsyncMoi_read_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiOpaqueWithPrivateFieldTwinRustAsyncMoiReadTwinRustAsyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiOpaqueWithPrivateFieldTwinRustAsyncMoiReadTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinRustAsyncMoi_read_twin_rust_async_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<OpaqueWithPrivateFieldTwinRustAsyncSseMoi>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiNewTwinRustAsyncSseMoi(
+          {required String value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(value, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__OpaqueWithPrivateFieldTwinRustAsyncSseMoi_new_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiNewTwinRustAsyncSseMoiConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiNewTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinRustAsyncSseMoi_new_twin_rust_async_sse_moi",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiReadTwinRustAsyncSseMoi(
+          {required OpaqueWithPrivateFieldTwinRustAsyncSseMoi that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__OpaqueWithPrivateFieldTwinRustAsyncSseMoi_read_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiReadTwinRustAsyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiReadTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinRustAsyncSseMoi_read_twin_rust_async_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<OpaqueWithPrivateFieldTwinRustAsyncSse>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseOpaqueWithPrivateFieldTwinRustAsyncSseNewTwinRustAsyncSse(
+          {required String value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(value, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__OpaqueWithPrivateFieldTwinRustAsyncSse_new_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseOpaqueWithPrivateFieldTwinRustAsyncSseNewTwinRustAsyncSseConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseOpaqueWithPrivateFieldTwinRustAsyncSseNewTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinRustAsyncSse_new_twin_rust_async_sse",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseOpaqueWithPrivateFieldTwinRustAsyncSseReadTwinRustAsyncSse(
+          {required OpaqueWithPrivateFieldTwinRustAsyncSse that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__OpaqueWithPrivateFieldTwinRustAsyncSse_read_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseOpaqueWithPrivateFieldTwinRustAsyncSseReadTwinRustAsyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseOpaqueWithPrivateFieldTwinRustAsyncSseReadTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinRustAsyncSse_read_twin_rust_async_sse",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<OpaqueWithPrivateFieldTwinRustAsync>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncOpaqueWithPrivateFieldTwinRustAsyncNewTwinRustAsync(
+          {required String value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(value);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__OpaqueWithPrivateFieldTwinRustAsync_new_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncOpaqueWithPrivateFieldTwinRustAsyncNewTwinRustAsyncConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncOpaqueWithPrivateFieldTwinRustAsyncNewTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinRustAsync_new_twin_rust_async",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinRustAsyncOpaqueWithPrivateFieldTwinRustAsyncReadTwinRustAsync(
+          {required OpaqueWithPrivateFieldTwinRustAsync that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+                that);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__OpaqueWithPrivateFieldTwinRustAsync_read_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncOpaqueWithPrivateFieldTwinRustAsyncReadTwinRustAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncOpaqueWithPrivateFieldTwinRustAsyncReadTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinRustAsync_read_twin_rust_async",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<OpaqueWithPrivateFieldTwinSseMoi>
+      crateApiPseudoManualRustAutoOpaqueTwinSseMoiOpaqueWithPrivateFieldTwinSseMoiNewTwinSseMoi(
+          {required String value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(value, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__OpaqueWithPrivateFieldTwinSseMoi_new_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSseMoiOpaqueWithPrivateFieldTwinSseMoiNewTwinSseMoiConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSseMoiOpaqueWithPrivateFieldTwinSseMoiNewTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSseMoi_new_twin_sse_moi",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinSseMoiOpaqueWithPrivateFieldTwinSseMoiReadTwinSseMoi(
+          {required OpaqueWithPrivateFieldTwinSseMoi that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__OpaqueWithPrivateFieldTwinSseMoi_read_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSseMoiOpaqueWithPrivateFieldTwinSseMoiReadTwinSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSseMoiOpaqueWithPrivateFieldTwinSseMoiReadTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSseMoi_read_twin_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<OpaqueWithPrivateFieldTwinSse>
+      crateApiPseudoManualRustAutoOpaqueTwinSseOpaqueWithPrivateFieldTwinSseNewTwinSse(
+          {required String value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(value, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__OpaqueWithPrivateFieldTwinSse_new_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSseOpaqueWithPrivateFieldTwinSseNewTwinSseConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSseOpaqueWithPrivateFieldTwinSseNewTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSse_new_twin_sse",
+            argNames: ["value"],
+          );
+
+  @override
+  Future<String>
+      crateApiPseudoManualRustAutoOpaqueTwinSseOpaqueWithPrivateFieldTwinSseReadTwinSse(
+          {required OpaqueWithPrivateFieldTwinSse that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__OpaqueWithPrivateFieldTwinSse_read_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSseOpaqueWithPrivateFieldTwinSseReadTwinSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSseOpaqueWithPrivateFieldTwinSseReadTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSse_read_twin_sse",
+            argNames: ["that"],
+          );
+
+  @override
+  OpaqueWithPrivateFieldTwinSyncMoi
+      crateApiPseudoManualRustAutoOpaqueTwinSyncMoiOpaqueWithPrivateFieldTwinSyncMoiNewTwinSyncMoi(
+          {required String value}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_String(value);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__OpaqueWithPrivateFieldTwinSyncMoi_new_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncMoiOpaqueWithPrivateFieldTwinSyncMoiNewTwinSyncMoiConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncMoiOpaqueWithPrivateFieldTwinSyncMoiNewTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSyncMoi_new_twin_sync_moi",
+            argNames: ["value"],
+          );
+
+  @override
+  String
+      crateApiPseudoManualRustAutoOpaqueTwinSyncMoiOpaqueWithPrivateFieldTwinSyncMoiReadTwinSyncMoi(
+          {required OpaqueWithPrivateFieldTwinSyncMoi that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+                that);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__OpaqueWithPrivateFieldTwinSyncMoi_read_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncMoiOpaqueWithPrivateFieldTwinSyncMoiReadTwinSyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncMoiOpaqueWithPrivateFieldTwinSyncMoiReadTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSyncMoi_read_twin_sync_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiOpaqueWithPrivateFieldTwinSyncSseMoiNewTwinSyncSseMoi(
+          {required String value}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(value, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__OpaqueWithPrivateFieldTwinSyncSseMoi_new_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiOpaqueWithPrivateFieldTwinSyncSseMoiNewTwinSyncSseMoiConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiOpaqueWithPrivateFieldTwinSyncSseMoiNewTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinSyncSseMoi_new_twin_sync_sse_moi",
+            argNames: ["value"],
+          );
+
+  @override
+  String
+      crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiOpaqueWithPrivateFieldTwinSyncSseMoiReadTwinSyncSseMoi(
+          {required OpaqueWithPrivateFieldTwinSyncSseMoi that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__OpaqueWithPrivateFieldTwinSyncSseMoi_read_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiOpaqueWithPrivateFieldTwinSyncSseMoiReadTwinSyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiOpaqueWithPrivateFieldTwinSyncSseMoiReadTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OpaqueWithPrivateFieldTwinSyncSseMoi_read_twin_sync_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  OpaqueWithPrivateFieldTwinSyncSse
+      crateApiPseudoManualRustAutoOpaqueTwinSyncSseOpaqueWithPrivateFieldTwinSyncSseNewTwinSyncSse(
+          {required String value}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(value, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__OpaqueWithPrivateFieldTwinSyncSse_new_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncSseOpaqueWithPrivateFieldTwinSyncSseNewTwinSyncSseConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncSseOpaqueWithPrivateFieldTwinSyncSseNewTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSyncSse_new_twin_sync_sse",
+            argNames: ["value"],
+          );
+
+  @override
+  String
+      crateApiPseudoManualRustAutoOpaqueTwinSyncSseOpaqueWithPrivateFieldTwinSyncSseReadTwinSyncSse(
+          {required OpaqueWithPrivateFieldTwinSyncSse that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__OpaqueWithPrivateFieldTwinSyncSse_read_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncSseOpaqueWithPrivateFieldTwinSyncSseReadTwinSyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncSseOpaqueWithPrivateFieldTwinSyncSseReadTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSyncSse_read_twin_sync_sse",
+            argNames: ["that"],
+          );
+
+  @override
+  OpaqueWithPrivateFieldTwinSync
+      crateApiPseudoManualRustAutoOpaqueTwinSyncOpaqueWithPrivateFieldTwinSyncNewTwinSync(
+          {required String value}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_String(value);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__OpaqueWithPrivateFieldTwinSync_new_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncOpaqueWithPrivateFieldTwinSyncNewTwinSyncConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncOpaqueWithPrivateFieldTwinSyncNewTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSync_new_twin_sync",
+            argNames: ["value"],
+          );
+
+  @override
+  String
+      crateApiPseudoManualRustAutoOpaqueTwinSyncOpaqueWithPrivateFieldTwinSyncReadTwinSync(
+          {required OpaqueWithPrivateFieldTwinSync that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+                that);
+        return wire
+            .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__OpaqueWithPrivateFieldTwinSync_read_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustAutoOpaqueTwinSyncOpaqueWithPrivateFieldTwinSyncReadTwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustAutoOpaqueTwinSyncOpaqueWithPrivateFieldTwinSyncReadTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "OpaqueWithPrivateFieldTwinSync_read_twin_sync",
             argNames: ["that"],
           );
 
@@ -103373,6 +104337,102 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsync =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsync =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsyncMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSse =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSse =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSync => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSyncSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RustAutoOpaqueWebLockingDataTwinNormal =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal;
 
@@ -104845,6 +105905,114 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueWithPrivateFieldTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   RustOpaqueWebLockingDataTwinNormal
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw) {
@@ -106034,6 +107202,114 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return OpaqueStructWithDartCodeTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseMoiImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -108850,6 +110126,114 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return OpaqueTwoTwinSyncSseMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinNormalImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncMoiImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseImpl.frbInternalDcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseMoiImpl.frbInternalDcoDecode(
         raw as List<dynamic>);
   }
 
@@ -127936,6 +129320,114 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueWithPrivateFieldTwinMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   RustOpaqueWebLockingDataTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer) {
@@ -129172,6 +130664,114 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return OpaqueStructWithDartCodeTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseMoiImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -132041,6 +133641,114 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return OpaqueTwoTwinSyncSseMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSseMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncMoiImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return OpaqueWithPrivateFieldTwinSyncSseMoiImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -151259,6 +152967,60 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+      OpaqueWithPrivateFieldTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinMoiImpl)
+        .frbInternalCstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+      OpaqueWithPrivateFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinNormalImpl)
+        .frbInternalCstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+      OpaqueWithPrivateFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinRustAsyncImpl)
+        .frbInternalCstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+      OpaqueWithPrivateFieldTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinRustAsyncMoiImpl)
+        .frbInternalCstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+      OpaqueWithPrivateFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinSyncImpl)
+        .frbInternalCstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+      OpaqueWithPrivateFieldTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinSyncMoiImpl)
+        .frbInternalCstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
       RustOpaqueWebLockingDataTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -152133,6 +153895,60 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
     return (raw as OpaqueStructWithDartCodeTwinNormalImpl)
+        .frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+      OpaqueWithPrivateFieldTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinMoiImpl)
+        .frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+      OpaqueWithPrivateFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinNormalImpl)
+        .frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+      OpaqueWithPrivateFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinRustAsyncImpl)
+        .frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+      OpaqueWithPrivateFieldTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinRustAsyncMoiImpl)
+        .frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+      OpaqueWithPrivateFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinSyncImpl)
+        .frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+      OpaqueWithPrivateFieldTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinSyncMoiImpl)
         .frbInternalCstEncode(move: false);
   }
 
@@ -153298,6 +155114,57 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
     return (raw as OpaqueTwoTwinSyncMoiImpl).frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+      OpaqueWithPrivateFieldTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinMoiImpl).frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+      OpaqueWithPrivateFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinNormalImpl).frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+      OpaqueWithPrivateFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinRustAsyncImpl)
+        .frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+      OpaqueWithPrivateFieldTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinRustAsyncMoiImpl)
+        .frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+      OpaqueWithPrivateFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinSyncImpl).frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+      OpaqueWithPrivateFieldTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as OpaqueWithPrivateFieldTwinSyncMoiImpl)
+        .frbInternalCstEncode();
   }
 
   @protected
@@ -155156,6 +157023,141 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          OpaqueWithPrivateFieldTwinMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinMoiImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          OpaqueWithPrivateFieldTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinNormalImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          OpaqueWithPrivateFieldTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncMoi self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncMoiImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          OpaqueWithPrivateFieldTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncSseImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncSseMoi self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          OpaqueWithPrivateFieldTwinSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSseImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          OpaqueWithPrivateFieldTwinSseMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSseMoiImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          OpaqueWithPrivateFieldTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          OpaqueWithPrivateFieldTwinSyncMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncMoiImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          OpaqueWithPrivateFieldTwinSyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncSseImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          OpaqueWithPrivateFieldTwinSyncSseMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncSseMoiImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -156633,6 +158635,141 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as OpaqueStructWithDartCodeTwinNormalImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          OpaqueWithPrivateFieldTwinMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinMoiImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          OpaqueWithPrivateFieldTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinNormalImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          OpaqueWithPrivateFieldTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncMoi self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncMoiImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          OpaqueWithPrivateFieldTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncSseImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncSseMoi self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          OpaqueWithPrivateFieldTwinSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSseImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          OpaqueWithPrivateFieldTwinSseMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSseMoiImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          OpaqueWithPrivateFieldTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          OpaqueWithPrivateFieldTwinSyncMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncMoiImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          OpaqueWithPrivateFieldTwinSyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncSseImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          OpaqueWithPrivateFieldTwinSyncSseMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncSseMoiImpl)
             .frbInternalSseEncode(move: false),
         serializer);
   }
@@ -159937,6 +162074,141 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as OpaqueTwoTwinSyncSseMoiImpl).frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          OpaqueWithPrivateFieldTwinMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinMoiImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          OpaqueWithPrivateFieldTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinNormalImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          OpaqueWithPrivateFieldTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncMoi self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncMoiImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          OpaqueWithPrivateFieldTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncSseImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncSseMoi self,
+          SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          OpaqueWithPrivateFieldTwinSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSseImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          OpaqueWithPrivateFieldTwinSseMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSseMoiImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          OpaqueWithPrivateFieldTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          OpaqueWithPrivateFieldTwinSyncMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncMoiImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          OpaqueWithPrivateFieldTwinSyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncSseImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          OpaqueWithPrivateFieldTwinSyncSseMoi self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as OpaqueWithPrivateFieldTwinSyncSseMoiImpl)
+            .frbInternalSseEncode(move: null),
         serializer);
   }
 
@@ -180978,6 +183250,335 @@ class OpaqueTwoTwinSyncSseMoiImpl extends RustOpaque
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSseMoiPtr,
   );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinMoiImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinMoi {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinMoiImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinMoiImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinMoiPtr,
+  );
+
+  Future<String> readTwinMoi() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinMoiOpaqueWithPrivateFieldTwinMoiReadTwinMoi(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinNormalImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinNormal {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinNormalImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinNormalImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinNormalPtr,
+  );
+
+  Future<String> readTwinNormal() => RustLib.instance.api
+          .crateApiRustAutoOpaqueOpaqueWithPrivateFieldTwinNormalReadTwinNormal(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinRustAsyncImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinRustAsync {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinRustAsyncImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinRustAsyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsync,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncPtr,
+  );
+
+  Future<String> readTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncOpaqueWithPrivateFieldTwinRustAsyncReadTwinRustAsync(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinRustAsyncMoiImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinRustAsyncMoi {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinRustAsyncMoiImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinRustAsyncMoiImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsyncMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncMoiPtr,
+  );
+
+  Future<String> readTwinRustAsyncMoi() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiOpaqueWithPrivateFieldTwinRustAsyncMoiReadTwinRustAsyncMoi(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinRustAsyncSseImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinRustAsyncSse {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinRustAsyncSseImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinRustAsyncSseImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSsePtr,
+  );
+
+  Future<String> readTwinRustAsyncSse() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseOpaqueWithPrivateFieldTwinRustAsyncSseReadTwinRustAsyncSse(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinRustAsyncSseMoi {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoiImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSseMoiPtr,
+  );
+
+  Future<String> readTwinRustAsyncSseMoi() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiReadTwinRustAsyncSseMoi(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinSseImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinSse {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSseImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSseImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSsePtr,
+  );
+
+  Future<String> readTwinSse() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseOpaqueWithPrivateFieldTwinSseReadTwinSse(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinSseMoiImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinSseMoi {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSseMoiImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSseMoiImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSseMoiPtr,
+  );
+
+  Future<String> readTwinSseMoi() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseMoiOpaqueWithPrivateFieldTwinSseMoiReadTwinSseMoi(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinSyncImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinSync {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSyncImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSyncImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSync,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncPtr,
+  );
+
+  String readTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncOpaqueWithPrivateFieldTwinSyncReadTwinSync(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinSyncMoiImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinSyncMoi {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSyncMoiImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSyncMoiImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSyncMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncMoiPtr,
+  );
+
+  String readTwinSyncMoi() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncMoiOpaqueWithPrivateFieldTwinSyncMoiReadTwinSyncMoi(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinSyncSseImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinSyncSse {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSyncSseImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSyncSseImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSyncSse,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSse,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSsePtr,
+  );
+
+  String readTwinSyncSse() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseOpaqueWithPrivateFieldTwinSyncSseReadTwinSyncSse(
+        that: this,
+      );
+}
+
+@sealed
+class OpaqueWithPrivateFieldTwinSyncSseMoiImpl extends RustOpaque
+    implements OpaqueWithPrivateFieldTwinSyncSseMoi {
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSyncSseMoiImpl.frbInternalDcoDecode(
+      List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  OpaqueWithPrivateFieldTwinSyncSseMoiImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueWithPrivateFieldTwinSyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSseMoiPtr,
+  );
+
+  String readTwinSyncSseMoi() => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSyncSseMoiOpaqueWithPrivateFieldTwinSyncSseMoiReadTwinSyncSseMoi(
+        that: this,
+      );
 }
 
 @sealed

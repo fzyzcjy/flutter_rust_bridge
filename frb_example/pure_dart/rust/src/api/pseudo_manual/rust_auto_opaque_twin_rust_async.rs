@@ -9,6 +9,7 @@ use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 use std::path::PathBuf;
+use std::sync::{Arc, RwLock};
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
@@ -237,6 +238,32 @@ impl NonCloneSimpleTwinRustAsync {
     #[frb(getter)]
     pub async fn instance_method_getter_twin_rust_async(&self) -> i32 {
         self.inner
+    }
+}
+
+// ==================================== inaccessible private field type =======================================
+
+#[derive(Debug)]
+struct PrivateOpaqueFieldInnerTwinRustAsync {
+    value: String,
+}
+
+#[allow(private_interfaces)]
+#[derive(Clone, Debug)]
+#[frb(opaque)]
+pub struct OpaqueWithPrivateFieldTwinRustAsync {
+    pub field: Arc<RwLock<PrivateOpaqueFieldInnerTwinRustAsync>>,
+}
+
+impl OpaqueWithPrivateFieldTwinRustAsync {
+    pub async fn new_twin_rust_async(value: String) -> Self {
+        Self {
+            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinRustAsync { value })),
+        }
+    }
+
+    pub async fn read_twin_rust_async(&self) -> String {
+        self.field.read().unwrap().value.clone()
     }
 }
 

@@ -9,6 +9,7 @@ use crate::frb_generated::RustAutoOpaque;
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 use std::path::PathBuf;
+use std::sync::{Arc, RwLock};
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
@@ -238,6 +239,34 @@ impl NonCloneSimpleTwinSse {
     #[flutter_rust_bridge::frb(serialize)]
     pub fn instance_method_getter_twin_sse(&self) -> i32 {
         self.inner
+    }
+}
+
+// ==================================== inaccessible private field type =======================================
+
+#[derive(Debug)]
+struct PrivateOpaqueFieldInnerTwinSse {
+    value: String,
+}
+
+#[allow(private_interfaces)]
+#[derive(Clone, Debug)]
+#[frb(opaque)]
+pub struct OpaqueWithPrivateFieldTwinSse {
+    pub field: Arc<RwLock<PrivateOpaqueFieldInnerTwinSse>>,
+}
+
+impl OpaqueWithPrivateFieldTwinSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn new_twin_sse(value: String) -> Self {
+        Self {
+            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSse { value })),
+        }
+    }
+
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn read_twin_sse(&self) -> String {
+        self.field.read().unwrap().value.clone()
     }
 }
 

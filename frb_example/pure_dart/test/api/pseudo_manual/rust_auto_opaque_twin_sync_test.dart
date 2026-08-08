@@ -265,6 +265,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await obj.instanceMethodGetterTwinSync, 42);
   });
 
+  test('opaque struct with an inaccessible private field type', () async {
+    final obj = await OpaqueWithPrivateFieldTwinSync.newTwinSync(
+      value: 'private',
+    );
+    expect(await obj.readTwinSync(), 'private');
+    obj.dispose();
+  });
+
   test('structs with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync();

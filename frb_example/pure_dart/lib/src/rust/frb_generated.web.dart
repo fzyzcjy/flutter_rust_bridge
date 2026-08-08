@@ -1060,6 +1060,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinMoiPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinNormalPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncMoiPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSsePtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinRustAsyncSseMoiPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSsePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSseMoiPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncMoiPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSsePtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueWithPrivateFieldTwinSyncSseMoiPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinNormalPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal;
 
@@ -1878,6 +1926,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  OpaqueWithPrivateFieldTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
   RustOpaqueWebLockingDataTwinNormal
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw);
@@ -2550,6 +2658,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -4045,6 +4213,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSyncSseMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -11421,6 +11649,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  OpaqueWithPrivateFieldTwinMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
   RustOpaqueWebLockingDataTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer);
@@ -12093,6 +12381,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueStructWithDartCodeTwinNormal
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
           SseDeserializer deserializer);
 
   @protected
@@ -13584,6 +13932,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSyncSseMoi
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueWithPrivateFieldTwinSyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
           SseDeserializer deserializer);
 
   @protected
@@ -29933,6 +30341,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueTwoTwinSyncMoi raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+      OpaqueWithPrivateFieldTwinMoi raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+      OpaqueWithPrivateFieldTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+      OpaqueWithPrivateFieldTwinRustAsync raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+      OpaqueWithPrivateFieldTwinRustAsyncMoi raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+      OpaqueWithPrivateFieldTwinSync raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+      OpaqueWithPrivateFieldTwinSyncMoi raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
       RustOpaqueWebLockingDataTwinNormal raw);
 
@@ -30323,6 +30755,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
       OpaqueStructWithDartCodeTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+      OpaqueWithPrivateFieldTwinMoi raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+      OpaqueWithPrivateFieldTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+      OpaqueWithPrivateFieldTwinRustAsync raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+      OpaqueWithPrivateFieldTwinRustAsyncMoi raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+      OpaqueWithPrivateFieldTwinSync raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+      OpaqueWithPrivateFieldTwinSyncMoi raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
@@ -30879,6 +31335,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncMoi(
       OpaqueTwoTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+      OpaqueWithPrivateFieldTwinMoi raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+      OpaqueWithPrivateFieldTwinNormal raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+      OpaqueWithPrivateFieldTwinRustAsync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+      OpaqueWithPrivateFieldTwinRustAsyncMoi raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+      OpaqueWithPrivateFieldTwinSync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+      OpaqueWithPrivateFieldTwinSyncMoi raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
@@ -31795,6 +32275,69 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          OpaqueWithPrivateFieldTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          OpaqueWithPrivateFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          OpaqueWithPrivateFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          OpaqueWithPrivateFieldTwinRustAsyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncSseMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          OpaqueWithPrivateFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          OpaqueWithPrivateFieldTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          OpaqueWithPrivateFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          OpaqueWithPrivateFieldTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          OpaqueWithPrivateFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          OpaqueWithPrivateFieldTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
 
@@ -32492,6 +33035,69 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
           OpaqueStructWithDartCodeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          OpaqueWithPrivateFieldTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          OpaqueWithPrivateFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          OpaqueWithPrivateFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          OpaqueWithPrivateFieldTwinRustAsyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncSseMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          OpaqueWithPrivateFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          OpaqueWithPrivateFieldTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          OpaqueWithPrivateFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          OpaqueWithPrivateFieldTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          OpaqueWithPrivateFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          OpaqueWithPrivateFieldTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
   void
@@ -34062,6 +34668,69 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi(
           OpaqueTwoTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          OpaqueWithPrivateFieldTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          OpaqueWithPrivateFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          OpaqueWithPrivateFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          OpaqueWithPrivateFieldTwinRustAsyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          OpaqueWithPrivateFieldTwinRustAsyncSseMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          OpaqueWithPrivateFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          OpaqueWithPrivateFieldTwinSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          OpaqueWithPrivateFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          OpaqueWithPrivateFieldTwinSyncMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          OpaqueWithPrivateFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          OpaqueWithPrivateFieldTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
   void
@@ -43032,6 +43701,190 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
               port_, that);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__OpaqueWithPrivateFieldTwinMoi_new_twin_moi(
+          NativePortType port_, String value) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__OpaqueWithPrivateFieldTwinMoi_new_twin_moi(
+              port_, value);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__OpaqueWithPrivateFieldTwinMoi_read_twin_moi(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__OpaqueWithPrivateFieldTwinMoi_read_twin_moi(
+              port_, that);
+
+  void wire__crate__api__rust_auto_opaque__OpaqueWithPrivateFieldTwinNormal_new_twin_normal(
+          NativePortType port_, String value) =>
+      wasmModule
+          .wire__crate__api__rust_auto_opaque__OpaqueWithPrivateFieldTwinNormal_new_twin_normal(
+              port_, value);
+
+  void wire__crate__api__rust_auto_opaque__OpaqueWithPrivateFieldTwinNormal_read_twin_normal(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__rust_auto_opaque__OpaqueWithPrivateFieldTwinNormal_read_twin_normal(
+              port_, that);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__OpaqueWithPrivateFieldTwinRustAsyncMoi_new_twin_rust_async_moi(
+          NativePortType port_, String value) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__OpaqueWithPrivateFieldTwinRustAsyncMoi_new_twin_rust_async_moi(
+              port_, value);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__OpaqueWithPrivateFieldTwinRustAsyncMoi_read_twin_rust_async_moi(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__OpaqueWithPrivateFieldTwinRustAsyncMoi_read_twin_rust_async_moi(
+              port_, that);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__OpaqueWithPrivateFieldTwinRustAsyncSseMoi_new_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__OpaqueWithPrivateFieldTwinRustAsyncSseMoi_new_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__OpaqueWithPrivateFieldTwinRustAsyncSseMoi_read_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__OpaqueWithPrivateFieldTwinRustAsyncSseMoi_read_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__OpaqueWithPrivateFieldTwinRustAsyncSse_new_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__OpaqueWithPrivateFieldTwinRustAsyncSse_new_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__OpaqueWithPrivateFieldTwinRustAsyncSse_read_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__OpaqueWithPrivateFieldTwinRustAsyncSse_read_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__OpaqueWithPrivateFieldTwinRustAsync_new_twin_rust_async(
+          NativePortType port_, String value) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__OpaqueWithPrivateFieldTwinRustAsync_new_twin_rust_async(
+              port_, value);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__OpaqueWithPrivateFieldTwinRustAsync_read_twin_rust_async(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__OpaqueWithPrivateFieldTwinRustAsync_read_twin_rust_async(
+              port_, that);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__OpaqueWithPrivateFieldTwinSseMoi_new_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__OpaqueWithPrivateFieldTwinSseMoi_new_twin_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__OpaqueWithPrivateFieldTwinSseMoi_read_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__OpaqueWithPrivateFieldTwinSseMoi_read_twin_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__OpaqueWithPrivateFieldTwinSse_new_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__OpaqueWithPrivateFieldTwinSse_new_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__OpaqueWithPrivateFieldTwinSse_read_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__OpaqueWithPrivateFieldTwinSse_read_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__OpaqueWithPrivateFieldTwinSyncMoi_new_twin_sync_moi(
+              String value) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__OpaqueWithPrivateFieldTwinSyncMoi_new_twin_sync_moi(
+                  value);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__OpaqueWithPrivateFieldTwinSyncMoi_read_twin_sync_moi(
+              int that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__OpaqueWithPrivateFieldTwinSyncMoi_read_twin_sync_moi(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__OpaqueWithPrivateFieldTwinSyncSseMoi_new_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__OpaqueWithPrivateFieldTwinSyncSseMoi_new_twin_sync_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__OpaqueWithPrivateFieldTwinSyncSseMoi_read_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__OpaqueWithPrivateFieldTwinSyncSseMoi_read_twin_sync_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__OpaqueWithPrivateFieldTwinSyncSse_new_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__OpaqueWithPrivateFieldTwinSyncSse_new_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__OpaqueWithPrivateFieldTwinSyncSse_read_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__OpaqueWithPrivateFieldTwinSyncSse_read_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__OpaqueWithPrivateFieldTwinSync_new_twin_sync(
+              String value) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__OpaqueWithPrivateFieldTwinSync_new_twin_sync(
+                  value);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__OpaqueWithPrivateFieldTwinSync_read_twin_sync(
+              int that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__OpaqueWithPrivateFieldTwinSync_read_twin_sync(
+                  that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__SimpleLogger_get_and_reset(
@@ -65449,6 +66302,150 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           int ptr) =>
       wasmModule
@@ -67212,6 +68209,134 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
           NativePortType port_, int that);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__OpaqueWithPrivateFieldTwinMoi_new_twin_moi(
+          NativePortType port_, String value);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__OpaqueWithPrivateFieldTwinMoi_read_twin_moi(
+          NativePortType port_, int that);
+
+  external void
+      wire__crate__api__rust_auto_opaque__OpaqueWithPrivateFieldTwinNormal_new_twin_normal(
+          NativePortType port_, String value);
+
+  external void
+      wire__crate__api__rust_auto_opaque__OpaqueWithPrivateFieldTwinNormal_read_twin_normal(
+          NativePortType port_, int that);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__OpaqueWithPrivateFieldTwinRustAsyncMoi_new_twin_rust_async_moi(
+          NativePortType port_, String value);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__OpaqueWithPrivateFieldTwinRustAsyncMoi_read_twin_rust_async_moi(
+          NativePortType port_, int that);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__OpaqueWithPrivateFieldTwinRustAsyncSseMoi_new_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__OpaqueWithPrivateFieldTwinRustAsyncSseMoi_read_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__OpaqueWithPrivateFieldTwinRustAsyncSse_new_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__OpaqueWithPrivateFieldTwinRustAsyncSse_read_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__OpaqueWithPrivateFieldTwinRustAsync_new_twin_rust_async(
+          NativePortType port_, String value);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__OpaqueWithPrivateFieldTwinRustAsync_read_twin_rust_async(
+          NativePortType port_, int that);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__OpaqueWithPrivateFieldTwinSseMoi_new_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__OpaqueWithPrivateFieldTwinSseMoi_read_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__OpaqueWithPrivateFieldTwinSse_new_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__OpaqueWithPrivateFieldTwinSse_read_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__OpaqueWithPrivateFieldTwinSyncMoi_new_twin_sync_moi(
+          String value);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_moi__OpaqueWithPrivateFieldTwinSyncMoi_read_twin_sync_moi(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__OpaqueWithPrivateFieldTwinSyncSseMoi_new_twin_sync_sse_moi(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__OpaqueWithPrivateFieldTwinSyncSseMoi_read_twin_sync_sse_moi(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__OpaqueWithPrivateFieldTwinSyncSse_new_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse__OpaqueWithPrivateFieldTwinSyncSse_read_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__OpaqueWithPrivateFieldTwinSync_new_twin_sync(
+          String value);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__OpaqueWithPrivateFieldTwinSync_read_twin_sync(
+          int that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__SimpleLogger_get_and_reset(
@@ -82715,6 +83840,102 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinMoi(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsync(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncMoi(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSse(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinRustAsyncSseMoi(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSse(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSseMoi(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSync(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncMoi(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSse(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueWithPrivateFieldTwinSyncSseMoi(
           int ptr);
 
   external void

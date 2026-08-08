@@ -11,6 +11,9 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_rust_async_sse_moi.freezed.dart';
 
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `PrivateOpaqueFieldInnerTwinRustAsyncSseMoi`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`, `fmt`
+
 Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(
         {required NonCloneSimpleTwinRustAsyncSseMoi arg,
         required int expect}) =>
@@ -263,6 +266,17 @@ abstract class OpaqueOneTwinRustAsyncSseMoi implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinRustAsyncSseMoi>>
 abstract class OpaqueTwoTwinRustAsyncSseMoi implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueWithPrivateFieldTwinRustAsyncSseMoi>>
+abstract class OpaqueWithPrivateFieldTwinRustAsyncSseMoi
+    implements RustOpaqueInterface {
+  static Future<OpaqueWithPrivateFieldTwinRustAsyncSseMoi>
+      newTwinRustAsyncSseMoi({required String value}) => RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiOpaqueWithPrivateFieldTwinRustAsyncSseMoiNewTwinRustAsyncSseMoi(
+              value: value);
+
+  Future<String> readTwinRustAsyncSseMoi();
+}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi>>
 abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi
