@@ -21,11 +21,11 @@ impl HirFlatPack {
         vec_to_map_with_warn(&self.traits, |x| (x.name.name.clone(), x))
     }
 
-    pub(crate) fn types_map(&self) -> HashMap<String, Type> {
+    pub(crate) fn types_map(&self) -> HashMap<String, HirFlatTypeAlias> {
         let non_generic: Vec<&HirFlatTypeAlias> = (self.types.iter())
             .filter(|x| x.type_params.is_empty())
             .collect();
-        vec_to_map_with_warn(&non_generic, |x| (x.ident.clone(), x.target.clone()))
+        vec_to_map_with_warn(&non_generic, |x| (x.ident.clone(), (*x).clone()))
     }
 
     pub(crate) fn generic_types_map(&self) -> HashMap<String, HirFlatTypeAlias> {

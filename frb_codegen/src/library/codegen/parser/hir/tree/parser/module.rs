@@ -23,6 +23,7 @@ pub(super) fn parse_module(
 
     Ok(HirTreeModule {
         meta,
+        item_contexts: vec![None; output_items.len()],
         items: output_items,
         modules: output_modules,
     })

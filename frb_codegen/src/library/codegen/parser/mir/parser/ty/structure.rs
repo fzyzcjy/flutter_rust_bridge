@@ -63,7 +63,7 @@ impl TypeParserWithContext<'_, '_, '_> {
                     idx,
                     field,
                     &attributes,
-                    &src_struct.name.namespace,
+                    &src_struct.declaration_namespace,
                     &src_struct.imports,
                 )
             })
@@ -152,7 +152,10 @@ impl TypeParserWithContext<'_, '_, '_> {
 struct InaccessiblePrivateTypeVisitor<'a, 'b> {
     src_structs: &'a HashMap<String, &'b HirFlatStruct>,
     src_enums: &'a HashMap<String, &'b crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum>,
-    src_types: &'a HashMap<String, Type>,
+    src_types: &'a HashMap<
+        String,
+        crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias,
+    >,
     src_generic_type_aliases:
         &'a HashMap<String, crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias>,
     initiated_namespace: &'a Namespace,
@@ -179,23 +182,23 @@ impl VisitMut for InaccessiblePrivateTypeVisitor<'_, '_> {
 
         if !self.found && self.alias_depth < 64 {
             for candidate in candidates {
-                let alias_target = self
+                let alias = self
                     .src_types
                     .get(&candidate.name)
                     .or_else(|| {
                         self.src_generic_type_aliases
                             .get(&candidate.name)
-                            .map(|alias| &alias.target)
                     })
-                    .cloned();
-                if let Some(mut alias_target) = alias_target {
+                    .filter(|alias| alias.namespace == candidate.namespace);
+                if let Some(alias) = alias {
+                    let mut alias_target = alias.target.clone();
                     let mut alias_visitor = InaccessiblePrivateTypeVisitor {
                         src_structs: self.src_structs,
                         src_enums: self.src_enums,
                         src_types: self.src_types,
                         src_generic_type_aliases: self.src_generic_type_aliases,
-                        initiated_namespace: &candidate.namespace,
-                        imports: &[],
+                        initiated_namespace: &alias.declaration_namespace,
+                        imports: &alias.imports,
                         alias_depth: self.alias_depth + 1,
                         found: false,
                     };
@@ -265,6 +268,26 @@ fn type_path_candidates(
         Namespace::new(type_namespace_segments.to_vec()),
         segments.last().unwrap().clone(),
     ));
+    let mut imported_modules = vec![];
+    for item_use in imports {
+        collect_import_targets(
+            &item_use.tree,
+            &[],
+            &type_namespace_segments[0],
+            initiated_namespace,
+            &mut imported_modules,
+        );
+    }
+    for imported_module in imported_modules {
+        let mut namespace = imported_module.namespace.join(&imported_module.name);
+        for segment in &type_namespace_segments[1..] {
+            namespace = namespace.join(segment);
+        }
+        output.push(NamespacedName::new(
+            namespace,
+            segments.last().unwrap().clone(),
+        ));
+    }
     output.sort();
     output.dedup();
     output
@@ -426,6 +449,67 @@ mod inaccessible_private_type_tests {
             &struct_namespace,
             &[],
         ));
+
+        let renamed_module_import =
+            syn::parse_str::<ItemUse>("use super::other as renamed;").unwrap();
+        assert!(type_path_targets_item(
+            &syn::parse_str::<TypePath>("renamed::String")
+                .unwrap()
+                .path,
+            &other_name,
+            &initiated_namespace,
+            &[renamed_module_import],
+        ));
+    }
+
+    /// Resolves an imported alias target with imports from the alias declaration module.
+    #[test]
+    fn test_imported_alias_target_uses_declaration_imports() {
+        use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
+        use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+        use crate::codegen::ir::hir::misc::visibility::HirVisibility;
+
+        let hidden_namespace = Namespace::new_self_crate("api::hidden".to_owned());
+        let inner = HirFlatStruct {
+            name: NamespacedName::new(hidden_namespace.clone(), "Inner".to_owned()),
+            declaration_namespace: hidden_namespace,
+            visibility: HirVisibility::Public,
+            is_accessible_from_rust_output: false,
+            imports: vec![],
+            sources: vec![HirGenerationSource::Normal],
+            mirror: false,
+            src: syn::parse_str("pub struct Inner { pub value: String }").unwrap(),
+        };
+        let aliases_namespace = Namespace::new_self_crate("api::aliases".to_owned());
+        let alias = HirFlatTypeAlias {
+            ident: "Alias".to_owned(),
+            namespace: aliases_namespace.clone(),
+            declaration_namespace: aliases_namespace,
+            imports: vec![syn::parse_str("use super::hidden::Inner;").unwrap()],
+            target: syn::parse_str("Inner").unwrap(),
+            type_params: vec![],
+        };
+        let src_structs = HashMap::from([("Inner".to_owned(), &inner)]);
+        let src_enums = HashMap::new();
+        let src_types = HashMap::from([("Alias".to_owned(), alias)]);
+        let src_generic_type_aliases = HashMap::new();
+        let initiated_namespace = Namespace::new_self_crate("api".to_owned());
+        let imports = vec![syn::parse_str("use aliases::Alias;").unwrap()];
+        let mut ty = syn::parse_str("Arc<Alias>").unwrap();
+        let mut visitor = InaccessiblePrivateTypeVisitor {
+            src_structs: &src_structs,
+            src_enums: &src_enums,
+            src_types: &src_types,
+            src_generic_type_aliases: &src_generic_type_aliases,
+            initiated_namespace: &initiated_namespace,
+            imports: &imports,
+            alias_depth: 0,
+            found: false,
+        };
+
+        visitor.visit_type_mut(&mut ty);
+
+        assert!(visitor.found);
     }
 }
 

@@ -14,6 +14,8 @@ pub(crate) struct HirNaiveFlatItem {
 #[derive(Clone, Debug, Derivative, Serialize)]
 pub(crate) struct HirNaiveFlatItemMeta {
     pub namespace: Namespace,
+    #[serde(skip_serializing)]
+    pub declaration_namespace: Namespace,
     pub sources: Vec<HirGenerationSource>,
     pub is_module_public: bool,
     pub is_module_accessible_from_rust_output: bool,

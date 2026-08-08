@@ -43,6 +43,7 @@ fn parse_synthesized_syn_items(
 ) -> anyhow::Result<()> {
     let meta = HirNaiveFlatItemMeta {
         namespace: namespace.to_owned(),
+        declaration_namespace: namespace.to_owned(),
         sources: vec![HirGenerationSource::Normal],
         is_module_public: true,
         is_module_accessible_from_rust_output: true,

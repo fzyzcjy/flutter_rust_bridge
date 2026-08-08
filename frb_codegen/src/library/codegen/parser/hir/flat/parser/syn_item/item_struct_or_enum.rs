@@ -62,6 +62,7 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
         .into_iter()
         .map(|ident| HirFlatStructOrEnum {
             name: NamespacedName::new(meta.namespace.to_owned(), ident.to_string()),
+            declaration_namespace: meta.declaration_namespace.clone(),
             visibility: item_vis.into(),
             is_accessible_from_rust_output: meta.is_module_accessible_from_rust_output
                 && is_visibility_accessible_from(

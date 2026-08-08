@@ -298,10 +298,19 @@ mod private_opaque_field_module_twin_sync_sse {
     pub type PrivateModuleOpaqueFieldAliasTwinSyncSse = PrivateModuleOpaqueFieldInnerTwinSyncSse;
 }
 
+use private_opaque_field_module_twin_sync_sse as private_module_alias_twin_sync_sse;
 use private_opaque_field_module_twin_sync_sse::{
     PrivateModuleOpaqueFieldAliasTwinSyncSse, PrivateModuleOpaqueFieldInnerTwinSyncSse,
     PrivateModuleOpaqueFieldInnerTwinSyncSse as RenamedPrivateModuleOpaqueFieldInnerTwinSyncSse,
 };
+
+mod private_opaque_field_alias_module_twin_sync_sse {
+    use super::private_opaque_field_module_twin_sync_sse::PrivateModuleOpaqueFieldInnerTwinSyncSse;
+
+    pub type ImportedTargetAliasTwinSyncSse = PrivateModuleOpaqueFieldInnerTwinSyncSse;
+}
+
+use private_opaque_field_alias_module_twin_sync_sse::ImportedTargetAliasTwinSyncSse;
 
 type PrivateOpaqueFieldAliasTwinSyncSse = PrivateOpaqueFieldInnerTwinSyncSse;
 
@@ -317,6 +326,9 @@ pub struct OpaqueWithPrivateFieldTwinSyncSse {
     pub imported_private_module_field: Arc<RwLock<PrivateModuleOpaqueFieldInnerTwinSyncSse>>,
     pub renamed_private_module_field: Arc<RwLock<RenamedPrivateModuleOpaqueFieldInnerTwinSyncSse>>,
     pub imported_alias_field: Arc<RwLock<PrivateModuleOpaqueFieldAliasTwinSyncSse>>,
+    pub module_alias_field:
+        Arc<RwLock<private_module_alias_twin_sync_sse::PrivateModuleOpaqueFieldInnerTwinSyncSse>>,
+    pub imported_target_alias_field: Arc<RwLock<ImportedTargetAliasTwinSyncSse>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinSyncSse>>,
 }
 
@@ -349,6 +361,16 @@ impl OpaqueWithPrivateFieldTwinSyncSse {
             imported_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinSyncSse {
                 value: value.clone(),
             })),
+            module_alias_field: Arc::new(RwLock::new(
+                private_module_alias_twin_sync_sse::PrivateModuleOpaqueFieldInnerTwinSyncSse {
+                    value: value.clone(),
+                },
+            )),
+            imported_target_alias_field: Arc::new(RwLock::new(
+                PrivateModuleOpaqueFieldInnerTwinSyncSse {
+                    value: value.clone(),
+                },
+            )),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSyncSse { value })),
         }
     }
@@ -357,13 +379,15 @@ impl OpaqueWithPrivateFieldTwinSyncSse {
     #[flutter_rust_bridge::frb(sync)]
     pub fn read_twin_sync_sse(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
             self.imported_private_module_field.read().unwrap().value,
             self.renamed_private_module_field.read().unwrap().value,
             self.imported_alias_field.read().unwrap().value,
+            self.module_alias_field.read().unwrap().value,
+            self.imported_target_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

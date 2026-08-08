@@ -12,6 +12,7 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
                 HirNaiveFlatItem {
                     meta: HirNaiveFlatItemMeta {
                         namespace: compute_moved_namespace(&item.meta.namespace),
+                        declaration_namespace: item.meta.declaration_namespace,
                         sources: concat([
                             item.meta.sources.clone(),
                             vec![HirGenerationSource::MoveFromCrateThirdPartyFolder],

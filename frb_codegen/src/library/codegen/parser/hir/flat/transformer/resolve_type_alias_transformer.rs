@@ -13,15 +13,24 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     let (generic, non_generic): (Vec<_>, Vec<_>) =
         (pack.types.into_iter()).partition(|x| !x.type_params.is_empty());
 
+    let metadata = (non_generic.iter())
+        .map(|x| (x.ident.clone(), x.clone()))
+        .collect::<HashMap<_, _>>();
     let map_raw = (non_generic.iter())
         .map(|x| (x.ident.clone(), x.target.clone()))
         .collect();
     let map_transformed = resolve_type_aliases(map_raw);
     let mut vec_transformed = (map_transformed.into_iter())
-        .map(|(ident, target)| HirFlatTypeAlias {
-            ident,
-            target,
-            type_params: vec![],
+        .map(|(ident, target)| {
+            let original = &metadata[&ident];
+            HirFlatTypeAlias {
+                ident,
+                namespace: original.namespace.clone(),
+                declaration_namespace: original.declaration_namespace.clone(),
+                imports: original.imports.clone(),
+                target,
+                type_params: vec![],
+            }
         })
         .collect_vec();
     vec_transformed.extend(generic);

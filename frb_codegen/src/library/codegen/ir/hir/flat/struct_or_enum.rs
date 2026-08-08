@@ -13,6 +13,8 @@ use syn::{ItemEnum, ItemStruct};
 #[derivative(Debug)]
 pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
     pub(crate) name: NamespacedName,
+    #[serde(skip_serializing)]
+    pub(crate) declaration_namespace: crate::utils::namespace::Namespace,
     pub(crate) visibility: HirVisibility,
     pub(crate) is_accessible_from_rust_output: bool,
     #[derivative(Debug = "ignore")]

@@ -91,7 +91,7 @@ impl TypeParserWithContext<'_, '_, '_> {
     }
 
     fn get_alias_type(&self, ty: &Type) -> Option<&Type> {
-        convert_ident_str(ty).and_then(|key| self.inner.src_types.get(&key))
+        convert_ident_str(ty).and_then(|key| self.inner.src_types.get(&key).map(|alias| &alias.target))
     }
 }
 

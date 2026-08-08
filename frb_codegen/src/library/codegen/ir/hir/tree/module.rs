@@ -11,6 +11,14 @@ pub struct HirTreeModule {
     pub modules: Vec<HirTreeModule>,
     #[serde(serialize_with = "serialize_vec_syn")]
     pub items: Vec<syn::Item>,
+    #[serde(skip)]
+    pub item_contexts: Vec<Option<HirTreeItemContext>>,
+}
+
+#[derive(Clone, Debug)]
+pub struct HirTreeItemContext {
+    pub declaration_namespace: Namespace,
+    pub imports: Vec<syn::ItemUse>,
 }
 
 // This is surely used, but not counted by coverage tools

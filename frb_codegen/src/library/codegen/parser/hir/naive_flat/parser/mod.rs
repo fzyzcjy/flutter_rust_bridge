@@ -21,16 +21,26 @@ fn flatten_module(module: HirTreeModule, target: &mut Vec<HirNaiveFlatItem>) {
             _ => None,
         })
         .collect::<Vec<_>>();
-    target.extend(module.items.into_iter().map(|item| HirNaiveFlatItem {
-        meta: HirNaiveFlatItemMeta {
-            namespace: module.meta.namespace.clone(),
-            sources: vec![HirGenerationSource::Normal],
-            is_module_public: module.meta.is_public(),
-            is_module_accessible_from_rust_output: module.meta.is_accessible_from_rust_output,
-            imports: imports.clone(),
+    let mut item_contexts = module.item_contexts;
+    item_contexts.resize(module.items.len(), None);
+    target.extend(module.items.into_iter().zip(item_contexts).map(
+        |(item, context)| HirNaiveFlatItem {
+            meta: HirNaiveFlatItemMeta {
+                namespace: module.meta.namespace.clone(),
+                declaration_namespace: context.as_ref().map_or_else(
+                    || module.meta.namespace.clone(),
+                    |x| x.declaration_namespace.clone(),
+                ),
+                sources: vec![HirGenerationSource::Normal],
+                is_module_public: module.meta.is_public(),
+                is_module_accessible_from_rust_output: module
+                    .meta
+                    .is_accessible_from_rust_output,
+                imports: context.map_or_else(|| imports.clone(), |x| x.imports),
+            },
+            item,
         },
-        item,
-    }));
+    ));
 
     for child_module in module.modules {
         flatten_module(child_module, target);

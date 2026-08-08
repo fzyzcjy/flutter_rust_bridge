@@ -1,7 +1,11 @@
 use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
+use crate::codegen::ir::hir::naive_flat::item::HirNaiveFlatItemMeta;
 use syn::ItemType;
 
-pub(crate) fn parse_syn_item_type(item_type: ItemType) -> Option<HirFlatTypeAlias> {
+pub(crate) fn parse_syn_item_type(
+    item_type: ItemType,
+    meta: &HirNaiveFlatItemMeta,
+) -> Option<HirFlatTypeAlias> {
     // debug!("parse_syn_item_type item_type={item_type:?}");
 
     if item_type.generics.where_clause.is_some() {
@@ -25,6 +29,9 @@ pub(crate) fn parse_syn_item_type(item_type: ItemType) -> Option<HirFlatTypeAlia
 
     Some(HirFlatTypeAlias {
         ident: item_type.ident.to_string(),
+        namespace: meta.namespace.clone(),
+        declaration_namespace: meta.declaration_namespace.clone(),
+        imports: meta.imports.clone(),
         target: *item_type.ty,
         type_params,
     })
@@ -33,11 +40,27 @@ pub(crate) fn parse_syn_item_type(item_type: ItemType) -> Option<HirFlatTypeAlia
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+    use crate::utils::namespace::Namespace;
     use syn::parse_quote;
+
+    fn parse_test_type(item_type: ItemType) -> Option<HirFlatTypeAlias> {
+        parse_syn_item_type(
+            item_type,
+            &HirNaiveFlatItemMeta {
+                namespace: Namespace::new_self_crate("api".to_owned()),
+                declaration_namespace: Namespace::new_self_crate("api".to_owned()),
+                sources: vec![HirGenerationSource::Normal],
+                is_module_public: true,
+                is_module_accessible_from_rust_output: true,
+                imports: vec![],
+            },
+        )
+    }
 
     #[test]
     fn keeps_non_generic_alias() {
-        let alias = parse_syn_item_type(parse_quote!(
+        let alias = parse_test_type(parse_quote!(
             pub type Id = u64;
         ))
         .unwrap();
@@ -47,7 +70,7 @@ mod tests {
 
     #[test]
     fn keeps_type_param_only_alias() {
-        let alias = parse_syn_item_type(parse_quote!(
+        let alias = parse_test_type(parse_quote!(
             pub type AppResult<T> = Result<T, AppError>;
         ))
         .unwrap();
@@ -58,7 +81,7 @@ mod tests {
     #[test]
     fn skips_alias_with_const_generic() {
         // `N` would be silently dropped during substitution, so it must be skipped.
-        assert!(parse_syn_item_type(parse_quote!(
+        assert!(parse_test_type(parse_quote!(
             pub type Fixed<T, const N: usize> = [T; N];
         ))
         .is_none());
@@ -66,7 +89,7 @@ mod tests {
 
     #[test]
     fn skips_alias_with_lifetime() {
-        assert!(parse_syn_item_type(parse_quote!(
+        assert!(parse_test_type(parse_quote!(
             pub type Borrowed<'a, T> = &'a T;
         ))
         .is_none());
@@ -75,7 +98,7 @@ mod tests {
     #[test]
     fn skips_alias_with_where_clause() {
         // `where` clauses are not supported yet, so such aliases are skipped.
-        assert!(parse_syn_item_type(parse_quote!(
+        assert!(parse_test_type(parse_quote!(
             pub type Aliased<T>
             where
                 T: Clone,

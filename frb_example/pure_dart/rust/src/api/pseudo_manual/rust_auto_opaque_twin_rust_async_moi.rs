@@ -291,10 +291,19 @@ mod private_opaque_field_module_twin_rust_async_moi {
         PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi;
 }
 
+use private_opaque_field_module_twin_rust_async_moi as private_module_alias_twin_rust_async_moi;
 use private_opaque_field_module_twin_rust_async_moi::{
     PrivateModuleOpaqueFieldAliasTwinRustAsyncMoi, PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi,
     PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi as RenamedPrivateModuleOpaqueFieldInnerTwinRustAsyncMoi,
 };
+
+mod private_opaque_field_alias_module_twin_rust_async_moi {
+    use super::private_opaque_field_module_twin_rust_async_moi::PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi;
+
+    pub type ImportedTargetAliasTwinRustAsyncMoi = PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi;
+}
+
+use private_opaque_field_alias_module_twin_rust_async_moi::ImportedTargetAliasTwinRustAsyncMoi;
 
 type PrivateOpaqueFieldAliasTwinRustAsyncMoi = PrivateOpaqueFieldInnerTwinRustAsyncMoi;
 
@@ -310,6 +319,9 @@ pub struct OpaqueWithPrivateFieldTwinRustAsyncMoi {
     pub imported_private_module_field: Arc<RwLock<PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi>>,
     pub renamed_private_module_field: Arc<RwLock<RenamedPrivateModuleOpaqueFieldInnerTwinRustAsyncMoi>>,
     pub imported_alias_field: Arc<RwLock<PrivateModuleOpaqueFieldAliasTwinRustAsyncMoi>>,
+    pub module_alias_field:
+        Arc<RwLock<private_module_alias_twin_rust_async_moi::PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi>>,
+    pub imported_target_alias_field: Arc<RwLock<ImportedTargetAliasTwinRustAsyncMoi>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinRustAsyncMoi>>,
 }
 
@@ -341,6 +353,16 @@ impl OpaqueWithPrivateFieldTwinRustAsyncMoi {
             imported_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi {
                 value: value.clone(),
             })),
+            module_alias_field: Arc::new(RwLock::new(
+                private_module_alias_twin_rust_async_moi::PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi {
+                    value: value.clone(),
+                },
+            )),
+            imported_target_alias_field: Arc::new(RwLock::new(
+                PrivateModuleOpaqueFieldInnerTwinRustAsyncMoi {
+                    value: value.clone(),
+                },
+            )),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinRustAsyncMoi { value })),
         }
     }
@@ -348,13 +370,15 @@ impl OpaqueWithPrivateFieldTwinRustAsyncMoi {
     #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
     pub async fn read_twin_rust_async_moi(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
             self.imported_private_module_field.read().unwrap().value,
             self.renamed_private_module_field.read().unwrap().value,
             self.imported_alias_field.read().unwrap().value,
+            self.module_alias_field.read().unwrap().value,
+            self.imported_target_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }
