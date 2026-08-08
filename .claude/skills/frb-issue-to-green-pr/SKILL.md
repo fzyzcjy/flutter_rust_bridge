@@ -1,11 +1,11 @@
 ---
 name: frb-issue-to-green-pr
-description: "Use when implementing a GitHub issue, bug fix, or feature in flutter_rust_bridge end-to-end: develop the change, add regression coverage, prepare and open a PR, monitor CI until green, request and resolve Gemini review, and keep following up on a 5 minute cadence until the PR is ready."
+description: "Use when implementing a GitHub issue, bug fix, or feature in flutter_rust_bridge end-to-end: develop the change, add regression coverage, prepare and open a PR, monitor CI until green, and keep following up on a 5 minute cadence until the PR is ready."
 ---
 
 # FRB Issue to Green PR
 
-Use this skill as the top-level workflow when the user asks you to implement an issue, fix a bug, add a feature, or otherwise "handle it end to end" in `flutter_rust_bridge`, especially when they ask for an automatic PR, CI monitoring, or Gemini review.
+Use this skill as the top-level workflow when the user asks you to implement an issue, fix a bug, add a feature, or otherwise "handle it end to end" in `flutter_rust_bridge`, especially when they ask for an automatic PR or CI monitoring.
 
 This skill orchestrates the narrower FRB skills. Do not duplicate their detailed instructions in memory; read them when their phase begins.
 
@@ -74,15 +74,9 @@ Read these when entering the matching phase:
 - Create the PR according to the active PR workflow and repository/user PR body rules.
 - If the work comes from a GitHub issue, ensure the PR body includes the appropriate closing keyword such as `Close #1234`, unless the active PR workflow explicitly requires an empty body.
 
-### 6. Handle Gemini review
+### 6. Run the review gate
 
-- Follow `frb-pr-review` for the full PR review gate, including correctness review, test-weakening review, and Gemini.
-- After pushing the PR and once you believe the code is reasonably ready, post a PR comment containing exactly `/gemini review` to request a Gemini pass; do not wait for CI to be green before requesting this first self-initiated review.
-- Wait for Gemini's GitHub review or comments if the repository automation posts them.
-- Treat actionable Gemini feedback like review comments: inspect, fix if valid, commit, push, and reply or otherwise make the resolution visible.
-- If feedback is incorrect or not actionable, leave a concise PR comment explaining why.
-- After substantial follow-up fixes, request another Gemini pass when you again believe the code is reasonably ready.
-- Wait for each new Gemini response on GitHub, then resolve any actionable follow-up feedback.
+- Follow `frb-pr-review` for the full PR review gate, including correctness review and test-weakening review.
 
 ### 7. Monitor CI until terminal
 
@@ -96,13 +90,12 @@ Read these when entering the matching phase:
 ### 8. Stop only when ready
 
 - The PR checks are green or all remaining non-green checks are clearly unrelated and explained.
-- Gemini has no unresolved actionable feedback after the latest self-initiated `/gemini review` pass.
 - The branch is pushed, commits are present on the PR, and the final status is reported to the user with the PR URL.
 
 ## Automation Rules
 
 - Prefer a heartbeat attached to the current thread for short follow-up intervals such as every 5 minutes.
-- The heartbeat prompt must be self-contained: include the PR URL/number, branch, repository, and the requirement to inspect CI and Gemini review state, fix issues, commit, push, and continue until ready.
+- The heartbeat prompt must be self-contained: include the PR URL/number, branch, repository, and the requirement to inspect CI and review state, fix issues, commit, push, and continue until ready.
 - Do not create a duplicate heartbeat if one already exists for the same PR; update the existing automation instead.
 - Cancel or leave inactive any PR-specific heartbeat once the stop conditions are met.
 
