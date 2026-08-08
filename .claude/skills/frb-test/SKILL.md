@@ -61,4 +61,4 @@ Choose tests by blast radius:
 
 After pushing to a PR branch, monitor GitHub Actions until the run reaches a terminal state. If CI fails, inspect the failing job logs and either fix the issue or clearly report why it is unrelated or flaky. Do not leave a PR in an unknown queued or in-progress state when the user asked for CI validation.
 
-Before treating a non-trivial PR as ready, run the review gate in `frb-pr-review`; local tests alone do not check correctness review, test weakening, or Gemini feedback.
+Before treating a non-trivial PR as ready, run the review gate in `frb-pr-review`; local tests alone do not check correctness review or test weakening.
