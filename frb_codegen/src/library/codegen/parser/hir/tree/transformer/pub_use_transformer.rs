@@ -30,7 +30,11 @@ fn transform_module(
         rust_output_path_namespace,
     );
     for pub_use_info in pub_use_infos {
-        transform_module_by_pub_use_single(module, &pub_use_info)?;
+        transform_module_by_pub_use_single(
+            module,
+            &pub_use_info,
+            rust_output_path_namespace,
+        )?;
     }
     Ok(())
 }
@@ -138,6 +142,7 @@ impl PubUseInfo {
 fn transform_module_by_pub_use_single(
     module: &mut HirTreeModule,
     pub_use_info: &PubUseInfo,
+    rust_output_path_namespace: &Namespace,
 ) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
     let is_self_crate = module.meta.namespace.crate_name().is_self_crate();
@@ -164,16 +169,23 @@ fn transform_module_by_pub_use_single(
         // let self_namespace = &module.meta.namespace;
 
         if is_self_crate {
+            let src_namespace = src_mod.meta.namespace.clone();
             let (interest_items, remaining_items) = std::mem::take(&mut src_mod.items)
                 .into_iter()
-                .partition(|item| is_interest_item(item, pub_use_info));
+                .partition(|item| {
+                    is_interest_item(
+                        item,
+                        pub_use_info,
+                        Some((&src_namespace, rust_output_path_namespace)),
+                    )
+                });
             src_mod.items = remaining_items;
             interest_items
         } else {
             src_mod
                 .items
                 .iter()
-                .filter(|item| is_interest_item(item, pub_use_info))
+                .filter(|item| is_interest_item(item, pub_use_info, None))
                 .cloned()
                 .collect_vec()
         }
@@ -192,10 +204,27 @@ fn transform_module_by_pub_use_single(
     Ok(())
 }
 
-fn is_interest_item(item: &syn::Item, pub_use_info: &PubUseInfo) -> bool {
+fn is_interest_item(
+    item: &syn::Item,
+    pub_use_info: &PubUseInfo,
+    self_crate_namespaces: Option<(&Namespace, &Namespace)>,
+) -> bool {
     let name_for_use_stmt = name_for_use_stmt(item).unwrap_or_else(|| "NOT_EXIST_NAME".to_owned());
+    let is_visible = if let Some((declaration_namespace, rust_output_path_namespace)) =
+        self_crate_namespaces
+    {
+        item_visibility(item).is_none_or(|visibility| {
+            is_visibility_accessible_from(
+                visibility,
+                declaration_namespace,
+                rust_output_path_namespace,
+            )
+        })
+    } else {
+        is_item_public(item).unwrap_or(true)
+    };
     pub_use_info.is_interest_name(&name_for_use_stmt)
-        && is_item_public(item).unwrap_or(true)
+        && is_visible
         && is_localized_definition(item)
 }
 
@@ -212,6 +241,10 @@ fn name_for_use_stmt(item: &syn::Item) -> Option<String> {
 }
 
 pub(crate) fn is_item_public(item: &syn::Item) -> Option<bool> {
+    item_visibility(item).map(|vis| matches!(vis, syn::Visibility::Public(_)))
+}
+
+fn item_visibility(item: &syn::Item) -> Option<&syn::Visibility> {
     let vis = match item {
         syn::Item::Struct(x) => &x.vis,
         syn::Item::Enum(x) => &x.vis,
@@ -220,7 +253,7 @@ pub(crate) fn is_item_public(item: &syn::Item) -> Option<bool> {
         syn::Item::Trait(x) => &x.vis,
         _ => return None,
     };
-    Some(matches!(vis, syn::Visibility::Public(_)))
+    Some(vis)
 }
 
 pub(crate) fn is_localized_definition(item: &syn::Item) -> bool {
@@ -329,7 +362,9 @@ mod tests {
                 is_accessible_from_rust_output: false,
             },
             modules: vec![],
-            items: vec![syn::parse_str("pub struct Thing { pub value: String }")?],
+            items: vec![syn::parse_str(
+                "pub(crate) struct Thing { pub value: String }",
+            )?],
         };
         let root_module = HirTreeModule {
             meta: HirTreeModuleMeta {
