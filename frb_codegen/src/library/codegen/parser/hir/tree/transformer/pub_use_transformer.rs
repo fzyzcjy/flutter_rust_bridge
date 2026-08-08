@@ -3,6 +3,7 @@ use crate::codegen::ir::hir::tree::module::{HirTreeItemContext, HirTreeModule};
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
+use std::collections::HashSet;
 use syn::UseTree;
 
 pub(crate) fn transform(
@@ -105,13 +106,21 @@ fn transform_self_crate_pub_use(
             .resize(source_module.items.len(), None);
         let source_items = std::mem::take(&mut source_module.items);
         let source_contexts = std::mem::take(&mut source_module.item_contexts);
+        let interest_names = source_items
+            .iter()
+            .filter(|item| {
+                is_interest_item(
+                    item,
+                    &directive.info,
+                    Some((&source_namespace, rust_output_path_namespace)),
+                )
+            })
+            .filter_map(name_for_use_stmt)
+            .collect::<HashSet<_>>();
         let mut moved_items = vec![];
         for (mut item, context) in source_items.into_iter().zip(source_contexts) {
-            if is_interest_item(
-                &item,
-                &directive.info,
-                Some((&source_namespace, rust_output_path_namespace)),
-            ) {
+            if is_item_or_impl_interesting(&item, &interest_names, directive.info.rename.is_some())
+            {
                 rename_item_for_use(&mut item, &directive.info);
                 moved_items.push((
                     item,
@@ -330,22 +339,46 @@ fn transform_module_by_pub_use_single(
 
         if is_self_crate {
             let src_namespace = src_mod.meta.namespace.clone();
-            let (interest_items, remaining_items) = std::mem::take(&mut src_mod.items)
-                .into_iter()
-                .partition(|item| {
+            let interest_names = src_mod
+                .items
+                .iter()
+                .filter(|item| {
                     is_interest_item(
                         item,
                         pub_use_info,
                         Some((&src_namespace, rust_output_path_namespace)),
                     )
+                })
+                .filter_map(name_for_use_stmt)
+                .collect::<HashSet<_>>();
+            let (interest_items, remaining_items) = std::mem::take(&mut src_mod.items)
+                .into_iter()
+                .partition(|item| {
+                    is_item_or_impl_interesting(
+                        item,
+                        &interest_names,
+                        pub_use_info.rename.is_some(),
+                    )
                 });
             src_mod.items = remaining_items;
             interest_items
         } else {
-            src_mod
+            let interest_names = src_mod
                 .items
                 .iter()
                 .filter(|item| is_interest_item(item, pub_use_info, None))
+                .filter_map(name_for_use_stmt)
+                .collect::<HashSet<_>>();
+            src_mod
+                .items
+                .iter()
+                .filter(|item| {
+                    is_item_or_impl_interesting(
+                        item,
+                        &interest_names,
+                        pub_use_info.rename.is_some(),
+                    )
+                })
                 .cloned()
                 .collect_vec()
         }
@@ -383,8 +416,42 @@ fn rename_item_for_use(item: &mut syn::Item, pub_use_info: &PubUseInfo) {
         syn::Item::Type(x) => x.ident = ident,
         syn::Item::Fn(x) => x.sig.ident = ident,
         syn::Item::Trait(x) => x.ident = ident,
+        syn::Item::Impl(x) => {
+            if let syn::Type::Path(self_ty) = x.self_ty.as_mut() {
+                if let Some(mut segment) = self_ty.path.segments.last().cloned() {
+                    segment.ident = ident;
+                    self_ty.qself = None;
+                    self_ty.path.leading_colon = None;
+                    self_ty.path.segments = std::iter::once(segment).collect();
+                }
+            }
+        }
         _ => {}
     }
+}
+
+fn is_item_or_impl_interesting(
+    item: &syn::Item,
+    interest_names: &HashSet<String>,
+    include_impls: bool,
+) -> bool {
+    name_for_use_stmt(item).is_some_and(|name| interest_names.contains(&name))
+        || (include_impls
+            && impl_target_name(item).is_some_and(|name| interest_names.contains(&name)))
+}
+
+fn impl_target_name(item: &syn::Item) -> Option<String> {
+    let syn::Item::Impl(item_impl) = item else {
+        return None;
+    };
+    let syn::Type::Path(self_ty) = item_impl.self_ty.as_ref() else {
+        return None;
+    };
+    self_ty
+        .path
+        .segments
+        .last()
+        .map(|segment| segment.ident.to_string())
 }
 
 fn is_interest_item(
@@ -694,10 +761,11 @@ mod tests {
                 is_accessible_from_rust_output: false,
             },
             modules: vec![],
-            items: vec![syn::parse_str(
-                "pub(crate) struct Inner { pub value: String }",
-            )?],
-            item_contexts: vec![None],
+            items: vec![
+                syn::parse_str("pub(crate) struct Inner { pub value: String }")?,
+                syn::parse_str("impl Inner { pub fn value(&self) -> &str { &self.value } }")?,
+            ],
+            item_contexts: vec![None, None],
         };
         let root_module = HirTreeModule {
             meta: HirTreeModuleMeta {
@@ -726,10 +794,14 @@ mod tests {
             .items
             .iter()
             .any(|item| name_for_use_stmt(item).as_deref() == Some("PublicInner")));
-        assert!(!root.modules[0]
+        assert!(root
             .items
             .iter()
-            .any(|item| name_for_use_stmt(item).as_deref() == Some("Inner")));
+            .any(|item| impl_target_name(item).as_deref() == Some("PublicInner")));
+        assert!(!root.modules[0].items.iter().any(|item| {
+            name_for_use_stmt(item).as_deref() == Some("Inner")
+                || impl_target_name(item).as_deref() == Some("Inner")
+        }));
         Ok(())
     }
 
