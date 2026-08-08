@@ -6,8 +6,10 @@ There are two answers.
 
 ## Through properties
 
-For each public field, corresponding getters and setters will be auto generated, thus can be directy used.
-Please refer to [this page](properties) for more details.
+For each public field whose type is accessible from the generated module,
+corresponding getters and setters will be automatically generated and can be
+used directly. Please refer to [this page](properties) for details and
+exceptions.
 
 ## Through functions/methods
 
