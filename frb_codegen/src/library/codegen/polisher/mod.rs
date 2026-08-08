@@ -126,7 +126,11 @@ fn execute_build_runner(
     }
 
     let _pb = progress_bar_pack.polish_dart_build_runner.start();
-    dart_build_runner(&config.dart_root, config.fvm_install_mode)
+    dart_build_runner(
+        &config.dart_root,
+        &config.dart_output,
+        config.fvm_install_mode,
+    )
 }
 
 fn execute_dart_fix(
