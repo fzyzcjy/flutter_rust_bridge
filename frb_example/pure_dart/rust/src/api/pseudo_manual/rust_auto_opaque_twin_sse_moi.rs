@@ -279,11 +279,27 @@ struct PrivateOpaqueFieldInnerTwinSseMoi {
     value: String,
 }
 
+#[derive(Debug)]
+pub(super) struct RestrictedOpaqueFieldInnerTwinSseMoi {
+    value: String,
+}
+
+mod private_opaque_field_module_twin_sse_moi {
+    #[derive(Debug)]
+    pub struct PrivateModuleOpaqueFieldInnerTwinSseMoi {
+        pub value: String,
+    }
+}
+
 #[allow(private_interfaces)]
 #[derive(Clone, Debug)]
 #[frb(opaque)]
 pub struct OpaqueWithPrivateFieldTwinSseMoi {
     pub field: Arc<RwLock<PrivateOpaqueFieldInnerTwinSseMoi>>,
+    pub restricted_field: Arc<RwLock<RestrictedOpaqueFieldInnerTwinSseMoi>>,
+    pub private_module_field: Arc<
+        RwLock<private_opaque_field_module_twin_sse_moi::PrivateModuleOpaqueFieldInnerTwinSseMoi>,
+    >,
 }
 
 impl OpaqueWithPrivateFieldTwinSseMoi {
@@ -291,14 +307,29 @@ impl OpaqueWithPrivateFieldTwinSseMoi {
     #[flutter_rust_bridge::frb(serialize)]
     pub fn new_twin_sse_moi(value: String) -> Self {
         Self {
-            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSseMoi { value })),
+            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSseMoi {
+                value: value.clone(),
+            })),
+            restricted_field: Arc::new(RwLock::new(RestrictedOpaqueFieldInnerTwinSseMoi {
+                value: value.clone(),
+            })),
+            private_module_field: Arc::new(RwLock::new(
+                private_opaque_field_module_twin_sse_moi::PrivateModuleOpaqueFieldInnerTwinSseMoi {
+                    value,
+                },
+            )),
         }
     }
 
     #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
     #[flutter_rust_bridge::frb(serialize)]
     pub fn read_twin_sse_moi(&self) -> String {
-        self.field.read().unwrap().value.clone()
+        format!(
+            "{}/{}/{}",
+            self.field.read().unwrap().value,
+            self.restricted_field.read().unwrap().value,
+            self.private_module_field.read().unwrap().value,
+        )
     }
 }
 

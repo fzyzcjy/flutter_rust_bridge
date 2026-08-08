@@ -1,5 +1,4 @@
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
-use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
 use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicitReason;
@@ -119,7 +118,6 @@ impl TypeParserWithContext<'_, '_, '_> {
         let mut visitor = InaccessiblePrivateTypeVisitor {
             src_structs: &self.inner.src_structs,
             src_enums: &self.inner.src_enums,
-            rust_output_path_namespace: &self.context.rust_output_path_namespace,
             found: false,
         };
         visitor.visit_type_mut(&mut ty);
@@ -130,7 +128,6 @@ impl TypeParserWithContext<'_, '_, '_> {
 struct InaccessiblePrivateTypeVisitor<'a, 'b> {
     src_structs: &'a HashMap<String, &'b HirFlatStruct>,
     src_enums: &'a HashMap<String, &'b crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum>,
-    rust_output_path_namespace: &'a Namespace,
     found: bool,
 }
 
@@ -146,22 +143,17 @@ impl VisitMut for InaccessiblePrivateTypeVisitor<'_, '_> {
             .last()
             .map(|segment| segment.ident.to_string())
         {
-            self.found =
-                self.src_structs.get(&name).is_some_and(|item| {
-                    self.is_inaccessible(item.visibility, &item.name.namespace)
-                }) || self.src_enums.get(&name).is_some_and(|item| {
-                    self.is_inaccessible(item.visibility, &item.name.namespace)
-                });
+            self.found = self
+                .src_structs
+                .get(&name)
+                .is_some_and(|item| !item.is_accessible_from_rust_output)
+                || self
+                    .src_enums
+                    .get(&name)
+                    .is_some_and(|item| !item.is_accessible_from_rust_output);
         }
 
         syn::visit_mut::visit_type_path_mut(self, node);
-    }
-}
-
-impl InaccessiblePrivateTypeVisitor<'_, '_> {
-    fn is_inaccessible(&self, visibility: HirVisibility, namespace: &Namespace) -> bool {
-        visibility == HirVisibility::Inherited
-            && !namespace.is_prefix_of(self.rust_output_path_namespace)
     }
 }
 

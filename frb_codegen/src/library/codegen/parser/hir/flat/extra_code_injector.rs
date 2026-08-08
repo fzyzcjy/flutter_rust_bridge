@@ -45,10 +45,11 @@ fn parse_synthesized_syn_items(
         namespace: namespace.to_owned(),
         sources: vec![HirGenerationSource::Normal],
         is_module_public: true,
+        is_module_accessible_from_rust_output: true,
     };
     let syn_file = syn::parse_file(extra_code).with_context(|| format!("code={extra_code}"))?;
     for syn_item in syn_file.items {
-        parse_syn_item(syn_item, &meta, pack, false)?;
+        parse_syn_item(syn_item, &meta, pack, false, namespace)?;
     }
     Ok(())
 }

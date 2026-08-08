@@ -14,6 +14,7 @@ use syn::{ItemEnum, ItemStruct};
 pub struct HirFlatStructOrEnum<Item: SynItemStructOrEnum> {
     pub(crate) name: NamespacedName,
     pub(crate) visibility: HirVisibility,
+    pub(crate) is_accessible_from_rust_output: bool,
     pub(crate) sources: Vec<HirGenerationSource>,
     pub(crate) mirror: bool,
     #[derivative(Debug = "ignore")]

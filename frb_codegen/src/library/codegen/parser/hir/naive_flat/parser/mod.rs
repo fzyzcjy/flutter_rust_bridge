@@ -18,6 +18,7 @@ fn flatten_module(module: HirTreeModule, target: &mut Vec<HirNaiveFlatItem>) {
             namespace: module.meta.namespace.clone(),
             sources: vec![HirGenerationSource::Normal],
             is_module_public: module.meta.is_public(),
+            is_module_accessible_from_rust_output: module.meta.is_accessible_from_rust_output,
         },
         item,
     }));

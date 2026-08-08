@@ -16,4 +16,5 @@ pub(crate) struct HirNaiveFlatItemMeta {
     pub namespace: Namespace,
     pub sources: Vec<HirGenerationSource>,
     pub is_module_public: bool,
+    pub is_module_accessible_from_rust_output: bool,
 }

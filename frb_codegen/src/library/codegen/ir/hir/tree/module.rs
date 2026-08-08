@@ -21,6 +21,7 @@ pub struct HirTreeModuleMeta {
     pub parent_vis: Vec<HirVisibility>,
     pub vis: HirVisibility,
     pub namespace: Namespace,
+    pub is_accessible_from_rust_output: bool,
 }
 // frb-coverage:ignore-end
 

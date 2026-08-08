@@ -17,6 +17,7 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
                             vec![HirGenerationSource::MoveFromCrateThirdPartyFolder],
                         ]),
                         is_module_public: true,
+                        is_module_accessible_from_rust_output: true,
                     },
                     item: item.item,
                 }

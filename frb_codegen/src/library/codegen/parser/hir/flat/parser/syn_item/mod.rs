@@ -15,16 +15,22 @@ use crate::codegen::parser::hir::flat::parser::syn_item::item_struct_or_enum::{
 };
 use crate::codegen::parser::hir::flat::parser::syn_item::item_trait::parse_syn_item_trait;
 use crate::codegen::parser::hir::flat::parser::syn_item::item_type::parse_syn_item_type;
+use crate::utils::namespace::Namespace;
 
 pub(crate) fn parse_syn_item(
     item: syn::Item,
     meta: &HirNaiveFlatItemMeta,
     target: &mut HirFlatPack,
     parse_const: bool,
+    rust_output_path_namespace: &Namespace,
 ) -> anyhow::Result<()> {
     match item {
-        syn::Item::Struct(x) => (target.structs).extend(parse_syn_item_struct(&x, meta)?),
-        syn::Item::Enum(x) => (target.enums).extend(parse_syn_item_enum(&x, meta)?),
+        syn::Item::Struct(x) => {
+            (target.structs).extend(parse_syn_item_struct(&x, meta, rust_output_path_namespace)?)
+        }
+        syn::Item::Enum(x) => {
+            (target.enums).extend(parse_syn_item_enum(&x, meta, rust_output_path_namespace)?)
+        }
         syn::Item::Type(x) => target.types.extend(parse_syn_item_type(x)),
         syn::Item::Fn(x) => target.functions.push(parse_syn_item_fn(x, meta)),
         syn::Item::Const(x) if parse_const => target.constants.push(parse_syn_item_const(x, meta)),

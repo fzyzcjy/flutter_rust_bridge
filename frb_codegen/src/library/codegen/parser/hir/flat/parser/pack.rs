@@ -16,7 +16,13 @@ pub(crate) fn parse_pack(
     };
 
     for item in hir_naive_flat.items {
-        parse_syn_item(item.item, &item.meta, &mut pack, config.parse_const)?;
+        parse_syn_item(
+            item.item,
+            &item.meta,
+            &mut pack,
+            config.parse_const,
+            &config.rust_input_namespace_pack.rust_output_path_namespace,
+        )?;
     }
 
     Ok(pack)

@@ -250,22 +250,55 @@ struct PrivateOpaqueFieldInnerTwinRustAsync {
     value: String,
 }
 
+#[derive(Debug)]
+pub(super) struct RestrictedOpaqueFieldInnerTwinRustAsync {
+    value: String,
+}
+
+mod private_opaque_field_module_twin_rust_async {
+    #[derive(Debug)]
+    pub struct PrivateModuleOpaqueFieldInnerTwinRustAsync {
+        pub value: String,
+    }
+}
+
 #[allow(private_interfaces)]
 #[derive(Clone, Debug)]
 #[frb(opaque)]
 pub struct OpaqueWithPrivateFieldTwinRustAsync {
     pub field: Arc<RwLock<PrivateOpaqueFieldInnerTwinRustAsync>>,
+    pub restricted_field: Arc<RwLock<RestrictedOpaqueFieldInnerTwinRustAsync>>,
+    pub private_module_field: Arc<
+        RwLock<
+            private_opaque_field_module_twin_rust_async::PrivateModuleOpaqueFieldInnerTwinRustAsync,
+        >,
+    >,
 }
 
 impl OpaqueWithPrivateFieldTwinRustAsync {
     pub async fn new_twin_rust_async(value: String) -> Self {
         Self {
-            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinRustAsync { value })),
+            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinRustAsync {
+                value: value.clone(),
+            })),
+            restricted_field: Arc::new(RwLock::new(RestrictedOpaqueFieldInnerTwinRustAsync {
+                value: value.clone(),
+            })),
+            private_module_field: Arc::new(RwLock::new(
+                private_opaque_field_module_twin_rust_async::PrivateModuleOpaqueFieldInnerTwinRustAsync {
+                    value,
+                },
+            )),
         }
     }
 
     pub async fn read_twin_rust_async(&self) -> String {
-        self.field.read().unwrap().value.clone()
+        format!(
+            "{}/{}/{}",
+            self.field.read().unwrap().value,
+            self.restricted_field.read().unwrap().value,
+            self.private_module_field.read().unwrap().value,
+        )
     }
 }
 

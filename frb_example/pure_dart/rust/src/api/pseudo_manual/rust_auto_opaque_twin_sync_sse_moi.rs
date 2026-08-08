@@ -310,11 +310,27 @@ struct PrivateOpaqueFieldInnerTwinSyncSseMoi {
     value: String,
 }
 
+#[derive(Debug)]
+pub(super) struct RestrictedOpaqueFieldInnerTwinSyncSseMoi {
+    value: String,
+}
+
+mod private_opaque_field_module_twin_sync_sse_moi {
+    #[derive(Debug)]
+    pub struct PrivateModuleOpaqueFieldInnerTwinSyncSseMoi {
+        pub value: String,
+    }
+}
+
 #[allow(private_interfaces)]
 #[derive(Clone, Debug)]
 #[frb(opaque)]
 pub struct OpaqueWithPrivateFieldTwinSyncSseMoi {
     pub field: Arc<RwLock<PrivateOpaqueFieldInnerTwinSyncSseMoi>>,
+    pub restricted_field: Arc<RwLock<RestrictedOpaqueFieldInnerTwinSyncSseMoi>>,
+    pub private_module_field: Arc<
+        RwLock<private_opaque_field_module_twin_sync_sse_moi::PrivateModuleOpaqueFieldInnerTwinSyncSseMoi>,
+    >,
 }
 
 impl OpaqueWithPrivateFieldTwinSyncSseMoi {
@@ -323,7 +339,17 @@ impl OpaqueWithPrivateFieldTwinSyncSseMoi {
     #[flutter_rust_bridge::frb(sync)]
     pub fn new_twin_sync_sse_moi(value: String) -> Self {
         Self {
-            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSyncSseMoi { value })),
+            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSyncSseMoi {
+                value: value.clone(),
+            })),
+            restricted_field: Arc::new(RwLock::new(RestrictedOpaqueFieldInnerTwinSyncSseMoi {
+                value: value.clone(),
+            })),
+            private_module_field: Arc::new(RwLock::new(
+                private_opaque_field_module_twin_sync_sse_moi::PrivateModuleOpaqueFieldInnerTwinSyncSseMoi {
+                    value,
+                },
+            )),
         }
     }
 
@@ -331,7 +357,12 @@ impl OpaqueWithPrivateFieldTwinSyncSseMoi {
     #[flutter_rust_bridge::frb(serialize)]
     #[flutter_rust_bridge::frb(sync)]
     pub fn read_twin_sync_sse_moi(&self) -> String {
-        self.field.read().unwrap().value.clone()
+        format!(
+            "{}/{}/{}",
+            self.field.read().unwrap().value,
+            self.restricted_field.read().unwrap().value,
+            self.private_module_field.read().unwrap().value,
+        )
     }
 }
 

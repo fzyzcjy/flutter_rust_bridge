@@ -14,6 +14,7 @@ pub(crate) fn parse_crate(
         parent_vis: vec![],
         vis: HirVisibility::Public,
         namespace: crate_name.namespace(),
+        is_accessible_from_rust_output: true,
     };
     let root_module = parse_module(file.items, info, config)?;
     Ok(HirTreeCrate {

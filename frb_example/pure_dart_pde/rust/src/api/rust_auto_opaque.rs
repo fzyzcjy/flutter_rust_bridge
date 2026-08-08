@@ -228,22 +228,53 @@ struct PrivateOpaqueFieldInnerTwinNormal {
     value: String,
 }
 
+#[derive(Debug)]
+pub(super) struct RestrictedOpaqueFieldInnerTwinNormal {
+    value: String,
+}
+
+mod private_opaque_field_module_twin_normal {
+    #[derive(Debug)]
+    pub struct PrivateModuleOpaqueFieldInnerTwinNormal {
+        pub value: String,
+    }
+}
+
 #[allow(private_interfaces)]
 #[derive(Clone, Debug)]
 #[frb(opaque)]
 pub struct OpaqueWithPrivateFieldTwinNormal {
     pub field: Arc<RwLock<PrivateOpaqueFieldInnerTwinNormal>>,
+    pub restricted_field: Arc<RwLock<RestrictedOpaqueFieldInnerTwinNormal>>,
+    pub private_module_field: Arc<
+        RwLock<private_opaque_field_module_twin_normal::PrivateModuleOpaqueFieldInnerTwinNormal>,
+    >,
 }
 
 impl OpaqueWithPrivateFieldTwinNormal {
     pub fn new_twin_normal(value: String) -> Self {
         Self {
-            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinNormal { value })),
+            field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinNormal {
+                value: value.clone(),
+            })),
+            restricted_field: Arc::new(RwLock::new(RestrictedOpaqueFieldInnerTwinNormal {
+                value: value.clone(),
+            })),
+            private_module_field: Arc::new(RwLock::new(
+                private_opaque_field_module_twin_normal::PrivateModuleOpaqueFieldInnerTwinNormal {
+                    value,
+                },
+            )),
         }
     }
 
     pub fn read_twin_normal(&self) -> String {
-        self.field.read().unwrap().value.clone()
+        format!(
+            "{}/{}/{}",
+            self.field.read().unwrap().value,
+            self.restricted_field.read().unwrap().value,
+            self.private_module_field.read().unwrap().value,
+        )
     }
 }
 
