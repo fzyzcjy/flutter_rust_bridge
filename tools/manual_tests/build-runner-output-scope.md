@@ -48,6 +48,7 @@ Append a complex Rust enum so FRB must invoke Freezed through build runner.
 ```bash
 cat >> frb_example/dart_minimal/rust/src/api/minimal.rs <<'RUST'
 
+#[frb(unignore)]
 pub enum BuildRunnerTrigger {
     Value { value: String },
 }
