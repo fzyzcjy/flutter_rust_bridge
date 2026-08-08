@@ -6,5 +6,20 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`, `fmt`
+
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Future<Handle> createHandle() =>
+    RustLib.instance.api.crateApiMinimalCreateHandle();
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Arc < RwLock < Internal > >>>
+abstract class ArcInternal implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Handle>>
+abstract class Handle implements RustOpaqueInterface {
+  ArcInternal get field;
+
+  set field(ArcInternal field);
+}
