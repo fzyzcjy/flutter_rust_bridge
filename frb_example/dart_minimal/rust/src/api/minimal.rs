@@ -8,3 +8,7 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+pub fn process_large_bytes(bytes: Vec<u8>) -> i32 {
+    bytes.len() as i32
+}
