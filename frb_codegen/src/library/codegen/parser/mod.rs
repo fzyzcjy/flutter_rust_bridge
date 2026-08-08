@@ -143,6 +143,12 @@ mod tests {
         body("library/codegen/parser/mod/unused_struct_enum", None)
     }
 
+    #[test]
+    #[serial]
+    fn test_generic_type_alias() -> anyhow::Result<()> {
+        body("library/codegen/parser/mod/generic_type_alias", None)
+    }
+
     #[allow(clippy::type_complexity)]
     fn body(
         fixture_name: &str,

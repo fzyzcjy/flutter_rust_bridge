@@ -1,5 +1,6 @@
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::handle_to_message_port;
+use crate::platform_types::release_message_port_handle;
 use crate::platform_types::MessagePort;
 use crate::platform_types::{message_port_to_handle, SendableMessagePortHandle};
 
@@ -41,4 +42,8 @@ pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
 
 pub fn handle_to_channel(handle: &SendableChannelHandle) -> Channel {
     Channel::new(handle_to_message_port(&handle.0))
+}
+
+pub fn release_channel_handle(handle: &SendableChannelHandle) {
+    release_message_port_handle(&handle.0);
 }
