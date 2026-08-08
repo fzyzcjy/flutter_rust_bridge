@@ -18,6 +18,7 @@ pub struct HirTreeModule {
 #[derive(Clone, Debug)]
 pub struct HirTreeItemContext {
     pub declaration_namespace: Namespace,
+    pub declaration_name: String,
     pub imports: Vec<syn::ItemUse>,
 }
 
