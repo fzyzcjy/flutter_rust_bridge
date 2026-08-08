@@ -1,41 +1,66 @@
+use crate::codegen::ir::hir::misc::visibility::is_visibility_accessible_from;
 use crate::codegen::ir::hir::tree::module::HirTreeModule;
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 use syn::UseTree;
 
-pub(crate) fn transform(mut pack: HirTreePack) -> anyhow::Result<HirTreePack> {
+pub(crate) fn transform(
+    mut pack: HirTreePack,
+    rust_output_path_namespace: &Namespace,
+) -> anyhow::Result<HirTreePack> {
     for hir_crate in pack.crates.iter_mut() {
-        transform_module(&mut hir_crate.root_module)?;
+        transform_module(&mut hir_crate.root_module, rust_output_path_namespace)?;
     }
     Ok(pack)
 }
 
-fn transform_module(module: &mut HirTreeModule) -> anyhow::Result<()> {
+fn transform_module(
+    module: &mut HirTreeModule,
+    rust_output_path_namespace: &Namespace,
+) -> anyhow::Result<()> {
     // Transform child modules *first*, since parent module may `pub use` something in child module
     for child_module in module.modules.iter_mut() {
-        transform_module(child_module)?;
+        transform_module(child_module, rust_output_path_namespace)?;
     }
 
-    let pub_use_infos = parse_pub_use_from_items(&module.items);
+    let pub_use_infos = parse_pub_use_from_items(
+        &module.items,
+        &module.meta.namespace,
+        rust_output_path_namespace,
+    );
     for pub_use_info in pub_use_infos {
         transform_module_by_pub_use_single(module, &pub_use_info)?;
     }
     Ok(())
 }
 
-fn parse_pub_use_from_items(items: &[syn::Item]) -> Vec<PubUseInfo> {
+fn parse_pub_use_from_items(
+    items: &[syn::Item],
+    declaration_namespace: &Namespace,
+    rust_output_path_namespace: &Namespace,
+) -> Vec<PubUseInfo> {
     (items.iter())
-        .flat_map(parse_pub_use_from_item)
+        .flat_map(|item| {
+            parse_pub_use_from_item(item, declaration_namespace, rust_output_path_namespace)
+        })
         .collect_vec()
 }
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
-fn parse_pub_use_from_item(item: &syn::Item) -> Vec<PubUseInfo> {
+fn parse_pub_use_from_item(
+    item: &syn::Item,
+    declaration_namespace: &Namespace,
+    rust_output_path_namespace: &Namespace,
+) -> Vec<PubUseInfo> {
     // frb-coverage:ignore-end
     if let syn::Item::Use(item_use) = item {
-        if matches!(item_use.vis, syn::Visibility::Public(_)) {
+        if is_visibility_accessible_from(
+            &item_use.vis,
+            declaration_namespace,
+            rust_output_path_namespace,
+        ) {
             return parse_pub_use_from_use_tree(&item_use.tree);
             // let tree_string = quote::quote!(#tree).to_string().replace(' ', "");
             // let tree_parts = tree_string.split(Namespace::SEP).collect_vec();
@@ -222,7 +247,11 @@ mod tests {
     pub fn test_parse_pub_use_from_item() {
         fn body(code: &str, expect: Vec<PubUseInfo>) {
             let item: syn::Item = syn::parse_str(code).unwrap();
-            let actual = parse_pub_use_from_item(&item);
+            let actual = parse_pub_use_from_item(
+                &item,
+                &CrateName::self_crate().namespace(),
+                &Namespace::new_self_crate("frb_generated".to_owned()),
+            );
             assert_eq!(actual, expect);
         }
 
@@ -236,6 +265,14 @@ mod tests {
 
         body(
             "pub use one::two::Three;",
+            vec![PubUseInfo {
+                namespace: Namespace::new_raw("one::two".to_owned()),
+                name_filter: Some("Three".to_owned()),
+            }],
+        );
+
+        body(
+            "pub(crate) use one::two::Three;",
             vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
                 name_filter: Some("Three".to_owned()),
@@ -302,7 +339,7 @@ mod tests {
                 is_accessible_from_rust_output: true,
             },
             modules: vec![hidden_module],
-            items: vec![syn::parse_str("pub use hidden::Thing;")?],
+            items: vec![syn::parse_str("pub(crate) use hidden::Thing;")?],
         };
         let pack = HirTreePack {
             crates: vec![HirTreeCrate {
@@ -311,7 +348,7 @@ mod tests {
             }],
         };
 
-        let output = transform(pack)?;
+        let output = transform(pack, &Namespace::new_self_crate("frb_generated".to_owned()))?;
         let root = &output.crates[0].root_module;
 
         assert!(root

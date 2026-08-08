@@ -17,4 +17,6 @@ pub(crate) struct HirNaiveFlatItemMeta {
     pub sources: Vec<HirGenerationSource>,
     pub is_module_public: bool,
     pub is_module_accessible_from_rust_output: bool,
+    #[serde(skip_serializing)]
+    pub imports: Vec<syn::ItemUse>,
 }

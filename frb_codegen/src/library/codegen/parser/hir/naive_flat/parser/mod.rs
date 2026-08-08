@@ -13,12 +13,21 @@ pub(crate) fn parse(pack: HirTreePack) -> anyhow::Result<HirNaiveFlatPack> {
 }
 
 fn flatten_module(module: HirTreeModule, target: &mut Vec<HirNaiveFlatItem>) {
+    let imports = module
+        .items
+        .iter()
+        .filter_map(|item| match item {
+            syn::Item::Use(item_use) => Some(item_use.clone()),
+            _ => None,
+        })
+        .collect::<Vec<_>>();
     target.extend(module.items.into_iter().map(|item| HirNaiveFlatItem {
         meta: HirNaiveFlatItemMeta {
             namespace: module.meta.namespace.clone(),
             sources: vec![HirGenerationSource::Normal],
             is_module_public: module.meta.is_public(),
             is_module_accessible_from_rust_output: module.meta.is_accessible_from_rust_output,
+            imports: imports.clone(),
         },
         item,
     }));

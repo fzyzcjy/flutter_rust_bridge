@@ -18,7 +18,10 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
 use std::collections::HashMap;
 use syn::visit_mut::VisitMut;
-use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, TypePath, Visibility};
+use syn::{
+    Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, ItemUse, Type, TypePath, UseTree,
+    Visibility,
+};
 
 impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_path_data_struct(
@@ -55,7 +58,9 @@ impl TypeParserWithContext<'_, '_, '_> {
         let fields = struct_fields
             .iter()
             .enumerate()
-            .map(|(idx, field)| self.parse_struct_field(idx, field, &attributes))
+            .map(|(idx, field)| {
+                self.parse_struct_field(idx, field, &attributes, &src_struct.imports)
+            })
             .collect::<anyhow::Result<Vec<_>>>()?;
 
         let comments = parse_comments(&src_struct.src.attrs);
@@ -87,6 +92,7 @@ impl TypeParserWithContext<'_, '_, '_> {
         idx: usize,
         field: &Field,
         struct_attributes: &FrbAttributes,
+        imports: &[ItemUse],
     ) -> anyhow::Result<MirField> {
         let field_name = field
             .ident
@@ -98,7 +104,7 @@ impl TypeParserWithContext<'_, '_, '_> {
         let attributes = FrbAttributes::parse(&field.attrs)?;
         let resolved_field_type = self.resolve_alias(&field.ty);
         let contains_inaccessible_private_type =
-            self.contains_inaccessible_private_type(&resolved_field_type);
+            self.contains_inaccessible_private_type(&resolved_field_type, imports);
         Ok(MirField {
             name: MirIdent::new(field_name, attributes.name()),
             ty: field_type,
@@ -115,12 +121,13 @@ impl TypeParserWithContext<'_, '_, '_> {
         })
     }
 
-    fn contains_inaccessible_private_type(&self, ty: &Type) -> bool {
+    fn contains_inaccessible_private_type(&self, ty: &Type, imports: &[ItemUse]) -> bool {
         let mut ty = ty.clone();
         let mut visitor = InaccessiblePrivateTypeVisitor {
             src_structs: &self.inner.src_structs,
             src_enums: &self.inner.src_enums,
             initiated_namespace: &self.context.initiated_namespace,
+            imports,
             found: false,
         };
         visitor.visit_type_mut(&mut ty);
@@ -132,6 +139,7 @@ struct InaccessiblePrivateTypeVisitor<'a, 'b> {
     src_structs: &'a HashMap<String, &'b HirFlatStruct>,
     src_enums: &'a HashMap<String, &'b crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum>,
     initiated_namespace: &'a Namespace,
+    imports: &'a [ItemUse],
     found: bool,
 }
 
@@ -144,10 +152,20 @@ impl VisitMut for InaccessiblePrivateTypeVisitor<'_, '_> {
         if let Some(name) = node.path.segments.last().map(|x| x.ident.to_string()) {
             self.found = self.src_structs.get(&name).is_some_and(|item| {
                 !item.is_accessible_from_rust_output
-                    && type_path_targets_item(&node.path, &item.name, self.initiated_namespace)
+                    && type_path_targets_item(
+                        &node.path,
+                        &item.name,
+                        self.initiated_namespace,
+                        self.imports,
+                    )
             }) || self.src_enums.get(&name).is_some_and(|item| {
                 !item.is_accessible_from_rust_output
-                    && type_path_targets_item(&node.path, &item.name, self.initiated_namespace)
+                    && type_path_targets_item(
+                        &node.path,
+                        &item.name,
+                        self.initiated_namespace,
+                        self.imports,
+                    )
             });
         }
 
@@ -159,6 +177,7 @@ fn type_path_targets_item(
     path: &syn::Path,
     item_name: &NamespacedName,
     initiated_namespace: &Namespace,
+    imports: &[ItemUse],
 ) -> bool {
     let segments = path
         .segments
@@ -166,13 +185,80 @@ fn type_path_targets_item(
         .map(|segment| segment.ident.to_string())
         .collect::<Vec<_>>();
     if segments.len() == 1 {
-        return item_name.namespace == *initiated_namespace;
+        return item_name.namespace == *initiated_namespace
+            || imports.iter().any(|item_use| {
+                import_targets_item(item_use, &segments[0], item_name, initiated_namespace)
+            });
     }
 
     let type_namespace_segments = &segments[..segments.len() - 1];
     resolve_relative_namespace(type_namespace_segments, initiated_namespace)
         .is_some_and(|namespace| namespace == item_name.namespace)
         || Namespace::new(type_namespace_segments.to_vec()) == item_name.namespace
+}
+
+fn import_targets_item(
+    item_use: &ItemUse,
+    local_name: &str,
+    item_name: &NamespacedName,
+    initiated_namespace: &Namespace,
+) -> bool {
+    use_tree_targets_item(
+        &item_use.tree,
+        &[],
+        local_name,
+        item_name,
+        initiated_namespace,
+    )
+}
+
+fn use_tree_targets_item(
+    tree: &UseTree,
+    prefix: &[String],
+    local_name: &str,
+    item_name: &NamespacedName,
+    initiated_namespace: &Namespace,
+) -> bool {
+    match tree {
+        UseTree::Path(inner) => {
+            let mut child_prefix = prefix.to_vec();
+            child_prefix.push(inner.ident.to_string());
+            use_tree_targets_item(
+                &inner.tree,
+                &child_prefix,
+                local_name,
+                item_name,
+                initiated_namespace,
+            )
+        }
+        UseTree::Name(inner) => {
+            inner.ident == local_name
+                && inner.ident == item_name.name
+                && import_namespace_targets_item(prefix, item_name, initiated_namespace)
+        }
+        UseTree::Rename(inner) => {
+            inner.rename == local_name
+                && inner.ident == item_name.name
+                && import_namespace_targets_item(prefix, item_name, initiated_namespace)
+        }
+        UseTree::Glob(_) => {
+            item_name.name == local_name
+                && import_namespace_targets_item(prefix, item_name, initiated_namespace)
+        }
+        UseTree::Group(inner) => inner.items.iter().any(|tree| {
+            use_tree_targets_item(tree, prefix, local_name, item_name, initiated_namespace)
+        }),
+    }
+}
+
+fn import_namespace_targets_item(
+    prefix: &[String],
+    item_name: &NamespacedName,
+    initiated_namespace: &Namespace,
+) -> bool {
+    resolve_relative_namespace(prefix, initiated_namespace)
+        .is_some_and(|namespace| namespace == item_name.namespace)
+        || Namespace::new(prefix.to_vec()) == item_name.namespace
 }
 
 fn resolve_relative_namespace(
@@ -223,11 +309,13 @@ mod inaccessible_private_type_tests {
             &syn::parse_str::<TypePath>("String").unwrap().path,
             &local_name,
             &initiated_namespace,
+            &[],
         ));
         assert!(!type_path_targets_item(
             &syn::parse_str::<TypePath>("String").unwrap().path,
             &other_name,
             &initiated_namespace,
+            &[],
         ));
         assert!(type_path_targets_item(
             &syn::parse_str::<TypePath>("crate::api::other::String")
@@ -235,6 +323,7 @@ mod inaccessible_private_type_tests {
                 .path,
             &other_name,
             &initiated_namespace,
+            &[],
         ));
         assert!(!type_path_targets_item(
             &syn::parse_str::<TypePath>("std::string::String")
@@ -242,6 +331,15 @@ mod inaccessible_private_type_tests {
                 .path,
             &other_name,
             &initiated_namespace,
+            &[],
+        ));
+
+        let private_import = syn::parse_str::<ItemUse>("use super::other::String;").unwrap();
+        assert!(type_path_targets_item(
+            &syn::parse_str::<TypePath>("String").unwrap().path,
+            &other_name,
+            &initiated_namespace,
+            &[private_import],
         ));
     }
 }

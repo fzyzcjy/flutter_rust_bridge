@@ -314,8 +314,9 @@ mod private_opaque_field_module_twin_rust_async_sse_moi {
     }
 }
 
-type PrivateOpaqueFieldAliasTwinRustAsyncSseMoi =
-    Arc<RwLock<PrivateOpaqueFieldInnerTwinRustAsyncSseMoi>>;
+use private_opaque_field_module_twin_rust_async_sse_moi::PrivateModuleOpaqueFieldInnerTwinRustAsyncSseMoi;
+
+type PrivateOpaqueFieldAliasTwinRustAsyncSseMoi = PrivateOpaqueFieldInnerTwinRustAsyncSseMoi;
 
 #[allow(private_interfaces)]
 #[derive(Clone, Debug)]
@@ -326,7 +327,8 @@ pub struct OpaqueWithPrivateFieldTwinRustAsyncSseMoi {
     pub private_module_field: Arc<
         RwLock<private_opaque_field_module_twin_rust_async_sse_moi::PrivateModuleOpaqueFieldInnerTwinRustAsyncSseMoi>,
     >,
-    pub alias_field: PrivateOpaqueFieldAliasTwinRustAsyncSseMoi,
+    pub imported_private_module_field: Arc<RwLock<PrivateModuleOpaqueFieldInnerTwinRustAsyncSseMoi>>,
+    pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinRustAsyncSseMoi>>,
 }
 
 impl OpaqueWithPrivateFieldTwinRustAsyncSseMoi {
@@ -345,6 +347,11 @@ impl OpaqueWithPrivateFieldTwinRustAsyncSseMoi {
                     value: value.clone(),
                 },
             )),
+            imported_private_module_field: Arc::new(RwLock::new(
+                PrivateModuleOpaqueFieldInnerTwinRustAsyncSseMoi {
+                    value: value.clone(),
+                },
+            )),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinRustAsyncSseMoi { value })),
         }
     }
@@ -353,10 +360,11 @@ impl OpaqueWithPrivateFieldTwinRustAsyncSseMoi {
     #[flutter_rust_bridge::frb(serialize)]
     pub async fn read_twin_rust_async_sse_moi(&self) -> String {
         format!(
-            "{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
+            self.imported_private_module_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

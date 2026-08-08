@@ -69,6 +69,7 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
                     &meta.namespace,
                     rust_output_path_namespace,
                 ),
+            imports: meta.imports.clone(),
             mirror: mirror_by_ident || !meta.namespace.crate_name().is_self_crate(),
             sources: meta.sources.clone(),
             src: item.to_owned(),

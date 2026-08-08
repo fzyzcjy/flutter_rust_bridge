@@ -296,7 +296,9 @@ mod private_opaque_field_module_twin_sync_sse {
     }
 }
 
-type PrivateOpaqueFieldAliasTwinSyncSse = Arc<RwLock<PrivateOpaqueFieldInnerTwinSyncSse>>;
+use private_opaque_field_module_twin_sync_sse::PrivateModuleOpaqueFieldInnerTwinSyncSse;
+
+type PrivateOpaqueFieldAliasTwinSyncSse = PrivateOpaqueFieldInnerTwinSyncSse;
 
 #[allow(private_interfaces)]
 #[derive(Clone, Debug)]
@@ -307,7 +309,8 @@ pub struct OpaqueWithPrivateFieldTwinSyncSse {
     pub private_module_field: Arc<
         RwLock<private_opaque_field_module_twin_sync_sse::PrivateModuleOpaqueFieldInnerTwinSyncSse>,
     >,
-    pub alias_field: PrivateOpaqueFieldAliasTwinSyncSse,
+    pub imported_private_module_field: Arc<RwLock<PrivateModuleOpaqueFieldInnerTwinSyncSse>>,
+    pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinSyncSse>>,
 }
 
 impl OpaqueWithPrivateFieldTwinSyncSse {
@@ -326,6 +329,11 @@ impl OpaqueWithPrivateFieldTwinSyncSse {
                     value: value.clone(),
                 },
             )),
+            imported_private_module_field: Arc::new(RwLock::new(
+                PrivateModuleOpaqueFieldInnerTwinSyncSse {
+                    value: value.clone(),
+                },
+            )),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSyncSse { value })),
         }
     }
@@ -334,10 +342,11 @@ impl OpaqueWithPrivateFieldTwinSyncSse {
     #[flutter_rust_bridge::frb(sync)]
     pub fn read_twin_sync_sse(&self) -> String {
         format!(
-            "{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
+            self.imported_private_module_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

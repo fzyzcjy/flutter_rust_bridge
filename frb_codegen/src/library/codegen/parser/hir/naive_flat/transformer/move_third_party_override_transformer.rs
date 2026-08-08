@@ -18,6 +18,7 @@ pub(crate) fn transform(mut pack: HirNaiveFlatPack) -> anyhow::Result<HirNaiveFl
                         ]),
                         is_module_public: true,
                         is_module_accessible_from_rust_output: true,
+                        imports: vec![],
                     },
                     item: item.item,
                 }

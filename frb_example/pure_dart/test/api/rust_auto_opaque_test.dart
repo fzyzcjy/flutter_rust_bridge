@@ -266,7 +266,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final obj = await OpaqueWithPrivateFieldTwinNormal.newTwinNormal(
       value: 'private',
     );
-    expect(await obj.readTwinNormal(), 'private/private/private/private');
+    expect(
+      await obj.readTwinNormal(),
+      'private/private/private/private/private',
+    );
     obj.dispose();
   });
 

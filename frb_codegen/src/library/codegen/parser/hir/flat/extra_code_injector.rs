@@ -46,6 +46,7 @@ fn parse_synthesized_syn_items(
         sources: vec![HirGenerationSource::Normal],
         is_module_public: true,
         is_module_accessible_from_rust_output: true,
+        imports: vec![],
     };
     let syn_file = syn::parse_file(extra_code).with_context(|| format!("code={extra_code}"))?;
     for syn_item in syn_file.items {

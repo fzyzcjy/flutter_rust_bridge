@@ -14,7 +14,10 @@ pub(crate) fn parse(
     let pack = parser::pack::parse_pack(config, hir_raw)?;
     dumper.dump("1_parse_pack.json", &pack)?;
 
-    let pack = transformer::pub_use_transformer::transform(pack)?;
+    let pack = transformer::pub_use_transformer::transform(
+        pack,
+        &config.rust_input_namespace_pack.rust_output_path_namespace,
+    )?;
     dumper.dump("2_pub_use_transformer.json", &pack)?;
 
     Ok(pack)

@@ -6,6 +6,7 @@ use crate::codegen::parser::mir::parser::ty::misc::convert_ident_str;
 use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypeParserWithContext};
 use crate::utils::syn_utils::ty_to_string;
 use anyhow::Context;
+use syn::visit_mut::VisitMut;
 use syn::Type;
 
 impl TypeParserWithContext<'_, '_, '_> {
@@ -47,7 +48,13 @@ impl TypeParserWithContext<'_, '_, '_> {
     }
 
     pub(crate) fn resolve_alias(&self, ty: &Type) -> Type {
-        self.resolve_alias_inner(ty, 0)
+        let mut output = ty.clone();
+        AliasResolver {
+            parser: self,
+            depth: 0,
+        }
+        .visit_type_mut(&mut output);
+        output
     }
 
     fn resolve_alias_inner(&self, ty: &Type, depth: usize) -> Type {
@@ -71,7 +78,9 @@ impl TypeParserWithContext<'_, '_, '_> {
         }
 
         // Plain (non-generic) alias, already pre-resolved by the HIR transformer.
-        self.get_alias_type(ty).unwrap_or(ty).clone()
+        self.get_alias_type(ty)
+            .map(|target| self.resolve_alias_inner(target, depth + 1))
+            .unwrap_or_else(|| ty.clone())
     }
 
     fn substitute_generic_alias(&self, ty: &Type) -> Option<Type> {
@@ -83,5 +92,23 @@ impl TypeParserWithContext<'_, '_, '_> {
 
     fn get_alias_type(&self, ty: &Type) -> Option<&Type> {
         convert_ident_str(ty).and_then(|key| self.inner.src_types.get(&key))
+    }
+}
+
+struct AliasResolver<'parser, 'a, 'b, 'c> {
+    parser: &'parser TypeParserWithContext<'a, 'b, 'c>,
+    depth: usize,
+}
+
+impl VisitMut for AliasResolver<'_, '_, '_, '_> {
+    fn visit_type_mut(&mut self, node: &mut Type) {
+        if self.depth >= 64 {
+            return;
+        }
+
+        *node = self.parser.resolve_alias_inner(node, self.depth);
+        self.depth += 1;
+        syn::visit_mut::visit_type_mut(self, node);
+        self.depth -= 1;
     }
 }

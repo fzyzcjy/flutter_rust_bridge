@@ -284,7 +284,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await OpaqueWithPrivateFieldTwinRustAsyncMoi.newTwinRustAsyncMoi(
       value: 'private',
     );
-    expect(await obj.readTwinRustAsyncMoi(), 'private/private/private/private');
+    expect(
+      await obj.readTwinRustAsyncMoi(),
+      'private/private/private/private/private',
+    );
     obj.dispose();
   });
 
