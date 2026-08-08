@@ -78,17 +78,8 @@ As for how to fill it in or use it, you can refer to `thiserror` crate for some 
 
 ## Projects using `panic = "abort"`
 
-flutter_rust_bridge can turn a Rust panic into a Dart `PanicException` only when the panic unwinds. If your
-project uses:
-
-```toml
-[profile.release]
-panic = "abort"
-```
-
-Rust terminates the process at the panic site instead.
+flutter_rust_bridge can turn a Rust panic into a Dart `PanicException` when the panic unwinds.
+If your project uses `panic = "abort"`, Rust terminates the process at the panic site instead.
 
 Generated decoders use `.unwrap()` for codec invariants such as valid UTF-8 and integers. The generated Dart
-encoder provides matching valid input, so these calls do not panic in normal use. They may panic because of a
-codegen bug, mismatched generated code, or malformed input passed directly to native symbols. With
-`panic = "abort"`, such a panic terminates the process instead of reaching Dart.
+encoder provides matching valid input, so these calls do not panic in normal use, even if there are bugs in user code.
