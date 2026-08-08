@@ -305,6 +305,20 @@ mod private_opaque_field_alias_module_twin_rust_async_sse {
 
 use private_opaque_field_alias_module_twin_rust_async_sse::ImportedTargetAliasTwinRustAsyncSse;
 
+mod private_opaque_field_base_alias_module_twin_rust_async_sse {
+    use super::private_opaque_field_module_twin_rust_async_sse::PrivateModuleOpaqueFieldInnerTwinRustAsyncSse;
+
+    pub type BaseAliasTwinRustAsyncSse = PrivateModuleOpaqueFieldInnerTwinRustAsyncSse;
+}
+
+mod private_opaque_field_chained_alias_module_twin_rust_async_sse {
+    use super::private_opaque_field_base_alias_module_twin_rust_async_sse::BaseAliasTwinRustAsyncSse;
+
+    pub type ChainedAliasTwinRustAsyncSse = BaseAliasTwinRustAsyncSse;
+}
+
+use private_opaque_field_chained_alias_module_twin_rust_async_sse::ChainedAliasTwinRustAsyncSse;
+
 type PrivateOpaqueFieldAliasTwinRustAsyncSse = PrivateOpaqueFieldInnerTwinRustAsyncSse;
 
 #[allow(private_interfaces)]
@@ -322,6 +336,7 @@ pub struct OpaqueWithPrivateFieldTwinRustAsyncSse {
     pub module_alias_field:
         Arc<RwLock<private_module_alias_twin_rust_async_sse::PrivateModuleOpaqueFieldInnerTwinRustAsyncSse>>,
     pub imported_target_alias_field: Arc<RwLock<ImportedTargetAliasTwinRustAsyncSse>>,
+    pub chained_alias_field: Arc<RwLock<ChainedAliasTwinRustAsyncSse>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinRustAsyncSse>>,
 }
 
@@ -363,6 +378,9 @@ impl OpaqueWithPrivateFieldTwinRustAsyncSse {
                     value: value.clone(),
                 },
             )),
+            chained_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinRustAsyncSse {
+                value: value.clone(),
+            })),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinRustAsyncSse { value })),
         }
     }
@@ -370,7 +388,7 @@ impl OpaqueWithPrivateFieldTwinRustAsyncSse {
     #[flutter_rust_bridge::frb(serialize)]
     pub async fn read_twin_rust_async_sse(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
@@ -379,6 +397,7 @@ impl OpaqueWithPrivateFieldTwinRustAsyncSse {
             self.imported_alias_field.read().unwrap().value,
             self.module_alias_field.read().unwrap().value,
             self.imported_target_alias_field.read().unwrap().value,
+            self.chained_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

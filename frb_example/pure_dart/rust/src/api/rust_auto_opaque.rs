@@ -254,6 +254,20 @@ mod private_opaque_field_alias_module_twin_normal {
 
 use private_opaque_field_alias_module_twin_normal::ImportedTargetAliasTwinNormal;
 
+mod private_opaque_field_base_alias_module_twin_normal {
+    use super::private_opaque_field_module_twin_normal::PrivateModuleOpaqueFieldInnerTwinNormal;
+
+    pub type BaseAliasTwinNormal = PrivateModuleOpaqueFieldInnerTwinNormal;
+}
+
+mod private_opaque_field_chained_alias_module_twin_normal {
+    use super::private_opaque_field_base_alias_module_twin_normal::BaseAliasTwinNormal;
+
+    pub type ChainedAliasTwinNormal = BaseAliasTwinNormal;
+}
+
+use private_opaque_field_chained_alias_module_twin_normal::ChainedAliasTwinNormal;
+
 type PrivateOpaqueFieldAliasTwinNormal = PrivateOpaqueFieldInnerTwinNormal;
 
 #[allow(private_interfaces)]
@@ -271,6 +285,7 @@ pub struct OpaqueWithPrivateFieldTwinNormal {
     pub module_alias_field:
         Arc<RwLock<private_module_alias_twin_normal::PrivateModuleOpaqueFieldInnerTwinNormal>>,
     pub imported_target_alias_field: Arc<RwLock<ImportedTargetAliasTwinNormal>>,
+    pub chained_alias_field: Arc<RwLock<ChainedAliasTwinNormal>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinNormal>>,
 }
 
@@ -311,13 +326,16 @@ impl OpaqueWithPrivateFieldTwinNormal {
                     value: value.clone(),
                 },
             )),
+            chained_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinNormal {
+                value: value.clone(),
+            })),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinNormal { value })),
         }
     }
 
     pub fn read_twin_normal(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
@@ -326,6 +344,7 @@ impl OpaqueWithPrivateFieldTwinNormal {
             self.imported_alias_field.read().unwrap().value,
             self.module_alias_field.read().unwrap().value,
             self.imported_target_alias_field.read().unwrap().value,
+            self.chained_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

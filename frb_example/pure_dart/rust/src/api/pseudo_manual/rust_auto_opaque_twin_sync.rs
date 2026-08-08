@@ -277,6 +277,20 @@ mod private_opaque_field_alias_module_twin_sync {
 
 use private_opaque_field_alias_module_twin_sync::ImportedTargetAliasTwinSync;
 
+mod private_opaque_field_base_alias_module_twin_sync {
+    use super::private_opaque_field_module_twin_sync::PrivateModuleOpaqueFieldInnerTwinSync;
+
+    pub type BaseAliasTwinSync = PrivateModuleOpaqueFieldInnerTwinSync;
+}
+
+mod private_opaque_field_chained_alias_module_twin_sync {
+    use super::private_opaque_field_base_alias_module_twin_sync::BaseAliasTwinSync;
+
+    pub type ChainedAliasTwinSync = BaseAliasTwinSync;
+}
+
+use private_opaque_field_chained_alias_module_twin_sync::ChainedAliasTwinSync;
+
 type PrivateOpaqueFieldAliasTwinSync = PrivateOpaqueFieldInnerTwinSync;
 
 #[allow(private_interfaces)]
@@ -293,6 +307,7 @@ pub struct OpaqueWithPrivateFieldTwinSync {
     pub module_alias_field:
         Arc<RwLock<private_module_alias_twin_sync::PrivateModuleOpaqueFieldInnerTwinSync>>,
     pub imported_target_alias_field: Arc<RwLock<ImportedTargetAliasTwinSync>>,
+    pub chained_alias_field: Arc<RwLock<ChainedAliasTwinSync>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinSync>>,
 }
 
@@ -334,6 +349,9 @@ impl OpaqueWithPrivateFieldTwinSync {
                     value: value.clone(),
                 },
             )),
+            chained_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinSync {
+                value: value.clone(),
+            })),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSync { value })),
         }
     }
@@ -341,7 +359,7 @@ impl OpaqueWithPrivateFieldTwinSync {
     #[flutter_rust_bridge::frb(sync)]
     pub fn read_twin_sync(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
@@ -350,6 +368,7 @@ impl OpaqueWithPrivateFieldTwinSync {
             self.imported_alias_field.read().unwrap().value,
             self.module_alias_field.read().unwrap().value,
             self.imported_target_alias_field.read().unwrap().value,
+            self.chained_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

@@ -312,6 +312,20 @@ mod private_opaque_field_alias_module_twin_sync_sse {
 
 use private_opaque_field_alias_module_twin_sync_sse::ImportedTargetAliasTwinSyncSse;
 
+mod private_opaque_field_base_alias_module_twin_sync_sse {
+    use super::private_opaque_field_module_twin_sync_sse::PrivateModuleOpaqueFieldInnerTwinSyncSse;
+
+    pub type BaseAliasTwinSyncSse = PrivateModuleOpaqueFieldInnerTwinSyncSse;
+}
+
+mod private_opaque_field_chained_alias_module_twin_sync_sse {
+    use super::private_opaque_field_base_alias_module_twin_sync_sse::BaseAliasTwinSyncSse;
+
+    pub type ChainedAliasTwinSyncSse = BaseAliasTwinSyncSse;
+}
+
+use private_opaque_field_chained_alias_module_twin_sync_sse::ChainedAliasTwinSyncSse;
+
 type PrivateOpaqueFieldAliasTwinSyncSse = PrivateOpaqueFieldInnerTwinSyncSse;
 
 #[allow(private_interfaces)]
@@ -329,6 +343,7 @@ pub struct OpaqueWithPrivateFieldTwinSyncSse {
     pub module_alias_field:
         Arc<RwLock<private_module_alias_twin_sync_sse::PrivateModuleOpaqueFieldInnerTwinSyncSse>>,
     pub imported_target_alias_field: Arc<RwLock<ImportedTargetAliasTwinSyncSse>>,
+    pub chained_alias_field: Arc<RwLock<ChainedAliasTwinSyncSse>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinSyncSse>>,
 }
 
@@ -371,6 +386,9 @@ impl OpaqueWithPrivateFieldTwinSyncSse {
                     value: value.clone(),
                 },
             )),
+            chained_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinSyncSse {
+                value: value.clone(),
+            })),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinSyncSse { value })),
         }
     }
@@ -379,7 +397,7 @@ impl OpaqueWithPrivateFieldTwinSyncSse {
     #[flutter_rust_bridge::frb(sync)]
     pub fn read_twin_sync_sse(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
@@ -388,6 +406,7 @@ impl OpaqueWithPrivateFieldTwinSyncSse {
             self.imported_alias_field.read().unwrap().value,
             self.module_alias_field.read().unwrap().value,
             self.imported_target_alias_field.read().unwrap().value,
+            self.chained_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }

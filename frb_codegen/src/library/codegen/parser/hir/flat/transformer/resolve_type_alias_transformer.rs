@@ -2,7 +2,7 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
 use crate::codegen::parser::mir::parser::ty::misc::convert_ident_str;
 use itertools::Itertools;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use syn::Type;
 use topological_sort::TopologicalSort;
 
@@ -23,11 +23,12 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     let mut vec_transformed = (map_transformed.into_iter())
         .map(|(ident, target)| {
             let original = &metadata[&ident];
+            let target_context = resolve_alias_target_context(&ident, &metadata);
             HirFlatTypeAlias {
                 ident,
                 namespace: original.namespace.clone(),
-                declaration_namespace: original.declaration_namespace.clone(),
-                imports: original.imports.clone(),
+                declaration_namespace: target_context.declaration_namespace.clone(),
+                imports: target_context.imports.clone(),
                 target,
                 type_params: vec![],
             }
@@ -38,6 +39,24 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
     pack.types = vec_transformed;
 
     Ok(pack)
+}
+
+fn resolve_alias_target_context<'a>(
+    ident: &str,
+    aliases: &'a HashMap<String, HirFlatTypeAlias>,
+) -> &'a HirFlatTypeAlias {
+    let mut current = &aliases[ident];
+    let mut visited = HashSet::new();
+    while visited.insert(current.ident.clone()) {
+        let Some(target_ident) = convert_ident_str(&current.target) else {
+            break;
+        };
+        let Some(next) = aliases.get(&target_ident) else {
+            break;
+        };
+        current = next;
+    }
+    current
 }
 
 // See https://github.com/fzyzcjy/flutter_rust_bridge/pull/929 for more details of the algorithm
@@ -111,6 +130,7 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::utils::namespace::Namespace;
     use std::collections::HashMap;
     use syn::{parse_str, Type};
 
@@ -160,5 +180,42 @@ mod tests {
         ]);
         let output = resolve_type_aliases(input);
         assert_eq!(&output, &expect);
+    }
+
+    /// Keeps the declaration context of the alias that names the flattened target.
+    #[test]
+    fn test_resolve_alias_target_context_across_modules() {
+        let aliases = HashMap::from([
+            (
+                "Base".to_owned(),
+                HirFlatTypeAlias {
+                    ident: "Base".to_owned(),
+                    namespace: Namespace::new_self_crate("a".to_owned()),
+                    declaration_namespace: Namespace::new_self_crate("a".to_owned()),
+                    imports: vec![syn::parse_str("use crate::hidden::Inner;").unwrap()],
+                    target: parse_str::<Type>("Inner").unwrap(),
+                    type_params: vec![],
+                },
+            ),
+            (
+                "Alias".to_owned(),
+                HirFlatTypeAlias {
+                    ident: "Alias".to_owned(),
+                    namespace: Namespace::new_self_crate("b".to_owned()),
+                    declaration_namespace: Namespace::new_self_crate("b".to_owned()),
+                    imports: vec![syn::parse_str("use crate::a::Base;").unwrap()],
+                    target: parse_str::<Type>("Base").unwrap(),
+                    type_params: vec![],
+                },
+            ),
+        ]);
+
+        let output = resolve_alias_target_context("Alias", &aliases);
+
+        assert_eq!(
+            output.declaration_namespace,
+            Namespace::new_self_crate("a".to_owned())
+        );
+        assert_eq!(output.ident, "Base");
     }
 }

@@ -106,12 +106,13 @@ fn transform_self_crate_pub_use(
         let source_items = std::mem::take(&mut source_module.items);
         let source_contexts = std::mem::take(&mut source_module.item_contexts);
         let mut moved_items = vec![];
-        for (item, context) in source_items.into_iter().zip(source_contexts) {
+        for (mut item, context) in source_items.into_iter().zip(source_contexts) {
             if is_interest_item(
                 &item,
                 &directive.info,
                 Some((&source_namespace, rust_output_path_namespace)),
             ) {
+                rename_item_for_use(&mut item, &directive.info);
                 moved_items.push((
                     item,
                     context.unwrap_or_else(|| HirTreeItemContext {
@@ -246,23 +247,27 @@ fn parse_pub_use_from_use_tree(tree: &UseTree) -> Vec<PubUseInfo> {
             .map(|x| PubUseInfo {
                 namespace: namespace_add_prefix(&x.namespace, &inner.ident.to_string()),
                 name_filter: x.name_filter,
+                rename: x.rename,
             })
             .collect_vec(),
         UseTree::Name(inner) => vec![PubUseInfo {
             namespace: Namespace::new(vec![]),
             name_filter: Some(inner.ident.to_string()),
+            rename: None,
         }],
         UseTree::Glob(_) => vec![PubUseInfo {
             namespace: Namespace::new(vec![]),
             name_filter: None,
+            rename: None,
         }],
         UseTree::Group(inner) => (inner.items.iter())
             .flat_map(parse_pub_use_from_use_tree)
             .collect_vec(),
-        // Not supported yet
-        // frb-coverage:ignore-start
-        UseTree::Rename(_) => vec![],
-        // frb-coverage:ignore-end
+        UseTree::Rename(inner) => vec![PubUseInfo {
+            namespace: Namespace::new(vec![]),
+            name_filter: Some(inner.ident.to_string()),
+            rename: Some(inner.rename.to_string()),
+        }],
     }
 }
 
@@ -276,6 +281,7 @@ fn namespace_add_prefix(namespace: &Namespace, prefix: &str) -> Namespace {
 struct PubUseInfo {
     namespace: Namespace,
     name_filter: Option<String>,
+    rename: Option<String>,
 }
 
 impl PubUseInfo {
@@ -300,7 +306,7 @@ fn transform_module_by_pub_use_single(
 ) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
     let is_self_crate = module.meta.namespace.crate_name().is_self_crate();
-    let src_mod_interest_items = if let Some(src_mod) =
+    let mut src_mod_interest_items = if let Some(src_mod) =
         module.get_module_nested_mut(&pub_use_info.namespace.path())
     {
         // Codecov seems to be buggy by saying this line is not covered (while lines above/below) are
@@ -353,13 +359,32 @@ fn transform_module_by_pub_use_single(
         vec![]
     };
 
+    for item in &mut src_mod_interest_items {
+        rename_item_for_use(item, pub_use_info);
+    }
+
     let added_item_count = src_mod_interest_items.len();
     module.items.extend(src_mod_interest_items);
     module
         .item_contexts
-        .extend(std::iter::repeat_n(None, added_item_count));
+        .extend(std::iter::repeat(None).take(added_item_count));
 
     Ok(())
+}
+
+fn rename_item_for_use(item: &mut syn::Item, pub_use_info: &PubUseInfo) {
+    let Some(rename) = &pub_use_info.rename else {
+        return;
+    };
+    let ident = syn::parse_str(rename).expect("re-export rename should be a valid identifier");
+    match item {
+        syn::Item::Struct(x) => x.ident = ident,
+        syn::Item::Enum(x) => x.ident = ident,
+        syn::Item::Type(x) => x.ident = ident,
+        syn::Item::Fn(x) => x.sig.ident = ident,
+        syn::Item::Trait(x) => x.ident = ident,
+        _ => {}
+    }
 }
 
 fn is_interest_item(
@@ -370,7 +395,7 @@ fn is_interest_item(
     let name_for_use_stmt = name_for_use_stmt(item).unwrap_or_else(|| "NOT_EXIST_NAME".to_owned());
     let is_visible =
         if let Some((declaration_namespace, rust_output_path_namespace)) = self_crate_namespaces {
-            item_visibility(item).is_none_or(|visibility| {
+            item_visibility(item).map_or(true, |visibility| {
                 is_visibility_accessible_from(
                     visibility,
                     declaration_namespace,
@@ -448,6 +473,7 @@ mod tests {
             vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
                 name_filter: None,
+                rename: None,
             }],
         );
 
@@ -456,6 +482,7 @@ mod tests {
             vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
                 name_filter: Some("Three".to_owned()),
+                rename: None,
             }],
         );
 
@@ -464,6 +491,7 @@ mod tests {
             vec![PubUseInfo {
                 namespace: Namespace::new_raw("one::two".to_owned()),
                 name_filter: Some("Three".to_owned()),
+                rename: None,
             }],
         );
 
@@ -474,14 +502,17 @@ mod tests {
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two".to_owned()),
                     name_filter: Some("x".to_owned()),
+                    rename: None,
                 },
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two".to_owned()),
                     name_filter: Some("y".to_owned()),
+                    rename: None,
                 },
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two".to_owned()),
                     name_filter: Some("z".to_owned()),
+                    rename: None,
                 },
             ],
         );
@@ -493,16 +524,28 @@ mod tests {
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two".to_owned()),
                     name_filter: Some("x".to_owned()),
+                    rename: None,
                 },
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two::u".to_owned()),
                     name_filter: Some("v".to_owned()),
+                    rename: None,
                 },
                 PubUseInfo {
                     namespace: Namespace::new_raw("one::two::u".to_owned()),
                     name_filter: Some("w".to_owned()),
+                    rename: None,
                 },
             ],
+        );
+
+        body(
+            "pub use one::two::Three as PublicThree;",
+            vec![PubUseInfo {
+                namespace: Namespace::new_raw("one::two".to_owned()),
+                name_filter: Some("Three".to_owned()),
+                rename: Some("PublicThree".to_owned()),
+            }],
         );
     }
 
@@ -637,6 +680,56 @@ mod tests {
                 .iter()
                 .any(|item| name_for_use_stmt(item).as_deref() == Some("Thing"))
         }));
+        Ok(())
+    }
+
+    /// Moves a renamed re-export under its publicly usable name.
+    #[test]
+    fn test_transform_renamed_self_crate_pub_use() -> anyhow::Result<()> {
+        let hidden_module = HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis: vec![HirVisibility::Public],
+                vis: HirVisibility::Inherited,
+                namespace: Namespace::new_self_crate("hidden".to_owned()),
+                is_accessible_from_rust_output: false,
+            },
+            modules: vec![],
+            items: vec![syn::parse_str(
+                "pub(crate) struct Inner { pub value: String }",
+            )?],
+            item_contexts: vec![None],
+        };
+        let root_module = HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis: vec![],
+                vis: HirVisibility::Public,
+                namespace: CrateName::self_crate().namespace(),
+                is_accessible_from_rust_output: true,
+            },
+            modules: vec![hidden_module],
+            items: vec![syn::parse_str(
+                "pub(crate) use crate::hidden::Inner as PublicInner;",
+            )?],
+            item_contexts: vec![None],
+        };
+        let pack = HirTreePack {
+            crates: vec![HirTreeCrate {
+                name: CrateName::self_crate(),
+                root_module,
+            }],
+        };
+
+        let output = transform(pack, &Namespace::new_self_crate("frb_generated".to_owned()))?;
+        let root = &output.crates[0].root_module;
+
+        assert!(root
+            .items
+            .iter()
+            .any(|item| name_for_use_stmt(item).as_deref() == Some("PublicInner")));
+        assert!(!root.modules[0]
+            .items
+            .iter()
+            .any(|item| name_for_use_stmt(item).as_deref() == Some("Inner")));
         Ok(())
     }
 

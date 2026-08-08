@@ -333,6 +333,20 @@ mod private_opaque_field_alias_module_twin_rust_async_sse_moi {
 
 use private_opaque_field_alias_module_twin_rust_async_sse_moi::ImportedTargetAliasTwinRustAsyncSseMoi;
 
+mod private_opaque_field_base_alias_module_twin_rust_async_sse_moi {
+    use super::private_opaque_field_module_twin_rust_async_sse_moi::PrivateModuleOpaqueFieldInnerTwinRustAsyncSseMoi;
+
+    pub type BaseAliasTwinRustAsyncSseMoi = PrivateModuleOpaqueFieldInnerTwinRustAsyncSseMoi;
+}
+
+mod private_opaque_field_chained_alias_module_twin_rust_async_sse_moi {
+    use super::private_opaque_field_base_alias_module_twin_rust_async_sse_moi::BaseAliasTwinRustAsyncSseMoi;
+
+    pub type ChainedAliasTwinRustAsyncSseMoi = BaseAliasTwinRustAsyncSseMoi;
+}
+
+use private_opaque_field_chained_alias_module_twin_rust_async_sse_moi::ChainedAliasTwinRustAsyncSseMoi;
+
 type PrivateOpaqueFieldAliasTwinRustAsyncSseMoi = PrivateOpaqueFieldInnerTwinRustAsyncSseMoi;
 
 #[allow(private_interfaces)]
@@ -350,6 +364,7 @@ pub struct OpaqueWithPrivateFieldTwinRustAsyncSseMoi {
     pub module_alias_field:
         Arc<RwLock<private_module_alias_twin_rust_async_sse_moi::PrivateModuleOpaqueFieldInnerTwinRustAsyncSseMoi>>,
     pub imported_target_alias_field: Arc<RwLock<ImportedTargetAliasTwinRustAsyncSseMoi>>,
+    pub chained_alias_field: Arc<RwLock<ChainedAliasTwinRustAsyncSseMoi>>,
     pub alias_field: Arc<RwLock<PrivateOpaqueFieldAliasTwinRustAsyncSseMoi>>,
 }
 
@@ -392,6 +407,9 @@ impl OpaqueWithPrivateFieldTwinRustAsyncSseMoi {
                     value: value.clone(),
                 },
             )),
+            chained_alias_field: Arc::new(RwLock::new(PrivateModuleOpaqueFieldInnerTwinRustAsyncSseMoi {
+                value: value.clone(),
+            })),
             alias_field: Arc::new(RwLock::new(PrivateOpaqueFieldInnerTwinRustAsyncSseMoi { value })),
         }
     }
@@ -400,7 +418,7 @@ impl OpaqueWithPrivateFieldTwinRustAsyncSseMoi {
     #[flutter_rust_bridge::frb(serialize)]
     pub async fn read_twin_rust_async_sse_moi(&self) -> String {
         format!(
-            "{}/{}/{}/{}/{}/{}/{}/{}/{}",
+            "{}/{}/{}/{}/{}/{}/{}/{}/{}/{}",
             self.field.read().unwrap().value,
             self.restricted_field.read().unwrap().value,
             self.private_module_field.read().unwrap().value,
@@ -409,6 +427,7 @@ impl OpaqueWithPrivateFieldTwinRustAsyncSseMoi {
             self.imported_alias_field.read().unwrap().value,
             self.module_alias_field.read().unwrap().value,
             self.imported_target_alias_field.read().unwrap().value,
+            self.chained_alias_field.read().unwrap().value,
             self.alias_field.read().unwrap().value,
         )
     }
