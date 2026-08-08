@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.13.0-beta.6
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support generic type aliases and qualify generated `Result` #3242 (thanks @dbsxdbsx)
+* Preserve web `StreamSink` message ordering #3233
+* Fail fast for locked Rust opaque sync calls on web #3271
+
 ## 2.13.0-beta.5
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
