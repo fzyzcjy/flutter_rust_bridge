@@ -5,6 +5,7 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqu
 use crate::codegen::ir::mir::ty::structure::{MirStruct, MirStructIdent, MirTypeStructRef};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
+use crate::codegen::parser::hir::type_path_resolver::type_path_candidates;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::ty::enum_or_struct::{
     parse_struct_or_enum_should_ignore, EnumOrStructParser, EnumOrStructParserInfo,
@@ -19,8 +20,7 @@ use anyhow::bail;
 use std::collections::HashMap;
 use syn::visit_mut::VisitMut;
 use syn::{
-    Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, ItemUse, Type, TypePath, UseTree,
-    Visibility,
+    Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, ItemUse, Type, TypePath, Visibility,
 };
 
 impl TypeParserWithContext<'_, '_, '_> {
@@ -209,6 +209,66 @@ impl VisitMut for InaccessiblePrivateTypeVisitor<'_, '_> {
     }
 }
 
+struct EnumOrStructParserStruct<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
+
+impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
+    for EnumOrStructParserStruct<'_, '_, '_, '_>
+{
+    fn parse_inner_impl(
+        &mut self,
+        src_object: &HirFlatStruct,
+        name: NamespacedName,
+        wrapper_name: Option<String>,
+    ) -> anyhow::Result<MirStruct> {
+        self.0.parse_struct(src_object, name, wrapper_name)
+    }
+
+    fn construct_output(&self, ident: MirStructIdent) -> anyhow::Result<MirType> {
+        Ok(StructRef(MirTypeStructRef {
+            ident,
+            is_exception: false,
+        }))
+    }
+
+    fn src_objects(&self) -> &HashMap<String, &HirFlatStruct> {
+        &self.0.inner.src_structs
+    }
+
+    fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<MirStructIdent, MirStruct> {
+        &mut self.0.inner.struct_parser_info
+    }
+
+    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode> {
+        &mut self.0.inner.dart_code_of_type
+    }
+
+    fn parse_type_rust_auto_opaque_implicit(
+        &mut self,
+        namespace: Option<Namespace>,
+        ty: &Type,
+        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
+        override_ignore: Option<bool>,
+    ) -> anyhow::Result<MirType> {
+        self.0
+            .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
+    }
+
+    fn context(&self) -> &TypeParserParsingContext {
+        self.0.context
+    }
+
+    fn compute_default_opaque(obj: &MirStruct) -> bool {
+        structure_compute_default_opaque(obj, &obj.name.namespace.crate_name())
+    }
+}
+
+pub(super) fn structure_compute_default_opaque(s: &MirStruct, crate_name: &CrateName) -> bool {
+    (s.fields.iter()).any(|f| {
+        matches!(f.ty, MirType::RustAutoOpaqueImplicit(_))
+            || ((!crate_name.is_self_crate()) && !f.is_rust_public.unwrap())
+    })
+}
+
 #[cfg(test)]
 fn type_path_targets_item(
     path: &syn::Path,
@@ -217,159 +277,6 @@ fn type_path_targets_item(
     imports: &[ItemUse],
 ) -> bool {
     type_path_candidates(path, initiated_namespace, imports).contains(item_name)
-}
-
-fn type_path_candidates(
-    path: &syn::Path,
-    initiated_namespace: &Namespace,
-    imports: &[ItemUse],
-) -> Vec<NamespacedName> {
-    let segments = path
-        .segments
-        .iter()
-        .map(|segment| segment.ident.to_string())
-        .collect::<Vec<_>>();
-    if segments.len() == 1 {
-        let mut output = vec![NamespacedName::new(
-            initiated_namespace.clone(),
-            segments[0].clone(),
-        )];
-        for item_use in imports {
-            collect_import_targets(
-                &item_use.tree,
-                &[],
-                &segments[0],
-                initiated_namespace,
-                &mut output,
-            );
-        }
-        output.sort();
-        output.dedup();
-        return output;
-    }
-
-    let type_namespace_segments = &segments[..segments.len() - 1];
-    let mut output = vec![];
-    if let Some(namespace) =
-        resolve_relative_namespace(type_namespace_segments, initiated_namespace)
-    {
-        output.push(NamespacedName::new(
-            namespace,
-            segments.last().unwrap().clone(),
-        ));
-    }
-    output.push(NamespacedName::new(
-        Namespace::new(type_namespace_segments.to_vec()),
-        segments.last().unwrap().clone(),
-    ));
-    let mut imported_modules = vec![];
-    for item_use in imports {
-        collect_import_targets(
-            &item_use.tree,
-            &[],
-            &type_namespace_segments[0],
-            initiated_namespace,
-            &mut imported_modules,
-        );
-    }
-    for imported_module in imported_modules {
-        let mut namespace = imported_module.namespace.join(&imported_module.name);
-        for segment in &type_namespace_segments[1..] {
-            namespace = namespace.join(segment);
-        }
-        output.push(NamespacedName::new(
-            namespace,
-            segments.last().unwrap().clone(),
-        ));
-    }
-    output.sort();
-    output.dedup();
-    output
-}
-
-fn collect_import_targets(
-    tree: &UseTree,
-    prefix: &[String],
-    local_name: &str,
-    initiated_namespace: &Namespace,
-    output: &mut Vec<NamespacedName>,
-) {
-    match tree {
-        UseTree::Path(inner) => {
-            let mut child_prefix = prefix.to_vec();
-            child_prefix.push(inner.ident.to_string());
-            collect_import_targets(
-                &inner.tree,
-                &child_prefix,
-                local_name,
-                initiated_namespace,
-                output,
-            )
-        }
-        UseTree::Name(inner) => {
-            if inner.ident == local_name {
-                push_import_targets(prefix, inner.ident.to_string(), initiated_namespace, output);
-            }
-        }
-        UseTree::Rename(inner) => {
-            if inner.rename == local_name {
-                push_import_targets(prefix, inner.ident.to_string(), initiated_namespace, output);
-            }
-        }
-        UseTree::Glob(_) => {
-            push_import_targets(prefix, local_name.to_owned(), initiated_namespace, output);
-        }
-        UseTree::Group(inner) => {
-            for tree in &inner.items {
-                collect_import_targets(tree, prefix, local_name, initiated_namespace, output);
-            }
-        }
-    }
-}
-
-fn push_import_targets(
-    prefix: &[String],
-    item_name: String,
-    initiated_namespace: &Namespace,
-    output: &mut Vec<NamespacedName>,
-) {
-    if let Some(namespace) = resolve_relative_namespace(prefix, initiated_namespace) {
-        output.push(NamespacedName::new(namespace, item_name.clone()));
-    }
-    output.push(NamespacedName::new(
-        Namespace::new(prefix.to_vec()),
-        item_name,
-    ));
-}
-
-fn resolve_relative_namespace(
-    type_namespace_segments: &[String],
-    initiated_namespace: &Namespace,
-) -> Option<Namespace> {
-    let mut output = initiated_namespace
-        .path()
-        .into_iter()
-        .map(ToString::to_string)
-        .collect::<Vec<_>>();
-    let mut index = 0;
-
-    match type_namespace_segments.first().map(String::as_str) {
-        Some("crate") => {
-            output = vec!["crate".to_owned()];
-            index = 1;
-        }
-        Some("self") => index = 1,
-        Some("super") => {
-            while type_namespace_segments.get(index).map(String::as_str) == Some("super") {
-                output.pop()?;
-                index += 1;
-            }
-        }
-        _ => {}
-    }
-
-    output.extend(type_namespace_segments[index..].iter().cloned());
-    Some(Namespace::new(output))
 }
 
 #[cfg(test)]
@@ -503,64 +410,4 @@ mod inaccessible_private_type_tests {
 
         assert!(visitor.found);
     }
-}
-
-struct EnumOrStructParserStruct<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
-
-impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
-    for EnumOrStructParserStruct<'_, '_, '_, '_>
-{
-    fn parse_inner_impl(
-        &mut self,
-        src_object: &HirFlatStruct,
-        name: NamespacedName,
-        wrapper_name: Option<String>,
-    ) -> anyhow::Result<MirStruct> {
-        self.0.parse_struct(src_object, name, wrapper_name)
-    }
-
-    fn construct_output(&self, ident: MirStructIdent) -> anyhow::Result<MirType> {
-        Ok(StructRef(MirTypeStructRef {
-            ident,
-            is_exception: false,
-        }))
-    }
-
-    fn src_objects(&self) -> &HashMap<String, &HirFlatStruct> {
-        &self.0.inner.src_structs
-    }
-
-    fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<MirStructIdent, MirStruct> {
-        &mut self.0.inner.struct_parser_info
-    }
-
-    fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode> {
-        &mut self.0.inner.dart_code_of_type
-    }
-
-    fn parse_type_rust_auto_opaque_implicit(
-        &mut self,
-        namespace: Option<Namespace>,
-        ty: &Type,
-        reason: Option<MirTypeRustAutoOpaqueImplicitReason>,
-        override_ignore: Option<bool>,
-    ) -> anyhow::Result<MirType> {
-        self.0
-            .parse_type_rust_auto_opaque_implicit(namespace, ty, reason, override_ignore)
-    }
-
-    fn context(&self) -> &TypeParserParsingContext {
-        self.0.context
-    }
-
-    fn compute_default_opaque(obj: &MirStruct) -> bool {
-        structure_compute_default_opaque(obj, &obj.name.namespace.crate_name())
-    }
-}
-
-pub(super) fn structure_compute_default_opaque(s: &MirStruct, crate_name: &CrateName) -> bool {
-    (s.fields.iter()).any(|f| {
-        matches!(f.ty, MirType::RustAutoOpaqueImplicit(_))
-            || ((!crate_name.is_self_crate()) && !f.is_rust_public.unwrap())
-    })
 }

@@ -1,9 +1,9 @@
 use crate::codegen::ir::hir::misc::visibility::is_visibility_accessible_from;
 use crate::codegen::ir::hir::tree::module::{HirTreeItemContext, HirTreeModule};
 use crate::codegen::ir::hir::tree::pack::HirTreePack;
-use crate::utils::namespace::Namespace;
+use crate::codegen::parser::hir::type_path_resolver::type_path_candidates;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::Itertools;
-use std::collections::HashSet;
 use syn::UseTree;
 
 pub(crate) fn transform(
@@ -24,6 +24,11 @@ pub(crate) fn transform(
 struct SelfCratePubUse {
     destination_namespace: Namespace,
     info: PubUseInfo,
+}
+
+struct RenamedDefinition {
+    source: NamespacedName,
+    destination: NamespacedName,
 }
 
 fn transform_self_crate(
@@ -85,7 +90,7 @@ fn transform_self_crate_pub_use(
     let destination_path = directive
         .destination_namespace
         .strip_prefix(&root_namespace);
-    let moved_items = {
+    let (moved_items, renamed_definitions) = {
         let Some(source_module) = root_module.get_module_nested_mut(&source_path.path()) else {
             return Ok(false);
         };
@@ -106,21 +111,26 @@ fn transform_self_crate_pub_use(
             .resize(source_module.items.len(), None);
         let source_items = std::mem::take(&mut source_module.items);
         let source_contexts = std::mem::take(&mut source_module.item_contexts);
-        let interest_names = source_items
-            .iter()
-            .filter(|item| {
-                is_interest_item(
-                    item,
-                    &directive.info,
-                    Some((&source_namespace, rust_output_path_namespace)),
-                )
-            })
-            .filter_map(name_for_use_stmt)
-            .collect::<HashSet<_>>();
         let mut moved_items = vec![];
+        let mut renamed_definitions = vec![];
         for (mut item, context) in source_items.into_iter().zip(source_contexts) {
-            if is_item_or_impl_interesting(&item, &interest_names, directive.info.rename.is_some())
-            {
+            if is_interest_item(
+                &item,
+                &directive.info,
+                Some((&source_namespace, rust_output_path_namespace)),
+            ) {
+                if let Some(rename) = &directive.info.rename {
+                    renamed_definitions.push(RenamedDefinition {
+                        source: NamespacedName::new(
+                            source_namespace.clone(),
+                            name_for_use_stmt(&item).unwrap(),
+                        ),
+                        destination: NamespacedName::new(
+                            directive.destination_namespace.clone(),
+                            rename.clone(),
+                        ),
+                    });
+                }
                 rename_item_for_use(&mut item, &directive.info);
                 moved_items.push((
                     item,
@@ -134,7 +144,7 @@ fn transform_self_crate_pub_use(
                 source_module.item_contexts.push(context);
             }
         }
-        moved_items
+        (moved_items, renamed_definitions)
     };
     if moved_items.is_empty() {
         return Ok(false);
@@ -147,7 +157,86 @@ fn transform_self_crate_pub_use(
         destination_module.items.push(item);
         destination_module.item_contexts.push(Some(context));
     }
+    rewrite_impl_paths(root_module, &renamed_definitions)?;
     Ok(true)
+}
+
+fn rewrite_impl_paths(
+    module: &mut HirTreeModule,
+    renamed_definitions: &[RenamedDefinition],
+) -> anyhow::Result<()> {
+    if renamed_definitions.is_empty() {
+        return Ok(());
+    }
+    let module_imports = module
+        .items
+        .iter()
+        .filter_map(|item| match item {
+            syn::Item::Use(item_use) => Some(item_use.clone()),
+            _ => None,
+        })
+        .collect::<Vec<_>>();
+    module.item_contexts.resize(module.items.len(), None);
+    for (item, context) in module.items.iter_mut().zip(&module.item_contexts) {
+        let syn::Item::Impl(item_impl) = item else {
+            continue;
+        };
+        let declaration_namespace = context.as_ref().map_or(&module.meta.namespace, |context| {
+            &context.declaration_namespace
+        });
+        let imports = context
+            .as_ref()
+            .map_or(module_imports.as_slice(), |context| {
+                context.imports.as_slice()
+            });
+        if let syn::Type::Path(self_ty) = item_impl.self_ty.as_mut() {
+            if self_ty.qself.is_none() {
+                rewrite_path(
+                    &mut self_ty.path,
+                    declaration_namespace,
+                    imports,
+                    renamed_definitions,
+                )?;
+            }
+        }
+        if let Some((_, trait_path, _)) = &mut item_impl.trait_ {
+            rewrite_path(
+                trait_path,
+                declaration_namespace,
+                imports,
+                renamed_definitions,
+            )?;
+        }
+    }
+    for child_module in &mut module.modules {
+        rewrite_impl_paths(child_module, renamed_definitions)?;
+    }
+    Ok(())
+}
+
+fn rewrite_path(
+    path: &mut syn::Path,
+    declaration_namespace: &Namespace,
+    imports: &[syn::ItemUse],
+    renamed_definitions: &[RenamedDefinition],
+) -> anyhow::Result<()> {
+    let candidates = type_path_candidates(path, declaration_namespace, imports);
+    let Some(renamed_definition) = renamed_definitions
+        .iter()
+        .find(|definition| candidates.contains(&definition.source))
+    else {
+        return Ok(());
+    };
+    let generic_arguments = path
+        .segments
+        .last()
+        .map(|segment| segment.arguments.clone())
+        .unwrap_or_default();
+    let mut replacement =
+        syn::parse_str::<syn::Path>(&renamed_definition.destination.rust_style())?;
+    replacement.segments.last_mut().unwrap().arguments = generic_arguments;
+    *path = replacement;
+    Ok(())
 }
 
 fn resolve_pub_use_namespace(
@@ -339,46 +428,22 @@ fn transform_module_by_pub_use_single(
 
         if is_self_crate {
             let src_namespace = src_mod.meta.namespace.clone();
-            let interest_names = src_mod
-                .items
-                .iter()
-                .filter(|item| {
+            let (interest_items, remaining_items) = std::mem::take(&mut src_mod.items)
+                .into_iter()
+                .partition(|item| {
                     is_interest_item(
                         item,
                         pub_use_info,
                         Some((&src_namespace, rust_output_path_namespace)),
                     )
-                })
-                .filter_map(name_for_use_stmt)
-                .collect::<HashSet<_>>();
-            let (interest_items, remaining_items) = std::mem::take(&mut src_mod.items)
-                .into_iter()
-                .partition(|item| {
-                    is_item_or_impl_interesting(
-                        item,
-                        &interest_names,
-                        pub_use_info.rename.is_some(),
-                    )
                 });
             src_mod.items = remaining_items;
             interest_items
         } else {
-            let interest_names = src_mod
-                .items
-                .iter()
-                .filter(|item| is_interest_item(item, pub_use_info, None))
-                .filter_map(name_for_use_stmt)
-                .collect::<HashSet<_>>();
             src_mod
                 .items
                 .iter()
-                .filter(|item| {
-                    is_item_or_impl_interesting(
-                        item,
-                        &interest_names,
-                        pub_use_info.rename.is_some(),
-                    )
-                })
+                .filter(|item| is_interest_item(item, pub_use_info, None))
                 .cloned()
                 .collect_vec()
         }
@@ -416,42 +481,8 @@ fn rename_item_for_use(item: &mut syn::Item, pub_use_info: &PubUseInfo) {
         syn::Item::Type(x) => x.ident = ident,
         syn::Item::Fn(x) => x.sig.ident = ident,
         syn::Item::Trait(x) => x.ident = ident,
-        syn::Item::Impl(x) => {
-            if let syn::Type::Path(self_ty) = x.self_ty.as_mut() {
-                if let Some(mut segment) = self_ty.path.segments.last().cloned() {
-                    segment.ident = ident;
-                    self_ty.qself = None;
-                    self_ty.path.leading_colon = None;
-                    self_ty.path.segments = std::iter::once(segment).collect();
-                }
-            }
-        }
         _ => {}
     }
-}
-
-fn is_item_or_impl_interesting(
-    item: &syn::Item,
-    interest_names: &HashSet<String>,
-    include_impls: bool,
-) -> bool {
-    name_for_use_stmt(item).is_some_and(|name| interest_names.contains(&name))
-        || (include_impls
-            && impl_target_name(item).is_some_and(|name| interest_names.contains(&name)))
-}
-
-fn impl_target_name(item: &syn::Item) -> Option<String> {
-    let syn::Item::Impl(item_impl) = item else {
-        return None;
-    };
-    let syn::Type::Path(self_ty) = item_impl.self_ty.as_ref() else {
-        return None;
-    };
-    self_ty
-        .path
-        .segments
-        .last()
-        .map(|segment| segment.ident.to_string())
 }
 
 fn is_interest_item(
@@ -522,6 +553,7 @@ mod tests {
     use crate::codegen::ir::hir::tree::crates::HirTreeCrate;
     use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
     use crate::utils::crate_name::CrateName;
+    use quote::ToTokens;
 
     #[test]
     pub fn test_parse_pub_use_from_item() {
@@ -750,7 +782,7 @@ mod tests {
         Ok(())
     }
 
-    /// Moves a renamed re-export under its publicly usable name.
+    /// Rewrites matching impls globally without changing qualified same-name impls.
     #[test]
     fn test_transform_renamed_self_crate_pub_use() -> anyhow::Result<()> {
         let hidden_module = HirTreeModule {
@@ -763,9 +795,33 @@ mod tests {
             modules: vec![],
             items: vec![
                 syn::parse_str("pub(crate) struct Inner { pub value: String }")?,
-                syn::parse_str("impl Inner { pub fn value(&self) -> &str { &self.value } }")?,
+                syn::parse_str("impl crate::other::Inner { pub fn unrelated(&self) {} }")?,
             ],
             item_contexts: vec![None, None],
+        };
+        let implementations_module = HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis: vec![HirVisibility::Public],
+                vis: HirVisibility::Inherited,
+                namespace: Namespace::new_self_crate("implementations".to_owned()),
+                is_accessible_from_rust_output: false,
+            },
+            modules: vec![],
+            items: vec![syn::parse_str(
+                "impl crate::hidden::Inner { pub fn value(&self) -> &str { &self.value } }",
+            )?],
+            item_contexts: vec![None],
+        };
+        let other_module = HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis: vec![HirVisibility::Public],
+                vis: HirVisibility::Public,
+                namespace: Namespace::new_self_crate("other".to_owned()),
+                is_accessible_from_rust_output: true,
+            },
+            modules: vec![],
+            items: vec![syn::parse_str("pub(crate) struct Inner;")?],
+            item_contexts: vec![None],
         };
         let root_module = HirTreeModule {
             meta: HirTreeModuleMeta {
@@ -774,7 +830,7 @@ mod tests {
                 namespace: CrateName::self_crate().namespace(),
                 is_accessible_from_rust_output: true,
             },
-            modules: vec![hidden_module],
+            modules: vec![hidden_module, implementations_module, other_module],
             items: vec![syn::parse_str(
                 "pub(crate) use crate::hidden::Inner as PublicInner;",
             )?],
@@ -794,15 +850,103 @@ mod tests {
             .items
             .iter()
             .any(|item| name_for_use_stmt(item).as_deref() == Some("PublicInner")));
+        assert!(!root.modules[0]
+            .items
+            .iter()
+            .any(|item| name_for_use_stmt(item).as_deref() == Some("Inner")));
+        assert_eq!(
+            impl_self_paths(&root.modules[0]),
+            ["crate :: other :: Inner"]
+        );
+        assert_eq!(impl_self_paths(&root.modules[1]), ["crate :: PublicInner"]);
+        Ok(())
+    }
+
+    /// Rewrites a renamed trait path while preserving its implementation target.
+    #[test]
+    fn test_transform_renamed_trait_impl() -> anyhow::Result<()> {
+        let hidden_module = HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis: vec![HirVisibility::Public],
+                vis: HirVisibility::Inherited,
+                namespace: Namespace::new_self_crate("hidden".to_owned()),
+                is_accessible_from_rust_output: false,
+            },
+            modules: vec![],
+            items: vec![syn::parse_str(
+                "pub(crate) trait HiddenTrait { fn value(&self) -> &str; }",
+            )?],
+            item_contexts: vec![None],
+        };
+        let implementations_module = HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis: vec![HirVisibility::Public],
+                vis: HirVisibility::Inherited,
+                namespace: Namespace::new_self_crate("implementations".to_owned()),
+                is_accessible_from_rust_output: false,
+            },
+            modules: vec![],
+            items: vec![syn::parse_str(
+                "impl crate::hidden::HiddenTrait for crate::other::Inner { fn value(&self) -> &str { &self.value } }",
+            )?],
+            item_contexts: vec![None],
+        };
+        let root_module = HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis: vec![],
+                vis: HirVisibility::Public,
+                namespace: CrateName::self_crate().namespace(),
+                is_accessible_from_rust_output: true,
+            },
+            modules: vec![hidden_module, implementations_module],
+            items: vec![syn::parse_str(
+                "pub(crate) use crate::hidden::HiddenTrait as PublicTrait;",
+            )?],
+            item_contexts: vec![None],
+        };
+        let pack = HirTreePack {
+            crates: vec![HirTreeCrate {
+                name: CrateName::self_crate(),
+                root_module,
+            }],
+        };
+
+        let output = transform(pack, &Namespace::new_self_crate("frb_generated".to_owned()))?;
+        let root = &output.crates[0].root_module;
+        let syn::Item::Impl(item_impl) = &root.modules[1].items[0] else {
+            unreachable!()
+        };
+
         assert!(root
             .items
             .iter()
-            .any(|item| impl_target_name(item).as_deref() == Some("PublicInner")));
-        assert!(!root.modules[0].items.iter().any(|item| {
-            name_for_use_stmt(item).as_deref() == Some("Inner")
-                || impl_target_name(item).as_deref() == Some("Inner")
-        }));
+            .any(|item| name_for_use_stmt(item).as_deref() == Some("PublicTrait")));
+        assert_eq!(
+            item_impl
+                .trait_
+                .as_ref()
+                .unwrap()
+                .1
+                .to_token_stream()
+                .to_string(),
+            "crate :: PublicTrait"
+        );
+        assert_eq!(
+            item_impl.self_ty.to_token_stream().to_string(),
+            "crate :: other :: Inner"
+        );
         Ok(())
+    }
+
+    fn impl_self_paths(module: &HirTreeModule) -> Vec<String> {
+        module
+            .items
+            .iter()
+            .filter_map(|item| match item {
+                syn::Item::Impl(item_impl) => Some(item_impl.self_ty.to_token_stream().to_string()),
+                _ => None,
+            })
+            .collect()
     }
 
     /// Resolves self and parent re-export module paths from their declaration module.
