@@ -66,6 +66,7 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 - Be careful with grouped entries: if a local maintainer PR and a third-party PR are summarized together, the grouped entry still needs the third-party thanks attribution.
 - Review the release section manually before publishing. The top `CHANGELOG.md` version is the source used by `frb_internal release`.
 - If changelog or version files changed, commit that release preparation before publishing.
+- Land contributor and changelog preparation commits on `origin/master` before publishing. Do not leave release preparation only on a side branch.
 
 ### 4. Publish
 
@@ -74,6 +75,8 @@ Use the repository release command through a temporary Docker container with pub
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release
 ```
+
+Run the one-shot command from a clean local `master` that tracks the latest `origin/master`. `release-update-git` uses plain `git push`, so do not run the command from a side release branch.
 
 Do not split the normal release into separate `release-update-*` or publish commands. The one-shot command is the source of truth for release sequencing: it computes old/new versions from `CHANGELOG.md`, updates checked-in versions and generated version text, updates Scoop metadata, commits and pushes the version bump, creates the GitHub release, then runs the registry publisher:
 
