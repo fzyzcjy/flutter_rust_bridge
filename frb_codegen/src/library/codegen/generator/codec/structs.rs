@@ -132,7 +132,11 @@ pub(crate) fn pde_web_direct_codec(func: &MirFunc) -> bool {
         .iter()
         .all(|input| pde_web_direct_type(&input.inner.ty))
         && pde_web_direct_type(&func.output.normal)
-        && func.output.error.as_ref().is_none_or(pde_web_direct_type)
+        && func
+            .output
+            .error
+            .as_ref()
+            .map_or(true, pde_web_direct_type)
 }
 
 fn pde_web_direct_type(ty: &MirType) -> bool {
