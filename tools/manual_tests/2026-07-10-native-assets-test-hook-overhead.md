@@ -1,6 +1,6 @@
 ## Purpose
 
-Verify whether Flutter invokes a Native Assets build hook once per `flutter test` invocation or once for every selected test file. The procedure records hook invocations for FRB's wrapper and a vanilla `native_toolchain_rust` fixture.
+Verify whether Flutter invokes a Native Assets build hook once per `flutter test` invocation or once for every selected test file, including default test discovery, and whether an unchanged warm invocation skips the hook. The procedure records hook invocations and wall time for FRB's wrapper and a vanilla `native_toolchain_rust` fixture.
 
 ## Source
 
@@ -33,8 +33,10 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
 
 ## Test Data
 
-- Input files: two independent lightweight test files and a temporary hook marker that appends its process id to `hook-invocations.log`.
-- Reset procedure before each run: remove the fixture's `.dart_tool`, `build`, and `hook-invocations.log` files.
+- Input files: two independent lightweight test files and a temporary hook marker that appends its timestamp and process ID to `hook-invocations.log`.
+- Cold cases: one explicitly selected file, two explicitly selected files, and default discovery with no file arguments.
+- Warm case: repeat the one-file command without deleting `.dart_tool`, `build`, or `hook-invocations.log`.
+- Reset procedure before each cold case: remove the fixture's `.dart_tool`, `build`, and `hook-invocations.log` files.
 
 ## Steps
 
@@ -67,7 +69,10 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
    import 'package:flutter_rust_bridge_hooks/flutter_rust_bridge_hooks.dart';
 
    void main(List<String> args) async {
-     File('hook-invocations.log').writeAsStringSync('$pid\n', mode: FileMode.append);
+     File('hook-invocations.log').writeAsStringSync(
+       '${DateTime.now().toIso8601String()} $pid\n',
+       mode: FileMode.append,
+     );
      await build(args, (input, output) async {
        await const FlutterRustBridgeNativeAssetsBuilder(cratePath: 'rust').run(
          input: input,
@@ -81,44 +86,99 @@ Run all commands in the per-worktree FRB Docker container. Use a disposable fixt
    printf "import 'package:flutter_test/flutter_test.dart'; void main() => test('b', () {});\n" > test/b_test.dart
    ```
 
-3. Run a clean one-file control and a clean two-file comparison. Preserve each marker file and its count.
+3. Run the three cold FRB cases, then repeat the one-file command without clearing the cache. Preserve each terminal log, marker file, marker count, and wall time.
 
    ```bash
-   for test_args in 'test/a_test.dart' 'test/a_test.dart test/b_test.dart'; do
-     rm -rf .dart_tool hook-invocations.log
+   set -euo pipefail
+   mkdir -p evidence
+   TIMEFORMAT='real %3R s user %3U s sys %3S s'
+
+   run_cold_case() {
+     case_name="$1"
+     shift
+     rm -rf .dart_tool build hook-invocations.log
      flutter pub get
-     flutter test $test_args | tee "flutter-test-$(echo "$test_args" | tr ' /' '__').log"
+     { time flutter test "$@"; } 2>&1 | tee "evidence/$case_name.log"
      test -f hook-invocations.log
-     wc -l hook-invocations.log
-     cp hook-invocations.log "hook-invocations-$(echo "$test_args" | tr ' /' '__').log"
-   done
+     cp hook-invocations.log "evidence/$case_name-hook-invocations.log"
+     wc -l hook-invocations.log | tee "evidence/$case_name-hook-count.log"
+   }
+
+   run_cold_case single-file test/a_test.dart
+   run_cold_case explicit-two-files test/a_test.dart test/b_test.dart
+   run_cold_case default-discovery
+
+   before_count="$(wc -l < hook-invocations.log)"
+   { time flutter test test/a_test.dart; } 2>&1 | tee evidence/warm-repeat.log
+   after_count="$(wc -l < hook-invocations.log)"
+   printf 'before=%s after=%s delta=%s\n' \
+     "$before_count" "$after_count" "$((after_count - before_count))" \
+     | tee evidence/warm-repeat-hook-count.log
+   cp hook-invocations.log evidence/warm-repeat-hook-invocations.log
    ```
 
-4. Run the equivalent vanilla comparison at the pinned upstream revision. Its Flutter fixture is `examples/flutter`.
+4. Run the equivalent vanilla comparison at the pinned upstream revision. Its Flutter fixture is `examples/flutter`; default discovery also includes the existing `widget_test.dart`.
 
    ```bash
-   rm -rf /tmp/native_toolchain_rust-hook-overhead
-   git clone https://github.com/GregoryConrad/native_toolchain_rust.git /tmp/native_toolchain_rust-hook-overhead
-   git -C /tmp/native_toolchain_rust-hook-overhead checkout aeda048b2581317cad0051cf1e061ba6327a1c67
-   cd /tmp/native_toolchain_rust-hook-overhead/examples/flutter
-   sed -i "1i import 'dart:io';" hook/build.dart
-   sed -i "/void main(List<String> args) async {/a\\  File('hook-invocations.log').writeAsStringSync('\$pid\\n', mode: FileMode.append);" hook/build.dart
+   rm -rf frb_example/native_toolchain_rust_hook_overhead_fixture
+   git clone https://github.com/GregoryConrad/native_toolchain_rust.git \
+     frb_example/native_toolchain_rust_hook_overhead_fixture
+   git -C frb_example/native_toolchain_rust_hook_overhead_fixture \
+     checkout aeda048b2581317cad0051cf1e061ba6327a1c67
+   cd frb_example/native_toolchain_rust_hook_overhead_fixture/examples/flutter
+   cat > hook/build.dart <<'EOF'
+   import 'dart:io';
+
+   import 'package:hooks/hooks.dart';
+   import 'package:native_toolchain_rust/native_toolchain_rust.dart';
+
+   void main(List<String> args) async {
+     File('hook-invocations.log').writeAsStringSync(
+       '${DateTime.now().toIso8601String()} $pid\n',
+       mode: FileMode.append,
+     );
+     await build(args, (input, output) async {
+       await const RustBuilder(assetName: 'src/ffi.g.dart').run(
+         input: input,
+         output: output,
+       );
+     });
+   }
+   EOF
    mkdir -p test
    printf "import 'package:flutter_test/flutter_test.dart'; void main() => test('a', () {});\n" > test/a_test.dart
    printf "import 'package:flutter_test/flutter_test.dart'; void main() => test('b', () {});\n" > test/b_test.dart
-   for test_args in 'test/a_test.dart' 'test/a_test.dart test/b_test.dart'; do
-     rm -rf .dart_tool hook-invocations.log
+   set -euo pipefail
+   mkdir -p evidence
+   TIMEFORMAT='real %3R s user %3U s sys %3S s'
+
+   run_cold_case() {
+     case_name="$1"
+     shift
+     rm -rf .dart_tool build hook-invocations.log
      flutter pub get
-     flutter test $test_args | tee "flutter-test-$(echo "$test_args" | tr ' /' '__').log"
+     { time flutter test "$@"; } 2>&1 | tee "evidence/$case_name.log"
      test -f hook-invocations.log
-     wc -l hook-invocations.log
-     cp hook-invocations.log "hook-invocations-$(echo "$test_args" | tr ' /' '__').log"
-   done
+     cp hook-invocations.log "evidence/$case_name-hook-invocations.log"
+     wc -l hook-invocations.log | tee "evidence/$case_name-hook-count.log"
+   }
+
+   run_cold_case single-file test/a_test.dart
+   run_cold_case explicit-two-files test/a_test.dart test/b_test.dart
+   run_cold_case default-discovery
+
+   before_count="$(wc -l < hook-invocations.log)"
+   { time flutter test test/a_test.dart; } 2>&1 | tee evidence/warm-repeat.log
+   after_count="$(wc -l < hook-invocations.log)"
+   printf 'before=%s after=%s delta=%s\n' \
+     "$before_count" "$after_count" "$((after_count - before_count))" \
+     | tee evidence/warm-repeat-hook-count.log
+   cp hook-invocations.log evidence/warm-repeat-hook-invocations.log
    ```
 
 ## Expected Result
 
-All commands exit `0` and both tests pass. Compare the raw marker counts from clean one-file and two-file runs: an increase matching the added test file is evidence consistent with per-file hook execution; identical counts only show that this invocation did not add an observable hook process. Report the counts without claiming a root cause, and compare the FRB and vanilla deltas.
+All commands exit `0` and all selected tests pass. Compare the raw marker counts from the three cold cases: a default-discovery or explicit-two-files count that grows with the number of suites is evidence consistent with per-file hook execution; identical counts show that the invocation did not add observable hook processes for additional suites. For the warm case, a zero marker delta shows that the hook runner reused its cached result, while a nonzero delta shows that it invoked the hook again. Report counts and wall times without inferring a root cause from timing alone, and compare FRB with vanilla.
 
 ## Failure Criteria
 
@@ -127,12 +187,14 @@ The test fails or is blocked if any of the following happens:
 - `flutter test` exits non-zero unexpectedly.
 - `hook-invocations.log` is absent, so the build-hook invocation cannot be observed.
 - The vanilla fixture cannot be prepared; mark that comparison as blocked rather than inferring a result.
-- The one-file and two-file runs are not both captured from clean state.
+- Any cold case is not captured from clean state.
+- The warm case clears `.dart_tool`, `build`, or `hook-invocations.log`, making its cache result invalid.
 
 ## Results To Capture
 
 - Full terminal logs for the FRB and vanilla runs.
-- Each `hook-invocations-*.log` marker file from the clean one-file and two-file runs.
+- Each marker file and count from the three cold cases and warm repeat.
+- Wall time for every `flutter test` command.
 - Flutter, Dart, and Rust version output.
 - The exact vanilla upstream commit.
 
@@ -145,7 +207,9 @@ The test fails or is blocked if any of the following happens:
 ## Cleanup
 
 ```bash
-   rm -rf frb_example/native_assets_hook_overhead_fixture /tmp/native_toolchain_rust-hook-overhead
+   rm -rf \
+     frb_example/native_assets_hook_overhead_fixture \
+     frb_example/native_toolchain_rust_hook_overhead_fixture
 ```
 
 No repository files, simulators, or external account state should remain changed.
