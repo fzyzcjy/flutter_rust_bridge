@@ -97,8 +97,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             c.with_struct_or_enum_attributes(struct_attributes.clone())
         })?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
-        let contains_inaccessible_private_type =
-            self.contains_inaccessible_private_type(&field.ty);
+        let contains_inaccessible_private_type = self.contains_inaccessible_private_type(&field.ty);
         Ok(MirField {
             name: MirIdent::new(field_name, attributes.name()),
             ty: field_type,
@@ -141,15 +140,18 @@ impl VisitMut for InaccessiblePrivateTypeVisitor<'_, '_> {
             return;
         }
 
-        if let Some(name) = node.path.segments.last().map(|segment| segment.ident.to_string()) {
-            self.found = self
-                .src_structs
-                .get(&name)
-                .is_some_and(|item| self.is_inaccessible(item.visibility, &item.name.namespace))
-                || self
-                    .src_enums
-                    .get(&name)
-                    .is_some_and(|item| self.is_inaccessible(item.visibility, &item.name.namespace));
+        if let Some(name) = node
+            .path
+            .segments
+            .last()
+            .map(|segment| segment.ident.to_string())
+        {
+            self.found =
+                self.src_structs.get(&name).is_some_and(|item| {
+                    self.is_inaccessible(item.visibility, &item.name.namespace)
+                }) || self.src_enums.get(&name).is_some_and(|item| {
+                    self.is_inaccessible(item.visibility, &item.name.namespace)
+                });
         }
 
         syn::visit_mut::visit_type_path_mut(self, node);
