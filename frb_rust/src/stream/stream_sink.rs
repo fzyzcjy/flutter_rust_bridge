@@ -1,6 +1,8 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::for_generated::DartAbi;
+#[cfg(target_family = "wasm")]
+use crate::generalized_isolate::handle_to_uncached_channel;
 use crate::generalized_isolate::IntoDart;
 use crate::generalized_isolate::{
     deserialize_sendable_channel_handle, handle_to_cached_channel, SendableChannelHandle,
@@ -34,13 +36,18 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
     pub fn add_raw(&self, value: Rust2DartCodec::Message) -> Result<(), Rust2DartSendError> {
-        sender(&self.sendable_channel_handle)
-            .send_stream(self._closer.next_sequence(), value.into_dart_abi())
+        self._closer
+            .send(sender(&self.sendable_channel_handle), value.into_dart_abi())
     }
 }
 
 pub(super) fn sender(sendable_channel_handle: &SendableChannelHandle) -> Rust2DartSender {
     Rust2DartSender::new(handle_to_cached_channel(sendable_channel_handle))
+}
+
+#[cfg(target_family = "wasm")]
+pub(super) fn uncached_sender(sendable_channel_handle: &SendableChannelHandle) -> Rust2DartSender {
+    Rust2DartSender::new(handle_to_uncached_channel(sendable_channel_handle))
 }
 
 // frb-coverage:ignore-start

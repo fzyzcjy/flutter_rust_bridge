@@ -21,15 +21,24 @@ impl Rust2DartSender {
         }
     }
 
-    pub fn send_stream(&self, sequence: u64, msg: impl IntoDart) -> Result<(), Rust2DartSendError> {
-        #[cfg(target_family = "wasm")]
-        return self.send(((sequence >> 32) as u32, sequence as u32, msg.into_dart()));
-
-        #[cfg(not(target_family = "wasm"))]
-        {
-            let _ = sequence;
-            self.send(msg)
+    #[cfg(target_family = "wasm")]
+    pub fn send_stream(
+        &self,
+        sequence: u64,
+        skipped_sequences: &[u64],
+        msg: impl IntoDart,
+    ) -> Result<(), Rust2DartSendError> {
+        let sequence = ((sequence >> 32) as u32, sequence as u32);
+        let msg = msg.into_dart();
+        if skipped_sequences.is_empty() {
+            return self.send((sequence.0, sequence.1, msg));
         }
+
+        let skipped_sequences = skipped_sequences
+            .iter()
+            .map(|sequence| ((sequence >> 32) as u32, *sequence as u32))
+            .collect::<Vec<_>>();
+        self.send((sequence.0, sequence.1, skipped_sequences, msg))
     }
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
@@ -37,12 +46,6 @@ impl Rust2DartSender {
     pub fn send_or_warn(&self, msg: impl IntoDart) {
         // frb-coverage:ignore-end
         if let Err(e) = self.send(msg) {
-            log_warn_or_println(&format!("{e:?}"));
-        }
-    }
-
-    pub fn send_stream_or_warn(&self, sequence: u64, msg: impl IntoDart) {
-        if let Err(e) = self.send_stream(sequence, msg) {
             log_warn_or_println(&format!("{e:?}"));
         }
     }
