@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:meta/meta.dart';
 
 /// {@macro flutter_rust_bridge.internal}
 @internal
 class ExecuteStreamPortGenerator {
   static final _streamSinkNameIndex = <String, int>{};
+  static final _sessionNonce = _createSessionNonce();
 
   /// {@macro flutter_rust_bridge.internal}
   static String create(String funcName) {
@@ -12,7 +15,15 @@ class ExecuteStreamPortGenerator {
       (value) => value + 1,
       ifAbsent: () => 0,
     );
-    return '__frb_streamsink_${funcName}_$nextIndex';
+    return '__frb_streamsink_${_sessionNonce}_${funcName}_$nextIndex';
+  }
+
+  static String _createSessionNonce() {
+    final random = Random.secure();
+    return List.generate(
+      8,
+      (_) => random.nextInt(1 << 16).toRadixString(16).padLeft(4, '0'),
+    ).join();
   }
 }
 

@@ -29,10 +29,11 @@ keeps the ports in a JS-local scope that cannot be shared with other threads. A 
 is created by Dart, then passed to the main Rust thread. Rust then transfers its name to the workers.
 When other workers refer to a `StreamSink` from another worker, e.g. if the sink was put in a static variable,
 each worker creates a `BroadcastChannel` from its name on first use and reuses that channel for subsequent
-sends. This preserves message ordering within the worker. When the last Rust `StreamSink` clone is dropped,
-Rust sends the stream-close message and broadcasts a release signal. Each worker then removes the channel
-from its local cache and closes the underlying channel after a short delay so already-posted messages can
-be delivered.
+sends. Rust attaches a shared sequence number to every message, and Dart buffers messages until the next
+sequence arrives. This preserves data, error, and close ordering even when different workers send them.
+When the last Rust `StreamSink` clone is dropped, Rust sends the stream-close message and broadcasts a
+release signal. Each worker then removes the channel from its local cache and closes the underlying channel
+after a short delay so already-posted messages can be delivered.
 
 `BroadcastChannel`s are guaranteed to be unique for each invocation.[^1]
 
@@ -48,4 +49,4 @@ Rust Worker 2 ->> Dart: channel.postMessage
 It is theoretically possible to have a one-to-one implementation of Isolate using only web primitives,
 `BroadcastChannel`s and `Worker`s, but it remains to be seen how practical such an approach would be.
 
-[^1]: This is currently implemented as a monotonically-increasing index.
+[^1]: This is currently implemented as a random page-session nonce plus a monotonically-increasing index.
