@@ -75,3 +75,11 @@ pub enum CustomStructError {
 ```
 
 As for how to fill it in or use it, you can refer to `thiserror` crate for some hints.
+
+## Projects using `panic = "abort"`
+
+flutter_rust_bridge can turn a Rust panic into a Dart `PanicException` when the panic unwinds.
+If your project uses `panic = "abort"`, Rust terminates the process at the panic site instead.
+
+Generated decoders use `.unwrap()` for codec invariants such as valid UTF-8 and integers. The generated Dart
+encoder provides matching valid input, so these calls do not panic in normal use, even if there are bugs in user code.
