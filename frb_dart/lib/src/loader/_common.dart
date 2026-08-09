@@ -20,6 +20,7 @@ class ExternalLibraryLoaderConfig {
     this.wasmBindgenName = 'wasm_bindgen',
   });
 
+  /// Arguments of `loadExternalLibrary` for native-only output
   const ExternalLibraryLoaderConfig.io({
     required this.stem,
     required this.ioDirectory,
