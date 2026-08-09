@@ -152,7 +152,7 @@ class CargoKitPlugin implements Plugin<Project> {
 
             // The task name depends on plugin properties, which are not available
             // at this point
-            project.getGradle().afterProject {
+            project.afterEvaluate {
                 def taskName = "cargokitCargoBuild${project.cargokit.libname.capitalize()}${buildType.capitalize()}";
 
                 if (project.tasks.findByName(taskName)) {
