@@ -36,12 +36,18 @@ impl<T> DeferredCloseBatches<T> {
         self.current = std::mem::take(&mut self.next);
         (completed, true)
     }
+
+    pub(super) fn schedule_failed(&mut self) {
+        self.current.append(&mut self.next);
+        self.scheduled = false;
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use super::DeferredCloseBatches;
 
+    /// Keeps late entries queued for a full subsequent delay.
     #[test]
     fn item_added_after_scheduling_waits_for_next_batch() {
         let mut batches = DeferredCloseBatches::default();
@@ -55,6 +61,21 @@ mod tests {
 
         let (second_batch, has_next_batch) = batches.finish_current();
         assert_eq!(second_batch, vec![2]);
+        assert!(!has_next_batch);
+    }
+
+    /// Allows a later push to retry after scheduling a close callback fails.
+    #[test]
+    fn failed_schedule_can_be_retried() {
+        let mut batches = DeferredCloseBatches::default();
+
+        assert!(batches.push(1));
+        assert!(!batches.push(2));
+        batches.schedule_failed();
+
+        assert!(batches.push(3));
+        let (batch, has_next_batch) = batches.finish_current();
+        assert_eq!(batch, vec![1, 2, 3]);
         assert!(!has_next_batch);
     }
 }

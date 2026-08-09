@@ -80,6 +80,7 @@ impl BroadcastChannelState {
             BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS,
         ) {
             crate::console_error!("schedule broadcast channel close: {:?}", error);
+            self.pending_close.schedule_failed();
         }
     }
 
