@@ -28,7 +28,10 @@ Rust Worker ->> Dart: port2.postMessage
 keeps the ports in a JS-local scope that cannot be shared with other threads. A broadcast channel
 is created by Dart, then passed to the main Rust thread. Rust then transfers its name to the workers.
 When other workers refer to a `StreamSink` from another worker, e.g. if the sink was put in a static variable,
-a new `BroadcastChannel` will be created from its name.
+each worker creates a `BroadcastChannel` from its name on first use and reuses that channel for subsequent
+sends. This preserves message ordering within the worker. When the last Rust `StreamSink` clone is dropped,
+Rust sends the stream-close message, removes the channel from the worker's cache, and closes the underlying
+channel after a short delay so already-posted messages can be delivered.
 
 `BroadcastChannel`s are guaranteed to be unique for each invocation.[^1]
 
