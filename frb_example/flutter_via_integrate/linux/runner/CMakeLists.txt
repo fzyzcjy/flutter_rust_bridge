@@ -25,6 +25,7 @@ target_link_libraries(${BINARY_NAME} PRIVATE PkgConfig::GTK)
 
 target_include_directories(${BINARY_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
 
+# flutter_rust_bridge: cargokit integration begin
 include("${CMAKE_CURRENT_SOURCE_DIR}/../../rust_builder/cargokit/cmake/cargokit.cmake")
 
 apply_cargokit(
@@ -35,3 +36,4 @@ apply_cargokit(
 )
 
 set(${BINARY_NAME}_cargokit_lib "${${BINARY_NAME}_cargokit_lib}" PARENT_SCOPE)
+# flutter_rust_bridge: cargokit integration end

@@ -1,7 +1,7 @@
 use super::IntegrateConfig;
 use crate::integration::utils::{overlay_dir, replace_file_content};
 use crate::misc::{IntegrationBackend, Template};
-use anyhow::Result;
+use anyhow::{bail, Result};
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::warn;
@@ -24,6 +24,10 @@ set(${BINARY_NAME}_cargokit_lib "${${BINARY_NAME}_cargokit_lib}" PARENT_SCOPE)"#
 const CARGOKIT_LINUX_APP_CMAKE_FRAGMENT: &str = r#"install(FILES "${${BINARY_NAME}_cargokit_lib}"
   DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
   COMPONENT Runtime)"#;
+
+const CARGOKIT_LINUX_CMAKE_BEGIN_MARKER: &[u8] =
+    b"# flutter_rust_bridge: cargokit integration begin";
+const CARGOKIT_LINUX_CMAKE_END_MARKER: &[u8] = b"# flutter_rust_bridge: cargokit integration end";
 
 fn execute_overlay_dir(
     current_reference_dir: &Dir,
@@ -117,34 +121,61 @@ fn append_cargokit_linux_cmake(dart_root: &Path, replacements: &HashMap<&str, &s
         ("linux/CMakeLists.txt", CARGOKIT_LINUX_APP_CMAKE_FRAGMENT),
     ] {
         let fragment = replace_file_content(fragment.as_bytes(), replacements);
-        append_cmake_fragment(&dart_root.join(relative_path), &fragment)?;
+        upsert_cmake_fragment(&dart_root.join(relative_path), &fragment)?;
     }
 
     Ok(())
 }
 
-fn append_cmake_fragment(path: &Path, fragment: &[u8]) -> Result<()> {
+fn upsert_cmake_fragment(path: &Path, fragment: &[u8]) -> Result<()> {
     if !path.exists() {
         return Ok(());
     }
 
     let mut content = fs::read(path)?;
-    if content
-        .windows(fragment.len())
-        .any(|window| window == fragment)
-    {
-        return Ok(());
+    let managed_fragment = [
+        CARGOKIT_LINUX_CMAKE_BEGIN_MARKER,
+        b"\n",
+        fragment,
+        b"\n",
+        CARGOKIT_LINUX_CMAKE_END_MARKER,
+    ]
+    .concat();
+
+    match (
+        find_bytes(&content, CARGOKIT_LINUX_CMAKE_BEGIN_MARKER),
+        find_bytes(&content, CARGOKIT_LINUX_CMAKE_END_MARKER),
+    ) {
+        (Some(begin), Some(end)) if begin < end => {
+            let end = end + CARGOKIT_LINUX_CMAKE_END_MARKER.len();
+            if content[begin..end] == managed_fragment {
+                return Ok(());
+            }
+            content.splice(begin..end, managed_fragment);
+        }
+        (None, None) => {
+            if !content.ends_with(b"\n") {
+                content.push(b'\n');
+            }
+            content.push(b'\n');
+            content.extend_from_slice(&managed_fragment);
+            content.push(b'\n');
+        }
+        _ => bail!(
+            "Malformed flutter_rust_bridge CargoKit block in {}",
+            path.display()
+        ),
     }
 
-    if !content.ends_with(b"\n") {
-        content.push(b'\n');
-    }
-    content.push(b'\n');
-    content.extend_from_slice(fragment);
-    content.push(b'\n');
     fs::write(path, content)?;
 
     Ok(())
+}
+
+fn find_bytes(haystack: &[u8], needle: &[u8]) -> Option<usize> {
+    haystack
+        .windows(needle.len())
+        .position(|window| window == needle)
 }
 
 fn backend_shared_template_dir(
@@ -377,33 +408,52 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::{append_cmake_fragment, filter_file};
+    use super::{filter_file, upsert_cmake_fragment};
     use std::fs;
     use std::path::Path;
     use tempfile::tempdir;
 
     /// Appends a CMake fragment exactly once while preserving existing content.
     #[test]
-    fn append_cmake_fragment_is_idempotent() {
+    fn upsert_cmake_fragment_is_idempotent() {
         let temp_dir = tempdir().unwrap();
         let path = temp_dir.path().join("CMakeLists.txt");
         fs::write(&path, "project(runner)").unwrap();
 
-        append_cmake_fragment(&path, b"install(FILES library)").unwrap();
-        append_cmake_fragment(&path, b"install(FILES library)").unwrap();
+        upsert_cmake_fragment(&path, b"install(FILES library)").unwrap();
+        upsert_cmake_fragment(&path, b"install(FILES library)").unwrap();
 
         assert_eq!(
             fs::read_to_string(path).unwrap(),
-            "project(runner)\n\ninstall(FILES library)\n"
+            "project(runner)\n\n# flutter_rust_bridge: cargokit integration begin\ninstall(FILES library)\n# flutter_rust_bridge: cargokit integration end\n"
+        );
+    }
+
+    /// Replaces an outdated managed CMake fragment instead of appending a duplicate target.
+    #[test]
+    fn upsert_cmake_fragment_replaces_existing_block() {
+        let temp_dir = tempdir().unwrap();
+        let path = temp_dir.path().join("CMakeLists.txt");
+        fs::write(
+            &path,
+            "project(runner)\n\n# flutter_rust_bridge: cargokit integration begin\napply_cargokit(old)\n# flutter_rust_bridge: cargokit integration end\n",
+        )
+        .unwrap();
+
+        upsert_cmake_fragment(&path, b"apply_cargokit(new)").unwrap();
+
+        assert_eq!(
+            fs::read_to_string(path).unwrap(),
+            "project(runner)\n\n# flutter_rust_bridge: cargokit integration begin\napply_cargokit(new)\n# flutter_rust_bridge: cargokit integration end\n"
         );
     }
 
     /// Ignores a platform CMake file when Flutter did not generate that platform.
     #[test]
-    fn append_cmake_fragment_ignores_missing_file() {
+    fn upsert_cmake_fragment_ignores_missing_file() {
         let temp_dir = tempdir().unwrap();
 
-        append_cmake_fragment(
+        upsert_cmake_fragment(
             &temp_dir.path().join("missing/CMakeLists.txt"),
             b"install(FILES library)",
         )

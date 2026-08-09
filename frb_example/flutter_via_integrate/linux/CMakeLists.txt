@@ -127,6 +127,8 @@ if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
     COMPONENT Runtime)
 endif()
 
+# flutter_rust_bridge: cargokit integration begin
 install(FILES "${${BINARY_NAME}_cargokit_lib}"
   DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
   COMPONENT Runtime)
+# flutter_rust_bridge: cargokit integration end
