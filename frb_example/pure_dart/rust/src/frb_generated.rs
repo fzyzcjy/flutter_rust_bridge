@@ -58444,13 +58444,6 @@ impl SseDecode for Box<i32> {
     }
 }
 
-impl SseDecode for Box<i64> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return Box::new(<i64>::sse_decode(deserializer));
-    }
-}
-
 impl SseDecode for Box<i8> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -64355,18 +64348,6 @@ impl SseDecode for Vec<i32> {
     }
 }
 
-impl SseDecode for Vec<i64> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = Vec::with_capacity(len_ as usize);
-        for idx_ in 0..len_ {
-            ans_.push(<i64>::sse_decode(deserializer));
-        }
-        return ans_;
-    }
-}
-
 impl SseDecode for Vec<i8> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -67936,17 +67917,6 @@ impl SseDecode for Option<i32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         if (<bool>::sse_decode(deserializer)) {
             return Some(<i32>::sse_decode(deserializer));
-        } else {
-            return None;
-        }
-    }
-}
-
-impl SseDecode for Option<i64> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        if (<bool>::sse_decode(deserializer)) {
-            return Some(<i64>::sse_decode(deserializer));
         } else {
             return None;
         }
@@ -98199,13 +98169,6 @@ impl SseEncode for Box<i32> {
     }
 }
 
-impl SseEncode for Box<i64> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i64>::sse_encode(*self, serializer);
-    }
-}
-
 impl SseEncode for Box<i8> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -102844,16 +102807,6 @@ impl SseEncode for Vec<i32> {
     }
 }
 
-impl SseEncode for Vec<i64> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.len() as _, serializer);
-        for item in self {
-            <i64>::sse_encode(item, serializer);
-        }
-    }
-}
-
 impl SseEncode for Vec<i8> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -105780,16 +105733,6 @@ impl SseEncode for Option<i32> {
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <i32>::sse_encode(value, serializer);
-        }
-    }
-}
-
-impl SseEncode for Option<i64> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <bool>::sse_encode(self.is_some(), serializer);
-        if let Some(value) = self {
-            <i64>::sse_encode(value, serializer);
         }
     }
 }
@@ -114882,8 +114825,7 @@ mod io {
     impl CstDecode<Box<i64>> for *mut i64 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> Box<i64> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<i64>::cst_decode(*wrap).into()
+            unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<Box<crate::api::mirror::ApplicationEnv>> for *mut wire_cst_application_env {
@@ -114896,78 +114838,67 @@ mod io {
     impl CstDecode<NonCloneSimpleTwinMoi> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> NonCloneSimpleTwinMoi {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<NonCloneSimpleTwinMoi>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<NonCloneSimpleTwinNormal> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> NonCloneSimpleTwinNormal {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<NonCloneSimpleTwinNormal>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<NonCloneSimpleTwinRustAsync> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> NonCloneSimpleTwinRustAsync {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<NonCloneSimpleTwinRustAsync>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<NonCloneSimpleTwinRustAsyncMoi> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> NonCloneSimpleTwinRustAsyncMoi {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<NonCloneSimpleTwinRustAsyncMoi>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<NonCloneSimpleTwinSync> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> NonCloneSimpleTwinSync {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<NonCloneSimpleTwinSync>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<NonCloneSimpleTwinSyncMoi> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> NonCloneSimpleTwinSyncMoi {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<NonCloneSimpleTwinSyncMoi>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<i64> for *mut i64 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> i64 {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<i64>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<chrono::Duration> for *mut i64 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> chrono::Duration {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<chrono::Duration>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<chrono::NaiveDate> for *mut i64 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> chrono::NaiveDate {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<chrono::NaiveDate>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<chrono::NaiveDateTime> for *mut i64 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> chrono::NaiveDateTime {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<chrono::NaiveDateTime>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<chrono::DateTime<chrono::Utc>> for *mut i64 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> chrono::DateTime<chrono::Utc> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<chrono::DateTime<chrono::Utc>>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<flutter_rust_bridge::DartOpaque> for *mut *const std::ffi::c_void {
@@ -114980,57 +114911,49 @@ mod io {
     impl CstDecode<RustOpaqueMoi<HideDataAnotherTwinMoi>> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueMoi<HideDataAnotherTwinMoi> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<RustOpaqueMoi<HideDataAnotherTwinMoi>>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<RustOpaqueNom<HideDataAnotherTwinNormal>> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueNom<HideDataAnotherTwinNormal> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<RustOpaqueNom<HideDataAnotherTwinNormal>>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<RustOpaqueMoi<HideDataTwinMoi>> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueMoi<HideDataTwinMoi> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<RustOpaqueMoi<HideDataTwinMoi>>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<RustOpaqueNom<HideDataTwinNormal>> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueNom<HideDataTwinNormal> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<RustOpaqueNom<HideDataTwinNormal>>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<RustOpaqueNom<HideDataTwinRustAsync>> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueNom<HideDataTwinRustAsync> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<RustOpaqueNom<HideDataTwinRustAsync>>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<RustOpaqueMoi<HideDataTwinRustAsyncMoi>> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueMoi<HideDataTwinRustAsyncMoi> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<RustOpaqueMoi<HideDataTwinRustAsyncMoi>>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<RustOpaqueNom<HideDataTwinSync>> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueNom<HideDataTwinSync> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<RustOpaqueNom<HideDataTwinSync>>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<RustOpaqueMoi<HideDataTwinSyncMoi>> for *mut usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueMoi<HideDataTwinSyncMoi> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<RustOpaqueMoi<HideDataTwinSyncMoi>>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<crate::api::misc_example::ATwinNormal> for *mut wire_cst_a_twin_normal {
@@ -115103,8 +115026,7 @@ mod io {
     impl CstDecode<crate::api::mirror::ApplicationMode> for *mut i32 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> crate::api::mirror::ApplicationMode {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::mirror::ApplicationMode>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<crate::api::mirror::ApplicationSettings> for *mut wire_cst_application_settings {
@@ -115219,11 +115141,7 @@ mod io {
     impl CstDecode<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal> for *mut i32 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>::cst_decode(
-                *wrap,
-            )
-            .into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl
@@ -115235,11 +115153,7 @@ mod io {
             self,
         ) -> crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync
         {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<
-                crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync,
-            >::cst_decode(*wrap)
-            .into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>
@@ -115249,8 +115163,7 @@ mod io {
         fn cst_decode(
             self,
         ) -> crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<crate::api::pseudo_manual::basic::BasicStructTwinNormal>
@@ -116196,12 +116109,6 @@ mod io {
     impl CstDecode<i32> for *mut i32 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> i32 {
-            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
-        }
-    }
-    impl CstDecode<i64> for *mut i64 {
-        // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> i64 {
             unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
@@ -117494,8 +117401,7 @@ mod io {
     impl CstDecode<crate::api::misc_example::WeekdaysTwinNormal> for *mut i32 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> crate::api::misc_example::WeekdaysTwinNormal {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::misc_example::WeekdaysTwinNormal>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>
@@ -117506,18 +117412,13 @@ mod io {
             self,
         ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync
         {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<
-                crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync,
-            >::cst_decode(*wrap)
-            .into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> for *mut i32 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>::cst_decode(*wrap).into()
+            unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>>
@@ -117702,12 +117603,6 @@ mod io {
             unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
-    impl CstDecode<Box<i64>> for *mut i64 {
-        // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> Box<i64> {
-            unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
-        }
-    }
     impl CstDecode<Box<i8>> for *mut i8 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> Box<i8> {
@@ -117809,8 +117704,7 @@ mod io {
     impl CstDecode<Box<crate::api::misc_example::WeekdaysTwinNormal>> for *mut i32 {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> Box<crate::api::misc_example::WeekdaysTwinNormal> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::misc_example::WeekdaysTwinNormal>::cst_decode(*wrap).into()
+            unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl
@@ -117823,11 +117717,7 @@ mod io {
             self,
         ) -> Box<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>
         {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<
-                crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync,
-            >::cst_decode(*wrap)
-            .into()
+            unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>
@@ -117837,8 +117727,7 @@ mod io {
         fn cst_decode(
             self,
         ) -> Box<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> {
-            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>::cst_decode(*wrap).into()
+            unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
         }
     }
     impl CstDecode<crate::api::misc_example::CTwinNormal> for wire_cst_c_twin_normal {
@@ -183586,12 +183475,6 @@ mod web {
             Box::new(self.cst_decode())
         }
     }
-    impl CstDecode<Box<i64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-        // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> Box<i64> {
-            Box::new(self.cst_decode())
-        }
-    }
     impl CstDecode<Box<i8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> Box<i8> {
@@ -183978,16 +183861,6 @@ mod web {
                 .into()
         }
     }
-    impl CstDecode<Vec<i64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-        // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> Vec<i64> {
-            let buf = self
-                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>()
-                .unwrap();
-            let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
-            flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
-        }
-    }
     impl CstDecode<Vec<i8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> Vec<i8> {
@@ -184015,11 +183888,11 @@ mod web {
     impl CstDecode<Vec<u64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> Vec<u64> {
-            let buf = self
-                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigUint64Array>()
-                .unwrap();
-            let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
-            flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
+            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap()
+                .iter()
+                .map(CstDecode::cst_decode)
+                .collect()
         }
     }
     impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
