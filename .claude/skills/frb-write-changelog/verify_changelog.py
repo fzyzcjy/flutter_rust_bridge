@@ -66,6 +66,7 @@ def verify_changelog(
     local_authors: set[str],
     ignored_pr_numbers: set[int],
     extra_local_pr_numbers: set[int],
+    extra_thanks_authors: set[str],
 ) -> VerificationResult:
     section = extract_changelog_section(
         changelog_text=changelog_text,
@@ -90,7 +91,8 @@ def verify_changelog(
             pr.author_login
             for pr in expected_prs
             if should_thank_author(pr=pr, local_authors=local_authors)
-        },
+        }
+        | extra_thanks_authors,
     )
 
     return VerificationResult(
@@ -298,6 +300,16 @@ def main(
             help="PR number expected in the changelog but absent from the merged PR JSON, authored by a local maintainer.",
         ),
     ] = [],
+    extra_thanks_author: Annotated[
+        list[str],
+        typer.Option(
+            "--extra-thanks-author",
+            help=(
+                "Contributor to credit even though they are not the author of a "
+                "merged PR in the release range, such as a verified co-author."
+            ),
+        ),
+    ] = [],
 ) -> None:
     result = verify_changelog(
         changelog_text=changelog_path.read_text(),
@@ -310,6 +322,7 @@ def main(
         local_authors=set(local_author),
         ignored_pr_numbers=set(ignore_pr),
         extra_local_pr_numbers=set(extra_local_pr),
+        extra_thanks_authors=set(extra_thanks_author),
     )
 
     typer.echo(format_result(result))
