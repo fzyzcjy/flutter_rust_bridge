@@ -64,6 +64,9 @@ Future<void> streamSinkInsideStructTwinSse(
 Stream<int> funcStreamAddValueAndErrorTwinSse() => RustLib.instance.api
     .crateApiPseudoManualStreamTwinSseFuncStreamAddValueAndErrorTwinSse();
 
+Stream<int> funcStreamCrossWorkerCloseTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinSseFuncStreamCrossWorkerCloseTwinSse();
+
 class LogTwinSse {
   final int key;
   final int value;
