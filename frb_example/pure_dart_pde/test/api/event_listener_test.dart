@@ -49,7 +49,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await Future.delayed(Duration.zero);
     final subscription = stream.listen((_) {});
     await Future.delayed(Duration.zero);
-    unawaited(subscription.cancel());
+    // Cancelling must complete promptly even though Rust never sends another
+    // event nor closes the stream (regression for the idle-cancel deadlock).
+    await subscription.cancel().timeout(const Duration(seconds: 5));
+    // Rust sending after the Dart side already cancelled must not crash.
     createEventSyncTwinNormal(address: '1', payload: '');
   });
   // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
