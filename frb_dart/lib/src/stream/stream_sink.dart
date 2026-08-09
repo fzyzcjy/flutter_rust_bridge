@@ -79,8 +79,6 @@ Stream<T> _bindDecodedStream<T>(
         terminate();
         return;
       } catch (error, stackTrace) {
-        // Preserve the previous `async*` behaviour: a decoded error/panic ends
-        // the stream after the error event is delivered.
         controller.addError(error, stackTrace);
         terminate();
         return;
@@ -88,8 +86,6 @@ Stream<T> _bindDecodedStream<T>(
       controller.add(decoded);
     },
     onError: (Object error, StackTrace stackTrace) {
-      // Receive ports never surface stream-level errors, but an arbitrary
-      // source may, and silently dropping them would hide failures.
       controller.addError(error, stackTrace);
       terminate();
     },
