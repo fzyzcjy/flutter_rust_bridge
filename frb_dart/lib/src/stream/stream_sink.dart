@@ -50,6 +50,7 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
 }
 
 @visibleForTesting
+/// Binds and decodes a source stream for internal tests.
 Stream<T> bindDecodedStreamForTest<T>({
   required T Function(dynamic) decodeObject,
   required Stream<dynamic> source,
