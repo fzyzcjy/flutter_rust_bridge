@@ -174,21 +174,17 @@ class CargoKitPlugin implements Plugin<Project> {
                     targetPlatforms = platforms
                     pluginFile = CargoKitPlugin.file
                 }
-                def onTask = { newTask ->
-                    def taskNames = [
-                        "merge${buildType.capitalize()}NativeLibs",
-                        "merge${buildType.capitalize()}JniLibFolders",
-                        "copy${buildType.capitalize()}JniLibsProjectOnly",
-                        "copy${buildType.capitalize()}JniLibsProjectAndLocalJars",
-                    ]
-                    if (newTask.name in taskNames) {
-                        newTask.dependsOn task
-                        // Fix gradle 7.4.2 not picking up JNI library changes
-                        newTask.outputs.upToDateWhen { false }
-                    }
+                def taskNames = [
+                    "merge${buildType.capitalize()}NativeLibs",
+                    "merge${buildType.capitalize()}JniLibFolders",
+                    "copy${buildType.capitalize()}JniLibsProjectOnly",
+                    "copy${buildType.capitalize()}JniLibsProjectAndLocalJars",
+                ]
+                project.tasks.matching { it.name in taskNames }.configureEach { newTask ->
+                    newTask.dependsOn task
+                    // Fix gradle 7.4.2 not picking up JNI library changes
+                    newTask.outputs.upToDateWhen { false }
                 }
-                project.tasks.each onTask
-                project.tasks.whenTaskAdded onTask
             }
         }
     }
