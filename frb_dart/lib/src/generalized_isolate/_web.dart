@@ -17,21 +17,25 @@ String serializeNativePort(NativePortType port) {
 }
 
 /// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
-  RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)),
-);
+ReceivePort broadcastPort(String channelName, {bool ordered = false}) =>
+    ReceivePort._raw(
+      RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)),
+      ordered,
+    );
 
 /// {@template flutter_rust_bridge.same_as_native}
 /// Web implementation of the one with same name in native.
 /// {@endtemplate}
 class ReceivePort extends Stream<dynamic> {
   final RawReceivePort _rawReceivePort;
+  final bool _ordered;
 
   /// {@macro flutter_rust_bridge.same_as_native}
   factory ReceivePort() => ReceivePort._raw();
 
-  ReceivePort._raw([RawReceivePort? rawReceivePort])
-    : _rawReceivePort = rawReceivePort ?? RawReceivePort();
+  ReceivePort._raw([RawReceivePort? rawReceivePort, bool ordered = false])
+    : _rawReceivePort = rawReceivePort ?? RawReceivePort(),
+      _ordered = ordered;
 
   @override
   StreamSubscription listen(
@@ -40,14 +44,16 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    final subscription = _rawReceivePort._webReceivePort._onMessage
-        .map(_extractData)
-        .listen(
-          onData,
-          onError: onError,
-          onDone: onDone,
-          cancelOnError: cancelOnError,
-        );
+    Stream<dynamic> stream = _rawReceivePort._webReceivePort._onMessage.map(
+      _extractData,
+    );
+    if (_ordered) stream = _orderMessages(stream);
+    final subscription = stream.listen(
+      onData,
+      onError: onError,
+      onDone: onDone,
+      cancelOnError: cancelOnError,
+    );
     _rawReceivePort._webReceivePort._start();
     return subscription;
   }
@@ -60,6 +66,31 @@ class ReceivePort extends Stream<dynamic> {
   /// {@macro flutter_rust_bridge.same_as_native}
   void close() => _rawReceivePort.close();
 }
+
+Stream<dynamic> _orderMessages(Stream<dynamic> stream) async* {
+  final pending = <(int, int), dynamic>{};
+  var next = (0, 0);
+
+  await for (final event in stream) {
+    final sequence = (event[0] as int, event[1] as int);
+    if (_sequenceBefore(sequence, next) || pending.containsKey(sequence)) {
+      throw StateError('Duplicate or stale ordered port message: $sequence');
+    }
+
+    pending[sequence] = event[2];
+    while (pending.containsKey(next)) {
+      yield pending.remove(next);
+      next = _nextSequence(next);
+    }
+  }
+}
+
+bool _sequenceBefore((int, int) lhs, (int, int) rhs) =>
+    lhs.$1 < rhs.$1 || (lhs.$1 == rhs.$1 && lhs.$2 < rhs.$2);
+
+(int, int) _nextSequence((int, int) sequence) => sequence.$2 == 0xffffffff
+    ? (sequence.$1 + 1, 0)
+    : (sequence.$1, sequence.$2 + 1);
 
 /// {@macro flutter_rust_bridge.same_as_native}
 class RawReceivePort {
