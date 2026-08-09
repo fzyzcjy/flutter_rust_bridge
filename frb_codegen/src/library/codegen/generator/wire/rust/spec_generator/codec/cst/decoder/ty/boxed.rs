@@ -19,7 +19,11 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
         let exist_in_real_api = self.mir.exist_in_real_api;
         Acc::new(|target| {
             match (target, self.mir.inner.as_ref()) {
-                (Io, mir) if mir.is_primitive() => Some(format!(
+                (
+                    Io,
+                    MirType::Primitive(_)
+                    | MirType::Delegate(MirTypeDelegate::CastedPrimitive(_)),
+                ) => Some(format!(
                     "unsafe {{ {extra} flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }}",
                     extra = if exist_in_real_api { "" } else { "*" }
                 )),
