@@ -5,17 +5,32 @@ use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::warn;
-use std::borrow::Cow;
 use std::collections::HashMap;
 use std::ffi::OsStr;
+use std::fs;
 use std::path::{Path, PathBuf};
+
+const CARGOKIT_LINUX_RUNNER_CMAKE_FRAGMENT: &str = r#"include("${CMAKE_CURRENT_SOURCE_DIR}/../../rust_builder/cargokit/cmake/cargokit.cmake")
+
+apply_cargokit(
+  ${BINARY_NAME}
+  "../../REPLACE_ME_RUST_CRATE_DIR"
+  "REPLACE_ME_RUST_CRATE_NAME"
+  ""
+)
+
+set(${BINARY_NAME}_cargokit_lib "${${BINARY_NAME}_cargokit_lib}" PARENT_SCOPE)"#;
+
+const CARGOKIT_LINUX_APP_CMAKE_FRAGMENT: &str = r#"install(FILES "${${BINARY_NAME}_cargokit_lib}"
+  DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+  COMPONENT Runtime)"#;
 
 fn execute_overlay_dir(
     current_reference_dir: &Dir,
     replacements: &HashMap<&'static str, &str>,
     dart_root: &Path,
     config: &IntegrateConfig,
-    comment_out_files: Option<&[Cow<'_, str>]>,
+    comment_out_files: Option<&[String]>,
     include_ohos: bool,
 ) -> Result<()> {
     overlay_dir(
@@ -60,10 +75,10 @@ pub(super) fn execute_overlay_templates(
     )?;
 
     let (shared_template_dir, comment_out_files) = match &config.template {
-        Template::App => (&TemplateDirs::SHARED_APP, vec!["main.dart".into()]),
+        Template::App => (&TemplateDirs::SHARED_APP, vec!["main.dart".to_string()]),
         Template::Plugin => (
             &TemplateDirs::SHARED_PLUGIN,
-            vec![format!("{dart_package_name}.dart").into()],
+            vec![format!("{dart_package_name}.dart")],
         ),
     };
     execute_overlay_dir(
@@ -71,7 +86,7 @@ pub(super) fn execute_overlay_templates(
         replacements,
         dart_root,
         config,
-        Some(comment_out_files.as_slice()),
+        Some(&comment_out_files),
         include_ohos,
     )?;
 
@@ -80,15 +95,54 @@ pub(super) fn execute_overlay_templates(
     }
 
     if let Some(dir) = backend_template_dir(config.integration_backend, config.template) {
-        execute_overlay_dir(
-            dir,
-            replacements,
-            dart_root,
-            config,
-            Some(&["CMakeLists.txt".into()]),
-            include_ohos,
-        )?;
+        execute_overlay_dir(dir, replacements, dart_root, config, None, include_ohos)?;
     }
+
+    if config.integration_backend == IntegrationBackend::Cargokit
+        && config.template == Template::App
+        && config.enable_write_lib
+    {
+        append_cargokit_linux_cmake(dart_root, replacements)?;
+    }
+
+    Ok(())
+}
+
+fn append_cargokit_linux_cmake(dart_root: &Path, replacements: &HashMap<&str, &str>) -> Result<()> {
+    for (relative_path, fragment) in [
+        (
+            "linux/runner/CMakeLists.txt",
+            CARGOKIT_LINUX_RUNNER_CMAKE_FRAGMENT,
+        ),
+        ("linux/CMakeLists.txt", CARGOKIT_LINUX_APP_CMAKE_FRAGMENT),
+    ] {
+        let fragment = replace_file_content(fragment.as_bytes(), replacements);
+        append_cmake_fragment(&dart_root.join(relative_path), &fragment)?;
+    }
+
+    Ok(())
+}
+
+fn append_cmake_fragment(path: &Path, fragment: &[u8]) -> Result<()> {
+    if !path.exists() {
+        return Ok(());
+    }
+
+    let mut content = fs::read(path)?;
+    if content
+        .windows(fragment.len())
+        .any(|window| window == fragment)
+    {
+        return Ok(());
+    }
+
+    if !content.ends_with(b"\n") {
+        content.push(b'\n');
+    }
+    content.push(b'\n');
+    content.extend_from_slice(fragment);
+    content.push(b'\n');
+    fs::write(path, content)?;
 
     Ok(())
 }
@@ -155,7 +209,7 @@ fn modify_file(
     existing_content: Option<Vec<u8>>,
     replacements: &HashMap<&str, &str>,
     enable_local_dependency: bool,
-    comment_out_files: Option<&[Cow<'_, str>]>,
+    comment_out_files: Option<&[String]>,
 ) -> Option<(PathBuf, Vec<u8>)> {
     let src = replace_file_content(reference_content, replacements);
 
@@ -164,7 +218,7 @@ fn modify_file(
             target_path.file_name().and_then(|e| e.to_str()),
             comment_out_files,
         ) {
-            if files.contains(&Cow::Borrowed(file_name)) {
+            if files.contains(&file_name.to_owned()) {
                 return comment_out_existing_file_and_write_template(
                     existing_content,
                     target_path,
@@ -207,23 +261,12 @@ fn comment_out_existing_file_and_write_template(
     path: PathBuf,
     src: &[u8],
 ) -> Option<(PathBuf, Vec<u8>)> {
-    const HASHTAG_COMMENT_FILES: &[&str] = &["CMakeLists.txt"];
-
-    let comment_leading = if HASHTAG_COMMENT_FILES
-        .iter()
-        .any(|f| path.iter().contains(&OsStr::new(f)))
-    {
-        "#"
-    } else {
-        "//"
-    };
-
-    let existing_content = std::str::from_utf8(existing_content.as_slice());
+    let existing_content = String::from_utf8(existing_content);
     let commented_existing_content = existing_content
         .map(|x| {
             format!(
-                "{comment_leading} The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n{}\n\n",
-                x.split('\n').map(|line| format!("{comment_leading} {line}")).join("\n")
+                "// The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n{}\n\n",
+                x.split('\n').map(|line| format!("// {line}")).join("\n")
             )
         })
         .unwrap_or_default();
@@ -241,10 +284,7 @@ fn filter_file(
     }
 
     if path.iter().contains(&OsStr::new("cargokit")) {
-        const CARGOKIT_GIT_PATHS: &[&str] = &[".git", ".github", "docs", "test"];
-        return !CARGOKIT_GIT_PATHS
-            .iter()
-            .contains(&file_name(path).as_ref());
+        return ![".git", ".github", "docs", "test"].contains(&file_name(path));
     }
 
     if !enable_write_lib {
@@ -280,11 +320,11 @@ fn filter_file(
 }
 
 fn compute_cargokit_comments(path: &Path) -> Option<String> {
-    if ".gitignore" == file_name(path) {
+    if [".gitignore"].contains(&file_name(path)) {
         return None;
     }
 
-    let comment_leading = match file_extension(path).as_ref() {
+    let comment_leading = match file_extension(path) {
         "dart" | "md" | "gradle" | "" => "///",
         "yaml" | "toml" => "#",
         // Do not add prelude for `sh`, since it can contain things like `#!/bin/bash`
@@ -303,12 +343,12 @@ fn compute_cargokit_comments(path: &Path) -> Option<String> {
     )
 }
 
-fn file_name(p: &Path) -> Cow<'_, str> {
-    p.file_name().unwrap().to_string_lossy()
+fn file_name(p: &Path) -> &str {
+    p.file_name().unwrap().to_str().unwrap()
 }
 
-fn file_extension(p: &Path) -> Cow<'_, str> {
-    p.extension().unwrap_or_default().to_string_lossy()
+fn file_extension(p: &Path) -> &str {
+    p.extension().unwrap_or_default().to_str().unwrap()
 }
 
 const CARGOKIT_PRELUDE: &[&str] = &[
@@ -321,30 +361,54 @@ struct TemplateDirs;
 impl TemplateDirs {
     const SHARED_SHARED: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/shared");
-
     const SHARED_APP: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/app");
-
     const SHARED_PLUGIN: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/shared/plugin");
-
     const CARGOKIT_APP: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/app");
-
     const CARGOKIT_PLUGIN: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/plugin");
-
     const NATIVE_ASSETS_SHARED: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/native_assets/shared");
-
     const NATIVE_ASSETS_PLUGIN: Dir<'static> =
         include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/native_assets/plugin");
 }
 
 #[cfg(test)]
 mod tests {
-    use super::filter_file;
+    use super::{append_cmake_fragment, filter_file};
+    use std::fs;
     use std::path::Path;
+    use tempfile::tempdir;
+
+    /// Appends a CMake fragment exactly once while preserving existing content.
+    #[test]
+    fn append_cmake_fragment_is_idempotent() {
+        let temp_dir = tempdir().unwrap();
+        let path = temp_dir.path().join("CMakeLists.txt");
+        fs::write(&path, "project(runner)").unwrap();
+
+        append_cmake_fragment(&path, b"install(FILES library)").unwrap();
+        append_cmake_fragment(&path, b"install(FILES library)").unwrap();
+
+        assert_eq!(
+            fs::read_to_string(path).unwrap(),
+            "project(runner)\n\ninstall(FILES library)\n"
+        );
+    }
+
+    /// Ignores a platform CMake file when Flutter did not generate that platform.
+    #[test]
+    fn append_cmake_fragment_ignores_missing_file() {
+        let temp_dir = tempdir().unwrap();
+
+        append_cmake_fragment(
+            &temp_dir.path().join("missing/CMakeLists.txt"),
+            b"install(FILES library)",
+        )
+        .unwrap();
+    }
 
     #[test]
     fn test_filter_file_excludes_ohos_when_not_enabled() {

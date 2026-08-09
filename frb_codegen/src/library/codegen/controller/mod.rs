@@ -4,7 +4,7 @@ use itertools::Itertools;
 use log::{debug, warn};
 use notify::{RecommendedWatcher, RecursiveMode};
 use notify_debouncer_mini::{new_debouncer, DebounceEventResult, Debouncer};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use std::sync::mpsc::Receiver;
 use std::time::Duration;
 
@@ -68,11 +68,6 @@ fn create_fs_watcher(
         // Should not be too large, otherwise an event is only sent at the end of the interval
         Duration::from_millis(300),
         move |event: DebounceEventResult| {
-            let exclude_paths = exclude_paths
-                .iter()
-                .map(|p| p.as_path())
-                .collect::<Vec<&Path>>();
-
             if is_event_interesting(&event, &exclude_paths) {
                 debug!("See interesting file change: {event:?}");
                 tx.send(()).unwrap()
@@ -91,11 +86,11 @@ fn create_fs_watcher(
     Ok((debouncer, rx))
 }
 
-fn is_event_interesting(event: &DebounceEventResult, exclude_paths: &Vec<&Path>) -> bool {
+fn is_event_interesting(event: &DebounceEventResult, exclude_paths: &[PathBuf]) -> bool {
     if let Ok(event) = event {
-        (event.iter()).map(|e| e.path.as_path()).all(|p| {
-            !exclude_paths.contains(&p.canonicalize().unwrap_or(p.to_path_buf()).as_path())
-        })
+        (event.iter())
+            .map(|e| e.path.clone())
+            .all(|p| !exclude_paths.contains(&p.canonicalize().unwrap_or(p.clone())))
     } else {
         false
     }

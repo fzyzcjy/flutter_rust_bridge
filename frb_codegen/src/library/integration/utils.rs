@@ -1,3 +1,4 @@
+use crate::utils::path_utils::path_to_string;
 use anyhow::Result;
 use include_dir::{Dir, DirEntry};
 use log::debug;
@@ -20,9 +21,9 @@ pub(super) fn overlay_dir(
             continue;
         }
 
-        let target_sub_path =
-            compute_effective_path(&base_target_path.join(entry.path()), replacements);
+        let target_sub_path = base_target_path.join(entry.path());
 
+        let target_sub_path = compute_effective_path(&target_sub_path, replacements);
         match entry {
             DirEntry::Dir(new_reference_dir) => {
                 if let Some((modified_path, _)) = modifier(&target_sub_path, &[], None) {
@@ -53,13 +54,13 @@ pub(super) fn overlay_dir(
 }
 
 pub(crate) fn compute_effective_path(path: &Path, replacements: &HashMap<&str, &str>) -> PathBuf {
-    replace_string_content(&path.as_os_str().to_string_lossy(), replacements).into()
+    replace_string_content(&path_to_string(path).unwrap(), replacements).into()
 }
 
 pub(crate) fn replace_file_content(content: &[u8], replacements: &HashMap<&str, &str>) -> Vec<u8> {
-    match std::str::from_utf8(content) {
-        Ok(string_content) => replace_string_content(string_content, replacements).into_bytes(),
-        Err(_) => content.to_vec(),
+    match String::from_utf8(content.to_owned()) {
+        Ok(string_content) => replace_string_content(&string_content, replacements).into_bytes(),
+        Err(e) => e.into_bytes(),
     }
 }
 

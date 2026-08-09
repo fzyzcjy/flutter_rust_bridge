@@ -5,7 +5,6 @@ use crate::library::commands::fvm::command_arg_maybe_fvm;
 use crate::misc::{FvmInstallMode, IntegrationBackend, Template};
 use anyhow::ensure;
 use log::info;
-use std::borrow::Cow;
 use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
@@ -27,18 +26,18 @@ pub fn flutter_create(
     if let Some(o) = org {
         full_args.extend(["--org".to_owned(), o.to_owned()]);
     }
-    match flutter_create_template_arg(template, integration_backend, platforms.as_deref())? {
+    match flutter_create_template_arg(template, integration_backend, platforms.as_ref())? {
         FlutterCreateTemplateArg::App { platforms } => full_args.extend([
             "--template".to_owned(),
             "app".to_owned(),
             "--platforms".to_owned(),
-            platforms.into(),
+            platforms,
         ]),
         FlutterCreateTemplateArg::PluginFfi { platforms } => full_args.extend([
             "--template".to_owned(),
             "plugin_ffi".to_owned(),
             "--platforms".to_owned(),
-            platforms.into(),
+            platforms,
         ]),
         FlutterCreateTemplateArg::PackageFfi => {
             full_args.extend(["--template".to_owned(), "package_ffi".to_owned()])
@@ -50,24 +49,24 @@ pub fn flutter_create(
 }
 
 #[derive(Debug)]
-enum FlutterCreateTemplateArg<'a> {
-    App { platforms: Cow<'a, str> },
-    PluginFfi { platforms: Cow<'a, str> },
+enum FlutterCreateTemplateArg {
+    App { platforms: String },
+    PluginFfi { platforms: String },
     PackageFfi,
 }
 
-fn flutter_create_template_arg<'a>(
+fn flutter_create_template_arg(
     template: Template,
     integration_backend: IntegrationBackend,
-    platforms: Option<&'a str>,
-) -> anyhow::Result<FlutterCreateTemplateArg<'a>> {
+    platforms: Option<&String>,
+) -> anyhow::Result<FlutterCreateTemplateArg> {
     match (template, integration_backend) {
         (Template::App, _) => Ok(FlutterCreateTemplateArg::App {
-            platforms: resolve_flutter_platforms(template, platforms)?,
+            platforms: resolve_flutter_platforms(template, platforms.cloned())?,
         }),
         (Template::Plugin, IntegrationBackend::Cargokit) => {
             Ok(FlutterCreateTemplateArg::PluginFfi {
-                platforms: resolve_flutter_platforms(template, platforms)?,
+                platforms: resolve_flutter_platforms(template, platforms.cloned())?,
             })
         }
         (Template::Plugin, IntegrationBackend::NativeAssets) => {
@@ -121,14 +120,14 @@ pub fn flutter_pub_get(path: &Path, fvm_install_mode: FvmInstallMode) -> anyhow:
 
 pub(crate) fn resolve_flutter_platforms(
     template: Template,
-    platforms: Option<&str>,
-) -> anyhow::Result<Cow<'_, str>> {
+    platforms: Option<String>,
+) -> anyhow::Result<String> {
     if let Some(value) = platforms {
-        return Ok(value.into());
+        return Ok(value);
     }
 
     let include_ohos = is_ohos_flutter().unwrap_or(false);
-    Ok(default_flutter_platforms(template, include_ohos).into())
+    Ok(default_flutter_platforms(template, include_ohos))
 }
 
 #[allow(clippy::vec_init_then_push)]
@@ -256,7 +255,7 @@ mod tests {
         let arg = flutter_create_template_arg(
             Template::Plugin,
             IntegrationBackend::Cargokit,
-            Some("android,ios"),
+            Some(&"android,ios".to_owned()),
         )
         .unwrap();
 

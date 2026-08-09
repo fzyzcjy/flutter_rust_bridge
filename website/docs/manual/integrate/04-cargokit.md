@@ -6,6 +6,9 @@ with flutter applications and packages.
 Cargokit remains the default `flutter_rust_bridge_codegen create/integrate` backend for compatibility with existing projects and older Flutter/Dart SDKs.
 The [Native Assets](native-assets) backend is available through `--integration-backend native-assets`.
 
+For Flutter applications on Linux, `create` and `integrate` link the generated Rust library into the runner and install it in the application bundle.
+Run `flutter_rust_bridge_codegen integrate` again after upgrading an existing project to apply this configuration.
+
 ## Cargokit Details
 
 Please refer to its documentation for how to use it.

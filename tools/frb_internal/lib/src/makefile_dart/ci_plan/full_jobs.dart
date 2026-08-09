@@ -210,9 +210,7 @@ final kCiJobs = [
       for (final info in [
         ..._linuxFlutterDesktopPackageEntries([
           'frb_example--flutter_via_create',
-          'frb_example--flutter_via_create_native_assets',
           'frb_example--flutter_via_integrate',
-          'frb_example--flutter_via_integrate_native_assets',
         ]),
       ])
         {'info': info},
@@ -271,13 +269,10 @@ List<Map<String, Object?>> _flutterDesktopPackageEntries(String package) => [
 ];
 
 List<Map<String, Object?>> _linuxFlutterDesktopPackageEntries(
-  List<String> packages) => [
+  List<String> packages,
+) => [
   for (final package in packages)
-    {
-      'image': 'ubuntu-latest',
-      'platform': 'linux',
-      'package': package,
-    },
+    {'image': 'ubuntu-latest', 'platform': 'linux', 'package': package},
 ];
 
 List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
