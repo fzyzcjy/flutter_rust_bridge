@@ -45,12 +45,6 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
   );
 }
 
-/// Test-only seam exposing [_bindDecodedStream] over an injectable raw event
-/// [source] instead of a platform receive port.
-///
-/// Kept as a top-level symbol (not a member of [RustStreamSink]) so that
-/// entrypoints exporting `show RustStreamSink` do not leak it to consumers.
-/// Tests reach it via `package:flutter_rust_bridge/src/...`.
 @visibleForTesting
 Stream<T> bindDecodedStreamForTest<T>({
   required BaseCodec<T, dynamic, dynamic> codec,
@@ -58,15 +52,6 @@ Stream<T> bindDecodedStreamForTest<T>({
   required void Function() closeSource,
 }) => _bindDecodedStream(codec, source, closeSource: closeSource);
 
-/// Listen to [source] directly instead of wrapping it in an `async*` generator
-/// that does `await for`. A generator suspended in `await for` cannot be
-/// interrupted by cancelling its subscription, so if the producer stays idle
-/// (never sends another message and never closes the stream) then
-/// `StreamSubscription.cancel()` would hang forever. Closing a receive port
-/// only wakes such a generator on native (where `ReceivePort.close()` delivers
-/// a done event) but not on web (where closing a `BroadcastChannel` delivers
-/// nothing), so `await for` is fundamentally unsafe here. A plain subscription
-/// can always be cancelled immediately and identically on every platform.
 Stream<T> _bindDecodedStream<T>(
   BaseCodec<T, dynamic, dynamic> codec,
   Stream<dynamic> source, {
@@ -74,9 +59,6 @@ Stream<T> _bindDecodedStream<T>(
 }) {
   final controller = StreamController<T>(sync: true);
 
-  // Nullable rather than `late`: a source is allowed to report done or error
-  // before `listen` returns, so `terminate` can run while the subscription
-  // does not exist yet. The `if (terminated)` check below closes that window.
   StreamSubscription<dynamic>? sourceSubscription;
   var terminated = false;
 
