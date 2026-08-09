@@ -31,6 +31,12 @@ variable "flutter_version" {
   default     = "3.44.0"
 }
 
+variable "host_proxy_url" {
+  type        = string
+  description = "Optional host proxy URL reachable from the Tart VM, for example http://192.168.64.1:7897."
+  default     = ""
+}
+
 source "tart-cli" "frb_tart_base" {
   vm_base_name   = var.source_vm
   vm_name        = var.target_vm
@@ -51,9 +57,22 @@ build {
 
   provisioner "shell" {
     script = "scripts/provision-frb-tart-base.sh"
-    environment_vars = [
-      "FRB_TART_FLUTTER_VERSION=${var.flutter_version}",
-    ]
+    environment_vars = concat(
+      [
+        "FRB_TART_FLUTTER_VERSION=${var.flutter_version}",
+      ],
+      var.host_proxy_url == "" ? [] : [
+        "http_proxy=${var.host_proxy_url}",
+        "https_proxy=${var.host_proxy_url}",
+        "all_proxy=${var.host_proxy_url}",
+        "HTTP_PROXY=${var.host_proxy_url}",
+        "HTTPS_PROXY=${var.host_proxy_url}",
+        "ALL_PROXY=${var.host_proxy_url}",
+        "CARGO_HTTP_PROXY=${var.host_proxy_url}",
+        "NO_PROXY=localhost,127.0.0.1,::1",
+        "no_proxy=localhost,127.0.0.1,::1",
+      ],
+    )
     execute_command = "chmod +x {{ .Path }}; {{ .Vars }} {{ .Path }}"
   }
 }

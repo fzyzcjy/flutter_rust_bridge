@@ -118,7 +118,10 @@ final kCiJobs = [
     'test_mimic_quickstart',
     matrix: CiMatrix([
       for (final image in ['windows-2025', 'macos-15-intel', 'ubuntu-latest'])
-        {'image': image},
+        for (final integrationBackend in ['cargokit', 'native-assets'])
+          if (!(image == 'macos-15-intel' &&
+              integrationBackend == 'native-assets'))
+            {'image': image, 'integration_backend': integrationBackend},
     ]),
   ),
   CiJob(
@@ -182,7 +185,7 @@ final kCiJobs = [
     'test_flutter_native_ios',
     matrix: CiMatrix([
       for (final package in _flutterNativePackages)
-        {'package': package, 'device': 'iPhone 16 Pro Max Simulator (18.6)'},
+        {'package': package, 'device': 'iPhone 17 Pro Max Simulator (26.5)'},
     ]),
   ),
   CiJob(
@@ -284,7 +287,7 @@ List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
       'image': 'macos-latest',
       'platform': 'ios',
       'target': 'ios',
-      'device': 'iPhone 16 Pro Max Simulator (18.6)',
+      'device': 'iPhone 17 Pro Max Simulator (26.5)',
       'package': package,
       'package_path': packagePath,
     },

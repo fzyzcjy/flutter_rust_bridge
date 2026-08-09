@@ -1,5 +1,45 @@
 # Changelog
 
+## 2.13.0-beta.6
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support generic type aliases and qualify generated `Result` #3242 (thanks @dbsxdbsx)
+* Require release contributor description coverage #3332
+* Preserve web `StreamSink` message ordering #3233
+* Fail fast for locked Rust opaque sync calls on web #3271
+
+## 2.13.0-beta.5
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Clarify the uninitialized RustStreamSink stream error #3280 (thanks @ShuttleSpace)
+* Support fallback iOS simulator runtimes and update the iOS CI simulator #3284 #3283
+* Improve CI stability and release submodule checks #3282 #3275 #3262
+* Improve native assets quickstart documentation and Cargo configuration #3278 #3276
+
+## 2.13.0-beta.4
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix CargoKit integration template packaging in the codegen crate
+
+## 2.13.0-beta.3
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix Dart prerelease caret dependency checks #3249
+* Improve frb_hooks pub score checks #3259
+* Improve native assets post-release validation #3260 #3258
+* Improve release changelog and development environment guidance #3261 #3257
+
+## 2.13.0-beta.2
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Improve OHOS and HarmonyOS docs and tooling #3246 #3236 (thanks @star4277)
+* Support native assets integration backend #3181
+* Sync frb_hooks release version #3256
+* Improve native assets, Apple scaffold, and integration template tooling #3240 #3237 #3208 #3206 #3205
+* Improve Tart, VMware, and local development environment tooling #3245 #3244 #3243 #3190
+* Improve release publishing, changelog, and contributor workflow #3255 #3254 #3235 #3232 #3228 #3231 #3230
+* Improve CI and coverage handling #3238 #3212
+
 ## 2.13.0-beta.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

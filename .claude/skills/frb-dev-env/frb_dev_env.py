@@ -43,6 +43,17 @@ REPO_LABEL_VALUE = "flutter_rust_bridge"
 LAYOUT_VERSION_VALUE = "3"
 TART_WORKSPACE_SHARE_NAME = "workspace"
 TART_HOST_MAIN_SHARE_NAME = "main"
+TART_HOST_PROXY_ENV_VAR = "FRB_TART_HOST_PROXY_URL"
+TART_PROXY_ENV_NAMES = [
+    "http_proxy",
+    "https_proxy",
+    "all_proxy",
+    "HTTP_PROXY",
+    "HTTPS_PROXY",
+    "ALL_PROXY",
+    "CARGO_HTTP_PROXY",
+]
+TART_NO_PROXY_VALUE = "localhost,127.0.0.1,::1"
 TART_LOCAL_COPY_ROOT = Path("/Users/admin/frb-dev-env-local-copies")
 TART_LOCAL_COPY_EXCLUDES = [
     ".dart_tool",
@@ -710,12 +721,56 @@ def ensure_tart_vm(*, worktree_root: Path, base_vm: str, min_free_gb: int) -> st
     return vm_name
 
 
-def tart_shell_command(command: list[str], *, worktree_root: Path) -> list[str]:
+def get_tart_host_proxy_url(host_proxy_url: str | None) -> str | None:
+    if host_proxy_url:
+        return host_proxy_url
+
+    return os.environ.get(TART_HOST_PROXY_ENV_VAR)
+
+
+def build_tart_guest_proxy_env(host_proxy_url: str | None) -> dict[str, str]:
+    resolved_host_proxy_url = get_tart_host_proxy_url(host_proxy_url=host_proxy_url)
+    if not resolved_host_proxy_url:
+        return {}
+
+    parsed = urlsplit(resolved_host_proxy_url)
+    if not parsed.scheme or not parsed.netloc:
+        raise CommandError(
+            "Tart host proxy URL must include scheme and host, for example "
+            "http://192.168.64.1:7897"
+        )
+
+    return {
+        **{name: resolved_host_proxy_url for name in TART_PROXY_ENV_NAMES},
+        "NO_PROXY": TART_NO_PROXY_VALUE,
+        "no_proxy": TART_NO_PROXY_VALUE,
+    }
+
+
+def shell_export_lines(env: dict[str, str]) -> list[str]:
+    return [
+        f"export {key}={shlex.quote(value)}"
+        for key, value in sorted(env.items())
+    ]
+
+
+def tart_shell_command(
+    command: list[str],
+    *,
+    worktree_root: Path,
+    env: dict[str, str] | None = None,
+) -> list[str]:
     quoted_command = " ".join(shlex.quote(part) for part in command)
+    script = "\n".join(
+        [
+            *shell_export_lines(env or {}),
+            f"cd {shlex.quote(str(worktree_root))} && exec {quoted_command}",
+        ]
+    )
     return [
         "/bin/zsh",
         "-lc",
-        f"cd {shlex.quote(str(worktree_root))} && exec {quoted_command}",
+        script,
     ]
 
 
@@ -860,12 +915,19 @@ def tart_prepare_ios_integration_test(
     *,
     vm_name: str,
     flutter_root: Path,
+    env: dict[str, str] | None = None,
 ) -> None:
+    command = ["tart", "exec", vm_name]
+    if env:
+        command.extend(
+            [
+                "/usr/bin/env",
+                *[f"{key}={value}" for key, value in sorted(env.items())],
+            ]
+        )
     exec_command(
         [
-            "tart",
-            "exec",
-            vm_name,
+            *command,
             "/usr/bin/python3",
             "-c",
             build_tart_prepare_ios_integration_test_script(flutter_root=flutter_root),
@@ -1647,6 +1709,13 @@ def tart_prepare_ios_integration_test_command(
         Path,
         typer.Option("--flutter-root", help="Flutter SDK root inside the Tart VM."),
     ] = DEFAULT_TART_FLUTTER_ROOT,
+    host_proxy_url: Annotated[
+        str | None,
+        typer.Option(
+            "--host-proxy-url",
+            help=f"Host proxy URL reachable from the Tart VM. Defaults to {TART_HOST_PROXY_ENV_VAR}.",
+        ),
+    ] = None,
 ) -> None:
     """Prepare the Tart VM Flutter SDK for iOS integration tests."""
 
@@ -1661,6 +1730,7 @@ def tart_prepare_ios_integration_test_command(
     tart_prepare_ios_integration_test(
         vm_name=vm_name,
         flutter_root=flutter_root,
+        env=build_tart_guest_proxy_env(host_proxy_url=host_proxy_url),
     )
 
 
@@ -1698,6 +1768,13 @@ def tart_exec(
         Path,
         typer.Option("--local-copy-root", help="VM-local root for uploaded worktree copies."),
     ] = TART_LOCAL_COPY_ROOT,
+    host_proxy_url: Annotated[
+        str | None,
+        typer.Option(
+            "--host-proxy-url",
+            help=f"Host proxy URL reachable from the Tart VM. Defaults to {TART_HOST_PROXY_ENV_VAR}.",
+        ),
+    ] = None,
 ) -> None:
     """Ensure the Tart VM is running, then execute a command inside it."""
 
@@ -1725,7 +1802,11 @@ def tart_exec(
             "tart",
             "exec",
             vm_name,
-            *tart_shell_command(command, worktree_root=command_worktree_root),
+            *tart_shell_command(
+                command,
+                worktree_root=command_worktree_root,
+                env=build_tart_guest_proxy_env(host_proxy_url=host_proxy_url),
+            ),
         ]
     )
 

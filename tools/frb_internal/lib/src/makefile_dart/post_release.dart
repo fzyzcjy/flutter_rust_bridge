@@ -25,10 +25,13 @@ List<Command<void>> createCommands() {
 class PostReleaseConfig {
   final CodegenInstallMode codegenInstallMode;
   final ReleaseChannel releaseChannel;
+  @CliOption(defaultsTo: IntegrateExampleBackend.cargokit)
+  final IntegrateExampleBackend integrationBackend;
 
   const PostReleaseConfig({
     required this.codegenInstallMode,
     required this.releaseChannel,
+    required this.integrationBackend,
   });
 }
 
@@ -42,6 +45,7 @@ Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
       'Post-release codegen install skipped: '
       'release_channel=${config.releaseChannel.name} '
       'codegen_install_mode=${config.codegenInstallMode.name} '
+      'integration_backend=${config.integrationBackend.name} '
       'package=$_codegenPackageName '
       'reason=no newer unstable version',
     );
@@ -52,6 +56,7 @@ Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
     'Post-release codegen install: '
     'release_channel=${config.releaseChannel.name} '
     'codegen_install_mode=${config.codegenInstallMode.name} '
+    'integration_backend=${config.integrationBackend.name} '
     'package=$_codegenPackageName '
     'version_requirement=$versionRequirement',
   );
@@ -60,7 +65,10 @@ Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
     config.codegenInstallMode,
     versionConstraint: versionRequirement,
   );
-  await const MimicQuickstartTester(postRelease: true).test();
+  await MimicQuickstartTester(
+    postRelease: true,
+    integrationBackend: config.integrationBackend,
+  ).test();
 }
 
 enum CodegenInstallMode { cargoInstall, cargoBinstall, scoop, homebrew }

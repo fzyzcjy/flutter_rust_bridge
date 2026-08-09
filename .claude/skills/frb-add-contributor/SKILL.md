@@ -19,9 +19,26 @@ Important:
 
 - Deduplicate by contributor. A single person may have multiple merged PRs.
 - If the task is about `new contributor PR`s, use the contributor's first PR only.
+- For release reconciliation, inspect every third-party human-authored PR in the same release range used by `frb-write-changelog`.
+- For each such PR, confirm that the contributor's human-written `.all-contributors-custom.yaml` summary covers that contribution. Being present in `.all-contributorsrc` or `README.md` is not sufficient.
+- Treat an existing contributor whose summary does not cover a release-range PR as needing reconciliation, but do not expect a new all-contributors PR for that person.
 - If the contributor already exists in `.all-contributorsrc` or `README.md`, do not expect a new all-contributors PR to be created.
 
-## Step 2: Prepare `.all-contributors-custom.yaml` and stop for human input
+## Step 2: Stop for human confirmation
+
+After determining which contributors may need to be added or have their custom descriptions extended, stop and ask a human to confirm the contributor list and source PRs before taking any mutating action.
+
+This stop is mandatory.
+
+- Do not edit `.all-contributors-custom.yaml`.
+- Do not regenerate contributor artifacts.
+- Do not post all-contributors comments.
+- Do not create or merge any PRs.
+- Do not perform any other GitHub mutation.
+
+Only continue after the human explicitly confirms which contributors to add or update and which source PRs those changes cover.
+
+## Step 3: Prepare `.all-contributors-custom.yaml` and stop for human input
 
 Before regenerating contributor artifacts, append each new contributor to the end of `.all-contributors-custom.yaml`:
 
@@ -31,7 +48,19 @@ Before regenerating contributor artifacts, append each new contributor to the en
 
 Do this only for contributors who are not already present in `.all-contributors-custom.yaml`.
 
-Then stop and ask a human to replace each `TODO` with a concise contribution summary.
+For an existing credited contributor with no custom entry, append:
+
+```yaml
+- <username>: TODO(#<pr-number>)
+```
+
+For an existing contributor whose summary does not cover a release-range PR, preserve the existing human-written text and append a marker for each uncovered PR:
+
+```yaml
+- <username>: <existing human-written summary> TODO(#<pr-number>)
+```
+
+Then stop and ask a human to replace each `TODO` or `TODO(#<pr-number>)` with a concise contribution summary.
 
 This stop is mandatory.
 
@@ -42,7 +71,7 @@ This stop is mandatory.
 
 Only resume after the human-written descriptions are present in `.all-contributors-custom.yaml`.
 
-## Step 3: Trigger all-contributors
+## Step 4: Trigger all-contributors
 
 Post the comment on the chosen source PR:
 
@@ -52,10 +81,11 @@ gh pr comment <pr-number> --repo fzyzcjy/flutter_rust_bridge --body '@all-contri
 
 Then inspect the bot response on that PR.
 
+- Skip this step for an existing contributor whose only gap was an incomplete custom description.
 - If the bot says the user already contributed before, stop there for that user.
 - Otherwise, wait for the bot to open a PR named `docs: add <username> as a contributor for code`.
 
-## Step 4: Validate contributor metadata
+## Step 5: Validate contributor metadata
 
 When a contributor PR exists, check the generated contributor data before merging.
 
@@ -70,9 +100,9 @@ Required validation:
 - If the generated homepage is `http://`, change it to `https://` if the site supports it.
 - If the personal site does not support `https://`, prefer the contributor's GitHub profile URL instead of keeping `http://`.
 
-## Step 5: Regenerate contributor output
+## Step 6: Regenerate contributor output
 
-After the human has replaced all `TODO` messages, regenerate the contributor artifacts instead of hand-editing `README.md`.
+After the human has replaced all `TODO` markers, confirm that the custom summaries cover every third-party release-range PR. Then regenerate the contributor artifacts instead of hand-editing `README.md`.
 
 Use:
 
@@ -92,7 +122,7 @@ If you only need to refresh the website copy of the README, use:
 ./frb_internal generate-internal-readme
 ```
 
-## Step 6: Resolve merge conflicts in contributor PRs
+## Step 7: Resolve merge conflicts in contributor PRs
 
 These PRs usually conflict only in:
 
@@ -118,7 +148,7 @@ If the merge conflicts:
 
 Do not revert unrelated contributor entries that were merged by other PRs.
 
-## Step 7: Merge the contributor PRs
+## Step 8: Merge the contributor PRs
 
 After the branch is updated and GitHub reports it mergeable:
 
@@ -132,7 +162,7 @@ Notes:
 - If that happens, wait briefly, re-check the PR state, and retry the merge.
 - After merging one contributor PR, fetch `origin/master` again before resolving the next one.
 
-## Step 8: Final verification
+## Step 9: Final verification
 
 At the end, verify there are no remaining open all-contributors PRs:
 

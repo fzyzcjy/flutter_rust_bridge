@@ -29,4 +29,55 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(testModel.aliasEnum, MyEnum.false_);
     expect(testModel.aliasStruct.content, true);
   });
+
+  test('generic type alias resolves to Ok value (#3071)', () async {
+    final value = await genericResultAliasOkTwinSse();
+    expect(value, 42);
+  });
+
+  test('generic type alias Err translates to a Dart exception (#3071)',
+      () async {
+    await expectLater(
+      () async => genericResultAliasErrTwinSse(),
+      throwsA(isA<GenericAliasErrorTwinSse>()),
+    );
+  });
+
+  test('chained generic type alias resolves to Ok value (#3071)', () async {
+    final value = await genericResultAliasChainedOkTwinSse();
+    expect(value, 43);
+  });
+
+  test('chained generic type alias Err translates to a Dart exception (#3071)',
+      () async {
+    await expectLater(
+      () async => genericResultAliasChainedErrTwinSse(),
+      throwsA(isA<GenericAliasErrorTwinSse>()),
+    );
+  });
+
+  test('two-parameter generic type alias resolves to Ok value (#3071)',
+      () async {
+    final value = await genericResultAliasTwoParamsOkTwinSse();
+    expect(value, 44);
+  });
+
+  test(
+      'two-parameter generic type alias Err translates to a Dart exception (#3071)',
+      () async {
+    await expectLater(
+      () async => genericResultAliasTwoParamsErrTwinSse(),
+      throwsA(isA<GenericAliasErrorTwinSse>()),
+    );
+  });
+
+  test('generic Option alias resolves in return position (#3071)', () async {
+    expect(await genericOptionAliasReturnTwinSse(input: 45), 45);
+    expect(await genericOptionAliasReturnTwinSse(input: -1), isNull);
+  });
+
+  test('generic Option alias resolves in argument position (#3071)', () async {
+    expect(await genericOptionAliasArgTwinSse(input: 46), 46);
+    expect(await genericOptionAliasArgTwinSse(input: null), -1);
+  });
 }

@@ -77,6 +77,51 @@ void main() {
     },
   );
 
+  test('release Cargo lock template path exists', () {
+    expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
+  });
+
+  test('release guard rejects uninitialized submodules', () {
+    expect(
+      () => verifyReleaseSubmodules(
+        submoduleStatus:
+            '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+      ),
+      throwsA(
+        isA<Exception>().having(
+          (error) => error.toString(),
+          'message',
+          contains('git submodule update --init --recursive'),
+        ),
+      ),
+    );
+  });
+
+  test('release guard accepts initialized submodules', () {
+    expect(
+      () => verifyReleaseSubmodules(
+        submoduleStatus:
+            ' 6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit (heads/main)\n'
+            ' 6f7144d frb_codegen/assets/integration_template/cargokit/plugin/cargokit (heads/main)',
+      ),
+      returnsNormally,
+    );
+  });
+
+  test('release guard reports all uninitialized submodules', () {
+    expect(
+      uninitializedSubmodulePathsForTesting(
+        '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit\n'
+        ' 6f7144d frb_codegen/assets/integration_template/cargokit/plugin/cargokit\n'
+        '-1234567 unrelated/submodule',
+      ),
+      [
+        'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+        'unrelated/submodule',
+      ],
+    );
+  });
+
   test(
     'pure dart generator resolves package from repo root instead of cwd',
     () {
@@ -279,6 +324,26 @@ plain
       const Duration(minutes: 10),
     );
   });
+
+  test(
+    'quickstart smoke gives macOS desktop cold builds more readiness time',
+    () {
+      expect(
+        quickstartSmokeFlutterRunReadyTimeoutForTesting(
+          QuickstartSmokeTarget.desktop,
+          isMacOS: true,
+        ),
+        const Duration(minutes: 10),
+      );
+      expect(
+        quickstartSmokeFlutterRunReadyTimeoutForTesting(
+          QuickstartSmokeTarget.desktop,
+          isMacOS: false,
+        ),
+        const Duration(minutes: 5),
+      );
+    },
+  );
 
   test('quickstart smoke does not capture while Flutter is still building', () {
     expect(
@@ -583,10 +648,39 @@ plain
         'cargo-install',
         '--release-channel',
         'unstable',
+        '--integration-backend',
+        'native-assets',
       ]);
 
       expect(config.codegenInstallMode, CodegenInstallMode.cargoInstall);
       expect(config.releaseChannel, ReleaseChannel.unstable);
+      expect(config.integrationBackend, IntegrateExampleBackend.nativeAssets);
+    });
+
+    test('defaults post-release backend to cargokit', () {
+      final config = parsePostReleaseConfig([
+        '--codegen-install-mode',
+        'cargo-install',
+        '--release-channel',
+        'unstable',
+      ]);
+
+      expect(config.integrationBackend, IntegrateExampleBackend.cargokit);
+    });
+
+    test('parses mimic quickstart backend from CLI arguments', () {
+      final config = parseTestMimicQuickstartConfig([
+        '--integration-backend',
+        'native-assets',
+      ]);
+
+      expect(config.integrationBackend, IntegrateExampleBackend.nativeAssets);
+    });
+
+    test('defaults mimic quickstart backend to cargokit', () {
+      final config = parseTestMimicQuickstartConfig([]);
+
+      expect(config.integrationBackend, IntegrateExampleBackend.cargokit);
     });
   });
 

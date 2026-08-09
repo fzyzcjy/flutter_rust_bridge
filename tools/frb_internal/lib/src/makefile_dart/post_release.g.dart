@@ -29,6 +29,10 @@ PostReleaseConfig _$parsePostReleaseConfigResult(ArgResults result) =>
         _$ReleaseChannelEnumMapBuildCli,
         result['release-channel'] as String,
       ),
+      integrationBackend: _$enumValueHelper(
+        _$IntegrateExampleBackendEnumMapBuildCli,
+        result['integration-backend'] as String,
+      ),
     );
 
 const _$CodegenInstallModeEnumMapBuildCli = <CodegenInstallMode, String>{
@@ -43,12 +47,23 @@ const _$ReleaseChannelEnumMapBuildCli = <ReleaseChannel, String>{
   ReleaseChannel.unstable: 'unstable',
 };
 
+const _$IntegrateExampleBackendEnumMapBuildCli =
+    <IntegrateExampleBackend, String>{
+      IntegrateExampleBackend.cargokit: 'cargokit',
+      IntegrateExampleBackend.nativeAssets: 'native-assets',
+    };
+
 ArgParser _$populatePostReleaseConfigParser(ArgParser parser) => parser
   ..addOption(
     'codegen-install-mode',
     allowed: ['cargo-install', 'cargo-binstall', 'scoop', 'homebrew'],
   )
-  ..addOption('release-channel', allowed: ['stable', 'unstable']);
+  ..addOption('release-channel', allowed: ['stable', 'unstable'])
+  ..addOption(
+    'integration-backend',
+    defaultsTo: 'cargokit',
+    allowed: ['cargokit', 'native-assets'],
+  );
 
 final _$parserForPostReleaseConfig = _$populatePostReleaseConfigParser(
   ArgParser(),

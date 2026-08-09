@@ -62,9 +62,11 @@ def verify_changelog(
     merged_prs: list[PullRequestInfo],
     version: str,
     previous_release_time: datetime,
+    release_time: datetime | None,
     local_authors: set[str],
     ignored_pr_numbers: set[int],
     extra_local_pr_numbers: set[int],
+    extra_thanks_authors: set[str],
 ) -> VerificationResult:
     section = extract_changelog_section(
         changelog_text=changelog_text,
@@ -73,6 +75,7 @@ def verify_changelog(
     expected_prs = expected_prs_for_release(
         merged_prs=merged_prs,
         previous_release_time=previous_release_time,
+        release_time=release_time,
         ignored_pr_numbers=ignored_pr_numbers,
     )
 
@@ -88,7 +91,8 @@ def verify_changelog(
             pr.author_login
             for pr in expected_prs
             if should_thank_author(pr=pr, local_authors=local_authors)
-        },
+        }
+        | extra_thanks_authors,
     )
 
     return VerificationResult(
@@ -126,12 +130,14 @@ def expected_prs_for_release(
     *,
     merged_prs: list[PullRequestInfo],
     previous_release_time: datetime,
+    release_time: datetime | None,
     ignored_pr_numbers: set[int],
 ) -> list[PullRequestInfo]:
     return [
         pr
         for pr in merged_prs
         if pr.merged_at > previous_release_time
+        and (release_time is None or pr.merged_at <= release_time)
         and pr.number not in ignored_pr_numbers
         and not is_all_contributors_pr(pr)
     ]
@@ -146,9 +152,10 @@ def should_thank_author(
 
 
 def is_all_contributors_pr(pr: PullRequestInfo) -> bool:
-    return pr.author_login == "app/allcontributors" or pr.title.startswith(
-        "docs: add ",
-    )
+    return pr.author_login == "app/allcontributors" or re.match(
+        r"^docs: add .+ as a contributor(?: for .+)?$",
+        pr.title,
+    ) is not None
 
 
 def extract_pr_numbers(section: str) -> list[int]:
@@ -261,6 +268,13 @@ def main(
             help="Path to gh pr list JSON output.",
         ),
     ],
+    release_time: Annotated[
+        str | None,
+        typer.Option(
+            "--release-time",
+            help="Target release timestamp. Use this when verifying an already-published release.",
+        ),
+    ] = None,
     changelog_path: Annotated[
         Path,
         typer.Option("--changelog", help="Path to CHANGELOG.md."),
@@ -286,15 +300,29 @@ def main(
             help="PR number expected in the changelog but absent from the merged PR JSON, authored by a local maintainer.",
         ),
     ] = [],
+    extra_thanks_author: Annotated[
+        list[str],
+        typer.Option(
+            "--extra-thanks-author",
+            help=(
+                "Contributor to credit even though they are not the author of a "
+                "merged PR in the release range, such as a verified co-author."
+            ),
+        ),
+    ] = [],
 ) -> None:
     result = verify_changelog(
         changelog_text=changelog_path.read_text(),
         merged_prs=load_merged_prs(merged_prs_json),
         version=version,
         previous_release_time=parse_datetime(previous_release_time),
+        release_time=(
+            parse_datetime(release_time) if release_time is not None else None
+        ),
         local_authors=set(local_author),
         ignored_pr_numbers=set(ignore_pr),
         extra_local_pr_numbers=set(extra_local_pr),
+        extra_thanks_authors=set(extra_thanks_author),
     )
 
     typer.echo(format_result(result))

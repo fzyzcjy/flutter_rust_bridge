@@ -6,6 +6,7 @@ It does not replace the core bridge code generator.
 
 :::info
 The flutter_rust_bridge Native Assets backend is available through `--integration-backend native-assets`.
+Use `flutter_rust_bridge_codegen >= 2.13.0-beta.2` and a Flutter/Dart SDK that supports build hooks and code assets.
 :::
 
 ## Usage
@@ -30,7 +31,7 @@ That package currently wraps [`native_toolchain_rust`](https://pub.dev/packages/
 The Rust crate must be buildable by Cargo for the requested target platform.
 For `native_toolchain_rust`, the crate needs a library target that can produce both static and dynamic artifacts:
 
-```toml
+```text
 [lib]
 crate-type = ["staticlib", "cdylib"]
 ```

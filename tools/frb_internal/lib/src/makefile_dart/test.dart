@@ -23,7 +23,12 @@ part 'test.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleCommand('test-mimic-quickstart', testMimicQuickstart),
+    SimpleConfigCommand(
+      'test-mimic-quickstart',
+      testMimicQuickstart,
+      _$populateTestMimicQuickstartConfigParser,
+      _$parseTestMimicQuickstartConfigResult,
+    ),
     SimpleCommand('test-upgrade', testUpgrade),
     SimpleConfigCommand(
       'test-rust',
@@ -85,6 +90,14 @@ List<Command<void>> createCommands() {
 @CliOptions()
 class TestConfig {
   const TestConfig();
+}
+
+@CliOptions()
+class TestMimicQuickstartConfig {
+  @CliOption(defaultsTo: IntegrateExampleBackend.cargokit)
+  final IntegrateExampleBackend integrationBackend;
+
+  const TestMimicQuickstartConfig({required this.integrationBackend});
 }
 
 @CliOptions()
@@ -179,16 +192,21 @@ class TestFlutterQuickstartSmokeConfig {
   });
 }
 
-Future<void> testMimicQuickstart() async =>
-    await const MimicQuickstartTester(postRelease: false).test();
+Future<void> testMimicQuickstart(TestMimicQuickstartConfig config) =>
+    MimicQuickstartTester(
+      postRelease: false,
+      integrationBackend: config.integrationBackend,
+    ).test();
 
 class MimicQuickstartTester {
   final bool postRelease;
   final bool coverage;
+  final IntegrateExampleBackend integrationBackend;
 
   const MimicQuickstartTester({
     required this.postRelease,
     this.coverage = false,
+    this.integrationBackend = IntegrateExampleBackend.cargokit,
   });
 
   Future<void> test() async {
@@ -220,7 +238,12 @@ class MimicQuickstartTester {
 
   Future<void> _quickstartStepCreate() async {
     await executeFrbCodegen(
-      'create $_kMimicQuickstartPackageName ${postRelease ? "" : "--local"}',
+      [
+        'create',
+        _kMimicQuickstartPackageName,
+        if (!postRelease) '--local',
+        if (_mimicQuickstartBackendArg.isNotEmpty) _mimicQuickstartBackendArg,
+      ].join(' '),
       relativePwd: 'frb_example',
       coverage: coverage,
       postRelease: postRelease,
@@ -293,6 +316,14 @@ class MimicQuickstartTester {
       coverageName: 'MimicQuickstartStepGenerate',
       postRelease: postRelease,
     );
+  }
+
+  String get _mimicQuickstartBackendArg {
+    return switch (integrationBackend) {
+      IntegrateExampleBackend.cargokit => '',
+      IntegrateExampleBackend.nativeAssets =>
+        '--integration-backend native-assets',
+    };
   }
 }
 

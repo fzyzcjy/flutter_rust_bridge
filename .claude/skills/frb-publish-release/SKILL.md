@@ -11,8 +11,17 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 ### 1. Preflight
 
-- Work from the repository root on the intended release branch, normally fresh `master`.
+- Work from the repository root on the intended release branch, normally fresh `master`. If the checkout is detached but already points at the intended release commit, switch or create a local release branch from that commit before running mutating release commands; do not treat detached HEAD itself as a release blocker.
 - Check `git status --short --branch` and do not start publishing from a dirty tree.
+- Check submodules before publishing:
+
+  ```bash
+  git submodule update --init --recursive
+  git submodule status --recursive
+  ```
+
+  Stop if any submodule path remains uninitialized. A release built without initialized submodules can publish incomplete package contents. The release script performs the same submodule-status guard before publishing.
+- Treat `master` as a moving branch. Before each irreversible release phase, fetch `origin master`, confirm the current release branch or detached checkout still points at the intended latest `origin/master` commit, and re-run `git status --short --branch` to confirm there are no unexpected local changes.
 - Confirm the target version in `CHANGELOG.md`, root `Cargo.toml`, and `frb_dart/pubspec.yaml`.
 - Compute the release versions the same way `./frb_internal release` does: the top `CHANGELOG.md` version is the new version and the next release section is the old version.
 - Verify both old and new versions are legal before running any mutating release command. The only allowed shapes are stable SemVer `MAJOR.MINOR.PATCH` such as `2.0.0`, or beta SemVer `MAJOR.MINOR.PATCH-beta.N` such as `2.0.0-beta.1`. Use exactly `^\d+\.\d+\.\d+(-beta\.\d+)?$`.
@@ -44,13 +53,23 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
   Stop and wait for normal CI if the script reports any `BLOCK` path. The script is intentionally conservative: release-surface paths such as `Cargo.toml`, `frb_dart/pubspec.yaml`, `frb_codegen/**`, `frb_macros/**`, `frb_rust/**`, `frb_dart/**`, `frb_utils/**`, `frb_example/**`, `tools/frb_internal/**`, `pubspec.yaml`, `melos.yaml`, and lockfiles are not in the allowlist. `CHANGELOG.md` is allowed because adding the target release section is a normal release-preparation step and is reviewed directly before publishing. This exception is for changelog-only release preparation, docs, agent tooling, devcontainer, selected CI configuration, and other explicitly non-release paths only.
 
-### 2. Write Changelog
+### 2. Reconcile Contributors
+
+- Before writing the release changelog, use `frb-add-contributor` to identify contributors from the target release range who may need all-contributors credit or whose human-written custom description does not cover every release-range PR.
+- Follow `frb-add-contributor` exactly. In particular, after determining which contributors may need to be added or have their custom descriptions extended, stop for human confirmation before editing contributor files, posting GitHub comments, triggering all-contributors, opening PRs, or merging contributor PRs.
+- Do not continue to changelog preparation until contributor reconciliation is complete, or confirmed unnecessary because all contributors are credited and their custom descriptions cover every third-party PR in the release range.
+
+### 3. Write Changelog
 
 - Use `frb-write-changelog` to create or refresh the target release section in `CHANGELOG.md`.
-- Review the release section manually before publishing. The top `CHANGELOG.md` version is the source used by `frb_internal release`.
+- When reviewing the release section, explicitly check every third-party human-authored PR in the release range, including docs, CI, chore, and tooling PRs. Each must either have `(thanks @username)` in the matching changelog entry or a documented reason for omission.
+- Be careful with grouped entries: if a local maintainer PR and a third-party PR are summarized together, the grouped entry still needs the third-party thanks attribution.
+- If `CHANGELOG.md` changed for the release, stop and ask a human to review the actual release-section text. Do not publish until the human explicitly confirms that text; approval of the file change, PR, CI result, or release process does not count as confirmation of the changelog text.
+- The top `CHANGELOG.md` version is the source used by `frb_internal release`.
 - If changelog or version files changed, commit that release preparation before publishing.
+- Land contributor and changelog preparation commits on `origin/master` before publishing. Do not leave release preparation only on a side branch.
 
-### 3. Publish
+### 4. Publish
 
 Use the repository release command through a temporary Docker container with publish credentials as the normal publishing path:
 
@@ -58,13 +77,15 @@ Use the repository release command through a temporary Docker container with pub
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release
 ```
 
+Run the one-shot command from a clean local `master` that tracks the latest `origin/master`. `release-update-git` uses plain `git push`, so do not run the command from a side release branch.
+
 Do not split the normal release into separate `release-update-*` or publish commands. The one-shot command is the source of truth for release sequencing: it computes old/new versions from `CHANGELOG.md`, updates checked-in versions and generated version text, updates Scoop metadata, commits and pushes the version bump, creates the GitHub release, then runs the registry publisher:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all
 ```
 
-For beta versions such as `2.13.0-beta.1`, verify the GitHub release is labeled as a pre-release before treating the release as complete.
+For beta versions such as `2.13.0-beta.1`, do not require the GitHub release to be labeled as a pre-release. FRB intentionally publishes beta GitHub releases as normal GitHub releases while the package version itself remains a SemVer prerelease.
 
 `release-publish-all` publishes these packages:
 
@@ -75,7 +96,7 @@ For beta versions such as `2.13.0-beta.1`, verify the GitHub release is labeled 
 
 Only use a split subcommand as a recovery path after confirming which one-shot step already completed. For example, if the version bump and GitHub release already exist and only registry publication is needed, use `.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all` directly.
 
-### 4. Check Released Versions
+### 5. Check Released Versions
 
 Poll registry state with:
 
@@ -110,7 +131,7 @@ Wait until every package has `isReleased: true` and `allReleased: true`. If one 
 
 For beta releases, `get-released-version --version <VERSION>` must verify the pub.dev `versions` list, not only pub.dev's `latest` field, because pub.dev keeps `latest` on the latest stable release when a prerelease is uploaded.
 
-### 5. Babysit CI And Post-Release CI
+### 6. Babysit CI And Post-Release CI
 
 - Keep watching the release commit's normal CI until it is green.
 - After `./frb_internal get-released-version` reports `allReleased: true`, trigger `.github/workflows/post_release.yaml` for the release commit or `master`.

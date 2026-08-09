@@ -405,13 +405,24 @@
       "id": "test_mimic_quickstart",
       "matrix": [
         {
-          "image": "windows-2025"
+          "image": "windows-2025",
+          "integration_backend": "cargokit"
         },
         {
-          "image": "macos-15-intel"
+          "image": "windows-2025",
+          "integration_backend": "native-assets"
         },
         {
-          "image": "ubuntu-latest"
+          "image": "macos-15-intel",
+          "integration_backend": "cargokit"
+        },
+        {
+          "image": "ubuntu-latest",
+          "integration_backend": "cargokit"
+        },
+        {
+          "image": "ubuntu-latest",
+          "integration_backend": "native-assets"
         }
       ]
     },
@@ -635,27 +646,27 @@
       "matrix": [
         {
           "package": "frb_example--flutter_via_create",
-          "device": "iPhone 16 Pro Max Simulator (18.6)"
+          "device": "iPhone 17 Pro Max Simulator (26.5)"
         },
         {
           "package": "frb_example--flutter_via_create_native_assets",
-          "device": "iPhone 16 Pro Max Simulator (18.6)"
+          "device": "iPhone 17 Pro Max Simulator (26.5)"
         },
         {
           "package": "frb_example--flutter_package--example",
-          "device": "iPhone 16 Pro Max Simulator (18.6)"
+          "device": "iPhone 17 Pro Max Simulator (26.5)"
         },
         {
           "package": "frb_example--flutter_package_native_assets--example",
-          "device": "iPhone 16 Pro Max Simulator (18.6)"
+          "device": "iPhone 17 Pro Max Simulator (26.5)"
         },
         {
           "package": "frb_example--rust_ui_counter--ui",
-          "device": "iPhone 16 Pro Max Simulator (18.6)"
+          "device": "iPhone 17 Pro Max Simulator (26.5)"
         },
         {
           "package": "frb_example--rust_ui_todo_list--ui",
-          "device": "iPhone 16 Pro Max Simulator (18.6)"
+          "device": "iPhone 17 Pro Max Simulator (26.5)"
         }
       ]
     },
@@ -861,7 +872,7 @@
             "image": "macos-latest",
             "platform": "ios",
             "target": "ios",
-            "device": "iPhone 16 Pro Max Simulator (18.6)",
+            "device": "iPhone 17 Pro Max Simulator (26.5)",
             "package": "frb_example--flutter_via_create",
             "package_path": "frb_example/flutter_via_create"
           }
@@ -922,7 +933,7 @@
             "image": "macos-latest",
             "platform": "ios",
             "target": "ios",
-            "device": "iPhone 16 Pro Max Simulator (18.6)",
+            "device": "iPhone 17 Pro Max Simulator (26.5)",
             "package": "frb_example--flutter_via_create_native_assets",
             "package_path": "frb_example/flutter_via_create_native_assets"
           }

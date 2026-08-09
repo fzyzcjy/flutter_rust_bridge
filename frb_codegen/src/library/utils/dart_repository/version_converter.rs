@@ -81,6 +81,14 @@ impl TryFrom<&CargoDependencyVersion> for DartPackageVersion {
 mod tests {
     use super::*;
 
+    fn dart_package_version(version: &str) -> DartPackageVersion {
+        DartPackageVersion::try_from(&DartDependencyVersion(version.to_owned())).unwrap()
+    }
+
+    fn version_requirement(requirement: &str) -> VersionReq {
+        VersionReq::parse(requirement).unwrap()
+    }
+
     #[test]
     fn test_dart_dependency_version_to_cargo_dependency_version() {
         for (dart, cargo) in [("^1.2.3", "1.2.3"), ("^0.2.3", "0.2")] {
@@ -97,5 +105,233 @@ mod tests {
             DartPackageVersion::try_from(&CargoDependencyVersion(">=1.2.3".to_owned())).unwrap(),
             DartPackageVersion::Range(VersionReq::parse(">=1.2.3").unwrap())
         );
+    }
+
+    #[test]
+    fn test_dart_stable_exact_version_uses_semver_requirement_matching() {
+        let version = dart_package_version("1.2.3");
+
+        for requirement in [
+            "=1.2.3",
+            ">=1.0.0",
+            ">1.2.2",
+            "<2.0.0",
+            "^1.2.0",
+            "~1.2.0",
+            ">=1.0.0, <2.0.0",
+        ] {
+            assert!(
+                version.matches_requirement(&version_requirement(requirement)),
+                "{version} should satisfy {requirement}"
+            );
+        }
+
+        for requirement in [">1.2.3", ">=2.0.0", "<1.2.3", "^2.0.0", "~1.3.0"] {
+            assert!(
+                !version.matches_requirement(&version_requirement(requirement)),
+                "{version} should not satisfy {requirement}"
+            );
+        }
+    }
+
+    #[test]
+    fn test_dart_range_version_matches_only_identical_requirement() {
+        let version = dart_package_version(">=1.0.0");
+
+        assert!(version.matches_requirement(&version_requirement(">=1.0.0")));
+        assert!(!version.matches_requirement(&version_requirement(">1.0.0")));
+        assert!(!version.matches_requirement(&version_requirement(">=1.0.0, <2.0.0")));
+    }
+
+    #[test]
+    fn test_semver_rejects_prerelease_for_stable_lower_bound_without_override() {
+        let version = Version::parse("4.0.0-dev.3").unwrap();
+        let requirement = version_requirement(">=1.0.0");
+
+        assert!(!requirement.matches(&version));
+        assert!(dart_package_version("^4.0.0-dev.3").matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_satisfies_stable_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^4.0.0-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse(">=1.0.0").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_does_not_satisfy_release_boundary() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^4.0.0-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse(">=4.0.0").unwrap();
+
+        assert!(!version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_stable_exact_version_does_not_satisfy_larger_stable_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("1.0.0".to_owned())).unwrap();
+        let requirement = VersionReq::parse(">=2.0.0").unwrap();
+
+        assert!(!version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_does_not_satisfy_exact_stable_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.0.1-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse("=1.0.1").unwrap();
+
+        assert!(!version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_does_not_satisfy_abbreviated_release_boundary() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.0.0-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse(">=1").unwrap();
+
+        assert!(!version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_satisfies_stable_greater_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.0.1-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse(">1.0.0").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_satisfies_stable_compound_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.1.0-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse(">=1.0.0, <2.0.0").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_satisfies_stable_upper_bound_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.1.0-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse("<2.0.0").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_does_not_satisfy_compound_upper_bound() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^2.0.0-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse(">=1.0.0, <2.0.0").unwrap();
+
+        assert!(!version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_satisfies_stable_caret_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.0.1-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse("^1.0.0").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_satisfies_prerelease_greater_eq_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.0.1-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse(">=1.0.0-dev.1").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_satisfies_prerelease_caret_requirement() {
+        let version =
+            DartPackageVersion::try_from(&DartDependencyVersion("^1.0.1-dev.3".to_owned()))
+                .unwrap();
+        let requirement = VersionReq::parse("^1.0.0-dev.1").unwrap();
+
+        assert!(version.matches_requirement(&requirement));
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_stable_requirement_matrix() {
+        for (version, requirement) in [
+            ("^1.0.1-dev.3", ">=1.0.0"),
+            ("^1.0.1-dev.3", ">1.0.0"),
+            ("^1.0.1-dev.3", "^1.0.0"),
+            ("^1.0.1-dev.3", "~1.0.0"),
+            ("^1.2.0-dev.3", ">=1.0.0, <2.0.0"),
+            ("^1.2.0-dev.3", "<2.0.0"),
+            ("^0.2.4-dev.3", ">=0.2.0, <0.3.0"),
+        ] {
+            let version = dart_package_version(version);
+            let requirement = version_requirement(requirement);
+
+            assert!(
+                version.matches_requirement(&requirement),
+                "{version} should satisfy {requirement}"
+            );
+        }
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_rejects_non_matching_stable_requirement_matrix() {
+        for (version, requirement) in [
+            ("^1.0.1-dev.3", "=1.0.1"),
+            ("^1.0.1-dev.3", ">=1.0.1"),
+            ("^1.0.1-dev.3", ">1.0.1"),
+            ("^1.0.1-dev.3", "<1.0.1"),
+            ("^1.0.1-dev.3", "^1.0.1"),
+            ("^1.2.0-dev.3", ">=1.0.0, <1.2.0"),
+            ("^2.0.0-dev.3", ">=1.0.0, <2.0.0"),
+            ("^0.3.0-dev.3", ">=0.2.0, <0.3.0"),
+        ] {
+            let version = dart_package_version(version);
+            let requirement = version_requirement(requirement);
+
+            assert!(
+                !version.matches_requirement(&requirement),
+                "{version} should not satisfy {requirement}"
+            );
+        }
+    }
+
+    #[test]
+    fn test_dart_prerelease_caret_version_prerelease_requirement_matrix() {
+        for (version, requirement, expected) in [
+            ("^1.0.1-dev.3", ">=1.0.0-dev.1", true),
+            ("^1.0.1-dev.3", "^1.0.0-dev.1", true),
+            ("^1.0.1-dev.3", ">=1.0.1-dev.3", true),
+            ("^1.0.1-dev.3", ">1.0.1-dev.3", false),
+            ("^1.0.1-dev.3", "=1.0.1-dev.3", true),
+            ("^1.0.1-dev.3", "=1.0.1-dev.4", false),
+        ] {
+            let version = dart_package_version(version);
+            let requirement = version_requirement(requirement);
+
+            assert_eq!(
+                version.matches_requirement(&requirement),
+                expected,
+                "{version} match result for {requirement}"
+            );
+        }
     }
 }
