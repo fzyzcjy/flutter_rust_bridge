@@ -65,6 +65,7 @@ mod tests {
 
     #[test]
     #[serial]
+    /// Verifies native-only codegen omits every web output and reference.
     fn test_no_web_fixture_omits_web_outputs_and_references() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let original_dir = env::current_dir()?;
@@ -115,6 +116,7 @@ mod tests {
             .all_code();
 
         assert!(generated_dart.contains("import 'frb_generated.io.dart';"));
+        assert!(generated_dart.contains("ExternalLibraryLoaderConfig.io("));
         assert!(!generated_dart.contains("frb_generated.web.dart"));
         assert!(!generated_dart.contains("webPrefix"));
         assert!(!generated_dart.contains("wasmBindgenName"));

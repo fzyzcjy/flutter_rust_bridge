@@ -268,25 +268,29 @@ fn generate_default_external_library_loader_config(
     config: &crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
     web_enabled: bool,
 ) -> String {
-    if web_enabled {
+    let constructor = if web_enabled {
+        "ExternalLibraryLoaderConfig"
+    } else {
+        "ExternalLibraryLoaderConfig.io"
+    };
+    let web_fields = if web_enabled {
         format!(
-            "ExternalLibraryLoaderConfig(
-                    stem: '{}',
-                    ioDirectory: '{}',
-                    webPrefix: '{}',
+            "                    webPrefix: '{}',
                     wasmBindgenName: '{}',
-                  )",
-            config.stem, config.io_directory, config.web_prefix, config.wasm_bindgen_name
+",
+            config.web_prefix, config.wasm_bindgen_name
         )
     } else {
-        format!(
-            "ExternalLibraryLoaderConfig(
+        String::new()
+    };
+
+    format!(
+        "{constructor}(
                     stem: '{}',
                     ioDirectory: '{}',
-                  )",
-            config.stem, config.io_directory
-        )
-    }
+{web_fields}                  )",
+        config.stem, config.io_directory
+    )
 }
 
 fn file_stem(p: &Path) -> String {
@@ -331,6 +335,7 @@ mod tests {
     }
 
     #[test]
+    /// Verifies that native-only output imports no web implementation.
     fn test_generate_platform_import_without_web() {
         assert_eq!(
             generate_platform_import(false),
@@ -339,6 +344,16 @@ mod tests {
     }
 
     #[test]
+    /// Verifies that web output retains its conditional platform import.
+    fn test_generate_platform_import_with_web() {
+        assert_eq!(
+            generate_platform_import(true),
+            "import 'frb_generated.io.dart' if (dart.library.js_interop) 'frb_generated.web.dart';"
+        );
+    }
+
+    #[test]
+    /// Verifies that native-only output uses the IO constructor.
     fn test_generate_default_external_library_loader_config_without_web() {
         let actual = generate_default_external_library_loader_config(
             &GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
@@ -350,10 +365,31 @@ mod tests {
             false,
         );
 
+        assert!(actual.starts_with("ExternalLibraryLoaderConfig.io("));
         assert!(!actual.contains("webPrefix"));
         assert!(!actual.contains("wasmBindgenName"));
         assert!(actual.contains("stem: 'demo'"));
         assert!(actual.contains("ioDirectory: 'target/release/'"));
+    }
+
+    #[test]
+    /// Verifies that web output retains all loader fields.
+    fn test_generate_default_external_library_loader_config_with_web() {
+        let actual = generate_default_external_library_loader_config(
+            &GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
+                stem: "demo".into(),
+                io_directory: "target/release/".into(),
+                web_prefix: "pkg/".into(),
+                wasm_bindgen_name: "wasm_bindgen".into(),
+            },
+            true,
+        );
+
+        assert!(actual.starts_with("ExternalLibraryLoaderConfig("));
+        assert!(actual.contains("stem: 'demo'"));
+        assert!(actual.contains("ioDirectory: 'target/release/'"));
+        assert!(actual.contains("webPrefix: 'pkg/'"));
+        assert!(actual.contains("wasmBindgenName: 'wasm_bindgen'"));
     }
 }
 

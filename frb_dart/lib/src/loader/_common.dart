@@ -16,7 +16,13 @@ class ExternalLibraryLoaderConfig {
   const ExternalLibraryLoaderConfig({
     required this.stem,
     required this.ioDirectory,
-    this.webPrefix,
+    required this.webPrefix,
     this.wasmBindgenName = 'wasm_bindgen',
   });
+
+  const ExternalLibraryLoaderConfig.io({
+    required this.stem,
+    required this.ioDirectory,
+  }) : webPrefix = '',
+       wasmBindgenName = 'wasm_bindgen';
 }
