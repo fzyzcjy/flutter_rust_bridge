@@ -106,12 +106,14 @@ fn switch_to_config_parent_directory(args: &GenerateCommandArgs) -> Result<(), i
 
 #[cfg(test)]
 mod tests {
-    use crate::binary::commands::Cli;
+    use crate::binary::commands::{Cli, GenerateCommandArgs};
     use crate::binary::test_utils::set_cwd_test_fixture;
-    use crate::main_given_cli;
+    use crate::{main_given_cli, switch_to_config_parent_directory};
     use clap::Parser;
     use serial_test::serial;
-    use std::env;
+    use std::fs::File;
+    use std::path::{Path, PathBuf};
+    use std::{env, fs};
 
     #[test]
     #[serial]
@@ -139,4 +141,28 @@ mod tests {
         main_given_cli(Cli::parse_from(vec!["", "generate"]))
     }
     // frb-coverage:ignore-end
+
+    #[test]
+    #[serial]
+    fn test_switch_to_config_parent_directory() -> anyhow::Result<()> {
+        const TEST_PATH: &str = "/tmp/flutter_rust_bridge.yaml";
+        let test_config_path = Path::new(TEST_PATH);
+
+        let mut generate_command_args = GenerateCommandArgs::default();
+        generate_command_args.primary.switch_to_config_parent = true;
+        generate_command_args.primary.config_file = Some(TEST_PATH.to_string());
+
+        File::create(test_config_path)?;
+
+        switch_to_config_parent_directory(&generate_command_args)?;
+
+        assert_eq!(
+            PathBuf::new().join("/").join("tmp"),
+            std::env::current_dir().unwrap()
+        );
+
+        fs::remove_file(test_config_path)?;
+
+        Ok(())
+    }
 }

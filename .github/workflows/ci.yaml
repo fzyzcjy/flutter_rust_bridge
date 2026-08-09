@@ -1076,7 +1076,7 @@ jobs:
   test_flutter_native_nix:
     needs: plan_ci
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_nix.enable == true }}
-    name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
+    name: 'Test :: Flutter :: Native :: Nix :: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -1091,22 +1091,25 @@ jobs:
         with:
           comment_on_pr: false
           job_summary: false
-      - uses: cachix/install-nix-action@v25
+
+      - name: Repo checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure dependencies
+        run: sudo apt-get update && sudo apt-get install git -y && sudo apt-get remove xvfb -y
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v25
         with:
           nix_path: nixpkgs=channel:nixos-26.05
 
-      - run: |
-          nix-shell -p \
-            flutter \
-            glib \
-            libepoxy \
-            pango \
-            pkg-config \
-            ninja \
-            at-spi2-core \
-            gtk3 \
-            rustup \
-            --run "./frb_internal test-flutter-native \
+      - name: Execute test
+        run: |
+          mkdir -p ~/.config/nix/
+          echo "extra-experimental-features = nix-command flakes" | tee ~/.config/nix/nix.conf
+          cd "$(git rev-parse --show-toplevel)"
+          nix-shell --run \
+            "xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24 -ac +extension GLX +render -noreset' ./frb_internal test-flutter-native \
             --flutter-test-args '--device-id ${{ matrix.info.platform }}' \
             --package ${{ matrix.info.package }}"
 

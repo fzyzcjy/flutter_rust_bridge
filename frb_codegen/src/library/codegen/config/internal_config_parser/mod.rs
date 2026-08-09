@@ -34,6 +34,7 @@ impl InternalConfig {
         };
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
+        // frb-coverage:ignore-start
         let Some(rust_input) = config.rust_input.as_deref() else {
             error!("Please provide `rust_input` (via config file or command line)");
             exit(1);
@@ -43,6 +44,7 @@ impl InternalConfig {
             error!("Please provide `dart_output` (via config file or command line)");
             exit(1);
         };
+        // frb-coverage:ignore-end
 
         let migrated_rust_input =
             rust_path_migrator::migrate_rust_input_config(config.rust_root.as_deref(), rust_input)?;

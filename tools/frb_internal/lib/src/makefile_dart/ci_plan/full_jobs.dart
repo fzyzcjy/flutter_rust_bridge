@@ -271,13 +271,10 @@ List<Map<String, Object?>> _flutterDesktopPackageEntries(String package) => [
 ];
 
 List<Map<String, Object?>> _linuxFlutterDesktopPackageEntries(
-  List<String> packages) => [
+  List<String> packages,
+) => [
   for (final package in packages)
-    {
-      'image': 'ubuntu-latest',
-      'platform': 'linux',
-      'package': package,
-    },
+    {'image': 'ubuntu-latest', 'platform': 'linux', 'package': package},
 ];
 
 List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
