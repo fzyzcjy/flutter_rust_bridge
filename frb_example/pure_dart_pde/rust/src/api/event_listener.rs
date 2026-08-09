@@ -52,6 +52,16 @@ pub fn create_event_twin_normal(address: String, payload: String) {
     }
 }
 
+pub fn try_create_event_twin_normal(address: String, payload: String) -> Result<bool> {
+    let mut guard = EVENTS
+        .lock()
+        .map_err(|err| anyhow!("Could not access event listener: {}", err))?;
+    let sink = guard
+        .as_mut()
+        .ok_or_else(|| anyhow!("No event listener registered"))?;
+    Ok(sink.add(EventTwinNormal { address, payload }).is_ok())
+}
+
 // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
 // #1836
 #[frb(sync)]

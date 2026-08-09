@@ -60,3 +60,17 @@ pub async fn create_event_twin_rust_async_sse(address: String, payload: String) 
         }
     }
 }
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn try_create_event_twin_rust_async_sse(
+    address: String,
+    payload: String,
+) -> Result<bool> {
+    let mut guard = EVENTS
+        .lock()
+        .map_err(|err| anyhow!("Could not access event listener: {}", err))?;
+    let sink = guard
+        .as_mut()
+        .ok_or_else(|| anyhow!("No event listener registered"))?;
+    Ok(sink.add(EventTwinRustAsyncSse { address, payload }).is_ok())
+}
