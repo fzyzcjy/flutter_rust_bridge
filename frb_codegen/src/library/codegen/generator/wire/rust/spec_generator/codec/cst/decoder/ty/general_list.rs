@@ -89,7 +89,7 @@ const DECODE_BODY_IO: &str = "
     };
     vec.into_iter().map(CstDecode::cst_decode).collect()
 ";
-const DECODE_BODY_WEB: &str =
+pub(crate) const DECODE_BODY_WEB: &str =
     "self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()";
 
 pub(crate) fn generate_list_generate_allocate_func(

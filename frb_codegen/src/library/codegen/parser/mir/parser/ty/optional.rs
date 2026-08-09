@@ -33,11 +33,9 @@ impl TypeParserWithContext<'_, '_, '_> {
                     MirTypeOptional::new_with_boxed_wrapper(inner)
                 } else {
                     match inner {
-                        PrimitiveList(_)
-                        | GeneralList(_)
-                        | Boxed(_)
-                        | Dynamic(_)
-                        | Delegate(_) => MirTypeOptional::new(inner),
+                        PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_) | Delegate(_) => {
+                            MirTypeOptional::new(inner)
+                        }
                         // frb-coverage:ignore-start
                         Optional(_) | MirType::TraitDef(_) => unreachable!(),
                         // frb-coverage:ignore-end
@@ -63,21 +61,19 @@ fn optional_inner_needs_boxed_wrapper(inner: &MirType) -> bool {
         || matches!(
             inner,
             StructRef(..)
-            | EnumRef(..)
-            | RustAutoOpaqueImplicit(..)
-            | RustOpaque(..)
-            | DartOpaque(..)
-            | DartFn(..)
-            | Record(..)
+                | EnumRef(..)
+                | RustAutoOpaqueImplicit(..)
+                | RustOpaque(..)
+                | DartOpaque(..)
+                | DartFn(..)
+                | Record(..)
         )
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::codegen::ir::mir::ty::delegate::{
-        MirTypeDelegate, MirTypeDelegateCastedPrimitive,
-    };
+    use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateCastedPrimitive};
     use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 
     /// Ensures casted primitives use the production optional boxing classifier.

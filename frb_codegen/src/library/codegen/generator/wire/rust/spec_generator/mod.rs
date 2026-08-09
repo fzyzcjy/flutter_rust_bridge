@@ -35,8 +35,10 @@ pub(super) fn generate(
     (dumper.with_content(GeneratorInfo))
         .dump("wire_rust.json", &generate_dump_info(&cache, context))?;
 
-    let dart2rust = WireRustCodecEntrypoint::generate_all(context, &cache, Decode);
-    let rust2dart = WireRustCodecEntrypoint::generate_all(context, &cache, Encode);
+    let dart2rust =
+        WireRustCodecEntrypoint::generate_all(context, &cache, Decode).deduplicate_coherent_impls();
+    let rust2dart =
+        WireRustCodecEntrypoint::generate_all(context, &cache, Encode).deduplicate_coherent_impls();
     let extern_struct_names = generate_extern_struct_names(&dart2rust, &rust2dart);
 
     Ok(WireRustOutputSpec {

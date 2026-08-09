@@ -176,10 +176,7 @@ fn casted_primitive_encoder_body(inner: &MirTypePrimitive, target: Target) -> St
         _ => "BigInt.from(raw)",
     };
 
-    format!(
-        "return cst_encode_{}({inner_arg});",
-        inner.safe_ident(),
-    )
+    format!("return cst_encode_{}({inner_arg});", inner.safe_ident(),)
 }
 
 fn uint8list_safe_ident(strict_dart_type: bool) -> String {

@@ -46,7 +46,6 @@ fn generate_impl_decode_for_type(
                 &format!("{rust_wire_modifier}{rust_wire_type}"),
                 &body,
             )
-            .into()
         })
         .unwrap_or_default()
     })
@@ -64,22 +63,26 @@ fn generate_impl_decode_jsvalue_for_type(
                 &ty.rust_api_type(),
                 "flutter_rust_bridge::for_generated::wasm_bindgen::JsValue",
                 body.as_ref(),
-            )
-            .into(),
+            ),
             ..Default::default()
         })
         .unwrap_or_default()
 }
 
-fn generate_impl_decode_code_block(api: &str, wire: &str, body: &str) -> String {
+fn generate_impl_decode_code_block(api: &str, wire: &str, body: &str) -> WireRustOutputCode {
     let body = body.trim();
     let codec_comments = generate_codec_comments(CodecMode::Cst);
-    format!(
-        "impl CstDecode<{api}> for {wire} {{
+    let coherence_key = format!("impl CstDecode<{api}> for {wire}");
+    WireRustOutputCode {
+        body: format!(
+            "{coherence_key} {{
             {codec_comments}
             fn cst_decode(self) -> {api} {{
                 {body}
             }}
-        }}",
-    )
+        }}"
+        ),
+        coherence_key: Some(coherence_key),
+        ..Default::default()
+    }
 }

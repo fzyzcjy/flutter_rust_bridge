@@ -9,6 +9,8 @@ pub(crate) struct WireRustOutputCode {
     pub(crate) body: String,
     pub(crate) extern_funcs: Vec<ExternFunc>,
     pub(crate) extern_classes: Vec<ExternClass>,
+    #[serde(skip)]
+    pub(crate) coherence_key: Option<String>,
 }
 
 simple_code_trait_impl!(WireRustOutputCode);
