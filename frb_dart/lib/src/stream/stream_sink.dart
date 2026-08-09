@@ -45,7 +45,9 @@ class _State<T> {
 }
 
 _State<T> _setup<T>(
-    BaseCodec<T, dynamic, dynamic> codec, StreamController<T> controller) {
+  BaseCodec<T, dynamic, dynamic> codec,
+  StreamController<T> controller,
+) {
   final portName = ExecuteStreamPortGenerator.create('RustStreamSink');
   final receivePort = broadcastPort(portName);
 
