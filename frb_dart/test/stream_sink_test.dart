@@ -21,7 +21,7 @@ void main() {
   ({Stream<int> stream, StreamController<dynamic> source}) createInjected() {
     final source = StreamController<dynamic>();
     final stream = bindDecodedStreamForTest<int>(
-      codec: codec,
+      decodeObject: codec.decodeObject,
       source: source.stream,
       closeSource: source.close,
     );
@@ -142,7 +142,7 @@ void main() {
   test('events produced after termination are dropped', () async {
     final source = StreamController<dynamic>.broadcast();
     final stream = bindDecodedStreamForTest<int>(
-      codec: codec,
+      decodeObject: codec.decodeObject,
       source: source.stream,
       closeSource: () {},
     );
@@ -207,7 +207,7 @@ void main() {
   test('a source that is already done while binding does not throw', () async {
     var done = false;
     final stream = bindDecodedStreamForTest<int>(
-      codec: codec,
+      decodeObject: codec.decodeObject,
       source: _SynchronouslyDoneStream(),
       closeSource: () {},
     );
@@ -229,7 +229,7 @@ void main() {
       },
     );
     final stream = bindDecodedStreamForTest<int>(
-      codec: codec,
+      decodeObject: codec.decodeObject,
       source: source.stream,
       closeSource: source.close,
     );

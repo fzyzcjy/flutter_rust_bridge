@@ -41,19 +41,23 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
   final receivePort = broadcastPort(portName);
   return _State(
     receivePort,
-    _bindDecodedStream(codec, receivePort, closeSource: receivePort.close),
+    _bindDecodedStream(
+      codec.decodeObject,
+      receivePort,
+      closeSource: receivePort.close,
+    ),
   );
 }
 
 @visibleForTesting
 Stream<T> bindDecodedStreamForTest<T>({
-  required BaseCodec<T, dynamic, dynamic> codec,
+  required T Function(dynamic) decodeObject,
   required Stream<dynamic> source,
   required void Function() closeSource,
-}) => _bindDecodedStream(codec, source, closeSource: closeSource);
+}) => _bindDecodedStream(decodeObject, source, closeSource: closeSource);
 
 Stream<T> _bindDecodedStream<T>(
-  BaseCodec<T, dynamic, dynamic> codec,
+  T Function(dynamic) decodeObject,
   Stream<dynamic> source, {
   required void Function() closeSource,
 }) {
@@ -74,7 +78,7 @@ Stream<T> _bindDecodedStream<T>(
     (raw) {
       final T decoded;
       try {
-        decoded = codec.decodeObject(raw);
+        decoded = decodeObject(raw);
       } on CloseStreamException {
         terminate();
         return;
