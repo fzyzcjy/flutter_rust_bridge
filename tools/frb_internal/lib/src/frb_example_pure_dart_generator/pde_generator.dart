@@ -20,10 +20,12 @@ Future<void> generatePureDartPde({
     Directory(dirPureDart.toFilePath()),
     Directory(dirPureDartPde.toFilePath()),
     filter: (entity) {
+      // Normalize to forward slashes so the relativePath checks below also work
+      // on Windows, where `relative` returns backslash-separated paths.
       final relativePath = relative(
         entity.path,
         from: dirPureDart.toFilePath(),
-      );
+      ).replaceAll(r'\', '/');
 
       if (const ['.DS_Store'].contains(basename(relativePath)) ||
           const [
@@ -57,7 +59,10 @@ Future<void> generatePureDartPde({
       return true;
     },
     map: (file, text) {
-      final relativePath = relative(file.path, from: dirPureDart.toFilePath());
+      final relativePath = relative(
+        file.path,
+        from: dirPureDart.toFilePath(),
+      ).replaceAll(r'\', '/');
 
       switch (relativePath) {
         case 'pubspec.yaml':
