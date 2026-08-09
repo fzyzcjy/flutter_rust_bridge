@@ -144,27 +144,8 @@ fn general_list_inner_uses_default_initializer(inner: &MirType) -> bool {
     inner.is_primitive()
         || matches!(
             inner,
-            MirType::Delegate(
-                MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::RustAutoOpaqueExplicit(_)
-            ) | MirType::RustOpaque(_)
+            MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                | MirType::RustOpaque(_)
                 | MirType::RustAutoOpaqueImplicit(_)
         )
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateCastedPrimitive;
-    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
-
-    #[test]
-    fn casted_primitive_list_uses_default_initializer() {
-        let inner = MirType::Delegate(MirTypeDelegate::CastedPrimitive(
-            MirTypeDelegateCastedPrimitive {
-                inner: MirTypePrimitive::I64,
-            },
-        ));
-
-        assert!(general_list_inner_uses_default_initializer(&inner));
-    }
 }

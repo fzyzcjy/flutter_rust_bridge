@@ -42,12 +42,18 @@ class StructWithCastedPrimitiveTwinNormal {
   final int fieldU64;
   final int fieldI32;
   final Uint8List fieldVecU8;
+  final List<int> fieldVecI64;
+  final int? fieldOptionalI64;
+  final int fieldBoxedI64;
 
   const StructWithCastedPrimitiveTwinNormal({
     required this.fieldI64,
     required this.fieldU64,
     required this.fieldI32,
     required this.fieldVecU8,
+    required this.fieldVecI64,
+    this.fieldOptionalI64,
+    required this.fieldBoxedI64,
   });
 
   @override
@@ -55,7 +61,10 @@ class StructWithCastedPrimitiveTwinNormal {
       fieldI64.hashCode ^
       fieldU64.hashCode ^
       fieldI32.hashCode ^
-      fieldVecU8.hashCode;
+      fieldVecU8.hashCode ^
+      fieldVecI64.hashCode ^
+      fieldOptionalI64.hashCode ^
+      fieldBoxedI64.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -65,5 +74,8 @@ class StructWithCastedPrimitiveTwinNormal {
           fieldI64 == other.fieldI64 &&
           fieldU64 == other.fieldU64 &&
           fieldI32 == other.fieldI32 &&
-          fieldVecU8 == other.fieldVecU8;
+          fieldVecU8 == other.fieldVecU8 &&
+          fieldVecI64 == other.fieldVecI64 &&
+          fieldOptionalI64 == other.fieldOptionalI64 &&
+          fieldBoxedI64 == other.fieldBoxedI64;
 }

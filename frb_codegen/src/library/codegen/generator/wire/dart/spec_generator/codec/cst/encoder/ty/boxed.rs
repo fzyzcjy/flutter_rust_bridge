@@ -91,9 +91,8 @@ fn boxed_inner_uses_value_allocator(inner: &MirType) -> bool {
     inner.is_primitive()
         || matches!(
             inner,
-            MirType::Delegate(
-                MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::RustAutoOpaqueExplicit(_)
-            ) | MirType::RustOpaque(_)
+            MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                | MirType::RustOpaque(_)
                 | MirType::RustAutoOpaqueImplicit(_)
                 | MirType::DartOpaque(_)
         )
@@ -103,12 +102,6 @@ fn boxed_inner_native_type(inner: &MirType) -> Option<String> {
     inner
         .as_primitive()
         .map(|prim| dart_native_type_of_primitive(prim).to_owned())
-        .or_else(|| match inner {
-            MirType::Delegate(MirTypeDelegate::CastedPrimitive(mir)) => {
-                Some(dart_native_type_of_primitive(&mir.inner).to_owned())
-            }
-            _ => None,
-        })
 }
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool

@@ -51,8 +51,7 @@ fn general_list_inner_uses_direct_assignment(inner: &MirType) -> bool {
                 | MirType::RustAutoOpaqueImplicit(_)
                 | MirType::RustOpaque(_)
                 | MirType::Delegate(
-                    MirTypeDelegate::CastedPrimitive(_)
-                        | MirTypeDelegate::RustAutoOpaqueExplicit(_)
+                    MirTypeDelegate::RustAutoOpaqueExplicit(_)
                         | MirTypeDelegate::String
                         | MirTypeDelegate::StreamSink(_)
                         | MirTypeDelegate::Time(_)

@@ -36397,6 +36397,13 @@ impl SseDecode for bool {
     }
 }
 
+impl SseDecode for Box<i64> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return Box::new(<i64>::sse_decode(deserializer));
+    }
+}
+
 impl SseDecode for Box<crate::api::mirror::ApplicationEnv> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -38706,6 +38713,18 @@ impl SseDecode for Vec<OpaqueItemTwinNormal> {
         let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<OpaqueItemTwinNormal>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<i64> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = Vec::with_capacity(len_ as usize);
+        for idx_ in 0..len_ {
+            ans_.push(<i64>::sse_decode(deserializer));
         }
         return ans_;
     }
@@ -41096,6 +41115,17 @@ impl SseDecode for Option<NonCloneSimpleTwinSync> {
     }
 }
 
+impl SseDecode for Option<i64> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<i64>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
 impl SseDecode for Option<chrono::Duration> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -43166,11 +43196,17 @@ impl SseDecode for crate::api::casted_primitive::StructWithCastedPrimitiveTwinNo
         let mut var_fieldU64 = <u64>::sse_decode(deserializer);
         let mut var_fieldI32 = <i32>::sse_decode(deserializer);
         let mut var_fieldVecU8 = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_fieldVecI64 = <Vec<i64>>::sse_decode(deserializer);
+        let mut var_fieldOptionalI64 = <Option<i64>>::sse_decode(deserializer);
+        let mut var_fieldBoxedI64 = <Box<i64>>::sse_decode(deserializer);
         return crate::api::casted_primitive::StructWithCastedPrimitiveTwinNormal {
             field_i64: var_fieldI64,
             field_u64: var_fieldU64,
             field_i32: var_fieldI32,
             field_vec_u8: var_fieldVecU8,
+            field_vec_i64: var_fieldVecI64,
+            field_optional_i64: var_fieldOptionalI64,
+            field_boxed_i64: var_fieldBoxedI64,
         };
     }
 }
@@ -52842,6 +52878,9 @@ impl flutter_rust_bridge::IntoDart
             self.field_u64.into_into_dart().into_dart(),
             self.field_i32.into_into_dart().into_dart(),
             self.field_vec_u8.into_into_dart().into_dart(),
+            self.field_vec_i64.into_into_dart().into_dart(),
+            self.field_optional_i64.into_into_dart().into_dart(),
+            self.field_boxed_i64.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -57959,6 +57998,13 @@ impl SseEncode for bool {
     }
 }
 
+impl SseEncode for Box<i64> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i64>::sse_encode(*self, serializer);
+    }
+}
+
 impl SseEncode for Box<crate::api::mirror::ApplicationEnv> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -59864,6 +59910,16 @@ impl SseEncode for Vec<OpaqueItemTwinNormal> {
     }
 }
 
+impl SseEncode for Vec<i64> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <i64>::sse_encode(item, serializer);
+        }
+    }
+}
+
 impl SseEncode for Vec<chrono::Duration> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -61762,6 +61818,16 @@ impl SseEncode for Option<NonCloneSimpleTwinSync> {
     }
 }
 
+impl SseEncode for Option<i64> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <i64>::sse_encode(value, serializer);
+        }
+    }
+}
+
 impl SseEncode for Option<chrono::Duration> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -63549,6 +63615,9 @@ impl SseEncode for crate::api::casted_primitive::StructWithCastedPrimitiveTwinNo
         <u64>::sse_encode(self.field_u64, serializer);
         <i32>::sse_encode(self.field_i32, serializer);
         <Vec<u8>>::sse_encode(self.field_vec_u8, serializer);
+        <Vec<i64>>::sse_encode(self.field_vec_i64, serializer);
+        <Option<i64>>::sse_encode(self.field_optional_i64, serializer);
+        <Box<i64>>::sse_encode(self.field_boxed_i64, serializer);
     }
 }
 

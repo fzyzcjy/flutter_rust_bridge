@@ -326,6 +326,7 @@ impl MirTypeTrait for MirTypeDelegate {
         match self {
             MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { repr, .. }) => Some(repr),
             MirTypeDelegate::Time(_) => Some(&MirTypePrimitive::I64),
+            MirTypeDelegate::CastedPrimitive(mir) => Some(&mir.inner),
             _ => None,
         }
     }

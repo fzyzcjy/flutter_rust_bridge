@@ -130,28 +130,9 @@ fn boxed_inner_uses_value_allocator(inner: &MirType) -> bool {
     inner.is_primitive()
         || matches!(
             inner,
-            MirType::Delegate(
-                MirTypeDelegate::CastedPrimitive(_) | MirTypeDelegate::RustAutoOpaqueExplicit(_)
-            ) | MirType::RustOpaque(_)
+            MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                | MirType::RustOpaque(_)
                 | MirType::RustAutoOpaqueImplicit(_)
                 | MirType::DartOpaque(_)
         )
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::codegen::ir::mir::ty::delegate::MirTypeDelegateCastedPrimitive;
-    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
-
-    #[test]
-    fn casted_primitive_box_uses_value_allocator() {
-        let inner = MirType::Delegate(MirTypeDelegate::CastedPrimitive(
-            MirTypeDelegateCastedPrimitive {
-                inner: MirTypePrimitive::I64,
-            },
-        ));
-
-        assert!(boxed_inner_uses_value_allocator(&inner));
-    }
 }
