@@ -205,7 +205,7 @@ final kCiJobs = [
     ]),
   ),
   CiJob(
-    'test_flutter_native_nix',
+    'test_flutter_native_dynamic_linking',
     matrix: CiMatrix([
       for (final info in [
         ..._linuxFlutterDesktopPackageEntries([
