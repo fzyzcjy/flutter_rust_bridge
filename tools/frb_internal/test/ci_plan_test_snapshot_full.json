@@ -830,6 +830,25 @@
       ]
     },
     {
+      "id": "test_flutter_native_dynamic_linking",
+      "matrix": [
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--flutter_via_integrate"
+          }
+        }
+      ]
+    },
+    {
       "id": "test_flutter_web",
       "matrix": [
         {
