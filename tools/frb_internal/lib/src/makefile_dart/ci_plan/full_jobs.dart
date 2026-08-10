@@ -210,9 +210,7 @@ final kCiJobs = [
       for (final info in [
         ..._linuxFlutterDesktopPackageEntries([
           'frb_example--flutter_via_create',
-          'frb_example--flutter_via_create_native_assets',
           'frb_example--flutter_via_integrate',
-          'frb_example--flutter_via_integrate_native_assets',
         ]),
       ])
         {'info': info},
