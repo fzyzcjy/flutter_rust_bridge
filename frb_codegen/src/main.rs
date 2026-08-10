@@ -111,8 +111,7 @@ mod tests {
     use crate::{main_given_cli, switch_to_config_parent_directory};
     use clap::Parser;
     use serial_test::serial;
-    use std::fs::File;
-    use std::path::{Path, PathBuf};
+    use std::fs::{canonicalize, File};
     use std::{env, fs};
 
     #[test]
@@ -157,7 +156,10 @@ mod tests {
 
         switch_to_config_parent_directory(&generate_command_args)?;
 
-        assert_eq!(temp_directory, std::env::current_dir().unwrap());
+        assert_eq!(
+            canonicalize(temp_directory)?,
+            canonicalize(std::env::current_dir()?)?
+        );
 
         fs::remove_file(&test_path)?;
 
