@@ -145,23 +145,21 @@ mod tests {
     #[test]
     #[serial]
     fn test_switch_to_config_parent_directory() -> anyhow::Result<()> {
-        const TEST_PATH: &str = "/tmp/flutter_rust_bridge.yaml";
-        let test_config_path = Path::new(TEST_PATH);
+        let temp_directory = std::env::temp_dir();
+
+        let test_path = temp_directory.join("flutter_rust_bridge.yaml");
 
         let mut generate_command_args = GenerateCommandArgs::default();
         generate_command_args.primary.switch_to_config_parent = true;
-        generate_command_args.primary.config_file = Some(TEST_PATH.to_string());
+        generate_command_args.primary.config_file = Some(test_path.to_str().unwrap().to_string());
 
-        File::create(test_config_path)?;
+        File::create(&test_path)?;
 
         switch_to_config_parent_directory(&generate_command_args)?;
 
-        assert_eq!(
-            PathBuf::new().join("/").join("tmp"),
-            std::env::current_dir().unwrap()
-        );
+        assert_eq!(temp_directory, std::env::current_dir().unwrap());
 
-        fs::remove_file(test_config_path)?;
+        fs::remove_file(&test_path)?;
 
         Ok(())
     }
