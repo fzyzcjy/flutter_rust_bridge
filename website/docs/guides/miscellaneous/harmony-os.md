@@ -36,9 +36,9 @@ The CI workflow pins these values instead of following the latest OHOS SDK or
 Flutter fork automatically. Other toolchain combinations can work, but are not
 release-gated yet. x86_64, armv7, profile, Native Assets, plugin consumption,
 and CI-controlled real-device execution remain experimental or unverified until
-their test matrix is added. The debug quickstart's extended FRB matrix has run
-20 consecutive times without failure on an arm64 HarmonyOS PC, but this local
-device automation is not yet a release gate.
+their test matrix is added. A dedicated test entrypoint provides a deterministic
+synchronous Dart-to-Rust device smoke marker; broader FRB API coverage is not
+yet a release gate.
 
 ## `OHOS_SDK_HOME`
 
@@ -168,13 +168,22 @@ starts its ability, waits for a log marker that proves the Rust call completed,
 saves the matching process logs, and uninstalls the test application in a
 `finally` cleanup step.
 
+Build the quickstart with the dedicated smoke entrypoint, then sign the HAP
+through your normal secure signing workflow:
+
+```shell
+cd frb_example/flutter_via_create
+flutter build hap --debug \
+  --target ohos/ohos_device_smoke_main.dart
+```
+
 Connect exactly one development device, confirm it is visible, and run:
 
 ```shell
 hdc list targets
 ./frb_internal ohos-device-smoke \
   --hap /absolute/path/to/entry-default-signed.hap \
-  --bundle com.example.frb_ohos_smoke \
+  --bundle com.example.flutter_via_create \
   --ability EntryAbility
 ```
 
@@ -183,18 +192,19 @@ When more than one device is connected, select one explicitly:
 ```shell
 ./frb_internal ohos-device-smoke \
   --hap /absolute/path/to/entry-default-signed.hap \
-  --bundle com.example.frb_ohos_smoke \
+  --bundle com.example.flutter_via_create \
   --device-id DEVICE_UDID
 ```
 
-The checked-in quickstart emits `FRB_OHOS_SMOKE_RESULT=PASS` only after its
-synchronous call, async call, Stream, Rust-to-Dart callback, opaque-object
-mutation and disposal, diagnostic error conversion, struct/enum transfer, and
-64 KiB byte payload checks all succeed. For another fixture, pass its
-deterministic marker with `--expected-log`. Logs are saved under
-`target/ohos_device_smoke` by default. Use a dedicated bundle name whose
-application is not already installed on the device; the command intentionally
-aborts instead of overwriting user application data.
+The dedicated entrypoint emits `FRB_OHOS_SMOKE_RESULT=PASS` only after its
+synchronous `greet` call returns the expected value. For a broader device test
+fixture, pass its deterministic marker with `--expected-log`. The command also
+checks that `--bundle` matches the HAP metadata before installation. Logs are
+saved under `target/ohos_device_smoke` by default. Use a dedicated bundle name
+whose application is not already installed on the device; the command
+intentionally aborts instead of overwriting user application data. To use a
+dedicated name, change `bundleName` in `ohos/AppScope/app.json5` before building
+and pass exactly the same value to `--bundle`.
 
 The command does not create or manage signing credentials. Configure a debug
 signature in DevEco Studio or sign the HAP through your existing secure signing

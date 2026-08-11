@@ -316,6 +316,33 @@ bundleName: com.example.smoke
     );
   });
 
+  test('OHOS device smoke install never replaces an existing bundle', () {
+    expect(
+      ohosHdcInstallArgumentsForTesting(
+        deviceId: 'device-a',
+        hapPath: '/tmp/smoke.hap',
+      ),
+      ['-t', 'device-a', 'install', '/tmp/smoke.hap'],
+    );
+  });
+
+  test('OHOS device smoke validates the HAP bundle name', () {
+    expect(
+      ohosHapBundleNameForTesting('''
+{"summary":{"app":{"bundleName":"com.example.smoke"}}}
+'''),
+      'com.example.smoke',
+    );
+    expect(
+      () => ohosHapBundleNameForTesting('{"summary":{"app":{}}}'),
+      throwsFormatException,
+    );
+    expect(
+      () => ohosHapBundleNameForTesting('[]'),
+      throwsFormatException,
+    );
+  });
+
   test('OHOS device smoke recognizes hdc outcomes and Rust marker', () {
     expect(
       ohosHdcInstallSucceededForTesting('install bundle successfully.'),

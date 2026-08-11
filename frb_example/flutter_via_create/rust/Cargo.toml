@@ -7,7 +7,6 @@ edition = "2021"
 crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
-anyhow = "1.0.64"
 flutter_rust_bridge = { path = "../../../frb_rust" }
 
 [lints.rust]

@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -171,6 +172,14 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
   if (!hapFile.existsSync()) {
     throw StateError('Signed OHOS HAP does not exist: ${hapFile.path}');
   }
+  final hapBundle = await _readOhosHapBundleName(hapFile.path);
+  if (hapBundle != config.bundle) {
+    throw StateError(
+      'OHOS HAP bundle `$hapBundle` does not match --bundle '
+      '`${config.bundle}`. Refusing to install because cleanup could target '
+      'the wrong application.',
+    );
+  }
 
   final targetsResult = await _runHdc(['list', 'targets']);
   _ensureProcessSucceeded(targetsResult, operation: '`hdc list targets`');
@@ -210,18 +219,18 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
   Object? operationError;
   StackTrace? operationStackTrace;
   try {
-    final installResult = await _runHdc([
-      ...hdcPrefix,
-      'install',
-      '-r',
-      hapFile.path,
-    ]);
+    final installResult = await _runHdc(
+      ohosHdcInstallArgumentsForTesting(
+        deviceId: deviceId,
+        hapPath: hapFile.path,
+      ),
+    );
     _ensureProcessSucceeded(installResult, operation: 'install signed HAP');
+    installedByThisRun = true;
     final installOutput = '${installResult.stdout}\n${installResult.stderr}';
     if (!ohosHdcInstallSucceededForTesting(installOutput)) {
       throw StateError('OHOS HAP installation failed:\n$installOutput');
     }
-    installedByThisRun = true;
 
     final launchResult = await _runHdc([
       ...hdcPrefix,
@@ -403,8 +412,29 @@ bool ohosBundleAppearsInstalledForTesting(
 bool ohosHdcInstallSucceededForTesting(String output) =>
     output.contains('install bundle successfully');
 
+List<String> ohosHdcInstallArgumentsForTesting({
+  required String deviceId,
+  required String hapPath,
+}) => ['-t', deviceId, 'install', hapPath];
+
 bool ohosHdcAbilityStartSucceededForTesting(String output) =>
     output.toLowerCase().contains('start ability successfully');
+
+String ohosHapBundleNameForTesting(String packInfo) {
+  final decoded = jsonDecode(packInfo);
+  if (decoded is! Map<String, dynamic>) {
+    throw const FormatException('pack.info root must be a JSON object');
+  }
+  final summary = decoded['summary'];
+  final app = summary is Map<String, dynamic> ? summary['app'] : null;
+  final bundleName = app is Map<String, dynamic> ? app['bundleName'] : null;
+  if (bundleName is! String || bundleName.trim().isEmpty) {
+    throw const FormatException(
+      'pack.info does not contain summary.app.bundleName',
+    );
+  }
+  return bundleName;
+}
 
 bool ohosDeviceSmokeLogPassedForTesting(
   String logs, {
@@ -654,6 +684,60 @@ Future<List<String>> _listOhosHapEntries(String hapPath) async {
     );
   }
   return (result.stdout as String).split(RegExp(r'\r?\n'));
+}
+
+Future<String> _readOhosHapBundleName(String hapPath) async {
+  const entry = 'pack.info';
+  final lister = await _findOhosArchiveLister();
+  if (lister == null) {
+    throw StateError(
+      'Cannot inspect OHOS HAP $hapPath because neither `jar` nor `unzip` '
+      'is available. Install a full JDK 17 or add `unzip` to PATH.',
+    );
+  }
+
+  String packInfo;
+  if (lister.executable == 'unzip') {
+    final result = await Process.run('unzip', ['-p', hapPath, entry]);
+    if (result.exitCode != 0) {
+      throw StateError(
+        'Failed to read $entry from OHOS HAP $hapPath with unzip: '
+        '${result.stderr}',
+      );
+    }
+    packInfo = result.stdout as String;
+  } else if (lister.executable == 'jar') {
+    final temporaryDirectory = Directory.systemTemp.createTempSync(
+      'frb_ohos_hap_metadata_',
+    );
+    try {
+      final result = await Process.run(
+        'jar',
+        ['xf', hapPath, entry],
+        workingDirectory: temporaryDirectory.path,
+      );
+      final extracted = File(path.join(temporaryDirectory.path, entry));
+      if (result.exitCode != 0 || !extracted.existsSync()) {
+        throw StateError(
+          'Failed to read $entry from OHOS HAP $hapPath with jar: '
+          '${result.stderr}',
+        );
+      }
+      packInfo = extracted.readAsStringSync();
+    } finally {
+      temporaryDirectory.deleteSync(recursive: true);
+    }
+  } else {
+    throw StateError(
+      'Unsupported OHOS HAP archive lister: ${lister.executable}',
+    );
+  }
+
+  try {
+    return ohosHapBundleNameForTesting(packInfo);
+  } on FormatException catch (error) {
+    throw StateError('Invalid $entry in OHOS HAP $hapPath: $error');
+  }
 }
 
 List<({String executable, List<String> arguments})>
