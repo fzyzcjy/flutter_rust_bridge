@@ -19,6 +19,27 @@ Both Flutter and OpenHarmony should be reported as available. If the doctor
 output reports a missing OpenHarmony component, finish the corresponding setup
 step from the environment guide before continuing.
 
+## Supported baseline
+
+OHOS support is currently **Beta**. The repository's required CI baseline is:
+
+| Component | Supported baseline |
+|---|---|
+| Flutter OHOS | branch `oh-3.41.9-dev`, commit `6d7e5b43fb43bb85ba0a59e3469299ebcf45a637` |
+| HarmonyOS command-line tools | `6.1.1.280` |
+| JDK | 17 |
+| Rust | stable; CI currently uses `1.93.1` |
+| Integration backend | CargoKit |
+| Required ABI/build mode | arm64 release (`ohos-arm64` / `arm64-v8a`) |
+
+The CI workflow pins these values instead of following the latest OHOS SDK or
+Flutter fork automatically. Other toolchain combinations can work, but are not
+release-gated yet. x86_64, armv7, profile, Native Assets, plugin consumption,
+and CI-controlled real-device execution remain experimental or unverified until
+their test matrix is added. The debug quickstart's extended FRB matrix has run
+20 consecutive times without failure on an arm64 HarmonyOS PC, but this local
+device automation is not yet a release gate.
+
 ## `OHOS_SDK_HOME`
 
 In addition to the variables required by the OpenHarmony Flutter guide,
@@ -62,6 +83,27 @@ On Windows PowerShell, use:
 echo $env:OHOS_SDK_HOME
 ```
 
+The repository's OHOS build gate runs an environment preflight before invoking
+Flutter. It rejects a missing or unsafe `OHOS_SDK_HOME`, checks for
+`llvm/bin/clang`, `llvm/bin/llvm-ar`, and `sysroot`, confirms that the active
+Flutter SDK advertises the `ohos` platform, and verifies that JDK's `jar` tool is
+available or that `unzip` can be used as a HAP inspection fallback. The
+successful preflight log also prints the Flutter target, Rust target, HAP ABI,
+and selected native SDK path.
+
+You can perform the equivalent core checks locally before a build:
+
+```shell
+flutter create --help | grep -w ohos
+test -x "$OHOS_SDK_HOME/llvm/bin/clang"
+test -x "$OHOS_SDK_HOME/llvm/bin/llvm-ar"
+test -d "$OHOS_SDK_HOME/sysroot"
+jar --version || unzip -v
+```
+
+On Windows, check for `clang.exe` and `llvm-ar.exe` in PowerShell or File
+Explorer instead of using the POSIX `test` commands.
+
 ## Creating an OHOS project
 
 :::warning
@@ -103,6 +145,78 @@ cd my_app
 flutter build hap --debug
 ```
 
+To confirm that the Rust library was packaged into the HAP, inspect the archive:
+
+```shell
+find build/ohos/hap -name '*.hap' -exec jar tf {} \; | grep 'libs/arm64-v8a/lib.*\.so'
+```
+
+The output should contain the library for your Rust crate, such as
+`libs/arm64-v8a/librust_lib_my_app.so`. Cargo replaces hyphens in crate names
+with underscores in the generated library filename. A HAP that contains only
+Flutter or system libraries cannot call the generated Rust bridge.
+
 If the Rust build fails with an OHOS SDK error, check `OHOS_SDK_HOME` first. It
 must point to the `native` SDK directory and the full path must not contain
 Chinese characters or whitespace.
+
+## Running the signed HAP smoke test on a device
+
+The repository provides a repeatable device smoke command for a signed HAP.
+The command refuses to replace an existing application, installs the HAP,
+starts its ability, waits for a log marker that proves the Rust call completed,
+saves the matching process logs, and uninstalls the test application in a
+`finally` cleanup step.
+
+Connect exactly one development device, confirm it is visible, and run:
+
+```shell
+hdc list targets
+./frb_internal ohos-device-smoke \
+  --hap /absolute/path/to/entry-default-signed.hap \
+  --bundle com.example.frb_ohos_smoke \
+  --ability EntryAbility
+```
+
+When more than one device is connected, select one explicitly:
+
+```shell
+./frb_internal ohos-device-smoke \
+  --hap /absolute/path/to/entry-default-signed.hap \
+  --bundle com.example.frb_ohos_smoke \
+  --device-id DEVICE_UDID
+```
+
+The checked-in quickstart emits `FRB_OHOS_SMOKE_RESULT=PASS` only after its
+synchronous call, async call, Stream, Rust-to-Dart callback, opaque-object
+mutation and disposal, diagnostic error conversion, struct/enum transfer, and
+64 KiB byte payload checks all succeed. For another fixture, pass its
+deterministic marker with `--expected-log`. Logs are saved under
+`target/ohos_device_smoke` by default. Use a dedicated bundle name whose
+application is not already installed on the device; the command intentionally
+aborts instead of overwriting user application data.
+
+The command does not create or manage signing credentials. Configure a debug
+signature in DevEco Studio or sign the HAP through your existing secure signing
+workflow before running it. Do not commit `.p12`, provision profiles, passwords,
+or generated signing configuration.
+
+## HarmonyOS PC and OpenHarmony device types
+
+Some Flutter OHOS templates generate an entry module that only declares the
+`phone` device type. On an OpenHarmony PC or 2-in-1 SDK this can produce an empty
+system-capability intersection during the Hvigor build. If the build reports
+that `phone` is unsupported, update the application entry module's
+`deviceTypes` for the target product, for example:
+
+```json5
+"deviceTypes": [
+  "default"
+]
+```
+
+Keep `runtimeOS`, `compatibleSdkVersion`, and the installed SDK component from
+the same HarmonyOS or OpenHarmony toolchain family. Switching only `runtimeOS`
+without matching SDK components can instead produce `SDK component missing`.
+For an existing application, preserve its product-specific phone, tablet, PC,
+and signing configuration rather than replacing the whole build profile.

@@ -8,3 +8,55 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 String greet({required String name}) =>
     RustLib.instance.api.crateApiSimpleGreet(name: name);
+
+Future<int> smokeAsync({required int input}) =>
+    RustLib.instance.api.crateApiSimpleSmokeAsync(input: input);
+
+Stream<int> smokeStream({required int count}) =>
+    RustLib.instance.api.crateApiSimpleSmokeStream(count: count);
+
+Future<String> smokeCallback({
+  required FutureOr<String> Function(String) callback,
+}) => RustLib.instance.api.crateApiSimpleSmokeCallback(callback: callback);
+
+Future<SmokeCounter> smokeCounterCreate({required int initial}) =>
+    RustLib.instance.api.crateApiSimpleSmokeCounterCreate(initial: initial);
+
+Future<String> smokeError({required bool shouldFail}) =>
+    RustLib.instance.api.crateApiSimpleSmokeError(shouldFail: shouldFail);
+
+Future<SmokePayload> smokePayload({required int size}) =>
+    RustLib.instance.api.crateApiSimpleSmokePayload(size: size);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SmokeCounter>>
+abstract class SmokeCounter implements RustOpaqueInterface {
+  Future<int> add({required int delta});
+
+  Future<int> value();
+}
+
+class SmokePayload {
+  final String label;
+  final Uint8List bytes;
+  final SmokeState state;
+
+  const SmokePayload({
+    required this.label,
+    required this.bytes,
+    required this.state,
+  });
+
+  @override
+  int get hashCode => label.hashCode ^ bytes.hashCode ^ state.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SmokePayload &&
+          runtimeType == other.runtimeType &&
+          label == other.label &&
+          bytes == other.bytes &&
+          state == other.state;
+}
+
+enum SmokeState { ready }
