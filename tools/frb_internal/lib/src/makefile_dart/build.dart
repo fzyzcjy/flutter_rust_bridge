@@ -232,6 +232,22 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
       throw StateError('OHOS HAP installation failed:\n$installOutput');
     }
 
+    final markerPattern = RegExp.escape(config.expectedLog.trim());
+    final baselineLogsResult = await _runHdc([
+      ...hdcPrefix,
+      'shell',
+      'hilog',
+      '-x',
+      '-e',
+      markerPattern,
+    ]);
+    _ensureProcessSucceeded(
+      baselineLogsResult,
+      operation: 'capture OHOS smoke log baseline',
+    );
+    final baselineLogs =
+        '${baselineLogsResult.stdout}\n${baselineLogsResult.stderr}';
+
     final launchResult = await _runHdc([
       ...hdcPrefix,
       'shell',
@@ -278,6 +294,7 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
         logFile.writeAsStringSync(latestLogs);
         if (ohosDeviceSmokeLogPassedForTesting(
           latestLogs,
+          baselineLogs: baselineLogs,
           expectedLog: config.expectedLog,
         )) {
           successMessage =
@@ -438,19 +455,31 @@ String ohosHapBundleNameForTesting(String packInfo) {
 
 bool ohosDeviceSmokeLogPassedForTesting(
   String logs, {
+  String baselineLogs = '',
   required String expectedLog,
 }) {
   final marker = expectedLog.trim();
   if (marker.isEmpty) return false;
 
-  final lines = logs.split(RegExp(r'\r?\n'));
-  final processStartIndex = lines.lastIndexWhere(
-    (line) => line.contains('APPSPAWN: AppSpawnChild'),
-  );
-  if (processStartIndex < 0) return false;
-
   final markerAtEndOfLine = RegExp('${RegExp.escape(marker)}\\s*\$');
-  return lines.skip(processStartIndex + 1).any(markerAtEndOfLine.hasMatch);
+  final baselineMarkerCounts = <String, int>{};
+  for (final line in baselineLogs.split(RegExp(r'\r?\n'))) {
+    if (markerAtEndOfLine.hasMatch(line)) {
+      baselineMarkerCounts.update(
+        line,
+        (count) => count + 1,
+        ifAbsent: () => 1,
+      );
+    }
+  }
+
+  for (final line in logs.split(RegExp(r'\r?\n'))) {
+    if (!markerAtEndOfLine.hasMatch(line)) continue;
+    final baselineCount = baselineMarkerCounts[line] ?? 0;
+    if (baselineCount == 0) return true;
+    baselineMarkerCounts[line] = baselineCount - 1;
+  }
+  return false;
 }
 
 Future<void> _runOhosBuildPreflight() async {
@@ -711,11 +740,11 @@ Future<String> _readOhosHapBundleName(String hapPath) async {
       'frb_ohos_hap_metadata_',
     );
     try {
-      final result = await Process.run(
-        'jar',
-        ['xf', hapPath, entry],
-        workingDirectory: temporaryDirectory.path,
-      );
+      final result = await Process.run('jar', [
+        'xf',
+        hapPath,
+        entry,
+      ], workingDirectory: temporaryDirectory.path);
       final extracted = File(path.join(temporaryDirectory.path, entry));
       if (result.exitCode != 0 || !extracted.existsSync()) {
         throw StateError(

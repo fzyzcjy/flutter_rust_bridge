@@ -337,10 +337,7 @@ bundleName: com.example.smoke
       () => ohosHapBundleNameForTesting('{"summary":{"app":{}}}'),
       throwsFormatException,
     );
-    expect(
-      () => ohosHapBundleNameForTesting('[]'),
-      throwsFormatException,
-    );
+    expect(() => ohosHapBundleNameForTesting('[]'), throwsFormatException);
   });
 
   test('OHOS device smoke recognizes hdc outcomes and Rust marker', () {
@@ -358,30 +355,44 @@ bundleName: com.example.smoke
     );
     expect(
       ohosDeviceSmokeLogPassedForTesting('''
-08-11 12:31:35.865 50093 50093 I APPSPAWN: AppSpawnChild id 2917
 08-11 12:31:36.401 50093 50093 W Flutter: FRB_OHOS_SMOKE_RESULT=PASS
 ''', expectedLog: 'FRB_OHOS_SMOKE_RESULT=PASS'),
       isTrue,
     );
     expect(
-      ohosDeviceSmokeLogPassedForTesting('''
-08-11 12:30:00.000 40000 40000 I APPSPAWN: AppSpawnChild id 2916
+      ohosDeviceSmokeLogPassedForTesting(
+        '''
 08-11 12:30:00.500 40000 40000 W Flutter: FRB_OHOS_SMOKE_RESULT=PASS
-08-11 12:31:35.865 40000 40000 I APPSPAWN: AppSpawnChild id 2917
-08-11 12:31:36.000 40000 40000 I Flutter: current launch still running
-''', expectedLog: 'FRB_OHOS_SMOKE_RESULT=PASS'),
+''',
+        baselineLogs: '''
+08-11 12:30:00.500 40000 40000 W Flutter: FRB_OHOS_SMOKE_RESULT=PASS
+''',
+        expectedLog: 'FRB_OHOS_SMOKE_RESULT=PASS',
+      ),
       isFalse,
     );
     expect(
+      ohosDeviceSmokeLogPassedForTesting(
+        '''
+08-11 12:30:00.500 40000 40000 W Flutter: FRB_OHOS_SMOKE_RESULT=PASS
+08-11 12:31:36.401 50093 50093 W Flutter: FRB_OHOS_SMOKE_RESULT=PASS
+''',
+        baselineLogs: '''
+08-11 12:30:00.500 40000 40000 W Flutter: FRB_OHOS_SMOKE_RESULT=PASS
+''',
+        expectedLog: 'FRB_OHOS_SMOKE_RESULT=PASS',
+      ),
+      isTrue,
+    );
+    expect(
       ohosDeviceSmokeLogPassedForTesting('''
-08-11 12:31:35.865 50093 50093 I APPSPAWN: AppSpawnChild id 2917
 08-11 12:31:36.401 50093 50093 W Flutter: FRB_OHOS_SMOKE_RESULT=PASSIVE
 ''', expectedLog: 'FRB_OHOS_SMOKE_RESULT=PASS'),
       isFalse,
     );
     expect(
       ohosDeviceSmokeLogPassedForTesting(
-        'APPSPAWN: AppSpawnChild id 2917',
+        'FRB_OHOS_SMOKE_RESULT=PASS',
         expectedLog: '   ',
       ),
       isFalse,
