@@ -405,10 +405,12 @@ mod tests {
         let out = execute_command(bin, args.iter(), None, streaming_options()).unwrap();
         assert!(out.status.success());
         let stdout = String::from_utf8_lossy(&out.stdout);
-        assert!(
-            stdout.contains("stream-ok"),
-            "expected streamed stdout to contain marker, got {stdout:?}"
-        );
+        if !stdout.contains("stream-ok") {
+            // Failure-only diagnostics; a passing test never takes this arm.
+            // frb-coverage:ignore-start
+            panic!("expected streamed stdout to contain marker, got {stdout:?}");
+            // frb-coverage:ignore-end
+        }
     }
 
     #[test]
@@ -421,10 +423,12 @@ mod tests {
         let out = execute_command(bin, args.iter(), None, streaming_options()).unwrap();
         assert!(!out.status.success());
         let stderr = String::from_utf8_lossy(&out.stderr);
-        assert!(
-            stderr.contains("stream-err"),
-            "expected streamed stderr to contain marker, got {stderr:?}"
-        );
+        if !stderr.contains("stream-err") {
+            // Failure-only diagnostics; a passing test never takes this arm.
+            // frb-coverage:ignore-start
+            panic!("expected streamed stderr to contain marker, got {stderr:?}");
+            // frb-coverage:ignore-end
+        }
     }
 
     #[test]
@@ -437,9 +441,11 @@ mod tests {
         )
         .expect_err("missing binary should fail to spawn");
         let msg = format!("{err:#}");
-        assert!(
-            msg.contains("failed to spawn"),
-            "expected spawn error, got {msg}"
-        );
+        if !msg.contains("failed to spawn") {
+            // Failure-only diagnostics; a passing test never takes this arm.
+            // frb-coverage:ignore-start
+            panic!("expected spawn error, got {msg}");
+            // frb-coverage:ignore-end
+        }
     }
 }
