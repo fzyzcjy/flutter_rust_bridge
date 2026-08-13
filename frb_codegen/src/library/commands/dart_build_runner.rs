@@ -16,6 +16,7 @@ pub fn dart_build_runner(dart_root: &Path, fvm_install_mode: FvmInstallMode) -> 
     let out = command_run!(
         call_shell[Some(dart_root), Some(ExecuteCommandOptions {
             envs: Some(dart_run_extra_env()),
+            stream_output: true,
             ..Default::default()
         })],
         ?command_arg_maybe_fvm(Some(dart_root), fvm_install_mode),
@@ -31,9 +32,10 @@ pub fn dart_build_runner(dart_root: &Path, fvm_install_mode: FvmInstallMode) -> 
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
         bail!(
-            "Failed to run build_runner for {:?}: {}",
+            "Failed to run build_runner for {:?}: {}\n{}",
             dart_root,
-            String::from_utf8_lossy(&out.stdout)
+            String::from_utf8_lossy(&out.stdout),
+            String::from_utf8_lossy(&out.stderr)
         );
         // frb-coverage:ignore-end
     }

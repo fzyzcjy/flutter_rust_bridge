@@ -1,12 +1,14 @@
+use crate::utils::console::println_over_progress;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::{bail, Context};
 use itertools::Itertools;
 use log::debug;
 use log::warn;
 use std::collections::HashMap;
+use std::io::{BufRead, BufReader, Read};
 use std::path::{Path, PathBuf};
-use std::process::Command;
-use std::process::Output;
+use std::process::{Command, Output, Stdio};
+use std::thread;
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.
@@ -168,6 +170,10 @@ pub fn windows_escape_for_powershell(section_in: &str) -> String {
 pub(crate) struct ExecuteCommandOptions {
     pub envs: Option<HashMap<String, String>>,
     pub log_when_error: Option<bool>,
+    /// Forward child stdout/stderr line-by-line while the process is still running.
+    /// Needed for long-lived tools such as `build_runner`, whose useful diagnostics
+    /// otherwise stay buffered until exit (or never appear if the child hangs).
+    pub stream_output: bool,
 }
 
 pub(crate) fn execute_command<'a>(
@@ -195,9 +201,12 @@ pub(crate) fn execute_command<'a>(
         bin, args_display, current_dir, cmd
     );
 
-    let result = cmd
-        .output()
-        .with_context(|| format!(r#""{bin}" "{args_display}" failed (cmd={cmd:?})"#))?;
+    let result = if options.stream_output {
+        execute_command_streaming(&mut cmd, bin, &args_display)?
+    } else {
+        cmd.output()
+            .with_context(|| format!(r#""{bin}" "{args_display}" failed (cmd={cmd:?})"#))?
+    };
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {
@@ -213,7 +222,8 @@ pub(crate) fn execute_command<'a>(
             warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} stdout={:?}", cmd, stdout);
             // frb-coverage:ignore-end
         }
-    } else if options.log_when_error.unwrap_or(true) {
+    } else if options.log_when_error.unwrap_or(true) && !options.stream_output {
+        // Streaming already printed the child output live; do not dump it again.
         warn!(
             "command={:?} stdout={} stderr={}",
             cmd,
@@ -222,6 +232,61 @@ pub(crate) fn execute_command<'a>(
         );
     }
     Ok(result)
+}
+
+fn execute_command_streaming(
+    cmd: &mut Command,
+    bin: &str,
+    args_display: &str,
+) -> anyhow::Result<Output> {
+    cmd.stdout(Stdio::piped());
+    cmd.stderr(Stdio::piped());
+    let mut child = cmd
+        .spawn()
+        .with_context(|| format!(r#""{bin}" "{args_display}" failed to spawn (cmd={cmd:?})"#))?;
+    let stdout_pipe = child.stdout.take().context("stdout was piped")?;
+    let stderr_pipe = child.stderr.take().context("stderr was piped")?;
+
+    let stdout_thread = thread::spawn(move || {
+        let mut collected = Vec::new();
+        tee_reader(stdout_pipe, &mut collected);
+        collected
+    });
+    let stderr_thread = thread::spawn(move || {
+        let mut collected = Vec::new();
+        tee_reader(stderr_pipe, &mut collected);
+        collected
+    });
+
+    let status = child
+        .wait()
+        .with_context(|| format!(r#""{bin}" "{args_display}" failed to wait"#))?;
+    // A panicked reader thread should not hide the child's exit status.
+    let stdout = stdout_thread.join().unwrap_or_default();
+    let stderr = stderr_thread.join().unwrap_or_default();
+    Ok(Output {
+        status,
+        stdout,
+        stderr,
+    })
+}
+
+/// Copies `reader` into `collected` and prints each line above the codegen spinner.
+fn tee_reader(reader: impl Read, collected: &mut Vec<u8>) {
+    let mut reader = BufReader::new(reader);
+    let mut line = Vec::new();
+    loop {
+        line.clear();
+        match reader.read_until(b'\n', &mut line) {
+            Ok(0) => break,
+            Ok(_) => {
+                collected.extend_from_slice(&line);
+                let text = String::from_utf8_lossy(&line);
+                println_over_progress(text.trim_end_matches(['\r', '\n']));
+            }
+            Err(_) => break,
+        }
+    }
 }
 
 pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
@@ -238,6 +303,7 @@ pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::io::Read;
     #[test]
     #[cfg(windows)]
     fn test_call_shell_info() {
@@ -286,5 +352,94 @@ mod tests {
         let actual_token_out = windows_escape_for_powershell(section_in);
         let expect_token_out = "detects` regression` `\"errors`\"` when` tests` are` run` `\\` on` non_windows` systems";
         assert_eq!(actual_token_out, expect_token_out);
+    }
+
+    #[test]
+    fn test_tee_reader_collects_every_line_including_crlf() {
+        let input = b"freezed on 45 inputs\r\nE missing implementation\npartial";
+        let mut collected = Vec::new();
+        super::tee_reader(&input[..], &mut collected);
+        assert_eq!(collected, input);
+    }
+
+    #[test]
+    fn test_tee_reader_empty_input_is_noop() {
+        let mut collected = Vec::new();
+        super::tee_reader(&b""[..], &mut collected);
+        assert!(collected.is_empty());
+    }
+
+    struct FailingReader;
+
+    impl Read for FailingReader {
+        fn read(&mut self, _buf: &mut [u8]) -> std::io::Result<usize> {
+            Err(std::io::Error::new(std::io::ErrorKind::Other, "boom"))
+        }
+    }
+
+    #[test]
+    fn test_tee_reader_io_error_stops_without_panic() {
+        let mut collected = Vec::new();
+        super::tee_reader(FailingReader, &mut collected);
+        assert!(collected.is_empty());
+    }
+
+    fn streaming_options() -> Option<ExecuteCommandOptions> {
+        Some(ExecuteCommandOptions {
+            stream_output: true,
+            ..Default::default()
+        })
+    }
+
+    fn cmd_args(parts: &[&str]) -> Vec<PathBuf> {
+        parts.iter().map(PathBuf::from).collect()
+    }
+
+    #[test]
+    fn test_execute_command_streaming_captures_stdout() {
+        let (bin, args) = if cfg!(windows) {
+            ("cmd", cmd_args(&["/c", "echo", "stream-ok"]))
+        } else {
+            ("echo", cmd_args(&["stream-ok"]))
+        };
+        let out = execute_command(bin, args.iter(), None, streaming_options()).unwrap();
+        assert!(out.status.success());
+        let stdout = String::from_utf8_lossy(&out.stdout);
+        assert!(
+            stdout.contains("stream-ok"),
+            "expected streamed stdout to contain marker, got {stdout:?}"
+        );
+    }
+
+    #[test]
+    fn test_execute_command_streaming_captures_stderr_and_nonzero_exit() {
+        let (bin, args) = if cfg!(windows) {
+            ("cmd", cmd_args(&["/c", "echo stream-err 1>&2 & exit /b 1"]))
+        } else {
+            ("sh", cmd_args(&["-c", "echo stream-err >&2; exit 1"]))
+        };
+        let out = execute_command(bin, args.iter(), None, streaming_options()).unwrap();
+        assert!(!out.status.success());
+        let stderr = String::from_utf8_lossy(&out.stderr);
+        assert!(
+            stderr.contains("stream-err"),
+            "expected streamed stderr to contain marker, got {stderr:?}"
+        );
+    }
+
+    #[test]
+    fn test_execute_command_streaming_missing_binary_fails() {
+        let err = execute_command(
+            "definitely-not-a-real-binary-frb-stream-test-9f3c",
+            std::iter::empty(),
+            None,
+            streaming_options(),
+        )
+        .expect_err("missing binary should fail to spawn");
+        let msg = format!("{err:#}");
+        assert!(
+            msg.contains("failed to spawn"),
+            "expected spawn error, got {msg}"
+        );
     }
 }

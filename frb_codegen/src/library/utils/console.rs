@@ -34,6 +34,11 @@ impl SimpleProgressBar {
     }
 }
 
+/// Prints above the live progress bars without tearing the spinner.
+pub(crate) fn println_over_progress(line: impl AsRef<str>) {
+    let _ = MULTI_PROGRESS.println(line.as_ref());
+}
+
 pub(crate) struct SimpleProgressBarHandle {
     pb: ProgressBar,
 }
