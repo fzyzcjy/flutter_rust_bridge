@@ -3,7 +3,7 @@ FROM ghcr.io/cirruslabs/android-sdk:36
 # Inlined from https://github.com/cirruslabs/docker-images-flutter/blob/master/sdk/Dockerfile
 USER root
 ARG FLUTTER_VERSION=3.47.0
-ENV FLUTTER_HOME=${HOME}/sdks/flutter \
+ENV FLUTTER_HOME=/sdks/flutter \
     FLUTTER_VERSION=${FLUTTER_VERSION}
 ENV FLUTTER_ROOT=${FLUTTER_HOME}
 ENV PATH=${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
@@ -43,8 +43,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Android SDK platform-tools, CMake, NDK packages, and Chrome for Testing
-# chromedriver provide linux-x86_64 binaries in the arm64 Cirrus Flutter base
-# image. Docker Desktop can emulate them, but the image still needs the
+# Chrome for Testing only provides linux-x86_64 chromedriver binaries on arm64.
+# Docker Desktop can emulate them, but the image still needs the
 # matching x86_64 runtime libraries.
 # References:
 # - Debian multiarch: https://wiki.debian.org/Multiarch/HOWTO
