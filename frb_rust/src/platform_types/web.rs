@@ -15,7 +15,7 @@ pub type MessagePort = crate::generalized_isolate::PortLike;
 pub type DartAbi = wasm_bindgen::JsValue;
 
 const BROADCAST_CHANNEL_RELEASE_SUFFIX: &str = "__flutter_rust_bridge_release";
-const BROADCAST_CHANNEL_RELEASE_FALLBACK_MILLIS: i32 = 1000;
+const BROADCAST_CHANNEL_RELEASE_FALLBACK_MILLIS: i32 = 10_000;
 
 #[derive(Clone, Debug)]
 pub struct SendableMessagePortHandle(String);
