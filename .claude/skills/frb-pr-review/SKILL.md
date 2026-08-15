@@ -11,6 +11,8 @@ Use this before treating a non-trivial `flutter_rust_bridge` PR as ready, especi
 
 Run independent review before final readiness:
 
+- If the user's local skill catalog provides `sdev-review-single-general`, run it against the PR diff as part of this gate.
+
 1. Spawn a subagent to review correctness.
    - Ask it to inspect the PR diff against the PR base.
    - Focus on real behavior bugs, stale generated output, incorrect CI workarounds, coverage-only changes, and unrelated drift.
