@@ -528,6 +528,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           generatedPackageDir: dirPackage,
         );
       }
+      await exec('dart format .', relativePwd: config.package);
 
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {
