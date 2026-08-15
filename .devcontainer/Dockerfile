@@ -1,5 +1,17 @@
+FROM ghcr.io/cirruslabs/android-sdk:36
+
+# Inlined from https://github.com/cirruslabs/docker-images-flutter/blob/master/sdk/Dockerfile
+USER root
 ARG FLUTTER_VERSION=3.47.0
-FROM ghcr.io/adrianjagielak/flutter:${FLUTTER_VERSION}
+ENV FLUTTER_HOME=${HOME}/sdks/flutter \
+    FLUTTER_VERSION=${FLUTTER_VERSION}
+ENV FLUTTER_ROOT=${FLUTTER_HOME}
+ENV PATH=${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
+RUN git clone --depth 1 --branch ${FLUTTER_VERSION} https://github.com/flutter/flutter.git ${FLUTTER_HOME}
+RUN yes | flutter doctor --android-licenses \
+    && flutter doctor \
+    && chown -R root:root ${FLUTTER_HOME}
+RUN flutter precache --android
 
 # Configurable version parameters
 ARG RUST_VERSION=1.93.1
