@@ -28,6 +28,11 @@ import 'package:yaml/yaml.dart';
 part 'generate.g.dart';
 
 const _kRefreshCargoLockOrderingEnv = 'FRB_REFRESH_CARGO_LOCK_ORDERING';
+const _kBuildCliDependency = '  build_cli: ^2.2.5';
+const _kDisabledBuildCliDependency =
+    '  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed\n'
+    '  # build_cli: ^2.2.5';
+const _kBuildCliPackages = ['frb_dart', 'frb_utils'];
 
 List<Command<void>> createCommands() {
   return [
@@ -427,31 +432,61 @@ Future<void> generateRunFrbCodegenCommandGenerate(
 
 Future<void> generateRunFrbCodegenCommandGenerateFromScratch() async {
   await wrapMaybeSetExitIfChangedRaw(true, () async {
-    final expectedGeneratedFiles =
-        await deleteTrackedGeneratedFilesForFromScratch();
-    await _prepareFromScratchCodegenDependencies();
-    const generateConfig = GenerateConfig(
-      setExitIfChanged: false,
-      coverage: false,
-    );
-    await generateInternalRust(generateConfig);
-    await generateInternalBuildRunner(generateConfig);
-    for (final package in [
-      'frb_example/pure_dart',
-      'frb_example/pure_dart_pde',
-    ]) {
-      await generateRunFrbCodegenCommandGenerate(
-        GeneratePackageConfig(
-          setExitIfChanged: false,
-          package: package,
-          coverage: false,
-        ),
+    await _withBuildCliEnabled(() async {
+      final expectedGeneratedFiles =
+          await deleteTrackedGeneratedFilesForFromScratch();
+      await _prepareFromScratchCodegenDependencies();
+      const generateConfig = GenerateConfig(
+        setExitIfChanged: false,
+        coverage: false,
+      );
+      await generateInternalRust(generateConfig);
+      await generateInternalBuildRunner(generateConfig);
+      for (final package in [
+        'frb_example/pure_dart',
+        'frb_example/pure_dart_pde',
+      ]) {
+        await generateRunFrbCodegenCommandGenerate(
+          GeneratePackageConfig(
+            setExitIfChanged: false,
+            package: package,
+            coverage: false,
+          ),
+        );
+      }
+      await generateInternal(generateConfig);
+      await precommitGenerate();
+      verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
+    });
+  });
+}
+
+Future<void> _withBuildCliEnabled(Future<void> Function() action) async {
+  _setBuildCliEnabled(enabled: true);
+  try {
+    await action();
+  } finally {
+    _setBuildCliEnabled(enabled: false);
+  }
+}
+
+void _setBuildCliEnabled({required bool enabled}) {
+  final expected = enabled
+      ? _kDisabledBuildCliDependency
+      : _kBuildCliDependency;
+  final replacement = enabled
+      ? _kBuildCliDependency
+      : _kDisabledBuildCliDependency;
+  for (final package in _kBuildCliPackages) {
+    final pubspec = File(path.join(exec.pwd!, package, 'pubspec.yaml'));
+    final contents = pubspec.readAsStringSync();
+    if (!contents.contains(expected)) {
+      throw StateError(
+        'Expected build_cli state not found in ${pubspec.path}.',
       );
     }
-    await generateInternal(generateConfig);
-    await precommitGenerate();
-    verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
-  });
+    pubspec.writeAsStringSync(contents.replaceFirst(expected, replacement));
+  }
 }
 
 Future<void> _prepareFromScratchCodegenDependencies() async {
