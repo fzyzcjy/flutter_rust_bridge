@@ -184,9 +184,11 @@ Stream<dynamic> _orderMessages(
         }
 
         final sequence = (event[0] as int, event[1] as int);
+        final sequenceIsNext = sequence == next;
         if (_sequenceBefore(sequence, next) ||
-            pending.containsKey(sequence) ||
-            skipped.contains(sequence)) {
+            (!sequenceIsNext &&
+                (pending.containsKey(sequence) ||
+                    skipped.contains(sequence)))) {
           throw StateError(
             'Duplicate or stale ordered port message: $sequence',
           );
@@ -214,13 +216,13 @@ Stream<dynamic> _orderMessages(
           event[releaseAfterDelivery ? 3 : event.length - 1],
           releaseAfterDelivery,
         );
-        if (sequence == next) {
+        if (sequenceIsNext) {
           emit(message, sink);
           next = _nextSequence(next);
         } else {
           pending[sequence] = message;
         }
-        drain(sink);
+        if (pending.isNotEmpty || skipped.isNotEmpty) drain(sink);
       },
     ),
   );
