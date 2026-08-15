@@ -114,6 +114,10 @@ Run the mechanical verifier again after the user finishes manual edits.
 - Confirm entries with third-party thanks appear before entries without thanks.
 - Apply any confirmed fixes, then do one final diff check.
 
+If the user explicitly wants an independent review, ask a separate reviewer or subagent to compare the final `CHANGELOG.md` against the same merged PR list.
+
+## Step 10: Regenerate published-package changelogs
+
 Regenerate the published-package changelog copies from the final root `CHANGELOG.md`:
 
 ```bash
@@ -124,5 +128,3 @@ Regenerate the published-package changelog copies from the final root `CHANGELOG
 - Commit the root changelog and both generated copies together as one atomic release-preparation change.
 - Do not manually edit either generated package changelog.
 - From the clean post-commit tree, run `./frb_internal generate-internal-readme --set-exit-if-changed` as the final drift gate. Do not run this flag while the changelog draft is still dirty because it checks the entire worktree.
-
-If the user explicitly wants an independent review, ask a separate reviewer or subagent to compare the final `CHANGELOG.md` against the same merged PR list.
