@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:async/async.dart';
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
-import 'package:meta/meta.dart';
 
 /// The Rust `StreamSink<T>` on the Dart side.
 class RustStreamSink<T> {
@@ -39,77 +39,22 @@ class _State<T> {
 _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
   final portName = ExecuteStreamPortGenerator.create('RustStreamSink');
   final receivePort = broadcastPort(portName);
-  return _State(
-    receivePort,
-    _bindDecodedStream(
-      codec.decodeObject,
-      receivePort,
-      closeSource: receivePort.close,
-    ),
-  );
-}
 
-@visibleForTesting
-/// Binds and decodes a source stream for internal tests.
-Stream<T> bindDecodedStreamForTest<T>({
-  required T Function(dynamic) decodeObject,
-  required Stream<dynamic> source,
-  required void Function() closeSource,
-}) => _bindDecodedStream(decodeObject, source, closeSource: closeSource);
-
-Stream<T> _bindDecodedStream<T>(
-  T Function(dynamic) decodeObject,
-  Stream<dynamic> source, {
-  required void Function() closeSource,
-}) {
-  final controller = StreamController<T>(sync: true);
-
-  StreamSubscription<dynamic>? sourceSubscription;
-  var terminated = false;
-
-  void terminate() {
-    if (terminated) return;
-    terminated = true;
-    closeSource();
-    sourceSubscription?.cancel();
-    controller.close();
-  }
-
-  sourceSubscription = source.listen(
-    (raw) {
-      final T decoded;
-      try {
-        decoded = decodeObject(raw);
-      } on CloseStreamException {
-        terminate();
-        return;
-      } catch (error, stackTrace) {
-        controller.addError(error, stackTrace);
-        terminate();
-        return;
+  final Stream<T> rawStream = () async* {
+    try {
+      await for (final raw in receivePort) {
+        try {
+          yield codec.decodeObject(raw);
+        } on CloseStreamException {
+          break;
+        }
       }
-      controller.add(decoded);
-    },
-    onError: (Object error, StackTrace stackTrace) {
-      controller.addError(error, stackTrace);
-      terminate();
-    },
-    onDone: terminate,
-  );
-  if (terminated) sourceSubscription.cancel();
-
-  controller
-    ..onPause = () {
-      if (!terminated) sourceSubscription!.pause();
+    } finally {
+      receivePort.close();
     }
-    ..onResume = () {
-      if (!terminated) sourceSubscription!.resume();
-    }
-    ..onCancel = () {
-      terminated = true;
-      closeSource();
-      return sourceSubscription!.cancel();
-    };
+  }();
 
-  return controller.stream;
+  final stream = rawStream.listenAndBuffer();
+
+  return _State(receivePort, stream);
 }

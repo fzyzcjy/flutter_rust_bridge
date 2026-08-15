@@ -110,6 +110,13 @@ final kCiJobs = [
           'package': 'frb_example--flutter_via_create',
           'package_path': 'frb_example/flutter_via_create',
         },
+        {
+          'image': 'ubuntu-latest',
+          'target': 'ohos',
+          'package': 'frb_example--flutter_via_integrate',
+          'package_path': 'frb_example/flutter_via_integrate',
+          'prepare_ohos_package': 'frb_example--flutter_via_integrate',
+        },
       ])
         {'info': info},
     ]),
@@ -299,6 +306,15 @@ List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
       'package': package,
       'package_path': packagePath,
     },
+    if (package == 'frb_example--flutter_via_create')
+      {
+        'image': 'ubuntu-latest',
+        'platform': 'nix',
+        'target': 'desktop',
+        'device': 'linux',
+        'package': package,
+        'package_path': packagePath,
+      },
     {
       'image': 'macos-15-intel',
       'platform': 'macos',

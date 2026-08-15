@@ -76,7 +76,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.13.0-beta.6";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1227090195;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 2146624671;
 
 // Section: executor
 
@@ -31454,61 +31454,6 @@ fn wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_n
                     })())
                 } })
 }
-fn wire__crate__api__event_listener__try_create_event_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "try_create_event_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_address = <String>::sse_decode(&mut deserializer);
-            let api_payload = <String>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, flutter_rust_bridge::for_generated::anyhow::Error>(
-                    (move || {
-                        let output_ok = crate::api::event_listener::try_create_event_twin_normal(
-                            api_address,
-                            api_payload,
-                        )?;
-                        std::result::Result::Ok(output_ok)
-                    })(),
-                )
-            }
-        },
-    )
-}
-fn wire__crate__api__pseudo_manual__event_listener_twin_rust_async__try_create_event_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "try_create_event_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_address = <String>::sse_decode(&mut deserializer);
-let api_payload = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
-                    transform_result_sse::<_, flutter_rust_bridge::for_generated::anyhow::Error>((move || async move {
-                         let output_ok = crate::api::pseudo_manual::event_listener_twin_rust_async::try_create_event_twin_rust_async(api_address, api_payload).await?;   std::result::Result::Ok(output_ok)
-                    })().await)
-                } })
-}
 fn wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -45098,18 +45043,16 @@ fn pde_ffi_dispatcher_primary_impl(
 1353 => wire__crate__api__exception__throw_anyhow_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 1354 => wire__crate__api__pseudo_manual__exception_twin_rust_async__throw_anyhow_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
 1356 => wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1357 => wire__crate__api__event_listener__try_create_event_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1358 => wire__crate__api__pseudo_manual__event_listener_twin_rust_async__try_create_event_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1360 => wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1361 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1363 => wire__crate__api__array__use_boxed_blob_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1364 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1366 => wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1367 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1369 => wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1370 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
-1372 => wire__crate__api__array__use_msgid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
-1373 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1358 => wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1359 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1361 => wire__crate__api__array__use_boxed_blob_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1362 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_boxed_blob_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1364 => wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1365 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_enum_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1367 => wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1368 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_rust_async__use_imported_struct_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+1370 => wire__crate__api__array__use_msgid_twin_normal_impl(port, ptr, rust_vec_len, data_len),
+1371 => wire__crate__api__pseudo_manual__array_twin_rust_async__use_msgid_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }
@@ -45563,12 +45506,12 @@ fn pde_ffi_dispatcher_sync_impl(
 1349 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_2_twin_sync_impl(ptr, rust_vec_len, data_len),
 1352 => wire__crate__api__pseudo_manual__tuple_twin_sync__test_tuple_twin_sync_impl(ptr, rust_vec_len, data_len),
 1355 => wire__crate__api__pseudo_manual__exception_twin_sync__throw_anyhow_twin_sync_impl(ptr, rust_vec_len, data_len),
-1359 => wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
-1362 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
-1365 => wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync_impl(ptr, rust_vec_len, data_len),
-1368 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
-1371 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
-1374 => wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync_impl(ptr, rust_vec_len, data_len),
+1357 => wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal_impl(ptr, rust_vec_len, data_len),
+1360 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync_impl(ptr, rust_vec_len, data_len),
+1363 => wire__crate__api__pseudo_manual__array_twin_sync__use_boxed_blob_twin_sync_impl(ptr, rust_vec_len, data_len),
+1366 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_enum_twin_sync_impl(ptr, rust_vec_len, data_len),
+1369 => wire__crate__api__pseudo_manual__external_type_in_crate_twin_sync__use_imported_struct_twin_sync_impl(ptr, rust_vec_len, data_len),
+1372 => wire__crate__api__pseudo_manual__array_twin_sync__use_msgid_twin_sync_impl(ptr, rust_vec_len, data_len),
                         _ => unreachable!(),
                     }
 }

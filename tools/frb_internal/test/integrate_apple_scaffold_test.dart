@@ -145,6 +145,10 @@ void main() {
       ['ohos'],
     );
     expect(
+      preservedOhosScaffoldPathsForTesting('frb_example/flutter_via_integrate'),
+      ['ohos'],
+    );
+    expect(
       preservedOhosScaffoldPathsForTesting('frb_example/flutter_package'),
       isEmpty,
     );
@@ -193,6 +197,34 @@ void main() {
       );
     },
   );
+
+  test('preserveCheckedInOhosScaffold restores integrate OHOS files', () async {
+    final tempDir = Directory.systemTemp.createTempSync(
+      'frb-preserve-integrate-ohos-',
+    );
+    addTearDown(() => tempDir.deleteSync(recursive: true));
+
+    final original = Directory('${tempDir.path}/original');
+    final generated = Directory('${tempDir.path}/generated');
+    Directory('${original.path}/ohos').createSync(recursive: true);
+    File(
+      '${original.path}/ohos/ohos_device_smoke_main.dart',
+    ).writeAsStringSync('void main() {}');
+    Directory(generated.path).createSync(recursive: true);
+
+    await preserveCheckedInOhosScaffold(
+      package: 'frb_example/flutter_via_integrate',
+      originalPackageDir: original.path,
+      generatedPackageDir: generated.path,
+    );
+
+    expect(
+      File(
+        '${generated.path}/ohos/ohos_device_smoke_main.dart',
+      ).readAsStringSync(),
+      'void main() {}',
+    );
+  });
 
   test('copyDirectoryRecursive preserves dotfiles and nested workspace files', () {
     final tempDir = Directory.systemTemp.createTempSync('frb-copy-recursive-');
