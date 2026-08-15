@@ -228,6 +228,7 @@ Stream<dynamic> _orderMessages(
 
 void _acknowledgeRelease(SendPort sendPort) {
   final channelName = (sendPort.nativePort as web.BroadcastChannel).name;
+  print('stream release reached: $channelName');
   final channel = web.BroadcastChannel(
     '${channelName}__flutter_rust_bridge_release',
   );

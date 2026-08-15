@@ -135,6 +135,9 @@ impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
             log_warn_or_println(&format!("{error:?}"));
             #[cfg(target_family = "wasm")]
             release_cached_channel_handle(&self.sendable_channel_handle);
+        } else {
+            #[cfg(target_family = "wasm")]
+            crate::console_error!("stream final close posted");
         }
     }
 }
