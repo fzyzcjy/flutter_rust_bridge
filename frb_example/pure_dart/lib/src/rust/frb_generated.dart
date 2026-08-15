@@ -376,7 +376,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0-beta.6';
 
   @override
-  int get rustContentHash => -703344157;
+  int get rustContentHash => -1730785095;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -10740,20 +10740,6 @@ abstract class RustLibApi extends BaseApi {
   Future<int>
       crateApiDartCodeTranslatableStructWithDartCodeTwinNormalNormalMethodTwinNormal(
           {required TranslatableStructWithDartCodeTwinNormal that});
-
-  Future<bool> crateApiEventListenerTryCreateEventTwinNormal(
-      {required String address, required String payload});
-
-  Future<bool>
-      crateApiPseudoManualEventListenerTwinRustAsyncTryCreateEventTwinRustAsync(
-          {required String address, required String payload});
-
-  Future<bool>
-      crateApiPseudoManualEventListenerTwinRustAsyncSseTryCreateEventTwinRustAsyncSse(
-          {required String address, required String payload});
-
-  Future<bool> crateApiPseudoManualEventListenerTwinSseTryCreateEventTwinSse(
-      {required String address, required String payload});
 
   String crateApiDartOpaqueSyncUnwrapDartOpaqueTwinNormal(
       {required Object opaque});
@@ -100229,126 +100215,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             debugName:
                 "translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal",
             argNames: ["that"],
-          );
-
-  @override
-  Future<bool> crateApiEventListenerTryCreateEventTwinNormal(
-      {required String address, required String payload}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_String(address);
-        var arg1 = cst_encode_String(payload);
-        return wire
-            .wire__crate__api__event_listener__try_create_event_twin_normal(
-                port_, arg0, arg1);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_bool,
-        decodeErrorData: dco_decode_AnyhowException,
-      ),
-      constMeta: kCrateApiEventListenerTryCreateEventTwinNormalConstMeta,
-      argValues: [address, payload],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiEventListenerTryCreateEventTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "try_create_event_twin_normal",
-        argNames: ["address", "payload"],
-      );
-
-  @override
-  Future<bool>
-      crateApiPseudoManualEventListenerTwinRustAsyncTryCreateEventTwinRustAsync(
-          {required String address, required String payload}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_String(address);
-        var arg1 = cst_encode_String(payload);
-        return wire
-            .wire__crate__api__pseudo_manual__event_listener_twin_rust_async__try_create_event_twin_rust_async(
-                port_, arg0, arg1);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_bool,
-        decodeErrorData: dco_decode_AnyhowException,
-      ),
-      constMeta:
-          kCrateApiPseudoManualEventListenerTwinRustAsyncTryCreateEventTwinRustAsyncConstMeta,
-      argValues: [address, payload],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualEventListenerTwinRustAsyncTryCreateEventTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "try_create_event_twin_rust_async",
-            argNames: ["address", "payload"],
-          );
-
-  @override
-  Future<bool>
-      crateApiPseudoManualEventListenerTwinRustAsyncSseTryCreateEventTwinRustAsyncSse(
-          {required String address, required String payload}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_String(address, serializer);
-        sse_encode_String(payload, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__try_create_event_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: sse_decode_AnyhowException,
-      ),
-      constMeta:
-          kCrateApiPseudoManualEventListenerTwinRustAsyncSseTryCreateEventTwinRustAsyncSseConstMeta,
-      argValues: [address, payload],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualEventListenerTwinRustAsyncSseTryCreateEventTwinRustAsyncSseConstMeta =>
-          const TaskConstMeta(
-            debugName: "try_create_event_twin_rust_async_sse",
-            argNames: ["address", "payload"],
-          );
-
-  @override
-  Future<bool> crateApiPseudoManualEventListenerTwinSseTryCreateEventTwinSse(
-      {required String address, required String payload}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_String(address, serializer);
-        sse_encode_String(payload, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire__crate__api__pseudo_manual__event_listener_twin_sse__try_create_event_twin_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: sse_decode_AnyhowException,
-      ),
-      constMeta:
-          kCrateApiPseudoManualEventListenerTwinSseTryCreateEventTwinSseConstMeta,
-      argValues: [address, payload],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualEventListenerTwinSseTryCreateEventTwinSseConstMeta =>
-          const TaskConstMeta(
-            debugName: "try_create_event_twin_sse",
-            argNames: ["address", "payload"],
           );
 
   @override

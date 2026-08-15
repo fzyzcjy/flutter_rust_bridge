@@ -45,21 +45,9 @@ pub fn close_event_listener_twin_normal() {
 pub fn create_event_twin_normal(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
-            // The Dart subscription may already be cancelled (which now closes the
-            // receive port promptly), so a failed `add` is expected, not a bug.
-            let _ = sink.add(EventTwinNormal { address, payload });
+            sink.add(EventTwinNormal { address, payload }).unwrap();
         }
     }
-}
-
-pub fn try_create_event_twin_normal(address: String, payload: String) -> Result<bool> {
-    let mut guard = EVENTS
-        .lock()
-        .map_err(|err| anyhow!("Could not access event listener: {}", err))?;
-    let sink = guard
-        .as_mut()
-        .ok_or_else(|| anyhow!("No event listener registered"))?;
-    Ok(sink.add(EventTwinNormal { address, payload }).is_ok())
 }
 
 // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
@@ -68,9 +56,7 @@ pub fn try_create_event_twin_normal(address: String, payload: String) -> Result<
 pub fn create_event_sync_twin_normal(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
-            // The Dart subscription may already be cancelled (which now closes the
-            // receive port promptly), so a failed `add` is expected, not a bug.
-            let _ = sink.add(EventTwinNormal { address, payload });
+            sink.add(EventTwinNormal { address, payload }).unwrap();
         }
     }
 }
