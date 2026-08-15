@@ -42,6 +42,27 @@ void main() {
     );
   });
 
+  /// Responds to a Rust worker's BroadcastChannel readiness probe.
+  test('broadcast port acknowledges a readiness probe', () async {
+    final channelName =
+        'frb-readiness-${DateTime.now().microsecondsSinceEpoch}';
+    final port = broadcastPort(channelName);
+    final probe = web.BroadcastChannel(
+      '${channelName}__flutter_rust_bridge_ready',
+    );
+    addTearDown(() {
+      port.close();
+      probe.close();
+    });
+
+    final acknowledged = const web.EventStreamProvider<web.MessageEvent>(
+      'message',
+    ).forTarget(probe).first;
+    probe.postMessage(null);
+
+    await acknowledged.timeout(const Duration(seconds: 1));
+  });
+
   /// Completes outer cancellation while draining the ordered source to ACK.
   test('RustStreamSink cancel completes before ordered release', () async {
     const codec = DcoCodec<int, Exception>(

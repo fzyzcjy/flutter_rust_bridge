@@ -29,8 +29,8 @@ keeps the ports in a JS-local scope that cannot be shared with other threads. A 
 is created by Dart, then passed to the main Rust thread. Rust then transfers its name to the workers.
 When other workers refer to a `StreamSink` from another worker, e.g. if the sink was put in a static variable,
 each worker creates a `BroadcastChannel` from its name on first use and reuses that channel for subsequent
-sends. The first worker-local batch is deferred to the next browser task so a newly opened channel is ready
-before its messages are posted. Rust attaches a shared sequence number to every message, and Dart buffers
+sends. Before the first worker-local batch is posted, Rust waits for Dart to acknowledge a readiness probe;
+subsequent sends use the ready channel directly. Rust attaches a shared sequence number to every message, and Dart buffers
 messages until the next sequence arrives. This preserves data, error, and close ordering even when different
 workers send them.
 The Dart ordering layer uses a synchronous stream transformer so pause and resume propagate directly to

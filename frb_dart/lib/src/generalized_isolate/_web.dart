@@ -304,6 +304,7 @@ class _WebMessageChannel implements _WebChannel {
 class _WebBroadcastChannel implements _WebChannel {
   final web.BroadcastChannel _sendChannel;
   final web.BroadcastChannel _receiveChannel;
+  final web.BroadcastChannel _readyChannel;
   late final _WebBroadcastPort _receiver;
 
   _WebBroadcastChannel(String channelName)
@@ -311,8 +312,14 @@ class _WebBroadcastChannel implements _WebChannel {
     // because HTML BroadcastChannel spec says that, the event will not be fired
     // at the object which sends it. Therefore, we need two different objects.
     : _sendChannel = web.BroadcastChannel(channelName),
-      _receiveChannel = web.BroadcastChannel(channelName) {
+      _receiveChannel = web.BroadcastChannel(channelName),
+      _readyChannel = web.BroadcastChannel(
+        '${channelName}__flutter_rust_bridge_ready',
+      ) {
     _receiver = _WebBroadcastPort(_receiveChannel);
+    _readyChannel.onmessage = ((web.Event _) {
+      _readyChannel.postMessage(null);
+    }).toJS;
   }
 
   @override
@@ -326,6 +333,9 @@ class _WebBroadcastChannel implements _WebChannel {
     _receiver.close();
     _receiveChannel.close();
     _sendChannel.close();
+    _readyChannel
+      ..onmessage = null
+      ..close();
   }
 }
 
