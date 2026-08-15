@@ -41,6 +41,8 @@ After Dart has received all preceding messages and reaches that close, it broadc
 Each worker then removes the channel from its local cache and closes the underlying channel.
 Waiting for Dart's acknowledgement prevents cleanup on one worker from discarding a message
 that another worker has already posted but the browser has not delivered yet.
+If Dart cancels the stream before receiving the close, the worker that sends the final close broadcasts
+a delayed fallback release instead, so abandoned streams cannot remain in worker-local caches indefinitely.
 
 `BroadcastChannel`s are guaranteed to be unique for each invocation.[^1]
 
