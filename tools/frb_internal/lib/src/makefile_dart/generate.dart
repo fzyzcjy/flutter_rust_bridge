@@ -330,7 +330,21 @@ void _replaceCustomMessageText(String customMessageText) {
 
 Future<void> generateInternalReadme(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    final readmeText = File('${exec.pwd}README.md').readAsStringSync();
+    final rootPath = exec.pwd;
+    final readmeText = File('${rootPath}README.md').readAsStringSync();
+
+    _writeGeneratedDocumentationFile(
+      path: '${rootPath}frb_dart/README.md',
+      text: readmeText,
+    );
+
+    final changelogText = File('${rootPath}CHANGELOG.md').readAsStringSync();
+    for (final package in kDartPublishedPackages) {
+      _writeGeneratedDocumentationFile(
+        path: '$rootPath$package/CHANGELOG.md',
+        text: changelogText,
+      );
+    }
 
     {
       const kPrelude = '''---
@@ -356,9 +370,21 @@ hide_title: true
       //   inside: kShowMeTheCode,
       // );
 
-      File('${exec.pwd}/website/docs/index.md').writeAsStringSync(text);
+      File('${rootPath}website/docs/index.md').writeAsStringSync(text);
     }
   });
+}
+
+void _writeGeneratedDocumentationFile({
+  required String path,
+  required String text,
+}) {
+  if (FileSystemEntity.typeSync(path, followLinks: false) ==
+      FileSystemEntityType.link) {
+    Link(path).deleteSync();
+  }
+
+  File(path).writeAsStringSync(text);
 }
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {

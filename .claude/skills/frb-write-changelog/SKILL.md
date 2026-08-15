@@ -65,13 +65,13 @@ Match the existing changelog style.
 
 Edit only `CHANGELOG.md`. Do not manually edit generated files for this task.
 
-## Step 6: Review and commit
+## Step 6: Review the draft
 
 Review the final diff.
 
 - Confirm the change is limited to the target release section.
 - Confirm wording and ordering match nearby release sections.
-- Create a small atomic commit after finishing the edit.
+- Do not commit yet. Human review can still change the text, and the package changelog copies must be regenerated from the final root changelog.
 
 ## Step 7: Run mechanical verification
 
@@ -115,3 +115,16 @@ Run the mechanical verifier again after the user finishes manual edits.
 - Apply any confirmed fixes, then do one final diff check.
 
 If the user explicitly wants an independent review, ask a separate reviewer or subagent to compare the final `CHANGELOG.md` against the same merged PR list.
+
+## Step 10: Regenerate published-package changelogs
+
+Regenerate the published-package changelog copies from the final root `CHANGELOG.md`:
+
+```bash
+./frb_internal generate-internal-readme
+```
+
+- Confirm `frb_dart/CHANGELOG.md` and `frb_hooks/CHANGELOG.md` match the root `CHANGELOG.md`.
+- Commit the root changelog and both generated copies together as one atomic release-preparation change.
+- Do not manually edit either generated package changelog.
+- From the clean post-commit tree, run `./frb_internal generate-internal-readme --set-exit-if-changed` as the final drift gate. Do not run this flag while the changelog draft is still dirty because it checks the entire worktree.

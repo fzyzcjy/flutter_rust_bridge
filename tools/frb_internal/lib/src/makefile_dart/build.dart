@@ -6,6 +6,7 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/ohos_build.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:io/io.dart';
 
@@ -94,10 +95,7 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       copyArtifacts(['build/ios/archive']);
 
     case BuildTarget.ohos:
-      await exec(
-        'flutter build hap --no-codesign --verbose',
-        relativePwd: config.package,
-      );
+      await buildOhos(config.package);
       copyArtifacts(['build/ohos/hap']);
   }
 }
