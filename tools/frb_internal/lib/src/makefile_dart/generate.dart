@@ -457,7 +457,7 @@ Future<List<String>> _deleteTrackedGeneratedFiles({
 }) async {
   if (!enabled) return const [];
 
-  final output = await exec('git ls-files -z');
+  final output = await exec('git ls-files -z', silent: true);
   final generatedFiles = select(
     output.stdout.split('\x00').where((file) => file.isNotEmpty).toList(),
   )..sort();
