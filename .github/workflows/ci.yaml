@@ -1250,6 +1250,7 @@ jobs:
             rustup \
             mesa.llvmpipeHook \
             --run "cd ${{ matrix.info.package_path }} && flutter build linux --debug"
+          mkdir -p "${{ matrix.info.package_path }}/target"
           nix-build tools/nixos/flutter_quickstart_smoke.nix \
             --out-link "${{ matrix.info.package_path }}/target/nixos_quickstart_smoke"
       - if: ${{ matrix.info.target != 'android' && matrix.info.platform != 'nixos' }}

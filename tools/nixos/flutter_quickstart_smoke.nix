@@ -30,6 +30,10 @@ pkgs.testers.runNixOSTest {
   };
 
   testScript = ''
+    @polling_condition(description="check that the Flutter app is running")
+    def quickstart_running():
+        machine.succeed("systemctl is-active frb-quickstart.service")
+
     machine.start()
     machine.wait_for_unit("multi-user.target")
     machine.succeed("test -e /etc/NIXOS")
@@ -45,17 +49,22 @@ pkgs.testers.runNixOSTest {
         "--property=Environment=LD_LIBRARY_PATH=/run/opengl-driver/lib "
         "${bundle}/flutter_via_create"
     )
-    machine.wait_until_succeeds("systemctl is-active frb-quickstart.service")
-    machine.wait_until_succeeds(
-        "systemctl is-active frb-quickstart.service && "
-        "DISPLAY=:99 import -window root /tmp/quickstart.png && "
-        "convert /tmp/quickstart.png -resize 300% -colorspace Gray "
-        "-normalize /tmp/quickstart-processed.png && "
-        "tesseract /tmp/quickstart-processed.png /tmp/quickstart && "
-        "grep -Eiq 'hello' /tmp/quickstart.txt && "
-        "grep -Eiq 'tom' /tmp/quickstart.txt",
-        timeout=120,
-    )
+    try:
+        machine.wait_for_unit("frb-quickstart.service", timeout=30)
+        with quickstart_running:
+            machine.wait_until_succeeds(
+                "DISPLAY=:99 import -window root /tmp/quickstart.png && "
+                "convert /tmp/quickstart.png -resize 300% -colorspace Gray "
+                "-normalize /tmp/quickstart-processed.png && "
+                "tesseract /tmp/quickstart-processed.png /tmp/quickstart && "
+                "grep -Eiq 'hello' /tmp/quickstart.txt && "
+                "grep -Eiq 'tom' /tmp/quickstart.txt",
+                timeout=120,
+            )
+    except Exception:
+        print(machine.execute("systemctl status --no-pager frb-quickstart.service")[1])
+        print(machine.execute("journalctl -u frb-quickstart.service --no-pager")[1])
+        raise
     machine.copy_from_machine("/tmp/quickstart.png", "")
     machine.copy_from_machine("/tmp/quickstart.txt", "")
     machine.succeed("systemctl stop frb-quickstart.service")
