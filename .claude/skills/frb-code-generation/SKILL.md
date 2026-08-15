@@ -27,9 +27,20 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 | `frb_rust/src/` core API | `./frb_internal generate-internal-rust` |
 | `frb_example/pure_dart` generator | `./frb_internal generate-internal-frb-example-pure-dart` |
 | CLI help documentation | `./frb_internal generate-internal-book-help` |
-| Non-generated (docs, comments, tests, `frb_dart/`) | No generation needed |
+| Root `README.md` or `CHANGELOG.md` | `./frb_internal generate-internal-readme` |
+| Other non-generated docs, comments, tests, or `frb_dart/` source | No generation needed |
 
 ## Important Rules
+
+### Root Documentation Fan-Out
+
+Treat the root `README.md` and `CHANGELOG.md` as sources of truth. After changing either file, run:
+
+```bash
+./frb_internal generate-internal-readme
+```
+
+Commit the generated package documentation in the same change. Do not manually edit `frb_dart/README.md`, `frb_dart/CHANGELOG.md`, or `frb_hooks/CHANGELOG.md`.
 
 ### Integrate Template Drift
 

@@ -1,4 +1,7 @@
 exclude_paths:
+  - "frb_dart/README.md"
+  - "frb_dart/CHANGELOG.md"
+  - "frb_hooks/CHANGELOG.md"
   - "tools/vmware_windows/**"
   - "website/**"
   - "**/cargokit/**"

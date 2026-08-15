@@ -25,12 +25,6 @@ Future<void> createEventTwinSse(
         .crateApiPseudoManualEventListenerTwinSseCreateEventTwinSse(
             address: address, payload: payload);
 
-Future<bool> tryCreateEventTwinSse(
-        {required String address, required String payload}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEventListenerTwinSseTryCreateEventTwinSse(
-            address: address, payload: payload);
-
 @freezed
 sealed class EventTwinSse with _$EventTwinSse {
   const EventTwinSse._();

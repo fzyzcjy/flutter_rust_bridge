@@ -27,12 +27,6 @@ Future<void> createEventTwinRustAsyncSse(
         .crateApiPseudoManualEventListenerTwinRustAsyncSseCreateEventTwinRustAsyncSse(
             address: address, payload: payload);
 
-Future<bool> tryCreateEventTwinRustAsyncSse(
-        {required String address, required String payload}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEventListenerTwinRustAsyncSseTryCreateEventTwinRustAsyncSse(
-            address: address, payload: payload);
-
 @freezed
 sealed class EventTwinRustAsyncSse with _$EventTwinRustAsyncSse {
   const EventTwinRustAsyncSse._();
