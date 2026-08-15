@@ -67,7 +67,11 @@ fn build_runner_output_filters(
         format!("dart_output={dart_output:?} must be within dart_root={dart_root:?}")
     })?;
     let relative_output = path_to_string(relative_output)?.replace(MAIN_SEPARATOR, "/");
-    let output_prefix = build_filter_output_prefix(&relative_output, dart_package_name)?;
+    let Some(output_prefix) = build_filter_output_prefix(&relative_output, dart_package_name)
+    else {
+        debug!("Falling back to unfiltered build_runner for dart_output path {relative_output:?}");
+        return Ok(Vec::new());
+    };
 
     let mut extensions = vec!["freezed.dart"];
     if needs_json_serializable {
@@ -93,34 +97,29 @@ fn build_runner_args(output_filters: Vec<String>) -> Vec<String> {
     .concat()
 }
 
-fn build_filter_output_prefix(
-    relative_output: &str,
-    dart_package_name: &str,
-) -> anyhow::Result<String> {
+fn build_filter_output_prefix(relative_output: &str, dart_package_name: &str) -> Option<String> {
     if relative_output.is_empty() {
-        return Ok(String::new());
+        return Some(String::new());
     }
 
     if let Some(library_output) = relative_output.strip_prefix("lib/") {
-        return Ok(format!(
+        return Some(format!(
             "package:{dart_package_name}/{}/",
             quote_package_glob_uri_path(library_output)
         ));
     }
 
     if relative_output == "lib" {
-        return Ok(format!("package:{dart_package_name}/"));
+        return Some(format!("package:{dart_package_name}/"));
     }
 
     if relative_output.bytes().all(|byte| {
         byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'.' | b'_' | b'~' | b'/')
     }) {
-        return Ok(format!("{relative_output}/"));
+        return Some(format!("{relative_output}/"));
     }
 
-    bail!(
-        "dart_output path outside lib contains characters that build_runner 1.7 cannot represent safely: {relative_output:?}"
-    )
+    None
 }
 
 fn quote_package_glob_uri_path(path: &str) -> String {
@@ -221,18 +220,34 @@ mod tests {
         assert!(error.to_string().contains("must be within dart_root"));
     }
 
-    /// Rejects an unsafe relative URI when build_runner cannot decode it as a package path.
+    /// Falls back to an unfiltered build when a non-library output path cannot be filtered safely.
     #[test]
     fn test_build_runner_output_filters_metacharacter_output_outside_lib() {
-        let error = build_runner_output_filters(
-            Path::new("/project"),
-            Path::new("/project/generated[foo]"),
-            "example",
-            false,
-        )
-        .unwrap_err();
+        assert_eq!(
+            build_runner_output_filters(
+                Path::new("/project"),
+                Path::new("/project/generated[foo]"),
+                "example",
+                false,
+            )
+            .unwrap(),
+            Vec::<String>::new()
+        );
+    }
 
-        assert!(error.to_string().contains("cannot represent safely"));
+    /// Filters a URI-safe output path outside the package library.
+    #[test]
+    fn test_build_runner_output_filters_safe_output_outside_lib() {
+        assert_eq!(
+            build_runner_output_filters(
+                Path::new("/project"),
+                Path::new("/project/test/generated"),
+                "example",
+                false,
+            )
+            .unwrap(),
+            vec!["--build-filter=test/generated/**.freezed.dart"]
+        );
     }
 
     /// Constructs a build_runner command supported by the declared minimum version.
