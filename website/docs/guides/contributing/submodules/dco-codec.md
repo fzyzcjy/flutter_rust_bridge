@@ -38,9 +38,9 @@ remain buffered behind an event that will never arrive. A failed final close is 
 channel.
 When the last Rust `StreamSink` clone is dropped, Rust marks the ordered stream-close message for release.
 After Dart has received all preceding messages and reaches that close, it broadcasts an acknowledgement.
-Each worker then removes the channel from its local cache and closes the underlying channel after a short
-delay. Waiting for Dart's acknowledgement prevents cleanup on one worker from discarding a message that
-another worker has already posted but the browser has not delivered yet.
+Each worker then removes the channel from its local cache and closes the underlying channel.
+Waiting for Dart's acknowledgement prevents cleanup on one worker from discarding a message
+that another worker has already posted but the browser has not delivered yet.
 
 `BroadcastChannel`s are guaranteed to be unique for each invocation.[^1]
 

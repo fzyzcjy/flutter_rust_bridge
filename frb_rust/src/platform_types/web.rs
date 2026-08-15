@@ -1,5 +1,4 @@
 use crate::generalized_isolate::PortLike;
-use crate::platform_types::deferred_close::DeferredCloseBatches;
 use std::cell::RefCell;
 use std::collections::HashMap;
 use wasm_bindgen::closure::Closure;
@@ -14,7 +13,6 @@ pub type MessagePort = crate::generalized_isolate::PortLike;
 
 pub type DartAbi = wasm_bindgen::JsValue;
 
-const BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS: i32 = 100;
 const BROADCAST_CHANNEL_RELEASE_SUFFIX: &str = "__flutter_rust_bridge_release";
 
 #[derive(Clone, Debug)]
@@ -26,8 +24,6 @@ thread_local! {
 
 struct BroadcastChannelState {
     channel_of_name: HashMap<String, CachedBroadcastChannel>,
-    pending_close: DeferredCloseBatches<CachedBroadcastChannel>,
-    close_callback: Closure<dyn FnMut()>,
 }
 
 struct CachedBroadcastChannel {
@@ -40,8 +36,6 @@ impl BroadcastChannelState {
     fn new() -> Self {
         Self {
             channel_of_name: Default::default(),
-            pending_close: Default::default(),
-            close_callback: Closure::wrap(Box::new(close_pending_message_ports) as Box<dyn FnMut()>),
         }
     }
 
@@ -68,30 +62,7 @@ impl BroadcastChannelState {
 
     fn release_message_port_name_locally(&mut self, name: &str) {
         if let Some(channel) = self.channel_of_name.remove(name) {
-            if self.pending_close.push(channel) {
-                self.schedule_close();
-            }
-        }
-    }
-
-    fn schedule_close(&mut self) {
-        if let Err(error) = js_set_timeout(
-            self.close_callback.as_ref().unchecked_ref(),
-            BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS,
-        ) {
-            crate::console_error!("schedule broadcast channel close: {:?}", error);
-            self.pending_close.schedule_failed();
-        }
-    }
-
-    fn close_pending_message_ports(&mut self) {
-        let (channels, has_next_batch) = self.pending_close.finish_current();
-        for channel in channels {
             channel.close();
-        }
-
-        if has_next_batch {
-            self.schedule_close();
         }
     }
 }
@@ -131,12 +102,6 @@ impl CachedBroadcastChannel {
     }
 }
 
-#[wasm_bindgen]
-extern "C" {
-    #[wasm_bindgen(js_name = setTimeout, catch)]
-    fn js_set_timeout(handler: &js_sys::Function, timeout: i32) -> Result<JsValue, JsValue>;
-}
-
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
     SendableMessagePortHandle(
         port.dyn_ref::<BroadcastChannel>()
@@ -162,10 +127,6 @@ pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessageP
 }
 
 pub type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
-
-fn close_pending_message_ports() {
-    BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().close_pending_message_ports())
-}
 
 fn release_message_port_name_locally(name: &str) {
     BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().release_message_port_name_locally(name))

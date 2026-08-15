@@ -1,6 +1,3 @@
-#[cfg(any(target_family = "wasm", test))]
-mod deferred_close;
-
 /// cbindgen:ignore
 #[cfg(target_family = "wasm")]
 mod web;
