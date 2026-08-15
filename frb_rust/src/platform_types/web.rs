@@ -78,13 +78,11 @@ impl BroadcastChannelState {
 
 impl CachedBroadcastChannel {
     fn new(name: &str) -> Self {
-        crate::console_error!("stream channel cache create: {}", name);
         let message_port = PortLike::broadcast(name);
         let release_port =
             PortLike::broadcast(&format!("{name}{BROADCAST_CHANNEL_RELEASE_SUFFIX}"));
         let name = name.to_owned();
         let release_callback = Closure::wrap(Box::new(move || {
-            crate::console_error!("stream channel release acknowledged: {}", name);
             release_message_port_name_locally(&name);
         }) as Box<dyn FnMut()>);
         release_port

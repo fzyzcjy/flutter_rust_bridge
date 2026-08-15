@@ -210,11 +210,6 @@ Stream<dynamic> _orderMessages(
         }
 
         final releaseAfterDelivery = event.length == 5 && event[4] as bool;
-        if (releaseAfterDelivery) {
-          print(
-            'stream final close arrived: channel=${(sendPort.nativePort as web.BroadcastChannel).name} next=$next pending=${pending.length} skipped=${skipped.length}',
-          );
-        }
         final message = (
           event[releaseAfterDelivery ? 3 : event.length - 1],
           releaseAfterDelivery,
