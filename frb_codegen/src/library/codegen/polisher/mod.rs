@@ -35,7 +35,12 @@ pub(super) fn polish(
     ensure_dependencies(config, needs_freezed, needs_json_serializable)?;
 
     warn_if_fail(
-        execute_build_runner(needs_freezed, config, progress_bar_pack),
+        execute_build_runner(
+            needs_freezed,
+            needs_json_serializable,
+            config,
+            progress_bar_pack,
+        ),
         "execute_build_runner",
     );
     if config.dart_fix {
@@ -83,7 +88,7 @@ fn ensure_dependencies(
         repo.has_specified_and_installed(
             "build_runner",
             DartDependencyMode::Dev,
-            &BUILD_RUNNER_REQUIREMENT,
+            build_runner_requirement(config.build_runner),
         )?;
     }
 
@@ -104,6 +109,14 @@ fn ensure_dependencies(
     Ok(())
 }
 
+fn build_runner_requirement(build_runner: bool) -> &'static VersionReq {
+    if build_runner {
+        &BUILD_RUNNER_REQUIREMENT
+    } else {
+        &ANY_REQUIREMENT
+    }
+}
+
 fn warn_if_fail(r: anyhow::Result<()>, debug_name: &str) -> bool {
     match r {
         Ok(_) => true,
@@ -119,6 +132,7 @@ fn warn_if_fail(r: anyhow::Result<()>, debug_name: &str) -> bool {
 
 fn execute_build_runner(
     needs_freezed: bool,
+    needs_json_serializable: bool,
     config: &PolisherInternalConfig,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
@@ -130,6 +144,7 @@ fn execute_build_runner(
     dart_build_runner(
         &config.dart_root,
         &config.dart_output,
+        needs_json_serializable,
         config.fvm_install_mode,
     )
 }
@@ -190,7 +205,7 @@ fn execute_duplicate_c_output(config: &PolisherInternalConfig) -> anyhow::Result
 
 #[cfg(test)]
 mod tests {
-    use super::BUILD_RUNNER_REQUIREMENT;
+    use super::{build_runner_requirement, BUILD_RUNNER_REQUIREMENT};
     use cargo_metadata::Version;
 
     /// Requires the first build_runner release that supports output filters.
@@ -198,5 +213,12 @@ mod tests {
     fn test_build_runner_requirement_supports_output_filters() {
         assert!(!BUILD_RUNNER_REQUIREMENT.matches(&Version::parse("1.6.9").unwrap()));
         assert!(BUILD_RUNNER_REQUIREMENT.matches(&Version::parse("1.7.0").unwrap()));
+    }
+
+    /// Keeps the legacy dependency range when automatic build_runner invocation is disabled.
+    #[test]
+    fn test_build_runner_requirement_when_invocation_disabled() {
+        assert!(build_runner_requirement(false).matches(&Version::parse("1.6.9").unwrap()));
+        assert!(!build_runner_requirement(true).matches(&Version::parse("1.6.9").unwrap()));
     }
 }
