@@ -259,7 +259,7 @@ class RawReceivePort {
   }
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  void close() => _webReceivePort._close();
+  void close() => _webChannel._close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _webChannel._sendPort;
@@ -280,6 +280,8 @@ abstract class _WebChannel {
 
   _WebPortLike get _receivePort;
 
+  void _close();
+
   factory _WebChannel.messageChannel() = _WebMessageChannel;
 
   factory _WebChannel.broadcastChannel(String channelName) =
@@ -294,6 +296,9 @@ class _WebMessageChannel implements _WebChannel {
 
   @override
   _WebPortLike get _receivePort => _WebPortLike._messagePort(_channel.port1);
+
+  @override
+  void _close() => _channel.port1.close();
 }
 
 class _WebBroadcastChannel implements _WebChannel {
@@ -313,6 +318,12 @@ class _WebBroadcastChannel implements _WebChannel {
   @override
   _WebPortLike get _receivePort =>
       _WebPortLike._broadcastChannel(_receiveChannel);
+
+  @override
+  void _close() {
+    _receiveChannel.close();
+    _sendChannel.close();
+  }
 }
 
 /// {@macro flutter_rust_bridge.same_as_native}
@@ -325,8 +336,6 @@ abstract class _WebPortLike {
       _WebBroadcastPort;
 
   void _start();
-
-  void _close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   web.EventTarget get _nativePort;
@@ -346,9 +355,6 @@ class _WebMessagePort extends _WebPortLike {
 
   @override
   void _start() => _nativePort.start();
-
-  @override
-  void _close() => _nativePort.close();
 }
 
 // Indeed a BroadcastChannel, not a Broadcast "Port"
@@ -360,7 +366,4 @@ class _WebBroadcastPort extends _WebPortLike {
 
   @override
   void _start() {}
-
-  @override
-  void _close() => _nativePort.close();
 }

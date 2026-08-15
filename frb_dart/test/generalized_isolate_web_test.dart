@@ -10,6 +10,21 @@ import 'package:test/test.dart';
 import 'package:web/web.dart' as web;
 
 void main() {
+  /// Closes both Dart BroadcastChannel objects owned by a receive port.
+  test('closing ordered port closes its serialized channel', () {
+    final channelName =
+        'frb-ordered-close-${DateTime.now().microsecondsSinceEpoch}';
+    final port = broadcastPort(channelName, ordered: true);
+    final serializedChannel = port.sendPort.nativePort as web.BroadcastChannel;
+
+    port.close();
+
+    expect(
+      () => serializedChannel.postMessage(null),
+      throwsA(isA<web.DOMException>()),
+    );
+  });
+
   /// Completes outer cancellation while draining the ordered source to ACK.
   test('RustStreamSink cancel completes before ordered release', () async {
     const codec = DcoCodec<int, Exception>(
