@@ -33,6 +33,7 @@ impl<T> DeferredRelease<T> {
 mod tests {
     use super::DeferredRelease;
 
+    /// Batches canceled streams behind one pending fallback callback.
     #[test]
     fn unacknowledged_channels_share_one_fallback_callback() {
         let mut deferred = DeferredRelease::default();
@@ -42,6 +43,7 @@ mod tests {
         assert_eq!(deferred.finish(), vec![1, 2]);
     }
 
+    /// Schedules a new fallback after the previous batch has finished.
     #[test]
     fn final_close_after_fallback_schedules_again() {
         let mut deferred = DeferredRelease::default();
