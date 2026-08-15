@@ -3,6 +3,7 @@ use js_sys::{Function, Reflect};
 use std::cell::RefCell;
 use std::collections::HashMap;
 use std::mem;
+use std::sync::Arc;
 use wasm_bindgen::closure::Closure;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
@@ -19,7 +20,7 @@ const BROADCAST_CHANNEL_RELEASE_SUFFIX: &str = "__flutter_rust_bridge_release";
 const BROADCAST_CHANNEL_READY_SUFFIX: &str = "__flutter_rust_bridge_ready";
 const MAX_READINESS_PROBE_DELAY_MILLIS: i32 = 1000;
 #[derive(Clone, Debug)]
-pub struct SendableMessagePortHandle(String);
+pub struct SendableMessagePortHandle(Arc<str>);
 
 thread_local! {
     static BROADCAST_CHANNEL_STATE: RefCell<BroadcastChannelState> = RefCell::new(BroadcastChannelState::new());
@@ -239,11 +240,11 @@ impl CachedBroadcastChannel {
 }
 
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
-    SendableMessagePortHandle(
+    SendableMessagePortHandle(Arc::from(
         port.dyn_ref::<BroadcastChannel>()
             .map(|channel| channel.name())
             .expect("Not a BroadcastChannel"),
-    )
+    ))
 }
 
 pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort {
@@ -259,7 +260,7 @@ pub fn release_cached_message_port_handle(handle: &SendableMessagePortHandle) {
 }
 
 pub fn deserialize_sendable_message_port_handle(raw: String) -> SendableMessagePortHandle {
-    SendableMessagePortHandle(raw)
+    SendableMessagePortHandle(Arc::from(raw))
 }
 
 pub type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
