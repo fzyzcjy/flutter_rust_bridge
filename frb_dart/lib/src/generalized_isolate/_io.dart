@@ -5,6 +5,9 @@ export 'dart:ffi' show NativePort;
 export 'dart:isolate';
 
 /// {@macro flutter_rust_bridge.internal}
+const bool orderedReceivePortDrainsAfterCancel = false;
+
+/// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName, {bool ordered = false}) =>
     ReceivePort(channelName);
 

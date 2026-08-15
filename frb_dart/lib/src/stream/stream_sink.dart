@@ -45,6 +45,7 @@ _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
       codec.decodeObject,
       receivePort,
       closeSource: receivePort.close,
+      sourceDrainsAfterCancel: orderedReceivePortDrainsAfterCancel,
     ),
   );
 }
@@ -61,6 +62,7 @@ Stream<T> _bindDecodedStream<T>(
   T Function(dynamic) decodeObject,
   Stream<dynamic> source, {
   required void Function() closeSource,
+  bool sourceDrainsAfterCancel = false,
 }) {
   final controller = StreamController<T>(sync: true);
 
@@ -70,7 +72,7 @@ Stream<T> _bindDecodedStream<T>(
   void terminate() {
     if (terminated) return;
     terminated = true;
-    closeSource();
+    if (!sourceDrainsAfterCancel) closeSource();
     sourceSubscription?.cancel();
     controller.close();
   }
@@ -107,7 +109,7 @@ Stream<T> _bindDecodedStream<T>(
     }
     ..onCancel = () {
       terminated = true;
-      closeSource();
+      if (!sourceDrainsAfterCancel) closeSource();
       return sourceSubscription!.cancel();
     };
 

@@ -7,6 +7,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
+const bool orderedReceivePortDrainsAfterCancel = true;
+
+/// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) {
   if (port.isA<web.BroadcastChannel>()) {
     return (port as web.BroadcastChannel).name;
@@ -44,10 +47,17 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    Stream<dynamic> stream = _rawReceivePort._webReceivePort._onMessage.map(
-      _extractData,
-    );
-    if (_ordered) stream = _orderMessages(stream, _rawReceivePort.sendPort);
+    final stream = _rawReceivePort._webReceivePort._onMessage.map(_extractData);
+    if (_ordered) {
+      return _listenOrdered(
+        stream,
+        onData,
+        onError: onError,
+        onDone: onDone,
+        cancelOnError: cancelOnError,
+      );
+    }
+
     final subscription = stream.listen(
       onData,
       onError: onError,
@@ -60,6 +70,71 @@ class ReceivePort extends Stream<dynamic> {
 
   static dynamic _extractData(web.MessageEvent event) => event.data;
 
+  StreamSubscription<dynamic> _listenOrdered(
+    Stream<dynamic> stream,
+    void Function(dynamic event)? onData, {
+    Function? onError,
+    void Function()? onDone,
+    bool? cancelOnError,
+  }) {
+    final controller = StreamController<dynamic>(sync: true);
+    var consumerCanceled = false;
+    var releaseReached = false;
+    var sourceClosed = false;
+    late StreamSubscription<dynamic> sourceSubscription;
+
+    void closeSource() {
+      if (sourceClosed) return;
+      sourceClosed = true;
+      _rawReceivePort.close();
+      unawaited(sourceSubscription.cancel());
+    }
+
+    void closeCanceledSourceAfterRelease() {
+      if (consumerCanceled && releaseReached) scheduleMicrotask(closeSource);
+    }
+
+    sourceSubscription =
+        _orderMessages(
+          stream,
+          _rawReceivePort.sendPort,
+          onRelease: () {
+            releaseReached = true;
+            closeCanceledSourceAfterRelease();
+          },
+        ).listen(
+          (event) {
+            if (!consumerCanceled) controller.add(event);
+          },
+          onError: (Object error, StackTrace stackTrace) {
+            if (!consumerCanceled) controller.addError(error, stackTrace);
+            scheduleMicrotask(closeSource);
+          },
+          onDone: () {
+            if (!consumerCanceled) controller.close();
+            scheduleMicrotask(closeSource);
+          },
+        );
+
+    controller
+      ..onPause = sourceSubscription.pause
+      ..onResume = sourceSubscription.resume
+      ..onCancel = () {
+        consumerCanceled = true;
+        if (sourceSubscription.isPaused) sourceSubscription.resume();
+        closeCanceledSourceAfterRelease();
+      };
+
+    final subscription = controller.stream.listen(
+      onData,
+      onError: onError,
+      onDone: onDone,
+      cancelOnError: cancelOnError,
+    );
+    _rawReceivePort._webReceivePort._start();
+    return subscription;
+  }
+
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _rawReceivePort.sendPort;
 
@@ -67,13 +142,20 @@ class ReceivePort extends Stream<dynamic> {
   void close() => _rawReceivePort.close();
 }
 
-Stream<dynamic> _orderMessages(Stream<dynamic> stream, SendPort sendPort) {
+Stream<dynamic> _orderMessages(
+  Stream<dynamic> stream,
+  SendPort sendPort, {
+  required void Function() onRelease,
+}) {
   final pending = <(int, int), (dynamic, bool)>{};
   final skipped = <(int, int)>{};
   var next = (0, 0);
 
   void emit((dynamic, bool) message, EventSink<dynamic> sink) {
-    if (message.$2) _acknowledgeRelease(sendPort);
+    if (message.$2) {
+      _acknowledgeRelease(sendPort);
+      onRelease();
+    }
     sink.add(message.$1);
   }
 

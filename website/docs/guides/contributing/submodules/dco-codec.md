@@ -31,8 +31,8 @@ When other workers refer to a `StreamSink` from another worker, e.g. if the sink
 each worker creates a `BroadcastChannel` from its name on first use and reuses that channel for subsequent
 sends. Rust attaches a shared sequence number to every message, and Dart buffers messages until the next
 sequence arrives. This preserves data, error, and close ordering even when different workers send them.
-The Dart ordering layer uses a synchronous stream transformer so cancellation, pause, and resume propagate
-directly to the underlying browser channel subscription without waiting for another message.
+The Dart ordering layer uses a synchronous stream transformer so pause and resume propagate directly to
+the underlying browser channel subscription without waiting for another message.
 If a send fails, Rust carries its skipped sequence numbers on the next message so later messages do not
 remain buffered behind an event that will never arrive. A failed final close is retried through a fresh
 channel.
@@ -41,8 +41,10 @@ After Dart has received all preceding messages and reaches that close, it broadc
 Each worker then removes the channel from its local cache and closes the underlying channel.
 Waiting for Dart's acknowledgement prevents cleanup on one worker from discarding a message
 that another worker has already posted but the browser has not delivered yet.
-If Dart cancels the stream before receiving the close, the worker that sends the final close broadcasts
-a delayed fallback release instead, so abandoned streams cannot remain in worker-local caches indefinitely.
+If Dart cancels the stream before receiving the close, cancellation completes for the consumer immediately
+while the ordered browser subscription keeps draining in the background. Reaching the close then sends the
+same acknowledgement and safely releases every worker-local cache without exposing later events to the
+canceled consumer.
 
 `BroadcastChannel`s are guaranteed to be unique for each invocation.[^1]
 

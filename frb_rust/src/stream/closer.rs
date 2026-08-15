@@ -1,9 +1,7 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 #[cfg(target_family = "wasm")]
-use crate::generalized_isolate::{
-    defer_release_cached_channel_handle, release_cached_channel_handle,
-};
+use crate::generalized_isolate::release_cached_channel_handle;
 use crate::generalized_isolate::{IntoDart, SendableChannelHandle};
 #[cfg(any(target_family = "wasm", test))]
 use crate::misc::atomic::{AtomicBool, AtomicU64, Ordering};
@@ -133,16 +131,10 @@ impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
             Rust2DartCodec::encode_close_stream().into_dart_abi(),
         );
 
-        match result {
-            Err(error) => {
-                log_warn_or_println(&format!("{error:?}"));
-                #[cfg(target_family = "wasm")]
-                release_cached_channel_handle(&self.sendable_channel_handle);
-            }
+        if let Err(error) = result {
+            log_warn_or_println(&format!("{error:?}"));
             #[cfg(target_family = "wasm")]
-            Ok(()) => defer_release_cached_channel_handle(&self.sendable_channel_handle),
-            #[cfg(not(target_family = "wasm"))]
-            Ok(()) => {}
+            release_cached_channel_handle(&self.sendable_channel_handle);
         }
     }
 }

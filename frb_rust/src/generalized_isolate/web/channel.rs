@@ -1,5 +1,4 @@
 use crate::generalized_isolate::IntoDart;
-use crate::platform_types::defer_release_cached_message_port_handle;
 use crate::platform_types::deserialize_sendable_message_port_handle;
 use crate::platform_types::handle_to_cached_message_port;
 use crate::platform_types::handle_to_message_port;
@@ -53,8 +52,4 @@ pub fn handle_to_uncached_channel(handle: &SendableChannelHandle) -> Channel {
 
 pub fn release_cached_channel_handle(handle: &SendableChannelHandle) {
     release_cached_message_port_handle(&handle.0);
-}
-
-pub fn defer_release_cached_channel_handle(handle: &SendableChannelHandle) {
-    defer_release_cached_message_port_handle(&handle.0);
 }
