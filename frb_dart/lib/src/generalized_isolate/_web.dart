@@ -317,8 +317,8 @@ class _WebBroadcastChannel implements _WebChannel {
         '${channelName}__flutter_rust_bridge_ready',
       ) {
     _receiver = _WebBroadcastPort(_receiveChannel);
-    _readyChannel.onmessage = ((web.Event _) {
-      _readyChannel.postMessage(null);
+    _readyChannel.onmessage = ((web.Event event) {
+      _readyChannel.postMessage((event as web.MessageEvent).data);
     }).toJS;
   }
 

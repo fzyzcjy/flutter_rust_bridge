@@ -6,7 +6,7 @@ use std::mem;
 use wasm_bindgen::closure::Closure;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
-use web_sys::BroadcastChannel;
+use web_sys::{BroadcastChannel, MessageEvent};
 
 pub type WireSyncRust2DartDco = wasm_bindgen::JsValue;
 pub type WireSyncRust2DartSse = wasm_bindgen::JsValue;
@@ -17,6 +17,8 @@ pub type DartAbi = wasm_bindgen::JsValue;
 
 const BROADCAST_CHANNEL_RELEASE_SUFFIX: &str = "__flutter_rust_bridge_release";
 const BROADCAST_CHANNEL_READY_SUFFIX: &str = "__flutter_rust_bridge_ready";
+const MAX_PENDING_MESSAGES: usize = 4096;
+const MAX_READINESS_PROBE_DELAY_MILLIS: i32 = 1000;
 #[derive(Clone, Debug)]
 pub struct SendableMessagePortHandle(String);
 
@@ -33,10 +35,13 @@ struct CachedBroadcastChannel {
     release_port: MessagePort,
     ready_port: MessagePort,
     _release_callback: Closure<dyn FnMut()>,
-    _ready_callback: Closure<dyn FnMut()>,
+    _ready_callback: Closure<dyn FnMut(MessageEvent)>,
     pending_messages: Vec<JsValue>,
     ready: bool,
+    readiness_nonce: String,
     readiness_probe_callback: Option<Closure<dyn FnMut()>>,
+    readiness_probe_timer: Option<i32>,
+    next_readiness_probe_delay_millis: i32,
 }
 
 impl BroadcastChannelState {
@@ -102,10 +107,14 @@ impl CachedBroadcastChannel {
             .expect("Not a BroadcastChannel")
             .set_onmessage(Some(release_callback.as_ref().unchecked_ref()));
 
+        let readiness_nonce = readiness_nonce();
         let ready_name = name.clone();
-        let ready_callback = Closure::wrap(Box::new(move || {
-            flush_message_port_name(&ready_name);
-        }) as Box<dyn FnMut()>);
+        let expected_nonce = readiness_nonce.clone();
+        let ready_callback = Closure::<dyn FnMut(_)>::new(move |event: MessageEvent| {
+            if event.data() == JsValue::from_str(&expected_nonce) {
+                flush_message_port_name(&ready_name);
+            }
+        });
         ready_port
             .dyn_ref::<BroadcastChannel>()
             .expect("Not a BroadcastChannel")
@@ -119,7 +128,10 @@ impl CachedBroadcastChannel {
             _ready_callback: ready_callback,
             pending_messages: Vec::new(),
             ready: false,
+            readiness_nonce,
             readiness_probe_callback: None,
+            readiness_probe_timer: None,
+            next_readiness_probe_delay_millis: 0,
         }
     }
 
@@ -134,6 +146,9 @@ impl CachedBroadcastChannel {
                 .is_ok();
         }
 
+        if self.pending_messages.len() == MAX_PENDING_MESSAGES {
+            return false;
+        }
         let Some(message) = clone_for_deferred_post(&message) else {
             return false;
         };
@@ -147,8 +162,8 @@ impl CachedBroadcastChannel {
             let callback = Closure::wrap(Box::new(move || {
                 probe_message_port_name(&name);
             }) as Box<dyn FnMut()>);
-            schedule_timeout(&callback);
             self.readiness_probe_callback = Some(callback);
+            self.schedule_readiness_probe();
         }
         true
     }
@@ -158,7 +173,7 @@ impl CachedBroadcastChannel {
             return;
         }
         self.ready = true;
-        self.readiness_probe_callback = None;
+        self.cancel_readiness_probe();
         for message in mem::take(&mut self.pending_messages) {
             self.message_port
                 .post_message(&message)
@@ -167,11 +182,14 @@ impl CachedBroadcastChannel {
     }
 
     fn probe_readiness(&mut self) {
-        self.readiness_probe_callback = None;
+        self.readiness_probe_timer = None;
         if self.ready {
             return;
         }
-        if let Err(error) = self.ready_port.post_message(&JsValue::NULL) {
+        if let Err(error) = self
+            .ready_port
+            .post_message(&JsValue::from_str(&self.readiness_nonce))
+        {
             crate::console_error!("probe broadcast channel readiness: {:?}", error);
         }
         if !self.ready {
@@ -179,7 +197,8 @@ impl CachedBroadcastChannel {
         }
     }
 
-    fn close(self) {
+    fn close(mut self) {
+        self.cancel_readiness_probe();
         self.release_port
             .dyn_ref::<BroadcastChannel>()
             .expect("Not a BroadcastChannel")
@@ -197,16 +216,29 @@ impl CachedBroadcastChannel {
     }
 
     fn schedule_readiness_probe(&mut self) {
-        let name = self
-            .message_port
-            .dyn_ref::<BroadcastChannel>()
-            .expect("Not a BroadcastChannel")
-            .name();
-        let callback = Closure::wrap(Box::new(move || {
-            probe_message_port_name(&name);
-        }) as Box<dyn FnMut()>);
-        schedule_timeout(&callback);
-        self.readiness_probe_callback = Some(callback);
+        if self.ready || self.readiness_probe_timer.is_some() {
+            return;
+        }
+        let callback = self
+            .readiness_probe_callback
+            .as_ref()
+            .expect("readiness probe callback was initialized");
+        self.readiness_probe_timer = Some(schedule_timeout(
+            callback,
+            self.next_readiness_probe_delay_millis,
+        ));
+        self.next_readiness_probe_delay_millis = self
+            .next_readiness_probe_delay_millis
+            .max(1)
+            .saturating_mul(2)
+            .min(MAX_READINESS_PROBE_DELAY_MILLIS);
+    }
+
+    fn cancel_readiness_probe(&mut self) {
+        if let Some(timer) = self.readiness_probe_timer.take() {
+            clear_timeout(timer);
+        }
+        self.readiness_probe_callback = None;
     }
 }
 
@@ -261,7 +293,11 @@ fn clone_for_deferred_post(message: &JsValue) -> Option<JsValue> {
         .ok()
 }
 
-fn schedule_timeout(callback: &Closure<dyn FnMut()>) {
+fn readiness_nonce() -> String {
+    format!("{}-{}", js_sys::Date::now(), js_sys::Math::random())
+}
+
+fn schedule_timeout(callback: &Closure<dyn FnMut()>, delay_millis: i32) -> i32 {
     let global = js_sys::global();
     let set_timeout = Reflect::get(&global, &JsValue::from_str("setTimeout"))
         .expect("setTimeout is unavailable")
@@ -270,7 +306,19 @@ fn schedule_timeout(callback: &Closure<dyn FnMut()>) {
         .call2(
             &global,
             callback.as_ref().unchecked_ref(),
-            &JsValue::from(0),
+            &JsValue::from(delay_millis),
         )
-        .expect("setTimeout failed");
+        .expect("setTimeout failed")
+        .as_f64()
+        .expect("setTimeout returned a timer id") as i32
+}
+
+fn clear_timeout(timer: i32) {
+    let global = js_sys::global();
+    let clear_timeout = Reflect::get(&global, &JsValue::from_str("clearTimeout"))
+        .expect("clearTimeout is unavailable")
+        .unchecked_into::<Function>();
+    clear_timeout
+        .call1(&global, &JsValue::from(timer))
+        .expect("clearTimeout failed");
 }

@@ -58,9 +58,12 @@ void main() {
     final acknowledged = const web.EventStreamProvider<web.MessageEvent>(
       'message',
     ).forTarget(probe).first;
-    probe.postMessage(null);
+    probe.postMessage('nonce'.toJS);
 
-    await acknowledged.timeout(const Duration(seconds: 1));
+    expect(
+      (await acknowledged.timeout(const Duration(seconds: 1))).data,
+      'nonce',
+    );
   });
 
   /// Completes outer cancellation while draining the ordered source to ACK.
