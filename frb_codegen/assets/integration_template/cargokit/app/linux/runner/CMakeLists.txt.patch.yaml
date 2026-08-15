@@ -1,0 +1,15 @@
+patches:
+  - id: cargokit-link-rust
+    before: '# Apply the standard set of build settings.'
+    content: |
+      include("${CMAKE_CURRENT_SOURCE_DIR}/../../rust_builder/cargokit/cmake/cargokit.cmake")
+
+      apply_cargokit(
+        ${BINARY_NAME}
+        "../../rust"
+        "rust_lib_${BINARY_NAME}"
+        ""
+      )
+
+      set(${BINARY_NAME}_cargokit_lib "${${BINARY_NAME}_cargokit_lib}" PARENT_SCOPE)
+

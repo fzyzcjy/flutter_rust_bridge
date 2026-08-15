@@ -5,6 +5,8 @@ use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::warn;
+use serde::Deserialize;
+use std::fs;
 use std::collections::HashMap;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
@@ -84,7 +86,7 @@ pub(super) fn execute_overlay_templates(
             replacements,
             dart_root,
             config,
-            Some(&["CMakeLists.txt".to_owned()]),
+            None,
             include_ohos,
         )?;
     }
@@ -156,6 +158,19 @@ fn modify_file(
     enable_local_dependency: bool,
     comment_out_files: Option<&[String]>,
 ) -> Option<(PathBuf, Vec<u8>)> {
+    if let Some(target_path) = target_path
+        .file_name()
+        .and_then(|name| name.to_str())
+        .and_then(|name| name.strip_suffix(".patch.yaml"))
+        .map(|name| target_path.with_file_name(name))
+    {
+        let existing_content = fs::read_to_string(&target_path).ok()?;
+        let patch: CmakePatch = serde_yaml::from_slice(reference_content)
+            .expect("bundled integration CMake patch must be valid YAML");
+        let content = apply_cmake_patch(existing_content, patch, replacements)?;
+        return Some((target_path, content.into_bytes()));
+    }
+
     let src = replace_file_content(reference_content, replacements);
 
     if let Some(existing_content) = existing_content {
@@ -199,6 +214,37 @@ fn modify_file(
     }
 
     Some((target_path, src))
+}
+
+#[derive(Deserialize)]
+struct CmakePatch {
+    patches: Vec<CmakePatchOperation>,
+}
+
+#[derive(Deserialize)]
+struct CmakePatchOperation {
+    id: String,
+    before: String,
+    content: String,
+}
+
+fn apply_cmake_patch(
+    mut existing_content: String,
+    patch: CmakePatch,
+    replacements: &HashMap<&str, &str>,
+) -> Option<String> {
+    for operation in patch.patches {
+        let begin_marker = format!("# BEGIN flutter_rust_bridge {}", operation.id);
+        if existing_content.contains(&begin_marker) {
+            continue;
+        }
+        let content = replace_file_content(operation.content.as_bytes(), replacements);
+        let content = String::from_utf8(content).ok()?;
+        let insertion = format!("{begin_marker}\n{content}# END flutter_rust_bridge {}\n\n", operation.id);
+        let index = existing_content.find(&operation.before)?;
+        existing_content.insert_str(index, &insertion);
+    }
+    Some(existing_content)
 }
 
 fn comment_out_existing_file_and_write_template(

@@ -1,0 +1,8 @@
+patches:
+  - id: cargokit-install-rust
+    before: 'install(FILES "${FLUTTER_ICU_DATA_FILE}"'
+    content: |
+      install(FILES "${${BINARY_NAME}_cargokit_lib}"
+        DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+        COMPONENT Runtime)
+
