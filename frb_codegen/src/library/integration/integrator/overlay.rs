@@ -84,7 +84,7 @@ pub(super) fn execute_overlay_templates(
             replacements,
             dart_root,
             config,
-            None,
+            Some(&["CMakeLists.txt".to_owned()]),
             include_ohos,
         )?;
     }
@@ -200,7 +200,6 @@ fn modify_file(
 
     Some((target_path, src))
 }
-
 
 fn comment_out_existing_file_and_write_template(
     existing_content: Vec<u8>,
