@@ -182,7 +182,7 @@ Future<void> lintDartAnalyze(LintConfig config) async {
 }
 
 Future<void> lintDartPana(LintConfig config) async {
-  await exec('flutter pub global activate pana');
+  await exec('flutter pub global activate pana 0.23.17');
   for (final package in kDartPublishedPackages) {
     final exitCodeThreshold = kDartPanaExitCodeThresholdByPackage[package]!;
     await exec(
