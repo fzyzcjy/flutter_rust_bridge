@@ -48,10 +48,6 @@ List<Command<void>> createCommands() {
       repoRootPath: exec.pwd!,
     ),
     SimpleCommand('precommit-generate', precommitGenerate),
-    SimpleCommand(
-      'precommit-generate-from-scratch',
-      precommitGenerateFromScratch,
-    ),
     SimpleCommand('precommit-integrate', precommitIntegrate),
     SimpleCommand('sync-cargokit-copies', syncCargokitCopies),
     SimpleCommand('pub-get-all', pubGetAll),
@@ -167,37 +163,10 @@ Future<void> precommitGenerate() async {
           setExitIfChanged: false,
           package: package,
           coverage: false,
+          fromScratch: false,
         ),
       ),
   ]);
-}
-
-Future<void> precommitGenerateFromScratch() async {
-  await wrapMaybeSetExitIfChangedRaw(true, () async {
-    final expectedGeneratedFiles =
-        await deleteTrackedGeneratedFilesForFromScratch();
-    const generateConfig = GenerateConfig(
-      setExitIfChanged: false,
-      coverage: false,
-    );
-    await generateInternalRust(generateConfig);
-    await generateInternalBuildRunner(generateConfig);
-    for (final package in [
-      'frb_example/pure_dart',
-      'frb_example/pure_dart_pde',
-    ]) {
-      await generateRunFrbCodegenCommandGenerate(
-        GeneratePackageConfig(
-          setExitIfChanged: false,
-          package: package,
-          coverage: false,
-        ),
-      );
-    }
-    await generateInternal(generateConfig);
-    await precommitGenerate();
-    verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
-  });
 }
 
 Future<void> ensureCargoExpandInstalledForPrecommitGenerate() async {

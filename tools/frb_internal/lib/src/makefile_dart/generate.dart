@@ -127,11 +127,14 @@ class GeneratePackageConfig implements _GenerateCommonConfig {
   final String package;
   @override
   final bool coverage;
+  @CliOption(defaultsTo: false)
+  final bool fromScratch;
 
   const GeneratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
     required this.coverage,
+    required this.fromScratch,
   });
 }
 
@@ -409,6 +412,11 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
 Future<void> generateRunFrbCodegenCommandGenerate(
   GeneratePackageConfig config,
 ) async {
+  if (config.fromScratch) {
+    await _generateRunFrbCodegenCommandGenerateFromScratch(config);
+    return;
+  }
+
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runPubGetIfNotRunYet(config.package);
     print("generating with ${config.package}");
@@ -420,6 +428,55 @@ Future<void> generateRunFrbCodegenCommandGenerate(
     );
     await _formatPackageAfterGenerate(config.package);
   });
+}
+
+Future<void> _generateRunFrbCodegenCommandGenerateFromScratch(
+  GeneratePackageConfig config,
+) async {
+  if (config.package != 'all') {
+    throw ArgumentError.value(
+      config.package,
+      'package',
+      '--from-scratch requires --package all.',
+    );
+  }
+
+  await wrapMaybeSetExitIfChangedRaw(true, () async {
+    final expectedGeneratedFiles =
+        await deleteTrackedGeneratedFilesForFromScratch();
+    await _prepareFromScratchCodegenDependencies();
+    const generateConfig = GenerateConfig(
+      setExitIfChanged: false,
+      coverage: false,
+    );
+    await generateInternalRust(generateConfig);
+    await generateInternalBuildRunner(generateConfig);
+    for (final package in [
+      'frb_example/pure_dart',
+      'frb_example/pure_dart_pde',
+    ]) {
+      await generateRunFrbCodegenCommandGenerate(
+        GeneratePackageConfig(
+          setExitIfChanged: false,
+          package: package,
+          coverage: false,
+          fromScratch: false,
+        ),
+      );
+    }
+    await generateInternal(generateConfig);
+    await precommitGenerate();
+    verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
+  });
+}
+
+Future<void> _prepareFromScratchCodegenDependencies() async {
+  await exec(
+    'rustup toolchain install $kPinnedRustfmtNightly && '
+    'rustup component add rustfmt --toolchain '
+    '$kPinnedRustfmtNightly-x86_64-unknown-linux-gnu',
+  );
+  await exec('yarn global add all-contributors-cli');
 }
 
 Future<List<String>> deleteTrackedGeneratedFilesForFromScratch() async {
