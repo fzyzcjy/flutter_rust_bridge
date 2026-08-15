@@ -67,56 +67,68 @@ class ReceivePort extends Stream<dynamic> {
   void close() => _rawReceivePort.close();
 }
 
-Stream<dynamic> _orderMessages(Stream<dynamic> stream) async* {
+Stream<dynamic> _orderMessages(Stream<dynamic> stream) {
   final pending = <(int, int), dynamic>{};
   final skipped = <(int, int)>{};
   var next = (0, 0);
 
-  await for (final event in stream) {
-    final sequence = (event[0] as int, event[1] as int);
-    if (_sequenceBefore(sequence, next) ||
-        pending.containsKey(sequence) ||
-        skipped.contains(sequence)) {
-      throw StateError('Duplicate or stale ordered port message: $sequence');
-    }
-
-    if (event.length == 4) {
-      for (final rawSkipped in event[2]) {
-        final skippedSequence = (rawSkipped[0] as int, rawSkipped[1] as int);
-        if (!_sequenceBefore(skippedSequence, sequence) ||
-            _sequenceBefore(skippedSequence, next) ||
-            pending.containsKey(skippedSequence) ||
-            !skipped.add(skippedSequence)) {
-          throw StateError(
-            'Invalid skipped ordered port message: $skippedSequence',
-          );
-        }
-      }
-    }
-
+  void drain(EventSink<dynamic> sink) {
     while (skipped.remove(next)) {
       next = _nextSequence(next);
-    }
-
-    final payload = event[event.length - 1];
-    if (sequence == next) {
-      yield payload;
-      next = _nextSequence(next);
-    } else {
-      pending[sequence] = payload;
     }
 
     while (true) {
       if (skipped.remove(next)) {
         next = _nextSequence(next);
       } else if (pending.containsKey(next)) {
-        yield pending.remove(next);
+        sink.add(pending.remove(next));
         next = _nextSequence(next);
       } else {
         break;
       }
     }
   }
+
+  return stream.transform(
+    StreamTransformer.fromHandlers(
+      handleData: (event, sink) {
+        final sequence = (event[0] as int, event[1] as int);
+        if (_sequenceBefore(sequence, next) ||
+            pending.containsKey(sequence) ||
+            skipped.contains(sequence)) {
+          throw StateError(
+            'Duplicate or stale ordered port message: $sequence',
+          );
+        }
+
+        if (event.length == 4) {
+          for (final rawSkipped in event[2]) {
+            final skippedSequence = (
+              rawSkipped[0] as int,
+              rawSkipped[1] as int,
+            );
+            if (!_sequenceBefore(skippedSequence, sequence) ||
+                _sequenceBefore(skippedSequence, next) ||
+                pending.containsKey(skippedSequence) ||
+                !skipped.add(skippedSequence)) {
+              throw StateError(
+                'Invalid skipped ordered port message: $skippedSequence',
+              );
+            }
+          }
+        }
+
+        final payload = event[event.length - 1];
+        if (sequence == next) {
+          sink.add(payload);
+          next = _nextSequence(next);
+        } else {
+          pending[sequence] = payload;
+        }
+        drain(sink);
+      },
+    ),
+  );
 }
 
 bool _sequenceBefore((int, int) lhs, (int, int) rhs) =>

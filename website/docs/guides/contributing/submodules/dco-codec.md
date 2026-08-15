@@ -31,6 +31,8 @@ When other workers refer to a `StreamSink` from another worker, e.g. if the sink
 each worker creates a `BroadcastChannel` from its name on first use and reuses that channel for subsequent
 sends. Rust attaches a shared sequence number to every message, and Dart buffers messages until the next
 sequence arrives. This preserves data, error, and close ordering even when different workers send them.
+The Dart ordering layer uses a synchronous stream transformer so cancellation, pause, and resume propagate
+directly to the underlying browser channel subscription without waiting for another message.
 If a send fails, Rust carries its skipped sequence numbers on the next message so later messages do not
 remain buffered behind an event that will never arrive. A failed final close is retried through a fresh
 channel before Rust releases the cached channels.
