@@ -8,6 +8,20 @@ let
     path = bundlePath;
     name = "flutter-via-create-bundle";
   };
+  runtimeLibraryPath = pkgs.lib.makeLibraryPath (
+    with pkgs;
+    [
+      at-spi2-core
+      cairo
+      gdk-pixbuf
+      glib
+      gtk3
+      harfbuzz
+      libepoxy
+      pango
+      stdenv.cc.cc.lib
+    ]
+  );
 in
 pkgs.testers.runNixOSTest {
   name = "flutter-rust-bridge-quickstart";
@@ -45,7 +59,7 @@ pkgs.testers.runNixOSTest {
         "systemd-run --unit=frb-quickstart "
         "--property=Environment=DISPLAY=:99 "
         "--property=Environment=LIBGL_ALWAYS_SOFTWARE=1 "
-        "--property=Environment=LD_LIBRARY_PATH=/run/opengl-driver/lib "
+        "--property=Environment=LD_LIBRARY_PATH=${runtimeLibraryPath}:/run/opengl-driver/lib "
         "${bundle}/flutter_via_create"
     )
     try:
