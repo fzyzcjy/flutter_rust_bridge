@@ -112,6 +112,8 @@ pub async fn func_stream_add_value_and_error_twin_rust_async(sink: StreamSink<i3
 }
 
 pub async fn func_stream_cross_worker_close_twin_rust_async(sink: StreamSink<i32>) {
-    sink.add(42).unwrap();
+    for value in 0..1000 {
+        sink.add(value).unwrap();
+    }
     (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| { drop(sink) }));
 }

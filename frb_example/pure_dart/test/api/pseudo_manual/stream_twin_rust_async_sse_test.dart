@@ -119,8 +119,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('preserves data before close across workers', () async {
-    for (var i = 0; i < 1000; ++i) {
-      expect(await funcStreamCrossWorkerCloseTwinRustAsyncSse().toList(), [42]);
-    }
+    expect(
+      await funcStreamCrossWorkerCloseTwinRustAsyncSse().toList(),
+      List<int>.generate(1000, (i) => i),
+    );
   });
 }
