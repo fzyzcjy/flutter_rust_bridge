@@ -6,8 +6,6 @@ use crate::codegen::generator::wire::dart::spec_generator::wire_class::io::commo
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 use anyhow::ensure;
-use lazy_static::lazy_static;
-use regex::Regex;
 
 pub(crate) fn generate(
     config: &GeneratorWireDartInternalConfig,
@@ -42,12 +40,6 @@ fn postpare_modify(
     content_raw: &str,
     dart_output_class_name_pack: &DartOutputClassNamePack,
 ) -> String {
-    lazy_static! {
-        static ref FILTER: Regex =
-            Regex::new(r#"(?s)final class WireSyncRust2DartSse extends ffi.Struct \{.*?\}"#)
-                .unwrap();
-    }
-
     let DartOutputClassNamePack {
         wire_class_name, ..
     } = &dart_output_class_name_pack;
@@ -63,8 +55,38 @@ fn postpare_modify(
             "typedef WireSyncRust2DartDco = ffi.Pointer<DartCObject>;",
             "",
         );
-    let ans = FILTER.replace_all(&ans, "").to_string();
-    ans
+    remove_dart_class(
+        ans,
+        "final class WireSyncRust2DartSse extends ffi.Struct {",
+    )
+}
+
+fn remove_dart_class(mut content: String, class_header: &str) -> String {
+    while let Some(class_start) = content.find(class_header) {
+        let brace_start = class_start + class_header.rfind('{').unwrap();
+        let Some(brace_end) = find_matching_brace(&content[brace_start..]) else {
+            break;
+        };
+
+        content.replace_range(class_start..=brace_start + brace_end, "");
+    }
+
+    content
+}
+
+fn find_matching_brace(content: &str) -> Option<usize> {
+    let mut depth = 0;
+
+    for (index, byte) in content.bytes().enumerate() {
+        match byte {
+            b'{' => depth += 1,
+            b'}' if depth == 1 => return Some(index),
+            b'}' if depth > 1 => depth -= 1,
+            _ => {}
+        }
+    }
+
+    None
 }
 
 fn sanity_check(
@@ -107,6 +129,8 @@ final class WireSyncRust2DartSse extends ffi.Struct {
     ..ref.ptr = ptr
     ..ref.len = len;
 }
+
+final class KeepMe extends ffi.Struct {}
 "#,
             &DartOutputClassNamePack {
                 entrypoint_class_name: "RustLib".to_owned(),
@@ -122,5 +146,7 @@ final class WireSyncRust2DartSse extends ffi.Struct {
             !output.contains("..ref.ptr = ptr"),
             "ffigen 21 class fragment remains and causes expected_executable parser errors:\n{output}"
         );
+        assert!(!output.contains("final class WireSyncRust2DartSse"));
+        assert!(output.contains("final class KeepMe extends ffi.Struct {}"));
     }
 }
