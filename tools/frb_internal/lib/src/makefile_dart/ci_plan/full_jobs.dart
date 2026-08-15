@@ -309,7 +309,7 @@ List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
     if (package == 'frb_example--flutter_via_create')
       {
         'image': 'ubuntu-latest',
-        'platform': 'nix',
+        'platform': 'nixos',
         'target': 'desktop',
         'device': 'linux',
         'package': package,
