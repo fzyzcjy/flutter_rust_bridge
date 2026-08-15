@@ -1,5 +1,5 @@
-ARG FLUTTER_VERSION=3.44.0
-FROM ghcr.io/cirruslabs/flutter:${FLUTTER_VERSION}
+ARG FLUTTER_VERSION=3.47.0
+FROM ghcr.io/adrianjagielak/flutter:${FLUTTER_VERSION}
 
 # Configurable version parameters
 ARG RUST_VERSION=1.93.1

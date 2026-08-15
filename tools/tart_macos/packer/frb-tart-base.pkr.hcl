@@ -28,7 +28,7 @@ variable "allow_insecure" {
 variable "flutter_version" {
   type        = string
   description = "Flutter SDK version to install in the Tart base. Keep this in sync with FRB_MAIN_FLUTTER_VERSION in CI."
-  default     = "3.44.0"
+  default     = "3.47.0"
 }
 
 variable "host_proxy_url" {
