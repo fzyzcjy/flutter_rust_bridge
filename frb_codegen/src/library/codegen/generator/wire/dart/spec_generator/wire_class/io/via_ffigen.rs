@@ -55,10 +55,7 @@ fn postpare_modify(
             "typedef WireSyncRust2DartDco = ffi.Pointer<DartCObject>;",
             "",
         );
-    remove_dart_class(
-        ans,
-        "final class WireSyncRust2DartSse extends ffi.Struct {",
-    )
+    remove_dart_class(ans, "final class WireSyncRust2DartSse extends ffi.Struct {")
 }
 
 fn remove_dart_class(mut content: String, class_header: &str) -> String {
