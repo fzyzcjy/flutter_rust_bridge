@@ -54,7 +54,20 @@ pub fn close_event_listener_twin_sse() {
 pub fn create_event_twin_sse(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
-            sink.add(EventTwinSse { address, payload }).unwrap();
+            // The Dart subscription may already be cancelled (which now closes the
+            // receive port promptly), so a failed `add` is expected, not a bug.
+            let _ = sink.add(EventTwinSse { address, payload });
         }
     }
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn try_create_event_twin_sse(address: String, payload: String) -> Result<bool> {
+    let mut guard = EVENTS
+        .lock()
+        .map_err(|err| anyhow!("Could not access event listener: {}", err))?;
+    let sink = guard
+        .as_mut()
+        .ok_or_else(|| anyhow!("No event listener registered"))?;
+    Ok(sink.add(EventTwinSse { address, payload }).is_ok())
 }
