@@ -79,7 +79,14 @@ pub(super) fn execute_overlay_templates(
     }
 
     if let Some(dir) = backend_template_dir(config.integration_backend, config.template) {
-        execute_overlay_dir(dir, replacements, dart_root, config, None, include_ohos)?;
+        execute_overlay_dir(
+            dir,
+            replacements,
+            dart_root,
+            config,
+            Some(&["CMakeLists.txt".to_owned()]),
+            include_ohos,
+        )?;
     }
 
     Ok(())
@@ -199,12 +206,29 @@ fn comment_out_existing_file_and_write_template(
     path: PathBuf,
     src: &[u8],
 ) -> Option<(PathBuf, Vec<u8>)> {
+    const HASHTAG_COMMENT_FILES: &[&str] = &["CMakeLists.txt"];
+
+    let comment_leading = if HASHTAG_COMMENT_FILES
+        .iter()
+        .any(|file_name| path.iter().contains(&OsStr::new(file_name)))
+    {
+        "#"
+    } else {
+        "//"
+    };
+
     let existing_content = String::from_utf8(existing_content);
     let commented_existing_content = existing_content
         .map(|x| {
             format!(
-                "// The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n{}\n\n",
-                x.split('\n').map(|line| format!("// {line}")).join("\n")
+                "{comment_leading} The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n{}\n\n",
+                x.split('\n')
+                    .map(|line| if line.is_empty() {
+                        comment_leading.to_owned()
+                    } else {
+                        format!("{comment_leading} {line}")
+                    })
+                    .join("\n")
             )
         })
         .unwrap_or_default();
