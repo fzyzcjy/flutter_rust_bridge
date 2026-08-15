@@ -150,7 +150,7 @@ void _acknowledgeRelease(SendPort sendPort) {
     '${channelName}__flutter_rust_bridge_release',
   );
   channel.postMessage(null);
-  Timer(const Duration(milliseconds: 100), channel.close);
+  Timer(const Duration(milliseconds: 100), () => channel.close());
 }
 
 bool _sequenceBefore((int, int) lhs, (int, int) rhs) =>
