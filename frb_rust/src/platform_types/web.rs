@@ -17,7 +17,6 @@ pub type DartAbi = wasm_bindgen::JsValue;
 
 const BROADCAST_CHANNEL_RELEASE_SUFFIX: &str = "__flutter_rust_bridge_release";
 const BROADCAST_CHANNEL_READY_SUFFIX: &str = "__flutter_rust_bridge_ready";
-const MAX_PENDING_MESSAGES: usize = 4096;
 const MAX_READINESS_PROBE_DELAY_MILLIS: i32 = 1000;
 #[derive(Clone, Debug)]
 pub struct SendableMessagePortHandle(String);
@@ -146,9 +145,6 @@ impl CachedBroadcastChannel {
                 .is_ok();
         }
 
-        if self.pending_messages.len() == MAX_PENDING_MESSAGES {
-            return false;
-        }
         let Some(message) = clone_for_deferred_post(&message) else {
             return false;
         };
