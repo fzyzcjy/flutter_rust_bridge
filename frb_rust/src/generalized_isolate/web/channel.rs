@@ -35,7 +35,7 @@ impl Channel {
 
 // TODO the name should reflect "broadcast" channel?
 /// A handle to a [`web_sys::BroadcastChannel`] that implements `Send`.
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct SendableChannelHandle(SendableMessagePortHandle);
 
 pub fn deserialize_sendable_channel_handle(raw: String) -> SendableChannelHandle {

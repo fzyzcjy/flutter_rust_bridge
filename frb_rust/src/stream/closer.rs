@@ -54,7 +54,23 @@ impl<Rust2DartCodec: BaseCodec> StreamSinkCloser<Rust2DartCodec> {
         {
             let sequence = self.sequence.next();
             let failed = self.sequence.take_failed_before(sequence);
+            if sequence == 0 || release_after_delivery {
+                crate::console_error!(
+                    "stream channel post attempt: handle={:?} sequence={} release={}",
+                    self.sendable_channel_handle,
+                    sequence,
+                    release_after_delivery,
+                );
+            }
             let result = sender.send_stream(sequence, &failed, msg, release_after_delivery);
+            if (sequence == 0 || release_after_delivery) && result.is_ok() {
+                crate::console_error!(
+                    "stream channel post succeeded: handle={:?} sequence={} release={}",
+                    self.sendable_channel_handle,
+                    sequence,
+                    release_after_delivery,
+                );
+            }
             if result.is_err() {
                 self.sequence.record_failed(sequence, failed);
             }
