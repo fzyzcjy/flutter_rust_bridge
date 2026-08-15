@@ -34,6 +34,18 @@ impl SimpleProgressBar {
     }
 }
 
+pub(crate) fn progress_bar_message(message: &str) -> String {
+    progress_bar_message_with_level(message, log::max_level())
+}
+
+fn progress_bar_message_with_level(message: &str, max_level: log::LevelFilter) -> String {
+    if max_level >= log::LevelFilter::Debug {
+        message.to_owned()
+    } else {
+        format!("{message} (use --verbose for logs)")
+    }
+}
+
 /// Prints above the live progress bars without tearing the spinner.
 pub(crate) fn println_over_progress(line: impl AsRef<str>) {
     println_over_progress_inner(&MULTI_PROGRESS, line.as_ref(), |line| eprintln!("{line}"));
@@ -84,6 +96,18 @@ fn create_simple_progress_bar(message: String, level: usize) -> ProgressBar {
 mod tests {
     use super::*;
     use indicatif::ProgressDrawTarget;
+
+    #[test]
+    fn test_progress_bar_message_hints_verbose_unless_already_debug() {
+        assert_eq!(
+            progress_bar_message_with_level("Run Dart build_runner", log::LevelFilter::Info),
+            "Run Dart build_runner (use --verbose for logs)"
+        );
+        assert_eq!(
+            progress_bar_message_with_level("Run Dart build_runner", log::LevelFilter::Debug),
+            "Run Dart build_runner"
+        );
+    }
 
     #[test]
     /// Hidden progress targets must still forward diagnostics to the fallback writer.

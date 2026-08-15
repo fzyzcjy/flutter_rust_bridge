@@ -7,7 +7,6 @@
 * Require release contributor description coverage #3332
 * Preserve web `StreamSink` message ordering #3233
 * Fail fast for locked Rust opaque sync calls on web #3271
-* Stream `build_runner` output during codegen polish so a hung or slow run is visible #2097
 
 ## 2.13.0-beta.5
 

@@ -16,7 +16,6 @@ pub fn dart_build_runner(dart_root: &Path, fvm_install_mode: FvmInstallMode) -> 
     let out = command_run!(
         call_shell[Some(dart_root), Some(ExecuteCommandOptions {
             envs: Some(dart_run_extra_env()),
-            stream_output: true,
             ..Default::default()
         })],
         ?command_arg_maybe_fvm(Some(dart_root), fvm_install_mode),

@@ -68,7 +68,7 @@ You can install llvm using `brew install llvm` and it will be installed at `/usr
 
 If your `.freezed.dart` or `.g.dart` seems outdated, ensure you have run the `build_runner`.
 
-Code generation streams `build_runner` stdout/stderr while Polish is running. If that step looks stuck, those lines are the first place to look (for example `freezed on N inputs` or an analyzer exception).
+Code generation streams child command output, including `build_runner`, when run with `--verbose`. If Polish looks stuck, re-run with `--verbose` and look at those lines first (for example `freezed on N inputs` or an analyzer exception).
 
 Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/330
 

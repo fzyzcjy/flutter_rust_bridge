@@ -2,8 +2,7 @@ use crate::utils::console::println_over_progress;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::{bail, Context};
 use itertools::Itertools;
-use log::debug;
-use log::warn;
+use log::{debug, warn, LevelFilter};
 use std::collections::HashMap;
 use std::io::{BufRead, BufReader, Read};
 use std::path::{Path, PathBuf};
@@ -198,7 +197,8 @@ pub(crate) fn execute_command<'a>(
         bin, args_display, current_dir, cmd
     );
 
-    let result = (if options.stream_output {
+    let stream_output = should_stream_command_output(options.stream_output, log::max_level());
+    let result = (if stream_output {
         execute_command_streaming(&mut cmd, bin, &args_display)
     } else {
         cmd.output().map_err(anyhow::Error::from)
@@ -219,7 +219,7 @@ pub(crate) fn execute_command<'a>(
             warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} stdout={:?}", cmd, stdout);
             // frb-coverage:ignore-end
         }
-    } else if options.log_when_error.unwrap_or(true) && !options.stream_output {
+    } else if options.log_when_error.unwrap_or(true) && !stream_output {
         // Streaming already printed the child output live; do not dump it again.
         warn!(
             "command={:?} stdout={} stderr={}",
@@ -229,6 +229,10 @@ pub(crate) fn execute_command<'a>(
         );
     }
     Ok(result)
+}
+
+fn should_stream_command_output(force: bool, max_level: LevelFilter) -> bool {
+    force || max_level >= LevelFilter::Debug
 }
 
 fn execute_command_streaming(
@@ -383,6 +387,16 @@ mod tests {
         let mut collected = Vec::new();
         super::tee_reader(FailingReader, &mut collected);
         assert!(collected.is_empty());
+    }
+
+    #[test]
+    fn test_should_stream_command_output_follows_force_or_debug_level() {
+        assert!(!should_stream_command_output(false, LevelFilter::Off));
+        assert!(!should_stream_command_output(false, LevelFilter::Info));
+        assert!(should_stream_command_output(false, LevelFilter::Debug));
+        assert!(should_stream_command_output(false, LevelFilter::Trace));
+        assert!(should_stream_command_output(true, LevelFilter::Off));
+        assert!(should_stream_command_output(true, LevelFilter::Info));
     }
 
     fn streaming_options() -> Option<ExecuteCommandOptions> {
