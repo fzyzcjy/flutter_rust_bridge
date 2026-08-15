@@ -467,7 +467,8 @@ Future<List<String>> _deleteTrackedGeneratedFiles({
 
   print('Deleting ${generatedFiles.length} tracked generated files');
   for (final relativePath in generatedFiles) {
-    File(path.join(exec.pwd!, relativePath)).deleteSync();
+    final file = File(path.join(exec.pwd!, relativePath));
+    if (file.existsSync()) file.deleteSync();
   }
   return generatedFiles;
 }
