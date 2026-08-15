@@ -12,5 +12,3 @@ pub fn deserialize_sendable_channel_handle(raw: String) -> SendableChannelHandle
 pub fn handle_to_cached_channel(handle: &SendableChannelHandle) -> Channel {
     handle.to_owned()
 }
-
-pub fn release_cached_channel_handle(_handle: &SendableChannelHandle) {}
