@@ -1,6 +1,7 @@
+include: package:flutter_lints/flutter.yaml
+
 analyzer:
   exclude:
-    - cargokit/**
     - build/**
     - android/**
     - ios/**
@@ -9,7 +10,6 @@ analyzer:
     - macos/**
     - linux/**
 
-include: package:flutter_lints/flutter.yaml
-
+    - cargokit/**
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
