@@ -223,10 +223,14 @@ fn comment_out_existing_file_and_write_template(
             format!(
                 "{comment_leading} The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n{}\n\n",
                 x.split('\n')
-                    .map(|line| if line.is_empty() {
-                        comment_leading.to_owned()
-                    } else {
-                        format!("{comment_leading} {line}")
+                    .map(|line| {
+                        let (line, line_ending) =
+                            line.strip_suffix('\r').map_or((line, ""), |line| (line, "\r"));
+                        if line.is_empty() {
+                            format!("{comment_leading}{line_ending}")
+                        } else {
+                            format!("{comment_leading} {line}{line_ending}")
+                        }
                     })
                     .join("\n")
             )
@@ -339,7 +343,7 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::filter_file;
+    use super::{comment_out_existing_file_and_write_template, filter_file};
     use std::path::Path;
 
     #[test]
@@ -405,5 +409,20 @@ mod tests {
             true,
             true,
         ));
+    }
+
+    #[test]
+    fn test_comment_out_cmake_preserves_crlf_without_trailing_whitespace() {
+        let (_, output) = comment_out_existing_file_and_write_template(
+            b"line one\r\n\r\nline two\r\n".to_vec(),
+            Path::new("CMakeLists.txt").to_path_buf(),
+            b"template\n",
+        )
+        .unwrap();
+
+        assert_eq!(
+            String::from_utf8(output).unwrap(),
+            "# The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n# line one\r\n#\r\n# line two\r\n#\n\ntemplate\n"
+        );
     }
 }
