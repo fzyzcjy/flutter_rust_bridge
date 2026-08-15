@@ -188,6 +188,7 @@ Future<void> lintDartPana(LintConfig config) async {
     await exec(
       'dart pub global run pana '
       '--no-warning '
+      '--project-root .. '
       '--exit-code-threshold $exitCodeThreshold',
       relativePwd: package,
     );
