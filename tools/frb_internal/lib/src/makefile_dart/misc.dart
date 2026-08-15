@@ -232,6 +232,9 @@ String convertConfigPackage(String raw) {
   return ans;
 }
 
+String? convertOptionalConfigPackage(String? raw) =>
+    raw == null ? null : convertConfigPackage(raw);
+
 String? getRustFeaturesOfPackage(String package) {
   if (package == "frb_example/pure_dart_pde/rust" ||
       package == "frb_example/pure_dart/rust" ||

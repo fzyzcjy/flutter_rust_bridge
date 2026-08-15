@@ -22,14 +22,8 @@ void main() {
           reason: filter,
         );
         expect(
-          plan.matrixByJob['generate_run_frb_codegen_command_generate']!['include'],
-          contains(
-            equals({
-              'image': 'ubuntu-24.04',
-              'package': 'all',
-              'from_scratch': true,
-            }),
-          ),
+          plan.enabledJobs,
+          contains('generate_run_frb_codegen_command_generate_from_scratch'),
           reason: filter,
         );
         expect(plan.matrixByJob['test_dart_web'], {

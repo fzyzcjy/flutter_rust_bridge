@@ -346,7 +346,7 @@ jobs:
       - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
-      - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage ${{ matrix.from_scratch == true && '--from-scratch' || '' }}
+      - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage
 
       # report
       - uses: actions/upload-artifact@v4
@@ -354,6 +354,35 @@ jobs:
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
           path: target/coverage
+
+  generate_run_frb_codegen_command_generate_from_scratch:
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_run_frb_codegen_command_generate_from_scratch.enable == true }}
+    name: 'Generate :: FRB Codegen :: Command Generate From Scratch'
+    runs-on: ubuntu-24.04
+
+    steps:
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
+        with:
+          comment_on_pr: false
+          job_summary: false
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt, clippy
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          cache: true
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+
+      - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --from-scratch
 
   generate_run_frb_codegen_command_integrate:
     needs: plan_ci

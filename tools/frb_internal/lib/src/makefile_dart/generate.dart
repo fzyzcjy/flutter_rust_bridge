@@ -123,8 +123,8 @@ class GeneratePackageConfig implements _GenerateCommonConfig {
   @override
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
-  @CliOption(convert: convertConfigPackage)
-  final String package;
+  @CliOption(convert: convertOptionalConfigPackage)
+  final String? package;
   @override
   final bool coverage;
   @CliOption(defaultsTo: false)
@@ -417,30 +417,27 @@ Future<void> generateRunFrbCodegenCommandGenerate(
     return;
   }
 
+  final package = config.package;
+  if (package == null) {
+    throw ArgumentError.notNull('package');
+  }
+
   await _wrapMaybeSetExitIfChanged(config, () async {
-    await runPubGetIfNotRunYet(config.package);
-    print("generating with ${config.package}");
+    await runPubGetIfNotRunYet(package);
+    print("generating with $package");
     await executeFrbCodegen(
       'generate',
-      relativePwd: config.package,
+      relativePwd: package,
       coverage: config.coverage,
       coverageName: 'GenerateRunFrbCodegenCommandGenerate',
     );
-    await _formatPackageAfterGenerate(config.package);
+    await _formatPackageAfterGenerate(package);
   });
 }
 
 Future<void> _generateRunFrbCodegenCommandGenerateFromScratch(
   GeneratePackageConfig config,
 ) async {
-  if (config.package != 'all') {
-    throw ArgumentError.value(
-      config.package,
-      'package',
-      '--from-scratch requires --package all.',
-    );
-  }
-
   await wrapMaybeSetExitIfChangedRaw(true, () async {
     final expectedGeneratedFiles =
         await deleteTrackedGeneratedFilesForFromScratch();

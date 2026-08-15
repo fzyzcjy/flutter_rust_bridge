@@ -150,13 +150,11 @@
         {
           "image": "ubuntu-24.04",
           "package": "frb_example--rust_ui_todo_list--ui"
-        },
-        {
-          "image": "ubuntu-24.04",
-          "package": "all",
-          "from_scratch": true
         }
       ]
+    },
+    {
+      "id": "generate_run_frb_codegen_command_generate_from_scratch"
     },
     {
       "id": "generate_run_frb_codegen_command_integrate",
