@@ -210,9 +210,6 @@ Stream<dynamic> _orderMessages(
         }
 
         final releaseAfterDelivery = event.length == 5 && event[4] as bool;
-        if (releaseAfterDelivery) {
-          print('stream final close arrived at next=$next');
-        }
         final message = (
           event[releaseAfterDelivery ? 3 : event.length - 1],
           releaseAfterDelivery,
@@ -231,7 +228,6 @@ Stream<dynamic> _orderMessages(
 
 void _acknowledgeRelease(SendPort sendPort) {
   final channelName = (sendPort.nativePort as web.BroadcastChannel).name;
-  print('stream release reached: $channelName');
   final channel = web.BroadcastChannel(
     '${channelName}__flutter_rust_bridge_release',
   );
@@ -308,23 +304,26 @@ class _WebMessageChannel implements _WebChannel {
 class _WebBroadcastChannel implements _WebChannel {
   final web.BroadcastChannel _sendChannel;
   final web.BroadcastChannel _receiveChannel;
+  late final _WebBroadcastPort _receiver;
 
   _WebBroadcastChannel(String channelName)
     // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
     // because HTML BroadcastChannel spec says that, the event will not be fired
     // at the object which sends it. Therefore, we need two different objects.
     : _sendChannel = web.BroadcastChannel(channelName),
-      _receiveChannel = web.BroadcastChannel(channelName);
+      _receiveChannel = web.BroadcastChannel(channelName) {
+    _receiver = _WebBroadcastPort(_receiveChannel);
+  }
 
   @override
   SendPort get _sendPort => SendPort._(_sendChannel);
 
   @override
-  _WebPortLike get _receivePort =>
-      _WebPortLike._broadcastChannel(_receiveChannel);
+  _WebPortLike get _receivePort => _receiver;
 
   @override
   void _close() {
+    _receiver.close();
     _receiveChannel.close();
     _sendChannel.close();
   }
@@ -335,9 +334,6 @@ abstract class _WebPortLike {
   const _WebPortLike._();
 
   factory _WebPortLike._messagePort(web.MessagePort port) = _WebMessagePort;
-
-  factory _WebPortLike._broadcastChannel(web.BroadcastChannel channel) =
-      _WebBroadcastPort;
 
   void _start();
 
@@ -365,8 +361,18 @@ class _WebMessagePort extends _WebPortLike {
 class _WebBroadcastPort extends _WebPortLike {
   @override
   final web.BroadcastChannel _nativePort;
+  final _messages = StreamController<web.MessageEvent>();
 
-  _WebBroadcastPort(this._nativePort) : super._();
+  _WebBroadcastPort(this._nativePort) : super._() {
+    _nativePort.onmessage = ((web.Event event) {
+      _messages.add(event as web.MessageEvent);
+    }).toJS;
+  }
+
+  @override
+  Stream<web.MessageEvent> get _onMessage => _messages.stream;
+
+  void close() => _nativePort.onmessage = null;
 
   @override
   void _start() {}

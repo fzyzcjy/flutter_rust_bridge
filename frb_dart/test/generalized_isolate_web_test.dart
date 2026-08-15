@@ -10,6 +10,23 @@ import 'package:test/test.dart';
 import 'package:web/web.dart' as web;
 
 void main() {
+  /// Buffers BroadcastChannel messages sent before Dart subscribes.
+  test('broadcast port buffers messages before listen', () async {
+    final channelName =
+        'frb-broadcast-buffer-${DateTime.now().microsecondsSinceEpoch}';
+    final port = broadcastPort(channelName);
+    final sender = web.BroadcastChannel(channelName);
+    addTearDown(() {
+      port.close();
+      sender.close();
+    });
+
+    sender.postMessage(42.toJS);
+    await Future<void>.delayed(Duration.zero);
+
+    expect(await port.first, 42);
+  });
+
   /// Closes both Dart BroadcastChannel objects owned by a receive port.
   test('closing ordered port closes its serialized channel', () {
     final channelName =
