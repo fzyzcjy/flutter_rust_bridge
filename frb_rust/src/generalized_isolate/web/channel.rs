@@ -1,28 +1,40 @@
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::deserialize_sendable_message_port_handle;
-use crate::platform_types::handle_to_cached_message_port;
 use crate::platform_types::handle_to_message_port;
+use crate::platform_types::post_cached_message_port;
 use crate::platform_types::release_cached_message_port_handle;
 use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
 
 #[derive(Clone)]
 pub struct Channel {
-    port: MessagePort,
+    port: ChannelPort,
+}
+
+#[derive(Clone)]
+enum ChannelPort {
+    Direct(MessagePort),
+    Cached(SendableMessagePortHandle),
 }
 
 impl Channel {
     pub fn new(port: MessagePort) -> Self {
-        Self { port }
+        Self {
+            port: ChannelPort::Direct(port),
+        }
     }
 
     pub fn post(&self, msg: impl IntoDart) -> bool {
-        self.port
-            .post_message(&msg.into_dart())
-            .map_err(|err| {
-                crate::console_error!("post: {:?}", err);
-            })
-            .is_ok()
+        let msg = msg.into_dart();
+        match &self.port {
+            ChannelPort::Direct(port) => port
+                .post_message(&msg)
+                .map_err(|err| {
+                    crate::console_error!("post: {:?}", err);
+                })
+                .is_ok(),
+            ChannelPort::Cached(handle) => post_cached_message_port(handle, msg),
+        }
     }
 
     // TODO unused, rm?
@@ -43,7 +55,9 @@ pub fn deserialize_sendable_channel_handle(raw: String) -> SendableChannelHandle
 }
 
 pub fn handle_to_cached_channel(handle: &SendableChannelHandle) -> Channel {
-    Channel::new(handle_to_cached_message_port(&handle.0))
+    Channel {
+        port: ChannelPort::Cached(handle.0.clone()),
+    }
 }
 
 pub fn handle_to_uncached_channel(handle: &SendableChannelHandle) -> Channel {
