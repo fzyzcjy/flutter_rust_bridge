@@ -119,7 +119,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('preserves data before close across workers', () async {
-    for (var i = 0; i < 100; ++i) {
+    for (var i = 0; i < 1000; ++i) {
       expect(await funcStreamCrossWorkerCloseTwinRustAsyncSse().toList(), [42]);
     }
   });
