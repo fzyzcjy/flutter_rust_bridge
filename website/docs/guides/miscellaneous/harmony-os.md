@@ -106,7 +106,6 @@ Explorer instead of using the POSIX `test` commands.
 
 ## Creating an OHOS project
 
-:::warning
 If your project uses FVM to manage Flutter versions, always pass
 `--skip-fvm-install` when running flutter_rust_bridge commands for an OHOS
 project.
@@ -116,7 +115,6 @@ Flutter does not support OHOS, but FVM installs Flutter from the official
 Flutter releases by default. Without `--skip-fvm-install`, FVM may try to fetch
 an official Flutter SDK, which can get stuck or leave the OHOS project unable to
 run.
-:::
 
 After the HarmonyOS toolchain is ready, create the project with OHOS enabled:
 
