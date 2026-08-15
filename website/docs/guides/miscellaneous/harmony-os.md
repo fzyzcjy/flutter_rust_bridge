@@ -21,7 +21,7 @@ step from the environment guide before continuing.
 
 ## Supported baseline
 
-OHOS support is currently **Beta**. The repository's required CI baseline is:
+The repository's CI baseline is:
 
 | Component | Supported baseline |
 |---|---|
