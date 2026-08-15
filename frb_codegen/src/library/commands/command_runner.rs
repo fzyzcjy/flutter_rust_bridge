@@ -170,9 +170,6 @@ pub fn windows_escape_for_powershell(section_in: &str) -> String {
 pub(crate) struct ExecuteCommandOptions {
     pub envs: Option<HashMap<String, String>>,
     pub log_when_error: Option<bool>,
-    /// Forward child stdout/stderr line-by-line while the process is still running.
-    /// Needed for long-lived tools such as `build_runner`, whose useful diagnostics
-    /// otherwise stay buffered until exit (or never appear if the child hangs).
     pub stream_output: bool,
 }
 
@@ -201,12 +198,12 @@ pub(crate) fn execute_command<'a>(
         bin, args_display, current_dir, cmd
     );
 
-    let result = if options.stream_output {
-        execute_command_streaming(&mut cmd, bin, &args_display)?
+    let result = (if options.stream_output {
+        execute_command_streaming(&mut cmd, bin, &args_display)
     } else {
-        cmd.output()
-            .with_context(|| format!(r#""{bin}" "{args_display}" failed (cmd={cmd:?})"#))?
-    };
+        cmd.output().map_err(anyhow::Error::from)
+    })
+    .with_context(|| format!(r#""{bin}" "{args_display}" failed (cmd={cmd:?})"#))?;
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {
