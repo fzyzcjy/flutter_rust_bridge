@@ -343,14 +343,22 @@ jobs:
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
+      - if: ${{ matrix.from_scratch != true }}
+        run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
-      - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage ${{ matrix.image == 'ubuntu-24.04' && '--from-scratch' || '' }}
+      - if: ${{ matrix.from_scratch != true }}
+        run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage
+      - if: ${{ matrix.from_scratch == true }}
+        run: rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }} && rustup component add rustfmt --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}-x86_64-unknown-linux-gnu
+      - if: ${{ matrix.from_scratch == true }}
+        run: yarn global add all-contributors-cli
+      - if: ${{ matrix.from_scratch == true }}
+        run: ./frb_internal precommit-generate-from-scratch
 
       # report
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: ${{ always() && matrix.from_scratch != true }}
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
           path: target/coverage
@@ -487,7 +495,7 @@ jobs:
       - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
-      - run: ./frb_internal generate-internal --set-exit-if-changed --coverage --from-scratch
+      - run: ./frb_internal generate-internal --set-exit-if-changed --coverage
 
       # report
       - uses: actions/upload-artifact@v4

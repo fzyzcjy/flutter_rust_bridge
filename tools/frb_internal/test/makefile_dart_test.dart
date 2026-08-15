@@ -245,80 +245,30 @@ plain
     );
   });
 
-  test('from-scratch example selection keeps all package outputs', () {
-    const package = 'frb_example/example';
-    final trackedFiles = [
-      '$package/frb_generated.h',
-      '$package/lib/src/rust/frb_generated.dart',
-      '$package/lib/src/rust/frb_generated.io.dart',
-      '$package/lib/src/rust/api/model.freezed.dart',
-      '$package/lib/src/rust/api/model.g.dart',
-      '$package/lib/unrelated_model.g.dart',
-      '$package/rust/src/frb_generated.rs',
-      'frb_example/example_extra/src/frb_generated.rs',
-      'frb_example/other/lib/src/rust/frb_generated.dart',
-    ];
-
+  test('from-scratch selection keeps every tracked generated output', () {
     expect(
-      selectExampleGeneratedFilesForTesting(
-        trackedFiles: trackedFiles,
-        package: package,
-      ),
-      [
-        '$package/frb_generated.h',
-        '$package/lib/src/rust/frb_generated.dart',
-        '$package/lib/src/rust/frb_generated.io.dart',
-        '$package/lib/src/rust/api/model.freezed.dart',
-        '$package/lib/src/rust/api/model.g.dart',
-        '$package/lib/unrelated_model.g.dart',
-        '$package/rust/src/frb_generated.rs',
-      ],
-    );
-  });
-
-  test('from-scratch example selection supports an external Rust root', () {
-    const package = 'frb_example/rust_ui/ui';
-    const externalRustOutput = 'frb_example/rust_ui/src/frb_generated.rs';
-
-    expect(
-      selectExampleGeneratedFilesForTesting(
-        trackedFiles: [
-          '$package/lib/src/rust/frb_generated.dart',
-          externalRustOutput,
-        ],
-        package: package,
-        externalRustOutput: externalRustOutput,
-      ),
-      ['$package/lib/src/rust/frb_generated.dart', externalRustOutput],
-    );
-  });
-
-  test('from-scratch internal Rust selection excludes template inputs', () {
-    expect(
-      selectInternalRustGeneratedFilesForTesting([
+      selectTrackedGeneratedFilesForFromScratchForTesting([
+        'frb_example/example/frb_generated.h',
+        'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/unrelated_model.g.dart',
+        'frb_example/rust_ui/src/frb_generated.rs',
         'frb_rust/src/internal_generated/mod.rs',
         'frb_dart/lib/src/ffigen_generated/multi_package.dart',
+        'frb_dart/lib/src/cli/build_web/entrypoint.g.dart',
         'frb_codegen/assets/integration_template/shared/lib/src/rust/frb_generated.dart',
+        'frb_codegen/assets/integration_template/shared/lib/model.g.dart',
+        'frb_example/example/lib/model.dart',
       ]),
       [
+        'frb_example/example/frb_generated.h',
+        'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/unrelated_model.g.dart',
+        'frb_example/rust_ui/src/frb_generated.rs',
         'frb_rust/src/internal_generated/mod.rs',
         'frb_dart/lib/src/ffigen_generated/multi_package.dart',
-      ],
-    );
-  });
-
-  test('from-scratch internal build runner selection uses owned packages', () {
-    expect(
-      selectInternalBuildRunnerGeneratedFilesForTesting([
         'frb_dart/lib/src/cli/build_web/entrypoint.g.dart',
-        'frb_utils/lib/src/commands/test_web_command.g.dart',
-        'tools/frb_internal/lib/src/makefile_dart/generate.g.dart',
-        'frb_example/pure_dart/lib/src/rust/api/model.freezed.dart',
-      ]),
-      [
-        'frb_dart/lib/src/cli/build_web/entrypoint.g.dart',
-        'frb_utils/lib/src/commands/test_web_command.g.dart',
-        'tools/frb_internal/lib/src/makefile_dart/generate.g.dart',
       ],
     );
   });

@@ -51,7 +51,7 @@ final kCiJobs = [
             package: package,
           ))
             {'image': image, 'package': package},
-      {'image': 'ubuntu-24.04', 'package': 'frb_example--gallery'},
+      {'image': 'ubuntu-24.04', 'package': 'all', 'from_scratch': true},
     ]),
   ),
   CiJob(

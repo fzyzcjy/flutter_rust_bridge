@@ -48,6 +48,10 @@ List<Command<void>> createCommands() {
       repoRootPath: exec.pwd!,
     ),
     SimpleCommand('precommit-generate', precommitGenerate),
+    SimpleCommand(
+      'precommit-generate-from-scratch',
+      precommitGenerateFromScratch,
+    ),
     SimpleCommand('precommit-integrate', precommitIntegrate),
     SimpleCommand('sync-cargokit-copies', syncCargokitCopies),
     SimpleCommand('pub-get-all', pubGetAll),
@@ -166,6 +170,18 @@ Future<void> precommitGenerate() async {
         ),
       ),
   ]);
+}
+
+Future<void> precommitGenerateFromScratch() async {
+  await wrapMaybeSetExitIfChangedRaw(true, () async {
+    final expectedGeneratedFiles =
+        await deleteTrackedGeneratedFilesForFromScratch();
+    await generateInternal(
+      const GenerateConfig(setExitIfChanged: false, coverage: false),
+    );
+    await precommitGenerate();
+    verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
+  });
 }
 
 Future<void> ensureCargoExpandInstalledForPrecommitGenerate() async {
