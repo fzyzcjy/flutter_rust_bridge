@@ -30,6 +30,7 @@ env:
   FRB_MAIN_FLUTTER_VERSION: 3.44.0
   FRB_RUSTFMT_NIGHTLY_VERSION: nightly-2025-02-01
   FRB_OHOS_FLUTTER_REF: 6d7e5b43fb43bb85ba0a59e3469299ebcf45a637
+  FRB_OHOS_TOOLCHAIN_VERSION: 6.1.1.280
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -392,7 +393,7 @@ jobs:
         name: Setup HarmonyOS toolchain
         uses: ErBWs/setup-ohos@v1
         with:
-          version: latest
+          version: ${{ env.FRB_OHOS_TOOLCHAIN_VERSION }}
           cache: true
       - if: matrix.platforms == 'ohos'
         name: Setup JDK17
@@ -611,7 +612,7 @@ jobs:
         name: Setup HarmonyOS toolchain
         uses: ErBWs/setup-ohos@v1
         with:
-          version: latest
+          version: ${{ env.FRB_OHOS_TOOLCHAIN_VERSION }}
           cache: true
       - if: matrix.info.target == 'ohos'
         name: Setup JDK17
@@ -632,6 +633,9 @@ jobs:
           echo "OHOS_SDK_HOME=${OHOS_NDK_HOME}/native" >> $GITHUB_ENV
 
       # execute
+      - if: matrix.info.prepare_ohos_package != null
+        name: Generate OHOS scaffold for integration scenario
+        run: ./frb_internal generate-run-frb-codegen-command-integrate --package ${{ matrix.info.prepare_ohos_package }} --include-ohos
       - run: ./frb_internal build-flutter --package ${{ matrix.info.package }} --target ${{ matrix.info.target }}
 
       # report

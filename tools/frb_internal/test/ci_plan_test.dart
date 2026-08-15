@@ -543,6 +543,33 @@ void main() {
         },
       ),
       const _CiFilterExample(
+        filter: 'build_flutter[target=ohos]',
+        enabledJobs: {'build_flutter'},
+        matrixByJob: {
+          'build_flutter': {
+            'include': [
+              {
+                'info': {
+                  'image': 'ubuntu-latest',
+                  'target': 'ohos',
+                  'package': 'frb_example--flutter_via_create',
+                  'package_path': 'frb_example/flutter_via_create',
+                },
+              },
+              {
+                'info': {
+                  'image': 'ubuntu-latest',
+                  'target': 'ohos',
+                  'package': 'frb_example--flutter_via_integrate',
+                  'package_path': 'frb_example/flutter_via_integrate',
+                  'prepare_ohos_package': 'frb_example--flutter_via_integrate',
+                },
+              },
+            ],
+          },
+        },
+      ),
+      const _CiFilterExample(
         filter:
             'test_dart_sanitizer[sanitizer=asan,package=frb_example--pure_dart]',
         enabledJobs: {'test_dart_sanitizer'},
