@@ -3,11 +3,59 @@ library;
 
 import 'dart:js_interop';
 
+import 'package:flutter_rust_bridge/src/codec/dco.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
+import 'package:flutter_rust_bridge/src/stream/stream_sink.dart';
 import 'package:test/test.dart';
 import 'package:web/web.dart' as web;
 
 void main() {
+  /// Completes outer cancellation while draining the ordered source to ACK.
+  test('RustStreamSink cancel completes before ordered release', () async {
+    const codec = DcoCodec<int, Exception>(
+      decodeSuccessData: _decodeInt,
+      decodeErrorData: null,
+    );
+    final sink = RustStreamSink<int>();
+    final channelName = sink.setupAndSerialize(codec: codec);
+    final sender = web.BroadcastChannel(channelName);
+    final release = web.BroadcastChannel(
+      '${channelName}__flutter_rust_bridge_release',
+    );
+    addTearDown(() {
+      sender.close();
+      release.close();
+    });
+
+    final events = <int>[];
+    final subscription = sink.stream.listen(events.add);
+    await subscription.cancel().timeout(const Duration(seconds: 1));
+
+    final acknowledged = const web.EventStreamProvider<web.MessageEvent>(
+      'message',
+    ).forTarget(release).first;
+    sender
+      ..postMessage(
+        <Object?>[
+          0,
+          0,
+          <Object?>[0, 42],
+        ].jsify(),
+      )
+      ..postMessage(
+        <Object?>[
+          0,
+          1,
+          <Object?>[],
+          <Object?>[2],
+          true,
+        ].jsify(),
+      );
+
+    await acknowledged.timeout(const Duration(seconds: 1));
+    expect(events, isEmpty);
+  });
+
   /// Drains an ordered port through its release marker after consumer cancel.
   test('ordered port acknowledges release after consumer cancel', () async {
     final channelName =
@@ -38,3 +86,5 @@ void main() {
     expect(events, isEmpty);
   });
 }
+
+int _decodeInt(dynamic raw) => raw as int;
