@@ -14192,24 +14192,6 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 void frbgen_frb_example_pure_dart_wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(int64_t port_,
                                                                                                                                         struct wire_cst_translatable_struct_with_dart_code_twin_normal *that);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__event_listener__try_create_event_twin_normal(int64_t port_,
-                                                                                                 struct wire_cst_list_prim_u_8_strict *address,
-                                                                                                 struct wire_cst_list_prim_u_8_strict *payload);
-
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async__try_create_event_twin_rust_async(int64_t port_,
-                                                                                                                                    struct wire_cst_list_prim_u_8_strict *address,
-                                                                                                                                    struct wire_cst_list_prim_u_8_strict *payload);
-
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__try_create_event_twin_rust_async_sse(int64_t port_,
-                                                                                                                                            uint8_t *ptr_,
-                                                                                                                                            int32_t rust_vec_len_,
-                                                                                                                                            int32_t data_len_);
-
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_sse__try_create_event_twin_sse(int64_t port_,
-                                                                                                                      uint8_t *ptr_,
-                                                                                                                      int32_t rust_vec_len_,
-                                                                                                                      int32_t data_len_);
-
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal(const void *opaque);
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__unwrap_dart_opaque_twin_sse(uint8_t *ptr_,
@@ -17184,7 +17166,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__event_listener__create_event_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__event_listener__event_twin_normal_as_string_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__event_listener__register_event_listener_twin_normal);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__event_listener__try_create_event_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__exception__custom_enum_error_panic_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__exception__custom_enum_error_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__exception__custom_enum_error_return_ok_twin_normal);
@@ -18308,17 +18289,14 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async__create_event_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async__event_twin_rust_async_as_string_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async__register_event_listener_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async__try_create_event_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__close_event_listener_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__create_event_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__event_twin_rust_async_sse_as_string_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__register_event_listener_twin_rust_async_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__try_create_event_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_sse__close_event_listener_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_sse__create_event_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_sse__event_twin_sse_as_string_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_sse__register_event_listener_twin_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__event_listener_twin_sse__try_create_event_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_error_panic_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_error_return_error_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__exception_twin_rust_async__custom_enum_error_return_ok_twin_rust_async);
