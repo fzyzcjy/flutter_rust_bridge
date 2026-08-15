@@ -78,6 +78,7 @@ IR -- Generator --> rust_dart[Rust and Dart output]
 - The generator converts the IR into final outputs.
 - The outputs are written to corresponding files.
 - Remark: There are also `preparer` (to prepare environments) and `polisher` (to do postprocessing).
+- Generate CI removes the tracked outputs owned by each generator before running codegen on Ubuntu. The regenerated files must all reappear with no Git diff, so checked-in outputs cannot hide a generator that exits successfully without producing its required files.
 
 The **generator** part is naturally splitted into:
 

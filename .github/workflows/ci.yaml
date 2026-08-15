@@ -346,7 +346,7 @@ jobs:
       - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
-      - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage
+      - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage ${{ matrix.image == 'ubuntu-24.04' && '--from-scratch' || '' }}
 
       # report
       - uses: actions/upload-artifact@v4
@@ -487,7 +487,7 @@ jobs:
       - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
-      - run: ./frb_internal generate-internal --set-exit-if-changed --coverage
+      - run: ./frb_internal generate-internal --set-exit-if-changed --coverage --from-scratch
 
       # report
       - uses: actions/upload-artifact@v4

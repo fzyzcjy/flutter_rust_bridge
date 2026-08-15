@@ -150,6 +150,10 @@
         {
           "image": "ubuntu-24.04",
           "package": "frb_example--rust_ui_todo_list--ui"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--gallery"
         }
       ]
     },

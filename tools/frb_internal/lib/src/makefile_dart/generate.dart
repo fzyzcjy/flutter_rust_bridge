@@ -105,19 +105,24 @@ List<Command<void>> createCommands() {
 }
 
 @CliOptions()
-class GenerateConfig {
+class GenerateConfig implements _GenerateCommonConfig {
+  @override
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
+  @override
   final bool coverage;
+  @CliOption(defaultsTo: false)
+  final bool fromScratch;
 
   const GenerateConfig({
     required this.setExitIfChanged,
     required this.coverage,
+    this.fromScratch = false,
   });
 }
 
 @CliOptions()
-class GeneratePackageConfig implements GenerateConfig {
+class GeneratePackageConfig implements _GenerateCommonConfig {
   @override
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
@@ -125,16 +130,20 @@ class GeneratePackageConfig implements GenerateConfig {
   final String package;
   @override
   final bool coverage;
+  @override
+  @CliOption(defaultsTo: false)
+  final bool fromScratch;
 
   const GeneratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
     required this.coverage,
+    this.fromScratch = false,
   });
 }
 
 @CliOptions()
-class GenerateIntegratePackageConfig implements GenerateConfig {
+class GenerateIntegratePackageConfig implements _GenerateCommonConfig {
   @override
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
@@ -161,6 +170,11 @@ class GenerateWebsiteConfig {
   final bool coverage;
 
   const GenerateWebsiteConfig({required this.coverage});
+}
+
+abstract interface class _GenerateCommonConfig {
+  bool get setExitIfChanged;
+  bool get coverage;
 }
 
 Future<void> generateInternal(
@@ -207,6 +221,11 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
 
 Future<void> generateInternalRust(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
+    final expectedGeneratedFiles = await _deleteTrackedGeneratedFiles(
+      enabled: config.fromScratch,
+      select: _selectInternalRustGeneratedFiles,
+    );
+
     for (final package in kDartPackages) {
       await runPubGetIfNotRunYet(package);
     }
@@ -219,6 +238,7 @@ Future<void> generateInternalRust(GenerateConfig config) async {
       // cbindgen needs this (e.g. https://github.com/mozilla/cbindgen/issues/674)
       nightly: true,
     );
+    _verifyGeneratedFilesRestored(expectedGeneratedFiles);
   });
 }
 
@@ -389,6 +409,11 @@ void _writeGeneratedDocumentationFile({
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
+    final expectedGeneratedFiles = await _deleteTrackedGeneratedFiles(
+      enabled: config.fromScratch,
+      select: _selectInternalBuildRunnerGeneratedFiles,
+    );
+
     for (final package in kDartBuildRunnerPackages) {
       await runPubGetIfNotRunYet(package);
       await exec(
@@ -396,6 +421,7 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
         relativePwd: package,
       );
     }
+    _verifyGeneratedFilesRestored(expectedGeneratedFiles);
   });
 }
 
@@ -403,6 +429,15 @@ Future<void> generateRunFrbCodegenCommandGenerate(
   GeneratePackageConfig config,
 ) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
+    final expectedGeneratedFiles = await _deleteTrackedGeneratedFiles(
+      enabled: config.fromScratch,
+      select: (trackedFiles) => _selectExampleGeneratedFiles(
+        trackedFiles: trackedFiles,
+        package: config.package,
+        externalRustOutput: _resolveExternalRustOutput(config.package),
+      ),
+    );
+
     await runPubGetIfNotRunYet(config.package);
     print("generating with ${config.package}");
     await executeFrbCodegen(
@@ -412,8 +447,147 @@ Future<void> generateRunFrbCodegenCommandGenerate(
       coverageName: 'GenerateRunFrbCodegenCommandGenerate',
     );
     await _formatPackageAfterGenerate(config.package);
+    _verifyGeneratedFilesRestored(expectedGeneratedFiles);
   });
 }
+
+Future<List<String>> _deleteTrackedGeneratedFiles({
+  required bool enabled,
+  required List<String> Function(List<String> trackedFiles) select,
+}) async {
+  if (!enabled) return const [];
+
+  final output = await exec('git ls-files -z');
+  final generatedFiles = select(
+    output.stdout.split('\x00').where((file) => file.isNotEmpty).toList(),
+  )..sort();
+  if (generatedFiles.isEmpty) {
+    throw StateError('No tracked generated files were selected for deletion.');
+  }
+
+  print('Deleting ${generatedFiles.length} tracked generated files');
+  for (final relativePath in generatedFiles) {
+    File(path.join(exec.pwd!, relativePath)).deleteSync();
+  }
+  return generatedFiles;
+}
+
+void _verifyGeneratedFilesRestored(
+  List<String> expectedGeneratedFiles, {
+  String? repoRoot,
+}) {
+  final effectiveRepoRoot = repoRoot ?? exec.pwd!;
+  final missingFiles = [
+    for (final relativePath in expectedGeneratedFiles)
+      if (!File(path.join(effectiveRepoRoot, relativePath)).existsSync())
+        relativePath,
+  ];
+  if (missingFiles.isEmpty) return;
+
+  throw StateError(
+    'Code generation did not restore ${missingFiles.length} tracked generated files:\n'
+    '${missingFiles.join('\n')}',
+  );
+}
+
+List<String> _selectExampleGeneratedFiles({
+  required List<String> trackedFiles,
+  required String package,
+  required String? externalRustOutput,
+}) {
+  final packagePrefix = '$package/';
+  final packageFiles = [
+    for (final file in trackedFiles)
+      if (file.startsWith(packagePrefix)) file,
+  ];
+  final dartOutputDirectories = {
+    for (final file in packageFiles)
+      if (_fileName(file) == 'frb_generated.dart') _directoryName(file),
+  };
+
+  return [
+    for (final file in trackedFiles)
+      if ((file.startsWith(packagePrefix) &&
+              (_isFrbGeneratedFile(file) ||
+                  (_isDartBuilderOutput(file) &&
+                      dartOutputDirectories.any(
+                        (directory) => file.startsWith('$directory/'),
+                      )))) ||
+          file == externalRustOutput)
+        file,
+  ];
+}
+
+List<String> _selectInternalRustGeneratedFiles(List<String> trackedFiles) => [
+  for (final file in trackedFiles)
+    if (file.startsWith('frb_rust/src/internal_generated/') ||
+        file.startsWith('frb_dart/lib/src/ffigen_generated/'))
+      file,
+];
+
+List<String> _selectInternalBuildRunnerGeneratedFiles(
+  List<String> trackedFiles,
+) => [
+  for (final file in trackedFiles)
+    if (_isDartBuilderOutput(file) &&
+        kDartBuildRunnerPackages.any((package) => file.startsWith('$package/')))
+      file,
+];
+
+String? _resolveExternalRustOutput(String package) {
+  final configFile = File(
+    path.join(exec.pwd!, package, 'flutter_rust_bridge.yaml'),
+  );
+  if (!configFile.existsSync()) return null;
+
+  final config = loadYaml(configFile.readAsStringSync());
+  if (config is! YamlMap || config['rust_root'] is! String) return null;
+
+  final rustRoot = config['rust_root'] as String;
+  final relativeOutput = path.posix.normalize(
+    path.posix.join(package, rustRoot, 'src/frb_generated.rs'),
+  );
+  return relativeOutput.startsWith('$package/') ? null : relativeOutput;
+}
+
+bool _isFrbGeneratedFile(String file) =>
+    _fileName(file).startsWith('frb_generated.');
+
+bool _isDartBuilderOutput(String file) =>
+    file.endsWith('.g.dart') || file.endsWith('.freezed.dart');
+
+String _fileName(String file) {
+  final separator = file.lastIndexOf('/');
+  return separator == -1 ? file : file.substring(separator + 1);
+}
+
+String _directoryName(String file) {
+  final separator = file.lastIndexOf('/');
+  return separator == -1 ? '' : file.substring(0, separator);
+}
+
+List<String> selectExampleGeneratedFilesForTesting({
+  required List<String> trackedFiles,
+  required String package,
+  String? externalRustOutput,
+}) => _selectExampleGeneratedFiles(
+  trackedFiles: trackedFiles,
+  package: package,
+  externalRustOutput: externalRustOutput,
+);
+
+List<String> selectInternalRustGeneratedFilesForTesting(
+  List<String> trackedFiles,
+) => _selectInternalRustGeneratedFiles(trackedFiles);
+
+List<String> selectInternalBuildRunnerGeneratedFilesForTesting(
+  List<String> trackedFiles,
+) => _selectInternalBuildRunnerGeneratedFiles(trackedFiles);
+
+void verifyGeneratedFilesRestoredForTesting({
+  required String repoRoot,
+  required List<String> expectedGeneratedFiles,
+}) => _verifyGeneratedFilesRestored(expectedGeneratedFiles, repoRoot: repoRoot);
 
 Future<void> _formatPackageAfterGenerate(String package) async {
   switch (package) {
@@ -588,7 +762,7 @@ Future<RunCommandOutput> executeFrbCodegen(
 // }
 
 Future<void> _wrapMaybeSetExitIfChanged(
-  GenerateConfig config,
+  _GenerateCommonConfig config,
   Future<void> Function() inner, {
   String? extraArgs,
 }) async {
