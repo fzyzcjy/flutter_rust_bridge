@@ -36,7 +36,19 @@ impl SimpleProgressBar {
 
 /// Prints above the live progress bars without tearing the spinner.
 pub(crate) fn println_over_progress(line: impl AsRef<str>) {
-    let _ = MULTI_PROGRESS.println(line.as_ref());
+    println_over_progress_inner(&MULTI_PROGRESS, line.as_ref(), |line| eprintln!("{line}"));
+}
+
+fn println_over_progress_inner(
+    multi_progress: &MultiProgress,
+    line: &str,
+    fallback: impl FnOnce(&str),
+) {
+    if multi_progress.is_hidden() {
+        fallback(line);
+    } else {
+        let _ = multi_progress.println(line);
+    }
 }
 
 pub(crate) struct SimpleProgressBarHandle {
@@ -66,4 +78,23 @@ fn create_simple_progress_bar(message: String, level: usize) -> ProgressBar {
     pb.enable_steady_tick(Duration::from_millis(50));
     pb.set_message(message);
     pb
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use indicatif::ProgressDrawTarget;
+
+    #[test]
+    /// Hidden progress targets must still forward diagnostics to the fallback writer.
+    fn test_println_over_progress_hidden_target_uses_fallback() {
+        let multi_progress = MultiProgress::with_draw_target(ProgressDrawTarget::hidden());
+        let mut actual = None;
+
+        println_over_progress_inner(&multi_progress, "diagnostic", |line| {
+            actual = Some(line.to_owned());
+        });
+
+        assert_eq!(actual.as_deref(), Some("diagnostic"));
+    }
 }

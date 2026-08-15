@@ -236,6 +236,7 @@ fn execute_command_streaming(
     bin: &str,
     args_display: &str,
 ) -> anyhow::Result<Output> {
+    cmd.stdin(Stdio::null());
     cmd.stdout(Stdio::piped());
     cmd.stderr(Stdio::piped());
     let mut child = cmd
@@ -301,6 +302,9 @@ pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
 mod tests {
     use super::*;
     use std::io::Read;
+    use std::time::{Duration, Instant};
+
+    const STREAMING_STDIN_TEST_CHILD: &str = "FRB_STREAMING_STDIN_TEST_CHILD";
     #[test]
     #[cfg(windows)]
     fn test_call_shell_info() {
@@ -443,6 +447,48 @@ mod tests {
             // frb-coverage:ignore-start
             panic!("expected spawn error, got {msg}");
             // frb-coverage:ignore-end
+        }
+    }
+
+    #[test]
+    /// Streaming children must receive EOF instead of inheriting caller stdin.
+    fn test_execute_command_streaming_closes_stdin() {
+        if std::env::var_os(STREAMING_STDIN_TEST_CHILD).is_some() {
+            let (bin, args) = if cfg!(windows) {
+                ("cmd", cmd_args(&["/c", "set /p FRB_INPUT= & exit /b 0"]))
+            } else {
+                ("sh", cmd_args(&["-c", "read frb_input || true"]))
+            };
+            let output = execute_command(bin, args.iter(), None, streaming_options()).unwrap();
+            assert!(output.status.success());
+            std::process::exit(42);
+        }
+
+        let mut test_process = Command::new(std::env::current_exe().unwrap())
+            .args([
+                "--exact",
+                "library::commands::command_runner::tests::test_execute_command_streaming_closes_stdin",
+                "--nocapture",
+            ])
+            .env(STREAMING_STDIN_TEST_CHILD, "1")
+            .stdin(Stdio::piped())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .spawn()
+            .unwrap();
+        let deadline = Instant::now() + Duration::from_secs(3);
+
+        loop {
+            if let Some(status) = test_process.try_wait().unwrap() {
+                assert_eq!(status.code(), Some(42));
+                break;
+            }
+            if Instant::now() >= deadline {
+                drop(test_process.stdin.take());
+                let _ = test_process.wait();
+                panic!("streaming child inherited an open stdin pipe");
+            }
+            thread::sleep(Duration::from_millis(10));
         }
     }
 }
