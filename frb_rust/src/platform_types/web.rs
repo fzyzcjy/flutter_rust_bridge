@@ -79,6 +79,10 @@ impl BroadcastChannelState {
             return;
         }
 
+        self.schedule_deferred_release();
+    }
+
+    fn schedule_deferred_release(&mut self) {
         if let Err(error) = js_set_timeout(
             self.deferred_release_callback.as_ref().unchecked_ref(),
             BROADCAST_CHANNEL_RELEASE_FALLBACK_MILLIS,
@@ -89,8 +93,13 @@ impl BroadcastChannelState {
     }
 
     fn release_deferred_message_ports(&mut self) {
-        for name in self.deferred_release.finish() {
+        let (names, has_next_batch) = self.deferred_release.finish_current();
+        for name in names {
             self.release_message_port_name(&name);
+        }
+
+        if has_next_batch {
+            self.schedule_deferred_release();
         }
     }
 }
