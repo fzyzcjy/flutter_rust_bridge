@@ -117,12 +117,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(events, ['data 100', 'data 200', contains('deliberate error')]);
   });
 
-  test('preserves data before close across workers', () async {
-    for (var i = 0; i < 100; ++i) {
-      expect(
-        await funcStreamCrossWorkerCloseTwinSse().toList(),
-        List<int>.generate(1000, (i) => i),
-      );
-    }
-  });
+  for (var batch = 0; batch < 10; ++batch) {
+    test('preserves data before close across workers batch $batch', () async {
+      for (var i = 0; i < 10; ++i) {
+        expect(
+          await funcStreamCrossWorkerCloseTwinSse().toList(),
+          List<int>.generate(1000, (i) => i),
+        );
+      }
+    });
+  }
 }
