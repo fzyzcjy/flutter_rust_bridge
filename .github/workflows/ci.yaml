@@ -1233,6 +1233,8 @@ jobs:
           script: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target android --device-id emulator-5554
       - if: ${{ matrix.info.platform == 'nix' }}
         shell: bash
+        env:
+          LD_LIBRARY_PATH: ${{ github.workspace }}/${{ matrix.info.package_path }}/build/linux/x64/debug/bundle/lib
         run: |-
           nix-shell -p \
             flutter \
@@ -1250,7 +1252,6 @@ jobs:
             imagemagick \
             tesseract \
             mesa.llvmpipeHook \
-            libsysprof-capture \
             --run "xvfb-run -a ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target desktop --device-id linux"
       - if: ${{ matrix.info.target != 'android' && matrix.info.platform != 'nix' }}
         shell: bash
