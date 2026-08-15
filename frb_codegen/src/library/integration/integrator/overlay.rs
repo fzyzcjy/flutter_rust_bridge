@@ -79,14 +79,7 @@ pub(super) fn execute_overlay_templates(
     }
 
     if let Some(dir) = backend_template_dir(config.integration_backend, config.template) {
-        execute_overlay_dir(
-            dir,
-            replacements,
-            dart_root,
-            config,
-            Some(&["CMakeLists.txt".to_owned()]),
-            include_ohos,
-        )?;
+        execute_overlay_dir(dir, replacements, dart_root, config, None, include_ohos)?;
     }
 
     Ok(())
@@ -206,33 +199,12 @@ fn comment_out_existing_file_and_write_template(
     path: PathBuf,
     src: &[u8],
 ) -> Option<(PathBuf, Vec<u8>)> {
-    const HASHTAG_COMMENT_FILES: &[&str] = &["CMakeLists.txt"];
-
-    let comment_leading = if HASHTAG_COMMENT_FILES
-        .iter()
-        .any(|file_name| path.iter().contains(&OsStr::new(file_name)))
-    {
-        "#"
-    } else {
-        "//"
-    };
-
     let existing_content = String::from_utf8(existing_content);
     let commented_existing_content = existing_content
         .map(|x| {
             format!(
-                "{comment_leading} The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n{}\n\n",
-                x.split('\n')
-                    .map(|line| {
-                        let (line, line_ending) =
-                            line.strip_suffix('\r').map_or((line, ""), |line| (line, "\r"));
-                        if line.is_empty() {
-                            format!("{comment_leading}{line_ending}")
-                        } else {
-                            format!("{comment_leading} {line}{line_ending}")
-                        }
-                    })
-                    .join("\n")
+                "// The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n{}\n\n",
+                x.split('\n').map(|line| format!("// {line}")).join("\n")
             )
         })
         .unwrap_or_default();
@@ -343,7 +315,7 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::{comment_out_existing_file_and_write_template, filter_file};
+    use super::filter_file;
     use std::path::Path;
 
     #[test]
@@ -409,20 +381,5 @@ mod tests {
             true,
             true,
         ));
-    }
-
-    #[test]
-    fn test_comment_out_cmake_preserves_crlf_without_trailing_whitespace() {
-        let (_, output) = comment_out_existing_file_and_write_template(
-            b"line one\r\n\r\nline two\r\n".to_vec(),
-            Path::new("CMakeLists.txt").to_path_buf(),
-            b"template\n",
-        )
-        .unwrap();
-
-        assert_eq!(
-            String::from_utf8(output).unwrap(),
-            "# The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n# line one\r\n#\r\n# line two\r\n#\n\ntemplate\n"
-        );
     }
 }
