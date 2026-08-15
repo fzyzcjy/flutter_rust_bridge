@@ -45,12 +45,12 @@ const _$IntegrateExampleBackendEnumMapBuildCli =
       IntegrateExampleBackend.nativeAssets: 'native-assets',
     };
 
-ArgParser _$populateTestMimicQuickstartConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'integration-backend',
-    defaultsTo: 'cargokit',
-    allowed: ['cargokit', 'native-assets'],
-  );
+ArgParser _$populateTestMimicQuickstartConfigParser(ArgParser parser) =>
+    parser..addOption(
+      'integration-backend',
+      defaultsTo: 'cargokit',
+      allowed: ['cargokit', 'native-assets'],
+    );
 
 final _$parserForTestMimicQuickstartConfig =
     _$populateTestMimicQuickstartConfigParser(ArgParser());

@@ -395,6 +395,7 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
         'dart run build_runner build --delete-conflicting-outputs',
         relativePwd: package,
       );
+      await exec('dart format .', relativePwd: package);
     }
   });
 }
