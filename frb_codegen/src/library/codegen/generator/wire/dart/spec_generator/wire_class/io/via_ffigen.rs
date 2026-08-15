@@ -81,3 +81,46 @@ fn sanity_check(
     );
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn postpare_modify_removes_ffigen_21_wire_sync_struct() {
+        let output = postpare_modify(
+            r#"
+class RustLibWire {
+}
+
+final class WireSyncRust2DartSse extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+
+  static ffi.Pointer<WireSyncRust2DartSse> $allocate(
+    ffi.Allocator $allocator, {
+    required ffi.Pointer<ffi.Uint8> ptr,
+    required int len,
+  }) => $allocator<WireSyncRust2DartSse>()
+    ..ref.ptr = ptr
+    ..ref.len = len;
+}
+"#,
+            &DartOutputClassNamePack {
+                entrypoint_class_name: "RustLib".to_owned(),
+                api_class_name: "RustLibApi".to_owned(),
+                api_impl_class_name: "RustLibApiImpl".to_owned(),
+                api_impl_platform_class_name: "RustLibApiImplPlatform".to_owned(),
+                wire_class_name: "RustLibWire".to_owned(),
+                wasm_module_name: "RustLibWasmModule".to_owned(),
+            },
+        );
+
+        assert!(
+            !output.contains("..ref.ptr = ptr"),
+            "ffigen 21 class fragment remains and causes expected_executable parser errors:\n{output}"
+        );
+    }
+}
