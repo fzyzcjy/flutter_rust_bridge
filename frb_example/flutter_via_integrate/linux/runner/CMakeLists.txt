@@ -12,19 +12,6 @@ add_executable(${BINARY_NAME}
   "${FLUTTER_MANAGED_DIR}/generated_plugin_registrant.cc"
 )
 
-# BEGIN flutter_rust_bridge cargokit-link-rust
-include("${CMAKE_CURRENT_SOURCE_DIR}/../../rust_builder/cargokit/cmake/cargokit.cmake")
-
-apply_cargokit(
-  ${BINARY_NAME}
-  "../../rust"
-  "rust_lib_${BINARY_NAME}"
-  ""
-)
-
-set(${BINARY_NAME}_cargokit_lib "${${BINARY_NAME}_cargokit_lib}" PARENT_SCOPE)
-# END flutter_rust_bridge cargokit-link-rust
-
 # Apply the standard set of build settings. This can be removed for applications
 # that need different build settings.
 apply_standard_settings(${BINARY_NAME})
