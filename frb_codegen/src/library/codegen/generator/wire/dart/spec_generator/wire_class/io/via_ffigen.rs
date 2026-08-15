@@ -146,4 +146,17 @@ final class KeepMe extends ffi.Struct {}
         assert!(!output.contains("final class WireSyncRust2DartSse"));
         assert!(output.contains("final class KeepMe extends ffi.Struct {}"));
     }
+
+    #[test]
+    fn remove_dart_class_keeps_unterminated_class() {
+        let content = "before\nfinal class WireSyncRust2DartSse extends ffi.Struct {\n";
+
+        assert_eq!(
+            remove_dart_class(
+                content.to_owned(),
+                "final class WireSyncRust2DartSse extends ffi.Struct {",
+            ),
+            content,
+        );
+    }
 }
