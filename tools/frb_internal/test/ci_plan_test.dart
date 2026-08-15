@@ -248,6 +248,29 @@ void main() {
       });
     });
 
+    test('single Nix Flutter smoke filter selects one entry', () {
+      final plan = buildCiPlan(
+        filter: 'test_flutter_quickstart_smoke[platform=nix]',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'test_flutter_quickstart_smoke'});
+      expect(plan.matrixByJob['test_flutter_quickstart_smoke'], {
+        'include': [
+          {
+            'info': {
+              'image': 'ubuntu-latest',
+              'platform': 'nix',
+              'target': 'desktop',
+              'device': 'linux',
+              'package': 'frb_example--flutter_via_create',
+              'package_path': 'frb_example/flutter_via_create',
+            },
+          },
+        ],
+      });
+    });
+
     test('values containing spaces are accepted verbatim', () {
       final plan = buildCiPlan(
         filter:
