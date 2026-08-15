@@ -43,6 +43,10 @@ List<Command<void>> createCommands() {
       _$populateGeneratePackageConfigParser,
       _$parseGeneratePackageConfigResult,
     ),
+    SimpleCommand(
+      'generate-run-frb-codegen-command-generate-from-scratch',
+      generateRunFrbCodegenCommandGenerateFromScratch,
+    ),
     SimpleConfigCommand(
       'generate-run-frb-codegen-command-integrate',
       generateRunFrbCodegenCommandIntegrate,
@@ -123,18 +127,14 @@ class GeneratePackageConfig implements _GenerateCommonConfig {
   @override
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
-  @CliOption(convert: convertOptionalConfigPackage)
-  final String? package;
+  @CliOption(convert: convertConfigPackage)
+  final String package;
   @override
   final bool coverage;
-  @CliOption(defaultsTo: false)
-  final bool fromScratch;
-
   const GeneratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
     required this.coverage,
-    required this.fromScratch,
   });
 }
 
@@ -412,32 +412,20 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
 Future<void> generateRunFrbCodegenCommandGenerate(
   GeneratePackageConfig config,
 ) async {
-  if (config.fromScratch) {
-    await _generateRunFrbCodegenCommandGenerateFromScratch(config);
-    return;
-  }
-
-  final package = config.package;
-  if (package == null) {
-    throw ArgumentError.notNull('package');
-  }
-
   await _wrapMaybeSetExitIfChanged(config, () async {
-    await runPubGetIfNotRunYet(package);
-    print("generating with $package");
+    await runPubGetIfNotRunYet(config.package);
+    print("generating with ${config.package}");
     await executeFrbCodegen(
       'generate',
-      relativePwd: package,
+      relativePwd: config.package,
       coverage: config.coverage,
       coverageName: 'GenerateRunFrbCodegenCommandGenerate',
     );
-    await _formatPackageAfterGenerate(package);
+    await _formatPackageAfterGenerate(config.package);
   });
 }
 
-Future<void> _generateRunFrbCodegenCommandGenerateFromScratch(
-  GeneratePackageConfig config,
-) async {
+Future<void> generateRunFrbCodegenCommandGenerateFromScratch() async {
   await wrapMaybeSetExitIfChangedRaw(true, () async {
     final expectedGeneratedFiles =
         await deleteTrackedGeneratedFilesForFromScratch();
@@ -457,7 +445,6 @@ Future<void> _generateRunFrbCodegenCommandGenerateFromScratch(
           setExitIfChanged: false,
           package: package,
           coverage: false,
-          fromScratch: false,
         ),
       );
     }

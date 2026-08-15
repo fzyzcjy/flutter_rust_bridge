@@ -27,16 +27,14 @@ GenerateConfig parseGenerateConfig(List<String> args) {
 GeneratePackageConfig _$parseGeneratePackageConfigResult(ArgResults result) =>
     GeneratePackageConfig(
       setExitIfChanged: result['set-exit-if-changed'] as bool,
-      package: convertOptionalConfigPackage(result['package'] as String?),
+      package: convertConfigPackage(result['package'] as String),
       coverage: result['coverage'] as bool,
-      fromScratch: result['from-scratch'] as bool,
     );
 
 ArgParser _$populateGeneratePackageConfigParser(ArgParser parser) => parser
   ..addFlag('set-exit-if-changed')
   ..addOption('package')
-  ..addFlag('coverage')
-  ..addFlag('from-scratch');
+  ..addFlag('coverage');
 
 final _$parserForGeneratePackageConfig = _$populateGeneratePackageConfigParser(
   ArgParser(),

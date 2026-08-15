@@ -163,7 +163,6 @@ Future<void> precommitGenerate() async {
           setExitIfChanged: false,
           package: package,
           coverage: false,
-          fromScratch: false,
         ),
       ),
   ]);
@@ -231,9 +230,6 @@ String convertConfigPackage(String raw) {
   if (raw != ans) print('convertConfigPackage: $raw -> $ans');
   return ans;
 }
-
-String? convertOptionalConfigPackage(String? raw) =>
-    raw == null ? null : convertConfigPackage(raw);
 
 String? getRustFeaturesOfPackage(String package) {
   if (package == "frb_example/pure_dart_pde/rust" ||
