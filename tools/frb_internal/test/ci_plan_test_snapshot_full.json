@@ -898,6 +898,16 @@
         },
         {
           "info": {
+            "image": "ubuntu-latest",
+            "platform": "nix",
+            "target": "desktop",
+            "device": "linux",
+            "package": "frb_example--flutter_via_create",
+            "package_path": "frb_example/flutter_via_create"
+          }
+        },
+        {
+          "info": {
             "image": "macos-15-intel",
             "platform": "macos",
             "target": "desktop",

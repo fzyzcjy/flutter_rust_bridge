@@ -170,6 +170,8 @@ class _QuickstartSmokeFlutterRun {
   final IOSink logSink;
   final Future<int> exitCodeFuture;
   final StringBuffer outputBuffer = StringBuffer();
+  final List<StreamSubscription<String>> _outputSubscriptions = [];
+  final List<Future<void>> _outputDoneFutures = [];
   var _logClosed = false;
 
   int? observedExitCode;
@@ -186,10 +188,30 @@ class _QuickstartSmokeFlutterRun {
     logSink.write(text);
   }
 
+  void listenToOutput() {
+    for (final stream in [process.stdout, process.stderr]) {
+      final subscription = stream
+          .transform(systemEncoding.decoder)
+          .listen(recordOutput);
+      _outputSubscriptions.add(subscription);
+      _outputDoneFutures.add(subscription.asFuture<void>());
+    }
+  }
+
   Future<void> closeLog() async {
     if (_logClosed) return;
     _logClosed = true;
-    await logSink.close();
+    try {
+      await Future.any<void>([
+        Future.wait(_outputDoneFutures).then((_) {}),
+        Future<void>.delayed(const Duration(seconds: 1)),
+      ]);
+    } finally {
+      await Future.wait(
+        _outputSubscriptions.map((subscription) => subscription.cancel()),
+      );
+      await logSink.close();
+    }
   }
 }
 
@@ -327,8 +349,7 @@ Future<_QuickstartSmokeFlutterRun> _startQuickstartSmokeFlutterRun(
     process: process,
     logSink: context.logFile.openWrite(),
   );
-  process.stdout.transform(systemEncoding.decoder).listen(result.recordOutput);
-  process.stderr.transform(systemEncoding.decoder).listen(result.recordOutput);
+  result.listenToOutput();
   return result;
 }
 

@@ -1155,11 +1155,18 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
-      - uses: flutter-actions/setup-flutter@v4
+      - if: ${{ matrix.info.platform == 'nix' }}
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          nix_path: nixpkgs=channel:nixos-26.05
+      - if: ${{ matrix.info.platform != 'nix' }}
+        uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - uses: dtolnay/rust-toolchain@stable
+      - if: ${{ matrix.info.platform != 'nix' }}
+        uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
       - if: ${{ matrix.info.target == 'web' }}
@@ -1205,7 +1212,7 @@ jobs:
           echo "UDID=$UDID" >> "$GITHUB_ENV"
           echo "QUICKSTART_SMOKE_DEVICE_ID=$UDID" >> "$GITHUB_ENV"
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
-      - if: ${{ runner.os == 'Linux' }}
+      - if: ${{ runner.os == 'Linux' && matrix.info.platform != 'nix' }}
         run: sudo apt-get update && sudo apt-get install -y clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev imagemagick tesseract-ocr
       - if: ${{ matrix.info.target == 'web' || matrix.info.platform == 'linux' }}
         uses: pyvista/setup-headless-display-action@v4
@@ -1224,7 +1231,29 @@ jobs:
           arch: x86_64
           profile: ${{ matrix.info.device }}
           script: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target android --device-id emulator-5554
-      - if: ${{ matrix.info.target != 'android' }}
+      - if: ${{ matrix.info.platform == 'nix' }}
+        shell: bash
+        env:
+          LD_LIBRARY_PATH: ${{ github.workspace }}/${{ matrix.info.package_path }}/build/linux/x64/debug/bundle/lib
+        run: |-
+          nix-shell -p \
+            flutter \
+            glib \
+            libepoxy \
+            pango \
+            clang \
+            cmake \
+            pkg-config \
+            ninja \
+            at-spi2-core \
+            gtk3 \
+            rustup \
+            xvfb-run \
+            imagemagick \
+            tesseract \
+            mesa.llvmpipeHook \
+            --run "xvfb-run -a -s '-screen 0 1280x1024x24' ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target desktop --device-id linux"
+      - if: ${{ matrix.info.target != 'android' && matrix.info.platform != 'nix' }}
         shell: bash
         run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target ${{ matrix.info.target }} --device-id "${QUICKSTART_SMOKE_DEVICE_ID:-${{ matrix.info.device }}}"
 
