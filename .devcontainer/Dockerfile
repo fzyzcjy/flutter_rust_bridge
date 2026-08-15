@@ -1,7 +1,6 @@
 FROM ghcr.io/cirruslabs/android-sdk:36
 
 # Inlined from https://github.com/cirruslabs/docker-images-flutter/blob/master/sdk/Dockerfile
-USER root
 ARG FLUTTER_VERSION=3.47.0
 ENV FLUTTER_HOME=/sdks/flutter \
     FLUTTER_VERSION=${FLUTTER_VERSION}
