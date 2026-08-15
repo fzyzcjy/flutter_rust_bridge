@@ -210,6 +210,9 @@ Stream<dynamic> _orderMessages(
         }
 
         final releaseAfterDelivery = event.length == 5 && event[4] as bool;
+        if (releaseAfterDelivery) {
+          print('stream final close arrived at next=$next');
+        }
         final message = (
           event[releaseAfterDelivery ? 3 : event.length - 1],
           releaseAfterDelivery,
