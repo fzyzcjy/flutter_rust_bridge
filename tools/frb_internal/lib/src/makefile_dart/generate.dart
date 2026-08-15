@@ -497,23 +497,11 @@ List<String> _selectExampleGeneratedFiles({
   required String? externalRustOutput,
 }) {
   final packagePrefix = '$package/';
-  final packageFiles = [
-    for (final file in trackedFiles)
-      if (file.startsWith(packagePrefix)) file,
-  ];
-  final dartOutputDirectories = {
-    for (final file in packageFiles)
-      if (_fileName(file) == 'frb_generated.dart') _directoryName(file),
-  };
 
   return [
     for (final file in trackedFiles)
       if ((file.startsWith(packagePrefix) &&
-              (_isFrbGeneratedFile(file) ||
-                  (_isDartBuilderOutput(file) &&
-                      dartOutputDirectories.any(
-                        (directory) => file.startsWith('$directory/'),
-                      )))) ||
+              (_isFrbGeneratedFile(file) || _isDartBuilderOutput(file))) ||
           file == externalRustOutput)
         file,
   ];
@@ -560,11 +548,6 @@ bool _isDartBuilderOutput(String file) =>
 String _fileName(String file) {
   final separator = file.lastIndexOf('/');
   return separator == -1 ? file : file.substring(separator + 1);
-}
-
-String _directoryName(String file) {
-  final separator = file.lastIndexOf('/');
-  return separator == -1 ? '' : file.substring(0, separator);
 }
 
 List<String> selectExampleGeneratedFilesForTesting({

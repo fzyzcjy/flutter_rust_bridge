@@ -245,7 +245,7 @@ plain
     );
   });
 
-  test('from-scratch example selection keeps FRB-owned outputs', () {
+  test('from-scratch example selection keeps all package outputs', () {
     const package = 'frb_example/example';
     final trackedFiles = [
       '$package/frb_generated.h',
@@ -270,6 +270,7 @@ plain
         '$package/lib/src/rust/frb_generated.io.dart',
         '$package/lib/src/rust/api/model.freezed.dart',
         '$package/lib/src/rust/api/model.g.dart',
+        '$package/lib/unrelated_model.g.dart',
         '$package/rust/src/frb_generated.rs',
       ],
     );
