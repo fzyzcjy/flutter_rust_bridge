@@ -62915,35 +62915,6 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
               port_, that);
 
-  void wire__crate__api__event_listener__try_create_event_twin_normal(
-          NativePortType port_, String address, String payload) =>
-      wasmModule.wire__crate__api__event_listener__try_create_event_twin_normal(
-          port_, address, payload);
-
-  void wire__crate__api__pseudo_manual__event_listener_twin_rust_async__try_create_event_twin_rust_async(
-          NativePortType port_, String address, String payload) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__event_listener_twin_rust_async__try_create_event_twin_rust_async(
-              port_, address, payload);
-
-  void wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__try_create_event_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__try_create_event_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__event_listener_twin_sse__try_create_event_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__event_listener_twin_sse__try_create_event_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal(
               PlatformPointer opaque) =>
@@ -81058,27 +81029,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       wire__crate__api__dart_code__translatable_struct_with_dart_code_twin_normal_normal_method_twin_normal(
           NativePortType port_, JSAny that);
-
-  external void wire__crate__api__event_listener__try_create_event_twin_normal(
-      NativePortType port_, String address, String payload);
-
-  external void
-      wire__crate__api__pseudo_manual__event_listener_twin_rust_async__try_create_event_twin_rust_async(
-          NativePortType port_, String address, String payload);
-
-  external void
-      wire__crate__api__pseudo_manual__event_listener_twin_rust_async_sse__try_create_event_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__event_listener_twin_sse__try_create_event_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__dart_opaque_sync__unwrap_dart_opaque_twin_normal(

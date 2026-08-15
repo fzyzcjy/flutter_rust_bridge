@@ -28,5 +28,5 @@ export 'src/misc/box.dart';
 export 'src/misc/rust_opaque.dart';
 export 'src/misc/simple_disposable.dart';
 export 'src/rust_arc/_common.dart';
-export 'src/stream/stream_sink.dart' show RustStreamSink;
+export 'src/stream/stream_sink.dart';
 export 'src/task.dart';
