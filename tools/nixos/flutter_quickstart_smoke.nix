@@ -30,7 +30,6 @@ pkgs.testers.runNixOSTest {
   };
 
   testScript = ''
-    @polling_condition(description="check that the Flutter app is running")
     def quickstart_running():
         machine.succeed("systemctl is-active frb-quickstart.service")
 
@@ -51,7 +50,10 @@ pkgs.testers.runNixOSTest {
     )
     try:
         machine.wait_for_unit("frb-quickstart.service", timeout=30)
-        with quickstart_running:
+        with polling_condition(
+            quickstart_running,
+            description="check that the Flutter app is running",
+        ):
             machine.wait_until_succeeds(
                 "DISPLAY=:99 import -window root /tmp/quickstart.png && "
                 "convert /tmp/quickstart.png -resize 300% -colorspace Gray "
