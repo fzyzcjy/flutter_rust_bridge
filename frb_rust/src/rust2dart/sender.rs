@@ -27,9 +27,18 @@ impl Rust2DartSender {
         sequence: u64,
         skipped_sequences: &[u64],
         msg: impl IntoDart,
+        release_after_delivery: bool,
     ) -> Result<(), Rust2DartSendError> {
         let sequence = ((sequence >> 32) as u32, sequence as u32);
         let msg = msg.into_dart();
+        if release_after_delivery {
+            let skipped_sequences = skipped_sequences
+                .iter()
+                .map(|sequence| ((sequence >> 32) as u32, *sequence as u32))
+                .collect::<Vec<_>>();
+            return self.send((sequence.0, sequence.1, skipped_sequences, msg, true));
+        }
+
         if skipped_sequences.is_empty() {
             return self.send((sequence.0, sequence.1, msg));
         }

@@ -1,6 +1,8 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::{release_cached_channel_handle, IntoDart, SendableChannelHandle};
+#[cfg(target_family = "wasm")]
+use crate::generalized_isolate::release_cached_channel_handle;
+use crate::generalized_isolate::{IntoDart, SendableChannelHandle};
 #[cfg(any(target_family = "wasm", test))]
 use crate::misc::atomic::{AtomicBool, AtomicU64, Ordering};
 use crate::misc::logs::log_warn_or_println;
@@ -39,11 +41,20 @@ impl<Rust2DartCodec: BaseCodec> StreamSinkCloser<Rust2DartCodec> {
         sender: Rust2DartSender,
         msg: impl IntoDart,
     ) -> Result<(), Rust2DartSendError> {
+        self.send_inner(sender, msg, false)
+    }
+
+    fn send_inner(
+        &self,
+        sender: Rust2DartSender,
+        msg: impl IntoDart,
+        release_after_delivery: bool,
+    ) -> Result<(), Rust2DartSendError> {
         #[cfg(target_family = "wasm")]
         {
             let sequence = self.sequence.next();
             let failed = self.sequence.take_failed_before(sequence);
-            let result = sender.send_stream(sequence, &failed, msg);
+            let result = sender.send_stream(sequence, &failed, msg, release_after_delivery);
             if result.is_err() {
                 self.sequence.record_failed(sequence, failed);
             }
@@ -52,6 +63,7 @@ impl<Rust2DartCodec: BaseCodec> StreamSinkCloser<Rust2DartCodec> {
 
         #[cfg(not(target_family = "wasm"))]
         {
+            let _ = release_after_delivery;
             sender.send(msg)
         }
     }
@@ -97,14 +109,16 @@ impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
     fn drop(&mut self) {
         #[cfg(target_family = "wasm")]
         let result = {
-            let result = self.send(
+            let result = self.send_inner(
                 super::stream_sink::sender(&self.sendable_channel_handle),
                 Rust2DartCodec::encode_close_stream().into_dart_abi(),
+                true,
             );
             if result.is_err() {
-                self.send(
+                self.send_inner(
                     super::stream_sink::uncached_sender(&self.sendable_channel_handle),
                     Rust2DartCodec::encode_close_stream().into_dart_abi(),
+                    true,
                 )
             } else {
                 result
@@ -119,8 +133,9 @@ impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
 
         if let Err(error) = result {
             log_warn_or_println(&format!("{error:?}"));
+            #[cfg(target_family = "wasm")]
+            release_cached_channel_handle(&self.sendable_channel_handle);
         }
-        release_cached_channel_handle(&self.sendable_channel_handle);
     }
 }
 

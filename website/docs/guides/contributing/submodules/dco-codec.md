@@ -35,10 +35,12 @@ The Dart ordering layer uses a synchronous stream transformer so cancellation, p
 directly to the underlying browser channel subscription without waiting for another message.
 If a send fails, Rust carries its skipped sequence numbers on the next message so later messages do not
 remain buffered behind an event that will never arrive. A failed final close is retried through a fresh
-channel before Rust releases the cached channels.
-When the last Rust `StreamSink` clone is dropped, Rust sends the stream-close message and broadcasts a
-release signal. Each worker then removes the channel from its local cache and closes the underlying channel
-after a short delay so already-posted messages can be delivered.
+channel.
+When the last Rust `StreamSink` clone is dropped, Rust marks the ordered stream-close message for release.
+After Dart has received all preceding messages and reaches that close, it broadcasts an acknowledgement.
+Each worker then removes the channel from its local cache and closes the underlying channel after a short
+delay. Waiting for Dart's acknowledgement prevents cleanup on one worker from discarding a message that
+another worker has already posted but the browser has not delivered yet.
 
 `BroadcastChannel`s are guaranteed to be unique for each invocation.[^1]
 

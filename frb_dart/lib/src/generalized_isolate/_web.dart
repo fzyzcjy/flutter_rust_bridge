@@ -47,7 +47,7 @@ class ReceivePort extends Stream<dynamic> {
     Stream<dynamic> stream = _rawReceivePort._webReceivePort._onMessage.map(
       _extractData,
     );
-    if (_ordered) stream = _orderMessages(stream);
+    if (_ordered) stream = _orderMessages(stream, _rawReceivePort.sendPort);
     final subscription = stream.listen(
       onData,
       onError: onError,
@@ -67,10 +67,15 @@ class ReceivePort extends Stream<dynamic> {
   void close() => _rawReceivePort.close();
 }
 
-Stream<dynamic> _orderMessages(Stream<dynamic> stream) {
-  final pending = <(int, int), dynamic>{};
+Stream<dynamic> _orderMessages(Stream<dynamic> stream, SendPort sendPort) {
+  final pending = <(int, int), (dynamic, bool)>{};
   final skipped = <(int, int)>{};
   var next = (0, 0);
+
+  void emit((dynamic, bool) message, EventSink<dynamic> sink) {
+    if (message.$2) _acknowledgeRelease(sendPort);
+    sink.add(message.$1);
+  }
 
   void drain(EventSink<dynamic> sink) {
     while (skipped.remove(next)) {
@@ -81,7 +86,7 @@ Stream<dynamic> _orderMessages(Stream<dynamic> stream) {
       if (skipped.remove(next)) {
         next = _nextSequence(next);
       } else if (pending.containsKey(next)) {
-        sink.add(pending.remove(next));
+        emit(pending.remove(next)!, sink);
         next = _nextSequence(next);
       } else {
         break;
@@ -92,6 +97,10 @@ Stream<dynamic> _orderMessages(Stream<dynamic> stream) {
   return stream.transform(
     StreamTransformer.fromHandlers(
       handleData: (event, sink) {
+        if (event.length != 3 && event.length != 4 && event.length != 5) {
+          throw StateError('Invalid ordered port message: $event');
+        }
+
         final sequence = (event[0] as int, event[1] as int);
         if (_sequenceBefore(sequence, next) ||
             pending.containsKey(sequence) ||
@@ -101,7 +110,7 @@ Stream<dynamic> _orderMessages(Stream<dynamic> stream) {
           );
         }
 
-        if (event.length == 4) {
+        if (event.length >= 4) {
           for (final rawSkipped in event[2]) {
             final skippedSequence = (
               rawSkipped[0] as int,
@@ -118,17 +127,30 @@ Stream<dynamic> _orderMessages(Stream<dynamic> stream) {
           }
         }
 
-        final payload = event[event.length - 1];
+        final releaseAfterDelivery = event.length == 5 && event[4] as bool;
+        final message = (
+          event[releaseAfterDelivery ? 3 : event.length - 1],
+          releaseAfterDelivery,
+        );
         if (sequence == next) {
-          sink.add(payload);
+          emit(message, sink);
           next = _nextSequence(next);
         } else {
-          pending[sequence] = payload;
+          pending[sequence] = message;
         }
         drain(sink);
       },
     ),
   );
+}
+
+void _acknowledgeRelease(SendPort sendPort) {
+  final channelName = (sendPort.nativePort as web.BroadcastChannel).name;
+  final channel = web.BroadcastChannel(
+    '${channelName}__flutter_rust_bridge_release',
+  );
+  channel.postMessage(null);
+  Timer(const Duration(milliseconds: 100), channel.close);
 }
 
 bool _sequenceBefore((int, int) lhs, (int, int) rhs) =>
