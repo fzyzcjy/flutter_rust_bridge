@@ -46,6 +46,22 @@ crate-type = ["cdylib"]
     );
   });
 
+  test('OHOS HAP validation rejects any archive missing the Rust library', () {
+    expect(
+      () => validateOhosHapRustLibrariesForTesting({
+        '/build/entry.hap': ['libs/arm64-v8a/librust_lib_example.so'],
+        '/build/feature.hap': ['libs/arm64-v8a/libother.so'],
+      }, expectedLibrary: 'librust_lib_example.so'),
+      throwsA(
+        isA<StateError>().having(
+          (error) => error.message,
+          'message',
+          contains('/build/feature.hap'),
+        ),
+      ),
+    );
+  });
+
   test('OHOS HAP backup restores the previous output after failure', () {
     final temporaryDirectory = Directory.systemTemp.createTempSync(
       'frb_ohos_hap_backup_test_',

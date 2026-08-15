@@ -136,8 +136,10 @@ The test fails or is blocked if any of the following occurs:
 
 ## Cleanup
 
-The smoke command uninstalls only the bundle it installed. Restore any temporary
-SDK, bundle, or signing configuration and verify the checkout afterwards.
+The smoke command uninstalls only the bundle it installed. After an install
+failure, it queries the device again and removes the bundle if it appeared.
+Restore any temporary SDK, bundle, or signing configuration and verify the
+checkout afterwards.
 
 ```bash
 git status --short

@@ -201,20 +201,35 @@ Future<void> _verifyOhosHapContainsRustLibrary(String package) async {
     );
   }
 
+  final entriesByHap = <String, Iterable<String>>{};
   for (final hapFile in hapFiles) {
-    final entries = await listOhosHapEntries(hapFile.path);
-    if (ohosHapContainsRustLibraryForTesting(
-      entries,
-      expectedLibrary: expectedLibrary,
-    )) {
-      return;
-    }
+    entriesByHap[hapFile.path] = await listOhosHapEntries(hapFile.path);
   }
-
-  throw StateError(
-    'OHOS HAP does not contain $expectedLibrary for arm64-v8a: '
-    '${hapFiles.map((file) => file.path).join(', ')}',
+  validateOhosHapRustLibrariesForTesting(
+    entriesByHap,
+    expectedLibrary: expectedLibrary,
   );
+}
+
+void validateOhosHapRustLibrariesForTesting(
+  Map<String, Iterable<String>> entriesByHap, {
+  required String expectedLibrary,
+}) {
+  final invalidHaps = entriesByHap.entries
+      .where(
+        (entry) => !ohosHapContainsRustLibraryForTesting(
+          entry.value,
+          expectedLibrary: expectedLibrary,
+        ),
+      )
+      .map((entry) => entry.key)
+      .toList();
+  if (invalidHaps.isNotEmpty) {
+    throw StateError(
+      'OHOS HAPs do not contain $expectedLibrary for arm64-v8a: '
+      '${invalidHaps.join(', ')}',
+    );
+  }
 }
 
 String ohosRustCargoTomlPathForTesting({

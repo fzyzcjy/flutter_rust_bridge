@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'dart:async';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -66,6 +67,7 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
       'must not be empty',
     );
   }
+  final hdcTimeout = Duration(seconds: config.timeoutSeconds);
 
   final hapFile = File(path.absolute(config.hap));
   if (!hapFile.existsSync()) {
@@ -80,7 +82,7 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
     );
   }
 
-  final targetsResult = await _runHdc(['list', 'targets']);
+  final targetsResult = await _runHdc(['list', 'targets'], timeout: hdcTimeout);
   _ensureProcessSucceeded(targetsResult, operation: '`hdc list targets`');
   final deviceId = resolveOhosDeviceIdForTesting(
     targetsResult.stdout as String,
@@ -94,7 +96,7 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
     'bm',
     'dump',
     '-a',
-  ]);
+  ], timeout: hdcTimeout);
   _ensureProcessSucceeded(bundlesResult, operation: 'query installed bundles');
   if (ohosBundleAppearsInstalledForTesting(
     bundlesResult.stdout as String,
@@ -114,6 +116,7 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
   );
 
   var installedByThisRun = false;
+  var installAttempted = false;
   String? successMessage;
   Object? operationError;
   StackTrace? operationStackTrace;
@@ -123,6 +126,8 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
         deviceId: deviceId,
         hapPath: hapFile.path,
       ),
+      timeout: hdcTimeout,
+      onStarted: () => installAttempted = true,
     );
     _ensureProcessSucceeded(installResult, operation: 'install signed HAP');
     installedByThisRun = true;
@@ -139,7 +144,7 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
       '-x',
       '-e',
       markerPattern,
-    ]);
+    ], timeout: hdcTimeout);
     _ensureProcessSucceeded(
       baselineLogsResult,
       operation: 'capture OHOS smoke log baseline',
@@ -156,7 +161,7 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
       config.ability,
       '-b',
       config.bundle,
-    ]);
+    ], timeout: hdcTimeout);
     _ensureProcessSucceeded(launchResult, operation: 'start OHOS ability');
     final launchOutput = '${launchResult.stdout}\n${launchResult.stderr}';
     if (!ohosHdcAbilityStartSucceededForTesting(launchOutput)) {
@@ -169,18 +174,22 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
     String? processId;
     var latestLogs = '';
     while (DateTime.now().isBefore(deadline)) {
+      final pidTimeout = deadline.difference(DateTime.now());
+      if (pidTimeout <= Duration.zero) break;
       final pidResult = await _runHdc([
         ...hdcPrefix,
         'shell',
         'pidof',
         config.bundle,
-      ]);
+      ], timeout: pidTimeout);
       final candidate = (pidResult.stdout as String).trim();
       if (pidResult.exitCode == 0 && RegExp(r'^\d+$').hasMatch(candidate)) {
         processId = candidate;
       }
 
       if (processId != null) {
+        final logsTimeout = deadline.difference(DateTime.now());
+        if (logsTimeout <= Duration.zero) break;
         final logsResult = await _runHdc([
           ...hdcPrefix,
           'shell',
@@ -188,7 +197,7 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
           '-x',
           '-P',
           processId,
-        ]);
+        ], timeout: logsTimeout);
         latestLogs = '${logsResult.stdout}\n${logsResult.stderr}';
         logFile.writeAsStringSync(latestLogs);
         if (ohosDeviceSmokeLogPassedForTesting(
@@ -219,24 +228,52 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
   }
 
   Object? cleanupError;
+  Object? cleanupProbeError;
+  if (installAttempted && !installedByThisRun) {
+    installedByThisRun = true;
+    try {
+      final bundlesAfterInstallResult = await _runHdc([
+        ...hdcPrefix,
+        'shell',
+        'bm',
+        'dump',
+        '-a',
+      ], timeout: hdcTimeout);
+      _ensureProcessSucceeded(
+        bundlesAfterInstallResult,
+        operation: 'query installed bundles after failed install',
+      );
+      installedByThisRun = ohosBundleAppearsInstalledForTesting(
+        bundlesAfterInstallResult.stdout as String,
+        bundle: config.bundle,
+      );
+    } catch (error) {
+      cleanupProbeError = error;
+    }
+  }
   if (installedByThisRun) {
     try {
       final uninstallResult = await _runHdc([
         ...hdcPrefix,
         'uninstall',
         config.bundle,
-      ]);
+      ], timeout: hdcTimeout);
       final uninstallOutput =
           '${uninstallResult.stdout}\n${uninstallResult.stderr}';
       if (uninstallResult.exitCode != 0 ||
           !uninstallOutput.contains('uninstall bundle successfully')) {
-        cleanupError = StateError(
+        final uninstallError = StateError(
           'Failed to clean up OHOS smoke bundle '
           '`${config.bundle}` from device $deviceId:\n$uninstallOutput',
         );
+        cleanupError = cleanupProbeError == null
+            ? uninstallError
+            : StateError('$cleanupProbeError\nAdditionally, $uninstallError');
       }
     } catch (error) {
-      cleanupError = error;
+      cleanupError = cleanupProbeError == null
+          ? error
+          : StateError('$cleanupProbeError\nAdditionally, $error');
     }
   }
 
@@ -259,13 +296,69 @@ Future<void> ohosDeviceSmoke(OhosDeviceSmokeConfig config) async {
   print(successMessage);
 }
 
-Future<ProcessResult> _runHdc(List<String> arguments) async {
+Future<ProcessResult> _runHdc(
+  List<String> arguments, {
+  required Duration timeout,
+  void Function()? onStarted,
+}) async {
+  Process process;
   try {
-    return await Process.run('hdc', arguments);
+    process = await Process.start('hdc', arguments);
   } on ProcessException catch (error) {
     throw StateError(
       'Cannot execute `hdc`: ${error.message}. Install the HarmonyOS '
       'command-line tools and add `hdc` to PATH.',
+    );
+  }
+  onStarted?.call();
+
+  final stdout = StringBuffer();
+  final stderr = StringBuffer();
+  final stdoutSubscription = process.stdout
+      .transform(systemEncoding.decoder)
+      .listen(stdout.write);
+  final stderrSubscription = process.stderr
+      .transform(systemEncoding.decoder)
+      .listen(stderr.write);
+  final stdoutDone = stdoutSubscription.asFuture<void>();
+  final stderrDone = stderrSubscription.asFuture<void>();
+  final exitCodeFuture = process.exitCode;
+  try {
+    final result = await Future.wait<Object?>([
+      exitCodeFuture,
+      stdoutDone,
+      stderrDone,
+    ]).timeout(timeout);
+    return ProcessResult(
+      process.pid,
+      result.first! as int,
+      stdout.toString(),
+      stderr.toString(),
+    );
+  } on TimeoutException {
+    process.kill();
+    final exitCode = await exitCodeFuture.timeout(
+      const Duration(seconds: 5),
+      onTimeout: () => -1,
+    );
+    if (exitCode == -1) {
+      try {
+        process.kill(ProcessSignal.sigkill);
+      } on UnsupportedError {
+        process.kill();
+      }
+      await exitCodeFuture.timeout(
+        const Duration(seconds: 1),
+        onTimeout: () => -1,
+      );
+    }
+    await Future.wait<void>([
+      stdoutSubscription.cancel(),
+      stderrSubscription.cancel(),
+    ]).timeout(const Duration(seconds: 1), onTimeout: () => <void>[]);
+    throw StateError(
+      'Timed out after ${timeout.inMilliseconds}ms executing '
+      '`hdc ${arguments.join(' ')}`:\n$stdout\n$stderr',
     );
   }
 }

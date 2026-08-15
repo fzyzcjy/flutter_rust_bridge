@@ -143,15 +143,31 @@ cd my_app
 flutter build hap --debug
 ```
 
-To confirm that the Rust library was packaged into the HAP, inspect the archive:
+To confirm that the Rust library was packaged into every HAP, inspect each
+archive independently:
 
-```shell
-find build/ohos/hap -name '*.hap' -exec jar tf {} \; | grep 'libs/arm64-v8a/lib.*\.so'
+```bash
+set -o pipefail
+find build/ohos/hap -name '*.hap' -print0 |
+  (
+    hap_count=0
+    while IFS= read -r -d '' hap; do
+      jar tf "$hap" |
+        grep 'libs/arm64-v8a/librust_lib_my_app\.so$' >/dev/null || {
+        echo "Missing Rust library: $hap" >&2
+        exit 1
+      }
+      ((hap_count += 1))
+    done
+    ((hap_count > 0)) || { echo 'No HAP files found' >&2; exit 1; }
+  )
 ```
 
-The output should contain the library for your Rust crate, such as
+The command should succeed for every HAP. Each archive should contain the
+library for your Rust crate, such as
 `libs/arm64-v8a/librust_lib_my_app.so`. Cargo replaces hyphens in crate names
-with underscores in the generated library filename. A HAP that contains only
+with underscores in the generated library filename; replace the example name in
+the command when your crate uses a different name. A HAP that contains only
 Flutter or system libraries cannot call the generated Rust bridge.
 
 If the Rust build fails with an OHOS SDK error, check `OHOS_SDK_HOME` first. It
@@ -163,8 +179,10 @@ Chinese characters or whitespace.
 The repository provides a repeatable device smoke command for a signed HAP.
 The command refuses to replace an existing application, installs the HAP,
 starts its ability, waits for a log marker that proves the Rust call completed,
-saves the matching process logs, and uninstalls the test application in a
-`finally` cleanup step.
+saves the matching process logs, bounds every `hdc` invocation, and uninstalls
+the test application during cleanup. If installation reports a failure, the
+command checks whether the bundle nevertheless appeared before deciding whether
+to uninstall it.
 
 Build the quickstart with the dedicated smoke entrypoint, then sign the HAP
 through your normal secure signing workflow:
