@@ -182,9 +182,7 @@ Future<void> lintDartAnalyze(LintConfig config) async {
 }
 
 Future<void> lintDartPana(LintConfig config) async {
-  // 0.23.18 stopped following package-root symlinks, so the isolated
-  // frb_dart copy no longer sees README.md / CHANGELOG.md (150/160).
-  await exec('flutter pub global activate pana 0.23.17');
+  await exec('flutter pub global activate pana');
   for (final package in kDartPublishedPackages) {
     final exitCodeThreshold = kDartPanaExitCodeThresholdByPackage[package]!;
     await exec(
