@@ -64,7 +64,7 @@ class ArtifactProvider {
     }
 
     final rustup = Rustup();
-    for (final target in targets) {
+    for (final target in pendingTargets) {
       final builder = RustBuilder(target: target, environment: environment);
       builder.prepare(rustup);
       _log.info('Building ${environment.crateInfo.packageName} for $target');
@@ -237,28 +237,30 @@ List<String> getArtifactNames({
   required bool remote,
   AritifactType? aritifactType,
 }) {
+  // Cargo converts hyphens in package names to underscores for library files.
+  final artifactLibraryName = libraryName.replaceAll('-', '_');
   aritifactType ??= artifactTypeForTarget(target);
   if (target.darwinArch != null) {
     if (aritifactType == AritifactType.staticlib) {
-      return ['lib$libraryName.a'];
+      return ['lib$artifactLibraryName.a'];
     } else {
-      return ['lib$libraryName.dylib'];
+      return ['lib$artifactLibraryName.dylib'];
     }
   } else if (target.rust.contains('-windows-')) {
     if (aritifactType == AritifactType.staticlib) {
-      return ['$libraryName.lib'];
+      return ['$artifactLibraryName.lib'];
     } else {
       return [
-        '$libraryName.dll',
-        '$libraryName.dll.lib',
-        if (!remote) '$libraryName.pdb'
+        '$artifactLibraryName.dll',
+        '$artifactLibraryName.dll.lib',
+        if (!remote) '$artifactLibraryName.pdb'
       ];
     }
   } else if (target.rust.contains('-linux-')) {
     if (aritifactType == AritifactType.staticlib) {
-      return ['lib$libraryName.a'];
+      return ['lib$artifactLibraryName.a'];
     } else {
-      return ['lib$libraryName.so'];
+      return ['lib$artifactLibraryName.so'];
     }
   } else {
     throw Exception("Unsupported target: ${target.rust}");

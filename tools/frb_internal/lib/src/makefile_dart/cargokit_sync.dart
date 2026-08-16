@@ -34,6 +34,7 @@ const _kSkippedCargokitNames = {'.git', '.github', 'docs', 'test'};
 
 const _kExecutableRelativePaths = [
   'build_pod.sh',
+  'build_spm.sh',
   'run_build_tool.sh',
   'run_build_tool.cmd',
 ];

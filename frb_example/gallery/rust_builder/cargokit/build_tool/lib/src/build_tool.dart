@@ -13,6 +13,7 @@ import 'android_environment.dart';
 import 'build_cmake.dart';
 import 'build_gradle.dart';
 import 'build_pod.dart';
+import 'build_spm.dart';
 import 'logging.dart';
 import 'options.dart';
 import 'precompile_binaries.dart';
@@ -76,6 +77,20 @@ class BuildCMakeCommand extends BuildCommand {
   @override
   Future<void> runBuildCommand(CargokitUserOptions options) async {
     final build = BuildCMake(userOptions: options);
+    await build.build();
+  }
+}
+
+class BuildXcframeworkCommand extends BuildCommand {
+  @override
+  final name = 'build-xcframework';
+
+  @override
+  final description = 'Build an Apple XCFramework for Swift Package Manager';
+
+  @override
+  Future<void> runBuildCommand(CargokitUserOptions options) async {
+    final build = BuildSpm(userOptions: options);
     await build.build();
   }
 }
@@ -249,6 +264,7 @@ Future<void> runMain(List<String> args) async {
       ..addCommand(BuildPodCommand())
       ..addCommand(BuildGradleCommand())
       ..addCommand(BuildCMakeCommand())
+      ..addCommand(BuildXcframeworkCommand())
       ..addCommand(GenKeyCommand())
       ..addCommand(PrecompileBinariesCommand())
       ..addCommand(VerifyBinariesCommand());

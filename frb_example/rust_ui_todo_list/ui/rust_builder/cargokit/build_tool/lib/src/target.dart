@@ -129,6 +129,17 @@ class Target {
     return all.where((element) => element.ohos != null).toList(growable: false);
   }
 
+  /// Targets grouped into the Apple platforms expected by an XCFramework.
+  static Map<String, List<Target>> darwinXcframeworkTargetGroups() {
+    const platforms = ['iphoneos', 'iphonesimulator', 'macosx'];
+    return {
+      for (final platform in platforms)
+        platform: all
+            .where((target) => target.darwinPlatform == platform)
+            .toList(growable: false),
+    };
+  }
+
   /// Returns buildable targets on current host platform ignoring Android targets.
   static List<Target> buildableTargets() {
     if (Platform.operatingSystem == 'ohos') {

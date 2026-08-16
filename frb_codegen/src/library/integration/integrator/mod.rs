@@ -55,8 +55,16 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let include_ohos = platform_list_contains_ohos(&platforms);
 
     info!("Overlay template onto project");
-    let replacements =
-        compute_replacements(&config, &dart_package_name, &rust_crate_name, include_ohos);
+    let dart_package_name_hyphenated = dart_package_name.replace('_', "-");
+    let rust_crate_name_hyphenated = rust_crate_name.replace('_', "-");
+    let replacements = compute_replacements(
+        &config,
+        &dart_package_name,
+        &rust_crate_name,
+        &dart_package_name_hyphenated,
+        &rust_crate_name_hyphenated,
+        include_ohos,
+    );
     execute_overlay_templates(
         &replacements,
         &dart_root,

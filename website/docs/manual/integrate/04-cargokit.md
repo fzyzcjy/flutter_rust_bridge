@@ -10,12 +10,32 @@ The [Native Assets](native-assets) backend is available through `--integration-b
 
 Please refer to its documentation for how to use it.
 The original GitHub repository is https://github.com/irondash/cargokit.
-That repository has been archived; flutter_rust_bridge now uses the fork maintained by the flutter_rust_bridge team for template and submodule updates.
+That repository has been archived; flutter_rust_bridge now uses the `feature/swift-package-manager` branch of https://github.com/star4277/cargokit for template and submodule updates.
 In addition, it has a companion blog about how to integrate it at https://matejknopp.com/post/flutter_plugin_in_rust_with_no_prebuilt_binaries/.
 
 The following links may also be useful for customizations:
 
 * Configuration: https://github.com/irondash/cargokit/blob/main/docs/architecture.md#configuring-cargokit
 * Use precompiled binaries (instead of default compile-on-the-fly): https://github.com/irondash/cargokit/blob/main/docs/precompiled_binaries.md
+
+## Swift Package Manager
+
+The generated iOS and macOS Cargokit templates support both Swift Package Manager and CocoaPods. The existing podspecs remain available for projects that use CocoaPods.
+
+Swift Package Manager consumes a local Rust XCFramework. On macOS, generate it before building the Flutter project. For a plugin template, run one command for each package directory:
+
+```sh
+sh cargokit/build_spm.sh rust ios release
+sh cargokit/build_spm.sh rust macos release
+```
+
+For an app template, run the equivalent commands from `rust_builder`:
+
+```sh
+sh cargokit/build_spm.sh ../rust ios release
+sh cargokit/build_spm.sh ../rust macos release
+```
+
+The generated `.xcframework` directories are ignored by Git. Re-run the command after changing Rust code.
 
 For new projects that can require a recent Flutter/Dart SDK, consider the [Native Assets](native-assets) backend.

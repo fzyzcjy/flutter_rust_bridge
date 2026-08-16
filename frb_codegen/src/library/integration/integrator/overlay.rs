@@ -112,11 +112,21 @@ pub(super) fn compute_replacements<'a>(
     config: &'a IntegrateConfig,
     dart_package_name: &'a str,
     rust_crate_name: &'a str,
+    dart_package_name_hyphenated: &'a str,
+    rust_crate_name_hyphenated: &'a str,
     include_ohos: bool,
 ) -> HashMap<&'static str, &'a str> {
     let mut replacements = HashMap::new();
     replacements.insert("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name);
     replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name);
+    replacements.insert(
+        "REPLACE_ME_DART_PACKAGE_HYPHENATED_NAME",
+        dart_package_name_hyphenated,
+    );
+    replacements.insert(
+        "REPLACE_ME_RUST_CRATE_HYPHENATED_NAME",
+        rust_crate_name_hyphenated,
+    );
     replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir.as_str());
     replacements.insert("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION"));
 
@@ -315,8 +325,75 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::filter_file;
+    use super::{filter_file, TemplateDirs};
+    use crate::integration::utils::replace_file_content;
+    use std::collections::HashMap;
     use std::path::Path;
+
+    #[test]
+    fn test_swift_package_name_replacements_do_not_overlap() {
+        let replacements = HashMap::from([
+            ("REPLACE_ME_DART_PACKAGE_NAME", "my_plugin"),
+            ("REPLACE_ME_DART_PACKAGE_HYPHENATED_NAME", "my-plugin"),
+            ("REPLACE_ME_RUST_CRATE_NAME", "rust_lib_my_plugin"),
+            (
+                "REPLACE_ME_RUST_CRATE_HYPHENATED_NAME",
+                "rust-lib-my-plugin",
+            ),
+        ]);
+
+        let actual = String::from_utf8(replace_file_content(
+            b"REPLACE_ME_DART_PACKAGE_NAME REPLACE_ME_DART_PACKAGE_HYPHENATED_NAME REPLACE_ME_RUST_CRATE_NAME REPLACE_ME_RUST_CRATE_HYPHENATED_NAME",
+            &replacements,
+        ))
+        .unwrap();
+
+        assert_eq!(
+            actual,
+            "my_plugin my-plugin rust_lib_my_plugin rust-lib-my-plugin"
+        );
+    }
+
+    #[test]
+    fn test_cargokit_apple_templates_keep_swiftpm_and_cocoapods() {
+        for (template, manifest_path, podspec_path) in [
+            (
+                &TemplateDirs::CARGOKIT_APP,
+                "rust_builder/ios/Package.swift",
+                "rust_builder/ios/REPLACE_ME_RUST_CRATE_NAME.podspec",
+            ),
+            (
+                &TemplateDirs::CARGOKIT_APP,
+                "rust_builder/macos/Package.swift",
+                "rust_builder/macos/REPLACE_ME_RUST_CRATE_NAME.podspec",
+            ),
+            (
+                &TemplateDirs::CARGOKIT_PLUGIN,
+                "ios/Package.swift",
+                "ios/REPLACE_ME_DART_PACKAGE_NAME.podspec",
+            ),
+            (
+                &TemplateDirs::CARGOKIT_PLUGIN,
+                "macos/Package.swift",
+                "macos/REPLACE_ME_DART_PACKAGE_NAME.podspec",
+            ),
+        ] {
+            let manifest = template
+                .get_file(manifest_path)
+                .unwrap()
+                .contents_utf8()
+                .unwrap();
+            let podspec = template
+                .get_file(podspec_path)
+                .unwrap()
+                .contents_utf8()
+                .unwrap();
+
+            assert!(manifest.contains("FlutterFramework"));
+            assert!(manifest.contains("RustLibrary"));
+            assert!(podspec.contains("s.script_phase"));
+        }
+    }
 
     #[test]
     fn test_filter_file_excludes_ohos_when_not_enabled() {

@@ -85,7 +85,7 @@ void main() {
     expect(
       () => verifyReleaseSubmodules(
         submoduleStatus:
-            '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+            '-4f30da7 frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
       ),
       throwsA(
         isA<Exception>().having(
@@ -101,8 +101,8 @@ void main() {
     expect(
       () => verifyReleaseSubmodules(
         submoduleStatus:
-            ' 6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit (heads/main)\n'
-            ' 6f7144d frb_codegen/assets/integration_template/cargokit/plugin/cargokit (heads/main)',
+            ' 4f30da7 frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit (heads/feature/swift-package-manager)\n'
+            ' 4f30da7 frb_codegen/assets/integration_template/cargokit/plugin/cargokit (heads/feature/swift-package-manager)',
       ),
       returnsNormally,
     );
