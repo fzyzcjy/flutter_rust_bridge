@@ -253,9 +253,9 @@ void main() {
       });
     });
 
-    test('single Nix Flutter smoke filter selects one entry', () {
+    test('single NixOS Flutter smoke filter selects one entry', () {
       final plan = buildCiPlan(
-        filter: 'test_flutter_quickstart_smoke[platform=nix]',
+        filter: 'test_flutter_quickstart_smoke[platform=nixos]',
         automaticCiDisabled: false,
       );
 
@@ -265,7 +265,7 @@ void main() {
           {
             'info': {
               'image': 'ubuntu-latest',
-              'platform': 'nix',
+              'platform': 'nixos',
               'target': 'desktop',
               'device': 'linux',
               'package': 'frb_example--flutter_via_create',
