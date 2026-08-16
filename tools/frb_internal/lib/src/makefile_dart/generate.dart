@@ -421,7 +421,7 @@ Future<void> _formatPackageAfterGenerate(String package) async {
     case 'frb_example/pure_dart':
       await exec('dart format lib test benchmark', relativePwd: package);
     default:
-      return;
+      await exec('dart format .', relativePwd: package);
   }
 }
 
