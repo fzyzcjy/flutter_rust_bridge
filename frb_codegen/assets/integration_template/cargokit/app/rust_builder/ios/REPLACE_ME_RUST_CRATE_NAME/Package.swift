@@ -1,7 +1,45 @@
 // swift-tools-version: 5.9
-// Before building with SwiftPM, run from rust_builder:
-// sh cargokit/build_spm.sh ../REPLACE_ME_RUST_CRATE_DIR ios/REPLACE_ME_RUST_CRATE_NAME release
+import Foundation
 import PackageDescription
+
+let packageDirectory = URL(fileURLWithPath: #filePath)
+    .deletingLastPathComponent()
+    .resolvingSymlinksInPath()
+let rustBuilderDirectory = packageDirectory
+    .deletingLastPathComponent()
+    .deletingLastPathComponent()
+let dartPackageDirectory = rustBuilderDirectory.deletingLastPathComponent()
+let environment = ProcessInfo.processInfo.environment
+let requestedConfiguration = (
+    environment["CARGOKIT_CONFIGURATION"] ??
+        environment["CONFIGURATION"] ??
+        "release"
+).lowercased()
+let cargokitConfiguration = requestedConfiguration.contains("debug") ? "debug" : "release"
+
+func buildRustLibrary() {
+    let process = Process()
+    process.executableURL = URL(fileURLWithPath: "/bin/sh")
+    process.arguments = [
+        rustBuilderDirectory.appendingPathComponent("cargokit/build_spm.sh").path,
+        dartPackageDirectory.appendingPathComponent("REPLACE_ME_RUST_CRATE_DIR").path,
+        packageDirectory.path,
+        cargokitConfiguration,
+    ]
+    process.currentDirectoryURL = dartPackageDirectory
+
+    do {
+        try process.run()
+    } catch {
+        fatalError("Failed to start Cargokit SwiftPM build: \(error)")
+    }
+    process.waitUntilExit()
+    guard process.terminationStatus == 0 else {
+        fatalError("Cargokit SwiftPM build failed with exit code \(process.terminationStatus)")
+    }
+}
+
+buildRustLibrary()
 
 let package = Package(
     name: "REPLACE_ME_RUST_CRATE_NAME",

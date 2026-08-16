@@ -402,6 +402,9 @@ mod tests {
             assert!(manifest.contains("FlutterFramework"));
             assert!(manifest.contains("RustLibrary"));
             assert!(manifest.contains(".xcframework"));
+            assert!(manifest.contains("let process = Process()"));
+            assert!(manifest.contains("cargokit/build_spm.sh"));
+            assert!(manifest.contains("buildRustLibrary()"));
             assert!(template.get_file(source_path).is_some());
             assert!(template.get_file(legacy_manifest_path).is_none());
             assert!(podspec.contains("s.script_phase"));
@@ -464,7 +467,7 @@ mod tests {
             assert!(!output.path().join(legacy_manifest_path).exists());
             assert!(fs::read_to_string(output.path().join(manifest_path))
                 .unwrap()
-                .contains("FlutterFramework"));
+                .contains("cargokit/build_spm.sh"));
         }
     }
 

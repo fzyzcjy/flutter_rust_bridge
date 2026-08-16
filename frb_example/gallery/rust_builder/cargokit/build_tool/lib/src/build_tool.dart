@@ -81,9 +81,9 @@ class BuildCMakeCommand extends BuildCommand {
   }
 }
 
-class BuildXcframeworkCommand extends BuildCommand {
+class BuildSpmCommand extends BuildCommand {
   @override
-  final name = 'build-xcframework';
+  final name = 'build-spm';
 
   @override
   final description = 'Build an Apple XCFramework for Swift Package Manager';
@@ -264,7 +264,7 @@ Future<void> runMain(List<String> args) async {
       ..addCommand(BuildPodCommand())
       ..addCommand(BuildGradleCommand())
       ..addCommand(BuildCMakeCommand())
-      ..addCommand(BuildXcframeworkCommand())
+      ..addCommand(BuildSpmCommand())
       ..addCommand(GenKeyCommand())
       ..addCommand(PrecompileBinariesCommand())
       ..addCommand(VerifyBinariesCommand());

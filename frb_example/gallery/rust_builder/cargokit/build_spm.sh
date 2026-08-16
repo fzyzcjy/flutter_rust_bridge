@@ -27,4 +27,4 @@ export CARGOKIT_TARGET_TEMP_DIR="$OUTPUT_DIR/.cargokit-build"
 export CARGOKIT_TOOL_TEMP_DIR="$CARGOKIT_TARGET_TEMP_DIR/build_tool"
 export CARGOKIT_ROOT_PROJECT_DIR="$(pwd -P)"
 
-exec "$BASEDIR/run_build_tool.sh" build-xcframework
+exec "$BASEDIR/run_build_tool.sh" build-spm

@@ -22,20 +22,8 @@ The following links may also be useful for customizations:
 
 The generated iOS and macOS Cargokit templates support both Swift Package Manager and CocoaPods. The existing podspecs remain available for projects that use CocoaPods.
 
-Swift Package Manager consumes a local Rust dynamic framework XCFramework. On macOS, generate it before building the Flutter project. For a plugin template, run one command for each nested Swift package directory, replacing `<dart-package-name>` with the plugin package name:
+Swift Package Manager consumes a local Rust dynamic framework XCFramework. During package manifest evaluation, each generated `Package.swift` runs `cargokit/build_spm.sh` before declaring the XCFramework as a binary target. Cargokit selects debug or release mode from the Xcode build environment and rebuilds changed Rust artifacts automatically.
 
-```sh
-sh cargokit/build_spm.sh rust ios/<dart-package-name> release
-sh cargokit/build_spm.sh rust macos/<dart-package-name> release
-```
-
-For an app template, run the equivalent commands from `rust_builder`, replacing `<rust-crate-name>` with the generated Rust crate name:
-
-```sh
-sh cargokit/build_spm.sh ../rust ios/<rust-crate-name> release
-sh cargokit/build_spm.sh ../rust macos/<rust-crate-name> release
-```
-
-The XCFramework is generated next to the corresponding `Package.swift` and is ignored by Git. Re-run the command after changing Rust code.
+The XCFramework is generated next to the corresponding `Package.swift` and is ignored by Git. A failed Cargokit build stops Swift package resolution with the script's exit status instead of leaving a missing binary target.
 
 For new projects that can require a recent Flutter/Dart SDK, consider the [Native Assets](native-assets) backend.
