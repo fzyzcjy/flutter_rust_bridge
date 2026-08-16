@@ -165,7 +165,7 @@ Future<void> precommitGenerate() async {
           package: package,
           coverage: false,
         ),
-        ),
+      ),
   ]);
   await lintDartFormat(const LintConfig(fix: true));
 }

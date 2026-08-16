@@ -35,11 +35,11 @@ void main() {
         'frb_example/flutter_via_create',
         'frb_example/flutter_via_create_native_assets',
       ]) {
-        expect(integrateAppleScaffoldSourceOfTruthPathsForTesting(package), [
-          '.metadata',
-          'ios',
-          'macos/Podfile',
-        ], reason: package);
+        expect(
+          integrateAppleScaffoldSourceOfTruthPathsForTesting(package),
+          ['.metadata', 'ios', 'macos/Podfile'],
+          reason: package,
+        );
 
         expect(
           integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
@@ -64,11 +64,11 @@ void main() {
         'frb_example/flutter_via_integrate',
         'frb_example/flutter_via_integrate_native_assets',
       ]) {
-        expect(integrateAppleScaffoldSourceOfTruthPathsForTesting(package), [
-          '.metadata',
-          'ios',
-          'macos/Podfile',
-        ], reason: package);
+        expect(
+          integrateAppleScaffoldSourceOfTruthPathsForTesting(package),
+          ['.metadata', 'ios', 'macos/Podfile'],
+          reason: package,
+        );
 
         expect(
           integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
@@ -91,12 +91,11 @@ void main() {
       'frb_example/flutter_package',
       'frb_example/flutter_package_native_assets',
     ]) {
-      expect(integrateAppleScaffoldSourceOfTruthPathsForTesting(package), [
-        '.metadata',
-        'pubspec.yaml',
-        'example/ios',
-        'example/macos/Podfile',
-      ], reason: package);
+      expect(
+        integrateAppleScaffoldSourceOfTruthPathsForTesting(package),
+        ['.metadata', 'pubspec.yaml', 'example/ios', 'example/macos/Podfile'],
+        reason: package,
+      );
 
       expect(
         integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
