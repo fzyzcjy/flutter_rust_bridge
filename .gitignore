@@ -23,3 +23,7 @@ pubspec_overrides.yaml
 
 # The file itself mentions do not check in vsc
 .flutter-plugins
+
+# Nix related
+.direnv
+result/

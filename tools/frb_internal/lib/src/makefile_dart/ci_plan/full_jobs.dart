@@ -213,6 +213,18 @@ final kCiJobs = [
     ]),
   ),
   CiJob(
+    'test_flutter_native_dynamic_linking',
+    matrix: CiMatrix([
+      for (final info in [
+        ..._linuxFlutterDesktopPackageEntries([
+          'frb_example--flutter_via_create',
+          'frb_example--flutter_via_integrate',
+        ]),
+      ])
+        {'info': info},
+    ]),
+  ),
+  CiJob(
     'test_flutter_web',
     matrix: CiMatrix([
       for (final package in [
