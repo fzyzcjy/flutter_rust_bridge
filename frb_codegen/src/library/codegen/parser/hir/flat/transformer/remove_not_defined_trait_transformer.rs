@@ -50,4 +50,20 @@ fn has_frb_attributes(f: &HirFlatFunction) -> bool {
     !attrs.is_empty()
 }
 
-pub(crate) const WHITELIST_TRAIT_NAMES: [&str; 1] = ["Default"];
+pub(crate) const WHITELIST_TRAIT_NAMES: [&str; 15] = [
+    "Default",
+    "Add",
+    "Sub",
+    "Mul",
+    "Div",
+    "Rem",
+    "Neg",
+    "Not",
+    "BitAnd",
+    "BitOr",
+    "BitXor",
+    "Shl",
+    "Shr",
+    "PartialEq",
+    "PartialOrd",
+];

@@ -17,8 +17,11 @@ pub(crate) fn parse(
     let pack = parser::parse(config, ir_pack, parse_mode)?;
     dumper.dump("1_parse_pack.json", &pack)?;
 
+    let pack = transformer::standard_operator_transformer::transform(pack)?;
+    dumper.dump("2_standard_operator_transformer.json", &pack)?;
+
     let pack = transformer::filter_trait_impl_transformer::transform(pack)?;
-    dumper.dump("2_filter_trait_impl_transformer.json", &pack)?;
+    dumper.dump("3_filter_trait_impl_transformer.json", &pack)?;
 
     // let pack = transformer::dyn_trait_inner_transformer::transform(pack)?;
     // dump(dumper, "3_dyn_trait_inner_transformer", &pack)?;

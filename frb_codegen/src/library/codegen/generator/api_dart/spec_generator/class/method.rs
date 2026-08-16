@@ -5,8 +5,9 @@ use crate::codegen::generator::api_dart::spec_generator::function::{
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncDefaultConstructorMode, MirFuncImplMode, MirFuncImplModeDartOnly,
-    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncImplMode,
+    MirFuncImplModeDartOnly, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirStandardOperator,
 };
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
@@ -48,11 +49,13 @@ pub(crate) struct GeneratedApiMethods {
     pub(crate) num_methods: usize,
     pub(crate) code: String,
     pub(crate) header: DartHeaderCode,
+    pub(crate) has_rust_partial_eq: bool,
 }
 
 struct GeneratedApiMethod {
     code: String,
     header: DartHeaderCode,
+    is_rust_partial_eq: bool,
 }
 
 pub(crate) fn generate_api_methods(
@@ -70,6 +73,7 @@ pub(crate) fn generate_api_methods(
         num_methods: methods.len(),
         code: methods.iter().map(|x| x.code.clone()).join("\n"),
         header: (methods.iter().map(|x| x.header.clone())).fold(Default::default(), |a, b| a + b),
+        has_rust_partial_eq: methods.iter().any(|method| method.is_rust_partial_eq),
     }
 }
 
@@ -165,6 +169,7 @@ fn generate_api_method(
         .filter(|param| !skip_names.contains(&&param.name_str[..]))
         .cloned()
         .collect_vec();
+    let standard_operator = method_info.standard_operator();
     let method_name = generate_method_name(method_info, default_constructor_mode);
 
     let comments = generate_comments(func, default_constructor_mode);
@@ -176,22 +181,44 @@ fn generate_api_method(
         &api_dart_func,
         &method_name,
         dart_class_name,
+        standard_operator,
     );
 
     let maybe_implementation = match config.get(&method_info.mode) {
         GenerateApiMethodMode::Nothing => return None,
         GenerateApiMethodMode::DeclOnly => "".to_owned(),
-        GenerateApiMethodMode::DeclAndImpl => format!(
-            "=>{}",
-            generate_implementation(func, context, method_info, &params)
-        ),
+        GenerateApiMethodMode::DeclAndImpl => {
+            let implementation = generate_implementation(func, context, method_info, &params);
+            if standard_operator == Some(MirStandardOperator::PartialEq) {
+                let other_name = &params.first().unwrap().name_str;
+                format!(
+                    "=> identical(this, {other_name}) || {other_name} is {dart_class_name} && runtimeType == {other_name}.runtimeType && {implementation}"
+                )
+            } else {
+                format!("=>{implementation}")
+            }
+        }
     };
 
-    let code = format!("{comments}{signature}{maybe_implementation};\n\n");
+    let is_rust_partial_eq = standard_operator == Some(MirStandardOperator::PartialEq);
+    let maybe_override = if is_rust_partial_eq {
+        "@override\n"
+    } else {
+        ""
+    };
+    let maybe_hash_code = if is_rust_partial_eq {
+        "\n@override\nint get hashCode => 0;\n"
+    } else {
+        ""
+    };
+    let code = format!(
+        "{comments}{maybe_override}{signature}{maybe_implementation};\n{maybe_hash_code}\n"
+    );
 
     Some(GeneratedApiMethod {
         code,
         header: api_dart_func.header,
+        is_rust_partial_eq,
     })
 }
 
@@ -227,6 +254,7 @@ fn generate_signature(
     api_dart_func: &ApiDartGeneratedFunction,
     method_name: &str,
     dart_class_name: &str,
+    standard_operator: Option<MirStandardOperator>,
 ) -> String {
     let is_static_method = method_info.mode == MirFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
@@ -238,6 +266,24 @@ fn generate_signature(
         return format!(
             "factory {dart_class_name}{func_params}",
             func_params = return_type_and_params.func_params
+        );
+    }
+
+    if let Some(operator) = standard_operator {
+        let params = func_params
+            .iter()
+            .map(|param| {
+                if operator == MirStandardOperator::PartialEq {
+                    format!("Object {}", param.name_str)
+                } else {
+                    param.full(MirFuncArgMode::Positional)
+                }
+            })
+            .join(", ");
+        return format!(
+            "{return_type} operator {symbol}({params})",
+            return_type = return_type_and_params.return_type,
+            symbol = operator.dart_symbol(),
         );
     }
 

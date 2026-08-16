@@ -276,6 +276,17 @@ fn compute_dart_async(
     attributes: &FrbAttributes,
     default_dart_async: bool,
 ) -> bool {
+    if matches!(
+        &func.owner,
+        HirFlatFunctionOwner::StructOrEnum {
+            trait_def_name: Some(name),
+            ..
+        } if crate::codegen::parser::hir::flat::transformer::remove_not_defined_trait_transformer::WHITELIST_TRAIT_NAMES.contains(&name.as_str())
+            && name != "Default"
+    ) {
+        return false;
+    }
+
     attributes
         .dart_async()
         .unwrap_or(func.is_async() || default_dart_async)

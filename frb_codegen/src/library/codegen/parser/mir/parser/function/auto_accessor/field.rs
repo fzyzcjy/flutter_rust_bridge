@@ -45,6 +45,7 @@ pub(super) fn parse_auto_accessor_of_field(
         actual_method_dart_name: Some(field.name.rust_style(true).to_owned()),
         mode: MirFuncOwnerInfoMethodMode::Instance,
         trait_def: None,
+        trait_name: None,
     };
 
     let mut inputs = vec![compute_self_arg(

@@ -43,6 +43,7 @@ import 'api/misc_no_twin_example_a.dart';
 import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
+import 'api/operator.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/ownership.dart';
@@ -100,6 +101,8 @@ import 'api/pseudo_manual/misc_type_twin_rust_async.dart';
 import 'api/pseudo_manual/misc_type_twin_sync.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_rust_async.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
+import 'api/pseudo_manual/operator_twin_rust_async.dart';
+import 'api/pseudo_manual/operator_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sync.dart';
 import 'api/pseudo_manual/optional_twin_rust_async.dart';
@@ -2958,6 +2961,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  OperatorPointTwinNormal dco_decode_box_autoadd_operator_point_twin_normal(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsync
+      dco_decode_box_autoadd_operator_point_twin_rust_async(dynamic raw);
+
+  @protected
+  OperatorPointTwinSync dco_decode_box_autoadd_operator_point_twin_sync(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinNormal dco_decode_box_autoadd_operator_value_twin_normal(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsync
+      dco_decode_box_autoadd_operator_value_twin_rust_async(dynamic raw);
+
+  @protected
+  OperatorValueTwinSync dco_decode_box_autoadd_operator_value_twin_sync(
+      dynamic raw);
+
+  @protected
   OptVecsTwinNormal dco_decode_box_autoadd_opt_vecs_twin_normal(dynamic raw);
 
   @protected
@@ -4450,6 +4477,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   OpaqueNestedTwinSync dco_decode_opaque_nested_twin_sync(dynamic raw);
+
+  @protected
+  OperatorPointTwinNormal dco_decode_operator_point_twin_normal(dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsync dco_decode_operator_point_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinSync dco_decode_operator_point_twin_sync(dynamic raw);
+
+  @protected
+  OperatorValueTwinNormal dco_decode_operator_value_twin_normal(dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsync dco_decode_operator_value_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinSync dco_decode_operator_value_twin_sync(dynamic raw);
 
   @protected
   BigInt? dco_decode_opt_I128(dynamic raw);
@@ -7887,6 +7934,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  OperatorPointTwinNormal sse_decode_box_autoadd_operator_point_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsync
+      sse_decode_box_autoadd_operator_point_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSync sse_decode_box_autoadd_operator_point_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinNormal sse_decode_box_autoadd_operator_value_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsync
+      sse_decode_box_autoadd_operator_value_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSync sse_decode_box_autoadd_operator_value_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
   OptVecsTwinNormal sse_decode_box_autoadd_opt_vecs_twin_normal(
       SseDeserializer deserializer);
 
@@ -9585,6 +9658,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   OpaqueNestedTwinSync sse_decode_opaque_nested_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinNormal sse_decode_operator_point_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsync sse_decode_operator_point_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSync sse_decode_operator_point_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinNormal sse_decode_operator_value_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsync sse_decode_operator_value_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSync sse_decode_operator_value_twin_sync(
       SseDeserializer deserializer);
 
   @protected
@@ -13190,6 +13287,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueNestedTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_operator_point_twin_normal(
+      OperatorPointTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sync(
+      OperatorPointTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_normal(
+      OperatorValueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sync(
+      OperatorValueTwinSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_opt_vecs_twin_normal(
       OptVecsTwinNormal self, SseSerializer serializer);
 
@@ -14841,6 +14962,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opaque_nested_twin_sync(
       OpaqueNestedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_normal(
+      OperatorPointTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_sync(
+      OperatorPointTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_normal(
+      OperatorValueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_sync(
+      OperatorValueTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_I128(BigInt? self, SseSerializer serializer);

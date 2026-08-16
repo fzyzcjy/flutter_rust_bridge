@@ -48,6 +48,7 @@ import 'api/misc_no_twin_example_a.dart';
 import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
+import 'api/operator.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/ownership.dart';
@@ -178,6 +179,11 @@ import 'api/pseudo_manual/newtype_pattern_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync_sse.dart';
+import 'api/pseudo_manual/operator_twin_rust_async.dart';
+import 'api/pseudo_manual/operator_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/operator_twin_sse.dart';
+import 'api/pseudo_manual/operator_twin_sync.dart';
+import 'api/pseudo_manual/operator_twin_sync_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sse.dart';
@@ -376,7 +382,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0-beta.6';
 
   @override
-  int get rustContentHash => -1730785095;
+  int get rustContentHash => -228622036;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -7500,6 +7506,484 @@ abstract class RustLibApi extends BaseApi {
 
   List<HideDataTwinSyncSseMoi>
       crateApiPseudoManualRustOpaqueTwinSyncSseMoiOpaqueVecTwinSyncSseMoi();
+
+  OperatorPointTwinNormal crateApiOperatorOperatorPointTwinNormalAdd(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal rhs});
+
+  bool crateApiOperatorOperatorPointTwinNormalEq(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other});
+
+  bool crateApiOperatorOperatorPointTwinNormalGe(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other});
+
+  bool crateApiOperatorOperatorPointTwinNormalGt(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other});
+
+  bool crateApiOperatorOperatorPointTwinNormalLe(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other});
+
+  bool crateApiOperatorOperatorPointTwinNormalLt(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other});
+
+  OperatorPointTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncAdd(
+          {required OperatorPointTwinRustAsync that,
+          required OperatorPointTwinRustAsync rhs});
+
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncEq(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other});
+
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncGe(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other});
+
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncGt(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other});
+
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncLe(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other});
+
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncLt(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other});
+
+  OperatorPointTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseAdd(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse rhs});
+
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseEq(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other});
+
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseGe(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other});
+
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseGt(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other});
+
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseLe(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other});
+
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseLt(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other});
+
+  OperatorPointTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseAdd(
+          {required OperatorPointTwinSse that,
+          required OperatorPointTwinSse rhs});
+
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseEq(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other});
+
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseGe(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other});
+
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseGt(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other});
+
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseLe(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other});
+
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseLt(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other});
+
+  OperatorPointTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncAdd(
+          {required OperatorPointTwinSync that,
+          required OperatorPointTwinSync rhs});
+
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncEq(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other});
+
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncGe(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other});
+
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncGt(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other});
+
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncLe(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other});
+
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncLt(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other});
+
+  OperatorPointTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseAdd(
+          {required OperatorPointTwinSyncSse that,
+          required OperatorPointTwinSyncSse rhs});
+
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseEq(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other});
+
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseGe(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other});
+
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseGt(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other});
+
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseLe(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other});
+
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseLt(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalAdd(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalBitand(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalBitor(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalBitxor(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalDiv(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalMul(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalNeg(
+      {required OperatorValueTwinNormal that});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalNot(
+      {required OperatorValueTwinNormal that});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalRem(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalShl(
+      {required OperatorValueTwinNormal that, required int rhs});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalShr(
+      {required OperatorValueTwinNormal that, required int rhs});
+
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalSub(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncAdd(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitand(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitor(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitxor(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncDiv(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncMul(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncNeg(
+          {required OperatorValueTwinRustAsync that});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncNot(
+          {required OperatorValueTwinRustAsync that});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncRem(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncShl(
+          {required OperatorValueTwinRustAsync that, required int rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncShr(
+          {required OperatorValueTwinRustAsync that, required int rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseAdd(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitand(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitor(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitxor(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseDiv(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseMul(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseNeg(
+          {required OperatorValueTwinRustAsyncSse that});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseNot(
+          {required OperatorValueTwinRustAsyncSse that});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseRem(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseShl(
+          {required OperatorValueTwinRustAsyncSse that, required int rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseShr(
+          {required OperatorValueTwinRustAsyncSse that, required int rhs});
+
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseSub(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs});
+
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncSub(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseAdd(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitand(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitor(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitxor(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseDiv(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseMul(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseNeg(
+          {required OperatorValueTwinSse that});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseNot(
+          {required OperatorValueTwinSse that});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseRem(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseShl(
+          {required OperatorValueTwinSse that, required int rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseShr(
+          {required OperatorValueTwinSse that, required int rhs});
+
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseSub(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncAdd(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitand(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitor(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitxor(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncDiv(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncMul(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncNeg(
+          {required OperatorValueTwinSync that});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncNot(
+          {required OperatorValueTwinSync that});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncRem(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncShl(
+          {required OperatorValueTwinSync that, required int rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncShr(
+          {required OperatorValueTwinSync that, required int rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseAdd(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitand(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitor(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitxor(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseDiv(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseMul(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseNeg(
+          {required OperatorValueTwinSyncSse that});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseNot(
+          {required OperatorValueTwinSyncSse that});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseRem(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseShl(
+          {required OperatorValueTwinSyncSse that, required int rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseShr(
+          {required OperatorValueTwinSyncSse that, required int rhs});
+
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseSub(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs});
+
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncSub(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs});
 
   Future<DateTime?> crateApiChronoTypeOptionalEmptyDatetimeUtcTwinNormal(
       {DateTime? d});
@@ -72661,6 +73145,3261 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  OperatorPointTwinNormal crateApiOperatorOperatorPointTwinNormalAdd(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_normal(rhs);
+        return wire.wire__crate__api__operator__operator_point_twin_normal_add(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_point_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorPointTwinNormalAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorPointTwinNormalAddConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_point_twin_normal_add",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  bool crateApiOperatorOperatorPointTwinNormalEq(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_normal(other);
+        return wire.wire__crate__api__operator__operator_point_twin_normal_eq(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorPointTwinNormalEqConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorPointTwinNormalEqConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_point_twin_normal_eq",
+        argNames: ["that", "other"],
+      );
+
+  @override
+  bool crateApiOperatorOperatorPointTwinNormalGe(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_normal(other);
+        return wire.wire__crate__api__operator__operator_point_twin_normal_ge(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorPointTwinNormalGeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorPointTwinNormalGeConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_point_twin_normal_ge",
+        argNames: ["that", "other"],
+      );
+
+  @override
+  bool crateApiOperatorOperatorPointTwinNormalGt(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_normal(other);
+        return wire.wire__crate__api__operator__operator_point_twin_normal_gt(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorPointTwinNormalGtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorPointTwinNormalGtConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_point_twin_normal_gt",
+        argNames: ["that", "other"],
+      );
+
+  @override
+  bool crateApiOperatorOperatorPointTwinNormalLe(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_normal(other);
+        return wire.wire__crate__api__operator__operator_point_twin_normal_le(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorPointTwinNormalLeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorPointTwinNormalLeConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_point_twin_normal_le",
+        argNames: ["that", "other"],
+      );
+
+  @override
+  bool crateApiOperatorOperatorPointTwinNormalLt(
+      {required OperatorPointTwinNormal that,
+      required OperatorPointTwinNormal other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_normal(other);
+        return wire.wire__crate__api__operator__operator_point_twin_normal_lt(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorPointTwinNormalLtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorPointTwinNormalLtConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_point_twin_normal_lt",
+        argNames: ["that", "other"],
+      );
+
+  @override
+  OperatorPointTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncAdd(
+          {required OperatorPointTwinRustAsync that,
+          required OperatorPointTwinRustAsync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_rust_async(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_point_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncEq(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_rust_async(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncEqConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncEqConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_eq",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncGe(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_rust_async(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncGeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncGeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_ge",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncGt(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_rust_async(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncGtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncGtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_gt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncLe(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_rust_async(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncLeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncLeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_le",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncLt(
+      {required OperatorPointTwinRustAsync that,
+      required OperatorPointTwinRustAsync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_rust_async(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncLtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorPointTwinRustAsyncLtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_lt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  OperatorPointTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseAdd(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_point_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_sse_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseEq(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseEqConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseEqConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_sse_eq",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseGe(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseGeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseGeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_sse_ge",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseGt(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseGtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseGtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_sse_gt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseLe(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseLeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseLeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_sse_le",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseLt(
+          {required OperatorPointTwinRustAsyncSse that,
+          required OperatorPointTwinRustAsyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_point_twin_rust_async_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseLtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorPointTwinRustAsyncSseLtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_rust_async_sse_lt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  OperatorPointTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseAdd(
+          {required OperatorPointTwinSse that,
+          required OperatorPointTwinSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_point_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sse_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseEq(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseEqConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseEqConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sse_eq",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseGe(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseGeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseGeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sse_ge",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseGt(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseGtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseGtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sse_gt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseLe(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseLeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseLeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sse_le",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSseOperatorPointTwinSseLt(
+      {required OperatorPointTwinSse that,
+      required OperatorPointTwinSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseLtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorPointTwinSseLtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sse_lt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  OperatorPointTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncAdd(
+          {required OperatorPointTwinSync that,
+          required OperatorPointTwinSync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_point_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncEq(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncEqConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncEqConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_eq",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncGe(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncGeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncGeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_ge",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncGt(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncGtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncGtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_gt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncLe(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncLeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncLeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_le",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncLt(
+      {required OperatorPointTwinSync that,
+      required OperatorPointTwinSync other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncLtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorPointTwinSyncLtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_lt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  OperatorPointTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseAdd(
+          {required OperatorPointTwinSyncSse that,
+          required OperatorPointTwinSyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_point_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_sse_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseEq(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseEqConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseEqConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_sse_eq",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseGe(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseGeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseGeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_sse_ge",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseGt(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseGtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseGtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_sse_gt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseLe(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseLeConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseLeConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_sse_le",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  bool crateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseLt(
+      {required OperatorPointTwinSyncSse that,
+      required OperatorPointTwinSyncSse other}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_point_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_point_twin_sync_sse(other);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseLtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorPointTwinSyncSseLtConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_point_twin_sync_sse_lt",
+            argNames: ["that", "other"],
+          );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalAdd(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_normal(rhs);
+        return wire.wire__crate__api__operator__operator_value_twin_normal_add(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalAddConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_add",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalBitand(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_normal(rhs);
+        return wire
+            .wire__crate__api__operator__operator_value_twin_normal_bitand(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalBitandConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalBitandConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_bitand",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalBitor(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_normal(rhs);
+        return wire
+            .wire__crate__api__operator__operator_value_twin_normal_bitor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalBitorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalBitorConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_bitor",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalBitxor(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_normal(rhs);
+        return wire
+            .wire__crate__api__operator__operator_value_twin_normal_bitxor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalBitxorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalBitxorConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_bitxor",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalDiv(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_normal(rhs);
+        return wire.wire__crate__api__operator__operator_value_twin_normal_div(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalDivConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalDivConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_div",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalMul(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_normal(rhs);
+        return wire.wire__crate__api__operator__operator_value_twin_normal_mul(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalMulConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalMulConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_mul",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalNeg(
+      {required OperatorValueTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        return wire
+            .wire__crate__api__operator__operator_value_twin_normal_neg(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalNegConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalNegConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_neg",
+        argNames: ["that"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalNot(
+      {required OperatorValueTwinNormal that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        return wire
+            .wire__crate__api__operator__operator_value_twin_normal_not(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalNotConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalNotConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_not",
+        argNames: ["that"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalRem(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_normal(rhs);
+        return wire.wire__crate__api__operator__operator_value_twin_normal_rem(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalRemConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalRemConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_rem",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalShl(
+      {required OperatorValueTwinNormal that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire.wire__crate__api__operator__operator_value_twin_normal_shl(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalShlConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalShlConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_shl",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalShr(
+      {required OperatorValueTwinNormal that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire.wire__crate__api__operator__operator_value_twin_normal_shr(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalShrConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalShrConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_shr",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinNormal crateApiOperatorOperatorValueTwinNormalSub(
+      {required OperatorValueTwinNormal that,
+      required OperatorValueTwinNormal rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_normal(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_normal(rhs);
+        return wire.wire__crate__api__operator__operator_value_twin_normal_sub(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiOperatorOperatorValueTwinNormalSubConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiOperatorOperatorValueTwinNormalSubConstMeta =>
+      const TaskConstMeta(
+        debugName: "operator_value_twin_normal_sub",
+        argNames: ["that", "rhs"],
+      );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncAdd(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_rust_async(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitand(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_rust_async(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitandConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitandConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_bitand",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitor(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_rust_async(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_bitor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitxor(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_rust_async(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitxorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncBitxorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_bitxor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncDiv(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_rust_async(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncDivConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncDivConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_div",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncMul(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_rust_async(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncMulConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncMulConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_mul",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncNeg(
+          {required OperatorValueTwinRustAsync that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncNegConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncNegConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_neg",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncNot(
+          {required OperatorValueTwinRustAsync that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncNotConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncNotConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_not",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncRem(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_rust_async(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncRemConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncRemConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_rem",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncShl(
+          {required OperatorValueTwinRustAsync that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncShlConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncShlConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_shl",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncShr(
+          {required OperatorValueTwinRustAsync that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncShrConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncShrConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_shr",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseAdd(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitand(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitandConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitandConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_bitand",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitor(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_bitor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitxor(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitxorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseBitxorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_bitxor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseDiv(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseDivConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseDivConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_div",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseMul(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseMulConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseMulConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_mul",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseNeg(
+          {required OperatorValueTwinRustAsyncSse that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseNegConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseNegConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_neg",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseNot(
+          {required OperatorValueTwinRustAsyncSse that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseNotConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseNotConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_not",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseRem(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseRemConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseRemConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_rem",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseShl(
+          {required OperatorValueTwinRustAsyncSse that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseShlConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseShlConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_shl",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseShr(
+          {required OperatorValueTwinRustAsyncSse that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseShrConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseShrConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_shr",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsyncSse
+      crateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseSub(
+          {required OperatorValueTwinRustAsyncSse that,
+          required OperatorValueTwinRustAsyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(that);
+        var arg1 =
+            cst_encode_box_autoadd_operator_value_twin_rust_async_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseSubConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncSseOperatorValueTwinRustAsyncSseSubConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sse_sub",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinRustAsync
+      crateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncSub(
+          {required OperatorValueTwinRustAsync that,
+          required OperatorValueTwinRustAsync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_rust_async(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_rust_async(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncSubConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinRustAsyncOperatorValueTwinRustAsyncSubConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_rust_async_sub",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseAdd(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitand(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitandConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitandConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_bitand",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitor(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_bitor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitxor(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitxorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseBitxorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_bitxor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseDiv(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseDivConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseDivConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_div",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseMul(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseMulConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseMulConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_mul",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseNeg(
+          {required OperatorValueTwinSse that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseNegConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseNegConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_neg",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseNot(
+          {required OperatorValueTwinSse that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseNotConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseNotConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_not",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseRem(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseRemConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseRemConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_rem",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseShl(
+          {required OperatorValueTwinSse that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseShlConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseShlConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_shl",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseShr(
+          {required OperatorValueTwinSse that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseShrConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseShrConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_shr",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSse
+      crateApiPseudoManualOperatorTwinSseOperatorValueTwinSseSub(
+          {required OperatorValueTwinSse that,
+          required OperatorValueTwinSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseSubConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSseOperatorValueTwinSseSubConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sse_sub",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncAdd(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitand(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitandConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitandConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_bitand",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitor(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_bitor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitxor(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitxorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncBitxorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_bitxor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncDiv(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncDivConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncDivConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_div",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncMul(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncMulConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncMulConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_mul",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncNeg(
+          {required OperatorValueTwinSync that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncNegConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncNegConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_neg",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncNot(
+          {required OperatorValueTwinSync that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncNotConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncNotConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_not",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncRem(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncRemConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncRemConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_rem",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncShl(
+          {required OperatorValueTwinSync that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncShlConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncShlConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_shl",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncShr(
+          {required OperatorValueTwinSync that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncShrConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncShrConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_shr",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseAdd(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseAddConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseAddConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_add",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitand(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitandConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitandConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_bitand",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitor(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_bitor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitxor(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitxorConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseBitxorConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_bitxor",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseDiv(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseDivConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseDivConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_div",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseMul(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseMulConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseMulConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_mul",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseNeg(
+          {required OperatorValueTwinSyncSse that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseNegConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseNegConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_neg",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseNot(
+          {required OperatorValueTwinSyncSse that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseNotConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseNotConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_not",
+            argNames: ["that"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseRem(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseRemConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseRemConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_rem",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseShl(
+          {required OperatorValueTwinSyncSse that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseShlConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseShlConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_shl",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseShr(
+          {required OperatorValueTwinSyncSse that, required int rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_u_32(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseShrConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseShrConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_shr",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSyncSse
+      crateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseSub(
+          {required OperatorValueTwinSyncSse that,
+          required OperatorValueTwinSyncSse rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync_sse(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync_sse(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseSubConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncSseOperatorValueTwinSyncSseSubConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sse_sub",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
+  OperatorValueTwinSync
+      crateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncSub(
+          {required OperatorValueTwinSync that,
+          required OperatorValueTwinSync rhs}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_operator_value_twin_sync(that);
+        var arg1 = cst_encode_box_autoadd_operator_value_twin_sync(rhs);
+        return wire
+            .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_operator_value_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncSubConstMeta,
+      argValues: [that, rhs],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualOperatorTwinSyncOperatorValueTwinSyncSubConstMeta =>
+          const TaskConstMeta(
+            debugName: "operator_value_twin_sync_sub",
+            argNames: ["that", "rhs"],
+          );
+
+  @override
   Future<DateTime?> crateApiChronoTypeOptionalEmptyDatetimeUtcTwinNormal(
       {DateTime? d}) {
     return handler.executeNormal(NormalTask(
@@ -113201,6 +116940,90 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OperatorPointTwinNormal dco_decode_box_autoadd_operator_point_twin_normal(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_point_twin_normal(raw);
+  }
+
+  @protected
+  OperatorPointTwinRustAsync
+      dco_decode_box_autoadd_operator_point_twin_rust_async(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_point_twin_rust_async(raw);
+  }
+
+  @protected
+  OperatorPointTwinRustAsyncSse
+      dco_decode_box_autoadd_operator_point_twin_rust_async_sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_point_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  OperatorPointTwinSse dco_decode_box_autoadd_operator_point_twin_sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_point_twin_sse(raw);
+  }
+
+  @protected
+  OperatorPointTwinSync dco_decode_box_autoadd_operator_point_twin_sync(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_point_twin_sync(raw);
+  }
+
+  @protected
+  OperatorPointTwinSyncSse dco_decode_box_autoadd_operator_point_twin_sync_sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_point_twin_sync_sse(raw);
+  }
+
+  @protected
+  OperatorValueTwinNormal dco_decode_box_autoadd_operator_value_twin_normal(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_value_twin_normal(raw);
+  }
+
+  @protected
+  OperatorValueTwinRustAsync
+      dco_decode_box_autoadd_operator_value_twin_rust_async(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_value_twin_rust_async(raw);
+  }
+
+  @protected
+  OperatorValueTwinRustAsyncSse
+      dco_decode_box_autoadd_operator_value_twin_rust_async_sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_value_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  OperatorValueTwinSse dco_decode_box_autoadd_operator_value_twin_sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_value_twin_sse(raw);
+  }
+
+  @protected
+  OperatorValueTwinSync dco_decode_box_autoadd_operator_value_twin_sync(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_value_twin_sync(raw);
+  }
+
+  @protected
+  OperatorValueTwinSyncSse dco_decode_box_autoadd_operator_value_twin_sync_sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_operator_value_twin_sync_sse(raw);
+  }
+
+  @protected
   OptVecsTwinNormal dco_decode_box_autoadd_opt_vecs_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_opt_vecs_twin_normal(raw);
@@ -121367,6 +125190,150 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return OpaqueNestedTwinSyncSseMoi(
       first: dco_decode_RustOpaque_HideDataTwinSyncSseMoi(arr[0]),
       second: dco_decode_RustOpaque_HideDataTwinSyncSseMoi(arr[1]),
+    );
+  }
+
+  @protected
+  OperatorPointTwinNormal dco_decode_operator_point_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OperatorPointTwinNormal(
+      x: dco_decode_i_32(arr[0]),
+      y: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  OperatorPointTwinRustAsync dco_decode_operator_point_twin_rust_async(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OperatorPointTwinRustAsync(
+      x: dco_decode_i_32(arr[0]),
+      y: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  OperatorPointTwinRustAsyncSse dco_decode_operator_point_twin_rust_async_sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OperatorPointTwinRustAsyncSse(
+      x: dco_decode_i_32(arr[0]),
+      y: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  OperatorPointTwinSse dco_decode_operator_point_twin_sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OperatorPointTwinSse(
+      x: dco_decode_i_32(arr[0]),
+      y: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  OperatorPointTwinSync dco_decode_operator_point_twin_sync(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OperatorPointTwinSync(
+      x: dco_decode_i_32(arr[0]),
+      y: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  OperatorPointTwinSyncSse dco_decode_operator_point_twin_sync_sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OperatorPointTwinSyncSse(
+      x: dco_decode_i_32(arr[0]),
+      y: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  OperatorValueTwinNormal dco_decode_operator_value_twin_normal(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return OperatorValueTwinNormal(
+      value: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  OperatorValueTwinRustAsync dco_decode_operator_value_twin_rust_async(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return OperatorValueTwinRustAsync(
+      value: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  OperatorValueTwinRustAsyncSse dco_decode_operator_value_twin_rust_async_sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return OperatorValueTwinRustAsyncSse(
+      value: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  OperatorValueTwinSse dco_decode_operator_value_twin_sse(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return OperatorValueTwinSse(
+      value: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  OperatorValueTwinSync dco_decode_operator_value_twin_sync(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return OperatorValueTwinSync(
+      value: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  OperatorValueTwinSyncSse dco_decode_operator_value_twin_sync_sse(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return OperatorValueTwinSyncSse(
+      value: dco_decode_i_32(arr[0]),
     );
   }
 
@@ -136325,6 +140292,94 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OperatorPointTwinNormal sse_decode_box_autoadd_operator_point_twin_normal(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_point_twin_normal(deserializer));
+  }
+
+  @protected
+  OperatorPointTwinRustAsync
+      sse_decode_box_autoadd_operator_point_twin_rust_async(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_point_twin_rust_async(deserializer));
+  }
+
+  @protected
+  OperatorPointTwinRustAsyncSse
+      sse_decode_box_autoadd_operator_point_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_point_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  OperatorPointTwinSse sse_decode_box_autoadd_operator_point_twin_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_point_twin_sse(deserializer));
+  }
+
+  @protected
+  OperatorPointTwinSync sse_decode_box_autoadd_operator_point_twin_sync(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_point_twin_sync(deserializer));
+  }
+
+  @protected
+  OperatorPointTwinSyncSse sse_decode_box_autoadd_operator_point_twin_sync_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_point_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  OperatorValueTwinNormal sse_decode_box_autoadd_operator_value_twin_normal(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_value_twin_normal(deserializer));
+  }
+
+  @protected
+  OperatorValueTwinRustAsync
+      sse_decode_box_autoadd_operator_value_twin_rust_async(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_value_twin_rust_async(deserializer));
+  }
+
+  @protected
+  OperatorValueTwinRustAsyncSse
+      sse_decode_box_autoadd_operator_value_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_value_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  OperatorValueTwinSse sse_decode_box_autoadd_operator_value_twin_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_value_twin_sse(deserializer));
+  }
+
+  @protected
+  OperatorValueTwinSync sse_decode_box_autoadd_operator_value_twin_sync(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_value_twin_sync(deserializer));
+  }
+
+  @protected
+  OperatorValueTwinSyncSse sse_decode_box_autoadd_operator_value_twin_sync_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_operator_value_twin_sync_sse(deserializer));
+  }
+
+  @protected
   OptVecsTwinNormal sse_decode_box_autoadd_opt_vecs_twin_normal(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -145378,6 +149433,108 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_first = sse_decode_RustOpaque_HideDataTwinSyncSseMoi(deserializer);
     var var_second = sse_decode_RustOpaque_HideDataTwinSyncSseMoi(deserializer);
     return OpaqueNestedTwinSyncSseMoi(first: var_first, second: var_second);
+  }
+
+  @protected
+  OperatorPointTwinNormal sse_decode_operator_point_twin_normal(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_x = sse_decode_i_32(deserializer);
+    var var_y = sse_decode_i_32(deserializer);
+    return OperatorPointTwinNormal(x: var_x, y: var_y);
+  }
+
+  @protected
+  OperatorPointTwinRustAsync sse_decode_operator_point_twin_rust_async(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_x = sse_decode_i_32(deserializer);
+    var var_y = sse_decode_i_32(deserializer);
+    return OperatorPointTwinRustAsync(x: var_x, y: var_y);
+  }
+
+  @protected
+  OperatorPointTwinRustAsyncSse sse_decode_operator_point_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_x = sse_decode_i_32(deserializer);
+    var var_y = sse_decode_i_32(deserializer);
+    return OperatorPointTwinRustAsyncSse(x: var_x, y: var_y);
+  }
+
+  @protected
+  OperatorPointTwinSse sse_decode_operator_point_twin_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_x = sse_decode_i_32(deserializer);
+    var var_y = sse_decode_i_32(deserializer);
+    return OperatorPointTwinSse(x: var_x, y: var_y);
+  }
+
+  @protected
+  OperatorPointTwinSync sse_decode_operator_point_twin_sync(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_x = sse_decode_i_32(deserializer);
+    var var_y = sse_decode_i_32(deserializer);
+    return OperatorPointTwinSync(x: var_x, y: var_y);
+  }
+
+  @protected
+  OperatorPointTwinSyncSse sse_decode_operator_point_twin_sync_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_x = sse_decode_i_32(deserializer);
+    var var_y = sse_decode_i_32(deserializer);
+    return OperatorPointTwinSyncSse(x: var_x, y: var_y);
+  }
+
+  @protected
+  OperatorValueTwinNormal sse_decode_operator_value_twin_normal(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_value = sse_decode_i_32(deserializer);
+    return OperatorValueTwinNormal(value: var_value);
+  }
+
+  @protected
+  OperatorValueTwinRustAsync sse_decode_operator_value_twin_rust_async(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_value = sse_decode_i_32(deserializer);
+    return OperatorValueTwinRustAsync(value: var_value);
+  }
+
+  @protected
+  OperatorValueTwinRustAsyncSse sse_decode_operator_value_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_value = sse_decode_i_32(deserializer);
+    return OperatorValueTwinRustAsyncSse(value: var_value);
+  }
+
+  @protected
+  OperatorValueTwinSse sse_decode_operator_value_twin_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_value = sse_decode_i_32(deserializer);
+    return OperatorValueTwinSse(value: var_value);
+  }
+
+  @protected
+  OperatorValueTwinSync sse_decode_operator_value_twin_sync(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_value = sse_decode_i_32(deserializer);
+    return OperatorValueTwinSync(value: var_value);
+  }
+
+  @protected
+  OperatorValueTwinSyncSse sse_decode_operator_value_twin_sync_sse(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_value = sse_decode_i_32(deserializer);
+    return OperatorValueTwinSyncSse(value: var_value);
   }
 
   @protected
@@ -164410,6 +168567,90 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_operator_point_twin_normal(
+      OperatorPointTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_point_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_point_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_point_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sse(
+      OperatorPointTwinSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_point_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sync(
+      OperatorPointTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_point_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sync_sse(
+      OperatorPointTwinSyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_point_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_normal(
+      OperatorValueTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_value_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_value_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_value_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sse(
+      OperatorValueTwinSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_value_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sync(
+      OperatorValueTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_value_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sync_sse(
+      OperatorValueTwinSyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_operator_value_twin_sync_sse(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_opt_vecs_twin_normal(
       OptVecsTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -171879,6 +176120,96 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_RustOpaque_HideDataTwinSyncSseMoi(self.first, serializer);
     sse_encode_RustOpaque_HideDataTwinSyncSseMoi(self.second, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_point_twin_normal(
+      OperatorPointTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.x, serializer);
+    sse_encode_i_32(self.y, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.x, serializer);
+    sse_encode_i_32(self.y, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.x, serializer);
+    sse_encode_i_32(self.y, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_point_twin_sse(
+      OperatorPointTwinSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.x, serializer);
+    sse_encode_i_32(self.y, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_point_twin_sync(
+      OperatorPointTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.x, serializer);
+    sse_encode_i_32(self.y, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_point_twin_sync_sse(
+      OperatorPointTwinSyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.x, serializer);
+    sse_encode_i_32(self.y, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_value_twin_normal(
+      OperatorValueTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_value_twin_sse(
+      OperatorValueTwinSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_value_twin_sync(
+      OperatorValueTwinSync self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.value, serializer);
+  }
+
+  @protected
+  void sse_encode_operator_value_twin_sync_sse(
+      OperatorValueTwinSyncSse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.value, serializer);
   }
 
   @protected

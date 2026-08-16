@@ -67,6 +67,7 @@ impl FunctionParser<'_, '_> {
                     owner_ty,
                     &ty_to_string(impl_ty),
                     trait_def,
+                    trait_def_name.clone(),
                 )
             }
             HirFlatFunctionOwner::TraitDef { trait_def_name } => {
@@ -80,6 +81,7 @@ impl FunctionParser<'_, '_> {
                     MirType::TraitDef(trait_def.clone()),
                     &trait_def_name.name,
                     Some(trait_def),
+                    Some(trait_def_name.name.clone()),
                 )
             }
         }
@@ -92,6 +94,7 @@ impl FunctionParser<'_, '_> {
         owner_ty: MirType,
         owner_ty_raw: &str,
         trait_def: Option<MirTypeTraitDef>,
+        trait_name: Option<String>,
     ) -> anyhow::Result<IrValueOrSkip<MirFuncOwnerInfo, IrSkipReason>> {
         let sig = func.item_fn.sig();
         let mode = if matches!(sig.inputs.first(), Some(FnArg::Receiver(..))) {
@@ -114,6 +117,7 @@ impl FunctionParser<'_, '_> {
                 actual_method_dart_name,
                 mode,
                 trait_def,
+                trait_name,
             },
         )))
     }

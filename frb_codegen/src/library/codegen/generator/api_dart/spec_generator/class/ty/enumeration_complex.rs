@@ -21,6 +21,7 @@ impl EnumRefApiDartGenerator<'_> {
         src: &MirEnum,
         extra_body: &str,
         header: DartHeaderCode,
+        has_rust_partial_eq: bool,
     ) -> Option<ApiDartGeneratedClass> {
         let variants = src
             .variants()
@@ -39,12 +40,17 @@ impl EnumRefApiDartGenerator<'_> {
 
         let json_serializable_extra_code =
             compute_json_serializable_extra_code(src.needs_json_serializable, name);
+        let freezed_annotation = if has_rust_partial_eq {
+            "@Freezed(equal: false)"
+        } else {
+            "@freezed"
+        };
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
             class_name: name.clone(),
             code: format!(
-                "@freezed
+                "{freezed_annotation}
                 {sealed} class {name} with _${name} {maybe_implements_exception} {{
                     const {name}._();
 

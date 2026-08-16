@@ -42,6 +42,7 @@ pub mod misc_no_twin_example_a;
 pub mod misc_no_twin_example_b;
 pub mod misc_type;
 pub mod newtype_pattern;
+pub mod operator;
 pub mod optional;
 pub mod optional_primitive_misc;
 pub mod ownership;
