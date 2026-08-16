@@ -154,6 +154,9 @@
       ]
     },
     {
+      "id": "generate_run_frb_codegen_command_generate_from_scratch"
+    },
+    {
       "id": "generate_run_frb_codegen_command_integrate",
       "matrix": [
         {

@@ -53,6 +53,7 @@ final kCiJobs = [
             {'image': image, 'package': package},
     ]),
   ),
+  const CiJob('generate_run_frb_codegen_command_generate_from_scratch'),
   CiJob(
     'generate_run_frb_codegen_command_integrate',
     matrix: CiMatrix([
