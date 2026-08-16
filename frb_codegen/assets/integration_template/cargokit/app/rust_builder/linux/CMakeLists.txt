@@ -2,6 +2,7 @@
 # installed. You should not increase this version, as doing so will cause
 # the plugin to fail to compile for some customers of the plugin.
 cmake_minimum_required(VERSION 3.10)
+cmake_policy(SET CMP0079 NEW)
 
 # Project-level configuration.
 set(PROJECT_NAME "REPLACE_ME_RUST_CRATE_NAME")
