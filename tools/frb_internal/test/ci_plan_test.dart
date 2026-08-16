@@ -21,6 +21,11 @@ void main() {
           kCiJobs.map((job) => job.id).toSet(),
           reason: filter,
         );
+        expect(
+          plan.enabledJobs,
+          contains('generate_run_frb_codegen_command_generate_from_scratch'),
+          reason: filter,
+        );
         expect(plan.matrixByJob['test_dart_web'], {
           'include': [
             {'package': 'frb_dart'},
