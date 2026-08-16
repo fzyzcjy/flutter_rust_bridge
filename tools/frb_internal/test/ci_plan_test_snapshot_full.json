@@ -902,7 +902,7 @@
         {
           "info": {
             "image": "ubuntu-latest",
-            "platform": "nix",
+            "platform": "nixos",
             "target": "desktop",
             "device": "linux",
             "package": "frb_example--flutter_via_create",
