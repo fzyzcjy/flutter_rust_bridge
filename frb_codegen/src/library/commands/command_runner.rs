@@ -469,7 +469,10 @@ mod tests {
     fn test_execute_command_streaming_closes_stdin() {
         if std::env::var_os(STREAMING_STDIN_TEST_CHILD).is_some() {
             let (bin, args) = if cfg!(windows) {
+                // Only executed on Windows; Linux llvm-cov is the uploaded host.
+                // frb-coverage:ignore-start
                 ("cmd", cmd_args(&["/c", "set /p FRB_INPUT= & exit /b 0"]))
+                // frb-coverage:ignore-end
             } else {
                 ("sh", cmd_args(&["-c", "read frb_input || true"]))
             };
@@ -498,9 +501,12 @@ mod tests {
                 break;
             }
             if Instant::now() >= deadline {
+                // Failure-only diagnostics; a passing test never takes this arm.
+                // frb-coverage:ignore-start
                 drop(test_process.stdin.take());
                 let _ = test_process.wait();
                 panic!("streaming child inherited an open stdin pipe");
+                // frb-coverage:ignore-end
             }
             thread::sleep(Duration::from_millis(10));
         }

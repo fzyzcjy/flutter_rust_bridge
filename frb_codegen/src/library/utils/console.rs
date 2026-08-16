@@ -109,6 +109,61 @@ mod tests {
         );
     }
 
+    #[derive(Debug)]
+    struct VisibleTerm;
+
+    impl indicatif::TermLike for VisibleTerm {
+        fn width(&self) -> u16 {
+            80
+        }
+
+        fn move_cursor_up(&self, _n: usize) -> std::io::Result<()> {
+            Ok(())
+        }
+
+        fn move_cursor_down(&self, _n: usize) -> std::io::Result<()> {
+            Ok(())
+        }
+
+        fn move_cursor_right(&self, _n: usize) -> std::io::Result<()> {
+            Ok(())
+        }
+
+        fn move_cursor_left(&self, _n: usize) -> std::io::Result<()> {
+            Ok(())
+        }
+
+        fn write_line(&self, _s: &str) -> std::io::Result<()> {
+            Ok(())
+        }
+
+        fn write_str(&self, _s: &str) -> std::io::Result<()> {
+            Ok(())
+        }
+
+        fn clear_line(&self) -> std::io::Result<()> {
+            Ok(())
+        }
+
+        fn flush(&self) -> std::io::Result<()> {
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn test_println_over_progress_visible_target_uses_progress_println() {
+        let multi_progress =
+            MultiProgress::with_draw_target(ProgressDrawTarget::term_like(Box::new(VisibleTerm)));
+        let mut fallback = None;
+
+        println_over_progress_inner(&multi_progress, "live-line", |line| {
+            fallback = Some(line.to_owned());
+        });
+
+        assert!(fallback.is_none());
+        assert!(!multi_progress.is_hidden());
+    }
+
     #[test]
     /// Hidden progress targets must still forward diagnostics to the fallback writer.
     fn test_println_over_progress_hidden_target_uses_fallback() {
