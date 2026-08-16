@@ -1,6 +1,6 @@
 // swift-tools-version: 5.9
 // Before building with SwiftPM, run from rust_builder:
-// sh cargokit/build_spm.sh ../REPLACE_ME_RUST_CRATE_DIR macos release
+// sh cargokit/build_spm.sh ../REPLACE_ME_RUST_CRATE_DIR macos/REPLACE_ME_RUST_CRATE_NAME release
 import PackageDescription
 
 let package = Package(

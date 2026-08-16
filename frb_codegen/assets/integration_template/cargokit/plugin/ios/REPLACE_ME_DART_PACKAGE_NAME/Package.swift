@@ -1,6 +1,6 @@
 // swift-tools-version: 5.9
 // Before building with SwiftPM, run from the package root:
-// sh cargokit/build_spm.sh rust ios release
+// sh cargokit/build_spm.sh rust ios/REPLACE_ME_DART_PACKAGE_NAME release
 import PackageDescription
 
 let package = Package(

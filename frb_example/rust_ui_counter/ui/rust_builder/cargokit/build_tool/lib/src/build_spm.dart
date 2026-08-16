@@ -13,15 +13,42 @@ import 'target.dart';
 import 'util.dart';
 
 List<String> createXcframeworkArguments({
-  required Iterable<String> libraries,
+  required Iterable<String> frameworks,
   required String output,
 }) {
   return [
     '-create-xcframework',
-    for (final library in libraries) ...['-library', library],
+    for (final framework in frameworks) ...['-framework', framework],
     '-output',
     output,
   ];
+}
+
+String createFrameworkInfoPlist(String frameworkName) {
+  final bundleName = frameworkName.replaceAll('_', '-');
+  return '''<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en</string>
+  <key>CFBundleExecutable</key>
+  <string>$frameworkName</string>
+  <key>CFBundleIdentifier</key>
+  <string>dev.cargokit.$bundleName</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundleName</key>
+  <string>$frameworkName</string>
+  <key>CFBundlePackageType</key>
+  <string>FMWK</string>
+  <key>CFBundleShortVersionString</key>
+  <string>1.0</string>
+  <key>CFBundleVersion</key>
+  <string>1</string>
+</dict>
+</plist>
+''';
 }
 
 class BuildSpm {
@@ -39,46 +66,63 @@ class BuildSpm {
     final targets = targetGroups.values.expand((group) => group).toList();
     final provider =
         ArtifactProvider(environment: environment, userOptions: userOptions);
-    final artifacts = await provider.getArtifacts(targets);
+    final artifacts = await provider.getArtifacts(
+      targets,
+      artifactType: AritifactType.dylib,
+    );
 
     final crateName = environment.crateInfo.packageName;
+    final frameworkName = crateName.replaceAll('-', '_');
     final workDir =
         path.join(environment.targetTempDir, 'xcframework', crateName);
-    final libraries = <String>[];
+    final frameworks = <String>[];
 
+    final existingWorkDir = Directory(workDir);
+    if (existingWorkDir.existsSync()) {
+      existingWorkDir.deleteSync(recursive: true);
+    }
     Directory(workDir).createSync(recursive: true);
 
     for (final entry in targetGroups.entries) {
       final inputLibraries = entry.value.map((target) {
-        final staticLibraries = (artifacts[target] ?? [])
-            .where((artifact) => artifact.type == AritifactType.staticlib)
+        final dynamicLibraries = (artifacts[target] ?? [])
+            .where((artifact) => artifact.type == AritifactType.dylib)
             .toList();
-        if (staticLibraries.length != 1) {
+        if (dynamicLibraries.length != 1) {
           throw StateError(
-            'Expected one static library for $target. Swift Package Manager '
+            'Expected one dynamic library for $target. Swift Package Manager '
             'XCFramework builds require the Rust crate to declare '
-            'crate-type = ["staticlib"].',
+            'crate-type = ["cdylib"].',
           );
         }
-        return staticLibraries.single.path;
+        return dynamicLibraries.single.path;
       }).toList();
 
-      final output = path.join(workDir, 'lib$crateName-${entry.key}.a');
-      if (inputLibraries.length == 1) {
-        File(inputLibraries.single).copySync(output);
-      } else {
-        runCommand('lipo', [
-          '-create',
-          ...inputLibraries,
-          '-output',
-          output,
-        ]);
-      }
-      libraries.add(output);
+      final frameworkDir = path.join(
+        workDir,
+        entry.key,
+        '$frameworkName.framework',
+      );
+      Directory(frameworkDir).createSync(recursive: true);
+      final frameworkBinary = path.join(frameworkDir, frameworkName);
+      runCommand('lipo', [
+        '-create',
+        ...inputLibraries,
+        '-output',
+        frameworkBinary,
+      ]);
+      runCommand('install_name_tool', [
+        '-id',
+        '@rpath/$frameworkName.framework/$frameworkName',
+        frameworkBinary,
+      ]);
+      File(path.join(frameworkDir, 'Info.plist'))
+          .writeAsStringSync(createFrameworkInfoPlist(frameworkName));
+      frameworks.add(frameworkDir);
     }
 
     final outputDir = Environment.outputDir;
-    final output = path.join(outputDir, '$crateName.xcframework');
+    final output = path.join(outputDir, '$frameworkName.xcframework');
     Directory(outputDir).createSync(recursive: true);
     final existingOutput = Directory(output);
     if (existingOutput.existsSync()) {
@@ -86,7 +130,7 @@ class BuildSpm {
     }
     runCommand(
       'xcodebuild',
-      createXcframeworkArguments(libraries: libraries, output: output),
+      createXcframeworkArguments(frameworks: frameworks, output: output),
     );
   }
 }

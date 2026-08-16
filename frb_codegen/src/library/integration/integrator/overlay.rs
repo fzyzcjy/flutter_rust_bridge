@@ -325,10 +325,12 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::{filter_file, TemplateDirs};
+    use super::super::IntegrateConfig;
+    use super::{compute_replacements, execute_overlay_dir, filter_file, TemplateDirs};
     use crate::integration::utils::replace_file_content;
-    use std::collections::HashMap;
+    use crate::misc::{FvmInstallMode, IntegrationBackend, Template};
     use std::path::Path;
+    use std::{collections::HashMap, fs};
 
     #[test]
     fn test_swift_package_name_replacements_do_not_overlap() {
@@ -355,25 +357,33 @@ mod tests {
     }
 
     #[test]
-    fn test_cargokit_apple_templates_keep_swiftpm_and_cocoapods() {
-        for (template, manifest_path, podspec_path) in [
+    fn test_cargokit_apple_templates_use_flutter_swiftpm_layout() {
+        for (template, manifest_path, source_path, legacy_manifest_path, podspec_path) in [
             (
                 &TemplateDirs::CARGOKIT_APP,
+                "rust_builder/ios/REPLACE_ME_RUST_CRATE_NAME/Package.swift",
+                "rust_builder/ios/REPLACE_ME_RUST_CRATE_NAME/Sources/REPLACE_ME_RUST_CRATE_NAME/Empty.swift",
                 "rust_builder/ios/Package.swift",
                 "rust_builder/ios/REPLACE_ME_RUST_CRATE_NAME.podspec",
             ),
             (
                 &TemplateDirs::CARGOKIT_APP,
+                "rust_builder/macos/REPLACE_ME_RUST_CRATE_NAME/Package.swift",
+                "rust_builder/macos/REPLACE_ME_RUST_CRATE_NAME/Sources/REPLACE_ME_RUST_CRATE_NAME/Empty.swift",
                 "rust_builder/macos/Package.swift",
                 "rust_builder/macos/REPLACE_ME_RUST_CRATE_NAME.podspec",
             ),
             (
                 &TemplateDirs::CARGOKIT_PLUGIN,
+                "ios/REPLACE_ME_DART_PACKAGE_NAME/Package.swift",
+                "ios/REPLACE_ME_DART_PACKAGE_NAME/Sources/REPLACE_ME_DART_PACKAGE_NAME/Empty.swift",
                 "ios/Package.swift",
                 "ios/REPLACE_ME_DART_PACKAGE_NAME.podspec",
             ),
             (
                 &TemplateDirs::CARGOKIT_PLUGIN,
+                "macos/REPLACE_ME_DART_PACKAGE_NAME/Package.swift",
+                "macos/REPLACE_ME_DART_PACKAGE_NAME/Sources/REPLACE_ME_DART_PACKAGE_NAME/Empty.swift",
                 "macos/Package.swift",
                 "macos/REPLACE_ME_DART_PACKAGE_NAME.podspec",
             ),
@@ -391,7 +401,70 @@ mod tests {
 
             assert!(manifest.contains("FlutterFramework"));
             assert!(manifest.contains("RustLibrary"));
+            assert!(manifest.contains(".xcframework"));
+            assert!(template.get_file(source_path).is_some());
+            assert!(template.get_file(legacy_manifest_path).is_none());
             assert!(podspec.contains("s.script_phase"));
+        }
+    }
+
+    #[test]
+    fn test_cargokit_swiftpm_manifests_are_generated_at_flutter_discovery_paths() {
+        for (template, template_dir, manifest_path, source_path, legacy_manifest_path) in [
+            (
+                Template::App,
+                &TemplateDirs::CARGOKIT_APP,
+                "rust_builder/ios/rust_lib_my_plugin/Package.swift",
+                "rust_builder/ios/rust_lib_my_plugin/Sources/rust_lib_my_plugin/Empty.swift",
+                "rust_builder/ios/Package.swift",
+            ),
+            (
+                Template::Plugin,
+                &TemplateDirs::CARGOKIT_PLUGIN,
+                "ios/my_plugin/Package.swift",
+                "ios/my_plugin/Sources/my_plugin/Empty.swift",
+                "ios/Package.swift",
+            ),
+        ] {
+            let config = IntegrateConfig {
+                enable_write_lib: true,
+                enable_integration_test: false,
+                enable_dart_fix: false,
+                enable_dart_format: false,
+                enable_local_dependency: false,
+                rust_crate_name: Some("rust_lib_my_plugin".to_owned()),
+                rust_crate_dir: "rust".to_owned(),
+                template,
+                integration_backend: IntegrationBackend::Cargokit,
+                platforms: None,
+                fvm_install_mode: FvmInstallMode::Skip,
+            };
+            let replacements = compute_replacements(
+                &config,
+                "my_plugin",
+                "rust_lib_my_plugin",
+                "my-plugin",
+                "rust-lib-my-plugin",
+                false,
+            );
+            let output = tempfile::tempdir().unwrap();
+
+            execute_overlay_dir(
+                template_dir,
+                &replacements,
+                output.path(),
+                &config,
+                None,
+                false,
+            )
+            .unwrap();
+
+            assert!(output.path().join(manifest_path).is_file());
+            assert!(output.path().join(source_path).is_file());
+            assert!(!output.path().join(legacy_manifest_path).exists());
+            assert!(fs::read_to_string(output.path().join(manifest_path))
+                .unwrap()
+                .contains("FlutterFramework"));
         }
     }
 

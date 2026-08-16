@@ -1,15 +1,15 @@
 // swift-tools-version: 5.9
-// Before building with SwiftPM, run from rust_builder:
-// sh cargokit/build_spm.sh ../REPLACE_ME_RUST_CRATE_DIR ios release
+// Before building with SwiftPM, run from the package root:
+// sh cargokit/build_spm.sh rust macos/REPLACE_ME_DART_PACKAGE_NAME release
 import PackageDescription
 
 let package = Package(
-    name: "REPLACE_ME_RUST_CRATE_NAME",
-    platforms: [.iOS(.v13)],
+    name: "REPLACE_ME_DART_PACKAGE_NAME",
+    platforms: [.macOS(.v10_15)],
     products: [
         .library(
-            name: "REPLACE_ME_RUST_CRATE_HYPHENATED_NAME",
-            targets: ["REPLACE_ME_RUST_CRATE_NAME"]
+            name: "REPLACE_ME_DART_PACKAGE_HYPHENATED_NAME",
+            targets: ["REPLACE_ME_DART_PACKAGE_NAME"]
         ),
     ],
     dependencies: [
@@ -21,7 +21,7 @@ let package = Package(
             path: "REPLACE_ME_RUST_CRATE_NAME.xcframework"
         ),
         .target(
-            name: "REPLACE_ME_RUST_CRATE_NAME",
+            name: "REPLACE_ME_DART_PACKAGE_NAME",
             dependencies: [
                 "RustLibrary",
                 .product(name: "FlutterFramework", package: "FlutterFramework"),

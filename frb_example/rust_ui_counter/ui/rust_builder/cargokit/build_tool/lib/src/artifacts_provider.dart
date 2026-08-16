@@ -53,8 +53,14 @@ class ArtifactProvider {
   final BuildEnvironment environment;
   final CargokitUserOptions userOptions;
 
-  Future<Map<Target, List<Artifact>>> getArtifacts(List<Target> targets) async {
-    final result = await _getPrecompiledArtifacts(targets);
+  Future<Map<Target, List<Artifact>>> getArtifacts(
+    List<Target> targets, {
+    AritifactType? artifactType,
+  }) async {
+    final result = await _getPrecompiledArtifacts(
+      targets,
+      artifactType: artifactType,
+    );
 
     final pendingTargets = List.of(targets);
     pendingTargets.removeWhere((element) => result.containsKey(element));
@@ -69,21 +75,29 @@ class ArtifactProvider {
       builder.prepare(rustup);
       _log.info('Building ${environment.crateInfo.packageName} for $target');
       final targetDir = await builder.build();
-      // For local build accept both static and dynamic libraries.
-      final artifactNames = <String>{
-        ...getArtifactNames(
-          target: target,
-          libraryName: environment.crateInfo.packageName,
-          aritifactType: AritifactType.dylib,
-          remote: false,
-        ),
-        ...getArtifactNames(
-          target: target,
-          libraryName: environment.crateInfo.packageName,
-          aritifactType: AritifactType.staticlib,
-          remote: false,
-        )
-      };
+      // For local builds, accept both library types unless the caller needs a
+      // specific linkage model.
+      final artifactNames = artifactType == null
+          ? <String>{
+              ...getArtifactNames(
+                target: target,
+                libraryName: environment.crateInfo.packageName,
+                aritifactType: AritifactType.dylib,
+                remote: false,
+              ),
+              ...getArtifactNames(
+                target: target,
+                libraryName: environment.crateInfo.packageName,
+                aritifactType: AritifactType.staticlib,
+                remote: false,
+              )
+            }
+          : getArtifactNames(
+              target: target,
+              libraryName: environment.crateInfo.packageName,
+              aritifactType: artifactType,
+              remote: false,
+            ).toSet();
       final artifacts = artifactNames
           .map((artifactName) => Artifact(
                 path: path.join(targetDir, artifactName),
@@ -97,7 +111,9 @@ class ArtifactProvider {
   }
 
   Future<Map<Target, List<Artifact>>> _getPrecompiledArtifacts(
-      List<Target> targets) async {
+    List<Target> targets, {
+    AritifactType? artifactType,
+  }) async {
     if (userOptions.usePrecompiledBinaries == false) {
       _log.info('Precompiled binaries are disabled');
       return {};
@@ -123,6 +139,7 @@ class ArtifactProvider {
       final requiredArtifacts = getArtifactNames(
         target: target,
         libraryName: environment.crateInfo.packageName,
+        aritifactType: artifactType,
         remote: true,
       );
       final artifactsForTarget = <Artifact>[];
