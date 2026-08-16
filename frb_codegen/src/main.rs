@@ -5,21 +5,15 @@
 
 mod binary;
 
-use crate::binary::commands::{
-    Cli, Commands, CreateOrIntegrateCommandCommonArgs, GenerateCommandArgs,
-};
+use crate::binary::commands::{Cli, Commands, CreateOrIntegrateCommandCommonArgs};
 use crate::binary::commands_parser::{compute_codegen_config, compute_codegen_meta_config};
 use clap::Parser;
 use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
 use lib_flutter_rust_bridge_codegen::misc::FvmInstallMode;
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
-use log::{debug, error, warn};
-use std::env::set_current_dir;
-use std::fs::canonicalize;
-use std::io;
+use log::{debug, warn};
 use std::path::Path;
-use std::process::exit;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
@@ -32,13 +26,8 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
     debug!("cli={cli:?}");
     match cli.command {
         Commands::Generate(args) => {
-            if args.primary.switch_to_config_parent {
-                switch_to_config_parent_directory(&args)?;
-            }
-
             let meta_config = compute_codegen_meta_config(&args);
             let config = compute_codegen_config(args.primary)?;
-
             codegen::generate_with_fvm_install_mode(
                 config,
                 meta_config,
@@ -89,30 +78,14 @@ fn compute_rust_crate_dir(config: &CreateOrIntegrateCommandCommonArgs) -> String
     rust_crate_dir
 }
 
-fn switch_to_config_parent_directory(args: &GenerateCommandArgs) -> Result<(), io::Error> {
-    if let Some(config_path) = args.primary.config_file.as_deref() {
-        if let Some(parent) = canonicalize(Path::new(config_path))?.parent() {
-            set_current_dir(parent)?;
-        } else {
-            error!(
-                "Couldn't switch current working directory to the specified config path's parent"
-            );
-            exit(1);
-        }
-    }
-
-    Ok(())
-}
-
 #[cfg(test)]
 mod tests {
-    use crate::binary::commands::{Cli, GenerateCommandArgs};
+    use crate::binary::commands::Cli;
     use crate::binary::test_utils::set_cwd_test_fixture;
-    use crate::{main_given_cli, switch_to_config_parent_directory};
+    use crate::main_given_cli;
     use clap::Parser;
     use serial_test::serial;
-    use std::fs::{canonicalize, File};
-    use std::{env, fs};
+    use std::env;
 
     #[test]
     #[serial]
@@ -140,29 +113,4 @@ mod tests {
         main_given_cli(Cli::parse_from(vec!["", "generate"]))
     }
     // frb-coverage:ignore-end
-
-    #[test]
-    #[serial]
-    fn test_switch_to_config_parent_directory() -> anyhow::Result<()> {
-        let temp_directory = std::env::temp_dir();
-
-        let test_path = temp_directory.join("flutter_rust_bridge.yaml");
-
-        let mut generate_command_args = GenerateCommandArgs::default();
-        generate_command_args.primary.switch_to_config_parent = true;
-        generate_command_args.primary.config_file = Some(test_path.to_str().unwrap().to_string());
-
-        File::create(&test_path)?;
-
-        switch_to_config_parent_directory(&generate_command_args)?;
-
-        assert_eq!(
-            canonicalize(temp_directory)?,
-            canonicalize(std::env::current_dir()?)?
-        );
-
-        fs::remove_file(&test_path)?;
-
-        Ok(())
-    }
 }

@@ -14,10 +14,9 @@ use crate::codegen::{Config, ConfigDumpContent};
 use crate::utils::path_utils::{canonicalize_with_error_message, find_dart_package_dir};
 use anyhow::Result;
 use itertools::Itertools;
-use log::{debug, error};
+use log::debug;
 use std::fs;
 use std::path::PathBuf;
-use std::process::exit;
 use strum::IntoEnumIterator;
 
 mod controller_parser;
@@ -34,21 +33,13 @@ impl InternalConfig {
         };
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
-        // frb-coverage:ignore-start
-        let Some(rust_input) = config.rust_input.as_deref() else {
-            error!("Please provide `rust_input` (via config file or command line)");
-            exit(1);
-        };
-
-        let Some(dart_output) = config.dart_output.as_deref() else {
-            error!("Please provide `dart_output` (via config file or command line)");
-            exit(1);
-        };
-        // frb-coverage:ignore-end
+        let rust_input = (config.rust_input.clone())
+            .expect("Please provide `rust_input` (via config file or command line)");
+        let dart_output = (config.dart_output.clone())
+            .expect("Please provide `dart_output` (via config file or command line)");
 
         let migrated_rust_input =
-            rust_path_migrator::migrate_rust_input_config(config.rust_root.as_deref(), rust_input)?;
-
+            rust_path_migrator::migrate_rust_input_config(&config.rust_root, &rust_input)?;
         let RustInputInfo {
             rust_crate_dir,
             third_party_crate_names,

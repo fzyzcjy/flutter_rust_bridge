@@ -64,10 +64,6 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub config_file: Option<String>,
 
-    /// Switch to the specified config file parent directory.
-    #[arg(long)]
-    pub switch_to_config_parent: bool,
-
     /// Input Rust files, such as `crate::api,crate::hello::world,another-third-party-crate`
     #[arg(short, long)]
     pub rust_input: Option<String>,

@@ -17,7 +17,6 @@ use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use log::{debug, info};
-use std::borrow::Cow;
 use std::env;
 use std::path::Path;
 
@@ -45,14 +44,14 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let dart_package_name = get_dart_package_name(&dart_root)?;
     let rust_crate_name = config
         .rust_crate_name
-        .as_deref()
-        .map(Cow::Borrowed)
+        .clone()
         .unwrap_or(match &config.template {
-            Template::App => Cow::Owned(format!("rust_lib_{dart_package_name}")),
-            Template::Plugin => Cow::Borrowed(dart_package_name.as_str()),
+            Template::App => {
+                format!("rust_lib_{dart_package_name}")
+            }
+            Template::Plugin => dart_package_name.to_owned(),
         });
-
-    let platforms = resolve_flutter_platforms(config.template, config.platforms.as_deref())?;
+    let platforms = resolve_flutter_platforms(config.template, config.platforms.clone())?;
     let include_ohos = platform_list_contains_ohos(&platforms);
 
     info!("Overlay template onto project");
