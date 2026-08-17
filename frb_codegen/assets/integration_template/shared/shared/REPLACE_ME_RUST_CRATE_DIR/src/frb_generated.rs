@@ -248,7 +248,12 @@ mod io {
 
     // Section: boilerplate
 
-    flutter_rust_bridge::frb_generated_boilerplate_io!();
+    flutter_rust_bridge::frb_generated_boilerplate_io!(
+        frb_get_rust_content_hash = "frbgen_REPLACE_ME_DART_PACKAGE_NAME_frb_get_rust_content_hash",
+        frb_pde_ffi_dispatcher_primary = "frbgen_REPLACE_ME_DART_PACKAGE_NAME_frb_pde_ffi_dispatcher_primary",
+        frb_pde_ffi_dispatcher_sync = "frbgen_REPLACE_ME_DART_PACKAGE_NAME_frb_pde_ffi_dispatcher_sync",
+        frb_dart_fn_deliver_output = "frbgen_REPLACE_ME_DART_PACKAGE_NAME_frb_dart_fn_deliver_output",
+    );
 }
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
@@ -276,3 +281,51 @@ mod web {
 }
 #[cfg(target_family = "wasm")]
 pub use web::*;
+
+#[cfg(not(target_family = "wasm"))]
+unsafe extern "C" {
+    #[link_name = "store_dart_post_cobject"]
+    fn frb_link_store_dart_post_cobject();
+    #[link_name = "frb_dart_opaque_dart2rust_encode"]
+    fn frb_link_dart_opaque_dart2rust_encode();
+    #[link_name = "frb_dart_opaque_drop_thread_box_persistent_handle"]
+    fn frb_link_dart_opaque_drop_thread_box_persistent_handle();
+    #[link_name = "frb_dart_opaque_rust2dart_decode"]
+    fn frb_link_dart_opaque_rust2dart_decode();
+    #[link_name = "frb_rust_vec_u8_new"]
+    fn frb_link_rust_vec_u8_new();
+    #[link_name = "frb_rust_vec_u8_resize"]
+    fn frb_link_rust_vec_u8_resize();
+    #[link_name = "frb_rust_vec_u8_free"]
+    fn frb_link_rust_vec_u8_free();
+    #[link_name = "frb_init_frb_dart_api_dl"]
+    fn frb_link_init_frb_dart_api_dl();
+    #[link_name = "frb_free_wire_sync_rust2dart_dco"]
+    fn frb_link_free_wire_sync_rust2dart_dco();
+    #[link_name = "frb_free_wire_sync_rust2dart_sse"]
+    fn frb_link_free_wire_sync_rust2dart_sse();
+    #[link_name = "frb_create_shutdown_callback"]
+    fn frb_link_create_shutdown_callback();
+}
+
+#[cfg(not(target_family = "wasm"))]
+#[unsafe(export_name = "frbgen_REPLACE_ME_DART_PACKAGE_NAME_link_anchor")]
+pub extern "C" fn frb_link_anchor() {
+    std::hint::black_box([
+        frb_get_rust_content_hash as *const () as usize,
+        frb_pde_ffi_dispatcher_primary as *const () as usize,
+        frb_pde_ffi_dispatcher_sync as *const () as usize,
+        frb_dart_fn_deliver_output as *const () as usize,
+        frb_link_store_dart_post_cobject as *const () as usize,
+        frb_link_dart_opaque_dart2rust_encode as *const () as usize,
+        frb_link_dart_opaque_drop_thread_box_persistent_handle as *const () as usize,
+        frb_link_dart_opaque_rust2dart_decode as *const () as usize,
+        frb_link_rust_vec_u8_new as *const () as usize,
+        frb_link_rust_vec_u8_resize as *const () as usize,
+        frb_link_rust_vec_u8_free as *const () as usize,
+        frb_link_init_frb_dart_api_dl as *const () as usize,
+        frb_link_free_wire_sync_rust2dart_dco as *const () as usize,
+        frb_link_free_wire_sync_rust2dart_sse as *const () as usize,
+        frb_link_create_shutdown_callback as *const () as usize,
+    ]);
+}

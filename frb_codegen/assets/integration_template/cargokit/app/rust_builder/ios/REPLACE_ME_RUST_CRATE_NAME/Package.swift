@@ -5,41 +5,24 @@ import PackageDescription
 let packageDirectory = URL(fileURLWithPath: #filePath)
     .deletingLastPathComponent()
     .resolvingSymlinksInPath()
-let rustBuilderDirectory = packageDirectory
-    .deletingLastPathComponent()
-    .deletingLastPathComponent()
-let dartPackageDirectory = rustBuilderDirectory.deletingLastPathComponent()
-let environment = ProcessInfo.processInfo.environment
-let requestedConfiguration = (
-    environment["CARGOKIT_CONFIGURATION"] ??
-        environment["CONFIGURATION"] ??
-        "release"
-).lowercased()
-let cargokitConfiguration = requestedConfiguration.contains("debug") ? "debug" : "release"
 
-func buildRustLibrary() {
-    let process = Process()
-    process.executableURL = URL(fileURLWithPath: "/bin/sh")
-    process.arguments = [
-        rustBuilderDirectory.appendingPathComponent("cargokit/build_spm.sh").path,
-        dartPackageDirectory.appendingPathComponent("REPLACE_ME_RUST_CRATE_DIR").path,
-        packageDirectory.path,
-        cargokitConfiguration,
-    ]
-    process.currentDirectoryURL = dartPackageDirectory
-
-    do {
-        try process.run()
-    } catch {
-        fatalError("Failed to start Cargokit SwiftPM build: \(error)")
+func stablePathHash(_ value: String) -> String {
+    var hash: UInt64 = 14_695_981_039_346_656_037
+    for byte in value.utf8 {
+        hash ^= UInt64(byte)
+        hash &*= 1_099_511_628_211
     }
-    process.waitUntilExit()
-    guard process.terminationStatus == 0 else {
-        fatalError("Cargokit SwiftPM build failed with exit code \(process.terminationStatus)")
-    }
+    return String(format: "%016llx", hash)
 }
 
-buildRustLibrary()
+let archiveName = "lib" + "REPLACE_ME_RUST_CRATE_NAME"
+    .replacingOccurrences(of: "-", with: "_") + ".a"
+let archivePath = "/tmp/cargokit-spm/" +
+    stablePathHash(packageDirectory.path) + "/" + archiveName
+let archiveDirectory = URL(fileURLWithPath: archivePath)
+    .deletingLastPathComponent().path
+let archiveLibraryName = "REPLACE_ME_RUST_CRATE_NAME"
+    .replacingOccurrences(of: "-", with: "_")
 
 let package = Package(
     name: "REPLACE_ME_RUST_CRATE_NAME",
@@ -54,16 +37,30 @@ let package = Package(
         .package(name: "FlutterFramework", path: "../FlutterFramework"),
     ],
     targets: [
-        .binaryTarget(
-            name: "RustLibrary",
-            path: "REPLACE_ME_RUST_CRATE_NAME.xcframework"
-        ),
         .target(
             name: "REPLACE_ME_RUST_CRATE_NAME",
             dependencies: [
-                "RustLibrary",
+                "REPLACE_ME_RUST_CRATE_NAME_CargoKitLinker",
                 .product(name: "FlutterFramework", package: "FlutterFramework"),
             ]
+        ),
+        .target(
+            name: "REPLACE_ME_RUST_CRATE_NAME_CargoKitLinker",
+            path: "Sources/CargoKitLinker",
+            linkerSettings: [
+                .unsafeFlags([
+                    "-L", archiveDirectory,
+                    "-Xlinker", "-u",
+                    "-Xlinker", "_frbgen_REPLACE_ME_DART_PACKAGE_NAME_link_anchor",
+                    "-l" + archiveLibraryName,
+                ]),
+            ],
+            plugins: ["REPLACE_ME_RUST_CRATE_NAME_CargoKitPlugin"]
+        ),
+        .plugin(
+            name: "REPLACE_ME_RUST_CRATE_NAME_CargoKitPlugin",
+            capability: .buildTool(),
+            path: "Plugins/CargoKitPlugin"
         ),
     ]
 )

@@ -66,6 +66,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => 'REPLACE_ME_FRB_VERSION';
 
   @override
+  String get cSymbolPrefix => 'frbgen_REPLACE_ME_DART_PACKAGE_NAME_';
+
+  @override
   int get rustContentHash => -1918914929;
 
   static const kDefaultExternalLibraryLoaderConfig =

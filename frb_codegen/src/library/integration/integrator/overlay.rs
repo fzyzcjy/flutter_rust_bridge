@@ -325,6 +325,7 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
+    use super::super::backend_cargokit::copy_cargokit_to_swift_packages;
     use super::super::IntegrateConfig;
     use super::{compute_replacements, execute_overlay_dir, filter_file, TemplateDirs};
     use crate::integration::utils::replace_file_content;
@@ -358,11 +359,21 @@ mod tests {
 
     #[test]
     fn test_cargokit_apple_templates_use_flutter_swiftpm_layout() {
-        for (template, manifest_path, source_path, legacy_manifest_path, podspec_path) in [
+        for (
+            template,
+            manifest_path,
+            source_path,
+            plugin_path,
+            linker_source_path,
+            legacy_manifest_path,
+            podspec_path,
+        ) in [
             (
                 &TemplateDirs::CARGOKIT_APP,
                 "rust_builder/ios/REPLACE_ME_RUST_CRATE_NAME/Package.swift",
                 "rust_builder/ios/REPLACE_ME_RUST_CRATE_NAME/Sources/REPLACE_ME_RUST_CRATE_NAME/Empty.swift",
+                "rust_builder/ios/REPLACE_ME_RUST_CRATE_NAME/Plugins/CargoKitPlugin/plugin.swift",
+                "rust_builder/ios/REPLACE_ME_RUST_CRATE_NAME/Sources/CargoKitLinker/Empty.c",
                 "rust_builder/ios/Package.swift",
                 "rust_builder/ios/REPLACE_ME_RUST_CRATE_NAME.podspec",
             ),
@@ -370,6 +381,8 @@ mod tests {
                 &TemplateDirs::CARGOKIT_APP,
                 "rust_builder/macos/REPLACE_ME_RUST_CRATE_NAME/Package.swift",
                 "rust_builder/macos/REPLACE_ME_RUST_CRATE_NAME/Sources/REPLACE_ME_RUST_CRATE_NAME/Empty.swift",
+                "rust_builder/macos/REPLACE_ME_RUST_CRATE_NAME/Plugins/CargoKitPlugin/plugin.swift",
+                "rust_builder/macos/REPLACE_ME_RUST_CRATE_NAME/Sources/CargoKitLinker/Empty.c",
                 "rust_builder/macos/Package.swift",
                 "rust_builder/macos/REPLACE_ME_RUST_CRATE_NAME.podspec",
             ),
@@ -377,6 +390,8 @@ mod tests {
                 &TemplateDirs::CARGOKIT_PLUGIN,
                 "ios/REPLACE_ME_DART_PACKAGE_NAME/Package.swift",
                 "ios/REPLACE_ME_DART_PACKAGE_NAME/Sources/REPLACE_ME_DART_PACKAGE_NAME/Empty.swift",
+                "ios/REPLACE_ME_DART_PACKAGE_NAME/Plugins/CargoKitPlugin/plugin.swift",
+                "ios/REPLACE_ME_DART_PACKAGE_NAME/Sources/CargoKitLinker/Empty.c",
                 "ios/Package.swift",
                 "ios/REPLACE_ME_DART_PACKAGE_NAME.podspec",
             ),
@@ -384,6 +399,8 @@ mod tests {
                 &TemplateDirs::CARGOKIT_PLUGIN,
                 "macos/REPLACE_ME_DART_PACKAGE_NAME/Package.swift",
                 "macos/REPLACE_ME_DART_PACKAGE_NAME/Sources/REPLACE_ME_DART_PACKAGE_NAME/Empty.swift",
+                "macos/REPLACE_ME_DART_PACKAGE_NAME/Plugins/CargoKitPlugin/plugin.swift",
+                "macos/REPLACE_ME_DART_PACKAGE_NAME/Sources/CargoKitLinker/Empty.c",
                 "macos/Package.swift",
                 "macos/REPLACE_ME_DART_PACKAGE_NAME.podspec",
             ),
@@ -400,12 +417,18 @@ mod tests {
                 .unwrap();
 
             assert!(manifest.contains("FlutterFramework"));
-            assert!(manifest.contains("RustLibrary"));
-            assert!(manifest.contains(".xcframework"));
-            assert!(manifest.contains("let process = Process()"));
-            assert!(manifest.contains("cargokit/build_spm.sh"));
-            assert!(manifest.contains("buildRustLibrary()"));
+            assert!(manifest.contains("CargoKitLinker"));
+            assert!(manifest.contains("CargoKitPlugin"));
+            assert!(!manifest.contains("-all_load"));
+            assert!(manifest.contains("_frbgen_REPLACE_ME_DART_PACKAGE_NAME_link_anchor"));
+            assert!(manifest.contains("\"-l\" + archiveLibraryName"));
+            assert!(manifest.contains("/tmp/cargokit-spm/"));
+            assert!(!manifest.contains("binaryTarget"));
+            assert!(!manifest.contains(".xcframework"));
+            assert!(!manifest.contains("Process()"));
             assert!(template.get_file(source_path).is_some());
+            assert!(template.get_file(plugin_path).is_some());
+            assert!(template.get_file(linker_source_path).is_some());
             assert!(template.get_file(legacy_manifest_path).is_none());
             assert!(podspec.contains("s.script_phase"));
         }
@@ -413,12 +436,22 @@ mod tests {
 
     #[test]
     fn test_cargokit_swiftpm_manifests_are_generated_at_flutter_discovery_paths() {
-        for (template, template_dir, manifest_path, source_path, legacy_manifest_path) in [
+        for (
+            template,
+            template_dir,
+            manifest_path,
+            source_path,
+            plugin_path,
+            package_cargokit_path,
+            legacy_manifest_path,
+        ) in [
             (
                 Template::App,
                 &TemplateDirs::CARGOKIT_APP,
                 "rust_builder/ios/rust_lib_my_plugin/Package.swift",
                 "rust_builder/ios/rust_lib_my_plugin/Sources/rust_lib_my_plugin/Empty.swift",
+                "rust_builder/ios/rust_lib_my_plugin/Plugins/CargoKitPlugin/plugin.swift",
+                "rust_builder/ios/rust_lib_my_plugin/cargokit/build_spm.sh",
                 "rust_builder/ios/Package.swift",
             ),
             (
@@ -426,6 +459,8 @@ mod tests {
                 &TemplateDirs::CARGOKIT_PLUGIN,
                 "ios/my_plugin/Package.swift",
                 "ios/my_plugin/Sources/my_plugin/Empty.swift",
+                "ios/my_plugin/Plugins/CargoKitPlugin/plugin.swift",
+                "ios/my_plugin/cargokit/build_spm.sh",
                 "ios/Package.swift",
             ),
         ] {
@@ -462,13 +497,57 @@ mod tests {
             )
             .unwrap();
 
+            copy_cargokit_to_swift_packages(
+                output.path(),
+                &template,
+                "my_plugin",
+                "rust_lib_my_plugin",
+            )
+            .unwrap();
+
             assert!(output.path().join(manifest_path).is_file());
             assert!(output.path().join(source_path).is_file());
+            assert!(output.path().join(plugin_path).is_file());
+            assert!(output.path().join(package_cargokit_path).is_file());
             assert!(!output.path().join(legacy_manifest_path).exists());
-            assert!(fs::read_to_string(output.path().join(manifest_path))
-                .unwrap()
-                .contains("cargokit/build_spm.sh"));
+            let manifest = fs::read_to_string(output.path().join(manifest_path)).unwrap();
+            let target_name_prefix = match template {
+                Template::App => "rust_lib_my_plugin",
+                Template::Plugin => "my_plugin",
+            };
+            assert!(manifest.contains(&format!("{target_name_prefix}_CargoKitPlugin")));
+            assert!(manifest.contains(&format!("{target_name_prefix}_CargoKitLinker")));
+            assert!(manifest.contains("path: \"Plugins/CargoKitPlugin\""));
+            assert!(manifest.contains("path: \"Sources/CargoKitLinker\""));
         }
+    }
+
+    #[test]
+    fn test_shared_template_uses_package_prefixed_static_link_symbols() {
+        let rust_generated = TemplateDirs::SHARED_SHARED
+            .get_file("REPLACE_ME_RUST_CRATE_DIR/src/frb_generated.rs")
+            .unwrap()
+            .contents_utf8()
+            .unwrap();
+        let dart_generated = TemplateDirs::SHARED_SHARED
+            .get_file("lib/src/rust/frb_generated.dart")
+            .unwrap()
+            .contents_utf8()
+            .unwrap();
+
+        for suffix in [
+            "frb_get_rust_content_hash",
+            "frb_pde_ffi_dispatcher_primary",
+            "frb_pde_ffi_dispatcher_sync",
+            "frb_dart_fn_deliver_output",
+            "link_anchor",
+        ] {
+            assert!(
+                rust_generated.contains(&format!("frbgen_REPLACE_ME_DART_PACKAGE_NAME_{suffix}"))
+            );
+        }
+        assert!(dart_generated
+            .contains("String get cSymbolPrefix => 'frbgen_REPLACE_ME_DART_PACKAGE_NAME_'"));
     }
 
     #[test]

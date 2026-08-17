@@ -56,6 +56,7 @@ abstract class BaseEntrypoint<
     handler ??= BaseHandler();
     final generalizedFrbRustBinding = GeneralizedFrbRustBinding(
       externalLibrary,
+      cSymbolPrefix: cSymbolPrefix,
     );
     _sanityCheckContentHash(generalizedFrbRustBinding);
     final portManager = PortManager(generalizedFrbRustBinding, handler);
@@ -157,6 +158,10 @@ abstract class BaseEntrypoint<
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   String get codegenVersion;
+
+  /// Prefix applied to C symbols generated for this package.
+  @protected
+  String get cSymbolPrefix => '';
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected

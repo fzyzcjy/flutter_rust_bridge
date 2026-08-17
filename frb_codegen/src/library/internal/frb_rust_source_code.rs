@@ -51,6 +51,40 @@ fn generate_target(target: Target) -> String {
     ]
     .concat();
     let body = funcs.iter().map(|f| f.generate("")).join("\n");
+    let prefixed_arm = (target == Target::Io)
+        .then(|| {
+            let params = funcs
+                .iter()
+                .map(|f| {
+                    format!(
+                        "{} = ${}_link_name:literal",
+                        f.partial_func_name, f.partial_func_name
+                    )
+                })
+                .join(",\n");
+            let prefixed_body = funcs
+                .iter()
+                .map(|f| {
+                    f.generate("").replace(
+                        "#[unsafe(no_mangle)]",
+                        &format!(
+                            "#[unsafe(export_name = ${}_link_name)]",
+                            f.partial_func_name
+                        ),
+                    )
+                })
+                .join("\n");
+            format!(
+                r#"
+                (
+                    {params},
+                ) => {{
+                    {prefixed_body}
+                }};
+            "#
+            )
+        })
+        .unwrap_or_default();
 
     format!(
         r#"
@@ -60,6 +94,7 @@ fn generate_target(target: Target) -> String {
                 () => {{
                     {body}
                 }};
+                {prefixed_arm}
             }}
         "#
     )

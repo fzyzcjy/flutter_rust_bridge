@@ -32,15 +32,86 @@ pub(super) fn generate(
             .collect(),
     });
 
+    let extern_funcs = compute_extern_funcs(merged_code.clone());
     let text_acc = generate_text_from_merged_code(
         config,
         &(merged_code.clone()).map(|code, _| code.all_code(&config.c_symbol_prefix)),
     )?;
-    let text = merge_rust_acc_into_one_file(text_acc);
-
-    let extern_funcs = compute_extern_funcs(merged_code);
+    let text = merge_rust_acc_into_one_file(text_acc)
+        + &generate_static_link_anchor(config, &extern_funcs);
 
     Ok(WireRustOutputText { text, extern_funcs })
+}
+
+fn generate_static_link_anchor(
+    config: &GeneratorWireRustInternalConfig,
+    extern_funcs: &[ExternFunc],
+) -> String {
+    let referenced_functions = [
+        "frb_get_rust_content_hash".to_owned(),
+        "frb_pde_ffi_dispatcher_primary".to_owned(),
+        "frb_pde_ffi_dispatcher_sync".to_owned(),
+        "frb_dart_fn_deliver_output".to_owned(),
+        "frb_link_store_dart_post_cobject".to_owned(),
+        "frb_link_dart_opaque_dart2rust_encode".to_owned(),
+        "frb_link_dart_opaque_drop_thread_box_persistent_handle".to_owned(),
+        "frb_link_dart_opaque_rust2dart_decode".to_owned(),
+        "frb_link_rust_vec_u8_new".to_owned(),
+        "frb_link_rust_vec_u8_resize".to_owned(),
+        "frb_link_rust_vec_u8_free".to_owned(),
+        "frb_link_init_frb_dart_api_dl".to_owned(),
+        "frb_link_free_wire_sync_rust2dart_dco".to_owned(),
+        "frb_link_free_wire_sync_rust2dart_sse".to_owned(),
+        "frb_link_create_shutdown_callback".to_owned(),
+    ]
+    .into_iter()
+    .chain(
+        extern_funcs
+            .iter()
+            .filter(|func| func.target == Target::Io)
+            .map(|func| func.func_name(&config.c_symbol_prefix)),
+    )
+    .map(|name| format!("{name} as *const () as usize"))
+    .join(",\n");
+
+    format!(
+        r#"
+        #[cfg(not(target_family = "wasm"))]
+        unsafe extern "C" {{
+            #[link_name = "store_dart_post_cobject"]
+            fn frb_link_store_dart_post_cobject();
+            #[link_name = "frb_dart_opaque_dart2rust_encode"]
+            fn frb_link_dart_opaque_dart2rust_encode();
+            #[link_name = "frb_dart_opaque_drop_thread_box_persistent_handle"]
+            fn frb_link_dart_opaque_drop_thread_box_persistent_handle();
+            #[link_name = "frb_dart_opaque_rust2dart_decode"]
+            fn frb_link_dart_opaque_rust2dart_decode();
+            #[link_name = "frb_rust_vec_u8_new"]
+            fn frb_link_rust_vec_u8_new();
+            #[link_name = "frb_rust_vec_u8_resize"]
+            fn frb_link_rust_vec_u8_resize();
+            #[link_name = "frb_rust_vec_u8_free"]
+            fn frb_link_rust_vec_u8_free();
+            #[link_name = "frb_init_frb_dart_api_dl"]
+            fn frb_link_init_frb_dart_api_dl();
+            #[link_name = "frb_free_wire_sync_rust2dart_dco"]
+            fn frb_link_free_wire_sync_rust2dart_dco();
+            #[link_name = "frb_free_wire_sync_rust2dart_sse"]
+            fn frb_link_free_wire_sync_rust2dart_sse();
+            #[link_name = "frb_create_shutdown_callback"]
+            fn frb_link_create_shutdown_callback();
+        }}
+
+        #[cfg(not(target_family = "wasm"))]
+        #[unsafe(export_name = "{prefix}link_anchor")]
+        pub extern "C" fn frb_link_anchor() {{
+            std::hint::black_box([
+                {referenced_functions}
+            ]);
+        }}
+        "#,
+        prefix = config.c_symbol_prefix,
+    )
 }
 
 fn compute_extern_funcs(merged_code: Acc<WireRustOutputCode>) -> Vec<ExternFunc> {

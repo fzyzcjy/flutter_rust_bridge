@@ -18,9 +18,16 @@ class GeneralizedFrbRustBinding {
   static _ShutdownWatcher? _shutdownWatcher;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
-    : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary),
-      _externalLibraryDebugInfo = externalLibrary.debugInfo;
+  GeneralizedFrbRustBinding(
+    ExternalLibrary externalLibrary, {
+    String cSymbolPrefix = '',
+  }) : _binding = MultiPackageCBinding.fromLookup(
+         _PrefixedLibraryLookup(
+           externalLibrary.ffiDynamicLibrary,
+           cSymbolPrefix,
+         ).lookup,
+       ),
+       _externalLibraryDebugInfo = externalLibrary.debugInfo;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {
@@ -150,6 +157,27 @@ class GeneralizedFrbRustBinding {
         'Original stack trace: $s',
       );
     }
+  }
+}
+
+class _PrefixedLibraryLookup {
+  static const _packageSymbols = {
+    'frb_get_rust_content_hash',
+    'frb_pde_ffi_dispatcher_primary',
+    'frb_pde_ffi_dispatcher_sync',
+    'frb_dart_fn_deliver_output',
+  };
+
+  final ffi.DynamicLibrary dynamicLibrary;
+  final String prefix;
+
+  const _PrefixedLibraryLookup(this.dynamicLibrary, this.prefix);
+
+  ffi.Pointer<T> lookup<T extends ffi.NativeType>(String symbolName) {
+    final effectiveName = _packageSymbols.contains(symbolName)
+        ? '$prefix$symbolName'
+        : symbolName;
+    return dynamicLibrary.lookup<T>(effectiveName);
   }
 }
 

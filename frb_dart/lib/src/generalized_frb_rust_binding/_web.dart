@@ -12,8 +12,10 @@ class GeneralizedFrbRustBinding {
   final String _wasmBindgenName;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
-    : _wasmBindgenName = externalLibrary.wasmBindgenName;
+  GeneralizedFrbRustBinding(
+    ExternalLibrary externalLibrary, {
+    String cSymbolPrefix = '',
+  }) : _wasmBindgenName = externalLibrary.wasmBindgenName;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {}

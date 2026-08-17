@@ -3,7 +3,8 @@ mod overlay;
 mod pubspec;
 
 use self::backend_cargokit::{
-    exclude_cargokit_from_outer_analyzer, modify_permissions, setup_cargokit_dependencies,
+    copy_cargokit_to_swift_packages, exclude_cargokit_from_outer_analyzer, modify_permissions,
+    setup_cargokit_dependencies,
 };
 use self::overlay::{compute_replacements, execute_overlay_templates};
 pub(crate) use self::pubspec::pub_add_dependency_frb;
@@ -80,6 +81,13 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     if config.integration_backend == IntegrationBackend::Cargokit {
         info!("Modify file permissions");
         modify_permissions(&dart_root, &config.template)?;
+
+        copy_cargokit_to_swift_packages(
+            &dart_root,
+            &config.template,
+            &dart_package_name,
+            &rust_crate_name,
+        )?;
     }
 
     info!("Add pub dependencies");
@@ -97,6 +105,14 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         setup_cargokit_dependencies(&dart_root, &config.template, config.fvm_install_mode)?;
 
         exclude_cargokit_from_outer_analyzer(&dart_root, &config.template)?;
+
+        if platforms
+            .split(',')
+            .any(|platform| matches!(platform.trim(), "ios" | "macos"))
+        {
+            info!("Fetch Rust dependencies before sandboxed SwiftPM builds");
+            cargo_fetch(&dart_root.join(&config.rust_crate_dir))?;
+        }
     }
 
     if config.enable_dart_fix {

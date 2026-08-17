@@ -53,6 +53,7 @@ pub(crate) fn generate(
             context.config.default_rust_opaque_codec,
             content_hash,
             &context.config.rust_preamble,
+            &context.config.c_symbol_prefix,
         ),
         wire_funcs: (context.mir_pack.funcs_with_impl().iter())
             .map(|f| generate_wire_func(f, context))
@@ -176,6 +177,7 @@ fn generate_boilerplate(
     default_rust_opaque_codec: RustOpaqueCodecMode,
     content_hash: i32,
     rust_preamble: &str,
+    c_symbol_prefix: &str,
 ) -> Acc<Vec<WireRustOutputCode>> {
     let rust_preamble_formatted = if rust_preamble.is_empty() {
         "".to_owned()
@@ -185,17 +187,25 @@ fn generate_boilerplate(
 
     Acc::new(|target| {
         match target {
-            TargetOrCommon::Io | TargetOrCommon::Web => {
+            TargetOrCommon::Io => {
                 vec![
                     // generate_boilerplate_frb_initialize_rust(target).into(),
                     // generate_boilerplate_dart_fn_deliver_output(target).into(),
-                    format!(
-                        "{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate_{}!();",
-                        target.to_string().to_lowercase()
-                    )
+                    format!(r#"
+                        {rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate_io!(
+                            frb_get_rust_content_hash = "{c_symbol_prefix}frb_get_rust_content_hash",
+                            frb_pde_ffi_dispatcher_primary = "{c_symbol_prefix}frb_pde_ffi_dispatcher_primary",
+                            frb_pde_ffi_dispatcher_sync = "{c_symbol_prefix}frb_pde_ffi_dispatcher_sync",
+                            frb_dart_fn_deliver_output = "{c_symbol_prefix}frb_dart_fn_deliver_output",
+                        );
+                    "#)
                     .into(),
                 ]
             }
+            TargetOrCommon::Web => vec![format!(
+                "{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate_web!();"
+            )
+            .into()],
             TargetOrCommon::Common => vec![format!(
                 r#"{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate!(
                     default_stream_sink_codec = {default_stream_sink_codec}Codec,

@@ -1,1 +1,1 @@
-// The Rust dynamic framework is linked through the binary target.
+// Rust is built by CargoKitPlugin and linked through CargoKitLinker.

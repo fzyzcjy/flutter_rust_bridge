@@ -5,6 +5,56 @@ use itertools::Itertools;
 use std::fs;
 use std::path::Path;
 
+pub(super) fn copy_cargokit_to_swift_packages(
+    dart_root: &Path,
+    template: &Template,
+    dart_package_name: &str,
+    rust_crate_name: &str,
+) -> Result<()> {
+    let (source, package_roots) = match template {
+        Template::App => {
+            let rust_builder = dart_root.join("rust_builder");
+            (
+                rust_builder.join("cargokit"),
+                vec![
+                    rust_builder.join("ios").join(rust_crate_name),
+                    rust_builder.join("macos").join(rust_crate_name),
+                ],
+            )
+        }
+        Template::Plugin => (
+            dart_root.join("cargokit"),
+            vec![
+                dart_root.join("ios").join(dart_package_name),
+                dart_root.join("macos").join(dart_package_name),
+            ],
+        ),
+    };
+
+    for package_root in package_roots {
+        if package_root.join("Package.swift").is_file() {
+            copy_directory_contents(&source, &package_root.join("cargokit"))?;
+        }
+    }
+    Ok(())
+}
+
+fn copy_directory_contents(source: &Path, destination: &Path) -> Result<()> {
+    fs::create_dir_all(destination)?;
+    for entry in fs::read_dir(source)? {
+        let entry = entry?;
+        let source_path = entry.path();
+        let destination_path = destination.join(entry.file_name());
+        if entry.file_type()?.is_dir() {
+            copy_directory_contents(&source_path, &destination_path)?;
+        } else {
+            fs::copy(&source_path, &destination_path)?;
+            fs::set_permissions(&destination_path, fs::metadata(&source_path)?.permissions())?;
+        }
+    }
+    Ok(())
+}
+
 pub(super) fn modify_permissions(dart_root: &Path, template: &Template) -> Result<()> {
     #[allow(unused_variables)] // unused when in windows
     let dir_cargokit = match template {
@@ -138,7 +188,8 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 #[cfg(all(test, unix))]
 mod tests {
     use super::{
-        add_analyzer_exclude, exclude_cargokit_from_outer_analyzer, set_permission_executable,
+        add_analyzer_exclude, copy_cargokit_to_swift_packages,
+        exclude_cargokit_from_outer_analyzer, set_permission_executable,
     };
     use crate::misc::Template;
     use std::fs;
@@ -165,6 +216,42 @@ mod tests {
 
         let permissions = fs::metadata(&script_path).unwrap().permissions();
         assert_eq!(permissions.mode() & 0o777, 0o755);
+    }
+
+    #[test]
+    fn test_copy_cargokit_to_plugin_swift_packages() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        fs::create_dir_all(temp_dir.path().join("cargokit")).unwrap();
+        let source_script = temp_dir.path().join("cargokit/build_spm.sh");
+        fs::write(&source_script, "#!/bin/sh\n").unwrap();
+        #[cfg(unix)]
+        fs::set_permissions(&source_script, PermissionsExt::from_mode(0o755)).unwrap();
+        for platform in ["ios", "macos"] {
+            let package = temp_dir.path().join(platform).join("my_plugin");
+            fs::create_dir_all(&package).unwrap();
+            fs::write(package.join("Package.swift"), "").unwrap();
+        }
+
+        copy_cargokit_to_swift_packages(
+            temp_dir.path(),
+            &Template::Plugin,
+            "my_plugin",
+            "rust_lib_my_plugin",
+        )
+        .unwrap();
+
+        for platform in ["ios", "macos"] {
+            let copied_script = temp_dir
+                .path()
+                .join(platform)
+                .join("my_plugin/cargokit/build_spm.sh");
+            assert!(copied_script.is_file());
+            #[cfg(unix)]
+            assert_eq!(
+                fs::metadata(copied_script).unwrap().permissions().mode() & 0o777,
+                0o755
+            );
+        }
     }
 
     #[test]

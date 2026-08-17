@@ -75,8 +75,14 @@ ExternalLibrary loadExternalLibraryRaw({
       (debugInfo) => _tryOpen(
         'rust_builder.framework/rust_builder',
         debugInfo,
-        (debugInfo) =>
-            ExternalLibrary.open('$stem.framework/$stem', debugInfo: debugInfo),
+        (debugInfo) => _tryOpen(
+          '$stem.framework/$stem',
+          debugInfo,
+          (debugInfo) => ExternalLibrary.process(
+            iKnowHowToUseIt: true,
+            debugInfo: debugInfo,
+          ),
+        ),
       ),
     );
   }

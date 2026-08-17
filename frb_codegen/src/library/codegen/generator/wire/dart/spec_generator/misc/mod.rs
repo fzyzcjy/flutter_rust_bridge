@@ -203,6 +203,9 @@ fn generate_boilerplate(
                   String get codegenVersion => '{codegen_version}';
 
                   @override
+                  String get cSymbolPrefix => '{c_symbol_prefix}';
+
+                  @override
                   int get rustContentHash => {rust_content_hash};
 
                   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
@@ -216,7 +219,8 @@ fn generate_boilerplate(
                 stem = context.config.default_external_library_loader.stem,
                 io_directory = context.config.default_external_library_loader.io_directory,
                 web_prefix = context.config.default_external_library_loader.web_prefix,
-                wasm_bindgen_name = context.config.default_external_library_loader.wasm_bindgen_name
+                wasm_bindgen_name = context.config.default_external_library_loader.wasm_bindgen_name,
+                c_symbol_prefix = context.config.c_symbol_prefix,
             ),
             body: "".to_owned(),
             ..Default::default()
