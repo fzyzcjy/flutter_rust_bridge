@@ -44398,7 +44398,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             argNames: ["id"],
           );
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(
           FutureOr<InternetAddress> Function(InternetAddress) raw) {
     return (callId, rawArg0) async {
@@ -44427,14 +44427,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
           FutureOr<void> Function(Object) raw) {
     return (callId, rawArg0) async {
@@ -44460,14 +44460,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_String_Output_String_AnyhowException(
           FutureOr<String> Function(String) raw) {
     return (callId, rawArg0) async {
@@ -44493,14 +44493,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_String_Output_unit_AnyhowException(
           FutureOr<void> Function(String) raw) {
     return (callId, rawArg0) async {
@@ -44526,14 +44526,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic, dynamic)
+  Future<void> Function(dynamic, dynamic, dynamic)
       encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit_AnyhowException(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
               raw) {
@@ -44562,14 +44562,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic, dynamic)
+  Future<void> Function(dynamic, dynamic, dynamic)
       encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit_AnyhowException(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsync)
@@ -44599,7 +44599,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
@@ -44607,7 +44607,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   Future<void> Function(
-    int,
+    dynamic,
   ) encode_DartFn_Inputs__Output_DartOpaque_AnyhowException(
       FutureOr<Object> Function() raw) {
     return (
@@ -44633,7 +44633,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
@@ -44641,7 +44641,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   Future<void> Function(
-    int,
+    dynamic,
   ) encode_DartFn_Inputs__Output_String_AnyhowException(
       FutureOr<String> Function() raw) {
     return (
@@ -44667,7 +44667,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
@@ -44675,7 +44675,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   Future<void> Function(
-    int,
+    dynamic,
   ) encode_DartFn_Inputs__Output_unit_AnyhowException(
       FutureOr<void> Function() raw) {
     return (
@@ -44701,14 +44701,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinNormal> Function(
                   DemoStructForRustCallDartTwinNormal)
@@ -44738,14 +44738,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async_AnyhowException(
           FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
                   DemoStructForRustCallDartTwinRustAsync)
@@ -44775,7 +44775,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
@@ -45519,7 +45519,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AnyhowException(raw as String);
+    return AnyhowException(dcoDecodeString(raw));
   }
 
   @protected
@@ -45671,8 +45671,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxAnyMyDartTypeRenameImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return BoxAnyMyDartTypeRenameImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45680,7 +45679,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxFnStringStringImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BoxFnStringStringImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45688,7 +45687,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxMyTraitTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BoxMyTraitTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45696,8 +45695,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxMyTraitTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return BoxMyTraitTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45705,7 +45703,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxMyTraitTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BoxMyTraitTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45714,7 +45712,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConstructorOpaqueStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45723,7 +45721,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConstructorOpaqueSyncStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45731,8 +45729,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return CustomHasherTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return CustomHasherTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45741,7 +45738,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return CustomHasherTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45749,7 +45746,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return CustomHasherTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return CustomHasherTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45758,7 +45755,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return DeliberateFailSanityCheckTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45766,7 +45763,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DroppableTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45774,8 +45771,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return DroppableTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45783,7 +45779,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DroppableTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45792,7 +45788,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45801,7 +45797,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45810,7 +45806,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45819,7 +45815,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ItemContainerSolutionOneTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45827,8 +45823,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtOwnedStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return LtOwnedStructTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45836,7 +45831,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtOwnedStructTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtOwnedStructTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45844,7 +45839,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtSubStructTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtSubStructTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45852,7 +45847,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtSubStructTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtSubStructTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45860,8 +45855,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyAudioParamTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return MyAudioParamTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45870,7 +45864,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyImplTraitWithSelfTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45879,7 +45873,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyImplTraitWithSelfTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45887,7 +45881,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyNodeTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MyNodeTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45896,7 +45890,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyStructWithTryFromTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45905,7 +45899,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleEnumTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45914,7 +45908,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleEnumTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45923,7 +45917,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleEnumTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45932,7 +45926,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45941,7 +45935,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -45949,8 +45943,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45958,7 +45951,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueItemTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueItemTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45966,7 +45959,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueOneTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueOneTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45974,8 +45967,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueOneTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return OpaqueOneTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45983,7 +45975,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueOneTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueOneTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -45992,7 +45984,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return OpaqueStructWithDartCodeTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46000,7 +45992,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueTwoTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueTwoTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46008,8 +46000,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueTwoTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return OpaqueTwoTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46017,7 +46008,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueTwoTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueTwoTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46026,7 +46017,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46034,7 +46025,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimpleLoggerImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return SimpleLoggerImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46043,7 +46034,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return SimpleOpaqueExternalStructWithMethodImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46052,7 +46043,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StaticGetterOnlyTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46061,7 +46052,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StaticGetterOnlyTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46070,7 +46061,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StaticGetterOnlyTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46079,7 +46070,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructInMiscNoTwinExampleAImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46088,7 +46079,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructInMiscNoTwinExampleBImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46097,7 +46088,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitForDynTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46106,7 +46097,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46115,7 +46106,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46124,7 +46115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitForDynTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46133,7 +46124,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46142,7 +46133,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46151,7 +46142,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46160,7 +46151,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46169,7 +46160,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46178,7 +46169,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithImplBlockInMultiFileImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46187,7 +46178,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithRustAutoOpaqueFieldWithManyDeriveInnerImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46196,7 +46187,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46204,7 +46195,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return TypeForIgnoreImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46212,7 +46203,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return TypeForIgnoreAllImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46221,7 +46212,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConstructorOpaqueStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46230,7 +46221,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConstructorOpaqueSyncStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46239,7 +46230,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return DeliberateFailSanityCheckTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46247,7 +46238,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DroppableTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46255,8 +46246,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return DroppableTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46264,7 +46254,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DroppableTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46273,7 +46263,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ItemContainerSolutionOneTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46281,7 +46271,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtSubStructTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtSubStructTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46289,7 +46279,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtSubStructTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtSubStructTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46298,7 +46288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46307,7 +46297,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46315,8 +46305,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46325,7 +46314,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46334,7 +46323,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitForDynTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46343,7 +46332,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46352,7 +46341,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46361,7 +46350,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitForDynTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46370,7 +46359,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46379,7 +46368,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46388,7 +46377,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46397,7 +46386,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46406,7 +46395,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46415,7 +46404,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46423,7 +46412,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return TypeForIgnoreAllImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46432,7 +46421,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConstructorOpaqueStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46441,7 +46430,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConstructorOpaqueSyncStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46450,7 +46439,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return DeliberateFailSanityCheckTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46458,7 +46447,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DroppableTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46466,8 +46455,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return DroppableTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46475,7 +46463,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DroppableTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46484,7 +46472,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ItemContainerSolutionOneTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46492,8 +46480,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtOwnedStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return LtOwnedStructTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46501,7 +46488,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtOwnedStructTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtOwnedStructTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46509,7 +46496,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtSubStructTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtSubStructTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46517,7 +46504,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtSubStructTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtSubStructTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46525,8 +46512,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyAudioParamTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return MyAudioParamTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46535,7 +46521,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyImplTraitWithSelfTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46544,7 +46530,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyImplTraitWithSelfTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46552,7 +46538,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyNodeTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MyNodeTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46561,7 +46547,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyStructWithTryFromTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46570,7 +46556,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleEnumTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46579,7 +46565,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleEnumTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46588,7 +46574,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleEnumTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46597,7 +46583,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46606,7 +46592,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46614,8 +46600,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46624,7 +46609,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return OpaqueStructWithDartCodeTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46633,7 +46618,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46641,7 +46626,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimpleLoggerImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return SimpleLoggerImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46650,7 +46635,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return SimpleOpaqueExternalStructWithMethodImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46659,7 +46644,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructInMiscNoTwinExampleAImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46668,7 +46653,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructInMiscNoTwinExampleBImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46677,7 +46662,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitForDynTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46686,7 +46671,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46695,7 +46680,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46704,7 +46689,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitForDynTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46713,7 +46698,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46722,7 +46707,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46731,7 +46716,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46740,7 +46725,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46749,7 +46734,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46758,7 +46743,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithImplBlockInMultiFileImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46767,7 +46752,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46775,7 +46760,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return TypeForIgnoreImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -46783,13 +46768,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return TypeForIgnoreAllImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
   String dco_decode_Backtrace(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as String;
+    return dcoDecodeString(raw);
   }
 
   @protected
@@ -46823,7 +46808,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   String dco_decode_Char(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return String.fromCharCode(raw);
+    return String.fromCharCode(dcoDecodePrimitiveInt(raw));
   }
 
   @protected
@@ -46966,8 +46951,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ObjectArray1 dco_decode_DartOpaque_array_1(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ObjectArray1(
-        (raw as List<dynamic>).map(dco_decode_DartOpaque).toList());
+    return ObjectArray1(dcoDecodeList(raw).map(dco_decode_DartOpaque).toList());
   }
 
   @protected
@@ -46980,7 +46964,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt dco_decode_I128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BigInt.parse(raw);
+    return BigInt.parse(dcoDecodeString(raw));
   }
 
   @protected
@@ -47451,8 +47435,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BoxDartDebugTwinNormal dco_decode_RustOpaque_BoxdynDartDebugTwinNormal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxDartDebugTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return BoxDartDebugTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47460,14 +47443,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return BoxDartDebugTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
   BoxDartDebugTwinSync dco_decode_RustOpaque_BoxdynDartDebugTwinSync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxDartDebugTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BoxDartDebugTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47475,7 +47458,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return FrbOpaqueReturnTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47483,15 +47466,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_FrbOpaqueReturnTwinRustAsync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return FrbOpaqueReturnTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
   FrbOpaqueReturnTwinSync dco_decode_RustOpaque_FrbOpaqueReturnTwinSync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return FrbOpaqueReturnTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return FrbOpaqueReturnTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47499,7 +47481,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_FrbOpaqueSyncReturnTwinNormal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return FrbOpaqueSyncReturnTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47507,20 +47489,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return HideDataAnotherTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
   HideDataTwinNormal dco_decode_RustOpaque_HideDataTwinNormal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HideDataTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return HideDataTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
   HideDataTwinNormalArray2 dco_decode_RustOpaque_HideDataTwinNormal_array_2(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HideDataTwinNormalArray2((raw as List<dynamic>)
+    return HideDataTwinNormalArray2(dcoDecodeList(raw)
         .map(dco_decode_RustOpaque_HideDataTwinNormal)
         .toList());
   }
@@ -47529,14 +47511,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   HideDataTwinRustAsync dco_decode_RustOpaque_HideDataTwinRustAsync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HideDataTwinRustAsyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return HideDataTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
   HideDataTwinRustAsyncArray2
       dco_decode_RustOpaque_HideDataTwinRustAsync_array_2(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HideDataTwinRustAsyncArray2((raw as List<dynamic>)
+    return HideDataTwinRustAsyncArray2(dcoDecodeList(raw)
         .map(dco_decode_RustOpaque_HideDataTwinRustAsync)
         .toList());
   }
@@ -47544,14 +47526,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   HideDataTwinSync dco_decode_RustOpaque_HideDataTwinSync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HideDataTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return HideDataTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
   HideDataTwinSyncArray2 dco_decode_RustOpaque_HideDataTwinSync_array_2(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return HideDataTwinSyncArray2((raw as List<dynamic>)
+    return HideDataTwinSyncArray2(dcoDecodeList(raw)
         .map(dco_decode_RustOpaque_HideDataTwinSync)
         .toList());
   }
@@ -47560,8 +47542,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MutexHideDataTwinNormal dco_decode_RustOpaque_MutexHideDataTwinNormal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MutexHideDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return MutexHideDataTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47569,22 +47550,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MutexHideDataTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
   MutexHideDataTwinSync dco_decode_RustOpaque_MutexHideDataTwinSync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MutexHideDataTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MutexHideDataTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
   NonCloneDataTwinNormal dco_decode_RustOpaque_NonCloneDataTwinNormal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return NonCloneDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return NonCloneDataTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47592,13 +47572,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneDataTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
   NonCloneDataTwinSync dco_decode_RustOpaque_NonCloneDataTwinSync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return NonCloneDataTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return NonCloneDataTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47606,7 +47586,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RwLockHideDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47614,15 +47594,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RwLockHideDataTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
   RwLockHideDataTwinSync dco_decode_RustOpaque_RwLockHideDataTwinSync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RwLockHideDataTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return RwLockHideDataTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47630,8 +47609,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxAnyMyDartTypeRenameImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return BoxAnyMyDartTypeRenameImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47639,7 +47617,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxFnStringStringImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BoxFnStringStringImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47647,7 +47625,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxMyTraitTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BoxMyTraitTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47655,8 +47633,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxMyTraitTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return BoxMyTraitTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47664,7 +47641,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BoxMyTraitTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BoxMyTraitTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47673,7 +47650,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConstructorOpaqueStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47682,7 +47659,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConstructorOpaqueSyncStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47690,8 +47667,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return CustomHasherTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return CustomHasherTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47700,7 +47676,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return CustomHasherTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47708,7 +47684,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return CustomHasherTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return CustomHasherTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47717,7 +47693,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return DeliberateFailSanityCheckTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47725,7 +47701,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DroppableTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47733,8 +47709,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return DroppableTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47742,7 +47717,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DroppableTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DroppableTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47751,7 +47726,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47760,7 +47735,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47769,7 +47744,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47778,7 +47753,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ItemContainerSolutionOneTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47787,7 +47762,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return LtNestedTypeWithLifetimeTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47796,7 +47771,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return LtNestedTypeWithLifetimeTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47805,7 +47780,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return LtTypeWithLifetimeTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47814,7 +47789,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return LtTypeWithLifetimeTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47823,7 +47798,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return LtTypeWithMultiDepTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47832,7 +47807,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return LtTypeWithMultiDepTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47840,8 +47815,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtOwnedStructTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return LtOwnedStructTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47849,7 +47823,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtOwnedStructTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtOwnedStructTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47857,7 +47831,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtSubStructTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtSubStructTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47865,7 +47839,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return LtSubStructTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return LtSubStructTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47873,8 +47847,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyAudioParamTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return MyAudioParamTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47883,7 +47856,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyImplTraitWithSelfTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47892,7 +47865,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyImplTraitWithSelfTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47900,7 +47873,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyNodeTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MyNodeTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47909,7 +47882,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MyStructWithTryFromTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47917,7 +47890,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return NonCloneDataRawImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return NonCloneDataRawImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47926,7 +47899,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleEnumTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47935,7 +47908,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleEnumTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47944,7 +47917,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleEnumTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47953,7 +47926,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47962,7 +47935,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return NonCloneSimpleTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -47970,8 +47943,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return NonCloneSimpleTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47979,7 +47951,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueItemTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueItemTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47987,7 +47959,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueOneTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueOneTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -47995,8 +47967,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueOneTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return OpaqueOneTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48004,7 +47975,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueOneTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueOneTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48013,7 +47984,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return OpaqueStructWithDartCodeTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48021,7 +47992,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueTwoTwinNormalImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueTwoTwinNormalImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48029,8 +48000,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueTwoTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return OpaqueTwoTwinRustAsyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48038,7 +48008,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OpaqueTwoTwinSyncImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OpaqueTwoTwinSyncImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48047,7 +48017,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustAutoOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48056,7 +48026,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48064,7 +48034,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimpleLoggerImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return SimpleLoggerImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48073,7 +48043,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return SimpleOpaqueExternalStructWithMethodImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48082,7 +48052,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StaticGetterOnlyTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48091,7 +48061,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StaticGetterOnlyTwinRustAsyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48100,7 +48070,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StaticGetterOnlyTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48109,7 +48079,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructInMiscNoTwinExampleAImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48118,7 +48088,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructInMiscNoTwinExampleBImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48127,7 +48097,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitForDynTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48136,7 +48106,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48145,7 +48115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructOneWithTraitTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48154,7 +48124,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitForDynTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48163,7 +48133,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48172,7 +48142,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructTwoWithTraitTwinSyncImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48181,7 +48151,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48190,7 +48160,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48199,7 +48169,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48208,7 +48178,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithImplBlockInMultiFileImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48217,7 +48187,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithRustAutoOpaqueFieldWithManyDeriveInnerImpl
-        .frbInternalDcoDecode(raw as List<dynamic>);
+        .frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48226,7 +48196,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48234,7 +48204,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return TypeForIgnoreImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -48242,19 +48212,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return TypeForIgnoreAllImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
   I32 dco_decode_RustOpaque_i32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return I32Impl.frbInternalDcoDecode(raw as List<dynamic>);
+    return I32Impl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
   Object? dco_decode_SerdeJsonValue(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return jsonDecode(raw as String);
+    return jsonDecode(dcoDecodeString(raw));
   }
 
   @protected
@@ -48505,7 +48475,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as String;
+    return dcoDecodeString(raw);
   }
 
   @protected
@@ -48568,7 +48538,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigInt dco_decode_U128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BigInt.parse(raw);
+    return BigInt.parse(dcoDecodeString(raw));
   }
 
   @protected
@@ -48580,7 +48550,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ATwinNormal dco_decode_a_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ATwinNormal(
@@ -48591,7 +48561,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ATwinRustAsync dco_decode_a_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ATwinRustAsync(
@@ -48602,7 +48572,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ATwinSync dco_decode_a_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ATwinSync(
@@ -48613,22 +48583,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AbcTwinNormal dco_decode_abc_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return AbcTwinNormal_A(
-          dco_decode_box_autoadd_a_twin_normal(raw[1]),
+          dco_decode_box_autoadd_a_twin_normal(arr[1]),
         );
       case 1:
         return AbcTwinNormal_B(
-          dco_decode_box_autoadd_b_twin_normal(raw[1]),
+          dco_decode_box_autoadd_b_twin_normal(arr[1]),
         );
       case 2:
         return AbcTwinNormal_C(
-          dco_decode_box_autoadd_c_twin_normal(raw[1]),
+          dco_decode_box_autoadd_c_twin_normal(arr[1]),
         );
       case 3:
         return AbcTwinNormal_JustInt(
-          dco_decode_i_32(raw[1]),
+          dco_decode_i_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -48638,22 +48609,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AbcTwinRustAsync dco_decode_abc_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return AbcTwinRustAsync_A(
-          dco_decode_box_autoadd_a_twin_rust_async(raw[1]),
+          dco_decode_box_autoadd_a_twin_rust_async(arr[1]),
         );
       case 1:
         return AbcTwinRustAsync_B(
-          dco_decode_box_autoadd_b_twin_rust_async(raw[1]),
+          dco_decode_box_autoadd_b_twin_rust_async(arr[1]),
         );
       case 2:
         return AbcTwinRustAsync_C(
-          dco_decode_box_autoadd_c_twin_rust_async(raw[1]),
+          dco_decode_box_autoadd_c_twin_rust_async(arr[1]),
         );
       case 3:
         return AbcTwinRustAsync_JustInt(
-          dco_decode_i_32(raw[1]),
+          dco_decode_i_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -48663,22 +48635,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AbcTwinSync dco_decode_abc_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return AbcTwinSync_A(
-          dco_decode_box_autoadd_a_twin_sync(raw[1]),
+          dco_decode_box_autoadd_a_twin_sync(arr[1]),
         );
       case 1:
         return AbcTwinSync_B(
-          dco_decode_box_autoadd_b_twin_sync(raw[1]),
+          dco_decode_box_autoadd_b_twin_sync(arr[1]),
         );
       case 2:
         return AbcTwinSync_C(
-          dco_decode_box_autoadd_c_twin_sync(raw[1]),
+          dco_decode_box_autoadd_c_twin_sync(arr[1]),
         );
       case 3:
         return AbcTwinSync_JustInt(
-          dco_decode_i_32(raw[1]),
+          dco_decode_i_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -48689,7 +48662,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   AnotherMacroStructTwinNormal dco_decode_another_macro_struct_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return AnotherMacroStructTwinNormal(
@@ -48701,7 +48674,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AnotherTwinNormal dco_decode_another_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return AnotherTwinNormal(
@@ -48712,7 +48685,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AnotherTwinRustAsync dco_decode_another_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return AnotherTwinRustAsync(
@@ -48723,7 +48696,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AnotherTwinSync dco_decode_another_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return AnotherTwinSync(
@@ -48734,7 +48707,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ApplicationEnv dco_decode_application_env(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ApplicationEnv(
@@ -48745,7 +48718,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ApplicationEnvVar dco_decode_application_env_var(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return ApplicationEnvVar(
@@ -48757,15 +48730,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ApplicationMessage dco_decode_application_message(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return ApplicationMessage_DisplayMessage(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return ApplicationMessage_RenderPixel(
-          x: dco_decode_i_32(raw[1]),
-          y: dco_decode_i_32(raw[2]),
+          x: dco_decode_i_32(arr[1]),
+          y: dco_decode_i_32(arr[2]),
         );
       case 2:
         return ApplicationMessage_Exit();
@@ -48777,20 +48751,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ApplicationMode dco_decode_application_mode(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ApplicationMode.values[raw as int];
+    return ApplicationMode.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   ApplicationModeArray2 dco_decode_application_mode_array_2(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ApplicationModeArray2(
-        (raw as List<dynamic>).map(dco_decode_application_mode).toList());
+        dcoDecodeList(raw).map(dco_decode_application_mode).toList());
   }
 
   @protected
   ApplicationSettings dco_decode_application_settings(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 5)
       throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return ApplicationSettings(
@@ -48805,7 +48779,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AttributeTwinNormal dco_decode_attribute_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return AttributeTwinNormal(
@@ -48817,7 +48791,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AttributeTwinRustAsync dco_decode_attribute_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return AttributeTwinRustAsync(
@@ -48829,7 +48803,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AttributeTwinSync dco_decode_attribute_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return AttributeTwinSync(
@@ -48843,16 +48817,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
-              raw[1]),
+              arr[1]),
         );
       case 1:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
-              raw[1]),
+              arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -48862,7 +48837,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BTwinNormal dco_decode_b_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return BTwinNormal(
@@ -48873,7 +48848,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BTwinRustAsync dco_decode_b_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return BTwinRustAsync(
@@ -48884,7 +48859,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BTwinSync dco_decode_b_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return BTwinSync(
@@ -48896,10 +48871,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BasicGeneralEnumTwinNormal dco_decode_basic_general_enum_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return BasicGeneralEnumTwinNormal_Apple(
-          field: dco_decode_String(raw[1]),
+          field: dco_decode_String(arr[1]),
         );
       case 1:
         return BasicGeneralEnumTwinNormal_Orange();
@@ -48912,10 +48888,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BasicGeneralEnumTwinRustAsync dco_decode_basic_general_enum_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return BasicGeneralEnumTwinRustAsync_Apple(
-          field: dco_decode_String(raw[1]),
+          field: dco_decode_String(arr[1]),
         );
       case 1:
         return BasicGeneralEnumTwinRustAsync_Orange();
@@ -48928,10 +48905,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BasicGeneralEnumTwinSync dco_decode_basic_general_enum_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return BasicGeneralEnumTwinSync_Apple(
-          field: dco_decode_String(raw[1]),
+          field: dco_decode_String(arr[1]),
         );
       case 1:
         return BasicGeneralEnumTwinSync_Orange();
@@ -48944,27 +48922,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BasicPrimitiveEnumTwinNormal dco_decode_basic_primitive_enum_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BasicPrimitiveEnumTwinNormal.values[raw as int];
+    return BasicPrimitiveEnumTwinNormal.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   BasicPrimitiveEnumTwinRustAsync
       dco_decode_basic_primitive_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BasicPrimitiveEnumTwinRustAsync.values[raw as int];
+    return BasicPrimitiveEnumTwinRustAsync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   BasicPrimitiveEnumTwinSync dco_decode_basic_primitive_enum_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BasicPrimitiveEnumTwinSync.values[raw as int];
+    return BasicPrimitiveEnumTwinSync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   BasicStructTwinNormal dco_decode_basic_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BasicStructTwinNormal(
@@ -48977,7 +48955,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BasicStructTwinRustAsync dco_decode_basic_struct_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BasicStructTwinRustAsync(
@@ -48989,7 +48967,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BasicStructTwinSync dco_decode_basic_struct_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BasicStructTwinSync(
@@ -49002,7 +48980,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BenchmarkBinaryTreeTwinNormal dco_decode_benchmark_binary_tree_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBinaryTreeTwinNormal(
@@ -49016,7 +48994,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BenchmarkBinaryTreeTwinRustAsync
       dco_decode_benchmark_binary_tree_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBinaryTreeTwinRustAsync(
@@ -49030,7 +49008,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BenchmarkBinaryTreeTwinSync dco_decode_benchmark_binary_tree_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBinaryTreeTwinSync(
@@ -49043,7 +49021,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BenchmarkBlobTwinNormal dco_decode_benchmark_blob_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBlobTwinNormal(
@@ -49057,7 +49035,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BenchmarkBlobTwinRustAsync dco_decode_benchmark_blob_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBlobTwinRustAsync(
@@ -49070,7 +49048,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BenchmarkBlobTwinSync dco_decode_benchmark_blob_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBlobTwinSync(
@@ -49083,7 +49061,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigBuffersTwinNormal dco_decode_big_buffers_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffersTwinNormal(
@@ -49095,7 +49073,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigBuffersTwinRustAsync dco_decode_big_buffers_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffersTwinRustAsync(
@@ -49107,7 +49085,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigBuffersTwinSync dco_decode_big_buffers_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffersTwinSync(
@@ -49119,7 +49097,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BlobTwinNormal dco_decode_blob_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return BlobTwinNormal(
@@ -49130,7 +49108,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BlobTwinRustAsync dco_decode_blob_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return BlobTwinRustAsync(
@@ -49141,7 +49119,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BlobTwinSync dco_decode_blob_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return BlobTwinSync(
@@ -49944,13 +49922,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_autoadd_i_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_16(raw);
   }
 
   @protected
   int dco_decode_box_autoadd_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_32(raw);
   }
 
   @protected
@@ -49962,7 +49940,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_autoadd_i_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_8(raw);
   }
 
   @protected
@@ -50782,13 +50760,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_autoadd_u_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_u_16(raw);
   }
 
   @protected
   int dco_decode_box_autoadd_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_u_32(raw);
   }
 
   @protected
@@ -50800,7 +50778,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_autoadd_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_u_8(raw);
   }
 
   @protected
@@ -50958,7 +50936,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_32(raw);
   }
 
   @protected
@@ -50970,7 +50948,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_i_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_8(raw);
   }
 
   @protected
@@ -51019,7 +50997,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_u_8(raw);
   }
 
   @protected
@@ -51055,7 +51033,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CTwinNormal dco_decode_c_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CTwinNormal(
@@ -51066,7 +51044,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CTwinRustAsync dco_decode_c_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CTwinRustAsync(
@@ -51077,7 +51055,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CTwinSync dco_decode_c_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CTwinSync(
@@ -51089,7 +51067,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ConcatenateWithTwinNormal dco_decode_concatenate_with_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConcatenateWithTwinNormal(
@@ -51101,7 +51079,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ConcatenateWithTwinRustAsync dco_decode_concatenate_with_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConcatenateWithTwinRustAsync(
@@ -51112,7 +51090,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ConcatenateWithTwinSync dco_decode_concatenate_with_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConcatenateWithTwinSync(
@@ -51124,7 +51102,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ConstructorTranslatableStructTwinNormal
       dco_decode_constructor_translatable_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConstructorTranslatableStructTwinNormal(
@@ -51136,7 +51114,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ConstructorTranslatableSyncStructTwinNormal
       dco_decode_constructor_translatable_sync_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConstructorTranslatableSyncStructTwinNormal.raw(
@@ -51148,7 +51126,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ContainsMirroredSubStructTwinNormal
       dco_decode_contains_mirrored_sub_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return ContainsMirroredSubStructTwinNormal(
@@ -51161,7 +51139,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ContainsMirroredSubStructTwinRustAsync
       dco_decode_contains_mirrored_sub_struct_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return ContainsMirroredSubStructTwinRustAsync(
@@ -51174,7 +51152,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ContainsMirroredSubStructTwinSync
       dco_decode_contains_mirrored_sub_struct_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return ContainsMirroredSubStructTwinSync(
@@ -51187,16 +51165,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomEnumErrorTwinNormal dco_decode_custom_enum_error_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomEnumErrorTwinNormal_One(
-          message: dco_decode_String(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          message: dco_decode_String(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       case 1:
         return CustomEnumErrorTwinNormal_Two(
-          message: dco_decode_u_32(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          message: dco_decode_u_32(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       default:
         throw Exception("unreachable");
@@ -51207,16 +51186,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomEnumErrorTwinRustAsync dco_decode_custom_enum_error_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomEnumErrorTwinRustAsync_One(
-          message: dco_decode_String(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          message: dco_decode_String(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       case 1:
         return CustomEnumErrorTwinRustAsync_Two(
-          message: dco_decode_u_32(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          message: dco_decode_u_32(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       default:
         throw Exception("unreachable");
@@ -51226,16 +51206,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CustomEnumErrorTwinSync dco_decode_custom_enum_error_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomEnumErrorTwinSync_One(
-          message: dco_decode_String(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          message: dco_decode_String(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       case 1:
         return CustomEnumErrorTwinSync_Two(
-          message: dco_decode_u_32(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          message: dco_decode_u_32(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       default:
         throw Exception("unreachable");
@@ -51245,16 +51226,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CustomErrorTwinNormal dco_decode_custom_error_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomErrorTwinNormal_Error0(
-          e: dco_decode_String(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          e: dco_decode_String(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       case 1:
         return CustomErrorTwinNormal_Error1(
-          e: dco_decode_u_32(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          e: dco_decode_u_32(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       default:
         throw Exception("unreachable");
@@ -51265,16 +51247,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomErrorTwinRustAsync dco_decode_custom_error_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomErrorTwinRustAsync_Error0(
-          e: dco_decode_String(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          e: dco_decode_String(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       case 1:
         return CustomErrorTwinRustAsync_Error1(
-          e: dco_decode_u_32(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          e: dco_decode_u_32(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       default:
         throw Exception("unreachable");
@@ -51284,16 +51267,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CustomErrorTwinSync dco_decode_custom_error_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomErrorTwinSync_Error0(
-          e: dco_decode_String(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          e: dco_decode_String(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       case 1:
         return CustomErrorTwinSync_Error1(
-          e: dco_decode_u_32(raw[1]),
-          backtrace: dco_decode_Backtrace(raw[2]),
+          e: dco_decode_u_32(arr[1]),
+          backtrace: dco_decode_Backtrace(arr[2]),
         );
       default:
         throw Exception("unreachable");
@@ -51304,14 +51288,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedError1TwinNormal dco_decode_custom_nested_error_1_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedError1TwinNormal_CustomNested1(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedError1TwinNormal_ErrorNested(
-          dco_decode_box_autoadd_custom_nested_error_2_twin_normal(raw[1]),
+          dco_decode_box_autoadd_custom_nested_error_2_twin_normal(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51322,14 +51307,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedError1TwinRustAsync
       dco_decode_custom_nested_error_1_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedError1TwinRustAsync_CustomNested1(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedError1TwinRustAsync_ErrorNested(
-          dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async(raw[1]),
+          dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51340,14 +51326,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedError1TwinSync dco_decode_custom_nested_error_1_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedError1TwinSync_CustomNested1(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedError1TwinSync_ErrorNested(
-          dco_decode_box_autoadd_custom_nested_error_2_twin_sync(raw[1]),
+          dco_decode_box_autoadd_custom_nested_error_2_twin_sync(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51358,14 +51345,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedError2TwinNormal dco_decode_custom_nested_error_2_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedError2TwinNormal_CustomNested2(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedError2TwinNormal_CustomNested2Number(
-          dco_decode_u_32(raw[1]),
+          dco_decode_u_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51376,14 +51364,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedError2TwinRustAsync
       dco_decode_custom_nested_error_2_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedError2TwinRustAsync_CustomNested2(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedError2TwinRustAsync_CustomNested2Number(
-          dco_decode_u_32(raw[1]),
+          dco_decode_u_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51394,14 +51383,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedError2TwinSync dco_decode_custom_nested_error_2_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedError2TwinSync_CustomNested2(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedError2TwinSync_CustomNested2Number(
-          dco_decode_u_32(raw[1]),
+          dco_decode_u_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51412,14 +51402,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedErrorInnerTwinNormal
       dco_decode_custom_nested_error_inner_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedErrorInnerTwinNormal_Three(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedErrorInnerTwinNormal_Four(
-          dco_decode_u_32(raw[1]),
+          dco_decode_u_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51430,14 +51421,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedErrorInnerTwinRustAsync
       dco_decode_custom_nested_error_inner_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedErrorInnerTwinRustAsync_Three(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedErrorInnerTwinRustAsync_Four(
-          dco_decode_u_32(raw[1]),
+          dco_decode_u_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51448,14 +51440,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedErrorInnerTwinSync dco_decode_custom_nested_error_inner_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedErrorInnerTwinSync_Three(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedErrorInnerTwinSync_Four(
-          dco_decode_u_32(raw[1]),
+          dco_decode_u_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51466,14 +51459,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedErrorOuterTwinNormal
       dco_decode_custom_nested_error_outer_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedErrorOuterTwinNormal_One(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedErrorOuterTwinNormal_Two(
-          dco_decode_box_autoadd_custom_nested_error_inner_twin_normal(raw[1]),
+          dco_decode_box_autoadd_custom_nested_error_inner_twin_normal(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51484,15 +51478,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedErrorOuterTwinRustAsync
       dco_decode_custom_nested_error_outer_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedErrorOuterTwinRustAsync_One(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedErrorOuterTwinRustAsync_Two(
           dco_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
-              raw[1]),
+              arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51503,14 +51498,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomNestedErrorOuterTwinSync dco_decode_custom_nested_error_outer_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return CustomNestedErrorOuterTwinSync_One(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return CustomNestedErrorOuterTwinSync_Two(
-          dco_decode_box_autoadd_custom_nested_error_inner_twin_sync(raw[1]),
+          dco_decode_box_autoadd_custom_nested_error_inner_twin_sync(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51521,7 +51517,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomStructErrorAnotherTwinNormal
       dco_decode_custom_struct_error_another_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructErrorAnotherTwinNormal(
@@ -51533,7 +51529,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomStructErrorAnotherTwinRustAsync
       dco_decode_custom_struct_error_another_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructErrorAnotherTwinRustAsync(
@@ -51545,7 +51541,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomStructErrorAnotherTwinSync
       dco_decode_custom_struct_error_another_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructErrorAnotherTwinSync(
@@ -51557,7 +51553,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomStructErrorTwinNormal dco_decode_custom_struct_error_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructErrorTwinNormal(
@@ -51569,7 +51565,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomStructErrorTwinRustAsync dco_decode_custom_struct_error_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructErrorTwinRustAsync(
@@ -51581,7 +51577,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomStructErrorTwinSync dco_decode_custom_struct_error_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructErrorTwinSync(
@@ -51592,7 +51588,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CustomStructTwinNormal dco_decode_custom_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructTwinNormal(
@@ -51604,7 +51600,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomStructTwinRustAsync dco_decode_custom_struct_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructTwinRustAsync(
@@ -51615,7 +51611,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CustomStructTwinSync dco_decode_custom_struct_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructTwinSync(
@@ -51626,7 +51622,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CustomizedTwinNormal dco_decode_customized_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return CustomizedTwinNormal(
@@ -51638,7 +51634,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CustomizedTwinRustAsync dco_decode_customized_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return CustomizedTwinRustAsync(
@@ -51650,7 +51646,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   CustomizedTwinSync dco_decode_customized_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return CustomizedTwinSync(
@@ -51663,7 +51659,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   DartOpaqueNestedTwinNormal dco_decode_dart_opaque_nested_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return DartOpaqueNestedTwinNormal(
@@ -51676,7 +51672,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   DartOpaqueNestedTwinRustAsync dco_decode_dart_opaque_nested_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return DartOpaqueNestedTwinRustAsync(
@@ -51689,7 +51685,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   DartOpaqueNestedTwinSync dco_decode_dart_opaque_nested_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return DartOpaqueNestedTwinSync(
@@ -51702,7 +51698,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   DemoStructForRustCallDartTwinNormal
       dco_decode_demo_struct_for_rust_call_dart_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return DemoStructForRustCallDartTwinNormal(
@@ -51714,7 +51710,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   DemoStructForRustCallDartTwinRustAsync
       dco_decode_demo_struct_for_rust_call_dart_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return DemoStructForRustCallDartTwinRustAsync(
@@ -51725,12 +51721,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   DistanceTwinNormal dco_decode_distance_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return DistanceTwinNormal_Unknown();
       case 1:
         return DistanceTwinNormal_Map(
-          dco_decode_f_64(raw[1]),
+          dco_decode_f_64(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51740,12 +51737,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   DistanceTwinRustAsync dco_decode_distance_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return DistanceTwinRustAsync_Unknown();
       case 1:
         return DistanceTwinRustAsync_Map(
-          dco_decode_f_64(raw[1]),
+          dco_decode_f_64(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51755,12 +51753,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   DistanceTwinSync dco_decode_distance_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return DistanceTwinSync_Unknown();
       case 1:
         return DistanceTwinSync_Map(
-          dco_decode_f_64(raw[1]),
+          dco_decode_f_64(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51770,7 +51769,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ElementTwinNormal dco_decode_element_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return ElementTwinNormal(
@@ -51784,7 +51783,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ElementTwinRustAsync dco_decode_element_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return ElementTwinRustAsync(
@@ -51798,7 +51797,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ElementTwinSync dco_decode_element_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return ElementTwinSync(
@@ -51812,7 +51811,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   EmptyTwinNormal dco_decode_empty_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return EmptyTwinNormal();
@@ -51821,7 +51820,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   EmptyTwinRustAsync dco_decode_empty_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return EmptyTwinRustAsync();
@@ -51830,7 +51829,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   EmptyTwinSync dco_decode_empty_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return EmptyTwinSync();
@@ -51840,14 +51839,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumDartOpaqueTwinNormal dco_decode_enum_dart_opaque_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumDartOpaqueTwinNormal_Primitive(
-          dco_decode_i_32(raw[1]),
+          dco_decode_i_32(arr[1]),
         );
       case 1:
         return EnumDartOpaqueTwinNormal_Opaque(
-          dco_decode_DartOpaque(raw[1]),
+          dco_decode_DartOpaque(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51858,14 +51858,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumDartOpaqueTwinRustAsync dco_decode_enum_dart_opaque_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumDartOpaqueTwinRustAsync_Primitive(
-          dco_decode_i_32(raw[1]),
+          dco_decode_i_32(arr[1]),
         );
       case 1:
         return EnumDartOpaqueTwinRustAsync_Opaque(
-          dco_decode_DartOpaque(raw[1]),
+          dco_decode_DartOpaque(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51875,14 +51876,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   EnumDartOpaqueTwinSync dco_decode_enum_dart_opaque_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumDartOpaqueTwinSync_Primitive(
-          dco_decode_i_32(raw[1]),
+          dco_decode_i_32(arr[1]),
         );
       case 1:
         return EnumDartOpaqueTwinSync_Opaque(
-          dco_decode_DartOpaque(raw[1]),
+          dco_decode_DartOpaque(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -51892,26 +51894,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   EnumOpaqueTwinNormal dco_decode_enum_opaque_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumOpaqueTwinNormal_Struct(
-          dco_decode_RustOpaque_HideDataTwinNormal(raw[1]),
+          dco_decode_RustOpaque_HideDataTwinNormal(arr[1]),
         );
       case 1:
         return EnumOpaqueTwinNormal_Primitive(
-          dco_decode_RustOpaque_i32(raw[1]),
+          dco_decode_RustOpaque_i32(arr[1]),
         );
       case 2:
         return EnumOpaqueTwinNormal_TraitObj(
-          dco_decode_RustOpaque_BoxdynDartDebugTwinNormal(raw[1]),
+          dco_decode_RustOpaque_BoxdynDartDebugTwinNormal(arr[1]),
         );
       case 3:
         return EnumOpaqueTwinNormal_Mutex(
-          dco_decode_RustOpaque_MutexHideDataTwinNormal(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinNormal(arr[1]),
         );
       case 4:
         return EnumOpaqueTwinNormal_RwLock(
-          dco_decode_RustOpaque_RwLockHideDataTwinNormal(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinNormal(arr[1]),
         );
       case 5:
         return EnumOpaqueTwinNormal_Nothing();
@@ -51924,34 +51927,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumOpaqueTwinNormalArray5 dco_decode_enum_opaque_twin_normal_array_5(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumOpaqueTwinNormalArray5((raw as List<dynamic>)
-        .map(dco_decode_enum_opaque_twin_normal)
-        .toList());
+    return EnumOpaqueTwinNormalArray5(
+        dcoDecodeList(raw).map(dco_decode_enum_opaque_twin_normal).toList());
   }
 
   @protected
   EnumOpaqueTwinRustAsync dco_decode_enum_opaque_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumOpaqueTwinRustAsync_Struct(
-          dco_decode_RustOpaque_HideDataTwinRustAsync(raw[1]),
+          dco_decode_RustOpaque_HideDataTwinRustAsync(arr[1]),
         );
       case 1:
         return EnumOpaqueTwinRustAsync_Primitive(
-          dco_decode_RustOpaque_i32(raw[1]),
+          dco_decode_RustOpaque_i32(arr[1]),
         );
       case 2:
         return EnumOpaqueTwinRustAsync_TraitObj(
-          dco_decode_RustOpaque_BoxdynDartDebugTwinRustAsync(raw[1]),
+          dco_decode_RustOpaque_BoxdynDartDebugTwinRustAsync(arr[1]),
         );
       case 3:
         return EnumOpaqueTwinRustAsync_Mutex(
-          dco_decode_RustOpaque_MutexHideDataTwinRustAsync(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinRustAsync(arr[1]),
         );
       case 4:
         return EnumOpaqueTwinRustAsync_RwLock(
-          dco_decode_RustOpaque_RwLockHideDataTwinRustAsync(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinRustAsync(arr[1]),
         );
       case 5:
         return EnumOpaqueTwinRustAsync_Nothing();
@@ -51964,7 +51967,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumOpaqueTwinRustAsyncArray5 dco_decode_enum_opaque_twin_rust_async_array_5(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumOpaqueTwinRustAsyncArray5((raw as List<dynamic>)
+    return EnumOpaqueTwinRustAsyncArray5(dcoDecodeList(raw)
         .map(dco_decode_enum_opaque_twin_rust_async)
         .toList());
   }
@@ -51972,26 +51975,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   EnumOpaqueTwinSync dco_decode_enum_opaque_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumOpaqueTwinSync_Struct(
-          dco_decode_RustOpaque_HideDataTwinSync(raw[1]),
+          dco_decode_RustOpaque_HideDataTwinSync(arr[1]),
         );
       case 1:
         return EnumOpaqueTwinSync_Primitive(
-          dco_decode_RustOpaque_i32(raw[1]),
+          dco_decode_RustOpaque_i32(arr[1]),
         );
       case 2:
         return EnumOpaqueTwinSync_TraitObj(
-          dco_decode_RustOpaque_BoxdynDartDebugTwinSync(raw[1]),
+          dco_decode_RustOpaque_BoxdynDartDebugTwinSync(arr[1]),
         );
       case 3:
         return EnumOpaqueTwinSync_Mutex(
-          dco_decode_RustOpaque_MutexHideDataTwinSync(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinSync(arr[1]),
         );
       case 4:
         return EnumOpaqueTwinSync_RwLock(
-          dco_decode_RustOpaque_RwLockHideDataTwinSync(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinSync(arr[1]),
         );
       case 5:
         return EnumOpaqueTwinSync_Nothing();
@@ -52005,61 +52009,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumOpaqueTwinSyncArray5(
-        (raw as List<dynamic>).map(dco_decode_enum_opaque_twin_sync).toList());
+        dcoDecodeList(raw).map(dco_decode_enum_opaque_twin_sync).toList());
   }
 
   @protected
   EnumSimpleTwinNormal dco_decode_enum_simple_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumSimpleTwinNormal.values[raw as int];
+    return EnumSimpleTwinNormal.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   EnumSimpleTwinRustAsync dco_decode_enum_simple_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumSimpleTwinRustAsync.values[raw as int];
+    return EnumSimpleTwinRustAsync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   EnumSimpleTwinSync dco_decode_enum_simple_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumSimpleTwinSync.values[raw as int];
+    return EnumSimpleTwinSync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   EnumWithDiscriminantTwinNormal dco_decode_enum_with_discriminant_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumWithDiscriminantTwinNormal.values[raw as int];
+    return EnumWithDiscriminantTwinNormal.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   EnumWithDiscriminantTwinRustAsync
       dco_decode_enum_with_discriminant_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumWithDiscriminantTwinRustAsync.values[raw as int];
+    return EnumWithDiscriminantTwinRustAsync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   EnumWithDiscriminantTwinSync dco_decode_enum_with_discriminant_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumWithDiscriminantTwinSync.values[raw as int];
+    return EnumWithDiscriminantTwinSync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   EnumWithGoodAndOpaqueTwinNormal
       dco_decode_enum_with_good_and_opaque_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithGoodAndOpaqueTwinNormal_Good(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return EnumWithGoodAndOpaqueTwinNormal_Opaque(
           dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
-              raw[1]),
+              arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52070,15 +52075,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithGoodAndOpaqueTwinRustAsync
       dco_decode_enum_with_good_and_opaque_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithGoodAndOpaqueTwinRustAsync_Good(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return EnumWithGoodAndOpaqueTwinRustAsync_Opaque(
           dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
-              raw[1]),
+              arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52089,15 +52095,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithGoodAndOpaqueTwinSync dco_decode_enum_with_good_and_opaque_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithGoodAndOpaqueTwinSync_Good(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return EnumWithGoodAndOpaqueTwinSync_Opaque(
           dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
-              raw[1]),
+              arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52108,16 +52115,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithItemMixedTwinNormal dco_decode_enum_with_item_mixed_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithItemMixedTwinNormal_A();
       case 1:
         return EnumWithItemMixedTwinNormal_B(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 2:
         return EnumWithItemMixedTwinNormal_C(
-          cField: dco_decode_String(raw[1]),
+          cField: dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52128,16 +52136,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithItemMixedTwinRustAsync
       dco_decode_enum_with_item_mixed_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithItemMixedTwinRustAsync_A();
       case 1:
         return EnumWithItemMixedTwinRustAsync_B(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 2:
         return EnumWithItemMixedTwinRustAsync_C(
-          cField: dco_decode_String(raw[1]),
+          cField: dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52148,16 +52157,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithItemMixedTwinSync dco_decode_enum_with_item_mixed_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithItemMixedTwinSync_A();
       case 1:
         return EnumWithItemMixedTwinSync_B(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 2:
         return EnumWithItemMixedTwinSync_C(
-          cField: dco_decode_String(raw[1]),
+          cField: dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52168,14 +52178,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithItemStructTwinNormal dco_decode_enum_with_item_struct_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithItemStructTwinNormal_A(
-          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+          aField: dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 1:
         return EnumWithItemStructTwinNormal_B(
-          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+          bField: dco_decode_list_prim_i_32_strict(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52186,14 +52197,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithItemStructTwinRustAsync
       dco_decode_enum_with_item_struct_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithItemStructTwinRustAsync_A(
-          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+          aField: dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 1:
         return EnumWithItemStructTwinRustAsync_B(
-          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+          bField: dco_decode_list_prim_i_32_strict(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52204,14 +52216,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithItemStructTwinSync dco_decode_enum_with_item_struct_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithItemStructTwinSync_A(
-          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+          aField: dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 1:
         return EnumWithItemStructTwinSync_B(
-          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+          bField: dco_decode_list_prim_i_32_strict(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52222,14 +52235,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithItemTupleTwinNormal dco_decode_enum_with_item_tuple_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithItemTupleTwinNormal_A(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 1:
         return EnumWithItemTupleTwinNormal_B(
-          dco_decode_i_32(raw[1]),
+          dco_decode_i_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52240,14 +52254,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithItemTupleTwinRustAsync
       dco_decode_enum_with_item_tuple_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithItemTupleTwinRustAsync_A(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 1:
         return EnumWithItemTupleTwinRustAsync_B(
-          dco_decode_i_32(raw[1]),
+          dco_decode_i_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52258,14 +52273,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   EnumWithItemTupleTwinSync dco_decode_enum_with_item_tuple_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return EnumWithItemTupleTwinSync_A(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 1:
         return EnumWithItemTupleTwinSync_B(
-          dco_decode_i_32(raw[1]),
+          dco_decode_i_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52275,7 +52291,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   EventTwinNormal dco_decode_event_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return EventTwinNormal(
@@ -52287,7 +52303,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   EventTwinRustAsync dco_decode_event_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return EventTwinRustAsync(
@@ -52300,7 +52316,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ExoticOptionalsTwinNormal dco_decode_exotic_optionals_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 14)
       throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
     return ExoticOptionalsTwinNormal(
@@ -52327,7 +52343,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ExoticOptionalsTwinRustAsync dco_decode_exotic_optionals_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 14)
       throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
     return ExoticOptionalsTwinRustAsync(
@@ -52355,7 +52371,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ExoticOptionalsTwinSync dco_decode_exotic_optionals_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 14)
       throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
     return ExoticOptionalsTwinSync(
@@ -52405,7 +52421,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FeatureChronoTwinNormal dco_decode_feature_chrono_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 5)
       throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return FeatureChronoTwinNormal(
@@ -52421,7 +52437,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FeatureChronoTwinRustAsync dco_decode_feature_chrono_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 5)
       throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return FeatureChronoTwinRustAsync(
@@ -52436,7 +52452,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FeatureChronoTwinSync dco_decode_feature_chrono_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 5)
       throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return FeatureChronoTwinSync(
@@ -52452,7 +52468,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FeatureSerdeJsonTwinNormal dco_decode_feature_serde_json_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeatureSerdeJsonTwinNormal(
@@ -52464,7 +52480,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FeatureSerdeJsonTwinRustAsync dco_decode_feature_serde_json_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeatureSerdeJsonTwinRustAsync(
@@ -52476,7 +52492,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FeatureSerdeJsonTwinSync dco_decode_feature_serde_json_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeatureSerdeJsonTwinSync(
@@ -52487,7 +52503,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FeatureUuidTwinNormal dco_decode_feature_uuid_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeatureUuidTwinNormal(
@@ -52499,7 +52515,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FeatureUuidTwinRustAsync dco_decode_feature_uuid_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeatureUuidTwinRustAsync(
@@ -52510,7 +52526,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FeatureUuidTwinSync dco_decode_feature_uuid_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeatureUuidTwinSync(
@@ -52521,7 +52537,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FeedIdTwinNormal dco_decode_feed_id_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeedIdTwinNormal(
@@ -52532,7 +52548,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FeedIdTwinRustAsync dco_decode_feed_id_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeedIdTwinRustAsync(
@@ -52543,7 +52559,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FeedIdTwinSync dco_decode_feed_id_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeedIdTwinSync(
@@ -52554,7 +52570,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FrbLogRecord dco_decode_frb_log_record(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return FrbLogRecord(
@@ -52571,27 +52587,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   GenericAliasErrorTwinNormal dco_decode_generic_alias_error_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return GenericAliasErrorTwinNormal.values[raw as int];
+    return GenericAliasErrorTwinNormal.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   GenericAliasErrorTwinRustAsync dco_decode_generic_alias_error_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return GenericAliasErrorTwinRustAsync.values[raw as int];
+    return GenericAliasErrorTwinRustAsync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   GenericAliasErrorTwinSync dco_decode_generic_alias_error_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return GenericAliasErrorTwinSync.values[raw as int];
+    return GenericAliasErrorTwinSync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   HashMapValue dco_decode_hash_map_value(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return HashMapValue(
@@ -52602,13 +52618,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_i_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
@@ -52626,7 +52642,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_i_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
@@ -52639,7 +52655,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ItemContainerSolutionTwoTwinNormal
       dco_decode_item_container_solution_two_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return ItemContainerSolutionTwoTwinNormal(
@@ -52653,32 +52669,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return KitchenSinkTwinNormal_Empty();
       case 1:
         return KitchenSinkTwinNormal_Primitives(
-          int32: dco_decode_i_32(raw[1]),
-          float64: dco_decode_f_64(raw[2]),
-          boolean: dco_decode_bool(raw[3]),
+          int32: dco_decode_i_32(arr[1]),
+          float64: dco_decode_f_64(arr[2]),
+          boolean: dco_decode_bool(arr[3]),
         );
       case 2:
         return KitchenSinkTwinNormal_Nested(
-          dco_decode_i_32(raw[1]),
-          dco_decode_box_kitchen_sink_twin_normal(raw[2]),
+          dco_decode_i_32(arr[1]),
+          dco_decode_box_kitchen_sink_twin_normal(arr[2]),
         );
       case 3:
         return KitchenSinkTwinNormal_Optional(
-          dco_decode_opt_box_autoadd_i_32(raw[1]),
-          dco_decode_opt_box_autoadd_i_32(raw[2]),
+          dco_decode_opt_box_autoadd_i_32(arr[1]),
+          dco_decode_opt_box_autoadd_i_32(arr[2]),
         );
       case 4:
         return KitchenSinkTwinNormal_Buffer(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 5:
         return KitchenSinkTwinNormal_Enums(
-          dco_decode_weekdays_twin_normal(raw[1]),
+          dco_decode_weekdays_twin_normal(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52689,32 +52706,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   KitchenSinkTwinRustAsync dco_decode_kitchen_sink_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return KitchenSinkTwinRustAsync_Empty();
       case 1:
         return KitchenSinkTwinRustAsync_Primitives(
-          int32: dco_decode_i_32(raw[1]),
-          float64: dco_decode_f_64(raw[2]),
-          boolean: dco_decode_bool(raw[3]),
+          int32: dco_decode_i_32(arr[1]),
+          float64: dco_decode_f_64(arr[2]),
+          boolean: dco_decode_bool(arr[3]),
         );
       case 2:
         return KitchenSinkTwinRustAsync_Nested(
-          dco_decode_i_32(raw[1]),
-          dco_decode_box_kitchen_sink_twin_rust_async(raw[2]),
+          dco_decode_i_32(arr[1]),
+          dco_decode_box_kitchen_sink_twin_rust_async(arr[2]),
         );
       case 3:
         return KitchenSinkTwinRustAsync_Optional(
-          dco_decode_opt_box_autoadd_i_32(raw[1]),
-          dco_decode_opt_box_autoadd_i_32(raw[2]),
+          dco_decode_opt_box_autoadd_i_32(arr[1]),
+          dco_decode_opt_box_autoadd_i_32(arr[2]),
         );
       case 4:
         return KitchenSinkTwinRustAsync_Buffer(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 5:
         return KitchenSinkTwinRustAsync_Enums(
-          dco_decode_weekdays_twin_rust_async(raw[1]),
+          dco_decode_weekdays_twin_rust_async(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52724,32 +52742,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   KitchenSinkTwinSync dco_decode_kitchen_sink_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return KitchenSinkTwinSync_Empty();
       case 1:
         return KitchenSinkTwinSync_Primitives(
-          int32: dco_decode_i_32(raw[1]),
-          float64: dco_decode_f_64(raw[2]),
-          boolean: dco_decode_bool(raw[3]),
+          int32: dco_decode_i_32(arr[1]),
+          float64: dco_decode_f_64(arr[2]),
+          boolean: dco_decode_bool(arr[3]),
         );
       case 2:
         return KitchenSinkTwinSync_Nested(
-          dco_decode_i_32(raw[1]),
-          dco_decode_box_kitchen_sink_twin_sync(raw[2]),
+          dco_decode_i_32(arr[1]),
+          dco_decode_box_kitchen_sink_twin_sync(arr[2]),
         );
       case 3:
         return KitchenSinkTwinSync_Optional(
-          dco_decode_opt_box_autoadd_i_32(raw[1]),
-          dco_decode_opt_box_autoadd_i_32(raw[2]),
+          dco_decode_opt_box_autoadd_i_32(arr[1]),
+          dco_decode_opt_box_autoadd_i_32(arr[2]),
         );
       case 4:
         return KitchenSinkTwinSync_Buffer(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8_strict(arr[1]),
         );
       case 5:
         return KitchenSinkTwinSync_Enums(
-          dco_decode_weekdays_twin_sync(raw[1]),
+          dco_decode_weekdays_twin_sync(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -52761,7 +52780,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(
             dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal)
         .toList();
@@ -52772,7 +52791,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(
             dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal)
         .toList();
@@ -52783,7 +52802,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(
             dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync)
         .toList();
@@ -52794,7 +52813,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(
             dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync)
         .toList();
@@ -52805,7 +52824,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(
             dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal)
         .toList();
@@ -52814,32 +52833,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<Duration> dco_decode_list_Chrono_Duration(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_Chrono_Duration).toList();
+    return dcoDecodeList(raw).map(dco_decode_Chrono_Duration).toList();
   }
 
   @protected
   List<DateTime> dco_decode_list_Chrono_Local(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_Chrono_Local).toList();
+    return dcoDecodeList(raw).map(dco_decode_Chrono_Local).toList();
   }
 
   @protected
   List<DateTime> dco_decode_list_Chrono_NaiveDateTime(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_Chrono_NaiveDateTime).toList();
+    return dcoDecodeList(raw).map(dco_decode_Chrono_NaiveDateTime).toList();
   }
 
   @protected
   List<Object> dco_decode_list_DartOpaque(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_DartOpaque).toList();
+    return dcoDecodeList(raw).map(dco_decode_DartOpaque).toList();
   }
 
   @protected
   List<HideDataTwinNormal> dco_decode_list_RustOpaque_HideDataTwinNormal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_RustOpaque_HideDataTwinNormal)
         .toList();
   }
@@ -52848,7 +52867,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<HideDataTwinRustAsync> dco_decode_list_RustOpaque_HideDataTwinRustAsync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_RustOpaque_HideDataTwinRustAsync)
         .toList();
   }
@@ -52857,7 +52876,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<HideDataTwinSync> dco_decode_list_RustOpaque_HideDataTwinSync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_RustOpaque_HideDataTwinSync)
         .toList();
   }
@@ -52865,19 +52884,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<Object?> dco_decode_list_SerdeJsonValue(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_SerdeJsonValue).toList();
+    return dcoDecodeList(raw).map(dco_decode_SerdeJsonValue).toList();
   }
 
   @protected
   List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_Sse(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_StreamSink_i_32_Sse).toList();
+    return dcoDecodeList(raw).map(dco_decode_StreamSink_i_32_Sse).toList();
   }
 
   @protected
   List<String> dco_decode_list_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_String).toList();
+    return dcoDecodeList(raw).map(dco_decode_String).toList();
   }
 
   @protected
@@ -52896,34 +52915,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<ApplicationEnvVar> dco_decode_list_application_env_var(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_application_env_var).toList();
+    return dcoDecodeList(raw).map(dco_decode_application_env_var).toList();
   }
 
   @protected
   List<ApplicationMode> dco_decode_list_application_mode(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_application_mode).toList();
+    return dcoDecodeList(raw).map(dco_decode_application_mode).toList();
   }
 
   @protected
   List<ApplicationSettings> dco_decode_list_application_settings(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_application_settings).toList();
+    return dcoDecodeList(raw).map(dco_decode_application_settings).toList();
   }
 
   @protected
   List<AttributeTwinNormal> dco_decode_list_attribute_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_attribute_twin_normal)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_attribute_twin_normal).toList();
   }
 
   @protected
   List<AttributeTwinRustAsync> dco_decode_list_attribute_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_attribute_twin_rust_async)
         .toList();
   }
@@ -52931,14 +52948,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<AttributeTwinSync> dco_decode_list_attribute_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_attribute_twin_sync).toList();
+    return dcoDecodeList(raw).map(dco_decode_attribute_twin_sync).toList();
   }
 
   @protected
   List<BasicGeneralEnumTwinNormal>
       dco_decode_list_basic_general_enum_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_basic_general_enum_twin_normal)
         .toList();
   }
@@ -52947,7 +52964,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<BasicGeneralEnumTwinRustAsync>
       dco_decode_list_basic_general_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_basic_general_enum_twin_rust_async)
         .toList();
   }
@@ -52956,7 +52973,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<BasicGeneralEnumTwinSync> dco_decode_list_basic_general_enum_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_basic_general_enum_twin_sync)
         .toList();
   }
@@ -52965,7 +52982,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<BasicPrimitiveEnumTwinNormal>
       dco_decode_list_basic_primitive_enum_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_basic_primitive_enum_twin_normal)
         .toList();
   }
@@ -52974,7 +52991,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<BasicPrimitiveEnumTwinRustAsync>
       dco_decode_list_basic_primitive_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_basic_primitive_enum_twin_rust_async)
         .toList();
   }
@@ -52983,7 +53000,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<BasicPrimitiveEnumTwinSync>
       dco_decode_list_basic_primitive_enum_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_basic_primitive_enum_twin_sync)
         .toList();
   }
@@ -52992,16 +53009,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<BasicStructTwinNormal> dco_decode_list_basic_struct_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_basic_struct_twin_normal)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_basic_struct_twin_normal).toList();
   }
 
   @protected
   List<BasicStructTwinRustAsync> dco_decode_list_basic_struct_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_basic_struct_twin_rust_async)
         .toList();
   }
@@ -53010,52 +53025,46 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<BasicStructTwinSync> dco_decode_list_basic_struct_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_basic_struct_twin_sync)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_basic_struct_twin_sync).toList();
   }
 
   @protected
   List<bool> dco_decode_list_bool(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_bool).toList();
+    return dcoDecodeList(raw).map(dco_decode_bool).toList();
   }
 
   @protected
   List<ElementTwinNormal> dco_decode_list_element_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_element_twin_normal).toList();
+    return dcoDecodeList(raw).map(dco_decode_element_twin_normal).toList();
   }
 
   @protected
   List<ElementTwinRustAsync> dco_decode_list_element_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_element_twin_rust_async)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_element_twin_rust_async).toList();
   }
 
   @protected
   List<ElementTwinSync> dco_decode_list_element_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_element_twin_sync).toList();
+    return dcoDecodeList(raw).map(dco_decode_element_twin_sync).toList();
   }
 
   @protected
   List<EnumOpaqueTwinNormal> dco_decode_list_enum_opaque_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_enum_opaque_twin_normal)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_enum_opaque_twin_normal).toList();
   }
 
   @protected
   List<EnumOpaqueTwinRustAsync> dco_decode_list_enum_opaque_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_enum_opaque_twin_rust_async)
         .toList();
   }
@@ -53063,43 +53072,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<EnumOpaqueTwinSync> dco_decode_list_enum_opaque_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_enum_opaque_twin_sync)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_enum_opaque_twin_sync).toList();
   }
 
   @protected
   List<Uint8List> dco_decode_list_list_prim_u_8_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_list_prim_u_8_strict).toList();
+    return dcoDecodeList(raw).map(dco_decode_list_prim_u_8_strict).toList();
   }
 
   @protected
   List<MyEnum> dco_decode_list_my_enum(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_my_enum).toList();
+    return dcoDecodeList(raw).map(dco_decode_my_enum).toList();
   }
 
   @protected
   List<MySize> dco_decode_list_my_size(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_my_size).toList();
+    return dcoDecodeList(raw).map(dco_decode_my_size).toList();
   }
 
   @protected
   List<MyTreeNodeTwinNormal> dco_decode_list_my_tree_node_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_my_tree_node_twin_normal)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_my_tree_node_twin_normal).toList();
   }
 
   @protected
   List<MyTreeNodeTwinRustAsync> dco_decode_list_my_tree_node_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_my_tree_node_twin_rust_async)
         .toList();
   }
@@ -53107,16 +53112,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<MyTreeNodeTwinSync> dco_decode_list_my_tree_node_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_my_tree_node_twin_sync)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_my_tree_node_twin_sync).toList();
   }
 
   @protected
   List<NestedRawStringMirrored> dco_decode_list_nested_raw_string_mirrored(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_nested_raw_string_mirrored)
         .toList();
   }
@@ -53125,7 +53128,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ListOfNestedRawStringMirrored dco_decode_list_of_nested_raw_string_mirrored(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ListOfNestedRawStringMirrored(
@@ -53136,14 +53139,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<String?> dco_decode_list_opt_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_opt_String).toList();
+    return dcoDecodeList(raw).map(dco_decode_opt_String).toList();
   }
 
   @protected
   List<AttributeTwinNormal?>
       dco_decode_list_opt_box_autoadd_attribute_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_opt_box_autoadd_attribute_twin_normal)
         .toList();
   }
@@ -53152,7 +53155,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<AttributeTwinRustAsync?>
       dco_decode_list_opt_box_autoadd_attribute_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_opt_box_autoadd_attribute_twin_rust_async)
         .toList();
   }
@@ -53161,7 +53164,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<AttributeTwinSync?> dco_decode_list_opt_box_autoadd_attribute_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_opt_box_autoadd_attribute_twin_sync)
         .toList();
   }
@@ -53169,14 +53172,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<int?> dco_decode_list_opt_box_autoadd_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_opt_box_autoadd_i_32).toList();
+    return dcoDecodeList(raw).map(dco_decode_opt_box_autoadd_i_32).toList();
   }
 
   @protected
   List<WeekdaysTwinNormal?>
       dco_decode_list_opt_box_autoadd_weekdays_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_opt_box_autoadd_weekdays_twin_normal)
         .toList();
   }
@@ -53185,7 +53188,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<WeekdaysTwinRustAsync?>
       dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_opt_box_autoadd_weekdays_twin_rust_async)
         .toList();
   }
@@ -53194,7 +53197,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<WeekdaysTwinSync?> dco_decode_list_opt_box_autoadd_weekdays_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_opt_box_autoadd_weekdays_twin_sync)
         .toList();
   }
@@ -53202,7 +53205,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<Int32List?> dco_decode_list_opt_list_prim_i_32_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_opt_list_prim_i_32_strict)
         .toList();
   }
@@ -53210,21 +53213,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<PointTwinNormal> dco_decode_list_point_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_point_twin_normal).toList();
+    return dcoDecodeList(raw).map(dco_decode_point_twin_normal).toList();
   }
 
   @protected
   List<PointTwinRustAsync> dco_decode_list_point_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_point_twin_rust_async)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_point_twin_rust_async).toList();
   }
 
   @protected
   List<PointTwinSync> dco_decode_list_point_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_point_twin_sync).toList();
+    return dcoDecodeList(raw).map(dco_decode_point_twin_sync).toList();
   }
 
   @protected
@@ -53339,22 +53340,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<RawStringEnumMirrored> dco_decode_list_raw_string_enum_mirrored(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_raw_string_enum_mirrored)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_raw_string_enum_mirrored).toList();
   }
 
   @protected
   List<RawStringMirrored> dco_decode_list_raw_string_mirrored(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_raw_string_mirrored).toList();
+    return dcoDecodeList(raw).map(dco_decode_raw_string_mirrored).toList();
   }
 
   @protected
   List<(int, BasicGeneralEnumTwinNormal)>
       dco_decode_list_record_i_32_basic_general_enum_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_basic_general_enum_twin_normal)
         .toList();
   }
@@ -53364,7 +53363,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_list_record_i_32_basic_general_enum_twin_rust_async(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_basic_general_enum_twin_rust_async)
         .toList();
   }
@@ -53373,7 +53372,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(int, BasicGeneralEnumTwinSync)>
       dco_decode_list_record_i_32_basic_general_enum_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_basic_general_enum_twin_sync)
         .toList();
   }
@@ -53383,7 +53382,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_list_record_i_32_basic_primitive_enum_twin_normal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_basic_primitive_enum_twin_normal)
         .toList();
   }
@@ -53393,7 +53392,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_basic_primitive_enum_twin_rust_async)
         .toList();
   }
@@ -53402,7 +53401,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(int, BasicPrimitiveEnumTwinSync)>
       dco_decode_list_record_i_32_basic_primitive_enum_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_basic_primitive_enum_twin_sync)
         .toList();
   }
@@ -53411,7 +53410,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(int, BasicStructTwinNormal)>
       dco_decode_list_record_i_32_basic_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_basic_struct_twin_normal)
         .toList();
   }
@@ -53420,7 +53419,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(int, BasicStructTwinRustAsync)>
       dco_decode_list_record_i_32_basic_struct_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_basic_struct_twin_rust_async)
         .toList();
   }
@@ -53429,7 +53428,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(int, BasicStructTwinSync)>
       dco_decode_list_record_i_32_basic_struct_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_basic_struct_twin_sync)
         .toList();
   }
@@ -53437,62 +53436,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<(int, bool)> dco_decode_list_record_i_32_bool(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_bool).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_bool).toList();
   }
 
   @protected
   List<(int, double)> dco_decode_list_record_i_32_f_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_f_32).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_f_32).toList();
   }
 
   @protected
   List<(int, double)> dco_decode_list_record_i_32_f_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_f_64).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_f_64).toList();
   }
 
   @protected
   List<(int, BigInt)> dco_decode_list_record_i_32_i_128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_128).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_i_128).toList();
   }
 
   @protected
   List<(int, int)> dco_decode_list_record_i_32_i_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_16).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_i_16).toList();
   }
 
   @protected
   List<(int, int)> dco_decode_list_record_i_32_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_32).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_i_32).toList();
   }
 
   @protected
   List<(int, PlatformInt64)> dco_decode_list_record_i_32_i_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_64).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_i_64).toList();
   }
 
   @protected
   List<(int, int)> dco_decode_list_record_i_32_i_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_8).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_i_8).toList();
   }
 
   @protected
   List<(int, PlatformInt64)> dco_decode_list_record_i_32_isize(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_isize).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_isize).toList();
   }
 
   @protected
   List<(int, Uint8List)> dco_decode_list_record_i_32_list_prim_u_8_strict(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_i_32_list_prim_u_8_strict)
         .toList();
   }
@@ -53500,50 +53499,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<(int, String)> dco_decode_list_record_i_32_string(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_string).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_string).toList();
   }
 
   @protected
   List<(int, BigInt)> dco_decode_list_record_i_32_u_128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_128).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_u_128).toList();
   }
 
   @protected
   List<(int, int)> dco_decode_list_record_i_32_u_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_16).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_u_16).toList();
   }
 
   @protected
   List<(int, int)> dco_decode_list_record_i_32_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_32).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_u_32).toList();
   }
 
   @protected
   List<(int, BigInt)> dco_decode_list_record_i_32_u_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_64).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_u_64).toList();
   }
 
   @protected
   List<(int, int)> dco_decode_list_record_i_32_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_8).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_u_8).toList();
   }
 
   @protected
   List<(int, BigInt)> dco_decode_list_record_i_32_usize(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_i_32_usize).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_i_32_usize).toList();
   }
 
   @protected
   List<(String, EnumSimpleTwinNormal)>
       dco_decode_list_record_string_enum_simple_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_string_enum_simple_twin_normal)
         .toList();
   }
@@ -53552,7 +53551,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(String, EnumSimpleTwinRustAsync)>
       dco_decode_list_record_string_enum_simple_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_string_enum_simple_twin_rust_async)
         .toList();
   }
@@ -53561,7 +53560,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(String, EnumSimpleTwinSync)>
       dco_decode_list_record_string_enum_simple_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_string_enum_simple_twin_sync)
         .toList();
   }
@@ -53570,7 +53569,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(String, HashMapValue)> dco_decode_list_record_string_hash_map_value(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_string_hash_map_value)
         .toList();
   }
@@ -53578,14 +53577,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<(String, int)> dco_decode_list_record_string_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_string_i_32).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_string_i_32).toList();
   }
 
   @protected
   List<(String, KitchenSinkTwinNormal)>
       dco_decode_list_record_string_kitchen_sink_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_string_kitchen_sink_twin_normal)
         .toList();
   }
@@ -53594,7 +53593,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(String, KitchenSinkTwinRustAsync)>
       dco_decode_list_record_string_kitchen_sink_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_string_kitchen_sink_twin_rust_async)
         .toList();
   }
@@ -53603,7 +53602,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(String, KitchenSinkTwinSync)>
       dco_decode_list_record_string_kitchen_sink_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_string_kitchen_sink_twin_sync)
         .toList();
   }
@@ -53612,7 +53611,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<(String, Uint8List)> dco_decode_list_record_string_list_prim_u_8_strict(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_string_list_prim_u_8_strict)
         .toList();
   }
@@ -53620,16 +53619,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<(String, MySize)> dco_decode_list_record_string_my_size(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_record_string_my_size)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_record_string_my_size).toList();
   }
 
   @protected
   List<(String, Object?)> dco_decode_list_record_string_serde_json_value(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_string_serde_json_value)
         .toList();
   }
@@ -53637,14 +53634,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<(String, String)> dco_decode_list_record_string_string(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_record_string_string).toList();
+    return dcoDecodeList(raw).map(dco_decode_record_string_string).toList();
   }
 
   @protected
   List<(int, ApplicationMode)> dco_decode_list_record_u_8_application_mode(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_record_u_8_application_mode)
         .toList();
   }
@@ -53653,7 +53650,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<SimpleStructTwinNormal> dco_decode_list_simple_struct_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_simple_struct_twin_normal)
         .toList();
   }
@@ -53662,7 +53659,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<SimpleStructTwinRustAsync> dco_decode_list_simple_struct_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(dco_decode_simple_struct_twin_rust_async)
         .toList();
   }
@@ -53671,78 +53668,70 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<SimpleStructTwinSync> dco_decode_list_simple_struct_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_simple_struct_twin_sync)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_simple_struct_twin_sync).toList();
   }
 
   @protected
   List<SumWithTwinNormal> dco_decode_list_sum_with_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_sum_with_twin_normal).toList();
+    return dcoDecodeList(raw).map(dco_decode_sum_with_twin_normal).toList();
   }
 
   @protected
   List<SumWithTwinRustAsync> dco_decode_list_sum_with_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_sum_with_twin_rust_async)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_sum_with_twin_rust_async).toList();
   }
 
   @protected
   List<SumWithTwinSync> dco_decode_list_sum_with_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_sum_with_twin_sync).toList();
+    return dcoDecodeList(raw).map(dco_decode_sum_with_twin_sync).toList();
   }
 
   @protected
   List<TestIdTwinNormal> dco_decode_list_test_id_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_test_id_twin_normal).toList();
+    return dcoDecodeList(raw).map(dco_decode_test_id_twin_normal).toList();
   }
 
   @protected
   List<TestIdTwinRustAsync> dco_decode_list_test_id_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_test_id_twin_rust_async)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_test_id_twin_rust_async).toList();
   }
 
   @protected
   List<TestIdTwinSync> dco_decode_list_test_id_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_test_id_twin_sync).toList();
+    return dcoDecodeList(raw).map(dco_decode_test_id_twin_sync).toList();
   }
 
   @protected
   List<WeekdaysTwinNormal> dco_decode_list_weekdays_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_weekdays_twin_normal).toList();
+    return dcoDecodeList(raw).map(dco_decode_weekdays_twin_normal).toList();
   }
 
   @protected
   List<WeekdaysTwinRustAsync> dco_decode_list_weekdays_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_weekdays_twin_rust_async)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_weekdays_twin_rust_async).toList();
   }
 
   @protected
   List<WeekdaysTwinSync> dco_decode_list_weekdays_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_weekdays_twin_sync).toList();
+    return dcoDecodeList(raw).map(dco_decode_weekdays_twin_sync).toList();
   }
 
   @protected
   Log2TwinNormal dco_decode_log_2_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Log2TwinNormal(
@@ -53754,7 +53743,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Log2TwinRustAsync dco_decode_log_2_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Log2TwinRustAsync(
@@ -53766,7 +53755,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Log2TwinSync dco_decode_log_2_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Log2TwinSync(
@@ -53778,7 +53767,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   LogTwinNormal dco_decode_log_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return LogTwinNormal(
@@ -53790,7 +53779,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   LogTwinRustAsync dco_decode_log_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return LogTwinRustAsync(
@@ -53802,7 +53791,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MacroStruct dco_decode_macro_struct(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MacroStruct(
@@ -53813,14 +53802,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MeasureTwinNormal dco_decode_measure_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return MeasureTwinNormal_Speed(
-          dco_decode_box_speed_twin_normal(raw[1]),
+          dco_decode_box_speed_twin_normal(arr[1]),
         );
       case 1:
         return MeasureTwinNormal_Distance(
-          dco_decode_box_distance_twin_normal(raw[1]),
+          dco_decode_box_distance_twin_normal(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -53830,14 +53820,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MeasureTwinRustAsync dco_decode_measure_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return MeasureTwinRustAsync_Speed(
-          dco_decode_box_speed_twin_rust_async(raw[1]),
+          dco_decode_box_speed_twin_rust_async(arr[1]),
         );
       case 1:
         return MeasureTwinRustAsync_Distance(
-          dco_decode_box_distance_twin_rust_async(raw[1]),
+          dco_decode_box_distance_twin_rust_async(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -53847,14 +53838,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MeasureTwinSync dco_decode_measure_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return MeasureTwinSync_Speed(
-          dco_decode_box_speed_twin_sync(raw[1]),
+          dco_decode_box_speed_twin_sync(arr[1]),
         );
       case 1:
         return MeasureTwinSync_Distance(
-          dco_decode_box_distance_twin_sync(raw[1]),
+          dco_decode_box_distance_twin_sync(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -53864,7 +53856,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MessageIdTwinNormal dco_decode_message_id_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MessageIdTwinNormal(
@@ -53875,7 +53867,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MessageIdTwinRustAsync dco_decode_message_id_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MessageIdTwinRustAsync(
@@ -53886,7 +53878,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MessageIdTwinSync dco_decode_message_id_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MessageIdTwinSync(
@@ -53897,7 +53889,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MirrorStructTwinNormal dco_decode_mirror_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MirrorStructTwinNormal(
@@ -53912,7 +53904,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MirrorStructTwinRustAsync dco_decode_mirror_struct_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MirrorStructTwinRustAsync(
@@ -53926,7 +53918,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MirrorStructTwinSync dco_decode_mirror_struct_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MirrorStructTwinSync(
@@ -53941,7 +53933,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MoreThanJustOneRawStringStructTwinNormal
       dco_decode_more_than_just_one_raw_string_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MoreThanJustOneRawStringStructTwinNormal(
@@ -53957,7 +53949,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_more_than_just_one_raw_string_struct_twin_rust_async(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MoreThanJustOneRawStringStructTwinRustAsync(
@@ -53972,7 +53964,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MoreThanJustOneRawStringStructTwinSync
       dco_decode_more_than_just_one_raw_string_struct_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MoreThanJustOneRawStringStructTwinSync(
@@ -53986,7 +53978,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyCallableTwinNormal dco_decode_my_callable_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyCallableTwinNormal(
@@ -53997,7 +53989,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyCallableTwinRustAsync dco_decode_my_callable_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyCallableTwinRustAsync(
@@ -54008,7 +54000,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyCallableTwinSync dco_decode_my_callable_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyCallableTwinSync(
@@ -54019,21 +54011,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyEnum dco_decode_my_enum(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyEnum.values[raw as int];
+    return MyEnum.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   MyEnumWithJsonSerializableTwinNormal
       dco_decode_my_enum_with_json_serializable_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return MyEnumWithJsonSerializableTwinNormal_Apple(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       case 1:
         return MyEnumWithJsonSerializableTwinNormal_Orange(
-          a: dco_decode_i_32(raw[1]),
+          a: dco_decode_i_32(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54044,10 +54037,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyEnumWithoutFnWithUnignoreTwinNormal
       dco_decode_my_enum_without_fn_with_unignore_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return MyEnumWithoutFnWithUnignoreTwinNormal_One(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54058,7 +54052,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyNestedStructTwinNormal dco_decode_my_nested_struct_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MyNestedStructTwinNormal(
@@ -54071,7 +54065,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyNestedStructTwinRustAsync dco_decode_my_nested_struct_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MyNestedStructTwinRustAsync(
@@ -54083,7 +54077,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyNestedStructTwinSync dco_decode_my_nested_struct_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MyNestedStructTwinSync(
@@ -54095,7 +54089,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MySize dco_decode_my_size(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MySize(
@@ -54107,7 +54101,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyStreamEntryTwinNormal dco_decode_my_stream_entry_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStreamEntryTwinNormal(
@@ -54119,7 +54113,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyStreamEntryTwinRustAsync dco_decode_my_stream_entry_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStreamEntryTwinRustAsync(
@@ -54130,7 +54124,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyStruct dco_decode_my_struct(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStruct(
@@ -54142,7 +54136,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyStructContainingStreamSinkTwinNormal
       dco_decode_my_struct_containing_stream_sink_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MyStructContainingStreamSinkTwinNormal(
@@ -54155,7 +54149,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyStructContainingStreamSinkTwinRustAsync
       dco_decode_my_struct_containing_stream_sink_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MyStructContainingStreamSinkTwinRustAsync(
@@ -54168,7 +54162,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyStructWithJsonSerializableTwinNormal
       dco_decode_my_struct_with_json_serializable_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStructWithJsonSerializableTwinNormal(
@@ -54179,7 +54173,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyStructWithSync dco_decode_my_struct_with_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return MyStructWithSync();
@@ -54189,7 +54183,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyStructWithoutFnWithUnignoreTwinNormal
       dco_decode_my_struct_without_fn_with_unignore_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStructWithoutFnWithUnignoreTwinNormal(
@@ -54202,7 +54196,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
@@ -54213,7 +54207,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNodeTwinNormal(
@@ -54227,7 +54221,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyTreeNodeTwinRustAsync dco_decode_my_tree_node_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNodeTwinRustAsync(
@@ -54241,7 +54235,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyTreeNodeTwinSync dco_decode_my_tree_node_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNodeTwinSync(
@@ -54255,7 +54249,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   NestedRawStringMirrored dco_decode_nested_raw_string_mirrored(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NestedRawStringMirrored(
@@ -54266,7 +54260,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   NewSimpleStruct dco_decode_new_simple_struct(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NewSimpleStruct(
@@ -54277,7 +54271,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   NewTypeIntTwinNormal dco_decode_new_type_int_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NewTypeIntTwinNormal(
@@ -54288,7 +54282,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   NewTypeIntTwinRustAsync dco_decode_new_type_int_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NewTypeIntTwinRustAsync(
@@ -54299,7 +54293,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   NewTypeIntTwinSync dco_decode_new_type_int_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NewTypeIntTwinSync(
@@ -54311,7 +54305,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   NonOpaqueStructContainingIpv4Addr
       dco_decode_non_opaque_struct_containing_ipv_4_addr(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NonOpaqueStructContainingIpv4Addr(
@@ -54324,7 +54318,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   NoteTwinNormal dco_decode_note_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return NoteTwinNormal(
@@ -54336,7 +54330,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   NoteTwinRustAsync dco_decode_note_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return NoteTwinRustAsync(
@@ -54348,7 +54342,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   NoteTwinSync dco_decode_note_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return NoteTwinSync(
@@ -54360,7 +54354,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Numbers dco_decode_numbers(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Numbers(
@@ -54371,7 +54365,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OldSimpleStruct dco_decode_old_simple_struct(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return OldSimpleStruct(
@@ -54382,7 +54376,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OpaqueNestedTwinNormal dco_decode_opaque_nested_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinNormal(
@@ -54395,7 +54389,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   OpaqueNestedTwinRustAsync dco_decode_opaque_nested_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinRustAsync(
@@ -54407,7 +54401,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OpaqueNestedTwinSync dco_decode_opaque_nested_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinSync(
@@ -55070,7 +55064,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OptVecsTwinNormal dco_decode_opt_vecs_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return OptVecsTwinNormal(
@@ -55084,7 +55078,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OptVecsTwinRustAsync dco_decode_opt_vecs_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return OptVecsTwinRustAsync(
@@ -55098,7 +55092,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OptVecsTwinSync dco_decode_opt_vecs_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return OptVecsTwinSync(
@@ -55112,7 +55106,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PointTwinNormal dco_decode_point_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return PointTwinNormal(
@@ -55125,13 +55119,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PointTwinNormalArray2 dco_decode_point_twin_normal_array_2(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return PointTwinNormalArray2(
-        (raw as List<dynamic>).map(dco_decode_point_twin_normal).toList());
+        dcoDecodeList(raw).map(dco_decode_point_twin_normal).toList());
   }
 
   @protected
   PointTwinRustAsync dco_decode_point_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return PointTwinRustAsync(
@@ -55145,13 +55139,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return PointTwinRustAsyncArray2(
-        (raw as List<dynamic>).map(dco_decode_point_twin_rust_async).toList());
+        dcoDecodeList(raw).map(dco_decode_point_twin_rust_async).toList());
   }
 
   @protected
   PointTwinSync dco_decode_point_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return PointTwinSync(
@@ -55164,24 +55158,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PointTwinSyncArray2 dco_decode_point_twin_sync_array_2(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return PointTwinSyncArray2(
-        (raw as List<dynamic>).map(dco_decode_point_twin_sync).toList());
+        dcoDecodeList(raw).map(dco_decode_point_twin_sync).toList());
   }
 
   @protected
   RawStringEnumMirrored dco_decode_raw_string_enum_mirrored(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return RawStringEnumMirrored_Raw(
-          dco_decode_box_autoadd_raw_string_mirrored(raw[1]),
+          dco_decode_box_autoadd_raw_string_mirrored(arr[1]),
         );
       case 1:
         return RawStringEnumMirrored_Nested(
-          dco_decode_box_autoadd_nested_raw_string_mirrored(raw[1]),
+          dco_decode_box_autoadd_nested_raw_string_mirrored(arr[1]),
         );
       case 2:
         return RawStringEnumMirrored_ListOfNested(
-          dco_decode_box_autoadd_list_of_nested_raw_string_mirrored(raw[1]),
+          dco_decode_box_autoadd_list_of_nested_raw_string_mirrored(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -55192,14 +55187,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RawStringItemEnumTwinNormal dco_decode_raw_string_item_enum_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return RawStringItemEnumTwinNormal_Regular(
-          regular: dco_decode_String(raw[1]),
+          regular: dco_decode_String(arr[1]),
         );
       case 1:
         return RawStringItemEnumTwinNormal_Raw(
-          type: dco_decode_String(raw[1]),
+          type: dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -55210,14 +55206,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RawStringItemEnumTwinRustAsync
       dco_decode_raw_string_item_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return RawStringItemEnumTwinRustAsync_Regular(
-          regular: dco_decode_String(raw[1]),
+          regular: dco_decode_String(arr[1]),
         );
       case 1:
         return RawStringItemEnumTwinRustAsync_Raw(
-          type: dco_decode_String(raw[1]),
+          type: dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -55228,14 +55225,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RawStringItemEnumTwinSync dco_decode_raw_string_item_enum_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return RawStringItemEnumTwinSync_Regular(
-          regular: dco_decode_String(raw[1]),
+          regular: dco_decode_String(arr[1]),
         );
       case 1:
         return RawStringItemEnumTwinSync_Raw(
-          type: dco_decode_String(raw[1]),
+          type: dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -55246,7 +55244,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RawStringItemStructTwinNormal dco_decode_raw_string_item_struct_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return RawStringItemStructTwinNormal(
@@ -55258,7 +55256,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RawStringItemStructTwinRustAsync
       dco_decode_raw_string_item_struct_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return RawStringItemStructTwinRustAsync(
@@ -55270,7 +55268,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RawStringItemStructTwinSync dco_decode_raw_string_item_struct_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return RawStringItemStructTwinSync(
@@ -55281,7 +55279,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   RawStringMirrored dco_decode_raw_string_mirrored(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return RawStringMirrored(
@@ -55295,7 +55293,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_record_application_settings_raw_string_enum_mirrored(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55312,7 +55310,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ) dco_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_normal_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55331,7 +55329,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ) dco_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_rust_async_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55350,7 +55348,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ) dco_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55365,7 +55363,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (double, double) dco_decode_record_f_32_f_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55379,7 +55377,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (int, BasicGeneralEnumTwinNormal)
       dco_decode_record_i_32_basic_general_enum_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55393,7 +55391,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (int, BasicGeneralEnumTwinRustAsync)
       dco_decode_record_i_32_basic_general_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55407,7 +55405,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (int, BasicGeneralEnumTwinSync)
       dco_decode_record_i_32_basic_general_enum_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55421,7 +55419,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (int, BasicPrimitiveEnumTwinNormal)
       dco_decode_record_i_32_basic_primitive_enum_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55435,7 +55433,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (int, BasicPrimitiveEnumTwinRustAsync)
       dco_decode_record_i_32_basic_primitive_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55449,7 +55447,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (int, BasicPrimitiveEnumTwinSync)
       dco_decode_record_i_32_basic_primitive_enum_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55463,7 +55461,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (int, BasicStructTwinNormal) dco_decode_record_i_32_basic_struct_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55477,7 +55475,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (int, BasicStructTwinRustAsync)
       dco_decode_record_i_32_basic_struct_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55491,7 +55489,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (int, BasicStructTwinSync) dco_decode_record_i_32_basic_struct_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55504,7 +55502,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, bool) dco_decode_record_i_32_bool(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55517,7 +55515,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, double) dco_decode_record_i_32_f_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55530,7 +55528,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, double) dco_decode_record_i_32_f_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55543,7 +55541,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, BigInt) dco_decode_record_i_32_i_128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55556,7 +55554,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, int) dco_decode_record_i_32_i_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55569,7 +55567,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, int) dco_decode_record_i_32_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55582,7 +55580,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, PlatformInt64) dco_decode_record_i_32_i_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55595,7 +55593,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, int) dco_decode_record_i_32_i_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55608,7 +55606,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, PlatformInt64) dco_decode_record_i_32_isize(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55621,7 +55619,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, Uint8List) dco_decode_record_i_32_list_prim_u_8_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55634,7 +55632,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, String) dco_decode_record_i_32_string(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55647,7 +55645,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, BigInt) dco_decode_record_i_32_u_128(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55660,7 +55658,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, int) dco_decode_record_i_32_u_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55673,7 +55671,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, int) dco_decode_record_i_32_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55686,7 +55684,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, BigInt) dco_decode_record_i_32_u_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55699,7 +55697,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, int) dco_decode_record_i_32_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55712,7 +55710,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, BigInt) dco_decode_record_i_32_usize(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55726,7 +55724,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (String, EnumSimpleTwinNormal)
       dco_decode_record_string_enum_simple_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55740,7 +55738,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (String, EnumSimpleTwinRustAsync)
       dco_decode_record_string_enum_simple_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55754,7 +55752,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (String, EnumSimpleTwinSync) dco_decode_record_string_enum_simple_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55767,7 +55765,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (String, HashMapValue) dco_decode_record_string_hash_map_value(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55780,7 +55778,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (String, int) dco_decode_record_string_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55794,7 +55792,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (String, KitchenSinkTwinNormal)
       dco_decode_record_string_kitchen_sink_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55808,7 +55806,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (String, KitchenSinkTwinRustAsync)
       dco_decode_record_string_kitchen_sink_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55822,7 +55820,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (String, KitchenSinkTwinSync) dco_decode_record_string_kitchen_sink_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55836,7 +55834,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   (String, Uint8List) dco_decode_record_string_list_prim_u_8_strict(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55849,7 +55847,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (String, MySize) dco_decode_record_string_my_size(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55862,7 +55860,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (String, Object?) dco_decode_record_string_serde_json_value(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55875,7 +55873,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (String, String) dco_decode_record_string_string(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55888,7 +55886,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   (int, ApplicationMode) dco_decode_record_u_8_application_mode(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -55901,7 +55899,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Sequences dco_decode_sequences(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Sequences(
@@ -55912,12 +55910,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SimpleEnumTwinNormal dco_decode_simple_enum_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return SimpleEnumTwinNormal_First();
       case 1:
         return SimpleEnumTwinNormal_Second(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -55927,12 +55926,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SimpleEnumTwinRustAsync dco_decode_simple_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return SimpleEnumTwinRustAsync_First();
       case 1:
         return SimpleEnumTwinRustAsync_Second(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -55942,12 +55942,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SimpleEnumTwinSync dco_decode_simple_enum_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return SimpleEnumTwinSync_First();
       case 1:
         return SimpleEnumTwinSync_Second(
-          dco_decode_String(raw[1]),
+          dco_decode_String(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -55958,28 +55959,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SimplePrimitiveEnumTwinNormal dco_decode_simple_primitive_enum_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimplePrimitiveEnumTwinNormal.values[raw as int];
+    return SimplePrimitiveEnumTwinNormal.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   SimplePrimitiveEnumTwinRustAsync
       dco_decode_simple_primitive_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimplePrimitiveEnumTwinRustAsync.values[raw as int];
+    return SimplePrimitiveEnumTwinRustAsync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   SimplePrimitiveEnumTwinSync dco_decode_simple_primitive_enum_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimplePrimitiveEnumTwinSync.values[raw as int];
+    return SimplePrimitiveEnumTwinSync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   SimpleStructForBorrowTwinNormal
       dco_decode_simple_struct_for_borrow_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SimpleStructForBorrowTwinNormal(
@@ -55991,7 +55992,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SimpleStructForBorrowTwinRustAsync
       dco_decode_simple_struct_for_borrow_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SimpleStructForBorrowTwinRustAsync(
@@ -56003,7 +56004,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SimpleStructForBorrowTwinSync dco_decode_simple_struct_for_borrow_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SimpleStructForBorrowTwinSync(
@@ -56014,7 +56015,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SimpleStructTwinNormal dco_decode_simple_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SimpleStructTwinNormal(
@@ -56026,7 +56027,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SimpleStructTwinRustAsync dco_decode_simple_struct_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SimpleStructTwinRustAsync(
@@ -56037,7 +56038,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SimpleStructTwinSync dco_decode_simple_struct_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SimpleStructTwinSync(
@@ -56049,16 +56050,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SimpleTraitForDynTwinNormalImplementor
       dco_decode_simple_trait_for_dyn_twin_normal_implementor(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return SimpleTraitForDynTwinNormalImplementor_Variant0(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
-              raw[1]),
+              arr[1]),
         );
       case 1:
         return SimpleTraitForDynTwinNormalImplementor_Variant1(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
-              raw[1]),
+              arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -56069,7 +56071,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SimpleTranslatableExternalStructWithMethod
       dco_decode_simple_translatable_external_struct_with_method(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SimpleTranslatableExternalStructWithMethod(
@@ -56080,7 +56082,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SomeStructTwinNormal dco_decode_some_struct_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SomeStructTwinNormal(
@@ -56091,7 +56093,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SomeStructTwinRustAsync dco_decode_some_struct_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SomeStructTwinRustAsync(
@@ -56102,7 +56104,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SomeStructTwinSync dco_decode_some_struct_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SomeStructTwinSync(
@@ -56113,12 +56115,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SpeedTwinNormal dco_decode_speed_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return SpeedTwinNormal_Unknown();
       case 1:
         return SpeedTwinNormal_GPS(
-          dco_decode_f_64(raw[1]),
+          dco_decode_f_64(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -56128,12 +56131,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SpeedTwinRustAsync dco_decode_speed_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return SpeedTwinRustAsync_Unknown();
       case 1:
         return SpeedTwinRustAsync_GPS(
-          dco_decode_f_64(raw[1]),
+          dco_decode_f_64(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -56143,12 +56147,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SpeedTwinSync dco_decode_speed_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return SpeedTwinSync_Unknown();
       case 1:
         return SpeedTwinSync_GPS(
-          dco_decode_f_64(raw[1]),
+          dco_decode_f_64(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -56158,7 +56163,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StaticOnlyTwinNormal dco_decode_static_only_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StaticOnlyTwinNormal(
@@ -56169,7 +56174,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StaticOnlyTwinRustAsync dco_decode_static_only_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StaticOnlyTwinRustAsync(
@@ -56180,7 +56185,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StaticOnlyTwinSync dco_decode_static_only_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StaticOnlyTwinSync(
@@ -56191,7 +56196,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StructInLowerLevel dco_decode_struct_in_lower_level(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructInLowerLevel(
@@ -56202,7 +56207,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StructInUpperLevel dco_decode_struct_in_upper_level(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructInUpperLevel(
@@ -56214,7 +56219,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithCastedPrimitiveTwinNormal
       dco_decode_struct_with_casted_primitive_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return StructWithCastedPrimitiveTwinNormal(
@@ -56229,7 +56234,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithCommentsTwinNormal(
@@ -56241,7 +56246,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithCommentsTwinRustAsync
       dco_decode_struct_with_comments_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithCommentsTwinRustAsync(
@@ -56253,7 +56258,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithCommentsTwinSync dco_decode_struct_with_comments_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithCommentsTwinSync(
@@ -56265,7 +56270,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithCustomNameMethodTwinNormal
       dco_decode_struct_with_custom_name_method_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithCustomNameMethodTwinNormal(
@@ -56277,7 +56282,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithDartKeywordFieldTwinNormal
       dco_decode_struct_with_dart_keyword_field_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithDartKeywordFieldTwinNormal(
@@ -56290,7 +56295,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithDartKeywordFieldTwinRustAsync
       dco_decode_struct_with_dart_keyword_field_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithDartKeywordFieldTwinRustAsync(
@@ -56303,7 +56308,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithDartKeywordFieldTwinSync
       dco_decode_struct_with_dart_keyword_field_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithDartKeywordFieldTwinSync(
@@ -56316,7 +56321,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithDeepCollectionEqualityTwinNormal
       dco_decode_struct_with_deep_collection_equality_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithDeepCollectionEqualityTwinNormal(
@@ -56334,7 +56339,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_deep_collection_equality_twin_rust_async(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithDeepCollectionEqualityTwinRustAsync(
@@ -56351,7 +56356,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithDeepCollectionEqualityTwinSync
       dco_decode_struct_with_deep_collection_equality_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithDeepCollectionEqualityTwinSync(
@@ -56368,7 +56373,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithEnumTwinNormal(
@@ -56381,7 +56386,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithEnumTwinRustAsync dco_decode_struct_with_enum_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithEnumTwinRustAsync(
@@ -56393,7 +56398,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StructWithEnumTwinSync dco_decode_struct_with_enum_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithEnumTwinSync(
@@ -56407,7 +56412,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_explicit_auto_opaque_field_twin_normal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithExplicitAutoOpaqueFieldTwinNormal(
@@ -56423,7 +56428,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_explicit_auto_opaque_field_twin_rust_async(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithExplicitAutoOpaqueFieldTwinRustAsync(
@@ -56438,7 +56443,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithExplicitAutoOpaqueFieldTwinSync
       dco_decode_struct_with_explicit_auto_opaque_field_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithExplicitAutoOpaqueFieldTwinSync(
@@ -56453,7 +56458,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithFieldRenameTwinNormal
       dco_decode_struct_with_field_rename_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithFieldRenameTwinNormal(
@@ -56465,7 +56470,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithFieldRenameTwinRustAsync
       dco_decode_struct_with_field_rename_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithFieldRenameTwinRustAsync(
@@ -56477,7 +56482,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithFieldRenameTwinSync dco_decode_struct_with_field_rename_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithFieldRenameTwinSync(
@@ -56489,7 +56494,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_struct_with_good_and_opaque_field_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return StructWithGoodAndOpaqueFieldTwinNormal(
@@ -56508,7 +56513,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_good_and_opaque_field_twin_rust_async(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return StructWithGoodAndOpaqueFieldTwinRustAsync(
@@ -56526,7 +56531,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_struct_with_good_and_opaque_field_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return StructWithGoodAndOpaqueFieldTwinSync(
@@ -56543,7 +56548,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StructWithHashMap dco_decode_struct_with_hash_map(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithHashMap(
@@ -56555,7 +56560,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithImplBlockInAnotherFile
       dco_decode_struct_with_impl_block_in_another_file(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return StructWithImplBlockInAnotherFile();
@@ -56566,7 +56571,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_impl_block_in_another_file_dependency(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return StructWithImplBlockInAnotherFileDependency();
@@ -56576,7 +56581,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithOneFieldTwinNormal(
@@ -56588,7 +56593,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithOneFieldTwinRustAsync
       dco_decode_struct_with_one_field_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithOneFieldTwinRustAsync(
@@ -56600,7 +56605,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithOneFieldTwinSync dco_decode_struct_with_one_field_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithOneFieldTwinSync(
@@ -56611,7 +56616,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StructWithRawNameField dco_decode_struct_with_raw_name_field(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithRawNameField(
@@ -56624,7 +56629,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_rust_auto_opaque_field_with_many_derive(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithRustAutoOpaqueFieldWithManyDerive(
@@ -56638,7 +56643,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithRustAutoOpaqueWithNonCloneData
       dco_decode_struct_with_rust_auto_opaque_with_non_clone_data(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithRustAutoOpaqueWithNonCloneData(
@@ -56653,7 +56658,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_shallow_collection_equality_twin_normal(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithShallowCollectionEqualityTwinNormal(
@@ -56671,7 +56676,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_shallow_collection_equality_twin_rust_async(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithShallowCollectionEqualityTwinRustAsync(
@@ -56689,7 +56694,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_shallow_collection_equality_twin_sync(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithShallowCollectionEqualityTwinSync(
@@ -56706,7 +56711,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithTwoFieldTwinNormal dco_decode_struct_with_two_field_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithTwoFieldTwinNormal(
@@ -56719,7 +56724,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithTwoFieldTwinRustAsync
       dco_decode_struct_with_two_field_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithTwoFieldTwinRustAsync(
@@ -56732,7 +56737,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithTwoFieldTwinSync dco_decode_struct_with_two_field_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StructWithTwoFieldTwinSync(
@@ -56745,7 +56750,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithZeroFieldTwinNormal dco_decode_struct_with_zero_field_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return StructWithZeroFieldTwinNormal();
@@ -56755,7 +56760,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithZeroFieldTwinRustAsync
       dco_decode_struct_with_zero_field_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return StructWithZeroFieldTwinRustAsync();
@@ -56765,7 +56770,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithZeroFieldTwinSync dco_decode_struct_with_zero_field_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return StructWithZeroFieldTwinSync();
@@ -56774,7 +56779,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   SumWithTwinNormal dco_decode_sum_with_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SumWithTwinNormal(
@@ -56786,13 +56791,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SumWithTwinNormalArray3 dco_decode_sum_with_twin_normal_array_3(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return SumWithTwinNormalArray3(
-        (raw as List<dynamic>).map(dco_decode_sum_with_twin_normal).toList());
+        dcoDecodeList(raw).map(dco_decode_sum_with_twin_normal).toList());
   }
 
   @protected
   SumWithTwinRustAsync dco_decode_sum_with_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SumWithTwinRustAsync(
@@ -56804,15 +56809,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SumWithTwinRustAsyncArray3 dco_decode_sum_with_twin_rust_async_array_3(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SumWithTwinRustAsyncArray3((raw as List<dynamic>)
-        .map(dco_decode_sum_with_twin_rust_async)
-        .toList());
+    return SumWithTwinRustAsyncArray3(
+        dcoDecodeList(raw).map(dco_decode_sum_with_twin_rust_async).toList());
   }
 
   @protected
   SumWithTwinSync dco_decode_sum_with_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return SumWithTwinSync(
@@ -56824,13 +56828,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SumWithTwinSyncArray3 dco_decode_sum_with_twin_sync_array_3(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return SumWithTwinSyncArray3(
-        (raw as List<dynamic>).map(dco_decode_sum_with_twin_sync).toList());
+        dcoDecodeList(raw).map(dco_decode_sum_with_twin_sync).toList());
   }
 
   @protected
   TestChronoTwinNormal dco_decode_test_chrono_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return TestChronoTwinNormal(
@@ -56844,7 +56848,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   TestChronoTwinRustAsync dco_decode_test_chrono_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return TestChronoTwinRustAsync(
@@ -56858,7 +56862,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   TestChronoTwinSync dco_decode_test_chrono_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return TestChronoTwinSync(
@@ -56872,7 +56876,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   TestIdTwinNormal dco_decode_test_id_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TestIdTwinNormal(
@@ -56884,20 +56888,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TestIdTwinNormalArray2 dco_decode_test_id_twin_normal_array_2(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return TestIdTwinNormalArray2(
-        (raw as List<dynamic>).map(dco_decode_test_id_twin_normal).toList());
+        dcoDecodeList(raw).map(dco_decode_test_id_twin_normal).toList());
   }
 
   @protected
   TestIdTwinNormalArray4 dco_decode_test_id_twin_normal_array_4(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return TestIdTwinNormalArray4(
-        (raw as List<dynamic>).map(dco_decode_test_id_twin_normal).toList());
+        dcoDecodeList(raw).map(dco_decode_test_id_twin_normal).toList());
   }
 
   @protected
   TestIdTwinRustAsync dco_decode_test_id_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TestIdTwinRustAsync(
@@ -56909,24 +56913,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TestIdTwinRustAsyncArray2 dco_decode_test_id_twin_rust_async_array_2(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TestIdTwinRustAsyncArray2((raw as List<dynamic>)
-        .map(dco_decode_test_id_twin_rust_async)
-        .toList());
+    return TestIdTwinRustAsyncArray2(
+        dcoDecodeList(raw).map(dco_decode_test_id_twin_rust_async).toList());
   }
 
   @protected
   TestIdTwinRustAsyncArray4 dco_decode_test_id_twin_rust_async_array_4(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TestIdTwinRustAsyncArray4((raw as List<dynamic>)
-        .map(dco_decode_test_id_twin_rust_async)
-        .toList());
+    return TestIdTwinRustAsyncArray4(
+        dcoDecodeList(raw).map(dco_decode_test_id_twin_rust_async).toList());
   }
 
   @protected
   TestIdTwinSync dco_decode_test_id_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TestIdTwinSync(
@@ -56938,20 +56940,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TestIdTwinSyncArray2 dco_decode_test_id_twin_sync_array_2(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return TestIdTwinSyncArray2(
-        (raw as List<dynamic>).map(dco_decode_test_id_twin_sync).toList());
+        dcoDecodeList(raw).map(dco_decode_test_id_twin_sync).toList());
   }
 
   @protected
   TestIdTwinSyncArray4 dco_decode_test_id_twin_sync_array_4(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return TestIdTwinSyncArray4(
-        (raw as List<dynamic>).map(dco_decode_test_id_twin_sync).toList());
+        dcoDecodeList(raw).map(dco_decode_test_id_twin_sync).toList());
   }
 
   @protected
   TestModelTwinNormal dco_decode_test_model_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return TestModelTwinNormal(
@@ -56965,7 +56967,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   TestModelTwinRustAsync dco_decode_test_model_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return TestModelTwinRustAsync(
@@ -56979,7 +56981,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   TestModelTwinSync dco_decode_test_model_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return TestModelTwinSync(
@@ -56994,7 +56996,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TranslatableStructWithDartCodeTwinNormal
       dco_decode_translatable_struct_with_dart_code_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TranslatableStructWithDartCodeTwinNormal(
@@ -57006,7 +57008,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TupleStructWithOneFieldTwinNormal
       dco_decode_tuple_struct_with_one_field_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TupleStructWithOneFieldTwinNormal(
@@ -57018,7 +57020,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TupleStructWithOneFieldTwinRustAsync
       dco_decode_tuple_struct_with_one_field_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TupleStructWithOneFieldTwinRustAsync(
@@ -57030,7 +57032,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TupleStructWithOneFieldTwinSync
       dco_decode_tuple_struct_with_one_field_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TupleStructWithOneFieldTwinSync(
@@ -57042,7 +57044,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TupleStructWithTwoFieldTwinNormal
       dco_decode_tuple_struct_with_two_field_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return TupleStructWithTwoFieldTwinNormal(
@@ -57055,7 +57057,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TupleStructWithTwoFieldTwinRustAsync
       dco_decode_tuple_struct_with_two_field_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return TupleStructWithTwoFieldTwinRustAsync(
@@ -57068,7 +57070,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TupleStructWithTwoFieldTwinSync
       dco_decode_tuple_struct_with_two_field_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return TupleStructWithTwoFieldTwinSync(
@@ -57080,13 +57082,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_u_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
   int dco_decode_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
@@ -57098,7 +57100,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
@@ -57146,7 +57148,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   UserIdTwinNormal dco_decode_user_id_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return UserIdTwinNormal(
@@ -57157,7 +57159,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   UserIdTwinRustAsync dco_decode_user_id_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return UserIdTwinRustAsync(
@@ -57168,7 +57170,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   UserIdTwinSync dco_decode_user_id_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return UserIdTwinSync(
@@ -57186,7 +57188,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   VecOfPrimitivePackTwinNormal dco_decode_vec_of_primitive_pack_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePackTwinNormal(
@@ -57208,7 +57210,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   VecOfPrimitivePackTwinRustAsync
       dco_decode_vec_of_primitive_pack_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePackTwinRustAsync(
@@ -57230,7 +57232,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   VecOfPrimitivePackTwinSync dco_decode_vec_of_primitive_pack_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePackTwinSync(
@@ -57251,19 +57253,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   WeekdaysTwinNormal dco_decode_weekdays_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WeekdaysTwinNormal.values[raw as int];
+    return WeekdaysTwinNormal.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   WeekdaysTwinRustAsync dco_decode_weekdays_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WeekdaysTwinRustAsync.values[raw as int];
+    return WeekdaysTwinRustAsync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   WeekdaysTwinSync dco_decode_weekdays_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WeekdaysTwinSync.values[raw as int];
+    return WeekdaysTwinSync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected

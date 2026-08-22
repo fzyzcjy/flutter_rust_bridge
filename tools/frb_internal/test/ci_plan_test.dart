@@ -28,10 +28,14 @@ void main() {
         );
         expect(plan.matrixByJob['test_dart_web'], {
           'include': [
-            {'package': 'frb_dart'},
-            {'package': 'frb_example--dart_minimal'},
-            {'package': 'frb_example--pure_dart'},
-            {'package': 'frb_example--pure_dart_pde'},
+            {'package': 'frb_dart', 'wasm': false},
+            {'package': 'frb_dart', 'wasm': true},
+            {'package': 'frb_example--dart_minimal', 'wasm': false},
+            {'package': 'frb_example--dart_minimal', 'wasm': true},
+            {'package': 'frb_example--pure_dart', 'wasm': false},
+            {'package': 'frb_example--pure_dart', 'wasm': true},
+            {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+            {'package': 'frb_example--pure_dart_pde', 'wasm': true},
           ],
         }, reason: filter);
       }
@@ -70,7 +74,8 @@ void main() {
       expect(plan.enabledJobs, {'lint_dart_primary', 'test_dart_web'});
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_example--pure_dart'},
+          {'package': 'frb_example--pure_dart', 'wasm': false},
+          {'package': 'frb_example--pure_dart', 'wasm': true},
         ],
       });
     });
@@ -84,10 +89,14 @@ void main() {
       expect(plan.enabledJobs, {'lint_dart_primary', 'test_dart_web'});
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_dart'},
-          {'package': 'frb_example--dart_minimal'},
-          {'package': 'frb_example--pure_dart'},
-          {'package': 'frb_example--pure_dart_pde'},
+          {'package': 'frb_dart', 'wasm': false},
+          {'package': 'frb_dart', 'wasm': true},
+          {'package': 'frb_example--dart_minimal', 'wasm': false},
+          {'package': 'frb_example--dart_minimal', 'wasm': true},
+          {'package': 'frb_example--pure_dart', 'wasm': false},
+          {'package': 'frb_example--pure_dart', 'wasm': true},
+          {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+          {'package': 'frb_example--pure_dart_pde', 'wasm': true},
         ],
       });
     });
@@ -117,7 +126,22 @@ void main() {
       expect(plan.enabledJobs, {'test_dart_web'});
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_example--pure_dart_pde'},
+          {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+          {'package': 'frb_example--pure_dart_pde', 'wasm': true},
+        ],
+      });
+    });
+
+    test('wasm dimension filter selects one dart web entry', () {
+      final plan = buildCiPlan(
+        filter: 'test_dart_web[package=frb_example--pure_dart_pde,wasm=true]',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'test_dart_web'});
+      expect(plan.matrixByJob['test_dart_web'], {
+        'include': [
+          {'package': 'frb_example--pure_dart_pde', 'wasm': true},
         ],
       });
     });
@@ -131,8 +155,10 @@ void main() {
       expect(plan.enabledJobs, {'test_dart_web'});
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_dart'},
-          {'package': 'frb_example--pure_dart_pde'},
+          {'package': 'frb_dart', 'wasm': false},
+          {'package': 'frb_dart', 'wasm': true},
+          {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+          {'package': 'frb_example--pure_dart_pde', 'wasm': true},
         ],
       });
     });
@@ -303,8 +329,10 @@ void main() {
 
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_dart'},
-          {'package': 'frb_example--pure_dart'},
+          {'package': 'frb_dart', 'wasm': false},
+          {'package': 'frb_dart', 'wasm': true},
+          {'package': 'frb_example--pure_dart', 'wasm': false},
+          {'package': 'frb_example--pure_dart', 'wasm': true},
         ],
       });
     });
@@ -339,8 +367,10 @@ void main() {
       expect(plan.enabledJobs, {'test_dart_web'});
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_dart'},
-          {'package': 'frb_example--pure_dart_pde'},
+          {'package': 'frb_dart', 'wasm': false},
+          {'package': 'frb_dart', 'wasm': true},
+          {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+          {'package': 'frb_example--pure_dart_pde', 'wasm': true},
         ],
       });
     });
@@ -359,7 +389,8 @@ void main() {
         'enable': true,
         'matrix': {
           'include': [
-            {'package': 'frb_example--pure_dart_pde'},
+            {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+            {'package': 'frb_example--pure_dart_pde', 'wasm': true},
           ],
         },
       });
@@ -390,10 +421,14 @@ void main() {
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_dart'},
-              {'package': 'frb_example--dart_minimal'},
-              {'package': 'frb_example--pure_dart'},
-              {'package': 'frb_example--pure_dart_pde'},
+              {'package': 'frb_dart', 'wasm': false},
+              {'package': 'frb_dart', 'wasm': true},
+              {'package': 'frb_example--dart_minimal', 'wasm': false},
+              {'package': 'frb_example--dart_minimal', 'wasm': true},
+              {'package': 'frb_example--pure_dart', 'wasm': false},
+              {'package': 'frb_example--pure_dart', 'wasm': true},
+              {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+              {'package': 'frb_example--pure_dart_pde', 'wasm': true},
             ],
           },
         },
@@ -405,7 +440,8 @@ void main() {
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_example--pure_dart'},
+              {'package': 'frb_example--pure_dart', 'wasm': false},
+              {'package': 'frb_example--pure_dart', 'wasm': true},
             ],
           },
         },
@@ -416,7 +452,8 @@ void main() {
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_example--pure_dart_pde'},
+              {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+              {'package': 'frb_example--pure_dart_pde', 'wasm': true},
             ],
           },
         },
@@ -427,8 +464,10 @@ void main() {
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_dart'},
-              {'package': 'frb_example--pure_dart_pde'},
+              {'package': 'frb_dart', 'wasm': false},
+              {'package': 'frb_dart', 'wasm': true},
+              {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+              {'package': 'frb_example--pure_dart_pde', 'wasm': true},
             ],
           },
         },
@@ -440,8 +479,10 @@ void main() {
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_dart'},
-              {'package': 'frb_example--pure_dart_pde'},
+              {'package': 'frb_dart', 'wasm': false},
+              {'package': 'frb_dart', 'wasm': true},
+              {'package': 'frb_example--pure_dart_pde', 'wasm': false},
+              {'package': 'frb_example--pure_dart_pde', 'wasm': true},
             ],
           },
         },

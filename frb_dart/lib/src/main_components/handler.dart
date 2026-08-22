@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge/src/dart_opaque/dart_opaque.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
+import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 
@@ -46,10 +47,10 @@ class BaseHandler {
     List<dynamic> message,
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
   ) {
-    final [closureDartOpaque, ...args] = message;
+    final [closureDartOpaque, callId, ...args] = message;
     final closureDartObject =
         decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding)
             as Function;
-    Function.apply(closureDartObject, args);
+    Function.apply(closureDartObject, [dcoDecodePrimitiveInt(callId), ...args]);
   }
 }

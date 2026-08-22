@@ -66,7 +66,7 @@ rustup component list --toolchain "${nightly_toolchain}" --installed | grep llvm
 
 ## Test Data
 
-- Input files, API examples, account fixtures, or generated assets: checked-in packages `frb_rust`, `frb_dart`, and `frb_example/pure_dart`.
+- Input files, API examples, account fixtures, or generated assets: checked-in packages `frb_rust`, `frb_dart`, `frb_example/pure_dart`, and `frb_example/flutter_via_create`.
 - Reset procedure before each run: return to a clean checkout or record intentional local changes in the execution record.
 
 ## Steps
@@ -90,43 +90,72 @@ rustup component list --toolchain "${nightly_toolchain}" --installed | grep llvm
    '
    ```
 
-2. Run a focused Rust package test in Docker.
+1. Run a focused Rust package test in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-rust-package --package frb_rust
    ```
 
-3. Run a focused Dart native test in Docker.
+1. Run a focused Dart native test in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-dart-native --package frb_dart
    ```
 
-4. Run a focused Dart web test in Docker.
+1. Run a focused Dart web JavaScript test in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-dart-web --package frb_example/pure_dart
    ```
 
-5. Run a focused Flutter web coverage test in Docker.
+1. Run the Dart web dart2wasm browser test command in Docker.
+
+   ```bash
+   .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-dart-web --package frb_dart --wasm
+   ```
+
+1. Start the headless WebDriver service used by Flutter web drive commands.
+
+   ```bash
+   .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc '
+   set -euo pipefail
+   export DISPLAY=:99
+   if ! curl -fsS http://127.0.0.1:4444/status >/tmp/frb-local-webdriver-status.log 2>&1; then
+     chromedriver --port=4444 --verbose >/tmp/frb-local-chromedriver.log 2>&1 &
+   fi
+   if ! xdpyinfo -display :99 >/tmp/frb-local-xdpyinfo.log 2>&1; then
+     Xvfb -ac :99 -screen 0 1280x1024x24 >/tmp/frb-local-xvfb.log 2>&1 &
+   fi
+   sleep 15
+   curl -fsS http://127.0.0.1:4444/status
+   '
+   ```
+
+1. Run the Flutter web JavaScript coverage command in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage
    ```
 
-6. Run a focused Linux Flutter native integration test in Docker through a headless display.
+1. Run the Flutter web dart2wasm coverage command in Docker.
+
+   ```bash
+   .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage --wasm
+   ```
+
+1. Run a focused Linux Flutter native integration test in Docker through a headless display.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- xvfb-run -a ./frb_internal test-flutter-native --package frb_example/flutter_via_create --flutter-test-args '--device-id linux'
    ```
 
-7. Smoke-test the Linux Flutter release build command in Docker.
+1. Smoke-test the Linux Flutter release build command in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal build-flutter --target linux
    ```
 
-8. Confirm the checkout did not gain unexpected generated or cache files.
+1. Confirm the checkout did not gain unexpected generated or cache files.
 
    ```bash
    git status --short
@@ -140,7 +169,9 @@ The Docker environment coverage test passes when every command exits successfull
 ./frb_internal test-rust-package --package frb_rust
 ./frb_internal test-dart-native --package frb_dart
 ./frb_internal test-dart-web --package frb_example/pure_dart
+./frb_internal test-dart-web --package frb_dart --wasm
 ./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage
+./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage --wasm
 xvfb-run -a ./frb_internal test-flutter-native --package frb_example/flutter_via_create --flutter-test-args '--device-id linux'
 ./frb_internal build-flutter --target linux
 ```
@@ -153,6 +184,7 @@ The test fails if any of the following happens:
 - Any required tool version command fails inside the container.
 - The Rust, Dart native, Dart web, Flutter web, or Linux Flutter native test command exits non-zero because Docker, browser startup, Linux desktop startup, package setup, toolchain availability, or local environment plumbing failed.
 - The Dart or Flutter web test requires a visible GUI session instead of running in a headless browser.
+- The dart2wasm web commands fail before launching Chrome or before reaching the actual test body. A deterministic test assertion failure or timeout after Chrome starts is product/test behavior to investigate separately, not a Docker environment failure; record the exact failing test and command.
 - The Flutter web drive command fails with `Unable to start a WebDriver session` because no compatible `chromedriver` is available.
 - The Linux Flutter native test cannot find the `linux` device, cannot start under `xvfb-run`, or exits non-zero unexpectedly.
 - The Linux Flutter build command exits non-zero unexpectedly or does not produce release artifacts under `target/build_flutter_output`.
@@ -172,7 +204,9 @@ The test is blocked, not failed, if the Docker image cannot be pulled because of
 
 - If submodules are uninitialized, rerun `git submodule update --init --recursive` and record the output.
 - If the container is missing or stopped, rerun `.claude/skills/frb-dev-env/frb_dev_env.py docker create` and record the helper output.
-- If Chrome, Chromium, or ChromeDriver cannot start, record the command, version, container architecture, and whether the web test log mentions sandbox flags.
+- If Chrome, Chromium, or ChromeDriver cannot start, record the command, version, container architecture, and whether the web test log mentions sandbox flags. For `dart test -p chrome`, verify that `CHROME_EXECUTABLE` points to the Docker no-sandbox wrapper when running inside the FRB Docker container.
+- If `flutter drive` reaches `dart2wasm` successfully and then fails to start a WebDriver session, record the container architecture, whether `chromedriver --version` succeeds, and whether the run is using `web-server` or `chrome`.
+- If Flutter web coverage fails only on the dart2wasm command, record whether the failure happened during FRB codegen, `flutter drive --wasm`, coverage formatting, or artifact generation.
 - If the Flutter web coverage step fails with a missing `Cargo.lock` under the nightly standard library source, verify the container is using the current Docker image and that the image has `rust-src` installed for the pinned nightly toolchain.
 - If the Flutter web coverage step fails with `can't find crate for profiler_builtins`, verify the container is using the current Docker image and that the image has `llvm-tools-preview` installed for the pinned nightly toolchain.
 - If the Linux Flutter native test cannot start, record `flutter devices`, `xvfb-run --help`, and whether the log mentions GTK, display, OpenGL, or missing Linux desktop dependencies.

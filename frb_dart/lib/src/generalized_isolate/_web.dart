@@ -6,6 +6,8 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:web/web.dart' as web;
 
+dynamic _extractData(web.MessageEvent event) => event.data.dartify();
+
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) {
   if (port.isA<web.BroadcastChannel>()) {
@@ -52,8 +54,6 @@ class ReceivePort extends Stream<dynamic> {
     return subscription;
   }
 
-  static dynamic _extractData(web.MessageEvent event) => event.data;
-
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _rawReceivePort.sendPort;
 
@@ -73,7 +73,7 @@ class RawReceivePort {
 
   /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
-    _webReceivePort._onMessage.listen((event) => handler(event.data));
+    _webReceivePort._onMessage.listen((event) => handler(_extractData(event)));
     _webReceivePort._start();
   }
 

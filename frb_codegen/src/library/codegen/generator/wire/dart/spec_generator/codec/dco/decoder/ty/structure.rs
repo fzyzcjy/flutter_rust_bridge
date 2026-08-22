@@ -23,7 +23,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGenerato
             .collect_vec();
 
         let inner = inner.join("\n");
-        let cast = "final arr = raw as List<dynamic>;".to_string();
+        let cast = "final arr = dcoDecodeList(raw);".to_string();
         let safe_check = format!("if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');", s.fields.len(), s.fields.len());
         let ctor_postfix = dart_constructor_postfix(
             &s.name.name,

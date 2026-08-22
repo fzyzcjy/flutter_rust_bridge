@@ -22,7 +22,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenerator<
                         .enumerate()
                         .map(|(idx, field)| {
                             let val =
-                                format!("dco_decode_{}(raw[{}]),", field.ty.safe_ident(), idx + 1);
+                                format!("dco_decode_{}(arr[{}]),", field.ty.safe_ident(), idx + 1);
                             if st.is_fields_named {
                                 format!("{}: {}", field.name.dart_style(), val)
                             } else {
@@ -36,7 +36,8 @@ impl WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenerator<
             })
             .collect_vec();
         format!(
-            "switch (raw[0]) {{
+            "final arr = dcoDecodeList(raw);
+            switch (dcoDecodePrimitiveInt(arr[0])) {{
                 {}
                 default: throw Exception(\"unreachable\");
             }}",

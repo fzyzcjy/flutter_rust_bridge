@@ -17,7 +17,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for GeneralListWireDartCodecDcoGenera
         }
 
         format!(
-            "return (raw as List<dynamic>).map(dco_decode_{}).toList();",
+            "return dcoDecodeList(raw).map(dco_decode_{}).toList();",
             self.mir.inner.safe_ident()
         )
     }

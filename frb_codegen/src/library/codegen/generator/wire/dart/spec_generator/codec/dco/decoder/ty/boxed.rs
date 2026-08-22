@@ -24,7 +24,13 @@ impl WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerator<'_
                 MirTypePrimitive::I64
                 | MirTypePrimitive::Isize
                 | MirTypePrimitive::U64
-                | MirTypePrimitive::Usize,
+                | MirTypePrimitive::Usize
+                | MirTypePrimitive::U8
+                | MirTypePrimitive::I8
+                | MirTypePrimitive::U16
+                | MirTypePrimitive::I16
+                | MirTypePrimitive::U32
+                | MirTypePrimitive::I32,
             )
             | Delegate(MirTypeDelegate::Array(_) | MirTypeDelegate::PrimitiveEnum { .. }) => {
                 format!("return dco_decode_{}(raw);", self.mir.inner.safe_ident())
