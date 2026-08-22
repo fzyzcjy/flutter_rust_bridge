@@ -260,6 +260,16 @@ class WriteBuffer {
     final raw = _buffer.intoRaw();
     return (ptr: raw.ptr, rustVecLen: raw.length, dataLen: _currentSize);
   }
+
+  void dispose() {
+    if (_isDone) {
+      throw StateError(
+        'dispose() must not be called after the same $runtimeType is done.',
+      );
+    }
+    _isDone = true;
+    _buffer.dispose();
+  }
 }
 
 /// {@macro flutter_rust_bridge.internal}
