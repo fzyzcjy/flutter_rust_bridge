@@ -652,8 +652,7 @@ plain
     test(
       'reports hooks as unreleased when its target version is absent',
       () async {
-        final statuses =
-            await released_version.fetchReleasePackageStatuses(
+        final statuses = await released_version.fetchReleasePackageStatuses(
           targetVersion: '9.9.9',
           fetcher: (uri) async {
             if (uri.host == 'crates.io') {
@@ -687,8 +686,7 @@ plain
     test(
       'reports hooks as unreleased when only another version exists',
       () async {
-        final statuses =
-            await released_version.fetchReleasePackageStatuses(
+        final statuses = await released_version.fetchReleasePackageStatuses(
           targetVersion: '9.9.9',
           fetcher: (uri) async {
             if (uri.host == 'crates.io') {
