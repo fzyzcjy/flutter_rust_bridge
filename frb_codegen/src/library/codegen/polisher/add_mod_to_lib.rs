@@ -34,6 +34,10 @@ fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> R
         })?;
     let rust_output_path_relative_to_src_folder =
         normalize_descendant_path(&rust_output_path_relative_to_src_folder_raw)?;
+    ensure!(
+        rust_output_path_relative_to_src_folder.components().count() == 1,
+        "rust_output_path must be directly inside the crate source directory"
+    );
 
     let mod_name = rust_output_path_relative_to_src_folder
         .file_stem()
@@ -97,18 +101,18 @@ mod tests {
         Ok(())
     }
 
-    /// Uses a nested generated filename as the module declaration name.
+    /// Rejects nested generated output that cannot be declared from lib.rs.
     #[test]
-    fn test_add_mod_to_lib_handles_nested_output() -> Result<()> {
+    fn test_add_mod_to_lib_rejects_nested_output() -> Result<()> {
         let temp_dir = tempdir()?;
         let crate_dir = temp_dir.path().join("crate");
         let src_dir = crate_dir.join("src");
         fs::create_dir_all(src_dir.join("nested"))?;
         fs::write(src_dir.join("lib.rs"), "")?;
 
-        auto_add_mod_to_lib_core(&crate_dir, &src_dir.join("nested/bridge.rs"))?;
+        assert!(auto_add_mod_to_lib_core(&crate_dir, &src_dir.join("nested/bridge.rs")).is_err());
 
-        assert!(fs::read_to_string(src_dir.join("lib.rs"))?.starts_with("mod bridge;"));
+        assert!(fs::read_to_string(src_dir.join("lib.rs"))?.is_empty());
         Ok(())
     }
 
