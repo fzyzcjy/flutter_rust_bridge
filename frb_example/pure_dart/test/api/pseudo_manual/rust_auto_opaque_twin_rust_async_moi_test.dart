@@ -11,10 +11,7 @@ import 'package:test/test.dart';
 
 import '../../test_utils.dart';
 
-Future<void> main({
-  bool skipRustLibInit = false,
-  bool skipKnownSseSerializerLeak = false,
-}) async {
+Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('simple functions', () {
@@ -32,25 +29,49 @@ Future<void> main({
         );
       });
 
-      test(
-        'after call, the object cannot be used again',
-        () async {
-          final obj =
-              await rustAutoOpaqueReturnOwnTwinRustAsyncMoi(initial: 100);
-          await futurizeVoidTwinRustAsyncMoi(
-            rustAutoOpaqueArgOwnTwinRustAsyncMoi(arg: obj, expect: 100),
-          );
+      test('after call, the object cannot be used again', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncMoi(initial: 100);
+        await futurizeVoidTwinRustAsyncMoi(
+          rustAutoOpaqueArgOwnTwinRustAsyncMoi(arg: obj, expect: 100),
+        );
 
-          expect(obj.isDisposed, true);
+        expect(obj.isDisposed, true);
 
-          await expectLater(
-            () =>
-                rustAutoOpaqueArgBorrowTwinRustAsyncMoi(arg: obj, expect: 100),
-            throwsA(isA<DroppableDisposedException>()),
-          );
-        },
-        skip: skipKnownSseSerializerLeak,
-      );
+        await expectLater(
+          () => rustAutoOpaqueArgBorrowTwinRustAsyncMoi(arg: obj, expect: 100),
+          throwsA(isA<DroppableDisposedException>()),
+        );
+      });
+
+      test('failed encoding preserves an earlier owned argument', () async {
+        final first =
+            await rustAutoOpaqueReturnOwnTwinRustAsyncMoi(initial: 10);
+        final disposed =
+            await rustAutoOpaqueReturnOwnTwinRustAsyncMoi(initial: 20);
+        disposed.dispose();
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinRustAsyncMoi(a: first, b: disposed),
+          throwsA(isA<DroppableDisposedException>()),
+        );
+        expect(first.isDisposed, false);
+        await futurizeVoidTwinRustAsyncMoi(
+          rustAutoOpaqueArgOwnTwinRustAsyncMoi(arg: first, expect: 10),
+        );
+      });
+
+      test('failed duplicate move preserves the owned argument', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncMoi(initial: 10);
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinRustAsyncMoi(a: obj, b: obj),
+          throwsA(isA<StateError>()),
+        );
+        expect(obj.isDisposed, false);
+        await futurizeVoidTwinRustAsyncMoi(
+          rustAutoOpaqueArgOwnTwinRustAsyncMoi(arg: obj, expect: 10),
+        );
+      });
     });
 
     group('arg ref', () {

@@ -13,10 +13,7 @@ import 'package:test/test.dart';
 
 import '../../test_utils.dart';
 
-Future<void> main({
-  bool skipRustLibInit = false,
-  bool skipKnownSseSerializerLeak = false,
-}) async {
+Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('simple functions', () {
@@ -34,23 +31,47 @@ Future<void> main({
         );
       });
 
-      test(
-        'after call, the object cannot be used again',
-        () async {
-          final obj = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
-          await futurizeVoidTwinSync(
-            rustAutoOpaqueArgOwnTwinSync(arg: obj, expect: 100),
-          );
+      test('after call, the object cannot be used again', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
+        await futurizeVoidTwinSync(
+          rustAutoOpaqueArgOwnTwinSync(arg: obj, expect: 100),
+        );
 
-          expect(obj.isDisposed, true);
+        expect(obj.isDisposed, true);
 
-          await expectLater(
-            () => rustAutoOpaqueArgBorrowTwinSync(arg: obj, expect: 100),
-            throwsA(isA<DroppableDisposedException>()),
-          );
-        },
-        skip: skipKnownSseSerializerLeak,
-      );
+        await expectLater(
+          () => rustAutoOpaqueArgBorrowTwinSync(arg: obj, expect: 100),
+          throwsA(isA<DroppableDisposedException>()),
+        );
+      });
+
+      test('failed encoding preserves an earlier owned argument', () async {
+        final first = await rustAutoOpaqueReturnOwnTwinSync(initial: 10);
+        final disposed = await rustAutoOpaqueReturnOwnTwinSync(initial: 20);
+        disposed.dispose();
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinSync(a: first, b: disposed),
+          throwsA(isA<DroppableDisposedException>()),
+        );
+        expect(first.isDisposed, false);
+        await futurizeVoidTwinSync(
+          rustAutoOpaqueArgOwnTwinSync(arg: first, expect: 10),
+        );
+      });
+
+      test('failed duplicate move preserves the owned argument', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinSync(initial: 10);
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinSync(a: obj, b: obj),
+          throwsA(isA<StateError>()),
+        );
+        expect(obj.isDisposed, false);
+        await futurizeVoidTwinSync(
+          rustAutoOpaqueArgOwnTwinSync(arg: obj, expect: 10),
+        );
+      });
     });
 
     group('arg ref', () {

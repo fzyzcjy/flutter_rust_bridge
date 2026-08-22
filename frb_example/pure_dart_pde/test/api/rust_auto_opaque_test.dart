@@ -9,10 +9,7 @@ import 'package:test/test.dart';
 
 import '../test_utils.dart';
 
-Future<void> main({
-  bool skipRustLibInit = false,
-  bool skipKnownSseSerializerLeak = false,
-}) async {
+Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('simple functions', () {
@@ -30,23 +27,47 @@ Future<void> main({
         );
       });
 
-      test(
-        'after call, the object cannot be used again',
-        () async {
-          final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-          await futurizeVoidTwinNormal(
-            rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100),
-          );
+      test('after call, the object cannot be used again', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+        await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100),
+        );
 
-          expect(obj.isDisposed, true);
+        expect(obj.isDisposed, true);
 
-          await expectLater(
-            () => rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-            throwsA(isA<DroppableDisposedException>()),
-          );
-        },
-        skip: skipKnownSseSerializerLeak,
-      );
+        await expectLater(
+          () => rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
+          throwsA(isA<DroppableDisposedException>()),
+        );
+      });
+
+      test('failed encoding preserves an earlier owned argument', () async {
+        final first = await rustAutoOpaqueReturnOwnTwinNormal(initial: 10);
+        final disposed = await rustAutoOpaqueReturnOwnTwinNormal(initial: 20);
+        disposed.dispose();
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinNormal(a: first, b: disposed),
+          throwsA(isA<DroppableDisposedException>()),
+        );
+        expect(first.isDisposed, false);
+        await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: first, expect: 10),
+        );
+      });
+
+      test('failed duplicate move preserves the owned argument', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 10);
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinNormal(a: obj, b: obj),
+          throwsA(isA<StateError>()),
+        );
+        expect(obj.isDisposed, false);
+        await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 10),
+        );
+      });
     });
 
     group('arg ref', () {
