@@ -36,7 +36,7 @@ sdks:
     expect(
       normalizePubspecLockText('''
 sdks:
-  dart: ">=3.10.0-0 <4.0.0"
+  dart: ">=3.11.0-0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"
 '''),
       '''

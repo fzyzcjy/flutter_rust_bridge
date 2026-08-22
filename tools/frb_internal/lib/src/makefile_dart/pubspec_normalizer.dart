@@ -15,6 +15,7 @@ const _kPubspecYamlSdkReplacements = <String, String>{
 const _kPubspecLockSdkReplacements = <String, String>{
   '  dart: ">=3.13.0 <4.0.0"': '  dart: ">=3.11.0 <4.0.0"',
   '  dart: ">=3.12.0 <4.0.0"': '  dart: ">=3.11.0 <4.0.0"',
+  '  dart: ">=3.11.0-0 <4.0.0"': '  dart: ">=3.9.2 <4.0.0"',
   '  dart: ">=3.10.0-0 <4.0.0"': '  dart: ">=3.9.2 <4.0.0"',
 };
 
