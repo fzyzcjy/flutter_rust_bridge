@@ -566,7 +566,6 @@ Future<void> testDartValgrind(TestDartConfig config) async {
 
   final valgrindCommand =
       '${_dartValgrindCommand()} '
-      '--error-exitcode=1 '
       '--leak-check=full '
       '--trace-children=yes '
       // Used for implicit null checks.
@@ -588,7 +587,10 @@ Future<void> testDartValgrind(TestDartConfig config) async {
 }
 
 String _dartValgrindCommand() =>
-    'valgrind --suppressions=../../tools/dart_valgrind.supp';
+    'valgrind '
+    '--suppressions=../../tools/dart_valgrind.supp '
+    '--error-exitcode=1 '
+    '--errors-for-leak-kinds=definite,indirect';
 
 @visibleForTesting
 String dartValgrindCommandForTesting() => _dartValgrindCommand();
