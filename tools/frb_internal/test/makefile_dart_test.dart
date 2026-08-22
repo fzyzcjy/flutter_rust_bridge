@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate_from_scratch.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
@@ -79,6 +80,13 @@ void main() {
 
   test('release Cargo lock template path exists', () {
     expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
+  });
+
+  test('release publishes every shared Dart package', () {
+    expect(kDartPublishedPackages.map(dartPublishCommand), [
+      'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org',
+      'cd frb_hooks && dart pub publish --force --server=https://pub.dartlang.org',
+    ]);
   });
 
   test('release guard rejects uninitialized submodules', () {
@@ -243,6 +251,70 @@ line with spaces
 plain
 ''',
     );
+  });
+
+  test('from-scratch selection keeps every tracked generated output', () {
+    expect(
+      selectTrackedGeneratedFilesForFromScratchForTesting([
+        'frb_example/example/frb_generated.h',
+        'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/unrelated_model.g.dart',
+        'frb_example/rust_ui/src/frb_generated.rs',
+        'frb_rust/src/internal_generated/mod.rs',
+        'frb_dart/lib/src/ffigen_generated/multi_package.dart',
+        'frb_dart/lib/src/cli/build_web/entrypoint.g.dart',
+        'frb_codegen/assets/integration_template/shared/lib/src/rust/frb_generated.dart',
+        'frb_codegen/assets/integration_template/shared/lib/model.g.dart',
+        'frb_example/example/lib/model.dart',
+      ]),
+      [
+        'frb_example/example/frb_generated.h',
+        'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/unrelated_model.g.dart',
+        'frb_example/rust_ui/src/frb_generated.rs',
+        'frb_rust/src/internal_generated/mod.rs',
+        'frb_dart/lib/src/ffigen_generated/multi_package.dart',
+        'frb_dart/lib/src/cli/build_web/entrypoint.g.dart',
+      ],
+    );
+  });
+
+  test('from-scratch restoration check reports every missing output', () async {
+    final tempDir = await Directory.systemTemp.createTemp(
+      'frb_generated_restore_',
+    );
+    try {
+      final restoredFile = File('${tempDir.path}/restored.g.dart');
+      await restoredFile.writeAsString('restored');
+
+      expect(
+        () => verifyGeneratedFilesRestoredForTesting(
+          repoRoot: tempDir.path,
+          expectedGeneratedFiles: [
+            'restored.g.dart',
+            'missing.freezed.dart',
+            'rust/src/frb_generated.rs',
+          ],
+        ),
+        throwsA(
+          isA<StateError>()
+              .having(
+                (error) => error.message,
+                'message',
+                contains('missing.freezed.dart'),
+              )
+              .having(
+                (error) => error.message,
+                'message',
+                contains('rust/src/frb_generated.rs'),
+              ),
+        ),
+      );
+    } finally {
+      await tempDir.delete(recursive: true);
+    }
   });
 
   test('pub get guard refreshes stale package config roots', () async {
@@ -566,36 +638,132 @@ plain
         statuses.map((status) => status.manifestVersion),
         everyElement('9.9.9'),
       );
+      expect(statuses.map((status) => (status.registry, status.name)), [
+        ('crates.io', 'flutter_rust_bridge_codegen'),
+        ('crates.io', 'flutter_rust_bridge_macros'),
+        ('crates.io', 'flutter_rust_bridge'),
+        ('pub.dev', 'flutter_rust_bridge'),
+        ('pub.dev', 'flutter_rust_bridge_hooks'),
+      ]);
       expect(statuses.map((status) => status.isReleased), everyElement(true));
     });
 
     test(
-      'uses local Dart manifest version as pub.dev target version',
+      'reports hooks as unreleased when its target version is absent',
+      () async {
+        final statuses = await fetchReleasePackageStatuses(
+          targetVersion: '9.9.9',
+          fetcher: (uri) async {
+            if (uri.host == 'crates.io') {
+              return {
+                'crate': {'max_version': '9.9.9'},
+              };
+            }
+            if (uri.path.endsWith('/flutter_rust_bridge_hooks')) {
+              return {'versions': <Map<String, String>>[]};
+            }
+            return {
+              'versions': [
+                {'version': '9.9.9'},
+              ],
+            };
+          },
+        );
+
+        final output = buildReleasePackageStatusOutput(statuses);
+        final hooksStatus = statuses.singleWhere(
+          (status) => status.name == 'flutter_rust_bridge_hooks',
+        );
+        expect(output['allReleased'], false);
+        expect(hooksStatus.releasedVersion, isNull);
+        expect(hooksStatus.isReleased, false);
+      },
+    );
+
+    test(
+      'reports hooks as unreleased when only another version exists',
+      () async {
+        final statuses = await fetchReleasePackageStatuses(
+          targetVersion: '9.9.9',
+          fetcher: (uri) async {
+            if (uri.host == 'crates.io') {
+              return {
+                'crate': {'max_version': '9.9.9'},
+              };
+            }
+            final version = uri.path.endsWith('/flutter_rust_bridge_hooks')
+                ? '9.9.8'
+                : '9.9.9';
+            return {
+              'latest': {'version': version},
+              'versions': [
+                {'version': version},
+              ],
+            };
+          },
+        );
+
+        final output = buildReleasePackageStatusOutput(statuses);
+        final hooksStatus = statuses.singleWhere(
+          (status) => status.name == 'flutter_rust_bridge_hooks',
+        );
+        expect(output['allReleased'], false);
+        expect(hooksStatus.releasedVersion, '9.9.8');
+        expect(hooksStatus.isReleased, false);
+      },
+    );
+
+    test(
+      'uses each local Dart manifest version as its pub.dev target',
       () async {
         final rustVersion = getWorkspaceRustVersion();
-        final dartVersion = getFrbDartVersion();
 
         final statuses = await fetchReleasePackageStatuses(
+          dartPackageManifestFetcher: (package) => switch (package) {
+            'frb_dart' =>
+              '''
+name: flutter_rust_bridge
+version: 9.9.9
+''',
+            'frb_hooks' =>
+              '''
+name: flutter_rust_bridge_hooks
+version: 9.9.8
+''',
+            _ => throw StateError('Unexpected Dart package: $package'),
+          },
           fetcher: (uri) async {
             if (uri.host == 'crates.io') {
               return {
                 'crate': {'max_version': rustVersion},
               };
             }
+            final version = uri.path.endsWith('/flutter_rust_bridge_hooks')
+                ? '9.9.8'
+                : '9.9.9';
             return {
-              'latest': {'version': '2.12.0'},
               'versions': [
-                {'version': dartVersion},
+                {'version': version},
               ],
             };
           },
         );
 
-        final pubDevStatus = statuses.singleWhere(
+        final pubDevStatuses = statuses.where(
           (status) => status.registry == 'pub.dev',
         );
-        expect(pubDevStatus.releasedVersion, dartVersion);
-        expect(pubDevStatus.isReleased, true);
+        expect(pubDevStatuses, hasLength(2));
+        expect(
+          pubDevStatuses.map((status) => (status.name, status.manifestVersion)),
+          [
+            ('flutter_rust_bridge', '9.9.9'),
+            ('flutter_rust_bridge_hooks', '9.9.8'),
+          ],
+        );
+        expect(
+          pubDevStatuses.map((status) => status.isReleased),
+          everyElement(true),
+        );
       },
     );
   });

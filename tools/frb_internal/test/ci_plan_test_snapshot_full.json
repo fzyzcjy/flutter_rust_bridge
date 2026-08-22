@@ -154,6 +154,9 @@
       ]
     },
     {
+      "id": "generate_run_frb_codegen_command_generate_from_scratch"
+    },
+    {
       "id": "generate_run_frb_codegen_command_integrate",
       "matrix": [
         {
@@ -899,7 +902,7 @@
         {
           "info": {
             "image": "ubuntu-latest",
-            "platform": "nix",
+            "platform": "nixos",
             "target": "desktop",
             "device": "linux",
             "package": "frb_example--flutter_via_create",
