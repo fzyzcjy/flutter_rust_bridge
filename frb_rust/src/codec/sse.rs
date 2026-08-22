@@ -150,16 +150,71 @@ impl SseSerializer {
 
 #[cfg(test)]
 mod tests {
-    use crate::for_generated::{Rust2DartMessageSse, SseSerializer};
+    use super::{Dart2RustMessageSse, Rust2DartMessageSse, SseCodec, SseDeserializer};
+    use crate::codec::{BaseCodec, Rust2DartMessageTrait};
+    use crate::for_generated::{Rust2DartAction, SseSerializer};
 
+    /// Represents the smallest SSE payload with no bytes.
     #[test]
     fn test_simplest() {
-        use crate::codec::Rust2DartMessageTrait;
         assert_eq!(Rust2DartMessageSse::simplest().0, vec![]);
     }
 
+    /// Builds an empty serializer through the default implementation.
     #[test]
     fn test_serializer_default() {
         assert_eq!(SseSerializer::default().cursor.into_inner(), vec![]);
+    }
+
+    /// Prefixes serialized data with the selected Rust-to-Dart action.
+    #[test]
+    fn test_encode_writes_action_and_payload() {
+        let message = SseCodec::encode(Rust2DartAction::Error, |serializer| {
+            serializer.cursor.get_mut().extend_from_slice(&[4, 5]);
+        });
+
+        assert_eq!(message.0, vec![Rust2DartAction::Error as u8, 4, 5]);
+    }
+
+    /// Encodes a stream close without an additional payload.
+    #[test]
+    fn test_close_stream_writes_only_close_action() {
+        assert_eq!(
+            SseCodec::encode_close_stream().0,
+            vec![Rust2DartAction::CloseStream as u8]
+        );
+    }
+
+    #[cfg(not(target_family = "wasm"))]
+    /// Preserves SSE bytes through the synchronous ownership transfer.
+    #[test]
+    fn test_wire_sync_round_trip_preserves_bytes() {
+        let raw = Rust2DartMessageSse(vec![1, 2, 3]).into_raw_wire_sync();
+        let message = unsafe { Rust2DartMessageSse::from_raw_wire_sync(raw) };
+
+        assert_eq!(message.0, vec![1, 2, 3]);
+    }
+
+    #[cfg(not(target_family = "wasm"))]
+    /// Accepts a Dart-to-Rust payload consumed exactly to its declared length.
+    #[test]
+    fn test_deserializer_end_accepts_exact_consumption() {
+        let (ptr, len) = crate::for_generated::into_leak_vec_ptr(vec![8, 9]);
+        let message = unsafe { Dart2RustMessageSse::from_wire(ptr, len, len) };
+        let mut deserializer = SseDeserializer::new(message);
+        deserializer.cursor.set_position(len as u64);
+
+        deserializer.end();
+    }
+
+    #[cfg(not(target_family = "wasm"))]
+    /// Rejects a Dart-to-Rust payload that leaves declared bytes unread.
+    #[test]
+    #[should_panic]
+    fn test_deserializer_end_rejects_incomplete_consumption() {
+        let (ptr, len) = crate::for_generated::into_leak_vec_ptr(vec![8, 9]);
+        let message = unsafe { Dart2RustMessageSse::from_wire(ptr, len, len) };
+
+        SseDeserializer::new(message).end();
     }
 }
