@@ -80,3 +80,31 @@ impl MirDartFnOutput {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    /// Uses a Result only when the Dart function exposes its error.
+    #[test]
+    fn dart_function_output_respects_fallibility() {
+        let normal = MirType::Primitive(MirTypePrimitive::I32);
+        let error =
+            MirType::Delegate(crate::codegen::ir::mir::ty::delegate::MirTypeDelegate::String);
+        let fallible = MirDartFnOutput {
+            normal: normal.clone(),
+            error: error.clone(),
+            api_fallible: true,
+        };
+        let infallible = MirDartFnOutput {
+            normal,
+            error,
+            api_fallible: false,
+        };
+
+        assert_eq!(fallible.safe_ident(), "i_32_String");
+        assert_eq!(fallible.rust_api_type(), "std::result::Result<i32, String>");
+        assert_eq!(infallible.rust_api_type(), "i32");
+    }
+}

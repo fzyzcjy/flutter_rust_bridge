@@ -106,3 +106,61 @@ impl From<NamespacedName> for MirEnumIdent {
         Self(value)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::structure::MirStruct;
+
+    /// Preserves enum identity, namespace, and struct variant fields.
+    #[test]
+    fn enum_reference_and_variant_fields_keep_their_contracts() {
+        let namespace = Namespace::new_raw("crate::api".to_owned());
+        let enum_ref = MirTypeEnumRef {
+            ident: MirEnumIdent(NamespacedName::new(
+                namespace.clone(),
+                "HttpStatus".to_owned(),
+            )),
+            is_exception: false,
+        };
+        let value_fields = MirVariantKind::Value.fields();
+        let struct_fields = MirVariantKind::Struct(MirStruct {
+            name: NamespacedName::new(namespace.clone(), "StatusPayload".to_owned()),
+            wrapper_name: None,
+            fields: vec![MirField {
+                ty: MirType::Primitive(MirTypePrimitive::I32),
+                name: MirIdent::new("code".to_owned(), None),
+                is_final: false,
+                is_rust_public: None,
+                comments: vec![],
+                default: None,
+                settings: MirFieldSettings::default(),
+            }],
+            is_fields_named: true,
+            dart_metadata_raw: vec![],
+            ignore: false,
+            needs_json_serializable: false,
+            generate_hash: false,
+            generate_eq: false,
+            dart_collection_deep_equality: false,
+            ui_state: false,
+            comments: vec![],
+        })
+        .fields();
+
+        assert_eq!(enum_ref.safe_ident(), "http_status");
+        assert_eq!(enum_ref.rust_api_type(), "crate::api::HttpStatus");
+        assert_eq!(enum_ref.self_namespace(), Some(namespace));
+        assert!(value_fields.is_empty());
+        assert!(matches!(
+            struct_fields.as_slice(),
+            [MirField {
+                ty: MirType::Primitive(MirTypePrimitive::I32),
+                ..
+            }]
+        ));
+    }
+}

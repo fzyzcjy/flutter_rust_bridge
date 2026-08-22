@@ -37,3 +37,25 @@ impl MirTypeDartOpaque {
         MirType::Primitive(MirTypePrimitive::Isize)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Exposes architecture-specific Rust and Dart integer delegates.
+    #[test]
+    fn dart_opaque_uses_usize_and_isize_delegates() {
+        let ty = MirTypeDartOpaque;
+
+        assert_eq!(ty.safe_ident(), "DartOpaque");
+        assert_eq!(ty.rust_api_type(), "flutter_rust_bridge::DartOpaque");
+        assert!(matches!(
+            ty.get_delegate_rust(),
+            MirType::Primitive(MirTypePrimitive::Usize)
+        ));
+        assert!(matches!(
+            ty.get_delegate_dart(),
+            MirType::Primitive(MirTypePrimitive::Isize)
+        ));
+    }
+}

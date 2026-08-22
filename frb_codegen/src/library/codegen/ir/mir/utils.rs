@@ -21,3 +21,42 @@ macro_rules! mir {
         $crate::mir!($($rest)*);
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use std::collections::HashSet;
+
+    crate::mir! {
+        struct SerializableMir {
+            value: u8,
+        }
+
+        #[no_serde]
+        struct NonSerializableMir {
+            value: u8,
+        }
+    }
+
+    /// The default macro branch adds serde and common value derives.
+    #[test]
+    fn mir_adds_serde_and_common_derives() {
+        let value = SerializableMir { value: 7 };
+        let mut values = HashSet::new();
+
+        values.insert(value.clone());
+
+        assert!(values.contains(&value));
+        assert_eq!(serde_json::to_string(&value).unwrap(), r#"{"value":7}"#);
+    }
+
+    /// The no-serde macro branch still adds the common value derives.
+    #[test]
+    fn mir_no_serde_branch_adds_common_derives() {
+        let value = NonSerializableMir { value: 9 };
+        let mut values = HashSet::new();
+
+        values.insert(value.clone());
+
+        assert!(values.contains(&value));
+    }
+}

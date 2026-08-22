@@ -41,3 +41,27 @@ impl MirTypeTrait for MirTypeBoxed {
         self.inner.cloned_getter_semantics_reasonable()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    /// Distinguishes real API boxes from automatically inserted wrappers.
+    #[test]
+    fn boxed_type_formats_real_and_automatic_boxes_differently() {
+        let real = MirTypeBoxed {
+            exist_in_real_api: true,
+            inner: Box::new(MirType::Primitive(MirTypePrimitive::I32)),
+        };
+        let automatic = MirTypeBoxed {
+            exist_in_real_api: false,
+            inner: Box::new(MirType::Primitive(MirTypePrimitive::I32)),
+        };
+
+        assert_eq!(real.safe_ident(), "box_i_32");
+        assert_eq!(real.rust_api_type(), "Box<i32>");
+        assert_eq!(automatic.safe_ident(), "box_autoadd_i_32");
+        assert_eq!(automatic.rust_api_type(), "i32");
+    }
+}
