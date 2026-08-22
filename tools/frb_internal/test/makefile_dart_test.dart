@@ -470,8 +470,17 @@ plain
     },
   );
 
+  test('quickstart smoke gives iOS cold builds more readiness time', () {
+    expect(
+      quickstartSmokeFlutterRunReadyTimeoutForTesting(
+        QuickstartSmokeTarget.ios,
+      ),
+      const Duration(minutes: 10),
+    );
+  });
+
   test(
-    'quickstart smoke gives cold macOS desktop and iOS builds more readiness time',
+    'quickstart smoke gives macOS desktop cold builds more readiness time',
     () {
       expect(
         quickstartSmokeFlutterRunReadyTimeoutForTesting(
@@ -486,12 +495,6 @@ plain
           isMacOS: false,
         ),
         const Duration(minutes: 5),
-      );
-      expect(
-        quickstartSmokeFlutterRunReadyTimeoutForTesting(
-          QuickstartSmokeTarget.ios,
-        ),
-        const Duration(minutes: 10),
       );
     },
   );
