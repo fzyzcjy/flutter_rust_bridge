@@ -209,16 +209,19 @@ mod tests {
     };
     use crate::misc::{IntegrationBackend, Template};
 
+    /// Detects OHOS regardless of surrounding whitespace.
     #[test]
     fn test_platform_list_contains_ohos_with_whitespace() {
         assert!(platform_list_contains_ohos("android, ohos"));
     }
 
+    /// Detects OHOS without relying on platform name capitalization.
     #[test]
     fn test_platform_list_contains_ohos_is_case_insensitive() {
         assert!(platform_list_contains_ohos("android,OHOS"));
     }
 
+    /// Does not confuse the default platform list with OHOS support.
     #[test]
     fn test_platform_list_contains_ohos_rejects_other_platforms() {
         assert!(!platform_list_contains_ohos(
@@ -226,6 +229,7 @@ mod tests {
         ));
     }
 
+    /// Includes web for applications and OHOS only when Flutter supports it.
     #[test]
     fn test_default_flutter_platforms_for_app() {
         assert_eq!(
@@ -238,6 +242,7 @@ mod tests {
         );
     }
 
+    /// Omits web from plugin platform defaults while retaining optional OHOS.
     #[test]
     fn test_default_flutter_platforms_for_plugin() {
         assert_eq!(
@@ -250,6 +255,7 @@ mod tests {
         );
     }
 
+    /// Chooses Flutter's plugin FFI template for the CargoKit backend.
     #[test]
     fn test_flutter_create_template_arg_for_cargokit_plugin_uses_plugin_ffi() {
         let arg = flutter_create_template_arg(
@@ -267,6 +273,7 @@ mod tests {
         }
     }
 
+    /// Chooses Flutter's package FFI template for native assets.
     #[test]
     fn test_flutter_create_template_arg_for_native_assets_plugin_uses_package_ffi() {
         let arg =
@@ -276,6 +283,7 @@ mod tests {
         assert!(matches!(arg, FlutterCreateTemplateArg::PackageFfi));
     }
 
+    /// Rejects platform filtering unsupported by package_ffi.
     #[test]
     fn test_flutter_create_template_arg_for_native_assets_plugin_rejects_platforms() {
         let err = flutter_create_template_arg(
@@ -288,6 +296,7 @@ mod tests {
         assert!(err.to_string().contains("package_ffi"));
     }
 
+    /// Finds OHOS in the documented platforms option values.
     #[test]
     fn test_flutter_create_help_supports_platform_on_platforms_line() {
         let help = "
@@ -301,6 +310,7 @@ Usage: flutter create <output directory>
         assert!(flutter_create_help_supports_platform(help, "ohos"));
     }
 
+    /// Ignores OHOS mentions outside the platforms option.
     #[test]
     fn test_flutter_create_help_supports_platform_rejects_other_help_text() {
         let help = "
@@ -315,6 +325,7 @@ Usage: flutter create <output directory>
         assert!(!flutter_create_help_supports_platform(help, "ohos"));
     }
 
+    /// Stops scanning when another option begins.
     #[test]
     fn test_flutter_create_help_supports_platform_stops_at_next_option() {
         let help = "
