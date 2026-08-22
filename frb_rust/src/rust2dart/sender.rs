@@ -21,15 +21,9 @@ impl Rust2DartSender {
         }
     }
 
+    #[cfg(target_family = "wasm")]
     pub fn send_stream(&self, sequence: u64, msg: impl IntoDart) -> Result<(), Rust2DartSendError> {
-        #[cfg(target_family = "wasm")]
-        return self.send(((sequence >> 32) as u32, sequence as u32, msg.into_dart()));
-
-        #[cfg(not(target_family = "wasm"))]
-        {
-            let _ = sequence;
-            self.send(msg)
-        }
+        self.send(((sequence >> 32) as u32, sequence as u32, msg.into_dart()))
     }
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
