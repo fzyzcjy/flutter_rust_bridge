@@ -49,3 +49,36 @@ impl CatchUnwindWithBacktrace {
         Self { err, backtrace }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{CatchUnwindWithBacktrace, PanicBacktrace};
+
+    /// Returns successful closures without recording a panic payload.
+    #[test]
+    fn test_catch_unwind_returns_successful_value() {
+        assert!(matches!(PanicBacktrace::catch_unwind(|| 7), Ok(7)));
+    }
+
+    /// Returns the original payload when a closure panics without a hook.
+    #[test]
+    fn test_catch_unwind_preserves_panic_payload() {
+        let error = PanicBacktrace::catch_unwind(|| panic!("failed")).unwrap_err();
+        assert_eq!(error.err.downcast_ref::<&str>(), Some(&"failed"));
+        assert!(error.backtrace.is_none());
+    }
+
+    /// Preserves supplied panic payloads and optional backtraces.
+    #[test]
+    fn test_catch_unwind_with_backtrace_new_preserves_fields() {
+        let error = CatchUnwindWithBacktrace::new(Box::new("failed"), None);
+        assert_eq!(error.err.downcast_ref::<&str>(), Some(&"failed"));
+        assert!(error.backtrace.is_none());
+    }
+
+    /// Leaves the thread-local backtrace empty until a panic hook records one.
+    #[test]
+    fn test_take_last_is_empty_without_recorded_panic() {
+        assert!(PanicBacktrace::take_last().is_none());
+    }
+}
