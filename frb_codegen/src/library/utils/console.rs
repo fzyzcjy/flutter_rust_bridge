@@ -62,3 +62,23 @@ fn create_simple_progress_bar(message: String, level: usize) -> ProgressBar {
     pb.set_message(message);
     pb
 }
+
+#[cfg(test)]
+mod tests {
+    use super::SimpleProgressBar;
+
+    /// Reuses one progress bar and finishes it when a handle is dropped.
+    #[test]
+    fn reuses_and_finishes_the_progress_bar() {
+        let progress_bar = SimpleProgressBar::new("Generate", 1);
+        let first_handle = progress_bar.start();
+        let second_handle = progress_bar.start();
+
+        assert_eq!(first_handle.pb.message(), "Generate");
+        assert!(!second_handle.pb.is_finished());
+
+        drop(first_handle);
+
+        assert!(second_handle.pb.is_finished());
+    }
+}
