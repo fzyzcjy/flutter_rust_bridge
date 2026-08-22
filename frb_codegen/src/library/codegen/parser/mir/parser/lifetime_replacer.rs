@@ -24,3 +24,32 @@ fn replace_lifetime(ty: &str, lifetime_src: &str, lifetime_dst: &str) -> String 
         .replace_all(ty, &format!("'{lifetime_dst}${{1}}"))
         .to_string()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Preserves generic, argument, and trait-object separators during replacement.
+    #[test]
+    fn preserves_separators_when_replacing_lifetimes() {
+        let lifetimes = vec![Lifetime("a".to_owned())];
+
+        assert_eq!(
+            replace_lifetimes_to_static("Result<Foo<'a>, Bar<'a>>", &lifetimes),
+            "Result<Foo<'static>, Bar<'static>>"
+        );
+        assert_eq!(
+            replace_lifetimes_to_static("Box<dyn Trait<'a> + Send>", &lifetimes),
+            "Box<dyn Trait<'static> + Send>"
+        );
+    }
+
+    /// Replaces extracted nested and reference lifetimes through the public API.
+    #[test]
+    fn replaces_all_extracted_lifetimes_to_static() {
+        assert_eq!(
+            replace_all_lifetimes_to_static("Result<&'a Item, Cow<'static, Wrapper<'b>>>"),
+            "Result<&'static Item, Cow<'static, Wrapper<'static>>>"
+        );
+    }
+}

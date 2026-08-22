@@ -200,9 +200,37 @@ pub(crate) fn is_localized_definition(item: &syn::Item) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::codegen::ir::hir::misc::visibility::HirVisibility;
+    use crate::codegen::ir::hir::tree::crates::HirTreeCrate;
+    use crate::codegen::ir::hir::tree::module::HirTreeModuleMeta;
+    use crate::utils::crate_name::CrateName;
+    use syn::parse_quote;
 
+    fn module(
+        namespace: &str,
+        vis: HirVisibility,
+        parent_vis: Vec<HirVisibility>,
+        items: Vec<syn::Item>,
+        modules: Vec<HirTreeModule>,
+    ) -> HirTreeModule {
+        HirTreeModule {
+            meta: HirTreeModuleMeta {
+                parent_vis,
+                vis,
+                namespace: Namespace::new_raw(namespace.to_owned()),
+            },
+            items,
+            modules,
+        }
+    }
+
+    fn item_names(items: &[syn::Item]) -> Vec<String> {
+        items.iter().filter_map(name_for_use_stmt).collect()
+    }
+
+    /// Parses public use trees into namespace and name filters.
     #[test]
-    pub fn test_parse_pub_use_from_item() {
+    fn parses_public_use_items() {
         fn body(code: &str, expect: Vec<PubUseInfo>) {
             let item: syn::Item = syn::parse_str(code).unwrap();
             let actual = parse_pub_use_from_item(&item);
@@ -262,5 +290,126 @@ mod tests {
                 },
             ],
         );
+    }
+
+    /// Classifies localized definitions and their explicit public visibility.
+    #[test]
+    fn classifies_definition_kind_and_visibility() {
+        let public_struct: syn::Item = syn::parse_str("pub struct Public;").unwrap();
+        let private_function: syn::Item = syn::parse_str("fn private() {}").unwrap();
+        let implementation: syn::Item = syn::parse_str("impl Public {}").unwrap();
+
+        assert_eq!(is_item_public(&public_struct), Some(true));
+        assert_eq!(is_item_public(&private_function), Some(false));
+        assert_eq!(is_item_public(&implementation), None);
+        assert!(is_localized_definition(&public_struct));
+        assert!(is_localized_definition(&private_function));
+        assert!(!is_localized_definition(&implementation));
+    }
+
+    /// Injects named and glob re-exports from private third-party modules only.
+    #[test]
+    fn injects_reexported_definitions_from_private_third_party_modules() -> anyhow::Result<()> {
+        let dependency_root = module(
+            "dependency",
+            HirVisibility::Public,
+            vec![],
+            vec![
+                parse_quote!(
+                    pub use private_named::Named;
+                ),
+                parse_quote!(
+                    pub use private_glob::*;
+                ),
+                parse_quote!(
+                    pub use public_child::AlreadyPublic;
+                ),
+            ],
+            vec![
+                module(
+                    "dependency::private_named",
+                    HirVisibility::Inherited,
+                    vec![HirVisibility::Public],
+                    vec![
+                        parse_quote!(
+                            pub struct Named;
+                        ),
+                        parse_quote!(
+                            pub struct NotNamed;
+                        ),
+                        parse_quote!(
+                            struct Private;
+                        ),
+                    ],
+                    vec![],
+                ),
+                module(
+                    "dependency::private_glob",
+                    HirVisibility::Inherited,
+                    vec![HirVisibility::Public],
+                    vec![
+                        parse_quote!(
+                            pub struct Globbed;
+                        ),
+                        parse_quote!(
+                            pub fn globbed_function() {}
+                        ),
+                        parse_quote!(
+                            struct Hidden;
+                        ),
+                    ],
+                    vec![],
+                ),
+                module(
+                    "dependency::public_child",
+                    HirVisibility::Public,
+                    vec![HirVisibility::Public],
+                    vec![parse_quote!(
+                        pub struct AlreadyPublic;
+                    )],
+                    vec![],
+                ),
+            ],
+        );
+        let self_root = module(
+            "crate",
+            HirVisibility::Public,
+            vec![],
+            vec![parse_quote!(
+                pub use private_child::SelfItem;
+            )],
+            vec![module(
+                "crate::private_child",
+                HirVisibility::Inherited,
+                vec![HirVisibility::Public],
+                vec![parse_quote!(
+                    pub struct SelfItem;
+                )],
+                vec![],
+            )],
+        );
+
+        let transformed = transform(HirTreePack {
+            crates: vec![
+                HirTreeCrate {
+                    name: CrateName::new("dependency".to_owned()),
+                    root_module: dependency_root,
+                },
+                HirTreeCrate {
+                    name: CrateName::self_crate(),
+                    root_module: self_root,
+                },
+            ],
+        })?;
+
+        assert_eq!(
+            item_names(&transformed.crates[0].root_module.items),
+            vec!["Named", "Globbed", "globbed_function"]
+        );
+        assert_eq!(
+            item_names(&transformed.crates[1].root_module.items),
+            Vec::<String>::new()
+        );
+        Ok(())
     }
 }

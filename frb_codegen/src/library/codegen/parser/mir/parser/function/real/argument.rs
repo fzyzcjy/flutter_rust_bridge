@@ -180,3 +180,79 @@ fn parse_maybe_proxy_enum(ty: MirType, type_parser: &TypeParser) -> anyhow::Resu
 
     Ok(ty)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{parse_argument_ty_and_name, split_ownership_from_ty_except_ref_mut};
+    use crate::codegen::ir::mir::func::{
+        MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode, OwnershipMode,
+    };
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::MirType;
+    use quote::quote;
+    use syn::FnArg;
+
+    /// Extracts named arguments while retaining their declared type.
+    #[test]
+    fn extracts_named_argument_type_and_name() -> anyhow::Result<()> {
+        let argument: FnArg = syn::parse2(quote!(value: Vec<u8>))?;
+
+        let (ty, name) = parse_argument_ty_and_name(&argument, &MirFuncOwnerInfo::Function)?;
+
+        assert_eq!(quote!(#ty).to_string(), "Vec < u8 >");
+        assert_eq!(name, "value");
+        Ok(())
+    }
+
+    /// Keeps mutable references intact unless trait parsing requires ownership splitting.
+    #[test]
+    fn preserves_mutable_reference_outside_trait_parsing() -> anyhow::Result<()> {
+        let ty = syn::parse_str("&mut Thing")?;
+
+        let (preserved, preserved_mode) = split_ownership_from_ty_except_ref_mut(&ty, false);
+        let (split, split_mode) = split_ownership_from_ty_except_ref_mut(&ty, true);
+
+        assert_eq!(quote!(#preserved).to_string(), "& mut Thing");
+        assert_eq!(preserved_mode, None);
+        assert_eq!(quote!(#split).to_string(), "Thing");
+        assert_eq!(split_mode, Some(OwnershipMode::RefMut));
+        Ok(())
+    }
+
+    /// Synthesizes a mutable receiver type from the method owner and its named lifetime.
+    #[test]
+    fn synthesizes_mutable_receiver_type_for_method_owner() -> anyhow::Result<()> {
+        let receiver: FnArg = syn::parse2(quote!(&'a mut self))?;
+
+        let (ty, name) = parse_argument_ty_and_name(&receiver, &method_owner())?;
+
+        assert_eq!(quote!(#ty).to_string(), "& 'a mut Owner");
+        assert_eq!(name, "that");
+        Ok(())
+    }
+
+    /// Rejects a receiver when parsing a free function without a method owner.
+    #[test]
+    fn rejects_receiver_for_function_owner() -> anyhow::Result<()> {
+        let receiver: FnArg = syn::parse2(quote!(&self))?;
+
+        let error = parse_argument_ty_and_name(&receiver, &MirFuncOwnerInfo::Function)
+            .expect_err("free functions cannot have receivers");
+
+        assert!(error
+            .to_string()
+            .contains("self` must happen within methods"));
+        Ok(())
+    }
+
+    fn method_owner() -> MirFuncOwnerInfo {
+        MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
+            owner_ty: MirType::Primitive(MirTypePrimitive::U8),
+            owner_ty_raw: "Owner".into(),
+            actual_method_name: "method".into(),
+            actual_method_dart_name: None,
+            mode: MirFuncOwnerInfoMethodMode::Instance,
+            trait_def: None,
+        })
+    }
+}
