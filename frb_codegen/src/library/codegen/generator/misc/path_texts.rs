@@ -109,7 +109,7 @@ mod tests {
             merged
                 .0
                 .iter()
-                .find(|item| item.path == PathBuf::from("shared.rs"))
+                .find(|item| item.path == std::path::Path::new("shared.rs"))
                 .unwrap()
                 .text
                 .all_code(),
@@ -119,7 +119,7 @@ mod tests {
             merged
                 .0
                 .iter()
-                .find(|item| item.path == PathBuf::from("other.rs"))
+                .find(|item| item.path == std::path::Path::new("other.rs"))
                 .unwrap()
                 .text
                 .all_code(),

@@ -173,7 +173,7 @@ mod tests {
 
         assert!(is_event_interesting(
             &event(included_path),
-            &[excluded_path.clone()]
+            std::slice::from_ref(&excluded_path)
         ));
         assert!(!is_event_interesting(
             &event(excluded_path.clone()),

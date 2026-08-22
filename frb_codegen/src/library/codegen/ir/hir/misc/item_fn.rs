@@ -65,7 +65,7 @@ mod tests {
     /// Checks names, attributes, signatures, visibility, and mutation access.
     #[test]
     fn generalized_item_fn_exposes_shared_accessors() {
-        let mut functions = vec![
+        let mut functions = [
             GeneralizedItemFn::ItemFn(syn::parse_str("#[inline] pub fn item_fn() {}").unwrap()),
             GeneralizedItemFn::ImplItemFn(syn::parse_str("#[inline] pub fn impl_fn() {}").unwrap()),
             GeneralizedItemFn::TraitItemFn(syn::parse_str("#[inline] fn trait_fn();").unwrap()),

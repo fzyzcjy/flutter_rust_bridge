@@ -383,7 +383,7 @@ mod tests {
         let result = InternalConfig::parse(&config, &MetaConfig { watch: true })?;
 
         assert!(result.controller.watch);
-        assert_eq!(result.preparer.needs_ffigen, false);
+        assert!(!result.preparer.needs_ffigen);
         assert_eq!(result.parser.mir.default_stream_sink_codec, CodecMode::Sse);
         assert_eq!(
             result.parser.mir.default_rust_opaque_codec,

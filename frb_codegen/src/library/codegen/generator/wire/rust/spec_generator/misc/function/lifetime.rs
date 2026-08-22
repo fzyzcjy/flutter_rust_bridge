@@ -42,6 +42,47 @@ pub(super) fn generate_illegal_static_reference(var_name: &str) -> String {
     )
 }
 
+fn is_interest_field(field: &MirFuncInput) -> bool {
+    field.needs_extend_lifetime
+}
+
+fn get_variable_name(field: &MirFuncInput) -> String {
+    field.inner.name.rust_style(true)
+}
+
+pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String {
+    if is_interest_field(field) {
+        format!("{raw}_illegal_static_ref")
+    } else {
+        raw.to_owned()
+    }
+}
+
+pub(super) fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
+    if !matches!(
+        &func.output.normal,
+        MirType::Delegate(MirTypeDelegate::Lifetimeable(_))
+    ) {
+        return "".to_owned();
+    }
+
+    let dependencies = (func.inputs.iter())
+        .filter(|field| is_interest_field(field))
+        .map(get_variable_name)
+        .map(|field_name| {
+            format!(
+                "flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
+                    Box::new(api_{field_name}_guard.clone()),
+                    Box::new(api_{field_name}.clone()),
+                )"
+            )
+        })
+        .join(", ");
+    format!(
+        "let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![{dependencies}]));"
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -169,45 +210,4 @@ mod tests {
         assert_eq!(output, "let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(\n                    Box::new(api_handle_guard.clone()),\n                    Box::new(api_handle.clone()),\n                )]));");
         assert_eq!(generate_code_postprocess_inner_output(&func(false)), "");
     }
-}
-
-fn is_interest_field(field: &MirFuncInput) -> bool {
-    field.needs_extend_lifetime
-}
-
-fn get_variable_name(field: &MirFuncInput) -> String {
-    field.inner.name.rust_style(true)
-}
-
-pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String {
-    if is_interest_field(field) {
-        format!("{raw}_illegal_static_ref")
-    } else {
-        raw.to_owned()
-    }
-}
-
-pub(super) fn generate_code_postprocess_inner_output(func: &MirFunc) -> String {
-    if !matches!(
-        &func.output.normal,
-        MirType::Delegate(MirTypeDelegate::Lifetimeable(_))
-    ) {
-        return "".to_owned();
-    }
-
-    let dependencies = (func.inputs.iter())
-        .filter(|field| is_interest_field(field))
-        .map(get_variable_name)
-        .map(|field_name| {
-            format!(
-                "flutter_rust_bridge::for_generated::LifetimeableDependency::new_guard_lockable(
-                    Box::new(api_{field_name}_guard.clone()),
-                    Box::new(api_{field_name}.clone()),
-                )"
-            )
-        })
-        .join(", ");
-    format!(
-        "let output_ok = RustAutoOpaque::new(Lifetimeable::new(output_ok, vec![{dependencies}]));"
-    )
 }

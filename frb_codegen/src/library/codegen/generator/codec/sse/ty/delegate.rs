@@ -303,43 +303,6 @@ pub(crate) fn generate_unimplemented_in_sse_message(mir: &MirType) -> String {
     format!("The type {mir:?} is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue")
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::codegen::generator::codec::sse::lang::{dart::DartLang, rust::RustLang};
-    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
-
-    /// Wraps delegated encoders with the target language call and statement terminator.
-    #[test]
-    fn simple_delegate_encode_uses_target_language_encoding_call() {
-        let ty = MirType::Primitive(MirTypePrimitive::I32);
-
-        assert_eq!(
-            simple_delegate_encode(&Lang::DartLang(DartLang), &ty, "value"),
-            "sse_encode_i_32(value, serializer);"
-        );
-        assert_eq!(
-            simple_delegate_encode(&Lang::RustLang(RustLang), &ty, "value"),
-            "<i32>::sse_encode(value, serializer);"
-        );
-    }
-
-    /// Declares delegated decode temporaries with the target language syntax.
-    #[test]
-    fn simple_delegate_decode_uses_target_language_variable_declaration() {
-        let ty = MirType::Primitive(MirTypePrimitive::Bool);
-
-        assert_eq!(
-            simple_delegate_decode(&Lang::DartLang(DartLang), &ty, "wrap(inner)"),
-            "var inner = sse_decode_bool(deserializer);\n        return wrap(inner);"
-        );
-        assert_eq!(
-            simple_delegate_decode(&Lang::RustLang(RustLang), &ty, "wrap(inner)"),
-            "let mut inner = <bool>::sse_decode(deserializer);\n        return wrap(inner);"
-        );
-    }
-}
-
 pub(crate) fn generate_set_to_list(
     mir: &MirTypeDelegateSet,
     context: ApiDartGeneratorContext,
@@ -410,4 +373,41 @@ fn generate_dyn_trait_dart_encode(
         .collect_vec();
 
     encode_to_enum::generate_encode_to_enum(&enum_name, &variants)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::codec::sse::lang::{dart::DartLang, rust::RustLang};
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    /// Wraps delegated encoders with the target language call and statement terminator.
+    #[test]
+    fn simple_delegate_encode_uses_target_language_encoding_call() {
+        let ty = MirType::Primitive(MirTypePrimitive::I32);
+
+        assert_eq!(
+            simple_delegate_encode(&Lang::DartLang(DartLang), &ty, "value"),
+            "sse_encode_i_32(value, serializer);"
+        );
+        assert_eq!(
+            simple_delegate_encode(&Lang::RustLang(RustLang), &ty, "value"),
+            "<i32>::sse_encode(value, serializer);"
+        );
+    }
+
+    /// Declares delegated decode temporaries with the target language syntax.
+    #[test]
+    fn simple_delegate_decode_uses_target_language_variable_declaration() {
+        let ty = MirType::Primitive(MirTypePrimitive::Bool);
+
+        assert_eq!(
+            simple_delegate_decode(&Lang::DartLang(DartLang), &ty, "wrap(inner)"),
+            "var inner = sse_decode_bool(deserializer);\n        return wrap(inner);"
+        );
+        assert_eq!(
+            simple_delegate_decode(&Lang::RustLang(RustLang), &ty, "wrap(inner)"),
+            "let mut inner = <bool>::sse_decode(deserializer);\n        return wrap(inner);"
+        );
+    }
 }
