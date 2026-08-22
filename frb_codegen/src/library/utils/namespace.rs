@@ -165,7 +165,9 @@ impl<'de> Deserialize<'de> for NamespacedName {
         D: Deserializer<'de>,
     {
         let s = String::deserialize(deserializer)?;
-        let index = s.rfind(Self::SEP).unwrap();
+        let index = s.rfind(Self::SEP).ok_or_else(|| {
+            <D::Error as serde::de::Error>::custom("namespaced name must contain `/`")
+        })?;
         Ok(Self::new(
             Namespace::new_raw(s[..index].to_owned()),
             s[index + Self::SEP.len()..].to_owned(),
