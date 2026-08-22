@@ -34,7 +34,9 @@ impl WireDartCodecEntrypointTrait<'_> for PdeWireDartCodecEntrypoint {
         let func_id = func.id.unwrap();
         format!(
             "
-            final serializer = SseSerializer(generalizedFrbRustBinding);{serialize_inputs}
+            final serializer = SseSerializer(generalizedFrbRustBinding);
+            serializer.encode(() {{{serialize_inputs}
+            }});
             {maybe_return}pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: {func_id}{maybe_port}){maybe_bang};
             "
         )
