@@ -48,7 +48,24 @@ git submodule update --init --recursive
 
 ## Steps
 
-1. Create a default Cargokit app with the current code generator.
+1. Compare this manual test with the migration guide before running it.
+
+   ```bash
+   sed -n '1,120p' website/docs/manual/integrate/05-migrate-cargokit-to-native-assets.md
+   sed -n '/## Steps/,/## Expected Result/p' tools/manual_tests/cargokit-to-native-assets-migration.md
+   ```
+
+   Confirm that the remaining steps cover every documented action in the same order:
+
+   - Run Native Assets integration.
+   - Check the hook and Rust crate requirements.
+   - Remove the old Cargokit integration.
+   - Refresh dependencies and regenerate the bridge.
+   - Test the supported platform.
+
+   Stop and update this manual test if they do not align.
+
+2. Create a default Cargokit app with the current code generator.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc '
@@ -59,23 +76,25 @@ git submodule update --init --recursive
    '
    ```
 
-2. Run Native Assets integration and remove the old Cargokit package and analyzer exclusion.
+3. Run Native Assets integration and remove the old Cargokit package and analyzer exclusion.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc '
    set -euxo pipefail
    cd /root/frb_manual_test_cargokit_migration
    cargo run --manifest-path "$OLDPWD/frb_codegen/Cargo.toml" -- integrate --integration-backend native-assets --platforms linux --skip-fvm-install
-   flutter pub remove rust_lib_frb_migration_test
+   flutter pub remove rust_lib_frb_manual_test_cargokit_migration
    rm -rf rust_builder
    perl -0pi -e "s/analyzer:\n  exclude:\n    - rust_builder\/cargokit\/\*\*\n\n//" analysis_options.yaml
    test -f hook/build.dart
+   grep -q 'crate-type.*cdylib.*staticlib' rust/Cargo.toml
+   grep -q '^channel = "[0-9]' rust/rust-toolchain.toml
    test ! -e rust_builder
    ! grep -q rust_builder pubspec.yaml analysis_options.yaml
    '
    ```
 
-3. Refresh dependencies, regenerate the bridge, and run the Flutter tests.
+4. Refresh dependencies, regenerate the bridge, and run the Flutter tests.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc '
@@ -89,8 +108,10 @@ git submodule update --init --recursive
 
 ## Expected Result
 
+- The manual test covers every migration-guide action in the same order.
 - Cargokit exists before migration and is absent afterward.
 - `hook/build.dart` exists after integration.
+- `rust/Cargo.toml` has `cdylib` and `staticlib` crate types, and `rust/rust-toolchain.toml` pins a concrete toolchain.
 - `pubspec.yaml` and `analysis_options.yaml` do not reference `rust_builder`.
 - Code generation exits zero.
 - The Linux integration test exits zero and prints `All tests passed!`.
@@ -99,6 +120,7 @@ git submodule update --init --recursive
 
 The test fails if any of the following happens:
 
+- The manual test and migration guide do not align.
 - Project creation or Native Assets integration exits non-zero.
 - The expected Cargokit or Native Assets files are absent at the corresponding checkpoint.
 - A stale `rust_builder` reference remains.
