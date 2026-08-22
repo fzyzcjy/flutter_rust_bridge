@@ -62,6 +62,18 @@ impl BroadcastChannelState {
             .post(message)
     }
 
+    fn message_port_of_name(&mut self, name: &str) -> MessagePort {
+        if !self.channel_of_name.contains_key(name) {
+            self.channel_of_name
+                .insert(name.to_owned(), CachedBroadcastChannel::new(name));
+        }
+        self.channel_of_name
+            .get(name)
+            .expect("cached broadcast channel was inserted")
+            .message_port
+            .clone()
+    }
+
     fn mark_message_port_ready(&mut self, name: &str) {
         let release_requested = self
             .channel_of_name
@@ -260,7 +272,7 @@ pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
 }
 
 pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort {
-    PortLike::broadcast(&handle.0)
+    BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().message_port_of_name(&handle.0))
 }
 
 pub fn post_cached_message_port(handle: &SendableMessagePortHandle, message: JsValue) -> bool {
