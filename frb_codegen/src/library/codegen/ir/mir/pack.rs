@@ -135,3 +135,114 @@ impl DistinctTypeGatherer {
             .collect()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::func::{
+        MirFuncArgMode, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
+    };
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::utils::namespace::Namespace;
+
+    fn codec_mode_pack(dart2rust: CodecMode, rust2dart: CodecMode) -> CodecModePack {
+        CodecModePack {
+            dart2rust,
+            rust2dart,
+        }
+    }
+
+    fn func(name: &str, impl_mode: MirFuncImplMode, codec_mode_pack: CodecModePack) -> MirFunc {
+        MirFunc {
+            namespace: Namespace::default(),
+            name: MirIdent::new(name.into(), None),
+            id: None,
+            inputs: vec![],
+            output: MirFuncOutput {
+                normal: MirType::Primitive(MirTypePrimitive::I32),
+                error: None,
+            },
+            owner: MirFuncOwnerInfo::Function,
+            mode: MirFuncMode::Sync,
+            stream_dart_await: false,
+            rust_async: false,
+            initializer: false,
+            init_dart_code: None,
+            arg_mode: MirFuncArgMode::Positional,
+            accessor: None,
+            comments: vec![],
+            codec_mode_pack,
+            rust_call_code: None,
+            rust_aop_after: None,
+            impl_mode,
+            src_lineno_pseudo: 0,
+        }
+    }
+
+    fn pack() -> MirPack {
+        MirPack {
+            funcs_all: vec![
+                func(
+                    "implemented",
+                    MirFuncImplMode::Normal,
+                    codec_mode_pack(CodecMode::Cst, CodecMode::Dco),
+                ),
+                func(
+                    "declaration_only",
+                    MirFuncImplMode::NoImpl,
+                    codec_mode_pack(CodecMode::Sse, CodecMode::Pde),
+                ),
+            ],
+            extra_types_all: vec![MirExtraType {
+                ty: MirType::Primitive(MirTypePrimitive::U8),
+                codec_mode_pack: codec_mode_pack(CodecMode::Sse, CodecMode::Pde),
+            }],
+            struct_pool: HashMap::new(),
+            enum_pool: HashMap::new(),
+            dart_code_of_type: HashMap::new(),
+            existing_handler: None,
+            skips: vec![],
+            trait_impls: vec![],
+            extra_rust_output_code: String::new(),
+            extra_dart_output_code: GeneralDartCode::default(),
+        }
+    }
+
+    fn idents(types: Vec<MirType>) -> Vec<String> {
+        types.into_iter().map(|ty| ty.safe_ident()).collect()
+    }
+
+    /// Excludes declaration-only functions while preserving implemented function order.
+    #[test]
+    fn filters_functions_to_only_normal_implementations() {
+        let functions = pack().funcs_with_impl();
+
+        assert_eq!(functions.len(), 1);
+        assert_eq!(functions[0].name.rust_style(false), "implemented");
+    }
+
+    /// Collects sorted unique types and applies codec-mode filters to functions and extras.
+    #[test]
+    fn collects_distinct_types_for_each_codec_mode() {
+        let cache = MirPackComputedCache::compute(&pack());
+
+        assert_eq!(idents(cache.distinct_types), ["i_32", "u_8", "unit"]);
+        assert_eq!(
+            idents(cache.distinct_types_for_codec[&CodecMode::Cst].clone()),
+            ["i_32", "unit"]
+        );
+        assert_eq!(
+            idents(cache.distinct_types_for_codec[&CodecMode::Dco].clone()),
+            ["i_32", "unit"]
+        );
+        assert_eq!(
+            idents(cache.distinct_types_for_codec[&CodecMode::Sse].clone()),
+            ["i_32", "u_8", "unit"]
+        );
+        assert_eq!(
+            idents(cache.distinct_types_for_codec[&CodecMode::Pde].clone()),
+            ["i_32", "u_8", "unit"]
+        );
+    }
+}

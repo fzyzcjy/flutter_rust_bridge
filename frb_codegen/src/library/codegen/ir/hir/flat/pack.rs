@@ -39,3 +39,30 @@ impl HirFlatPack {
 pub(crate) trait HirFlatPackComponentVisitor {
     fn visit<SK: Ord, T: HirFlatComponent<SK>>(&self, items: &mut Vec<T>);
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    use std::sync::Arc;
+
+    struct CountingVisitor(Arc<AtomicUsize>);
+
+    impl HirFlatPackComponentVisitor for CountingVisitor {
+        fn visit<SK: Ord, T: HirFlatComponent<SK>>(&self, _items: &mut Vec<T>) {
+            self.0.fetch_add(1, Ordering::Relaxed);
+        }
+    }
+
+    /// Visits every heterogeneous component collection exactly once.
+    #[test]
+    fn visits_all_component_collections() {
+        let mut pack = HirFlatPack::default();
+        let visits = Arc::new(AtomicUsize::new(0));
+        let visitor = CountingVisitor(Arc::clone(&visits));
+
+        pack.visit_components_mut(visitor);
+
+        assert_eq!(visits.load(Ordering::Relaxed), 7);
+    }
+}
