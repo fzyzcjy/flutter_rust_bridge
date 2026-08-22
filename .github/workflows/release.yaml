@@ -17,7 +17,6 @@ jobs:
   build-upload:
     name: Build and Upload Binaries
     runs-on: ${{ matrix.os }}
-    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
@@ -73,36 +72,54 @@ jobs:
       - name: Post-build (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          cd target/${{ matrix.target }}/release
-          7z a ../../../${{ matrix.name }} flutter_rust_bridge_codegen.exe
-          cd -
+          $binary = "target/${{ matrix.target }}/release/flutter_rust_bridge_codegen.exe"
+          if (!(Test-Path -Path $binary -PathType Leaf) -or (Get-Item $binary).Length -eq 0) {
+            throw "Missing or empty release binary: $binary"
+          }
+          if ('${{ matrix.target }}' -eq 'x86_64-pc-windows-msvc') {
+            & $binary --version
+          }
+          7z a "${{ matrix.name }}" $binary
+          if (!(Test-Path -Path '${{ matrix.name }}' -PathType Leaf) -or (Get-Item '${{ matrix.name }}').Length -eq 0) {
+            throw 'Missing or empty release archive: ${{ matrix.name }}'
+          }
+          7z t "${{ matrix.name }}"
       - name: Post-build (*nix)
         if: matrix.os != 'windows-latest'
         run: |
-          cd target/${{ matrix.target }}/release
-          tar czvf ../../../${{ matrix.name }} flutter_rust_bridge_codegen
-          cd -
+          binary="target/${{ matrix.target }}/release/flutter_rust_bridge_codegen"
+          test -s "$binary"
+          case "$(uname -s):$(uname -m):${{ matrix.target }}" in
+            Linux:x86_64:x86_64-unknown-linux-gnu|Darwin:x86_64:x86_64-apple-darwin|Darwin:arm64:aarch64-apple-darwin)
+              "$binary" --version
+              ;;
+          esac
+          tar czvf "${{ matrix.name }}" -C "$(dirname "$binary")" "$(basename "$binary")"
+          test -s "${{ matrix.name }}"
+          tar tzf "${{ matrix.name }}"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.name }}
+          if-no-files-found: error
   upload-artifacts:
     name: Add Build Artifacts to Release
     needs: build-upload
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
       - name: Download artifacts
         uses: actions/download-artifact@v5
-      - name: Generate checksums
-        run: |
-          for file in flutter_rust_bridge_codegen-*/flutter_rust_bridge_codegen-*; do
-            openssl dgst -sha256 -r "$file" | awk '{print $1}' > "${file}.sha256";
-          done
+        with:
+          path: downloaded-release-artifacts
+      - name: Verify and stage complete artifact set
+        run: .github/scripts/verify-release-artifacts.sh downloaded-release-artifacts release-assets "${{ inputs.publish_tag || github.ref_name }}"
       - name: Add Artifacts
         uses: softprops/action-gh-release@v2
         with:
-          files: flutter_rust_bridge_codegen-*/flutter_rust_bridge_codegen-*
+          files: release-assets/*
           tag_name: ${{ github.event_name == 'workflow_dispatch' && (inputs.publish_tag != '' && inputs.publish_tag) || github.ref_name }}
   refresh-homebrew:
     name: Refresh Homebrew formula

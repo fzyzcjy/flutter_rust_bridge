@@ -14,6 +14,120 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('release workflow enforces the complete binary artifact contract', () {
+    final workflow = File(
+      '../../.github/workflows/release.yaml',
+    ).readAsStringSync();
+    final verifier = File(
+      '../../.github/scripts/verify-release-artifacts.sh',
+    ).readAsStringSync();
+    final targets = RegExp(
+      r'^\s+- target: (\S+)$',
+      multiLine: true,
+    ).allMatches(workflow).map((match) => match.group(1)!).toList();
+    final verifierTargetBlock = RegExp(
+      r'targets=\(\n((?:  [a-z0-9_-]+\n)+)\)',
+    ).firstMatch(verifier)!.group(1)!;
+    final verifierTargets = verifierTargetBlock
+        .trim()
+        .split('\n')
+        .map((target) => target.trim())
+        .toList();
+
+    expect(targets, hasLength(10));
+    expect(targets.toSet(), hasLength(targets.length));
+    expect(verifierTargets, unorderedEquals(targets));
+    expect(workflow, isNot(contains('    continue-on-error: true\n')));
+    expect(workflow, contains('if-no-files-found: error'));
+    expect(
+      workflow,
+      contains(
+        '.github/scripts/verify-release-artifacts.sh downloaded-release-artifacts release-assets',
+      ),
+    );
+  });
+
+  test('release artifact verifier rejects an incomplete target set', () async {
+    final tempDirectory = await Directory.systemTemp.createTemp(
+      'frb-release-artifacts-',
+    );
+    addTearDown(() => tempDirectory.deleteSync(recursive: true));
+
+    final result = await Process.run('bash', [
+      '../../.github/scripts/verify-release-artifacts.sh',
+      '${tempDirectory.path}/input',
+      '${tempDirectory.path}/output',
+      'v2.13.0',
+    ]);
+
+    expect(result.exitCode, isNonZero);
+    expect(
+      result.stderr,
+      contains('Expected 10 artifact directories, found 0'),
+    );
+    expect(Directory('${tempDirectory.path}/output').existsSync(), false);
+  });
+
+  test('release artifact verifier stages every archive and checksum', () async {
+    final tempDirectory = await Directory.systemTemp.createTemp(
+      'frb-release-artifacts-',
+    );
+    addTearDown(() => tempDirectory.deleteSync(recursive: true));
+    final inputDirectory = Directory('${tempDirectory.path}/input')
+      ..createSync();
+    final payload = File('${tempDirectory.path}/flutter_rust_bridge_codegen')
+      ..writeAsStringSync('binary');
+    final targets = [
+      'x86_64-unknown-linux-gnu',
+      'x86_64-unknown-linux-musl',
+      'i686-unknown-linux-musl',
+      'aarch64-unknown-linux-musl',
+      'arm-unknown-linux-musleabihf',
+      'x86_64-apple-darwin',
+      'aarch64-apple-darwin',
+      'x86_64-pc-windows-msvc',
+      'i686-pc-windows-msvc',
+      'x86_64-unknown-freebsd',
+    ];
+
+    for (final target in targets) {
+      final extension = target.endsWith('-windows-msvc') ? 'zip' : 'tgz';
+      final archiveName =
+          'flutter_rust_bridge_codegen-$target-v2.13.0.$extension';
+      final artifactDirectory = Directory('${inputDirectory.path}/$archiveName')
+        ..createSync();
+      final archivePath = '${artifactDirectory.path}/$archiveName';
+      final result = extension == 'zip'
+          ? await Process.run('zip', ['-j', archivePath, payload.path])
+          : await Process.run('tar', [
+              'czf',
+              archivePath,
+              '-C',
+              tempDirectory.path,
+              payload.uri.pathSegments.last,
+            ]);
+      expect(result.exitCode, 0, reason: result.stderr as String);
+    }
+
+    final outputDirectory = '${tempDirectory.path}/output';
+    final result = await Process.run('bash', [
+      '../../.github/scripts/verify-release-artifacts.sh',
+      inputDirectory.path,
+      outputDirectory,
+      'v2.13.0',
+    ]);
+
+    expect(result.exitCode, 0, reason: result.stderr as String);
+    final stagedFiles = Directory(outputDirectory).listSync();
+    expect(stagedFiles, hasLength(20));
+    expect(
+      stagedFiles.whereType<File>().where(
+        (file) => file.path.endsWith('.sha256'),
+      ),
+      hasLength(10),
+    );
+  });
+
   test('dart valgrind compile command uses dart build output directory', () {
     expect(
       dartValgrindCompileCommandForTesting(),
