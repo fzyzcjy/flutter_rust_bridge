@@ -69,18 +69,22 @@ fn get_module_file_path_candidates(
     module_name: &str,
     parent_module_file_path: &Path,
 ) -> Vec<PathBuf> {
-    [
-        parent_module_file_path.parent().unwrap().to_owned(),
-        parent_module_file_path.with_extension(""),
-    ]
-    .iter()
-    .flat_map(|folder_path| {
-        [
-            folder_path.join(module_name).with_extension("rs"),
-            folder_path.join(module_name).join("mod.rs"),
-        ]
-    })
-    .collect_vec()
+    let parent_folder = parent_module_file_path.parent().unwrap().to_owned();
+    let nested_folder = parent_module_file_path.with_extension("");
+    let folders = match parent_module_file_path.file_name().and_then(|x| x.to_str()) {
+        Some("lib.rs" | "main.rs" | "mod.rs") => [parent_folder, nested_folder],
+        _ => [nested_folder, parent_folder],
+    };
+
+    folders
+        .iter()
+        .flat_map(|folder_path| {
+            [
+                folder_path.join(module_name).with_extension("rs"),
+                folder_path.join(module_name).join("mod.rs"),
+            ]
+        })
+        .collect_vec()
 }
 
 #[cfg(test)]
