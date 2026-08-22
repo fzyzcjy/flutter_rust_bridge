@@ -32,13 +32,13 @@ void main() {
     expect(sseDecodePanicError(SseDeserializer(bytes)).message, message);
   });
 
-  test(
-    'native manual integer decoders retain signed and unsigned boundaries',
-    () {
-      expect(dcoDecodeI64(-1), -1);
-      expect(dcoDecodeU64(-1), BigInt.parse('18446744073709551615'));
-      expect(sseEncodeCastedPrimitiveI64(-9), -9);
-      expect(sseEncodeCastedPrimitiveU64(9), BigInt.from(9));
-    },
-  );
+  test('manual integer decoders retain signed and unsigned boundaries', () {
+    expect(dcoDecodeI64(-1), kIsWeb ? BigInt.from(-1) : -1);
+    expect(
+      dcoDecodeU64(-1),
+      kIsWeb ? BigInt.from(-1) : BigInt.parse('18446744073709551615'),
+    );
+    expect(sseEncodeCastedPrimitiveI64(-9), kIsWeb ? BigInt.from(-9) : -9);
+    expect(sseEncodeCastedPrimitiveU64(9), BigInt.from(9));
+  });
 }

@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/read_buffer.dart';
 import 'package:test/test.dart';
 
@@ -31,7 +32,16 @@ void main() {
   test('ReadBuffer keeps its position when a read exceeds remaining bytes', () {
     final buffer = ReadBuffer(ByteData.sublistView(Uint8List.fromList([7])));
 
-    expect(buffer.getUint16, throwsRangeError);
+    expect(
+      buffer.getUint16,
+      throwsA(
+        predicate<Object>(
+          (error) => kIsWeb
+              ? error is ArgumentError && error is! RangeError
+              : error is RangeError,
+        ),
+      ),
+    );
     expect(buffer.getUint8(), 7);
     expect(buffer.hasRemaining, isFalse);
   });
