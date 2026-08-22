@@ -12905,8 +12905,9 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opa
                                                                                                                                  uintptr_t b);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal(int64_t port_,
-                                                                                                            uintptr_t a,
-                                                                                                            uintptr_t b);
+                                                                                                            uint8_t *ptr_,
+                                                                                                            int32_t rust_vec_len_,
+                                                                                                            int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_two_args_twin_rust_async(int64_t port_,
                                                                                                                                                uintptr_t a,

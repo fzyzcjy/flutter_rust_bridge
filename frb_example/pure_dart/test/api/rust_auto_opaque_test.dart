@@ -1,6 +1,8 @@
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
+// ignore: unused_import
+import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_auto_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -38,6 +40,51 @@ Future<void> main({bool skipRustLibInit = false}) async {
           throwsA(isA<DroppableDisposedException>()),
         );
       });
+
+      // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
+      test('failed encoding preserves an earlier owned argument', () async {
+        final first = await rustAutoOpaqueReturnOwnTwinNormal(initial: 10);
+        final disposed = await rustAutoOpaqueReturnOwnTwinNormal(initial: 20);
+        disposed.dispose();
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinNormal(a: first, b: disposed),
+          throwsA(isA<DroppableDisposedException>()),
+        );
+        expect(first.isDisposed, false);
+        await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: first, expect: 10),
+        );
+      });
+
+      test('failed duplicate move preserves the owned argument', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 10);
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinNormal(a: obj, b: obj),
+          throwsA(
+            anyOf(
+              isA<StateError>().having(
+                (error) => error.message,
+                'message',
+                'Cannot move the same Rust opaque object more than once',
+              ),
+              isA<PanicException>().having(
+                (error) => error.message,
+                'message',
+                contains(
+                  'Cannot move the same Rust opaque object more than once',
+                ),
+              ),
+            ),
+          ),
+        );
+        expect(obj.isDisposed, false);
+        await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 10),
+        );
+      });
+      // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
     });
 
     group('arg ref', () {

@@ -83,7 +83,7 @@ pub(super) fn generate_generalized_rust_opaque_encode(
             lang,
             &MirTypeRustOpaque::DELEGATE_TYPE,
             &format!(
-                "(self as {}Impl).frbInternalSseEncode(move: {needs_move})",
+                "(self as {}Impl).frbInternalSseEncode(move: {needs_move}, serializer: serializer)",
                 ApiDartGenerator::new(mir, context.as_api_dart_context()).dart_api_type()
             ),
         ),

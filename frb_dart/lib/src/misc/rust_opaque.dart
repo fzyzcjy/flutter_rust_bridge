@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge/src/codec/sse.dart';
 import 'package:flutter_rust_bridge/src/rust_arc/_common.dart';
 import 'package:meta/meta.dart';
 
@@ -69,8 +70,15 @@ abstract class RustOpaque implements RustOpaqueInterface {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  BigInt frbInternalSseEncode({bool? move}) =>
-      BigInt.from(frbInternalCstEncode(move: move)).toUnsigned(64);
+  BigInt frbInternalSseEncode({bool? move, required SseSerializer serializer}) {
+    assert(
+      move == null || _move == null,
+      'Cannot specify move semantics in two places',
+    );
+    final transfer = _arc.prepareTransfer(move: move ?? _move ?? false);
+    serializer.addRustArcTransfer(transfer);
+    return BigInt.from(transfer.ptr).toUnsigned(64);
+  }
 
   /// Dispose the underlying `Arc`.
   @override

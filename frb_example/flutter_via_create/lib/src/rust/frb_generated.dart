@@ -97,7 +97,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SyncTask(
         callFfi: () {
           final serializer = SseSerializer(generalizedFrbRustBinding);
-          sse_encode_String(name, serializer);
+          try {
+            sse_encode_String(name, serializer);
+          } catch (_) {
+            serializer.dispose();
+            rethrow;
+          }
           return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
         },
         codec: SseCodec(
@@ -120,6 +125,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       NormalTask(
         callFfi: (port_) {
           final serializer = SseSerializer(generalizedFrbRustBinding);
+          try {} catch (_) {
+            serializer.dispose();
+            rethrow;
+          }
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,

@@ -74,6 +74,7 @@ pub fn rust_auto_opaque_arg_own_and_return_own_twin_sync_sse_moi(
     arg
 }
 
+#[frb(serialize)]
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]

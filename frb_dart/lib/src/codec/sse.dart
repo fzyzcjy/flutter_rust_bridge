@@ -6,6 +6,7 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/platform_utils.dart';
+import 'package:flutter_rust_bridge/src/rust_arc/rust_arc.dart';
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/read_buffer.dart';
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/write_buffer.dart';
 
@@ -84,12 +85,44 @@ class SseSerializer {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   final WriteBuffer buffer;
 
+  List<RustArcTransfer>? _rustArcTransfers;
+
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   SseSerializer(GeneralizedFrbRustBinding binding)
     : buffer = WriteBuffer(binding: binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  WriteBufferRaw intoRaw() => buffer.intoRaw();
+  void addRustArcTransfer(RustArcTransfer transfer) {
+    final transfers = _rustArcTransfers ??= [];
+    if (transfers.any(transfer.conflictsWith)) {
+      throw StateError(
+        'Cannot move the same Rust opaque object more than once',
+      );
+    }
+    transfers.add(transfer);
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  WriteBufferRaw intoRaw() {
+    if (_rustArcTransfers case final transfers?) {
+      for (final transfer in transfers) {
+        transfer.commit();
+      }
+      _rustArcTransfers = null;
+    }
+    return buffer.intoRaw();
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void dispose() {
+    if (_rustArcTransfers case final transfers?) {
+      for (final transfer in transfers.reversed) {
+        transfer.rollback();
+      }
+      _rustArcTransfers = null;
+    }
+    buffer.dispose();
+  }
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
