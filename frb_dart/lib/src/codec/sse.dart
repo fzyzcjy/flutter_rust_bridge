@@ -88,15 +88,6 @@ class SseSerializer {
   SseSerializer(GeneralizedFrbRustBinding binding)
     : buffer = WriteBuffer(binding: binding);
 
-  void encode(void Function() callback) {
-    try {
-      callback();
-    } catch (_) {
-      buffer.dispose();
-      rethrow;
-    }
-  }
-
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   WriteBufferRaw intoRaw() => buffer.intoRaw();
 }

@@ -59,16 +59,14 @@ impl WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'_> {
                 }}
 
                 final serializer = SseSerializer(generalizedFrbRustBinding);
-                serializer.encode(() {{
-                  assert((rawOutput != null) ^ (rawError != null));
-                  if (rawOutput != null) {{
-                      serializer.buffer.putUint8({action_normal});
-                      sse_encode_{output_normal_safe_ident}(rawOutput.value, serializer);
-                  }} else {{
-                      serializer.buffer.putUint8({action_error});
-                      sse_encode_{output_error_safe_ident}(rawError!.value, serializer);
-                  }}
-                }});
+                assert((rawOutput != null) ^ (rawError != null));
+                if (rawOutput != null) {{
+                    serializer.buffer.putUint8({action_normal});
+                    sse_encode_{output_normal_safe_ident}(rawOutput.value, serializer);
+                }} else {{
+                    serializer.buffer.putUint8({action_error});
+                    sse_encode_{output_error_safe_ident}(rawError!.value, serializer);
+                }}
                 final output = serializer.intoRaw();
 
                 generalizedFrbRustBinding.dartFnDeliverOutput(
