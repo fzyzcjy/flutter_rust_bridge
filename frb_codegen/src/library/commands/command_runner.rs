@@ -7,6 +7,7 @@ use std::collections::HashMap;
 use std::io::{BufRead, BufReader, Read};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Output, Stdio};
+use std::sync::Arc;
 use std::thread;
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
@@ -240,6 +241,17 @@ fn execute_command_streaming(
     bin: &str,
     args_display: &str,
 ) -> anyhow::Result<Output> {
+    execute_command_streaming_with_output(cmd, bin, args_display, |line| {
+        println_over_progress(line)
+    })
+}
+
+fn execute_command_streaming_with_output(
+    cmd: &mut Command,
+    bin: &str,
+    args_display: &str,
+    print_line: impl Fn(&str) + Send + Sync + 'static,
+) -> anyhow::Result<Output> {
     cmd.stdin(Stdio::null());
     cmd.stdout(Stdio::piped());
     cmd.stderr(Stdio::piped());
@@ -248,15 +260,19 @@ fn execute_command_streaming(
         .with_context(|| format!(r#""{bin}" "{args_display}" failed to spawn (cmd={cmd:?})"#))?;
     let stdout_pipe = child.stdout.take().context("stdout was piped")?;
     let stderr_pipe = child.stderr.take().context("stderr was piped")?;
+    let print_line = Arc::new(print_line);
+    let print_stdout_line = print_line.clone();
 
     let stdout_thread = thread::spawn(move || {
         let mut collected = Vec::new();
-        tee_reader(stdout_pipe, &mut collected);
+        tee_reader(stdout_pipe, &mut collected, move |line| {
+            print_stdout_line(line)
+        });
         collected
     });
     let stderr_thread = thread::spawn(move || {
         let mut collected = Vec::new();
-        tee_reader(stderr_pipe, &mut collected);
+        tee_reader(stderr_pipe, &mut collected, move |line| print_line(line));
         collected
     });
 
@@ -274,7 +290,7 @@ fn execute_command_streaming(
 }
 
 /// Copies `reader` into `collected` and prints each line above the codegen spinner.
-fn tee_reader(reader: impl Read, collected: &mut Vec<u8>) {
+fn tee_reader(reader: impl Read, collected: &mut Vec<u8>, print_line: impl Fn(&str)) {
     let mut reader = BufReader::new(reader);
     let mut line = Vec::new();
     loop {
@@ -284,7 +300,7 @@ fn tee_reader(reader: impl Read, collected: &mut Vec<u8>) {
             Ok(_) => {
                 collected.extend_from_slice(&line);
                 let text = String::from_utf8_lossy(&line);
-                println_over_progress(text.trim_end_matches(['\r', '\n']));
+                print_line(text.trim_end_matches(['\r', '\n']));
             }
             Err(_) => break,
         }
@@ -363,14 +379,14 @@ mod tests {
     fn test_tee_reader_collects_every_line_including_crlf() {
         let input = b"freezed on 45 inputs\r\nE missing implementation\npartial";
         let mut collected = Vec::new();
-        super::tee_reader(&input[..], &mut collected);
+        super::tee_reader(&input[..], &mut collected, |_| {});
         assert_eq!(collected, input);
     }
 
     #[test]
     fn test_tee_reader_empty_input_is_noop() {
         let mut collected = Vec::new();
-        super::tee_reader(&b""[..], &mut collected);
+        super::tee_reader(&b""[..], &mut collected, |_| {});
         assert!(collected.is_empty());
     }
 
@@ -385,7 +401,7 @@ mod tests {
     #[test]
     fn test_tee_reader_io_error_stops_without_panic() {
         let mut collected = Vec::new();
-        super::tee_reader(FailingReader, &mut collected);
+        super::tee_reader(FailingReader, &mut collected, |_| {});
         assert!(collected.is_empty());
     }
 
@@ -426,6 +442,37 @@ mod tests {
             panic!("expected streamed stdout to contain marker, got {stdout:?}");
             // frb-coverage:ignore-end
         }
+    }
+
+    #[cfg(not(windows))]
+    #[test]
+    /// Output must be forwarded before the child process exits.
+    fn test_execute_command_streaming_forwards_output_while_child_is_running() {
+        let (line_sender, line_receiver) = std::sync::mpsc::channel();
+        let execution = thread::spawn(move || {
+            let mut command = Command::new("sh");
+            command.args(["-c", "echo first; sleep 2; echo second"]);
+            execute_command_streaming_with_output(
+                &mut command,
+                "sh",
+                "-c echo first; sleep 2; echo second",
+                move |line| line_sender.send(line.to_owned()).unwrap(),
+            )
+        });
+
+        assert_eq!(
+            line_receiver.recv_timeout(Duration::from_secs(1)).unwrap(),
+            "first"
+        );
+        assert!(!execution.is_finished());
+        assert_eq!(
+            line_receiver.recv_timeout(Duration::from_secs(3)).unwrap(),
+            "second"
+        );
+
+        let output = execution.join().unwrap().unwrap();
+        assert!(output.status.success());
+        assert_eq!(String::from_utf8_lossy(&output.stdout), "first\nsecond\n");
     }
 
     #[test]
