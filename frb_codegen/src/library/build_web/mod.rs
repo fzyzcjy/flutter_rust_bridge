@@ -99,7 +99,7 @@ fn dart_run(
         }
         cmd_args.extend(args.into_iter().map_into());
 
-        let info = call_shell_info(&cmd_args);
+        let info = call_shell_info(&cmd_args)?;
         Command::new(info.program)
             .args(info.args)
             .current_dir(current_dir)

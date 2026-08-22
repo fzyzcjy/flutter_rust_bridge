@@ -78,7 +78,7 @@ pub(crate) fn call_shell(
     pwd: Option<&Path>,
     options: Option<ExecuteCommandOptions>,
 ) -> anyhow::Result<Output> {
-    let CommandInfo { program, args } = call_shell_info(cmd);
+    let CommandInfo { program, args } = call_shell_info(cmd)?;
     let program = &program;
     command_run!(program in pwd, options = options, *args)
 }
@@ -89,30 +89,45 @@ pub(crate) struct CommandInfo {
     pub args: Vec<String>,
 }
 
-pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
+pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> anyhow::Result<CommandInfo> {
     #[cfg(windows)]
     {
         let cmd = cmd
             .iter()
             .map(|section| windows_escape_for_powershell(section.to_str().unwrap()))
             .join(" ");
-        CommandInfo {
+        Ok(CommandInfo {
             program: "powershell".to_owned(),
             args: vec![
                 "-noprofile".to_owned(),
                 "-command".to_owned(),
                 format!("& {}", cmd),
             ],
-        }
+        })
     }
     #[cfg(not(windows))]
     {
-        let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
-        CommandInfo {
+        let cmd = cmd
+            .iter()
+            .map(|section| shell_quote(section))
+            .collect::<anyhow::Result<Vec<_>>>()?
+            .join(" ");
+        Ok(CommandInfo {
             program: "sh".to_owned(),
             args: vec!["-c".to_owned(), cmd],
-        }
+        })
     }
+}
+
+#[cfg(not(windows))]
+fn shell_quote(section: &Path) -> anyhow::Result<String> {
+    Ok(format!(
+        "'{}'",
+        section
+            .to_str()
+            .context("shell argument is not valid UTF-8")?
+            .replace('\'', "'\"'\"'")
+    ))
 }
 
 /// Applies a minimal set of backtick escapes to convert a string into a PowerShell 5.1 argument token.
@@ -239,15 +254,16 @@ pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
 mod tests {
     use super::*;
 
+    /// Builds a POSIX shell command string for ordinary quoted arguments.
     #[test]
     #[cfg(not(windows))]
-    /// Builds a POSIX shell command string for ordinary quoted arguments.
-    fn builds_posix_shell_arguments_with_debug_quoting() {
+    fn builds_posix_shell_arguments_with_literal_quoting() {
         let actual = call_shell_info(&[
             PathBuf::from("tool"),
             PathBuf::from("argument with spaces"),
             PathBuf::from("quote\"and\\slash"),
-        ]);
+        ])
+        .unwrap();
 
         assert_eq!(
             actual,
@@ -255,15 +271,15 @@ mod tests {
                 program: "sh".to_owned(),
                 args: vec![
                     "-c".to_owned(),
-                    "\"tool\" \"argument with spaces\" \"quote\\\"and\\\\slash\"".to_owned(),
+                    "'tool' 'argument with spaces' 'quote\"and\\slash'".to_owned(),
                 ],
             }
         );
     }
 
+    /// Preserves shell metacharacters and newlines as literal executable arguments.
     #[cfg(unix)]
     #[test]
-    /// Preserves shell metacharacters and newlines as literal executable arguments.
     fn preserves_shell_metacharacters_as_literal_arguments() -> anyhow::Result<()> {
         use std::fs;
         use std::os::unix::ffi::OsStringExt;
@@ -284,6 +300,7 @@ mod tests {
             PathBuf::from("substitution:$(printf command)"),
             PathBuf::from("backtick:`printf tick`"),
             PathBuf::from("quote:\"literal\""),
+            PathBuf::from("apostrophe:'literal'"),
             PathBuf::from("newline:first\nsecond"),
         ];
         let options = ExecuteCommandOptions {
@@ -308,8 +325,19 @@ mod tests {
         Ok(())
     }
 
+    /// Rejects non-UTF-8 arguments instead of silently changing their bytes.
+    #[cfg(unix)]
     #[test]
+    fn rejects_non_utf8_shell_arguments() {
+        use std::os::unix::ffi::OsStringExt;
+
+        let argument = PathBuf::from(std::ffi::OsString::from_vec(vec![0xff]));
+
+        assert!(call_shell_info(&[argument]).is_err());
+    }
+
     /// Accepts an output with a successful exit status.
+    #[test]
     fn accepts_successful_exit_status() {
         assert!(check_exit_code(&Output {
             status: success_exit_status(),
@@ -319,8 +347,8 @@ mod tests {
         .is_ok());
     }
 
-    #[test]
     /// Returns stderr context for an unsuccessful exit status.
+    #[test]
     fn rejects_unsuccessful_exit_status() {
         let error = check_exit_code(&Output {
             status: failure_exit_status(),
@@ -376,7 +404,8 @@ mod tests {
             "D:\\coding\\project",
             "--wasm-pack-rustflags=--cfg getrandom_backend=\\\"wasm_js\\\" -C target-feature=+atomics,+bulk-memory,+mutable-globals -C link-args=--shared-memory",
         ];
-        let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
+        let actual =
+            call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>()).unwrap();
         let cmd = "fvm dart run flutter_rust_bridge build-web --dart-root D:`\\coding`\\project --wasm-pack-rustflags=--cfg` getrandom_backend=`\\`\"wasm_js`\\`\"` -C` target-feature=+atomics,+bulk-memory,+mutable-globals` -C` link-args=--shared-memory";
         let expect = CommandInfo {
             program: "powershell".to_owned(),
@@ -393,7 +422,8 @@ mod tests {
     /// Escapes PowerShell argument metacharacters in a single token.
     fn test_call_shell_info_escapes() {
         let params = ["abc\"def\\ghi jkl"];
-        let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
+        let actual =
+            call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>()).unwrap();
         let cmd = "abc`\"def`\\ghi` jkl";
         let expect = CommandInfo {
             program: "powershell".to_owned(),
@@ -405,8 +435,8 @@ mod tests {
         };
         assert_eq!(actual, expect);
     }
-    #[test]
     /// Escapes spaces, quotes, and backslashes for PowerShell tokens.
+    #[test]
     fn test_windows_escape_for_powershell() {
         let section_in =
             "detects regression \"errors\" when tests are run \\ on non_windows systems";

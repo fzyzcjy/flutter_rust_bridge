@@ -65,8 +65,8 @@ mod tests {
     use std::fs;
     use tempfile::tempdir;
 
-    #[test]
     /// Detects an FVM marker in the requested directory.
+    #[test]
     fn detects_an_immediate_fvmrc() -> anyhow::Result<()> {
         let directory = tempdir()?;
         fs::write(directory.path().join(".fvmrc"), "{}")?;
@@ -75,8 +75,8 @@ mod tests {
         Ok(())
     }
 
-    #[test]
     /// Detects an FVM marker in an ancestor directory.
+    #[test]
     fn detects_an_ancestor_fvmrc() -> anyhow::Result<()> {
         let directory = tempdir()?;
         let nested = directory.path().join("nested").join("project");
@@ -87,8 +87,8 @@ mod tests {
         Ok(())
     }
 
-    #[test]
     /// Returns false when the directory hierarchy has no FVM marker.
+    #[test]
     fn returns_false_without_an_fvmrc() -> anyhow::Result<()> {
         let directory = tempdir()?;
         let nested = directory.path().join("nested");
