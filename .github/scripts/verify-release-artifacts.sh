@@ -19,7 +19,7 @@ targets=(
   x86_64-unknown-freebsd
 )
 
-shopt -s nullglob
+shopt -s nullglob dotglob
 downloaded_directories=("$input_directory"/*)
 if [[ ${#downloaded_directories[@]} -ne ${#targets[@]} ]]; then
   printf 'Expected %d artifact directories, found %d\n' "${#targets[@]}" "${#downloaded_directories[@]}" >&2

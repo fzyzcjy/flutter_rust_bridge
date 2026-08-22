@@ -39,6 +39,20 @@ void main() {
     expect(verifierTargets, unorderedEquals(targets));
     expect(workflow, isNot(contains('    continue-on-error: true\n')));
     expect(workflow, contains('if-no-files-found: error'));
+    expect(workflow, contains('overwrite: true'));
+    expect(workflow, contains('Linux:x86_64:x86_64-unknown-linux-musl'));
+    expect(workflow, contains('if (\$LASTEXITCODE -ne 0)'));
+    expect(
+      workflow,
+      contains(
+        r'tag_name: ${{ github.event_name == '
+        "'workflow_dispatch' && (inputs.publish_tag != '' && inputs.publish_tag) || github.ref_name }}",
+      ),
+    );
+    expect(
+      workflow,
+      contains(r'tag-name: ${{ inputs.publish_tag || github.ref_name }}'),
+    );
     expect(
       workflow,
       contains(
@@ -125,6 +139,21 @@ void main() {
         (file) => file.path.endsWith('.sha256'),
       ),
       hasLength(10),
+    );
+
+    File(
+      '${inputDirectory.listSync().first.path}/.unexpected',
+    ).writeAsStringSync('unexpected');
+    final hiddenEntryResult = await Process.run('bash', [
+      '../../.github/scripts/verify-release-artifacts.sh',
+      inputDirectory.path,
+      '${tempDirectory.path}/hidden-entry-output',
+      'v2.13.0',
+    ]);
+    expect(hiddenEntryResult.exitCode, isNonZero);
+    expect(
+      hiddenEntryResult.stderr,
+      contains('Artifact directory must contain exactly one'),
     );
   });
 
