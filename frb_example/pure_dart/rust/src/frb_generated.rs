@@ -43305,20 +43305,31 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<NonCloneSimpleTwinNormal>,
-    b: impl CstDecode<NonCloneSimpleTwinNormal>,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_two_args_twin_normal",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_a = a.cst_decode();
-            let api_b = b.cst_decode();
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_a = <NonCloneSimpleTwinNormal>::sse_decode(&mut deserializer);
+            let api_b = <NonCloneSimpleTwinNormal>::sse_decode(&mut deserializer);
+            deserializer.end();
             move |context| {
-                transform_result_dco::<_, _, ()>((move || {
+                transform_result_sse::<_, ()>((move || {
                     let output_ok = Ok::<_, ()>({
                         crate::api::rust_auto_opaque::rust_auto_opaque_two_args_twin_normal(
                             api_a, api_b,
@@ -151923,10 +151934,16 @@ field1: Default::default(), }
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal(
         port_: i64,
-        a: usize,
-        b: usize,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
     ) {
-        wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(port_, a, b)
+        wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(
+            port_,
+            ptr_,
+            rust_vec_len_,
+            data_len_,
+        )
     }
 
     #[unsafe(no_mangle)]
@@ -207406,10 +207423,16 @@ mod web {
     #[wasm_bindgen]
     pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal(
         port_: flutter_rust_bridge::for_generated::MessagePort,
-        a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-        b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
     ) {
-        wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(port_, a, b)
+        wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal_impl(
+            port_,
+            ptr_,
+            rust_vec_len_,
+            data_len_,
+        )
     }
 
     #[wasm_bindgen]

@@ -104,12 +104,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_size(imageSize, serializer);
           sse_encode_box_autoadd_point(zoomPoint, serializer);
           sse_encode_f_64(scale, serializer);
           sse_encode_i_32(numThreads, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1, port: port_);
       },

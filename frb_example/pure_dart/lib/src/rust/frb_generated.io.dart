@@ -109787,25 +109787,32 @@ class RustLibWire implements BaseWire {
   void
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal(
     int port_,
-    int a,
-    int b,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal(
       port_,
-      a,
-      b,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normalPtr =
       _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<ffi.Uint8>,
+                ffi.Int32,
+                ffi.Int32,
+              )>>(
     'frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal',
   );
   late final _wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normal =
       _wire__crate__api__rust_auto_opaque__rust_auto_opaque_two_args_twin_normalPtr
-          .asFunction<void Function(int, int, int)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_two_args_twin_rust_async(

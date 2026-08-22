@@ -41,8 +41,11 @@ impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
         format!(
             "
             final serializer = SseSerializer(generalizedFrbRustBinding);
-            serializer.encode(() {{{serialize_inputs}
-            }});
+            try {{{serialize_inputs}
+            }} catch (_) {{
+              serializer.dispose();
+              rethrow;
+            }}
             final raw_ = serializer.intoRaw();
             return wire.{wire_func_name}({maybe_port}raw_.ptr, raw_.rustVecLen, raw_.dataLen);
             "
