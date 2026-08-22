@@ -44,3 +44,89 @@ impl WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenerator<
         )
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::test_utils;
+    use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::enumeration::{
+        MirEnum, MirEnumIdent, MirEnumMode, MirEnumVariant, MirTypeEnumRef, MirVariantKind,
+    };
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::structure::MirStruct;
+    use crate::codegen::ir::mir::ty::MirType;
+    use crate::utils::namespace::{Namespace, NamespacedName};
+
+    fn field(name: &str) -> MirField {
+        MirField {
+            ty: MirType::Primitive(MirTypePrimitive::I32),
+            name: MirIdent::new(name.into(), None),
+            is_final: true,
+            is_rust_public: None,
+            comments: vec![],
+            default: None,
+            settings: MirFieldSettings::default(),
+        }
+    }
+
+    /// Emits value and named-struct enum cases with their tag-indexed decoders.
+    #[test]
+    fn enumeration_decoder_covers_value_and_named_struct_variants() {
+        let mut pack = test_utils::pack();
+        let name = NamespacedName::new(Namespace::default(), "Event".into());
+        pack.enum_pool.insert(
+            MirEnumIdent(name.clone()),
+            MirEnum {
+                name: name.clone(),
+                wrapper_name: None,
+                comments: vec![],
+                variants: vec![
+                    MirEnumVariant {
+                        name: MirIdent::new("empty".into(), None),
+                        wrapper_name: MirIdent::new("Event.empty".into(), None),
+                        comments: vec![],
+                        kind: MirVariantKind::Value,
+                    },
+                    MirEnumVariant {
+                        name: MirIdent::new("value".into(), None),
+                        wrapper_name: MirIdent::new("Event.value".into(), None),
+                        comments: vec![],
+                        kind: MirVariantKind::Struct(MirStruct {
+                            name: name.clone(),
+                            wrapper_name: None,
+                            fields: vec![field("item_value")],
+                            is_fields_named: true,
+                            dart_metadata_raw: vec![],
+                            ignore: false,
+                            needs_json_serializable: false,
+                            generate_hash: false,
+                            generate_eq: false,
+                            dart_collection_deep_equality: false,
+                            ui_state: false,
+                            comments: vec![],
+                        }),
+                    },
+                ],
+                mode: MirEnumMode::Complex,
+                ignore: false,
+                needs_json_serializable: false,
+            },
+        );
+        let config = test_utils::config();
+        let generator = EnumRefWireDartCodecDcoGenerator::new(
+            MirTypeEnumRef {
+                ident: MirEnumIdent(name),
+                is_exception: false,
+            },
+            test_utils::context(&pack, &config),
+        );
+        let output = generator.generate_impl_decode_body();
+
+        assert_eq!(
+            output,
+            "switch (raw[0]) {\n                case 0: return Event.empty();\ncase 1: return Event.value(itemValue: dco_decode_i_32(raw[1]),);\n                default: throw Exception(\"unreachable\");\n            }"
+        );
+    }
+}

@@ -37,3 +37,29 @@ impl WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerator<'_
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::test_utils;
+    use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+
+    /// Delegates boxed 64-bit integers to their dedicated decoder.
+    #[test]
+    fn boxed_decoder_delegates_i64_to_inner_decoder() {
+        let pack = test_utils::pack();
+        let config = test_utils::config();
+        let generator = BoxedWireDartCodecDcoGenerator::new(
+            MirTypeBoxed {
+                exist_in_real_api: true,
+                inner: Box::new(MirType::Primitive(MirTypePrimitive::I64)),
+            },
+            test_utils::context(&pack, &config),
+        );
+
+        assert_eq!(
+            generator.generate_impl_decode_body(),
+            "return dco_decode_i_64(raw);"
+        );
+    }
+}

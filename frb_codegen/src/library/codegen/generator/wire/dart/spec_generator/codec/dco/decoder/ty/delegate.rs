@@ -107,3 +107,41 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::test_utils;
+
+    /// Emits specialized decoders for representative DCO delegate families.
+    #[test]
+    fn delegate_decoder_covers_scalar_time_and_uuid_branches() {
+        let pack = test_utils::pack();
+        let config = test_utils::config();
+        let context = test_utils::context(&pack, &config);
+
+        for (mir, expected) in [
+            (MirTypeDelegate::String, "return raw as String;"),
+            (MirTypeDelegate::Char, "return String.fromCharCode(raw);"),
+            (
+                MirTypeDelegate::Time(MirTypeDelegateTime::Duration),
+                "return dcoDecodeDuration(dco_decode_i_64(raw).toInt());",
+            ),
+            (
+                MirTypeDelegate::Time(MirTypeDelegateTime::Utc),
+                "return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: true);",
+            ),
+            (
+                MirTypeDelegate::Uuid,
+                "return UuidValue.fromByteList(dco_decode_list_prim_u_8_strict(raw));",
+            ),
+            (
+                MirTypeDelegate::SerdeJsonValue,
+                "return jsonDecode(raw as String);",
+            ),
+        ] {
+            let generator = DelegateWireDartCodecDcoGenerator::new(mir, context);
+            assert_eq!(generator.generate_impl_decode_body(), expected);
+        }
+    }
+}

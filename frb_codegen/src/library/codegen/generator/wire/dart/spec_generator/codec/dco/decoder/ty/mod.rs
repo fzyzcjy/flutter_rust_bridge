@@ -12,6 +12,8 @@ mod record;
 mod rust_auto_opaque_implicit;
 mod rust_opaque;
 mod structure;
+#[cfg(test)]
+pub(crate) mod test_utils;
 mod trait_def;
 
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;

@@ -61,3 +61,64 @@ pub fn dart_native_type_of_primitive(prim: &MirTypePrimitive) -> &'static str {
         MirTypePrimitive::Unit => "ffi.Void",
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::super::test_utils;
+    use super::*;
+
+    /// Maps every primitive to its Dart FFI representation.
+    #[test]
+    fn dart_native_types_cover_every_primitive() {
+        let cases = [
+            (MirTypePrimitive::U8, "ffi.Uint8"),
+            (MirTypePrimitive::I8, "ffi.Int8"),
+            (MirTypePrimitive::U16, "ffi.Uint16"),
+            (MirTypePrimitive::I16, "ffi.Int16"),
+            (MirTypePrimitive::U32, "ffi.Uint32"),
+            (MirTypePrimitive::I32, "ffi.Int32"),
+            (MirTypePrimitive::U64, "ffi.Uint64"),
+            (MirTypePrimitive::I64, "ffi.Int64"),
+            (MirTypePrimitive::Usize, "ffi.UintPtr"),
+            (MirTypePrimitive::Isize, "ffi.IntPtr"),
+            (MirTypePrimitive::F32, "ffi.Float"),
+            (MirTypePrimitive::F64, "ffi.Double"),
+            (MirTypePrimitive::Bool, "ffi.Bool"),
+            (MirTypePrimitive::Unit, "ffi.Void"),
+        ];
+
+        for (primitive, expected) in cases {
+            assert_eq!(dart_native_type_of_primitive(&primitive), expected);
+        }
+    }
+
+    /// Emits signed, unsigned, and ordinary primitive encoders for both targets.
+    #[test]
+    fn primitive_encoder_covers_integer_conversion_and_passthrough_branches() {
+        let pack = test_utils::pack();
+        let api_dart_config = test_utils::api_dart_config();
+        let wire_dart_config = test_utils::wire_dart_config(true);
+        let wire_rust_config = test_utils::wire_rust_config(true);
+        let context = test_utils::context(
+            &pack,
+            &wire_dart_config,
+            &wire_rust_config,
+            &api_dart_config,
+        );
+
+        let signed = PrimitiveWireDartCodecCstGenerator::new(MirTypePrimitive::I64, context)
+            .generate_encode_func_body();
+        let unsigned = PrimitiveWireDartCodecCstGenerator::new(MirTypePrimitive::U64, context)
+            .generate_encode_func_body();
+        let plain = PrimitiveWireDartCodecCstGenerator::new(MirTypePrimitive::I32, context)
+            .generate_encode_func_body();
+
+        assert_eq!(signed.io.as_deref(), Some("return raw.toInt();"));
+        assert_eq!(signed.web.as_deref(), Some(CAST_NATIVE_BIG_INT));
+        assert_eq!(
+            unsigned.io.as_deref(),
+            Some("return raw.toSigned(64).toInt();")
+        );
+        assert_eq!(plain.common.as_deref(), Some("return raw;"));
+    }
+}
