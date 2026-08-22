@@ -56,3 +56,68 @@ fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> R
 
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::auto_add_mod_to_lib_core;
+    use anyhow::Result;
+    use std::fs;
+    use tempfile::tempdir;
+
+    /// Inserts the generated module declaration only once.
+    #[test]
+    fn test_add_mod_to_lib_inserts_declaration_once() -> Result<()> {
+        let temp_dir = tempdir()?;
+        let crate_dir = temp_dir.path().join("crate");
+        let src_dir = crate_dir.join("src");
+        fs::create_dir_all(&src_dir)?;
+        fs::write(src_dir.join("lib.rs"), "pub fn existing() {}\n")?;
+        let output = src_dir.join("bridge.rs");
+
+        auto_add_mod_to_lib_core(&crate_dir, &output)?;
+        auto_add_mod_to_lib_core(&crate_dir, &output)?;
+
+        let content = fs::read_to_string(src_dir.join("lib.rs"))?;
+        assert_eq!(content.matches("mod bridge;").count(), 1);
+        Ok(())
+    }
+
+    /// Uses a nested generated filename as the module declaration name.
+    #[test]
+    fn test_add_mod_to_lib_handles_nested_output() -> Result<()> {
+        let temp_dir = tempdir()?;
+        let crate_dir = temp_dir.path().join("crate");
+        let src_dir = crate_dir.join("src");
+        fs::create_dir_all(src_dir.join("nested"))?;
+        fs::write(src_dir.join("lib.rs"), "")?;
+
+        auto_add_mod_to_lib_core(&crate_dir, &src_dir.join("nested/bridge.rs"))?;
+
+        assert!(fs::read_to_string(src_dir.join("lib.rs"))?.starts_with("mod bridge;"));
+        Ok(())
+    }
+
+    /// Rejects an output path outside the crate source directory.
+    #[test]
+    fn test_add_mod_to_lib_rejects_output_outside_src() -> Result<()> {
+        let temp_dir = tempdir()?;
+        let crate_dir = temp_dir.path().join("crate");
+        let src_dir = crate_dir.join("src");
+        fs::create_dir_all(&src_dir)?;
+        fs::write(src_dir.join("lib.rs"), "")?;
+
+        assert!(auto_add_mod_to_lib_core(&crate_dir, &temp_dir.path().join("bridge.rs")).is_err());
+        Ok(())
+    }
+
+    /// Propagates file-system errors when the crate has no lib.rs.
+    #[test]
+    fn test_add_mod_to_lib_propagates_missing_lib_error() -> Result<()> {
+        let temp_dir = tempdir()?;
+        let crate_dir = temp_dir.path().join("crate");
+        fs::create_dir_all(crate_dir.join("src"))?;
+
+        assert!(auto_add_mod_to_lib_core(&crate_dir, &crate_dir.join("src/bridge.rs")).is_err());
+        Ok(())
+    }
+}
