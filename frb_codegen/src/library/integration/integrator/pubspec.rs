@@ -112,3 +112,25 @@ pub(super) fn add_publish_to_none(dart_root: &Path) -> Result<()> {
     std::fs::write(&path, text_output)?;
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::add_publish_to_none;
+    use std::fs;
+
+    /// Adds exactly one publish restriction when invoked repeatedly.
+    #[test]
+    fn add_publish_to_none_is_idempotent() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let pubspec = temp_dir.path().join("pubspec.yaml");
+        fs::write(&pubspec, "name: sample\n").unwrap();
+
+        add_publish_to_none(temp_dir.path()).unwrap();
+        add_publish_to_none(temp_dir.path()).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(pubspec).unwrap(),
+            "publish_to: none\nname: sample\n",
+        );
+    }
+}
