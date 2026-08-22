@@ -71,7 +71,7 @@ git submodule update --init --recursive
    perl -0pi -e "s/analyzer:\n  exclude:\n    - rust_builder\/cargokit\/\*\*\n\n//" analysis_options.yaml
    test -f hook/build.dart
    test ! -e rust_builder
-   ! rg rust_builder pubspec.yaml analysis_options.yaml
+   ! grep -q rust_builder pubspec.yaml analysis_options.yaml
    '
    ```
 
@@ -83,7 +83,7 @@ git submodule update --init --recursive
    cd /root/frb_manual_test_cargokit_migration
    flutter pub get
    cargo run --manifest-path "$OLDPWD/frb_codegen/Cargo.toml" -- generate
-   flutter test
+   xvfb-run -a flutter test integration_test/simple_test.dart -d linux
    '
    ```
 
@@ -93,7 +93,7 @@ git submodule update --init --recursive
 - `hook/build.dart` exists after integration.
 - `pubspec.yaml` and `analysis_options.yaml` do not reference `rust_builder`.
 - Code generation exits zero.
-- `flutter test` exits zero and prints `All tests passed!`.
+- The Linux integration test exits zero and prints `All tests passed!`.
 
 ## Failure Criteria
 
@@ -110,7 +110,7 @@ Environment setup or package-source unavailability should be reported as blocked
 
 - Full terminal log for preparation and all steps.
 - Flutter, Dart, and Rust versions.
-- Exit status and success lines for code generation and `flutter test`.
+- Exit status and success lines for code generation and the Linux integration test.
 - Final checks for `hook/build.dart`, `rust_builder`, `pubspec.yaml`, and `analysis_options.yaml`.
 - Final cleanup and repository status.
 
