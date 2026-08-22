@@ -19,3 +19,4 @@ The following links may also be useful for customizations:
 * Use precompiled binaries (instead of default compile-on-the-fly): https://github.com/irondash/cargokit/blob/main/docs/precompiled_binaries.md
 
 For new projects that can require a recent Flutter/Dart SDK, consider the [Native Assets](native-assets) backend.
+For existing projects, see [Migrate from Cargokit to Native Assets](migrate-cargokit-to-native-assets).
