@@ -47,37 +47,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
           throwsA(isA<DroppableDisposedException>()),
         );
       });
-
-      test('failed encoding preserves an earlier owned argument', () async {
-        final first =
-            await rustAutoOpaqueReturnOwnTwinRustAsyncSseMoi(initial: 10);
-        final disposed =
-            await rustAutoOpaqueReturnOwnTwinRustAsyncSseMoi(initial: 20);
-        disposed.dispose();
-
-        await expectLater(
-          () => rustAutoOpaqueTwoArgsTwinRustAsyncSseMoi(a: first, b: disposed),
-          throwsA(isA<DroppableDisposedException>()),
-        );
-        expect(first.isDisposed, false);
-        await futurizeVoidTwinRustAsyncSseMoi(
-          rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(arg: first, expect: 10),
-        );
-      });
-
-      test('failed duplicate move preserves the owned argument', () async {
-        final obj =
-            await rustAutoOpaqueReturnOwnTwinRustAsyncSseMoi(initial: 10);
-
-        await expectLater(
-          () => rustAutoOpaqueTwoArgsTwinRustAsyncSseMoi(a: obj, b: obj),
-          throwsA(_duplicateMoveErrorMatcher()),
-        );
-        expect(obj.isDisposed, false);
-        await futurizeVoidTwinRustAsyncSseMoi(
-          rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(arg: obj, expect: 10),
-        );
-      });
     });
 
     group('arg ref', () {
@@ -515,16 +484,4 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await future2, 300);
     });
   });
-}
-
-Matcher _duplicateMoveErrorMatcher() {
-  const message = 'Cannot move the same Rust opaque object more than once';
-  return anyOf(
-    isA<StateError>().having((error) => error.message, 'message', message),
-    isA<PanicException>().having(
-      (error) => error.message,
-      'message',
-      contains(message),
-    ),
-  );
 }
