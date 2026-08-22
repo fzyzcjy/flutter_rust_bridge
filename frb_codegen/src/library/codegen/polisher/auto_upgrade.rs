@@ -179,6 +179,7 @@ mod tests {
             c_output_path: None,
             enable_auto_upgrade: true,
             fvm_install_mode: FvmInstallMode::Skip,
+            pre_generation_cleanup: false,
         };
         let upgrader = RecordingUpgrader {
             forwarded_mode: Cell::new(None),

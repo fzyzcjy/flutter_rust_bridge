@@ -68,6 +68,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         dart_fix: negative_bool_arg(args.no_dart_fix),
         rust_format: negative_bool_arg(args.no_rust_format),
         stop_on_error: positive_bool_arg(args.stop_on_error),
+        pre_generation_cleanup: positive_bool_arg(args.pre_generation_cleanup),
         dump: args.dump,
         dump_all: positive_bool_arg(args.dump_all),
         rust_features: args.rust_features,
@@ -96,6 +97,7 @@ mod tests {
         let config = run_command_line(vec!["", "generate"])?;
         assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
+        assert!(config.pre_generation_cleanup.unwrap());
 
         Ok(())
     }
@@ -109,6 +111,7 @@ mod tests {
         let config = run_command_line(vec!["", "generate"])?;
         assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
+        assert!(config.pre_generation_cleanup.unwrap());
 
         Ok(())
     }
@@ -141,6 +144,7 @@ mod tests {
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"])?;
         assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
+        assert!(config.pre_generation_cleanup.unwrap());
 
         Ok(())
     }
@@ -201,6 +205,15 @@ mod tests {
             .dart_collection_deep_equality,
             Some(true)
         );
+        assert_eq!(
+            run_command_line(concat([
+                common_args.clone(),
+                vec!["--pre-generation-cleanup"]
+            ]))
+            .expect("failed to parse cli args")
+            .pre_generation_cleanup,
+            Some(true)
+        );
     }
 
     #[test]
@@ -213,6 +226,7 @@ mod tests {
         assert_eq!(config.rust_input.unwrap(), "crate::hello".to_string());
         assert!(!config.dart3.unwrap());
         assert_eq!(config.llvm_path, Some(vec!["/my/path".to_owned()]));
+        assert!(config.pre_generation_cleanup.unwrap());
 
         Ok(())
     }
