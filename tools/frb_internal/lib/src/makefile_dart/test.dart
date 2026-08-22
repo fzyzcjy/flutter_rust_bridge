@@ -564,8 +564,8 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   await runPubGetIfNotRunYet(config.package);
   await exec(_dartValgrindCompileCommand(), relativePwd: config.package);
 
-  const valgrindCommand =
-      'valgrind '
+  final valgrindCommand =
+      '${_dartValgrindCommand()} '
       '--error-exitcode=1 '
       '--leak-check=full '
       '--trace-children=yes '
@@ -586,6 +586,12 @@ Future<void> testDartValgrind(TestDartConfig config) async {
     exitCode: output.exitCode,
   );
 }
+
+String _dartValgrindCommand() =>
+    'valgrind --suppressions=../../tools/dart_valgrind.supp';
+
+@visibleForTesting
+String dartValgrindCommandForTesting() => _dartValgrindCommand();
 
 String _dartValgrindCompileCommand() {
   return 'dart build cli '

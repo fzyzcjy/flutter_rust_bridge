@@ -14,6 +14,14 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('dart valgrind command uses the Dart AOT suppression file', () {
+    expect(
+      dartValgrindCommandForTesting(),
+      contains('--suppressions=../../tools/dart_valgrind.supp'),
+    );
+    expect(File('../../tools/dart_valgrind.supp').existsSync(), true);
+  });
+
   test('dart valgrind compile command uses dart build output directory', () {
     expect(
       dartValgrindCompileCommandForTesting(),
