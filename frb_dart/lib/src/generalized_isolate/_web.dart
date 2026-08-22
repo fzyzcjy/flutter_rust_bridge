@@ -6,6 +6,8 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:web/web.dart' as web;
 
+const _kBroadcastChannelReady = '__flutter_rust_bridge_ready';
+
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) {
   if (port.isA<web.BroadcastChannel>()) {
@@ -78,7 +80,7 @@ class RawReceivePort {
   }
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  void close() => _webReceivePort._close();
+  void close() => _webChannel._close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _webChannel._sendPort;
@@ -99,6 +101,8 @@ abstract class _WebChannel {
 
   _WebPortLike get _receivePort;
 
+  void _close();
+
   factory _WebChannel.messageChannel() = _WebMessageChannel;
 
   factory _WebChannel.broadcastChannel(String channelName) =
@@ -113,25 +117,31 @@ class _WebMessageChannel implements _WebChannel {
 
   @override
   _WebPortLike get _receivePort => _WebPortLike._messagePort(_channel.port1);
+
+  @override
+  void _close() => _channel.port1.close();
 }
 
 class _WebBroadcastChannel implements _WebChannel {
-  final web.BroadcastChannel _sendChannel;
-  final web.BroadcastChannel _receiveChannel;
+  final web.BroadcastChannel _channel;
+  late final _WebBroadcastPort _receiver;
 
   _WebBroadcastChannel(String channelName)
-    // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
-    // because HTML BroadcastChannel spec says that, the event will not be fired
-    // at the object which sends it. Therefore, we need two different objects.
-    : _sendChannel = web.BroadcastChannel(channelName),
-      _receiveChannel = web.BroadcastChannel(channelName);
+    : _channel = web.BroadcastChannel(channelName) {
+    _receiver = _WebBroadcastPort(_channel);
+  }
 
   @override
-  SendPort get _sendPort => SendPort._(_sendChannel);
+  SendPort get _sendPort => SendPort._(_channel);
 
   @override
-  _WebPortLike get _receivePort =>
-      _WebPortLike._broadcastChannel(_receiveChannel);
+  _WebPortLike get _receivePort => _receiver;
+
+  @override
+  void _close() {
+    _receiver.close();
+    _channel.close();
+  }
 }
 
 /// {@macro flutter_rust_bridge.same_as_native}
@@ -140,12 +150,7 @@ abstract class _WebPortLike {
 
   factory _WebPortLike._messagePort(web.MessagePort port) = _WebMessagePort;
 
-  factory _WebPortLike._broadcastChannel(web.BroadcastChannel channel) =
-      _WebBroadcastPort;
-
   void _start();
-
-  void _close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   web.EventTarget get _nativePort;
@@ -165,21 +170,30 @@ class _WebMessagePort extends _WebPortLike {
 
   @override
   void _start() => _nativePort.start();
-
-  @override
-  void _close() => _nativePort.close();
 }
 
 // Indeed a BroadcastChannel, not a Broadcast "Port"
 class _WebBroadcastPort extends _WebPortLike {
   @override
   final web.BroadcastChannel _nativePort;
+  final _messages = StreamController<web.MessageEvent>();
 
   _WebBroadcastPort(this._nativePort) : super._();
 
   @override
-  void _start() {}
+  Stream<web.MessageEvent> get _onMessage => _messages.stream;
 
   @override
-  void _close() => _nativePort.close();
+  void _start() {
+    _nativePort.onmessage = ((web.Event event) {
+      final message = event as web.MessageEvent;
+      if (message.data == _kBroadcastChannelReady) {
+        _nativePort.postMessage(_kBroadcastChannelReady.toJS);
+      } else {
+        _messages.add(message);
+      }
+    }).toJS;
+  }
+
+  void close() => _nativePort.onmessage = null;
 }
