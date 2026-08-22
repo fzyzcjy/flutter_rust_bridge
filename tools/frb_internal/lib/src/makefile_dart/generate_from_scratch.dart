@@ -55,31 +55,39 @@ Future<void> _generateExampleBuildRunnerOutputs() async {
   }
 }
 
-Future<void> withBuildCliEnabled(Future<void> Function() action) async {
-  _setBuildCliEnabled(enabled: true);
-  try {
-    await action();
-  } finally {
-    _setBuildCliEnabled(enabled: false);
-  }
-}
-
-void _setBuildCliEnabled({required bool enabled}) {
-  final expected = enabled
-      ? _kDisabledBuildCliDependency
-      : _kBuildCliDependency;
-  final replacement = enabled
-      ? _kBuildCliDependency
-      : _kDisabledBuildCliDependency;
-  for (final package in _kBuildCliPackages) {
-    final pubspec = File(path.join(exec.pwd!, package, 'pubspec.yaml'));
+Future<void> withBuildCliEnabled(
+  Future<void> Function() action, {
+  String? repoRootPath,
+}) async {
+  final effectiveRepoRootPath = repoRootPath ?? exec.pwd!;
+  final originalContents = <File, String?>{
+    for (final package in _kBuildCliPackages)
+      File(path.join(effectiveRepoRootPath, package, 'pubspec.yaml')): null,
+  };
+  for (final pubspec in originalContents.keys) {
     final contents = pubspec.readAsStringSync();
-    if (!contents.contains(expected)) {
+    if (!contents.contains(_kDisabledBuildCliDependency)) {
       throw StateError(
-        'Expected build_cli state not found in ${pubspec.path}.',
+        'Expected disabled build_cli state not found in ${pubspec.path}.',
       );
     }
-    pubspec.writeAsStringSync(contents.replaceFirst(expected, replacement));
+    originalContents[pubspec] = contents;
+  }
+
+  try {
+    for (final entry in originalContents.entries) {
+      entry.key.writeAsStringSync(
+        entry.value!.replaceFirst(
+          _kDisabledBuildCliDependency,
+          _kBuildCliDependency,
+        ),
+      );
+    }
+    await action();
+  } finally {
+    for (final entry in originalContents.entries) {
+      entry.key.writeAsStringSync(entry.value!);
+    }
   }
 }
 
