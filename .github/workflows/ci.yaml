@@ -931,7 +931,7 @@ jobs:
           architecture: x64
       - run: sudo apt-get update
 
-      # execute: Valgrind exit status and both output streams are hard gates
+      # execute
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
 
   test_dart_sanitizer:
