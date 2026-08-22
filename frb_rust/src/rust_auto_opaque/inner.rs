@@ -22,3 +22,17 @@ impl<T: fmt::Debug> fmt::Debug for RustAutoOpaqueInner<T> {
         self.data.fmt(f)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::RustAutoOpaqueInner;
+    use tokio::sync::RwLock;
+
+    /// Formats the guarded payload for debugging.
+    #[test]
+    fn formats_inner_value() {
+        let inner = RustAutoOpaqueInner::new(RwLock::new(42));
+
+        assert_eq!(format!("{inner:?}"), "RwLock { data: 42 }");
+    }
+}
