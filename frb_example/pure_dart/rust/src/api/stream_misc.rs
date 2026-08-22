@@ -7,7 +7,6 @@ use flutter_rust_bridge::{frb, transfer};
 use log::info;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
-use std::thread::sleep;
 use std::time::Duration;
 
 // Do not test this on web+async, since atomic is not allowed there
@@ -25,7 +24,7 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
             let msg = format!("(thread=child, i={i}, old_cnt={old_cnt})");
             info!("send data to sink msg={msg}");
             sink2.add(msg).unwrap();
-            sleep(Duration::from_millis(100));
+            sleep_for_test(Duration::from_millis(100));
         }
     }));
 
@@ -34,7 +33,7 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
         let msg = format!("(thread=normal, i={i}, old_cnt={old_cnt})");
         info!("send data to sink msg={msg}");
         sink.add(msg).unwrap();
-        sleep(Duration::from_millis(50));
+        sleep_for_test(Duration::from_millis(50));
     }
 }
 
@@ -42,3 +41,11 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
 pub fn stream_sink_dart_async_twin_normal(sink: StreamSink<i32>) {
     sink.add(100).unwrap()
 }
+
+#[cfg(not(target_family = "wasm"))]
+fn sleep_for_test(duration: Duration) {
+    std::thread::sleep(duration);
+}
+
+#[cfg(target_family = "wasm")]
+fn sleep_for_test(_duration: Duration) {}

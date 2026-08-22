@@ -452,7 +452,7 @@ Future<void> main() async {
   await RustLib.init();
 
   final success = await directRunTests(
-    () async => callFileEntrypoints(),
+    callFileEntrypoints,
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),

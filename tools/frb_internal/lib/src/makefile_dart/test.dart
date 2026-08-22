@@ -144,7 +144,7 @@ class TestDartNativeConfig {
   });
 }
 
-enum Sanitizer { asan, msan, lsan, tsan }
+enum Sanitizer { asan, msan, lsan, tsan, ubsan }
 
 @CliOptions()
 class TestDartSanitizerConfig {

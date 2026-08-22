@@ -11,6 +11,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
+import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -32,6 +33,105 @@ void main() {
     expect(
       dartValgrindOutputExecutablePathForTesting(),
       'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint',
+    );
+  });
+
+  test('sanitized Dart release defaults to checked-in artifact tag', () {
+    expect(
+      sanitizedDartReleaseName(environment: {}),
+      kDefaultSanitizedDartReleaseName,
+    );
+  });
+
+  test('sanitized Dart release can be overridden by environment', () {
+    expect(
+      sanitizedDartReleaseName(
+        environment: {'FRB_SANITIZED_DART_RELEASE_NAME': ' Build_test '},
+      ),
+      'Build_test',
+    );
+  });
+
+  test('sanitized Dart cache path remains outside the repository', () {
+    expect(
+      sanitizedDartCacheRelativePathForTesting(
+        repoRootPath:
+            '/home/runner/work/flutter_rust_bridge/flutter_rust_bridge',
+        cacheRootPath: '/tmp/frb_sanitized_dart/release',
+      ),
+      '../../../../../tmp/frb_sanitized_dart/release',
+    );
+  });
+
+  test('sanitized Dart version check is skipped without main Dart env', () {
+    checkSanitizedDartVersionForTesting(
+      versionOutput: 'Dart SDK version: 3.11.0 (stable)',
+      environment: {},
+    );
+  });
+
+  test('sanitized Dart version check accepts matching main Dart env', () {
+    checkSanitizedDartVersionForTesting(
+      versionOutput: 'Dart SDK version: 3.11.0 (stable)',
+      environment: {'FRB_MAIN_DART_VERSION': '3.11.0'},
+    );
+  });
+
+  test('sanitized Dart version check rejects stale artifact version', () {
+    expect(
+      () => checkSanitizedDartVersionForTesting(
+        versionOutput: 'Dart SDK version: 3.10.0 (stable)',
+        environment: {'FRB_MAIN_DART_VERSION': '3.11.0'},
+      ),
+      throwsA(
+        isA<Exception>().having(
+          (error) => error.toString(),
+          'message',
+          contains('Build a new sanitized Dart artifact'),
+        ),
+      ),
+    );
+  });
+
+  test('sanitizer env keeps TSAN on the normal thread pool', () async {
+    final runtimeEnv = await sanitizerRuntimeEnvForTesting(Sanitizer.tsan);
+
+    expect(runtimeEnv, isNot(contains('FRB_SYNC_THREAD_POOL')));
+    expect(runtimeEnv['TSAN_OPTIONS'], contains('report_thread_leaks=0'));
+    expect(runtimeEnv['TSAN_OPTIONS'], contains('suppressions='));
+  });
+
+  test('sanitizer rustflags disable ASAN use-after-scope false positives', () {
+    expect(
+      sanitizerRustflagsForTesting(
+        Sanitizer.asan,
+        package: 'frb_example/dart_minimal',
+      ),
+      contains('-Cllvm-args=-asan-use-after-scope=0'),
+    );
+  });
+
+  test('sanitizer rustflags keep ASAN stack sentinel coverage', () {
+    expect(
+      sanitizerRustflagsForTesting(
+        Sanitizer.asan,
+        package: 'frb_example/pure_dart',
+      ),
+      contains('-Cllvm-args=-asan-stack=0'),
+    );
+    expect(
+      sanitizerRustflagsForTesting(
+        Sanitizer.asan,
+        package: 'frb_example/deliberate_bad',
+      ),
+      isNot(contains('-Cllvm-args=-asan-stack=0')),
+    );
+  });
+
+  test('sanitizer rustflags normalize Rust package working directories', () {
+    expect(
+      packageForRustflagsForTesting('frb_example/pure_dart_pde/rust'),
+      'frb_example/pure_dart_pde',
     );
   });
 
