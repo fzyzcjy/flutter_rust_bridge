@@ -39,6 +39,10 @@ class RustArc<T> extends Droppable {
     );
   }
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  RustArcTransfer<T> prepareTransfer({required bool move}) =>
+      RustArcTransfer._(arc: move ? this : clone(), rollback: !move);
+
   /// Mimic `std::sync::Arc::into_raw`
   // Almost 1:1 implementation to `std::sync::Arc::into_raw` impl.
   int intoRaw() {
@@ -49,6 +53,27 @@ class RustArc<T> extends Droppable {
 
   @override
   DroppableStaticData get staticData => _staticData;
+}
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+class RustArcTransfer<T> {
+  final RustArc<T> _arc;
+  final bool _rollback;
+
+  RustArcTransfer._({required RustArc<T> arc, required bool rollback})
+    : _arc = arc,
+      _rollback = rollback;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  int get ptr => _arc._ptr;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void commit() => _arc.intoRaw();
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void rollback() {
+    if (_rollback) _arc.dispose();
+  }
 }
 
 /// Should have exactly *one* instance per *type*.

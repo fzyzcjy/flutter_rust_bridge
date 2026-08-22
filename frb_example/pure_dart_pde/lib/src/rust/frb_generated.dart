@@ -5794,7 +5794,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
       },
       codec: SseCodec(
@@ -5818,7 +5821,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
       },
       codec: SseCodec(
@@ -5843,10 +5849,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
       },
       codec: SseCodec(
@@ -5874,11 +5883,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
               that, serializer);
           sse_encode_String(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
       },
       codec: SseCodec(
@@ -5906,10 +5918,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
       },
       codec: SseCodec(
@@ -5936,7 +5951,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 6, port: port_);
       },
@@ -5966,10 +5984,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
       },
       codec: SseCodec(
@@ -5999,11 +6020,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
               that, serializer);
           sse_encode_String(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 8)!;
       },
       codec: SseCodec(
@@ -6031,10 +6055,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 9)!;
       },
       codec: SseCodec(
@@ -6061,7 +6088,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 10)!;
       },
       codec: SseCodec(
@@ -6090,10 +6120,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 11)!;
       },
       codec: SseCodec(
@@ -6122,10 +6155,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 12)!;
       },
       codec: SseCodec(
@@ -6155,10 +6191,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 13)!;
       },
       codec: SseCodec(
@@ -6188,10 +6227,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 14)!;
       },
       codec: SseCodec(
@@ -6219,10 +6261,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 15)!;
       },
       codec: SseCodec(
@@ -6251,10 +6296,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 16)!;
       },
       codec: SseCodec(
@@ -6285,11 +6333,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
           sse_encode_list_prim_u_8_strict(deliberateBadFieldA, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 17)!;
       },
       codec: SseCodec(
@@ -6319,12 +6370,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
               deliberateBadFieldB, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 18)!;
       },
       codec: SseCodec(
@@ -6354,12 +6408,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
           sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
               deliberateBadFieldC, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 19)!;
       },
       codec: SseCodec(
@@ -6389,11 +6446,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
           sse_encode_String(goodFieldA, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 20)!;
       },
       codec: SseCodec(
@@ -6423,11 +6483,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
           sse_encode_i_32(goodFieldB, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 21)!;
       },
       codec: SseCodec(
@@ -6457,12 +6520,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
               that, serializer);
           sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
               goodFieldC, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 22)!;
       },
       codec: SseCodec(
@@ -6490,7 +6556,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 23, port: port_);
       },
@@ -6520,11 +6589,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
               that, serializer);
           sse_encode_StreamSink_i_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 24, port: port_);
       },
@@ -6550,7 +6622,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 25, port: port_);
       },
@@ -6578,7 +6653,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 26, port: port_);
       },
@@ -6606,10 +6684,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 27, port: port_);
       },
@@ -6639,11 +6720,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
               that, serializer);
           sse_encode_StreamSink_i_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 28, port: port_);
       },
@@ -6672,7 +6756,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 29, port: port_);
       },
@@ -6700,7 +6787,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 30, port: port_);
       },
@@ -6730,10 +6820,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 31, port: port_);
       },
@@ -6763,11 +6856,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
               that, serializer);
           sse_encode_StreamSink_i_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 32)!;
       },
       codec: SseCodec(
@@ -6794,7 +6890,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 33)!;
       },
       codec: SseCodec(
@@ -6821,7 +6920,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 34)!;
       },
       codec: SseCodec(
@@ -6850,10 +6952,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 35)!;
       },
       codec: SseCodec(
@@ -6881,10 +6986,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 36)!;
       },
       codec: SseCodec(
@@ -6914,11 +7022,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
               that, serializer);
           sse_encode_String(name, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 37)!;
       },
       codec: SseCodec(
@@ -6946,7 +7057,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 38, port: port_);
       },
@@ -6976,10 +7090,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 39, port: port_);
       },
@@ -7009,10 +7126,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 40, port: port_);
       },
@@ -7042,10 +7162,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 41, port: port_);
       },
@@ -7075,10 +7198,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinSyncstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 42)!;
       },
       codec: SseCodec(
@@ -7107,10 +7233,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinSyncstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 43)!;
       },
       codec: SseCodec(
@@ -7139,10 +7268,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 44, port: port_);
       },
@@ -7173,10 +7305,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 45, port: port_);
       },
@@ -7207,10 +7342,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 46, port: port_);
       },
@@ -7240,10 +7378,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 47, port: port_);
       },
@@ -7273,10 +7414,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinSyncstatic(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 48, port: port_);
       },
@@ -7307,10 +7451,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinSyncstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 49, port: port_);
       },
@@ -7341,10 +7488,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinSyncstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 50)!;
       },
       codec: SseCodec(
@@ -7373,10 +7523,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithLifetimeTwinSyncstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 51)!;
       },
       codec: SseCodec(
@@ -7408,7 +7561,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
               a, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
@@ -7417,7 +7570,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
               unrelatedBorrowed, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
               unrelatedOwned, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 52, port: port_);
       },
@@ -7448,10 +7604,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 53, port: port_);
       },
@@ -7481,10 +7640,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 54, port: port_);
       },
@@ -7517,7 +7679,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
               a, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
@@ -7526,7 +7688,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
               unrelatedBorrowed, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
               unrelatedOwned, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 55, port: port_);
       },
@@ -7557,10 +7722,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinSyncstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 56)!;
       },
       codec: SseCodec(
@@ -7589,10 +7757,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtTypeWithMultiDepTwinSyncstatic(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 57)!;
       },
       codec: SseCodec(
@@ -7621,10 +7792,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 58, port: port_);
       },
@@ -7657,14 +7831,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
               that, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
               unrelatedBorrowed, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
               unrelatedOwned, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 59, port: port_);
       },
@@ -7695,9 +7872,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 60, port: port_);
       },
@@ -7727,11 +7907,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(value, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
               logger, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 61, port: port_);
       },
@@ -7761,10 +7944,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 62, port: port_);
       },
@@ -7797,14 +7983,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
               that, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
               unrelatedBorrowed, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
               unrelatedOwned, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 63, port: port_);
       },
@@ -7835,9 +8024,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 64)!;
       },
       codec: SseCodec(
@@ -7866,11 +8058,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(value, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
               logger, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 65)!;
       },
       codec: SseCodec(
@@ -7899,10 +8094,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 66, port: port_);
       },
@@ -7932,10 +8130,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 67, port: port_);
       },
@@ -7964,10 +8165,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 68)!;
       },
       codec: SseCodec(
@@ -7995,10 +8199,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtSubStructTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 69)!;
       },
       codec: SseCodec(
@@ -8026,9 +8233,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 70, port: port_);
       },
@@ -8056,10 +8266,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 71, port: port_);
       },
@@ -8089,12 +8302,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
               that, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
               another, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 72, port: port_);
       },
@@ -8124,10 +8340,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 73, port: port_);
       },
@@ -8159,12 +8378,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
               that, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
               another, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 74, port: port_);
       },
@@ -8194,10 +8416,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 75, port: port_);
       },
@@ -8226,7 +8451,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 76, port: port_);
       },
@@ -8254,9 +8482,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 79, port: port_);
       },
@@ -8286,10 +8517,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 80, port: port_);
       },
@@ -8318,10 +8552,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 81, port: port_);
       },
@@ -8351,10 +8588,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 82, port: port_);
       },
@@ -8384,10 +8624,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 83, port: port_);
       },
@@ -8417,10 +8660,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 84, port: port_);
       },
@@ -8450,10 +8696,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 85, port: port_);
       },
@@ -8483,7 +8732,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 86, port: port_);
       },
@@ -8512,7 +8764,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 87, port: port_);
       },
@@ -8541,7 +8796,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 88, port: port_);
       },
@@ -8571,10 +8829,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 89, port: port_);
       },
@@ -8604,10 +8865,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 90, port: port_);
       },
@@ -8637,10 +8901,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 91, port: port_);
       },
@@ -8669,7 +8936,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 92, port: port_);
       },
@@ -8700,10 +8970,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 93, port: port_);
       },
@@ -8733,10 +9006,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 94, port: port_);
       },
@@ -8766,10 +9042,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 95, port: port_);
       },
@@ -8799,10 +9078,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 96, port: port_);
       },
@@ -8832,10 +9114,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 97, port: port_);
       },
@@ -8865,7 +9150,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 98, port: port_);
       },
@@ -8895,7 +9183,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 99, port: port_);
       },
@@ -8924,7 +9215,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 100, port: port_);
       },
@@ -8955,10 +9249,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 101, port: port_);
       },
@@ -8988,10 +9285,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 102, port: port_);
       },
@@ -9021,10 +9321,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 103, port: port_);
       },
@@ -9053,7 +9356,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 104, port: port_);
       },
@@ -9084,10 +9390,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 105)!;
       },
       codec: SseCodec(
@@ -9116,10 +9425,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 106)!;
       },
       codec: SseCodec(
@@ -9148,10 +9460,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 107)!;
       },
       codec: SseCodec(
@@ -9179,10 +9494,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 108)!;
       },
       codec: SseCodec(
@@ -9211,10 +9529,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 109)!;
       },
       codec: SseCodec(
@@ -9243,7 +9564,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 110)!;
       },
       codec: SseCodec(
@@ -9271,7 +9595,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 111)!;
       },
       codec: SseCodec(
@@ -9299,7 +9626,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 112)!;
       },
       codec: SseCodec(
@@ -9328,10 +9658,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 113)!;
       },
       codec: SseCodec(
@@ -9360,10 +9693,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 114)!;
       },
       codec: SseCodec(
@@ -9392,10 +9728,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 115)!;
       },
       codec: SseCodec(
@@ -9422,7 +9761,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 116)!;
       },
       codec: SseCodec(
@@ -9452,10 +9794,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 117, port: port_);
       },
@@ -9484,10 +9829,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 118)!;
       },
       codec: SseCodec(
@@ -9512,7 +9860,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 119)!;
       },
       codec: SseCodec(
@@ -9539,9 +9890,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(a, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 120)!;
       },
       codec: SseCodec(
@@ -9570,10 +9924,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 121, port: port_);
       },
@@ -9601,7 +9958,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 122, port: port_);
       },
@@ -9629,7 +9989,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 123, port: port_);
       },
@@ -9657,7 +10020,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 124)!;
       },
       codec: SseCodec(
@@ -9685,10 +10051,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 125, port: port_);
       },
@@ -9717,10 +10086,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 126, port: port_);
       },
@@ -9751,10 +10123,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 127, port: port_);
       },
@@ -9782,10 +10157,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 128)!;
       },
       codec: SseCodec(
@@ -9813,11 +10191,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
               that, serializer);
           sse_encode_i_32(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 129)!;
       },
       codec: SseCodec(
@@ -9846,9 +10227,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 130, port: port_);
       },
@@ -9878,10 +10262,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 131, port: port_);
       },
@@ -9910,10 +10297,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 132)!;
       },
       codec: SseCodec(
@@ -9940,11 +10330,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
               that, serializer);
           sse_encode_i_32(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 133)!;
       },
       codec: SseCodec(
@@ -9972,10 +10365,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 134, port: port_);
       },
@@ -10005,9 +10401,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 135, port: port_);
       },
@@ -10037,7 +10436,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 136, port: port_);
       },
@@ -10066,10 +10468,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 137)!;
       },
       codec: SseCodec(
@@ -10097,11 +10502,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
               that, serializer);
           sse_encode_i_32(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 138)!;
       },
       codec: SseCodec(
@@ -10129,10 +10537,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 139, port: port_);
       },
@@ -10162,9 +10573,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 140, port: port_);
       },
@@ -10193,7 +10607,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 141, port: port_);
       },
@@ -10222,10 +10639,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 142)!;
       },
       codec: SseCodec(
@@ -10253,11 +10673,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
               that, serializer);
           sse_encode_i_32(two, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 143)!;
       },
       codec: SseCodec(
@@ -10286,9 +10709,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(two, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 144, port: port_);
       },
@@ -10318,10 +10744,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 145, port: port_);
       },
@@ -10350,10 +10779,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 146)!;
       },
       codec: SseCodec(
@@ -10380,11 +10812,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
               that, serializer);
           sse_encode_i_32(two, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 147)!;
       },
       codec: SseCodec(
@@ -10412,10 +10847,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 148, port: port_);
       },
@@ -10445,9 +10883,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 149, port: port_);
       },
@@ -10477,7 +10918,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 150, port: port_);
       },
@@ -10506,10 +10950,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 151)!;
       },
       codec: SseCodec(
@@ -10537,11 +10984,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
               that, serializer);
           sse_encode_i_32(two, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 152)!;
       },
       codec: SseCodec(
@@ -10569,10 +11019,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 153, port: port_);
       },
@@ -10602,9 +11055,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 154, port: port_);
       },
@@ -10633,7 +11089,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 155, port: port_);
       },
@@ -10663,10 +11122,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 156)!;
       },
       codec: SseCodec(
@@ -10696,11 +11158,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
               that, serializer);
           sse_encode_String(good, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 157)!;
       },
       codec: SseCodec(
@@ -10730,10 +11195,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 158)!;
       },
       codec: SseCodec(
@@ -10763,11 +11231,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
               that, serializer);
           sse_encode_String(good, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 159)!;
       },
       codec: SseCodec(
@@ -10796,10 +11267,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 160)!;
       },
       codec: SseCodec(
@@ -10829,11 +11303,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
               that, serializer);
           sse_encode_String(good, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 161)!;
       },
       codec: SseCodec(
@@ -10862,10 +11339,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 162, port: port_);
       },
@@ -10894,10 +11374,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 163, port: port_);
       },
@@ -10925,7 +11408,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 164, port: port_);
       },
@@ -10955,10 +11441,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 165)!;
       },
       codec: SseCodec(
@@ -10986,7 +11475,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 166)!;
       },
       codec: SseCodec(
@@ -11014,11 +11506,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
               that, serializer);
           sse_encode_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 167)!;
       },
       codec: SseCodec(
@@ -11046,10 +11541,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 168)!;
       },
       codec: SseCodec(
@@ -11076,11 +11574,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
               that, serializer);
           sse_encode_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 169)!;
       },
       codec: SseCodec(
@@ -11107,10 +11608,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 183)!;
       },
       codec: SseCodec(
@@ -11137,11 +11641,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
               that, serializer);
           sse_encode_u_32(field2, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 184)!;
       },
       codec: SseCodec(
@@ -11167,7 +11674,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 185, port: port_);
       },
@@ -11195,10 +11705,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 186, port: port_);
       },
@@ -11224,7 +11737,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 187, port: port_);
       },
@@ -11250,7 +11766,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 188, port: port_);
       },
@@ -11277,10 +11796,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 189, port: port_);
       },
@@ -11305,7 +11827,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 190, port: port_);
       },
@@ -11332,7 +11857,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 191, port: port_);
       },
@@ -11358,9 +11886,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_application_settings_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 192, port: port_);
       },
@@ -11388,9 +11919,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_application_settings_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 193, port: port_);
       },
@@ -11420,9 +11954,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_application_settings_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 194)!;
       },
       codec: SseCodec(
@@ -11451,9 +11988,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_list_application_settings_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 195, port: port_);
       },
@@ -11481,9 +12021,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_list_application_settings_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 196, port: port_);
       },
@@ -11513,9 +12056,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_list_application_settings_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 197)!;
       },
       codec: SseCodec(
@@ -11543,9 +12089,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 198, port: port_);
       },
@@ -11573,9 +12122,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 199, port: port_);
       },
@@ -11603,9 +12155,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 200)!;
       },
       codec: SseCodec(
@@ -11633,9 +12188,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 201, port: port_);
       },
@@ -11664,9 +12222,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 202, port: port_);
       },
@@ -11695,9 +12256,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 203)!;
       },
       codec: SseCodec(
@@ -11725,9 +12289,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 204, port: port_);
       },
@@ -11756,9 +12323,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 205, port: port_);
       },
@@ -11787,9 +12357,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 206)!;
       },
       codec: SseCodec(
@@ -11817,10 +12390,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_benchmark_binary_tree_twin_normal(
               tree, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 207, port: port_);
       },
@@ -11849,10 +12425,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(
               tree, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 208, port: port_);
       },
@@ -11880,10 +12459,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_benchmark_binary_tree_twin_sync(
               tree, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 209)!;
       },
       codec: SseCodec(
@@ -11911,9 +12493,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(depth, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 210, port: port_);
       },
@@ -11942,9 +12527,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(depth, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 211, port: port_);
       },
@@ -11973,9 +12561,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(depth, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 212)!;
       },
       codec: SseCodec(
@@ -12003,9 +12594,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(depth, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 213, port: port_);
       },
@@ -12034,9 +12628,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(depth, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 214, port: port_);
       },
@@ -12065,9 +12662,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(depth, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 215)!;
       },
       codec: SseCodec(
@@ -12095,9 +12695,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(depth, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 216, port: port_);
       },
@@ -12126,9 +12729,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(depth, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 217, port: port_);
       },
@@ -12157,9 +12763,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(depth, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 218)!;
       },
       codec: SseCodec(
@@ -12186,9 +12795,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 219, port: port_);
       },
@@ -12217,9 +12829,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 220, port: port_);
       },
@@ -12247,9 +12862,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 221)!;
       },
       codec: SseCodec(
@@ -12277,9 +12895,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 222, port: port_);
       },
@@ -12308,9 +12929,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 223, port: port_);
       },
@@ -12339,9 +12963,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(raw, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 224)!;
       },
       codec: SseCodec(
@@ -12368,9 +12995,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_benchmark_blob_twin_normal(blob, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 225, port: port_);
       },
@@ -12399,10 +13029,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_benchmark_blob_twin_rust_async(
               blob, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 226, port: port_);
       },
@@ -12430,9 +13063,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_benchmark_blob_twin_sync(blob, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 227)!;
       },
       codec: SseCodec(
@@ -12460,9 +13096,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 228, port: port_);
       },
@@ -12491,9 +13130,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 229, port: port_);
       },
@@ -12522,9 +13164,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 230)!;
       },
       codec: SseCodec(
@@ -12552,9 +13197,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 231, port: port_);
       },
@@ -12583,9 +13231,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 232, port: port_);
       },
@@ -12614,9 +13265,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 233)!;
       },
       codec: SseCodec(
@@ -12644,9 +13298,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 234, port: port_);
       },
@@ -12675,9 +13332,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 235, port: port_);
       },
@@ -12706,9 +13366,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 236)!;
       },
       codec: SseCodec(
@@ -12735,9 +13398,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(bytes, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 237, port: port_);
       },
@@ -12766,9 +13432,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(bytes, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 238, port: port_);
       },
@@ -12796,9 +13465,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(bytes, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 239)!;
       },
       codec: SseCodec(
@@ -12826,9 +13498,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 240, port: port_);
       },
@@ -12857,9 +13532,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 241, port: port_);
       },
@@ -12888,9 +13566,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(size, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 242)!;
       },
       codec: SseCodec(
@@ -12916,7 +13597,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 243)!;
       },
       codec: SseCodec(
@@ -12940,7 +13624,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 244, port: port_);
       },
@@ -12968,7 +13655,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 245, port: port_);
       },
@@ -12995,7 +13685,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 246)!;
       },
       codec: SseCodec(
@@ -13021,9 +13714,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 247, port: port_);
       },
@@ -13049,9 +13745,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 248, port: port_);
       },
@@ -13079,9 +13778,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 249)!;
       },
       codec: SseCodec(
@@ -13108,9 +13810,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 250, port: port_);
       },
@@ -13137,9 +13842,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 251, port: port_);
       },
@@ -13167,9 +13875,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 252)!;
       },
       codec: SseCodec(
@@ -13196,9 +13907,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 253, port: port_);
       },
@@ -13225,9 +13939,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 254, port: port_);
       },
@@ -13255,9 +13972,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 255)!;
       },
       codec: SseCodec(
@@ -13283,9 +14003,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 256, port: port_);
       },
@@ -13312,9 +14035,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 257, port: port_);
       },
@@ -13342,9 +14068,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 258)!;
       },
       codec: SseCodec(
@@ -13371,9 +14100,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 259, port: port_);
       },
@@ -13400,9 +14132,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 260, port: port_);
       },
@@ -13430,9 +14165,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 261)!;
       },
       codec: SseCodec(
@@ -13460,10 +14198,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_for_borrow_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 262, port: port_);
       },
@@ -13490,10 +14231,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_for_borrow_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 263, port: port_);
       },
@@ -13522,10 +14266,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_for_borrow_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 264)!;
       },
       codec: SseCodec(
@@ -13552,9 +14299,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_u_8_array_1600(blob, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 265, port: port_);
       },
@@ -13581,9 +14331,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_u_8_array_1600(blob, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 266, port: port_);
       },
@@ -13611,9 +14364,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_u_8_array_1600(blob, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 267)!;
       },
       codec: SseCodec(
@@ -13639,7 +14395,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 268, port: port_);
       },
@@ -13667,7 +14426,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 269, port: port_);
       },
@@ -13695,7 +14457,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 270)!;
       },
       codec: SseCodec(
@@ -13722,7 +14487,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 271, port: port_);
       },
@@ -13750,7 +14518,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 272, port: port_);
       },
@@ -13778,7 +14549,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 273)!;
       },
       codec: SseCodec(
@@ -13805,9 +14579,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_CastedPrimitive_i_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 274, port: port_);
       },
@@ -13834,9 +14611,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_CastedPrimitive_isize(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 275, port: port_);
       },
@@ -13864,12 +14644,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
           sse_encode_CastedPrimitive_i_64(b, serializer);
           sse_encode_CastedPrimitive_usize(c, serializer);
           sse_encode_I128(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 276, port: port_);
       },
@@ -13897,9 +14680,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_CastedPrimitive_u_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 277, port: port_);
       },
@@ -13926,9 +14712,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_CastedPrimitive_usize(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 278, port: port_);
       },
@@ -13955,7 +14744,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 279, port: port_);
       },
@@ -13981,9 +14773,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 280, port: port_);
       },
@@ -14010,9 +14805,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 281, port: port_);
       },
@@ -14040,9 +14838,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 282)!;
       },
       codec: SseCodec(
@@ -14068,7 +14869,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 283, port: port_);
       },
@@ -14095,7 +14899,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 284, port: port_);
       },
@@ -14124,10 +14931,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(a, serializer);
           sse_encode_String(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 285, port: port_);
       },
@@ -14156,10 +14966,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_normal(that, serializer);
           sse_encode_String(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 286, port: port_);
       },
@@ -14188,9 +15001,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_u_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 287, port: port_);
       },
@@ -14222,11 +15038,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
           sse_encode_StreamSink_log_2_twin_normal_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 288, port: port_);
       },
@@ -14258,10 +15077,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_normal(that, serializer);
           sse_encode_StreamSink_u_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 289, port: port_);
       },
@@ -14295,12 +15117,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_normal(that, serializer);
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
           sse_encode_StreamSink_log_2_twin_normal_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 290, port: port_);
       },
@@ -14331,9 +15156,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(a, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 291, port: port_);
       },
@@ -14360,9 +15188,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 292, port: port_);
       },
@@ -14391,10 +15222,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(a, serializer);
           sse_encode_String(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 293, port: port_);
       },
@@ -14424,11 +15258,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_rust_async(
               that, serializer);
           sse_encode_String(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 294, port: port_);
       },
@@ -14458,9 +15295,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_u_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 295, port: port_);
       },
@@ -14492,11 +15332,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
           sse_encode_StreamSink_log_2_twin_rust_async_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 296, port: port_);
       },
@@ -14528,11 +15371,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_rust_async(
               that, serializer);
           sse_encode_StreamSink_u_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 297, port: port_);
       },
@@ -14566,13 +15412,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_rust_async(
               that, serializer);
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
           sse_encode_StreamSink_log_2_twin_rust_async_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 298, port: port_);
       },
@@ -14603,9 +15452,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(a, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 299, port: port_);
       },
@@ -14634,10 +15486,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_rust_async(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 300, port: port_);
       },
@@ -14667,10 +15522,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(a, serializer);
           sse_encode_String(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 301)!;
       },
       codec: SseCodec(
@@ -14699,10 +15557,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_sync(that, serializer);
           sse_encode_String(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 302)!;
       },
       codec: SseCodec(
@@ -14730,9 +15591,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_u_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 303)!;
       },
       codec: SseCodec(
@@ -14763,11 +15627,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
           sse_encode_StreamSink_log_2_twin_sync_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 304)!;
       },
       codec: SseCodec(
@@ -14798,10 +15665,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_sync(that, serializer);
           sse_encode_StreamSink_u_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 305)!;
       },
       codec: SseCodec(
@@ -14834,12 +15704,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_sync(that, serializer);
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
           sse_encode_StreamSink_log_2_twin_sync_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 306)!;
       },
       codec: SseCodec(
@@ -14869,9 +15742,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(a, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 307)!;
       },
       codec: SseCodec(
@@ -14899,9 +15775,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_concatenate_with_twin_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 308)!;
       },
       codec: SseCodec(
@@ -14928,7 +15807,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 309, port: port_);
       },
@@ -14957,7 +15839,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 310)!;
       },
       codec: SseCodec(
@@ -14985,7 +15870,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 311, port: port_);
       },
@@ -15012,7 +15900,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 312, port: port_);
       },
@@ -15040,7 +15931,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 313)!;
       },
       codec: SseCodec(
@@ -15068,9 +15962,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 314, port: port_);
       },
@@ -15098,9 +15995,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 315, port: port_);
       },
@@ -15129,9 +16029,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 316)!;
       },
       codec: SseCodec(
@@ -15158,10 +16061,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(address, serializer);
           sse_encode_String(payload, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 317)!;
       },
       codec: SseCodec(
@@ -15186,10 +16092,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(address, serializer);
           sse_encode_String(payload, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 318, port: port_);
       },
@@ -15216,10 +16125,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(address, serializer);
           sse_encode_String(payload, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 319, port: port_);
       },
@@ -15248,10 +16160,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque1, serializer);
           sse_encode_DartOpaque(opaque2, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 320, port: port_);
       },
@@ -15279,10 +16194,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque1, serializer);
           sse_encode_DartOpaque(opaque2, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 321, port: port_);
       },
@@ -15311,10 +16229,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque1, serializer);
           sse_encode_DartOpaque(opaque2, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 322)!;
       },
       codec: SseCodec(
@@ -15341,7 +16262,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 323, port: port_);
       },
@@ -15367,7 +16291,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 324, port: port_);
       },
@@ -15395,7 +16322,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 325)!;
       },
       codec: SseCodec(
@@ -15421,7 +16351,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 326, port: port_);
       },
@@ -15447,7 +16380,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 327, port: port_);
       },
@@ -15475,7 +16411,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 328)!;
       },
       codec: SseCodec(
@@ -15502,10 +16441,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_RustOpaque_HideDataTwinNormal(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 329, port: port_);
       },
@@ -15533,10 +16475,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_RustOpaque_HideDataTwinRustAsync(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 330, port: port_);
       },
@@ -15566,10 +16511,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_RustOpaque_HideDataTwinSync(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 331)!;
       },
       codec: SseCodec(
@@ -15596,7 +16544,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 332, port: port_);
       },
@@ -15622,7 +16573,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 333, port: port_);
       },
@@ -15649,7 +16603,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 334)!;
       },
       codec: SseCodec(
@@ -15675,7 +16632,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 335, port: port_);
       },
@@ -15703,7 +16663,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 336, port: port_);
       },
@@ -15730,7 +16693,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 337)!;
       },
       codec: SseCodec(
@@ -15757,9 +16723,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 338, port: port_);
       },
@@ -15787,9 +16756,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 339, port: port_);
       },
@@ -15817,9 +16789,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 340)!;
       },
       codec: SseCodec(
@@ -15846,10 +16821,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_nested_error_outer_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 341, port: port_);
       },
@@ -15878,10 +16856,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 342, port: port_);
       },
@@ -15910,10 +16891,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_nested_error_outer_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 343)!;
       },
       codec: SseCodec(
@@ -15940,10 +16924,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_struct_error_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 344, port: port_);
       },
@@ -15972,10 +16959,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_struct_error_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 345, port: port_);
       },
@@ -16004,9 +16994,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_struct_error_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 346)!;
       },
       codec: SseCodec(
@@ -16034,9 +17027,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(message, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 347, port: port_);
       },
@@ -16064,9 +17060,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_struct_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 348, port: port_);
       },
@@ -16096,9 +17095,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_struct_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 349, port: port_);
       },
@@ -16127,7 +17129,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 350, port: port_);
       },
@@ -16156,7 +17161,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 351, port: port_);
       },
@@ -16186,9 +17194,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(message, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 352, port: port_);
       },
@@ -16217,10 +17228,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_struct_twin_rust_async(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 353, port: port_);
       },
@@ -16250,10 +17264,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_struct_twin_rust_async(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 354, port: port_);
       },
@@ -16282,7 +17299,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 355, port: port_);
       },
@@ -16311,7 +17331,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 356, port: port_);
       },
@@ -16341,9 +17364,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(message, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 357)!;
       },
       codec: SseCodec(
@@ -16371,9 +17397,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_struct_twin_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 358)!;
       },
       codec: SseCodec(
@@ -16401,9 +17430,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_custom_struct_twin_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 359)!;
       },
       codec: SseCodec(
@@ -16431,7 +17463,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 360)!;
       },
       codec: SseCodec(
@@ -16458,7 +17493,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 361)!;
       },
       codec: SseCodec(
@@ -16486,9 +17524,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_Local(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 362, port: port_);
       },
@@ -16515,9 +17556,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_Local(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 363, port: port_);
       },
@@ -16545,9 +17589,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_Local(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 364)!;
       },
       codec: SseCodec(
@@ -16574,9 +17621,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_Utc(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 365, port: port_);
       },
@@ -16603,9 +17653,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_Utc(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 366, port: port_);
       },
@@ -16633,9 +17686,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_Utc(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 367)!;
       },
       codec: SseCodec(
@@ -16662,9 +17718,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 368, port: port_);
       },
@@ -16692,9 +17751,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 369, port: port_);
       },
@@ -16722,9 +17784,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 370)!;
       },
       codec: SseCodec(
@@ -16750,9 +17815,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_Duration(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 371, port: port_);
       },
@@ -16779,9 +17847,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_Duration(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 372, port: port_);
       },
@@ -16809,9 +17880,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_Duration(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 373)!;
       },
       codec: SseCodec(
@@ -16839,10 +17913,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_normal(
               value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 374, port: port_);
       },
@@ -16872,10 +17949,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async(
               value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 375, port: port_);
       },
@@ -16906,10 +17986,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_sync(
               value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 376)!;
       },
       codec: SseCodec(
@@ -16938,10 +18021,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_normal(
               value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 377, port: port_);
       },
@@ -16972,10 +18058,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async(
               value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 378, port: port_);
       },
@@ -17006,10 +18095,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_sync(
               value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 379)!;
       },
       codec: SseCodec(
@@ -17036,7 +18128,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 380, port: port_);
       },
@@ -17062,7 +18157,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 381, port: port_);
       },
@@ -17090,7 +18188,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 382, port: port_);
       },
@@ -17117,9 +18218,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(message, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 383, port: port_);
       },
@@ -17145,9 +18249,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_empty_twin_normal(empty, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 384, port: port_);
       },
@@ -17174,9 +18281,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_empty_twin_rust_async(empty, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 385, port: port_);
       },
@@ -17204,9 +18314,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_empty_twin_sync(empty, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 386)!;
       },
       codec: SseCodec(
@@ -17233,9 +18346,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_event_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 387, port: port_);
       },
@@ -17264,9 +18380,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_event_twin_rust_async(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 388, port: port_);
       },
@@ -17295,9 +18414,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_basic_general_enum_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 389, port: port_);
       },
@@ -17327,9 +18449,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_basic_general_enum_twin_rust_async(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 390, port: port_);
       },
@@ -17359,9 +18484,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_basic_general_enum_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 391)!;
       },
       codec: SseCodec(
@@ -17390,9 +18518,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_basic_primitive_enum_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 392, port: port_);
       },
@@ -17422,9 +18553,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_basic_primitive_enum_twin_rust_async(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 393, port: port_);
       },
@@ -17454,9 +18588,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_basic_primitive_enum_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 394)!;
       },
       codec: SseCodec(
@@ -17485,9 +18622,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_basic_struct_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 395, port: port_);
       },
@@ -17517,9 +18657,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_basic_struct_twin_rust_async(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 396, port: port_);
       },
@@ -17549,9 +18692,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_basic_struct_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 397)!;
       },
       codec: SseCodec(
@@ -17580,9 +18726,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_bool(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 398, port: port_);
       },
@@ -17611,9 +18760,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_bool(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 399, port: port_);
       },
@@ -17642,9 +18794,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_bool(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 400)!;
       },
       codec: SseCodec(
@@ -17672,9 +18827,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_list_prim_u_8_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 401, port: port_);
       },
@@ -17703,9 +18861,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_list_prim_u_8_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 402, port: port_);
       },
@@ -17734,9 +18895,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_list_prim_u_8_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 403)!;
       },
       codec: SseCodec(
@@ -17764,9 +18928,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_f_32_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 404, port: port_);
       },
@@ -17795,9 +18962,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_f_32_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 405, port: port_);
       },
@@ -17826,9 +18996,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_f_32_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 406)!;
       },
       codec: SseCodec(
@@ -17856,9 +19029,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_f_64_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 407, port: port_);
       },
@@ -17887,9 +19063,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_f_64_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 408, port: port_);
       },
@@ -17918,9 +19097,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_f_64_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 409)!;
       },
       codec: SseCodec(
@@ -17948,9 +19130,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_16_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 410, port: port_);
       },
@@ -17979,9 +19164,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_16_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 411, port: port_);
       },
@@ -18010,9 +19198,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_16_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 412)!;
       },
       codec: SseCodec(
@@ -18040,9 +19231,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_32_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 413, port: port_);
       },
@@ -18071,9 +19265,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_32_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 414, port: port_);
       },
@@ -18102,9 +19299,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_32_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 415)!;
       },
       codec: SseCodec(
@@ -18132,9 +19332,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_64_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 416, port: port_);
       },
@@ -18163,9 +19366,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_64_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 417, port: port_);
       },
@@ -18194,9 +19400,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_64_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 418)!;
       },
       codec: SseCodec(
@@ -18224,9 +19433,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 419, port: port_);
       },
@@ -18255,9 +19467,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 420, port: port_);
       },
@@ -18285,9 +19500,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_i_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 421)!;
       },
       codec: SseCodec(
@@ -18315,9 +19533,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 422, port: port_);
       },
@@ -18346,9 +19567,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 423, port: port_);
       },
@@ -18377,9 +19601,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 424)!;
       },
       codec: SseCodec(
@@ -18407,9 +19634,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_16_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 425, port: port_);
       },
@@ -18438,9 +19668,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_16_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 426, port: port_);
       },
@@ -18469,9 +19702,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_16_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 427)!;
       },
       codec: SseCodec(
@@ -18499,9 +19735,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_32_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 428, port: port_);
       },
@@ -18530,9 +19769,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_32_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 429, port: port_);
       },
@@ -18561,9 +19803,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_32_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 430)!;
       },
       codec: SseCodec(
@@ -18591,9 +19836,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_64_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 431, port: port_);
       },
@@ -18622,9 +19870,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_64_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 432, port: port_);
       },
@@ -18653,9 +19904,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_64_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 433)!;
       },
       codec: SseCodec(
@@ -18683,9 +19937,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 434, port: port_);
       },
@@ -18714,9 +19971,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 435, port: port_);
       },
@@ -18744,9 +20004,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 436)!;
       },
       codec: SseCodec(
@@ -18774,10 +20037,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_basic_general_enum_twin_normal_None(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 437, port: port_);
       },
@@ -18808,10 +20074,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_basic_general_enum_twin_rust_async_None(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 438, port: port_);
       },
@@ -18842,10 +20111,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_basic_general_enum_twin_sync_None(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 439)!;
       },
       codec: SseCodec(
@@ -18875,10 +20147,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_basic_primitive_enum_twin_normal_None(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 440, port: port_);
       },
@@ -18909,10 +20184,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async_None(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 441, port: port_);
       },
@@ -18943,10 +20221,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_basic_primitive_enum_twin_sync_None(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 442)!;
       },
       codec: SseCodec(
@@ -18976,9 +20257,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_basic_struct_twin_normal_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 443, port: port_);
       },
@@ -19008,10 +20292,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_basic_struct_twin_rust_async_None(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 444, port: port_);
       },
@@ -19042,9 +20329,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_basic_struct_twin_sync_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 445)!;
       },
       codec: SseCodec(
@@ -19073,9 +20363,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_bool_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 446, port: port_);
       },
@@ -19104,9 +20397,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_bool_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 447, port: port_);
       },
@@ -19135,9 +20431,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_bool_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 448)!;
       },
       codec: SseCodec(
@@ -19165,9 +20464,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_list_prim_u_8_strict_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 449, port: port_);
       },
@@ -19196,9 +20498,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_list_prim_u_8_strict_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 450, port: port_);
       },
@@ -19227,9 +20532,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_list_prim_u_8_strict_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 451)!;
       },
       codec: SseCodec(
@@ -19257,9 +20565,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_f_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 452, port: port_);
       },
@@ -19288,9 +20599,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_f_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 453, port: port_);
       },
@@ -19319,9 +20633,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_f_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 454)!;
       },
       codec: SseCodec(
@@ -19349,9 +20666,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_f_64_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 455, port: port_);
       },
@@ -19380,9 +20700,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_f_64_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 456, port: port_);
       },
@@ -19411,9 +20734,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_f_64_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 457)!;
       },
       codec: SseCodec(
@@ -19441,9 +20767,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_I128_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 458, port: port_);
       },
@@ -19472,9 +20801,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_I128_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 459, port: port_);
       },
@@ -19503,9 +20835,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_I128_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 460)!;
       },
       codec: SseCodec(
@@ -19533,9 +20868,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_16_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 461, port: port_);
       },
@@ -19564,9 +20902,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_16_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 462, port: port_);
       },
@@ -19595,9 +20936,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_16_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 463)!;
       },
       codec: SseCodec(
@@ -19625,9 +20969,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 464, port: port_);
       },
@@ -19656,9 +21003,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 465, port: port_);
       },
@@ -19687,9 +21037,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 466)!;
       },
       codec: SseCodec(
@@ -19717,9 +21070,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_64_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 467, port: port_);
       },
@@ -19748,9 +21104,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_64_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 468, port: port_);
       },
@@ -19779,9 +21138,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_64_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 469)!;
       },
       codec: SseCodec(
@@ -19809,9 +21171,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_8_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 470, port: port_);
       },
@@ -19840,9 +21205,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_8_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 471, port: port_);
       },
@@ -19871,9 +21239,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_8_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 472)!;
       },
       codec: SseCodec(
@@ -19901,9 +21272,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_isize_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 473, port: port_);
       },
@@ -19932,9 +21306,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_isize_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 474, port: port_);
       },
@@ -19963,9 +21340,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_isize_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 475)!;
       },
       codec: SseCodec(
@@ -19993,9 +21373,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_String_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 476, port: port_);
       },
@@ -20024,9 +21407,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_String_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 477, port: port_);
       },
@@ -20055,9 +21441,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_String_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 478)!;
       },
       codec: SseCodec(
@@ -20085,9 +21474,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_U128_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 479, port: port_);
       },
@@ -20116,9 +21508,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_U128_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 480, port: port_);
       },
@@ -20147,9 +21542,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_U128_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 481)!;
       },
       codec: SseCodec(
@@ -20177,9 +21575,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_16_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 482, port: port_);
       },
@@ -20208,9 +21609,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_16_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 483, port: port_);
       },
@@ -20239,9 +21643,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_16_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 484)!;
       },
       codec: SseCodec(
@@ -20269,9 +21676,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 485, port: port_);
       },
@@ -20300,9 +21710,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 486, port: port_);
       },
@@ -20331,9 +21744,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 487)!;
       },
       codec: SseCodec(
@@ -20361,9 +21777,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_64_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 488, port: port_);
       },
@@ -20392,9 +21811,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_64_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 489, port: port_);
       },
@@ -20423,9 +21845,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_64_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 490)!;
       },
       codec: SseCodec(
@@ -20453,9 +21878,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_8_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 491, port: port_);
       },
@@ -20484,9 +21912,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_8_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 492, port: port_);
       },
@@ -20515,9 +21946,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_u_8_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 493)!;
       },
       codec: SseCodec(
@@ -20545,9 +21979,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_usize_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 494, port: port_);
       },
@@ -20576,9 +22013,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_usize_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 495, port: port_);
       },
@@ -20607,9 +22047,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_usize_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 496)!;
       },
       codec: SseCodec(
@@ -20637,10 +22080,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_basic_general_enum_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 497, port: port_);
       },
@@ -20671,10 +22117,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_basic_general_enum_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 498, port: port_);
       },
@@ -20705,10 +22154,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_basic_general_enum_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 499)!;
       },
       codec: SseCodec(
@@ -20738,10 +22190,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_basic_primitive_enum_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 500, port: port_);
       },
@@ -20772,10 +22227,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_basic_primitive_enum_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 501, port: port_);
       },
@@ -20806,10 +22264,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_basic_primitive_enum_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 502)!;
       },
       codec: SseCodec(
@@ -20839,9 +22300,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_basic_struct_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 503, port: port_);
       },
@@ -20871,10 +22335,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_basic_struct_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 504, port: port_);
       },
@@ -20905,9 +22372,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_basic_struct_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 505)!;
       },
       codec: SseCodec(
@@ -20936,9 +22406,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_bool(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 506, port: port_);
       },
@@ -20967,9 +22440,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_bool(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 507, port: port_);
       },
@@ -20998,9 +22474,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_bool(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 508)!;
       },
       codec: SseCodec(
@@ -21028,9 +22507,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_list_prim_u_8_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 509, port: port_);
       },
@@ -21059,9 +22541,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_list_prim_u_8_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 510, port: port_);
       },
@@ -21090,9 +22575,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_list_prim_u_8_strict(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 511)!;
       },
       codec: SseCodec(
@@ -21120,9 +22608,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_f_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 512, port: port_);
       },
@@ -21151,9 +22642,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_f_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 513, port: port_);
       },
@@ -21182,9 +22676,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_f_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 514)!;
       },
       codec: SseCodec(
@@ -21212,9 +22709,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_f_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 515, port: port_);
       },
@@ -21243,9 +22743,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_f_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 516, port: port_);
       },
@@ -21274,9 +22777,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_f_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 517)!;
       },
       codec: SseCodec(
@@ -21304,9 +22810,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_I128(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 518, port: port_);
       },
@@ -21335,9 +22844,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_I128(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 519, port: port_);
       },
@@ -21366,9 +22878,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_I128(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 520)!;
       },
       codec: SseCodec(
@@ -21396,9 +22911,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_16(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 521, port: port_);
       },
@@ -21427,9 +22945,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_16(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 522, port: port_);
       },
@@ -21458,9 +22979,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_16(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 523)!;
       },
       codec: SseCodec(
@@ -21488,9 +23012,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 524, port: port_);
       },
@@ -21519,9 +23046,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 525, port: port_);
       },
@@ -21550,9 +23080,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 526)!;
       },
       codec: SseCodec(
@@ -21580,9 +23113,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 527, port: port_);
       },
@@ -21611,9 +23147,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 528, port: port_);
       },
@@ -21642,9 +23181,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 529)!;
       },
       codec: SseCodec(
@@ -21672,9 +23214,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_8(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 530, port: port_);
       },
@@ -21703,9 +23248,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_8(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 531, port: port_);
       },
@@ -21734,9 +23282,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_8(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 532)!;
       },
       codec: SseCodec(
@@ -21764,9 +23315,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_isize(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 533, port: port_);
       },
@@ -21795,9 +23349,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_isize(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 534, port: port_);
       },
@@ -21826,9 +23383,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_isize(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 535)!;
       },
       codec: SseCodec(
@@ -21856,9 +23416,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 536, port: port_);
       },
@@ -21887,9 +23450,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 537, port: port_);
       },
@@ -21918,9 +23484,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 538)!;
       },
       codec: SseCodec(
@@ -21948,9 +23517,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_U128(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 539, port: port_);
       },
@@ -21979,9 +23551,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_U128(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 540, port: port_);
       },
@@ -22010,9 +23585,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_U128(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 541)!;
       },
       codec: SseCodec(
@@ -22040,9 +23618,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_16(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 542, port: port_);
       },
@@ -22071,9 +23652,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_16(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 543, port: port_);
       },
@@ -22102,9 +23686,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_16(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 544)!;
       },
       codec: SseCodec(
@@ -22132,9 +23719,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 545, port: port_);
       },
@@ -22163,9 +23753,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 546, port: port_);
       },
@@ -22194,9 +23787,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 547)!;
       },
       codec: SseCodec(
@@ -22224,9 +23820,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 548, port: port_);
       },
@@ -22255,9 +23854,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 549, port: port_);
       },
@@ -22286,9 +23888,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 550)!;
       },
       codec: SseCodec(
@@ -22316,9 +23921,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_8(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 551, port: port_);
       },
@@ -22347,9 +23955,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_8(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 552, port: port_);
       },
@@ -22378,9 +23989,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_u_8(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 553)!;
       },
       codec: SseCodec(
@@ -22408,9 +24022,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_usize(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 554, port: port_);
       },
@@ -22439,9 +24056,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_usize(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 555, port: port_);
       },
@@ -22470,9 +24090,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_usize(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 556)!;
       },
       codec: SseCodec(
@@ -22500,10 +24123,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_basic_general_enum_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 557, port: port_);
       },
@@ -22533,10 +24159,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_basic_general_enum_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 558, port: port_);
       },
@@ -22566,9 +24195,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_basic_general_enum_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 559)!;
       },
       codec: SseCodec(
@@ -22597,9 +24229,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_basic_primitive_enum_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 560, port: port_);
       },
@@ -22629,9 +24264,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_basic_primitive_enum_twin_rust_async(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 561, port: port_);
       },
@@ -22661,9 +24299,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_basic_primitive_enum_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 562)!;
       },
       codec: SseCodec(
@@ -22692,9 +24333,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_basic_struct_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 563, port: port_);
       },
@@ -22724,9 +24368,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_basic_struct_twin_rust_async(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 564, port: port_);
       },
@@ -22756,9 +24403,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_basic_struct_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 565)!;
       },
       codec: SseCodec(
@@ -22785,9 +24435,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_bool(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 566, port: port_);
       },
@@ -22816,9 +24469,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_bool(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 567, port: port_);
       },
@@ -22846,9 +24502,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_bool(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 568)!;
       },
       codec: SseCodec(
@@ -22875,9 +24534,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 569, port: port_);
       },
@@ -22906,9 +24568,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 570, port: port_);
       },
@@ -22936,9 +24601,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 571)!;
       },
       codec: SseCodec(
@@ -22965,9 +24633,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 572, port: port_);
       },
@@ -22996,9 +24667,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 573, port: port_);
       },
@@ -23026,9 +24700,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_32(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 574)!;
       },
       codec: SseCodec(
@@ -23055,9 +24732,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 575, port: port_);
       },
@@ -23086,9 +24766,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 576, port: port_);
       },
@@ -23116,9 +24799,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_64(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 577)!;
       },
       codec: SseCodec(
@@ -23145,10 +24831,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_I128(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 578, port: port_);
       },
@@ -23177,10 +24866,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_I128(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 579, port: port_);
       },
@@ -23208,10 +24900,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_I128(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 580)!;
       },
       codec: SseCodec(
@@ -23238,10 +24933,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_16(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 581, port: port_);
       },
@@ -23270,10 +24968,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_16(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 582, port: port_);
       },
@@ -23301,10 +25002,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_16(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 583)!;
       },
       codec: SseCodec(
@@ -23331,10 +25035,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 584, port: port_);
       },
@@ -23363,10 +25070,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 585, port: port_);
       },
@@ -23394,10 +25104,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 586)!;
       },
       codec: SseCodec(
@@ -23424,10 +25137,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_64(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 587, port: port_);
       },
@@ -23456,10 +25172,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_64(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 588, port: port_);
       },
@@ -23487,10 +25206,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_64(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 589)!;
       },
       codec: SseCodec(
@@ -23517,10 +25239,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_8(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 590, port: port_);
       },
@@ -23549,10 +25274,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_8(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 591, port: port_);
       },
@@ -23580,10 +25308,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_8(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 592)!;
       },
       codec: SseCodec(
@@ -23611,10 +25342,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_isize(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 593, port: port_);
       },
@@ -23643,10 +25377,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_isize(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 594, port: port_);
       },
@@ -23674,10 +25411,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_isize(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 595)!;
       },
       codec: SseCodec(
@@ -23704,9 +25444,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 596, port: port_);
       },
@@ -23735,9 +25478,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 597, port: port_);
       },
@@ -23765,9 +25511,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 598)!;
       },
       codec: SseCodec(
@@ -23794,10 +25543,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_U128(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 599, port: port_);
       },
@@ -23826,10 +25578,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_U128(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 600, port: port_);
       },
@@ -23857,10 +25612,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_U128(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 601)!;
       },
       codec: SseCodec(
@@ -23887,10 +25645,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_16(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 602, port: port_);
       },
@@ -23919,10 +25680,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_16(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 603, port: port_);
       },
@@ -23950,10 +25714,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_16(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 604)!;
       },
       codec: SseCodec(
@@ -23980,10 +25747,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 605, port: port_);
       },
@@ -24012,10 +25782,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 606, port: port_);
       },
@@ -24043,10 +25816,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 607)!;
       },
       codec: SseCodec(
@@ -24073,10 +25849,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 608, port: port_);
       },
@@ -24105,10 +25884,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 609, port: port_);
       },
@@ -24136,10 +25918,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 610)!;
       },
       codec: SseCodec(
@@ -24166,10 +25951,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_8(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 611, port: port_);
       },
@@ -24198,10 +25986,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_8(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 612, port: port_);
       },
@@ -24229,10 +26020,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_8(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 613)!;
       },
       codec: SseCodec(
@@ -24259,10 +26053,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_usize(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 614, port: port_);
       },
@@ -24291,10 +26088,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_usize(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 615, port: port_);
       },
@@ -24322,10 +26122,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_usize(arg, serializer);
           sse_encode_String(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 616)!;
       },
       codec: SseCodec(
@@ -24351,7 +26154,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 617, port: port_);
       },
@@ -24376,9 +26182,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_numbers(nums, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 618, port: port_);
       },
@@ -24404,9 +26213,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_numbers(nums, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 619, port: port_);
       },
@@ -24434,9 +26246,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_numbers(nums, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 620)!;
       },
       codec: SseCodec(
@@ -24463,9 +26278,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_sequences(seqs, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 621, port: port_);
       },
@@ -24492,9 +26310,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_sequences(seqs, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 622, port: port_);
       },
@@ -24522,9 +26343,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_sequences(seqs, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 623)!;
       },
       codec: SseCodec(
@@ -24550,9 +26374,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(type, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 624, port: port_);
       },
@@ -24578,7 +26405,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 625, port: port_);
       },
@@ -24604,7 +26434,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 626, port: port_);
       },
@@ -24632,7 +26465,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 627)!;
       },
       codec: SseCodec(
@@ -24658,7 +26494,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 628)!;
       },
       codec: SseCodec(
@@ -24684,10 +26523,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_frb_log_record_Sse(sink, serializer);
           sse_encode_String(maxLevel, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 629, port: port_);
       },
@@ -24713,7 +26555,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 630)!;
       },
       codec: SseCodec(
@@ -24737,7 +26582,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 631)!;
       },
       codec: SseCodec(
@@ -24764,7 +26612,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 634)!;
       },
       codec: SseCodec(
@@ -24790,9 +26641,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DynTrait_SimpleTraitForDynTwinNormal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 635, port: port_);
       },
@@ -24818,10 +26672,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
           sse_encode_i_32(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 636, port: port_);
       },
@@ -24846,7 +26703,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 637, port: port_);
       },
@@ -24872,9 +26732,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_enum_simple_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 638, port: port_);
       },
@@ -24901,9 +26764,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_enum_simple_twin_rust_async(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 639, port: port_);
       },
@@ -24932,9 +26798,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_enum_simple_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 640)!;
       },
       codec: SseCodec(
@@ -24962,9 +26831,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_enum_with_discriminant_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 641, port: port_);
       },
@@ -24993,9 +26865,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_enum_with_discriminant_twin_rust_async(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 642, port: port_);
       },
@@ -25024,9 +26899,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_enum_with_discriminant_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 643)!;
       },
       codec: SseCodec(
@@ -25054,10 +26932,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_item_mixed_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 644, port: port_);
       },
@@ -25085,10 +26966,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 645, port: port_);
       },
@@ -25117,10 +27001,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_item_mixed_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 646)!;
       },
       codec: SseCodec(
@@ -25148,10 +27035,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_item_struct_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 647, port: port_);
       },
@@ -25179,10 +27069,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_item_struct_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 648, port: port_);
       },
@@ -25211,10 +27104,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_item_struct_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 649)!;
       },
       codec: SseCodec(
@@ -25242,10 +27138,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_item_tuple_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 650, port: port_);
       },
@@ -25273,10 +27172,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 651, port: port_);
       },
@@ -25305,10 +27207,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_item_tuple_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 652)!;
       },
       codec: SseCodec(
@@ -25336,10 +27241,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 653, port: port_);
       },
@@ -25369,10 +27277,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 654, port: port_);
       },
@@ -25403,10 +27314,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_dart_keyword_field_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 655)!;
       },
       codec: SseCodec(
@@ -25434,10 +27348,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_field_rename_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 656, port: port_);
       },
@@ -25466,10 +27383,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_field_rename_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 657, port: port_);
       },
@@ -25498,10 +27418,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_field_rename_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 658)!;
       },
       codec: SseCodec(
@@ -25528,9 +27451,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 659, port: port_);
       },
@@ -25557,9 +27483,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 660, port: port_);
       },
@@ -25587,9 +27516,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_i_32_i_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 661)!;
       },
       codec: SseCodec(
@@ -25617,9 +27549,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_list_prim_u_8_strict_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 662, port: port_);
       },
@@ -25647,9 +27582,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_list_prim_u_8_strict_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 663, port: port_);
       },
@@ -25678,9 +27616,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_list_prim_u_8_strict_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 664)!;
       },
       codec: SseCodec(
@@ -25708,9 +27649,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_kitchen_sink_twin_normal_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 665, port: port_);
       },
@@ -25739,10 +27683,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_kitchen_sink_twin_rust_async_None(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 666, port: port_);
       },
@@ -25772,9 +27719,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_kitchen_sink_twin_sync_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 667)!;
       },
       codec: SseCodec(
@@ -25802,9 +27752,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_enum_simple_twin_normal_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 668, port: port_);
       },
@@ -25833,10 +27786,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_enum_simple_twin_rust_async_None(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 669, port: port_);
       },
@@ -25866,9 +27822,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_enum_simple_twin_sync_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 670)!;
       },
       codec: SseCodec(
@@ -25896,10 +27855,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 671, port: port_);
       },
@@ -25929,10 +27891,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 672, port: port_);
       },
@@ -25962,10 +27927,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 673)!;
       },
       codec: SseCodec(
@@ -25994,9 +27962,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_String_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 674, port: port_);
       },
@@ -26024,9 +27995,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_String_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 675, port: port_);
       },
@@ -26055,9 +28029,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_String_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 676)!;
       },
       codec: SseCodec(
@@ -26085,9 +28062,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_my_size_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 677, port: port_);
       },
@@ -26115,9 +28095,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_my_size_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 678, port: port_);
       },
@@ -26146,9 +28129,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_my_size_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 679)!;
       },
       codec: SseCodec(
@@ -26175,9 +28161,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Set_i_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 680, port: port_);
       },
@@ -26204,9 +28193,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Set_i_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 681, port: port_);
       },
@@ -26234,9 +28226,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Set_i_32_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 682)!;
       },
       codec: SseCodec(
@@ -26263,10 +28258,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 683, port: port_);
       },
@@ -26295,10 +28293,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 684, port: port_);
       },
@@ -26328,10 +28329,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 685)!;
       },
       codec: SseCodec(
@@ -26359,9 +28363,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Set_String_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 686, port: port_);
       },
@@ -26388,9 +28395,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Set_String_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 687, port: port_);
       },
@@ -26418,9 +28428,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Set_String_None(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 688)!;
       },
       codec: SseCodec(
@@ -26447,9 +28460,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_macro_struct(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 689, port: port_);
       },
@@ -26474,7 +28490,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 690, port: port_);
       },
@@ -26500,7 +28519,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 691, port: port_);
       },
@@ -26527,7 +28549,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 692)!;
       },
       codec: SseCodec(
@@ -26553,7 +28578,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 693, port: port_);
       },
@@ -26579,7 +28607,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 694, port: port_);
       },
@@ -26606,7 +28637,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 695)!;
       },
       codec: SseCodec(
@@ -26633,9 +28667,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_i_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 696, port: port_);
       },
@@ -26664,9 +28701,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_i_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 697, port: port_);
       },
@@ -26696,10 +28736,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_String_Sse(sink, serializer);
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 698, port: port_);
       },
@@ -26726,9 +28769,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_String_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 699, port: port_);
       },
@@ -26756,9 +28802,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_String_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 700, port: port_);
       },
@@ -26787,9 +28836,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_String_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 701, port: port_);
       },
@@ -26817,9 +28869,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_String_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 702, port: port_);
       },
@@ -26849,11 +28904,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(a, serializer);
           sse_encode_u_32(b, serializer);
           sse_encode_StreamSink_u_32_Sse(c, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 703, port: port_);
       },
@@ -26883,11 +28941,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(a, serializer);
           sse_encode_u_32(b, serializer);
           sse_encode_StreamSink_u_32_Sse(c, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 704, port: port_);
       },
@@ -26917,10 +28978,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_one_field_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 705, port: port_);
       },
@@ -26948,10 +29012,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_one_field_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 706, port: port_);
       },
@@ -26980,10 +29047,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_one_field_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 707)!;
       },
       codec: SseCodec(
@@ -27011,10 +29081,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_two_field_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 708, port: port_);
       },
@@ -27042,10 +29115,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_two_field_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 709, port: port_);
       },
@@ -27074,10 +29150,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_two_field_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 710)!;
       },
       codec: SseCodec(
@@ -27105,10 +29184,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_zero_field_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 711, port: port_);
       },
@@ -27136,10 +29218,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 712, port: port_);
       },
@@ -27168,10 +29253,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_zero_field_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 713)!;
       },
       codec: SseCodec(
@@ -27198,9 +29286,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_test_id_twin_normal(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 714, port: port_);
       },
@@ -27227,9 +29318,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_test_id_twin_rust_async(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 715, port: port_);
       },
@@ -27257,9 +29351,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_test_id_twin_sync(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 716)!;
       },
       codec: SseCodec(
@@ -27286,10 +29383,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 717, port: port_);
       },
@@ -27318,10 +29418,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 718, port: port_);
       },
@@ -27351,10 +29454,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 719)!;
       },
       codec: SseCodec(
@@ -27382,10 +29488,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 720, port: port_);
       },
@@ -27414,10 +29523,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 721, port: port_);
       },
@@ -27447,10 +29559,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 722)!;
       },
       codec: SseCodec(
@@ -27476,7 +29591,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 723, port: port_);
       },
@@ -27503,7 +29621,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 724, port: port_);
       },
@@ -27530,7 +29651,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 725)!;
       },
       codec: SseCodec(
@@ -27556,7 +29680,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 726, port: port_);
       },
@@ -27583,7 +29710,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 727, port: port_);
       },
@@ -27610,7 +29740,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 728)!;
       },
       codec: SseCodec(
@@ -27637,10 +29770,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 729, port: port_);
       },
@@ -27668,10 +29804,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_non_opaque_struct_containing_ipv_4_addr(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 730, port: port_);
       },
@@ -27698,7 +29837,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 731, port: port_);
       },
@@ -27724,10 +29866,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_casted_primitive_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 732, port: port_);
       },
@@ -27755,10 +29900,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMessageWithCustomSerializerTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 733, port: port_);
       },
@@ -27787,10 +29935,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
               a, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 734, port: port_);
       },
@@ -27817,7 +29968,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 735, port: port_);
       },
@@ -27845,7 +29999,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 736, port: port_);
       },
@@ -27873,7 +30030,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 737)!;
       },
       codec: SseCodec(
@@ -27900,7 +30060,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 738, port: port_);
       },
@@ -27929,7 +30092,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 739, port: port_);
       },
@@ -27958,7 +30124,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 740)!;
       },
       codec: SseCodec(
@@ -27986,7 +30155,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 741, port: port_);
       },
@@ -28015,7 +30187,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 742, port: port_);
       },
@@ -28044,7 +30219,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 743)!;
       },
       codec: SseCodec(
@@ -28071,7 +30249,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 744, port: port_);
       },
@@ -28099,9 +30280,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_32(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 745, port: port_);
       },
@@ -28129,9 +30313,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_32(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 746, port: port_);
       },
@@ -28159,9 +30346,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_32(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 747)!;
       },
       codec: SseCodec(
@@ -28188,9 +30378,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 748, port: port_);
       },
@@ -28218,9 +30411,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 749, port: port_);
       },
@@ -28248,9 +30444,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 750)!;
       },
       codec: SseCodec(
@@ -28276,7 +30475,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 751, port: port_);
       },
@@ -28304,7 +30506,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 752, port: port_);
       },
@@ -28331,7 +30536,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 753)!;
       },
       codec: SseCodec(
@@ -28357,7 +30565,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 754, port: port_);
       },
@@ -28385,7 +30596,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 755, port: port_);
       },
@@ -28412,7 +30626,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 756)!;
       },
       codec: SseCodec(
@@ -28438,7 +30655,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 757, port: port_);
       },
@@ -28465,7 +30685,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 758, port: port_);
       },
@@ -28492,7 +30715,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 759)!;
       },
       codec: SseCodec(
@@ -28518,7 +30744,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 760, port: port_);
       },
@@ -28544,7 +30773,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 761, port: port_);
       },
@@ -28571,7 +30803,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 762)!;
       },
       codec: SseCodec(
@@ -28597,7 +30832,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 763, port: port_);
       },
@@ -28625,7 +30863,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 764, port: port_);
       },
@@ -28652,7 +30893,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 765)!;
       },
       codec: SseCodec(
@@ -28678,7 +30922,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 766, port: port_);
       },
@@ -28706,7 +30953,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 767, port: port_);
       },
@@ -28733,7 +30983,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 768)!;
       },
       codec: SseCodec(
@@ -28759,7 +31012,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 769, port: port_);
       },
@@ -28785,7 +31041,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 770, port: port_);
       },
@@ -28813,7 +31072,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 771)!;
       },
       codec: SseCodec(
@@ -28839,7 +31101,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 772, port: port_);
       },
@@ -28865,7 +31130,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 773, port: port_);
       },
@@ -28892,7 +31160,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 774)!;
       },
       codec: SseCodec(
@@ -28917,7 +31188,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 775, port: port_);
       },
@@ -28943,7 +31217,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 776, port: port_);
       },
@@ -28971,7 +31248,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 777)!;
       },
       codec: SseCodec(
@@ -28998,10 +31278,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_dart_opaque_twin_normal(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 778, port: port_);
       },
@@ -29028,10 +31311,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 779, port: port_);
       },
@@ -29059,9 +31345,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_dart_opaque_twin_sync(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 780)!;
       },
       codec: SseCodec(
@@ -29087,7 +31376,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 781, port: port_);
       },
@@ -29113,7 +31405,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 782, port: port_);
       },
@@ -29141,7 +31436,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 783)!;
       },
       codec: SseCodec(
@@ -29167,7 +31465,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 784)!;
       },
       codec: SseCodec(
@@ -29191,7 +31492,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 785, port: port_);
       },
@@ -29217,7 +31521,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 786, port: port_);
       },
@@ -29244,7 +31551,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 787)!;
       },
       codec: SseCodec(
@@ -29270,10 +31580,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_dart_opaque_nested_twin_normal(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 788, port: port_);
       },
@@ -29300,10 +31613,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 789, port: port_);
       },
@@ -29331,10 +31647,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_dart_opaque_nested_twin_sync(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 790)!;
       },
       codec: SseCodec(
@@ -29361,11 +31680,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(a, serializer);
           sse_encode_u_32(b, serializer);
           sse_encode_u_32(c, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 791, port: port_);
       },
@@ -29392,11 +31714,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(a, serializer);
           sse_encode_u_32(b, serializer);
           sse_encode_u_32(c, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 792, port: port_);
       },
@@ -29424,11 +31749,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(a, serializer);
           sse_encode_u_32(b, serializer);
           sse_encode_u_32(c, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 793)!;
       },
       codec: SseCodec(
@@ -29454,7 +31782,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 794, port: port_);
       },
@@ -29480,7 +31811,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 795, port: port_);
       },
@@ -29507,7 +31841,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 796)!;
       },
       codec: SseCodec(
@@ -29533,7 +31870,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 797, port: port_);
       },
@@ -29559,7 +31899,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 798, port: port_);
       },
@@ -29587,7 +31930,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 799)!;
       },
       codec: SseCodec(
@@ -29614,9 +31960,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Char(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 800, port: port_);
       },
@@ -29643,9 +31992,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Char(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 801, port: port_);
       },
@@ -29673,9 +32025,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Char(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 802)!;
       },
       codec: SseCodec(
@@ -29702,9 +32057,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_tree_node_twin_normal(s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 803, port: port_);
       },
@@ -29732,9 +32090,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_tree_node_twin_rust_async(s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 804, port: port_);
       },
@@ -29763,9 +32124,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_tree_node_twin_sync(s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 805)!;
       },
       codec: SseCodec(
@@ -29792,9 +32156,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_customized_twin_normal(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 806, port: port_);
       },
@@ -29822,9 +32189,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_customized_twin_rust_async(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 807, port: port_);
       },
@@ -29852,9 +32222,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_customized_twin_sync(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 808)!;
       },
       codec: SseCodec(
@@ -29881,10 +32254,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Chrono_Duration(durations, serializer);
           sse_encode_Chrono_Local(since, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 809, port: port_);
       },
@@ -29911,10 +32287,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Chrono_Duration(durations, serializer);
           sse_encode_Chrono_Local(since, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 810, port: port_);
       },
@@ -29942,10 +32321,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Chrono_Duration(durations, serializer);
           sse_encode_Chrono_Local(since, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 811)!;
       },
       codec: SseCodec(
@@ -29972,9 +32354,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_weekdays_twin_normal(weekday, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 812, port: port_);
       },
@@ -30002,9 +32387,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_weekdays_twin_rust_async(weekday, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 813, port: port_);
       },
@@ -30033,9 +32421,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_weekdays_twin_sync(weekday, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 814)!;
       },
       codec: SseCodec(
@@ -30062,9 +32453,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_kitchen_sink_twin_normal(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 815, port: port_);
       },
@@ -30091,9 +32485,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_kitchen_sink_twin_rust_async(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 816, port: port_);
       },
@@ -30122,9 +32519,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_kitchen_sink_twin_sync(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 817)!;
       },
       codec: SseCodec(
@@ -30151,9 +32551,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_f_64(opt, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 818, port: port_);
       },
@@ -30182,9 +32585,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_f_64(opt, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 819, port: port_);
       },
@@ -30213,9 +32619,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_f_64(opt, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 820)!;
       },
       codec: SseCodec(
@@ -30242,9 +32651,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_my_size(l, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 821, port: port_);
       },
@@ -30271,9 +32683,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_my_size(l, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 822, port: port_);
       },
@@ -30301,9 +32716,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_my_size(l, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 823)!;
       },
       codec: SseCodec(
@@ -30331,9 +32749,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_SerdeJsonValue_None(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 824, port: port_);
       },
@@ -30362,9 +32783,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_SerdeJsonValue_None(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 825, port: port_);
       },
@@ -30393,9 +32817,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Map_String_SerdeJsonValue_None(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 826)!;
       },
       codec: SseCodec(
@@ -30423,10 +32850,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feature_serde_json_twin_normal(
               wrapper, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 827, port: port_);
       },
@@ -30455,10 +32885,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feature_serde_json_twin_rust_async(
               wrapper, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 828, port: port_);
       },
@@ -30487,10 +32920,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feature_serde_json_twin_sync(
               wrapper, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 829)!;
       },
       codec: SseCodec(
@@ -30518,9 +32954,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_nested_struct_twin_normal(s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 830, port: port_);
       },
@@ -30547,10 +32986,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_nested_struct_twin_rust_async(
               s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 831, port: port_);
       },
@@ -30579,9 +33021,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_nested_struct_twin_sync(s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 832)!;
       },
       codec: SseCodec(
@@ -30608,9 +33053,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feature_uuid_twin_normal(ids, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 833, port: port_);
       },
@@ -30637,9 +33085,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feature_uuid_twin_rust_async(ids, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 834, port: port_);
       },
@@ -30668,9 +33119,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feature_uuid_twin_sync(ids, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 835)!;
       },
       codec: SseCodec(
@@ -30697,9 +33151,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_new_type_int_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 836, port: port_);
       },
@@ -30726,9 +33183,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_new_type_int_twin_rust_async(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 837, port: port_);
       },
@@ -30757,9 +33217,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_new_type_int_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 838)!;
       },
       codec: SseCodec(
@@ -30792,7 +33255,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_i_8(i8Box, serializer);
           sse_encode_opt_box_u_8(u8Box, serializer);
           sse_encode_opt_box_i_32(i32Box, serializer);
@@ -30801,7 +33264,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           sse_encode_opt_box_bool(boolbox, serializer);
           sse_encode_opt_box_exotic_optionals_twin_normal(
               structbox, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 839, port: port_);
       },
@@ -30843,7 +33309,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_i_8(i8Box, serializer);
           sse_encode_opt_box_u_8(u8Box, serializer);
           sse_encode_opt_box_i_32(i32Box, serializer);
@@ -30852,7 +33318,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           sse_encode_opt_box_bool(boolbox, serializer);
           sse_encode_opt_box_exotic_optionals_twin_rust_async(
               structbox, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 840, port: port_);
       },
@@ -30894,7 +33363,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_i_8(i8Box, serializer);
           sse_encode_opt_box_u_8(u8Box, serializer);
           sse_encode_opt_box_i_32(i32Box, serializer);
@@ -30902,7 +33371,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           sse_encode_opt_box_f_64(f64Box, serializer);
           sse_encode_opt_box_bool(boolbox, serializer);
           sse_encode_opt_box_exotic_optionals_twin_sync(structbox, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 841)!;
       },
       codec: SseCodec(
@@ -30937,9 +33409,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_SerdeJsonValue(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 842, port: port_);
       },
@@ -30968,9 +33443,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_SerdeJsonValue(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 843, port: port_);
       },
@@ -30999,9 +33477,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_SerdeJsonValue(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 844)!;
       },
       codec: SseCodec(
@@ -31029,10 +33510,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_exotic_optionals_twin_normal(
               opt, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 845, port: port_);
       },
@@ -31061,10 +33545,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(
               opt, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 846, port: port_);
       },
@@ -31094,10 +33581,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_exotic_optionals_twin_sync(
               opt, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 847)!;
       },
       codec: SseCodec(
@@ -31125,10 +33615,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_64(left, serializer);
           sse_encode_f_64(right, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 848, port: port_);
       },
@@ -31155,10 +33648,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_64(left, serializer);
           sse_encode_f_64(right, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 849, port: port_);
       },
@@ -31186,10 +33682,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_64(left, serializer);
           sse_encode_f_64(right, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 850)!;
       },
       codec: SseCodec(
@@ -31216,9 +33715,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_String(document, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 851, port: port_);
       },
@@ -31245,9 +33747,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_String(document, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 852, port: port_);
       },
@@ -31276,9 +33781,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_String(document, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 853)!;
       },
       codec: SseCodec(
@@ -31305,9 +33813,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 854, port: port_);
       },
@@ -31334,9 +33845,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 855, port: port_);
       },
@@ -31365,9 +33879,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 856)!;
       },
       codec: SseCodec(
@@ -31394,9 +33911,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_SerdeJsonValue(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 857, port: port_);
       },
@@ -31424,9 +33944,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_SerdeJsonValue(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 858, port: port_);
       },
@@ -31454,9 +33977,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_SerdeJsonValue(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 859)!;
       },
       codec: SseCodec(
@@ -31484,10 +34010,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_my_stream_entry_twin_normal_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 860, port: port_);
       },
@@ -31515,10 +34044,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_my_stream_entry_twin_rust_async_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 861, port: port_);
       },
@@ -31548,11 +34080,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
           sse_encode_StreamSink_log_twin_normal_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 862, port: port_);
       },
@@ -31581,11 +34116,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
           sse_encode_StreamSink_log_twin_rust_async_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 863, port: port_);
       },
@@ -31615,11 +34153,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(key, serializer);
           sse_encode_StreamSink_log_twin_normal_Sse(sink, serializer);
           sse_encode_u_32(max, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 864, port: port_);
       },
@@ -31648,11 +34189,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(key, serializer);
           sse_encode_StreamSink_log_twin_rust_async_Sse(sink, serializer);
           sse_encode_u_32(max, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 865, port: port_);
       },
@@ -31682,11 +34226,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_log_twin_normal_Sse(sink, serializer);
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 866, port: port_);
       },
@@ -31715,11 +34262,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_log_twin_rust_async_Sse(sink, serializer);
           sse_encode_u_32(key, serializer);
           sse_encode_u_32(max, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 867, port: port_);
       },
@@ -31748,9 +34298,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_String(names, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 868, port: port_);
       },
@@ -31777,9 +34330,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_String(names, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 869, port: port_);
       },
@@ -31807,9 +34363,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_String(names, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 870)!;
       },
       codec: SseCodec(
@@ -31836,9 +34395,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 871, port: port_);
       },
@@ -31865,9 +34427,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 872, port: port_);
       },
@@ -31895,9 +34460,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 873)!;
       },
       codec: SseCodec(
@@ -31924,10 +34492,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_size(arg, serializer);
           sse_encode_box_my_size(boxed, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 874, port: port_);
       },
@@ -31954,10 +34525,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_size(arg, serializer);
           sse_encode_box_my_size(boxed, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 875, port: port_);
       },
@@ -31985,10 +34559,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_size(arg, serializer);
           sse_encode_box_my_size(boxed, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 876)!;
       },
       codec: SseCodec(
@@ -32015,10 +34592,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Chrono_NaiveDateTime(timestamps, serializer);
           sse_encode_Chrono_NaiveDateTime(epoch, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 877, port: port_);
       },
@@ -32045,10 +34625,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Chrono_NaiveDateTime(timestamps, serializer);
           sse_encode_Chrono_NaiveDateTime(epoch, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 878, port: port_);
       },
@@ -32076,10 +34659,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Chrono_NaiveDateTime(timestamps, serializer);
           sse_encode_Chrono_NaiveDateTime(epoch, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 879)!;
       },
       codec: SseCodec(
@@ -32106,9 +34692,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 880, port: port_);
       },
@@ -32135,9 +34724,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 881, port: port_);
       },
@@ -32165,9 +34757,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 882)!;
       },
       codec: SseCodec(
@@ -32194,9 +34789,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 883, port: port_);
       },
@@ -32223,9 +34821,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 884, port: port_);
       },
@@ -32254,9 +34855,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 885)!;
       },
       codec: SseCodec(
@@ -32283,9 +34887,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 886, port: port_);
       },
@@ -32313,9 +34920,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 887, port: port_);
       },
@@ -32343,9 +34953,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_64(input, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 888)!;
       },
       codec: SseCodec(
@@ -32372,9 +34985,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Uuid(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 889, port: port_);
       },
@@ -32401,9 +35017,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Uuid(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 890, port: port_);
       },
@@ -32431,9 +35050,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Uuid(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 891)!;
       },
       codec: SseCodec(
@@ -32460,9 +35082,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Uuid(ids, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 892, port: port_);
       },
@@ -32489,9 +35114,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Uuid(ids, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 893, port: port_);
       },
@@ -32519,9 +35147,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Uuid(ids, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 894)!;
       },
       codec: SseCodec(
@@ -32548,9 +35179,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_opt_vecs_twin_normal(opt, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 895, port: port_);
       },
@@ -32577,9 +35211,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_opt_vecs_twin_rust_async(opt, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 896, port: port_);
       },
@@ -32607,9 +35244,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_opt_vecs_twin_sync(opt, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 897)!;
       },
       codec: SseCodec(
@@ -32637,9 +35277,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(n, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 898, port: port_);
       },
@@ -32668,9 +35311,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(n, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 899, port: port_);
       },
@@ -32699,9 +35345,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(n, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 900)!;
       },
       codec: SseCodec(
@@ -32728,9 +35377,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_SerdeJsonValue(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 901, port: port_);
       },
@@ -32759,9 +35411,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_SerdeJsonValue(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 902, port: port_);
       },
@@ -32790,9 +35445,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_SerdeJsonValue(val, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 903)!;
       },
       codec: SseCodec(
@@ -32819,9 +35477,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(v, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 904, port: port_);
       },
@@ -32848,9 +35509,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(v, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 905, port: port_);
       },
@@ -32878,9 +35542,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_prim_u_8_loose(v, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 906)!;
       },
       codec: SseCodec(
@@ -32907,9 +35574,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feature_chrono_twin_normal(mine, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 907, port: port_);
       },
@@ -32936,10 +35606,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feature_chrono_twin_rust_async(
               mine, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 908, port: port_);
       },
@@ -32967,9 +35640,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feature_chrono_twin_sync(mine, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 909)!;
       },
       codec: SseCodec(
@@ -32995,7 +35671,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 910, port: port_);
       },
@@ -33021,9 +35700,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_application_settings(appSettings, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 911, port: port_);
       },
@@ -33050,9 +35732,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_application_settings(appSettings, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 912, port: port_);
       },
@@ -33080,9 +35765,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_application_settings(appSettings, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 913)!;
       },
       codec: SseCodec(
@@ -33109,7 +35797,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 914, port: port_);
       },
@@ -33139,10 +35830,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_item_container_solution_two_twin_normal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 915, port: port_);
       },
@@ -33171,9 +35865,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_64_array_16(array, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 916, port: port_);
       },
@@ -33199,9 +35896,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_64_array_16(array, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 917, port: port_);
       },
@@ -33229,9 +35929,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_f_64_array_16(array, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 918)!;
       },
       codec: SseCodec(
@@ -33258,9 +35961,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_weekdays_twin_normal(weekdays, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 919, port: port_);
       },
@@ -33288,9 +35994,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_weekdays_twin_rust_async(weekdays, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 920, port: port_);
       },
@@ -33319,9 +36028,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_weekdays_twin_sync(weekdays, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 921)!;
       },
       codec: SseCodec(
@@ -33348,9 +36060,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque_array_1(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 922, port: port_);
       },
@@ -33377,9 +36092,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque_array_1(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 923, port: port_);
       },
@@ -33407,9 +36125,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque_array_1(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 924)!;
       },
       codec: SseCodec(
@@ -33436,9 +36157,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 925, port: port_);
       },
@@ -33465,9 +36189,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 926, port: port_);
       },
@@ -33495,9 +36222,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 927)!;
       },
       codec: SseCodec(
@@ -33523,9 +36253,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 928, port: port_);
       },
@@ -33552,9 +36285,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 929, port: port_);
       },
@@ -33582,9 +36318,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 930)!;
       },
       codec: SseCodec(
@@ -33611,9 +36350,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 931, port: port_);
       },
@@ -33640,9 +36382,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 932, port: port_);
       },
@@ -33670,9 +36415,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 933)!;
       },
       codec: SseCodec(
@@ -33699,9 +36447,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 934, port: port_);
       },
@@ -33728,9 +36479,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 935, port: port_);
       },
@@ -33758,9 +36512,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 936)!;
       },
       codec: SseCodec(
@@ -33787,9 +36544,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 937, port: port_);
       },
@@ -33816,9 +36576,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 938, port: port_);
       },
@@ -33846,9 +36609,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 939)!;
       },
       codec: SseCodec(
@@ -33875,9 +36641,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 940, port: port_);
       },
@@ -33904,9 +36673,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 941, port: port_);
       },
@@ -33934,9 +36706,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 942)!;
       },
       codec: SseCodec(
@@ -33964,10 +36739,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 943, port: port_);
       },
@@ -33997,10 +36775,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtOwnedStructTwinSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 944, port: port_);
       },
@@ -34030,9 +36811,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_application_mode_array_2_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 945, port: port_);
       },
@@ -34060,9 +36844,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_application_mode_array_2_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 946, port: port_);
       },
@@ -34092,9 +36879,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_application_mode_array_2_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 947)!;
       },
       codec: SseCodec(
@@ -34122,9 +36912,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_application_mode_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 948, port: port_);
       },
@@ -34152,9 +36945,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_application_mode_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 949, port: port_);
       },
@@ -34184,9 +36980,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_application_mode_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 950)!;
       },
       codec: SseCodec(
@@ -34215,10 +37014,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_Map_u_8_application_mode_None_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 951, port: port_);
       },
@@ -34246,10 +37048,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_Map_u_8_application_mode_None_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 952, port: port_);
       },
@@ -34279,10 +37084,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_Map_u_8_application_mode_None_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 953)!;
       },
       codec: SseCodec(
@@ -34310,10 +37118,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_opt_box_autoadd_application_mode_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 954, port: port_);
       },
@@ -34341,10 +37152,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_opt_box_autoadd_application_mode_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 955, port: port_);
       },
@@ -34374,10 +37188,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_opt_box_autoadd_application_mode_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 956)!;
       },
       codec: SseCodec(
@@ -34405,9 +37222,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_Set_application_mode_None_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 957, port: port_);
       },
@@ -34435,9 +37255,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_Set_application_mode_None_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 958, port: port_);
       },
@@ -34467,9 +37290,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_Set_application_mode_None_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 959)!;
       },
       codec: SseCodec(
@@ -34497,9 +37323,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_mirror_struct_twin_normal_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 960, port: port_);
       },
@@ -34527,10 +37356,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_mirror_struct_twin_rust_async_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 961, port: port_);
       },
@@ -34560,9 +37392,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_mirror_struct_twin_sync_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 962)!;
       },
       codec: SseCodec(
@@ -34591,10 +37426,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 963, port: port_);
       },
@@ -34622,10 +37460,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 964, port: port_);
       },
@@ -34655,10 +37496,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_record_application_settings_raw_string_enum_mirrored_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 965)!;
       },
       codec: SseCodec(
@@ -34686,9 +37530,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_list_application_mode_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 966, port: port_);
       },
@@ -34716,9 +37563,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_list_application_mode_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 967, port: port_);
       },
@@ -34748,9 +37598,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_list_application_mode_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 968)!;
       },
       codec: SseCodec(
@@ -34778,9 +37631,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_measure_twin_normal(measure, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 969, port: port_);
       },
@@ -34807,9 +37663,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_measure_twin_rust_async(measure, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 970, port: port_);
       },
@@ -34837,9 +37696,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_measure_twin_sync(measure, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 971)!;
       },
       codec: SseCodec(
@@ -34866,10 +37728,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_callable_twin_normal(that, serializer);
           sse_encode_String(two, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 972, port: port_);
       },
@@ -34896,10 +37761,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_callable_twin_rust_async(that, serializer);
           sse_encode_String(two, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 973, port: port_);
       },
@@ -34927,10 +37795,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_callable_twin_sync(that, serializer);
           sse_encode_String(two, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 974)!;
       },
       codec: SseCodec(
@@ -34957,10 +37828,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_enum_with_json_serializable_twin_normal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 975, port: port_);
       },
@@ -34987,7 +37861,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 976, port: port_);
       },
@@ -35012,7 +37889,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 977, port: port_);
       },
@@ -35039,10 +37919,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_struct_with_json_serializable_twin_normal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 978, port: port_);
       },
@@ -35070,9 +37953,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_struct_with_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 979, port: port_);
       },
@@ -35098,9 +37984,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_NaiveDate(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 980, port: port_);
       },
@@ -35127,9 +38016,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_NaiveDate(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 981, port: port_);
       },
@@ -35157,9 +38049,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_NaiveDate(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 982)!;
       },
       codec: SseCodec(
@@ -35186,9 +38081,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_NaiveDateTime(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 983, port: port_);
       },
@@ -35215,9 +38113,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_NaiveDateTime(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 984, port: port_);
       },
@@ -35245,9 +38146,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Chrono_NaiveDateTime(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 985)!;
       },
       codec: SseCodec(
@@ -35274,9 +38178,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_test_id_twin_normal_array_4(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 986, port: port_);
       },
@@ -35303,9 +38210,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_test_id_twin_rust_async_array_4(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 987, port: port_);
       },
@@ -35333,9 +38243,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_test_id_twin_sync_array_4(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 988)!;
       },
       codec: SseCodec(
@@ -35361,9 +38274,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_8_array_32(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 989, port: port_);
       },
@@ -35390,9 +38306,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_8_array_32(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 990, port: port_);
       },
@@ -35420,9 +38339,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_8_array_32(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 991)!;
       },
       codec: SseCodec(
@@ -35448,9 +38370,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_user_id_twin_normal(userId, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 992, port: port_);
       },
@@ -35477,9 +38402,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_user_id_twin_rust_async(userId, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 993, port: port_);
       },
@@ -35507,9 +38435,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_user_id_twin_sync(userId, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 994)!;
       },
       codec: SseCodec(
@@ -35536,9 +38467,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinNormal_array_2(data, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 995, port: port_);
       },
@@ -35565,9 +38499,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinRustAsync_array_2(data, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 996, port: port_);
       },
@@ -35595,9 +38532,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinSync_array_2(data, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 997)!;
       },
       codec: SseCodec(
@@ -35623,7 +38563,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 998, port: port_);
       },
@@ -35649,7 +38592,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 999, port: port_);
       },
@@ -35677,7 +38623,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1000)!;
       },
       codec: SseCodec(
@@ -35704,9 +38653,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_RustOpaque_HideDataTwinNormal(data, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1001, port: port_);
       },
@@ -35733,9 +38685,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_RustOpaque_HideDataTwinRustAsync(data, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1002, port: port_);
       },
@@ -35763,9 +38718,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_RustOpaque_HideDataTwinSync(data, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1003)!;
       },
       codec: SseCodec(
@@ -35791,7 +38749,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1004, port: port_);
       },
@@ -35817,7 +38778,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1005, port: port_);
       },
@@ -35845,7 +38809,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1006)!;
       },
       codec: SseCodec(
@@ -35872,9 +38839,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_Chrono_Utc(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1007, port: port_);
       },
@@ -35902,9 +38872,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_Chrono_Utc(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1008, port: port_);
       },
@@ -35933,9 +38906,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_Chrono_Utc(d, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1009)!;
       },
       codec: SseCodec(
@@ -35962,9 +38938,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1010, port: port_);
       },
@@ -35992,9 +38971,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1011, port: port_);
       },
@@ -36022,9 +39004,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1012)!;
       },
       codec: SseCodec(
@@ -36050,7 +39035,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1013, port: port_);
       },
@@ -36077,7 +39065,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1014, port: port_);
       },
@@ -36104,7 +39095,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1015)!;
       },
       codec: SseCodec(
@@ -36131,10 +39125,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
           sse_encode_i_32(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1016, port: port_);
       },
@@ -36162,10 +39159,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
           sse_encode_i_32(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1017, port: port_);
       },
@@ -36193,10 +39193,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
           sse_encode_i_32(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1018)!;
       },
       codec: SseCodec(
@@ -36223,12 +39226,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_32(myI32, serializer);
           sse_encode_opt_box_autoadd_i_64(myI64, serializer);
           sse_encode_opt_box_autoadd_f_64(myF64, serializer);
           sse_encode_opt_box_autoadd_bool(myBool, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1019, port: port_);
       },
@@ -36257,12 +39263,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_32(myI32, serializer);
           sse_encode_opt_box_autoadd_i_64(myI64, serializer);
           sse_encode_opt_box_autoadd_f_64(myF64, serializer);
           sse_encode_opt_box_autoadd_bool(myBool, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1020, port: port_);
       },
@@ -36291,12 +39300,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_i_32(myI32, serializer);
           sse_encode_opt_box_autoadd_i_64(myI64, serializer);
           sse_encode_opt_box_autoadd_f_64(myF64, serializer);
           sse_encode_opt_box_autoadd_bool(myBool, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1021)!;
       },
       codec: SseCodec(
@@ -36326,12 +39338,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(myI32, serializer);
           sse_encode_i_64(myI64, serializer);
           sse_encode_f_64(myF64, serializer);
           sse_encode_bool(myBool, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1022, port: port_);
       },
@@ -36361,12 +39376,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(myI32, serializer);
           sse_encode_i_64(myI64, serializer);
           sse_encode_f_64(myF64, serializer);
           sse_encode_bool(myBool, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1023, port: port_);
       },
@@ -36397,12 +39415,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(myI32, serializer);
           sse_encode_i_64(myI64, serializer);
           sse_encode_f_64(myF64, serializer);
           sse_encode_bool(myBool, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1024)!;
       },
       codec: SseCodec(
@@ -36429,9 +39450,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(myU32, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1025, port: port_);
       },
@@ -36458,9 +39482,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(myU32, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1026, port: port_);
       },
@@ -36488,9 +39515,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(myU32, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1027)!;
       },
       codec: SseCodec(
@@ -36517,9 +39547,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_note_twin_normal(note, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1028, port: port_);
       },
@@ -36546,9 +39579,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_note_twin_rust_async(note, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1029, port: port_);
       },
@@ -36576,9 +39612,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_note_twin_sync(note, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1030)!;
       },
       codec: SseCodec(
@@ -36604,7 +39643,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1031, port: port_);
       },
@@ -36630,9 +39672,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(message, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1032)!;
       },
       codec: SseCodec(
@@ -36658,9 +39703,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_event_twin_normal_Sse(listener, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1033, port: port_);
       },
@@ -36689,9 +39737,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_event_twin_rust_async_Sse(listener, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1034, port: port_);
       },
@@ -36720,10 +39771,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(num, serializer);
           sse_encode_usize(times, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1035, port: port_);
       },
@@ -36750,10 +39804,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(num, serializer);
           sse_encode_usize(times, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1036, port: port_);
       },
@@ -36781,10 +39838,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(num, serializer);
           sse_encode_usize(times, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1037)!;
       },
       codec: SseCodec(
@@ -36811,10 +39871,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(seq, serializer);
           sse_encode_usize(times, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1038, port: port_);
       },
@@ -36841,10 +39904,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(seq, serializer);
           sse_encode_usize(times, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1039, port: port_);
       },
@@ -36872,10 +39938,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(seq, serializer);
           sse_encode_usize(times, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1040)!;
       },
       codec: SseCodec(
@@ -36901,7 +39970,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1041, port: port_);
       },
@@ -36927,9 +39999,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_8_array_8(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1042, port: port_);
       },
@@ -36956,9 +40031,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_8_array_8(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1043, port: port_);
       },
@@ -36986,9 +40064,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_8_array_8(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1044)!;
       },
       codec: SseCodec(
@@ -37015,9 +40096,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feed_id_twin_normal(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1045, port: port_);
       },
@@ -37044,9 +40128,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feed_id_twin_rust_async(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1046, port: port_);
       },
@@ -37074,9 +40161,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_feed_id_twin_sync(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1047)!;
       },
       codec: SseCodec(
@@ -37102,7 +40192,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1048, port: port_);
       },
@@ -37129,7 +40222,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1049, port: port_);
       },
@@ -37156,7 +40252,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1050)!;
       },
       codec: SseCodec(
@@ -37182,7 +40281,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1051, port: port_);
       },
@@ -37210,7 +40312,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1052, port: port_);
       },
@@ -37238,7 +40343,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1053)!;
       },
       codec: SseCodec(
@@ -37264,7 +40372,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1054, port: port_);
       },
@@ -37291,7 +40402,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1055, port: port_);
       },
@@ -37318,7 +40432,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1056)!;
       },
       codec: SseCodec(
@@ -37344,7 +40461,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1057, port: port_);
       },
@@ -37371,7 +40491,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1058, port: port_);
       },
@@ -37398,7 +40521,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1059)!;
       },
       codec: SseCodec(
@@ -37424,7 +40550,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1060, port: port_);
       },
@@ -37450,7 +40579,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1061, port: port_);
       },
@@ -37477,7 +40609,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1062)!;
       },
       codec: SseCodec(
@@ -37503,7 +40638,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1063, port: port_);
       },
@@ -37529,7 +40667,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1064, port: port_);
       },
@@ -37556,7 +40697,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1065)!;
       },
       codec: SseCodec(
@@ -37583,9 +40727,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(variant, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1066, port: port_);
       },
@@ -37612,9 +40759,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(variant, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1067, port: port_);
       },
@@ -37642,9 +40792,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(variant, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1068)!;
       },
       codec: SseCodec(
@@ -37670,7 +40823,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1069, port: port_);
       },
@@ -37696,7 +40852,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1070, port: port_);
       },
@@ -37723,7 +40882,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1071)!;
       },
       codec: SseCodec(
@@ -37749,7 +40911,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1072, port: port_);
       },
@@ -37775,7 +40940,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1073, port: port_);
       },
@@ -37803,7 +40971,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1074)!;
       },
       codec: SseCodec(
@@ -37830,9 +41001,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_opaque_twin_normal(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1075, port: port_);
       },
@@ -37859,10 +41033,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_opaque_twin_rust_async(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1076, port: port_);
       },
@@ -37890,9 +41067,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_opaque_twin_sync(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1077)!;
       },
       codec: SseCodec(
@@ -37919,9 +41099,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_opaque_nested_twin_normal(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1078, port: port_);
       },
@@ -37948,10 +41131,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_opaque_nested_twin_rust_async(
               opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1079, port: port_);
       },
@@ -37979,9 +41165,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_opaque_nested_twin_sync(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1080)!;
       },
       codec: SseCodec(
@@ -38008,9 +41197,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_NonCloneDataTwinNormal(clone, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1081, port: port_);
       },
@@ -38037,9 +41229,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_NonCloneDataTwinRustAsync(clone, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1082, port: port_);
       },
@@ -38067,9 +41262,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_NonCloneDataTwinSync(clone, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1083)!;
       },
       codec: SseCodec(
@@ -38096,9 +41294,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinNormal(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1084, port: port_);
       },
@@ -38125,9 +41326,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinRustAsync(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1085, port: port_);
       },
@@ -38155,9 +41359,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinSync(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1086)!;
       },
       codec: SseCodec(
@@ -38184,9 +41391,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinNormal(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1087, port: port_);
       },
@@ -38213,9 +41423,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinRustAsync(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1088, port: port_);
       },
@@ -38243,9 +41456,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinSync(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1089)!;
       },
       codec: SseCodec(
@@ -38272,11 +41488,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1090, port: port_);
       },
@@ -38305,11 +41524,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1091, port: port_);
       },
@@ -38338,11 +41560,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1092)!;
       },
       codec: SseCodec(
@@ -38371,12 +41596,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
           sse_encode_i_32(adder, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1093, port: port_);
       },
@@ -38407,12 +41635,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
           sse_encode_i_32(adder, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1094, port: port_);
       },
@@ -38443,12 +41674,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
           sse_encode_i_32(adder, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1095)!;
       },
       codec: SseCodec(
@@ -38476,10 +41710,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1096, port: port_);
       },
@@ -38509,10 +41746,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1097, port: port_);
       },
@@ -38543,10 +41783,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1098)!;
       },
       codec: SseCodec(
@@ -38574,11 +41817,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1099, port: port_);
       },
@@ -38606,11 +41852,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1100, port: port_);
       },
@@ -38638,11 +41887,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1101)!;
       },
       codec: SseCodec(
@@ -38670,11 +41922,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               arg, serializer);
           sse_encode_list_prim_i_32_loose(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1102, port: port_);
       },
@@ -38704,11 +41959,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               arg, serializer);
           sse_encode_list_prim_i_32_loose(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1103, port: port_);
       },
@@ -38738,11 +41996,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               arg, serializer);
           sse_encode_list_prim_i_32_loose(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1104)!;
       },
       codec: SseCodec(
@@ -38770,12 +42031,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               a, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1105, port: port_);
       },
@@ -38805,12 +42069,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               a, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1106, port: port_);
       },
@@ -38838,12 +42105,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               a, serializer);
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1107)!;
       },
       codec: SseCodec(
@@ -38871,12 +42141,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               borrow, serializer);
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               mutBorrow, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1108, port: port_);
       },
@@ -38906,12 +42179,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               borrow, serializer);
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               mutBorrow, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1109, port: port_);
       },
@@ -38940,12 +42216,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               borrow, serializer);
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               mutBorrow, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1110)!;
       },
       codec: SseCodec(
@@ -38972,10 +42251,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1111, port: port_);
       },
@@ -39004,10 +42286,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1112, port: port_);
       },
@@ -39036,10 +42321,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1113)!;
       },
       codec: SseCodec(
@@ -39066,7 +42354,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1114, port: port_);
       },
@@ -39095,7 +42386,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1115, port: port_);
       },
@@ -39124,7 +42418,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1116)!;
       },
       codec: SseCodec(
@@ -39153,12 +42450,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
               a, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
               b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1117, port: port_);
       },
@@ -39187,12 +42487,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
               a, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
               b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1118, port: port_);
       },
@@ -39221,12 +42524,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
               a, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
               b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1119)!;
       },
       codec: SseCodec(
@@ -39253,10 +42559,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1120, port: port_);
       },
@@ -39285,10 +42594,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1121, port: port_);
       },
@@ -39317,10 +42629,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1122)!;
       },
       codec: SseCodec(
@@ -39347,7 +42662,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1123, port: port_);
       },
@@ -39376,7 +42694,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1124, port: port_);
       },
@@ -39405,7 +42726,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1125)!;
       },
       codec: SseCodec(
@@ -39434,10 +42758,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1126, port: port_);
       },
@@ -39467,10 +42794,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1127, port: port_);
       },
@@ -39500,10 +42830,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_enum_with_good_and_opaque_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1128)!;
       },
       codec: SseCodec(
@@ -39531,7 +42864,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1129, port: port_);
       },
@@ -39560,7 +42896,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1130, port: port_);
       },
@@ -39589,7 +42928,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1131)!;
       },
       codec: SseCodec(
@@ -39617,7 +42959,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1132, port: port_);
       },
@@ -39646,7 +42991,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1133, port: port_);
       },
@@ -39675,7 +43023,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1134)!;
       },
       codec: SseCodec(
@@ -39703,11 +43054,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1135, port: port_);
       },
@@ -39736,11 +43090,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1136, port: port_);
       },
@@ -39769,11 +43126,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               arg, serializer);
           sse_encode_i_32(expect, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1137)!;
       },
       codec: SseCodec(
@@ -39800,7 +43160,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1138, port: port_);
       },
@@ -39829,7 +43192,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1139, port: port_);
       },
@@ -39859,7 +43225,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1140)!;
       },
       codec: SseCodec(
@@ -39888,9 +43257,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(initial, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1141, port: port_);
       },
@@ -39920,9 +43292,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(initial, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1142, port: port_);
       },
@@ -39952,9 +43327,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(initial, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1143)!;
       },
       codec: SseCodec(
@@ -39982,10 +43360,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1144, port: port_);
       },
@@ -40014,10 +43395,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1145, port: port_);
       },
@@ -40046,10 +43430,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1146)!;
       },
       codec: SseCodec(
@@ -40076,11 +43463,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               a, serializer);
           sse_encode_String(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1147, port: port_);
       },
@@ -40109,11 +43499,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               a, serializer);
           sse_encode_String(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1148, port: port_);
       },
@@ -40142,11 +43535,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               a, serializer);
           sse_encode_String(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1149)!;
       },
       codec: SseCodec(
@@ -40173,10 +43569,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1150, port: port_);
       },
@@ -40205,10 +43604,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1151, port: port_);
       },
@@ -40237,10 +43639,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1152)!;
       },
       codec: SseCodec(
@@ -40267,7 +43672,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1153, port: port_);
       },
@@ -40296,7 +43704,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1154, port: port_);
       },
@@ -40325,7 +43736,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1155)!;
       },
       codec: SseCodec(
@@ -40353,7 +43767,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1156, port: port_);
       },
@@ -40382,7 +43799,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1157, port: port_);
       },
@@ -40414,7 +43834,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1158)!;
       },
       codec: SseCodec(
@@ -40442,7 +43865,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1159, port: port_);
       },
@@ -40471,7 +43897,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1160, port: port_);
       },
@@ -40500,7 +43929,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1161)!;
       },
       codec: SseCodec(
@@ -40529,9 +43961,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(initial, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1162, port: port_);
       },
@@ -40561,9 +43996,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(initial, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1163, port: port_);
       },
@@ -40593,9 +44031,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(initial, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1164)!;
       },
       codec: SseCodec(
@@ -40623,7 +44064,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1165, port: port_);
       },
@@ -40652,7 +44096,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1166, port: port_);
       },
@@ -40681,7 +44128,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1167)!;
       },
       codec: SseCodec(
@@ -40710,12 +44160,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               apple, serializer);
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               orange, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1168, port: port_);
       },
@@ -40744,12 +44197,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               apple, serializer);
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               orange, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1169, port: port_);
       },
@@ -40778,12 +44234,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               apple, serializer);
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               orange, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1170)!;
       },
       codec: SseCodec(
@@ -40811,10 +44270,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1171, port: port_);
       },
@@ -40844,10 +44306,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1172, port: port_);
       },
@@ -40877,10 +44342,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync_Sse(
               sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1173)!;
       },
       codec: SseCodec(
@@ -40909,10 +44377,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1174, port: port_);
       },
@@ -40942,10 +44413,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1175, port: port_);
       },
@@ -40975,10 +44449,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_good_and_opaque_field_twin_sync(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1176)!;
       },
       codec: SseCodec(
@@ -41006,7 +44483,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1177, port: port_);
       },
@@ -41036,7 +44516,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1178, port: port_);
       },
@@ -41066,7 +44549,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1179)!;
       },
       codec: SseCodec(
@@ -41096,12 +44582,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               a, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
               b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1180, port: port_);
       },
@@ -41131,12 +44620,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               a, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
               b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1181, port: port_);
       },
@@ -41164,12 +44656,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               a, serializer);
           sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
               b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1182)!;
       },
       codec: SseCodec(
@@ -41198,11 +44693,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
               arg, serializer);
           sse_encode_i_32(adder, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1183, port: port_);
       },
@@ -41231,9 +44729,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(initial, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1184, port: port_);
       },
@@ -41262,10 +44763,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1185, port: port_);
       },
@@ -41294,10 +44798,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1186, port: port_);
       },
@@ -41327,11 +44834,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
               arg, serializer);
           sse_encode_i_32(adder, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1187)!;
       },
       codec: SseCodec(
@@ -41361,12 +44871,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
               arg, serializer);
           sse_encode_i_32(adder, serializer);
           sse_encode_u_32(delayMillis, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1188, port: port_);
       },
@@ -41396,10 +44909,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1189, port: port_);
       },
@@ -41428,10 +44944,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1190, port: port_);
       },
@@ -41459,11 +44978,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs__Output_unit_AnyhowException(
               callback, serializer);
           sse_encode_i_32(numTimes, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1191, port: port_);
       },
@@ -41491,11 +45013,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs__Output_unit_AnyhowException(
               callback, serializer);
           sse_encode_i_32(numTimes, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1192, port: port_);
       },
@@ -41523,10 +45048,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1193, port: port_);
       },
@@ -41553,10 +45081,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1194, port: port_);
       },
@@ -41585,11 +45116,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
               callback, serializer);
           sse_encode_opt_String(expectOutput, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1195, port: port_);
       },
@@ -41618,11 +45152,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
               callback, serializer);
           sse_encode_opt_String(expectOutput, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1196, port: port_);
       },
@@ -41650,10 +45187,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs__Output_String_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1197, port: port_);
       },
@@ -41680,10 +45220,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs__Output_String_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1198, port: port_);
       },
@@ -41711,10 +45254,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs__Output_unit_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1199, port: port_);
       },
@@ -41741,10 +45287,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs__Output_unit_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1200, port: port_);
       },
@@ -41774,10 +45323,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1201, port: port_);
       },
@@ -41806,10 +45358,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1202, port: port_);
       },
@@ -41837,10 +45392,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1203, port: port_);
       },
@@ -41869,10 +45427,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1204, port: port_);
       },
@@ -41901,11 +45462,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(input, serializer);
           sse_encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1205, port: port_);
       },
@@ -41935,11 +45499,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(input, serializer);
           sse_encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1206, port: port_);
       },
@@ -41967,10 +45534,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs__Output_DartOpaque_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1207, port: port_);
       },
@@ -41999,10 +45569,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartFn_Inputs__Output_DartOpaque_AnyhowException(
               callback, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1208, port: port_);
       },
@@ -42032,11 +45605,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
               arg, serializer);
           sse_encode_i_32(adder, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1209, port: port_);
       },
@@ -42065,9 +45641,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(initial, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1210, port: port_);
       },
@@ -42096,10 +45675,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1211, port: port_);
       },
@@ -42128,10 +45710,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1212, port: port_);
       },
@@ -42160,11 +45745,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
               arg, serializer);
           sse_encode_i_32(adder, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1213)!;
       },
       codec: SseCodec(
@@ -42194,12 +45782,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
               arg, serializer);
           sse_encode_i_32(adder, serializer);
           sse_encode_u_32(delayMillis, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1214, port: port_);
       },
@@ -42226,7 +45817,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1215, port: port_);
       },
@@ -42253,7 +45847,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1216, port: port_);
       },
@@ -42281,10 +45878,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(id, serializer);
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1217, port: port_);
       },
@@ -42311,10 +45911,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(id, serializer);
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1218, port: port_);
       },
@@ -42342,10 +45945,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(id, serializer);
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1219)!;
       },
       codec: SseCodec(
@@ -42372,10 +45978,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
           sse_encode_i_32(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1220, port: port_);
       },
@@ -42401,10 +46010,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
           sse_encode_i_32(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1221, port: port_);
       },
@@ -42432,10 +46044,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
           sse_encode_i_32(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1222)!;
       },
       codec: SseCodec(
@@ -42463,9 +46078,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1223, port: port_);
       },
@@ -42493,9 +46111,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_enum_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1224, port: port_);
       },
@@ -42524,9 +46145,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1225, port: port_);
       },
@@ -42556,9 +46180,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_enum_twin_rust_async(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1226, port: port_);
       },
@@ -42588,9 +46215,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1227)!;
       },
       codec: SseCodec(
@@ -42618,9 +46248,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_enum_twin_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1228)!;
       },
       codec: SseCodec(
@@ -42647,9 +46280,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_simple_primitive_enum_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1229, port: port_);
       },
@@ -42679,9 +46315,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_simple_primitive_enum_twin_rust_async(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1230, port: port_);
       },
@@ -42710,9 +46349,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_simple_primitive_enum_twin_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1231)!;
       },
       codec: SseCodec(
@@ -42740,10 +46382,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_twin_normal(a, serializer);
           sse_encode_box_autoadd_simple_struct_twin_normal(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1232, port: port_);
       },
@@ -42771,9 +46416,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1233, port: port_);
       },
@@ -42801,9 +46449,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1234, port: port_);
       },
@@ -42832,9 +46483,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1235, port: port_);
       },
@@ -42862,9 +46516,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_simple_struct_twin_normal(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1236, port: port_);
       },
@@ -42894,10 +46551,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_twin_rust_async(a, serializer);
           sse_encode_box_autoadd_simple_struct_twin_rust_async(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1237, port: port_);
       },
@@ -42926,10 +46586,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_twin_rust_async(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1238, port: port_);
       },
@@ -42959,10 +46622,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_twin_rust_async(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1239, port: port_);
       },
@@ -42992,9 +46658,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1240, port: port_);
       },
@@ -43024,9 +46693,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_simple_struct_twin_rust_async(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1241, port: port_);
       },
@@ -43054,10 +46726,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_twin_sync(a, serializer);
           sse_encode_box_autoadd_simple_struct_twin_sync(b, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1242)!;
       },
       codec: SseCodec(
@@ -43085,9 +46760,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_twin_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1243)!;
       },
       codec: SseCodec(
@@ -43115,9 +46793,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_struct_twin_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1244)!;
       },
       codec: SseCodec(
@@ -43145,9 +46826,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(one, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1245)!;
       },
       codec: SseCodec(
@@ -43175,9 +46859,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_simple_struct_twin_sync(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1246)!;
       },
       codec: SseCodec(
@@ -43205,10 +46892,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_simple_translatable_external_struct_with_method(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1247, port: port_);
       },
@@ -43236,9 +46926,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1248, port: port_);
       },
@@ -43264,9 +46957,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1249, port: port_);
       },
@@ -43293,10 +46989,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_String(arg, serializer);
           sse_encode_StreamSink_String_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1250, port: port_);
       },
@@ -43323,9 +47022,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1251, port: port_);
       },
@@ -43353,9 +47055,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_some_struct_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1252, port: port_);
       },
@@ -43385,9 +47090,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_some_struct_twin_normal(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1253, port: port_);
       },
@@ -43416,7 +47124,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1254, port: port_);
       },
@@ -43445,7 +47156,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1255, port: port_);
       },
@@ -43475,9 +47189,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1256, port: port_);
       },
@@ -43506,9 +47223,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_some_struct_twin_rust_async(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1257, port: port_);
       },
@@ -43538,9 +47258,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_some_struct_twin_rust_async(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1258, port: port_);
       },
@@ -43569,7 +47292,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1259, port: port_);
       },
@@ -43598,7 +47324,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1260, port: port_);
       },
@@ -43628,9 +47357,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_u_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1261)!;
       },
       codec: SseCodec(
@@ -43657,9 +47389,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_some_struct_twin_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1262)!;
       },
       codec: SseCodec(
@@ -43687,9 +47422,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_some_struct_twin_sync(that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1263)!;
       },
       codec: SseCodec(
@@ -43716,7 +47454,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1264)!;
       },
       codec: SseCodec(
@@ -43743,7 +47484,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1265)!;
       },
       codec: SseCodec(
@@ -43771,9 +47515,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1266, port: port_);
       },
@@ -43802,9 +47549,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1267, port: port_);
       },
@@ -43833,9 +47583,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_i_32(a, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1268)!;
       },
       codec: SseCodec(
@@ -43862,9 +47615,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_i_32_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1269, port: port_);
       },
@@ -43892,9 +47648,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_u_8_array_2_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1270, port: port_);
       },
@@ -43924,9 +47683,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_u_8_array_2_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1271, port: port_);
       },
@@ -43956,10 +47718,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_normal(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1272, port: port_);
       },
@@ -43986,10 +47751,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1273, port: port_);
       },
@@ -44017,9 +47785,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_StreamSink_i_32_Sse(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1274, port: port_);
       },
@@ -44046,9 +47817,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_StreamSink_i_32_Sse(arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1275, port: port_);
       },
@@ -44077,9 +47851,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_String_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1276, port: port_);
       },
@@ -44108,9 +47885,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     await handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_String_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1277, port: port_);
       },
@@ -44140,9 +47920,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_StreamSink_String_Sse(sink, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1278)!;
       },
       codec: SseCodec(
@@ -44171,10 +47954,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_comments_twin_normal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1279, port: port_);
       },
@@ -44203,7 +47989,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1280, port: port_);
       },
@@ -44233,10 +48022,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_comments_twin_rust_async(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1281, port: port_);
       },
@@ -44265,7 +48057,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1282, port: port_);
       },
@@ -44295,10 +48090,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_comments_twin_sync(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1283)!;
       },
       codec: SseCodec(
@@ -44326,7 +48124,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1284)!;
       },
       codec: SseCodec(
@@ -44354,10 +48155,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_custom_name_method_twin_normal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1285)!;
       },
       codec: SseCodec(
@@ -44385,10 +48189,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_impl_block_in_another_file_dependency(
               arg, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1286, port: port_);
       },
@@ -44415,7 +48222,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1287, port: port_);
       },
@@ -44443,7 +48253,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1288, port: port_);
       },
@@ -44474,10 +48287,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_rust_auto_opaque_field_with_many_derive(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1289, port: port_);
       },
@@ -44506,10 +48322,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1290, port: port_);
       },
@@ -44537,11 +48356,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_sum_with_twin_normal(that, serializer);
           sse_encode_u_32(y, serializer);
           sse_encode_u_32(z, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1291, port: port_);
       },
@@ -44570,11 +48392,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_sum_with_twin_rust_async(that, serializer);
           sse_encode_u_32(y, serializer);
           sse_encode_u_32(z, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1292, port: port_);
       },
@@ -44602,11 +48427,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_sum_with_twin_sync(that, serializer);
           sse_encode_u_32(y, serializer);
           sse_encode_u_32(z, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1293)!;
       },
       codec: SseCodec(
@@ -44633,9 +48461,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1294)!;
       },
       codec: SseCodec(
@@ -44660,7 +48491,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1295)!;
       },
       codec: SseCodec(
@@ -44685,7 +48519,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1296)!;
       },
       codec: SseCodec(
@@ -44711,9 +48548,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1297)!;
       },
       codec: SseCodec(
@@ -44738,9 +48578,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1298)!;
       },
       codec: SseCodec(
@@ -44765,9 +48608,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1299)!;
       },
       codec: SseCodec(
@@ -44793,7 +48639,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1300)!;
       },
       codec: SseCodec(
@@ -44820,9 +48669,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_abc_twin_normal(abc, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1301, port: port_);
       },
@@ -44849,9 +48701,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_abc_twin_rust_async(abc, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1302, port: port_);
       },
@@ -44879,9 +48734,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_abc_twin_sync(abc, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1303)!;
       },
       codec: SseCodec(
@@ -44907,7 +48765,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1304, port: port_);
       },
@@ -44933,7 +48794,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1305, port: port_);
       },
@@ -44961,7 +48825,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1306)!;
       },
       codec: SseCodec(
@@ -44988,7 +48855,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1307, port: port_);
       },
@@ -45016,7 +48886,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1308, port: port_);
       },
@@ -45045,7 +48918,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1309)!;
       },
       codec: SseCodec(
@@ -45073,9 +48949,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_in_lower_level(s, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1310, port: port_);
       },
@@ -45103,7 +48982,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1311, port: port_);
       },
@@ -45131,7 +49013,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1312, port: port_);
       },
@@ -45159,7 +49044,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1313)!;
       },
       codec: SseCodec(
@@ -45186,7 +49074,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1314, port: port_);
       },
@@ -45213,7 +49104,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1315, port: port_);
       },
@@ -45241,7 +49135,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1316)!;
       },
       codec: SseCodec(
@@ -45268,7 +49165,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1317, port: port_);
       },
@@ -45296,7 +49196,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1318, port: port_);
       },
@@ -45324,7 +49227,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1319)!;
       },
       codec: SseCodec(
@@ -45351,7 +49257,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1320, port: port_);
       },
@@ -45379,7 +49288,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1321, port: port_);
       },
@@ -45408,7 +49320,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1322)!;
       },
       codec: SseCodec(
@@ -45435,7 +49350,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1323, port: port_);
       },
@@ -45464,7 +49382,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1324, port: port_);
       },
@@ -45494,7 +49415,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1325)!;
       },
       codec: SseCodec(
@@ -45522,7 +49446,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1326, port: port_);
       },
@@ -45549,7 +49476,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1327, port: port_);
       },
@@ -45577,7 +49507,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1328)!;
       },
       codec: SseCodec(
@@ -45603,7 +49536,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1329, port: port_);
       },
@@ -45629,7 +49565,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1330, port: port_);
       },
@@ -45657,7 +49596,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1331)!;
       },
       codec: SseCodec(
@@ -45685,9 +49627,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_bool(nested, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1332, port: port_);
       },
@@ -45715,9 +49660,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_bool(nested, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1333, port: port_);
       },
@@ -45746,9 +49694,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_bool(nested, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1334)!;
       },
       codec: SseCodec(
@@ -45775,7 +49726,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1335, port: port_);
       },
@@ -45802,7 +49756,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1336, port: port_);
       },
@@ -45830,7 +49787,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1337)!;
       },
       codec: SseCodec(
@@ -45857,7 +49817,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1338, port: port_);
       },
@@ -45884,7 +49847,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1339, port: port_);
       },
@@ -45912,7 +49878,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1340)!;
       },
       codec: SseCodec(
@@ -45938,7 +49907,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1341, port: port_);
       },
@@ -45964,7 +49936,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1342, port: port_);
       },
@@ -45992,7 +49967,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1343)!;
       },
       codec: SseCodec(
@@ -46020,9 +49998,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_enum_twin_normal(se, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1344, port: port_);
       },
@@ -46049,10 +50030,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_enum_twin_rust_async(
               se, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1345, port: port_);
       },
@@ -46081,9 +50065,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_struct_with_enum_twin_sync(se, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1346)!;
       },
       codec: SseCodec(
@@ -46110,9 +50097,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_record_string_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1347, port: port_);
       },
@@ -46138,9 +50128,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_record_string_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1348, port: port_);
       },
@@ -46168,9 +50161,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_list_record_string_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1349)!;
       },
       codec: SseCodec(
@@ -46196,9 +50192,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_record_string_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1350, port: port_);
       },
@@ -46225,9 +50224,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_record_string_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1351, port: port_);
       },
@@ -46255,9 +50257,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_opt_box_autoadd_record_string_i_32(value, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1352)!;
       },
       codec: SseCodec(
@@ -46282,7 +50287,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1353, port: port_);
       },
@@ -46308,7 +50316,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1354, port: port_);
       },
@@ -46335,7 +50346,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {});
+        try {} catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1355)!;
       },
       codec: SseCodec(
@@ -46363,10 +50377,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
               that, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1356, port: port_);
       },
@@ -46395,9 +50412,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_DartOpaque(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1357)!;
       },
       codec: SseCodec(
@@ -46423,9 +50443,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinNormal(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1358, port: port_);
       },
@@ -46452,9 +50475,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinRustAsync(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1359, port: port_);
       },
@@ -46482,9 +50508,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_RustOpaque_HideDataTwinSync(opaque, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1360)!;
       },
       codec: SseCodec(
@@ -46511,9 +50540,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_blob_twin_normal(blob, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1361, port: port_);
       },
@@ -46540,9 +50572,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_blob_twin_rust_async(blob, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1362, port: port_);
       },
@@ -46570,9 +50605,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_blob_twin_sync(blob, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1363)!;
       },
       codec: SseCodec(
@@ -46599,9 +50637,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_my_enum(myEnum, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1364, port: port_);
       },
@@ -46629,9 +50670,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_my_enum(myEnum, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1365, port: port_);
       },
@@ -46659,9 +50703,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_my_enum(myEnum, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1366)!;
       },
       codec: SseCodec(
@@ -46688,9 +50735,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_struct(myStruct, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1367, port: port_);
       },
@@ -46719,9 +50769,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_struct(myStruct, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1368, port: port_);
       },
@@ -46749,9 +50802,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_my_struct(myStruct, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1369)!;
       },
       codec: SseCodec(
@@ -46778,9 +50834,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_message_id_twin_normal(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1370, port: port_);
       },
@@ -46806,9 +50865,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_message_id_twin_rust_async(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1371, port: port_);
       },
@@ -46836,9 +50898,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        serializer.encode(() {
+        try {
           sse_encode_box_autoadd_message_id_twin_sync(id, serializer);
-        });
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1372)!;
       },
       codec: SseCodec(
@@ -46875,7 +50940,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -46885,7 +50950,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -46911,7 +50979,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -46920,7 +50988,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -46946,7 +51017,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -46955,7 +51026,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -46981,7 +51055,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -46990,7 +51064,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -47019,7 +51096,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -47028,7 +51105,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -47058,7 +51138,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -47067,7 +51147,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -47094,7 +51177,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -47103,7 +51186,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -47130,7 +51216,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -47139,7 +51225,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -47166,7 +51255,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -47175,7 +51264,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -47204,7 +51296,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -47214,7 +51306,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -47243,7 +51338,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       }
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      serializer.encode(() {
+      try {
         assert((rawOutput != null) ^ (rawError != null));
         if (rawOutput != null) {
           serializer.buffer.putUint8(0);
@@ -47253,7 +51348,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serializer.buffer.putUint8(1);
           sse_encode_AnyhowException(rawError!.value, serializer);
         }
-      });
+      } catch (_) {
+        serializer.dispose();
+        rethrow;
+      }
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
@@ -72292,7 +76390,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxAnyMyDartTypeRename self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxAnyMyDartTypeRenameImpl).frbInternalSseEncode(move: true),
+        (self as BoxAnyMyDartTypeRenameImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72302,7 +76401,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxFnStringString self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxFnStringStringImpl).frbInternalSseEncode(move: true),
+        (self as BoxFnStringStringImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72312,7 +76412,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxMyTraitTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxMyTraitTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as BoxMyTraitTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72322,7 +76423,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxMyTraitTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxMyTraitTwinRustAsyncImpl).frbInternalSseEncode(move: true),
+        (self as BoxMyTraitTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72332,7 +76434,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxMyTraitTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxMyTraitTwinSyncImpl).frbInternalSseEncode(move: true),
+        (self as BoxMyTraitTwinSyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72343,7 +76446,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ConstructorOpaqueStructTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72355,7 +76458,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ConstructorOpaqueSyncStructTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72365,7 +76468,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           CustomHasherTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as CustomHasherTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as CustomHasherTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72376,7 +76480,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as CustomHasherTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72386,7 +76490,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           CustomHasherTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as CustomHasherTwinSyncImpl).frbInternalSseEncode(move: true),
+        (self as CustomHasherTwinSyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72397,7 +76502,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as DeliberateFailSanityCheckTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72407,7 +76512,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as DroppableTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72417,7 +76523,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinRustAsyncImpl).frbInternalSseEncode(move: true),
+        (self as DroppableTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72427,7 +76534,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinSyncImpl).frbInternalSseEncode(move: true),
+        (self as DroppableTwinSyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72439,7 +76547,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72451,7 +76559,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72463,7 +76571,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72474,7 +76582,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ItemContainerSolutionOneTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72484,7 +76592,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtOwnedStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtOwnedStructTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as LtOwnedStructTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72494,7 +76603,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtOwnedStructTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtOwnedStructTwinSyncImpl).frbInternalSseEncode(move: true),
+        (self as LtOwnedStructTwinSyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72504,7 +76614,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtSubStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtSubStructTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as LtSubStructTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72514,7 +76625,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtSubStructTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtSubStructTwinSyncImpl).frbInternalSseEncode(move: true),
+        (self as LtSubStructTwinSyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72524,7 +76636,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           MyAudioParamTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyAudioParamTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as MyAudioParamTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72535,7 +76648,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyImplTraitWithSelfTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72546,7 +76659,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyImplTraitWithSelfTwinSyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72556,7 +76669,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           MyNodeTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyNodeTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as MyNodeTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72567,7 +76681,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyStructWithTryFromTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72578,7 +76692,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleEnumTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72589,7 +76703,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleEnumTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72600,7 +76714,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleEnumTwinSyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72610,7 +76724,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           NonCloneSimpleTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as NonCloneSimpleTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as NonCloneSimpleTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72621,7 +76736,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72631,7 +76746,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           NonCloneSimpleTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as NonCloneSimpleTwinSyncImpl).frbInternalSseEncode(move: true),
+        (self as NonCloneSimpleTwinSyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72641,7 +76757,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueItemTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueItemTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as OpaqueItemTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72651,7 +76768,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueOneTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueOneTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as OpaqueOneTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72661,7 +76779,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueOneTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueOneTwinRustAsyncImpl).frbInternalSseEncode(move: true),
+        (self as OpaqueOneTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72671,7 +76790,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueOneTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueOneTwinSyncImpl).frbInternalSseEncode(move: true),
+        (self as OpaqueOneTwinSyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72682,7 +76802,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as OpaqueStructWithDartCodeTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72692,7 +76812,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueTwoTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueTwoTwinNormalImpl).frbInternalSseEncode(move: true),
+        (self as OpaqueTwoTwinNormalImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72702,7 +76823,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueTwoTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueTwoTwinRustAsyncImpl).frbInternalSseEncode(move: true),
+        (self as OpaqueTwoTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72712,7 +76834,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueTwoTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueTwoTwinSyncImpl).frbInternalSseEncode(move: true),
+        (self as OpaqueTwoTwinSyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72723,7 +76846,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as RustOpaqueWebLockingDataTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72733,7 +76856,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SimpleLogger self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as SimpleLoggerImpl).frbInternalSseEncode(move: true),
+        (self as SimpleLoggerImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72744,7 +76868,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as SimpleOpaqueExternalStructWithMethodImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72755,7 +76879,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StaticGetterOnlyTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72766,7 +76890,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StaticGetterOnlyTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72776,7 +76900,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           StaticGetterOnlyTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as StaticGetterOnlyTwinSyncImpl).frbInternalSseEncode(move: true),
+        (self as StaticGetterOnlyTwinSyncImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72787,7 +76912,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructInMiscNoTwinExampleAImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72798,7 +76923,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructInMiscNoTwinExampleBImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72809,7 +76934,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitForDynTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72820,7 +76945,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72831,7 +76956,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitTwinSyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72842,7 +76967,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitForDynTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72853,7 +76978,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72864,7 +76989,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitTwinSyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72876,7 +77001,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72888,7 +77013,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72900,7 +77025,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72911,7 +77036,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithImplBlockInMultiFileImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72923,7 +77048,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithRustAutoOpaqueFieldWithManyDeriveInnerImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72934,7 +77059,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithSimpleSetterTwinNormalImpl)
-            .frbInternalSseEncode(move: true),
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72944,7 +77069,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           TypeForIgnore self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as TypeForIgnoreImpl).frbInternalSseEncode(move: true),
+        (self as TypeForIgnoreImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72954,7 +77080,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           TypeForIgnoreAll self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as TypeForIgnoreAllImpl).frbInternalSseEncode(move: true),
+        (self as TypeForIgnoreAllImpl)
+            .frbInternalSseEncode(move: true, serializer: serializer),
         serializer);
   }
 
@@ -72965,7 +77092,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ConstructorOpaqueStructTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -72977,7 +77104,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ConstructorOpaqueSyncStructTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -72988,7 +77115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as DeliberateFailSanityCheckTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -72998,7 +77125,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinNormalImpl).frbInternalSseEncode(move: false),
+        (self as DroppableTwinNormalImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73008,7 +77136,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinRustAsyncImpl).frbInternalSseEncode(move: false),
+        (self as DroppableTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73018,7 +77147,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinSyncImpl).frbInternalSseEncode(move: false),
+        (self as DroppableTwinSyncImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73029,7 +77159,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ItemContainerSolutionOneTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73039,7 +77169,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtSubStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtSubStructTwinNormalImpl).frbInternalSseEncode(move: false),
+        (self as LtSubStructTwinNormalImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73049,7 +77180,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtSubStructTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtSubStructTwinSyncImpl).frbInternalSseEncode(move: false),
+        (self as LtSubStructTwinSyncImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73060,7 +77192,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73071,7 +77203,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73081,7 +77213,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           NonCloneSimpleTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as NonCloneSimpleTwinSyncImpl).frbInternalSseEncode(move: false),
+        (self as NonCloneSimpleTwinSyncImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73092,7 +77225,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as RustOpaqueWebLockingDataTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73103,7 +77236,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitForDynTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73114,7 +77247,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73125,7 +77258,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitTwinSyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73136,7 +77269,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitForDynTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73147,7 +77280,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73158,7 +77291,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitTwinSyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73170,7 +77303,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73182,7 +77315,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73194,7 +77327,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73205,7 +77338,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithSimpleSetterTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73215,7 +77348,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           TypeForIgnoreAll self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as TypeForIgnoreAllImpl).frbInternalSseEncode(move: false),
+        (self as TypeForIgnoreAllImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73226,7 +77360,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ConstructorOpaqueStructTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73238,7 +77372,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ConstructorOpaqueSyncStructTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73249,7 +77383,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as DeliberateFailSanityCheckTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73259,7 +77393,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinNormalImpl).frbInternalSseEncode(move: false),
+        (self as DroppableTwinNormalImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73269,7 +77404,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinRustAsyncImpl).frbInternalSseEncode(move: false),
+        (self as DroppableTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73279,7 +77415,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinSyncImpl).frbInternalSseEncode(move: false),
+        (self as DroppableTwinSyncImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73290,7 +77427,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ItemContainerSolutionOneTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73300,7 +77437,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtOwnedStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtOwnedStructTwinNormalImpl).frbInternalSseEncode(move: false),
+        (self as LtOwnedStructTwinNormalImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73310,7 +77448,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtOwnedStructTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtOwnedStructTwinSyncImpl).frbInternalSseEncode(move: false),
+        (self as LtOwnedStructTwinSyncImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73320,7 +77459,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtSubStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtSubStructTwinNormalImpl).frbInternalSseEncode(move: false),
+        (self as LtSubStructTwinNormalImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73330,7 +77470,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtSubStructTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtSubStructTwinSyncImpl).frbInternalSseEncode(move: false),
+        (self as LtSubStructTwinSyncImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73340,7 +77481,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           MyAudioParamTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyAudioParamTwinNormalImpl).frbInternalSseEncode(move: false),
+        (self as MyAudioParamTwinNormalImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73351,7 +77493,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyImplTraitWithSelfTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73362,7 +77504,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyImplTraitWithSelfTwinSyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73372,7 +77514,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           MyNodeTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyNodeTwinNormalImpl).frbInternalSseEncode(move: false),
+        (self as MyNodeTwinNormalImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73383,7 +77526,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyStructWithTryFromTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73394,7 +77537,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleEnumTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73405,7 +77548,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleEnumTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73416,7 +77559,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleEnumTwinSyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73427,7 +77570,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73438,7 +77581,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73448,7 +77591,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           NonCloneSimpleTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as NonCloneSimpleTwinSyncImpl).frbInternalSseEncode(move: false),
+        (self as NonCloneSimpleTwinSyncImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73459,7 +77603,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as OpaqueStructWithDartCodeTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73470,7 +77614,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as RustOpaqueWebLockingDataTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73480,7 +77624,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SimpleLogger self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as SimpleLoggerImpl).frbInternalSseEncode(move: false),
+        (self as SimpleLoggerImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73491,7 +77636,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as SimpleOpaqueExternalStructWithMethodImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73502,7 +77647,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructInMiscNoTwinExampleAImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73513,7 +77658,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructInMiscNoTwinExampleBImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73524,7 +77669,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitForDynTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73535,7 +77680,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73546,7 +77691,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitTwinSyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73557,7 +77702,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitForDynTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73568,7 +77713,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73579,7 +77724,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitTwinSyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73591,7 +77736,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73603,7 +77748,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73615,7 +77760,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73626,7 +77771,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithImplBlockInMultiFileImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73637,7 +77782,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithSimpleSetterTwinNormalImpl)
-            .frbInternalSseEncode(move: false),
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73647,7 +77792,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           TypeForIgnore self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as TypeForIgnoreImpl).frbInternalSseEncode(move: false),
+        (self as TypeForIgnoreImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -73657,7 +77803,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           TypeForIgnoreAll self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as TypeForIgnoreAllImpl).frbInternalSseEncode(move: false),
+        (self as TypeForIgnoreAllImpl)
+            .frbInternalSseEncode(move: false, serializer: serializer),
         serializer);
   }
 
@@ -74388,7 +78535,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       BoxDartDebugTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxDartDebugTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as BoxDartDebugTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74398,7 +78546,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as BoxDartDebugTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74407,7 +78555,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       BoxDartDebugTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxDartDebugTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as BoxDartDebugTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74417,7 +78566,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as FrbOpaqueReturnTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74427,7 +78576,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as FrbOpaqueReturnTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74436,7 +78585,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       FrbOpaqueReturnTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as FrbOpaqueReturnTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as FrbOpaqueReturnTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74446,7 +78596,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as FrbOpaqueSyncReturnTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74456,7 +78606,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as HideDataAnotherTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74465,7 +78615,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       HideDataTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as HideDataTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as HideDataTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74481,7 +78632,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       HideDataTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as HideDataTwinRustAsyncImpl).frbInternalSseEncode(move: null),
+        (self as HideDataTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74497,7 +78649,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       HideDataTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as HideDataTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as HideDataTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74513,7 +78666,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       MutexHideDataTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MutexHideDataTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as MutexHideDataTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74523,7 +78677,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MutexHideDataTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74532,7 +78686,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       MutexHideDataTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MutexHideDataTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as MutexHideDataTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74541,7 +78696,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       NonCloneDataTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as NonCloneDataTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as NonCloneDataTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74551,7 +78707,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneDataTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74560,7 +78716,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       NonCloneDataTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as NonCloneDataTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as NonCloneDataTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74569,7 +78726,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       RwLockHideDataTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RwLockHideDataTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as RwLockHideDataTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74579,7 +78737,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as RwLockHideDataTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74588,7 +78746,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       RwLockHideDataTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RwLockHideDataTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as RwLockHideDataTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74598,7 +78757,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxAnyMyDartTypeRename self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxAnyMyDartTypeRenameImpl).frbInternalSseEncode(move: null),
+        (self as BoxAnyMyDartTypeRenameImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74608,7 +78768,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxFnStringString self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxFnStringStringImpl).frbInternalSseEncode(move: null),
+        (self as BoxFnStringStringImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74618,7 +78779,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxMyTraitTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxMyTraitTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as BoxMyTraitTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74628,7 +78790,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxMyTraitTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxMyTraitTwinRustAsyncImpl).frbInternalSseEncode(move: null),
+        (self as BoxMyTraitTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74638,7 +78801,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           BoxMyTraitTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as BoxMyTraitTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as BoxMyTraitTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74649,7 +78813,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ConstructorOpaqueStructTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74661,7 +78825,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ConstructorOpaqueSyncStructTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74671,7 +78835,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           CustomHasherTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as CustomHasherTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as CustomHasherTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74682,7 +78847,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as CustomHasherTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74692,7 +78857,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           CustomHasherTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as CustomHasherTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as CustomHasherTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74703,7 +78869,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as DeliberateFailSanityCheckTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74713,7 +78879,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as DroppableTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74723,7 +78890,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinRustAsyncImpl).frbInternalSseEncode(move: null),
+        (self as DroppableTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74733,7 +78901,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           DroppableTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as DroppableTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as DroppableTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74745,7 +78914,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74757,7 +78926,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74769,7 +78938,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74780,7 +78949,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as ItemContainerSolutionOneTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74791,7 +78960,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtNestedTypeWithLifetimeTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74802,7 +78971,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtNestedTypeWithLifetimeTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74813,7 +78982,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtTypeWithLifetimeTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74824,7 +78993,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtTypeWithLifetimeTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74835,7 +79004,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtTypeWithMultiDepTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74846,7 +79015,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as LtTypeWithMultiDepTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74856,7 +79025,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtOwnedStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtOwnedStructTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as LtOwnedStructTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74866,7 +79036,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtOwnedStructTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtOwnedStructTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as LtOwnedStructTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74876,7 +79047,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtSubStructTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtSubStructTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as LtSubStructTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74886,7 +79058,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           LtSubStructTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as LtSubStructTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as LtSubStructTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74896,7 +79069,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           MyAudioParamTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyAudioParamTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as MyAudioParamTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74907,7 +79081,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyImplTraitWithSelfTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74918,7 +79092,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyImplTraitWithSelfTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74928,7 +79102,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           MyNodeTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as MyNodeTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as MyNodeTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74939,7 +79114,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as MyStructWithTryFromTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74949,7 +79124,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           NonCloneDataRaw self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as NonCloneDataRawImpl).frbInternalSseEncode(move: null),
+        (self as NonCloneDataRawImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74960,7 +79136,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleEnumTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74971,7 +79147,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleEnumTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74982,7 +79158,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleEnumTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -74992,7 +79168,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           NonCloneSimpleTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as NonCloneSimpleTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as NonCloneSimpleTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75003,7 +79180,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as NonCloneSimpleTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75013,7 +79190,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           NonCloneSimpleTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as NonCloneSimpleTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as NonCloneSimpleTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75023,7 +79201,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueItemTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueItemTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as OpaqueItemTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75033,7 +79212,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueOneTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueOneTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as OpaqueOneTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75043,7 +79223,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueOneTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueOneTwinRustAsyncImpl).frbInternalSseEncode(move: null),
+        (self as OpaqueOneTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75053,7 +79234,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueOneTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueOneTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as OpaqueOneTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75064,7 +79246,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as OpaqueStructWithDartCodeTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75074,7 +79256,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueTwoTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueTwoTwinNormalImpl).frbInternalSseEncode(move: null),
+        (self as OpaqueTwoTwinNormalImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75084,7 +79267,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueTwoTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueTwoTwinRustAsyncImpl).frbInternalSseEncode(move: null),
+        (self as OpaqueTwoTwinRustAsyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75094,7 +79278,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           OpaqueTwoTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as OpaqueTwoTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as OpaqueTwoTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75106,7 +79291,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as RustAutoOpaqueWebLockingDataTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75117,7 +79302,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as RustOpaqueWebLockingDataTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75127,7 +79312,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SimpleLogger self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as SimpleLoggerImpl).frbInternalSseEncode(move: null),
+        (self as SimpleLoggerImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75138,7 +79324,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as SimpleOpaqueExternalStructWithMethodImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75149,7 +79335,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StaticGetterOnlyTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75160,7 +79346,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StaticGetterOnlyTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75170,7 +79356,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           StaticGetterOnlyTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as StaticGetterOnlyTwinSyncImpl).frbInternalSseEncode(move: null),
+        (self as StaticGetterOnlyTwinSyncImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75181,7 +79368,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructInMiscNoTwinExampleAImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75192,7 +79379,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructInMiscNoTwinExampleBImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75203,7 +79390,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitForDynTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75214,7 +79401,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75225,7 +79412,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructOneWithTraitTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75236,7 +79423,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitForDynTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75247,7 +79434,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75258,7 +79445,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructTwoWithTraitTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75270,7 +79457,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75282,7 +79469,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75294,7 +79481,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75305,7 +79492,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithImplBlockInMultiFileImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75317,7 +79504,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithRustAutoOpaqueFieldWithManyDeriveInnerImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75328,7 +79515,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithSimpleSetterTwinNormalImpl)
-            .frbInternalSseEncode(move: null),
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75338,7 +79525,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           TypeForIgnore self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as TypeForIgnoreImpl).frbInternalSseEncode(move: null),
+        (self as TypeForIgnoreImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75348,7 +79536,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           TypeForIgnoreAll self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as TypeForIgnoreAllImpl).frbInternalSseEncode(move: null),
+        (self as TypeForIgnoreAllImpl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
         serializer);
   }
 
@@ -75356,7 +79545,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_RustOpaque_i32(I32 self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as I32Impl).frbInternalSseEncode(move: null), serializer);
+        (self as I32Impl)
+            .frbInternalSseEncode(move: null, serializer: serializer),
+        serializer);
   }
 
   @protected
