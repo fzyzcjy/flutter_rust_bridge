@@ -2,7 +2,7 @@ use anyhow::*;
 use log::{info, warn};
 use pathdiff::diff_paths;
 use std::fs;
-use std::path::Path;
+use std::path::{Component, Path};
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
@@ -32,6 +32,12 @@ fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> R
             )
             // frb-coverage:ignore-end
         })?;
+    ensure!(
+        !rust_output_path_relative_to_src_folder
+            .components()
+            .any(|component| matches!(component, Component::ParentDir | Component::RootDir)),
+        "rust_output_path must be inside the crate source directory"
+    );
 
     let mod_name = rust_output_path_relative_to_src_folder
         .file_stem()
