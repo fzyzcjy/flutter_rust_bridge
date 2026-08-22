@@ -96,8 +96,12 @@ Future<void> retainGeneratedOhosScaffold({
     'generated_ohos',
   );
   for (final relativePath in relativePaths) {
+    final source = path.join(generatedPackageDir, relativePath);
+    if (path.basename(relativePath) == 'ohos') {
+      _deletePathIfExists(path.join(source, 'node_modules'));
+    }
     _restorePathIfExists(
-      source: path.join(generatedPackageDir, relativePath),
+      source: source,
       destination: path.join(generatedOhosDirectory, relativePath),
     );
   }

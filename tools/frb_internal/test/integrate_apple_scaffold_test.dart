@@ -284,6 +284,41 @@ void main() {
     );
   });
 
+  test('retainGeneratedOhosScaffold drops generated node modules', () async {
+    final tempDir = Directory.systemTemp.createTempSync(
+      'frb-retain-ohos-node-modules-',
+    );
+    addTearDown(() => tempDir.deleteSync(recursive: true));
+
+    final original = Directory('${tempDir.path}/original');
+    final generated = Directory('${tempDir.path}/generated');
+    File('${original.path}/generic.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('original');
+    File('${generated.path}/ohos/scaffold.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-ohos');
+    File('${generated.path}/ohos/node_modules/flutter-hvigor-plugin/index.js')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-dependency');
+
+    await retainGeneratedOhosScaffold(
+      package: 'frb_example/flutter_via_integrate',
+      originalPackageDir: original.path,
+      generatedPackageDir: generated.path,
+      temporaryDirectory: tempDir.path,
+    );
+
+    expect(
+      File('${generated.path}/ohos/scaffold.txt').readAsStringSync(),
+      'generated-ohos',
+    );
+    expect(
+      Directory('${generated.path}/ohos/node_modules').existsSync(),
+      false,
+    );
+  });
+
   test('retainGeneratedOhosScaffold rejects unconfigured packages', () async {
     await expectLater(
       retainGeneratedOhosScaffold(
