@@ -37,6 +37,7 @@ class VersionInfo {
 
 Future<void> release() async {
   print('Version info: ${computeVersionInfo()}');
+  verifyReleaseSubmodules();
   await releaseUpdateVersion();
   await releaseUpdateCode();
   await releaseUpdateScoop();
@@ -183,6 +184,7 @@ String releaseCargoLockTemplatePathForTesting() =>
     '${exec.pwd}frb_codegen/assets/integration_template/shared/shared/REPLACE_ME_RUST_CRATE_DIR/Cargo.lock.template';
 
 Future<void> releasePublishAll() async {
+  verifyReleaseSubmodules();
   await exec('cd frb_codegen && cargo publish');
   await exec('cd frb_macros && cargo publish');
   await exec('cd frb_rust && cargo publish');
@@ -193,6 +195,43 @@ Future<void> releasePublishAll() async {
     'cd frb_hooks && dart pub publish --force --server=https://pub.dartlang.org',
   );
 }
+
+void verifyReleaseSubmodules({String? repoRoot, String? submoduleStatus}) {
+  final status =
+      submoduleStatus ?? _gitSubmoduleStatus(repoRoot ?? '${exec.pwd}');
+  final uninitializedPaths = _uninitializedSubmodulePaths(status);
+
+  if (uninitializedPaths.isNotEmpty) {
+    throw Exception(
+      [
+        'Release submodules are uninitialized. Run `git submodule update --init --recursive` before publishing.',
+        ...uninitializedPaths.map((path) => '- $path'),
+      ].join('\n'),
+    );
+  }
+}
+
+String _gitSubmoduleStatus(String repoRoot) {
+  final result = Process.runSync('git', [
+    'submodule',
+    'status',
+    '--recursive',
+  ], workingDirectory: repoRoot);
+  if (result.exitCode != 0) {
+    throw Exception('Failed to check git submodule status: ${result.stderr}');
+  }
+  return result.stdout as String;
+}
+
+@visibleForTesting
+List<String> uninitializedSubmodulePathsForTesting(String status) =>
+    _uninitializedSubmodulePaths(status);
+
+List<String> _uninitializedSubmodulePaths(String status) => status
+    .split('\n')
+    .where((line) => line.startsWith('-'))
+    .map((line) => line.trim().split(RegExp(r'\s+'))[1])
+    .toList();
 
 String getFrbDartVersion() => loadYaml(
   File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync(),

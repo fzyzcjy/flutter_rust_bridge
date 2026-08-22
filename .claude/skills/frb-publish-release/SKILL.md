@@ -13,6 +13,14 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 - Work from the repository root on the intended release branch, normally fresh `master`. If the checkout is detached but already points at the intended release commit, switch or create a local release branch from that commit before running mutating release commands; do not treat detached HEAD itself as a release blocker.
 - Check `git status --short --branch` and do not start publishing from a dirty tree.
+- Check submodules before publishing:
+
+  ```bash
+  git submodule update --init --recursive
+  git submodule status --recursive
+  ```
+
+  Stop if any submodule path remains uninitialized. A release built without initialized submodules can publish incomplete package contents. The release script performs the same submodule-status guard before publishing.
 - Treat `master` as a moving branch. Before each irreversible release phase, fetch `origin master`, confirm the current release branch or detached checkout still points at the intended latest `origin/master` commit, and re-run `git status --short --branch` to confirm there are no unexpected local changes.
 - Confirm the target version in `CHANGELOG.md`, root `Cargo.toml`, and `frb_dart/pubspec.yaml`.
 - Compute the release versions the same way `./frb_internal release` does: the top `CHANGELOG.md` version is the new version and the next release section is the old version.
@@ -47,17 +55,19 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 ### 2. Reconcile Contributors
 
-- Before writing the release changelog, use `frb-add-contributor` to identify contributors from the target release range who may need all-contributors credit.
-- Follow `frb-add-contributor` exactly. In particular, after determining which contributors may need to be added, stop for human confirmation before editing contributor files, posting GitHub comments, triggering all-contributors, opening PRs, or merging contributor PRs.
-- Do not continue to changelog preparation until contributor reconciliation is either complete, confirmed unnecessary because all contributors are already credited, or explicitly deferred by the human release owner.
+- Before writing the release changelog, use `frb-add-contributor` to identify contributors from the target release range who may need all-contributors credit or whose human-written custom description does not cover every release-range PR.
+- Follow `frb-add-contributor` exactly. In particular, after determining which contributors may need to be added or have their custom descriptions extended, stop for human confirmation before editing contributor files, posting GitHub comments, triggering all-contributors, opening PRs, or merging contributor PRs.
+- Do not continue to changelog preparation until contributor reconciliation is complete, or confirmed unnecessary because all contributors are credited and their custom descriptions cover every third-party PR in the release range.
 
 ### 3. Write Changelog
 
 - Use `frb-write-changelog` to create or refresh the target release section in `CHANGELOG.md`.
 - When reviewing the release section, explicitly check every third-party human-authored PR in the release range, including docs, CI, chore, and tooling PRs. Each must either have `(thanks @username)` in the matching changelog entry or a documented reason for omission.
 - Be careful with grouped entries: if a local maintainer PR and a third-party PR are summarized together, the grouped entry still needs the third-party thanks attribution.
-- Review the release section manually before publishing. The top `CHANGELOG.md` version is the source used by `frb_internal release`.
+- If `CHANGELOG.md` changed for the release, stop and ask a human to review the actual release-section text. Do not publish until the human explicitly confirms that text; approval of the file change, PR, CI result, or release process does not count as confirmation of the changelog text.
+- The top `CHANGELOG.md` version is the source used by `frb_internal release`.
 - If changelog or version files changed, commit that release preparation before publishing.
+- Land contributor and changelog preparation commits on `origin/master` before publishing. Do not leave release preparation only on a side branch.
 
 ### 4. Publish
 
@@ -66,6 +76,8 @@ Use the repository release command through a temporary Docker container with pub
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release
 ```
+
+Run the one-shot command from a clean local `master` that tracks the latest `origin/master`. `release-update-git` uses plain `git push`, so do not run the command from a side release branch.
 
 Do not split the normal release into separate `release-update-*` or publish commands. The one-shot command is the source of truth for release sequencing: it computes old/new versions from `CHANGELOG.md`, updates checked-in versions and generated version text, updates Scoop metadata, commits and pushes the version bump, creates the GitHub release, then runs the registry publisher:
 

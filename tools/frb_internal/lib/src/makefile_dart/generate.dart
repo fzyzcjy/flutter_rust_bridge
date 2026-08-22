@@ -12,6 +12,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate_from_scratch.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalizer.dart';
@@ -42,6 +43,10 @@ List<Command<void>> createCommands() {
       generateRunFrbCodegenCommandGenerate,
       _$populateGeneratePackageConfigParser,
       _$parseGeneratePackageConfigResult,
+    ),
+    SimpleCommand(
+      'generate-run-frb-codegen-command-generate-from-scratch',
+      generateRunFrbCodegenCommandGenerateFromScratch,
     ),
     SimpleConfigCommand(
       'generate-run-frb-codegen-command-integrate',
@@ -105,9 +110,11 @@ List<Command<void>> createCommands() {
 }
 
 @CliOptions()
-class GenerateConfig {
+class GenerateConfig implements _GenerateCommonConfig {
+  @override
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
+  @override
   final bool coverage;
 
   const GenerateConfig({
@@ -117,7 +124,7 @@ class GenerateConfig {
 }
 
 @CliOptions()
-class GeneratePackageConfig implements GenerateConfig {
+class GeneratePackageConfig implements _GenerateCommonConfig {
   @override
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
@@ -125,7 +132,6 @@ class GeneratePackageConfig implements GenerateConfig {
   final String package;
   @override
   final bool coverage;
-
   const GeneratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
@@ -134,7 +140,7 @@ class GeneratePackageConfig implements GenerateConfig {
 }
 
 @CliOptions()
-class GenerateIntegratePackageConfig implements GenerateConfig {
+class GenerateIntegratePackageConfig implements _GenerateCommonConfig {
   @override
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
@@ -161,6 +167,11 @@ class GenerateWebsiteConfig {
   final bool coverage;
 
   const GenerateWebsiteConfig({required this.coverage});
+}
+
+abstract interface class _GenerateCommonConfig {
+  bool get setExitIfChanged;
+  bool get coverage;
 }
 
 Future<void> generateInternal(
@@ -330,7 +341,21 @@ void _replaceCustomMessageText(String customMessageText) {
 
 Future<void> generateInternalReadme(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    final readmeText = File('${exec.pwd}README.md').readAsStringSync();
+    final rootPath = exec.pwd;
+    final readmeText = File('${rootPath}README.md').readAsStringSync();
+
+    _writeGeneratedDocumentationFile(
+      path: '${rootPath}frb_dart/README.md',
+      text: readmeText,
+    );
+
+    final changelogText = File('${rootPath}CHANGELOG.md').readAsStringSync();
+    for (final package in kDartPublishedPackages) {
+      _writeGeneratedDocumentationFile(
+        path: '$rootPath$package/CHANGELOG.md',
+        text: changelogText,
+      );
+    }
 
     {
       const kPrelude = '''---
@@ -356,9 +381,21 @@ hide_title: true
       //   inside: kShowMeTheCode,
       // );
 
-      File('${exec.pwd}/website/docs/index.md').writeAsStringSync(text);
+      File('${rootPath}website/docs/index.md').writeAsStringSync(text);
     }
   });
+}
+
+void _writeGeneratedDocumentationFile({
+  required String path,
+  required String text,
+}) {
+  if (FileSystemEntity.typeSync(path, followLinks: false) ==
+      FileSystemEntityType.link) {
+    Link(path).deleteSync();
+  }
+
+  File(path).writeAsStringSync(text);
 }
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
@@ -562,7 +599,7 @@ Future<RunCommandOutput> executeFrbCodegen(
 // }
 
 Future<void> _wrapMaybeSetExitIfChanged(
-  GenerateConfig config,
+  _GenerateCommonConfig config,
   Future<void> Function() inner, {
   String? extraArgs,
 }) async {

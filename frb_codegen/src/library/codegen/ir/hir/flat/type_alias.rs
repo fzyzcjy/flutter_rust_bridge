@@ -8,6 +8,9 @@ pub struct HirFlatTypeAlias {
     pub(crate) ident: String,
     #[serde(serialize_with = "serialize_syn")]
     pub(crate) target: Type,
+    /// Type parameter names of a generic alias, e.g. `["T"]` for
+    /// `type AppResult<T> = Result<T, AppError>`. Empty for non-generic aliases.
+    pub(crate) type_params: Vec<String>,
 }
 
 impl HirFlatComponent<String> for HirFlatTypeAlias {

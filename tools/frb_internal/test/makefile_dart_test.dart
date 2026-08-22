@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate_from_scratch.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
@@ -80,6 +81,47 @@ void main() {
 
   test('release Cargo lock template path exists', () {
     expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
+  });
+
+  test('release guard rejects uninitialized submodules', () {
+    expect(
+      () => verifyReleaseSubmodules(
+        submoduleStatus:
+            '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+      ),
+      throwsA(
+        isA<Exception>().having(
+          (error) => error.toString(),
+          'message',
+          contains('git submodule update --init --recursive'),
+        ),
+      ),
+    );
+  });
+
+  test('release guard accepts initialized submodules', () {
+    expect(
+      () => verifyReleaseSubmodules(
+        submoduleStatus:
+            ' 6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit (heads/main)\n'
+            ' 6f7144d frb_codegen/assets/integration_template/cargokit/plugin/cargokit (heads/main)',
+      ),
+      returnsNormally,
+    );
+  });
+
+  test('release guard reports all uninitialized submodules', () {
+    expect(
+      uninitializedSubmodulePathsForTesting(
+        '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit\n'
+        ' 6f7144d frb_codegen/assets/integration_template/cargokit/plugin/cargokit\n'
+        '-1234567 unrelated/submodule',
+      ),
+      [
+        'frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+        'unrelated/submodule',
+      ],
+    );
   });
 
   test(
@@ -203,6 +245,70 @@ line with spaces
 plain
 ''',
     );
+  });
+
+  test('from-scratch selection keeps every tracked generated output', () {
+    expect(
+      selectTrackedGeneratedFilesForFromScratchForTesting([
+        'frb_example/example/frb_generated.h',
+        'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/unrelated_model.g.dart',
+        'frb_example/rust_ui/src/frb_generated.rs',
+        'frb_rust/src/internal_generated/mod.rs',
+        'frb_dart/lib/src/ffigen_generated/multi_package.dart',
+        'frb_dart/lib/src/cli/build_web/entrypoint.g.dart',
+        'frb_codegen/assets/integration_template/shared/lib/src/rust/frb_generated.dart',
+        'frb_codegen/assets/integration_template/shared/lib/model.g.dart',
+        'frb_example/example/lib/model.dart',
+      ]),
+      [
+        'frb_example/example/frb_generated.h',
+        'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/unrelated_model.g.dart',
+        'frb_example/rust_ui/src/frb_generated.rs',
+        'frb_rust/src/internal_generated/mod.rs',
+        'frb_dart/lib/src/ffigen_generated/multi_package.dart',
+        'frb_dart/lib/src/cli/build_web/entrypoint.g.dart',
+      ],
+    );
+  });
+
+  test('from-scratch restoration check reports every missing output', () async {
+    final tempDir = await Directory.systemTemp.createTemp(
+      'frb_generated_restore_',
+    );
+    try {
+      final restoredFile = File('${tempDir.path}/restored.g.dart');
+      await restoredFile.writeAsString('restored');
+
+      expect(
+        () => verifyGeneratedFilesRestoredForTesting(
+          repoRoot: tempDir.path,
+          expectedGeneratedFiles: [
+            'restored.g.dart',
+            'missing.freezed.dart',
+            'rust/src/frb_generated.rs',
+          ],
+        ),
+        throwsA(
+          isA<StateError>()
+              .having(
+                (error) => error.message,
+                'message',
+                contains('missing.freezed.dart'),
+              )
+              .having(
+                (error) => error.message,
+                'message',
+                contains('rust/src/frb_generated.rs'),
+              ),
+        ),
+      );
+    } finally {
+      await tempDir.delete(recursive: true);
+    }
   });
 
   test('pub get guard refreshes stale package config roots', () async {

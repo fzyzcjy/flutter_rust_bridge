@@ -66,7 +66,9 @@ You can install llvm using `brew install llvm` and it will be installed at `/usr
 
 ## Freezed file is sometimes not generated when it should be
 
-If your `.freezed.dart` or `.g.dart` seems outdated, ensure you have run the `build_runner`.
+With automatic `build_runner` invocation enabled, code generation runs `build_runner` 1.7.0 or newer for required `.freezed.dart` outputs and, when JSON serialization is needed, `.g.dart` outputs under the configured `dart_output` directory. If those files seem outdated, ensure `build_runner`, `freezed`, and the corresponding annotations are installed.
+
+Run `build_runner` separately when the Dart package contains unrelated builders whose outputs live outside `dart_output`. The automatic invocation uses output filters to scope work to FRB-generated outputs. For non-library output paths that build_runner 1.7 cannot represent safely as filters, it falls back to an unfiltered build to preserve generation correctness.
 
 Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/330
 

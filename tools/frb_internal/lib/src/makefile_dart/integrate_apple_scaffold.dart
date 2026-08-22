@@ -44,6 +44,7 @@ const _kPreservedOhosScaffoldPaths = <String, List<String>>{
     'rust_builder/pubspec.yaml',
   ],
   'frb_example/flutter_via_create_native_assets': ['ohos'],
+  'frb_example/flutter_via_integrate': ['ohos'],
 };
 
 List<String> integrateAppleScaffoldSourceOfTruthPackages() =>

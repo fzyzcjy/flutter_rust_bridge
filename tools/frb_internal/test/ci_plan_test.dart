@@ -21,6 +21,11 @@ void main() {
           kCiJobs.map((job) => job.id).toSet(),
           reason: filter,
         );
+        expect(
+          plan.enabledJobs,
+          contains('generate_run_frb_codegen_command_generate_from_scratch'),
+          reason: filter,
+        );
         expect(plan.matrixByJob['test_dart_web'], {
           'include': [
             {'package': 'frb_dart', 'wasm': false},
@@ -274,10 +279,33 @@ void main() {
       });
     });
 
+    test('single NixOS Flutter smoke filter selects one entry', () {
+      final plan = buildCiPlan(
+        filter: 'test_flutter_quickstart_smoke[platform=nixos]',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'test_flutter_quickstart_smoke'});
+      expect(plan.matrixByJob['test_flutter_quickstart_smoke'], {
+        'include': [
+          {
+            'info': {
+              'image': 'ubuntu-latest',
+              'platform': 'nixos',
+              'target': 'desktop',
+              'device': 'linux',
+              'package': 'frb_example--flutter_via_create',
+              'package_path': 'frb_example/flutter_via_create',
+            },
+          },
+        ],
+      });
+    });
+
     test('values containing spaces are accepted verbatim', () {
       final plan = buildCiPlan(
         filter:
-            'test_flutter_native_ios[device=iPhone 16 Pro Max Simulator (18.6),package=frb_example--rust_ui_counter--ui]',
+            'test_flutter_native_ios[device=iPhone 17 Pro Max Simulator (26.5),package=frb_example--rust_ui_counter--ui]',
         automaticCiDisabled: false,
       );
 
@@ -286,7 +314,7 @@ void main() {
         'include': [
           {
             'package': 'frb_example--rust_ui_counter--ui',
-            'device': 'iPhone 16 Pro Max Simulator (18.6)',
+            'device': 'iPhone 17 Pro Max Simulator (26.5)',
           },
         ],
       });
@@ -540,14 +568,14 @@ void main() {
       ),
       const _CiFilterExample(
         filter:
-            'test_flutter_native_ios[device=iPhone 16 Pro Max Simulator (18.6),package=frb_example--rust_ui_counter--ui]',
+            'test_flutter_native_ios[device=iPhone 17 Pro Max Simulator (26.5),package=frb_example--rust_ui_counter--ui]',
         enabledJobs: {'test_flutter_native_ios'},
         matrixByJob: {
           'test_flutter_native_ios': {
             'include': [
               {
                 'package': 'frb_example--rust_ui_counter--ui',
-                'device': 'iPhone 16 Pro Max Simulator (18.6)',
+                'device': 'iPhone 17 Pro Max Simulator (26.5)',
               },
             ],
           },
@@ -578,6 +606,33 @@ void main() {
                 'image': 'ubuntu-24.04',
                 'package': 'frb_example--flutter_via_create',
                 'platforms': 'ohos',
+              },
+            ],
+          },
+        },
+      ),
+      const _CiFilterExample(
+        filter: 'build_flutter[target=ohos]',
+        enabledJobs: {'build_flutter'},
+        matrixByJob: {
+          'build_flutter': {
+            'include': [
+              {
+                'info': {
+                  'image': 'ubuntu-latest',
+                  'target': 'ohos',
+                  'package': 'frb_example--flutter_via_create',
+                  'package_path': 'frb_example/flutter_via_create',
+                },
+              },
+              {
+                'info': {
+                  'image': 'ubuntu-latest',
+                  'target': 'ohos',
+                  'package': 'frb_example--flutter_via_integrate',
+                  'package_path': 'frb_example/flutter_via_integrate',
+                  'prepare_ohos_package': 'frb_example--flutter_via_integrate',
+                },
               },
             ],
           },

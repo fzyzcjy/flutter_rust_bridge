@@ -53,6 +53,7 @@ final kCiJobs = [
             {'image': image, 'package': package},
     ]),
   ),
+  const CiJob('generate_run_frb_codegen_command_generate_from_scratch'),
   CiJob(
     'generate_run_frb_codegen_command_integrate',
     matrix: CiMatrix([
@@ -109,6 +110,13 @@ final kCiJobs = [
           'target': 'ohos',
           'package': 'frb_example--flutter_via_create',
           'package_path': 'frb_example/flutter_via_create',
+        },
+        {
+          'image': 'ubuntu-latest',
+          'target': 'ohos',
+          'package': 'frb_example--flutter_via_integrate',
+          'package_path': 'frb_example/flutter_via_integrate',
+          'prepare_ohos_package': 'frb_example--flutter_via_integrate',
         },
       ])
         {'info': info},
@@ -185,7 +193,7 @@ final kCiJobs = [
     'test_flutter_native_ios',
     matrix: CiMatrix([
       for (final package in _flutterNativePackages)
-        {'package': package, 'device': 'iPhone 16 Pro Max Simulator (18.6)'},
+        {'package': package, 'device': 'iPhone 17 Pro Max Simulator (26.5)'},
     ]),
   ),
   CiJob(
@@ -287,7 +295,7 @@ List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
       'image': 'macos-latest',
       'platform': 'ios',
       'target': 'ios',
-      'device': 'iPhone 16 Pro Max Simulator (18.6)',
+      'device': 'iPhone 17 Pro Max Simulator (26.5)',
       'package': package,
       'package_path': packagePath,
     },
@@ -299,6 +307,15 @@ List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
       'package': package,
       'package_path': packagePath,
     },
+    if (package == 'frb_example--flutter_via_create')
+      {
+        'image': 'ubuntu-latest',
+        'platform': 'nixos',
+        'target': 'desktop',
+        'device': 'linux',
+        'package': package,
+        'package_path': packagePath,
+      },
     {
       'image': 'macos-15-intel',
       'platform': 'macos',
