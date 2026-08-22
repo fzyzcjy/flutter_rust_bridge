@@ -93,6 +93,7 @@ For beta versions such as `2.13.0-beta.1`, do not require the GitHub release to 
 - `frb_macros` -> crates.io package `flutter_rust_bridge_macros`
 - `frb_rust` -> crates.io package `flutter_rust_bridge`
 - `frb_dart` -> pub.dev package `flutter_rust_bridge`
+- `frb_hooks` -> pub.dev package `flutter_rust_bridge_hooks`
 
 Only use a split subcommand as a recovery path after confirming which one-shot step already completed. For example, if the version bump and GitHub release already exist and only registry publication is needed, use `.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all` directly.
 

@@ -91,16 +91,17 @@ Future<List<ReleasePackageStatus>> fetchReleasePackageStatuses({
           fetcher: fetcher,
         ),
       ),
-    ReleasePackageStatus(
-      registry: 'pub.dev',
-      name: 'flutter_rust_bridge',
-      manifestVersion: dartVersion,
-      releasedVersion: await fetchPubDevReleasedVersion(
-        'flutter_rust_bridge',
-        targetVersion: dartVersion,
-        fetcher: fetcher,
+    for (final package in ['flutter_rust_bridge', 'flutter_rust_bridge_hooks'])
+      ReleasePackageStatus(
+        registry: 'pub.dev',
+        name: package,
+        manifestVersion: dartVersion,
+        releasedVersion: await fetchPubDevReleasedVersion(
+          package,
+          targetVersion: dartVersion,
+          fetcher: fetcher,
+        ),
       ),
-    ),
   ];
 }
 

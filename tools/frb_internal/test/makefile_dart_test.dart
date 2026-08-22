@@ -631,8 +631,80 @@ plain
         statuses.map((status) => status.manifestVersion),
         everyElement('9.9.9'),
       );
+      expect(statuses.map((status) => (status.registry, status.name)), [
+        ('crates.io', 'flutter_rust_bridge_codegen'),
+        ('crates.io', 'flutter_rust_bridge_macros'),
+        ('crates.io', 'flutter_rust_bridge'),
+        ('pub.dev', 'flutter_rust_bridge'),
+        ('pub.dev', 'flutter_rust_bridge_hooks'),
+      ]);
       expect(statuses.map((status) => status.isReleased), everyElement(true));
     });
+
+    test(
+      'reports hooks as unreleased when its target version is absent',
+      () async {
+        final statuses = await fetchReleasePackageStatuses(
+          targetVersion: '9.9.9',
+          fetcher: (uri) async {
+            if (uri.host == 'crates.io') {
+              return {
+                'crate': {'max_version': '9.9.9'},
+              };
+            }
+            if (uri.path.endsWith('/flutter_rust_bridge_hooks')) {
+              return {'versions': <Map<String, String>>[]};
+            }
+            return {
+              'versions': [
+                {'version': '9.9.9'},
+              ],
+            };
+          },
+        );
+
+        final output = buildReleasePackageStatusOutput(statuses);
+        final hooksStatus = statuses.singleWhere(
+          (status) => status.name == 'flutter_rust_bridge_hooks',
+        );
+        expect(output['allReleased'], false);
+        expect(hooksStatus.releasedVersion, isNull);
+        expect(hooksStatus.isReleased, false);
+      },
+    );
+
+    test(
+      'reports hooks as unreleased when only another version exists',
+      () async {
+        final statuses = await fetchReleasePackageStatuses(
+          targetVersion: '9.9.9',
+          fetcher: (uri) async {
+            if (uri.host == 'crates.io') {
+              return {
+                'crate': {'max_version': '9.9.9'},
+              };
+            }
+            final version = uri.path.endsWith('/flutter_rust_bridge_hooks')
+                ? '9.9.8'
+                : '9.9.9';
+            return {
+              'latest': {'version': version},
+              'versions': [
+                {'version': version},
+              ],
+            };
+          },
+        );
+
+        final output = buildReleasePackageStatusOutput(statuses);
+        final hooksStatus = statuses.singleWhere(
+          (status) => status.name == 'flutter_rust_bridge_hooks',
+        );
+        expect(output['allReleased'], false);
+        expect(hooksStatus.releasedVersion, '9.9.8');
+        expect(hooksStatus.isReleased, false);
+      },
+    );
 
     test(
       'uses local Dart manifest version as pub.dev target version',
@@ -656,11 +728,18 @@ plain
           },
         );
 
-        final pubDevStatus = statuses.singleWhere(
+        final pubDevStatuses = statuses.where(
           (status) => status.registry == 'pub.dev',
         );
-        expect(pubDevStatus.releasedVersion, dartVersion);
-        expect(pubDevStatus.isReleased, true);
+        expect(pubDevStatuses, hasLength(2));
+        expect(
+          pubDevStatuses.map((status) => status.releasedVersion),
+          everyElement(dartVersion),
+        );
+        expect(
+          pubDevStatuses.map((status) => status.isReleased),
+          everyElement(true),
+        );
       },
     );
   });
