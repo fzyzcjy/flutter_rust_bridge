@@ -65,16 +65,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   }
 
-  test('dart call handle_stream_sink_at_1', () {
-    testHandleStream(handleStreamSinkAt1TwinRustAsyncSse);
+  test('dart call handle_stream_sink_at_1', () async {
+    await testHandleStream(handleStreamSinkAt1TwinRustAsyncSse);
   });
 
-  test('dart call handle_stream_sink_at_2', () {
-    testHandleStream(handleStreamSinkAt2TwinRustAsyncSse);
+  test('dart call handle_stream_sink_at_2', () async {
+    await testHandleStream(handleStreamSinkAt2TwinRustAsyncSse);
   });
 
-  test('dart call handle_stream_sink_at_3', () {
-    testHandleStream(handleStreamSinkAt3TwinRustAsyncSse);
+  test('dart call handle_stream_sink_at_3', () async {
+    await testHandleStream(handleStreamSinkAt3TwinRustAsyncSse);
   });
 
   test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {

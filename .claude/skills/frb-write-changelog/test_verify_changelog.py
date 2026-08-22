@@ -44,9 +44,11 @@ def test_verify_changelog_accepts_complete_section_with_grouped_prs() -> None:
         merged_prs=merged_prs,
         version="2.0.0",
         previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        release_time=None,
         local_authors={"fzyzcjy"},
         ignored_pr_numbers=set(),
         extra_local_pr_numbers=set(),
+        extra_thanks_authors=set(),
     )
 
     assert result.ok is True
@@ -78,9 +80,11 @@ def test_verify_changelog_reports_missing_extra_and_duplicate_pr_numbers() -> No
         merged_prs=merged_prs,
         version="2.0.0",
         previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        release_time=None,
         local_authors={"fzyzcjy"},
         ignored_pr_numbers=set(),
         extra_local_pr_numbers=set(),
+        extra_thanks_authors=set(),
     )
 
     assert result.ok is False
@@ -112,9 +116,11 @@ def test_verify_changelog_reports_thanks_attribution_problems() -> None:
         merged_prs=merged_prs,
         version="2.0.0",
         previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        release_time=None,
         local_authors={"fzyzcjy"},
         ignored_pr_numbers=set(),
         extra_local_pr_numbers=set(),
+        extra_thanks_authors=set(),
     )
 
     assert result.ok is False
@@ -147,9 +153,11 @@ def test_verify_changelog_accepts_duplicate_thanks_author() -> None:
         merged_prs=merged_prs,
         version="2.0.0",
         previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        release_time=None,
         local_authors={"fzyzcjy"},
         ignored_pr_numbers=set(),
         extra_local_pr_numbers=set(),
+        extra_thanks_authors=set(),
     )
 
     assert result.ok is True
@@ -183,9 +191,11 @@ def test_verify_changelog_reports_thanks_order_problems() -> None:
         merged_prs=merged_prs,
         version="2.0.0",
         previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        release_time=None,
         local_authors={"fzyzcjy"},
         ignored_pr_numbers=set(),
         extra_local_pr_numbers=set(),
+        extra_thanks_authors=set(),
     )
 
     assert result.ok is False
@@ -214,14 +224,45 @@ def test_verify_changelog_accepts_stacked_local_pr() -> None:
         merged_prs=merged_prs,
         version="2.0.0",
         previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        release_time=None,
         local_authors={"fzyzcjy"},
         ignored_pr_numbers=set(),
         extra_local_pr_numbers={4},
+        extra_thanks_authors=set(),
     )
 
     assert result.ok is True
     assert result.expected_pr_numbers == [4, 3, 2]
     assert result.actual_pr_numbers == [4, 3, 2]
+
+
+def test_verify_changelog_accepts_verified_coauthor_thanks() -> None:
+    """Verifier accepts a manually verified co-author credit."""
+
+    changelog_text = """
+# Changelog
+
+## 2.0.0
+
+* Fix stream setup error #3 (thanks @coauthor)
+
+## 1.0.0
+"""
+
+    result = verify_changelog.verify_changelog(
+        changelog_text=changelog_text,
+        merged_prs=[make_pr(number=3)],
+        version="2.0.0",
+        previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        release_time=None,
+        local_authors={"fzyzcjy"},
+        ignored_pr_numbers=set(),
+        extra_local_pr_numbers=set(),
+        extra_thanks_authors={"coauthor"},
+    )
+
+    assert result.ok is True
+    assert result.expected_thanks_authors == ["coauthor"]
 
 
 def make_pr(
