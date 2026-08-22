@@ -139,3 +139,36 @@ pub(crate) fn generate_list_generate_allocate_func(
         needs_ffigen: true,
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::optional::MirTypeOptional;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    /// Adds pointer indirection only for CST list elements that are pointer-shaped.
+    #[test]
+    fn general_list_indirection_covers_scalar_optional_and_string_elements() {
+        let scalar = MirTypeGeneralList {
+            inner: Box::new(MirType::Primitive(MirTypePrimitive::I32)),
+        };
+        let optional = MirTypeGeneralList {
+            inner: Box::new(MirType::Optional(MirTypeOptional::new(MirType::Primitive(
+                MirTypePrimitive::I32,
+            )))),
+        };
+        let string = MirTypeGeneralList {
+            inner: Box::new(MirType::Delegate(MirTypeDelegate::String)),
+        };
+
+        assert_eq!(general_list_maybe_extra_pointer_indirection(&scalar), "");
+        assert_eq!(
+            general_list_maybe_extra_pointer_indirection(&optional),
+            "*mut "
+        );
+        assert_eq!(
+            general_list_maybe_extra_pointer_indirection(&string),
+            "*mut "
+        );
+    }
+}

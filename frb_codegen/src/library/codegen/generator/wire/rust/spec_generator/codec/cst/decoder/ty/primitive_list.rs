@@ -135,3 +135,37 @@ fn rust_web_wire_type(mir: &MirTypePrimitiveList) -> &str {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Maps every primitive family to its JavaScript wire array.
+    #[test]
+    fn rust_web_wire_type_covers_every_primitive_family() {
+        let cases = [
+            (MirTypePrimitive::U8, "Uint8Array"),
+            (MirTypePrimitive::I8, "Int8Array"),
+            (MirTypePrimitive::U16, "Uint16Array"),
+            (MirTypePrimitive::I16, "Int16Array"),
+            (MirTypePrimitive::U32, "Uint32Array"),
+            (MirTypePrimitive::Usize, "Uint32Array"),
+            (MirTypePrimitive::I32, "Int32Array"),
+            (MirTypePrimitive::Isize, "Int32Array"),
+            (MirTypePrimitive::U64, "BigUint64Array"),
+            (MirTypePrimitive::I64, "BigInt64Array"),
+            (MirTypePrimitive::F32, "Float32Array"),
+            (MirTypePrimitive::F64, "Float64Array"),
+            (MirTypePrimitive::Bool, "Array"),
+            (MirTypePrimitive::Unit, "Array"),
+        ];
+
+        for (primitive, expected_suffix) in cases {
+            let mir = MirTypePrimitiveList {
+                primitive,
+                strict_dart_type: true,
+            };
+            assert!(rust_web_wire_type(&mir).ends_with(expected_suffix));
+        }
+    }
+}

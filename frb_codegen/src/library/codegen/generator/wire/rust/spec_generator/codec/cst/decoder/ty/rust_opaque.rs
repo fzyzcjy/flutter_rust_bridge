@@ -43,3 +43,18 @@ pub(super) fn generalized_rust_opaque_rust_wire_type(target: Target) -> String {
     }
     .into()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Uses ABI-sized handles for IO and JavaScript values for web.
+    #[test]
+    fn generalized_rust_opaque_wire_type_matches_each_target_abi() {
+        assert_eq!(generalized_rust_opaque_rust_wire_type(Target::Io), "usize");
+        assert_eq!(
+            generalized_rust_opaque_rust_wire_type(Target::Web),
+            JS_VALUE,
+        );
+    }
+}
