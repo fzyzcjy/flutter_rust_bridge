@@ -28,6 +28,8 @@ That package currently wraps [`native_toolchain_rust`](https://pub.dev/packages/
 
 If the project already has `hook/build.dart`, `integrate` preserves it and prints a warning instead of modifying it. Add `FlutterRustBridgeNativeAssetsBuilder` to the existing hook manually; see the generated hook from a new Native Assets project for the required call.
 
+For existing projects that already use Cargokit, see [Migrate from Cargokit to Native Assets](migrate-cargokit-to-native-assets).
+
 ## Rust crate requirements
 
 The Rust crate must be buildable by Cargo for the requested target platform.
