@@ -81,3 +81,31 @@ impl GeneralizedRustOpaqueParserInfo {
         (self.0.entry(type_safe_ident).or_insert(insert_value)).clone()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Reuses the first parser information registered for a type name.
+    #[test]
+    fn generalized_parser_info_preserves_the_initial_registration() {
+        let mut info = GeneralizedRustOpaqueParserInfo::default();
+        let first = RustOpaqueParserTypeInfo::new(
+            Namespace::new(vec!["crate_one".to_owned()]),
+            RustOpaqueCodecMode::Nom,
+        );
+        let second = RustOpaqueParserTypeInfo::new(
+            Namespace::new(vec!["crate_two".to_owned()]),
+            RustOpaqueCodecMode::Moi,
+        );
+
+        assert_eq!(
+            info.get_or_insert("Widget".to_owned(), first.clone()).codec,
+            RustOpaqueCodecMode::Nom
+        );
+        let retained = info.get_or_insert("Widget".to_owned(), second);
+
+        assert_eq!(retained.namespace, first.namespace);
+        assert_eq!(retained.codec, RustOpaqueCodecMode::Nom);
+    }
+}
