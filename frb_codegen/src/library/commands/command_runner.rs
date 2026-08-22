@@ -1,12 +1,14 @@
+use crate::utils::console::println_over_progress;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::{bail, Context};
 use itertools::Itertools;
-use log::debug;
-use log::warn;
+use log::{debug, warn, LevelFilter};
 use std::collections::HashMap;
+use std::io::{BufRead, BufReader, Read};
 use std::path::{Path, PathBuf};
-use std::process::Command;
-use std::process::Output;
+use std::process::{Command, Output, Stdio};
+use std::sync::Arc;
+use std::thread;
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.
@@ -168,6 +170,7 @@ pub fn windows_escape_for_powershell(section_in: &str) -> String {
 pub(crate) struct ExecuteCommandOptions {
     pub envs: Option<HashMap<String, String>>,
     pub log_when_error: Option<bool>,
+    pub stream_output: bool,
 }
 
 pub(crate) fn execute_command<'a>(
@@ -195,9 +198,13 @@ pub(crate) fn execute_command<'a>(
         bin, args_display, current_dir, cmd
     );
 
-    let result = cmd
-        .output()
-        .with_context(|| format!(r#""{bin}" "{args_display}" failed (cmd={cmd:?})"#))?;
+    let stream_output = should_stream_command_output(options.stream_output, log::max_level());
+    let result = (if stream_output {
+        execute_command_streaming(&mut cmd, bin, &args_display)
+    } else {
+        cmd.output().map_err(anyhow::Error::from)
+    })
+    .with_context(|| format!(r#""{bin}" "{args_display}" failed (cmd={cmd:?})"#))?;
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {
@@ -213,7 +220,8 @@ pub(crate) fn execute_command<'a>(
             warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} stdout={:?}", cmd, stdout);
             // frb-coverage:ignore-end
         }
-    } else if options.log_when_error.unwrap_or(true) {
+    } else if options.log_when_error.unwrap_or(true) && !stream_output {
+        // Streaming already printed the child output live; do not dump it again.
         warn!(
             "command={:?} stdout={} stderr={}",
             cmd,
@@ -222,6 +230,81 @@ pub(crate) fn execute_command<'a>(
         );
     }
     Ok(result)
+}
+
+fn should_stream_command_output(force: bool, max_level: LevelFilter) -> bool {
+    force || max_level >= LevelFilter::Debug
+}
+
+fn execute_command_streaming(
+    cmd: &mut Command,
+    bin: &str,
+    args_display: &str,
+) -> anyhow::Result<Output> {
+    execute_command_streaming_with_output(cmd, bin, args_display, |line| {
+        println_over_progress(line)
+    })
+}
+
+fn execute_command_streaming_with_output(
+    cmd: &mut Command,
+    bin: &str,
+    args_display: &str,
+    print_line: impl Fn(&str) + Send + Sync + 'static,
+) -> anyhow::Result<Output> {
+    cmd.stdin(Stdio::null());
+    cmd.stdout(Stdio::piped());
+    cmd.stderr(Stdio::piped());
+    let mut child = cmd
+        .spawn()
+        .with_context(|| format!(r#""{bin}" "{args_display}" failed to spawn (cmd={cmd:?})"#))?;
+    let stdout_pipe = child.stdout.take().context("stdout was piped")?;
+    let stderr_pipe = child.stderr.take().context("stderr was piped")?;
+    let print_line = Arc::new(print_line);
+    let print_stdout_line = print_line.clone();
+
+    let stdout_thread = thread::spawn(move || {
+        let mut collected = Vec::new();
+        tee_reader(stdout_pipe, &mut collected, move |line| {
+            print_stdout_line(line)
+        });
+        collected
+    });
+    let stderr_thread = thread::spawn(move || {
+        let mut collected = Vec::new();
+        tee_reader(stderr_pipe, &mut collected, move |line| print_line(line));
+        collected
+    });
+
+    let status = child
+        .wait()
+        .with_context(|| format!(r#""{bin}" "{args_display}" failed to wait"#))?;
+    // A panicked reader thread should not hide the child's exit status.
+    let stdout = stdout_thread.join().unwrap_or_default();
+    let stderr = stderr_thread.join().unwrap_or_default();
+    Ok(Output {
+        status,
+        stdout,
+        stderr,
+    })
+}
+
+/// Copies `reader` into `collected` and prints each line above the codegen spinner.
+fn tee_reader(reader: impl Read, collected: &mut Vec<u8>, print_line: impl Fn(&str)) {
+    let mut reader = BufReader::new(reader);
+    let mut line = Vec::new();
+    loop {
+        line.clear();
+        match reader.read_until(b'\n', &mut line) {
+            Ok(0) => break,
+            Ok(_) => {
+                collected.extend_from_slice(&line);
+                let text = String::from_utf8_lossy(&line);
+                print_line(text.trim_end_matches(['\r', '\n']));
+            }
+            Err(_) => break,
+        }
+    }
 }
 
 pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
@@ -238,6 +321,10 @@ pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::io::Read;
+    use std::time::{Duration, Instant};
+
+    const STREAMING_STDIN_TEST_CHILD: &str = "FRB_STREAMING_STDIN_TEST_CHILD";
     #[test]
     #[cfg(windows)]
     fn test_call_shell_info() {
@@ -286,5 +373,189 @@ mod tests {
         let actual_token_out = windows_escape_for_powershell(section_in);
         let expect_token_out = "detects` regression` `\"errors`\"` when` tests` are` run` `\\` on` non_windows` systems";
         assert_eq!(actual_token_out, expect_token_out);
+    }
+
+    #[test]
+    fn test_tee_reader_collects_every_line_including_crlf() {
+        let input = b"freezed on 45 inputs\r\nE missing implementation\npartial";
+        let mut collected = Vec::new();
+        super::tee_reader(&input[..], &mut collected, |_| {});
+        assert_eq!(collected, input);
+    }
+
+    #[test]
+    fn test_tee_reader_empty_input_is_noop() {
+        let mut collected = Vec::new();
+        super::tee_reader(&b""[..], &mut collected, |_| {});
+        assert!(collected.is_empty());
+    }
+
+    struct FailingReader;
+
+    impl Read for FailingReader {
+        fn read(&mut self, _buf: &mut [u8]) -> std::io::Result<usize> {
+            Err(std::io::Error::new(std::io::ErrorKind::Other, "boom"))
+        }
+    }
+
+    #[test]
+    fn test_tee_reader_io_error_stops_without_panic() {
+        let mut collected = Vec::new();
+        super::tee_reader(FailingReader, &mut collected, |_| {});
+        assert!(collected.is_empty());
+    }
+
+    #[test]
+    fn test_should_stream_command_output_follows_force_or_debug_level() {
+        assert!(!should_stream_command_output(false, LevelFilter::Off));
+        assert!(!should_stream_command_output(false, LevelFilter::Info));
+        assert!(should_stream_command_output(false, LevelFilter::Debug));
+        assert!(should_stream_command_output(false, LevelFilter::Trace));
+        assert!(should_stream_command_output(true, LevelFilter::Off));
+        assert!(should_stream_command_output(true, LevelFilter::Info));
+    }
+
+    fn streaming_options() -> Option<ExecuteCommandOptions> {
+        Some(ExecuteCommandOptions {
+            stream_output: true,
+            ..Default::default()
+        })
+    }
+
+    fn cmd_args(parts: &[&str]) -> Vec<PathBuf> {
+        parts.iter().map(PathBuf::from).collect()
+    }
+
+    #[test]
+    fn test_execute_command_streaming_captures_stdout() {
+        let (bin, args) = if cfg!(windows) {
+            ("cmd", cmd_args(&["/c", "echo", "stream-ok"]))
+        } else {
+            ("echo", cmd_args(&["stream-ok"]))
+        };
+        let out = execute_command(bin, args.iter(), None, streaming_options()).unwrap();
+        assert!(out.status.success());
+        let stdout = String::from_utf8_lossy(&out.stdout);
+        if !stdout.contains("stream-ok") {
+            // Failure-only diagnostics; a passing test never takes this arm.
+            // frb-coverage:ignore-start
+            panic!("expected streamed stdout to contain marker, got {stdout:?}");
+            // frb-coverage:ignore-end
+        }
+    }
+
+    #[cfg(not(windows))]
+    #[test]
+    /// Output must be forwarded before the child process exits.
+    fn test_execute_command_streaming_forwards_output_while_child_is_running() {
+        let (line_sender, line_receiver) = std::sync::mpsc::channel();
+        let execution = thread::spawn(move || {
+            let mut command = Command::new("sh");
+            command.args(["-c", "echo first; sleep 5; echo second"]);
+            execute_command_streaming_with_output(
+                &mut command,
+                "sh",
+                "-c echo first; sleep 5; echo second",
+                move |line| line_sender.send(line.to_owned()).unwrap(),
+            )
+        });
+
+        assert_eq!(
+            line_receiver.recv_timeout(Duration::from_secs(3)).unwrap(),
+            "first"
+        );
+        assert!(!execution.is_finished());
+        assert_eq!(
+            line_receiver.recv_timeout(Duration::from_secs(10)).unwrap(),
+            "second"
+        );
+
+        let output = execution.join().unwrap().unwrap();
+        assert!(output.status.success());
+        assert_eq!(String::from_utf8_lossy(&output.stdout), "first\nsecond\n");
+    }
+
+    #[test]
+    fn test_execute_command_streaming_captures_stderr_and_nonzero_exit() {
+        let (bin, args) = if cfg!(windows) {
+            ("cmd", cmd_args(&["/c", "echo stream-err 1>&2 & exit /b 1"]))
+        } else {
+            ("sh", cmd_args(&["-c", "echo stream-err >&2; exit 1"]))
+        };
+        let out = execute_command(bin, args.iter(), None, streaming_options()).unwrap();
+        assert!(!out.status.success());
+        let stderr = String::from_utf8_lossy(&out.stderr);
+        if !stderr.contains("stream-err") {
+            // Failure-only diagnostics; a passing test never takes this arm.
+            // frb-coverage:ignore-start
+            panic!("expected streamed stderr to contain marker, got {stderr:?}");
+            // frb-coverage:ignore-end
+        }
+    }
+
+    #[test]
+    fn test_execute_command_streaming_missing_binary_fails() {
+        let err = execute_command(
+            "definitely-not-a-real-binary-frb-stream-test-9f3c",
+            std::iter::empty(),
+            None,
+            streaming_options(),
+        )
+        .expect_err("missing binary should fail to spawn");
+        let msg = format!("{err:#}");
+        if !msg.contains("failed to spawn") {
+            // Failure-only diagnostics; a passing test never takes this arm.
+            // frb-coverage:ignore-start
+            panic!("expected spawn error, got {msg}");
+            // frb-coverage:ignore-end
+        }
+    }
+
+    #[test]
+    /// Streaming children must receive EOF instead of inheriting caller stdin.
+    fn test_execute_command_streaming_closes_stdin() {
+        if std::env::var_os(STREAMING_STDIN_TEST_CHILD).is_some() {
+            let (bin, args) = if cfg!(windows) {
+                // Only executed on Windows; Linux llvm-cov is the uploaded host.
+                // frb-coverage:ignore-start
+                ("cmd", cmd_args(&["/c", "set /p FRB_INPUT= & exit /b 0"]))
+                // frb-coverage:ignore-end
+            } else {
+                ("sh", cmd_args(&["-c", "read frb_input || true"]))
+            };
+            let output = execute_command(bin, args.iter(), None, streaming_options()).unwrap();
+            assert!(output.status.success());
+            std::process::exit(42);
+        }
+
+        let mut test_process = Command::new(std::env::current_exe().unwrap())
+            .args([
+                "--exact",
+                "library::commands::command_runner::tests::test_execute_command_streaming_closes_stdin",
+                "--nocapture",
+            ])
+            .env(STREAMING_STDIN_TEST_CHILD, "1")
+            .stdin(Stdio::piped())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .spawn()
+            .unwrap();
+        let deadline = Instant::now() + Duration::from_secs(3);
+
+        loop {
+            if let Some(status) = test_process.try_wait().unwrap() {
+                assert_eq!(status.code(), Some(42));
+                break;
+            }
+            if Instant::now() >= deadline {
+                // Failure-only diagnostics; a passing test never takes this arm.
+                // frb-coverage:ignore-start
+                drop(test_process.stdin.take());
+                let _ = test_process.wait();
+                panic!("streaming child inherited an open stdin pipe");
+                // frb-coverage:ignore-end
+            }
+            thread::sleep(Duration::from_millis(10));
+        }
     }
 }
