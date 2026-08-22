@@ -1,7 +1,9 @@
 use crate::frb_generated::StreamSink;
+#[cfg(not(target_family = "wasm"))]
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
+#[cfg(not(target_family = "wasm"))]
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::{frb, transfer};
+use flutter_rust_bridge::frb;
 
 #[derive(Debug, Clone)]
 pub struct Log2TwinNormal {
@@ -38,7 +40,7 @@ impl ConcatenateWithTwinNormal {
         sink: StreamSink<Log2TwinNormal>,
     ) {
         let a = self.a.clone();
-        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+        dispatch_stream_task(move || {
             for i in 0..max {
                 sink.add(Log2TwinNormal {
                     key,
@@ -46,15 +48,15 @@ impl ConcatenateWithTwinNormal {
                 })
                 .unwrap();
             }
-        }));
+        });
     }
 
     pub fn handle_some_stream_sink_at_1_twin_normal(&self, sink: StreamSink<u32>) {
-        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+        dispatch_stream_task(move || {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-        }));
+        });
     }
 
     pub fn handle_some_static_stream_sink_twin_normal(
@@ -62,7 +64,7 @@ impl ConcatenateWithTwinNormal {
         max: u32,
         sink: StreamSink<Log2TwinNormal>,
     ) {
-        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+        dispatch_stream_task(move || {
             for i in 0..max {
                 sink.add(Log2TwinNormal {
                     key,
@@ -70,16 +72,24 @@ impl ConcatenateWithTwinNormal {
                 })
                 .unwrap();
             }
-        }));
+        });
     }
 
     pub fn handle_some_static_stream_sink_single_arg_twin_normal(sink: StreamSink<u32>) {
-        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+        dispatch_stream_task(move || {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-        }));
+        });
     }
+}
+
+fn dispatch_stream_task(task: impl FnOnce() + Send + 'static) {
+    #[cfg(target_family = "wasm")]
+    task();
+
+    #[cfg(not(target_family = "wasm"))]
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(task);
 }
 
 pub struct SumWithTwinNormal {
