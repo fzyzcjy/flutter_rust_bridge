@@ -555,9 +555,12 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         );
       }
       normalizePubspecFiles(packageRoot: dirPackage);
-      await runPubGet(
-        config.package,
-        kDartModeOfPackage[config.package]!,
+      await runPubGet(config.package, kDartModeOfPackage[config.package]!);
+      await executeFrbCodegen(
+        'generate',
+        relativePwd: config.package,
+        coverage: false,
+        coverageName: 'GenerateRunFrbCodegenCommandIntegrateFinal',
       );
       await exec('dart format .', relativePwd: config.package);
       if (config.includeOhos) {
