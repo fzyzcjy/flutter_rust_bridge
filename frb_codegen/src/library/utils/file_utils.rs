@@ -50,9 +50,10 @@ pub fn create_dir_all_and_write<P: AsRef<Path>, C: AsRef<[u8]>>(
 
 #[cfg(test)]
 mod tests {
-    use crate::utils::file_utils::temp_change_file;
+    use crate::utils::file_utils::{create_dir_all_and_write, temp_change_file};
     use std::fs;
 
+    /// Restores an existing file after the temporary change is dropped.
     #[test]
     fn test_temp_change_file_when_file_already_exists() -> anyhow::Result<()> {
         let dir = tempfile::tempdir()?;
@@ -77,6 +78,7 @@ mod tests {
         Ok(())
     }
 
+    /// Removes a newly created file after the temporary change is dropped.
     #[test]
     fn test_temp_change_file_when_file_not_exist() -> anyhow::Result<()> {
         let dir = tempfile::tempdir()?;
@@ -96,6 +98,22 @@ mod tests {
         assert!(!path.exists());
 
         drop(dir);
+        Ok(())
+    }
+
+    /// Creates missing parent directories and writes the requested bytes.
+    #[test]
+    fn test_create_dir_all_and_write_creates_parents_and_overwrites() -> anyhow::Result<()> {
+        let dir = tempfile::tempdir()?;
+        let path = dir.path().join("deep/nested/file.bin");
+
+        create_dir_all_and_write(&path, [0_u8, 1, 2])?;
+
+        assert_eq!(fs::read(&path)?, [0, 1, 2]);
+
+        create_dir_all_and_write(&path, b"replacement")?;
+
+        assert_eq!(fs::read(&path)?, b"replacement");
         Ok(())
     }
 }

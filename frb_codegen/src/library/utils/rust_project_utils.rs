@@ -27,10 +27,15 @@ mod tests {
     use super::*;
     use tempfile::tempdir;
 
+    /// Converts source files below src into Rust module paths.
     #[test]
     pub fn test_compute_mod_from_rust_crate_path() -> anyhow::Result<()> {
         let temp_dir = tempdir()?;
 
+        assert_eq!(
+            compute_mod_from_rust_crate_path(&temp_dir.path().join("src/lib.rs"), temp_dir.path())?,
+            "lib",
+        );
         assert_eq!(
             compute_mod_from_rust_crate_path(
                 &temp_dir
@@ -42,6 +47,35 @@ mod tests {
                 temp_dir.path(),
             )?,
             "apple::orange::hello".to_owned(),
+        );
+        Ok(())
+    }
+
+    /// Returns contextual errors for paths outside the crate source directory.
+    #[test]
+    fn test_compute_mod_from_rust_crate_path_rejects_path_outside_src() -> anyhow::Result<()> {
+        let temp_dir = tempdir()?;
+        let error = compute_mod_from_rust_crate_path(
+            &temp_dir.path().join("other/module.rs"),
+            temp_dir.path(),
+        )
+        .unwrap_err();
+
+        assert!(error
+            .to_string()
+            .contains("When compute_mod_from_rust_path"));
+        Ok(())
+    }
+
+    /// Replaces backslashes in lexical module paths on every platform.
+    #[test]
+    fn test_compute_mod_from_path_replaces_backslashes() -> anyhow::Result<()> {
+        assert_eq!(
+            compute_mod_from_path(
+                Path::new("base").join(r"apple\orange.rs").as_path(),
+                Path::new("base"),
+            )?,
+            "apple::orange",
         );
         Ok(())
     }
