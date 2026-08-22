@@ -555,6 +555,14 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         );
       }
       await exec('dart format .', relativePwd: config.package);
+      if (config.includeOhos) {
+        await retainGeneratedOhosScaffold(
+          package: config.package,
+          originalPackageDir: dirTempOriginal,
+          generatedPackageDir: dirPackage,
+          temporaryDirectory: dirTemp,
+        );
+      }
 
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {

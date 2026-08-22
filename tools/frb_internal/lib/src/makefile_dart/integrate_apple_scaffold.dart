@@ -80,6 +80,40 @@ Future<void> preserveCheckedInOhosScaffold({
   }
 }
 
+Future<void> retainGeneratedOhosScaffold({
+  required String package,
+  required String originalPackageDir,
+  required String generatedPackageDir,
+  required String temporaryDirectory,
+}) async {
+  final relativePaths = _preservedOhosScaffoldPaths(package);
+  if (relativePaths.isEmpty) {
+    throw StateError('No OHOS scaffold paths configured for $package.');
+  }
+
+  final generatedOhosDirectory = path.join(
+    temporaryDirectory,
+    'generated_ohos',
+  );
+  for (final relativePath in relativePaths) {
+    _restorePathIfExists(
+      source: path.join(generatedPackageDir, relativePath),
+      destination: path.join(generatedOhosDirectory, relativePath),
+    );
+  }
+
+  Directory(generatedPackageDir).deleteSync(recursive: true);
+  Directory(originalPackageDir).renameSync(generatedPackageDir);
+  for (final relativePath in relativePaths) {
+    final destination = path.join(generatedPackageDir, relativePath);
+    _deletePathIfExists(destination);
+    _restorePathIfExists(
+      source: path.join(generatedOhosDirectory, relativePath),
+      destination: destination,
+    );
+  }
+}
+
 List<String> _integrateAppleScaffoldSourceOfTruthPaths(String package) =>
     _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [];
 
@@ -143,22 +177,7 @@ void _restorePathIfExists({
   final sourceEntity = FileSystemEntity.typeSync(source);
   if (sourceEntity == FileSystemEntityType.notFound) return;
 
-  final destinationEntity = FileSystemEntity.typeSync(destination);
-  switch (destinationEntity) {
-    case FileSystemEntityType.file:
-      File(destination).deleteSync();
-    case FileSystemEntityType.directory:
-      Directory(destination).deleteSync(recursive: true);
-    case FileSystemEntityType.link:
-      Link(destination).deleteSync();
-    case FileSystemEntityType.pipe:
-    case FileSystemEntityType.unixDomainSock:
-      throw UnimplementedError(
-        'Do not expect special filesystem entity here: $destination',
-      );
-    case FileSystemEntityType.notFound:
-      break;
-  }
+  _deletePathIfExists(destination);
 
   switch (sourceEntity) {
     case FileSystemEntityType.file:
@@ -175,6 +194,24 @@ void _restorePathIfExists({
     case FileSystemEntityType.unixDomainSock:
       throw UnimplementedError(
         'Do not expect special filesystem entity here: $source',
+      );
+    case FileSystemEntityType.notFound:
+      break;
+  }
+}
+
+void _deletePathIfExists(String target) {
+  switch (FileSystemEntity.typeSync(target)) {
+    case FileSystemEntityType.file:
+      File(target).deleteSync();
+    case FileSystemEntityType.directory:
+      Directory(target).deleteSync(recursive: true);
+    case FileSystemEntityType.link:
+      Link(target).deleteSync();
+    case FileSystemEntityType.pipe:
+    case FileSystemEntityType.unixDomainSock:
+      throw UnimplementedError(
+        'Do not expect special filesystem entity here: $target',
       );
     case FileSystemEntityType.notFound:
       break;
