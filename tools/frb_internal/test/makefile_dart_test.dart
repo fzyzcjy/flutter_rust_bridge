@@ -22,6 +22,14 @@ void main() {
     expect(File('../../tools/dart_valgrind.supp').existsSync(), true);
   });
 
+  test('dart valgrind command treats only checked leak kinds as errors', () {
+    expect(dartValgrindCommandForTesting(), contains('--error-exitcode=1'));
+    expect(
+      dartValgrindCommandForTesting(),
+      contains('--errors-for-leak-kinds=definite,indirect'),
+    );
+  });
+
   test('dart valgrind compile command uses dart build output directory', () {
     expect(
       dartValgrindCompileCommandForTesting(),
