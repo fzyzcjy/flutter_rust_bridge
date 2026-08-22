@@ -158,17 +158,23 @@ final exec = SimpleExecutor(
 /// But there seems to be a bug currently.
 /// Temporary workaround before https://github.com/dart-lang/sdk/issues/54160 is fixed.
 Future<void> runPubGetIfNotRunYet(String package) async {
-  final mode = kDartModeOfPackage[package]!;
-
-  await _runPubGetIfNotRunYetRaw(package, mode);
-
-  for (final extraPackage in [
-    '$package/rust_builder/cargokit/build_tool',
-    '$package/cargokit/build_tool',
-  ]) {
-    await _runPubGetIfNotRunYetRaw(extraPackage, mode);
+  for (final (candidatePackage, mode) in _pubGetPackagesAndModes(package)) {
+    await _runPubGetIfNotRunYetRaw(candidatePackage, mode);
   }
 }
+
+List<(String, DartMode)> _pubGetPackagesAndModes(String package) {
+  final mode = kDartModeOfPackage[package]!;
+
+  return [
+    (package, mode),
+    ('$package/rust_builder/cargokit/build_tool', DartMode.dart),
+    ('$package/cargokit/build_tool', DartMode.dart),
+  ];
+}
+
+List<(String, DartMode)> pubGetPackagesAndModesForTesting(String package) =>
+    _pubGetPackagesAndModes(package);
 
 Future<void> _runPubGetIfNotRunYetRaw(String package, DartMode mode) async {
   final dirPackage = '${exec.pwd}/$package';

@@ -339,6 +339,14 @@ plain
     }
   });
 
+  test('CargoKit build tools always use Dart pub', () {
+    expect(pubGetPackagesAndModesForTesting('frb_example/gallery'), [
+      ('frb_example/gallery', DartMode.flutter),
+      ('frb_example/gallery/rust_builder/cargokit/build_tool', DartMode.dart),
+      ('frb_example/gallery/cargokit/build_tool', DartMode.dart),
+    ]);
+  });
+
   test('quickstart smoke OCR normalization ignores punctuation', () {
     expect(
       normalizeQuickstartSmokeOcrTextForTesting(
