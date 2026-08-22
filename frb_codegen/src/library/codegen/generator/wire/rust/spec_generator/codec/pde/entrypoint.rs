@@ -141,3 +141,31 @@ impl WireRustCodecEntrypointTrait<'_> for PdeWireRustCodecEntrypoint {
         SseWireRustCodecEntrypoint.generate_func_call_decode(func, context)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Emits primary and sync dispatcher signatures with their exact call contracts.
+    #[test]
+    fn ffi_dispatcher_template_preserves_mode_specific_port_and_return_types() {
+        let variants = HashMap::from([
+            (
+                FfiDispatcherMode::Primary,
+                "7 => wire__api__work_impl(port, ptr, len, data),".into(),
+            ),
+            (
+                FfiDispatcherMode::Sync,
+                "8 => wire__api__read_impl(ptr, len, data),".into(),
+            ),
+        ]);
+
+        let output = generate_ffi_dispatcher_raw(&variants, "bridge");
+
+        assert!(output.contains("fn pde_ffi_dispatcher_primary_impl(\n                    func_id: i32,port: bridge::for_generated::MessagePort,"));
+        assert!(output.contains("7 => wire__api__work_impl(port, ptr, len, data),"));
+        assert!(output.contains("fn pde_ffi_dispatcher_sync_impl(\n                    func_id: i32,\n                    ptr: bridge::for_generated::PlatformGeneralizedUint8ListPtr,"));
+        assert!(output.contains("-> bridge::for_generated::WireSyncRust2DartSse"));
+        assert!(output.contains("8 => wire__api__read_impl(ptr, len, data),"));
+    }
+}

@@ -274,3 +274,15 @@ fn ffi_call_mode(mode: MirFuncMode) -> &'static str {
         MirFuncMode::Sync => "Sync",
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Maps normal and sync MIR modes to their generated FFI task modes.
+    #[test]
+    fn ffi_call_mode_covers_normal_and_sync() {
+        assert_eq!(ffi_call_mode(MirFuncMode::Normal), "Normal");
+        assert_eq!(ffi_call_mode(MirFuncMode::Sync), "Sync");
+    }
+}

@@ -270,3 +270,75 @@ fn generate_content_hash(mir_pack: &MirPack) -> i32 {
     let digest = hasher.finalize();
     i32::from_le_bytes(digest[..4].try_into().unwrap())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::codec::structs::CodecMode;
+    use crate::codegen::ir::mir::pack::MirPack;
+    use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+    use crate::utils::namespace::{Namespace, NamespacedName};
+
+    fn empty_pack() -> MirPack {
+        MirPack {
+            funcs_all: vec![],
+            extra_types_all: vec![],
+            struct_pool: Default::default(),
+            enum_pool: Default::default(),
+            dart_code_of_type: Default::default(),
+            existing_handler: None,
+            skips: vec![],
+            trait_impls: vec![],
+            extra_rust_output_code: String::new(),
+            extra_dart_output_code: Default::default(),
+        }
+    }
+
+    /// Emits default and configured handlers with a stable empty-pack hash.
+    #[test]
+    fn handler_and_content_hash_follow_the_mir_pack_configuration() {
+        let mut pack = empty_pack();
+
+        assert_eq!(
+            generate_handler(&pack),
+            "flutter_rust_bridge::frb_generated_default_handler!();"
+        );
+        assert_eq!(generate_content_hash(&pack), -291_292_710);
+
+        pack.existing_handler = Some(NamespacedName::new(
+            Namespace::new_raw("crate::handlers".into()),
+            "CUSTOM_HANDLER".into(),
+        ));
+        assert_eq!(
+            generate_handler(&pack),
+            "pub use crate::handlers::CUSTOM_HANDLER;"
+        );
+    }
+
+    /// Places shared and platform boilerplate in their respective target slots.
+    #[test]
+    fn boilerplate_preserves_preamble_codecs_and_target_macro() {
+        let boilerplate = generate_boilerplate(
+            CodecMode::Sse,
+            RustOpaqueCodecMode::Moi,
+            42,
+            "#![allow(dead_code)]",
+        );
+
+        assert!(boilerplate.common[0]
+            .body
+            .contains("default_stream_sink_codec = SseCodec"));
+        assert!(boilerplate.common[0]
+            .body
+            .contains("FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 42"));
+        assert!(boilerplate.io[0]
+            .body
+            .contains("frb_generated_boilerplate_io!()"));
+        assert!(boilerplate.web[0]
+            .body
+            .contains("frb_generated_boilerplate_web!()"));
+        assert!(boilerplate.common[0]
+            .body
+            .starts_with("#![allow(dead_code)]\n\n"));
+    }
+}

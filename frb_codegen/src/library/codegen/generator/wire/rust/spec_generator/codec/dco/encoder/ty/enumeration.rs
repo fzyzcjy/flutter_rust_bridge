@@ -63,3 +63,27 @@ pub(super) fn parse_wrapper_name_into_dart_name_and_self_path(
         None => (name.rust_style(), "Self".into()),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::utils::namespace::{Namespace, NamespacedName};
+
+    /// Selects wrapper and self-path names for wrapped and unwrapped enums.
+    #[test]
+    fn parse_wrapper_name_selects_wrapped_and_unwrapped_enum_names() {
+        let name = NamespacedName::new(
+            Namespace::new(vec!["crate".into(), "api".into()]),
+            "ExampleEnum".into(),
+        );
+
+        assert_eq!(
+            parse_wrapper_name_into_dart_name_and_self_path(&name, &Some("WireExample".into())),
+            ("WireExample".into(), "crate::api::ExampleEnum".into())
+        );
+        assert_eq!(
+            parse_wrapper_name_into_dart_name_and_self_path(&name, &None),
+            ("crate::api::ExampleEnum".into(), "Self".into())
+        );
+    }
+}
