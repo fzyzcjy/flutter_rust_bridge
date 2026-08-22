@@ -69,18 +69,22 @@ fn get_module_file_path_candidates(
     module_name: &str,
     parent_module_file_path: &Path,
 ) -> Vec<PathBuf> {
-    [
-        parent_module_file_path.parent().unwrap().to_owned(),
-        parent_module_file_path.with_extension(""),
-    ]
-    .iter()
-    .flat_map(|folder_path| {
-        [
-            folder_path.join(module_name).with_extension("rs"),
-            folder_path.join(module_name).join("mod.rs"),
-        ]
-    })
-    .collect_vec()
+    let parent_folder = parent_module_file_path.parent().unwrap().to_owned();
+    let nested_folder = parent_module_file_path.with_extension("");
+    let folders = match parent_module_file_path.file_name().and_then(|x| x.to_str()) {
+        Some("lib.rs" | "main.rs" | "mod.rs") => [parent_folder, nested_folder],
+        _ => [nested_folder, parent_folder],
+    };
+
+    folders
+        .iter()
+        .flat_map(|folder_path| {
+            [
+                folder_path.join(module_name).with_extension("rs"),
+                folder_path.join(module_name).join("mod.rs"),
+            ]
+        })
+        .collect_vec()
 }
 
 #[cfg(test)]
@@ -134,6 +138,21 @@ mod tests {
         write_crate_file(&temp_dir, "src/foo/mod.rs", "pub struct Foo;");
 
         assert_eq!(parsed_tokens(&temp_dir), "mod foo { pub struct Foo ; }");
+    }
+
+    /// Recursively expands nested external modules.
+    #[test]
+    fn test_run_recursively_expands_nested_external_modules() {
+        let temp_dir = TempDir::new().unwrap();
+        write_crate_file(&temp_dir, "src/lib.rs", "mod foo;");
+        write_crate_file(&temp_dir, "src/foo.rs", "mod nested; pub struct Foo;");
+        write_crate_file(&temp_dir, "src/nested.rs", "pub struct Decoy;");
+        write_crate_file(&temp_dir, "src/foo/nested.rs", "pub struct Nested;");
+
+        assert_eq!(
+            parsed_tokens(&temp_dir),
+            "mod foo { mod nested { pub struct Nested ; } pub struct Foo ; }"
+        );
     }
 
     /// Leaves an external module untouched when its source file is absent.

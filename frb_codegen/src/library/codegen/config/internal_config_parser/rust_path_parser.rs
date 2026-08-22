@@ -105,8 +105,8 @@ fn compute_third_party_crate_names(
         .iter()
         .map(|x| x.path()[0])
         .filter(|x| *x != CrateName::SELF_CRATE)
-        .dedup()
         .sorted()
+        .dedup()
         .map(|x| CrateName::new(x.to_owned()))
         .collect_vec()
 }
@@ -190,6 +190,22 @@ mod tests {
             vec![
                 Namespace::new_raw("crate::web_audio".to_owned()),
                 Namespace::new_raw("third_party::api".to_owned()),
+            ]
+        );
+    }
+
+    /// Sorts and deduplicates third-party crates while excluding the current crate.
+    #[test]
+    fn extracts_sorted_unique_third_party_crates() {
+        let raw = compute_rust_input_namespace_prefixes_raw(
+            "zebra::api,crate::api,alpha::api,zebra::other,crate",
+        );
+
+        assert_eq!(
+            compute_third_party_crate_names(&raw),
+            vec![
+                CrateName::new("alpha".to_owned()),
+                CrateName::new("zebra".to_owned())
             ]
         );
     }
