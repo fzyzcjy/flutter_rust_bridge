@@ -113,7 +113,7 @@ pub(super) fn add_publish_to_none(dart_root: &Path) -> Result<()> {
         .split_inclusive('\n')
         .map(|line| {
             let content = line.trim_end_matches(['\r', '\n']);
-            if content.starts_with("publish_to:") {
+            if line.starts_with("publish_to:") {
                 found = true;
                 let ending = &line[content.len()..];
                 format!("publish_to: none{ending}")
@@ -168,6 +168,25 @@ mod tests {
         assert_eq!(
             fs::read_to_string(pubspec).unwrap(),
             "name: sample\r\npublish_to: none\r\n",
+        );
+    }
+
+    /// Preserves nested keys while adding the top-level publish restriction.
+    #[test]
+    fn add_publish_to_none_does_not_match_nested_key() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let pubspec = temp_dir.path().join("pubspec.yaml");
+        fs::write(
+            &pubspec,
+            "name: sample\ndependency_overrides:\n  publish_to: local-package\n",
+        )
+        .unwrap();
+
+        add_publish_to_none(temp_dir.path()).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(pubspec).unwrap(),
+            "publish_to: none\nname: sample\ndependency_overrides:\n  publish_to: local-package\n",
         );
     }
 }
