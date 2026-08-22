@@ -85,31 +85,42 @@ class SseSerializer {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   final WriteBuffer buffer;
 
-  final List<RustArcTransfer> _rustArcTransfers = [];
+  List<RustArcTransfer>? _rustArcTransfers;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   SseSerializer(GeneralizedFrbRustBinding binding)
     : buffer = WriteBuffer(binding: binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void addRustArcTransfer(RustArcTransfer transfer) =>
-      _rustArcTransfers.add(transfer);
+  void addRustArcTransfer(RustArcTransfer transfer) {
+    final transfers = _rustArcTransfers ??= [];
+    if (transfers.any(transfer.conflictsWith)) {
+      throw StateError(
+        'Cannot move the same Rust opaque object more than once',
+      );
+    }
+    transfers.add(transfer);
+  }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   WriteBufferRaw intoRaw() {
-    for (final transfer in _rustArcTransfers) {
-      transfer.commit();
+    if (_rustArcTransfers case final transfers?) {
+      for (final transfer in transfers) {
+        transfer.commit();
+      }
+      _rustArcTransfers = null;
     }
-    _rustArcTransfers.clear();
     return buffer.intoRaw();
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dispose() {
-    for (final transfer in _rustArcTransfers.reversed) {
-      transfer.rollback();
+    if (_rustArcTransfers case final transfers?) {
+      for (final transfer in transfers.reversed) {
+        transfer.rollback();
+      }
+      _rustArcTransfers = null;
     }
-    _rustArcTransfers.clear();
     buffer.dispose();
   }
 }
