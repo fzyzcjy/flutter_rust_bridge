@@ -108,7 +108,85 @@ fn pub_add_dependency(
 pub(super) fn add_publish_to_none(dart_root: &Path) -> Result<()> {
     let path = dart_root.join("pubspec.yaml");
     let text_raw = std::fs::read_to_string(&path)?;
-    let text_output = format!("publish_to: none\n{text_raw}");
+    let mut found = false;
+    let text_replaced = text_raw
+        .split_inclusive('\n')
+        .map(|line| {
+            let content = line.trim_end_matches(['\r', '\n']);
+            if line.starts_with("publish_to:") {
+                found = true;
+                let ending = &line[content.len()..];
+                format!("publish_to: none{ending}")
+            } else {
+                line.to_owned()
+            }
+        })
+        .collect::<String>();
+    let text_output = if found {
+        text_replaced
+    } else {
+        format!("publish_to: none\n{text_raw}")
+    };
     std::fs::write(&path, text_output)?;
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::add_publish_to_none;
+    use std::fs;
+
+    /// Adds exactly one publish restriction when invoked repeatedly.
+    #[test]
+    fn add_publish_to_none_is_idempotent() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let pubspec = temp_dir.path().join("pubspec.yaml");
+        fs::write(&pubspec, "name: sample\n").unwrap();
+
+        add_publish_to_none(temp_dir.path()).unwrap();
+        add_publish_to_none(temp_dir.path()).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(pubspec).unwrap(),
+            "publish_to: none\nname: sample\n",
+        );
+    }
+
+    /// Replaces an existing publish target without creating a duplicate key.
+    #[test]
+    fn add_publish_to_none_replaces_existing_target() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let pubspec = temp_dir.path().join("pubspec.yaml");
+        fs::write(
+            &pubspec,
+            "name: sample\r\npublish_to: https://example.com # old\r\n",
+        )
+        .unwrap();
+
+        add_publish_to_none(temp_dir.path()).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(pubspec).unwrap(),
+            "name: sample\r\npublish_to: none\r\n",
+        );
+    }
+
+    /// Preserves nested keys while adding the top-level publish restriction.
+    #[test]
+    fn add_publish_to_none_does_not_match_nested_key() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let pubspec = temp_dir.path().join("pubspec.yaml");
+        fs::write(
+            &pubspec,
+            "name: sample\ndependency_overrides:\n  publish_to: local-package\n",
+        )
+        .unwrap();
+
+        add_publish_to_none(temp_dir.path()).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(pubspec).unwrap(),
+            "publish_to: none\nname: sample\ndependency_overrides:\n  publish_to: local-package\n",
+        );
+    }
 }

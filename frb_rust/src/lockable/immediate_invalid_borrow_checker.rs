@@ -38,7 +38,8 @@ mod tests {
     use crate::lockable::order::LockableOrder;
 
     #[test]
-    fn test_check_no_immediate_invalid_borrow() {
+    /// Rejects repeated borrows when either borrow is mutable.
+    fn rejects_immediate_invalid_borrows() {
         assert!(check_no_immediate_invalid_borrow(&[]));
 
         for mutable in [false, true] {

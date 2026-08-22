@@ -77,3 +77,79 @@ pub(crate) enum HirFlatFunctionOwner {
 }
 
 pub(crate) type SimpleOwnerAndName = (String, String);
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn function(owner: HirFlatFunctionOwner, item_fn: GeneralizedItemFn) -> HirFlatFunction {
+        HirFlatFunction {
+            namespace: Namespace::new_raw("crate::api".to_owned()),
+            owner,
+            sources: vec![],
+            item_fn,
+        }
+    }
+
+    /// Uses the FRB rename and namespace for a free-function deduplication key.
+    #[test]
+    fn deduplication_key_uses_free_function_namespace_and_rename() {
+        let function = function(
+            HirFlatFunctionOwner::Function,
+            GeneralizedItemFn::ItemFn(
+                syn::parse_str("#[frb(name = \"exposed\")] pub async fn original() {}").unwrap(),
+            ),
+        );
+
+        assert_eq!(
+            function.owner_and_name_for_dedup(),
+            ("crate::api".to_owned(), "exposed".to_owned())
+        );
+        assert_eq!(function.sort_key(), function.owner_and_name_for_dedup());
+        assert_eq!(function.is_public(), Some(true));
+        assert!(function.is_async());
+    }
+
+    /// Uses the implementation type and raw visibility for inherent methods.
+    #[test]
+    fn inherent_method_deduplication_and_visibility_follow_implementation() {
+        let function = function(
+            HirFlatFunctionOwner::StructOrEnum {
+                impl_ty: syn::parse_str("Widget").unwrap(),
+                trait_def_name: None,
+            },
+            GeneralizedItemFn::ImplItemFn(syn::parse_str("fn build() {}").unwrap()),
+        );
+
+        assert_eq!(function.owner_for_dedup(), "Widget");
+        assert_eq!(function.name_for_dedup(), "build");
+        assert_eq!(function.is_public(), Some(false));
+        assert!(!function.is_async());
+    }
+
+    /// Hides visibility for trait declarations and trait implementation methods.
+    #[test]
+    fn trait_owned_functions_do_not_report_public_visibility() {
+        let trait_definition = function(
+            HirFlatFunctionOwner::TraitDef {
+                trait_def_name: NamespacedName::new(
+                    Namespace::new_raw("crate::api".to_owned()),
+                    "Service".to_owned(),
+                ),
+            },
+            GeneralizedItemFn::TraitItemFn(syn::parse_str("async fn call();").unwrap()),
+        );
+        let trait_implementation = function(
+            HirFlatFunctionOwner::StructOrEnum {
+                impl_ty: syn::parse_str("ServiceImpl").unwrap(),
+                trait_def_name: Some("Service".to_owned()),
+            },
+            GeneralizedItemFn::ImplItemFn(syn::parse_str("pub fn call() {}").unwrap()),
+        );
+
+        assert_eq!(trait_definition.owner_for_dedup(), "Service");
+        assert_eq!(trait_definition.is_public(), None);
+        assert!(trait_definition.is_async());
+        assert_eq!(trait_implementation.is_public(), None);
+    }
+}

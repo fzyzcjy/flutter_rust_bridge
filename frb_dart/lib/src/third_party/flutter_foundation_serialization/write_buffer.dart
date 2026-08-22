@@ -25,7 +25,13 @@ class WriteBuffer {
     int startCapacity = 8,
     required GeneralizedFrbRustBinding binding,
   }) {
-    assert(startCapacity > 0);
+    if (startCapacity <= 0) {
+      throw ArgumentError.value(
+        startCapacity,
+        'startCapacity',
+        'must be greater than zero',
+      );
+    }
     final ByteData eightBytes = ByteData(8);
     final Uint8List eightBytesAsList = eightBytes.buffer.asUint8List();
     return WriteBuffer._(
@@ -42,6 +48,14 @@ class WriteBuffer {
   bool _isDone = false;
   final ByteData _eightBytes;
   final Uint8List _eightBytesAsList;
+
+  void _ensureNotDone() {
+    if (_isDone) {
+      throw StateError(
+        'Writing must not continue after intoRaw() on the same $runtimeType.',
+      );
+    }
+  }
 
   // static final Uint8List _zeroBuffer = Uint8List(8);
 
@@ -82,20 +96,20 @@ class WriteBuffer {
 
   /// Write a Uint8 into the buffer.
   void putUint8(int byte) {
-    assert(!_isDone);
+    _ensureNotDone();
     _add(byte);
   }
 
   /// Write a Uint16 into the buffer.
   void putUint16(int value, {Endian? endian}) {
-    assert(!_isDone);
+    _ensureNotDone();
     _eightBytes.setUint16(0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList, 0, 2);
   }
 
   /// Write a Uint32 into the buffer.
   void putUint32(int value, {Endian? endian}) {
-    assert(!_isDone);
+    _ensureNotDone();
     _eightBytes.setUint32(0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList, 0, 4);
   }
@@ -107,28 +121,28 @@ class WriteBuffer {
 
   /// Write a Uint64 into the buffer.
   void putBigUint64(BigInt value, {Endian? endian}) {
-    assert(!_isDone);
+    _ensureNotDone();
     byteDataSetUint64(_eightBytes, 0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList, 0, 8);
   }
 
   /// Write an Int8 into the buffer.
   void putInt8(int value) {
-    assert(!_isDone);
+    _ensureNotDone();
     _eightBytes.setInt8(0, value);
     _addAll(_eightBytesAsList, 0, 1);
   }
 
   /// Write an Int16 into the buffer.
   void putInt16(int value, {Endian? endian}) {
-    assert(!_isDone);
+    _ensureNotDone();
     _eightBytes.setInt16(0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList, 0, 2);
   }
 
   /// Write an Int32 into the buffer.
   void putInt32(int value, {Endian? endian}) {
-    assert(!_isDone);
+    _ensureNotDone();
     _eightBytes.setInt32(0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList, 0, 4);
   }
@@ -140,7 +154,7 @@ class WriteBuffer {
 
   /// Write an Int64 into the buffer.
   void putBigInt64(BigInt value, {Endian? endian}) {
-    assert(!_isDone);
+    _ensureNotDone();
     byteDataSetInt64(_eightBytes, 0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList, 0, 8);
   }
@@ -148,7 +162,7 @@ class WriteBuffer {
   // NOTE ADD by mimic the 64bit counterpart
   /// Write an Float32 into the buffer.
   void putFloat32(double value, {Endian? endian}) {
-    assert(!_isDone);
+    _ensureNotDone();
     // _alignTo(4);
     _eightBytes.setFloat32(0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList, 0, 4);
@@ -156,7 +170,7 @@ class WriteBuffer {
 
   /// Write an Float64 into the buffer.
   void putFloat64(double value, {Endian? endian}) {
-    assert(!_isDone);
+    _ensureNotDone();
     // _alignTo(8);
     _eightBytes.setFloat64(0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList);
@@ -164,25 +178,25 @@ class WriteBuffer {
 
   /// Write all the values from a [Uint8List] into the buffer.
   void putUint8List(Uint8List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     _append(list);
   }
 
   /// Write all the values from an [Uint16List] into the buffer.
   void putUint16List(Uint16List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     _append(list.buffer.asUint8List(list.offsetInBytes, 2 * list.length));
   }
 
   /// Write all the values from an [Uint32List] into the buffer.
   void putUint32List(Uint32List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     _append(list.buffer.asUint8List(list.offsetInBytes, 4 * list.length));
   }
 
   /// Write all the values from an [Uint64List] into the buffer.
   void putUint64List(Uint64List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     for (final value in list) {
       putBigUint64(value);
     }
@@ -190,26 +204,26 @@ class WriteBuffer {
 
   /// Write all the values from an [Int8List] into the buffer.
   void putInt8List(Int8List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     _append(list.buffer.asUint8List(list.offsetInBytes, 1 * list.length));
   }
 
   /// Write all the values from an [Int16List] into the buffer.
   void putInt16List(Int16List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     _append(list.buffer.asUint8List(list.offsetInBytes, 2 * list.length));
   }
 
   /// Write all the values from an [Int32List] into the buffer.
   void putInt32List(Int32List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     // _alignTo(4);
     _append(list.buffer.asUint8List(list.offsetInBytes, 4 * list.length));
   }
 
   /// Write all the values from an [Int64List] into the buffer.
   void putInt64List(Int64List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     // _alignTo(8);
     for (final value in list) {
       putBigInt64(value);
@@ -218,14 +232,14 @@ class WriteBuffer {
 
   /// Write all the values from a [Float32List] into the buffer.
   void putFloat32List(Float32List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     // _alignTo(4);
     _append(list.buffer.asUint8List(list.offsetInBytes, 4 * list.length));
   }
 
   /// Write all the values from a [Float64List] into the buffer.
   void putFloat64List(Float64List list) {
-    assert(!_isDone);
+    _ensureNotDone();
     // _alignTo(8);
     _append(list.buffer.asUint8List(list.offsetInBytes, 8 * list.length));
   }

@@ -115,3 +115,101 @@ impl<'a> Dumper<'a> {
         self.config.dump_contents.contains(&self.content.unwrap())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{ConfigDumpContent, Dumper, DumperInternalConfig};
+    use crate::codegen::generator::acc::Acc;
+    use std::fs;
+    use tempfile::tempdir;
+
+    /// Leaves the filesystem untouched when the selected dump content is disabled.
+    #[test]
+    fn skips_dumping_when_content_is_disabled() -> anyhow::Result<()> {
+        let directory = tempdir()?;
+        let config = DumperInternalConfig {
+            dump_contents: vec![],
+            dump_directory: directory.path().to_owned(),
+        };
+
+        Dumper::new(&config)
+            .with_content(ConfigDumpContent::Config)
+            .dump_str("input.json", "ignored")?;
+
+        assert!(fs::read_dir(directory.path())?.next().is_none());
+        Ok(())
+    }
+
+    /// Writes enabled dumps beneath the content directory with accumulated prefixes.
+    #[test]
+    fn writes_enabled_dump_with_content_and_prefix() -> anyhow::Result<()> {
+        let directory = tempdir()?;
+        let config = DumperInternalConfig {
+            dump_contents: vec![ConfigDumpContent::GeneratorText],
+            dump_directory: directory.path().to_owned(),
+        };
+
+        Dumper::new(&config)
+            .with_content(ConfigDumpContent::GeneratorText)
+            .with_add_name_prefix("api/")
+            .with_add_name_prefix("dart/")
+            .dump_str("output.dart", "generated")?;
+
+        assert_eq!(
+            fs::read_to_string(directory.path().join("generator_text/api/dart/output.dart"))?,
+            "generated"
+        );
+        Ok(())
+    }
+
+    /// Serializes public dump data as pretty JSON in its configured content directory.
+    #[test]
+    fn serializes_public_dump_data_as_pretty_json() -> anyhow::Result<()> {
+        let directory = tempdir()?;
+        let config = DumperInternalConfig {
+            dump_contents: vec![ConfigDumpContent::Config],
+            dump_directory: directory.path().to_owned(),
+        };
+
+        Dumper::new(&config)
+            .with_content(ConfigDumpContent::Config)
+            .dump("config.json", &serde_json::json!({"answer": 42}))?;
+
+        assert_eq!(
+            fs::read_to_string(directory.path().join("config/config.json"))?,
+            "{\n  \"answer\": 42\n}"
+        );
+        Ok(())
+    }
+
+    /// Writes common and target accumulator slots, defaulting absent values to empty text.
+    #[test]
+    fn dumps_all_accumulator_targets_with_empty_missing_values() -> anyhow::Result<()> {
+        let directory = tempdir()?;
+        let config = DumperInternalConfig {
+            dump_contents: vec![ConfigDumpContent::GeneratorText],
+            dump_directory: directory.path().to_owned(),
+        };
+        let acc = Acc {
+            common: Some("common".to_owned()),
+            io: None,
+            web: Some("web".to_owned()),
+        };
+
+        Dumper::new(&config)
+            .with_content(ConfigDumpContent::GeneratorText)
+            .dump_acc("generated", "dart", &acc)?;
+
+        let output_directory = directory.path().join("generator_text/generated");
+        assert_eq!(
+            fs::read_to_string(output_directory.join("Common.dart"))?,
+            "common"
+        );
+        assert_eq!(fs::read_to_string(output_directory.join("Io.dart"))?, "");
+        assert_eq!(
+            fs::read_to_string(output_directory.join("Web.dart"))?,
+            "web"
+        );
+        Ok(())
+    }
+}

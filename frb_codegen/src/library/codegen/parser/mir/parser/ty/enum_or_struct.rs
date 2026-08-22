@@ -213,3 +213,153 @@ pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
         || ((!crate_name.is_self_crate())  && src_object.visibility != HirVisibility::Public)
         || should_ignore_because_generics(src_object.src.generics(), context.enable_lifetime)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::codec::structs::CodecMode;
+    use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+    use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+    use crate::codegen::parser::mir::ParseMode;
+    use syn::parse_quote;
+
+    /// Produces an unwrapped name for ordinary structures and enums.
+    #[test]
+    fn compute_name_and_wrapper_name_keeps_non_mirrored_types_unwrapped() {
+        let namespace = Namespace::new_raw("crate::models".into());
+        let (name, wrapper_name) = compute_name_and_wrapper_name(&namespace, "Widget", false);
+
+        assert_eq!(name.rust_style(), "crate::models::Widget");
+        assert_eq!(wrapper_name, None);
+    }
+
+    /// Gives mirrored types the wrapper name based on their full Rust path.
+    #[test]
+    fn compute_name_and_wrapper_name_wraps_mirrored_types() {
+        let namespace = Namespace::new_raw("crate::models".into());
+        let (_, wrapper_name) = compute_name_and_wrapper_name(&namespace, "Widget", true);
+
+        assert_eq!(
+            wrapper_name.as_deref(),
+            Some("FrbWrapper<crate::models::Widget>")
+        );
+    }
+
+    /// Starts parser bookkeeping with no remembered names or parsed objects.
+    #[test]
+    fn enum_or_struct_parser_info_starts_empty() {
+        let info: EnumOrStructParserInfo<String, String> = EnumOrStructParserInfo::new();
+
+        assert!(info.parsing_or_parsed_objects.is_empty());
+        assert!(info.object_pool.is_empty());
+    }
+
+    /// Ignores objects explicitly marked with the FRB ignore attribute.
+    #[test]
+    fn parse_struct_or_enum_should_ignore_honors_ignore_attribute() {
+        let object = test_object(
+            parse_quote!(
+                #[frb(ignore)]
+                struct Value;
+            ),
+            HirVisibility::Public,
+        );
+
+        assert!(parse_struct_or_enum_should_ignore(
+            &object,
+            &CrateName::self_crate(),
+            &test_context(false)
+        ));
+    }
+
+    /// Ignores non-public types imported from a third-party crate.
+    #[test]
+    fn parse_struct_or_enum_should_ignore_honors_third_party_visibility() {
+        let object = test_object(
+            parse_quote!(
+                struct Value;
+            ),
+            HirVisibility::Inherited,
+        );
+
+        assert!(parse_struct_or_enum_should_ignore(
+            &object,
+            &CrateName::new("dependency".into()),
+            &test_context(false)
+        ));
+    }
+
+    /// Applies generic policy while retaining eligible public non-generic types.
+    #[test]
+    fn parse_struct_or_enum_should_ignore_honors_generics_and_lifetime_flag() {
+        let lifetime_only = test_object(
+            parse_quote!(
+                struct Borrowed<'a>(&'a str);
+            ),
+            HirVisibility::Public,
+        );
+        let type_generic = test_object(
+            parse_quote!(
+                struct Container<T>(T);
+            ),
+            HirVisibility::Public,
+        );
+        let control = test_object(
+            parse_quote!(
+                pub struct Value;
+            ),
+            HirVisibility::Public,
+        );
+        let crate_name = CrateName::new("dependency".into());
+
+        assert!(parse_struct_or_enum_should_ignore(
+            &lifetime_only,
+            &crate_name,
+            &test_context(false)
+        ));
+        assert!(!parse_struct_or_enum_should_ignore(
+            &lifetime_only,
+            &crate_name,
+            &test_context(true)
+        ));
+        assert!(parse_struct_or_enum_should_ignore(
+            &type_generic,
+            &crate_name,
+            &test_context(true)
+        ));
+        assert!(!parse_struct_or_enum_should_ignore(
+            &control,
+            &crate_name,
+            &test_context(false)
+        ));
+    }
+
+    fn test_object(
+        src: syn::ItemStruct,
+        visibility: HirVisibility,
+    ) -> HirFlatStructOrEnum<syn::ItemStruct> {
+        HirFlatStructOrEnum {
+            name: NamespacedName::new(Namespace::new_raw("crate::models".into()), "Value".into()),
+            visibility,
+            sources: Vec::<HirGenerationSource>::new(),
+            mirror: false,
+            src,
+        }
+    }
+
+    fn test_context(enable_lifetime: bool) -> TypeParserParsingContext {
+        TypeParserParsingContext {
+            initiated_namespace: Namespace::new_raw("crate".into()),
+            func_attributes: FrbAttributes::parse(&[]).unwrap(),
+            struct_or_enum_attributes: None,
+            rust_output_path_namespace: Namespace::new_raw("crate".into()),
+            default_stream_sink_codec: CodecMode::Dco,
+            default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
+            owner: None,
+            enable_lifetime,
+            type_64bit_int: false,
+            forbid_type_self: false,
+            parse_mode: ParseMode::Normal,
+        }
+    }
+}

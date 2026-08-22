@@ -105,6 +105,7 @@ fn sanity_check(
 mod tests {
     use super::*;
 
+    /// Removes the obsolete ffigen SSE struct while preserving neighboring code.
     #[test]
     fn postpare_modify_removes_ffigen_21_wire_sync_struct() {
         let output = postpare_modify(
@@ -147,6 +148,7 @@ final class KeepMe extends ffi.Struct {}
         assert!(output.contains("final class KeepMe extends ffi.Struct {}"));
     }
 
+    /// Leaves malformed class input intact instead of truncating following code.
     #[test]
     fn remove_dart_class_keeps_unterminated_class() {
         let content = "before\nfinal class WireSyncRust2DartSse extends ffi.Struct {\n";
@@ -158,5 +160,51 @@ final class KeepMe extends ffi.Struct {}
             ),
             content,
         );
+    }
+
+    /// Matches nested Dart class braces before removing the complete declaration.
+    #[test]
+    fn remove_dart_class_removes_nested_braces_and_repeated_declarations() {
+        let header = "final class WireSyncRust2DartSse extends ffi.Struct {";
+        let content =
+            format!("keep\n{header}\n  void method() {{ if (true) {{}} }}\n}}\n{header}\n}}\nkeep");
+
+        assert_eq!(remove_dart_class(content, header), "keep\n\n\nkeep");
+    }
+
+    /// Rejects generated output that omits the configured wire class.
+    #[test]
+    fn sanity_check_rejects_missing_wire_class_name() {
+        let error = sanity_check(
+            "class AnotherWire {}",
+            &DartOutputClassNamePack {
+                entrypoint_class_name: "RustLib".into(),
+                api_class_name: "RustLibApi".into(),
+                api_impl_class_name: "RustLibApiImpl".into(),
+                api_impl_platform_class_name: "RustLibApiImplPlatform".into(),
+                wire_class_name: "RustLibWire".into(),
+                wasm_module_name: "RustLibWasmModule".into(),
+            },
+        )
+        .unwrap_err();
+
+        assert!(error
+            .to_string()
+            .contains("Nothing is generated for dart wire class"));
+    }
+
+    /// Accepts generated output containing the configured wire class.
+    #[test]
+    fn sanity_check_accepts_configured_wire_class_name() {
+        let config = DartOutputClassNamePack {
+            entrypoint_class_name: "RustLib".into(),
+            api_class_name: "RustLibApi".into(),
+            api_impl_class_name: "RustLibApiImpl".into(),
+            api_impl_platform_class_name: "RustLibApiImplPlatform".into(),
+            wire_class_name: "RustLibWire".into(),
+            wasm_module_name: "RustLibWasmModule".into(),
+        };
+
+        assert!(sanity_check("class RustLibWire {}", &config).is_ok());
     }
 }

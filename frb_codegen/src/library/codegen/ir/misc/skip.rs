@@ -83,3 +83,28 @@ impl<T, S> IrValueOrSkip<T, S> {
 }
 
 pub type MirFuncOrSkip = IrValueOrSkip<MirFunc, IrSkip>;
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Matches skip metadata by namespace and name.
+    #[test]
+    fn skip_reason_explanation_is_optional_for_silent_skips() {
+        assert!(IrSkipReason::IgnoreSilently.explanation_prefix().is_none());
+        assert!(IrSkipReason::Err.explanation_prefix().is_some());
+    }
+
+    /// Preserves skip metadata defaults when fields are omitted.
+    #[test]
+    fn value_or_skip_split_preserves_input_order_within_partitions() {
+        let (values, skips) = IrValueOrSkip::split(vec![
+            IrValueOrSkip::Value(1),
+            IrValueOrSkip::Skip("first"),
+            IrValueOrSkip::Value(2),
+            IrValueOrSkip::Skip("second"),
+        ]);
+        assert_eq!(values, [1, 2]);
+        assert_eq!(skips, ["first", "second"]);
+    }
+}

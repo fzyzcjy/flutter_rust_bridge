@@ -89,6 +89,7 @@ mod tests {
         VersionReq::parse(requirement).unwrap()
     }
 
+    /// Converts Dart caret dependency constraints into Cargo-compatible constraints.
     #[test]
     fn test_dart_dependency_version_to_cargo_dependency_version() {
         for (dart, cargo) in [("^1.2.3", "1.2.3"), ("^0.2.3", "0.2")] {
@@ -99,6 +100,7 @@ mod tests {
         }
     }
 
+    /// Classifies Cargo comparator constraints as Dart package ranges.
     #[test]
     fn test_cargo_dependency_version_to_dart_package_version() {
         assert_eq!(
@@ -107,6 +109,7 @@ mod tests {
         );
     }
 
+    /// Matches stable exact versions through ordinary semantic version requirements.
     #[test]
     fn test_dart_stable_exact_version_uses_semver_requirement_matching() {
         let version = dart_package_version("1.2.3");
@@ -134,6 +137,7 @@ mod tests {
         }
     }
 
+    /// Requires range dependency constraints to match exactly.
     #[test]
     fn test_dart_range_version_matches_only_identical_requirement() {
         let version = dart_package_version(">=1.0.0");
@@ -143,6 +147,7 @@ mod tests {
         assert!(!version.matches_requirement(&version_requirement(">=1.0.0, <2.0.0")));
     }
 
+    /// Documents the semver pre-release behavior which Dart compatibility extends.
     #[test]
     fn test_semver_rejects_prerelease_for_stable_lower_bound_without_override() {
         let version = Version::parse("4.0.0-dev.3").unwrap();
@@ -152,6 +157,7 @@ mod tests {
         assert!(dart_package_version("^4.0.0-dev.3").matches_requirement(&requirement));
     }
 
+    /// Accepts a Dart pre-release caret version above a stable lower bound.
     #[test]
     fn test_dart_prerelease_caret_version_satisfies_stable_requirement() {
         let version =
@@ -162,6 +168,7 @@ mod tests {
         assert!(version.matches_requirement(&requirement));
     }
 
+    /// Rejects a pre-release at its corresponding stable release boundary.
     #[test]
     fn test_dart_prerelease_caret_version_does_not_satisfy_release_boundary() {
         let version =
@@ -172,6 +179,7 @@ mod tests {
         assert!(!version.matches_requirement(&requirement));
     }
 
+    /// Rejects stable exact versions below the requested stable range.
     #[test]
     fn test_dart_stable_exact_version_does_not_satisfy_larger_stable_requirement() {
         let version =
@@ -181,6 +189,7 @@ mod tests {
         assert!(!version.matches_requirement(&requirement));
     }
 
+    /// Rejects a pre-release when a matching stable version is required exactly.
     #[test]
     fn test_dart_prerelease_caret_version_does_not_satisfy_exact_stable_requirement() {
         let version =
@@ -191,6 +200,7 @@ mod tests {
         assert!(!version.matches_requirement(&requirement));
     }
 
+    /// Rejects a pre-release at an abbreviated stable release boundary.
     #[test]
     fn test_dart_prerelease_caret_version_does_not_satisfy_abbreviated_release_boundary() {
         let version =
@@ -201,6 +211,7 @@ mod tests {
         assert!(!version.matches_requirement(&requirement));
     }
 
+    /// Accepts a pre-release strictly above a stable version.
     #[test]
     fn test_dart_prerelease_caret_version_satisfies_stable_greater_requirement() {
         let version =
@@ -211,6 +222,7 @@ mod tests {
         assert!(version.matches_requirement(&requirement));
     }
 
+    /// Accepts a pre-release inside a compound stable range.
     #[test]
     fn test_dart_prerelease_caret_version_satisfies_stable_compound_requirement() {
         let version =
@@ -221,6 +233,7 @@ mod tests {
         assert!(version.matches_requirement(&requirement));
     }
 
+    /// Accepts a pre-release below a stable upper bound.
     #[test]
     fn test_dart_prerelease_caret_version_satisfies_stable_upper_bound_requirement() {
         let version =
@@ -231,6 +244,7 @@ mod tests {
         assert!(version.matches_requirement(&requirement));
     }
 
+    /// Rejects a pre-release at the upper edge of a compound stable range.
     #[test]
     fn test_dart_prerelease_caret_version_does_not_satisfy_compound_upper_bound() {
         let version =
@@ -241,6 +255,7 @@ mod tests {
         assert!(!version.matches_requirement(&requirement));
     }
 
+    /// Accepts a pre-release compatible with a stable caret requirement.
     #[test]
     fn test_dart_prerelease_caret_version_satisfies_stable_caret_requirement() {
         let version =
@@ -251,6 +266,7 @@ mod tests {
         assert!(version.matches_requirement(&requirement));
     }
 
+    /// Accepts a pre-release meeting a pre-release lower bound.
     #[test]
     fn test_dart_prerelease_caret_version_satisfies_prerelease_greater_eq_requirement() {
         let version =
@@ -261,6 +277,7 @@ mod tests {
         assert!(version.matches_requirement(&requirement));
     }
 
+    /// Accepts a pre-release compatible with a pre-release caret requirement.
     #[test]
     fn test_dart_prerelease_caret_version_satisfies_prerelease_caret_requirement() {
         let version =
@@ -271,6 +288,7 @@ mod tests {
         assert!(version.matches_requirement(&requirement));
     }
 
+    /// Covers compatible Dart pre-release and stable requirement combinations.
     #[test]
     fn test_dart_prerelease_caret_version_stable_requirement_matrix() {
         for (version, requirement) in [
@@ -292,6 +310,7 @@ mod tests {
         }
     }
 
+    /// Covers incompatible Dart pre-release and stable requirement combinations.
     #[test]
     fn test_dart_prerelease_caret_version_rejects_non_matching_stable_requirement_matrix() {
         for (version, requirement) in [
@@ -314,6 +333,7 @@ mod tests {
         }
     }
 
+    /// Covers matching behavior for pre-release requirement combinations.
     #[test]
     fn test_dart_prerelease_caret_version_prerelease_requirement_matrix() {
         for (version, requirement, expected) in [

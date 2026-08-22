@@ -487,3 +487,46 @@ impl MirTypeDelegateDynTrait {
         self.data.as_ref().unwrap()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Distinguishes primitive and general array delegates.
+    #[test]
+    fn array_delegate_preserves_element_kind_and_length() {
+        let namespace = Namespace::new_raw("crate::api".to_owned());
+        let primitive = MirTypeDelegateArray {
+            namespace: namespace.clone(),
+            length: 4,
+            mode: MirTypeDelegateArrayMode::Primitive(MirTypePrimitive::U8),
+        };
+        let general = MirTypeDelegateArray {
+            namespace,
+            length: 2,
+            mode: MirTypeDelegateArrayMode::General(Box::new(MirType::Delegate(
+                MirTypeDelegate::String,
+            ))),
+        };
+
+        assert_eq!(primitive.safe_ident(), "u_8_array_4");
+        assert_eq!(primitive.get_delegate().rust_api_type(), "Vec<u8>");
+        assert_eq!(general.safe_ident(), "String_array_2");
+        assert_eq!(general.get_delegate().rust_api_type(), "Vec<String>");
+    }
+
+    /// Uses a unit delegate for dyn traits without concrete implementors.
+    #[test]
+    fn dyn_trait_without_data_uses_unit_delegate() {
+        let ty = MirTypeDelegateDynTrait {
+            trait_def_name: NamespacedName::new(
+                Namespace::new_raw("crate::api".to_owned()),
+                "Service".to_owned(),
+            ),
+            data: None,
+        };
+
+        assert_eq!(ty.safe_ident(), "DynTrait_Service");
+        assert_eq!(ty.get_delegate().rust_api_type(), "()");
+    }
+}

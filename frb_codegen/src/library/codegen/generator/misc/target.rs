@@ -55,3 +55,25 @@ impl TargetOrCommon {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Converts IO and web target values in both directions without remapping them.
+    #[test]
+    fn converts_platform_targets_bidirectionally() {
+        assert_eq!(Target::try_from(TargetOrCommon::Io).unwrap(), Target::Io);
+        assert_eq!(Target::try_from(TargetOrCommon::Web).unwrap(), Target::Web);
+        assert_eq!(TargetOrCommon::from(Target::Io), TargetOrCommon::Io);
+        assert_eq!(TargetOrCommon::from(Target::Web), TargetOrCommon::Web);
+    }
+
+    /// Uses the caller-provided fallback only for the common target.
+    #[test]
+    fn resolves_common_and_platform_targets() {
+        assert_eq!(TargetOrCommon::Common.as_target_or(Target::Io), Target::Io);
+        assert_eq!(TargetOrCommon::Io.as_target_or(Target::Web), Target::Io);
+        assert_eq!(TargetOrCommon::Web.as_target_or(Target::Io), Target::Web);
+    }
+}

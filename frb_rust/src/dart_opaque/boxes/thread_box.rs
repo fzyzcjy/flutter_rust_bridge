@@ -58,6 +58,7 @@ mod tests {
     use std::sync::Arc;
     use std::thread;
 
+    /// Allows all supported operations on the creation thread.
     #[test]
     fn test_thread_box_simple() {
         let b = ThreadBox::new(42);
@@ -66,6 +67,7 @@ mod tests {
         assert_eq!(b.into_inner(), 42);
     }
 
+    /// Rejects shared access from a thread other than the creator.
     #[test]
     fn test_thread_box_should_panic_when_access_on_another_thread() {
         let b = Arc::new(ThreadBox::new(42));
@@ -80,6 +82,7 @@ mod tests {
         drop(b);
     }
 
+    /// Rejects access and leaks safely when unwinding on another thread.
     #[test]
     fn test_thread_box_should_panic_and_leak_when_access_and_drop_on_another_thread() {
         let b = ThreadBox::new(42);
@@ -94,6 +97,7 @@ mod tests {
         .unwrap();
     }
 
+    /// Rejects a final drop on a thread other than the creator.
     #[test]
     fn test_thread_box_should_panic_when_drop_on_another_thread() {
         let b = ThreadBox::new(42);

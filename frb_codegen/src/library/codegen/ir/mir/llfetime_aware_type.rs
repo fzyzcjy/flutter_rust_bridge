@@ -18,3 +18,16 @@ impl MirLifetimeAwareType {
         replace_all_lifetimes_to_static(&self.raw)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::MirLifetimeAwareType;
+
+    /// Preserves the original type and rewrites lifetimes to static.
+    #[test]
+    fn preserves_original_and_rewrites_lifetimes() {
+        let ty = MirLifetimeAwareType::new("Foo<'a, 'static>".into());
+        assert_eq!(ty.with_original_lifetime(), "Foo<'a, 'static>");
+        assert_eq!(ty.with_static_lifetime(), "Foo<'static, 'static>");
+    }
+}

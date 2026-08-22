@@ -22,3 +22,34 @@ pub enum ConfigDumpContent {
     GeneratorSpec,
     GeneratorText,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{ConfigDumpContent, DumperInternalConfig};
+    use std::path::PathBuf;
+
+    /// Serializes dump content names with their documented snake-case spelling.
+    #[test]
+    fn serializes_dump_content_names() {
+        assert_eq!(
+            serde_json::to_string(&ConfigDumpContent::GeneratorSpec).unwrap(),
+            "\"generator_spec\""
+        );
+        assert_eq!(
+            ConfigDumpContent::GeneratorText.to_string(),
+            "GeneratorText"
+        );
+    }
+
+    /// Defaults to no dump content and an empty output directory.
+    #[test]
+    fn defaults_to_an_inert_dumper_configuration() {
+        assert_eq!(
+            DumperInternalConfig::default(),
+            DumperInternalConfig {
+                dump_contents: vec![],
+                dump_directory: PathBuf::new(),
+            }
+        );
+    }
+}

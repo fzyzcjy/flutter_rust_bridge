@@ -114,3 +114,25 @@ fn reconstruct_dart_wire_type_from_raw_repr(ty: &str) -> String {
 fn is_rust_pointer(ty: &str) -> bool {
     ty.starts_with("*mut") || ty.starts_with("*const")
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Reconstructs pointers as integer handles and other values as JS values.
+    #[test]
+    fn reconstructs_wire_types_from_trimmed_raw_representations() {
+        assert_eq!(
+            reconstruct_dart_wire_type_from_raw_repr("  *mut std::ffi::c_void  "),
+            "int /* *mut std::ffi::c_void */"
+        );
+        assert_eq!(
+            reconstruct_dart_wire_type_from_raw_repr("*const u8"),
+            "int /* *const u8 */"
+        );
+        assert_eq!(
+            reconstruct_dart_wire_type_from_raw_repr("i32"),
+            "JSAny? /* i32 */"
+        );
+    }
+}

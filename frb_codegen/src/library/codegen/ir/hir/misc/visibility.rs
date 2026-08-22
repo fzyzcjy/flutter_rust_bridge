@@ -17,3 +17,20 @@ impl From<&syn::Visibility> for HirVisibility {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Converts public, restricted, and inherited syntax visibility.
+    #[test]
+    fn converts_each_syn_visibility_variant() {
+        let public: syn::Visibility = syn::parse_str("pub").unwrap();
+        let restricted: syn::Visibility = syn::parse_str("pub(crate)").unwrap();
+        let inherited: syn::Visibility = syn::parse_str("").unwrap();
+
+        assert_eq!(HirVisibility::from(&public), HirVisibility::Public);
+        assert_eq!(HirVisibility::from(&restricted), HirVisibility::Restricted);
+        assert_eq!(HirVisibility::from(&inherited), HirVisibility::Inherited);
+    }
+}

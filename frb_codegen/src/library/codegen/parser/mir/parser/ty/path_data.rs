@@ -44,6 +44,34 @@ fn parse_angle_bracketed_generic_arguments(args: &AngleBracketedGenericArguments
         .collect()
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use syn::parse_quote;
+
+    /// Extracts each path segment and only its type generic arguments.
+    #[test]
+    fn extract_path_data_preserves_segments_and_filters_generic_arguments() {
+        let path: Path = parse_quote!(crate::module::Container<'a, Item, 3>);
+
+        let data = extract_path_data(&path).unwrap();
+
+        assert_eq!(data.len(), 3);
+        assert_eq!(data[0].ident, "crate");
+        assert_eq!(data[1].ident, "module");
+        assert_eq!(data[2].ident, "Container");
+        assert_eq!(data[2].args, vec![parse_quote!(Item)]);
+    }
+
+    /// Returns an empty argument list for a plain path segment.
+    #[test]
+    fn extract_path_data_accepts_plain_segments() {
+        let path: Path = parse_quote!(Plain);
+
+        assert!(extract_path_data(&path).unwrap()[0].args.is_empty());
+    }
+}
+
 // not used yet
 // fn parse_parenthesized_generic_arguments(
 //     &mut self,

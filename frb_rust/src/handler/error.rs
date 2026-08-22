@@ -40,8 +40,9 @@ pub(crate) fn error_to_string(
 
 #[cfg(test)]
 mod tests {
-    use crate::handler::error::Error;
+    use super::{error_to_string, Error};
 
+    /// Formats custom, string, and opaque panic payloads predictably.
     #[test]
     fn test_error_message() {
         assert_eq!(Error::CustomError.message(), "CustomError".to_owned());
@@ -53,5 +54,13 @@ mod tests {
             Error::Panic(Box::new("Hello".to_string())).message(),
             "Hello".to_owned()
         );
+    }
+
+    /// Preserves static-str panic payloads before optional backtraces.
+    #[test]
+    fn test_error_to_string_supports_static_str_payload() {
+        let error: Box<dyn std::any::Any + Send> = Box::new("static error");
+
+        assert_eq!(error_to_string(&error, &None), "static error");
     }
 }

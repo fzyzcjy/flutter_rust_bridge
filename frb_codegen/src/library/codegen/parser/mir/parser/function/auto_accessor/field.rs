@@ -151,3 +151,171 @@ fn create_mir_field(ty: MirType, name: &str) -> MirField {
         settings: Default::default(),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{compute_src_lineno_pseudo, parse_auto_accessor_of_field};
+    use crate::codegen::generator::codec::structs::CodecMode;
+    use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
+    use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+    use crate::codegen::ir::mir::func::{MirFuncAccessorMode, OwnershipMode};
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+    use crate::codegen::ir::mir::ty::structure::MirStruct;
+    use crate::codegen::ir::mir::ty::MirType;
+    use crate::codegen::parser::mir::internal_config::{
+        ParserMirInternalConfig, RustInputNamespacePack,
+    };
+    use crate::codegen::parser::mir::parser::function::auto_accessor::create_simplified_parsing_context;
+    use crate::codegen::parser::mir::parser::function::ui_related::UI_MUTATION_FUNCTION_RUST_AOP_AFTER;
+    use crate::codegen::parser::mir::parser::ty::TypeParser;
+    use crate::codegen::parser::mir::ParseMode;
+    use crate::utils::namespace::{Namespace, NamespacedName};
+
+    /// Derives a stable pseudo line number from the fully qualified field name.
+    #[test]
+    fn derives_distinct_stable_pseudo_line_numbers() {
+        let struct_name = NamespacedName::new(
+            Namespace::new(vec!["crate".into(), "api".into()]),
+            "Sample".into(),
+        );
+        let first = field("first");
+        let second = field("second");
+
+        assert_eq!(
+            compute_src_lineno_pseudo(&struct_name, &first),
+            compute_src_lineno_pseudo(&struct_name, &first)
+        );
+        assert_ne!(
+            compute_src_lineno_pseudo(&struct_name, &first),
+            compute_src_lineno_pseudo(&struct_name, &second)
+        );
+    }
+
+    /// Builds getter and ui-state setter functions with their distinct API contracts.
+    #[test]
+    fn builds_getter_and_ui_state_setter_for_field() -> anyhow::Result<()> {
+        let struct_name = NamespacedName::new(
+            Namespace::new(vec!["crate".into(), "api".into()]),
+            "Sample".into(),
+        );
+        let config = config();
+        let context = create_simplified_parsing_context(
+            struct_name.namespace.clone(),
+            &config,
+            ParseMode::Normal,
+        )?;
+        let ir_pack = IrEarlyGeneratorPack::default();
+        let mut type_parser = TypeParser::new_from_pack(&ir_pack);
+        let field = field("value");
+        let ty_struct = struct_type(&struct_name, true);
+        let owner_ty = MirType::Primitive(MirTypePrimitive::U8);
+
+        let getter = parse_auto_accessor_of_field(
+            &config,
+            &struct_name,
+            &field,
+            MirFuncAccessorMode::Getter,
+            &owner_ty,
+            &mut type_parser,
+            &context,
+            &ty_struct,
+        )?;
+        let setter = parse_auto_accessor_of_field(
+            &config,
+            &struct_name,
+            &field,
+            MirFuncAccessorMode::Setter,
+            &owner_ty,
+            &mut type_parser,
+            &context,
+            &ty_struct,
+        )?;
+
+        assert_eq!(getter.mir_func.inputs.len(), 1);
+        assert_eq!(
+            getter.mir_func.inputs[0].ownership_mode,
+            Some(OwnershipMode::Ref)
+        );
+        assert_eq!(
+            getter.mir_func.output.normal,
+            MirType::Primitive(MirTypePrimitive::U8)
+        );
+        assert_eq!(
+            getter.mir_func.rust_call_code.as_deref(),
+            Some("api_that_guard.value.clone()")
+        );
+        assert_eq!(getter.mir_func.rust_aop_after, None);
+        assert!(getter.sanity_check_hint.is_none());
+
+        assert_eq!(setter.mir_func.inputs.len(), 2);
+        assert_eq!(
+            setter.mir_func.inputs[0].ownership_mode,
+            Some(OwnershipMode::RefMut)
+        );
+        assert_eq!(
+            setter.mir_func.inputs[1].inner.name.rust_style(true),
+            "value"
+        );
+        assert_eq!(
+            setter.mir_func.output.normal,
+            MirType::Primitive(MirTypePrimitive::Unit)
+        );
+        assert_eq!(
+            setter.mir_func.rust_call_code.as_deref(),
+            Some("{ api_that_guard.value = api_value; }")
+        );
+        assert_eq!(
+            setter.mir_func.rust_aop_after.as_deref(),
+            Some(UI_MUTATION_FUNCTION_RUST_AOP_AFTER)
+        );
+        assert!(setter.sanity_check_hint.is_none());
+        Ok(())
+    }
+
+    fn field(name: &str) -> MirField {
+        MirField {
+            ty: MirType::Primitive(MirTypePrimitive::U8),
+            name: MirIdent::new(name.into(), None),
+            is_final: true,
+            is_rust_public: Some(true),
+            comments: vec![],
+            default: None,
+            settings: MirFieldSettings::default(),
+        }
+    }
+
+    fn config() -> ParserMirInternalConfig {
+        ParserMirInternalConfig {
+            rust_input_namespace_pack: RustInputNamespacePack {
+                rust_input_namespace_prefixes: vec![Namespace::new(vec!["crate".into()])],
+                rust_output_path_namespace: Namespace::default(),
+            },
+            force_codec_mode_pack: None,
+            default_stream_sink_codec: CodecMode::Dco,
+            default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
+            stop_on_error: true,
+            enable_lifetime: false,
+            type_64bit_int: false,
+            default_dart_async: true,
+        }
+    }
+
+    fn struct_type(name: &NamespacedName, ui_state: bool) -> MirStruct {
+        MirStruct {
+            name: name.clone(),
+            wrapper_name: None,
+            fields: vec![],
+            is_fields_named: true,
+            dart_metadata_raw: vec![],
+            ignore: false,
+            needs_json_serializable: false,
+            generate_hash: true,
+            generate_eq: true,
+            dart_collection_deep_equality: false,
+            ui_state,
+            comments: vec![],
+        }
+    }
+}

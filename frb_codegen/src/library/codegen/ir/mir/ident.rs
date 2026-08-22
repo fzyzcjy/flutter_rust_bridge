@@ -77,3 +77,28 @@ fn convert_rust_to_dart_style(raw: &str) -> String {
 fn strip_prefix_rhash(raw: &str) -> &str {
     raw.strip_prefix("r#").unwrap_or(raw)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::MirIdent;
+    use crate::codegen::generator::codec::sse::lang::{dart::DartLang, Lang};
+
+    /// Exposes explicit and derived Rust, Dart, and generic styles.
+    #[test]
+    fn exposes_explicit_and_derived_styles() {
+        let ident = MirIdent::new("r#async_name".into(), Some("customName".into()));
+        assert_eq!(ident.rust_style(false), "r#async_name");
+        assert_eq!(ident.rust_style(true), "async_name");
+        assert_eq!(ident.dart_style(), "customName");
+        assert_eq!(ident.style(&Lang::DartLang(DartLang), false), "customName");
+        assert_eq!(ident.to_string(), "r#async_name(dart_style=customName)");
+    }
+
+    /// Derives Dart and C names safe for reserved keywords.
+    #[test]
+    fn derives_dart_and_c_keyword_safe_names() {
+        let ident = MirIdent::new("r#interface".into(), None);
+        assert_eq!(ident.dart_style(), "interface_");
+        assert_eq!(ident.c_style(), "interface1");
+    }
+}

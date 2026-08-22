@@ -16,6 +16,24 @@ impl BaseThreadPool for SimpleThreadPool {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::{BaseThreadPool, SimpleThreadPool};
+    use std::sync::mpsc;
+    use std::time::Duration;
+
+    /// Executes a submitted job on the native thread pool.
+    #[test]
+    fn test_execute_runs_submitted_job() {
+        let pool = SimpleThreadPool::default();
+        let (sender, receiver) = mpsc::channel();
+
+        pool.execute(move || sender.send(()).unwrap());
+
+        assert_eq!(receiver.recv_timeout(Duration::from_secs(1)), Ok(()));
+    }
+}
+
 // TODO migrate this documentation
 // /// Spawn a task using the internal thread pool.
 // /// Interprets the parameters as a list of captured transferables to

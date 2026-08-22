@@ -58,3 +58,43 @@ fn fvm_install_flutter_version() -> bool {
     command_run!(call_shell[None, Some(ExecuteCommandOptions { log_when_error: Some(false), ..Default::default() })], "fvm", "install")
         .map_or(false, |res| res.status.success())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+    use tempfile::tempdir;
+
+    /// Detects an FVM marker in the requested directory.
+    #[test]
+    fn detects_an_immediate_fvmrc() -> anyhow::Result<()> {
+        let directory = tempdir()?;
+        fs::write(directory.path().join(".fvmrc"), "{}")?;
+
+        assert!(has_fvmrc(directory.path()));
+        Ok(())
+    }
+
+    /// Detects an FVM marker in an ancestor directory.
+    #[test]
+    fn detects_an_ancestor_fvmrc() -> anyhow::Result<()> {
+        let directory = tempdir()?;
+        let nested = directory.path().join("nested").join("project");
+        fs::create_dir_all(&nested)?;
+        fs::write(directory.path().join(".fvmrc"), "{}")?;
+
+        assert!(has_fvmrc(&nested));
+        Ok(())
+    }
+
+    /// Returns false when the directory hierarchy has no FVM marker.
+    #[test]
+    fn returns_false_without_an_fvmrc() -> anyhow::Result<()> {
+        let directory = tempdir()?;
+        let nested = directory.path().join("nested");
+        fs::create_dir(&nested)?;
+
+        assert!(!has_fvmrc(&nested));
+        Ok(())
+    }
+}

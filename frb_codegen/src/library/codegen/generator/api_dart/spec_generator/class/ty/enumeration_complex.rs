@@ -169,3 +169,57 @@ pub(crate) fn compute_json_serializable_extra_code(
         "".to_owned()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::optional::MirTypeOptional;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::MirType;
+
+    fn field(optional: bool) -> MirField {
+        MirField {
+            ty: if optional {
+                MirType::Optional(MirTypeOptional::new(MirType::Primitive(
+                    MirTypePrimitive::U8,
+                )))
+            } else {
+                MirType::Primitive(MirTypePrimitive::U8)
+            },
+            name: MirIdent::new("value".into(), None),
+            is_final: true,
+            is_rust_public: None,
+            comments: vec![],
+            default: None,
+            settings: MirFieldSettings::default(),
+        }
+    }
+
+    /// Splits unnamed enum parameters only at a trailing optional boundary.
+    #[test]
+    fn optional_boundary_requires_all_remaining_fields_to_be_optional() {
+        assert_eq!(
+            optional_boundary_index(&[field(false), field(true)]),
+            Some(1)
+        );
+        assert_eq!(
+            optional_boundary_index(&[field(true), field(true)]),
+            Some(0)
+        );
+        assert_eq!(optional_boundary_index(&[field(true), field(false)]), None);
+        assert_eq!(optional_boundary_index(&[field(false)]), None);
+        assert_eq!(optional_boundary_index(&[]), None);
+    }
+
+    /// Emits the Freezed JSON factory only when serialization is enabled.
+    #[test]
+    fn json_serializable_extra_code_is_conditional() {
+        assert_eq!(compute_json_serializable_extra_code(false, "Event"), "");
+        assert_eq!(
+            compute_json_serializable_extra_code(true, "Event"),
+            "factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);"
+        );
+    }
+}

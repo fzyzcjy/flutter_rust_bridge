@@ -129,3 +129,40 @@ fn generate_imports_from_ty(
 
     Ok(import_ty_itself + &import_extra)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::annotation::MirDartAnnotation;
+    use crate::codegen::ir::mir::import::MirDartImport;
+
+    /// Joins Dart comments and preserves a single trailing newline.
+    #[test]
+    fn comments_emit_trailing_newline_only_when_present() {
+        assert_eq!(generate_dart_comments(&[]), "");
+        assert_eq!(
+            generate_dart_comments(&[MirComment("/// one".into()), MirComment("/// two".into())]),
+            "/// one\n/// two\n"
+        );
+    }
+
+    /// Prefixes metadata with its import alias when one is configured.
+    #[test]
+    fn metadata_uses_alias_when_available() {
+        assert_eq!(
+            generate_dart_metadata(&[MirDartAnnotation {
+                content: "JsonKey()".into(),
+                library: Some(MirDartImport {
+                    uri: "json.dart".into(),
+                    alias: Some("json".into())
+                })
+            }]),
+            "@json.JsonKey()\n"
+        );
+        assert_eq!(
+            generate_dart_maybe_implements_exception(true),
+            "implements FrbException"
+        );
+        assert_eq!(generate_dart_maybe_implements_exception(false), "");
+    }
+}

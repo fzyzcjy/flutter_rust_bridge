@@ -92,6 +92,42 @@ impl ExternFuncParam {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Renders native and wasm exports with their distinct symbol and attribute conventions.
+    #[test]
+    fn extern_function_template_covers_native_prefix_and_wasm_export() {
+        let params = vec![ExternFuncParam {
+            name: "value".into(),
+            rust_type: "i32".into(),
+            dart_type: "int".into(),
+        }];
+        let io = ExternFunc {
+            partial_func_name: "work".into(),
+            params: params.clone(),
+            return_type: Some("i64".into()),
+            body: "work_impl(value)".into(),
+            target: Target::Io,
+            needs_ffigen: true,
+        };
+        let web = ExternFunc {
+            target: Target::Web,
+            ..io.clone()
+        };
+
+        assert_eq!(io.func_name("frb_"), "frb_work");
+        assert!(io.generate("frb_").contains(
+            "#[unsafe(no_mangle)]\n                pub extern \"C\" fn frb_work(value: i32) -> i64"
+        ));
+        assert_eq!(web.func_name("frb_"), "work");
+        assert!(web
+            .generate("frb_")
+            .contains("#[wasm_bindgen]\n                pub  fn work(value: i32) -> i64"));
+    }
+}
+
 // TODO maybe move
 #[derive(Clone, Debug, Serialize)]
 pub(crate) struct ExternClass {

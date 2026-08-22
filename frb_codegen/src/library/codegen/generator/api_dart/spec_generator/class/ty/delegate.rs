@@ -134,3 +134,18 @@ fn generate_proxy_variant(
         }}"
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    /// Emits equality code bound to the generated array type rather than a fixed name.
+    fn generates_type_specific_deep_collection_equality() {
+        let code = generate_array_equality("ArrayOfWidgets");
+
+        assert!(code.contains("DeepCollectionEquality().hash(this)"));
+        assert!(code.contains("other is ArrayOfWidgets"));
+        assert!(code.contains("DeepCollectionEquality().equals(this, other)"));
+    }
+}

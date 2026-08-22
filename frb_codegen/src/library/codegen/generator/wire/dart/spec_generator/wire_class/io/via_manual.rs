@@ -80,3 +80,32 @@ fn generate_func(func: &ExternFunc, c_symbol_prefix: &str) -> String {
         // frb-coverage:ignore-end
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Generates the supported manual void-pointer FFI wrapper.
+    #[test]
+    fn generates_void_pointer_wrapper_with_prefixed_symbol() {
+        let func = ExternFunc {
+            partial_func_name: "drop_opaque".to_owned(),
+            params: vec![ExternFuncParam {
+                name: "ptr".to_owned(),
+                rust_type: "*const std::ffi::c_void".to_owned(),
+                dart_type: "int".to_owned(),
+            }],
+            return_type: None,
+            body: String::new(),
+            target: Target::Io,
+            needs_ffigen: false,
+        };
+
+        let output = generate_func(&func, "frb_");
+
+        assert!(output.contains("void drop_opaque("));
+        assert!(output.contains("ffi.Pointer<ffi.Void> ptr"));
+        assert!(output.contains("_lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('frb_drop_opaque')"));
+        assert!(output.contains("asFunction<void Function(ffi.Pointer<ffi.Void>)>()"));
+    }
+}

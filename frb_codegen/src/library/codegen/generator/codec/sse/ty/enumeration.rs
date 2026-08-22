@@ -150,3 +150,91 @@ fn enum_sep(lang: &Lang) -> &'static str {
 }
 
 const TAG_TYPE: MirType = Primitive(MirTypePrimitive::I32);
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::codec::sse::lang::{dart::DartLang, rust::RustLang};
+    use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::structure::MirStruct;
+    use crate::utils::namespace::{Namespace, NamespacedName};
+
+    fn value_variant() -> MirEnumVariant {
+        MirEnumVariant {
+            name: MirIdent::new("Ready".into(), None),
+            wrapper_name: MirIdent::new("Ready".into(), None),
+            comments: vec![],
+            kind: MirVariantKind::Value,
+        }
+    }
+
+    fn field(name: &str) -> MirField {
+        MirField {
+            ty: Primitive(MirTypePrimitive::I32),
+            name: MirIdent::new(name.into(), None),
+            is_final: false,
+            is_rust_public: None,
+            comments: vec![],
+            default: None,
+            settings: MirFieldSettings::default(),
+        }
+    }
+
+    fn struct_variant(named: bool) -> MirEnumVariant {
+        MirEnumVariant {
+            name: MirIdent::new("Payload".into(), None),
+            wrapper_name: MirIdent::new("Payload".into(), None),
+            comments: vec![],
+            kind: MirVariantKind::Struct(MirStruct {
+                name: NamespacedName::new(Namespace::new_raw("crate".into()), "Payload".into()),
+                wrapper_name: None,
+                fields: vec![field("value")],
+                is_fields_named: named,
+                dart_metadata_raw: vec![],
+                ignore: false,
+                needs_json_serializable: false,
+                generate_hash: false,
+                generate_eq: false,
+                dart_collection_deep_equality: false,
+                ui_state: false,
+                comments: vec![],
+            }),
+        }
+    }
+
+    /// Uses the target-specific enum separator and unit-variant pattern syntax.
+    #[test]
+    fn value_variant_patterns_and_separators_match_each_target() {
+        let variant = value_variant();
+        assert_eq!(enum_sep(&Lang::DartLang(DartLang)), "_");
+        assert_eq!(
+            pattern_match_enum_variant(&Lang::DartLang(DartLang), &variant),
+            "()"
+        );
+        assert_eq!(enum_sep(&Lang::RustLang(RustLang)), "::");
+        assert_eq!(
+            pattern_match_enum_variant(&Lang::RustLang(RustLang), &variant),
+            ""
+        );
+    }
+
+    /// Destructures named and positional payload variants with target-local patterns.
+    #[test]
+    fn struct_variant_patterns_cover_dart_and_rust_named_tuple_forms() {
+        let dart = Lang::DartLang(DartLang);
+        let rust = Lang::RustLang(RustLang);
+        assert_eq!(
+            pattern_match_enum_variant(&dart, &struct_variant(true)),
+            "(value: final value)"
+        );
+        assert_eq!(
+            pattern_match_enum_variant(&rust, &struct_variant(true)),
+            "{value}"
+        );
+        assert_eq!(
+            pattern_match_enum_variant(&rust, &struct_variant(false)),
+            "(value)"
+        );
+    }
+}

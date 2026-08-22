@@ -182,3 +182,172 @@ impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
         }));
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::SimpleHandler;
+    use crate::codec::{BaseCodec, Rust2DartMessageTrait};
+    use crate::handler::error::Error;
+    use crate::handler::error_listener::ErrorListener;
+    use crate::handler::executor::Executor;
+    use crate::handler::handler::{FfiCallMode, Handler, TaskContext, TaskInfo, TaskRetFutTrait};
+    use crate::platform_types::DartAbi;
+    use std::any::Any;
+    use std::backtrace::Backtrace;
+    use std::future::Future;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    use std::sync::Mutex;
+
+    static EXECUTE_SYNC_COUNT: AtomicUsize = AtomicUsize::new(0);
+    static PANIC_ERROR_COUNT: AtomicUsize = AtomicUsize::new(0);
+    static TEST_LOCK: Mutex<()> = Mutex::new(());
+
+    #[derive(Clone, Copy)]
+    struct TestCodec;
+
+    struct TestMessage(i32);
+
+    impl Rust2DartMessageTrait for TestMessage {
+        type WireSyncRust2DartType = i32;
+
+        fn simplest() -> Self {
+            Self(-1)
+        }
+
+        fn into_dart_abi(self) -> DartAbi {
+            unreachable!()
+        }
+
+        unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self {
+            Self(raw)
+        }
+
+        fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType {
+            self.0
+        }
+    }
+
+    impl BaseCodec for TestCodec {
+        type Message = TestMessage;
+
+        fn encode_panic(_: &Box<dyn Any + Send>, _: &Option<Backtrace>) -> Self::Message {
+            TestMessage(99)
+        }
+
+        fn encode_close_stream() -> Self::Message {
+            TestMessage(0)
+        }
+    }
+
+    struct RecordingExecutor;
+
+    impl Executor for RecordingExecutor {
+        #[cfg(feature = "thread-pool")]
+        fn execute_normal<Rust2DartCodec, TaskFn>(&self, _: TaskInfo, _: TaskFn)
+        where
+            TaskFn: FnOnce(TaskContext) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
+                + Send
+                + 'static,
+            Rust2DartCodec: BaseCodec,
+        {
+            unreachable!()
+        }
+
+        fn execute_sync<Rust2DartCodec, SyncTaskFn>(
+            &self,
+            _: TaskInfo,
+            sync_task: SyncTaskFn,
+        ) -> Rust2DartCodec::Message
+        where
+            SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>,
+            Rust2DartCodec: BaseCodec,
+        {
+            EXECUTE_SYNC_COUNT.fetch_add(1, Ordering::SeqCst);
+            sync_task().unwrap_or_else(|error| error)
+        }
+
+        #[cfg(feature = "rust-async")]
+        fn execute_async<Rust2DartCodec, TaskFn, TaskRetFut>(&self, _: TaskInfo, _: TaskFn)
+        where
+            TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + 'static,
+            TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
+                + TaskRetFutTrait,
+            Rust2DartCodec: BaseCodec,
+        {
+            unreachable!()
+        }
+    }
+
+    #[derive(Clone, Copy)]
+    struct RecordingErrorListener;
+
+    impl ErrorListener for RecordingErrorListener {
+        fn on_error(&self, error: Error) {
+            if matches!(error, Error::Panic(_)) {
+                PANIC_ERROR_COUNT.fetch_add(1, Ordering::SeqCst);
+            }
+        }
+    }
+
+    #[derive(Clone, Copy)]
+    struct PanickingErrorListener;
+
+    impl ErrorListener for PanickingErrorListener {
+        fn on_error(&self, _: Error) {
+            panic!("listener panic")
+        }
+    }
+
+    fn task_info() -> TaskInfo {
+        TaskInfo {
+            port: None,
+            debug_name: "test",
+            mode: FfiCallMode::Sync,
+        }
+    }
+
+    /// Forwards sync success through the executor and retains its wire value.
+    #[test]
+    fn test_wrap_sync_forwards_successful_task_result() {
+        let _guard = TEST_LOCK.lock().unwrap();
+        EXECUTE_SYNC_COUNT.store(0, Ordering::SeqCst);
+        PANIC_ERROR_COUNT.store(0, Ordering::SeqCst);
+        let handler = SimpleHandler::new(RecordingExecutor, RecordingErrorListener);
+
+        let wire = handler.wrap_sync::<TestCodec, _>(task_info(), || Ok(TestMessage(42)));
+
+        assert_eq!(wire, 42);
+        assert_eq!(EXECUTE_SYNC_COUNT.load(Ordering::SeqCst), 1);
+        assert_eq!(PANIC_ERROR_COUNT.load(Ordering::SeqCst), 0);
+    }
+
+    /// Converts a task panic to the codec panic payload and reports it once.
+    #[test]
+    fn test_wrap_sync_reports_task_panic_with_codec_payload() {
+        let _guard = TEST_LOCK.lock().unwrap();
+        PANIC_ERROR_COUNT.store(0, Ordering::SeqCst);
+        let handler = SimpleHandler::new(RecordingExecutor, RecordingErrorListener);
+
+        let wire = handler
+            .wrap_sync::<TestCodec, _>(task_info(), || -> Result<TestMessage, TestMessage> {
+                panic!("task panic")
+            });
+
+        assert_eq!(wire, 99);
+        assert_eq!(PANIC_ERROR_COUNT.load(Ordering::SeqCst), 1);
+    }
+
+    /// Falls back to the simplest wire value when panic reporting itself panics.
+    #[test]
+    fn test_wrap_sync_contains_listener_panic() {
+        let _guard = TEST_LOCK.lock().unwrap();
+        let handler = SimpleHandler::new(RecordingExecutor, PanickingErrorListener);
+
+        let wire = handler
+            .wrap_sync::<TestCodec, _>(task_info(), || -> Result<TestMessage, TestMessage> {
+                panic!("task panic")
+            });
+
+        assert_eq!(wire, -1);
+    }
+}

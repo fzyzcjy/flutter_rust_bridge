@@ -204,27 +204,40 @@ fn generate_default_rust_opaque_codec(full_dep: bool) -> RustOpaqueCodecMode {
 
 #[cfg(test)]
 mod tests {
+    use super::{
+        compute_dart_output_class_name_pack, compute_force_codec_mode_pack,
+        generate_default_rust_opaque_codec, generate_default_stream_sink_codec,
+        parse_dump_contents,
+    };
     use crate::codegen::config::config::MetaConfig;
     use crate::codegen::config::internal_config::InternalConfig;
+    use crate::codegen::dumper::internal_config::ConfigDumpContent;
+    use crate::codegen::generator::codec::structs::CodecMode;
+    use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::Config;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
-        create_path_sanitizers, get_test_fixture_dir, json_golden_test,
+        create_path_sanitizers, get_test_fixture_dir, json_golden_test, CurrentDirGuard,
     };
     use log::info;
     use serde_json::Value;
     use serial_test::serial;
     use std::env;
+    use std::fs;
     use std::path::PathBuf;
+    use strum::IntoEnumIterator;
+    use tempfile::tempdir;
 
     #[test]
     #[serial]
+    /// Parses the single-input fixture into the expected complete configuration.
     fn test_parse_single_rust_input() -> anyhow::Result<()> {
         body("library/codegen/config/internal_config_parser/single_rust_input")
     }
 
     #[test]
     #[serial]
+    /// Parses the wildcard migration fixture into the expected configuration.
     fn test_parse_wildcard_rust_input() -> anyhow::Result<()> {
         body("library/codegen/config/internal_config_parser/wildcard_rust_input")
     }
@@ -232,7 +245,7 @@ mod tests {
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
-        env::set_current_dir(&test_fixture_dir)?;
+        let _guard = CurrentDirGuard::change_to(&test_fixture_dir)?;
         info!("test_fixture_dir={test_fixture_dir:?}");
 
         let config = Config::from_files_auto()?;
@@ -253,6 +266,7 @@ mod tests {
 
     #[test]
     #[serial]
+    /// Rejects a fixture whose Rust output lacks a file extension.
     fn test_parse_rust_output_faulty() -> anyhow::Result<()> {
         let result = body("library/codegen/config/internal_config_parser/faulty_rust_output");
 
@@ -261,6 +275,153 @@ mod tests {
         assert!(error
             .to_string()
             .contains("Rust output path needs to include the file name."));
+        Ok(())
+    }
+
+    /// Selects complementary defaults for lightweight and full dependencies.
+    #[test]
+    fn selects_defaults_for_each_dependency_mode() {
+        assert_eq!(generate_default_stream_sink_codec(false), CodecMode::Sse);
+        assert_eq!(generate_default_stream_sink_codec(true), CodecMode::Dco);
+        assert_eq!(
+            generate_default_rust_opaque_codec(false),
+            RustOpaqueCodecMode::Moi
+        );
+        assert_eq!(
+            generate_default_rust_opaque_codec(true),
+            RustOpaqueCodecMode::Nom
+        );
+        assert_eq!(
+            compute_force_codec_mode_pack(false),
+            Some(crate::codegen::generator::codec::structs::CodecModePack {
+                dart2rust: CodecMode::Pde,
+                rust2dart: CodecMode::Pde,
+            })
+        );
+        assert_eq!(compute_force_codec_mode_pack(true), None);
+    }
+
+    /// Gives dump_all precedence over an explicitly selected dump subset.
+    #[test]
+    fn gives_dump_all_precedence_over_dump_subset() {
+        let config = Config {
+            dump_all: Some(true),
+            dump: Some(vec![ConfigDumpContent::Mir]),
+            ..Default::default()
+        };
+
+        assert_eq!(
+            parse_dump_contents(&config),
+            ConfigDumpContent::iter().collect::<Vec<_>>()
+        );
+    }
+
+    /// Preserves an explicit dump subset when dump_all is disabled.
+    #[test]
+    fn preserves_explicit_dump_subset() {
+        let config = Config {
+            dump_all: Some(false),
+            dump: Some(vec![
+                ConfigDumpContent::Config,
+                ConfigDumpContent::GeneratorText,
+            ]),
+            ..Default::default()
+        };
+
+        assert_eq!(
+            parse_dump_contents(&config),
+            vec![ConfigDumpContent::Config, ConfigDumpContent::GeneratorText]
+        );
+    }
+
+    /// Derives every generated Dart class name from a custom entrypoint name.
+    #[test]
+    fn computes_class_name_pack_from_custom_entrypoint() {
+        let pack = compute_dart_output_class_name_pack(&Config {
+            dart_entrypoint_class_name: Some("Bridge".to_owned()),
+            ..Default::default()
+        });
+
+        assert_eq!(pack.entrypoint_class_name, "Bridge");
+        assert_eq!(pack.api_class_name, "BridgeApi");
+        assert_eq!(pack.api_impl_class_name, "BridgeApiImpl");
+        assert_eq!(pack.api_impl_platform_class_name, "BridgeApiImplPlatform");
+        assert_eq!(pack.wire_class_name, "BridgeWire");
+        assert_eq!(pack.wasm_module_name, "BridgeWasmModule");
+    }
+
+    /// Uses the public fallback entrypoint class name when none is configured.
+    #[test]
+    fn uses_fallback_class_name_pack() {
+        assert_eq!(
+            compute_dart_output_class_name_pack(&Config::default()).entrypoint_class_name,
+            "RustLib"
+        );
+    }
+
+    /// Parses a complete temporary project with defaults and explicit overrides.
+    #[test]
+    fn parses_component_configuration_with_defaults_and_overrides() -> anyhow::Result<()> {
+        let temp_dir = tempdir()?;
+        let native_dir = temp_dir.path().join("native");
+        let dart_dir = temp_dir.path().join("dart/lib");
+        fs::create_dir_all(native_dir.join("src"))?;
+        fs::create_dir_all(&dart_dir)?;
+        fs::write(temp_dir.path().join("dart/pubspec.yaml"), "name: example\n")?;
+
+        let config = Config {
+            base_dir: Some(temp_dir.path().display().to_string()),
+            rust_root: Some("native".to_owned()),
+            rust_input: Some("crate::api".to_owned()),
+            dart_output: Some("dart/lib".to_owned()),
+            full_dep: Some(false),
+            dart_format_line_length: Some(120),
+            default_rust_opaque_codec: Some(RustOpaqueCodecMode::Nom),
+            ..Default::default()
+        };
+
+        let result = InternalConfig::parse(&config, &MetaConfig { watch: true })?;
+
+        assert!(result.controller.watch);
+        assert!(!result.preparer.needs_ffigen);
+        assert_eq!(result.parser.mir.default_stream_sink_codec, CodecMode::Sse);
+        assert_eq!(
+            result.parser.mir.default_rust_opaque_codec,
+            RustOpaqueCodecMode::Nom
+        );
+        assert_eq!(result.polisher.dart_format_line_length, 120);
+        assert_eq!(
+            result.polisher.rust_output_path,
+            native_dir.join("src/frb_generated.rs")
+        );
+        assert_eq!(
+            result
+                .generator
+                .wire
+                .dart
+                .dart_output_class_name_pack
+                .entrypoint_class_name,
+            "RustLib"
+        );
+        Ok(())
+    }
+
+    /// Falls back to the current directory when the configured base directory is invalid.
+    #[test]
+    #[serial]
+    fn falls_back_to_current_directory_for_invalid_base_dir() -> anyhow::Result<()> {
+        let current_dir = env::current_dir()?;
+
+        let config = Config {
+            base_dir: Some("missing-base-dir".to_owned()),
+            rust_root: Some(".".to_owned()),
+            rust_input: Some("crate::api".to_owned()),
+            dart_output: Some("../frb_dart/lib".to_owned()),
+            ..Default::default()
+        };
+        let result = InternalConfig::parse(&config, &MetaConfig::default());
+
+        assert_eq!(result?.polisher.rust_crate_dir, current_dir.canonicalize()?);
         Ok(())
     }
 }

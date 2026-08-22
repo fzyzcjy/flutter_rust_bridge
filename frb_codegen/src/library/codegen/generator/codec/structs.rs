@@ -130,3 +130,69 @@ pub(crate) enum EncodeOrDecode {
     Encode,
     Decode,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use std::collections::HashMap;
+
+    /// Delegates only PDE to SSE while retaining every other codec mode.
+    #[test]
+    fn delegates_only_pde_codec_mode() {
+        assert_eq!(CodecMode::Pde.delegate(), Some(CodecMode::Sse));
+        assert_eq!(CodecMode::Cst.delegate(), None);
+        assert_eq!(CodecMode::Dco.delegate_or_self(), CodecMode::Dco);
+        assert_eq!(CodecMode::Pde.delegate_or_self(), CodecMode::Sse);
+    }
+
+    /// Lists Dart-to-Rust and Rust-to-Dart modes in their configured order.
+    #[test]
+    fn lists_both_configured_codec_modes() {
+        let pack = CodecModePack {
+            dart2rust: CodecMode::Cst,
+            rust2dart: CodecMode::Dco,
+        };
+
+        assert_eq!(pack.all(), vec![CodecMode::Cst, CodecMode::Dco]);
+    }
+
+    /// Selects cached or global interest types for all codec modes.
+    #[test]
+    fn selects_interest_types_for_every_codec_mode() {
+        let cst_types = vec![MirType::Primitive(MirTypePrimitive::U8)];
+        let global_types = vec![
+            MirType::Primitive(MirTypePrimitive::I32),
+            MirType::Primitive(MirTypePrimitive::F64),
+        ];
+        let cache = MirPackComputedCache {
+            distinct_types: global_types.clone(),
+            distinct_types_for_codec: HashMap::from([
+                (CodecMode::Cst, cst_types.clone()),
+                (
+                    CodecMode::Dco,
+                    vec![MirType::Primitive(MirTypePrimitive::I8)],
+                ),
+                (
+                    CodecMode::Sse,
+                    vec![MirType::Primitive(MirTypePrimitive::U16)],
+                ),
+                (
+                    CodecMode::Pde,
+                    vec![MirType::Primitive(MirTypePrimitive::U32)],
+                ),
+            ]),
+        };
+
+        let cases = [
+            (CodecMode::Cst, cst_types),
+            (CodecMode::Dco, global_types.clone()),
+            (CodecMode::Sse, global_types),
+            (CodecMode::Pde, vec![]),
+        ];
+
+        for (codec, expected) in cases {
+            assert_eq!(get_interest_types_for_codec(&cache, codec), expected);
+        }
+    }
+}

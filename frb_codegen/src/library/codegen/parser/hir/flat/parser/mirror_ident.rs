@@ -39,3 +39,35 @@ pub(crate) fn parse_mirror_ident(
         mirror,
     })
 }
+
+#[cfg(test)]
+mod tests {
+    use super::parse_mirror_ident;
+    use quote::format_ident;
+
+    /// Preserves the original identifier when no mirror marker exists.
+    #[test]
+    fn preserves_ident_without_mirror_attribute() -> anyhow::Result<()> {
+        let output = parse_mirror_ident(&format_ident!("Original"), &[])?;
+
+        assert!(!output.mirror);
+        assert_eq!(output.idents[0], format_ident!("Original"));
+        Ok(())
+    }
+
+    /// Uses each simple mirror identifier from the FRB attribute.
+    #[test]
+    fn parses_simple_mirror_identifiers() -> anyhow::Result<()> {
+        let attrs = vec![syn::parse_quote!(
+            #[flutter_rust_bridge::frb(mirror(First, Second))]
+        )];
+        let output = parse_mirror_ident(&format_ident!("Original"), &attrs)?;
+
+        assert!(output.mirror);
+        assert_eq!(
+            output.idents,
+            vec![format_ident!("First"), format_ident!("Second")]
+        );
+        Ok(())
+    }
+}

@@ -95,3 +95,67 @@ fn parse_crate_dir(rust_crate_dir: &Path) -> anyhow::Result<String> {
     let canonical_path = Path::new(rust_crate_dir).canonicalize()?;
     Ok(normalize_windows_unc_path(canonical_path.to_str().unwrap()).to_owned())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{cbindgen, default_cbindgen_config, parse_crate_dir, CbindgenArgs};
+    use anyhow::Result;
+    use std::fs;
+    use tempfile::tempdir;
+
+    /// Uses the C header defaults required by Dart's native API.
+    #[test]
+    fn test_default_cbindgen_config() {
+        let config = default_cbindgen_config();
+
+        assert_eq!(config.language, cbindgen::Language::C);
+        assert_eq!(config.sys_includes, ["stdbool.h", "stdint.h", "stdlib.h"]);
+        assert!(config.no_includes);
+        assert_eq!(
+            config.after_includes.as_deref(),
+            Some("typedef struct _Dart_Handle* Dart_Handle;")
+        );
+    }
+
+    /// Canonicalizes crate directories before passing them to cbindgen.
+    #[test]
+    fn test_parse_crate_dir_normalizes_existing_path() -> Result<()> {
+        let temp_dir = tempdir()?;
+        let crate_dir = temp_dir.path().join("crate");
+        fs::create_dir(&crate_dir)?;
+
+        assert_eq!(
+            parse_crate_dir(&crate_dir)?,
+            crate_dir.canonicalize()?.to_string_lossy()
+        );
+        Ok(())
+    }
+
+    /// Generates a header from a minimal local crate with Cargo available for metadata lookup.
+    #[test]
+    fn test_cbindgen_generates_header_for_minimal_crate() -> Result<()> {
+        let temp_dir = tempdir()?;
+        let crate_dir = temp_dir.path();
+        fs::create_dir(crate_dir.join("src"))?;
+        fs::write(
+            crate_dir.join("Cargo.toml"),
+            "[package]\nname = \"cbindgen_test\"\nversion = \"0.1.0\"\nedition = \"2021\"\n",
+        )?;
+        fs::write(
+            crate_dir.join("src/lib.rs"),
+            "#[no_mangle]\npub extern \"C\" fn answer() -> i32 { 42 }\n",
+        )?;
+
+        let output = cbindgen(CbindgenArgs {
+            rust_crate_dir: crate_dir,
+            c_struct_names: Vec::new(),
+            exclude_symbols: Vec::new(),
+            after_includes: "#include <dart_api.h>\n".to_owned(),
+        })?;
+
+        assert!(output.contains("#include <dart_api.h>"));
+        assert!(output.contains("typedef struct _Dart_Handle* Dart_Handle;"));
+        assert!(output.contains("int32_t answer(void);"));
+        Ok(())
+    }
+}

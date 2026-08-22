@@ -137,7 +137,8 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 #[cfg(all(test, unix))]
 mod tests {
     use super::{
-        add_analyzer_exclude, exclude_cargokit_from_outer_analyzer, set_permission_executable,
+        add_analyzer_exclude, exclude_cargokit_from_outer_analyzer, modify_permissions,
+        set_permission_executable,
     };
     use crate::misc::Template;
     use std::fs;
@@ -280,6 +281,45 @@ include: package:flutter_lints/flutter.yaml
         );
     }
 
+    /// Recognizes an already-present exclude regardless of its indentation.
+    #[test]
+    fn test_add_analyzer_exclude_avoids_duplicate_with_nonstandard_indentation() {
+        let text = r#"analyzer:
+  exclude:
+      - cargokit/**
+"#;
+
+        assert_eq!(add_analyzer_exclude(text, "cargokit/**"), text);
+    }
+
+    /// Adds an exclude before a later top-level YAML section without changing its spacing.
+    #[test]
+    fn test_add_analyzer_exclude_stops_at_next_top_level_section() {
+        let actual = add_analyzer_exclude(
+            r#"analyzer:
+  language:
+    strict-casts: true
+linter:
+  rules:
+    avoid_print: true
+"#,
+            "cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            r#"analyzer:
+  exclude:
+    - cargokit/**
+  language:
+    strict-casts: true
+linter:
+  rules:
+    avoid_print: true
+"#
+        );
+    }
+
     #[test]
     fn test_exclude_cargokit_from_outer_analyzer_ignores_missing_file() {
         let temp_dir = tempfile::tempdir().unwrap();
@@ -334,6 +374,46 @@ include: package:flutter_lints/flutter.yaml
 
 include: package:flutter_lints/flutter.yaml
 "#
+        );
+    }
+
+    /// Makes app Cargokit scripts executable without requiring a Flutter project mock.
+    #[test]
+    fn test_modify_permissions_sets_app_cargokit_scripts_executable() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let cargokit_dir = temp_dir.path().join("rust_builder/cargokit");
+        fs::create_dir_all(&cargokit_dir).unwrap();
+        for file_name in ["build_pod.sh", "run_build_tool.sh", "run_build_tool.cmd"] {
+            let path = cargokit_dir.join(file_name);
+            fs::write(&path, "script").unwrap();
+            fs::set_permissions(&path, PermissionsExt::from_mode(0o644)).unwrap();
+        }
+
+        modify_permissions(temp_dir.path(), &Template::App).unwrap();
+
+        for file_name in ["build_pod.sh", "run_build_tool.sh", "run_build_tool.cmd"] {
+            let permissions = fs::metadata(cargokit_dir.join(file_name))
+                .unwrap()
+                .permissions();
+            assert_eq!(permissions.mode() & 0o777, 0o755);
+        }
+    }
+
+    /// Makes plugin Cargokit scripts executable while tolerating absent optional scripts.
+    #[test]
+    fn test_modify_permissions_handles_plugin_cargokit_with_partial_scripts() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let cargokit_dir = temp_dir.path().join("cargokit");
+        fs::create_dir_all(&cargokit_dir).unwrap();
+        let script_path = cargokit_dir.join("run_build_tool.sh");
+        fs::write(&script_path, "script").unwrap();
+        fs::set_permissions(&script_path, PermissionsExt::from_mode(0o644)).unwrap();
+
+        modify_permissions(temp_dir.path(), &Template::Plugin).unwrap();
+
+        assert_eq!(
+            fs::metadata(script_path).unwrap().permissions().mode() & 0o777,
+            0o755
         );
     }
 }

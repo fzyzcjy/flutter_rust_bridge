@@ -169,6 +169,94 @@ void main() {
       await controller.close();
     }
   });
+
+  test(
+    'unknown and case-insensitive levels preserve stream ordering',
+    () async {
+      final controller = StreamController<_RustLogRecord>();
+      final receivedRecords = <LogRecord>[];
+      final previousLevel = Logger.root.level;
+      final subscription = Logger.root.onRecord.listen(receivedRecords.add);
+      Logger.root.level = Level.ALL;
+
+      try {
+        kFrbDartLogging.init<_RustLogRecord>(
+          rustLogStream: controller.stream,
+          setupDefaultOutput: false,
+          mapRecord: _mapRustLogRecord,
+        );
+
+        controller
+          ..add(
+            const _RustLogRecord(
+              level: 'error',
+              message: 'first',
+              target: 'rust.order',
+            ),
+          )
+          ..add(
+            const _RustLogRecord(
+              level: 'unknown',
+              message: 'second',
+              target: 'rust.order',
+            ),
+          );
+        await pumpEventQueue();
+
+        expect(receivedRecords.map((record) => record.level), [
+          Level.SEVERE,
+          Level.INFO,
+        ]);
+        expect(receivedRecords.map((record) => record.message), [
+          'first',
+          'second',
+        ]);
+      } finally {
+        Logger.root.level = previousLevel;
+        await subscription.cancel();
+        await controller.close();
+      }
+    },
+  );
+
+  test(
+    'dispose stops forwarding records and invokes cleanup only once',
+    () async {
+      final controller = StreamController<_RustLogRecord>();
+      final receivedRecords = <LogRecord>[];
+      final previousLevel = Logger.root.level;
+      final subscription = Logger.root.onRecord.listen(receivedRecords.add);
+      var cleanupCalls = 0;
+      Logger.root.level = Level.ALL;
+
+      try {
+        kFrbDartLogging.init<_RustLogRecord>(
+          rustLogStream: controller.stream,
+          setupDefaultOutput: false,
+          disposeRustLogger: () => cleanupCalls += 1,
+          mapRecord: _mapRustLogRecord,
+        );
+
+        kFrbDartLogging.dispose();
+        kFrbDartLogging.dispose();
+        controller.add(
+          const _RustLogRecord(
+            level: 'INFO',
+            message: 'after dispose',
+            target: 'rust.lifecycle',
+          ),
+        );
+        await pumpEventQueue();
+
+        expect(cleanupCalls, 1);
+        expect(receivedRecords, isEmpty);
+      } finally {
+        Logger.root.level = previousLevel;
+        await subscription.cancel();
+        await controller.close();
+      }
+    },
+  );
 }
 
 class _RustLogRecord {
