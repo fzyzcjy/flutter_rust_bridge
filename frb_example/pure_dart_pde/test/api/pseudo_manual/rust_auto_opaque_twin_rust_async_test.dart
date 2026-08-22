@@ -66,7 +66,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
         await expectLater(
           () => rustAutoOpaqueTwoArgsTwinRustAsync(a: obj, b: obj),
-          throwsA(isA<StateError>()),
+          throwsA(_duplicateMoveErrorMatcher()),
         );
         expect(obj.isDisposed, false);
         await futurizeVoidTwinRustAsync(
@@ -482,4 +482,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await future2, 300);
     });
   });
+}
+
+Matcher _duplicateMoveErrorMatcher() {
+  const message = 'Cannot move the same Rust opaque object more than once';
+  return anyOf(
+    isA<StateError>().having((error) => error.message, 'message', message),
+    isA<PanicException>().having(
+      (error) => error.message,
+      'message',
+      contains(message),
+    ),
+  );
 }
