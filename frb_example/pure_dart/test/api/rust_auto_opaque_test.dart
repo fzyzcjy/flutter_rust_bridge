@@ -1,6 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
+import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_auto_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
