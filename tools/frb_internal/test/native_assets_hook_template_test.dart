@@ -5,15 +5,16 @@ import 'package:test/test.dart';
 void main() {
   test('native assets hook constructs the builder inside the callback', () {
     final template = _readRepoFile(_templatePath);
-
-    expect(
-      template.indexOf('await build(args, (input, output) async {'),
-      lessThan(
-        template.indexOf(
-          'await const FlutterRustBridgeNativeAssetsBuilder(',
-        ),
-      ),
+    final callbackStart = template.indexOf(
+      'await build(args, (input, output) async {',
     );
+    final callbackEnd = template.indexOf('\n  });', callbackStart);
+    final builderConstruction = template.indexOf(
+      'const builder = FlutterRustBridgeNativeAssetsBuilder(',
+    );
+
+    expect(builderConstruction, greaterThan(callbackStart));
+    expect(builderConstruction, lessThan(callbackEnd));
   });
 
   test('native assets hook template expands to checked-in examples', () {
