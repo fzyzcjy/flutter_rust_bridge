@@ -246,6 +246,33 @@ plain
     );
   });
 
+  test(
+    'internal build runner enables build_cli around every package',
+    () async {
+      final events = <String>[];
+
+      await generateInternalBuildRunnerForTesting(
+        withBuildCli: (action) async {
+          events.add('enable');
+          try {
+            await action();
+          } finally {
+            events.add('disable');
+          }
+        },
+        generatePackage: (package) async => events.add(package),
+      );
+
+      expect(events, [
+        'enable',
+        'frb_dart',
+        'frb_utils',
+        'tools/frb_internal',
+        'disable',
+      ]);
+    },
+  );
+
   test('from-scratch selection keeps every tracked generated output', () {
     expect(
       selectTrackedGeneratedFilesForFromScratchForTesting([
