@@ -159,3 +159,113 @@ impl ExecuteNormalOrAsyncUtils {
         };
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::SimpleExecutor;
+    use crate::codec::{BaseCodec, Rust2DartMessageTrait};
+    use crate::handler::error::Error;
+    use crate::handler::error_listener::ErrorListener;
+    use crate::handler::executor::Executor;
+    use crate::handler::handler::{FfiCallMode, TaskInfo};
+    use crate::platform_types::DartAbi;
+    use crate::rust_async::SimpleAsyncRuntime;
+    use crate::thread_pool::SimpleThreadPool;
+    use std::any::Any;
+    use std::backtrace::Backtrace;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    use std::sync::Mutex;
+
+    static CUSTOM_ERROR_COUNT: AtomicUsize = AtomicUsize::new(0);
+    static TEST_LOCK: Mutex<()> = Mutex::new(());
+
+    #[derive(Clone, Copy)]
+    struct TestCodec;
+
+    struct TestMessage(i32);
+
+    impl Rust2DartMessageTrait for TestMessage {
+        type WireSyncRust2DartType = i32;
+
+        fn simplest() -> Self {
+            Self(-1)
+        }
+
+        fn into_dart_abi(self) -> DartAbi {
+            unreachable!()
+        }
+
+        unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self {
+            Self(raw)
+        }
+
+        fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType {
+            self.0
+        }
+    }
+
+    impl BaseCodec for TestCodec {
+        type Message = TestMessage;
+
+        fn encode_panic(_: &Box<dyn Any + Send>, _: &Option<Backtrace>) -> Self::Message {
+            TestMessage(99)
+        }
+
+        fn encode_close_stream() -> Self::Message {
+            TestMessage(0)
+        }
+    }
+
+    #[derive(Clone, Copy)]
+    struct RecordingErrorListener;
+
+    impl ErrorListener for RecordingErrorListener {
+        fn on_error(&self, error: Error) {
+            if matches!(error, Error::CustomError) {
+                CUSTOM_ERROR_COUNT.fetch_add(1, Ordering::SeqCst);
+            }
+        }
+    }
+
+    fn task_info() -> TaskInfo {
+        TaskInfo {
+            port: None,
+            debug_name: "test",
+            mode: FfiCallMode::Sync,
+        }
+    }
+
+    /// Returns successful messages without notifying the error listener.
+    #[test]
+    fn test_execute_sync_returns_success_without_error_notification() {
+        let _guard = TEST_LOCK.lock().unwrap();
+        CUSTOM_ERROR_COUNT.store(0, Ordering::SeqCst);
+        let executor = SimpleExecutor::new(
+            RecordingErrorListener,
+            SimpleThreadPool::default(),
+            SimpleAsyncRuntime::default(),
+        );
+
+        let message = executor.execute_sync::<TestCodec, _>(task_info(), || Ok(TestMessage(7)));
+
+        assert_eq!(message.0, 7);
+        assert_eq!(CUSTOM_ERROR_COUNT.load(Ordering::SeqCst), 0);
+    }
+
+    /// Returns failed messages while notifying the error listener exactly once.
+    #[test]
+    fn test_execute_sync_returns_error_with_error_notification() {
+        let _guard = TEST_LOCK.lock().unwrap();
+        CUSTOM_ERROR_COUNT.store(0, Ordering::SeqCst);
+        let executor = SimpleExecutor::new(
+            RecordingErrorListener,
+            SimpleThreadPool::default(),
+            SimpleAsyncRuntime::default(),
+        );
+
+        let message = executor.execute_sync::<TestCodec, _>(task_info(), || Err(TestMessage(8)));
+
+        assert_eq!(message.0, 8);
+        assert_eq!(CUSTOM_ERROR_COUNT.load(Ordering::SeqCst), 1);
+    }
+}

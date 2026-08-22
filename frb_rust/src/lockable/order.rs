@@ -16,3 +16,17 @@ impl LockableOrder {
         Self(value)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    /// Allocates monotonically increasing lockable orders.
+    fn allocates_monotonically_increasing_orders() {
+        let first = LockableOrder::new();
+        let second = LockableOrder::new();
+
+        assert!(second > first);
+    }
+}
