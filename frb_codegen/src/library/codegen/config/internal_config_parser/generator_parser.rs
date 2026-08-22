@@ -213,6 +213,7 @@ mod tests {
         compute_default_external_library_relative_directory, fallback_llvm_path,
     };
     use crate::codegen::Config;
+    use serial_test::serial;
     use std::collections::HashMap;
     use std::fs;
     use std::path::Path;
@@ -271,6 +272,7 @@ mod tests {
 
     /// Falls back when Cargo metadata cannot identify a Rust library package.
     #[test]
+    #[serial]
     fn loader_uses_unknown_fallbacks_when_cargo_metadata_fails() -> anyhow::Result<()> {
         let temp_dir = tempdir()?;
         let dart_root = temp_dir.path().join("dart");
@@ -293,6 +295,7 @@ mod tests {
 
     /// Applies loader overrides while reading a real minimal Cargo package.
     #[test]
+    #[serial]
     fn loader_uses_cargo_metadata_and_configured_defaults() -> anyhow::Result<()> {
         let temp_dir = tempdir()?;
         let dart_root = temp_dir.path().join("dart");

@@ -99,12 +99,14 @@ fn is_event_interesting(event: &DebounceEventResult, exclude_paths: &[PathBuf]) 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use notify_debouncer_mini::{DebouncedEvent, DebouncedEventKind};
     use serial_test::serial;
     use std::fs;
     use std::sync::Mutex;
     use tempfile::tempdir;
 
     #[serial]
+    /// Re-runs the generator after a watched file change.
     #[test]
     fn test_run_with_watch() -> anyhow::Result<()> {
         let temp_dir = tempdir()?;
@@ -133,5 +135,53 @@ mod tests {
         assert_eq!(*run_inner_count.lock().unwrap(), 2);
 
         Ok(())
+    }
+
+    /// Runs the closure once without creating a filesystem watcher.
+    #[test]
+    fn runs_once_when_watch_is_disabled() -> anyhow::Result<()> {
+        let run_inner_count = Mutex::new(0);
+
+        run(
+            &ControllerInternalConfig {
+                watch: false,
+                watching_paths: vec![],
+                exclude_paths: vec![],
+                max_count: None,
+            },
+            &|| {
+                *run_inner_count.lock().unwrap() += 1;
+                Ok(())
+            },
+        )?;
+
+        assert_eq!(*run_inner_count.lock().unwrap(), 1);
+        Ok(())
+    }
+
+    /// Filters excluded paths and rejects watcher errors deterministically.
+    #[test]
+    fn identifies_interesting_events_from_paths_and_errors() {
+        let included_path = PathBuf::from("/included.dart");
+        let excluded_path = PathBuf::from("/excluded.dart");
+        let event = |path: PathBuf| {
+            Ok(vec![DebouncedEvent {
+                path,
+                kind: DebouncedEventKind::Any,
+            }])
+        };
+
+        assert!(is_event_interesting(
+            &event(included_path),
+            &[excluded_path.clone()]
+        ));
+        assert!(!is_event_interesting(
+            &event(excluded_path.clone()),
+            &[excluded_path]
+        ));
+        assert!(!is_event_interesting(
+            &Err(notify::Error::generic("watch failed")),
+            &[]
+        ));
     }
 }

@@ -86,6 +86,7 @@ mod tests {
     use serial_test::serial;
 
     // need to run serially, otherwise working directory will override each other
+    /// Loads the automatic flutter_rust_bridge configuration fixture.
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_from_files_auto_flutter_rust_bridge_yaml(
@@ -100,6 +101,7 @@ mod tests {
         Ok(())
     }
 
+    /// Loads the automatic pubspec configuration fixture.
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_from_files_auto_pubspec_yaml() -> anyhow::Result<()> {
@@ -113,6 +115,7 @@ mod tests {
         Ok(())
     }
 
+    /// Rejects an invalid automatic pubspec configuration.
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_from_files_auto_pubspec_yaml_faulty() -> anyhow::Result<()>
@@ -132,6 +135,7 @@ mod tests {
         Ok(())
     }
 
+    /// Loads configuration from an explicit file.
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_config_file() -> anyhow::Result<()> {
@@ -145,6 +149,7 @@ mod tests {
         Ok(())
     }
 
+    /// Rejects an invalid explicit configuration file.
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_config_file_faulty_file() -> anyhow::Result<()> {
@@ -166,6 +171,7 @@ mod tests {
         Ok(())
     }
 
+    /// Maps representative generate flags into configuration fields.
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_from_naive_generate_command_args() {
@@ -203,6 +209,7 @@ mod tests {
         );
     }
 
+    /// Merges command-line values over discovered configuration.
     #[test]
     #[serial]
     fn test_compute_codegen_config_from_both_file_and_command_line() -> anyhow::Result<()> {
