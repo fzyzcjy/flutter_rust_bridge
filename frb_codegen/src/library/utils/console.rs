@@ -46,7 +46,6 @@ fn progress_bar_message_with_level(message: &str, max_level: log::LevelFilter) -
     }
 }
 
-/// Prints above the live progress bars without tearing the spinner.
 pub(crate) fn println_over_progress(line: impl AsRef<str>) {
     println_over_progress_inner(&MULTI_PROGRESS, line.as_ref(), |line| eprintln!("{line}"));
 }
