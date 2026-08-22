@@ -42,6 +42,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         );
       });
 
+      // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
       test('failed encoding preserves an earlier owned argument', () async {
         final first = await rustAutoOpaqueReturnOwnTwinNormal(initial: 10);
         final disposed = await rustAutoOpaqueReturnOwnTwinNormal(initial: 20);
@@ -62,13 +63,29 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
         await expectLater(
           () => rustAutoOpaqueTwoArgsTwinNormal(a: obj, b: obj),
-          throwsA(_duplicateMoveErrorMatcher()),
+          throwsA(
+            anyOf(
+              isA<StateError>().having(
+                (error) => error.message,
+                'message',
+                'Cannot move the same Rust opaque object more than once',
+              ),
+              isA<PanicException>().having(
+                (error) => error.message,
+                'message',
+                contains(
+                  'Cannot move the same Rust opaque object more than once',
+                ),
+              ),
+            ),
+          ),
         );
         expect(obj.isDisposed, false);
         await futurizeVoidTwinNormal(
           rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 10),
         );
       });
+      // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
     });
 
     group('arg ref', () {
@@ -471,16 +488,4 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(await future2, 300);
     });
   });
-}
-
-Matcher _duplicateMoveErrorMatcher() {
-  const message = 'Cannot move the same Rust opaque object more than once';
-  return anyOf(
-    isA<StateError>().having((error) => error.message, 'message', message),
-    isA<PanicException>().having(
-      (error) => error.message,
-      'message',
-      contains(message),
-    ),
-  );
 }
