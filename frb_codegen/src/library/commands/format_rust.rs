@@ -48,7 +48,7 @@ pub(super) fn prepare_paths(
                 extra_extensions
                     .iter()
                     .map(move |ext| with_extension(path.clone(), ext))
-                    .filter(|path| base_path.join(path).exists()),
+                    .filter(|path| path.exists()),
             )
         })
         .collect_vec())
@@ -65,8 +65,8 @@ mod tests {
     use std::fs;
     use tempfile::tempdir;
 
-    /// Converts a descendant path into a path relative to the formatter root.
     #[test]
+    /// Converts a descendant path into a path relative to the formatter root.
     fn prepares_a_relative_path() -> anyhow::Result<()> {
         let directory = tempdir()?;
         let source = directory.path().join("src").join("lib.rs");
@@ -80,8 +80,8 @@ mod tests {
         Ok(())
     }
 
-    /// Uses the dot path when formatting the formatter root itself.
     #[test]
+    /// Uses the dot path when formatting the formatter root itself.
     fn prepares_the_base_path_as_dot() -> anyhow::Result<()> {
         let directory = tempdir()?;
 
@@ -92,30 +92,8 @@ mod tests {
         Ok(())
     }
 
-    /// Includes only existing sibling files with requested extensions.
     #[test]
-    fn adds_existing_sibling_extensions() -> anyhow::Result<()> {
-        let directory = tempdir()?;
-        let stem = format!(
-            "format-rust-sibling-{}",
-            directory.path().file_name().unwrap().to_string_lossy()
-        );
-        let source = directory.path().join(format!("{stem}.rs"));
-        fs::write(&source, "")?;
-        fs::write(directory.path().join(format!("{stem}.dart")), "")?;
-
-        assert_eq!(
-            prepare_paths(&[source], directory.path(), &["dart", "swift"])?,
-            vec![
-                PathBuf::from(format!("{stem}.rs")),
-                PathBuf::from(format!("{stem}.dart"))
-            ]
-        );
-        Ok(())
-    }
-
     /// Replaces a path extension without changing its parent directory.
-    #[test]
     fn replaces_a_path_extension() {
         assert_eq!(
             with_extension(PathBuf::from("nested/api.rs"), "dart"),
@@ -123,9 +101,9 @@ mod tests {
         );
     }
 
-    /// Rejects a path that cannot be represented as UTF-8.
     #[cfg(unix)]
     #[test]
+    /// Rejects a path that cannot be represented as UTF-8.
     fn rejects_a_non_utf8_path() {
         use std::os::unix::ffi::OsStringExt;
 

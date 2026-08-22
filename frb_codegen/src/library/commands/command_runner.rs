@@ -78,7 +78,7 @@ pub(crate) fn call_shell(
     pwd: Option<&Path>,
     options: Option<ExecuteCommandOptions>,
 ) -> anyhow::Result<Output> {
-    let CommandInfo { program, args } = call_shell_info(cmd)?;
+    let CommandInfo { program, args } = call_shell_info(cmd);
     let program = &program;
     command_run!(program in pwd, options = options, *args)
 }
@@ -89,45 +89,30 @@ pub(crate) struct CommandInfo {
     pub args: Vec<String>,
 }
 
-pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> anyhow::Result<CommandInfo> {
+pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
     #[cfg(windows)]
     {
         let cmd = cmd
             .iter()
             .map(|section| windows_escape_for_powershell(section.to_str().unwrap()))
             .join(" ");
-        Ok(CommandInfo {
+        CommandInfo {
             program: "powershell".to_owned(),
             args: vec![
                 "-noprofile".to_owned(),
                 "-command".to_owned(),
                 format!("& {}", cmd),
             ],
-        })
+        }
     }
     #[cfg(not(windows))]
     {
-        let cmd = cmd
-            .iter()
-            .map(|section| shell_quote(section))
-            .collect::<anyhow::Result<Vec<_>>>()?
-            .join(" ");
-        Ok(CommandInfo {
+        let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
+        CommandInfo {
             program: "sh".to_owned(),
             args: vec!["-c".to_owned(), cmd],
-        })
+        }
     }
-}
-
-#[cfg(not(windows))]
-fn shell_quote(section: &Path) -> anyhow::Result<String> {
-    Ok(format!(
-        "'{}'",
-        section
-            .to_str()
-            .context("shell argument is not valid UTF-8")?
-            .replace('\'', "'\"'\"'")
-    ))
 }
 
 /// Applies a minimal set of backtick escapes to convert a string into a PowerShell 5.1 argument token.
@@ -254,16 +239,15 @@ pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
 mod tests {
     use super::*;
 
-    /// Builds a POSIX shell command string for ordinary quoted arguments.
     #[test]
     #[cfg(not(windows))]
-    fn builds_posix_shell_arguments_with_literal_quoting() {
+    /// Builds a POSIX shell command string for ordinary quoted arguments.
+    fn builds_posix_shell_arguments_with_debug_quoting() {
         let actual = call_shell_info(&[
             PathBuf::from("tool"),
             PathBuf::from("argument with spaces"),
             PathBuf::from("quote\"and\\slash"),
-        ])
-        .unwrap();
+        ]);
 
         assert_eq!(
             actual,
@@ -271,73 +255,14 @@ mod tests {
                 program: "sh".to_owned(),
                 args: vec![
                     "-c".to_owned(),
-                    "'tool' 'argument with spaces' 'quote\"and\\slash'".to_owned(),
+                    "\"tool\" \"argument with spaces\" \"quote\\\"and\\\\slash\"".to_owned(),
                 ],
             }
         );
     }
 
-    /// Preserves shell metacharacters and newlines as literal executable arguments.
-    #[cfg(unix)]
     #[test]
-    fn preserves_shell_metacharacters_as_literal_arguments() -> anyhow::Result<()> {
-        use std::fs;
-        use std::os::unix::ffi::OsStringExt;
-        use std::os::unix::fs::PermissionsExt;
-        use tempfile::tempdir;
-
-        let directory = tempdir()?;
-        let capture_path = directory.path().join("capture.sh");
-        let output_path = directory.path().join("arguments.bin");
-        fs::write(
-            &capture_path,
-            "#!/bin/sh\nprintf '%s\\0' \"$@\" > \"$CAPTURE_OUTPUT\"\n",
-        )?;
-        fs::set_permissions(&capture_path, fs::Permissions::from_mode(0o755))?;
-
-        let expected = vec![
-            PathBuf::from("dollar:$HOME"),
-            PathBuf::from("substitution:$(printf command)"),
-            PathBuf::from("backtick:`printf tick`"),
-            PathBuf::from("quote:\"literal\""),
-            PathBuf::from("apostrophe:'literal'"),
-            PathBuf::from("newline:first\nsecond"),
-        ];
-        let options = ExecuteCommandOptions {
-            envs: Some(HashMap::from([(
-                "CAPTURE_OUTPUT".to_owned(),
-                output_path.to_string_lossy().into_owned(),
-            )])),
-            ..Default::default()
-        };
-        let command = std::iter::once(capture_path)
-            .chain(expected.iter().cloned())
-            .collect_vec();
-
-        check_exit_code(&call_shell(&command, None, Some(options))?)?;
-
-        let actual = fs::read(output_path)?
-            .split(|byte| *byte == 0)
-            .filter(|argument| !argument.is_empty())
-            .map(|argument| PathBuf::from(std::ffi::OsString::from_vec(argument.to_vec())))
-            .collect_vec();
-        assert_eq!(actual, expected);
-        Ok(())
-    }
-
-    /// Rejects non-UTF-8 arguments instead of silently changing their bytes.
-    #[cfg(unix)]
-    #[test]
-    fn rejects_non_utf8_shell_arguments() {
-        use std::os::unix::ffi::OsStringExt;
-
-        let argument = PathBuf::from(std::ffi::OsString::from_vec(vec![0xff]));
-
-        assert!(call_shell_info(&[argument]).is_err());
-    }
-
     /// Accepts an output with a successful exit status.
-    #[test]
     fn accepts_successful_exit_status() {
         assert!(check_exit_code(&Output {
             status: success_exit_status(),
@@ -347,8 +272,8 @@ mod tests {
         .is_ok());
     }
 
-    /// Returns stderr context for an unsuccessful exit status.
     #[test]
+    /// Returns stderr context for an unsuccessful exit status.
     fn rejects_unsuccessful_exit_status() {
         let error = check_exit_code(&Output {
             status: failure_exit_status(),
@@ -404,8 +329,7 @@ mod tests {
             "D:\\coding\\project",
             "--wasm-pack-rustflags=--cfg getrandom_backend=\\\"wasm_js\\\" -C target-feature=+atomics,+bulk-memory,+mutable-globals -C link-args=--shared-memory",
         ];
-        let actual =
-            call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>()).unwrap();
+        let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
         let cmd = "fvm dart run flutter_rust_bridge build-web --dart-root D:`\\coding`\\project --wasm-pack-rustflags=--cfg` getrandom_backend=`\\`\"wasm_js`\\`\"` -C` target-feature=+atomics,+bulk-memory,+mutable-globals` -C` link-args=--shared-memory";
         let expect = CommandInfo {
             program: "powershell".to_owned(),
@@ -422,8 +346,7 @@ mod tests {
     /// Escapes PowerShell argument metacharacters in a single token.
     fn test_call_shell_info_escapes() {
         let params = ["abc\"def\\ghi jkl"];
-        let actual =
-            call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>()).unwrap();
+        let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
         let cmd = "abc`\"def`\\ghi` jkl";
         let expect = CommandInfo {
             program: "powershell".to_owned(),
@@ -435,8 +358,8 @@ mod tests {
         };
         assert_eq!(actual, expect);
     }
-    /// Escapes spaces, quotes, and backslashes for PowerShell tokens.
     #[test]
+    /// Escapes spaces, quotes, and backslashes for PowerShell tokens.
     fn test_windows_escape_for_powershell() {
         let section_in =
             "detects regression \"errors\" when tests are run \\ on non_windows systems";

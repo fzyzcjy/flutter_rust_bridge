@@ -86,7 +86,7 @@ fn dart_run(
     let handle = {
         let cmd_args = dart_run_command_args(repo, dart_coverage, args, fvm_install_mode);
 
-        let info = call_shell_info(&cmd_args)?;
+        let info = call_shell_info(&cmd_args);
         Command::new(info.program)
             .args(info.args)
             .current_dir(current_dir)
@@ -204,7 +204,7 @@ mod tests {
                 .map(PathBuf::from)
                 .collect::<Vec<_>>(),
         );
-        let info = call_shell_info(&args)?;
+        let info = call_shell_info(&args);
         assert_eq!(
             info.program,
             if cfg!(windows) { "powershell" } else { "sh" }
@@ -239,7 +239,7 @@ mod tests {
             .map(PathBuf::from)
             .collect::<Vec<_>>(),
         );
-        let info = call_shell_info(&args)?;
+        let info = call_shell_info(&args);
         assert!(!info.args.is_empty());
         Ok(())
     }

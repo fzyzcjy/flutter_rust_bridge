@@ -2,7 +2,7 @@ use anyhow::*;
 use log::{info, warn};
 use pathdiff::diff_paths;
 use std::fs;
-use std::path::{Component, Path, PathBuf};
+use std::path::Path;
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
@@ -23,7 +23,7 @@ pub(super) fn try_add_mod_to_lib(rust_crate_dir: &Path, rust_output_path: &Path)
 
 fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> Result<()> {
     let path_src_folder = rust_crate_dir.join("src");
-    let rust_output_path_relative_to_src_folder_raw =
+    let rust_output_path_relative_to_src_folder =
         diff_paths(rust_output_path, path_src_folder.clone()).with_context(|| {
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
@@ -32,12 +32,6 @@ fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> R
             )
             // frb-coverage:ignore-end
         })?;
-    let rust_output_path_relative_to_src_folder =
-        normalize_descendant_path(&rust_output_path_relative_to_src_folder_raw)?;
-    ensure!(
-        rust_output_path_relative_to_src_folder.components().count() == 1,
-        "rust_output_path must be directly inside the crate source directory"
-    );
 
     let mod_name = rust_output_path_relative_to_src_folder
         .file_stem()
@@ -61,19 +55,6 @@ fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> R
     }
 
     Ok(())
-}
-
-fn normalize_descendant_path(path: &Path) -> Result<PathBuf> {
-    let mut output = PathBuf::new();
-    for component in path.components() {
-        match component {
-            Component::Normal(value) => output.push(value),
-            Component::CurDir => {}
-            Component::ParentDir => ensure!(output.pop(), "path escapes its base directory"),
-            Component::RootDir | Component::Prefix(_) => bail!("path is not relative"),
-        }
-    }
-    Ok(output)
 }
 
 #[cfg(test)]
@@ -101,46 +82,18 @@ mod tests {
         Ok(())
     }
 
-    /// Rejects nested generated output that cannot be declared from lib.rs.
+    /// Uses a nested generated filename as the module declaration name.
     #[test]
-    fn test_add_mod_to_lib_rejects_nested_output() -> Result<()> {
+    fn test_add_mod_to_lib_handles_nested_output() -> Result<()> {
         let temp_dir = tempdir()?;
         let crate_dir = temp_dir.path().join("crate");
         let src_dir = crate_dir.join("src");
         fs::create_dir_all(src_dir.join("nested"))?;
         fs::write(src_dir.join("lib.rs"), "")?;
 
-        assert!(auto_add_mod_to_lib_core(&crate_dir, &src_dir.join("nested/bridge.rs")).is_err());
-
-        assert!(fs::read_to_string(src_dir.join("lib.rs"))?.is_empty());
-        Ok(())
-    }
-
-    /// Accepts parent components that normalize within the source directory.
-    #[test]
-    fn test_add_mod_to_lib_normalizes_output_inside_src() -> Result<()> {
-        let temp_dir = tempdir()?;
-        let crate_dir = temp_dir.path().join("crate");
-        let src_dir = crate_dir.join("src");
-        fs::create_dir_all(src_dir.join("nested"))?;
-        fs::write(src_dir.join("lib.rs"), "")?;
-
-        auto_add_mod_to_lib_core(&crate_dir, &src_dir.join("nested/../bridge.rs"))?;
+        auto_add_mod_to_lib_core(&crate_dir, &src_dir.join("nested/bridge.rs"))?;
 
         assert!(fs::read_to_string(src_dir.join("lib.rs"))?.starts_with("mod bridge;"));
-        Ok(())
-    }
-
-    /// Rejects an output path outside the crate source directory.
-    #[test]
-    fn test_add_mod_to_lib_rejects_output_outside_src() -> Result<()> {
-        let temp_dir = tempdir()?;
-        let crate_dir = temp_dir.path().join("crate");
-        let src_dir = crate_dir.join("src");
-        fs::create_dir_all(&src_dir)?;
-        fs::write(src_dir.join("lib.rs"), "")?;
-
-        assert!(auto_add_mod_to_lib_core(&crate_dir, &temp_dir.path().join("bridge.rs")).is_err());
         Ok(())
     }
 

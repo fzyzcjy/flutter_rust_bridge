@@ -29,7 +29,7 @@ class AdaptedUint8List implements BaseGeneralizedUint8List<JSUint8Array> {
   void resize(int newLen) {
     final old = _inner;
     _inner = Uint8List(newLen);
-    _inner.setRange(0, newLen < old.length ? newLen : old.length, old);
+    _inner.setRange(0, old.length, old);
   }
 
   @override
