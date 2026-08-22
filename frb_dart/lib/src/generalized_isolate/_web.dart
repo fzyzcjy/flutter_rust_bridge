@@ -17,25 +17,21 @@ String serializeNativePort(NativePortType port) {
 }
 
 /// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName, {bool ordered = false}) =>
-    ReceivePort._raw(
-      RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)),
-      ordered,
-    );
+ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
+  RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)),
+);
 
 /// {@template flutter_rust_bridge.same_as_native}
 /// Web implementation of the one with same name in native.
 /// {@endtemplate}
 class ReceivePort extends Stream<dynamic> {
   final RawReceivePort _rawReceivePort;
-  final bool _ordered;
 
   /// {@macro flutter_rust_bridge.same_as_native}
   factory ReceivePort() => ReceivePort._raw();
 
-  ReceivePort._raw([RawReceivePort? rawReceivePort, bool ordered = false])
-    : _rawReceivePort = rawReceivePort ?? RawReceivePort(),
-      _ordered = ordered;
+  ReceivePort._raw([RawReceivePort? rawReceivePort])
+    : _rawReceivePort = rawReceivePort ?? RawReceivePort();
 
   @override
   StreamSubscription listen(
@@ -44,16 +40,14 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    Stream<dynamic> stream = _rawReceivePort._webReceivePort._onMessage.map(
-      _extractData,
-    );
-    if (_ordered) stream = _orderMessages(stream);
-    final subscription = stream.listen(
-      onData,
-      onError: onError,
-      onDone: onDone,
-      cancelOnError: cancelOnError,
-    );
+    final subscription = _rawReceivePort._webReceivePort._onMessage
+        .map(_extractData)
+        .listen(
+          onData,
+          onError: onError,
+          onDone: onDone,
+          cancelOnError: cancelOnError,
+        );
     _rawReceivePort._webReceivePort._start();
     return subscription;
   }
@@ -66,41 +60,6 @@ class ReceivePort extends Stream<dynamic> {
   /// {@macro flutter_rust_bridge.same_as_native}
   void close() => _rawReceivePort.close();
 }
-
-Stream<dynamic> _orderMessages(Stream<dynamic> stream) {
-  final pending = <(int, int), dynamic>{};
-  var next = (0, 0);
-
-  void drain(EventSink<dynamic> sink) {
-    while (pending.containsKey(next)) {
-      sink.add(pending.remove(next));
-      next = _nextSequence(next);
-    }
-  }
-
-  return stream.transform(
-    StreamTransformer.fromHandlers(
-      handleData: (event, sink) {
-        final sequence = (event[0] as int, event[1] as int);
-        if (_sequenceBefore(sequence, next) || pending.containsKey(sequence)) {
-          throw StateError(
-            'Duplicate or stale ordered port message: $sequence',
-          );
-        }
-
-        pending[sequence] = event[2];
-        drain(sink);
-      },
-    ),
-  );
-}
-
-bool _sequenceBefore((int, int) lhs, (int, int) rhs) =>
-    lhs.$1 < rhs.$1 || (lhs.$1 == rhs.$1 && lhs.$2 < rhs.$2);
-
-(int, int) _nextSequence((int, int) sequence) => sequence.$2 == 0xffffffff
-    ? (sequence.$1 + 1, 0)
-    : (sequence.$1, sequence.$2 + 1);
 
 /// {@macro flutter_rust_bridge.same_as_native}
 class RawReceivePort {
@@ -119,7 +78,7 @@ class RawReceivePort {
   }
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  void close() => _webChannel._close();
+  void close() => _webReceivePort._close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _webChannel._sendPort;
@@ -140,8 +99,6 @@ abstract class _WebChannel {
 
   _WebPortLike get _receivePort;
 
-  void _close();
-
   factory _WebChannel.messageChannel() = _WebMessageChannel;
 
   factory _WebChannel.broadcastChannel(String channelName) =
@@ -156,29 +113,18 @@ class _WebMessageChannel implements _WebChannel {
 
   @override
   _WebPortLike get _receivePort => _WebPortLike._messagePort(_channel.port1);
-
-  @override
-  void _close() => _channel.port1.close();
 }
 
 class _WebBroadcastChannel implements _WebChannel {
   final web.BroadcastChannel _sendChannel;
   final web.BroadcastChannel _receiveChannel;
-  final web.BroadcastChannel _readyChannel;
-  late final Timer _readyTimer;
 
   _WebBroadcastChannel(String channelName)
     // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
     // because HTML BroadcastChannel spec says that, the event will not be fired
     // at the object which sends it. Therefore, we need two different objects.
     : _sendChannel = web.BroadcastChannel(channelName),
-      _receiveChannel = web.BroadcastChannel(channelName),
-      _readyChannel = web.BroadcastChannel('${channelName}__frb_ready') {
-    _readyTimer = Timer.periodic(
-      const Duration(milliseconds: 10),
-      (_) => _readyChannel.postMessage(null),
-    );
-  }
+      _receiveChannel = web.BroadcastChannel(channelName);
 
   @override
   SendPort get _sendPort => SendPort._(_sendChannel);
@@ -186,15 +132,6 @@ class _WebBroadcastChannel implements _WebChannel {
   @override
   _WebPortLike get _receivePort =>
       _WebPortLike._broadcastChannel(_receiveChannel);
-
-  @override
-  void _close() {
-    _readyTimer.cancel();
-    _readyChannel.postMessage(null);
-    _sendChannel.close();
-    _receiveChannel.close();
-    Timer(const Duration(milliseconds: 100), _readyChannel.close);
-  }
 }
 
 /// {@macro flutter_rust_bridge.same_as_native}
@@ -207,6 +144,8 @@ abstract class _WebPortLike {
       _WebBroadcastPort;
 
   void _start();
+
+  void _close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   web.EventTarget get _nativePort;
@@ -227,6 +166,8 @@ class _WebMessagePort extends _WebPortLike {
   @override
   void _start() => _nativePort.start();
 
+  @override
+  void _close() => _nativePort.close();
 }
 
 // Indeed a BroadcastChannel, not a Broadcast "Port"
@@ -239,4 +180,6 @@ class _WebBroadcastPort extends _WebPortLike {
   @override
   void _start() {}
 
+  @override
+  void _close() => _nativePort.close();
 }

@@ -376,7 +376,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0-beta.6';
 
   @override
-  int get rustContentHash => 2121682429;
+  int get rustContentHash => -703344157;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -5397,17 +5397,6 @@ abstract class RustLibApi extends BaseApi {
 
   Stream<int>
       crateApiPseudoManualStreamTwinSseFuncStreamAddValueAndErrorTwinSse();
-
-  Stream<int> crateApiStreamFuncStreamCrossWorkerCloseTwinNormal();
-
-  Stream<int>
-      crateApiPseudoManualStreamTwinRustAsyncFuncStreamCrossWorkerCloseTwinRustAsync();
-
-  Stream<int>
-      crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamCrossWorkerCloseTwinRustAsyncSse();
-
-  Stream<int>
-      crateApiPseudoManualStreamTwinSseFuncStreamCrossWorkerCloseTwinSse();
 
   Stream<String> crateApiStreamMiscFuncStreamRealisticTwinNormal(
       {required String arg});
@@ -54306,128 +54295,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get kCrateApiPseudoManualStreamTwinSseFuncStreamAddValueAndErrorTwinSseConstMeta =>
           const TaskConstMeta(
             debugName: "func_stream_add_value_and_error_twin_sse",
-            argNames: ["sink"],
-          );
-
-  @override
-  Stream<int> crateApiStreamFuncStreamCrossWorkerCloseTwinNormal() {
-    final sink = RustStreamSink<int>();
-    unawaited(handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
-        return wire
-            .wire__crate__api__stream__func_stream_cross_worker_close_twin_normal(
-                port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiStreamFuncStreamCrossWorkerCloseTwinNormalConstMeta,
-      argValues: [sink],
-      apiImpl: this,
-    )));
-    return sink.stream;
-  }
-
-  TaskConstMeta
-      get kCrateApiStreamFuncStreamCrossWorkerCloseTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName: "func_stream_cross_worker_close_twin_normal",
-            argNames: ["sink"],
-          );
-
-  @override
-  Stream<int>
-      crateApiPseudoManualStreamTwinRustAsyncFuncStreamCrossWorkerCloseTwinRustAsync() {
-    final sink = RustStreamSink<int>();
-    unawaited(handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
-        return wire
-            .wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_cross_worker_close_twin_rust_async(
-                port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualStreamTwinRustAsyncFuncStreamCrossWorkerCloseTwinRustAsyncConstMeta,
-      argValues: [sink],
-      apiImpl: this,
-    )));
-    return sink.stream;
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualStreamTwinRustAsyncFuncStreamCrossWorkerCloseTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "func_stream_cross_worker_close_twin_rust_async",
-            argNames: ["sink"],
-          );
-
-  @override
-  Stream<int>
-      crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamCrossWorkerCloseTwinRustAsyncSse() {
-    final sink = RustStreamSink<int>();
-    unawaited(handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_i_32_Sse(sink, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_cross_worker_close_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualStreamTwinRustAsyncSseFuncStreamCrossWorkerCloseTwinRustAsyncSseConstMeta,
-      argValues: [sink],
-      apiImpl: this,
-    )));
-    return sink.stream;
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualStreamTwinRustAsyncSseFuncStreamCrossWorkerCloseTwinRustAsyncSseConstMeta =>
-          const TaskConstMeta(
-            debugName: "func_stream_cross_worker_close_twin_rust_async_sse",
-            argNames: ["sink"],
-          );
-
-  @override
-  Stream<int>
-      crateApiPseudoManualStreamTwinSseFuncStreamCrossWorkerCloseTwinSse() {
-    final sink = RustStreamSink<int>();
-    unawaited(handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_i_32_Sse(sink, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_cross_worker_close_twin_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiPseudoManualStreamTwinSseFuncStreamCrossWorkerCloseTwinSseConstMeta,
-      argValues: [sink],
-      apiImpl: this,
-    )));
-    return sink.stream;
-  }
-
-  TaskConstMeta
-      get kCrateApiPseudoManualStreamTwinSseFuncStreamCrossWorkerCloseTwinSseConstMeta =>
-          const TaskConstMeta(
-            debugName: "func_stream_cross_worker_close_twin_sse",
             argNames: ["sink"],
           );
 

@@ -5,8 +5,7 @@ export 'dart:ffi' show NativePort;
 export 'dart:isolate';
 
 /// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName, {bool ordered = false}) =>
-    ReceivePort(channelName);
+ReceivePort broadcastPort(String channelName) => ReceivePort(channelName);
 
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) => port.toString();

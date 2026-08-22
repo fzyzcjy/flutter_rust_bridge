@@ -67,9 +67,6 @@ Future<void> streamSinkInsideStructTwinRustAsync(
 Stream<int> funcStreamAddValueAndErrorTwinRustAsync() => RustLib.instance.api
     .crateApiPseudoManualStreamTwinRustAsyncFuncStreamAddValueAndErrorTwinRustAsync();
 
-Stream<int> funcStreamCrossWorkerCloseTwinRustAsync() => RustLib.instance.api
-    .crateApiPseudoManualStreamTwinRustAsyncFuncStreamCrossWorkerCloseTwinRustAsync();
-
 class LogTwinRustAsync {
   final int key;
   final int value;

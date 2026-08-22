@@ -134,11 +134,3 @@ pub async fn func_stream_add_value_and_error_twin_rust_async_sse(
         sink.add_error(anyhow!("deliberate error")).unwrap();
     }));
 }
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn func_stream_cross_worker_close_twin_rust_async_sse(
-    sink: StreamSink<i32, flutter_rust_bridge::SseCodec>,
-) {
-    sink.add(42).unwrap();
-    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| { drop(sink) }));
-}

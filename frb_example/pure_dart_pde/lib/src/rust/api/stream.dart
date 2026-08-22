@@ -57,9 +57,6 @@ Future<void> streamSinkInsideStructTwinNormal(
 Stream<int> funcStreamAddValueAndErrorTwinNormal() =>
     RustLib.instance.api.crateApiStreamFuncStreamAddValueAndErrorTwinNormal();
 
-Stream<int> funcStreamCrossWorkerCloseTwinNormal() =>
-    RustLib.instance.api.crateApiStreamFuncStreamCrossWorkerCloseTwinNormal();
-
 class LogTwinNormal {
   final int key;
   final int value;

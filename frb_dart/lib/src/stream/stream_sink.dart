@@ -38,7 +38,7 @@ class _State<T> {
 
 _State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
   final portName = ExecuteStreamPortGenerator.create('RustStreamSink');
-  final receivePort = broadcastPort(portName, ordered: true);
+  final receivePort = broadcastPort(portName);
   return _State(
     receivePort,
     _bindDecodedStream(

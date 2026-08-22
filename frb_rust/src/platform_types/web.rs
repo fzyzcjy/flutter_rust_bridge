@@ -23,19 +23,10 @@ thread_local! {
 }
 
 struct BroadcastChannelState {
-    channel_of_name: HashMap<String, CachedBroadcastChannel>,
-    pending_close: Vec<CachedBroadcastChannel>,
+    channel_of_name: HashMap<String, MessagePort>,
+    pending_close: Vec<MessagePort>,
     close_scheduled: bool,
     close_callback: Closure<dyn FnMut()>,
-}
-
-struct CachedBroadcastChannel {
-    message_port: MessagePort,
-    ready_port: MessagePort,
-    _ready_callback: Closure<dyn FnMut(web_sys::MessageEvent)>,
-    pending_messages: Vec<JsValue>,
-    ready: bool,
-    release_requested: bool,
 }
 
 impl BroadcastChannelState {
@@ -49,55 +40,23 @@ impl BroadcastChannelState {
     }
 
     fn message_port_of_name(&mut self, name: &str) -> MessagePort {
-        if !self.channel_of_name.contains_key(name) {
-            self.channel_of_name
-                .insert(name.to_owned(), CachedBroadcastChannel::new(name));
+        if let Some(port) = self.channel_of_name.get(name) {
+            return port.clone();
         }
-        self.channel_of_name
-            .get(name)
-            .expect("cached broadcast channel was inserted")
-            .message_port
-            .clone()
-    }
 
-    fn post_message(&mut self, name: &str, message: JsValue) -> bool {
-        self.message_port_of_name(name);
-        self.channel_of_name
-            .get_mut(name)
-            .expect("cached broadcast channel was inserted")
-            .post(message)
-    }
-
-    fn mark_ready(&mut self, name: &str) {
-        let release_requested = self
-            .channel_of_name
-            .get_mut(name)
-            .map(CachedBroadcastChannel::mark_ready)
-            .unwrap_or(false);
-        if release_requested {
-            self.release_ready_message_port_name(name);
-        }
+        let port = PortLike::broadcast(name);
+        self.channel_of_name.insert(name.to_owned(), port.clone());
+        port
     }
 
     fn release_message_port_name(&mut self, name: &str) {
-        let ready = self
-            .channel_of_name
-            .get_mut(name)
-            .map(CachedBroadcastChannel::request_release)
-            .unwrap_or(false);
-        if ready {
-            self.release_ready_message_port_name(name);
+        if let Some(port) = self.channel_of_name.remove(name) {
+            self.close_message_port_later(port);
         }
     }
 
-    fn release_ready_message_port_name(&mut self, name: &str) {
-        if let Some(channel) = self.channel_of_name.remove(name) {
-            self.close_message_port_later(channel);
-        }
-    }
-
-    fn close_message_port_later(&mut self, channel: CachedBroadcastChannel) {
-        self.pending_close.push(channel);
+    fn close_message_port_later(&mut self, port: MessagePort) {
+        self.pending_close.push(port);
         if self.close_scheduled {
             return;
         }
@@ -114,67 +73,10 @@ impl BroadcastChannelState {
 
     fn close_pending_message_ports(&mut self) {
         self.close_scheduled = false;
-        for channel in self.pending_close.drain(..) {
-            channel.close();
-        }
-    }
-}
-
-impl CachedBroadcastChannel {
-    fn new(name: &str) -> Self {
-        let message_port = PortLike::broadcast(name);
-        let ready_port = PortLike::broadcast(&format!("{name}__frb_ready"));
-        let ready_name = name.to_owned();
-        let ready_callback =
-            Closure::<dyn FnMut(web_sys::MessageEvent)>::new(move |_| mark_ready(&ready_name));
-        ready_port
-            .dyn_ref::<BroadcastChannel>()
-            .expect("Not a BroadcastChannel")
-            .set_onmessage(Some(ready_callback.as_ref().unchecked_ref()));
-        Self {
-            message_port,
-            ready_port,
-            _ready_callback: ready_callback,
-            pending_messages: Vec::new(),
-            ready: false,
-            release_requested: false,
-        }
-    }
-
-    fn post(&mut self, message: JsValue) -> bool {
-        if !self.ready {
-            self.pending_messages.push(message);
-            return true;
-        }
-        self.message_port
-            .post_message(&message)
-            .map_err(|error| crate::console_error!("post broadcast channel: {:?}", error))
-            .is_ok()
-    }
-
-    fn mark_ready(&mut self) -> bool {
-        if !self.ready {
-            self.ready = true;
-            for message in self.pending_messages.drain(..) {
-                if let Err(error) = self.message_port.post_message(&message) {
-                    crate::console_error!("flush broadcast channel: {:?}", error);
-                }
+        for port in self.pending_close.drain(..) {
+            if let Err(error) = port.close() {
+                crate::console_error!("close broadcast channel: {:?}", error);
             }
-        }
-        self.release_requested
-    }
-
-    fn request_release(&mut self) -> bool {
-        self.release_requested = true;
-        self.ready
-    }
-
-    fn close(self) {
-        if let Err(error) = self.message_port.close() {
-            crate::console_error!("close broadcast channel: {:?}", error);
-        }
-        if let Err(error) = self.ready_port.close() {
-            crate::console_error!("close ready channel: {:?}", error);
         }
     }
 }
@@ -197,10 +99,6 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
     BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().message_port_of_name(&handle.0))
 }
 
-pub fn post_cached_message_port(handle: &SendableMessagePortHandle, message: JsValue) -> bool {
-    BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().post_message(&handle.0, message))
-}
-
 pub fn release_message_port_handle(handle: &SendableMessagePortHandle) {
     BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().release_message_port_name(&handle.0))
 }
@@ -213,8 +111,4 @@ pub type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
 
 fn close_pending_message_ports() {
     BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().close_pending_message_ports())
-}
-
-fn mark_ready(name: &str) {
-    BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().mark_ready(name))
 }

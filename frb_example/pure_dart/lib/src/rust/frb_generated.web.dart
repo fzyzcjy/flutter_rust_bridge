@@ -51442,36 +51442,6 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__stream__func_stream_cross_worker_close_twin_normal(
-          NativePortType port_, String sink) =>
-      wasmModule
-          .wire__crate__api__stream__func_stream_cross_worker_close_twin_normal(
-              port_, sink);
-
-  void wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_cross_worker_close_twin_rust_async(
-          NativePortType port_, String sink) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_cross_worker_close_twin_rust_async(
-              port_, sink);
-
-  void wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_cross_worker_close_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_cross_worker_close_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_cross_worker_close_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_cross_worker_close_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
   void wire__crate__api__stream_misc__func_stream_realistic_twin_normal(
           NativePortType port_, String sink, String arg) =>
       wasmModule
@@ -73068,28 +73038,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_add_value_and_error_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__stream__func_stream_cross_worker_close_twin_normal(
-          NativePortType port_, String sink);
-
-  external void
-      wire__crate__api__pseudo_manual__stream_twin_rust_async__func_stream_cross_worker_close_twin_rust_async(
-          NativePortType port_, String sink);
-
-  external void
-      wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__func_stream_cross_worker_close_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__stream_twin_sse__func_stream_cross_worker_close_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
