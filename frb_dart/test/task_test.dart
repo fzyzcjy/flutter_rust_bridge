@@ -36,4 +36,21 @@ void main() {
     expect(meta.hashCode == metaTwo.hashCode, true);
     expect(meta.toString(), contains('TaskConstMeta'));
   });
+
+  test('TaskConstMeta equality distinguishes names and argument order', () {
+    const original = TaskConstMeta(debugName: 'task', argNames: ['a', 'b']);
+
+    expect(
+      original,
+      isNot(
+        equals(const TaskConstMeta(debugName: 'other', argNames: ['a', 'b'])),
+      ),
+    );
+    expect(
+      original,
+      isNot(
+        equals(const TaskConstMeta(debugName: 'task', argNames: ['b', 'a'])),
+      ),
+    );
+  });
 }
