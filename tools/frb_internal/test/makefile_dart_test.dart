@@ -82,6 +82,13 @@ void main() {
     expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
   });
 
+  test('release publishes every shared Dart package', () {
+    expect(kDartPublishedPackages.map(dartPublishCommand), [
+      'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org',
+      'cd frb_hooks && dart pub publish --force --server=https://pub.dartlang.org',
+    ]);
+  });
+
   test('release guard rejects uninitialized submodules', () {
     expect(
       () => verifyReleaseSubmodules(
