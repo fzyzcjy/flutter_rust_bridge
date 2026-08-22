@@ -478,7 +478,10 @@ mod tests {
                 Template::Plugin,
                 IntegrationBackend::Cargokit,
                 &["cargokit/build_tool/pubspec.yaml"][..],
-                &["rust_builder/cargokit/build_tool/pubspec.yaml", "hook/build.dart"][..],
+                &[
+                    "rust_builder/cargokit/build_tool/pubspec.yaml",
+                    "hook/build.dart",
+                ][..],
             ),
             (
                 Template::App,
