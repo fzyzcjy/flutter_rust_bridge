@@ -577,11 +577,14 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   final output = await exec(
     '$valgrindCommand ${_dartValgrindOutputExecutablePath()}',
     relativePwd: config.package,
-    checkExitCode: false,
     extraEnv: kEnvEnableRustBacktrace,
   );
 
-  checkValgrindOutput(output.stdout);
+  checkValgrindOutput(
+    stdout: output.stdout,
+    stderr: output.stderr,
+    exitCode: output.exitCode,
+  );
 }
 
 String _dartValgrindCompileCommand() {
@@ -608,7 +611,16 @@ String dartValgrindOutputExecutablePathForTesting() =>
     _dartValgrindOutputExecutablePath();
 
 @visibleForTesting
-void checkValgrindOutput(String output) {
+void checkValgrindOutput({
+  required String stdout,
+  required String stderr,
+  required int exitCode,
+}) {
+  if (exitCode != 0) {
+    throw Exception('Valgrind failed with exit code $exitCode');
+  }
+
+  final output = '$stdout\n$stderr';
   const kDartAllTestsPassedStr = 'All tests passed!';
   if (!output.contains(kDartAllTestsPassedStr)) {
     throw Exception(
