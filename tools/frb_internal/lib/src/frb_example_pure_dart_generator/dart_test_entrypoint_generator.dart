@@ -58,7 +58,7 @@ Future<void> _generateDartValgrindTestEntrypoint(
   ];
   final entrypoints = [
     for (final file in files) //
-      "    '${path.relative(file, from: dirTest.toFilePath())}': ${path.basenameWithoutExtension(file)}.main,\n",
+      '    ${path.basenameWithoutExtension(file)}.main,\n',
   ];
 
   final code =
@@ -92,11 +92,11 @@ Future<void> main() async {
 }
 
 Future<void> callFileEntrypoints() async {
-  final entrypoints = <String, Future<void> Function({bool skipRustLibInit})>{
+  final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
 ${entrypoints.join("")}
-  };
+  ];
 
-  for (final entrypoint in entrypoints.values) {
+  for (final entrypoint in entrypoints) {
     await entrypoint(skipRustLibInit: true);
   }
 }
