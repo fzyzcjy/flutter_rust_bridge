@@ -77,7 +77,7 @@ void main() {
     },
   );
 
-  test('wasm-pack environment isolates host and target rustflags', () {
+  test('wasm-pack environment uses target-specific rustflags', () {
     final environment = computeWasmPackEnvironment(
       rustupToolchain: 'nightly',
       rustflags: buildWebDefaultWasmPackRustflags,
@@ -90,8 +90,6 @@ void main() {
       buildWebDefaultWasmPackRustflags,
     );
     expect(environment['CARGO_TERM_COLOR'], 'always');
-    for (final key in buildWebWasmPackHostRustflagsEnvKeys) {
-      expect(environment[key], '');
-    }
+    expect(environment, isNot(contains('RUSTFLAGS')));
   });
 }
