@@ -248,7 +248,7 @@ class _$CustomEnumErrorTwinNormal_OneImpl
 }
 
 abstract class CustomEnumErrorTwinNormal_One extends CustomEnumErrorTwinNormal
-    implements InvalidType {
+    implements FrbBacktracedException {
   const factory CustomEnumErrorTwinNormal_One(
       {required final String message,
       required final String backtrace}) = _$CustomEnumErrorTwinNormal_OneImpl;
@@ -416,7 +416,7 @@ class _$CustomEnumErrorTwinNormal_TwoImpl
 }
 
 abstract class CustomEnumErrorTwinNormal_Two extends CustomEnumErrorTwinNormal
-    implements InvalidType {
+    implements FrbBacktracedException {
   const factory CustomEnumErrorTwinNormal_Two(
       {required final int message,
       required final String backtrace}) = _$CustomEnumErrorTwinNormal_TwoImpl;
@@ -669,7 +669,7 @@ class _$CustomErrorTwinNormal_Error0Impl extends CustomErrorTwinNormal_Error0 {
 }
 
 abstract class CustomErrorTwinNormal_Error0 extends CustomErrorTwinNormal
-    implements InvalidType {
+    implements FrbBacktracedException {
   const factory CustomErrorTwinNormal_Error0(
       {required final String e,
       required final String backtrace}) = _$CustomErrorTwinNormal_Error0Impl;
@@ -836,7 +836,7 @@ class _$CustomErrorTwinNormal_Error1Impl extends CustomErrorTwinNormal_Error1 {
 }
 
 abstract class CustomErrorTwinNormal_Error1 extends CustomErrorTwinNormal
-    implements InvalidType {
+    implements FrbBacktracedException {
   const factory CustomErrorTwinNormal_Error1(
       {required final int e,
       required final String backtrace}) = _$CustomErrorTwinNormal_Error1Impl;
