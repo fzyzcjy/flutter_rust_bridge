@@ -52,6 +52,17 @@ void main() {
     );
   });
 
+  test('sanitized Dart cache path remains outside the repository', () {
+    expect(
+      sanitizedDartCacheRelativePathForTesting(
+        repoRootPath:
+            '/home/runner/work/flutter_rust_bridge/flutter_rust_bridge',
+        cacheRootPath: '/tmp/frb_sanitized_dart/release',
+      ),
+      '../../../../../tmp/frb_sanitized_dart/release',
+    );
+  });
+
   test('sanitized Dart version check is skipped without main Dart env', () {
     checkSanitizedDartVersionForTesting(
       versionOutput: 'Dart SDK version: 3.11.0 (stable)',

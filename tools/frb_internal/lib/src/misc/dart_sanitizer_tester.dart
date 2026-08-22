@@ -318,6 +318,10 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   final pathChecksum = path.join(pathCacheRoot, fileNameChecksum);
   final pathUnzippedDir = path.join(pathCacheRoot, baseName);
   final pathExtractionComplete = path.join(pathUnzippedDir, '.complete');
+  final relativePathCacheRoot = sanitizedDartCacheRelativePathForTesting(
+    repoRootPath: Directory.current.parent.parent.path,
+    cacheRootPath: pathCacheRoot,
+  );
   final pathBin = path.join(
     pathUnzippedDir,
     'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart',
@@ -341,7 +345,7 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
 
   final checksumResult = await exec(
     'sha256sum --check $fileNameChecksum',
-    relativePwd: pathCacheRoot,
+    relativePwd: relativePathCacheRoot,
     checkExitCode: false,
   );
   if (checksumResult.exitCode != 0) {
@@ -359,7 +363,7 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
     );
     await exec(
       'sha256sum --check $fileNameChecksum',
-      relativePwd: pathCacheRoot,
+      relativePwd: relativePathCacheRoot,
     );
   }
 
@@ -407,6 +411,11 @@ String sanitizedDartReleaseName({Map<String, String>? environment}) {
   }
   return value.trim();
 }
+
+String sanitizedDartCacheRelativePathForTesting({
+  required String repoRootPath,
+  required String cacheRootPath,
+}) => path.relative(cacheRootPath, from: repoRootPath);
 
 Future<void> _printSanitizedDartVersion(String sanitizedDart) async {
   final output = await exec('$sanitizedDart --version', checkExitCode: false);
