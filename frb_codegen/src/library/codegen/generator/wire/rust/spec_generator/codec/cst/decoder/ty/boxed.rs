@@ -19,7 +19,11 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
         let exist_in_real_api = self.mir.exist_in_real_api;
         Acc::new(|target| {
             match (target, self.mir.inner.as_ref()) {
-                (Io, MirType::Primitive(_)) => Some(format!(
+                (
+                    Io,
+                    MirType::Primitive(_)
+                    | MirType::Delegate(MirTypeDelegate::CastedPrimitive(_)),
+                ) => Some(format!(
                     "unsafe {{ {extra} flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }}",
                     extra = if exist_in_real_api { "" } else { "*" }
                 )),
@@ -61,15 +65,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
             return Acc::default();
         }
         let func_name = format!("cst_new_{}", self.mir.safe_ident());
-        if self.mir.inner.is_primitive()
-            || matches!(
-                *self.mir.inner,
-                MirType::RustOpaque(_)
-                    | MirType::RustAutoOpaqueImplicit(_)
-                    | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
-                    | MirType::DartOpaque(_)
-            )
-        {
+        if boxed_inner_uses_value_allocator(&self.mir.inner) {
             Acc {
                 io: ExternFunc {
                     partial_func_name: func_name,
@@ -132,4 +128,15 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
                 && !self.mir.inner.is_array()
                 && !self.mir.inner.is_primitive()
     }
+}
+
+fn boxed_inner_uses_value_allocator(inner: &MirType) -> bool {
+    inner.is_primitive()
+        || matches!(
+            inner,
+            MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                | MirType::RustOpaque(_)
+                | MirType::RustAutoOpaqueImplicit(_)
+                | MirType::DartOpaque(_)
+        )
 }

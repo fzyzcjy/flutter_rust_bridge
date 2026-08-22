@@ -2361,6 +2361,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool dco_decode_bool(dynamic raw);
 
   @protected
+  int dco_decode_box_CastedPrimitive_i_64(dynamic raw);
+
+  @protected
   ApplicationEnv dco_decode_box_application_env(dynamic raw);
 
   @protected
@@ -2377,6 +2380,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSync
       dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_CastedPrimitive_i_64(dynamic raw);
 
   @protected
   Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw);
@@ -3847,6 +3853,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  List<int> dco_decode_list_CastedPrimitive_i_64(dynamic raw);
+
+  @protected
   List<Duration> dco_decode_list_Chrono_Duration(dynamic raw);
 
   @protected
@@ -4477,6 +4486,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSync?
       dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_CastedPrimitive_i_64(dynamic raw);
 
   @protected
   Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw);
@@ -7210,6 +7222,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  int sse_decode_box_CastedPrimitive_i_64(SseDeserializer deserializer);
+
+  @protected
   ApplicationEnv sse_decode_box_application_env(SseDeserializer deserializer);
 
   @protected
@@ -7226,6 +7241,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSync
       sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_CastedPrimitive_i_64(SseDeserializer deserializer);
 
   @protected
   Duration sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer);
@@ -8885,6 +8903,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  List<int> sse_decode_list_CastedPrimitive_i_64(SseDeserializer deserializer);
+
+  @protected
   List<Duration> sse_decode_list_Chrono_Duration(SseDeserializer deserializer);
 
   @protected
@@ -9613,6 +9634,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSync?
       sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_CastedPrimitive_i_64(
+      SseDeserializer deserializer);
 
   @protected
   Duration? sse_decode_opt_box_autoadd_Chrono_Duration(
@@ -12554,6 +12579,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_bool(bool self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_CastedPrimitive_i_64(int self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_application_env(
       ApplicationEnv self, SseSerializer serializer);
 
@@ -12571,6 +12599,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_CastedPrimitive_i_64(
+      int self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_Chrono_Duration(
@@ -14144,6 +14176,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<OpaqueItemTwinNormal> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_CastedPrimitive_i_64(
+      List<int> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_Chrono_Duration(
       List<Duration> self, SseSerializer serializer);
 
@@ -14868,6 +14904,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_CastedPrimitive_i_64(
+      int? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_Chrono_Duration(

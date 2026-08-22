@@ -41,26 +41,38 @@ fn generate_encode_or_decode_for_type(
 
     if let Some(body) = body {
         let body = body.trim();
-        let code  = match mode {
-            EncodeOrDecode::Encode => format!(
-                "
+        let (coherence_key, code) = match mode {
+            EncodeOrDecode::Encode => {
+                let coherence_key = format!("impl SseEncode for {rust_api_type}");
+                let code = format!(
+                    "
                 impl SseEncode for {rust_api_type} {{
                     {codec_comments}
                     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {{{body}}}
                 }}
                 "
-            ),
-            EncodeOrDecode::Decode => format!(
-                "
+                );
+                (coherence_key, code)
+            }
+            EncodeOrDecode::Decode => {
+                let coherence_key = format!("impl SseDecode for {rust_api_type}");
+                let code = format!(
+                    "
                 impl SseDecode for {rust_api_type} {{
                     {codec_comments}
                     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {{{body}}}
                 }}
                 "
-            ),
+                );
+                (coherence_key, code)
+            }
         };
 
-        Acc::new_common(code.into())
+        Acc::new_common(WireRustOutputCode {
+            body: code,
+            coherence_key: Some(coherence_key),
+            ..Default::default()
+        })
     } else {
         Acc::default()
     }

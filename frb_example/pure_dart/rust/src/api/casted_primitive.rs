@@ -38,9 +38,12 @@ pub struct StructWithCastedPrimitiveTwinNormal {
     pub field_u64: u64,
     pub field_i32: i32,
     pub field_vec_u8: Vec<u8>,
+    pub field_vec_i64: Vec<i64>,
+    pub field_optional_i64: Option<i64>,
+    pub field_boxed_i64: Box<i64>,
 }
 
-#[frb(serialize)]
+#[frb(semi_serialize)]
 pub fn function_for_struct_with_casted_primitive_twin_normal(
     arg: StructWithCastedPrimitiveTwinNormal,
 ) -> StructWithCastedPrimitiveTwinNormal {

@@ -4911,6 +4911,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool dco_decode_bool(dynamic raw);
 
   @protected
+  int dco_decode_box_CastedPrimitive_i_64(dynamic raw);
+
+  @protected
   ApplicationEnv dco_decode_box_application_env(dynamic raw);
 
   @protected
@@ -4972,6 +4975,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSyncSseMoi
       dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_CastedPrimitive_i_64(dynamic raw);
 
   @protected
   Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw);
@@ -7957,6 +7963,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  List<int> dco_decode_list_CastedPrimitive_i_64(dynamic raw);
+
+  @protected
   List<Duration> dco_decode_list_Chrono_Duration(dynamic raw);
 
   @protected
@@ -9066,6 +9075,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSyncSseMoi?
       dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_CastedPrimitive_i_64(dynamic raw);
 
   @protected
   Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw);
@@ -14451,6 +14463,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  int sse_decode_box_CastedPrimitive_i_64(SseDeserializer deserializer);
+
+  @protected
   ApplicationEnv sse_decode_box_application_env(SseDeserializer deserializer);
 
   @protected
@@ -14512,6 +14527,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSyncSseMoi
       sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_CastedPrimitive_i_64(SseDeserializer deserializer);
 
   @protected
   Duration sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer);
@@ -17884,6 +17902,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  List<int> sse_decode_list_CastedPrimitive_i_64(SseDeserializer deserializer);
+
+  @protected
   List<Duration> sse_decode_list_Chrono_Duration(SseDeserializer deserializer);
 
   @protected
@@ -19162,6 +19183,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSyncSseMoi?
       sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_CastedPrimitive_i_64(
+      SseDeserializer deserializer);
 
   @protected
   Duration? sse_decode_opt_box_autoadd_Chrono_Duration(
@@ -21214,6 +21239,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_CastedPrimitive_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_i_64(BigInt.from(raw));
+  }
+
+  @protected
+  JSAny cst_encode_CastedPrimitive_u_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_u_64(BigInt.from(raw));
+  }
+
+  @protected
   String cst_encode_Char(String raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw);
@@ -22457,6 +22494,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_box_CastedPrimitive_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_CastedPrimitive_i_64(raw);
+  }
+
+  @protected
   JSAny cst_encode_box_application_env(ApplicationEnv raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_application_env(raw);
@@ -22508,6 +22551,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
         raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_CastedPrimitive_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_CastedPrimitive_i_64(raw);
   }
 
   @protected
@@ -23768,6 +23817,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_struct_in_lower_level(StructInLowerLevel raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_in_lower_level(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_struct_with_casted_primitive_twin_normal(
+      StructWithCastedPrimitiveTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_casted_primitive_twin_normal(raw);
   }
 
   @protected
@@ -26021,6 +26077,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_list_CastedPrimitive_i_64(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_CastedPrimitive_i_64).toList().jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_list_Chrono_Duration(List<Duration> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_Chrono_Duration).toList().jsify()!;
@@ -27533,6 +27595,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny? cst_encode_opt_box_autoadd_CastedPrimitive_i_64(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_CastedPrimitive_i_64(raw);
+  }
+
+  @protected
   JSAny? cst_encode_opt_box_autoadd_Chrono_Duration(Duration? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_Chrono_Duration(raw);
@@ -28947,6 +29017,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_struct_in_upper_level(StructInUpperLevel raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_usize(raw.upper)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_struct_with_casted_primitive_twin_normal(
+      StructWithCastedPrimitiveTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_CastedPrimitive_i_64(raw.fieldI64),
+      cst_encode_CastedPrimitive_u_64(raw.fieldU64),
+      cst_encode_i_32(raw.fieldI32),
+      cst_encode_list_prim_u_8_strict(raw.fieldVecU8),
+      cst_encode_list_CastedPrimitive_i_64(raw.fieldVecI64),
+      cst_encode_opt_box_autoadd_CastedPrimitive_i_64(raw.fieldOptionalI64),
+      cst_encode_box_CastedPrimitive_i_64(raw.fieldBoxedI64)
+    ].jsify()!;
   }
 
   @protected
@@ -34934,6 +35019,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_bool(bool self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_CastedPrimitive_i_64(int self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_application_env(
       ApplicationEnv self, SseSerializer serializer);
 
@@ -34996,6 +35084,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_CastedPrimitive_i_64(
+      int self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_Chrono_Duration(
@@ -38156,6 +38248,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<OpaqueItemTwinNormal> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_CastedPrimitive_i_64(
+      List<int> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_Chrono_Duration(
       List<Duration> self, SseSerializer serializer);
 
@@ -39401,6 +39497,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           NonCloneSimpleTwinSyncSseMoi? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_CastedPrimitive_i_64(
+      int? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_Chrono_Duration(
@@ -51928,13 +52028,10 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__api__function_at_api_mod_rs(port_);
 
   void wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
+          NativePortType port_, JSAny arg) =>
       wasmModule
           .wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
-              port_, ptr_, rust_vec_len_, data_len_);
+              port_, arg);
 
   void wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(
           NativePortType port_,
@@ -73359,10 +73456,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
+          NativePortType port_, JSAny arg);
 
   external void
       wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(

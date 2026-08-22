@@ -89,7 +89,7 @@ const DECODE_BODY_IO: &str = "
     };
     vec.into_iter().map(CstDecode::cst_decode).collect()
 ";
-const DECODE_BODY_WEB: &str =
+pub(crate) const DECODE_BODY_WEB: &str =
     "self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()";
 
 pub(crate) fn generate_list_generate_allocate_func(
@@ -119,7 +119,7 @@ pub(crate) fn generate_list_generate_allocate_func(
             "let wrap = {} {{ ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr({}, len), len }};
                 flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)",
             list_generator.rust_wire_type(Target::Io),
-            if inner.is_primitive() || matches!(inner, MirType::RustOpaque(_)) || matches!(inner, MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))) || matches!(inner, MirType::RustAutoOpaqueImplicit(_)) {
+            if general_list_inner_uses_default_initializer(inner) {
                 // A primitive enum list can use a default value since
                 // `<i32>::new_with_null_ptr()` isn't implemented.
                 "Default::default()".to_string()
@@ -138,4 +138,14 @@ pub(crate) fn generate_list_generate_allocate_func(
         target: Target::Io,
         needs_ffigen: true,
     }
+}
+
+fn general_list_inner_uses_default_initializer(inner: &MirType) -> bool {
+    inner.is_primitive()
+        || matches!(
+            inner,
+            MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))
+                | MirType::RustOpaque(_)
+                | MirType::RustAutoOpaqueImplicit(_)
+        )
 }

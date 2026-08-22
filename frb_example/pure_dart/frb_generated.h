@@ -1215,6 +1215,21 @@ typedef struct wire_cst_tuple_struct_with_two_field_twin_sync {
   int32_t field1;
 } wire_cst_tuple_struct_with_two_field_twin_sync;
 
+typedef struct wire_cst_list_CastedPrimitive_i_64 {
+  int64_t *ptr;
+  int32_t len;
+} wire_cst_list_CastedPrimitive_i_64;
+
+typedef struct wire_cst_struct_with_casted_primitive_twin_normal {
+  int64_t field_i64;
+  uint64_t field_u64;
+  int32_t field_i32;
+  struct wire_cst_list_prim_u_8_strict *field_vec_u8;
+  struct wire_cst_list_CastedPrimitive_i_64 *field_vec_i64;
+  int64_t *field_optional_i64;
+  int64_t *field_boxed_i64;
+} wire_cst_struct_with_casted_primitive_twin_normal;
+
 typedef struct wire_cst_EnumDartOpaqueTwinNormal_Primitive {
   int32_t field0;
 } wire_cst_EnumDartOpaqueTwinNormal_Primitive;
@@ -8778,9 +8793,7 @@ void frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__func_using_n
 void frbgen_frb_example_pure_dart_wire__crate__api__function_at_api_mod_rs(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(int64_t port_,
-                                                                                                                            uint8_t *ptr_,
-                                                                                                                            int32_t rust_vec_len_,
-                                                                                                                            int32_t data_len_);
+                                                                                                                            struct wire_cst_struct_with_casted_primitive_twin_normal *arg);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(int64_t port_,
                                                                                                                uint8_t *ptr_,
@@ -15262,6 +15275,8 @@ void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_i32
 
 void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_i32(const void *ptr);
 
+int64_t *frbgen_frb_example_pure_dart_cst_new_box_CastedPrimitive_i_64(int64_t value);
+
 struct wire_cst_application_env *frbgen_frb_example_pure_dart_cst_new_box_application_env(void);
 
 uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(uintptr_t value);
@@ -15275,6 +15290,8 @@ uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaqu
 uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(uintptr_t value);
 
 uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(uintptr_t value);
+
+int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_CastedPrimitive_i_64(int64_t value);
 
 int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Duration(int64_t value);
 
@@ -15656,6 +15673,8 @@ struct wire_cst_some_struct_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_
 
 struct wire_cst_struct_in_lower_level *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_lower_level(void);
 
+struct wire_cst_struct_with_casted_primitive_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_casted_primitive_twin_normal(void);
+
 struct wire_cst_struct_with_comments_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_normal(void);
 
 struct wire_cst_struct_with_comments_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_rust_async(void);
@@ -15867,6 +15886,8 @@ struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustA
 struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi *frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(int32_t len);
 
 struct wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal *frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(int32_t len);
+
+struct wire_cst_list_CastedPrimitive_i_64 *frbgen_frb_example_pure_dart_cst_new_list_CastedPrimitive_i_64(int32_t len);
 
 struct wire_cst_list_Chrono_Duration *frbgen_frb_example_pure_dart_cst_new_list_Chrono_Duration(int32_t len);
 
@@ -16139,6 +16160,7 @@ struct wire_cst_list_weekdays_twin_rust_async *frbgen_frb_example_pure_dart_cst_
 struct wire_cst_list_weekdays_twin_sync *frbgen_frb_example_pure_dart_cst_new_list_weekdays_twin_sync(int32_t len);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_CastedPrimitive_i_64);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_application_env);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal);
@@ -16146,6 +16168,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_CastedPrimitive_i_64);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Duration);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDate);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDateTime);
@@ -16336,6 +16359,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_lower_level);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_casted_primitive_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_sync);
@@ -16442,6 +16466,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_CastedPrimitive_i_64);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_Duration);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_Local);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_NaiveDateTime);
