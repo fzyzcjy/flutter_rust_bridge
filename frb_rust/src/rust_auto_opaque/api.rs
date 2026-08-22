@@ -1,6 +1,10 @@
 use crate::generalized_arc::base_arc::BaseArc;
 use crate::rust_async::{RwLockReadGuard, RwLockWriteGuard};
 use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
+#[cfg(target_family = "wasm")]
+use crate::rust_auto_opaque::web_is_dedicated_worker_context;
+#[cfg(target_family = "wasm")]
+use crate::rust_auto_opaque::web_throw_lock_error;
 use crate::rust_auto_opaque::RustAutoOpaqueBase;
 use crate::rust_opaque::RustOpaqueBase;
 use tokio::sync::{RwLock, TryLockError};
@@ -13,11 +17,35 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     }
 
     pub fn blocking_read(&self) -> RwLockReadGuard<'_, T> {
-        self.0.data.blocking_read()
+        #[cfg(target_family = "wasm")]
+        {
+            if web_is_dedicated_worker_context() {
+                self.0.data.blocking_read()
+            } else {
+                self.try_read()
+                    .unwrap_or_else(|error| web_throw_lock_error("read", error))
+            }
+        }
+        #[cfg(not(target_family = "wasm"))]
+        {
+            self.0.data.blocking_read()
+        }
     }
 
     pub fn blocking_write(&self) -> RwLockWriteGuard<'_, T> {
-        self.0.data.blocking_write()
+        #[cfg(target_family = "wasm")]
+        {
+            if web_is_dedicated_worker_context() {
+                self.0.data.blocking_write()
+            } else {
+                self.try_write()
+                    .unwrap_or_else(|error| web_throw_lock_error("write", error))
+            }
+        }
+        #[cfg(not(target_family = "wasm"))]
+        {
+            self.0.data.blocking_write()
+        }
     }
 
     pub async fn read(&self) -> RwLockReadGuard<'_, T> {

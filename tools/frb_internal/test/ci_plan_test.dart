@@ -21,6 +21,11 @@ void main() {
           kCiJobs.map((job) => job.id).toSet(),
           reason: filter,
         );
+        expect(
+          plan.enabledJobs,
+          contains('generate_run_frb_codegen_command_generate_from_scratch'),
+          reason: filter,
+        );
         expect(plan.matrixByJob['test_dart_web'], {
           'include': [
             {'package': 'frb_dart'},
@@ -240,6 +245,29 @@ void main() {
               'platform': 'web',
               'target': 'web',
               'device': 'chrome',
+              'package': 'frb_example--flutter_via_create',
+              'package_path': 'frb_example/flutter_via_create',
+            },
+          },
+        ],
+      });
+    });
+
+    test('single NixOS Flutter smoke filter selects one entry', () {
+      final plan = buildCiPlan(
+        filter: 'test_flutter_quickstart_smoke[platform=nixos]',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'test_flutter_quickstart_smoke'});
+      expect(plan.matrixByJob['test_flutter_quickstart_smoke'], {
+        'include': [
+          {
+            'info': {
+              'image': 'ubuntu-latest',
+              'platform': 'nixos',
+              'target': 'desktop',
+              'device': 'linux',
               'package': 'frb_example--flutter_via_create',
               'package_path': 'frb_example/flutter_via_create',
             },
@@ -537,6 +565,33 @@ void main() {
                 'image': 'ubuntu-24.04',
                 'package': 'frb_example--flutter_via_create',
                 'platforms': 'ohos',
+              },
+            ],
+          },
+        },
+      ),
+      const _CiFilterExample(
+        filter: 'build_flutter[target=ohos]',
+        enabledJobs: {'build_flutter'},
+        matrixByJob: {
+          'build_flutter': {
+            'include': [
+              {
+                'info': {
+                  'image': 'ubuntu-latest',
+                  'target': 'ohos',
+                  'package': 'frb_example--flutter_via_create',
+                  'package_path': 'frb_example/flutter_via_create',
+                },
+              },
+              {
+                'info': {
+                  'image': 'ubuntu-latest',
+                  'target': 'ohos',
+                  'package': 'frb_example--flutter_via_integrate',
+                  'package_path': 'frb_example/flutter_via_integrate',
+                  'prepare_ohos_package': 'frb_example--flutter_via_integrate',
+                },
               },
             ],
           },
