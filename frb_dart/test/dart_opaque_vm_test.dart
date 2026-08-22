@@ -1,5 +1,4 @@
 @TestOn('vm')
-
 import 'dart:ffi';
 
 import 'package:flutter_rust_bridge/src/dart_opaque/dart_opaque.dart';

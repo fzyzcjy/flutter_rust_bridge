@@ -19,7 +19,6 @@ void main() {
     expect(decodeDartOpaque(456, binding), 'decoded');
     verify(() => binding.dartOpaqueRust2DartDecode(456)).called(1);
   });
-
 }
 
 class _Binding extends Mock implements GeneralizedFrbRustBinding {}
