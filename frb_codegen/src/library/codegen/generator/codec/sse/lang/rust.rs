@@ -76,3 +76,79 @@ impl LangTrait for RustLang {
         "let mut"
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    /// Emits Rust type wrappers and error macros for serialized values.
+    #[test]
+    fn wrappers_and_errors_match_rust_syntax() {
+        let lang = RustLang;
+        let ty = MirType::Primitive(MirTypePrimitive::I32);
+
+        assert_eq!(
+            lang.call_encode(&ty, "value"),
+            "<i32>::sse_encode(value, serializer)"
+        );
+        assert_eq!(lang.call_decode(&ty), "<i32>::sse_decode(deserializer)");
+        assert_eq!(
+            lang.throw_unimplemented("missing"),
+            "unimplemented!(\"missing\")"
+        );
+        assert_eq!(
+            lang.throw_unreachable("invalid"),
+            "unreachable!(\"invalid\")"
+        );
+    }
+
+    /// Formats Rust tuple and struct constructors without redundant field labels.
+    #[test]
+    fn constructor_uses_rust_brackets_and_shorthand() {
+        let lang = RustLang;
+        let fields = ["first".to_owned(), "second".to_owned()];
+        let values = ["first".to_owned(), "value".to_owned()];
+
+        assert_eq!(
+            lang.call_constructor("Pair", ".ignored", &fields, &values, false),
+            "Pair(first, value)"
+        );
+        assert_eq!(
+            lang.call_constructor("Pair", ".ignored", &fields, &values, true),
+            "Pair{first, second: value}"
+        );
+    }
+
+    /// Emits Rust control-flow tokens including a match fallback.
+    #[test]
+    fn control_flow_tokens_match_rust_syntax() {
+        let lang = RustLang;
+
+        assert_eq!(
+            lang.for_loop("item", "items", "use_item(item);"),
+            "for item in items { use_item(item); }"
+        );
+        assert_eq!(
+            lang.for_range_loop("index", "count", "use_index(index);"),
+            "for index in 0..count { use_index(index); }"
+        );
+        assert_eq!(
+            lang.switch_expr(
+                "value",
+                &[("Kind::Zero".to_owned(), "zero();".to_owned())],
+                Some("fallback();".to_owned()),
+            ),
+            "match value {Kind::Zero => { zero(); }\n _ => { fallback(); }}"
+        );
+        assert_eq!(
+            lang.switch_expr(
+                "value",
+                &[("Kind::Zero".to_owned(), "zero();".to_owned())],
+                None,
+            ),
+            "match value {Kind::Zero => { zero(); }\n }"
+        );
+        assert_eq!(lang.var_decl(), "let mut");
+    }
+}

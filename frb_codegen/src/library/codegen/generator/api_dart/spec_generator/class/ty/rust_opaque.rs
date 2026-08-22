@@ -186,3 +186,59 @@ fn get_candidate_safe_idents_for_matching(ty: &MirType) -> Vec<String> {
     }
     ans
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::func::OwnershipMode;
+    use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
+    use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
+        MirRustAutoOpaqueRaw, MirTypeRustAutoOpaqueImplicit,
+    };
+    use crate::codegen::ir::mir::ty::rust_opaque::{
+        MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
+    };
+    use crate::codegen::ir::mir::ty::MirTypeTrait;
+    use crate::utils::namespace::Namespace;
+
+    fn rust_opaque() -> MirTypeRustOpaque {
+        MirTypeRustOpaque {
+            namespace: Namespace::default(),
+            inner: MirRustOpaqueInner(MirLifetimeAwareType::new("Thing".into())),
+            codec: RustOpaqueCodecMode::Nom,
+            dart_api_type: None,
+            brief_name: false,
+        }
+    }
+
+    /// Includes both the wrapper and inner identifiers for implicit auto opaque types.
+    #[test]
+    fn candidate_idents_include_implicit_wrapper_and_inner_type() {
+        let inner = rust_opaque();
+        let ty = MirType::RustAutoOpaqueImplicit(MirTypeRustAutoOpaqueImplicit {
+            ownership_mode: OwnershipMode::Owned,
+            inner: inner.clone(),
+            raw: MirRustAutoOpaqueRaw {
+                string: MirLifetimeAwareType::new("Thing".into()),
+                segments: vec![],
+            },
+            reason: None,
+            ignore: false,
+        });
+
+        assert_eq!(
+            get_candidate_safe_idents_for_matching(&ty),
+            vec![ty.safe_ident(), inner.safe_ident()]
+        );
+    }
+
+    /// Keeps ordinary types to their sole safe identifier.
+    #[test]
+    fn candidate_idents_leave_non_implicit_types_unchanged() {
+        let ty = MirType::RustOpaque(rust_opaque());
+        assert_eq!(
+            get_candidate_safe_idents_for_matching(&ty),
+            vec![ty.safe_ident()]
+        );
+    }
+}

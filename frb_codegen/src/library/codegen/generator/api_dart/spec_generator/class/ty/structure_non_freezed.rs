@@ -186,6 +186,7 @@ mod tests {
     use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
     use crate::utils::namespace::Namespace;
 
+    /// Identifies collection types after boxed and optional wrappers.
     #[test]
     fn test_needs_deep_equality_handles_collection_wrappers() {
         let primitive = MirType::Primitive(MirTypePrimitive::U8);
@@ -214,5 +215,23 @@ mod tests {
         assert!(needs_deep_equality(&array));
         assert!(needs_deep_equality(&optional_boxed_list));
         assert!(!needs_deep_equality(&primitive));
+    }
+
+    /// Generates direct equality and hash expressions when deep equality is disabled.
+    #[test]
+    fn equality_and_hashcode_use_direct_field_operations_without_deep_equality() {
+        let fields = vec![MirField {
+            ty: MirType::Primitive(MirTypePrimitive::U8),
+            name: crate::codegen::ir::mir::ident::MirIdent::new("value".into(), None),
+            is_final: true,
+            is_rust_public: None,
+            comments: vec![],
+            default: None,
+            settings: crate::codegen::ir::mir::field::MirFieldSettings::default(),
+        }];
+
+        assert!(generate_hashcode(&fields, false).contains("value.hashCode"));
+        assert!(generate_equals(&fields, "Value", false).contains("other is Value"));
+        assert!(generate_equals(&fields, "Value", false).contains("value == other.value"));
     }
 }

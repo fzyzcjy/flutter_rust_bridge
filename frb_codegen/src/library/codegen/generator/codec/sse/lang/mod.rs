@@ -45,3 +45,21 @@ pub(crate) trait LangTrait {
 
     fn var_decl(&self) -> &'static str;
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Dispatches language-neutral calls to the selected target language.
+    #[test]
+    fn enum_dispatches_language_specific_implementations() {
+        assert_eq!(
+            Lang::DartLang(DartLang).throw_unimplemented("missing"),
+            "throw UnimplementedError('missing')"
+        );
+        assert_eq!(
+            Lang::RustLang(RustLang).throw_unreachable("bad"),
+            "unreachable!(\"bad\")"
+        );
+    }
+}
