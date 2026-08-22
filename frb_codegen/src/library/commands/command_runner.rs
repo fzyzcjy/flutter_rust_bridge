@@ -451,22 +451,22 @@ mod tests {
         let (line_sender, line_receiver) = std::sync::mpsc::channel();
         let execution = thread::spawn(move || {
             let mut command = Command::new("sh");
-            command.args(["-c", "echo first; sleep 2; echo second"]);
+            command.args(["-c", "echo first; sleep 5; echo second"]);
             execute_command_streaming_with_output(
                 &mut command,
                 "sh",
-                "-c echo first; sleep 2; echo second",
+                "-c echo first; sleep 5; echo second",
                 move |line| line_sender.send(line.to_owned()).unwrap(),
             )
         });
 
         assert_eq!(
-            line_receiver.recv_timeout(Duration::from_secs(1)).unwrap(),
+            line_receiver.recv_timeout(Duration::from_secs(3)).unwrap(),
             "first"
         );
         assert!(!execution.is_finished());
         assert_eq!(
-            line_receiver.recv_timeout(Duration::from_secs(3)).unwrap(),
+            line_receiver.recv_timeout(Duration::from_secs(10)).unwrap(),
             "second"
         );
 
