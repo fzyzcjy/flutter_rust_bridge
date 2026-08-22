@@ -261,6 +261,7 @@ class WriteBuffer {
     return (ptr: raw.ptr, rustVecLen: raw.length, dataLen: _currentSize);
   }
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dispose() {
     if (_isDone) {
       throw StateError(
