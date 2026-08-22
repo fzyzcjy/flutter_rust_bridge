@@ -135,8 +135,10 @@ Future<void> expectRustPanicRaw(
 }
 
 final _isWebRustPanic = predicate<Object?>(
-  (error) => error.toString().contains('RuntimeError: unreachable'),
-  'WASM RuntimeError: unreachable',
+  (error) =>
+      error is PanicException ||
+      error.toString().contains('RuntimeError: unreachable'),
+  'PanicException or WASM RuntimeError: unreachable',
 );
 
 /// Hack to make generated pseudo-manual tests be happy about async and sync
