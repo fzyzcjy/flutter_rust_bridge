@@ -95,27 +95,11 @@ impl Config {
 #[cfg(test)]
 mod tests {
     use super::Config;
+    use crate::utils::test_utils::CurrentDirGuard;
     use serial_test::serial;
-    use std::env;
     use std::fs;
-    use std::path::{Path, PathBuf};
+    use std::path::Path;
     use tempfile::TempDir;
-
-    struct CurrentDirGuard(PathBuf);
-
-    impl CurrentDirGuard {
-        fn change_to(path: &Path) -> anyhow::Result<Self> {
-            let previous = env::current_dir()?;
-            env::set_current_dir(path)?;
-            Ok(Self(previous))
-        }
-    }
-
-    impl Drop for CurrentDirGuard {
-        fn drop(&mut self) {
-            env::set_current_dir(&self.0).expect("restore current directory");
-        }
-    }
 
     fn write_file(root: &Path, relative_path: &str, content: &str) -> anyhow::Result<()> {
         let path = root.join(relative_path);

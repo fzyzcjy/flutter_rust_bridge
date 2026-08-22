@@ -147,7 +147,32 @@ mod tests {
     };
     use crate::misc::Template;
     use serial_test::serial;
+    use std::env;
+    use std::ffi::OsString;
     use std::fs;
+
+    struct EnvironmentVariableGuard {
+        key: &'static str,
+        previous: Option<OsString>,
+    }
+
+    impl EnvironmentVariableGuard {
+        fn new(key: &'static str) -> Self {
+            Self {
+                key,
+                previous: env::var_os(key),
+            }
+        }
+    }
+
+    impl Drop for EnvironmentVariableGuard {
+        fn drop(&mut self) {
+            match &self.previous {
+                Some(value) => env::set_var(self.key, value),
+                None => env::remove_var(self.key),
+            }
+        }
+    }
 
     #[test]
     fn test_refresh_cargo_lock_ordering_real_fetch() {
@@ -193,29 +218,27 @@ mod tests {
     #[test]
     #[serial]
     fn test_should_refresh_cargo_lock_ordering_only_when_env_var_is_one() {
-        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+        let _guard = EnvironmentVariableGuard::new(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+        env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
         assert!(!should_refresh_cargo_lock_ordering());
 
-        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "true");
+        env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "true");
         assert!(!should_refresh_cargo_lock_ordering());
 
-        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "1");
+        env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "1");
         assert!(should_refresh_cargo_lock_ordering());
-
-        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
     }
 
     #[test]
     #[serial]
     fn test_maybe_refresh_cargo_lock_ordering_skips_when_env_var_is_not_one() {
-        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+        let _guard = EnvironmentVariableGuard::new(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+        env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
 
         let temp_dir = tempfile::tempdir().unwrap();
         maybe_refresh_cargo_lock_ordering(temp_dir.path(), "does-not-need-to-exist").unwrap();
 
-        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "0");
+        env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "0");
         maybe_refresh_cargo_lock_ordering(temp_dir.path(), "still-not-used").unwrap();
-
-        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
     }
 }

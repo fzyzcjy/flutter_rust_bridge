@@ -217,7 +217,7 @@ mod tests {
     use crate::codegen::Config;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{
-        create_path_sanitizers, get_test_fixture_dir, json_golden_test,
+        create_path_sanitizers, get_test_fixture_dir, json_golden_test, CurrentDirGuard,
     };
     use log::info;
     use serde_json::Value;
@@ -245,7 +245,7 @@ mod tests {
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
-        env::set_current_dir(&test_fixture_dir)?;
+        let _guard = CurrentDirGuard::change_to(&test_fixture_dir)?;
         info!("test_fixture_dir={test_fixture_dir:?}");
 
         let config = Config::from_files_auto()?;
@@ -408,6 +408,7 @@ mod tests {
 
     /// Falls back to the current directory when the configured base directory is invalid.
     #[test]
+    #[serial]
     fn falls_back_to_current_directory_for_invalid_base_dir() -> anyhow::Result<()> {
         let current_dir = env::current_dir()?;
 
