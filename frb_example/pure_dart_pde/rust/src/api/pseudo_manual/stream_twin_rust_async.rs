@@ -52,8 +52,7 @@ pub async fn handle_stream_sink_at_1_twin_rust_async(
     max: u32,
     sink: StreamSink<LogTwinRustAsync>,
 ) {
-    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
-        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
+    dispatch_handle_stream(key, max, sink);
 }
 
 pub async fn handle_stream_sink_at_2_twin_rust_async(
@@ -61,8 +60,7 @@ pub async fn handle_stream_sink_at_2_twin_rust_async(
     sink: StreamSink<LogTwinRustAsync>,
     max: u32,
 ) {
-    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
-        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
+    dispatch_handle_stream(key, max, sink);
 }
 
 pub async fn handle_stream_sink_at_3_twin_rust_async(
@@ -70,6 +68,14 @@ pub async fn handle_stream_sink_at_3_twin_rust_async(
     key: u32,
     max: u32,
 ) {
+    dispatch_handle_stream(key, max, sink);
+}
+
+fn dispatch_handle_stream(key: u32, max: u32, sink: StreamSink<LogTwinRustAsync>) {
+    #[cfg(target_family = "wasm")]
+    handle_stream_inner(key, max, sink);
+
+    #[cfg(not(target_family = "wasm"))]
     (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
         .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
