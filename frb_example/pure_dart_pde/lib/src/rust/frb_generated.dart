@@ -46017,7 +46017,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46314,7 +46314,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -46618,7 +46618,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48017,7 +48017,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustAutoOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -48026,7 +48026,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RustOpaqueWebLockingDataTwinNormalImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -52587,21 +52587,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   GenericAliasErrorTwinNormal dco_decode_generic_alias_error_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return GenericAliasErrorTwinNormal.values[raw as int];
+    return GenericAliasErrorTwinNormal.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   GenericAliasErrorTwinRustAsync dco_decode_generic_alias_error_twin_rust_async(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return GenericAliasErrorTwinRustAsync.values[raw as int];
+    return GenericAliasErrorTwinRustAsync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   GenericAliasErrorTwinSync dco_decode_generic_alias_error_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return GenericAliasErrorTwinSync.values[raw as int];
+    return GenericAliasErrorTwinSync.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
