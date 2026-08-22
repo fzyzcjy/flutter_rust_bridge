@@ -113,7 +113,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueNom,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.13.0-beta.6";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1730785095;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -228622036;
 
 // Section: executor
 
@@ -34363,6 +34363,2252 @@ fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_vec_tw
                      let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::opaque_vec_twin_sync_sse_moi())?;   std::result::Result::Ok(output_ok)
                 })()) })
 }
+fn wire__crate__api__operator__operator_point_twin_normal_add_impl(
+    that: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+    rhs: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_normal_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_point_twin_normal_eq_impl(
+    that: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+    other: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_normal_eq",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialEq::eq(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_point_twin_normal_ge_impl(
+    that: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+    other: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_normal_ge",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::ge(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_point_twin_normal_gt_impl(
+    that: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+    other: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_normal_gt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::gt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_point_twin_normal_le_impl(
+    that: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+    other: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_normal_le",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::le(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_point_twin_normal_lt_impl(
+    that: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+    other: impl CstDecode<crate::api::operator::OperatorPointTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_normal_lt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::lt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_eq",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialEq::eq(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_ge",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::ge(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_gt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::gt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_le",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::le(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_lt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::lt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_sse_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_sse_eq",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialEq::eq(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_sse_ge",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::ge(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_sse_gt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::gt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_sse_le",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::le(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+    other: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_rust_async_sse_lt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::lt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sse_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sse_eq",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialEq::eq(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sse_ge",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::ge(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sse_gt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::gt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sse_le",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::le(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sse_lt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::lt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_eq",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialEq::eq(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_ge",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::ge(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_gt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::gt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_le",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::le(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_lt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::lt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_sse_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_sse_eq",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialEq::eq(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_sse_ge",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::ge(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_sse_gt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::gt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_sse_le",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::le(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+    other: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_point_twin_sync_sse_lt",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other = other.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::cmp::PartialOrd::lt(&api_that, &api_other))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_add_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_bitand_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_bitand",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitAnd::bitand(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_bitor_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_bitor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitOr::bitor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_bitxor_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_bitxor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitXor::bitxor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_div_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_div",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Div::div(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_mul_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_mul",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Mul::mul(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_neg_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_neg",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Neg::neg(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_not_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_not",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Not::not(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_rem_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_rem",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Rem::rem(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_shl_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_shl",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shl::shl(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_shr_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_shr",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shr::shr(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__operator__operator_value_twin_normal_sub_impl(
+    that: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+    rhs: impl CstDecode<crate::api::operator::OperatorValueTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_normal_sub",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Sub::sub(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_bitand",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitAnd::bitand(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_bitor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitOr::bitor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_bitxor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitXor::bitxor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_div",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Div::div(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_mul",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Mul::mul(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_neg",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Neg::neg(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_not",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Not::not(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_rem",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Rem::rem(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_shl",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shl::shl(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_shr",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shr::shr(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_bitand",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitAnd::bitand(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_bitor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitOr::bitor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_bitxor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitXor::bitxor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_div",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Div::div(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_mul",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Mul::mul(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_neg",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Neg::neg(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_not",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Not::not(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_rem",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Rem::rem(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_shl",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shl::shl(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_shr",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shr::shr(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+    rhs: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sse_sub",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Sub::sub(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    >,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_rust_async_sub",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Sub::sub(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_bitand",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitAnd::bitand(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_bitor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitOr::bitor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_bitxor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitXor::bitxor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_div",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Div::div(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_mul",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Mul::mul(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_neg",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Neg::neg(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_not",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Not::not(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_rem",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Rem::rem(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_shl",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shl::shl(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_shr",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shr::shr(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sse_sub",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Sub::sub(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_bitand",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitAnd::bitand(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_bitor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitOr::bitor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_bitxor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitXor::bitxor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_div",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Div::div(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_mul",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Mul::mul(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_neg",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Neg::neg(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_not",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Not::not(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_rem",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Rem::rem(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_shl",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shl::shl(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_shr",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shr::shr(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_add",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Add::add(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_bitand",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitAnd::bitand(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_bitor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitOr::bitor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_bitxor",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::BitXor::bitxor(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_div",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Div::div(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_mul",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Mul::mul(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_neg",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Neg::neg(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_not",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Not::not(api_that))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_rem",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Rem::rem(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_shl",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shl::shl(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<u32>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_shr",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Shr::shr(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sse_sub",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Sub::sub(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+    rhs: impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "operator_value_twin_sync_sub",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_rhs = rhs.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>(std::ops::Sub::sub(api_that, api_rhs))?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
 fn wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     d: impl CstDecode<Option<chrono::DateTime<chrono::Utc>>>,
@@ -66909,6 +69155,132 @@ impl SseDecode
     }
 }
 
+impl SseDecode for crate::api::operator::OperatorPointTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_x = <i32>::sse_decode(deserializer);
+        let mut var_y = <i32>::sse_decode(deserializer);
+        return crate::api::operator::OperatorPointTwinNormal { x: var_x, y: var_y };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_x = <i32>::sse_decode(deserializer);
+        let mut var_y = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync {
+            x: var_x,
+            y: var_y,
+        };
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_x = <i32>::sse_decode(deserializer);
+        let mut var_y = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse{x: var_x, y: var_y};
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_x = <i32>::sse_decode(deserializer);
+        let mut var_y = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse {
+            x: var_x,
+            y: var_y,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_x = <i32>::sse_decode(deserializer);
+        let mut var_y = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync {
+            x: var_x,
+            y: var_y,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_x = <i32>::sse_decode(deserializer);
+        let mut var_y = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse {
+            x: var_x,
+            y: var_y,
+        };
+    }
+}
+
+impl SseDecode for crate::api::operator::OperatorValueTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_value = <i32>::sse_decode(deserializer);
+        return crate::api::operator::OperatorValueTwinNormal { value: var_value };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_value = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync {
+            value: var_value,
+        };
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_value = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse{value: var_value};
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_value = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse {
+            value: var_value,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_value = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync {
+            value: var_value,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_value = <i32>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse {
+            value: var_value,
+        };
+    }
+}
+
 impl SseDecode for Option<i128> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -85547,6 +87919,292 @@ impl
     fn into_into_dart(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::OpaqueNestedTwinSyncSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::operator::OperatorPointTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::operator::OperatorPointTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::operator::OperatorPointTwinNormal>
+    for crate::api::operator::OperatorPointTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::operator::OperatorPointTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+    > for crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+    > for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse
+    {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse,
+    > for crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse
+{
+    fn into_into_dart(self) -> crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync,
+    > for crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse,
+    > for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::operator::OperatorValueTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.value.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::operator::OperatorValueTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::operator::OperatorValueTwinNormal>
+    for crate::api::operator::OperatorValueTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::operator::OperatorValueTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.value.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+    > for crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.value.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+    > for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse
+    {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.value.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse,
+    > for crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse
+{
+    fn into_into_dart(self) -> crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.value.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync,
+    > for crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.value.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse,
+    > for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse {
         self
     }
 }
@@ -104849,6 +107507,100 @@ impl SseEncode
     }
 }
 
+impl SseEncode for crate::api::operator::OperatorPointTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.x, serializer);
+        <i32>::sse_encode(self.y, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.x, serializer);
+        <i32>::sse_encode(self.y, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.x, serializer);
+        <i32>::sse_encode(self.y, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.x, serializer);
+        <i32>::sse_encode(self.y, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.x, serializer);
+        <i32>::sse_encode(self.y, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.x, serializer);
+        <i32>::sse_encode(self.y, serializer);
+    }
+}
+
+impl SseEncode for crate::api::operator::OperatorValueTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.value, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.value, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.value, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.value, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.value, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.value, serializer);
+    }
+}
+
 impl SseEncode for Option<i128> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -116568,6 +119320,144 @@ mod io {
             CstDecode::<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi>::cst_decode(*wrap).into()
         }
     }
+    impl CstDecode<crate::api::operator::OperatorPointTwinNormal>
+        for *mut wire_cst_operator_point_twin_normal
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::operator::OperatorPointTwinNormal {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::operator::OperatorPointTwinNormal>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync>
+        for *mut wire_cst_operator_point_twin_rust_async
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync
+        {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<
+                crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync,
+            >::cst_decode(*wrap)
+            .into()
+        }
+    }
+    impl
+        CstDecode<
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+        > for *mut wire_cst_operator_point_twin_rust_async_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse
+        {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>
+        for *mut wire_cst_operator_point_twin_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>
+        for *mut wire_cst_operator_point_twin_sync
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>
+        for *mut wire_cst_operator_point_twin_sync_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::api::operator::OperatorValueTwinNormal>
+        for *mut wire_cst_operator_value_twin_normal
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::operator::OperatorValueTwinNormal {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::operator::OperatorValueTwinNormal>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>
+        for *mut wire_cst_operator_value_twin_rust_async
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync
+        {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<
+                crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync,
+            >::cst_decode(*wrap)
+            .into()
+        }
+    }
+    impl
+        CstDecode<
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+        > for *mut wire_cst_operator_value_twin_rust_async_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse
+        {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>
+        for *mut wire_cst_operator_value_twin_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>
+        for *mut wire_cst_operator_value_twin_sync
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>
+        for *mut wire_cst_operator_value_twin_sync_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>::cst_decode(*wrap).into()
+        }
+    }
     impl CstDecode<crate::api::optional::OptVecsTwinNormal> for *mut wire_cst_opt_vecs_twin_normal {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> crate::api::optional::OptVecsTwinNormal {
@@ -122130,6 +125020,156 @@ mod io {
             }
         }
     }
+    impl CstDecode<crate::api::operator::OperatorPointTwinNormal>
+        for wire_cst_operator_point_twin_normal
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::operator::OperatorPointTwinNormal {
+            crate::api::operator::OperatorPointTwinNormal {
+                x: self.x.cst_decode(),
+                y: self.y.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync>
+        for wire_cst_operator_point_twin_rust_async
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync
+        {
+            crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync {
+                x: self.x.cst_decode(),
+                y: self.y.cst_decode(),
+            }
+        }
+    }
+    impl
+        CstDecode<
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+        > for wire_cst_operator_point_twin_rust_async_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse
+        {
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse {
+                x: self.x.cst_decode(),
+                y: self.y.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>
+        for wire_cst_operator_point_twin_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse {
+            crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse {
+                x: self.x.cst_decode(),
+                y: self.y.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>
+        for wire_cst_operator_point_twin_sync
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync {
+            crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync {
+                x: self.x.cst_decode(),
+                y: self.y.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>
+        for wire_cst_operator_point_twin_sync_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse {
+            crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse {
+                x: self.x.cst_decode(),
+                y: self.y.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::operator::OperatorValueTwinNormal>
+        for wire_cst_operator_value_twin_normal
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::operator::OperatorValueTwinNormal {
+            crate::api::operator::OperatorValueTwinNormal {
+                value: self.value.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>
+        for wire_cst_operator_value_twin_rust_async
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync
+        {
+            crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync {
+                value: self.value.cst_decode(),
+            }
+        }
+    }
+    impl
+        CstDecode<
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+        > for wire_cst_operator_value_twin_rust_async_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse
+        {
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse {
+                value: self.value.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>
+        for wire_cst_operator_value_twin_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse {
+            crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse {
+                value: self.value.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>
+        for wire_cst_operator_value_twin_sync
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync {
+            crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync {
+                value: self.value.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>
+        for wire_cst_operator_value_twin_sync_sse
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse {
+            crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse {
+                value: self.value.cst_decode(),
+            }
+        }
+    }
     impl CstDecode<crate::api::optional::OptVecsTwinNormal> for wire_cst_opt_vecs_twin_normal {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> crate::api::optional::OptVecsTwinNormal {
@@ -126580,6 +129620,156 @@ mod io {
         }
     }
     impl Default for wire_cst_opaque_nested_twin_sync_moi {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_point_twin_normal {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                x: Default::default(),
+                y: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_point_twin_normal {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_point_twin_rust_async {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                x: Default::default(),
+                y: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_point_twin_rust_async {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_point_twin_rust_async_sse {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                x: Default::default(),
+                y: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_point_twin_rust_async_sse {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_point_twin_sse {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                x: Default::default(),
+                y: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_point_twin_sse {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_point_twin_sync {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                x: Default::default(),
+                y: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_point_twin_sync {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_point_twin_sync_sse {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                x: Default::default(),
+                y: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_point_twin_sync_sse {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_value_twin_normal {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                value: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_value_twin_normal {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_value_twin_rust_async {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                value: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_value_twin_rust_async {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_value_twin_rust_async_sse {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                value: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_value_twin_rust_async_sse {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_value_twin_sse {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                value: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_value_twin_sse {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_value_twin_sync {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                value: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_value_twin_sync {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_operator_value_twin_sync_sse {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                value: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_operator_value_twin_sync_sse {
         fn default() -> Self {
             Self::new_with_null_ptr()
         }
@@ -146884,6 +150074,922 @@ field1: Default::default(), }
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_add(
+        that: *mut wire_cst_operator_point_twin_normal,
+        rhs: *mut wire_cst_operator_point_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_add_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_eq(
+        that: *mut wire_cst_operator_point_twin_normal,
+        other: *mut wire_cst_operator_point_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_eq_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_ge(
+        that: *mut wire_cst_operator_point_twin_normal,
+        other: *mut wire_cst_operator_point_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_ge_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_gt(
+        that: *mut wire_cst_operator_point_twin_normal,
+        other: *mut wire_cst_operator_point_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_gt_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_le(
+        that: *mut wire_cst_operator_point_twin_normal,
+        other: *mut wire_cst_operator_point_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_le_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_lt(
+        that: *mut wire_cst_operator_point_twin_normal,
+        other: *mut wire_cst_operator_point_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_lt_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add(
+        that: *mut wire_cst_operator_point_twin_rust_async,
+        rhs: *mut wire_cst_operator_point_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq(
+        that: *mut wire_cst_operator_point_twin_rust_async,
+        other: *mut wire_cst_operator_point_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge(
+        that: *mut wire_cst_operator_point_twin_rust_async,
+        other: *mut wire_cst_operator_point_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt(
+        that: *mut wire_cst_operator_point_twin_rust_async,
+        other: *mut wire_cst_operator_point_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le(
+        that: *mut wire_cst_operator_point_twin_rust_async,
+        other: *mut wire_cst_operator_point_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt(
+        that: *mut wire_cst_operator_point_twin_rust_async,
+        other: *mut wire_cst_operator_point_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add(
+        that: *mut wire_cst_operator_point_twin_rust_async_sse,
+        rhs: *mut wire_cst_operator_point_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq(
+        that: *mut wire_cst_operator_point_twin_rust_async_sse,
+        other: *mut wire_cst_operator_point_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge(
+        that: *mut wire_cst_operator_point_twin_rust_async_sse,
+        other: *mut wire_cst_operator_point_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt(
+        that: *mut wire_cst_operator_point_twin_rust_async_sse,
+        other: *mut wire_cst_operator_point_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le(
+        that: *mut wire_cst_operator_point_twin_rust_async_sse,
+        other: *mut wire_cst_operator_point_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt(
+        that: *mut wire_cst_operator_point_twin_rust_async_sse,
+        other: *mut wire_cst_operator_point_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add(
+        that: *mut wire_cst_operator_point_twin_sse,
+        rhs: *mut wire_cst_operator_point_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq(
+        that: *mut wire_cst_operator_point_twin_sse,
+        other: *mut wire_cst_operator_point_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge(
+        that: *mut wire_cst_operator_point_twin_sse,
+        other: *mut wire_cst_operator_point_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt(
+        that: *mut wire_cst_operator_point_twin_sse,
+        other: *mut wire_cst_operator_point_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le(
+        that: *mut wire_cst_operator_point_twin_sse,
+        other: *mut wire_cst_operator_point_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt(
+        that: *mut wire_cst_operator_point_twin_sse,
+        other: *mut wire_cst_operator_point_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add(
+        that: *mut wire_cst_operator_point_twin_sync,
+        rhs: *mut wire_cst_operator_point_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq(
+        that: *mut wire_cst_operator_point_twin_sync,
+        other: *mut wire_cst_operator_point_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge(
+        that: *mut wire_cst_operator_point_twin_sync,
+        other: *mut wire_cst_operator_point_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt(
+        that: *mut wire_cst_operator_point_twin_sync,
+        other: *mut wire_cst_operator_point_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le(
+        that: *mut wire_cst_operator_point_twin_sync,
+        other: *mut wire_cst_operator_point_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt(
+        that: *mut wire_cst_operator_point_twin_sync,
+        other: *mut wire_cst_operator_point_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt_impl(
+            that, other,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add(
+        that: *mut wire_cst_operator_point_twin_sync_sse,
+        rhs: *mut wire_cst_operator_point_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq(
+        that: *mut wire_cst_operator_point_twin_sync_sse,
+        other: *mut wire_cst_operator_point_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge(
+        that: *mut wire_cst_operator_point_twin_sync_sse,
+        other: *mut wire_cst_operator_point_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt(
+        that: *mut wire_cst_operator_point_twin_sync_sse,
+        other: *mut wire_cst_operator_point_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le(
+        that: *mut wire_cst_operator_point_twin_sync_sse,
+        other: *mut wire_cst_operator_point_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt(
+        that: *mut wire_cst_operator_point_twin_sync_sse,
+        other: *mut wire_cst_operator_point_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt_impl(that, other)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_add(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_add_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitand(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_bitand_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitor(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_bitor_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitxor(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_bitxor_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_div(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_div_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_mul(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_mul_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_neg(
+        that: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_neg_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_not(
+        that: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_not_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_rem(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_rem_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_shl(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_shl_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_shr(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_shr_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_sub(
+        that: *mut wire_cst_operator_value_twin_normal,
+        rhs: *mut wire_cst_operator_value_twin_normal,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_sub_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub(
+        that: *mut wire_cst_operator_value_twin_rust_async_sse,
+        rhs: *mut wire_cst_operator_value_twin_rust_async_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub(
+        that: *mut wire_cst_operator_value_twin_rust_async,
+        rhs: *mut wire_cst_operator_value_twin_rust_async,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg(
+        that: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not(
+        that: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub(
+        that: *mut wire_cst_operator_value_twin_sse,
+        rhs: *mut wire_cst_operator_value_twin_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg(
+        that: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not(
+        that: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub(
+        that: *mut wire_cst_operator_value_twin_sync_sse,
+        rhs: *mut wire_cst_operator_value_twin_sync_sse,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub_impl(that, rhs)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub(
+        that: *mut wire_cst_operator_value_twin_sync,
+        rhs: *mut wire_cst_operator_value_twin_sync,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub_impl(
+            that, rhs,
+        )
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(
         port_: i64,
         d: *mut i64,
@@ -161463,6 +165569,102 @@ field1: Default::default(), }
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_normal(
+    ) -> *mut wire_cst_operator_point_twin_normal {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_point_twin_normal::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_rust_async(
+    ) -> *mut wire_cst_operator_point_twin_rust_async {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_point_twin_rust_async::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_rust_async_sse(
+    ) -> *mut wire_cst_operator_point_twin_rust_async_sse {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_point_twin_rust_async_sse::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sse(
+    ) -> *mut wire_cst_operator_point_twin_sse {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_point_twin_sse::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sync(
+    ) -> *mut wire_cst_operator_point_twin_sync {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_point_twin_sync::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sync_sse(
+    ) -> *mut wire_cst_operator_point_twin_sync_sse {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_point_twin_sync_sse::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_normal(
+    ) -> *mut wire_cst_operator_value_twin_normal {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_value_twin_normal::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_rust_async(
+    ) -> *mut wire_cst_operator_value_twin_rust_async {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_value_twin_rust_async::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_rust_async_sse(
+    ) -> *mut wire_cst_operator_value_twin_rust_async_sse {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_value_twin_rust_async_sse::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sse(
+    ) -> *mut wire_cst_operator_value_twin_sse {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_value_twin_sse::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sync(
+    ) -> *mut wire_cst_operator_value_twin_sync {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_value_twin_sync::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sync_sse(
+    ) -> *mut wire_cst_operator_value_twin_sync_sse {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_operator_value_twin_sync_sse::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_opt_vecs_twin_normal(
     ) -> *mut wire_cst_opt_vecs_twin_normal {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -167496,6 +171698,72 @@ items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generat
     pub struct wire_cst_opaque_nested_twin_sync_moi {
         first: usize,
         second: usize,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_point_twin_normal {
+        x: i32,
+        y: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_point_twin_rust_async {
+        x: i32,
+        y: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_point_twin_rust_async_sse {
+        x: i32,
+        y: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_point_twin_sse {
+        x: i32,
+        y: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_point_twin_sync {
+        x: i32,
+        y: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_point_twin_sync_sse {
+        x: i32,
+        y: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_value_twin_normal {
+        value: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_value_twin_rust_async {
+        value: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_value_twin_rust_async_sse {
+        value: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_value_twin_sse {
+        value: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_value_twin_sync {
+        value: i32,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_operator_value_twin_sync_sse {
+        value: i32,
     }
     #[repr(C)]
     #[derive(Clone, Copy)]
@@ -174980,6 +179248,264 @@ mod web {
             crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi {
                 first: self_.get(0).cst_decode(),
                 second: self_.get(1).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::operator::OperatorPointTwinNormal>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::operator::OperatorPointTwinNormal {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                2,
+                "Expected 2 elements, got {}",
+                self_.length()
+            );
+            crate::api::operator::OperatorPointTwinNormal {
+                x: self_.get(0).cst_decode(),
+                y: self_.get(1).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync
+        {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                2,
+                "Expected 2 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_rust_async::OperatorPointTwinRustAsync {
+                x: self_.get(0).cst_decode(),
+                y: self_.get(1).cst_decode(),
+            }
+        }
+    }
+    impl
+        CstDecode<
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse,
+        > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse
+        {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                2,
+                "Expected 2 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorPointTwinRustAsyncSse {
+                x: self_.get(0).cst_decode(),
+                y: self_.get(1).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                2,
+                "Expected 2 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_sse::OperatorPointTwinSse {
+                x: self_.get(0).cst_decode(),
+                y: self_.get(1).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                2,
+                "Expected 2 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_sync::OperatorPointTwinSync {
+                x: self_.get(0).cst_decode(),
+                y: self_.get(1).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                2,
+                "Expected 2 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_sync_sse::OperatorPointTwinSyncSse {
+                x: self_.get(0).cst_decode(),
+                y: self_.get(1).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::operator::OperatorValueTwinNormal>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::operator::OperatorValueTwinNormal {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                1,
+                "Expected 1 elements, got {}",
+                self_.length()
+            );
+            crate::api::operator::OperatorValueTwinNormal {
+                value: self_.get(0).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync
+        {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                1,
+                "Expected 1 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_rust_async::OperatorValueTwinRustAsync {
+                value: self_.get(0).cst_decode(),
+            }
+        }
+    }
+    impl
+        CstDecode<
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse,
+        > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse
+        {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                1,
+                "Expected 1 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_rust_async_sse::OperatorValueTwinRustAsyncSse {
+                value: self_.get(0).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                1,
+                "Expected 1 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_sse::OperatorValueTwinSse {
+                value: self_.get(0).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                1,
+                "Expected 1 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_sync::OperatorValueTwinSync {
+                value: self_.get(0).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                1,
+                "Expected 1 elements, got {}",
+                self_.length()
+            );
+            crate::api::pseudo_manual::operator_twin_sync_sse::OperatorValueTwinSyncSse {
+                value: self_.get(0).cst_decode(),
             }
         }
     }
@@ -202364,6 +206890,922 @@ mod web {
         data_len_: i32,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
         wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_vec_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_point_twin_normal_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_add_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_point_twin_normal_eq(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_eq_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_point_twin_normal_ge(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_ge_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_point_twin_normal_gt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_gt_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_point_twin_normal_le(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_le_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_point_twin_normal_lt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_point_twin_normal_lt_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt_impl(
+            that, other,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt_impl(that, other)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_add_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_bitand(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_bitand_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_bitor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_bitor_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_bitxor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_bitxor_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_div(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_div_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_mul(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_mul_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_neg(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_neg_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_not(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_not_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_rem(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_rem_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_shl(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_shl_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_shr(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_shr_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__operator__operator_value_twin_normal_sub(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__operator__operator_value_twin_normal_sub_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr_impl(
+            that, rhs,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub_impl(that, rhs)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        rhs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub_impl(
+            that, rhs,
+        )
     }
 
     #[wasm_bindgen]

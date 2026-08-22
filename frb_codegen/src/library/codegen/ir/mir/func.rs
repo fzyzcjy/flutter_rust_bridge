@@ -84,6 +84,8 @@ pub struct MirFuncOwnerInfoMethod {
     pub(crate) actual_method_dart_name: Option<String>,
     pub(crate) mode: MirFuncOwnerInfoMethodMode,
     pub(crate) trait_def: Option<MirTypeTraitDef>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) trait_name: Option<String>,
 }
 
 pub enum MirFuncOwnerInfoMethodMode {
@@ -95,6 +97,27 @@ pub enum MirFuncOwnerInfoMethodMode {
 pub enum MirFuncAccessorMode {
     Getter,
     Setter,
+}
+
+#[derive(Copy)]
+pub enum MirStandardOperator {
+    Add,
+    Sub,
+    Mul,
+    Div,
+    Rem,
+    Neg,
+    Not,
+    BitAnd,
+    BitOr,
+    BitXor,
+    Shl,
+    Shr,
+    PartialEq,
+    PartialOrdLt,
+    PartialOrdLe,
+    PartialOrdGt,
+    PartialOrdGe,
 }
 }
 
@@ -207,6 +230,105 @@ impl MirFuncOwnerInfoMethod {
     pub(crate) fn owner_ty_name(&self) -> Option<NamespacedName> {
         compute_interest_name_of_owner_ty(&self.owner_ty)
     }
+
+    pub(crate) fn standard_operator(&self) -> Option<MirStandardOperator> {
+        if self.trait_def.is_some() {
+            return None;
+        }
+
+        Some(
+            match (
+                self.trait_name.as_deref()?,
+                self.actual_method_name.as_str(),
+            ) {
+                ("Add", "add") => MirStandardOperator::Add,
+                ("Sub", "sub") => MirStandardOperator::Sub,
+                ("Mul", "mul") => MirStandardOperator::Mul,
+                ("Div", "div") => MirStandardOperator::Div,
+                ("Rem", "rem") => MirStandardOperator::Rem,
+                ("Neg", "neg") => MirStandardOperator::Neg,
+                ("Not", "not") => MirStandardOperator::Not,
+                ("BitAnd", "bitand") => MirStandardOperator::BitAnd,
+                ("BitOr", "bitor") => MirStandardOperator::BitOr,
+                ("BitXor", "bitxor") => MirStandardOperator::BitXor,
+                ("Shl", "shl") => MirStandardOperator::Shl,
+                ("Shr", "shr") => MirStandardOperator::Shr,
+                ("PartialEq", "eq") => MirStandardOperator::PartialEq,
+                ("PartialOrd", "lt") => MirStandardOperator::PartialOrdLt,
+                ("PartialOrd", "le") => MirStandardOperator::PartialOrdLe,
+                ("PartialOrd", "gt") => MirStandardOperator::PartialOrdGt,
+                ("PartialOrd", "ge") => MirStandardOperator::PartialOrdGe,
+                _ => return None,
+            },
+        )
+    }
+
+    pub(crate) fn is_standard_operator_trait(&self) -> bool {
+        self.trait_def.is_none()
+            && matches!(
+                self.trait_name.as_deref(),
+                Some(
+                    "Add"
+                        | "Sub"
+                        | "Mul"
+                        | "Div"
+                        | "Rem"
+                        | "Neg"
+                        | "Not"
+                        | "BitAnd"
+                        | "BitOr"
+                        | "BitXor"
+                        | "Shl"
+                        | "Shr"
+                        | "PartialEq"
+                        | "PartialOrd"
+                )
+            )
+    }
+}
+
+impl MirStandardOperator {
+    pub(crate) fn dart_symbol(self) -> &'static str {
+        match self {
+            Self::Add => "+",
+            Self::Sub | Self::Neg => "-",
+            Self::Mul => "*",
+            Self::Div => "/",
+            Self::Rem => "%",
+            Self::Not => "~",
+            Self::BitAnd => "&",
+            Self::BitOr => "|",
+            Self::BitXor => "^",
+            Self::Shl => "<<",
+            Self::Shr => ">>",
+            Self::PartialEq => "==",
+            Self::PartialOrdLt => "<",
+            Self::PartialOrdLe => "<=",
+            Self::PartialOrdGt => ">",
+            Self::PartialOrdGe => ">=",
+        }
+    }
+
+    pub(crate) fn rust_trait_path(self) -> &'static str {
+        match self {
+            Self::PartialEq => "std::cmp::PartialEq",
+            Self::PartialOrdLt | Self::PartialOrdLe | Self::PartialOrdGt | Self::PartialOrdGe => {
+                "std::cmp::PartialOrd"
+            }
+            Self::Add => "std::ops::Add",
+            Self::Sub => "std::ops::Sub",
+            Self::Mul => "std::ops::Mul",
+            Self::Div => "std::ops::Div",
+            Self::Rem => "std::ops::Rem",
+            Self::Neg => "std::ops::Neg",
+            Self::Not => "std::ops::Not",
+            Self::BitAnd => "std::ops::BitAnd",
+            Self::BitOr => "std::ops::BitOr",
+            Self::BitXor => "std::ops::BitXor",
+            Self::Shl => "std::ops::Shl",
+            Self::Shr => "std::ops::Shr",
+        }
+    }
 }
 
 pub(crate) fn compute_interest_name_of_owner_ty(owner_ty: &MirType) -> Option<NamespacedName> {
@@ -228,6 +350,50 @@ pub(crate) fn compute_interest_name_of_owner_ty(owner_ty: &MirType) -> Option<Na
         MirType::TraitDef(ty) => ty.name.clone(),
         _ => return None,
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    fn method(trait_name: &str, method_name: &str) -> MirFuncOwnerInfoMethod {
+        MirFuncOwnerInfoMethod {
+            owner_ty: MirType::Primitive(MirTypePrimitive::U8),
+            owner_ty_raw: "u8".to_owned(),
+            actual_method_name: method_name.to_owned(),
+            actual_method_dart_name: None,
+            mode: MirFuncOwnerInfoMethodMode::Instance,
+            trait_def: None,
+            trait_name: Some(trait_name.to_owned()),
+        }
+    }
+
+    #[test]
+    fn maps_standard_operator_trait_methods() {
+        for (trait_name, method_name, symbol) in [
+            ("Add", "add", "+"),
+            ("Sub", "sub", "-"),
+            ("Neg", "neg", "-"),
+            ("Not", "not", "~"),
+            ("PartialEq", "eq", "=="),
+            ("PartialOrd", "ge", ">="),
+        ] {
+            assert_eq!(
+                method(trait_name, method_name)
+                    .standard_operator()
+                    .unwrap()
+                    .dart_symbol(),
+                symbol
+            );
+        }
+    }
+
+    #[test]
+    fn does_not_map_non_operator_trait_methods() {
+        assert!(method("PartialEq", "ne").standard_operator().is_none());
+        assert!(method("CustomTrait", "add").standard_operator().is_none());
+    }
 }
 
 #[derive(Clone, Copy, Eq, PartialEq)]

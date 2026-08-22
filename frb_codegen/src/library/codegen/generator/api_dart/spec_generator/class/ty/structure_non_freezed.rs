@@ -35,12 +35,16 @@ impl StructRefApiDartGenerator<'_> {
         let dart_collection_deep_equality =
             self.context.config.dart_collection_deep_equality || src.dart_collection_deep_equality;
 
-        let hashcode = if src.generate_hash {
+        let hashcode = if methods.has_rust_partial_eq {
+            "".to_owned()
+        } else if src.generate_hash {
             generate_hashcode(&src.fields, dart_collection_deep_equality)
         } else {
             "".to_owned()
         };
-        let equals = if src.generate_eq {
+        let equals = if methods.has_rust_partial_eq {
+            "".to_owned()
+        } else if src.generate_eq {
             generate_equals(&src.fields, class_name, dart_collection_deep_equality)
         } else {
             "".to_owned()

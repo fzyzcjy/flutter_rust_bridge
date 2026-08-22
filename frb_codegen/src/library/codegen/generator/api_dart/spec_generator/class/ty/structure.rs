@@ -7,6 +7,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_metadata,
 };
+use crate::codegen::ir::mir::annotation::MirDartAnnotation;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
@@ -14,7 +15,6 @@ impl ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'_> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let src = self.mir.get(self.context.mir_pack);
         let comments = generate_dart_comments(&src.comments);
-        let metadata = generate_dart_metadata(&src.effective_dart_metadata());
 
         let constructor_postfix = dart_constructor_postfix(
             &src.name.name,
@@ -28,6 +28,21 @@ impl ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'_> {
             self.context,
             &GenerateApiMethodConfig::COMBINED,
             class_name,
+        );
+        let metadata = generate_dart_metadata(
+            &src.effective_dart_metadata()
+                .into_iter()
+                .map(|annotation| {
+                    if methods.has_rust_partial_eq && annotation.content == "freezed" {
+                        MirDartAnnotation {
+                            content: "Freezed(equal: false)".to_owned(),
+                            library: annotation.library,
+                        }
+                    } else {
+                        annotation
+                    }
+                })
+                .collect::<Vec<_>>(),
         );
         let extra_code =
             generate_class_extra_body(self.mir_type(), &self.context.mir_pack.dart_code_of_type);

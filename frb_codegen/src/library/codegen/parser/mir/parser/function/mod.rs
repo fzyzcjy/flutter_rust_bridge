@@ -32,7 +32,7 @@ pub(crate) fn parse(
     Ok((funcs, skips))
 }
 
-fn sort_and_add_func_id(funcs: Vec<MirFunc>) -> Vec<MirFunc> {
+pub(crate) fn sort_and_add_func_id(funcs: Vec<MirFunc>) -> Vec<MirFunc> {
     (funcs.into_iter())
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.rust_style(true).clone())

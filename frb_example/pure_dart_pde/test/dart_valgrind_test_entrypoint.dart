@@ -40,6 +40,7 @@ import 'api/misc_no_twin_example_a_test.dart' as misc_no_twin_example_a_test;
 import 'api/misc_no_twin_example_b_test.dart' as misc_no_twin_example_b_test;
 import 'api/misc_type_test.dart' as misc_type_test;
 import 'api/newtype_pattern_test.dart' as newtype_pattern_test;
+import 'api/operator_test.dart' as operator_test;
 import 'api/optional_primitive_misc_test.dart' as optional_primitive_misc_test;
 import 'api/optional_test.dart' as optional_test;
 import 'api/ownership_test.dart' as ownership_test;
@@ -130,6 +131,10 @@ import 'api/pseudo_manual/newtype_pattern_twin_rust_async_test.dart'
     as newtype_pattern_twin_rust_async_test;
 import 'api/pseudo_manual/newtype_pattern_twin_sync_test.dart'
     as newtype_pattern_twin_sync_test;
+import 'api/pseudo_manual/operator_twin_rust_async_test.dart'
+    as operator_twin_rust_async_test;
+import 'api/pseudo_manual/operator_twin_sync_test.dart'
+    as operator_twin_sync_test;
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async_test.dart'
     as optional_primitive_misc_twin_rust_async_test;
 import 'api/pseudo_manual/optional_primitive_misc_twin_sync_test.dart'
@@ -252,6 +257,7 @@ Future<void> callFileEntrypoints() async {
     misc_no_twin_example_b_test.main,
     misc_type_test.main,
     newtype_pattern_test.main,
+    operator_test.main,
     optional_primitive_misc_test.main,
     optional_test.main,
     ownership_test.main,
@@ -304,6 +310,8 @@ Future<void> callFileEntrypoints() async {
     misc_type_twin_sync_test.main,
     newtype_pattern_twin_rust_async_test.main,
     newtype_pattern_twin_sync_test.main,
+    operator_twin_rust_async_test.main,
+    operator_twin_sync_test.main,
     optional_primitive_misc_twin_rust_async_test.main,
     optional_primitive_misc_twin_sync_test.main,
     optional_twin_rust_async_test.main,

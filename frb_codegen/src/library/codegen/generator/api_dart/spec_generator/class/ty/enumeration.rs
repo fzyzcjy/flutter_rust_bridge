@@ -26,7 +26,9 @@ impl ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'_> {
 
         match src.mode {
             MirEnumMode::Simple => self.generate_mode_simple(src, &body, header),
-            MirEnumMode::Complex => self.generate_mode_complex(src, &body, header),
+            MirEnumMode::Complex => {
+                self.generate_mode_complex(src, &body, header, methods.has_rust_partial_eq)
+            }
         }
     }
 }

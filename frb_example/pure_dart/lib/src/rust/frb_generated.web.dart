@@ -47,6 +47,7 @@ import 'api/misc_no_twin_example_a.dart';
 import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
+import 'api/operator.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/ownership.dart';
@@ -177,6 +178,11 @@ import 'api/pseudo_manual/newtype_pattern_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync_sse.dart';
+import 'api/pseudo_manual/operator_twin_rust_async.dart';
+import 'api/pseudo_manual/operator_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/operator_twin_sse.dart';
+import 'api/pseudo_manual/operator_twin_sync.dart';
+import 'api/pseudo_manual/operator_twin_sync_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sse.dart';
@@ -6160,6 +6166,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_opaque_nested_twin_sync_sse_moi(dynamic raw);
 
   @protected
+  OperatorPointTwinNormal dco_decode_box_autoadd_operator_point_twin_normal(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsync
+      dco_decode_box_autoadd_operator_point_twin_rust_async(dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsyncSse
+      dco_decode_box_autoadd_operator_point_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  OperatorPointTwinSse dco_decode_box_autoadd_operator_point_twin_sse(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinSync dco_decode_box_autoadd_operator_point_twin_sync(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinSyncSse dco_decode_box_autoadd_operator_point_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinNormal dco_decode_box_autoadd_operator_value_twin_normal(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsync
+      dco_decode_box_autoadd_operator_value_twin_rust_async(dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsyncSse
+      dco_decode_box_autoadd_operator_value_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  OperatorValueTwinSse dco_decode_box_autoadd_operator_value_twin_sse(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinSync dco_decode_box_autoadd_operator_value_twin_sync(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinSyncSse dco_decode_box_autoadd_operator_value_twin_sync_sse(
+      dynamic raw);
+
+  @protected
   OptVecsTwinNormal dco_decode_box_autoadd_opt_vecs_twin_normal(dynamic raw);
 
   @protected
@@ -8994,6 +9048,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueNestedTwinSyncSseMoi dco_decode_opaque_nested_twin_sync_sse_moi(
       dynamic raw);
+
+  @protected
+  OperatorPointTwinNormal dco_decode_operator_point_twin_normal(dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsync dco_decode_operator_point_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsyncSse dco_decode_operator_point_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinSse dco_decode_operator_point_twin_sse(dynamic raw);
+
+  @protected
+  OperatorPointTwinSync dco_decode_operator_point_twin_sync(dynamic raw);
+
+  @protected
+  OperatorPointTwinSyncSse dco_decode_operator_point_twin_sync_sse(dynamic raw);
+
+  @protected
+  OperatorValueTwinNormal dco_decode_operator_value_twin_normal(dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsync dco_decode_operator_value_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsyncSse dco_decode_operator_value_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinSse dco_decode_operator_value_twin_sse(dynamic raw);
+
+  @protected
+  OperatorValueTwinSync dco_decode_operator_value_twin_sync(dynamic raw);
+
+  @protected
+  OperatorValueTwinSyncSse dco_decode_operator_value_twin_sync_sse(dynamic raw);
 
   @protected
   BigInt? dco_decode_opt_I128(dynamic raw);
@@ -15860,6 +15954,58 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  OperatorPointTwinNormal sse_decode_box_autoadd_operator_point_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsync
+      sse_decode_box_autoadd_operator_point_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsyncSse
+      sse_decode_box_autoadd_operator_point_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSse sse_decode_box_autoadd_operator_point_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSync sse_decode_box_autoadd_operator_point_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSyncSse sse_decode_box_autoadd_operator_point_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinNormal sse_decode_box_autoadd_operator_value_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsync
+      sse_decode_box_autoadd_operator_value_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsyncSse
+      sse_decode_box_autoadd_operator_value_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSse sse_decode_box_autoadd_operator_value_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSync sse_decode_box_autoadd_operator_value_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSyncSse sse_decode_box_autoadd_operator_value_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   OptVecsTwinNormal sse_decode_box_autoadd_opt_vecs_twin_normal(
       SseDeserializer deserializer);
 
@@ -19089,6 +19235,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   OpaqueNestedTwinSyncSseMoi sse_decode_opaque_nested_twin_sync_sse_moi(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinNormal sse_decode_operator_point_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsync sse_decode_operator_point_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsyncSse sse_decode_operator_point_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSse sse_decode_operator_point_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSync sse_decode_operator_point_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSyncSse sse_decode_operator_point_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinNormal sse_decode_operator_value_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsync sse_decode_operator_value_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsyncSse sse_decode_operator_value_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSse sse_decode_operator_value_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSync sse_decode_operator_value_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSyncSse sse_decode_operator_value_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -23626,6 +23820,90 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_box_autoadd_operator_point_twin_normal(
+      OperatorPointTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_point_twin_normal(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_point_twin_rust_async(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_point_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_point_twin_sse(
+      OperatorPointTwinSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_point_twin_sse(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_point_twin_sync(
+      OperatorPointTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_point_twin_sync(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_point_twin_sync_sse(
+      OperatorPointTwinSyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_point_twin_sync_sse(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_value_twin_normal(
+      OperatorValueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_value_twin_normal(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_value_twin_rust_async(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_value_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_value_twin_sse(
+      OperatorValueTwinSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_value_twin_sse(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_value_twin_sync(
+      OperatorValueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_value_twin_sync(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_operator_value_twin_sync_sse(
+      OperatorValueTwinSyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_operator_value_twin_sync_sse(raw);
+  }
+
+  @protected
   JSAny cst_encode_box_autoadd_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opt_vecs_twin_normal(raw);
@@ -27440,6 +27718,82 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_RustOpaque_HideDataTwinSyncMoi(raw.first),
       cst_encode_RustOpaque_HideDataTwinSyncMoi(raw.second)
     ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_point_twin_normal(OperatorPointTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_point_twin_sse(OperatorPointTwinSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_point_twin_sync(OperatorPointTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_point_twin_sync_sse(OperatorPointTwinSyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_value_twin_normal(OperatorValueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.value)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.value)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.value)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_value_twin_sse(OperatorValueTwinSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.value)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_value_twin_sync(OperatorValueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.value)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_operator_value_twin_sync_sse(OperatorValueTwinSyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.value)].jsify()!;
   }
 
   @protected
@@ -36233,6 +36587,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueNestedTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_operator_point_twin_normal(
+      OperatorPointTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sse(
+      OperatorPointTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sync(
+      OperatorPointTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sync_sse(
+      OperatorPointTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_normal(
+      OperatorValueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sse(
+      OperatorValueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sync(
+      OperatorValueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sync_sse(
+      OperatorValueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_opt_vecs_twin_normal(
       OptVecsTwinNormal self, SseSerializer serializer);
 
@@ -39329,6 +39731,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opaque_nested_twin_sync_sse_moi(
       OpaqueNestedTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_normal(
+      OperatorPointTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_sse(
+      OperatorPointTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_sync(
+      OperatorPointTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_sync_sse(
+      OperatorPointTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_normal(
+      OperatorValueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_sse(
+      OperatorValueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_sync(
+      OperatorValueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_sync_sse(
+      OperatorValueTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_I128(BigInt? self, SseSerializer serializer);
@@ -56099,6 +56549,745 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__opaque_vec_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule.wire__crate__api__operator__operator_point_twin_normal_add(
+              that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_eq(
+              JSAny that, JSAny other) =>
+          wasmModule.wire__crate__api__operator__operator_point_twin_normal_eq(
+              that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_ge(
+              JSAny that, JSAny other) =>
+          wasmModule.wire__crate__api__operator__operator_point_twin_normal_ge(
+              that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_gt(
+              JSAny that, JSAny other) =>
+          wasmModule.wire__crate__api__operator__operator_point_twin_normal_gt(
+              that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_le(
+              JSAny that, JSAny other) =>
+          wasmModule.wire__crate__api__operator__operator_point_twin_normal_le(
+              that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_lt(
+              JSAny that, JSAny other) =>
+          wasmModule.wire__crate__api__operator__operator_point_twin_normal_lt(
+              that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt(
+              JSAny that, JSAny other) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt(
+                  that, other);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule.wire__crate__api__operator__operator_value_twin_normal_add(
+              that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_bitand(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__operator__operator_value_twin_normal_bitand(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_bitor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__operator__operator_value_twin_normal_bitor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_bitxor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__operator__operator_value_twin_normal_bitxor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_div(
+              JSAny that, JSAny rhs) =>
+          wasmModule.wire__crate__api__operator__operator_value_twin_normal_div(
+              that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_mul(
+              JSAny that, JSAny rhs) =>
+          wasmModule.wire__crate__api__operator__operator_value_twin_normal_mul(
+              that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_neg(JSAny that) =>
+          wasmModule
+              .wire__crate__api__operator__operator_value_twin_normal_neg(that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_not(JSAny that) =>
+          wasmModule
+              .wire__crate__api__operator__operator_value_twin_normal_not(that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_rem(
+              JSAny that, JSAny rhs) =>
+          wasmModule.wire__crate__api__operator__operator_value_twin_normal_rem(
+              that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_shl(
+              JSAny that, int rhs) =>
+          wasmModule.wire__crate__api__operator__operator_value_twin_normal_shl(
+              that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_shr(
+              JSAny that, int rhs) =>
+          wasmModule.wire__crate__api__operator__operator_value_twin_normal_shr(
+              that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_sub(
+              JSAny that, JSAny rhs) =>
+          wasmModule.wire__crate__api__operator__operator_value_twin_normal_sub(
+              that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not(
+              JSAny that) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr(
+              JSAny that, int rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub(
+                  that, rhs);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub(
+              JSAny that, JSAny rhs) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub(
+                  that, rhs);
 
   void wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(
           NativePortType port_, JSAny? d) =>
@@ -76268,6 +77457,436 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_eq(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_ge(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_gt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_le(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_point_twin_normal_lt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt(
+          JSAny that, JSAny other);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_bitand(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_bitor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_bitxor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_div(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_mul(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_neg(JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_not(JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_rem(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_shl(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_shr(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__operator__operator_value_twin_normal_sub(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not(
+          JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr(
+          JSAny that, int rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub(
+          JSAny that, JSAny rhs);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub(
+          JSAny that, JSAny rhs);
 
   external void
       wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(

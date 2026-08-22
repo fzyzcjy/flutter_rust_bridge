@@ -44,6 +44,7 @@ import 'api/misc_no_twin_example_a.dart';
 import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
+import 'api/operator.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/ownership.dart';
@@ -174,6 +175,11 @@ import 'api/pseudo_manual/newtype_pattern_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync_sse.dart';
+import 'api/pseudo_manual/operator_twin_rust_async.dart';
+import 'api/pseudo_manual/operator_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/operator_twin_sse.dart';
+import 'api/pseudo_manual/operator_twin_sync.dart';
+import 'api/pseudo_manual/operator_twin_sync_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sse.dart';
@@ -6158,6 +6164,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_opaque_nested_twin_sync_sse_moi(dynamic raw);
 
   @protected
+  OperatorPointTwinNormal dco_decode_box_autoadd_operator_point_twin_normal(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsync
+      dco_decode_box_autoadd_operator_point_twin_rust_async(dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsyncSse
+      dco_decode_box_autoadd_operator_point_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  OperatorPointTwinSse dco_decode_box_autoadd_operator_point_twin_sse(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinSync dco_decode_box_autoadd_operator_point_twin_sync(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinSyncSse dco_decode_box_autoadd_operator_point_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinNormal dco_decode_box_autoadd_operator_value_twin_normal(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsync
+      dco_decode_box_autoadd_operator_value_twin_rust_async(dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsyncSse
+      dco_decode_box_autoadd_operator_value_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  OperatorValueTwinSse dco_decode_box_autoadd_operator_value_twin_sse(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinSync dco_decode_box_autoadd_operator_value_twin_sync(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinSyncSse dco_decode_box_autoadd_operator_value_twin_sync_sse(
+      dynamic raw);
+
+  @protected
   OptVecsTwinNormal dco_decode_box_autoadd_opt_vecs_twin_normal(dynamic raw);
 
   @protected
@@ -8992,6 +9046,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueNestedTwinSyncSseMoi dco_decode_opaque_nested_twin_sync_sse_moi(
       dynamic raw);
+
+  @protected
+  OperatorPointTwinNormal dco_decode_operator_point_twin_normal(dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsync dco_decode_operator_point_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinRustAsyncSse dco_decode_operator_point_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  OperatorPointTwinSse dco_decode_operator_point_twin_sse(dynamic raw);
+
+  @protected
+  OperatorPointTwinSync dco_decode_operator_point_twin_sync(dynamic raw);
+
+  @protected
+  OperatorPointTwinSyncSse dco_decode_operator_point_twin_sync_sse(dynamic raw);
+
+  @protected
+  OperatorValueTwinNormal dco_decode_operator_value_twin_normal(dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsync dco_decode_operator_value_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinRustAsyncSse dco_decode_operator_value_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  OperatorValueTwinSse dco_decode_operator_value_twin_sse(dynamic raw);
+
+  @protected
+  OperatorValueTwinSync dco_decode_operator_value_twin_sync(dynamic raw);
+
+  @protected
+  OperatorValueTwinSyncSse dco_decode_operator_value_twin_sync_sse(dynamic raw);
 
   @protected
   BigInt? dco_decode_opt_I128(dynamic raw);
@@ -15858,6 +15952,58 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  OperatorPointTwinNormal sse_decode_box_autoadd_operator_point_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsync
+      sse_decode_box_autoadd_operator_point_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsyncSse
+      sse_decode_box_autoadd_operator_point_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSse sse_decode_box_autoadd_operator_point_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSync sse_decode_box_autoadd_operator_point_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSyncSse sse_decode_box_autoadd_operator_point_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinNormal sse_decode_box_autoadd_operator_value_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsync
+      sse_decode_box_autoadd_operator_value_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsyncSse
+      sse_decode_box_autoadd_operator_value_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSse sse_decode_box_autoadd_operator_value_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSync sse_decode_box_autoadd_operator_value_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSyncSse sse_decode_box_autoadd_operator_value_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   OptVecsTwinNormal sse_decode_box_autoadd_opt_vecs_twin_normal(
       SseDeserializer deserializer);
 
@@ -19087,6 +19233,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   OpaqueNestedTwinSyncSseMoi sse_decode_opaque_nested_twin_sync_sse_moi(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinNormal sse_decode_operator_point_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsync sse_decode_operator_point_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinRustAsyncSse sse_decode_operator_point_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSse sse_decode_operator_point_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSync sse_decode_operator_point_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorPointTwinSyncSse sse_decode_operator_point_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinNormal sse_decode_operator_value_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsync sse_decode_operator_value_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinRustAsyncSse sse_decode_operator_value_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSse sse_decode_operator_value_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSync sse_decode_operator_value_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OperatorValueTwinSyncSse sse_decode_operator_value_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -23786,6 +23980,124 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_opaque_nested_twin_sync_moi();
     cst_api_fill_to_wire_opaque_nested_twin_sync_moi(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_point_twin_normal>
+      cst_encode_box_autoadd_operator_point_twin_normal(
+          OperatorPointTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_point_twin_normal();
+    cst_api_fill_to_wire_operator_point_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_point_twin_rust_async>
+      cst_encode_box_autoadd_operator_point_twin_rust_async(
+          OperatorPointTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_point_twin_rust_async();
+    cst_api_fill_to_wire_operator_point_twin_rust_async(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>
+      cst_encode_box_autoadd_operator_point_twin_rust_async_sse(
+          OperatorPointTwinRustAsyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_point_twin_rust_async_sse();
+    cst_api_fill_to_wire_operator_point_twin_rust_async_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_point_twin_sse>
+      cst_encode_box_autoadd_operator_point_twin_sse(OperatorPointTwinSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_point_twin_sse();
+    cst_api_fill_to_wire_operator_point_twin_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_point_twin_sync>
+      cst_encode_box_autoadd_operator_point_twin_sync(
+          OperatorPointTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_point_twin_sync();
+    cst_api_fill_to_wire_operator_point_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_point_twin_sync_sse>
+      cst_encode_box_autoadd_operator_point_twin_sync_sse(
+          OperatorPointTwinSyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_point_twin_sync_sse();
+    cst_api_fill_to_wire_operator_point_twin_sync_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_value_twin_normal>
+      cst_encode_box_autoadd_operator_value_twin_normal(
+          OperatorValueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_value_twin_normal();
+    cst_api_fill_to_wire_operator_value_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_value_twin_rust_async>
+      cst_encode_box_autoadd_operator_value_twin_rust_async(
+          OperatorValueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_value_twin_rust_async();
+    cst_api_fill_to_wire_operator_value_twin_rust_async(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>
+      cst_encode_box_autoadd_operator_value_twin_rust_async_sse(
+          OperatorValueTwinRustAsyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_value_twin_rust_async_sse();
+    cst_api_fill_to_wire_operator_value_twin_rust_async_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_value_twin_sse>
+      cst_encode_box_autoadd_operator_value_twin_sse(OperatorValueTwinSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_value_twin_sse();
+    cst_api_fill_to_wire_operator_value_twin_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_value_twin_sync>
+      cst_encode_box_autoadd_operator_value_twin_sync(
+          OperatorValueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_value_twin_sync();
+    cst_api_fill_to_wire_operator_value_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_operator_value_twin_sync_sse>
+      cst_encode_box_autoadd_operator_value_twin_sync_sse(
+          OperatorValueTwinSyncSse raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_operator_value_twin_sync_sse();
+    cst_api_fill_to_wire_operator_value_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -29198,6 +29510,92 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_point_twin_normal(
+      OperatorPointTwinNormal apiObj,
+      ffi.Pointer<wire_cst_operator_point_twin_normal> wireObj) {
+    cst_api_fill_to_wire_operator_point_twin_normal(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync apiObj,
+      ffi.Pointer<wire_cst_operator_point_twin_rust_async> wireObj) {
+    cst_api_fill_to_wire_operator_point_twin_rust_async(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse apiObj,
+      ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> wireObj) {
+    cst_api_fill_to_wire_operator_point_twin_rust_async_sse(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_point_twin_sse(
+      OperatorPointTwinSse apiObj,
+      ffi.Pointer<wire_cst_operator_point_twin_sse> wireObj) {
+    cst_api_fill_to_wire_operator_point_twin_sse(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_point_twin_sync(
+      OperatorPointTwinSync apiObj,
+      ffi.Pointer<wire_cst_operator_point_twin_sync> wireObj) {
+    cst_api_fill_to_wire_operator_point_twin_sync(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_point_twin_sync_sse(
+      OperatorPointTwinSyncSse apiObj,
+      ffi.Pointer<wire_cst_operator_point_twin_sync_sse> wireObj) {
+    cst_api_fill_to_wire_operator_point_twin_sync_sse(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_value_twin_normal(
+      OperatorValueTwinNormal apiObj,
+      ffi.Pointer<wire_cst_operator_value_twin_normal> wireObj) {
+    cst_api_fill_to_wire_operator_value_twin_normal(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync apiObj,
+      ffi.Pointer<wire_cst_operator_value_twin_rust_async> wireObj) {
+    cst_api_fill_to_wire_operator_value_twin_rust_async(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse apiObj,
+      ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> wireObj) {
+    cst_api_fill_to_wire_operator_value_twin_rust_async_sse(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_value_twin_sse(
+      OperatorValueTwinSse apiObj,
+      ffi.Pointer<wire_cst_operator_value_twin_sse> wireObj) {
+    cst_api_fill_to_wire_operator_value_twin_sse(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_value_twin_sync(
+      OperatorValueTwinSync apiObj,
+      ffi.Pointer<wire_cst_operator_value_twin_sync> wireObj) {
+    cst_api_fill_to_wire_operator_value_twin_sync(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_operator_value_twin_sync_sse(
+      OperatorValueTwinSyncSse apiObj,
+      ffi.Pointer<wire_cst_operator_value_twin_sync_sse> wireObj) {
+    cst_api_fill_to_wire_operator_value_twin_sync_sse(apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_normal(
       OptVecsTwinNormal apiObj,
       ffi.Pointer<wire_cst_opt_vecs_twin_normal> wireObj) {
@@ -32104,6 +32502,92 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wire_cst_opaque_nested_twin_sync_moi wireObj) {
     wireObj.first = cst_encode_RustOpaque_HideDataTwinSyncMoi(apiObj.first);
     wireObj.second = cst_encode_RustOpaque_HideDataTwinSyncMoi(apiObj.second);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_point_twin_normal(
+      OperatorPointTwinNormal apiObj,
+      wire_cst_operator_point_twin_normal wireObj) {
+    wireObj.x = cst_encode_i_32(apiObj.x);
+    wireObj.y = cst_encode_i_32(apiObj.y);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync apiObj,
+      wire_cst_operator_point_twin_rust_async wireObj) {
+    wireObj.x = cst_encode_i_32(apiObj.x);
+    wireObj.y = cst_encode_i_32(apiObj.y);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse apiObj,
+      wire_cst_operator_point_twin_rust_async_sse wireObj) {
+    wireObj.x = cst_encode_i_32(apiObj.x);
+    wireObj.y = cst_encode_i_32(apiObj.y);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_point_twin_sse(
+      OperatorPointTwinSse apiObj, wire_cst_operator_point_twin_sse wireObj) {
+    wireObj.x = cst_encode_i_32(apiObj.x);
+    wireObj.y = cst_encode_i_32(apiObj.y);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_point_twin_sync(
+      OperatorPointTwinSync apiObj, wire_cst_operator_point_twin_sync wireObj) {
+    wireObj.x = cst_encode_i_32(apiObj.x);
+    wireObj.y = cst_encode_i_32(apiObj.y);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_point_twin_sync_sse(
+      OperatorPointTwinSyncSse apiObj,
+      wire_cst_operator_point_twin_sync_sse wireObj) {
+    wireObj.x = cst_encode_i_32(apiObj.x);
+    wireObj.y = cst_encode_i_32(apiObj.y);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_value_twin_normal(
+      OperatorValueTwinNormal apiObj,
+      wire_cst_operator_value_twin_normal wireObj) {
+    wireObj.value = cst_encode_i_32(apiObj.value);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync apiObj,
+      wire_cst_operator_value_twin_rust_async wireObj) {
+    wireObj.value = cst_encode_i_32(apiObj.value);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse apiObj,
+      wire_cst_operator_value_twin_rust_async_sse wireObj) {
+    wireObj.value = cst_encode_i_32(apiObj.value);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_value_twin_sse(
+      OperatorValueTwinSse apiObj, wire_cst_operator_value_twin_sse wireObj) {
+    wireObj.value = cst_encode_i_32(apiObj.value);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_value_twin_sync(
+      OperatorValueTwinSync apiObj, wire_cst_operator_value_twin_sync wireObj) {
+    wireObj.value = cst_encode_i_32(apiObj.value);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_operator_value_twin_sync_sse(
+      OperatorValueTwinSyncSse apiObj,
+      wire_cst_operator_value_twin_sync_sse wireObj) {
+    wireObj.value = cst_encode_i_32(apiObj.value);
   }
 
   @protected
@@ -40023,6 +40507,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueNestedTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_operator_point_twin_normal(
+      OperatorPointTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sse(
+      OperatorPointTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sync(
+      OperatorPointTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_point_twin_sync_sse(
+      OperatorPointTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_normal(
+      OperatorValueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sse(
+      OperatorValueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sync(
+      OperatorValueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_operator_value_twin_sync_sse(
+      OperatorValueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_opt_vecs_twin_normal(
       OptVecsTwinNormal self, SseSerializer serializer);
 
@@ -43119,6 +43651,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opaque_nested_twin_sync_sse_moi(
       OpaqueNestedTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_normal(
+      OperatorPointTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_rust_async(
+      OperatorPointTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_rust_async_sse(
+      OperatorPointTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_sse(
+      OperatorPointTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_sync(
+      OperatorPointTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_point_twin_sync_sse(
+      OperatorPointTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_normal(
+      OperatorValueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_rust_async(
+      OperatorValueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_rust_async_sse(
+      OperatorValueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_sse(
+      OperatorValueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_sync(
+      OperatorValueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_operator_value_twin_sync_sse(
+      OperatorValueTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_I128(BigInt? self, SseSerializer serializer);
@@ -95839,6 +96419,2963 @@ class RustLibWire implements BaseWire {
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_point_twin_normal_add(
+    ffi.Pointer<wire_cst_operator_point_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_point_twin_normal> rhs,
+  ) {
+    return _wire__crate__api__operator__operator_point_twin_normal_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_point_twin_normal_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_add',
+  );
+  late final _wire__crate__api__operator__operator_point_twin_normal_add =
+      _wire__crate__api__operator__operator_point_twin_normal_addPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_point_twin_normal_eq(
+    ffi.Pointer<wire_cst_operator_point_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_point_twin_normal> other,
+  ) {
+    return _wire__crate__api__operator__operator_point_twin_normal_eq(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_point_twin_normal_eqPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_eq',
+  );
+  late final _wire__crate__api__operator__operator_point_twin_normal_eq =
+      _wire__crate__api__operator__operator_point_twin_normal_eqPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_point_twin_normal_ge(
+    ffi.Pointer<wire_cst_operator_point_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_point_twin_normal> other,
+  ) {
+    return _wire__crate__api__operator__operator_point_twin_normal_ge(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_point_twin_normal_gePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_ge',
+  );
+  late final _wire__crate__api__operator__operator_point_twin_normal_ge =
+      _wire__crate__api__operator__operator_point_twin_normal_gePtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_point_twin_normal_gt(
+    ffi.Pointer<wire_cst_operator_point_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_point_twin_normal> other,
+  ) {
+    return _wire__crate__api__operator__operator_point_twin_normal_gt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_point_twin_normal_gtPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_gt',
+  );
+  late final _wire__crate__api__operator__operator_point_twin_normal_gt =
+      _wire__crate__api__operator__operator_point_twin_normal_gtPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_point_twin_normal_le(
+    ffi.Pointer<wire_cst_operator_point_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_point_twin_normal> other,
+  ) {
+    return _wire__crate__api__operator__operator_point_twin_normal_le(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_point_twin_normal_lePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_le',
+  );
+  late final _wire__crate__api__operator__operator_point_twin_normal_le =
+      _wire__crate__api__operator__operator_point_twin_normal_lePtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_point_twin_normal_lt(
+    ffi.Pointer<wire_cst_operator_point_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_point_twin_normal> other,
+  ) {
+    return _wire__crate__api__operator__operator_point_twin_normal_lt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_point_twin_normal_ltPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+                ffi.Pointer<wire_cst_operator_point_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_lt',
+  );
+  late final _wire__crate__api__operator__operator_point_twin_normal_lt =
+      _wire__crate__api__operator__operator_point_twin_normal_ltPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+            ffi.Pointer<wire_cst_operator_point_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eqPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eqPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gtPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gtPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ltPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ltPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eqPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eqPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gtPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gtPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt(
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ltPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ltPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add(
+    ffi.Pointer<wire_cst_operator_point_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq(
+    ffi.Pointer<wire_cst_operator_point_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eqPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eqPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge(
+    ffi.Pointer<wire_cst_operator_point_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt(
+    ffi.Pointer<wire_cst_operator_point_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gtPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gtPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le(
+    ffi.Pointer<wire_cst_operator_point_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt(
+    ffi.Pointer<wire_cst_operator_point_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ltPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ltPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add(
+    ffi.Pointer<wire_cst_operator_point_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq(
+    ffi.Pointer<wire_cst_operator_point_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eqPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eqPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge(
+    ffi.Pointer<wire_cst_operator_point_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt(
+    ffi.Pointer<wire_cst_operator_point_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gtPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gtPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le(
+    ffi.Pointer<wire_cst_operator_point_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt(
+    ffi.Pointer<wire_cst_operator_point_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ltPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ltPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add(
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq(
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eqPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eqPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge(
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt(
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gtPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gtPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le(
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lePtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lePtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt(
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_point_twin_sync_sse> other,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt(
+      that,
+      other,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ltPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ltPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_point_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_add(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_value_twin_normal> rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_add',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_add =
+      _wire__crate__api__operator__operator_value_twin_normal_addPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_bitand(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_value_twin_normal> rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_bitand(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_bitandPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitand',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_bitand =
+      _wire__crate__api__operator__operator_value_twin_normal_bitandPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_bitor(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_value_twin_normal> rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_bitor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_bitorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitor',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_bitor =
+      _wire__crate__api__operator__operator_value_twin_normal_bitorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_bitxor(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_value_twin_normal> rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_bitxor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_bitxorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitxor',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_bitxor =
+      _wire__crate__api__operator__operator_value_twin_normal_bitxorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_div(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_value_twin_normal> rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_div(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_divPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_div',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_div =
+      _wire__crate__api__operator__operator_value_twin_normal_divPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_mul(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_value_twin_normal> rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_mul(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_mulPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_mul',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_mul =
+      _wire__crate__api__operator__operator_value_twin_normal_mulPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_neg(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_neg(that);
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_negPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_neg',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_neg =
+      _wire__crate__api__operator__operator_value_twin_normal_negPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_not(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_not(that);
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_notPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_not',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_not =
+      _wire__crate__api__operator__operator_value_twin_normal_notPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_rem(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_value_twin_normal> rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_rem(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_remPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_rem',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_rem =
+      _wire__crate__api__operator__operator_value_twin_normal_remPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_shl(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_shl(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_shlPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_shl',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_shl =
+      _wire__crate__api__operator__operator_value_twin_normal_shlPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+            int,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_shr(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_shr(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_shrPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_shr',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_shr =
+      _wire__crate__api__operator__operator_value_twin_normal_shrPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+            int,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__operator__operator_value_twin_normal_sub(
+    ffi.Pointer<wire_cst_operator_value_twin_normal> that,
+    ffi.Pointer<wire_cst_operator_value_twin_normal> rhs,
+  ) {
+    return _wire__crate__api__operator__operator_value_twin_normal_sub(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__operator__operator_value_twin_normal_subPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+                ffi.Pointer<wire_cst_operator_value_twin_normal>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_sub',
+  );
+  late final _wire__crate__api__operator__operator_value_twin_normal_sub =
+      _wire__crate__api__operator__operator_value_twin_normal_subPtr.asFunction<
+          WireSyncRust2DartDco Function(
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+            ffi.Pointer<wire_cst_operator_value_twin_normal>,
+          )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitandPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitandPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_divPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_divPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mulPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mulPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_negPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_negPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_notPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_notPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_remPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_remPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shlPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shlPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shrPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shrPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitandPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitandPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_divPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_divPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mulPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mulPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_negPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_negPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_notPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_notPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_remPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_remPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shlPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shlPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shrPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shrPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_subPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_subPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub(
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> that,
+    ffi.Pointer<wire_cst_operator_value_twin_rust_async> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_subPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub =
+      _wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_subPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+                ffi.Pointer<wire_cst_operator_value_twin_rust_async>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitandPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitandPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_divPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_divPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mulPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mulPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_negPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_negPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_notPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_notPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_remPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_remPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shlPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shlPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shrPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shrPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub(
+    ffi.Pointer<wire_cst_operator_value_twin_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_subPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub =
+      _wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_subPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitandPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitandPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_divPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_divPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mulPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mulPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_negPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_negPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_notPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_notPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_remPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_remPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shlPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shlPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shrPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shrPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_addPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_addPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitandPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitandPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxorPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxorPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_divPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_divPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mulPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mulPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_negPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_negPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not(
+      that,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_notPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_notPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_remPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_remPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shlPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shlPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    int rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shrPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Uint32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shrPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                int,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub(
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync_sse> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_subPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub =
+      _wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_subPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync_sse>,
+              )>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub(
+    ffi.Pointer<wire_cst_operator_value_twin_sync> that,
+    ffi.Pointer<wire_cst_operator_value_twin_sync> rhs,
+  ) {
+    return _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub(
+      that,
+      rhs,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_subPtr =
+      _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub',
+  );
+  late final _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub =
+      _wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_subPtr
+          .asFunction<
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+                ffi.Pointer<wire_cst_operator_value_twin_sync>,
+              )>();
+
   void wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(
     int port_,
     ffi.Pointer<ffi.Int64> d,
@@ -129803,6 +133340,180 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_opaque_nested_twin_sync_moiPtr.asFunction<
           ffi.Pointer<wire_cst_opaque_nested_twin_sync_moi> Function()>();
 
+  ffi.Pointer<wire_cst_operator_point_twin_normal>
+      cst_new_box_autoadd_operator_point_twin_normal() {
+    return _cst_new_box_autoadd_operator_point_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_operator_point_twin_normalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_normal> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_normal',
+  );
+  late final _cst_new_box_autoadd_operator_point_twin_normal =
+      _cst_new_box_autoadd_operator_point_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_normal> Function()>();
+
+  ffi.Pointer<wire_cst_operator_point_twin_rust_async>
+      cst_new_box_autoadd_operator_point_twin_rust_async() {
+    return _cst_new_box_autoadd_operator_point_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_operator_point_twin_rust_asyncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_rust_async> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_rust_async',
+  );
+  late final _cst_new_box_autoadd_operator_point_twin_rust_async =
+      _cst_new_box_autoadd_operator_point_twin_rust_asyncPtr.asFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_rust_async> Function()>();
+
+  ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>
+      cst_new_box_autoadd_operator_point_twin_rust_async_sse() {
+    return _cst_new_box_autoadd_operator_point_twin_rust_async_sse();
+  }
+
+  late final _cst_new_box_autoadd_operator_point_twin_rust_async_ssePtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>
+                  Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_rust_async_sse',
+  );
+  late final _cst_new_box_autoadd_operator_point_twin_rust_async_sse =
+      _cst_new_box_autoadd_operator_point_twin_rust_async_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_rust_async_sse>
+              Function()>();
+
+  ffi.Pointer<wire_cst_operator_point_twin_sse>
+      cst_new_box_autoadd_operator_point_twin_sse() {
+    return _cst_new_box_autoadd_operator_point_twin_sse();
+  }
+
+  late final _cst_new_box_autoadd_operator_point_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_sse> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sse',
+  );
+  late final _cst_new_box_autoadd_operator_point_twin_sse =
+      _cst_new_box_autoadd_operator_point_twin_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_sse> Function()>();
+
+  ffi.Pointer<wire_cst_operator_point_twin_sync>
+      cst_new_box_autoadd_operator_point_twin_sync() {
+    return _cst_new_box_autoadd_operator_point_twin_sync();
+  }
+
+  late final _cst_new_box_autoadd_operator_point_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_sync> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sync',
+  );
+  late final _cst_new_box_autoadd_operator_point_twin_sync =
+      _cst_new_box_autoadd_operator_point_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_sync> Function()>();
+
+  ffi.Pointer<wire_cst_operator_point_twin_sync_sse>
+      cst_new_box_autoadd_operator_point_twin_sync_sse() {
+    return _cst_new_box_autoadd_operator_point_twin_sync_sse();
+  }
+
+  late final _cst_new_box_autoadd_operator_point_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_sync_sse> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sync_sse',
+  );
+  late final _cst_new_box_autoadd_operator_point_twin_sync_sse =
+      _cst_new_box_autoadd_operator_point_twin_sync_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_operator_point_twin_sync_sse> Function()>();
+
+  ffi.Pointer<wire_cst_operator_value_twin_normal>
+      cst_new_box_autoadd_operator_value_twin_normal() {
+    return _cst_new_box_autoadd_operator_value_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_operator_value_twin_normalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_normal> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_normal',
+  );
+  late final _cst_new_box_autoadd_operator_value_twin_normal =
+      _cst_new_box_autoadd_operator_value_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_normal> Function()>();
+
+  ffi.Pointer<wire_cst_operator_value_twin_rust_async>
+      cst_new_box_autoadd_operator_value_twin_rust_async() {
+    return _cst_new_box_autoadd_operator_value_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_operator_value_twin_rust_asyncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_rust_async> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_rust_async',
+  );
+  late final _cst_new_box_autoadd_operator_value_twin_rust_async =
+      _cst_new_box_autoadd_operator_value_twin_rust_asyncPtr.asFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_rust_async> Function()>();
+
+  ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>
+      cst_new_box_autoadd_operator_value_twin_rust_async_sse() {
+    return _cst_new_box_autoadd_operator_value_twin_rust_async_sse();
+  }
+
+  late final _cst_new_box_autoadd_operator_value_twin_rust_async_ssePtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>
+                  Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_rust_async_sse',
+  );
+  late final _cst_new_box_autoadd_operator_value_twin_rust_async_sse =
+      _cst_new_box_autoadd_operator_value_twin_rust_async_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_rust_async_sse>
+              Function()>();
+
+  ffi.Pointer<wire_cst_operator_value_twin_sse>
+      cst_new_box_autoadd_operator_value_twin_sse() {
+    return _cst_new_box_autoadd_operator_value_twin_sse();
+  }
+
+  late final _cst_new_box_autoadd_operator_value_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_sse> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sse',
+  );
+  late final _cst_new_box_autoadd_operator_value_twin_sse =
+      _cst_new_box_autoadd_operator_value_twin_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_sse> Function()>();
+
+  ffi.Pointer<wire_cst_operator_value_twin_sync>
+      cst_new_box_autoadd_operator_value_twin_sync() {
+    return _cst_new_box_autoadd_operator_value_twin_sync();
+  }
+
+  late final _cst_new_box_autoadd_operator_value_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_sync> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sync',
+  );
+  late final _cst_new_box_autoadd_operator_value_twin_sync =
+      _cst_new_box_autoadd_operator_value_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_sync> Function()>();
+
+  ffi.Pointer<wire_cst_operator_value_twin_sync_sse>
+      cst_new_box_autoadd_operator_value_twin_sync_sse() {
+    return _cst_new_box_autoadd_operator_value_twin_sync_sse();
+  }
+
+  late final _cst_new_box_autoadd_operator_value_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_sync_sse> Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sync_sse',
+  );
+  late final _cst_new_box_autoadd_operator_value_twin_sync_sse =
+      _cst_new_box_autoadd_operator_value_twin_sync_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_operator_value_twin_sync_sse> Function()>();
+
   ffi.Pointer<wire_cst_opt_vecs_twin_normal>
       cst_new_box_autoadd_opt_vecs_twin_normal() {
     return _cst_new_box_autoadd_opt_vecs_twin_normal();
@@ -136398,6 +140109,84 @@ final class wire_cst_list_RustOpaque_HideDataTwinSyncMoi extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
+}
+
+final class wire_cst_operator_point_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int x;
+
+  @ffi.Int32()
+  external int y;
+}
+
+final class wire_cst_operator_point_twin_rust_async extends ffi.Struct {
+  @ffi.Int32()
+  external int x;
+
+  @ffi.Int32()
+  external int y;
+}
+
+final class wire_cst_operator_point_twin_rust_async_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int x;
+
+  @ffi.Int32()
+  external int y;
+}
+
+final class wire_cst_operator_point_twin_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int x;
+
+  @ffi.Int32()
+  external int y;
+}
+
+final class wire_cst_operator_point_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int x;
+
+  @ffi.Int32()
+  external int y;
+}
+
+final class wire_cst_operator_point_twin_sync_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int x;
+
+  @ffi.Int32()
+  external int y;
+}
+
+final class wire_cst_operator_value_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int value;
+}
+
+final class wire_cst_operator_value_twin_rust_async extends ffi.Struct {
+  @ffi.Int32()
+  external int value;
+}
+
+final class wire_cst_operator_value_twin_rust_async_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int value;
+}
+
+final class wire_cst_operator_value_twin_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int value;
+}
+
+final class wire_cst_operator_value_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int value;
+}
+
+final class wire_cst_operator_value_twin_sync_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int value;
 }
 
 final class wire_cst_note_twin_normal extends ffi.Struct {

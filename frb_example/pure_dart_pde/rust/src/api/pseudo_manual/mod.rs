@@ -50,6 +50,8 @@ pub mod misc_type_twin_rust_async;
 pub mod misc_type_twin_sync;
 pub mod newtype_pattern_twin_rust_async;
 pub mod newtype_pattern_twin_sync;
+pub mod operator_twin_rust_async;
+pub mod operator_twin_sync;
 pub mod optional_primitive_misc_twin_rust_async;
 pub mod optional_primitive_misc_twin_sync;
 pub mod optional_twin_rust_async;

@@ -118,6 +118,15 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
                 )
             }
             MirFuncOwnerInfo::Method(method) => {
+                if let Some(operator) = method.standard_operator() {
+                    return format!(
+                        "{}::{}({})",
+                        operator.rust_trait_path(),
+                        method.actual_method_name,
+                        inner_func_args.join(", ")
+                    );
+                }
+
                 let owner_ty_name = method.owner_ty_name().unwrap().rust_style();
                 // For simplicity, remove all generics currently
                 lazy_static! {

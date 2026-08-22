@@ -1886,6 +1886,60 @@ typedef struct wire_cst_list_RustOpaque_HideDataTwinSyncMoi {
   int32_t len;
 } wire_cst_list_RustOpaque_HideDataTwinSyncMoi;
 
+typedef struct wire_cst_operator_point_twin_normal {
+  int32_t x;
+  int32_t y;
+} wire_cst_operator_point_twin_normal;
+
+typedef struct wire_cst_operator_point_twin_rust_async {
+  int32_t x;
+  int32_t y;
+} wire_cst_operator_point_twin_rust_async;
+
+typedef struct wire_cst_operator_point_twin_rust_async_sse {
+  int32_t x;
+  int32_t y;
+} wire_cst_operator_point_twin_rust_async_sse;
+
+typedef struct wire_cst_operator_point_twin_sse {
+  int32_t x;
+  int32_t y;
+} wire_cst_operator_point_twin_sse;
+
+typedef struct wire_cst_operator_point_twin_sync {
+  int32_t x;
+  int32_t y;
+} wire_cst_operator_point_twin_sync;
+
+typedef struct wire_cst_operator_point_twin_sync_sse {
+  int32_t x;
+  int32_t y;
+} wire_cst_operator_point_twin_sync_sse;
+
+typedef struct wire_cst_operator_value_twin_normal {
+  int32_t value;
+} wire_cst_operator_value_twin_normal;
+
+typedef struct wire_cst_operator_value_twin_rust_async {
+  int32_t value;
+} wire_cst_operator_value_twin_rust_async;
+
+typedef struct wire_cst_operator_value_twin_rust_async_sse {
+  int32_t value;
+} wire_cst_operator_value_twin_rust_async_sse;
+
+typedef struct wire_cst_operator_value_twin_sse {
+  int32_t value;
+} wire_cst_operator_value_twin_sse;
+
+typedef struct wire_cst_operator_value_twin_sync {
+  int32_t value;
+} wire_cst_operator_value_twin_sync;
+
+typedef struct wire_cst_operator_value_twin_sync_sse {
+  int32_t value;
+} wire_cst_operator_value_twin_sync_sse;
+
 typedef struct wire_cst_note_twin_normal {
   int32_t *day;
   struct wire_cst_list_prim_u_8_strict *body;
@@ -10835,6 +10889,318 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                                int32_t rust_vec_len_,
                                                                                                                                                int32_t data_len_);
 
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_add(struct wire_cst_operator_point_twin_normal *that,
+                                                                                                             struct wire_cst_operator_point_twin_normal *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_eq(struct wire_cst_operator_point_twin_normal *that,
+                                                                                                            struct wire_cst_operator_point_twin_normal *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_ge(struct wire_cst_operator_point_twin_normal *that,
+                                                                                                            struct wire_cst_operator_point_twin_normal *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_gt(struct wire_cst_operator_point_twin_normal *that,
+                                                                                                            struct wire_cst_operator_point_twin_normal *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_le(struct wire_cst_operator_point_twin_normal *that,
+                                                                                                            struct wire_cst_operator_point_twin_normal *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_lt(struct wire_cst_operator_point_twin_normal *that,
+                                                                                                            struct wire_cst_operator_point_twin_normal *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add(struct wire_cst_operator_point_twin_rust_async *that,
+                                                                                                                                                struct wire_cst_operator_point_twin_rust_async *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq(struct wire_cst_operator_point_twin_rust_async *that,
+                                                                                                                                               struct wire_cst_operator_point_twin_rust_async *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge(struct wire_cst_operator_point_twin_rust_async *that,
+                                                                                                                                               struct wire_cst_operator_point_twin_rust_async *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt(struct wire_cst_operator_point_twin_rust_async *that,
+                                                                                                                                               struct wire_cst_operator_point_twin_rust_async *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le(struct wire_cst_operator_point_twin_rust_async *that,
+                                                                                                                                               struct wire_cst_operator_point_twin_rust_async *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt(struct wire_cst_operator_point_twin_rust_async *that,
+                                                                                                                                               struct wire_cst_operator_point_twin_rust_async *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add(struct wire_cst_operator_point_twin_rust_async_sse *that,
+                                                                                                                                                        struct wire_cst_operator_point_twin_rust_async_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq(struct wire_cst_operator_point_twin_rust_async_sse *that,
+                                                                                                                                                       struct wire_cst_operator_point_twin_rust_async_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge(struct wire_cst_operator_point_twin_rust_async_sse *that,
+                                                                                                                                                       struct wire_cst_operator_point_twin_rust_async_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt(struct wire_cst_operator_point_twin_rust_async_sse *that,
+                                                                                                                                                       struct wire_cst_operator_point_twin_rust_async_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le(struct wire_cst_operator_point_twin_rust_async_sse *that,
+                                                                                                                                                       struct wire_cst_operator_point_twin_rust_async_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt(struct wire_cst_operator_point_twin_rust_async_sse *that,
+                                                                                                                                                       struct wire_cst_operator_point_twin_rust_async_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add(struct wire_cst_operator_point_twin_sse *that,
+                                                                                                                                  struct wire_cst_operator_point_twin_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq(struct wire_cst_operator_point_twin_sse *that,
+                                                                                                                                 struct wire_cst_operator_point_twin_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge(struct wire_cst_operator_point_twin_sse *that,
+                                                                                                                                 struct wire_cst_operator_point_twin_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt(struct wire_cst_operator_point_twin_sse *that,
+                                                                                                                                 struct wire_cst_operator_point_twin_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le(struct wire_cst_operator_point_twin_sse *that,
+                                                                                                                                 struct wire_cst_operator_point_twin_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt(struct wire_cst_operator_point_twin_sse *that,
+                                                                                                                                 struct wire_cst_operator_point_twin_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add(struct wire_cst_operator_point_twin_sync *that,
+                                                                                                                                    struct wire_cst_operator_point_twin_sync *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq(struct wire_cst_operator_point_twin_sync *that,
+                                                                                                                                   struct wire_cst_operator_point_twin_sync *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge(struct wire_cst_operator_point_twin_sync *that,
+                                                                                                                                   struct wire_cst_operator_point_twin_sync *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt(struct wire_cst_operator_point_twin_sync *that,
+                                                                                                                                   struct wire_cst_operator_point_twin_sync *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le(struct wire_cst_operator_point_twin_sync *that,
+                                                                                                                                   struct wire_cst_operator_point_twin_sync *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt(struct wire_cst_operator_point_twin_sync *that,
+                                                                                                                                   struct wire_cst_operator_point_twin_sync *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add(struct wire_cst_operator_point_twin_sync_sse *that,
+                                                                                                                                            struct wire_cst_operator_point_twin_sync_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq(struct wire_cst_operator_point_twin_sync_sse *that,
+                                                                                                                                           struct wire_cst_operator_point_twin_sync_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge(struct wire_cst_operator_point_twin_sync_sse *that,
+                                                                                                                                           struct wire_cst_operator_point_twin_sync_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt(struct wire_cst_operator_point_twin_sync_sse *that,
+                                                                                                                                           struct wire_cst_operator_point_twin_sync_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le(struct wire_cst_operator_point_twin_sync_sse *that,
+                                                                                                                                           struct wire_cst_operator_point_twin_sync_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt(struct wire_cst_operator_point_twin_sync_sse *that,
+                                                                                                                                           struct wire_cst_operator_point_twin_sync_sse *other);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_add(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                             struct wire_cst_operator_value_twin_normal *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitand(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                                struct wire_cst_operator_value_twin_normal *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitor(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                               struct wire_cst_operator_value_twin_normal *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitxor(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                                struct wire_cst_operator_value_twin_normal *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_div(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                             struct wire_cst_operator_value_twin_normal *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_mul(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                             struct wire_cst_operator_value_twin_normal *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_neg(struct wire_cst_operator_value_twin_normal *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_not(struct wire_cst_operator_value_twin_normal *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_rem(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                             struct wire_cst_operator_value_twin_normal *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_shl(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                             uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_shr(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                             uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_sub(struct wire_cst_operator_value_twin_normal *that,
+                                                                                                             struct wire_cst_operator_value_twin_normal *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                struct wire_cst_operator_value_twin_rust_async *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                   struct wire_cst_operator_value_twin_rust_async *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                  struct wire_cst_operator_value_twin_rust_async *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                   struct wire_cst_operator_value_twin_rust_async *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                struct wire_cst_operator_value_twin_rust_async *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                struct wire_cst_operator_value_twin_rust_async *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg(struct wire_cst_operator_value_twin_rust_async *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not(struct wire_cst_operator_value_twin_rust_async *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                struct wire_cst_operator_value_twin_rust_async *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                        struct wire_cst_operator_value_twin_rust_async_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                           struct wire_cst_operator_value_twin_rust_async_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                          struct wire_cst_operator_value_twin_rust_async_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                           struct wire_cst_operator_value_twin_rust_async_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                        struct wire_cst_operator_value_twin_rust_async_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                        struct wire_cst_operator_value_twin_rust_async_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg(struct wire_cst_operator_value_twin_rust_async_sse *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not(struct wire_cst_operator_value_twin_rust_async_sse *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                        struct wire_cst_operator_value_twin_rust_async_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                        uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                        uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub(struct wire_cst_operator_value_twin_rust_async_sse *that,
+                                                                                                                                                        struct wire_cst_operator_value_twin_rust_async_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub(struct wire_cst_operator_value_twin_rust_async *that,
+                                                                                                                                                struct wire_cst_operator_value_twin_rust_async *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                  struct wire_cst_operator_value_twin_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                     struct wire_cst_operator_value_twin_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                    struct wire_cst_operator_value_twin_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                     struct wire_cst_operator_value_twin_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                  struct wire_cst_operator_value_twin_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                  struct wire_cst_operator_value_twin_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg(struct wire_cst_operator_value_twin_sse *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not(struct wire_cst_operator_value_twin_sse *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                  struct wire_cst_operator_value_twin_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                  uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                  uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub(struct wire_cst_operator_value_twin_sse *that,
+                                                                                                                                  struct wire_cst_operator_value_twin_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                    struct wire_cst_operator_value_twin_sync *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                       struct wire_cst_operator_value_twin_sync *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                      struct wire_cst_operator_value_twin_sync *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                       struct wire_cst_operator_value_twin_sync *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                    struct wire_cst_operator_value_twin_sync *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                    struct wire_cst_operator_value_twin_sync *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg(struct wire_cst_operator_value_twin_sync *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not(struct wire_cst_operator_value_twin_sync *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                    struct wire_cst_operator_value_twin_sync *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                    uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                    uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                            struct wire_cst_operator_value_twin_sync_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                               struct wire_cst_operator_value_twin_sync_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                              struct wire_cst_operator_value_twin_sync_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                               struct wire_cst_operator_value_twin_sync_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                            struct wire_cst_operator_value_twin_sync_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                            struct wire_cst_operator_value_twin_sync_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg(struct wire_cst_operator_value_twin_sync_sse *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not(struct wire_cst_operator_value_twin_sync_sse *that);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                            struct wire_cst_operator_value_twin_sync_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                            uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                            uint32_t rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub(struct wire_cst_operator_value_twin_sync_sse *that,
+                                                                                                                                            struct wire_cst_operator_value_twin_sync_sse *rhs);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub(struct wire_cst_operator_value_twin_sync *that,
+                                                                                                                                    struct wire_cst_operator_value_twin_sync *rhs);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal(int64_t port_,
                                                                                                          int64_t *d);
 
@@ -15612,6 +15978,30 @@ struct wire_cst_opaque_nested_twin_sync *frbgen_frb_example_pure_dart_cst_new_bo
 
 struct wire_cst_opaque_nested_twin_sync_moi *frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_sync_moi(void);
 
+struct wire_cst_operator_point_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_normal(void);
+
+struct wire_cst_operator_point_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_rust_async(void);
+
+struct wire_cst_operator_point_twin_rust_async_sse *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_rust_async_sse(void);
+
+struct wire_cst_operator_point_twin_sse *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sse(void);
+
+struct wire_cst_operator_point_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sync(void);
+
+struct wire_cst_operator_point_twin_sync_sse *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sync_sse(void);
+
+struct wire_cst_operator_value_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_normal(void);
+
+struct wire_cst_operator_value_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_rust_async(void);
+
+struct wire_cst_operator_value_twin_rust_async_sse *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_rust_async_sse(void);
+
+struct wire_cst_operator_value_twin_sse *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sse(void);
+
+struct wire_cst_operator_value_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sync(void);
+
+struct wire_cst_operator_value_twin_sync_sse *frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sync_sse(void);
+
 struct wire_cst_opt_vecs_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_opt_vecs_twin_normal(void);
 
 struct wire_cst_opt_vecs_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_opt_vecs_twin_rust_async(void);
@@ -16314,6 +16704,18 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_rust_async_moi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_sync_moi);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_point_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_operator_value_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_opt_vecs_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_opt_vecs_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_opt_vecs_twin_sync);
@@ -17375,6 +17777,24 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_type__handle_list_of_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_type__handle_string_list_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__newtype_pattern__handle_newtype_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_eq);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_ge);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_gt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_le);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_point_twin_normal_lt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitand);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_bitxor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_div);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_mul);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_neg);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_not);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_rem);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_shl);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_shr);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__operator__operator_value_twin_normal_sub);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__optional__element_twin_normal_default);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__optional__handle_increment_boxed_optional_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__optional__handle_option_box_arguments_twin_normal);
@@ -18884,6 +19304,96 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__newtype_pattern_twin_sse__handle_newtype_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__newtype_pattern_twin_sync__handle_newtype_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__newtype_pattern_twin_sync_sse__handle_newtype_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_eq);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_ge);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_gt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_le);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_point_twin_rust_async_lt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitand);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_bitxor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_div);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_mul);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_neg);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_not);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_rem);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shl);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_shr);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async__operator_value_twin_rust_async_sub);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_eq);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_ge);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_gt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_le);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_point_twin_rust_async_sse_lt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitand);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_bitxor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_div);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_mul);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_neg);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_not);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_rem);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shl);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_shr);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_rust_async_sse__operator_value_twin_rust_async_sse_sub);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_eq);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_ge);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_gt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_le);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_point_twin_sse_lt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitand);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_bitxor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_div);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_mul);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_neg);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_not);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_rem);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shl);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_shr);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sse__operator_value_twin_sse_sub);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_eq);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_ge);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_gt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_le);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_point_twin_sync_lt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitand);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_bitxor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_div);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_mul);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_neg);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_not);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_rem);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shl);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_shr);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync__operator_value_twin_sync_sub);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_eq);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_ge);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_gt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_le);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_point_twin_sync_sse_lt);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_add);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitand);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_bitxor);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_div);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_mul);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_neg);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_not);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_rem);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shl);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_shr);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__operator_twin_sync_sse__operator_value_twin_sync_sse_sub);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async__primitive_optional_types_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__optional_primitive_misc_twin_rust_async_sse__primitive_optional_types_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__optional_primitive_misc_twin_sse__primitive_optional_types_twin_sse);
