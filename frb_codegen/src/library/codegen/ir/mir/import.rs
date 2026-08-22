@@ -15,3 +15,29 @@ impl MirDartImport {
         format!("import '{}' {as_part};", self.uri)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::MirDartImport;
+
+    /// Checks import code generation with and without an alias.
+    #[test]
+    fn renders_import_with_optional_alias() {
+        assert_eq!(
+            MirDartImport {
+                uri: "a.dart".into(),
+                alias: None
+            }
+            .to_code(),
+            "import 'a.dart' ;"
+        );
+        assert_eq!(
+            MirDartImport {
+                uri: "a.dart".into(),
+                alias: Some("a".into())
+            }
+            .to_code(),
+            "import 'a.dart' as a;"
+        );
+    }
+}

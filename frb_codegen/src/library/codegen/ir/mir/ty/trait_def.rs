@@ -27,3 +27,25 @@ impl MirTypeTrait for MirTypeTraitDef {
         Some(self.name.namespace.clone())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Uses the unqualified trait name while retaining its namespace.
+    #[test]
+    fn trait_definition_uses_unqualified_api_name() {
+        let ty = MirTypeTraitDef {
+            name: NamespacedName::new(
+                Namespace::new_raw("crate::api".to_owned()),
+                "Service".to_owned(),
+            ),
+        };
+        assert_eq!(ty.safe_ident(), "TraitDef_Service");
+        assert_eq!(ty.rust_api_type(), "Service");
+        assert_eq!(
+            ty.self_namespace(),
+            Some(Namespace::new_raw("crate::api".to_owned()))
+        );
+    }
+}

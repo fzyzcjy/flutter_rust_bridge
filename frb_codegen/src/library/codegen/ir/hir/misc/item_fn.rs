@@ -57,3 +57,30 @@ impl GeneralizedItemFn {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Checks names, attributes, signatures, visibility, and mutation access.
+    #[test]
+    fn generalized_item_fn_exposes_shared_accessors() {
+        let mut functions = vec![
+            GeneralizedItemFn::ItemFn(syn::parse_str("#[inline] pub fn item_fn() {}").unwrap()),
+            GeneralizedItemFn::ImplItemFn(syn::parse_str("#[inline] pub fn impl_fn() {}").unwrap()),
+            GeneralizedItemFn::TraitItemFn(syn::parse_str("#[inline] fn trait_fn();").unwrap()),
+        ];
+
+        assert_eq!(functions[0].name(), "item_fn");
+        assert_eq!(functions[1].name(), "impl_fn");
+        assert_eq!(functions[2].name(), "trait_fn");
+        assert!(functions.iter().all(|function| function.attrs().len() == 1));
+        assert!(functions.iter().all(|function| function.sig().ident != ""));
+        assert!(functions[0].vis_raw().is_some());
+        assert!(functions[1].vis_raw().is_some());
+        assert!(functions[2].vis_raw().is_none());
+
+        functions[0].attrs_mut().clear();
+        assert!(functions[0].attrs().is_empty());
+    }
+}
