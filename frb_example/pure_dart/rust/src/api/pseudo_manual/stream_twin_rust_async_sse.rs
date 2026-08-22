@@ -5,10 +5,12 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "sync sse"]}
 
 use crate::frb_generated::StreamSink;
+#[cfg(not(target_family = "wasm"))]
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
+#[cfg(not(target_family = "wasm"))]
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::{frb, transfer};
+use flutter_rust_bridge::frb;
 
 #[frb(stream_dart_await)]
 #[flutter_rust_bridge::frb(serialize)]
@@ -60,7 +62,7 @@ pub async fn handle_stream_sink_at_1_twin_rust_async_sse(
     max: u32,
     sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
 ) {
-    dispatch_handle_stream(key, max, sink);
+    dispatch_stream_task(move || handle_stream_inner(key, max, sink));
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -69,7 +71,7 @@ pub async fn handle_stream_sink_at_2_twin_rust_async_sse(
     sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
     max: u32,
 ) {
-    dispatch_handle_stream(key, max, sink);
+    dispatch_stream_task(move || handle_stream_inner(key, max, sink));
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -78,20 +80,15 @@ pub async fn handle_stream_sink_at_3_twin_rust_async_sse(
     key: u32,
     max: u32,
 ) {
-    dispatch_handle_stream(key, max, sink);
+    dispatch_stream_task(move || handle_stream_inner(key, max, sink));
 }
 
-fn dispatch_handle_stream(
-    key: u32,
-    max: u32,
-    sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
-) {
+fn dispatch_stream_task(task: impl FnOnce() + Send + 'static) {
     #[cfg(target_family = "wasm")]
-    handle_stream_inner(key, max, sink);
+    task();
 
     #[cfg(not(target_family = "wasm"))]
-    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
-        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(task);
 }
 
 fn handle_stream_inner(
@@ -138,9 +135,9 @@ pub async fn stream_sink_inside_struct_twin_rust_async_sse(
 pub async fn func_stream_add_value_and_error_twin_rust_async_sse(
     sink: StreamSink<i32, flutter_rust_bridge::SseCodec>,
 ) {
-    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+    dispatch_stream_task(move || {
         sink.add(100).unwrap();
         sink.add(200).unwrap();
         sink.add_error(anyhow!("deliberate error")).unwrap();
-    }));
+    });
 }
