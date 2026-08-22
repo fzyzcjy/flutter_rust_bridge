@@ -67,22 +67,32 @@ class ReceivePort extends Stream<dynamic> {
   void close() => _rawReceivePort.close();
 }
 
-Stream<dynamic> _orderMessages(Stream<dynamic> stream) async* {
+Stream<dynamic> _orderMessages(Stream<dynamic> stream) {
   final pending = <(int, int), dynamic>{};
   var next = (0, 0);
 
-  await for (final event in stream) {
-    final sequence = (event[0] as int, event[1] as int);
-    if (_sequenceBefore(sequence, next) || pending.containsKey(sequence)) {
-      throw StateError('Duplicate or stale ordered port message: $sequence');
-    }
-
-    pending[sequence] = event[2];
+  void drain(EventSink<dynamic> sink) {
     while (pending.containsKey(next)) {
-      yield pending.remove(next);
+      sink.add(pending.remove(next));
       next = _nextSequence(next);
     }
   }
+
+  return stream.transform(
+    StreamTransformer.fromHandlers(
+      handleData: (event, sink) {
+        final sequence = (event[0] as int, event[1] as int);
+        if (_sequenceBefore(sequence, next) || pending.containsKey(sequence)) {
+          throw StateError(
+            'Duplicate or stale ordered port message: $sequence',
+          );
+        }
+
+        pending[sequence] = event[2];
+        drain(sink);
+      },
+    ),
+  );
 }
 
 bool _sequenceBefore((int, int) lhs, (int, int) rhs) =>
