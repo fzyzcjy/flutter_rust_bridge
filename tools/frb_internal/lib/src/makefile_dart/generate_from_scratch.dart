@@ -38,9 +38,23 @@ Future<void> generateRunFrbCodegenCommandGenerateFromScratch() async {
       }
       await generateInternal(generateConfig);
       await precommitGenerate();
+      await _generateExampleBuildRunnerOutputs();
       verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
     });
   });
+}
+
+Future<void> _generateExampleBuildRunnerOutputs() async {
+  for (final package in [
+    'frb_example/pure_dart',
+    'frb_example/pure_dart_pde',
+  ]) {
+    await exec(
+      'dart run build_runner build --delete-conflicting-outputs',
+      relativePwd: package,
+    );
+    await exec('dart format lib', relativePwd: package);
+  }
 }
 
 Future<void> _withBuildCliEnabled(Future<void> Function() action) async {
