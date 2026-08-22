@@ -63,7 +63,6 @@ pub fn rust_auto_opaque_arg_own_and_return_own_twin_sync(
     arg
 }
 
-#[frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_two_args_twin_sync(a: NonCloneSimpleTwinSync, b: NonCloneSimpleTwinSync) {
     assert_eq!(a.inner, 10);

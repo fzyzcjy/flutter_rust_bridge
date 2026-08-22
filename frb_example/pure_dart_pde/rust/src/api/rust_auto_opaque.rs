@@ -54,7 +54,9 @@ pub fn rust_auto_opaque_arg_own_and_return_own_twin_normal(
     arg
 }
 
+// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
 #[frb(serialize)]
+// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
 pub fn rust_auto_opaque_two_args_twin_normal(
     a: NonCloneSimpleTwinNormal,
     b: NonCloneSimpleTwinNormal,
