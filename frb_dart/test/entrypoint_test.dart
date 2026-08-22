@@ -3,6 +3,18 @@ import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;
 import 'package:test/test.dart';
 
 void main() {
+  test('Native loader config excludes web-specific arguments', () {
+    const config = ExternalLibraryLoaderConfig.io(
+      stem: 'fake_native',
+      ioDirectory: 'fake_dir',
+    );
+
+    expect(config.stem, 'fake_native');
+    expect(config.ioDirectory, 'fake_dir');
+    expect(config.webPrefix, '');
+    expect(config.wasmBindgenName, 'wasm_bindgen');
+  });
+
   test('Should be ready when initMock is called', () async {
     final entrypoint = _FakeBaseEntrypoint();
 
