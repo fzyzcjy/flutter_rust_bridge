@@ -35,11 +35,11 @@ void main() {
         'frb_example/flutter_via_create',
         'frb_example/flutter_via_create_native_assets',
       ]) {
-        expect(
-          integrateAppleScaffoldSourceOfTruthPathsForTesting(package),
-          ['.metadata', 'ios', 'macos/Podfile'],
-          reason: package,
-        );
+        expect(integrateAppleScaffoldSourceOfTruthPathsForTesting(package), [
+          '.metadata',
+          'ios',
+          'macos/Podfile',
+        ], reason: package);
 
         expect(
           integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
@@ -64,11 +64,11 @@ void main() {
         'frb_example/flutter_via_integrate',
         'frb_example/flutter_via_integrate_native_assets',
       ]) {
-        expect(
-          integrateAppleScaffoldSourceOfTruthPathsForTesting(package),
-          ['.metadata', 'ios', 'macos/Podfile'],
-          reason: package,
-        );
+        expect(integrateAppleScaffoldSourceOfTruthPathsForTesting(package), [
+          '.metadata',
+          'ios',
+          'macos/Podfile',
+        ], reason: package);
 
         expect(
           integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
@@ -91,11 +91,12 @@ void main() {
       'frb_example/flutter_package',
       'frb_example/flutter_package_native_assets',
     ]) {
-      expect(
-        integrateAppleScaffoldSourceOfTruthPathsForTesting(package),
-        ['.metadata', 'pubspec.yaml', 'example/ios', 'example/macos/Podfile'],
-        reason: package,
-      );
+      expect(integrateAppleScaffoldSourceOfTruthPathsForTesting(package), [
+        '.metadata',
+        'pubspec.yaml',
+        'example/ios',
+        'example/macos/Podfile',
+      ], reason: package);
 
       expect(
         integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
@@ -223,6 +224,110 @@ void main() {
         '${generated.path}/ohos/ohos_device_smoke_main.dart',
       ).readAsStringSync(),
       'void main() {}',
+    );
+  });
+
+  test('retainGeneratedOhosScaffold keeps only generated OHOS files', () async {
+    final tempDir = Directory.systemTemp.createTempSync('frb-retain-ohos-');
+    addTearDown(() => tempDir.deleteSync(recursive: true));
+
+    final original = Directory('${tempDir.path}/original');
+    final generated = Directory('${tempDir.path}/generated');
+    File('${original.path}/generic.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('original');
+    File('${original.path}/ohos/removed.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('removed');
+    File('${original.path}/rust_builder/ohos/marker.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('original-ohos');
+    File('${original.path}/rust_builder/pubspec.yaml')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('original-pubspec');
+    File('${generated.path}/generic.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated');
+    File('${generated.path}/ohos/marker.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-ohos');
+    File('${generated.path}/rust_builder/ohos/marker.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-builder-ohos');
+    File('${generated.path}/rust_builder/pubspec.yaml')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-pubspec');
+
+    await retainGeneratedOhosScaffold(
+      package: 'frb_example/flutter_via_create',
+      originalPackageDir: original.path,
+      generatedPackageDir: generated.path,
+      temporaryDirectory: tempDir.path,
+    );
+
+    expect(
+      File('${generated.path}/generic.txt').readAsStringSync(),
+      'original',
+    );
+    expect(
+      File('${generated.path}/ohos/marker.txt').readAsStringSync(),
+      'generated-ohos',
+    );
+    expect(File('${generated.path}/ohos/removed.txt').existsSync(), isFalse);
+    expect(
+      File('${generated.path}/rust_builder/ohos/marker.txt').readAsStringSync(),
+      'generated-builder-ohos',
+    );
+    expect(
+      File('${generated.path}/rust_builder/pubspec.yaml').readAsStringSync(),
+      'generated-pubspec',
+    );
+  });
+
+  test('retainGeneratedOhosScaffold drops generated node modules', () async {
+    final tempDir = Directory.systemTemp.createTempSync(
+      'frb-retain-ohos-node-modules-',
+    );
+    addTearDown(() => tempDir.deleteSync(recursive: true));
+
+    final original = Directory('${tempDir.path}/original');
+    final generated = Directory('${tempDir.path}/generated');
+    File('${original.path}/generic.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('original');
+    File('${generated.path}/ohos/scaffold.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-ohos');
+    File('${generated.path}/ohos/node_modules/flutter-hvigor-plugin/index.js')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-dependency');
+
+    await retainGeneratedOhosScaffold(
+      package: 'frb_example/flutter_via_integrate',
+      originalPackageDir: original.path,
+      generatedPackageDir: generated.path,
+      temporaryDirectory: tempDir.path,
+    );
+
+    expect(
+      File('${generated.path}/ohos/scaffold.txt').readAsStringSync(),
+      'generated-ohos',
+    );
+    expect(
+      Directory('${generated.path}/ohos/node_modules').existsSync(),
+      false,
+    );
+  });
+
+  test('retainGeneratedOhosScaffold rejects unconfigured packages', () async {
+    await expectLater(
+      retainGeneratedOhosScaffold(
+        package: 'frb_example/flutter_package',
+        originalPackageDir: '/unused/original',
+        generatedPackageDir: '/unused/generated',
+        temporaryDirectory: '/unused/temporary',
+      ),
+      throwsStateError,
     );
   });
 

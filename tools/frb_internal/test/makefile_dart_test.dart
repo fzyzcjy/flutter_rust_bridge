@@ -253,12 +253,97 @@ plain
     );
   });
 
+  test(
+    'internal build runner enables build_cli around every package',
+    () async {
+      final events = <String>[];
+
+      await generateInternalBuildRunnerForTesting(
+        withBuildCli: (action) async {
+          events.add('enable');
+          try {
+            await action();
+          } finally {
+            events.add('disable');
+          }
+        },
+        generatePackage: (package) async => events.add(package),
+      );
+
+      expect(events, [
+        'enable',
+        'frb_dart',
+        'frb_utils',
+        'tools/frb_internal',
+        'disable',
+      ]);
+    },
+  );
+
+  test('build_cli state is restored when internal generation fails', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_build_cli_');
+    addTearDown(() => tempDir.delete(recursive: true));
+    final pubspecs = [
+      File('${tempDir.path}/frb_dart/pubspec.yaml'),
+      File('${tempDir.path}/frb_utils/pubspec.yaml'),
+    ];
+    const disabledContents = '''
+dev_dependencies:
+  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
+  # build_cli: ^2.2.5
+''';
+    for (final pubspec in pubspecs) {
+      await pubspec.parent.create(recursive: true);
+      await pubspec.writeAsString(disabledContents);
+    }
+
+    await expectLater(
+      withBuildCliEnabled(() async {
+        for (final pubspec in pubspecs) {
+          expect(
+            await pubspec.readAsString(),
+            contains('\n  build_cli: ^2.2.5'),
+          );
+        }
+        throw StateError('generation failed');
+      }, repoRootPath: tempDir.path),
+      throwsStateError,
+    );
+    for (final pubspec in pubspecs) {
+      expect(await pubspec.readAsString(), disabledContents);
+    }
+  });
+
+  test('build_cli validates every pubspec before changing files', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_build_cli_');
+    addTearDown(() => tempDir.delete(recursive: true));
+    final firstPubspec = File('${tempDir.path}/frb_dart/pubspec.yaml');
+    final secondPubspec = File('${tempDir.path}/frb_utils/pubspec.yaml');
+    await firstPubspec.parent.create(recursive: true);
+    await secondPubspec.parent.create(recursive: true);
+    const disabledContents = '''
+dev_dependencies:
+  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
+  # build_cli: ^2.2.5
+''';
+    await firstPubspec.writeAsString(disabledContents);
+    await secondPubspec.writeAsString('dev_dependencies:\n');
+
+    await expectLater(
+      withBuildCliEnabled(() async {}, repoRootPath: tempDir.path),
+      throwsStateError,
+    );
+    expect(await firstPubspec.readAsString(), disabledContents);
+  });
+
   test('from-scratch selection keeps every tracked generated output', () {
     expect(
       selectTrackedGeneratedFilesForFromScratchForTesting([
         'frb_example/example/frb_generated.h',
         'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.dart',
         'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/src/rust/third_party/binding.dart',
         'frb_example/example/lib/unrelated_model.g.dart',
         'frb_example/rust_ui/src/frb_generated.rs',
         'frb_rust/src/internal_generated/mod.rs',
@@ -271,7 +356,9 @@ plain
       [
         'frb_example/example/frb_generated.h',
         'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.dart',
         'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/src/rust/third_party/binding.dart',
         'frb_example/example/lib/unrelated_model.g.dart',
         'frb_example/rust_ui/src/frb_generated.rs',
         'frb_rust/src/internal_generated/mod.rs',
@@ -344,6 +431,14 @@ plain
     } finally {
       await tempDir.delete(recursive: true);
     }
+  });
+
+  test('CargoKit build tools always use Dart pub', () {
+    expect(pubGetPackagesAndModesForTesting('frb_example/gallery'), [
+      ('frb_example/gallery', DartMode.flutter),
+      ('frb_example/gallery/rust_builder/cargokit/build_tool', DartMode.dart),
+      ('frb_example/gallery/cargokit/build_tool', DartMode.dart),
+    ]);
   });
 
   test('quickstart smoke OCR normalization ignores punctuation', () {

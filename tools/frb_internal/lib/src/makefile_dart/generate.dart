@@ -400,12 +400,28 @@ void _writeGeneratedDocumentationFile({
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
+    await generateInternalBuildRunnerForTesting(
+      withBuildCli: withBuildCliEnabled,
+      generatePackage: (package) async {
+        await runPubGetIfNotRunYet(package);
+        await exec(
+          'dart run build_runner build --delete-conflicting-outputs',
+          relativePwd: package,
+        );
+        await exec('dart format .', relativePwd: package);
+      },
+    );
+  });
+}
+
+@visibleForTesting
+Future<void> generateInternalBuildRunnerForTesting({
+  required Future<void> Function(Future<void> Function()) withBuildCli,
+  required Future<void> Function(String) generatePackage,
+}) async {
+  await withBuildCli(() async {
     for (final package in kDartBuildRunnerPackages) {
-      await runPubGetIfNotRunYet(package);
-      await exec(
-        'dart run build_runner build --delete-conflicting-outputs',
-        relativePwd: package,
-      );
+      await generatePackage(package);
     }
   });
 }
@@ -431,7 +447,7 @@ Future<void> _formatPackageAfterGenerate(String package) async {
     case 'frb_example/pure_dart':
       await exec('dart format lib test benchmark', relativePwd: package);
     default:
-      return;
+      await exec('dart format .', relativePwd: package);
   }
 }
 
@@ -536,6 +552,23 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           package: config.package,
           originalPackageDir: dirTempOriginal,
           generatedPackageDir: dirPackage,
+        );
+      }
+      normalizePubspecFiles(packageRoot: dirPackage);
+      await runPubGet(config.package, kDartModeOfPackage[config.package]!);
+      await executeFrbCodegen(
+        'generate',
+        relativePwd: config.package,
+        coverage: false,
+        coverageName: 'GenerateRunFrbCodegenCommandIntegrateFinal',
+      );
+      await exec('dart format .', relativePwd: config.package);
+      if (config.includeOhos) {
+        await retainGeneratedOhosScaffold(
+          package: config.package,
+          originalPackageDir: dirTempOriginal,
+          generatedPackageDir: dirPackage,
+          temporaryDirectory: dirTemp,
         );
       }
 

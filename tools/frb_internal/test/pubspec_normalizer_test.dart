@@ -8,7 +8,7 @@ void main() {
     expect(
       normalizePubspecYamlText('''
 environment:
-  sdk: ^3.12.0
+  sdk: ^3.13.0
 '''),
       '''
 environment:
@@ -17,11 +17,11 @@ environment:
     );
   });
 
-  test('pubspec lock normalization keeps Flutter 3.44 app floor stable', () {
+  test('pubspec lock normalization keeps Flutter 3.47 app floor stable', () {
     expect(
       normalizePubspecLockText('''
 sdks:
-  dart: ">=3.12.0 <4.0.0"
+  dart: ">=3.13.0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"
 '''),
       '''
@@ -36,7 +36,7 @@ sdks:
     expect(
       normalizePubspecLockText('''
 sdks:
-  dart: ">=3.10.0-0 <4.0.0"
+  dart: ">=3.11.0-0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"
 '''),
       '''
@@ -70,11 +70,11 @@ description:
       ..createSync(recursive: true);
     File('${package.path}/pubspec.yaml').writeAsStringSync('''
 environment:
-  sdk: ^3.12.0
+  sdk: ^3.13.0
 ''');
     File('${package.path}/pubspec.lock').writeAsStringSync('''
 sdks:
-  dart: ">=3.12.0 <4.0.0"
+  dart: ">=3.13.0 <4.0.0"
 ''');
 
     normalizePubspecs(

@@ -14,60 +14,80 @@ const _kBuildCliPackages = ['frb_dart', 'frb_utils'];
 
 Future<void> generateRunFrbCodegenCommandGenerateFromScratch() async {
   await wrapMaybeSetExitIfChangedRaw(true, () async {
-    await _withBuildCliEnabled(() async {
-      final expectedGeneratedFiles =
-          await deleteTrackedGeneratedFilesForFromScratch();
-      await _prepareFromScratchCodegenDependencies();
-      const generateConfig = GenerateConfig(
-        setExitIfChanged: false,
-        coverage: false,
+    final expectedGeneratedFiles =
+        await deleteTrackedGeneratedFilesForFromScratch();
+    await _prepareFromScratchCodegenDependencies();
+    const generateConfig = GenerateConfig(
+      setExitIfChanged: false,
+      coverage: false,
+    );
+    await generateInternalRust(generateConfig);
+    await generateInternalBuildRunner(generateConfig);
+    for (final package in [
+      'frb_example/pure_dart',
+      'frb_example/pure_dart_pde',
+    ]) {
+      await generateRunFrbCodegenCommandGenerate(
+        GeneratePackageConfig(
+          setExitIfChanged: false,
+          package: package,
+          coverage: false,
+        ),
       );
-      await generateInternalRust(generateConfig);
-      await generateInternalBuildRunner(generateConfig);
-      for (final package in [
-        'frb_example/pure_dart',
-        'frb_example/pure_dart_pde',
-      ]) {
-        await generateRunFrbCodegenCommandGenerate(
-          GeneratePackageConfig(
-            setExitIfChanged: false,
-            package: package,
-            coverage: false,
-          ),
-        );
-      }
-      await generateInternal(generateConfig);
-      await precommitGenerate();
-      verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
-    });
+    }
+    await generateInternal(generateConfig);
+    await precommitGenerate();
+    await _generateExampleBuildRunnerOutputs();
+    verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
   });
 }
 
-Future<void> _withBuildCliEnabled(Future<void> Function() action) async {
-  _setBuildCliEnabled(enabled: true);
-  try {
-    await action();
-  } finally {
-    _setBuildCliEnabled(enabled: false);
+Future<void> _generateExampleBuildRunnerOutputs() async {
+  for (final package in [
+    'frb_example/pure_dart',
+    'frb_example/pure_dart_pde',
+  ]) {
+    await exec(
+      'dart run build_runner build --delete-conflicting-outputs',
+      relativePwd: package,
+    );
+    await exec('dart format lib', relativePwd: package);
   }
 }
 
-void _setBuildCliEnabled({required bool enabled}) {
-  final expected = enabled
-      ? _kDisabledBuildCliDependency
-      : _kBuildCliDependency;
-  final replacement = enabled
-      ? _kBuildCliDependency
-      : _kDisabledBuildCliDependency;
-  for (final package in _kBuildCliPackages) {
-    final pubspec = File(path.join(exec.pwd!, package, 'pubspec.yaml'));
+Future<void> withBuildCliEnabled(
+  Future<void> Function() action, {
+  String? repoRootPath,
+}) async {
+  final effectiveRepoRootPath = repoRootPath ?? exec.pwd!;
+  final originalContents = <File, String?>{
+    for (final package in _kBuildCliPackages)
+      File(path.join(effectiveRepoRootPath, package, 'pubspec.yaml')): null,
+  };
+  for (final pubspec in originalContents.keys) {
     final contents = pubspec.readAsStringSync();
-    if (!contents.contains(expected)) {
+    if (!contents.contains(_kDisabledBuildCliDependency)) {
       throw StateError(
-        'Expected build_cli state not found in ${pubspec.path}.',
+        'Expected disabled build_cli state not found in ${pubspec.path}.',
       );
     }
-    pubspec.writeAsStringSync(contents.replaceFirst(expected, replacement));
+    originalContents[pubspec] = contents;
+  }
+
+  try {
+    for (final entry in originalContents.entries) {
+      entry.key.writeAsStringSync(
+        entry.value!.replaceFirst(
+          _kDisabledBuildCliDependency,
+          _kBuildCliDependency,
+        ),
+      );
+    }
+    await action();
+  } finally {
+    for (final entry in originalContents.entries) {
+      entry.key.writeAsStringSync(entry.value!);
+    }
   }
 }
 
@@ -128,7 +148,10 @@ List<String> _selectTrackedGeneratedFilesForFromScratch(
 ];
 
 bool _isFrbGeneratedFile(String file) =>
-    _fileName(file).startsWith('frb_generated.');
+    _fileName(file).startsWith('frb_generated.') ||
+    (file.startsWith('frb_example/') &&
+        file.contains('/lib/src/rust/') &&
+        file.endsWith('.dart'));
 
 bool _isDartBuilderOutput(String file) =>
     file.endsWith('.g.dart') || file.endsWith('.freezed.dart');
