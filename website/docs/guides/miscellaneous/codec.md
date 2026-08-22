@@ -13,9 +13,9 @@ Currently, we have three codecs:
 Mimic how humans transfer the fields.
 For example (simplified for demonstration),
 create a C struct `struct MyClass { char* name_ptr; int name_arr_len; }` as the intermediate step.
-* **DCO** (Dart_CObject-based):
-Use the [Dart_CObject](https://github.com/dart-lang/sdk/blob/72f6db9261a7d0c96c5fc11ed4bd9f17ccd7d071/runtime/include/dart_native_api.h#L63)
-as the intermediate step.
+* **DCO** (Dart-CObject-based):
+Use [Dart_CObject](https://github.com/dart-lang/sdk/blob/72f6db9261a7d0c96c5fc11ed4bd9f17ccd7d071/runtime/include/dart_native_api.h#L63)
+on native platforms, and direct JavaScript/Wasm values on Web, as the intermediate representation.
 * **SSE** (Simple SErialization): Serialize everything into a byte buffer, and deserialize on the other side.
 
 In addition, CST is implemented for Dart-to-Rust, DCO for Rust-to-Dart,
@@ -25,7 +25,14 @@ Currently, CST+DCO is the default choice. To use SSE instead, specify `#[frb(ser
 (The attribute syntax may be changed in the future, but should be as minimal as changing the name.)
 On the other hand, if `full_dep` is false,
 i.e. users are not required to install full dependencies like LLVM in order to use flutter_rust_bridge,
-then CST+DCO codec cannot be enabled and SSE is used.
+the platform-dependent encoding (PDE) mode is used:
+
+* Native platforms use SSE and the runtime dispatcher.
+* Web uses direct CST+DCO calls for primitive values and primitive lists, including `Uint8List`/`Vec<u8>`.
+* Web falls back to SSE and the runtime dispatcher for other types.
+
+The direct Web path passes typed data through the generated Wasm binding instead of serializing each element into an SSE message buffer.
+Wasm still owns the resulting Rust value, so this does not imply zero-copy transfer.
 
 Some features are not implemented in both codecs for simplicity of implementation.
 For example, Rust-Call-Dart uses DCO+SSE and cannot be changed currently,

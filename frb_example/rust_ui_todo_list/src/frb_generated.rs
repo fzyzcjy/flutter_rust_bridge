@@ -794,55 +794,6 @@ impl SseDecode for usize {
     }
 }
 
-fn pde_ffi_dispatcher_primary_impl(
-    func_id: i32,
-    port: flutter_rust_bridge::for_generated::MessagePort,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        _ => unreachable!(),
-    }
-}
-
-fn pde_ffi_dispatcher_sync_impl(
-    func_id: i32,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        1 => wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        2 => wire__crate__frb_generated__BaseRustState_empty_impl(ptr, rust_vec_len, data_len),
-        3 => wire__crate__app__RustState_add_impl(ptr, rust_vec_len, data_len),
-        4 => wire__crate__app__RustState_auto_accessor_get_filter_impl(ptr, rust_vec_len, data_len),
-        5 => wire__crate__app__RustState_auto_accessor_get_input_text_impl(
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        6 => wire__crate__app__RustState_auto_accessor_set_filter_impl(ptr, rust_vec_len, data_len),
-        7 => wire__crate__app__RustState_auto_accessor_set_input_text_impl(
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
-        8 => wire__crate__app__RustState_filtered_items_impl(ptr, rust_vec_len, data_len),
-        9 => wire__crate__app__RustState_new_impl(ptr, rust_vec_len, data_len),
-        10 => wire__crate__app__RustState_remove_impl(ptr, rust_vec_len, data_len),
-        11 => wire__crate__app__RustState_set_base_state_impl(ptr, rust_vec_len, data_len),
-        12 => wire__crate__app__RustState_toggle_impl(ptr, rust_vec_len, data_len),
-        _ => unreachable!(),
-    }
-}
-
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -1068,6 +1019,65 @@ mod io {
 
     flutter_rust_bridge::frb_generated_boilerplate_io!();
 
+    // Section: dart2rust
+
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            1 => wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            2 => wire__crate__frb_generated__BaseRustState_empty_impl(ptr, rust_vec_len, data_len),
+            3 => wire__crate__app__RustState_add_impl(ptr, rust_vec_len, data_len),
+            4 => wire__crate__app__RustState_auto_accessor_get_filter_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            5 => wire__crate__app__RustState_auto_accessor_get_input_text_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            6 => wire__crate__app__RustState_auto_accessor_set_filter_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            7 => wire__crate__app__RustState_auto_accessor_set_input_text_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            8 => wire__crate__app__RustState_filtered_items_impl(ptr, rust_vec_len, data_len),
+            9 => wire__crate__app__RustState_new_impl(ptr, rust_vec_len, data_len),
+            10 => wire__crate__app__RustState_remove_impl(ptr, rust_vec_len, data_len),
+            11 => wire__crate__app__RustState_set_base_state_impl(ptr, rust_vec_len, data_len),
+            12 => wire__crate__app__RustState_toggle_impl(ptr, rust_vec_len, data_len),
+            _ => unreachable!(),
+        }
+    }
+
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_rust_ui_todo_list_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
         ptr: *const std::ffi::c_void,
@@ -1120,6 +1130,127 @@ mod web {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_web!();
+
+    // Section: dart2rust
+
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            1 => wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            2 => wire__crate__frb_generated__BaseRustState_empty_impl(ptr, rust_vec_len, data_len),
+            3 => wire__crate__app__RustState_add_impl(ptr, rust_vec_len, data_len),
+            4 => wire__crate__app__RustState_auto_accessor_get_filter_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            5 => wire__crate__app__RustState_auto_accessor_get_input_text_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            6 => wire__crate__app__RustState_auto_accessor_set_filter_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            7 => wire__crate__app__RustState_auto_accessor_set_input_text_impl(
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            8 => wire__crate__app__RustState_filtered_items_impl(ptr, rust_vec_len, data_len),
+            9 => wire__crate__app__RustState_new_impl(ptr, rust_vec_len, data_len),
+            10 => wire__crate__app__RustState_remove_impl(ptr, rust_vec_len, data_len),
+            11 => wire__crate__app__RustState_set_base_state_impl(ptr, rust_vec_len, data_len),
+            12 => wire__crate__app__RustState_toggle_impl(ptr, rust_vec_len, data_len),
+            _ => unreachable!(),
+        }
+    }
+    impl CstDecode<bool> for bool {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> bool {
+            self
+        }
+    }
+    impl CstDecode<i32> for i32 {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> i32 {
+            self
+        }
+    }
+    impl CstDecode<u8> for u8 {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> u8 {
+            self
+        }
+    }
+    impl CstDecode<usize> for usize {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> usize {
+            self
+        }
+    }
+    impl CstDecode<Vec<u8>> for Box<[u8]> {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> Vec<u8> {
+            self.into_vec()
+        }
+    }
+    impl CstDecode<bool> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> bool {
+            self.is_truthy()
+        }
+    }
+    impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> i32 {
+            self.unchecked_into_f64() as _
+        }
+    }
+    impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> Vec<u8> {
+            self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
+                .to_vec()
+                .into()
+        }
+    }
+    impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> u8 {
+            self.unchecked_into_f64() as _
+        }
+    }
+    impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> usize {
+            ::std::convert::TryInto::<u64>::try_into(self).unwrap() as _
+        }
+    }
 
     #[wasm_bindgen]
     pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(

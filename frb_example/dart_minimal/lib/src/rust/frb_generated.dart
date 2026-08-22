@@ -99,13 +99,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiMinimalInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+        pdeCall1(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_unit,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_unit,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiMinimalInitAppConstMeta,
       argValues: [],
@@ -122,15 +122,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+        pdeCall2(port_, a, b);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
+      codec: PdeCodec(
+        decodeSuccessDataSse: sse_decode_i_32,
+        decodeErrorDataSse: null,
+        decodeSuccessDataDco: dco_decode_i_32,
+        decodeErrorDataDco: null,
       ),
       constMeta: kCrateApiMinimalMinimalAdderConstMeta,
       argValues: [a, b],

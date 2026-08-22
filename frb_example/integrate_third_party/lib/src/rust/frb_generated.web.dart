@@ -2861,6 +2861,89 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  bool cst_encode_bool(bool raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  double cst_encode_f_32(double raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  double cst_encode_f_64(double raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  int cst_encode_u_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  JSAny cst_encode_isize(PlatformInt64 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_f_32_loose(List<double> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_f_32_strict(Float32List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_f_64_loose(List<double> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_f_64_strict(Float64List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_prim_u_8_strict(Uint8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_usize(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  dynamic pdeCall682(NativePortType port_) {
+    return wire.wire__crate__api__simple__init_app(port_);
+  }
+
+  @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer);
 
@@ -4172,6 +4255,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
+  void wire__crate__api__simple__init_app(NativePortType port_) =>
+      wasmModule.wire__crate__api__simple__init_app(port_);
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
           int ptr) =>
       wasmModule
@@ -4707,6 +4793,8 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
+  external void wire__crate__api__simple__init_app(NativePortType port_);
+
   external void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
           int ptr);

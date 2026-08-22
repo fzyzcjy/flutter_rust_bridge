@@ -2,7 +2,7 @@ pub(crate) mod lifetime;
 pub(crate) mod lockable;
 
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::generator::codec::structs::{pde_web_direct_codec, CodecMode, CodecModePack};
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
@@ -23,6 +23,71 @@ use regex::Regex;
 use std::convert::TryInto;
 
 pub(crate) fn generate_wire_func(
+    func: &MirFunc,
+    context: WireRustGeneratorContext,
+) -> Acc<WireRustOutputCode> {
+    if func.codec_mode_pack.all().contains(&CodecMode::Pde) && pde_web_direct_codec(func) {
+        return generate_pde_wire_func(func, context);
+    }
+
+    generate_wire_func_inner(func, context)
+}
+
+fn generate_pde_wire_func(
+    func: &MirFunc,
+    context: WireRustGeneratorContext,
+) -> Acc<WireRustOutputCode> {
+    let mut io_func = func.clone();
+    io_func.codec_mode_pack = target_codec_mode_pack(&func.codec_mode_pack, false);
+    let io_output = generate_wire_func_inner(&io_func, context);
+    let mut io = io_output.common;
+    io += io_output.io;
+
+    let mut web_func = func.clone();
+    web_func.codec_mode_pack = target_codec_mode_pack(&func.codec_mode_pack, true);
+    let web_output = generate_wire_func_inner(&web_func, context);
+    let mut web = web_output.common;
+    web += web_output.web;
+    if func.codec_mode_pack.dart2rust == CodecMode::Pde {
+        for extern_func in &mut web.extern_funcs {
+            extern_func.needs_ffigen = false;
+        }
+    }
+
+    Acc {
+        common: Default::default(),
+        io,
+        web,
+    }
+}
+
+fn target_codec_mode_pack(
+    codec_mode_pack: &CodecModePack,
+    use_direct_codec: bool,
+) -> CodecModePack {
+    CodecModePack {
+        dart2rust: if codec_mode_pack.dart2rust == CodecMode::Pde {
+            if use_direct_codec {
+                CodecMode::Cst
+            } else {
+                CodecMode::Sse
+            }
+        } else {
+            codec_mode_pack.dart2rust
+        },
+        rust2dart: if codec_mode_pack.rust2dart == CodecMode::Pde {
+            if use_direct_codec {
+                CodecMode::Dco
+            } else {
+                CodecMode::Sse
+            }
+        } else {
+            codec_mode_pack.rust2dart
+        },
+    }
+}
+
+fn generate_wire_func_inner(
     func: &MirFunc,
     context: WireRustGeneratorContext,
 ) -> Acc<WireRustOutputCode> {

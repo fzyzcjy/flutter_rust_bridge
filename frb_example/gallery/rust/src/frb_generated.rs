@@ -172,32 +172,6 @@ impl SseDecode for bool {
     }
 }
 
-fn pde_ffi_dispatcher_primary_impl(
-    func_id: i32,
-    port: flutter_rust_bridge::for_generated::MessagePort,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        1 => wire__crate__api__mandelbrot__draw_mandelbrot_impl(port, ptr, rust_vec_len, data_len),
-        _ => unreachable!(),
-    }
-}
-
-fn pde_ffi_dispatcher_sync_impl(
-    func_id: i32,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        _ => unreachable!(),
-    }
-}
-
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -322,6 +296,39 @@ mod io {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_io!();
+
+    // Section: dart2rust
+
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            1 => wire__crate__api__mandelbrot__draw_mandelbrot_impl(
+                port,
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
 }
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
@@ -346,6 +353,89 @@ mod web {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_web!();
+
+    // Section: dart2rust
+
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            1 => wire__crate__api__mandelbrot__draw_mandelbrot_impl(
+                port,
+                ptr,
+                rust_vec_len,
+                data_len,
+            ),
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
+    impl CstDecode<f64> for f64 {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> f64 {
+            self
+        }
+    }
+    impl CstDecode<i32> for i32 {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> i32 {
+            self
+        }
+    }
+    impl CstDecode<u8> for u8 {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> u8 {
+            self
+        }
+    }
+    impl CstDecode<Vec<u8>> for Box<[u8]> {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> Vec<u8> {
+            self.into_vec()
+        }
+    }
+    impl CstDecode<f64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> f64 {
+            self.unchecked_into_f64() as _
+        }
+    }
+    impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> i32 {
+            self.unchecked_into_f64() as _
+        }
+    }
+    impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> Vec<u8> {
+            self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
+                .to_vec()
+                .into()
+        }
+    }
+    impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> u8 {
+            self.unchecked_into_f64() as _
+        }
+    }
 }
 #[cfg(target_family = "wasm")]
 pub use web::*;
