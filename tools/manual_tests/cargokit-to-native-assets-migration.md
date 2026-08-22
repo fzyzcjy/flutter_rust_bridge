@@ -48,22 +48,7 @@ git submodule update --init --recursive
 
 ## Steps
 
-1. Compare this manual test with the migration guide before running it.
-
-   ```bash
-   sed -n '1,120p' website/docs/manual/integrate/05-migrate-cargokit-to-native-assets.md
-   sed -n '/## Steps/,/## Expected Result/p' tools/manual_tests/cargokit-to-native-assets-migration.md
-   ```
-
-   Confirm that the remaining steps cover every documented action in the same order:
-
-   - Run Native Assets integration.
-   - Check the hook and Rust crate requirements.
-   - Remove the old Cargokit integration.
-   - Refresh dependencies and regenerate the bridge.
-   - Test the supported platform.
-
-   Stop and update this manual test if they do not align.
+1. Confirm that `tools/manual_tests/cargokit-to-native-assets-migration.md` is aligned with `website/docs/manual/integrate/05-migrate-cargokit-to-native-assets.md`.
 
 2. Create a default Cargokit app with the current code generator.
 
