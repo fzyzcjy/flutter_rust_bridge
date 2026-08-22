@@ -60,6 +60,19 @@ Future<void> main({
           rustAutoOpaqueArgOwnTwinNormal(arg: first, expect: 10),
         );
       });
+
+      test('failed duplicate move preserves the owned argument', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 10);
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinNormal(a: obj, b: obj),
+          throwsA(isA<StateError>()),
+        );
+        expect(obj.isDisposed, false);
+        await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 10),
+        );
+      });
     });
 
     group('arg ref', () {

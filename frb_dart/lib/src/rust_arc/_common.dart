@@ -40,8 +40,11 @@ class RustArc<T> extends Droppable {
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  RustArcTransfer<T> prepareTransfer({required bool move}) =>
-      RustArcTransfer._(arc: move ? this : clone(), rollback: !move);
+  RustArcTransfer<T> prepareTransfer({required bool move}) => RustArcTransfer._(
+    arc: move ? this : clone(),
+    source: this,
+    rollback: !move,
+  );
 
   /// Mimic `std::sync::Arc::into_raw`
   // Almost 1:1 implementation to `std::sync::Arc::into_raw` impl.
@@ -58,14 +61,23 @@ class RustArc<T> extends Droppable {
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class RustArcTransfer<T> {
   final RustArc<T> _arc;
+  final RustArc<T> _source;
   final bool _rollback;
 
-  RustArcTransfer._({required RustArc<T> arc, required bool rollback})
-    : _arc = arc,
-      _rollback = rollback;
+  RustArcTransfer._({
+    required RustArc<T> arc,
+    required RustArc<T> source,
+    required bool rollback,
+  }) : _arc = arc,
+       _source = source,
+       _rollback = rollback;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   int get ptr => _arc._ptr;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  bool conflictsWith(RustArcTransfer other) =>
+      !_rollback && !other._rollback && identical(_source, other._source);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void commit() => _arc.intoRaw();
