@@ -110,3 +110,32 @@ fn merge_vec_by_pair<T>(vec: &mut Vec<T>, merger: impl Fn(&T, &T) -> Option<T>) 
 
     while act_one_round() {}
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Repeats directional pair merges until no eligible pair remains.
+    #[test]
+    fn repeatedly_merges_pairs_until_stable() {
+        let mut values = vec![1, 2, 3, 4];
+
+        merge_vec_by_pair(&mut values, |left, right| match (*left, *right) {
+            (1, 2) => Some(3),
+            (3, 4) => Some(7),
+            _ => None,
+        });
+
+        assert_eq!(values, vec![3, 7]);
+    }
+
+    /// Retains every value when no directional pair can merge.
+    #[test]
+    fn retains_values_when_no_pair_merges() {
+        let mut values = vec![1, 2];
+
+        merge_vec_by_pair(&mut values, |_, _| None);
+
+        assert_eq!(values, vec![1, 2]);
+    }
+}

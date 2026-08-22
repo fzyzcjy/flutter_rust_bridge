@@ -190,3 +190,28 @@ class _SyncTextFieldState extends State<SyncTextField> {
     "###
     .to_owned()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{generate_dart_boilerplate, generate_rust_boilerplate};
+
+    /// Includes the Rust UI state and notification bridge definitions.
+    #[test]
+    fn generates_rust_ui_boilerplate() {
+        let code = generate_rust_boilerplate();
+
+        assert!(code.contains("pub struct BaseRustState"));
+        assert!(code.contains("create_notify_ui_stream"));
+        assert!(code.contains("on_mutation"));
+    }
+
+    /// Includes the Dart app bootstrap and synchronized text field.
+    #[test]
+    fn generates_dart_ui_boilerplate() {
+        let code = generate_dart_boilerplate();
+
+        assert!(code.contains("Future<void> runRustApp"));
+        assert!(code.contains("class SyncTextField"));
+        assert!(code.contains("BaseRustState(onMutate"));
+    }
+}

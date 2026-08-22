@@ -22,3 +22,45 @@ fn transform_function(function: &mut HirFlatFunction) -> anyhow::Result<()> {
 }
 
 const FRB_OVERRIDE_PREFIX: &str = "frb_override_";
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
+    use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
+    use crate::utils::namespace::Namespace;
+    use syn::parse_quote;
+
+    fn function(source: syn::ItemFn) -> HirFlatFunction {
+        HirFlatFunction {
+            namespace: Namespace::new_raw("crate::api".to_owned()),
+            owner: HirFlatFunctionOwner::Function,
+            sources: vec![],
+            item_fn: GeneralizedItemFn::ItemFn(source),
+        }
+    }
+
+    /// Adds the public name and provenance for override functions.
+    #[test]
+    fn transforms_override_function() {
+        let mut parsed = function(parse_quote!(
+            pub fn frb_override_run() {}
+        ));
+        transform_function(&mut parsed).unwrap();
+
+        assert_eq!(parsed.sources, vec![HirGenerationSource::FromFrbOverride]);
+        assert_eq!(parsed.name_for_dedup(), "run");
+    }
+
+    /// Leaves ordinary function metadata untouched.
+    #[test]
+    fn leaves_ordinary_function_untouched() {
+        let mut parsed = function(parse_quote!(
+            pub fn run() {}
+        ));
+        transform_function(&mut parsed).unwrap();
+
+        assert!(parsed.sources.is_empty());
+        assert!(parsed.item_fn.attrs().is_empty());
+    }
+}

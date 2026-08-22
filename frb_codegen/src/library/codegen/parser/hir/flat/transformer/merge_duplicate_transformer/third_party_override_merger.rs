@@ -52,3 +52,32 @@ fn merge_core<T: Clone>(
         ans
     })
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Merges only third-party overrides and applies the supplied mutation to the base value.
+    #[test]
+    fn merges_third_party_override_and_preserves_base_value() {
+        let merged = merge_core(
+            &"base".to_owned(),
+            &[HirGenerationSource::MoveFromCrateThirdPartyFolder],
+            |value| value.push_str("+override"),
+        );
+
+        assert_eq!(merged.as_deref(), Some("base+override"));
+    }
+
+    /// Rejects non-third-party sources without running the supplied mutation.
+    #[test]
+    fn does_not_merge_non_third_party_override() {
+        let merged = merge_core(
+            &"base".to_owned(),
+            &[HirGenerationSource::Normal],
+            |value| value.push_str("+override"),
+        );
+
+        assert_eq!(merged, None);
+    }
+}
