@@ -105,8 +105,8 @@ fn compute_third_party_crate_names(
         .iter()
         .map(|x| x.path()[0])
         .filter(|x| *x != CrateName::SELF_CRATE)
-        .dedup()
         .sorted()
+        .dedup()
         .map(|x| CrateName::new(x.to_owned()))
         .collect_vec()
 }
