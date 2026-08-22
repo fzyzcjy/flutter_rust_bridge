@@ -55,6 +55,7 @@ macro_rules! base_arc_generate_tests {
             (arc, dropped)
         }
 
+        /// Drops the only reference and releases its value.
         #[test]
         fn simple_drop() {
             let (a, dropped) = create();
@@ -64,6 +65,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
+        /// Keeps the value alive until every clone is dropped.
         #[test]
         fn simple_clone() {
             let (a, dropped) = create();
@@ -79,6 +81,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
+        /// Unwraps the value when it has one reference.
         #[test]
         fn try_unwrap_when_1_ref_should_succeed() {
             let (a, dropped) = create();
@@ -89,6 +92,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
+        /// Refuses to unwrap while another reference exists.
         #[test]
         fn try_unwrap_when_2_ref_should_fail() {
             let (a, dropped) = create();
@@ -99,6 +103,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
+        /// Returns the value from into_inner with one reference.
         #[test]
         fn into_inner_when_1_ref_should_succeed() {
             let (a, dropped) = create();
@@ -109,6 +114,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
+        /// Returns None from into_inner while another reference exists.
         #[test]
         fn into_inner_when_2_ref_should_fail() {
             let (a, dropped) = create();
@@ -119,6 +125,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
+        /// Recovers a sole reference from its raw representation.
         #[test]
         fn from_raw_and_into_raw_simple() {
             let (a, dropped) = create();
@@ -132,6 +139,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
+        /// Recovers a raw reference without disturbing its clone.
         #[test]
         fn from_raw_and_into_raw_with_another_ref() {
             let (a, dropped) = create();
@@ -152,6 +160,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
+        /// Balances an explicit strong-count increment and decrement.
         #[test]
         fn increment_strong_count_and_decrement_strong_count() {
             let (a, dropped) = create();
@@ -186,6 +195,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
+        /// Releases the final raw reference after decrementing its count.
         #[test]
         fn simple_decrement_strong_count() {
             let (a, dropped) = create();
