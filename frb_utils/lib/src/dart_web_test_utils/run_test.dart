@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, implementation_imports
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -67,6 +68,11 @@ Future<void> executeTestWeb(TestWebConfig config) async {
 
   print('executeTestWeb: launchBrowser');
   browser = await _launchBrowser(baseAddr: baseAddr, headless: config.headless);
+  Timer(const Duration(minutes: 10), () async {
+    print('executeTestWeb: timed out waiting for the test result');
+    await browser?.close();
+    exit(1);
+  });
 }
 
 Handler _createWebSocketHandler({

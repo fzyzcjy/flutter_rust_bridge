@@ -97,20 +97,36 @@ TestRustPackageConfig parseTestRustPackageConfig(List<String> args) {
   return _$parseTestRustPackageConfigResult(result);
 }
 
-TestDartConfig _$parseTestDartConfigResult(ArgResults result) => TestDartConfig(
-  package: convertConfigPackage(result['package'] as String),
-  wasm: result['wasm'] as bool,
-);
+TestDartConfig _$parseTestDartConfigResult(ArgResults result) =>
+    TestDartConfig(package: convertConfigPackage(result['package'] as String));
 
-ArgParser _$populateTestDartConfigParser(ArgParser parser) => parser
-  ..addOption('package')
-  ..addFlag('wasm');
+ArgParser _$populateTestDartConfigParser(ArgParser parser) =>
+    parser..addOption('package');
 
 final _$parserForTestDartConfig = _$populateTestDartConfigParser(ArgParser());
 
 TestDartConfig parseTestDartConfig(List<String> args) {
   final result = _$parserForTestDartConfig.parse(args);
   return _$parseTestDartConfigResult(result);
+}
+
+TestDartWebConfig _$parseTestDartWebConfigResult(ArgResults result) =>
+    TestDartWebConfig(
+      package: convertConfigPackage(result['package'] as String),
+      wasm: result['wasm'] as bool,
+    );
+
+ArgParser _$populateTestDartWebConfigParser(ArgParser parser) => parser
+  ..addOption('package')
+  ..addFlag('wasm');
+
+final _$parserForTestDartWebConfig = _$populateTestDartWebConfigParser(
+  ArgParser(),
+);
+
+TestDartWebConfig parseTestDartWebConfig(List<String> args) {
+  final result = _$parserForTestDartWebConfig.parse(args);
+  return _$parseTestDartWebConfigResult(result);
 }
 
 TestDartNativeConfig _$parseTestDartNativeConfigResult(ArgResults result) =>

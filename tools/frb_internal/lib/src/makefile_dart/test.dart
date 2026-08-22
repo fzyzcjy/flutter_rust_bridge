@@ -52,8 +52,8 @@ List<Command<void>> createCommands() {
     SimpleConfigCommand(
       'test-dart-web',
       testDartWeb,
-      _$populateTestDartConfigParser,
-      _$parseTestDartConfigResult,
+      _$populateTestDartWebConfigParser,
+      _$parseTestDartWebConfigResult,
     ),
     SimpleConfigCommand(
       'test-dart-valgrind',
@@ -126,9 +126,17 @@ class TestRustPackageConfig {
 class TestDartConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
+
+  const TestDartConfig({required this.package});
+}
+
+@CliOptions()
+class TestDartWebConfig {
+  @CliOption(convert: convertConfigPackage)
+  final String package;
   final bool wasm;
 
-  const TestDartConfig({required this.package, required this.wasm});
+  const TestDartWebConfig({required this.package, required this.wasm});
 }
 
 @CliOptions()
@@ -545,7 +553,7 @@ String getCoverageDir(String lang) {
   return ans;
 }
 
-Future<void> testDartWeb(TestDartConfig config) async {
+Future<void> testDartWeb(TestDartWebConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
   final package = config.package;

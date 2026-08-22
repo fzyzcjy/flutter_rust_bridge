@@ -64,6 +64,8 @@ void main() {
       expect(html, contains('type="module"'));
       expect(html, contains('main.dart.mjs'));
       expect(html, contains('main.dart.wasm'));
+      expect(html, contains('catch (error)'));
+      expect(html, contains('sendTestResult(false)'));
       expect(html, isNot(contains('main.dart.js')));
     });
   });

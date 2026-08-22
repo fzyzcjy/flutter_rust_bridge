@@ -110,9 +110,14 @@ const kWasmEntrypointScript = r'''
   <script type="module">
     import { compile } from "./main.dart.mjs";
 
-    const response = await fetch("./main.dart.wasm");
-    const app = await compile(await response.arrayBuffer());
-    const instance = await app.instantiate({});
-    instance.invokeMain();
+    try {
+      const response = await fetch("./main.dart.wasm");
+      const app = await compile(await response.arrayBuffer());
+      const instance = await app.instantiate({});
+      instance.invokeMain();
+    } catch (error) {
+      console.error(error);
+      await globalThis.sendTestResult(false);
+    }
   </script>
 ''';
