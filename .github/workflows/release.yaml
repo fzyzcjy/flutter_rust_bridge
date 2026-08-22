@@ -17,7 +17,6 @@ jobs:
   build-upload:
     name: Build and Upload Binaries
     runs-on: ${{ matrix.os }}
-    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
@@ -87,6 +86,7 @@ jobs:
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.name }}
+          if-no-files-found: error
   upload-artifacts:
     name: Add Build Artifacts to Release
     needs: build-upload
