@@ -707,22 +707,36 @@ plain
     );
 
     test(
-      'uses local Dart manifest version as pub.dev target version',
+      'uses each local Dart manifest version as its pub.dev target',
       () async {
         final rustVersion = getWorkspaceRustVersion();
-        final dartVersion = getFrbDartVersion();
 
         final statuses = await fetchReleasePackageStatuses(
+          dartPackageManifestFetcher: (package) => switch (package) {
+            'frb_dart' =>
+              '''
+name: flutter_rust_bridge
+version: 9.9.9
+''',
+            'frb_hooks' =>
+              '''
+name: flutter_rust_bridge_hooks
+version: 9.9.8
+''',
+            _ => throw StateError('Unexpected Dart package: $package'),
+          },
           fetcher: (uri) async {
             if (uri.host == 'crates.io') {
               return {
                 'crate': {'max_version': rustVersion},
               };
             }
+            final version = uri.path.endsWith('/flutter_rust_bridge_hooks')
+                ? '9.9.8'
+                : '9.9.9';
             return {
-              'latest': {'version': '2.12.0'},
               'versions': [
-                {'version': dartVersion},
+                {'version': version},
               ],
             };
           },
@@ -733,8 +747,11 @@ plain
         );
         expect(pubDevStatuses, hasLength(2));
         expect(
-          pubDevStatuses.map((status) => status.releasedVersion),
-          everyElement(dartVersion),
+          pubDevStatuses.map((status) => (status.name, status.manifestVersion)),
+          [
+            ('flutter_rust_bridge', '9.9.9'),
+            ('flutter_rust_bridge_hooks', '9.9.8'),
+          ],
         );
         expect(
           pubDevStatuses.map((status) => status.isReleased),

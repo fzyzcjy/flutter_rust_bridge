@@ -7,10 +7,9 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart'
-    show getFrbDartVersion;
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:toml/toml.dart';
+import 'package:yaml/yaml.dart';
 
 part 'released_version.g.dart';
 
@@ -68,13 +67,19 @@ class ReleasePackageStatus {
 }
 
 typedef ReleaseMetadataFetcher = Future<Map<String, dynamic>> Function(Uri uri);
+typedef DartPackageManifestFetcher = String Function(String package);
 
 Future<List<ReleasePackageStatus>> fetchReleasePackageStatuses({
   String? targetVersion,
   ReleaseMetadataFetcher fetcher = _defaultReleaseMetadataFetcher,
+  DartPackageManifestFetcher dartPackageManifestFetcher =
+      _defaultDartPackageManifestFetcher,
 }) async {
   final rustVersion = targetVersion ?? getWorkspaceRustVersion();
-  final dartVersion = targetVersion ?? getFrbDartVersion();
+  final dartPackages = [
+    for (final package in kDartPublishedPackages)
+      parseDartPackageManifest(dartPackageManifestFetcher(package)),
+  ];
 
   return [
     for (final package in [
@@ -91,14 +96,14 @@ Future<List<ReleasePackageStatus>> fetchReleasePackageStatuses({
           fetcher: fetcher,
         ),
       ),
-    for (final package in ['flutter_rust_bridge', 'flutter_rust_bridge_hooks'])
+    for (final package in dartPackages)
       ReleasePackageStatus(
         registry: 'pub.dev',
-        name: package,
-        manifestVersion: dartVersion,
+        name: package.name,
+        manifestVersion: targetVersion ?? package.version,
         releasedVersion: await fetchPubDevReleasedVersion(
-          package,
-          targetVersion: dartVersion,
+          package.name,
+          targetVersion: targetVersion ?? package.version,
           fetcher: fetcher,
         ),
       ),
@@ -149,6 +154,14 @@ Set<String> pubDevVersions(Map<String, dynamic> json) =>
         .map((version) => version['version'])
         .whereType<String>()
         .toSet();
+
+({String name, String version}) parseDartPackageManifest(String raw) {
+  final yaml = loadYaml(raw) as Map<Object?, Object?>;
+  return (name: yaml['name'] as String, version: yaml['version'] as String);
+}
+
+String _defaultDartPackageManifestFetcher(String package) =>
+    File('${exec.pwd}$package/pubspec.yaml').readAsStringSync();
 
 Future<Map<String, dynamic>> _defaultReleaseMetadataFetcher(Uri uri) async {
   final response = await Dio().getUri<Map<String, dynamic>>(uri);
