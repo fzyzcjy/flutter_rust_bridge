@@ -15,6 +15,27 @@ void main() {
     expect(entrypoint.api, isA<_FakeApi>());
   });
 
+  test(
+    'disposing a mock entrypoint clears state and permits reinitialization',
+    () {
+      final entrypoint = _FakeBaseEntrypoint();
+      final firstApi = _FakeApi();
+
+      // ignore: invalid_use_of_protected_member
+      entrypoint.initMockImpl(api: firstApi);
+      // ignore: invalid_use_of_protected_member
+      entrypoint.disposeImpl();
+
+      expect(entrypoint.initialized, isFalse);
+      expect(() => entrypoint.api, throwsA(isA<StateError>()));
+
+      final secondApi = _FakeApi();
+      // ignore: invalid_use_of_protected_member
+      entrypoint.initMockImpl(api: secondApi);
+      expect(entrypoint.api, same(secondApi));
+    },
+  );
+
   test('Codegen version check', () {
     final entrypoint = _FakeBaseEntrypointWithCodegenVersion('999.999.999');
 
