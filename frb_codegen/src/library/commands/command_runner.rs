@@ -238,8 +238,133 @@ pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    #[cfg(not(windows))]
+    /// Builds a POSIX shell command string for ordinary quoted arguments.
+    fn builds_posix_shell_arguments_with_debug_quoting() {
+        let actual = call_shell_info(&[
+            PathBuf::from("tool"),
+            PathBuf::from("argument with spaces"),
+            PathBuf::from("quote\"and\\slash"),
+        ]);
+
+        assert_eq!(
+            actual,
+            CommandInfo {
+                program: "sh".to_owned(),
+                args: vec![
+                    "-c".to_owned(),
+                    "\"tool\" \"argument with spaces\" \"quote\\\"and\\\\slash\"".to_owned(),
+                ],
+            }
+        );
+    }
+
+    #[cfg(unix)]
+    #[test]
+    /// Preserves shell metacharacters and newlines as literal executable arguments.
+    fn preserves_shell_metacharacters_as_literal_arguments() -> anyhow::Result<()> {
+        use std::fs;
+        use std::os::unix::ffi::OsStringExt;
+        use std::os::unix::fs::PermissionsExt;
+        use tempfile::tempdir;
+
+        let directory = tempdir()?;
+        let capture_path = directory.path().join("capture.sh");
+        let output_path = directory.path().join("arguments.bin");
+        fs::write(
+            &capture_path,
+            "#!/bin/sh\nprintf '%s\\0' \"$@\" > \"$CAPTURE_OUTPUT\"\n",
+        )?;
+        fs::set_permissions(&capture_path, fs::Permissions::from_mode(0o755))?;
+
+        let expected = vec![
+            PathBuf::from("dollar:$HOME"),
+            PathBuf::from("substitution:$(printf command)"),
+            PathBuf::from("backtick:`printf tick`"),
+            PathBuf::from("quote:\"literal\""),
+            PathBuf::from("newline:first\nsecond"),
+        ];
+        let options = ExecuteCommandOptions {
+            envs: Some(HashMap::from([(
+                "CAPTURE_OUTPUT".to_owned(),
+                output_path.to_string_lossy().into_owned(),
+            )])),
+            ..Default::default()
+        };
+        let command = std::iter::once(capture_path)
+            .chain(expected.iter().cloned())
+            .collect_vec();
+
+        check_exit_code(&call_shell(&command, None, Some(options))?)?;
+
+        let actual = fs::read(output_path)?
+            .split(|byte| *byte == 0)
+            .filter(|argument| !argument.is_empty())
+            .map(|argument| PathBuf::from(std::ffi::OsString::from_vec(argument.to_vec())))
+            .collect_vec();
+        assert_eq!(actual, expected);
+        Ok(())
+    }
+
+    #[test]
+    /// Accepts an output with a successful exit status.
+    fn accepts_successful_exit_status() {
+        assert!(check_exit_code(&Output {
+            status: success_exit_status(),
+            stdout: Vec::new(),
+            stderr: Vec::new(),
+        })
+        .is_ok());
+    }
+
+    #[test]
+    /// Returns stderr context for an unsuccessful exit status.
+    fn rejects_unsuccessful_exit_status() {
+        let error = check_exit_code(&Output {
+            status: failure_exit_status(),
+            stdout: Vec::new(),
+            stderr: b"missing tool".to_vec(),
+        })
+        .unwrap_err();
+
+        assert!(error
+            .to_string()
+            .contains("Command execution failed: missing tool"));
+    }
+
+    #[cfg(unix)]
+    fn success_exit_status() -> std::process::ExitStatus {
+        use std::os::unix::process::ExitStatusExt;
+
+        std::process::ExitStatus::from_raw(0)
+    }
+
+    #[cfg(windows)]
+    fn success_exit_status() -> std::process::ExitStatus {
+        use std::os::windows::process::ExitStatusExt;
+
+        std::process::ExitStatus::from_raw(0)
+    }
+
+    #[cfg(unix)]
+    fn failure_exit_status() -> std::process::ExitStatus {
+        use std::os::unix::process::ExitStatusExt;
+
+        std::process::ExitStatus::from_raw(1 << 8)
+    }
+
+    #[cfg(windows)]
+    fn failure_exit_status() -> std::process::ExitStatus {
+        use std::os::windows::process::ExitStatusExt;
+
+        std::process::ExitStatus::from_raw(1)
+    }
+
     #[test]
     #[cfg(windows)]
+    /// Builds the PowerShell invocation for the complete build-web argument list.
     fn test_call_shell_info() {
         let params = [
             "fvm",
@@ -265,6 +390,7 @@ mod tests {
     }
     #[test]
     #[cfg(windows)]
+    /// Escapes PowerShell argument metacharacters in a single token.
     fn test_call_shell_info_escapes() {
         let params = ["abc\"def\\ghi jkl"];
         let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
@@ -280,6 +406,7 @@ mod tests {
         assert_eq!(actual, expect);
     }
     #[test]
+    /// Escapes spaces, quotes, and backslashes for PowerShell tokens.
     fn test_windows_escape_for_powershell() {
         let section_in =
             "detects regression \"errors\" when tests are run \\ on non_windows systems";
