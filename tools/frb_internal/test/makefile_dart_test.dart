@@ -258,7 +258,9 @@ plain
       selectTrackedGeneratedFilesForFromScratchForTesting([
         'frb_example/example/frb_generated.h',
         'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.dart',
         'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/src/rust/third_party/binding.dart',
         'frb_example/example/lib/unrelated_model.g.dart',
         'frb_example/rust_ui/src/frb_generated.rs',
         'frb_rust/src/internal_generated/mod.rs',
@@ -271,7 +273,9 @@ plain
       [
         'frb_example/example/frb_generated.h',
         'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.dart',
         'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/src/rust/third_party/binding.dart',
         'frb_example/example/lib/unrelated_model.g.dart',
         'frb_example/rust_ui/src/frb_generated.rs',
         'frb_rust/src/internal_generated/mod.rs',

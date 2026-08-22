@@ -142,7 +142,10 @@ List<String> _selectTrackedGeneratedFilesForFromScratch(
 ];
 
 bool _isFrbGeneratedFile(String file) =>
-    _fileName(file).startsWith('frb_generated.');
+    _fileName(file).startsWith('frb_generated.') ||
+    (file.startsWith('frb_example/') &&
+        file.contains('/lib/src/rust/') &&
+        file.endsWith('.dart'));
 
 bool _isDartBuilderOutput(String file) =>
     file.endsWith('.g.dart') || file.endsWith('.freezed.dart');
