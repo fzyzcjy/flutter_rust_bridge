@@ -40,6 +40,34 @@ Future<void> main({bool skipRustLibInit = false}) async {
           throwsA(isA<DroppableDisposedException>()),
         );
       });
+
+      test('failed encoding preserves an earlier owned argument', () async {
+        final first = await rustAutoOpaqueReturnOwnTwinNormal(initial: 10);
+        final disposed = await rustAutoOpaqueReturnOwnTwinNormal(initial: 20);
+        disposed.dispose();
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinNormal(a: first, b: disposed),
+          throwsA(isA<DroppableDisposedException>()),
+        );
+        expect(first.isDisposed, false);
+        await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: first, expect: 10),
+        );
+      });
+
+      test('failed duplicate move preserves the owned argument', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 10);
+
+        await expectLater(
+          () => rustAutoOpaqueTwoArgsTwinNormal(a: obj, b: obj),
+          throwsA(isA<StateError>()),
+        );
+        expect(obj.isDisposed, false);
+        await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 10),
+        );
+      });
     });
 
     group('arg ref', () {
