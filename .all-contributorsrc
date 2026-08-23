@@ -1270,6 +1270,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "stepangfil",
+      "name": "Stepan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13966310?v=4",
+      "profile": "https://github.com/stepangfil",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
