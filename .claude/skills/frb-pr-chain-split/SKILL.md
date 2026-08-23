@@ -50,29 +50,45 @@ Classify every suspicious change before moving commits:
 master <- predecessor-a <- predecessor-b <- main-task
 ```
 
-- Standard `gh` has no `gh pr chain` subcommand. Construct the chain with branch ancestry and GitHub PR base fields.
-- For an unpublished main branch, branch it directly from the final predecessor.
-- For an already published main PR:
-    - create a timestamped backup tag before non-trivial history work;
-    - preserve published history by default;
-    - merge the final predecessor branch with `git merge --no-ff`;
-    - resolve overlaps to preserve the already reviewed main-task result;
-    - push normally instead of force-pushing;
-    - change the main PR base to the final predecessor branch.
-- Create and connect PRs with commands shaped like:
+- Use GitHub's official `github/gh-stack` extension. It provides `gh stack`, not `gh pr chain`.
+- Use `gh stack` for every stack operation: initialization, restructuring, linking, submission, synchronization, rebasing, pushing, and verification.
+- Never construct or maintain a stack with `gh pr create --base`, `gh pr edit --base`, direct API base edits, or branch ancestry alone.
+- Git commands may prepare the commits and linear branch ancestry, but the result is not complete until `gh stack` creates or updates the native GitHub stack object.
+- Check and install the extension when necessary. The extension requires `gh` 2.0 or later; a missing `gh stack` command normally means the extension is absent, not that core `gh` is outdated.
 
 ```bash
-git push -u origin <predecessor-branch>
-gh pr create --base <previous-branch> --head <predecessor-branch> --title "<title>" --body ""
-gh pr edit <main-pr-number> --base <final-predecessor-branch>
+gh stack --help
+gh extension install github/gh-stack
 ```
 
-- Verify both representations of the chain:
+- For an unpublished main branch, branch it directly from the final predecessor.
+- Initialize and submit a new local stack with `gh stack init` and `gh stack submit`.
+- For an already published main PR:
+    - create a timestamped backup tag before non-trivial history work;
+    - record the original final tree and three-dot PR diff;
+    - restack the main branch onto the final predecessor with a fully linear history;
+    - do not introduce merge commits because native GitHub stacks require linear ancestry;
+    - compare the rebuilt tree and PR delta with the recorded originals before pushing;
+    - use `--force-with-lease` only after those checks when published history must be rewritten.
+- Adopt existing branches or PRs with `gh stack link`. It pushes branches, creates missing PRs, corrects their base branches, and creates the native GitHub stack object.
+- Create and connect a new stack with commands shaped like:
+
+```bash
+gh stack init --base master <predecessor-branch> <main-task-branch>
+gh stack submit
+```
+
+- Adopt already prepared branches or existing PRs with:
+
+```bash
+gh stack link --base master <predecessor-branch> <main-task-branch>
+```
+
+- Verify local ancestry, native stack metadata, and PR bases:
 
 ```bash
 git merge-base --is-ancestor <predecessor-branch> <main-task-branch>
-gh pr view <predecessor-pr-number> --json headRefName,baseRefName,state
-gh pr view <main-pr-number> --json headRefName,baseRefName,state
+gh stack view --json
 ```
 
 - Compare three-dot diffs after constructing the chain:
@@ -117,7 +133,8 @@ gh workflow run ci.yaml --ref <predecessor-branch> -f 'ci_filter=<filter>'
 # 7 Reliability pitfalls
 
 - Do not create independent sibling PRs and merely call them a chain.
-- Do not change only the GitHub PR base; the branch ancestry must also contain the predecessor.
+- Do not substitute manual PR base edits for `gh stack link` or `gh stack submit`.
+- Do not treat matching branch ancestry as sufficient; verify the native stack with `gh stack view --json`.
 - Do not force-push a published main PR merely to make its history prettier.
 - Do not split generated files away from the generator or source change that owns them.
 - Do not leave an extracted commit duplicated in the visible main PR diff.
