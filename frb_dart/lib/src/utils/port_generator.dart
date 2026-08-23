@@ -1,4 +1,11 @@
+import 'dart:math';
+
 import 'package:meta/meta.dart';
+
+final _contextId = List.generate(
+  4,
+  (_) => Random.secure().nextInt(1 << 32).toRadixString(16).padLeft(8, '0'),
+).join();
 
 /// {@macro flutter_rust_bridge.internal}
 @internal
@@ -12,7 +19,7 @@ class ExecuteStreamPortGenerator {
       (value) => value + 1,
       ifAbsent: () => 0,
     );
-    return '__frb_streamsink_${funcName}_$nextIndex';
+    return '__frb_streamsink_${_contextId}_${funcName}_$nextIndex';
   }
 }
 
