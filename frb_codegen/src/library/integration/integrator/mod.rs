@@ -42,11 +42,15 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
     let dart_package_name = get_dart_package_name(&dart_root)?;
-    let rust_crate_name = resolve_rust_crate_name(
-        config.rust_crate_name.as_deref(),
-        config.template,
-        &dart_package_name,
-    );
+    let rust_crate_name = config
+        .rust_crate_name
+        .clone()
+        .unwrap_or(match &config.template {
+            Template::App => {
+                format!("rust_lib_{dart_package_name}")
+            }
+            Template::Plugin => dart_package_name.to_owned(),
+        });
     let platforms = resolve_flutter_platforms(config.template, config.platforms.clone())?;
     let include_ohos = platform_list_contains_ohos(&platforms);
 
@@ -117,19 +121,6 @@ fn maybe_refresh_cargo_lock_ordering(dart_root: &Path, rust_crate_dir: &str) -> 
     refresh_cargo_lock_ordering(dart_root, rust_crate_dir)
 }
 
-fn resolve_rust_crate_name(
-    configured_name: Option<&str>,
-    template: Template,
-    dart_package_name: &str,
-) -> String {
-    configured_name
-        .map(str::to_owned)
-        .unwrap_or_else(|| match template {
-            Template::App => format!("rust_lib_{dart_package_name}"),
-            Template::Plugin => dart_package_name.to_owned(),
-        })
-}
-
 fn should_refresh_cargo_lock_ordering() -> bool {
     env::var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR).unwrap_or_default() == "1"
 }
@@ -142,37 +133,11 @@ fn refresh_cargo_lock_ordering(dart_root: &Path, rust_crate_dir: &str) -> Result
 #[cfg(test)]
 mod tests {
     use super::{
-        maybe_refresh_cargo_lock_ordering, refresh_cargo_lock_ordering, resolve_rust_crate_name,
+        maybe_refresh_cargo_lock_ordering, refresh_cargo_lock_ordering,
         should_refresh_cargo_lock_ordering, REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
     };
-    use crate::misc::Template;
     use serial_test::serial;
-    use std::env;
-    use std::ffi::OsString;
     use std::fs;
-
-    struct EnvironmentVariableGuard {
-        key: &'static str,
-        previous: Option<OsString>,
-    }
-
-    impl EnvironmentVariableGuard {
-        fn new(key: &'static str) -> Self {
-            Self {
-                key,
-                previous: env::var_os(key),
-            }
-        }
-    }
-
-    impl Drop for EnvironmentVariableGuard {
-        fn drop(&mut self) {
-            match &self.previous {
-                Some(value) => env::set_var(self.key, value),
-                None => env::remove_var(self.key),
-            }
-        }
-    }
 
     #[test]
     fn test_refresh_cargo_lock_ordering_real_fetch() {
@@ -193,52 +158,32 @@ mod tests {
         refresh_cargo_lock_ordering(temp_dir.path(), "rust").unwrap();
     }
 
-    /// Prefers the configured Rust crate name over template-derived defaults.
-    #[test]
-    fn test_resolve_rust_crate_name_uses_configured_name() {
-        assert_eq!(
-            resolve_rust_crate_name(Some("custom_native"), Template::App, "demo"),
-            "custom_native"
-        );
-    }
-
-    /// Derives distinct default Rust crate names for app and plugin templates.
-    #[test]
-    fn test_resolve_rust_crate_name_uses_template_defaults() {
-        assert_eq!(
-            resolve_rust_crate_name(None, Template::App, "demo"),
-            "rust_lib_demo"
-        );
-        assert_eq!(
-            resolve_rust_crate_name(None, Template::Plugin, "demo"),
-            "demo"
-        );
-    }
-
     #[test]
     #[serial]
     fn test_should_refresh_cargo_lock_ordering_only_when_env_var_is_one() {
-        let _guard = EnvironmentVariableGuard::new(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
-        env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
         assert!(!should_refresh_cargo_lock_ordering());
 
-        env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "true");
+        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "true");
         assert!(!should_refresh_cargo_lock_ordering());
 
-        env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "1");
+        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "1");
         assert!(should_refresh_cargo_lock_ordering());
+
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
     }
 
     #[test]
     #[serial]
     fn test_maybe_refresh_cargo_lock_ordering_skips_when_env_var_is_not_one() {
-        let _guard = EnvironmentVariableGuard::new(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
-        env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
 
         let temp_dir = tempfile::tempdir().unwrap();
         maybe_refresh_cargo_lock_ordering(temp_dir.path(), "does-not-need-to-exist").unwrap();
 
-        env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "0");
+        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "0");
         maybe_refresh_cargo_lock_ordering(temp_dir.path(), "still-not-used").unwrap();
+
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
     }
 }

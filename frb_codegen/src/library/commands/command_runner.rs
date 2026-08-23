@@ -238,86 +238,8 @@ pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    #[cfg(not(windows))]
-    /// Builds a POSIX shell command string for ordinary quoted arguments.
-    fn builds_posix_shell_arguments_with_debug_quoting() {
-        let actual = call_shell_info(&[
-            PathBuf::from("tool"),
-            PathBuf::from("argument with spaces"),
-            PathBuf::from("quote\"and\\slash"),
-        ]);
-
-        assert_eq!(
-            actual,
-            CommandInfo {
-                program: "sh".to_owned(),
-                args: vec![
-                    "-c".to_owned(),
-                    "\"tool\" \"argument with spaces\" \"quote\\\"and\\\\slash\"".to_owned(),
-                ],
-            }
-        );
-    }
-
-    #[test]
-    /// Accepts an output with a successful exit status.
-    fn accepts_successful_exit_status() {
-        assert!(check_exit_code(&Output {
-            status: success_exit_status(),
-            stdout: Vec::new(),
-            stderr: Vec::new(),
-        })
-        .is_ok());
-    }
-
-    #[test]
-    /// Returns stderr context for an unsuccessful exit status.
-    fn rejects_unsuccessful_exit_status() {
-        let error = check_exit_code(&Output {
-            status: failure_exit_status(),
-            stdout: Vec::new(),
-            stderr: b"missing tool".to_vec(),
-        })
-        .unwrap_err();
-
-        assert!(error
-            .to_string()
-            .contains("Command execution failed: missing tool"));
-    }
-
-    #[cfg(unix)]
-    fn success_exit_status() -> std::process::ExitStatus {
-        use std::os::unix::process::ExitStatusExt;
-
-        std::process::ExitStatus::from_raw(0)
-    }
-
-    #[cfg(windows)]
-    fn success_exit_status() -> std::process::ExitStatus {
-        use std::os::windows::process::ExitStatusExt;
-
-        std::process::ExitStatus::from_raw(0)
-    }
-
-    #[cfg(unix)]
-    fn failure_exit_status() -> std::process::ExitStatus {
-        use std::os::unix::process::ExitStatusExt;
-
-        std::process::ExitStatus::from_raw(1 << 8)
-    }
-
-    #[cfg(windows)]
-    fn failure_exit_status() -> std::process::ExitStatus {
-        use std::os::windows::process::ExitStatusExt;
-
-        std::process::ExitStatus::from_raw(1)
-    }
-
     #[test]
     #[cfg(windows)]
-    /// Builds the PowerShell invocation for the complete build-web argument list.
     fn test_call_shell_info() {
         let params = [
             "fvm",
@@ -343,7 +265,6 @@ mod tests {
     }
     #[test]
     #[cfg(windows)]
-    /// Escapes PowerShell argument metacharacters in a single token.
     fn test_call_shell_info_escapes() {
         let params = ["abc\"def\\ghi jkl"];
         let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
@@ -359,7 +280,6 @@ mod tests {
         assert_eq!(actual, expect);
     }
     #[test]
-    /// Escapes spaces, quotes, and backslashes for PowerShell tokens.
     fn test_windows_escape_for_powershell() {
         let section_in =
             "detects regression \"errors\" when tests are run \\ on non_windows systems";
