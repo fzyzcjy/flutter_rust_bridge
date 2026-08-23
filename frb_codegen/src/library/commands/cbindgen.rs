@@ -98,7 +98,9 @@ fn parse_crate_dir(rust_crate_dir: &Path) -> anyhow::Result<String> {
 
 #[cfg(test)]
 mod tests {
-    use super::{cbindgen, default_cbindgen_config, parse_crate_dir, CbindgenArgs};
+    use super::{
+        cbindgen, default_cbindgen_config, normalize_windows_unc_path, parse_crate_dir, CbindgenArgs,
+    };
     use anyhow::Result;
     use std::fs;
     use tempfile::tempdir;
@@ -126,7 +128,7 @@ mod tests {
 
         assert_eq!(
             parse_crate_dir(&crate_dir)?,
-            crate_dir.canonicalize()?.to_string_lossy()
+            normalize_windows_unc_path(&crate_dir.canonicalize()?.to_string_lossy())
         );
         Ok(())
     }

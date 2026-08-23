@@ -23,7 +23,6 @@ void main() {
       throwsRangeError,
     );
   });
-
 }
 
 GeneralizedFrbRustBinding _binding() => _Binding();
