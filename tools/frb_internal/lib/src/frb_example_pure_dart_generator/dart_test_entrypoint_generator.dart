@@ -58,7 +58,7 @@ Future<void> _generateDartValgrindTestEntrypoint(
   ];
   final entrypoints = [
     for (final file in files)
-      if (_hasDisposedRustAutoOpaqueArgumentLeak(
+      if (_shouldSkipDisposedRustAutoOpaqueArgumentTest(
         package: package,
         fileStem: path.basenameWithoutExtension(file),
       ))
@@ -118,7 +118,7 @@ Future<void> callFileEntrypoints({
   await _writeToFile(dartRoot, 'test/dart_valgrind_test_entrypoint.dart', code);
 }
 
-bool _hasDisposedRustAutoOpaqueArgumentLeak({
+bool _shouldSkipDisposedRustAutoOpaqueArgumentTest({
   required Package package,
   required String fileStem,
 }) =>
