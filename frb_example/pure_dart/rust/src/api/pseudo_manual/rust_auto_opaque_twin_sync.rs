@@ -335,7 +335,6 @@ pub fn rust_auto_opaque_enum_return_own_twin_sync() -> NonCloneSimpleEnumTwinSyn
 
 // ================ stream sink ===================
 
-#[frb(sync)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_stream_sink_twin_sync(sink: StreamSink<NonCloneSimpleTwinSync>) {
     sink.add(NonCloneSimpleTwinSync { inner: 42 }).unwrap();

@@ -378,7 +378,6 @@ pub fn rust_auto_opaque_enum_return_own_twin_sync_sse() -> NonCloneSimpleEnumTwi
 
 // ================ stream sink ===================
 
-#[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_stream_sink_twin_sync_sse(

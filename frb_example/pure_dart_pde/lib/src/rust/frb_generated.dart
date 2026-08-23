@@ -38705,12 +38705,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinNormal>
       crateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormal() {
     final sink = RustStreamSink<NonCloneSimpleTwinNormal>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal_Sse(
             sink, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1171)!;
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1171, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38720,7 +38721,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormalConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 
@@ -38735,12 +38736,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinRustAsync>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStreamSinkTwinRustAsync() {
     final sink = RustStreamSink<NonCloneSimpleTwinRustAsync>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync_Sse(
             sink, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1172)!;
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1172, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38750,7 +38752,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStreamSinkTwinRustAsyncConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 

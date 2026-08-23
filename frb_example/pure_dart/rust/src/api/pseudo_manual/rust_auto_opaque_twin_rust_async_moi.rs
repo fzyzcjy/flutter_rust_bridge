@@ -365,7 +365,6 @@ pub async fn rust_auto_opaque_enum_return_own_twin_rust_async_moi(
 
 // ================ stream sink ===================
 
-#[frb(sync)]
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub async fn rust_auto_opaque_stream_sink_twin_rust_async_moi(
     sink: StreamSink<NonCloneSimpleTwinRustAsyncMoi>,

@@ -88594,14 +88594,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinMoi>
       crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueStreamSinkTwinMoi() {
     final sink = RustStreamSink<NonCloneSimpleTwinMoi>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         var arg0 =
             cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi_Dco(
                 sink);
         return wire
             .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
-                arg0);
+                port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -88611,7 +88611,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueStreamSinkTwinMoiConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 
@@ -88626,14 +88626,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinNormal>
       crateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormal() {
     final sink = RustStreamSink<NonCloneSimpleTwinNormal>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         var arg0 =
             cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal_Dco(
                 sink);
         return wire
             .wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-                arg0);
+                port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -88643,7 +88643,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormalConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 
@@ -88658,14 +88658,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinRustAsync>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStreamSinkTwinRustAsync() {
     final sink = RustStreamSink<NonCloneSimpleTwinRustAsync>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         var arg0 =
             cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync_Dco(
                 sink);
         return wire
             .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
-                arg0);
+                port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -88675,7 +88675,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStreamSinkTwinRustAsyncConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 
@@ -88690,14 +88690,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinRustAsyncMoi>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiRustAutoOpaqueStreamSinkTwinRustAsyncMoi() {
     final sink = RustStreamSink<NonCloneSimpleTwinRustAsyncMoi>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         var arg0 =
             cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi_Dco(
                 sink);
         return wire
             .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
-                arg0);
+                port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -88707,7 +88707,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncMoiRustAutoOpaqueStreamSinkTwinRustAsyncMoiConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 
@@ -88722,15 +88722,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinRustAsyncSse>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseRustAutoOpaqueStreamSinkTwinRustAsyncSse() {
     final sink = RustStreamSink<NonCloneSimpleTwinRustAsyncSse>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSse_Sse(
             sink, serializer);
         final raw_ = serializer.intoRaw();
         return wire
             .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
-                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -88740,7 +88740,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseRustAutoOpaqueStreamSinkTwinRustAsyncSseConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 
@@ -88755,15 +88755,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinRustAsyncSseMoi>
       crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueStreamSinkTwinRustAsyncSseMoi() {
     final sink = RustStreamSink<NonCloneSimpleTwinRustAsyncSseMoi>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncSseMoi_Sse(
             sink, serializer);
         final raw_ = serializer.intoRaw();
         return wire
             .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
-                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -88773,7 +88773,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueStreamSinkTwinRustAsyncSseMoiConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 
@@ -88788,15 +88788,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinSse>
       crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueStreamSinkTwinSse() {
     final sink = RustStreamSink<NonCloneSimpleTwinSse>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSse_Sse(
             sink, serializer);
         final raw_ = serializer.intoRaw();
         return wire
             .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
-                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -88806,7 +88806,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueStreamSinkTwinSseConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 
@@ -88821,15 +88821,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinSseMoi>
       crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueStreamSinkTwinSseMoi() {
     final sink = RustStreamSink<NonCloneSimpleTwinSseMoi>();
-    handler.executeSync(SyncTask(
-      callFfi: () {
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSseMoi_Sse(
             sink, serializer);
         final raw_ = serializer.intoRaw();
         return wire
             .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
-                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -88839,7 +88839,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueStreamSinkTwinSseMoiConstMeta,
       argValues: [sink],
       apiImpl: this,
-    ));
+    )));
     return sink.stream;
   }
 
