@@ -207,13 +207,14 @@ fn add_native_assets_asset_id_to_generated_template(
         return src;
     }
 
-    const ANCHOR: &str = "        wasmBindgenName: 'wasm_bindgen',\n";
+    const ANCHOR: &str = "        wasmBindgenName: 'wasm_bindgen',";
     let src = String::from_utf8(src).unwrap();
     assert_eq!(src.matches(ANCHOR).count(), 1);
+    let line_ending = if src.contains("\r\n") { "\r\n" } else { "\n" };
     src.replacen(
         ANCHOR,
         &format!(
-            "{ANCHOR}        nativeAssetsAssetId:\n            'package:{dart_package_name}/src/rust/frb_generated.io.dart',\n"
+            "{ANCHOR}{line_ending}        nativeAssetsAssetId:{line_ending}            'package:{dart_package_name}/src/rust/frb_generated.io.dart',"
         ),
         1,
     )
@@ -368,6 +369,20 @@ mod tests {
                 "my_package",
             ),
             input
+        );
+    }
+
+    #[test]
+    fn test_generated_template_preserves_windows_line_endings() {
+        let input = b"        wasmBindgenName: 'wasm_bindgen',\r\n".to_vec();
+        let output = add_native_assets_asset_id_to_generated_template(
+            Path::new("package/lib/src/rust/frb_generated.dart"),
+            input,
+            "my_package",
+        );
+        assert_eq!(
+            String::from_utf8(output).unwrap(),
+            "        wasmBindgenName: 'wasm_bindgen',\r\n        nativeAssetsAssetId:\r\n            'package:my_package/src/rust/frb_generated.io.dart',\r\n"
         );
     }
 
