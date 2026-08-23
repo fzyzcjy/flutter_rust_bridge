@@ -1,6 +1,6 @@
 ---
 name: frb-ci-filter
-description: Use when selecting, dispatching, or repeatedly validating exact flutter_rust_bridge GitHub Actions jobs or matrix entries with ci_filter, including ci-manual-dispatch label management and partial-CI evidence.
+description: Use when running focused flutter_rust_bridge GitHub Actions CI via ci_filter, adding/removing the ci-manual-dispatch PR label, choosing exact CI jobs or matrix entries, documenting intentionally partial CI runs, or repeatedly validating an exact CI target on one commit.
 ---
 
 Use this skill when CI feedback is too expensive and the current task needs a focused GitHub Actions signal instead of automatic full CI.
