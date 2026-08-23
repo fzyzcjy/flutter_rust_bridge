@@ -9,7 +9,7 @@ import '../test_utils.dart';
 
 Future<void> main({
   bool skipRustLibInit = false,
-  bool skipKnownSseSerializerLeak = false,
+  bool skipDisposedRustAutoOpaqueArgumentTest = false,
 }) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -43,7 +43,7 @@ Future<void> main({
             throwsA(isA<DroppableDisposedException>()),
           );
         },
-        skip: skipKnownSseSerializerLeak,
+        skip: skipDisposedRustAutoOpaqueArgumentTest,
       );
     });
 

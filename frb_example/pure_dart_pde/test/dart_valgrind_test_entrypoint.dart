@@ -204,7 +204,8 @@ Future<void> main() async {
   await RustLib.init();
 
   final success = await directRunTests(
-    () async => callFileEntrypoints(skipKnownSseSerializerLeak: true),
+    () async =>
+        callFileEntrypoints(skipDisposedRustAutoOpaqueArgumentTest: true),
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
@@ -218,7 +219,7 @@ Future<void> main() async {
 }
 
 Future<void> callFileEntrypoints({
-  bool skipKnownSseSerializerLeak = false,
+  bool skipDisposedRustAutoOpaqueArgumentTest = false,
 }) async {
   final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
     array_test.main,
