@@ -66,6 +66,14 @@ Future<void> _generateDartValgrindTestEntrypoint(
           skipRustLibInit: skipRustLibInit,
           skipDisposedRustAutoOpaqueArgumentTest: skipDisposedRustAutoOpaqueArgumentTest,
         ),\n'''
+      else if (_hasDisposedRustOpaqueVecArgumentLeak(
+        package: package,
+        fileStem: path.basenameWithoutExtension(file),
+      ))
+        '''({bool skipRustLibInit = false}) => ${path.basenameWithoutExtension(file)}.main(
+          skipRustLibInit: skipRustLibInit,
+          skipDisposedRustOpaqueVecArgumentTest: skipDisposedRustOpaqueVecArgumentTest,
+        ),\n'''
       else
         '${path.basenameWithoutExtension(file)}.main,\n',
   ];
@@ -87,7 +95,10 @@ Future<void> main() async {
   await RustLib.init();
 
   final success = await directRunTests(
-    () async => callFileEntrypoints(skipDisposedRustAutoOpaqueArgumentTest: true),
+    () async => callFileEntrypoints(
+      skipDisposedRustAutoOpaqueArgumentTest: true,
+      skipDisposedRustOpaqueVecArgumentTest: true,
+    ),
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
@@ -102,6 +113,7 @@ Future<void> main() async {
 
 Future<void> callFileEntrypoints({
   bool skipDisposedRustAutoOpaqueArgumentTest = false,
+  bool skipDisposedRustOpaqueVecArgumentTest = false,
 }) async {
   final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
     ${entrypoints.join("")}
@@ -128,6 +140,22 @@ bool _hasDisposedRustAutoOpaqueArgumentLeak({
       Package.pureDartPde => {
         'rust_auto_opaque_twin_rust_async_test',
         'rust_auto_opaque_twin_sync_test',
+      }.contains(fileStem),
+      _ => false,
+    };
+
+bool _hasDisposedRustOpaqueVecArgumentLeak({
+  required Package package,
+  required String fileStem,
+}) =>
+    switch (package) {
+      Package.pureDart => {
+        'rust_opaque_twin_rust_async_sse_test',
+        'rust_opaque_twin_sync_sse_test',
+      }.contains(fileStem),
+      Package.pureDartPde => {
+        'rust_opaque_twin_rust_async_test',
+        'rust_opaque_twin_sync_test',
       }.contains(fileStem),
       _ => false,
     };
