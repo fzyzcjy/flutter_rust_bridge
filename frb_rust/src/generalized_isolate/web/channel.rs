@@ -1,36 +1,26 @@
 use crate::generalized_isolate::IntoDart;
-use crate::platform_types::post_message_port;
+use crate::platform_types::handle_to_message_port;
 use crate::platform_types::release_message_port_handle;
 use crate::platform_types::MessagePort;
 use crate::platform_types::{message_port_to_handle, SendableMessagePortHandle};
 
 #[derive(Clone)]
 pub struct Channel {
-    port: ChannelPort,
-}
-
-#[derive(Clone)]
-enum ChannelPort {
-    Direct(MessagePort),
-    Sendable(SendableMessagePortHandle),
+    port: MessagePort,
 }
 
 impl Channel {
     pub fn new(port: MessagePort) -> Self {
-        Self {
-            port: ChannelPort::Direct(port),
-        }
+        Self { port }
     }
 
     pub fn post(&self, msg: impl IntoDart) -> bool {
-        let msg = msg.into_dart();
-        match &self.port {
-            ChannelPort::Direct(port) => port
-                .post_message(&msg)
-                .map_err(|err| crate::console_error!("post: {:?}", err))
-                .is_ok(),
-            ChannelPort::Sendable(handle) => post_message_port(handle, msg),
-        }
+        self.port
+            .post_message(&msg.into_dart())
+            .map_err(|err| {
+                crate::console_error!("post: {:?}", err);
+            })
+            .is_ok()
     }
 
     // TODO unused, rm?
@@ -47,16 +37,11 @@ impl Channel {
 pub struct SendableChannelHandle(SendableMessagePortHandle);
 
 pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
-    let ChannelPort::Direct(port) = &channel.port else {
-        unreachable!()
-    };
-    SendableChannelHandle(message_port_to_handle(port))
+    SendableChannelHandle(message_port_to_handle(&channel.port))
 }
 
 pub fn handle_to_channel(handle: &SendableChannelHandle) -> Channel {
-    Channel {
-        port: ChannelPort::Sendable(handle.0.clone()),
-    }
+    Channel::new(handle_to_message_port(&handle.0))
 }
 
 pub fn release_channel_handle(handle: &SendableChannelHandle) {

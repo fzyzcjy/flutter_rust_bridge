@@ -24,9 +24,6 @@ thread_local! {
 
 struct BroadcastChannelState {
     channel_of_name: HashMap<String, MessagePort>,
-    pending_messages: Vec<(MessagePort, JsValue)>,
-    flush_scheduled: bool,
-    flush_callback: Closure<dyn FnMut()>,
     pending_close: Vec<MessagePort>,
     close_scheduled: bool,
     close_callback: Closure<dyn FnMut()>,
@@ -36,37 +33,9 @@ impl BroadcastChannelState {
     fn new() -> Self {
         Self {
             channel_of_name: Default::default(),
-            pending_messages: Default::default(),
-            flush_scheduled: false,
-            flush_callback: Closure::wrap(Box::new(flush_pending_messages) as Box<dyn FnMut()>),
             pending_close: Default::default(),
             close_scheduled: false,
             close_callback: Closure::wrap(Box::new(close_pending_message_ports) as Box<dyn FnMut()>),
-        }
-    }
-
-    fn post(&mut self, name: &str, message: JsValue) -> bool {
-        let port = self.message_port_of_name(name);
-        self.pending_messages.push((port, message));
-        if self.flush_scheduled {
-            return true;
-        }
-
-        self.flush_scheduled = true;
-        if let Err(error) = js_set_timeout(self.flush_callback.as_ref().unchecked_ref(), 0) {
-            crate::console_error!("schedule broadcast channel flush: {:?}", error);
-            self.flush_pending_messages();
-            return false;
-        }
-        true
-    }
-
-    fn flush_pending_messages(&mut self) {
-        self.flush_scheduled = false;
-        for (port, message) in self.pending_messages.drain(..) {
-            if let Err(error) = port.post_message(&message) {
-                crate::console_error!("post broadcast channel: {:?}", error);
-            }
         }
     }
 
@@ -130,10 +99,6 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
     BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().message_port_of_name(&handle.0))
 }
 
-pub fn post_message_port(handle: &SendableMessagePortHandle, message: JsValue) -> bool {
-    BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().post(&handle.0, message))
-}
-
 pub fn release_message_port_handle(handle: &SendableMessagePortHandle) {
     BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().release_message_port_name(&handle.0))
 }
@@ -146,8 +111,4 @@ pub type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
 
 fn close_pending_message_ports() {
     BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().close_pending_message_ports())
-}
-
-fn flush_pending_messages() {
-    BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().flush_pending_messages())
 }
