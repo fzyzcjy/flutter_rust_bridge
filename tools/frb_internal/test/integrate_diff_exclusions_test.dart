@@ -63,17 +63,22 @@ void main() {
   });
 
   test('integrate extra args are explicit for flutter_package', () {
-    for (final package in [
-      'frb_example/flutter_package',
-      'frb_example/flutter_package_native_assets',
-    ]) {
-      expect(
-        integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
-        "':(exclude)$package/example/macos/Flutter/Flutter-Debug.xcconfig' "
-        "':(exclude)$package/example/macos/Flutter/Flutter-Release.xcconfig'",
-        reason: package,
-      );
-    }
+    const package = 'frb_example/flutter_package';
+    expect(
+      integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
+      "':(exclude)$package/example/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)$package/example/macos/Flutter/Flutter-Release.xcconfig'",
+    );
+  });
+
+  test('integrate preserves the native-assets pure Dart smoke', () {
+    const package = 'frb_example/flutter_package_native_assets';
+    expect(
+      integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
+      "':(exclude)$package/example/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)$package/example/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)$package/bin/pure_dart_smoke.dart'",
+    );
   });
 
   test('integrate extra args are empty for unrelated package', () {
