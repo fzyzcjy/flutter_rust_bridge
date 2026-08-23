@@ -57,16 +57,8 @@ Future<void> _generateDartValgrindTestEntrypoint(
       "import '${path.relative(file, from: dirTest.toFilePath()).replaceAll(r'\', '/')}' as ${path.basenameWithoutExtension(file)};\n",
   ];
   final entrypoints = [
-    for (final file in files)
-      if (package == Package.pureDart &&
-          path.basenameWithoutExtension(file) ==
-              'rust_auto_opaque_twin_rust_async_sse_test')
-        '''({bool skipRustLibInit = false}) => rust_auto_opaque_twin_rust_async_sse_test.main(
-          skipRustLibInit: skipRustLibInit,
-          skipKnownSseSerializerLeak: skipKnownSseSerializerLeak,
-        ),\n'''
-      else
-        '${path.basenameWithoutExtension(file)}.main,\n',
+    for (final file in files) //
+      '${path.basenameWithoutExtension(file)}.main,\n',
   ];
 
   final code =
@@ -86,7 +78,7 @@ Future<void> main() async {
   await RustLib.init();
 
   final success = await directRunTests(
-    () async => callFileEntrypoints(skipKnownSseSerializerLeak: true),
+    () async => callFileEntrypoints(),
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
@@ -99,9 +91,7 @@ Future<void> main() async {
   exit(success ? 0 : 1);
 }
 
-Future<void> callFileEntrypoints({
-  bool skipKnownSseSerializerLeak = false,
-}) async {
+Future<void> callFileEntrypoints() async {
   final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
     ${entrypoints.join("")}
   ];

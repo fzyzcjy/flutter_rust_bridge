@@ -9,10 +9,7 @@ import 'package:test/test.dart';
 
 import '../test_utils.dart';
 
-Future<void> main({
-  bool skipRustLibInit = false,
-  bool skipKnownSseSerializerLeak = false,
-}) async {
+Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('simple functions', () {
@@ -30,23 +27,19 @@ Future<void> main({
         );
       });
 
-      test(
-        'after call, the object cannot be used again',
-        () async {
-          final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-          await futurizeVoidTwinNormal(
-            rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100),
-          );
+      test('after call, the object cannot be used again', () async {
+        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+        await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100),
+        );
 
-          expect(obj.isDisposed, true);
+        expect(obj.isDisposed, true);
 
-          await expectLater(
-            () => rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-            throwsA(isA<DroppableDisposedException>()),
-          );
-        },
-        skip: skipKnownSseSerializerLeak,
-      );
+        await expectLater(
+          () => rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
+          throwsA(isA<DroppableDisposedException>()),
+        );
+      });
 
       // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
       test('failed encoding preserves an earlier owned argument', () async {
