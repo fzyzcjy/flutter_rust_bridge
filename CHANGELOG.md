@@ -11,7 +11,6 @@
 * Fix ffigen 21 struct removal and limit automatic build runner outputs #3357 #3344
 * Document the CargoKit to Native Assets migration #3285
 * Add FRB PR chain split tooling #3387
-* Prepare beta changelog and contributor credits #3225 #3224 #3222
 * Add Yarn to the development Docker image #3223
 * Exclude CargoKit from generated analyzer options #3141
 * Improve Flutter integration test timeouts #3140
