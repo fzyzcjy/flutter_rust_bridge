@@ -13,7 +13,6 @@ import '../../test_utils.dart';
 
 Future<void> main({
   bool skipRustLibInit = false,
-  bool skipDisposedRustOpaqueVecArgumentTest = false,
 }) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -266,7 +265,7 @@ Future<void> main({
       throwsA(isA<DroppableDisposedException>()),
     );
     data[1].dispose();
-  }, skip: skipDisposedRustOpaqueVecArgumentTest);
+  });
 
   // test('unwrap', () async {
   //   var data = await createOpaqueTwinMoi();

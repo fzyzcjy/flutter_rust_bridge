@@ -454,7 +454,6 @@ Future<void> main() async {
   final success = await directRunTests(
     () async => callFileEntrypoints(
       skipDisposedRustAutoOpaqueArgumentTest: true,
-      skipDisposedRustOpaqueVecArgumentTest: true,
     ),
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
@@ -470,7 +469,6 @@ Future<void> main() async {
 
 Future<void> callFileEntrypoints({
   bool skipDisposedRustAutoOpaqueArgumentTest = false,
-  bool skipDisposedRustOpaqueVecArgumentTest = false,
 }) async {
   final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
     array_test.main,
@@ -683,22 +681,13 @@ Future<void> callFileEntrypoints({
     rust_opaque_twin_moi_test.main,
     rust_opaque_twin_rust_async_moi_test.main,
     rust_opaque_twin_rust_async_sse_moi_test.main,
-    ({bool skipRustLibInit = false}) =>
-        rust_opaque_twin_rust_async_sse_test.main(
-          skipRustLibInit: skipRustLibInit,
-          skipDisposedRustOpaqueVecArgumentTest:
-              skipDisposedRustOpaqueVecArgumentTest,
-        ),
+    rust_opaque_twin_rust_async_sse_test.main,
     rust_opaque_twin_rust_async_test.main,
     rust_opaque_twin_sse_moi_test.main,
     rust_opaque_twin_sse_test.main,
     rust_opaque_twin_sync_moi_test.main,
     rust_opaque_twin_sync_sse_moi_test.main,
-    ({bool skipRustLibInit = false}) => rust_opaque_twin_sync_sse_test.main(
-          skipRustLibInit: skipRustLibInit,
-          skipDisposedRustOpaqueVecArgumentTest:
-              skipDisposedRustOpaqueVecArgumentTest,
-        ),
+    rust_opaque_twin_sync_sse_test.main,
     rust_opaque_twin_sync_test.main,
     rust_opaque_web_locking_twin_sse_test.main,
     serde_json_type_twin_rust_async_sse_test.main,

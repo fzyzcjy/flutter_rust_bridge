@@ -15,3 +15,11 @@
    obj:*dart_valgrind_test_entrypoint
    obj:*dart_valgrind_test_entrypoint
 }
+{
+   frb_sse_serializer_error_allocation
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   fun:frb_rust_vec_u8_new
+   obj:*dart_valgrind_test_entrypoint
+}
