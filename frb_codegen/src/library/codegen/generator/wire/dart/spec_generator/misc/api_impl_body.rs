@@ -3,6 +3,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::api_dart::spec_generator::function::{
     compute_params_str, ApiDartGeneratedFunction,
 };
+use crate::codegen::generator::codec::structs::{pde_web_direct_codec, CodecMode};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
@@ -155,7 +156,39 @@ fn generate_arg_values(func: &MirFunc) -> String {
 
 fn generate_rust2dart_codec_object(func: &MirFunc) -> String {
     let codec_mode = func.codec_mode_pack.rust2dart;
-    let codec_name_pascal = codec_mode.delegate_or_self().to_string();
+    if codec_mode == CodecMode::Pde {
+        if !pde_web_direct_codec(func) {
+            return generate_codec_object(func, CodecMode::Sse);
+        }
+
+        let output_ident = func.output.normal.safe_ident();
+        let error_ident = func.output.error.as_ref().map(|ty| ty.safe_ident());
+        let sse_error = error_ident
+            .as_ref()
+            .map(|ident| format!("sse_decode_{ident}"))
+            .unwrap_or_else(|| "null".to_owned());
+        let dco_error = error_ident
+            .as_ref()
+            .map(|ident| format!("dco_decode_{ident}"))
+            .unwrap_or_else(|| "null".to_owned());
+
+        return format!(
+            "
+            PdeCodec(
+              decodeSuccessDataSse: sse_decode_{output_ident},
+              decodeErrorDataSse: {sse_error},
+              decodeSuccessDataDco: dco_decode_{output_ident},
+              decodeErrorDataDco: {dco_error},
+            )
+            "
+        );
+    }
+
+    generate_codec_object(func, codec_mode.delegate_or_self())
+}
+
+fn generate_codec_object(func: &MirFunc, codec_mode: CodecMode) -> String {
+    let codec_name_pascal = codec_mode.to_string();
     let codec_name_snake = codec_name_pascal.to_case(Case::Snake);
 
     let parse_success_data = format!(

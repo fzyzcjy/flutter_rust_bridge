@@ -119,17 +119,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 2,
-            port: port_,
-          );
+          pdeCall2(port_);
         },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: null,
+        codec: PdeCodec(
+          decodeSuccessDataSse: sse_decode_unit,
+          decodeErrorDataSse: null,
+          decodeSuccessDataDco: dco_decode_unit,
+          decodeErrorDataDco: null,
         ),
         constMeta: kCrateApiSimpleInitAppConstMeta,
         argValues: [],

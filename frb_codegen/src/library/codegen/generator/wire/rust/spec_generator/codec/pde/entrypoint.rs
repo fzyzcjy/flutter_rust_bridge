@@ -1,6 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::structs::{
-    BaseCodecEntrypointTrait, CodecMode, EncodeOrDecode,
+    pde_web_direct_codec, BaseCodecEntrypointTrait, CodecMode, EncodeOrDecode,
 };
 use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::wire::misc::has_port_argument;
@@ -11,6 +11,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::generator::wire::rust::spec_generator::misc::function::wire_func_name;
+use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode};
 use crate::codegen::ir::mir::ty::MirType;
 use itertools::Itertools;
@@ -26,16 +27,37 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
     fn generate(
         &self,
         context: WireRustGeneratorContext,
-        _types: &[MirType],
+        types: &[MirType],
         mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
         match mode {
             EncodeOrDecode::Encode => None,
-            EncodeOrDecode::Decode => {
-                Some(generate_ffi_dispatcher(&context.mir_pack.funcs_with_impl()))
-            }
+            EncodeOrDecode::Decode => Some(generate_target_adaptive_decode(context, types)),
         }
     }
+}
+
+fn generate_target_adaptive_decode(
+    context: WireRustGeneratorContext,
+    types: &[MirType],
+) -> WireRustCodecOutputSpec {
+    let dispatcher = generate_ffi_dispatcher(&context.mir_pack.funcs_with_impl());
+    let cst = super::super::cst::decoder::generate(context.as_wire_rust_codec_cst_context(), types);
+    let web_dispatcher = generate_ffi_dispatcher(
+        &context
+            .mir_pack
+            .funcs_with_impl()
+            .into_iter()
+            .filter(|func| !pde_web_direct_codec(func))
+            .collect_vec(),
+    );
+
+    let mut inner = Acc::<Vec<WireRustOutputCode>>::default();
+    inner.io.extend(dispatcher.inner.common);
+    inner.web.extend(web_dispatcher.inner.common);
+    inner.web.extend(cst.inner.common);
+    inner.web.extend(cst.inner.web);
+    WireRustCodecOutputSpec { inner }
 }
 
 fn generate_ffi_dispatcher(funcs: &[MirFunc]) -> WireRustCodecOutputSpec {

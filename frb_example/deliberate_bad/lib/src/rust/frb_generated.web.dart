@@ -33,6 +33,38 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  dynamic pdeCall1(NativePortType port_) {
+    return wire.wire__crate__api__simple__make_data_race(port_);
+  }
+
+  @protected
+  dynamic pdeCall2(NativePortType port_) {
+    return wire.wire__crate__api__simple__make_heap_use_after_free(port_);
+  }
+
+  @protected
+  dynamic pdeCall3(NativePortType port_) {
+    return wire.wire__crate__api__simple__make_memory_leak(port_);
+  }
+
+  @protected
+  dynamic pdeCall4(NativePortType port_) {
+    return wire.wire__crate__api__simple__make_stack_buffer_overflow(port_);
+  }
+
+  @protected
+  dynamic pdeCall5(NativePortType port_) {
+    return wire
+        .wire__crate__api__simple__make_use_of_uninitialized_value(port_);
+  }
+
+  @protected
   void sse_encode_unit(void self, SseSerializer serializer);
 
   @protected
@@ -46,6 +78,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void wire__crate__api__simple__make_data_race(NativePortType port_) =>
+      wasmModule.wire__crate__api__simple__make_data_race(port_);
+
+  void wire__crate__api__simple__make_heap_use_after_free(
+          NativePortType port_) =>
+      wasmModule.wire__crate__api__simple__make_heap_use_after_free(port_);
+
+  void wire__crate__api__simple__make_memory_leak(NativePortType port_) =>
+      wasmModule.wire__crate__api__simple__make_memory_leak(port_);
+
+  void wire__crate__api__simple__make_stack_buffer_overflow(
+          NativePortType port_) =>
+      wasmModule.wire__crate__api__simple__make_stack_buffer_overflow(port_);
+
+  void wire__crate__api__simple__make_use_of_uninitialized_value(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__simple__make_use_of_uninitialized_value(port_);
 }
 
 @JS('wasm_bindgen')
@@ -53,4 +104,18 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-extension type RustLibWasmModule._(JSObject _) implements JSObject {}
+extension type RustLibWasmModule._(JSObject _) implements JSObject {
+  external void wire__crate__api__simple__make_data_race(NativePortType port_);
+
+  external void wire__crate__api__simple__make_heap_use_after_free(
+      NativePortType port_);
+
+  external void wire__crate__api__simple__make_memory_leak(
+      NativePortType port_);
+
+  external void wire__crate__api__simple__make_stack_buffer_overflow(
+      NativePortType port_);
+
+  external void wire__crate__api__simple__make_use_of_uninitialized_value(
+      NativePortType port_);
+}

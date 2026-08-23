@@ -72539,31 +72539,6 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync_sse::Weekda
     }
 }
 
-fn pde_ffi_dispatcher_primary_impl(
-    func_id: i32,
-    port: flutter_rust_bridge::for_generated::MessagePort,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        _ => unreachable!(),
-    }
-}
-
-fn pde_ffi_dispatcher_sync_impl(
-    func_id: i32,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        _ => unreachable!(),
-    }
-}
-
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -128589,6 +128564,30 @@ field1: Default::default(), }
             Self::new_with_null_ptr()
         }
     }
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__CONST_ARRAY_TWIN_NORMAL(
@@ -184070,6 +184069,30 @@ mod web {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync {
             (self.unchecked_into_f64() as i32).cst_decode()
+        }
+    }
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
         }
     }
 

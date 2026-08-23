@@ -49,6 +49,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  dynamic pdeCall2(NativePortType port_) {
+    final serializer = SseSerializer(generalizedFrbRustBinding);
+    pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2, port: port_);
+  }
+
+  @protected
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected

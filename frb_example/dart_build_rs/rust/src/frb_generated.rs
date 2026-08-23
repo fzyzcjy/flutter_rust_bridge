@@ -45,77 +45,6 @@ pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -2119384465;
 
 flutter_rust_bridge::frb_generated_default_handler!();
 
-// Section: wire_funcs
-
-fn wire__crate__api__minimal__init_app_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "init_app",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Ok::<_, ()>({
-                        crate::api::minimal::init_app();
-                    })?;
-                    std::result::Result::Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-fn wire__crate__api__minimal__minimal_adder_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "minimal_adder",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_a = <i32>::sse_decode(&mut deserializer);
-            let api_b = <i32>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| {
-                transform_result_sse::<_, ()>((move || {
-                    let output_ok = Ok::<_, ()>(crate::api::minimal::minimal_adder(api_a, api_b))?;
-                    std::result::Result::Ok(output_ok)
-                })())
-            }
-        },
-    )
-}
-
 // Section: dart2rust
 
 impl SseDecode for i32 {
@@ -134,33 +63,6 @@ impl SseDecode for bool {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_u8().unwrap() != 0
-    }
-}
-
-fn pde_ffi_dispatcher_primary_impl(
-    func_id: i32,
-    port: flutter_rust_bridge::for_generated::MessagePort,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        1 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
-        2 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
-        _ => unreachable!(),
-    }
-}
-
-fn pde_ffi_dispatcher_sync_impl(
-    func_id: i32,
-    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len: i32,
-    data_len: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    // Codec=Pde (Serialization + dispatch), see doc to use other codecs
-    match func_id {
-        _ => unreachable!(),
     }
 }
 
@@ -202,6 +104,109 @@ mod io {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_io!();
+
+    // Section: wire_funcs
+
+    fn wire__crate__api__minimal__init_app_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "init_app",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    let message = unsafe {
+                        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                            ptr_,
+                            rust_vec_len_,
+                            data_len_,
+                        )
+                    };
+                    let mut deserializer =
+                        flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+                    deserializer.end();
+                    move |context| {
+                        transform_result_sse::<_, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::minimal::init_app();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__minimal__minimal_adder_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "minimal_adder",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    let message = unsafe {
+                        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                            ptr_,
+                            rust_vec_len_,
+                            data_len_,
+                        )
+                    };
+                    let mut deserializer =
+                        flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+                    let api_a = <i32>::sse_decode(&mut deserializer);
+                    let api_b = <i32>::sse_decode(&mut deserializer);
+                    deserializer.end();
+                    move |context| {
+                        transform_result_sse::<_, ()>((move || {
+                            let output_ok =
+                                Ok::<_, ()>(crate::api::minimal::minimal_adder(api_a, api_b))?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+
+    // Section: dart2rust
+
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            1 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+            2 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
 }
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
@@ -226,6 +231,111 @@ mod web {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_web!();
+
+    // Section: wire_funcs
+
+    fn wire__crate__api__minimal__init_app_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "init_app",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    move |context| {
+                        transform_result_dco::<_, _, ()>((move || {
+                            let output_ok = Ok::<_, ()>({
+                                crate::api::minimal::init_app();
+                            })?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+    fn wire__crate__api__minimal__minimal_adder_impl(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        a: impl CstDecode<i32>,
+        b: impl CstDecode<i32>,
+    ) {
+        FLUTTER_RUST_BRIDGE_HANDLER
+            .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+                flutter_rust_bridge::for_generated::TaskInfo {
+                    debug_name: "minimal_adder",
+                    port: Some(port_),
+                    mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+                },
+                move || {
+                    let api_a = a.cst_decode();
+                    let api_b = b.cst_decode();
+                    move |context| {
+                        transform_result_dco::<_, _, ()>((move || {
+                            let output_ok =
+                                Ok::<_, ()>(crate::api::minimal::minimal_adder(api_a, api_b))?;
+                            std::result::Result::Ok(output_ok)
+                        })())
+                    }
+                },
+            )
+    }
+
+    // Section: dart2rust
+
+    fn pde_ffi_dispatcher_primary_impl(
+        func_id: i32,
+        port: flutter_rust_bridge::for_generated::MessagePort,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
+
+    fn pde_ffi_dispatcher_sync_impl(
+        func_id: i32,
+        ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        // Codec=Pde (Serialization + dispatch), see doc to use other codecs
+        match func_id {
+            _ => unreachable!(),
+        }
+    }
+    impl CstDecode<i32> for i32 {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> i32 {
+            self
+        }
+    }
+    impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> i32 {
+            self.unchecked_into_f64() as _
+        }
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__minimal__init_app(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__minimal__init_app_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__minimal__minimal_adder(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        a: i32,
+        b: i32,
+    ) {
+        wire__crate__api__minimal__minimal_adder_impl(port_, a, b)
+    }
 }
 #[cfg(target_family = "wasm")]
 pub use web::*;
