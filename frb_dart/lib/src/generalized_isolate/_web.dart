@@ -152,7 +152,7 @@ class _WebBroadcastChannel implements _WebChannel {
     _readyChannel.postMessage(null);
     _sendChannel.close();
     _receiveChannel.close();
-    Timer(const Duration(milliseconds: 100), _readyChannel.close);
+    Timer(const Duration(milliseconds: 100), () => _readyChannel.close());
   }
 }
 
