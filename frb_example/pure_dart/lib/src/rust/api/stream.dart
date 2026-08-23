@@ -9,7 +9,7 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'pseudo_manual/stream_twin_rust_async.dart';
 
-// These functions are ignored because they are not marked as `pub`: `dispatch_stream_task`, `handle_stream_inner`
+// These functions are ignored because they are not marked as `pub`: `dispatch_handle_stream`, `handle_stream_inner`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
 Future<Stream<String>> funcStreamReturnErrorTwinNormal() =>
