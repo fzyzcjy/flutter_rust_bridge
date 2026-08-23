@@ -6,8 +6,6 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:path/path.dart' as path;
 
-export 'package:flutter_rust_bridge_internal/src/makefile_dart/build_cli.dart';
-
 Future<void> generateRunFrbCodegenCommandGenerateFromScratch() async {
   await wrapMaybeSetExitIfChangedRaw(true, () async {
     final expectedGeneratedFiles =
