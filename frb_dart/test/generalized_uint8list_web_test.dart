@@ -45,7 +45,6 @@ void main() {
       throwsRangeError,
     );
   });
-
   test('WriteBuffer rejects invalid capacity and writes after intoRaw', () {
     expect(
       () => WriteBuffer(startCapacity: 0, binding: _binding()),

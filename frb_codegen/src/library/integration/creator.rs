@@ -421,6 +421,12 @@ dev_dependencies:
         let err = remove_unnecessary_plugin_files(temp_dir.path(), IntegrationBackend::Cargokit)
             .unwrap_err();
 
-        assert!(err.to_string().contains("No such file or directory"));
+        assert_eq!(
+            err.root_cause()
+                .downcast_ref::<std::io::Error>()
+                .unwrap()
+                .kind(),
+            std::io::ErrorKind::NotFound,
+        );
     }
 }

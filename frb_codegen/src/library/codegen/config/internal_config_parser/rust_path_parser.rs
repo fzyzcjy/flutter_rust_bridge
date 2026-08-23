@@ -260,10 +260,11 @@ mod tests {
 
         let result = compute_rust_path_info(&config, temp_dir.path(), &None)?;
 
-        assert_eq!(result.rust_crate_dir, crate_dir.canonicalize()?);
+        let canonical_crate_dir = crate_dir.canonicalize()?;
+        assert_eq!(result.rust_crate_dir, canonical_crate_dir);
         assert_eq!(
             result.rust_output_path,
-            crate_dir.join("src/frb_generated.rs")
+            result.rust_crate_dir.join("src/frb_generated.rs")
         );
         assert_eq!(
             result.third_party_crate_names,

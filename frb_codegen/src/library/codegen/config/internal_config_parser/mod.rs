@@ -392,7 +392,7 @@ mod tests {
         assert_eq!(result.polisher.dart_format_line_length, 120);
         assert_eq!(
             result.polisher.rust_output_path,
-            native_dir.join("src/frb_generated.rs")
+            result.polisher.rust_crate_dir.join("src/frb_generated.rs")
         );
         assert_eq!(
             result
