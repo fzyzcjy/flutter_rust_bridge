@@ -3,11 +3,9 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use crate::frb_generated::StreamSink;
-#[cfg(not(target_family = "wasm"))]
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
-#[cfg(not(target_family = "wasm"))]
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::frb;
+use flutter_rust_bridge::{frb, transfer};
 
 #[derive(Debug, Clone)]
 pub struct Log2TwinSync {
@@ -49,7 +47,7 @@ impl ConcatenateWithTwinSync {
         sink: StreamSink<Log2TwinSync>,
     ) {
         let a = self.a.clone();
-        dispatch_stream_task(move || {
+        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..max {
                 sink.add(Log2TwinSync {
                     key,
@@ -57,16 +55,16 @@ impl ConcatenateWithTwinSync {
                 })
                 .unwrap();
             }
-        });
+        }));
     }
 
     #[flutter_rust_bridge::frb(sync)]
     pub fn handle_some_stream_sink_at_1_twin_sync(&self, sink: StreamSink<u32>) {
-        dispatch_stream_task(move || {
+        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-        });
+        }));
     }
 
     #[flutter_rust_bridge::frb(sync)]
@@ -75,7 +73,7 @@ impl ConcatenateWithTwinSync {
         max: u32,
         sink: StreamSink<Log2TwinSync>,
     ) {
-        dispatch_stream_task(move || {
+        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..max {
                 sink.add(Log2TwinSync {
                     key,
@@ -83,25 +81,17 @@ impl ConcatenateWithTwinSync {
                 })
                 .unwrap();
             }
-        });
+        }));
     }
 
     #[flutter_rust_bridge::frb(sync)]
     pub fn handle_some_static_stream_sink_single_arg_twin_sync(sink: StreamSink<u32>) {
-        dispatch_stream_task(move || {
+        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-        });
+        }));
     }
-}
-
-fn dispatch_stream_task(task: impl FnOnce() + Send + 'static) {
-    #[cfg(target_family = "wasm")]
-    task();
-
-    #[cfg(not(target_family = "wasm"))]
-    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(task);
 }
 
 pub struct SumWithTwinSync {

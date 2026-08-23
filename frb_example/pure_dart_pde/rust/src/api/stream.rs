@@ -3,12 +3,10 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "sync sse"]}
 
 use crate::frb_generated::StreamSink;
-#[cfg(not(target_family = "wasm"))]
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
-#[cfg(not(target_family = "wasm"))]
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::frb;
+use flutter_rust_bridge::{frb, transfer};
 
 #[frb(stream_dart_await)]
 pub fn func_stream_return_error_twin_normal(_sink: StreamSink<String>) -> anyhow::Result<()> {
@@ -40,23 +38,24 @@ pub struct LogTwinNormal {
 }
 
 pub fn handle_stream_sink_at_1_twin_normal(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
-    dispatch_stream_task(move || handle_stream_inner(key, max, sink));
+    dispatch_handle_stream(key, max, sink);
 }
 
 pub fn handle_stream_sink_at_2_twin_normal(key: u32, sink: StreamSink<LogTwinNormal>, max: u32) {
-    dispatch_stream_task(move || handle_stream_inner(key, max, sink));
+    dispatch_handle_stream(key, max, sink);
 }
 
 pub fn handle_stream_sink_at_3_twin_normal(sink: StreamSink<LogTwinNormal>, key: u32, max: u32) {
-    dispatch_stream_task(move || handle_stream_inner(key, max, sink));
+    dispatch_handle_stream(key, max, sink);
 }
 
-fn dispatch_stream_task(task: impl FnOnce() + Send + 'static) {
+fn dispatch_handle_stream(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
     #[cfg(target_family = "wasm")]
-    task();
+    handle_stream_inner(key, max, sink);
 
     #[cfg(not(target_family = "wasm"))]
-    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(task);
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
@@ -87,9 +86,9 @@ pub fn stream_sink_inside_struct_twin_normal(arg: MyStructContainingStreamSinkTw
 }
 
 pub fn func_stream_add_value_and_error_twin_normal(sink: StreamSink<i32>) {
-    dispatch_stream_task(move || {
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
         sink.add(100).unwrap();
         sink.add(200).unwrap();
         sink.add_error(anyhow!("deliberate error")).unwrap();
-    });
+    }));
 }
