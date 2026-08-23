@@ -5,8 +5,8 @@ pub use allo_isolate::ZeroCopyBuffer;
 /// A channel that implements `Send`
 pub type SendableChannelHandle = Channel;
 
-pub fn deserialize_sendable_channel_handle(raw: String) -> SendableChannelHandle {
-    Channel::new(crate::platform_types::deserialize_sendable_message_port_handle(raw))
+pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
+    channel.to_owned()
 }
 
 pub fn handle_to_channel(handle: &SendableChannelHandle) -> Channel {
