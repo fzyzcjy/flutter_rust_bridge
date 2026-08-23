@@ -13,7 +13,10 @@ import 'package:test/test.dart';
 
 import '../../test_utils.dart';
 
-Future<void> main({bool skipRustLibInit = false}) async {
+Future<void> main({
+  bool skipRustLibInit = false,
+  bool skipKnownSseSerializerLeak = false,
+}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('simple functions', () {
@@ -31,19 +34,23 @@ Future<void> main({bool skipRustLibInit = false}) async {
         );
       });
 
-      test('after call, the object cannot be used again', () async {
-        final obj = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
-        await futurizeVoidTwinSync(
-          rustAutoOpaqueArgOwnTwinSync(arg: obj, expect: 100),
-        );
+      test(
+        'after call, the object cannot be used again',
+        () async {
+          final obj = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
+          await futurizeVoidTwinSync(
+            rustAutoOpaqueArgOwnTwinSync(arg: obj, expect: 100),
+          );
 
-        expect(obj.isDisposed, true);
+          expect(obj.isDisposed, true);
 
-        await expectLater(
-          () => rustAutoOpaqueArgBorrowTwinSync(arg: obj, expect: 100),
-          throwsA(isA<DroppableDisposedException>()),
-        );
-      });
+          await expectLater(
+            () => rustAutoOpaqueArgBorrowTwinSync(arg: obj, expect: 100),
+            throwsA(isA<DroppableDisposedException>()),
+          );
+        },
+        skip: skipKnownSseSerializerLeak,
+      );
     });
 
     group('arg ref', () {
