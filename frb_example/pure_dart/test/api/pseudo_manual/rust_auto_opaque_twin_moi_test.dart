@@ -310,7 +310,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinMoi(
       rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 42),
     );
-  }, skip: kIsWeb);
+  });
 
   test('vec of opaque', () async {
     final vec = await rustAutoOpaqueReturnVecOwnTwinMoi();

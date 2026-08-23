@@ -325,7 +325,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinRustAsyncSse(
       rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 42),
     );
-  }, skip: kIsWeb);
+  });
 
   test('vec of opaque', () async {
     final vec = await rustAutoOpaqueReturnVecOwnTwinRustAsyncSse();
