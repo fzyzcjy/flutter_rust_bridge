@@ -3,7 +3,7 @@ use crate::platform_types::handle_to_message_port;
 use crate::platform_types::release_message_port_handle;
 use crate::platform_types::MessagePort;
 use crate::platform_types::{
-    deserialize_sendable_message_port_handle, message_port_to_handle, SendableMessagePortHandle,
+    deserialize_sendable_message_port_handle, SendableMessagePortHandle,
 };
 
 #[derive(Clone)]
@@ -37,10 +37,6 @@ impl Channel {
 /// A handle to a [`web_sys::BroadcastChannel`] that implements `Send`.
 #[derive(Clone)]
 pub struct SendableChannelHandle(SendableMessagePortHandle);
-
-pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
-    SendableChannelHandle(message_port_to_handle(&channel.port))
-}
 
 pub fn deserialize_sendable_channel_handle(raw: String) -> SendableChannelHandle {
     SendableChannelHandle(deserialize_sendable_message_port_handle(raw))
