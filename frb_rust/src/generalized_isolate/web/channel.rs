@@ -3,6 +3,8 @@ use crate::platform_types::handle_to_message_port;
 use crate::platform_types::release_message_port_handle;
 use crate::platform_types::MessagePort;
 use crate::platform_types::{message_port_to_handle, SendableMessagePortHandle};
+use wasm_bindgen::JsCast;
+use web_sys::BroadcastChannel;
 
 #[derive(Clone)]
 pub struct Channel {
@@ -15,12 +17,28 @@ impl Channel {
     }
 
     pub fn post(&self, msg: impl IntoDart) -> bool {
-        self.port
-            .post_message(&msg.into_dart())
-            .map_err(|err| {
-                crate::console_error!("post: {:?}", err);
-            })
-            .is_ok()
+        let msg = msg.into_dart();
+        let diagnostic_channel_name = self
+            .port
+            .dyn_ref::<BroadcastChannel>()
+            .map(BroadcastChannel::name)
+            .filter(|name| name.starts_with("__frb_streamsink_RustStreamSink_"));
+        if let Some(name) = &diagnostic_channel_name {
+            crate::for_generated::web_utils::js_console_log(&format!(
+                "FRB_STREAMSINK_DIAGNOSTIC rust_post_start channel={name} payload={msg:?}"
+            ));
+        }
+
+        let result = self.port.post_message(&msg).map_err(|err| {
+            crate::console_error!("post: {:?}", err);
+        });
+        if let Some(name) = &diagnostic_channel_name {
+            crate::for_generated::web_utils::js_console_log(&format!(
+                "FRB_STREAMSINK_DIAGNOSTIC rust_post_finish channel={name} success={}",
+                result.is_ok()
+            ));
+        }
+        result.is_ok()
     }
 
     // TODO unused, rm?

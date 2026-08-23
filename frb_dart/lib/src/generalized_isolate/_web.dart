@@ -178,6 +178,17 @@ class _WebBroadcastPort extends _WebPortLike {
   _WebBroadcastPort(this._nativePort) : super._();
 
   @override
+  Stream<web.MessageEvent> get _onMessage => super._onMessage.map((event) {
+    if (_nativePort.name.startsWith('__frb_streamsink_RustStreamSink_')) {
+      print(
+        'FRB_STREAMSINK_DIAGNOSTIC dart_receive '
+        'channel=${_nativePort.name} payload=${event.data}',
+      );
+    }
+    return event;
+  });
+
+  @override
   void _start() {}
 
   @override
