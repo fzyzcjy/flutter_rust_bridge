@@ -124,7 +124,7 @@ class _WebBroadcastChannel implements _WebChannel {
   final web.BroadcastChannel _sendChannel;
   final web.BroadcastChannel _receiveChannel;
   final web.BroadcastChannel _readyChannel;
-  late final Timer _readyTimer;
+  late final StreamSubscription<web.MessageEvent> _readySubscription;
 
   _WebBroadcastChannel(String channelName)
     // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
@@ -133,10 +133,9 @@ class _WebBroadcastChannel implements _WebChannel {
     : _sendChannel = web.BroadcastChannel(channelName),
       _receiveChannel = web.BroadcastChannel(channelName),
       _readyChannel = web.BroadcastChannel('${channelName}__frb_ready') {
-    _readyTimer = Timer.periodic(
-      const Duration(milliseconds: 10),
-      (_) => _readyChannel.postMessage(null),
-    );
+    _readySubscription = const web.EventStreamProvider<web.MessageEvent>(
+      'message',
+    ).forTarget(_readyChannel).listen((_) => _readyChannel.postMessage(null));
   }
 
   @override
@@ -148,11 +147,10 @@ class _WebBroadcastChannel implements _WebChannel {
 
   @override
   void _close() {
-    _readyTimer.cancel();
-    _readyChannel.postMessage(null);
+    unawaited(_readySubscription.cancel());
+    _readyChannel.close();
     _sendChannel.close();
     _receiveChannel.close();
-    Timer(const Duration(milliseconds: 100), () => _readyChannel.close());
   }
 }
 
@@ -185,7 +183,6 @@ class _WebMessagePort extends _WebPortLike {
 
   @override
   void _start() => _nativePort.start();
-
 }
 
 // Indeed a BroadcastChannel, not a Broadcast "Port"
@@ -197,5 +194,4 @@ class _WebBroadcastPort extends _WebPortLike {
 
   @override
   void _start() {}
-
 }

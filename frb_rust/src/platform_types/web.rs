@@ -14,6 +14,7 @@ pub type MessagePort = crate::generalized_isolate::PortLike;
 pub type DartAbi = wasm_bindgen::JsValue;
 
 const BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS: i32 = 100;
+const BROADCAST_CHANNEL_READY_TIMEOUT_MILLIS: i32 = 5_000;
 
 #[derive(Clone, Debug)]
 pub struct SendableMessagePortHandle(String);
@@ -35,6 +36,7 @@ struct CachedBroadcastChannel {
     _ready_callback: Closure<dyn FnMut(web_sys::MessageEvent)>,
     pending_messages: Vec<JsValue>,
     ready: bool,
+    expired: bool,
     release_requested: bool,
 }
 
@@ -73,6 +75,17 @@ impl BroadcastChannelState {
             .channel_of_name
             .get_mut(name)
             .map(CachedBroadcastChannel::mark_ready)
+            .unwrap_or(false);
+        if release_requested {
+            self.release_ready_message_port_name(name);
+        }
+    }
+
+    fn expire(&mut self, name: &str) {
+        let release_requested = self
+            .channel_of_name
+            .get_mut(name)
+            .map(CachedBroadcastChannel::expire)
             .unwrap_or(false);
         if release_requested {
             self.release_ready_message_port_name(name);
@@ -131,17 +144,32 @@ impl CachedBroadcastChannel {
             .dyn_ref::<BroadcastChannel>()
             .expect("Not a BroadcastChannel")
             .set_onmessage(Some(ready_callback.as_ref().unchecked_ref()));
+        let timeout_name = name.to_owned();
+        let timeout_callback = Closure::once_into_js(move || expire(&timeout_name));
+        if let Err(error) = js_set_timeout(
+            timeout_callback.unchecked_ref(),
+            BROADCAST_CHANNEL_READY_TIMEOUT_MILLIS,
+        ) {
+            crate::console_error!("schedule broadcast channel ready timeout: {:?}", error);
+        }
+        if let Err(error) = ready_port.post_message(&JsValue::NULL) {
+            crate::console_error!("request broadcast channel readiness: {:?}", error);
+        }
         Self {
             message_port,
             ready_port,
             _ready_callback: ready_callback,
             pending_messages: Vec::new(),
             ready: false,
+            expired: false,
             release_requested: false,
         }
     }
 
     fn post(&mut self, message: JsValue) -> bool {
+        if self.expired {
+            return false;
+        }
         if !self.ready {
             self.pending_messages.push(message);
             return true;
@@ -153,7 +181,7 @@ impl CachedBroadcastChannel {
     }
 
     fn mark_ready(&mut self) -> bool {
-        if !self.ready {
+        if !self.ready && !self.expired {
             self.ready = true;
             for message in self.pending_messages.drain(..) {
                 if let Err(error) = self.message_port.post_message(&message) {
@@ -164,9 +192,17 @@ impl CachedBroadcastChannel {
         self.release_requested
     }
 
+    fn expire(&mut self) -> bool {
+        if !self.ready {
+            self.expired = true;
+            self.pending_messages.clear();
+        }
+        self.release_requested
+    }
+
     fn request_release(&mut self) -> bool {
         self.release_requested = true;
-        self.ready
+        self.ready || self.expired
     }
 
     fn close(self) {
@@ -217,4 +253,8 @@ fn close_pending_message_ports() {
 
 fn mark_ready(name: &str) {
     BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().mark_ready(name))
+}
+
+fn expire(name: &str) {
+    BROADCAST_CHANNEL_STATE.with(|state| state.borrow_mut().expire(name))
 }
