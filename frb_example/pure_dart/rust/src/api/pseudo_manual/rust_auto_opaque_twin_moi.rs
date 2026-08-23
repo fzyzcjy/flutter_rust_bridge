@@ -335,6 +335,7 @@ pub fn rust_auto_opaque_enum_return_own_twin_moi() -> NonCloneSimpleEnumTwinMoi 
 
 // ================ stream sink ===================
 
+#[flutter_rust_bridge::frb(sync)]
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub fn rust_auto_opaque_stream_sink_twin_moi(sink: StreamSink<NonCloneSimpleTwinMoi>) {
     sink.add(NonCloneSimpleTwinMoi { inner: 42 }).unwrap();
