@@ -253,6 +253,65 @@ plain
     );
   });
 
+  test('build_cli state is restored when internal generation fails', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_build_cli_');
+    addTearDown(() => tempDir.delete(recursive: true));
+    final pubspecs = [
+      File('${tempDir.path}/frb_dart/pubspec.yaml'),
+      File('${tempDir.path}/frb_utils/pubspec.yaml'),
+    ];
+    const disabledContents = '''
+dev_dependencies:
+  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
+  # build_cli: ^2.2.5
+''';
+    for (final pubspec in pubspecs) {
+      await pubspec.parent.create(recursive: true);
+      await pubspec.writeAsString(disabledContents);
+    }
+
+    await expectLater(
+      withBuildCliEnabled(
+        repoRootPath: tempDir.path,
+        action: () async {
+          for (final pubspec in pubspecs) {
+            expect(
+              await pubspec.readAsString(),
+              contains('\n  build_cli: ^2.2.5'),
+            );
+          }
+          throw StateError('generation failed');
+        },
+      ),
+      throwsStateError,
+    );
+    for (final pubspec in pubspecs) {
+      expect(await pubspec.readAsString(), disabledContents);
+    }
+  });
+
+  test('build_cli validates every pubspec before changing files', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_build_cli_');
+    addTearDown(() => tempDir.delete(recursive: true));
+    final firstPubspec = File('${tempDir.path}/frb_dart/pubspec.yaml');
+    final secondPubspec = File('${tempDir.path}/frb_utils/pubspec.yaml');
+    await firstPubspec.parent.create(recursive: true);
+    await secondPubspec.parent.create(recursive: true);
+    const disabledContents = '''
+dev_dependencies:
+  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
+  # build_cli: ^2.2.5
+''';
+    await firstPubspec.writeAsString(disabledContents);
+    await secondPubspec.writeAsString('dev_dependencies:\n');
+
+    await expectLater(
+      withBuildCliEnabled(repoRootPath: tempDir.path, action: () async {}),
+      throwsStateError,
+    );
+    expect(await firstPubspec.readAsString(), disabledContents);
+  });
+
   test('from-scratch selection keeps every tracked generated output', () {
     expect(
       selectTrackedGeneratedFilesForFromScratchForTesting([

@@ -400,13 +400,19 @@ void _writeGeneratedDocumentationFile({
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    for (final package in kDartBuildRunnerPackages) {
-      await runPubGetIfNotRunYet(package);
-      await exec(
-        'dart run build_runner build --delete-conflicting-outputs',
-        relativePwd: package,
-      );
-    }
+    await withBuildCliEnabled(
+      repoRootPath: exec.pwd!,
+      action: () async {
+        for (final package in kDartBuildRunnerPackages) {
+          await runPubGetIfNotRunYet(package);
+          await exec(
+            'dart run build_runner build --delete-conflicting-outputs',
+            relativePwd: package,
+          );
+          await exec('dart format .', relativePwd: package);
+        }
+      },
+    );
   });
 }
 
