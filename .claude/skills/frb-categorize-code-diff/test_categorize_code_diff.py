@@ -2,6 +2,8 @@ from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 import sys
 
+from typer.testing import CliRunner
+
 
 MODULE_PATH = Path(__file__).with_name("categorize_code_diff.py")
 SPEC = spec_from_file_location("categorize_code_diff", MODULE_PATH)
@@ -9,6 +11,17 @@ assert SPEC is not None and SPEC.loader is not None
 MODULE = module_from_spec(SPEC)
 sys.modules[SPEC.name] = MODULE
 SPEC.loader.exec_module(MODULE)
+RUNNER = CliRunner()
+
+
+def test_cli_help_describes_diff_options() -> None:
+    """Shows the supported revision and output options."""
+    result = RUNNER.invoke(MODULE.app, ["--help"])
+
+    assert result.exit_code == 0
+    assert "--base" in result.stdout
+    assert "--head" in result.stdout
+    assert "--json" in result.stdout
 
 
 def test_dedicated_test_paths_are_recognized() -> None:
