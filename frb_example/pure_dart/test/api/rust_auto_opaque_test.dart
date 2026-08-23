@@ -304,24 +304,34 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('stream sink', () async {
-    final stream = rustAutoOpaqueStreamSinkTwinNormal();
-    var dataCount = 0;
-    final objects = await stream
-        .map((event) {
-          dataCount++;
-          return event;
-        })
-        .toList()
-        .timeout(
-          const Duration(seconds: 20),
-          onTimeout: () => throw TimeoutException(
-            'stream sink diagnostic: data_count=$dataCount done=false',
-          ),
-        );
-    final obj = objects.single;
-    await futurizeVoidTwinNormal(
-      rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 42),
+    final streams = List.generate(
+      100,
+      (_) => rustAutoOpaqueStreamSinkTwinNormal(),
     );
+    final objects = await Future.wait(
+      streams.indexed.map((entry) {
+        final (index, stream) = entry;
+        var dataCount = 0;
+        return stream
+            .map((event) {
+              dataCount++;
+              return event;
+            })
+            .toList()
+            .timeout(
+              const Duration(seconds: 2),
+              onTimeout: () => throw TimeoutException(
+                'stream sink diagnostic: index=$index '
+                'data_count=$dataCount done=false',
+              ),
+            );
+      }),
+    );
+    for (final object in objects) {
+      await futurizeVoidTwinNormal(
+        rustAutoOpaqueArgBorrowTwinNormal(arg: object.single, expect: 42),
+      );
+    }
   });
 
   test('vec of opaque', () async {
