@@ -2,9 +2,12 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::for_generated::DartAbi;
 use crate::generalized_isolate::IntoDart;
-use crate::generalized_isolate::{
-    channel_to_handle, handle_to_channel, Channel, SendableChannelHandle,
-};
+#[cfg(target_family = "wasm")]
+use crate::generalized_isolate::deserialize_sendable_channel_handle;
+use crate::generalized_isolate::{handle_to_channel, SendableChannelHandle};
+#[cfg(not(target_family = "wasm"))]
+use crate::generalized_isolate::{channel_to_handle, Channel};
+#[cfg(not(target_family = "wasm"))]
 use crate::platform_types::{deserialize_sendable_message_port_handle, handle_to_message_port};
 use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
 use crate::stream::closer::StreamSinkCloser;
@@ -23,6 +26,9 @@ pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
 
 impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     pub fn deserialize(raw: String) -> Self {
+        #[cfg(target_family = "wasm")]
+        let sendable_channel_handle = deserialize_sendable_channel_handle(raw);
+        #[cfg(not(target_family = "wasm"))]
         let sendable_channel_handle = channel_to_handle(&Channel::new(handle_to_message_port(
             &deserialize_sendable_message_port_handle(raw),
         )));
