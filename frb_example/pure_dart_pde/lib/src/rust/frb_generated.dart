@@ -38705,13 +38705,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinNormal>
       crateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormal() {
     final sink = RustStreamSink<NonCloneSimpleTwinNormal>();
-    unawaited(handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal_Sse(
             sink, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1171, port: port_);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1171)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -38721,7 +38720,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormalConstMeta,
       argValues: [sink],
       apiImpl: this,
-    )));
+    ));
     return sink.stream;
   }
 

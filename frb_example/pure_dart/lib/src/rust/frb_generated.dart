@@ -88626,14 +88626,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<NonCloneSimpleTwinNormal>
       crateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormal() {
     final sink = RustStreamSink<NonCloneSimpleTwinNormal>();
-    unawaited(handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 =
             cst_encode_StreamSink_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal_Dco(
                 sink);
         return wire
             .wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-                port_, arg0);
+                arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -88643,7 +88643,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           kCrateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormalConstMeta,
       argValues: [sink],
       apiImpl: this,
-    )));
+    ));
     return sink.stream;
   }
 

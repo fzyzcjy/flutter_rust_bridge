@@ -60031,11 +60031,12 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
               port_, sink);
 
-  void wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-          NativePortType port_, String sink) =>
-      wasmModule
-          .wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-              port_, sink);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
+              String sink) =>
+          wasmModule
+              .wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
+                  sink);
 
   void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
           NativePortType port_, String sink) =>
@@ -79040,9 +79041,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
           NativePortType port_, String sink);
 
-  external void
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-          NativePortType port_, String sink);
+          String sink);
 
   external void
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(

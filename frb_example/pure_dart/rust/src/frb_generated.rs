@@ -42854,29 +42854,26 @@ fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_
                 } })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: impl CstDecode<
         StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>,
     >,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_stream_sink_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_sink = sink.cst_decode();
-            move |context| {
-                transform_result_dco::<_, _, ()>((move || {
-                    let output_ok = Ok::<_, ()>({
-                        crate::api::rust_auto_opaque::rust_auto_opaque_stream_sink_twin_normal(
-                            api_sink,
-                        );
-                    })?;
-                    std::result::Result::Ok(output_ok)
-                })())
-            }
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>({
+                    crate::api::rust_auto_opaque::rust_auto_opaque_stream_sink_twin_normal(
+                        api_sink,
+                    );
+                })?;
+                std::result::Result::Ok(output_ok)
+            })())
         },
     )
 }
@@ -151684,12 +151681,9 @@ field1: Default::default(), }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-        port_: i64,
         sink: *mut wire_cst_list_prim_u_8_strict,
-    ) {
-        wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(
-            port_, sink,
-        )
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(sink)
     }
 
     #[unsafe(no_mangle)]
@@ -207210,12 +207204,9 @@ mod web {
 
     #[wasm_bindgen]
     pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
         sink: String,
-    ) {
-        wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(
-            port_, sink,
-        )
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(sink)
     }
 
     #[wasm_bindgen]

@@ -306,6 +306,9 @@ pub fn rust_auto_opaque_enum_return_own_twin_normal() -> NonCloneSimpleEnumTwinN
 
 // ================ stream sink ===================
 
+// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
+#[frb(sync)]
+// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
 pub fn rust_auto_opaque_stream_sink_twin_normal(sink: StreamSink<NonCloneSimpleTwinNormal>) {
     sink.add(NonCloneSimpleTwinNormal { inner: 42 }).unwrap();
 }
