@@ -61,33 +61,8 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 ### 3. Write Changelog
 
-- Use `frb-write-changelog` to create or refresh the target release section in `CHANGELOG.md`.
-- Choose the changelog procedure from the target version:
-  - For a beta version such as `2.13.0-beta.7`, write the normal changelog for changes since the immediately preceding release. Do not roll earlier beta sections into the new beta section.
-  - For a stable version such as `2.13.0`, first write the normal changelog for changes since the latest release, then copy the substantive changelog entries from every preceding beta of the same `MAJOR.MINOR.PATCH` series into the new stable section. For example, `2.13.0` must include the entries from `2.13.0-beta.1` through the latest `2.13.0-beta.N`.
-- When rolling beta entries into a stable section:
-  - Keep only changes merged after the latest beta release as ordinary top-level entries immediately after the single generic "what's new" entry. Do not add an older change merely because every beta changelog omitted it.
-  - After those stable-only entries, add one top-level parent entry for each preceding beta, labeled with its canonical version such as `* 2.13.0-beta.6`.
-  - Order beta parent entries from the latest beta to the earliest beta. Nest that beta's substantive changelog entries beneath its parent, for example:
-
-    ```markdown
-    * Stable-only change #1234
-    * 2.13.0-beta.6
-      * Beta 6 change #1233
-    * 2.13.0-beta.5
-      * Beta 5 change #1232
-    ```
-
-  - Preserve the original entry wording, PR references, and `(thanks @username)` attribution.
-  - Keep the existing beta sections unchanged; the stable section is an additional consolidated view.
-  - Copy each beta's substantive entries exactly into its own group. Do not merge a post-latest-beta PR into a copied beta entry; write it as a separate entry before the beta groups.
-  - Keep user-visible features, fixes, behavior changes, published-package contents, and user-facing documentation as separate entries. Do not combine them with `and` or fold multiple such PRs into one summary.
-  - The only entries that may combine multiple PRs are user-invisible internal changes such as CI, tests, agent or release tooling, and code outside published packages.
-  - Order user-visible entries before user-invisible internal entries. Put all user-invisible internal entries at the end of the post-latest-beta group, immediately before the first beta parent entry.
-  - Do not duplicate identical recurring boilerplate such as the generic "what's new" link; include it once in the stable section.
-- When reviewing the release section, explicitly check every third-party human-authored PR in the release range, including docs, CI, chore, and tooling PRs. Each must either have `(thanks @username)` in the matching changelog entry or a documented reason for omission.
-- Be careful with grouped entries: if a local maintainer PR and a third-party PR are summarized together, the grouped entry still needs the third-party thanks attribution.
-- If `CHANGELOG.md` changed for the release, stop and ask a human to review the actual release-section text. Do not publish until the human explicitly confirms that text; approval of the file change, PR, CI result, or release process does not count as confirmation of the changelog text.
+- Use `frb-write-changelog` and follow it exactly. It is the single source of truth for beta and stable changelog content, grouping, ordering, attribution, review, verification, and generated package changelog copies. Do not duplicate those rules here.
+- Do not publish until the human-review gate required by `frb-write-changelog` is satisfied.
 - The top `CHANGELOG.md` version is the source used by `frb_internal release`.
 - If changelog or version files changed, commit that release preparation before publishing.
 - Land contributor and changelog preparation commits on `origin/master` before publishing. Do not leave release preparation only on a side branch.
