@@ -57,6 +57,8 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
             .map(RustOpaqueCodecMode::from),
         local: positive_bool_arg(args.local),
         default_external_library_loader_web_prefix: args.default_external_library_loader_web_prefix,
+        default_external_library_loader_native_assets_asset_id: args
+            .default_external_library_loader_native_assets_asset_id,
         wasm_bindgen_name: args.wasm_bindgen_name,
         dart_type_rename: None, // complex type, not supported on command line yet
         enable_lifetime: positive_bool_arg(args.enable_lifetime),

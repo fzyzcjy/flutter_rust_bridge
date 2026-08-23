@@ -2,3 +2,4 @@ rust_input: crate::api
 rust_root: .
 dart_output: my_dart_folder
 c_output: frb_generated.h
+default_external_library_loader_native_assets_asset_id: package:fake_dart_package/src/custom.io.dart

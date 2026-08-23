@@ -6,6 +6,16 @@ import 'package:test/test.dart';
 
 Future<void> main() async {
   test(
+    'generates the native asset identifier',
+    () {
+      expect(
+        RustLib.kDefaultExternalLibraryLoaderConfig.nativeAssetsAssetId,
+        'package:frb_example_pure_dart/src/rust/frb_generated.io.dart',
+      );
+    },
+  );
+
+  test(
     'when load dylib fails, should have nice message',
     skip: !Platform.isLinux,
     () async {

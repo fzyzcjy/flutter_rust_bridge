@@ -149,7 +149,11 @@ fn modify_file(
     enable_local_dependency: bool,
     comment_out_files: Option<&[String]>,
 ) -> Option<(PathBuf, Vec<u8>)> {
-    let src = replace_file_content(reference_content, replacements);
+    let src = add_native_assets_asset_id_to_generated_template(
+        &target_path,
+        replace_file_content(reference_content, replacements),
+        replacements["REPLACE_ME_DART_PACKAGE_NAME"],
+    );
 
     if let Some(existing_content) = existing_content {
         if let (Some(file_name), Some(files)) = (
@@ -192,6 +196,29 @@ fn modify_file(
     }
 
     Some((target_path, src))
+}
+
+fn add_native_assets_asset_id_to_generated_template(
+    target_path: &Path,
+    src: Vec<u8>,
+    dart_package_name: &str,
+) -> Vec<u8> {
+    if !target_path.ends_with("lib/src/rust/frb_generated.dart") {
+        return src;
+    }
+
+    const ANCHOR: &str = "        wasmBindgenName: 'wasm_bindgen',";
+    let src = String::from_utf8(src).unwrap();
+    assert_eq!(src.matches(ANCHOR).count(), 1);
+    let line_ending = if src.contains("\r\n") { "\r\n" } else { "\n" };
+    src.replacen(
+        ANCHOR,
+        &format!(
+            "{ANCHOR}{line_ending}        nativeAssetsAssetId:{line_ending}            'package:{dart_package_name}/src/rust/frb_generated.io.dart',"
+        ),
+        1,
+    )
+    .into_bytes()
 }
 
 fn comment_out_existing_file_and_write_template(
@@ -315,8 +342,49 @@ impl TemplateDirs {
 
 #[cfg(test)]
 mod tests {
-    use super::filter_file;
+    use super::{add_native_assets_asset_id_to_generated_template, filter_file};
     use std::path::Path;
+
+    #[test]
+    fn test_generated_template_adds_native_assets_asset_id() {
+        let input = b"        wasmBindgenName: 'wasm_bindgen',\n".to_vec();
+        let output = add_native_assets_asset_id_to_generated_template(
+            Path::new("package/lib/src/rust/frb_generated.dart"),
+            input,
+            "my_package",
+        );
+        assert_eq!(
+            String::from_utf8(output).unwrap(),
+            "        wasmBindgenName: 'wasm_bindgen',\n        nativeAssetsAssetId:\n            'package:my_package/src/rust/frb_generated.io.dart',\n"
+        );
+    }
+
+    #[test]
+    fn test_generated_template_leaves_other_files_unchanged() {
+        let input = b"        wasmBindgenName: 'wasm_bindgen',\n".to_vec();
+        assert_eq!(
+            add_native_assets_asset_id_to_generated_template(
+                Path::new("package/lib/other.dart"),
+                input.clone(),
+                "my_package",
+            ),
+            input
+        );
+    }
+
+    #[test]
+    fn test_generated_template_preserves_windows_line_endings() {
+        let input = b"        wasmBindgenName: 'wasm_bindgen',\r\n".to_vec();
+        let output = add_native_assets_asset_id_to_generated_template(
+            Path::new("package/lib/src/rust/frb_generated.dart"),
+            input,
+            "my_package",
+        );
+        assert_eq!(
+            String::from_utf8(output).unwrap(),
+            "        wasmBindgenName: 'wasm_bindgen',\r\n        nativeAssetsAssetId:\r\n            'package:my_package/src/rust/frb_generated.io.dart',\r\n"
+        );
+    }
 
     #[test]
     fn test_filter_file_excludes_ohos_when_not_enabled() {

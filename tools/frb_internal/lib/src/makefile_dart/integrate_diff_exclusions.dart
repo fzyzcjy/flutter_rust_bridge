@@ -54,6 +54,8 @@ Map<String, List<String>> _integrateSetExitIfChangedExcludedPathsByPackage({
     package: [
       '$package/example/macos/Flutter/Flutter-Debug.xcconfig',
       '$package/example/macos/Flutter/Flutter-Release.xcconfig',
+      if (package == 'frb_example/flutter_package_native_assets')
+        '$package/bin/pure_dart_smoke.dart',
     ],
 };
 
