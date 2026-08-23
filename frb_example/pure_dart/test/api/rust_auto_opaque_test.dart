@@ -1,5 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
+import 'dart:async';
+
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_auto_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -303,7 +305,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('stream sink', () async {
     final stream = rustAutoOpaqueStreamSinkTwinNormal();
-    final obj = (await stream.toList()).single;
+    var dataCount = 0;
+    final objects = await stream
+        .map((event) {
+          dataCount++;
+          return event;
+        })
+        .toList()
+        .timeout(
+          const Duration(seconds: 20),
+          onTimeout: () => throw TimeoutException(
+            'stream sink diagnostic: data_count=$dataCount done=false',
+          ),
+        );
+    final obj = objects.single;
     await futurizeVoidTwinNormal(
       rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 42),
     );
