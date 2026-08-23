@@ -10,7 +10,6 @@ import '../test_utils.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
-  if (kIsWeb) return;
 
   const cancellationTimeout = Duration(seconds: 5);
 
