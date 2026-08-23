@@ -60025,65 +60025,69 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync_sse_moi__rust_auto_opaque_sleep_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
-          NativePortType port_, String sink) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
-              port_, sink);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
+              String sink) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
+                  sink);
 
-  void wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-          NativePortType port_, String sink) =>
-      wasmModule
-          .wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-              port_, sink);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
+              String sink) =>
+          wasmModule
+              .wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
+                  sink);
 
-  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
-          NativePortType port_, String sink) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
-              port_, sink);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
+              String sink) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
+                  sink);
 
-  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
-          NativePortType port_, String sink) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
-              port_, sink);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
+              String sink) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
+                  sink);
 
-  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
+                  ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
-              port_, ptr_, rust_vec_len_, data_len_);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
+                  ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
-              port_, ptr_, rust_vec_len_, data_len_);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync(
@@ -79036,46 +79040,42 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external void
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
-          NativePortType port_, String sink);
+          String sink);
 
-  external void
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-          NativePortType port_, String sink);
+          String sink);
 
-  external void
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
-          NativePortType port_, String sink);
+          String sink);
 
-  external void
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
-          NativePortType port_, String sink);
+          String sink);
 
-  external void
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
-          NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external void
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
-          NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external void
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
-          NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
 
-  external void
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
-          NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

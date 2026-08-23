@@ -328,6 +328,7 @@ pub async fn rust_auto_opaque_enum_return_own_twin_rust_async() -> NonCloneSimpl
 
 // ================ stream sink ===================
 
+#[frb(sync)]
 pub async fn rust_auto_opaque_stream_sink_twin_rust_async(
     sink: StreamSink<NonCloneSimpleTwinRustAsync>,
 ) {

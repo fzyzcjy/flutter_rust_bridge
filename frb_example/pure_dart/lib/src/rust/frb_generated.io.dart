@@ -108812,13 +108812,11 @@ class RustLibWire implements BaseWire {
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void
+  WireSyncRust2DartDco
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
-    int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
-      port_,
       sink,
     );
   }
@@ -108826,8 +108824,7 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moiPtr =
       _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                ffi.Int64,
+              WireSyncRust2DartDco Function(
                 ffi.Pointer<wire_cst_list_prim_u_8_strict>,
               )>>(
     'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi',
@@ -108835,15 +108832,15 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi =
       _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moiPtr
           .asFunction<
-              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              )>();
 
-  void
+  WireSyncRust2DartDco
       wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-    int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-      port_,
       sink,
     );
   }
@@ -108851,8 +108848,7 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normalPtr =
       _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                ffi.Int64,
+              WireSyncRust2DartDco Function(
                 ffi.Pointer<wire_cst_list_prim_u_8_strict>,
               )>>(
     'frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal',
@@ -108860,15 +108856,15 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal =
       _wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normalPtr
           .asFunction<
-              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              )>();
 
-  void
+  WireSyncRust2DartDco
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
-    int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
-      port_,
       sink,
     );
   }
@@ -108876,8 +108872,7 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_asyncPtr =
       _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                ffi.Int64,
+              WireSyncRust2DartDco Function(
                 ffi.Pointer<wire_cst_list_prim_u_8_strict>,
               )>>(
     'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async',
@@ -108885,15 +108880,15 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async =
       _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_asyncPtr
           .asFunction<
-              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              )>();
 
-  void
+  WireSyncRust2DartDco
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
-    int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
   ) {
     return _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
-      port_,
       sink,
     );
   }
@@ -108901,8 +108896,7 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moiPtr =
       _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                ffi.Int64,
+              WireSyncRust2DartDco Function(
                 ffi.Pointer<wire_cst_list_prim_u_8_strict>,
               )>>(
     'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi',
@@ -108910,17 +108904,17 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi =
       _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moiPtr
           .asFunction<
-              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+              WireSyncRust2DartDco Function(
+                ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              )>();
 
-  void
+  WireSyncRust2DartSse
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
-    int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -108930,8 +108924,7 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_ssePtr =
       _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                ffi.Int64,
+              WireSyncRust2DartSse Function(
                 ffi.Pointer<ffi.Uint8>,
                 ffi.Int32,
                 ffi.Int32,
@@ -108940,17 +108933,17 @@ class RustLibWire implements BaseWire {
   );
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse =
       _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void
+  WireSyncRust2DartSse
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
-    int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -108960,8 +108953,7 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moiPtr =
       _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                ffi.Int64,
+              WireSyncRust2DartSse Function(
                 ffi.Pointer<ffi.Uint8>,
                 ffi.Int32,
                 ffi.Int32,
@@ -108970,17 +108962,17 @@ class RustLibWire implements BaseWire {
   );
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi =
       _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moiPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void
+  WireSyncRust2DartSse
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
-    int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -108990,8 +108982,7 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_ssePtr =
       _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                ffi.Int64,
+              WireSyncRust2DartSse Function(
                 ffi.Pointer<ffi.Uint8>,
                 ffi.Int32,
                 ffi.Int32,
@@ -109000,17 +108991,17 @@ class RustLibWire implements BaseWire {
   );
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse =
       _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void
+  WireSyncRust2DartSse
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
-    int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
     return _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
-      port_,
       ptr_,
       rust_vec_len_,
       data_len_,
@@ -109020,8 +109011,7 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moiPtr =
       _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                ffi.Int64,
+              WireSyncRust2DartSse Function(
                 ffi.Pointer<ffi.Uint8>,
                 ffi.Int32,
                 ffi.Int32,
@@ -109030,7 +109020,9 @@ class RustLibWire implements BaseWire {
   );
   late final _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi =
       _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moiPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartDco
       wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync(

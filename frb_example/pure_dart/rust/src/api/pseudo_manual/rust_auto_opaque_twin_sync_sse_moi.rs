@@ -412,6 +412,7 @@ pub fn rust_auto_opaque_enum_return_own_twin_sync_sse_moi() -> NonCloneSimpleEnu
 
 // ================ stream sink ===================
 
+#[frb(sync)]
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]

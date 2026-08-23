@@ -335,6 +335,7 @@ pub fn rust_auto_opaque_enum_return_own_twin_sse() -> NonCloneSimpleEnumTwinSse 
 
 // ================ stream sink ===================
 
+#[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
 pub fn rust_auto_opaque_stream_sink_twin_sse(
     sink: StreamSink<NonCloneSimpleTwinSse, flutter_rust_bridge::SseCodec>,

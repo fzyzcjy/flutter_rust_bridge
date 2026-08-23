@@ -365,6 +365,7 @@ pub async fn rust_auto_opaque_enum_return_own_twin_rust_async_sse(
 
 // ================ stream sink ===================
 
+#[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_auto_opaque_stream_sink_twin_rust_async_sse(
     sink: StreamSink<NonCloneSimpleTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,

@@ -12772,37 +12772,29 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                                                 int32_t rust_vec_len_,
                                                                                                                                                                 int32_t data_len_);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(int64_t port_,
-                                                                                                                                    struct wire_cst_list_prim_u_8_strict *sink);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(struct wire_cst_list_prim_u_8_strict *sink);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(int64_t port_,
-                                                                                                               struct wire_cst_list_prim_u_8_strict *sink);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(struct wire_cst_list_prim_u_8_strict *sink);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(int64_t port_,
-                                                                                                                                                  struct wire_cst_list_prim_u_8_strict *sink);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(struct wire_cst_list_prim_u_8_strict *sink);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(int64_t port_,
-                                                                                                                                                          struct wire_cst_list_prim_u_8_strict *sink);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(struct wire_cst_list_prim_u_8_strict *sink);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(int64_t port_,
-                                                                                                                                                          uint8_t *ptr_,
-                                                                                                                                                          int32_t rust_vec_len_,
-                                                                                                                                                          int32_t data_len_);
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(uint8_t *ptr_,
+                                                                                                                                                                          int32_t rust_vec_len_,
+                                                                                                                                                                          int32_t data_len_);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(int64_t port_,
-                                                                                                                                                                  uint8_t *ptr_,
-                                                                                                                                                                  int32_t rust_vec_len_,
-                                                                                                                                                                  int32_t data_len_);
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(uint8_t *ptr_,
+                                                                                                                                                                                  int32_t rust_vec_len_,
+                                                                                                                                                                                  int32_t data_len_);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(int64_t port_,
-                                                                                                                                    uint8_t *ptr_,
-                                                                                                                                    int32_t rust_vec_len_,
-                                                                                                                                    int32_t data_len_);
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(uint8_t *ptr_,
+                                                                                                                                                    int32_t rust_vec_len_,
+                                                                                                                                                    int32_t data_len_);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(int64_t port_,
-                                                                                                                                            uint8_t *ptr_,
-                                                                                                                                            int32_t rust_vec_len_,
-                                                                                                                                            int32_t data_len_);
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(uint8_t *ptr_,
+                                                                                                                                                            int32_t rust_vec_len_,
+                                                                                                                                                            int32_t data_len_);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync(struct wire_cst_list_prim_u_8_strict *sink);
 

@@ -42842,127 +42842,110 @@ let mut api_orange_guard = api_orange_guard.unwrap();
                 })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: impl CstDecode<
         StreamSink<NonCloneSimpleTwinMoi, flutter_rust_bridge::for_generated::DcoCodec>,
     >,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {let api_sink = sink.cst_decode(); move |context|  {
-                    transform_result_dco::<_, _, ()>((move ||  {
-                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_moi::rust_auto_opaque_stream_sink_twin_moi(api_sink); })?;   std::result::Result::Ok(output_ok)
-                    })())
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {let api_sink = sink.cst_decode();
+                transform_result_dco::<_, _, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_moi::rust_auto_opaque_stream_sink_twin_moi(api_sink); })?;   std::result::Result::Ok(output_ok)
+                })()) })
 }
 fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: impl CstDecode<
         StreamSink<NonCloneSimpleTwinNormal, flutter_rust_bridge::for_generated::DcoCodec>,
     >,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_stream_sink_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_sink = sink.cst_decode();
-            move |context| {
-                transform_result_dco::<_, _, ()>((move || {
-                    let output_ok = Ok::<_, ()>({
-                        crate::api::rust_auto_opaque::rust_auto_opaque_stream_sink_twin_normal(
-                            api_sink,
-                        );
-                    })?;
-                    std::result::Result::Ok(output_ok)
-                })())
-            }
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Ok::<_, ()>({
+                    crate::api::rust_auto_opaque::rust_auto_opaque_stream_sink_twin_normal(
+                        api_sink,
+                    );
+                })?;
+                std::result::Result::Ok(output_ok)
+            })())
         },
     )
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: impl CstDecode<
         StreamSink<NonCloneSimpleTwinRustAsync, flutter_rust_bridge::for_generated::DcoCodec>,
     >,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {let api_sink = sink.cst_decode(); move |context| async move {
-                    transform_result_dco::<_, _, ()>((move || async move {
-                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_stream_sink_twin_rust_async(api_sink).await; })?;   std::result::Result::Ok(output_ok)
-                    })().await)
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {let api_sink = sink.cst_decode();
+                transform_result_dco::<_, _, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::rust_auto_opaque_stream_sink_twin_rust_async(api_sink).await; })?;   std::result::Result::Ok(output_ok)
+                })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: impl CstDecode<
         StreamSink<NonCloneSimpleTwinRustAsyncMoi, flutter_rust_bridge::for_generated::DcoCodec>,
     >,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {let api_sink = sink.cst_decode(); move |context| async move {
-                    transform_result_dco::<_, _, ()>((move || async move {
-                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::rust_auto_opaque_stream_sink_twin_rust_async_moi(api_sink).await; })?;   std::result::Result::Ok(output_ok)
-                    })().await)
-                } })
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {let api_sink = sink.cst_decode();
+                transform_result_dco::<_, _, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::rust_auto_opaque_stream_sink_twin_rust_async_moi(api_sink).await; })?;   std::result::Result::Ok(output_ok)
+                })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_sink = <StreamSink<NonCloneSimpleTwinRustAsyncSse,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
-                    transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::rust_auto_opaque_stream_sink_twin_rust_async_sse(api_sink).await; })?;   std::result::Result::Ok(output_ok)
-                    })().await)
-                } })
+            let api_sink = <StreamSink<NonCloneSimpleTwinRustAsyncSse,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::rust_auto_opaque_stream_sink_twin_rust_async_sse(api_sink).await; })?;   std::result::Result::Ok(output_ok)
+                })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_rust_async_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_sink = <StreamSink<NonCloneSimpleTwinRustAsyncSseMoi,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
-                    transform_result_sse::<_, ()>((move || async move {
-                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(api_sink).await; })?;   std::result::Result::Ok(output_ok)
-                    })().await)
-                } })
+            let api_sink = <StreamSink<NonCloneSimpleTwinRustAsyncSseMoi,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(api_sink).await; })?;   std::result::Result::Ok(output_ok)
+                })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_sink = <StreamSink<NonCloneSimpleTwinSse,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sse::rust_auto_opaque_stream_sink_twin_sse(api_sink); })?;   std::result::Result::Ok(output_ok)
-                    })())
-                } })
+            let api_sink = <StreamSink<NonCloneSimpleTwinSse,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sse::rust_auto_opaque_stream_sink_twin_sse(api_sink); })?;   std::result::Result::Ok(output_ok)
+                })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_stream_sink_twin_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_sink = <StreamSink<NonCloneSimpleTwinSseMoi,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse::<_, ()>((move ||  {
-                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::rust_auto_opaque_stream_sink_twin_sse_moi(api_sink); })?;   std::result::Result::Ok(output_ok)
-                    })())
-                } })
+            let api_sink = <StreamSink<NonCloneSimpleTwinSseMoi,flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::rust_auto_opaque_stream_sink_twin_sse_moi(api_sink); })?;   std::result::Result::Ok(output_ok)
+                })()) })
 }
 fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__rust_auto_opaque_stream_sink_twin_sync_impl(
     sink: impl CstDecode<
@@ -151676,76 +151659,66 @@ field1: Default::default(), }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
-        port_: i64,
         sink: *mut wire_cst_list_prim_u_8_strict,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi_impl(port_, sink)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi_impl(sink)
     }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-        port_: i64,
         sink: *mut wire_cst_list_prim_u_8_strict,
-    ) {
-        wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(
-            port_, sink,
-        )
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(sink)
     }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
-        port_: i64,
         sink: *mut wire_cst_list_prim_u_8_strict,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(port_, sink)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(sink)
     }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
-        port_: i64,
         sink: *mut wire_cst_list_prim_u_8_strict,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(port_, sink)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(sink)
     }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
-        port_: i64,
         ptr_: *mut u8,
         rust_vec_len_: i32,
         data_len_: i32,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
-        port_: i64,
         ptr_: *mut u8,
         rust_vec_len_: i32,
         data_len_: i32,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
-        port_: i64,
         ptr_: *mut u8,
         rust_vec_len_: i32,
         data_len_: i32,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
-        port_: i64,
         ptr_: *mut u8,
         rust_vec_len_: i32,
         data_len_: i32,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[unsafe(no_mangle)]
@@ -207202,76 +207175,66 @@ mod web {
 
     #[wasm_bindgen]
     pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
         sink: String,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi_impl(port_, sink)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi_impl(sink)
     }
 
     #[wasm_bindgen]
     pub fn wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
         sink: String,
-    ) {
-        wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(
-            port_, sink,
-        )
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal_impl(sink)
     }
 
     #[wasm_bindgen]
     pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
         sink: String,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(port_, sink)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async_impl(sink)
     }
 
     #[wasm_bindgen]
     pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
         sink: String,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(port_, sink)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_moi__rust_auto_opaque_stream_sink_twin_rust_async_moi_impl(sink)
     }
 
     #[wasm_bindgen]
     pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
         ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
         rust_vec_len_: i32,
         data_len_: i32,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse__rust_auto_opaque_stream_sink_twin_rust_async_sse_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[wasm_bindgen]
     pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
         ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
         rust_vec_len_: i32,
         data_len_: i32,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async_sse_moi__rust_auto_opaque_stream_sink_twin_rust_async_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[wasm_bindgen]
     pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
         ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
         rust_vec_len_: i32,
         data_len_: i32,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse__rust_auto_opaque_stream_sink_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[wasm_bindgen]
     pub fn wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
         ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
         rust_vec_len_: i32,
         data_len_: i32,
-    ) {
-        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sse_moi__rust_auto_opaque_stream_sink_twin_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[wasm_bindgen]
