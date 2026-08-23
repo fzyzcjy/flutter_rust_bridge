@@ -36,22 +36,16 @@ pub struct LogTwinNormal {
 }
 
 pub fn handle_stream_sink_at_1_twin_normal(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
-    dispatch_handle_stream(key, max, sink);
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 pub fn handle_stream_sink_at_2_twin_normal(key: u32, sink: StreamSink<LogTwinNormal>, max: u32) {
-    dispatch_handle_stream(key, max, sink);
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 pub fn handle_stream_sink_at_3_twin_normal(sink: StreamSink<LogTwinNormal>, key: u32, max: u32) {
-    dispatch_handle_stream(key, max, sink);
-}
-
-fn dispatch_handle_stream(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
-    #[cfg(target_family = "wasm")]
-    handle_stream_inner(key, max, sink);
-
-    #[cfg(not(target_family = "wasm"))]
     (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
         .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
