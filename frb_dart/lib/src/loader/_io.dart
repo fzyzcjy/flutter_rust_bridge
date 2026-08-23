@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:ffi' as ffi;
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
@@ -11,6 +14,13 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 FutureOr<ExternalLibrary> loadExternalLibrary(
   ExternalLibraryLoaderConfig config,
 ) async {
+  if (!Platform.environment.containsKey(
+    _nativeLibraryDirectoryEnvironmentVariable,
+  )) {
+    final nativeAsset = _tryLoadNativeAsset(config.nativeAssetsAssetId);
+    if (nativeAsset != null) return nativeAsset;
+  }
+
   final ioDirectory = config.ioDirectory;
   return loadExternalLibraryRaw(
     nativeLibDirWhenNonPackaged: ioDirectory == null
@@ -39,7 +49,7 @@ ExternalLibrary loadExternalLibraryRaw({
     ExternalLibrary Function(String debugInfo) fallback,
   ) {
     final effectiveNativeLibDir =
-        Platform.environment['FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR']
+        Platform.environment[_nativeLibraryDirectoryEnvironmentVariable]
             ?.toUriDirectory() ??
         nativeLibDirWhenNonPackaged;
 
@@ -95,6 +105,48 @@ ExternalLibrary loadExternalLibraryRaw({
   );
 }
 
+ExternalLibrary? _tryLoadNativeAsset(String? assetId) {
+  if (assetId == null) return null;
+
+  final Uri? packageConfigUri;
+  try {
+    packageConfigUri = Isolate.packageConfigSync;
+  } on UnsupportedError {
+    return null;
+  }
+  if (packageConfigUri == null || packageConfigUri.scheme != 'file') {
+    return null;
+  }
+
+  final manifestFile = File.fromUri(
+    packageConfigUri.resolve('native_assets.yaml'),
+  );
+  if (!manifestFile.existsSync()) return null;
+
+  final manifestText = manifestFile.readAsStringSync();
+  final jsonStart = manifestText.indexOf('{');
+  if (jsonStart < 0) return null;
+
+  final manifest = jsonDecode(manifestText.substring(jsonStart));
+  if (manifest is! Map<String, dynamic>) return null;
+  final nativeAssets = manifest['native-assets'];
+  if (nativeAssets is! Map<String, dynamic>) return null;
+  final currentTargetAssets = nativeAssets[ffi.Abi.current().toString()];
+  if (currentTargetAssets is! Map<String, dynamic>) return null;
+  final route = currentTargetAssets[assetId];
+  if (route is! List<dynamic> ||
+      route.length != 2 ||
+      route[0] != 'absolute' ||
+      route[1] is! String) {
+    return null;
+  }
+
+  return ExternalLibrary.open(
+    route[1] as String,
+    debugInfo: ' for native asset $assetId',
+  );
+}
+
 ExternalLibrary _tryOpen(
   String name,
   String debugInfo,
@@ -110,5 +162,8 @@ ExternalLibrary _tryOpen(
 extension on String {
   Uri toUriDirectory() => Uri.directory(this);
 }
+
+const _nativeLibraryDirectoryEnvironmentVariable =
+    'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR';
 
 // coverage:ignore-end

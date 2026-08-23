@@ -56,6 +56,7 @@
           "io_directory": "target/release/",
           "stem": "UNKNOWN",
           "wasm_bindgen_name": "wasm_bindgen",
+          "native_assets_asset_id": "package:fake_dart_package/src/custom.io.dart",
           "web_prefix": "pkg/"
         },
         "extra_headers": "",

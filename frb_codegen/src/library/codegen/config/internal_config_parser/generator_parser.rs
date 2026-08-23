@@ -53,8 +53,12 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
 
     let dart_enums_style = config.dart_enums_style.unwrap_or(true);
     let dart3 = config.dart3.unwrap_or(true);
-    let default_external_library_loader =
-        compute_default_external_library_loader(rust_crate_dir, dart_root, config);
+    let default_external_library_loader = compute_default_external_library_loader(
+        rust_crate_dir,
+        dart_root,
+        &dart_output_path_pack.dart_impl_output_path.io,
+        config,
+    );
     let c_symbol_prefix = compute_c_symbol_prefix(dart_root)?;
 
     Ok(GeneratorInternalConfig {
@@ -134,6 +138,7 @@ fn compute_c_symbol_prefix(dart_root: &Path) -> anyhow::Result<String> {
 fn compute_default_external_library_loader(
     rust_crate_dir: &Path,
     dart_root: &Path,
+    dart_io_output_path: &Path,
     config: &Config,
 ) -> GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
     const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM: &str = "UNKNOWN";
@@ -157,7 +162,29 @@ fn compute_default_external_library_loader(
             .as_deref()
             .unwrap_or("wasm_bindgen")
             .into(),
+        native_assets_asset_id: config
+            .default_external_library_loader_native_assets_asset_id
+            .clone()
+            .or_else(|| {
+                compute_default_external_library_native_assets_asset_id(
+                    dart_root,
+                    dart_io_output_path,
+                )
+                .ok()
+            }),
     }
+}
+
+fn compute_default_external_library_native_assets_asset_id(
+    dart_root: &Path,
+    dart_io_output_path: &Path,
+) -> anyhow::Result<String> {
+    let package_name = get_dart_package_name(dart_root)?;
+    let relative_path = dart_io_output_path
+        .strip_prefix(dart_root.join("lib"))
+        .context("dart output is not inside the package lib directory")?;
+    let relative_path = path_to_string(relative_path)?.replace('\\', "/");
+    Ok(format!("package:{package_name}/{relative_path}"))
 }
 
 fn compute_default_external_library_stem(rust_crate_dir: &Path) -> anyhow::Result<String> {

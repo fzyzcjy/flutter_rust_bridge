@@ -23,6 +23,7 @@ pub(crate) struct GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
     pub io_directory: String,
     pub web_prefix: String,
     pub wasm_bindgen_name: String,
+    pub native_assets_asset_id: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

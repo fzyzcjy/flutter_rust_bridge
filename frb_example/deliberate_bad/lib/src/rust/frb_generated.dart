@@ -76,6 +76,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     ioDirectory: 'rust/target/release/',
     webPrefix: 'pkg/',
     wasmBindgenName: 'wasm_bindgen',
+    nativeAssetsAssetId:
+        'package:frb_example_deliberate_bad/src/rust/frb_generated.io.dart',
   );
 }
 

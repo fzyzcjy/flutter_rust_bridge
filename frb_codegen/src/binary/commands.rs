@@ -148,6 +148,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub default_external_library_loader_web_prefix: Option<String>,
 
+    /// The native asset identifier used by the default external library loader.
+    #[arg(long)]
+    pub default_external_library_loader_native_assets_asset_id: Option<String>,
+
     /// The name of the wasm_bindgen module.
     #[arg(long)]
     pub wasm_bindgen_name: Option<String>,

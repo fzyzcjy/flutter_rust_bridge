@@ -12,11 +12,15 @@ class ExternalLibraryLoaderConfig {
   /// The name of the wasm_bindgen module.
   final String wasmBindgenName;
 
+  /// The identifier registered by a Dart Native Assets build hook.
+  final String? nativeAssetsAssetId;
+
   /// Arguments of `loadExternalLibrary`
   const ExternalLibraryLoaderConfig({
     required this.stem,
     required this.ioDirectory,
     required this.webPrefix,
     this.wasmBindgenName = 'wasm_bindgen',
+    this.nativeAssetsAssetId,
   });
 }

@@ -646,6 +646,13 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
     relativePwd: config.package,
     flutterTestArgs: config.flutterTestArgs ?? '',
   );
+
+  if (config.package == 'frb_example/flutter_package_native_assets/example') {
+    await exec(
+      'dart run bin/pure_dart_smoke.dart',
+      relativePwd: 'frb_example/flutter_package_native_assets',
+    );
+  }
 }
 
 Future<void> flutterIntegrationTestRaw({
