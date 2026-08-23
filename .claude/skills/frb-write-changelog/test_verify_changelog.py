@@ -166,7 +166,7 @@ def test_verify_changelog_accepts_duplicate_thanks_author() -> None:
 
 
 def test_verify_changelog_reports_thanks_order_problems() -> None:
-    """Verifier reports thanks entries placed after entries without thanks."""
+    """Verifier reports thanks ordering problems inside a copied beta group."""
 
     merged_prs = [
         make_pr(number=4, author_login="alice"),
@@ -179,9 +179,10 @@ def test_verify_changelog_reports_thanks_order_problems() -> None:
 ## 2.0.0
 
 * Please refer to https://example.com for what's changed.
-* Add first feature #4 (thanks @alice)
-* Improve CI #3
-* Add second feature #2 (thanks @bob)
+* 2.0.0-beta.1
+  * Add first feature #4 (thanks @alice)
+  * Improve CI #3
+  * Add second feature #2 (thanks @bob)
 
 ## 1.0.0
 """

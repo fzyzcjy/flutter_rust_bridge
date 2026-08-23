@@ -3,17 +3,18 @@
 ## 2.13.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
-* Enhance HAP validation and document panic abort behavior #3352 #3330 (thanks @lqjdm) (thanks @stepangfil)
+* Generate regular Dart package documentation files #3359
+* Refresh vendored Dart API headers #3336
+* Fix ffigen 21 struct removal #3357
+* Limit automatic build runner outputs #3344
+* Add HAP validation and real-device smoke testing #3352 (thanks @lqjdm)
+* Document panic abort behavior of generated code #3330 (thanks @stepangfil)
+* Document the CargoKit to Native Assets migration #3285
+* Sync Flutter integration lockfiles #3373
+* Require general review in the FRB PR gate #3363
+* Add FRB PR chain split tooling #3387
 * Improve stable release preparation and publishing safeguards #3389 #3388 #3375 #3372 #3333
 * Improve CI workflow precision and validation #3386 #3381 #3365 #3364 #3358 #3339 #3338 #3337
-* Require general review in the FRB PR gate #3363
-* Sync Flutter integration lockfiles, package documentation, and vendored Dart API headers #3373 #3359 #3336
-* Fix ffigen 21 struct removal and limit automatic build runner outputs #3357 #3344
-* Document the CargoKit to Native Assets migration #3285
-* Add FRB PR chain split tooling #3387
-* Add Yarn to the development Docker image #3223
-* Exclude CargoKit from generated analyzer options #3141
-* Improve Flutter integration test timeouts #3140
 * 2.13.0-beta.6
   * Support generic type aliases and qualify generated `Result` #3242 (thanks @dbsxdbsx)
   * Require release contributor description coverage #3332

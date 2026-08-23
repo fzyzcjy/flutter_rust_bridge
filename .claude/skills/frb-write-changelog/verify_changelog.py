@@ -167,13 +167,15 @@ def extract_thanks_authors(section: str) -> list[str]:
 
 
 def find_thanks_order_violations(section: str) -> list[str]:
+    in_beta_group = False
     seen_entry_without_thanks = False
     violations: list[str] = []
     for line in section.splitlines():
         if re.match(r"^\* \d+\.\d+\.\d+-beta\.\d+$", line) is not None:
+            in_beta_group = True
             seen_entry_without_thanks = False
             continue
-        if re.match(r"^\s*\* .*#\d+", line) is None:
+        if not in_beta_group or re.match(r"^\s+\* .*#\d+", line) is None:
             continue
 
         entry = line.strip()
