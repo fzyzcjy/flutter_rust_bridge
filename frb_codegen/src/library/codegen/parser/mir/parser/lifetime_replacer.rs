@@ -19,7 +19,11 @@ pub(crate) fn replace_lifetimes_to_static(ty: &str, lifetimes: &[Lifetime]) -> S
 }
 
 fn replace_lifetime(ty: &str, lifetime_src: &str, lifetime_dst: &str) -> String {
-    let regex = Regex::new(&format!("'{}([^a-zA-Z]|$)", regex::escape(lifetime_src))).unwrap();
+    let regex = Regex::new(&format!(
+        "'{}([^\\p{{XID_Continue}}_]|$)",
+        regex::escape(lifetime_src)
+    ))
+    .unwrap();
     regex
         .replace_all(ty, &format!("'{lifetime_dst}${{1}}"))
         .to_string()
@@ -41,6 +45,19 @@ mod tests {
         assert_eq!(
             replace_lifetimes_to_static("Box<dyn Trait<'a> + Send>", &lifetimes),
             "Box<dyn Trait<'static> + Send>"
+        );
+        assert_eq!(
+            replace_lifetimes_to_static("Foo<'a1, 'a_b, 'a>", &lifetimes),
+            "Foo<'a1, 'a_b, 'static>"
+        );
+    }
+
+    /// Replaces complete lifetime identifiers that share a prefix.
+    #[test]
+    fn replaces_prefixed_lifetime_identifiers_independently() {
+        assert_eq!(
+            replace_all_lifetimes_to_static("Foo<'a, 'a1, 'a_b>"),
+            "Foo<'static, 'static, 'static>"
         );
     }
 
