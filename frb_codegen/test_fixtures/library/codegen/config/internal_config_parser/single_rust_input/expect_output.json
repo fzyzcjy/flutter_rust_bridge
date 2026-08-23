@@ -133,6 +133,7 @@
     "duplicated_c_output_path": [],
     "enable_auto_upgrade": true,
     "fvm_install_mode": "Normal",
+    "pre_generation_cleanup": false,
     "rust_crate_dir": "{the-working-directory}",
     "rust_format": true,
     "rust_output_path": "{the-working-directory}/src/frb_generated.rs",
