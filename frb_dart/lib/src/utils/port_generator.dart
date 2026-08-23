@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 final _contextId = List.generate(
   4,
-  (_) => Random.secure().nextInt(1 << 32).toRadixString(16).padLeft(8, '0'),
+  (_) => Random.secure().nextInt(1 << 31).toRadixString(16).padLeft(8, '0'),
 ).join();
 
 /// {@macro flutter_rust_bridge.internal}
