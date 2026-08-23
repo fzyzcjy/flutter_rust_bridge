@@ -906,6 +906,22 @@ version: 9.9.8
       );
     });
 
+    test('rejects an error reported only on stdout', () {
+      expect(
+        () => checkValgrindOutput(
+          stdout: '''
+00:00 +1: All tests passed!
+==3667== LEAK SUMMARY:
+==3667==    definitely lost: 4 bytes in 0 blocks
+==3667==    indirectly lost: 0 bytes in 0 blocks
+    ''',
+          stderr: '',
+          exitCode: 0,
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
+
     test('rejects indirectly lost bytes', () {
       expect(
         () => checkValgrindOutput(
