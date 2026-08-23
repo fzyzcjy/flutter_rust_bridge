@@ -45,7 +45,12 @@ class RustGenerator extends BaseGenerator {
     var ans = inputText
         .replaceAll(
           '// FRB_INTERNAL_GENERATOR_SYNC_NON_RUST_ASYNC',
-          mode.components.contains(DuplicatorComponentMode.rustAsync)
+          mode.components.any(
+                {
+                  DuplicatorComponentMode.sync,
+                  DuplicatorComponentMode.rustAsync,
+                }.contains,
+              )
               ? ''
               : '#[flutter_rust_bridge::frb(sync)]',
         )
