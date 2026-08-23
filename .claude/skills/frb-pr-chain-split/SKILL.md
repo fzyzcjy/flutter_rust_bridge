@@ -50,7 +50,7 @@ Classify every suspicious change before moving commits:
 master <- predecessor-a <- predecessor-b <- main-task
 ```
 
-- Use GitHub's official `github/gh-stack` extension. It provides `gh stack`, not `gh pr chain`.
+- Use GitHub's official `github/gh-stack` extension through `gh stack`.
 - Use `gh stack` for every stack operation: initialization, restructuring, linking, submission, synchronization, rebasing, pushing, and verification.
 - Never construct or maintain a stack with `gh pr create --base`, `gh pr edit --base`, direct API base edits, or branch ancestry alone.
 - Git commands may prepare the commits and linear branch ancestry, but the result is not complete until `gh stack` creates or updates the native GitHub stack object.
