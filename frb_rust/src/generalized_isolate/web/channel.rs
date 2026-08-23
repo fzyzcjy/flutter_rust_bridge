@@ -2,9 +2,7 @@ use crate::generalized_isolate::IntoDart;
 use crate::platform_types::handle_to_message_port;
 use crate::platform_types::release_message_port_handle;
 use crate::platform_types::MessagePort;
-use crate::platform_types::{
-    deserialize_sendable_message_port_handle, SendableMessagePortHandle,
-};
+use crate::platform_types::{deserialize_sendable_message_port_handle, SendableMessagePortHandle};
 
 #[derive(Clone)]
 pub struct Channel {
