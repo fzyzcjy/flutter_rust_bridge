@@ -41,7 +41,7 @@ uv run --no-project .claude/skills/frb-categorize-code-diff/categorize_code_diff
 - Run the script tests after changing its classification logic:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 uv run --no-project --with pytest pytest -q .claude/skills/frb-categorize-code-diff/test_categorize_code_diff.py
+PYTHONDONTWRITEBYTECODE=1 uv run --no-project --with pytest --with typer pytest -q .claude/skills/frb-categorize-code-diff/test_categorize_code_diff.py
 ```
 
 - Keep `PYTHONDONTWRITEBYTECODE=1`; otherwise pytest leaves an untracked `__pycache__/` inside the skill directory.

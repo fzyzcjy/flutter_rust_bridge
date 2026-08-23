@@ -1,4 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = ["typer>=0.12"]
+# ///
 
 from __future__ import annotations
 
@@ -6,12 +9,14 @@ import dataclasses
 import json
 import re
 import subprocess
-import sys
 from pathlib import PurePosixPath
-from typing import Literal
+from typing import Annotated, Literal
+
+import typer
 
 
 Category = Literal["test-only", "non-test-only", "mixed", "unclassified"]
+app = typer.Typer(add_completion=False)
 
 
 @dataclasses.dataclass(frozen=True)
@@ -29,21 +34,27 @@ class FileResult:
     non_test_lines: int
 
 
-@dataclasses.dataclass(frozen=True)
-class Arguments:
-    base: str = "origin/master"
-    head: str = "HEAD"
-    json_output: bool = False
+@app.command()
+def main(
+    base: Annotated[
+        str,
+        typer.Option("--base", help="Base revision used to compute the merge base."),
+    ] = "origin/master",
+    head: Annotated[
+        str,
+        typer.Option("--head", help="Head revision to classify."),
+    ] = "HEAD",
+    json_output: Annotated[
+        bool,
+        typer.Option("--json", help="Print machine-readable JSON."),
+    ] = False,
+) -> None:
+    results = categorize_diff(base=base, head=head)
 
-
-def main() -> None:
-    arguments = _parse_arguments(sys.argv[1:])
-    results = categorize_diff(base=arguments.base, head=arguments.head)
-
-    if arguments.json_output:
-        print(json.dumps([dataclasses.asdict(result) for result in results], indent=2))
+    if json_output:
+        typer.echo(json.dumps([dataclasses.asdict(result) for result in results], indent=2))
     else:
-        _print_text(results=results, base=arguments.base, head=arguments.head)
+        _print_text(results=results, base=base, head=head)
 
 
 def categorize_diff(base: str, head: str) -> list[FileResult]:
@@ -68,34 +79,6 @@ def categorize_diff(base: str, head: str) -> list[FileResult]:
         )
         for path, changed_lines in sorted(changed.items())
     ]
-
-
-def _parse_arguments(values: list[str]) -> Arguments:
-    base = "origin/master"
-    head = "HEAD"
-    json_output = False
-    index = 0
-
-    while index < len(values):
-        value = values[index]
-        if value == "--json":
-            json_output = True
-            index += 1
-        elif value in {"--base", "--head"}:
-            if index + 1 >= len(values):
-                raise SystemExit(f"missing value for {value}")
-            if value == "--base":
-                base = values[index + 1]
-            else:
-                head = values[index + 1]
-            index += 2
-        elif value in {"-h", "--help"}:
-            print("usage: categorize_code_diff.py [--base REV] [--head REV] [--json]")
-            raise SystemExit(0)
-        else:
-            raise SystemExit(f"unknown argument: {value}")
-
-    return Arguments(base=base, head=head, json_output=json_output)
 
 
 def _parse_diff(diff: str) -> dict[str, ChangedLines]:
@@ -322,4 +305,4 @@ def _print_text(results: list[FileResult], base: str, head: str) -> None:
 
 
 if __name__ == "__main__":
-    main()
+    app()
