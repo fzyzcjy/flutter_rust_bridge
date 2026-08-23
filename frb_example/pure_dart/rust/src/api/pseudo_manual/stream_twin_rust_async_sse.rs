@@ -60,7 +60,8 @@ pub async fn handle_stream_sink_at_1_twin_rust_async_sse(
     max: u32,
     sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
 ) {
-    dispatch_handle_stream(key, max, sink);
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -69,7 +70,8 @@ pub async fn handle_stream_sink_at_2_twin_rust_async_sse(
     sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
     max: u32,
 ) {
-    dispatch_handle_stream(key, max, sink);
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -78,18 +80,6 @@ pub async fn handle_stream_sink_at_3_twin_rust_async_sse(
     key: u32,
     max: u32,
 ) {
-    dispatch_handle_stream(key, max, sink);
-}
-
-fn dispatch_handle_stream(
-    key: u32,
-    max: u32,
-    sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
-) {
-    #[cfg(target_family = "wasm")]
-    handle_stream_inner(key, max, sink);
-
-    #[cfg(not(target_family = "wasm"))]
     (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
         .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
