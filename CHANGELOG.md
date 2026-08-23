@@ -7,7 +7,6 @@
 * Require release contributor description coverage #3332
 * Preserve web `StreamSink` message ordering #3233
 * Fail fast for locked Rust opaque sync calls on web #3271
-* Prevent Web StreamSink channel collisions and non-blocking opaque releases
 
 ## 2.13.0-beta.5
 

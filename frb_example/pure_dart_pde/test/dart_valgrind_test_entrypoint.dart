@@ -39,7 +39,6 @@ import 'api/misc_example_test.dart' as misc_example_test;
 import 'api/misc_no_twin_example_a_test.dart' as misc_no_twin_example_a_test;
 import 'api/misc_no_twin_example_b_test.dart' as misc_no_twin_example_b_test;
 import 'api/misc_type_test.dart' as misc_type_test;
-import 'api/moi_arc_web_release_test.dart' as moi_arc_web_release_test;
 import 'api/newtype_pattern_test.dart' as newtype_pattern_test;
 import 'api/optional_primitive_misc_test.dart' as optional_primitive_misc_test;
 import 'api/optional_test.dart' as optional_test;
@@ -252,7 +251,6 @@ Future<void> callFileEntrypoints() async {
     misc_no_twin_example_a_test.main,
     misc_no_twin_example_b_test.main,
     misc_type_test.main,
-    moi_arc_web_release_test.main,
     newtype_pattern_test.main,
     optional_primitive_misc_test.main,
     optional_test.main,
