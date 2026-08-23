@@ -223,7 +223,7 @@ pub(crate) fn compute_interest_name_of_owner_ty(owner_ty: &MirType) -> Option<Na
         MirType::Delegate(MirTypeDelegate::Lifetimeable(ty)) => {
             return compute_interest_name_of_owner_ty(&MirType::RustAutoOpaqueImplicit(
                 ty.api_type.clone(),
-            ))
+            ));
         }
         MirType::TraitDef(ty) => ty.name.clone(),
         _ => return None,
@@ -242,6 +242,122 @@ impl MirFuncAccessorMode {
             MirFuncAccessorMode::Getter => "get",
             MirFuncAccessorMode::Setter => "set",
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::utils::namespace::Namespace;
+
+    fn method_func(
+        name: &str,
+        method_mode: MirFuncOwnerInfoMethodMode,
+        func_mode: MirFuncMode,
+    ) -> MirFunc {
+        MirFunc {
+            namespace: Namespace::new_raw("crate::api".into()),
+            name: MirIdent::new(name.into(), None),
+            id: None,
+            inputs: vec![],
+            output: MirFuncOutput {
+                normal: MirType::Primitive(MirTypePrimitive::I32),
+                error: None,
+            },
+            owner: MirFuncOwnerInfo::Method(MirFuncOwnerInfoMethod {
+                owner_ty: MirType::Primitive(MirTypePrimitive::I32),
+                owner_ty_raw: "Thing".into(),
+                actual_method_name: name.into(),
+                actual_method_dart_name: None,
+                mode: method_mode,
+                trait_def: None,
+            }),
+            mode: func_mode,
+            stream_dart_await: false,
+            rust_async: false,
+            initializer: false,
+            init_dart_code: None,
+            arg_mode: MirFuncArgMode::Positional,
+            accessor: None,
+            comments: vec![],
+            codec_mode_pack: CodecModePack {
+                dart2rust: CodecMode::Cst,
+                rust2dart: CodecMode::Cst,
+            },
+            rust_call_code: None,
+            rust_aop_after: None,
+            impl_mode: MirFuncImplMode::Normal,
+            src_lineno_pseudo: 0,
+        }
+    }
+
+    /// Classifies only synchronous static new methods as Dart constructors.
+    #[test]
+    fn classifies_default_constructor_modes_across_semantic_branches() {
+        assert!(matches!(
+            method_func("new", MirFuncOwnerInfoMethodMode::Static, MirFuncMode::Sync)
+                .default_constructor_mode(),
+            Some(MirFuncDefaultConstructorMode::DartConstructor)
+        ));
+        assert!(matches!(
+            method_func(
+                "new",
+                MirFuncOwnerInfoMethodMode::Instance,
+                MirFuncMode::Sync
+            )
+            .default_constructor_mode(),
+            Some(MirFuncDefaultConstructorMode::StaticMethod)
+        ));
+        assert!(matches!(
+            method_func(
+                "new",
+                MirFuncOwnerInfoMethodMode::Static,
+                MirFuncMode::Normal
+            )
+            .default_constructor_mode(),
+            Some(MirFuncDefaultConstructorMode::StaticMethod)
+        ));
+        assert!(method_func(
+            "build",
+            MirFuncOwnerInfoMethodMode::Static,
+            MirFuncMode::Sync
+        )
+        .default_constructor_mode()
+        .is_none());
+    }
+
+    /// Produces Rust namespace paths and camel-cased Dart wire names.
+    #[test]
+    fn derives_rust_and_dart_function_names() {
+        let func = method_func(
+            "r#async_name",
+            MirFuncOwnerInfoMethodMode::Static,
+            MirFuncMode::Sync,
+        );
+
+        assert_eq!(
+            func.namespaced_name_rust_style(false),
+            "crate::api::r#async_name"
+        );
+        assert_eq!(
+            func.namespaced_name_rust_style(true),
+            "crate::api::async_name"
+        );
+        assert_eq!(func.name_dart_api(), "asyncName");
+        assert_eq!(func.name_dart_wire(), "crateApiAsyncName");
+    }
+
+    /// Maps ownership and accessor variants to their emitted syntax fragments.
+    #[test]
+    fn maps_ownership_and_accessor_variants() {
+        assert_eq!(OwnershipMode::Owned.prefix(), "");
+        assert_eq!(OwnershipMode::Ref.prefix(), "&");
+        assert_eq!(OwnershipMode::RefMut.prefix(), "&mut ");
+        assert_eq!(MirFuncAccessorMode::Getter.verb_str(), "get");
+        assert_eq!(MirFuncAccessorMode::Setter.verb_str(), "set");
     }
 }
 

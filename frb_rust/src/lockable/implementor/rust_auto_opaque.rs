@@ -82,3 +82,31 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
         Box::pin(async move { self.data.write().await })
     }
 }
+
+#[cfg(all(test, not(target_family = "wasm")))]
+mod tests {
+    use crate::for_generated::Lockable;
+    use crate::RustAutoOpaqueNom;
+
+    #[test]
+    /// Decodes opaque values through synchronous lockable methods.
+    fn decodes_synchronously() {
+        let opaque = RustAutoOpaqueNom::new(42);
+
+        assert_eq!(*opaque.0.lockable_decode_sync_ref(), 42);
+        *opaque.0.lockable_decode_sync_ref_mut() = 100;
+
+        assert_eq!(*opaque.0.lockable_decode_sync_ref(), 100);
+    }
+
+    #[tokio::test]
+    /// Decodes opaque values through asynchronous lockable methods.
+    async fn decodes_asynchronously() {
+        let opaque = RustAutoOpaqueNom::new(42);
+
+        assert_eq!(*opaque.0.lockable_decode_async_ref().await, 42);
+        *opaque.0.lockable_decode_async_ref_mut().await = 100;
+
+        assert_eq!(*opaque.0.lockable_decode_async_ref().await, 100);
+    }
+}
