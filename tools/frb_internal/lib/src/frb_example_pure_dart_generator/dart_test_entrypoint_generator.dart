@@ -121,18 +121,17 @@ Future<void> callFileEntrypoints({
 bool _shouldSkipDisposedRustAutoOpaqueArgumentTest({
   required Package package,
   required String fileStem,
-}) =>
-    switch (package) {
-      Package.pureDart => {
-        'rust_auto_opaque_twin_rust_async_sse_test',
-        'rust_auto_opaque_twin_sync_sse_test',
-      }.contains(fileStem),
-      Package.pureDartPde => {
-        'rust_auto_opaque_twin_rust_async_test',
-        'rust_auto_opaque_twin_sync_test',
-      }.contains(fileStem),
-      _ => false,
-    };
+}) => switch (package) {
+  Package.pureDart => {
+    'rust_auto_opaque_twin_rust_async_sse_test',
+    'rust_auto_opaque_twin_sync_sse_test',
+  }.contains(fileStem),
+  Package.pureDartPde => {
+    'rust_auto_opaque_twin_rust_async_test',
+    'rust_auto_opaque_twin_sync_test',
+  }.contains(fileStem),
+  _ => false,
+};
 
 Future<void> _writeToFile(
   Uri dartRoot,
