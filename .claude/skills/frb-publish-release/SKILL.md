@@ -77,7 +77,25 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 - If changelog or version files changed, commit that release preparation before publishing.
 - Land contributor and changelog preparation commits on `origin/master` before publishing. Do not leave release preparation only on a side branch.
 
-### 4. Publish
+### 4. Pre-Publish Independent Audit
+
+- Immediately before the first irreversible publish command, delegate a read-only audit to an independent subagent that has not participated in preparing the release.
+- Give the subagent the intended version and the raw evidence needed to verify the work completed so far:
+  - Current branch, exact `HEAD`, latest `origin/master`, and `git status --short --branch`.
+  - Previous and target release versions from `CHANGELOG.md`, root `Cargo.toml`, and `frb_dart/pubspec.yaml`.
+  - Final target changelog section, contributor reconciliation result, human changelog approval, and relevant diffs.
+  - Submodule status, credential preflight result, and normal CI green evidence or evidence that every narrow CI-gate exception condition in Step 1 is satisfied, including successful `release_ci_gate.py` output.
+  - Exact commands and results for any additional focused release tests that were run. These tests do not replace the normal CI gate or its defined narrow exception.
+  - Exact one-shot publish command that will run next.
+- Ask the subagent to return one verdict:
+  - `GO`: all release instructions are satisfied and the evidence is internally consistent.
+  - `NO-GO`: list every blocker, missing artifact, ambiguity, or inconsistent result with concrete evidence.
+- Do not tell the subagent the desired verdict or provide only a prepared summary. Let it inspect the repository and raw command outputs independently.
+- Stop before publishing on `NO-GO`, an ambiguous verdict, missing evidence, or unavailable subagent capability. Resolve every blocker and run a fresh independent audit.
+- Treat the audit as valid only for the exact audited `HEAD`, `origin/master`, clean worktree state, evidence snapshot, and next publish command.
+- After a `GO` verdict, run that exact publish command without any intervening mutation. If the command changes, the worktree becomes dirty, evidence is refreshed or invalidated, or `HEAD` or `origin/master` changes, repeat the affected preflight checks and the independent audit.
+
+### 5. Publish
 
 Use the repository release command through a temporary Docker container with publish credentials as the normal publishing path:
 
@@ -105,7 +123,7 @@ For beta versions such as `2.13.0-beta.1`, do not require the GitHub release to 
 
 Only use a split subcommand as a recovery path after confirming which one-shot step already completed. For example, if the version bump and GitHub release already exist and only registry publication is needed, use `.claude/skills/frb-dev-env/frb_dev_env.py docker-run-rm --with-publish-credentials -- ./frb_internal release-publish-all` directly.
 
-### 5. Check Released Versions
+### 6. Check Released Versions
 
 Poll registry state with:
 
@@ -140,7 +158,7 @@ Wait until every package has `isReleased: true` and `allReleased: true`. If one 
 
 For beta releases, `get-released-version --version <VERSION>` must verify the pub.dev `versions` list, not only pub.dev's `latest` field, because pub.dev keeps `latest` on the latest stable release when a prerelease is uploaded.
 
-### 6. Babysit CI And Post-Release CI
+### 7. Babysit CI And Post-Release CI
 
 - Keep watching the release commit's normal CI until it is green.
 - After `./frb_internal get-released-version` reports `allReleased: true`, trigger `.github/workflows/post_release.yaml` for the release commit or `master`.
