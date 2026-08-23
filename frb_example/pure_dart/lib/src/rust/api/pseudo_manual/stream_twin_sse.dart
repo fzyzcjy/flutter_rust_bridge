@@ -10,7 +10,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'stream_twin_rust_async.dart';
 
 // These functions are ignored because they are not marked as `pub`: `handle_stream_inner`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `deref`, `fmt`, `initialize`
 
 Future<Stream<String>> funcStreamReturnErrorTwinSse() => RustLib.instance.api
     .crateApiPseudoManualStreamTwinSseFuncStreamReturnErrorTwinSse();
@@ -63,6 +63,42 @@ Future<void> streamSinkInsideStructTwinSse(
 
 Stream<int> funcStreamAddValueAndErrorTwinSse() => RustLib.instance.api
     .crateApiPseudoManualStreamTwinSseFuncStreamAddValueAndErrorTwinSse();
+
+Stream<int> streamSinkEmitRangeTwinSse({required int count}) => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinSseStreamSinkEmitRangeTwinSse(count: count);
+
+Stream<int> streamSinkEmitRangeThenHoldTwinSse(
+        {required int count, required BigInt holdMillis}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseStreamSinkEmitRangeThenHoldTwinSse(
+            count: count, holdMillis: holdMillis);
+
+Stream<int> streamSinkEmitManyTwinSse({required int count}) => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinSseStreamSinkEmitManyTwinSse(count: count);
+
+Stream<int> storeStreamSinkTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinSseStoreStreamSinkTwinSse();
+
+Future<void> clearStoredStreamSinkTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinSseClearStoredStreamSinkTwinSse();
+
+Future<void> storedStreamSinkEmitManyTwinSse({required int count}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseStoredStreamSinkEmitManyTwinSse(
+            count: count);
+
+Future<void> storedStreamSinkStartSpamTwinSse(
+        {required int total, required BigInt intervalMillis}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseStoredStreamSinkStartSpamTwinSse(
+            total: total, intervalMillis: intervalMillis);
+
+Future<void> storedStreamSinkEmitErrorTwinSse({required String message}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseStoredStreamSinkEmitErrorTwinSse(
+            message: message);
 
 class LogTwinSse {
   final int key;

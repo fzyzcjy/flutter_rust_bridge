@@ -9,6 +9,10 @@ use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
 use flutter_rust_bridge::{frb, transfer};
+use lazy_static::lazy_static;
+use std::sync::Mutex;
+use std::thread::sleep;
+use std::time::Duration;
 
 #[frb(stream_dart_await)]
 #[flutter_rust_bridge::frb(serialize)]
@@ -129,4 +133,105 @@ pub fn func_stream_add_value_and_error_twin_sse(
         sink.add(200).unwrap();
         sink.add_error(anyhow!("deliberate error")).unwrap();
     }));
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stream_sink_emit_range_twin_sse(
+    sink: StreamSink<i32, flutter_rust_bridge::SseCodec>,
+    count: u32,
+) {
+    for i in 0..count {
+        sink.add(i as i32).unwrap();
+    }
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stream_sink_emit_range_then_hold_twin_sse(
+    sink: StreamSink<i32, flutter_rust_bridge::SseCodec>,
+    count: u32,
+    hold_millis: u64,
+) {
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+        for i in 0..count {
+            if sink.add(i as i32).is_err() {
+                return;
+            }
+        }
+        sleep(Duration::from_millis(hold_millis));
+    }));
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stream_sink_emit_many_twin_sse(
+    sink: StreamSink<i32, flutter_rust_bridge::SseCodec>,
+    count: u32,
+) {
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+        for i in 0..count {
+            if sink.add(i as i32).is_err() {
+                break;
+            }
+        }
+    }));
+}
+
+lazy_static! {
+    static ref STORED_STREAM_SINK_TWIN_NORMAL: Mutex<Option<StreamSink<i32, flutter_rust_bridge::SseCodec>>> =
+        Default::default();
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn store_stream_sink_twin_sse(sink: StreamSink<i32, flutter_rust_bridge::SseCodec>) {
+    if let Ok(mut guard) = STORED_STREAM_SINK_TWIN_NORMAL.lock() {
+        *guard = Some(sink);
+    }
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn clear_stored_stream_sink_twin_sse() {
+    let _ = STORED_STREAM_SINK_TWIN_NORMAL
+        .lock()
+        .map(|mut guard| guard.take());
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stored_stream_sink_emit_many_twin_sse(count: u32) {
+    if let Ok(mut guard) = STORED_STREAM_SINK_TWIN_NORMAL.lock() {
+        if let Some(sink) = guard.as_mut() {
+            for i in 0..count {
+                if sink.add(i as i32).is_err() {
+                    break;
+                }
+            }
+        }
+    }
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stored_stream_sink_start_spam_twin_sse(total: u32, interval_millis: u64) {
+    let sink = STORED_STREAM_SINK_TWIN_NORMAL
+        .lock()
+        .ok()
+        .and_then(|guard| guard.as_ref().cloned());
+    if let Some(sink) = sink {
+        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
+            for i in 0..total {
+                if sink.add(i as i32).is_err() {
+                    break;
+                }
+                if interval_millis > 0 {
+                    sleep(Duration::from_millis(interval_millis));
+                }
+            }
+        }));
+    }
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn stored_stream_sink_emit_error_twin_sse(message: String) {
+    if let Ok(mut guard) = STORED_STREAM_SINK_TWIN_NORMAL.lock() {
+        if let Some(sink) = guard.as_mut() {
+            let _ = sink.add_error(anyhow!(message));
+        }
+    }
 }

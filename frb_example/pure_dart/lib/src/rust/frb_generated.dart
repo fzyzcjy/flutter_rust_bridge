@@ -376,7 +376,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0-beta.6';
 
   @override
-  int get rustContentHash => -1730785095;
+  int get rustContentHash => -472920469;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -2249,6 +2249,16 @@ abstract class RustLibApi extends BaseApi {
       {required int arg});
 
   Future<bool> crateApiCustomizationCheckInitDone();
+
+  Future<void> crateApiStreamClearStoredStreamSinkTwinNormal();
+
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncClearStoredStreamSinkTwinRustAsync();
+
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncSseClearStoredStreamSinkTwinRustAsyncSse();
+
+  Future<void> crateApiPseudoManualStreamTwinSseClearStoredStreamSinkTwinSse();
 
   Future<List<Object>> crateApiDartOpaqueCloneDartOpaqueTwinNormal(
       {required Object opaque});
@@ -10199,10 +10209,105 @@ abstract class RustLibApi extends BaseApi {
   int crateApiPseudoManualMethodTwinSyncStaticOnlyTwinSyncStaticMethodTwinSync(
       {required int a});
 
+  Stream<int> crateApiStreamStoreStreamSinkTwinNormal();
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStoreStreamSinkTwinRustAsync();
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStoreStreamSinkTwinRustAsyncSse();
+
+  Stream<int> crateApiPseudoManualStreamTwinSseStoreStreamSinkTwinSse();
+
+  Future<void> crateApiStreamStoredStreamSinkEmitErrorTwinNormal(
+      {required String message});
+
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitErrorTwinRustAsync(
+          {required String message});
+
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkEmitErrorTwinRustAsyncSse(
+          {required String message});
+
+  Future<void>
+      crateApiPseudoManualStreamTwinSseStoredStreamSinkEmitErrorTwinSse(
+          {required String message});
+
+  Future<void> crateApiStreamStoredStreamSinkEmitManyTwinNormal(
+      {required int count});
+
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitManyTwinRustAsync(
+          {required int count});
+
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkEmitManyTwinRustAsyncSse(
+          {required int count});
+
+  Future<void> crateApiPseudoManualStreamTwinSseStoredStreamSinkEmitManyTwinSse(
+      {required int count});
+
+  Future<void> crateApiStreamStoredStreamSinkStartSpamTwinNormal(
+      {required int total, required BigInt intervalMillis});
+
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkStartSpamTwinRustAsync(
+          {required int total, required BigInt intervalMillis});
+
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkStartSpamTwinRustAsyncSse(
+          {required int total, required BigInt intervalMillis});
+
+  Future<void>
+      crateApiPseudoManualStreamTwinSseStoredStreamSinkStartSpamTwinSse(
+          {required int total, required BigInt intervalMillis});
+
   Future<Stream<int>> crateApiStreamMiscStreamSinkDartAsyncTwinNormal();
 
   Future<Stream<int>>
       crateApiPseudoManualStreamMiscTwinSseStreamSinkDartAsyncTwinSse();
+
+  Stream<int> crateApiStreamStreamSinkEmitManyTwinNormal({required int count});
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitManyTwinRustAsync(
+          {required int count});
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitManyTwinRustAsyncSse(
+          {required int count});
+
+  Stream<int> crateApiPseudoManualStreamTwinSseStreamSinkEmitManyTwinSse(
+      {required int count});
+
+  Stream<int> crateApiStreamStreamSinkEmitRangeThenHoldTwinNormal(
+      {required int count, required BigInt holdMillis});
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeThenHoldTwinRustAsync(
+          {required int count, required BigInt holdMillis});
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitRangeThenHoldTwinRustAsyncSse(
+          {required int count, required BigInt holdMillis});
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinSseStreamSinkEmitRangeThenHoldTwinSse(
+          {required int count, required BigInt holdMillis});
+
+  Stream<int> crateApiStreamStreamSinkEmitRangeTwinNormal({required int count});
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeTwinRustAsync(
+          {required int count});
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitRangeTwinRustAsyncSse(
+          {required int count});
+
+  Stream<int> crateApiPseudoManualStreamTwinSseStreamSinkEmitRangeTwinSse(
+      {required int count});
 
   Stream<U8Array2> crateApiStreamStreamSinkFixedSizedPrimitiveArrayTwinNormal();
 
@@ -28676,6 +28781,114 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "check_init_done",
         argNames: [],
       );
+
+  @override
+  Future<void> crateApiStreamClearStoredStreamSinkTwinNormal() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__stream__clear_stored_stream_sink_twin_normal(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamClearStoredStreamSinkTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiStreamClearStoredStreamSinkTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "clear_stored_stream_sink_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncClearStoredStreamSinkTwinRustAsync() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__clear_stored_stream_sink_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncClearStoredStreamSinkTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncClearStoredStreamSinkTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "clear_stored_stream_sink_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncSseClearStoredStreamSinkTwinRustAsyncSse() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__clear_stored_stream_sink_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseClearStoredStreamSinkTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseClearStoredStreamSinkTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "clear_stored_stream_sink_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<void> crateApiPseudoManualStreamTwinSseClearStoredStreamSinkTwinSse() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__clear_stored_stream_sink_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseClearStoredStreamSinkTwinSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseClearStoredStreamSinkTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "clear_stored_stream_sink_twin_sse",
+            argNames: [],
+          );
 
   @override
   Future<List<Object>> crateApiDartOpaqueCloneDartOpaqueTwinNormal(
@@ -95224,6 +95437,482 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Stream<int> crateApiStreamStoreStreamSinkTwinNormal() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        return wire.wire__crate__api__stream__store_stream_sink_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamStoreStreamSinkTwinNormalConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta get kCrateApiStreamStoreStreamSinkTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "store_stream_sink_twin_normal",
+        argNames: ["sink"],
+      );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStoreStreamSinkTwinRustAsync() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__store_stream_sink_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncStoreStreamSinkTwinRustAsyncConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncStoreStreamSinkTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "store_stream_sink_twin_rust_async",
+            argNames: ["sink"],
+          );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStoreStreamSinkTwinRustAsyncSse() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__store_stream_sink_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseStoreStreamSinkTwinRustAsyncSseConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseStoreStreamSinkTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "store_stream_sink_twin_rust_async_sse",
+            argNames: ["sink"],
+          );
+
+  @override
+  Stream<int> crateApiPseudoManualStreamTwinSseStoreStreamSinkTwinSse() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__store_stream_sink_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseStoreStreamSinkTwinSseConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseStoreStreamSinkTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "store_stream_sink_twin_sse",
+            argNames: ["sink"],
+          );
+
+  @override
+  Future<void> crateApiStreamStoredStreamSinkEmitErrorTwinNormal(
+      {required String message}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(message);
+        return wire
+            .wire__crate__api__stream__stored_stream_sink_emit_error_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamStoredStreamSinkEmitErrorTwinNormalConstMeta,
+      argValues: [message],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiStreamStoredStreamSinkEmitErrorTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_emit_error_twin_normal",
+            argNames: ["message"],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitErrorTwinRustAsync(
+          {required String message}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(message);
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__stored_stream_sink_emit_error_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitErrorTwinRustAsyncConstMeta,
+      argValues: [message],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitErrorTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_emit_error_twin_rust_async",
+            argNames: ["message"],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkEmitErrorTwinRustAsyncSse(
+          {required String message}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(message, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stored_stream_sink_emit_error_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkEmitErrorTwinRustAsyncSseConstMeta,
+      argValues: [message],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkEmitErrorTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_emit_error_twin_rust_async_sse",
+            argNames: ["message"],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinSseStoredStreamSinkEmitErrorTwinSse(
+          {required String message}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(message, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__stored_stream_sink_emit_error_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseStoredStreamSinkEmitErrorTwinSseConstMeta,
+      argValues: [message],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseStoredStreamSinkEmitErrorTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_emit_error_twin_sse",
+            argNames: ["message"],
+          );
+
+  @override
+  Future<void> crateApiStreamStoredStreamSinkEmitManyTwinNormal(
+      {required int count}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(count);
+        return wire
+            .wire__crate__api__stream__stored_stream_sink_emit_many_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamStoredStreamSinkEmitManyTwinNormalConstMeta,
+      argValues: [count],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiStreamStoredStreamSinkEmitManyTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_emit_many_twin_normal",
+            argNames: ["count"],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitManyTwinRustAsync(
+          {required int count}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(count);
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__stored_stream_sink_emit_many_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitManyTwinRustAsyncConstMeta,
+      argValues: [count],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkEmitManyTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_emit_many_twin_rust_async",
+            argNames: ["count"],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkEmitManyTwinRustAsyncSse(
+          {required int count}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_32(count, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stored_stream_sink_emit_many_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkEmitManyTwinRustAsyncSseConstMeta,
+      argValues: [count],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkEmitManyTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_emit_many_twin_rust_async_sse",
+            argNames: ["count"],
+          );
+
+  @override
+  Future<void> crateApiPseudoManualStreamTwinSseStoredStreamSinkEmitManyTwinSse(
+      {required int count}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_32(count, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__stored_stream_sink_emit_many_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseStoredStreamSinkEmitManyTwinSseConstMeta,
+      argValues: [count],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseStoredStreamSinkEmitManyTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_emit_many_twin_sse",
+            argNames: ["count"],
+          );
+
+  @override
+  Future<void> crateApiStreamStoredStreamSinkStartSpamTwinNormal(
+      {required int total, required BigInt intervalMillis}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(total);
+        var arg1 = cst_encode_u_64(intervalMillis);
+        return wire
+            .wire__crate__api__stream__stored_stream_sink_start_spam_twin_normal(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamStoredStreamSinkStartSpamTwinNormalConstMeta,
+      argValues: [total, intervalMillis],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiStreamStoredStreamSinkStartSpamTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_start_spam_twin_normal",
+            argNames: ["total", "intervalMillis"],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkStartSpamTwinRustAsync(
+          {required int total, required BigInt intervalMillis}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(total);
+        var arg1 = cst_encode_u_64(intervalMillis);
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__stored_stream_sink_start_spam_twin_rust_async(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkStartSpamTwinRustAsyncConstMeta,
+      argValues: [total, intervalMillis],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncStoredStreamSinkStartSpamTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_start_spam_twin_rust_async",
+            argNames: ["total", "intervalMillis"],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkStartSpamTwinRustAsyncSse(
+          {required int total, required BigInt intervalMillis}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_32(total, serializer);
+        sse_encode_u_64(intervalMillis, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stored_stream_sink_start_spam_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkStartSpamTwinRustAsyncSseConstMeta,
+      argValues: [total, intervalMillis],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseStoredStreamSinkStartSpamTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_start_spam_twin_rust_async_sse",
+            argNames: ["total", "intervalMillis"],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualStreamTwinSseStoredStreamSinkStartSpamTwinSse(
+          {required int total, required BigInt intervalMillis}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_32(total, serializer);
+        sse_encode_u_64(intervalMillis, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__stored_stream_sink_start_spam_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseStoredStreamSinkStartSpamTwinSseConstMeta,
+      argValues: [total, intervalMillis],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseStoredStreamSinkStartSpamTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stored_stream_sink_start_spam_twin_sse",
+            argNames: ["total", "intervalMillis"],
+          );
+
+  @override
   Future<Stream<int>> crateApiStreamMiscStreamSinkDartAsyncTwinNormal() async {
     final sink = RustStreamSink<int>();
     await handler.executeNormal(NormalTask(
@@ -95280,6 +95969,394 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName: "stream_sink_dart_async_twin_sse",
             argNames: ["sink"],
+          );
+
+  @override
+  Stream<int> crateApiStreamStreamSinkEmitManyTwinNormal({required int count}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        var arg1 = cst_encode_u_32(count);
+        return wire.wire__crate__api__stream__stream_sink_emit_many_twin_normal(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamStreamSinkEmitManyTwinNormalConstMeta,
+      argValues: [sink, count],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta get kCrateApiStreamStreamSinkEmitManyTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "stream_sink_emit_many_twin_normal",
+        argNames: ["sink", "count"],
+      );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitManyTwinRustAsync(
+          {required int count}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        var arg1 = cst_encode_u_32(count);
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_emit_many_twin_rust_async(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitManyTwinRustAsyncConstMeta,
+      argValues: [sink, count],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitManyTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_many_twin_rust_async",
+            argNames: ["sink", "count"],
+          );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitManyTwinRustAsyncSse(
+          {required int count}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        sse_encode_u_32(count, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_emit_many_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitManyTwinRustAsyncSseConstMeta,
+      argValues: [sink, count],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitManyTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_many_twin_rust_async_sse",
+            argNames: ["sink", "count"],
+          );
+
+  @override
+  Stream<int> crateApiPseudoManualStreamTwinSseStreamSinkEmitManyTwinSse(
+      {required int count}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        sse_encode_u_32(count, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_emit_many_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseStreamSinkEmitManyTwinSseConstMeta,
+      argValues: [sink, count],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseStreamSinkEmitManyTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_many_twin_sse",
+            argNames: ["sink", "count"],
+          );
+
+  @override
+  Stream<int> crateApiStreamStreamSinkEmitRangeThenHoldTwinNormal(
+      {required int count, required BigInt holdMillis}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        var arg1 = cst_encode_u_32(count);
+        var arg2 = cst_encode_u_64(holdMillis);
+        return wire
+            .wire__crate__api__stream__stream_sink_emit_range_then_hold_twin_normal(
+                port_, arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamStreamSinkEmitRangeThenHoldTwinNormalConstMeta,
+      argValues: [sink, count, holdMillis],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiStreamStreamSinkEmitRangeThenHoldTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_range_then_hold_twin_normal",
+            argNames: ["sink", "count", "holdMillis"],
+          );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeThenHoldTwinRustAsync(
+          {required int count, required BigInt holdMillis}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        var arg1 = cst_encode_u_32(count);
+        var arg2 = cst_encode_u_64(holdMillis);
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_emit_range_then_hold_twin_rust_async(
+                port_, arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeThenHoldTwinRustAsyncConstMeta,
+      argValues: [sink, count, holdMillis],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeThenHoldTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_range_then_hold_twin_rust_async",
+            argNames: ["sink", "count", "holdMillis"],
+          );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitRangeThenHoldTwinRustAsyncSse(
+          {required int count, required BigInt holdMillis}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        sse_encode_u_32(count, serializer);
+        sse_encode_u_64(holdMillis, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_emit_range_then_hold_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitRangeThenHoldTwinRustAsyncSseConstMeta,
+      argValues: [sink, count, holdMillis],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitRangeThenHoldTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_range_then_hold_twin_rust_async_sse",
+            argNames: ["sink", "count", "holdMillis"],
+          );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinSseStreamSinkEmitRangeThenHoldTwinSse(
+          {required int count, required BigInt holdMillis}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        sse_encode_u_32(count, serializer);
+        sse_encode_u_64(holdMillis, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_emit_range_then_hold_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseStreamSinkEmitRangeThenHoldTwinSseConstMeta,
+      argValues: [sink, count, holdMillis],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseStreamSinkEmitRangeThenHoldTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_range_then_hold_twin_sse",
+            argNames: ["sink", "count", "holdMillis"],
+          );
+
+  @override
+  Stream<int> crateApiStreamStreamSinkEmitRangeTwinNormal(
+      {required int count}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        var arg1 = cst_encode_u_32(count);
+        return wire
+            .wire__crate__api__stream__stream_sink_emit_range_twin_normal(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamStreamSinkEmitRangeTwinNormalConstMeta,
+      argValues: [sink, count],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta get kCrateApiStreamStreamSinkEmitRangeTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "stream_sink_emit_range_twin_normal",
+        argNames: ["sink", "count"],
+      );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeTwinRustAsync(
+          {required int count}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        var arg1 = cst_encode_u_32(count);
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_sink_emit_range_twin_rust_async(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeTwinRustAsyncConstMeta,
+      argValues: [sink, count],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncStreamSinkEmitRangeTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_range_twin_rust_async",
+            argNames: ["sink", "count"],
+          );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitRangeTwinRustAsyncSse(
+          {required int count}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        sse_encode_u_32(count, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_sink_emit_range_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitRangeTwinRustAsyncSseConstMeta,
+      argValues: [sink, count],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseStreamSinkEmitRangeTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_range_twin_rust_async_sse",
+            argNames: ["sink", "count"],
+          );
+
+  @override
+  Stream<int> crateApiPseudoManualStreamTwinSseStreamSinkEmitRangeTwinSse(
+      {required int count}) {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        sse_encode_u_32(count, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__stream_sink_emit_range_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseStreamSinkEmitRangeTwinSseConstMeta,
+      argValues: [sink, count],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseStreamSinkEmitRangeTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_sink_emit_range_twin_sse",
+            argNames: ["sink", "count"],
           );
 
   @override
