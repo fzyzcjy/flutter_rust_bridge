@@ -61,18 +61,8 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
 
 ### 3. Write Changelog
 
-- Use `frb-write-changelog` to create or refresh the target release section in `CHANGELOG.md`.
-- Choose the changelog procedure from the target version:
-  - For a beta version such as `2.13.0-beta.7`, write the normal changelog for changes since the immediately preceding release. Do not roll earlier beta sections into the new beta section.
-  - For a stable version such as `2.13.0`, first write the normal changelog for changes since the latest release, then copy the substantive changelog entries from every preceding beta of the same `MAJOR.MINOR.PATCH` series into the new stable section. For example, `2.13.0` must include the entries from `2.13.0-beta.1` through the latest `2.13.0-beta.N`.
-- When rolling beta entries into a stable section:
-  - Preserve the original entry wording, PR references, and `(thanks @username)` attribution.
-  - Keep the existing beta sections unchanged; the stable section is an additional consolidated view.
-  - Copy entries in reverse release order, from the latest beta to the earliest beta, after the stable release's normal newly written entries.
-  - Do not duplicate identical recurring boilerplate such as the generic "what's new" link; include it once in the stable section.
-- When reviewing the release section, explicitly check every third-party human-authored PR in the release range, including docs, CI, chore, and tooling PRs. Each must either have `(thanks @username)` in the matching changelog entry or a documented reason for omission.
-- Be careful with grouped entries: if a local maintainer PR and a third-party PR are summarized together, the grouped entry still needs the third-party thanks attribution.
-- If `CHANGELOG.md` changed for the release, stop and ask a human to review the actual release-section text. Do not publish until the human explicitly confirms that text; approval of the file change, PR, CI result, or release process does not count as confirmation of the changelog text.
+- Use `frb-write-changelog` and follow it exactly. It is the single source of truth for beta and stable changelog content, grouping, ordering, attribution, review, verification, and generated package changelog copies. Do not duplicate those rules here.
+- Do not publish until the human-review gate required by `frb-write-changelog` is satisfied.
 - The top `CHANGELOG.md` version is the source used by `frb_internal release`.
 - If changelog or version files changed, commit that release preparation before publishing.
 - Land contributor and changelog preparation commits on `origin/master` before publishing. Do not leave release preparation only on a side branch.

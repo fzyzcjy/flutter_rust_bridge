@@ -8,7 +8,7 @@
 - sagudev: Make code generator a `lib`. Add error types. Depend on `cbindgen`. Fix LLVM paths. Update deps. Fix CI errors.
 - surban: Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.
 - Roms1383: Fix build_runner calling bug. Remove global `ffigen` dependency. Improve version check. Fix enum name-variant conflicts. Support Chrono date time and UUID types. Migrate to Rust 1.64 workspace. Update and refactor CI. Update header comments. Code cleanup.
-- dbsxdbsx: Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging. Loosen config. Prefix methods. Generic type aliases.
+- dbsxdbsx: Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging. Loosen config. Prefix methods. Generic type aliases. Stream cancellation issue.
 - GregoryConrad: Add doc to setup frb inside a Dart/Flutter library.
 - huang12zheng: Support type aliases and nested ones. Tweak code generation. Fix rust_build_and_test on Mac. Improve CI logic and cache. Remove bridge field in model.
 - trobanga: Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests. Fix fallible list case. Fix test compile. Fix Result + RustAutoOpaque.
@@ -37,6 +37,7 @@
 - SilverMira: Fix StreamSink. Encoded types in DCO.
 - star4277: Support OHOS platform.
 - nightscape: Support struct deep equality.
+- TrackerSB: Bump allo-isolate. Update CI. Chrono NaiveDate conversion.
 - Integral-Tech: Use concat. Fix lint.
 - h3x4d3c1m4l: Fix when outside folder. Support publish tag.
 - Tienisto: Remove default enum case. Add mock init.
@@ -50,6 +51,8 @@
 - NightFeather0615: Fix Vec bool.
 - fmeef: Add cargo feature flag.
 - ethicnology: Fix fvm install.
+- lqjdm: Enhance HAP testing.
+- stepangfil: Panic abort doc.
 - ganeshrvel: Fix name conflict.
 - xuxiaocheng0201: Support skipping in integrate.
 - ShuttleSpace: Stream listen vs await usage.
@@ -58,7 +61,6 @@
 - marcmcd: Windows 10 build-web.
 - turtletongue: Check deps when upgrading.
 - Shadowcat650: Vec optimization.
-- TrackerSB: Bump allo-isolate. Update CI.
 - futpib: Configurable log levels.
 - borgoat: Upgrade freezed.
 - xuwaters: Support edition 2024.
