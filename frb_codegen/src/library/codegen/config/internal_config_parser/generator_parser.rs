@@ -14,6 +14,8 @@ use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::Config;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::dart_repository::get_dart_package_name;
+#[cfg(any(windows, test))]
+use crate::utils::path_utils::normalize_windows_unc_path;
 use crate::utils::path_utils::path_to_string;
 use crate::utils::syn_utils::canonicalize_rust_type;
 use anyhow::Context;
@@ -180,11 +182,38 @@ fn compute_default_external_library_native_assets_asset_id(
     dart_io_output_path: &Path,
 ) -> anyhow::Result<String> {
     let package_name = get_dart_package_name(dart_root)?;
-    let relative_path = dart_io_output_path
-        .strip_prefix(dart_root.join("lib"))
-        .context("dart output is not inside the package lib directory")?;
-    let relative_path = path_to_string(relative_path)?.replace('\\', "/");
+    let relative_path = strip_dart_lib_prefix(dart_io_output_path, &dart_root.join("lib"))?;
     Ok(format!("package:{package_name}/{relative_path}"))
+}
+
+fn strip_dart_lib_prefix(path: &Path, prefix: &Path) -> anyhow::Result<String> {
+    #[cfg(windows)]
+    {
+        return strip_windows_path_prefix(&path_to_string(path)?, &path_to_string(prefix)?)
+            .context("dart output is not inside the package lib directory");
+    }
+
+    #[cfg(not(windows))]
+    {
+        let relative_path = path
+            .strip_prefix(prefix)
+            .context("dart output is not inside the package lib directory")?;
+        path_to_string(relative_path)
+    }
+}
+
+#[cfg(any(windows, test))]
+fn strip_windows_path_prefix(path: &str, prefix: &str) -> Option<String> {
+    let path = normalize_windows_unc_path(path).replace('\\', "/");
+    let prefix = normalize_windows_unc_path(prefix)
+        .replace('\\', "/")
+        .trim_end_matches('/')
+        .to_owned();
+    let prefix_candidate = path.get(..prefix.len())?;
+    let relative_path = path.get(prefix.len()..)?.strip_prefix('/')?;
+    prefix_candidate
+        .eq_ignore_ascii_case(&prefix)
+        .then(|| relative_path.to_owned())
 }
 
 fn compute_default_external_library_stem(rust_crate_dir: &Path) -> anyhow::Result<String> {
@@ -231,4 +260,31 @@ fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, S
         .into_iter()
         .flatten()
         .collect())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn windows_path_prefix_accepts_unc_and_drive_letter_case_differences() {
+        assert_eq!(
+            strip_windows_path_prefix(
+                r"\\?\D:\repo\package\lib\src\rust\frb_generated.io.dart",
+                r"d:\repo\package\lib",
+            ),
+            Some("src/rust/frb_generated.io.dart".to_owned())
+        );
+    }
+
+    #[test]
+    fn windows_path_prefix_rejects_sibling_directories() {
+        assert_eq!(
+            strip_windows_path_prefix(
+                r"D:\repo\package\library\frb_generated.io.dart",
+                r"D:\repo\package\lib",
+            ),
+            None
+        );
+    }
 }
