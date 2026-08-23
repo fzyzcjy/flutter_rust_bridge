@@ -13,7 +13,7 @@ pub type MessagePort = crate::generalized_isolate::PortLike;
 
 pub type DartAbi = wasm_bindgen::JsValue;
 
-const BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS: i32 = 100;
+const BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS: i32 = 60_000;
 
 #[derive(Clone, Debug)]
 pub struct SendableMessagePortHandle(String);
