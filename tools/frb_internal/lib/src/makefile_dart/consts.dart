@@ -166,7 +166,7 @@ Future<void> runPubGetIfNotRunYet(String package) async {
     '$package/rust_builder/cargokit/build_tool',
     '$package/cargokit/build_tool',
   ]) {
-    await _runPubGetIfNotRunYetRaw(extraPackage, mode);
+    await _runPubGetIfNotRunYetRaw(extraPackage, DartMode.dart);
   }
 }
 
