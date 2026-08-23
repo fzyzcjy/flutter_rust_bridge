@@ -4909,6 +4909,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool dco_decode_bool(dynamic raw);
 
   @protected
+  int dco_decode_box_CastedPrimitive_i_64(dynamic raw);
+
+  @protected
   ApplicationEnv dco_decode_box_application_env(dynamic raw);
 
   @protected
@@ -4970,6 +4973,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSyncSseMoi
       dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_CastedPrimitive_i_64(dynamic raw);
 
   @protected
   Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw);
@@ -7955,6 +7961,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  List<int> dco_decode_list_CastedPrimitive_i_64(dynamic raw);
+
+  @protected
   List<Duration> dco_decode_list_Chrono_Duration(dynamic raw);
 
   @protected
@@ -9064,6 +9073,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSyncSseMoi?
       dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_CastedPrimitive_i_64(dynamic raw);
 
   @protected
   Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw);
@@ -14449,6 +14461,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  int sse_decode_box_CastedPrimitive_i_64(SseDeserializer deserializer);
+
+  @protected
   ApplicationEnv sse_decode_box_application_env(SseDeserializer deserializer);
 
   @protected
@@ -14510,6 +14525,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSyncSseMoi
       sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_CastedPrimitive_i_64(SseDeserializer deserializer);
 
   @protected
   Duration sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer);
@@ -17882,6 +17900,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  List<int> sse_decode_list_CastedPrimitive_i_64(SseDeserializer deserializer);
+
+  @protected
   List<Duration> sse_decode_list_Chrono_Duration(SseDeserializer deserializer);
 
   @protected
@@ -19160,6 +19181,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonCloneSimpleTwinSyncSseMoi?
       sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_CastedPrimitive_i_64(
+      SseDeserializer deserializer);
 
   @protected
   Duration? sse_decode_opt_box_autoadd_Chrono_Duration(
@@ -21213,6 +21238,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  int cst_encode_CastedPrimitive_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_i_64(raw);
+  }
+
+  @protected
+  int cst_encode_CastedPrimitive_u_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_u_64(BigInt.from(raw));
+  }
+
+  @protected
   ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_Char(String raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw);
@@ -22129,6 +22166,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<ffi.Int64> cst_encode_box_CastedPrimitive_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return wire
+        .cst_new_box_CastedPrimitive_i_64(cst_encode_CastedPrimitive_i_64(raw));
+  }
+
+  @protected
   ffi.Pointer<wire_cst_application_env> cst_encode_box_application_env(
       ApplicationEnv raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -22201,6 +22245,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         .cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 raw));
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int64> cst_encode_box_autoadd_CastedPrimitive_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return wire.cst_new_box_autoadd_CastedPrimitive_i_64(
+        cst_encode_CastedPrimitive_i_64(raw));
   }
 
   @protected
@@ -24003,6 +24054,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_struct_with_casted_primitive_twin_normal>
+      cst_encode_box_autoadd_struct_with_casted_primitive_twin_normal(
+          StructWithCastedPrimitiveTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr =
+        wire.cst_new_box_autoadd_struct_with_casted_primitive_twin_normal();
+    cst_api_fill_to_wire_struct_with_casted_primitive_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_cst_struct_with_comments_twin_normal>
       cst_encode_box_autoadd_struct_with_comments_twin_normal(
           StructWithCommentsTwinNormal raw) {
@@ -25195,6 +25257,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ans.ref.ptr[i] =
           cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
               raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_CastedPrimitive_i_64>
+      cst_encode_list_CastedPrimitive_i_64(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_CastedPrimitive_i_64(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = cst_encode_CastedPrimitive_i_64(raw[i]);
     }
     return ans;
   }
@@ -26835,6 +26908,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         ? ffi.nullptr
         : cst_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
             raw);
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int64> cst_encode_opt_box_autoadd_CastedPrimitive_i_64(
+      int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_autoadd_CastedPrimitive_i_64(raw);
   }
 
   @protected
@@ -29357,6 +29439,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructInLowerLevel apiObj,
       ffi.Pointer<wire_cst_struct_in_lower_level> wireObj) {
     cst_api_fill_to_wire_struct_in_lower_level(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_struct_with_casted_primitive_twin_normal(
+          StructWithCastedPrimitiveTwinNormal apiObj,
+          ffi.Pointer<wire_cst_struct_with_casted_primitive_twin_normal>
+              wireObj) {
+    cst_api_fill_to_wire_struct_with_casted_primitive_twin_normal(
+        apiObj, wireObj.ref);
   }
 
   @protected
@@ -32874,6 +32966,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_struct_in_upper_level(
       StructInUpperLevel apiObj, wire_cst_struct_in_upper_level wireObj) {
     wireObj.upper = cst_encode_usize(apiObj.upper);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_casted_primitive_twin_normal(
+      StructWithCastedPrimitiveTwinNormal apiObj,
+      wire_cst_struct_with_casted_primitive_twin_normal wireObj) {
+    wireObj.field_i64 = cst_encode_CastedPrimitive_i_64(apiObj.fieldI64);
+    wireObj.field_u64 = cst_encode_CastedPrimitive_u_64(apiObj.fieldU64);
+    wireObj.field_i32 = cst_encode_i_32(apiObj.fieldI32);
+    wireObj.field_vec_u8 = cst_encode_list_prim_u_8_strict(apiObj.fieldVecU8);
+    wireObj.field_vec_i64 =
+        cst_encode_list_CastedPrimitive_i_64(apiObj.fieldVecI64);
+    wireObj.field_optional_i64 =
+        cst_encode_opt_box_autoadd_CastedPrimitive_i_64(
+            apiObj.fieldOptionalI64);
+    wireObj.field_boxed_i64 =
+        cst_encode_box_CastedPrimitive_i_64(apiObj.fieldBoxedI64);
   }
 
   @protected
@@ -38724,6 +38833,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_bool(bool self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_CastedPrimitive_i_64(int self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_application_env(
       ApplicationEnv self, SseSerializer serializer);
 
@@ -38786,6 +38898,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_CastedPrimitive_i_64(
+      int self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_Chrono_Duration(
@@ -41946,6 +42062,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<OpaqueItemTwinNormal> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_CastedPrimitive_i_64(
+      List<int> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_Chrono_Duration(
       List<Duration> self, SseSerializer serializer);
 
@@ -43191,6 +43311,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
           NonCloneSimpleTwinSyncSseMoi? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_CastedPrimitive_i_64(
+      int? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_Chrono_Duration(
@@ -81424,15 +81548,11 @@ class RustLibWire implements BaseWire {
   void
       wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
+    ffi.Pointer<wire_cst_struct_with_casted_primitive_twin_normal> arg,
   ) {
     return _wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
       port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
+      arg,
     );
   }
 
@@ -81441,15 +81561,17 @@ class RustLibWire implements BaseWire {
           ffi.NativeFunction<
               ffi.Void Function(
                 ffi.Int64,
-                ffi.Pointer<ffi.Uint8>,
-                ffi.Int32,
-                ffi.Int32,
+                ffi.Pointer<wire_cst_struct_with_casted_primitive_twin_normal>,
               )>>(
     'frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal',
   );
   late final _wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal =
       _wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          .asFunction<
+              void Function(
+                int,
+                ffi.Pointer<wire_cst_struct_with_casted_primitive_twin_normal>,
+              )>();
 
   void
       wire__crate__api__custom_ser_des__function_using_type_with_custom_serializer(
@@ -127314,6 +127436,18 @@ class RustLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_i32Ptr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
+  ffi.Pointer<ffi.Int64> cst_new_box_CastedPrimitive_i_64(int value) {
+    return _cst_new_box_CastedPrimitive_i_64(value);
+  }
+
+  late final _cst_new_box_CastedPrimitive_i_64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_CastedPrimitive_i_64',
+  );
+  late final _cst_new_box_CastedPrimitive_i_64 =
+      _cst_new_box_CastedPrimitive_i_64Ptr
+          .asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
+
   ffi.Pointer<wire_cst_application_env> cst_new_box_application_env() {
     return _cst_new_box_application_env();
   }
@@ -127431,6 +127565,18 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi =
       _cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoiPtr
           .asFunction<ffi.Pointer<ffi.UintPtr> Function(int)>();
+
+  ffi.Pointer<ffi.Int64> cst_new_box_autoadd_CastedPrimitive_i_64(int value) {
+    return _cst_new_box_autoadd_CastedPrimitive_i_64(value);
+  }
+
+  late final _cst_new_box_autoadd_CastedPrimitive_i_64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_CastedPrimitive_i_64',
+  );
+  late final _cst_new_box_autoadd_CastedPrimitive_i_64 =
+      _cst_new_box_autoadd_CastedPrimitive_i_64Ptr
+          .asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
   ffi.Pointer<ffi.Int64> cst_new_box_autoadd_Chrono_Duration(int value) {
     return _cst_new_box_autoadd_Chrono_Duration(value);
@@ -130124,6 +130270,24 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_struct_in_lower_levelPtr
           .asFunction<ffi.Pointer<wire_cst_struct_in_lower_level> Function()>();
 
+  ffi.Pointer<wire_cst_struct_with_casted_primitive_twin_normal>
+      cst_new_box_autoadd_struct_with_casted_primitive_twin_normal() {
+    return _cst_new_box_autoadd_struct_with_casted_primitive_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_struct_with_casted_primitive_twin_normalPtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_struct_with_casted_primitive_twin_normal>
+                  Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_casted_primitive_twin_normal',
+  );
+  late final _cst_new_box_autoadd_struct_with_casted_primitive_twin_normal =
+      _cst_new_box_autoadd_struct_with_casted_primitive_twin_normalPtr
+          .asFunction<
+              ffi.Pointer<wire_cst_struct_with_casted_primitive_twin_normal>
+                  Function()>();
+
   ffi.Pointer<wire_cst_struct_with_comments_twin_normal>
       cst_new_box_autoadd_struct_with_comments_twin_normal() {
     return _cst_new_box_autoadd_struct_with_comments_twin_normal();
@@ -131814,6 +131978,20 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<
                       wire_cst_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal>
                   Function(int)>();
+
+  ffi.Pointer<wire_cst_list_CastedPrimitive_i_64>
+      cst_new_list_CastedPrimitive_i_64(int len) {
+    return _cst_new_list_CastedPrimitive_i_64(len);
+  }
+
+  late final _cst_new_list_CastedPrimitive_i_64Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_CastedPrimitive_i_64> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_CastedPrimitive_i_64');
+  late final _cst_new_list_CastedPrimitive_i_64 =
+      _cst_new_list_CastedPrimitive_i_64Ptr.asFunction<
+          ffi.Pointer<wire_cst_list_CastedPrimitive_i_64> Function(int)>();
 
   ffi.Pointer<wire_cst_list_Chrono_Duration> cst_new_list_Chrono_Duration(
     int len,
@@ -135465,6 +135643,33 @@ final class wire_cst_tuple_struct_with_two_field_twin_sync extends ffi.Struct {
 
   @ffi.Int32()
   external int field1;
+}
+
+final class wire_cst_list_CastedPrimitive_i_64 extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_struct_with_casted_primitive_twin_normal
+    extends ffi.Struct {
+  @ffi.Int64()
+  external int field_i64;
+
+  @ffi.Uint64()
+  external int field_u64;
+
+  @ffi.Int32()
+  external int field_i32;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field_vec_u8;
+
+  external ffi.Pointer<wire_cst_list_CastedPrimitive_i_64> field_vec_i64;
+
+  external ffi.Pointer<ffi.Int64> field_optional_i64;
+
+  external ffi.Pointer<ffi.Int64> field_boxed_i64;
 }
 
 final class wire_cst_EnumDartOpaqueTwinNormal_Primitive extends ffi.Struct {

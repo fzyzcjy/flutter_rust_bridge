@@ -70,8 +70,7 @@ pub(crate) fn generate(
             .collect(),
         extra_from_parser: Acc::new_common(vec![WireRustOutputCode {
             body: context.mir_pack.extra_rust_output_code.clone(),
-            extern_funcs: vec![],
-            extern_classes: vec![],
+            ..Default::default()
         }]),
         content_hash,
     })

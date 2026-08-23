@@ -30,6 +30,7 @@ pub(super) fn generate(
         extern_classes: (code.extern_classes.into_iter())
             .filter(|f| config.has_ffigen || !f.needs_ffigen)
             .collect(),
+        ..Default::default()
     });
 
     let text_acc = generate_text_from_merged_code(

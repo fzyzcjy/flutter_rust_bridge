@@ -1,4 +1,5 @@
 use crate::generalized_isolate::PortLike;
+use crate::platform_types::delayed_close::DelayedCloseBatch;
 use std::cell::RefCell;
 use std::collections::HashMap;
 use wasm_bindgen::closure::Closure;
@@ -24,8 +25,7 @@ thread_local! {
 
 struct BroadcastChannelState {
     channel_of_name: HashMap<String, MessagePort>,
-    pending_close: Vec<MessagePort>,
-    close_scheduled: bool,
+    delayed_close: DelayedCloseBatch<MessagePort>,
     close_callback: Closure<dyn FnMut()>,
 }
 
@@ -33,8 +33,7 @@ impl BroadcastChannelState {
     fn new() -> Self {
         Self {
             channel_of_name: Default::default(),
-            pending_close: Default::default(),
-            close_scheduled: false,
+            delayed_close: Default::default(),
             close_callback: Closure::wrap(Box::new(close_pending_message_ports) as Box<dyn FnMut()>),
         }
     }
@@ -56,12 +55,12 @@ impl BroadcastChannelState {
     }
 
     fn close_message_port_later(&mut self, port: MessagePort) {
-        self.pending_close.push(port);
-        if self.close_scheduled {
-            return;
+        if self.delayed_close.push(port) {
+            self.schedule_close();
         }
+    }
 
-        self.close_scheduled = true;
+    fn schedule_close(&mut self) {
         if let Err(error) = js_set_timeout(
             self.close_callback.as_ref().unchecked_ref(),
             BROADCAST_CHANNEL_CLOSE_DELAY_MILLIS,
@@ -72,11 +71,14 @@ impl BroadcastChannelState {
     }
 
     fn close_pending_message_ports(&mut self) {
-        self.close_scheduled = false;
-        for port in self.pending_close.drain(..) {
+        let (ports, has_next_batch) = self.delayed_close.complete();
+        for port in ports {
             if let Err(error) = port.close() {
                 crate::console_error!("close broadcast channel: {:?}", error);
             }
+        }
+        if has_next_batch {
+            self.schedule_close();
         }
     }
 }

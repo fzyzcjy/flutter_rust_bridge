@@ -1,4 +1,3 @@
-use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::optional::MirTypeOptional;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{
@@ -30,31 +29,62 @@ impl TypeParserWithContext<'_, '_, '_> {
                 );
                 // frb-coverage:ignore-end
 
-                Optional(match inner {
-                    StructRef(..)
-                    | EnumRef(..)
-                    | RustAutoOpaqueImplicit(..)
-                    | RustOpaque(..)
-                    | DartOpaque(..)
-                    | DartFn(..)
-                    | Primitive(..)
-                    | Record(..)
-                    | Delegate(MirTypeDelegate::PrimitiveEnum(..)) => {
-                        MirTypeOptional::new_with_boxed_wrapper(inner.clone())
+                Optional(if optional_inner_needs_boxed_wrapper(&inner) {
+                    MirTypeOptional::new_with_boxed_wrapper(inner)
+                } else {
+                    match inner {
+                        PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_) | Delegate(_) => {
+                            MirTypeOptional::new(inner)
+                        }
+                        // frb-coverage:ignore-start
+                        Optional(_) | MirType::TraitDef(_) => unreachable!(),
+                        // frb-coverage:ignore-end
+                        StructRef(..)
+                        | EnumRef(..)
+                        | RustAutoOpaqueImplicit(..)
+                        | RustOpaque(..)
+                        | DartOpaque(..)
+                        | DartFn(..)
+                        | Primitive(..)
+                        | Record(..) => unreachable!(),
                     }
-                    Delegate(MirTypeDelegate::Time(..)) => {
-                        MirTypeOptional::new_with_boxed_wrapper(inner.clone())
-                    }
-                    PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_) | Delegate(_) => {
-                        MirTypeOptional::new(inner.clone())
-                    }
-                    // frb-coverage:ignore-start
-                    Optional(_) | MirType::TraitDef(_) => unreachable!(),
-                    // frb-coverage:ignore-end
                 })
             }
 
             _ => return Ok(None),
         }))
+    }
+}
+
+fn optional_inner_needs_boxed_wrapper(inner: &MirType) -> bool {
+    inner.is_primitive()
+        || matches!(
+            inner,
+            StructRef(..)
+                | EnumRef(..)
+                | RustAutoOpaqueImplicit(..)
+                | RustOpaque(..)
+                | DartOpaque(..)
+                | DartFn(..)
+                | Record(..)
+        )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateCastedPrimitive};
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    /// Ensures casted primitives use the production optional boxing classifier.
+    #[test]
+    fn casted_primitive_optional_uses_boxed_wrapper() {
+        let inner = Delegate(MirTypeDelegate::CastedPrimitive(
+            MirTypeDelegateCastedPrimitive {
+                inner: MirTypePrimitive::I64,
+            },
+        ));
+
+        assert!(optional_inner_needs_boxed_wrapper(&inner));
     }
 }

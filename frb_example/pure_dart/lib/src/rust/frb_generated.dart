@@ -56235,13 +56235,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithCastedPrimitiveTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_struct_with_casted_primitive_twin_normal(
-            arg, serializer);
-        final raw_ = serializer.intoRaw();
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_casted_primitive_twin_normal(
+                arg);
         return wire
             .wire__crate__api__casted_primitive__function_for_struct_with_casted_primitive_twin_normal(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+                port_, arg0);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_struct_with_casted_primitive_twin_normal,
@@ -110960,6 +110959,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int dco_decode_box_CastedPrimitive_i_64(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as int;
+  }
+
+  @protected
   ApplicationEnv dco_decode_box_application_env(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_application_env(raw);
@@ -111071,6 +111076,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
         raw);
+  }
+
+  @protected
+  int dco_decode_box_autoadd_CastedPrimitive_i_64(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as int;
   }
 
   @protected
@@ -118553,6 +118564,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<int> dco_decode_list_CastedPrimitive_i_64(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_CastedPrimitive_i_64).toList();
+  }
+
+  @protected
   List<Duration> dco_decode_list_Chrono_Duration(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return (raw as List<dynamic>).map(dco_decode_Chrono_Duration).toList();
@@ -121524,6 +121541,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
             raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_CastedPrimitive_i_64(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_CastedPrimitive_i_64(raw);
   }
 
   @protected
@@ -124569,13 +124594,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_casted_primitive_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 4)
-      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 7)
+      throw Exception('unexpected arr length: expect 7 but see ${arr.length}');
     return StructWithCastedPrimitiveTwinNormal(
       fieldI64: dco_decode_CastedPrimitive_i_64(arr[0]),
       fieldU64: dco_decode_CastedPrimitive_u_64(arr[1]),
       fieldI32: dco_decode_i_32(arr[2]),
       fieldVecU8: dco_decode_list_prim_u_8_strict(arr[3]),
+      fieldVecI64: dco_decode_list_CastedPrimitive_i_64(arr[4]),
+      fieldOptionalI64: dco_decode_opt_box_autoadd_CastedPrimitive_i_64(arr[5]),
+      fieldBoxedI64: dco_decode_box_CastedPrimitive_i_64(arr[6]),
     );
   }
 
@@ -133921,6 +133949,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int sse_decode_box_CastedPrimitive_i_64(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_CastedPrimitive_i_64(deserializer));
+  }
+
+  @protected
   ApplicationEnv sse_decode_box_application_env(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_application_env(deserializer));
@@ -134032,6 +134066,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
         deserializer));
+  }
+
+  @protected
+  int sse_decode_box_autoadd_CastedPrimitive_i_64(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_CastedPrimitive_i_64(deserializer));
   }
 
   @protected
@@ -141834,6 +141875,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<int> sse_decode_list_CastedPrimitive_i_64(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <int>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_CastedPrimitive_i_64(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<Duration> sse_decode_list_Chrono_Duration(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -145593,6 +145646,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int? sse_decode_opt_box_autoadd_CastedPrimitive_i_64(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_CastedPrimitive_i_64(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   Duration? sse_decode_opt_box_autoadd_Chrono_Duration(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -148880,11 +148945,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_fieldU64 = sse_decode_CastedPrimitive_u_64(deserializer);
     var var_fieldI32 = sse_decode_i_32(deserializer);
     var var_fieldVecU8 = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_fieldVecI64 = sse_decode_list_CastedPrimitive_i_64(deserializer);
+    var var_fieldOptionalI64 =
+        sse_decode_opt_box_autoadd_CastedPrimitive_i_64(deserializer);
+    var var_fieldBoxedI64 = sse_decode_box_CastedPrimitive_i_64(deserializer);
     return StructWithCastedPrimitiveTwinNormal(
         fieldI64: var_fieldI64,
         fieldU64: var_fieldU64,
         fieldI32: var_fieldI32,
-        fieldVecU8: var_fieldVecU8);
+        fieldVecU8: var_fieldVecU8,
+        fieldVecI64: var_fieldVecI64,
+        fieldOptionalI64: var_fieldOptionalI64,
+        fieldBoxedI64: var_fieldBoxedI64);
   }
 
   @protected
@@ -162124,6 +162196,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_CastedPrimitive_i_64(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_CastedPrimitive_i_64(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_application_env(
       ApplicationEnv self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -162236,6 +162314,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncSseMoi(
         self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_CastedPrimitive_i_64(
+      int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_CastedPrimitive_i_64(self, serializer);
   }
 
   @protected
@@ -169097,6 +169182,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_CastedPrimitive_i_64(
+      List<int> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_CastedPrimitive_i_64(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_Chrono_Duration(
       List<Duration> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -172078,6 +172173,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_opt_box_autoadd_CastedPrimitive_i_64(
+      int? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_CastedPrimitive_i_64(self, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_opt_box_autoadd_Chrono_Duration(
       Duration? self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -174863,6 +174969,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_CastedPrimitive_u_64(self.fieldU64, serializer);
     sse_encode_i_32(self.fieldI32, serializer);
     sse_encode_list_prim_u_8_strict(self.fieldVecU8, serializer);
+    sse_encode_list_CastedPrimitive_i_64(self.fieldVecI64, serializer);
+    sse_encode_opt_box_autoadd_CastedPrimitive_i_64(
+        self.fieldOptionalI64, serializer);
+    sse_encode_box_CastedPrimitive_i_64(self.fieldBoxedI64, serializer);
   }
 
   @protected

@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::{
     generate_class_from_fields, JS_VALUE,
 };
+use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::general_list::DECODE_BODY_WEB;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
@@ -53,21 +54,13 @@ impl WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGene
             // frb-coverage:ignore-start
             MirTypePrimitive::Bool | MirTypePrimitive::Unit => Some("todo!()".into()),
             // frb-coverage:ignore-end
-            MirTypePrimitive::I64 | MirTypePrimitive::U64 => Some(
-                format!(
-                    "let buf = self.dyn_into::<{}>().unwrap();
-                    let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
-                    flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()",
-                    rust_web_wire_type(&self.mir)
-                )
-                    .into(),
-            ),
+            MirTypePrimitive::I64 | MirTypePrimitive::U64 => Some(DECODE_BODY_WEB.into()),
             _ => Some(
                 format!(
                     "self.unchecked_into::<{}>().to_vec().into()",
                     rust_web_wire_type(&self.mir)
                 )
-                    .into(),
+                .into(),
             ),
         }
     }
