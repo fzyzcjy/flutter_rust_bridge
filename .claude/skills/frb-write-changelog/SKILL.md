@@ -63,6 +63,15 @@ Match the existing changelog style.
 - Place entries with `(thanks @username)` before entries without thanks.
 - Within the thanks group and the no-thanks group, keep items in merge order from newest to oldest unless the surrounding section clearly uses another order.
 
+For a stable release that follows betas of the same version series, use a grouped stable section:
+
+- Put entries absent from every preceding beta first as ordinary top-level entries.
+- Then add one top-level parent entry per beta, using the canonical version label such as `* 2.13.0-beta.6`, ordered from the latest beta to the earliest beta.
+- Copy that beta's substantive entries exactly beneath its parent as nested bullets. Preserve wording, PR references, and thanks attribution.
+- Keep the generic "what's new" entry only once at the top of the stable section.
+- Never fold a stable-only PR into a copied beta entry. Keep it in the stable-only group even when its subject is related to a beta entry.
+- Apply thanks-first ordering independently within the stable-only entries and within each beta group.
+
 Edit only `CHANGELOG.md`. Do not manually edit generated files for this task.
 
 ## Step 6: Review the draft
@@ -90,7 +99,7 @@ The verifier checks that:
 
 - PR numbers in the target section are complete, not duplicated, and not unexpected.
 - Third-party thanks authors are complete and not unexpected, including ordinary documentation PR authors. The same author may be thanked on multiple entries.
-- Entries with third-party thanks appear before entries without thanks.
+- Entries with third-party thanks appear before entries without thanks within each stable-only or beta group.
 - `docs: add <name> as a contributor ...` all-contributors PRs are ignored.
 
 Use `--ignore-pr <NUMBER>` only for a documented intentional exclusion. Use `--extra-local-pr <NUMBER>` for a stacked local maintainer PR that belongs in the changelog but is not present in the merged PR JSON yet. Use `--extra-thanks-author <LOGIN>` only for a verified co-author or contributor credited by a release-range PR even though their source PR falls outside the release range; record the source PR and reason in the release journal.
@@ -111,7 +120,7 @@ Run the mechanical verifier again after the user finishes manual edits.
 
 - Confirm there are no missing, duplicated, or extra PR numbers.
 - Confirm there are no missing or unexpected third-party thanks authors.
-- Confirm entries with third-party thanks appear before entries without thanks.
+- Confirm entries with third-party thanks appear before entries without thanks within each stable-only or beta group.
 - Apply any confirmed fixes, then do one final diff check.
 
 If the user explicitly wants an independent review, ask a separate reviewer or subagent to compare the final `CHANGELOG.md` against the same merged PR list.

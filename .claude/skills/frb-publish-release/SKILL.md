@@ -66,9 +66,21 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
   - For a beta version such as `2.13.0-beta.7`, write the normal changelog for changes since the immediately preceding release. Do not roll earlier beta sections into the new beta section.
   - For a stable version such as `2.13.0`, first write the normal changelog for changes since the latest release, then copy the substantive changelog entries from every preceding beta of the same `MAJOR.MINOR.PATCH` series into the new stable section. For example, `2.13.0` must include the entries from `2.13.0-beta.1` through the latest `2.13.0-beta.N`.
 - When rolling beta entries into a stable section:
+  - Keep changes that are absent from every preceding beta as ordinary top-level entries immediately after the single generic "what's new" entry.
+  - After those stable-only entries, add one top-level parent entry for each preceding beta, labeled with its canonical version such as `* 2.13.0-beta.6`.
+  - Order beta parent entries from the latest beta to the earliest beta. Nest that beta's substantive changelog entries beneath its parent, for example:
+
+    ```markdown
+    * Stable-only change #1234
+    * 2.13.0-beta.6
+      * Beta 6 change #1233
+    * 2.13.0-beta.5
+      * Beta 5 change #1232
+    ```
+
   - Preserve the original entry wording, PR references, and `(thanks @username)` attribution.
   - Keep the existing beta sections unchanged; the stable section is an additional consolidated view.
-  - Copy entries in reverse release order, from the latest beta to the earliest beta, after the stable release's normal newly written entries.
+  - Copy each beta's substantive entries exactly into its own group. Do not merge a stable-only PR into a copied beta entry; write the stable-only PR as a separate entry before the beta groups.
   - Do not duplicate identical recurring boilerplate such as the generic "what's new" link; include it once in the stable section.
 - When reviewing the release section, explicitly check every third-party human-authored PR in the release range, including docs, CI, chore, and tooling PRs. Each must either have `(thanks @username)` in the matching changelog entry or a documented reason for omission.
 - Be careful with grouped entries: if a local maintainer PR and a third-party PR are summarized together, the grouped entry still needs the third-party thanks attribution.

@@ -4,16 +4,6 @@
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Enhance HAP validation and document panic abort behavior #3352 #3330 (thanks @lqjdm) (thanks @stepangfil)
-* Support generic type aliases and qualify generated `Result` #3242 (thanks @dbsxdbsx)
-* Clarify the uninitialized RustStreamSink stream error #3280 (thanks @ShuttleSpace)
-* Improve OHOS and HarmonyOS docs and tooling #3246 #3236 (thanks @star4277)
-* Update git clone URL for flutter-ohos setup #3157 (thanks @star4277)
-* Add Rust-to-Dart logging bridge #3114 #3111 #3079 #2766 (thanks @patmuk)
-* Rename `ObjectId` to `MoiObjectId` in `frb_generated_moi_arc_def!` #3106 (thanks @ganeshrvel)
-* Support HarmonyOS #3065 (thanks @star4277)
-* Support serde_json Value #3077 (thanks @rlch)
-* Introduce conversion between chrono::NaiveDate and DateTime avoiding RustOpaque #2968 (thanks @TrackerSB)
-* Fix Map/List/Set equality in generated Dart structs #2956 (thanks @nightscape)
 * Improve stable release preparation and publishing safeguards #3389 #3388 #3375 #3372 #3333
 * Improve CI workflow precision and validation #3386 #3381 #3365 #3364 #3358 #3339 #3338 #3337
 * Require general review in the FRB PR gate #3363
@@ -21,45 +11,65 @@
 * Fix ffigen 21 struct removal and limit automatic build runner outputs #3357 #3344
 * Document the CargoKit to Native Assets migration #3285
 * Add FRB PR chain split tooling #3387
-* Require release contributor description coverage #3332
-* Preserve web `StreamSink` message ordering #3233
-* Fail fast for locked Rust opaque sync calls on web #3271
-* Support fallback iOS simulator runtimes and update the iOS CI simulator #3284 #3283
-* Improve CI stability and release submodule checks #3282 #3275 #3262
-* Improve native assets quickstart documentation and Cargo configuration #3278 #3276
-* Fix CargoKit integration template packaging in the codegen crate
-* Fix Dart prerelease caret dependency checks #3249
-* Improve frb_hooks pub score checks #3259
-* Improve native assets post-release validation #3260 #3258
-* Improve release changelog and development environment guidance #3261 #3257
-* Support native assets integration backend #3181
-* Sync frb_hooks release version #3256
-* Improve native assets, Apple scaffold, and integration template tooling #3240 #3237 #3208 #3206 #3205
-* Improve Tart, VMware, and local development environment tooling #3245 #3244 #3243 #3190
-* Improve release publishing, changelog, and contributor workflow #3255 #3254 #3235 #3232 #3228 #3231 #3230 #3225 #3224 #3222
-* Improve CI and coverage handling #3238 #3212
-* Fix web worker wasm initialization #3171
-* Bump CargoKit to latest and update it for Android 16KB pages #3170
-* Pass platforms through create and integrate commands #3129
-* Support skipping FVM installation #3126
-* Fix macOS xcconfig drift #3118
-* Upgrade Flutter to 3.44 #3112
-* Fix Dart native test hangs after logging bridge #3103
-* Fix generated fixed array equality #3093
-* Fix DCO boxed record decoding #3092
-* Fix concurrent cargo-expand auto install #3090
-* Add generic Dart initializer hook #3083
-* Allow frb_internal clean checks without git metadata #3082
-* Support multi-arch Docker development on Apple Silicon #3070
-* Remove outdated Dockerfile in favor of devcontainer up-to-date Dockerfile #3069
-* Fix threaded WASM build-web defaults for the website demo #3052
-* Improve release publishing and post-release validation tooling #3221 #3220 #3219 #3218 #3217 #3216 #3215 #3214 #3211 #3210
-* Improve CI, workflow dispatch, and precommit automation #3195 #3193 #3189 #3178 #3175 #3174 #3172 #3166 #3160 #3143 #3137 #3135 #3134 #3132 #3131 #3115 #3099 #3096 #3076 #3072 #3051 #2990
-* Improve local dev, Docker, Tart, Android, and manual-test tooling #3223 #3197 #3196 #3192 #3191 #3188 #3187 #3186 #3185 #3184 #3183 #3180 #3179 #3176 #3150 #3149 #3147 #3146 #3144 #3142 #3113
-* Update agent development skills and internal workflow documentation #3201 #3159 #3138 #3116 #3110 #3109 #3102 #3100 #3095 #3094 #3091 #3089 #3087
-* Exclude CargoKit from generated analyzer options and improve Flutter integration test timeouts #3168 #3167 #3141 #3140
-* Add coverage tests for existing helpers #3130
-* Bump website dependencies #3047 #3046
+* Prepare beta changelog and contributor credits #3225 #3224 #3222
+* Add Yarn to the development Docker image #3223
+* Exclude CargoKit from generated analyzer options #3141
+* Improve Flutter integration test timeouts #3140
+* 2.13.0-beta.6
+  * Support generic type aliases and qualify generated `Result` #3242 (thanks @dbsxdbsx)
+  * Require release contributor description coverage #3332
+  * Preserve web `StreamSink` message ordering #3233
+  * Fail fast for locked Rust opaque sync calls on web #3271
+* 2.13.0-beta.5
+  * Clarify the uninitialized RustStreamSink stream error #3280 (thanks @ShuttleSpace)
+  * Support fallback iOS simulator runtimes and update the iOS CI simulator #3284 #3283
+  * Improve CI stability and release submodule checks #3282 #3275 #3262
+  * Improve native assets quickstart documentation and Cargo configuration #3278 #3276
+* 2.13.0-beta.4
+  * Fix CargoKit integration template packaging in the codegen crate
+* 2.13.0-beta.3
+  * Fix Dart prerelease caret dependency checks #3249
+  * Improve frb_hooks pub score checks #3259
+  * Improve native assets post-release validation #3260 #3258
+  * Improve release changelog and development environment guidance #3261 #3257
+* 2.13.0-beta.2
+  * Improve OHOS and HarmonyOS docs and tooling #3246 #3236 (thanks @star4277)
+  * Support native assets integration backend #3181
+  * Sync frb_hooks release version #3256
+  * Improve native assets, Apple scaffold, and integration template tooling #3240 #3237 #3208 #3206 #3205
+  * Improve Tart, VMware, and local development environment tooling #3245 #3244 #3243 #3190
+  * Improve release publishing, changelog, and contributor workflow #3255 #3254 #3235 #3232 #3228 #3231 #3230
+  * Improve CI and coverage handling #3238 #3212
+* 2.13.0-beta.1
+  * Update git clone URL for flutter-ohos setup #3157 (thanks @star4277)
+  * Add Rust-to-Dart logging bridge #3114 #3111 #3079 #2766 (thanks @patmuk)
+  * Rename `ObjectId` to `MoiObjectId` in `frb_generated_moi_arc_def!` #3106 (thanks @ganeshrvel)
+  * Support HarmonyOS #3065 (thanks @star4277)
+  * Support serde_json Value #3077 (thanks @rlch)
+  * Introduce conversion between chrono::NaiveDate and DateTime avoiding RustOpaque #2968 (thanks @TrackerSB)
+  * Fix Map/List/Set equality in generated Dart structs #2956 (thanks @nightscape)
+  * Fix web worker wasm initialization #3171
+  * Bump CargoKit to latest and update it for Android 16KB pages #3170
+  * Pass platforms through create and integrate commands #3129
+  * Support skipping FVM installation #3126
+  * Fix macOS xcconfig drift #3118
+  * Upgrade Flutter to 3.44 #3112
+  * Fix Dart native test hangs after logging bridge #3103
+  * Fix generated fixed array equality #3093
+  * Fix DCO boxed record decoding #3092
+  * Fix concurrent cargo-expand auto install #3090
+  * Add generic Dart initializer hook #3083
+  * Allow frb_internal clean checks without git metadata #3082
+  * Support multi-arch Docker development on Apple Silicon #3070
+  * Remove outdated Dockerfile in favor of devcontainer up-to-date Dockerfile #3069
+  * Fix threaded WASM build-web defaults for the website demo #3052
+  * Improve release publishing and post-release validation tooling #3221 #3220 #3219 #3218 #3217 #3216 #3215 #3214 #3211 #3210
+  * Improve CI, workflow dispatch, and precommit automation #3195 #3193 #3189 #3178 #3175 #3174 #3172 #3166 #3160 #3143 #3137 #3135 #3134 #3132 #3131 #3115 #3099 #3096 #3076 #3072 #3051 #2990
+  * Improve local dev, Docker, Tart, Android, and manual-test tooling #3197 #3196 #3192 #3191 #3188 #3187 #3186 #3185 #3184 #3183 #3180 #3179 #3176 #3150 #3149 #3147 #3146 #3144 #3142 #3113
+  * Update agent development skills and internal workflow documentation #3201 #3159 #3138 #3116 #3110 #3109 #3102 #3100 #3095 #3094 #3091 #3089 #3087
+  * Exclude CargoKit from generated analyzer options and improve Flutter integration test timeouts #3168 #3167
+  * Add coverage tests for existing helpers #3130
+  * Bump website dependencies #3047 #3046
 
 ## 2.13.0-beta.6
 
