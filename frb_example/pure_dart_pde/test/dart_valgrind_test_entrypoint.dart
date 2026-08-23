@@ -319,8 +319,17 @@ Future<void> callFileEntrypoints({
     primitive_misc_twin_sync_test.main,
     raw_string_twin_rust_async_test.main,
     raw_string_twin_sync_test.main,
-    rust_auto_opaque_twin_rust_async_test.main,
-    rust_auto_opaque_twin_sync_test.main,
+    ({bool skipRustLibInit = false}) =>
+        rust_auto_opaque_twin_rust_async_test.main(
+          skipRustLibInit: skipRustLibInit,
+          skipDisposedRustAutoOpaqueArgumentTest:
+              skipDisposedRustAutoOpaqueArgumentTest,
+        ),
+    ({bool skipRustLibInit = false}) => rust_auto_opaque_twin_sync_test.main(
+          skipRustLibInit: skipRustLibInit,
+          skipDisposedRustAutoOpaqueArgumentTest:
+              skipDisposedRustAutoOpaqueArgumentTest,
+        ),
     rust_opaque_twin_rust_async_test.main,
     rust_opaque_twin_sync_test.main,
     serde_json_type_twin_rust_async_test.main,

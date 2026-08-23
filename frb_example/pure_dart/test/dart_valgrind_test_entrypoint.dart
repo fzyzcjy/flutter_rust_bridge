@@ -667,7 +667,12 @@ Future<void> callFileEntrypoints({
     rust_auto_opaque_twin_sse_test.main,
     rust_auto_opaque_twin_sync_moi_test.main,
     rust_auto_opaque_twin_sync_sse_moi_test.main,
-    rust_auto_opaque_twin_sync_sse_test.main,
+    ({bool skipRustLibInit = false}) =>
+        rust_auto_opaque_twin_sync_sse_test.main(
+          skipRustLibInit: skipRustLibInit,
+          skipDisposedRustAutoOpaqueArgumentTest:
+              skipDisposedRustAutoOpaqueArgumentTest,
+        ),
     rust_auto_opaque_twin_sync_test.main,
     rust_opaque_sync_twin_moi_test.main,
     rust_opaque_sync_twin_sse_moi_test.main,

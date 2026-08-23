@@ -58,10 +58,11 @@ Future<void> _generateDartValgrindTestEntrypoint(
   ];
   final entrypoints = [
     for (final file in files)
-      if (package == Package.pureDart &&
-          path.basenameWithoutExtension(file) ==
-              'rust_auto_opaque_twin_rust_async_sse_test')
-        '''({bool skipRustLibInit = false}) => rust_auto_opaque_twin_rust_async_sse_test.main(
+      if (_hasDisposedRustAutoOpaqueArgumentLeak(
+        package: package,
+        fileStem: path.basenameWithoutExtension(file),
+      ))
+        '''({bool skipRustLibInit = false}) => ${path.basenameWithoutExtension(file)}.main(
           skipRustLibInit: skipRustLibInit,
           skipDisposedRustAutoOpaqueArgumentTest: skipDisposedRustAutoOpaqueArgumentTest,
         ),\n'''
@@ -114,6 +115,22 @@ Future<void> callFileEntrypoints({
 
   await _writeToFile(dartRoot, 'test/dart_valgrind_test_entrypoint.dart', code);
 }
+
+bool _hasDisposedRustAutoOpaqueArgumentLeak({
+  required Package package,
+  required String fileStem,
+}) =>
+    switch (package) {
+      Package.pureDart => {
+        'rust_auto_opaque_twin_rust_async_sse_test',
+        'rust_auto_opaque_twin_sync_sse_test',
+      }.contains(fileStem),
+      Package.pureDartPde => {
+        'rust_auto_opaque_twin_rust_async_test',
+        'rust_auto_opaque_twin_sync_test',
+      }.contains(fileStem),
+      _ => false,
+    };
 
 Future<void> _writeToFile(
   Uri dartRoot,
