@@ -9,8 +9,8 @@ void main() {
     final completer = Completer<int>();
     final port = singleCompletePort<int, Object?>(completer);
 
-    port.send(42);
-    port.send(7);
+    port.sendPort.send(42);
+    port.sendPort.send(7);
 
     expect(await completer.future, 42);
   });
@@ -21,7 +21,7 @@ void main() {
       final completer = Completer<int>();
       final port = singleCompletePort<int, Object?>(completer);
 
-      port.send('not an int');
+      port.sendPort.send('not an int');
 
       await expectLater(completer.future, throwsA(isA<TypeError>()));
     },
