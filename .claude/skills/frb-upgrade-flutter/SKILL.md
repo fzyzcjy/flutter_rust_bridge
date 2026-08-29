@@ -99,6 +99,28 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 - When an old example has no supported regeneration entry point, compare it with a fresh target-Flutter scaffold and
   directly apply only required tool-defined migrations. Record those files separately from automatic output.
 
+# 7 Preserve the OHOS composition contract
+
+- Treat the checked-in package and the older OHOS Flutter fork as two distinct sources of truth:
+  - generic Flutter scaffold files come from the target stable Flutter package;
+  - overlay only explicit OHOS-owned paths from the OHOS fork;
+  - include `ohos` and, when required by the package, `rust_builder/ohos` and `rust_builder/pubspec.yaml`;
+  - exclude transient trees such as `node_modules`;
+  - preserve intentional deletions instead of silently resurrecting stale files.
+- Make preservation transactional. Stage and validate the composed result before replacing the canonical package, and
+  restore the original package if create, dependency resolution, code generation, formatting, or the final swap fails.
+- Test both success and failure paths. Do not add production APIs whose only purpose is exposing internals to tests.
+
+# 8 Route CargoKit changes correctly
+
+- Use `frb-cargokit` to determine whether a diff is an upstream source change, an FRB copy-sync change, or generated
+  integration output.
+- Use `frb-cargokit-dev` and a separate upstream change only when behavior belongs in the external CargoKit repository.
+- Use the owning sync command for source-copy updates; do not manually patch every copied CargoKit tree.
+- Keep `precommit-integrate` and CargoKit copy synchronization conceptually separate.
+- Treat nested `cargokit/build_tool` packages according to their own Dart package metadata even when the parent package
+  is a Flutter package.
+
 ### Step 7: Validate Locally
 
 Read `frb-lint` and `frb-test` for exact command guidance. Tom's FRB environment runs tests locally,
