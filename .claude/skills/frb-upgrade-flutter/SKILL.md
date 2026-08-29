@@ -5,69 +5,53 @@ description: >-
   devcontainer Docker images, CI/post-release pins, generated Flutter scaffolds, or platform compatibility.
 ---
 
-# FRB Upgrade Flutter
+# 1 Start here
 
-Use this as the single-file workflow for Flutter stable bumps in `flutter_rust_bridge`.
+- Confirm the target Flutter stable release from official Flutter sources.
+- Read `frb-dev-env` before running setup, generation, lint, or tests. Use its per-worktree local Docker workflow.
+- Read `frb-docker` before changing `.devcontainer/**` or publishing the dev image.
+- Read `frb-code-generation` before accepting generated or scaffold drift.
+- Read `frb-cargokit` before changing any copied CargoKit file. Read `frb-cargokit-dev` only when the source
+  change belongs in the external CargoKit repository.
+- Read `frb-pr-chain-split` as soon as an independently landable prerequisite or cleanup appears.
+- Read `frb-prepare-pr` and then `frb-pr-review` before treating the upgrade PR as ready.
+- Read `frb-fix-ci` when CI starts failing.
 
-## Start Here
+# 2 Establish the version contract
 
-1. Confirm the target Flutter stable release from official Flutter sources.
-2. Also read:
-   - `frb-docker` before changing `.devcontainer/**` or publishing the dev image.
-   - `frb-code-generation` before accepting generated or scaffold drift.
-   - `frb-cargokit` or `frb-cargokit-dev` before changing copied `cargokit` files.
-   - `frb-pr-review` before treating the upgrade PR as ready.
-   - `frb-fix-ci` when CI starts failing.
-
-## Workflow
-
-### Step 1: Review the Flutter Release
-
-Use official Flutter sources. Record the target Flutter version, bundled Dart version, release date,
-and release-note items likely to affect FRB.
-
-Scan for:
-
-- Dart SDK constraint changes
-- Android Gradle Plugin, Kotlin, Java, Android SDK, or NDK changes
-- iOS/macOS project generation changes, especially Swift Package Manager or CocoaPods defaults
-- Web renderer, Chrome, DevTools, or test-driver changes
-- Host architecture changes such as Apple Silicon or Windows ARM support
-
-### Step 2: Plan the Single Upgrade PR
-
-Plan one PR for the Flutter upgrade. Keep the PR internally organized by logical commits or phases,
-but do not split the upgrade across multiple PRs unless Tom explicitly asks.
-
-Use this order inside the single PR:
-
-1. Upgrade the dev Docker image inputs and derived metadata tests.
-2. Sync CI and post-release version pins.
-3. Regenerate and classify scaffold drift.
-4. Fix real compatibility failures.
-5. Update workflow docs or skills only if the process changed.
-
-### Step 3: Inventory Current Pins
-
-Run these before planning the bump:
+- Record the target Flutter version, bundled Dart version, release date, and relevant release-note changes.
+- Distinguish the primary Dart version from the minimum supported Dart SDK floor.
+  - Upgrade the primary Dart pin with Flutter.
+  - Do not raise package SDK constraints merely because the primary toolchain is newer.
+  - When retaining an older SDK floor, run dependency resolution, analysis, and tests on that floor in CI.
+- Inventory version-like values without assuming the target Dart major or minor:
 
 ```shell
-rg -n \
-  "FRB_MAIN_|FLUTTER_VERSION|DART_VERSION|RUST_VERSION|setup-flutter|setup-dart|cirruslabs/flutter"
-rg -n "flutter_rust_bridge_dev|3\\.[0-9]+"
+rg -n "FRB_MAIN_|FLUTTER_VERSION|DART_VERSION|RUST_VERSION|setup-flutter|setup-dart|cirruslabs/flutter"
+rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*target" \
+  .devcontainer .github tools frb_codegen frb_example
 ```
 
-Inspect at least:
+- Inspect at least:
+  - `.devcontainer/Dockerfile`;
+  - `.github/workflows/ci.yaml` and `.github/workflows/post_release.yaml`;
+  - `.github/workflows/publish_dev_docker.yaml`;
+  - `tools/frb_internal/test/src/makefile_dart/test_dev_docker_metadata.dart`;
+  - package `pubspec.yaml` and checked-in `pubspec.lock` files;
+  - `frb_codegen/assets/integration_template/**`;
+  - `tools/frb_internal/assets/apple_scaffold/**`;
+  - `tools/tart_macos/**`;
+  - `frb_example/**`.
 
-- `.devcontainer/Dockerfile`
-- `.github/workflows/ci.yaml`
-- `.github/workflows/post_release.yaml`
-- `.github/workflows/publish_dev_docker.yaml`
-- `tools/frb_internal/test/src/makefile_dart/test_dev_docker_metadata.dart`
-- `pubspec.yaml`, package `pubspec.yaml` files, and checked-in `pubspec.lock` files
-- `frb_codegen/assets/integration_template/**`
-- `tools/frb_internal/assets/apple_scaffold/**`
-- `frb_example/**`
+# 3 Choose PR boundaries before implementation
+
+- Keep generated snapshots, their generator changes, required tests, and upgrade-specific compatibility migrations in
+  the main upgrade PR.
+- Split independent bug fixes, hardening, and reusable prerequisites into predecessor PRs according to
+  `frb-pr-chain-split`.
+- Build and maintain any predecessor chain exclusively with the official `gh stack` workflow described there.
+- Put `ci-manual-dispatch` on dormant predecessors unless a predecessor specifically needs GitHub-only validation.
+- Do not move incidental skill or workflow cleanup into the upgrade PR when it can stand alone against `master`.
 
 ### Step 4: Upgrade the Devcontainer First
 
