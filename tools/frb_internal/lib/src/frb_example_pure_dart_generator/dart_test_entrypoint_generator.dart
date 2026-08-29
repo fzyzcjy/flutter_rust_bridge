@@ -130,7 +130,6 @@ bool _shouldSkipDisposedRustAutoOpaqueArgumentTest({
     'rust_auto_opaque_twin_rust_async_test',
     'rust_auto_opaque_twin_sync_test',
   }.contains(fileStem),
-  _ => false,
 };
 
 Future<void> _writeToFile(
