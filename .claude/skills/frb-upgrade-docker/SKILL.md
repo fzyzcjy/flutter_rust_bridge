@@ -15,6 +15,8 @@ description: Upgrade and publish the flutter_rust_bridge development Docker imag
 
 # 2 Build before merge
 
+- Before pushing the Docker upgrade PR, follow `frb-docker`'s local Dockerfile validation workflow with a freshly
+  built image. Do not validate with a stale per-worktree container.
 - Make Dockerfile and publish-workflow PRs automatically build and smoke-test native `linux/amd64` and `linux/arm64` images with `push: false`.
 - Do not expose registry credentials to untrusted pull-request code.
 - Derive image tags from Dockerfile `ARG` values instead of duplicating versions.
