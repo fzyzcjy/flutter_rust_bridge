@@ -452,8 +452,9 @@ Future<void> main() async {
   await RustLib.init();
 
   final success = await directRunTests(
-    () async =>
-        callFileEntrypoints(skipDisposedRustAutoOpaqueArgumentTest: true),
+    () async {
+      await callFileEntrypoints(skipDisposedRustAutoOpaqueArgumentTest: true);
+    },
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
