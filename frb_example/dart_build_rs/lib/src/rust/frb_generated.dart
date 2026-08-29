@@ -35,8 +35,12 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   /// Initialize flutter_rust_bridge in mock mode.
   /// No libraries for FFI are loaded.
-  static void initMock({required RustLibApi api}) {
-    instance.initMockImpl(api: api);
+  static void initMock({
+    required RustLibApi api,
+  }) {
+    instance.initMockImpl(
+      api: api,
+    );
   }
 
   /// Dispose flutter_rust_bridge
@@ -58,9 +62,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     await api.crateApiMinimalInitApp();
 
     kFrbDartLogging.init(
-      rustLogStream: frbInternalInitLogger(
-        maxLevel: frbInternalLoggingMaxLevel(),
-      ),
+      rustLogStream:
+          frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
       mapRecord: (record) => FrbLogRecordData(
         level: record.level,
         message: record.message,
@@ -86,19 +89,18 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-        stem: 'frb_example_dart_build_rs',
-        ioDirectory: 'rust/target/release/',
-        webPrefix: 'pkg/',
-        wasmBindgenName: 'wasm_bindgen',
-      );
+    stem: 'frb_example_dart_build_rs',
+    ioDirectory: 'rust/target/release/',
+    webPrefix: 'pkg/',
+    wasmBindgenName: 'wasm_bindgen',
+  );
 }
 
 abstract class RustLibApi extends BaseApi {
   void crateApiMinimalFrbInternalDisposeLogger();
 
-  Stream<FrbLogRecord> crateApiMinimalFrbInternalInitLogger({
-    required String maxLevel,
-  });
+  Stream<FrbLogRecord> crateApiMinimalFrbInternalInitLogger(
+      {required String maxLevel});
 
   String crateApiMinimalFrbInternalLoggingMaxLevel();
 
@@ -119,21 +121,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void crateApiMinimalFrbInternalDisposeLogger() {
-    return handler.executeSync(
-      SyncTask(
-        callFfi: () {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: null,
-        ),
-        constMeta: kCrateApiMinimalFrbInternalDisposeLoggerConstMeta,
-        argValues: [],
-        apiImpl: this,
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
       ),
-    );
+      constMeta: kCrateApiMinimalFrbInternalDisposeLoggerConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
   }
 
   TaskConstMeta get kCrateApiMinimalFrbInternalDisposeLoggerConstMeta =>
@@ -143,34 +143,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<FrbLogRecord> crateApiMinimalFrbInternalInitLogger({
-    required String maxLevel,
-  }) {
+  Stream<FrbLogRecord> crateApiMinimalFrbInternalInitLogger(
+      {required String maxLevel}) {
     final sink = RustStreamSink<FrbLogRecord>();
-    unawaited(
-      handler.executeNormal(
-        NormalTask(
-          callFfi: (port_) {
-            final serializer = SseSerializer(generalizedFrbRustBinding);
-            sse_encode_StreamSink_frb_log_record_Sse(sink, serializer);
-            sse_encode_String(maxLevel, serializer);
-            pdeCallFfi(
-              generalizedFrbRustBinding,
-              serializer,
-              funcId: 2,
-              port: port_,
-            );
-          },
-          codec: SseCodec(
-            decodeSuccessData: sse_decode_unit,
-            decodeErrorData: null,
-          ),
-          constMeta: kCrateApiMinimalFrbInternalInitLoggerConstMeta,
-          argValues: [sink, maxLevel],
-          apiImpl: this,
-        ),
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_frb_log_record_Sse(sink, serializer);
+        sse_encode_String(maxLevel, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 2, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
       ),
-    );
+      constMeta: kCrateApiMinimalFrbInternalInitLoggerConstMeta,
+      argValues: [sink, maxLevel],
+      apiImpl: this,
+    )));
     return sink.stream;
   }
 
@@ -182,21 +173,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String crateApiMinimalFrbInternalLoggingMaxLevel() {
-    return handler.executeSync(
-      SyncTask(
-        callFfi: () {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_String,
-          decodeErrorData: null,
-        ),
-        constMeta: kCrateApiMinimalFrbInternalLoggingMaxLevelConstMeta,
-        argValues: [],
-        apiImpl: this,
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
       ),
-    );
+      constMeta: kCrateApiMinimalFrbInternalLoggingMaxLevelConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
   }
 
   TaskConstMeta get kCrateApiMinimalFrbInternalLoggingMaxLevelConstMeta =>
@@ -207,86 +196,77 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   bool crateApiMinimalFrbInternalLoggingSetupDartLoggingOutput() {
-    return handler.executeSync(
-      SyncTask(
-        callFfi: () {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_bool,
-          decodeErrorData: null,
-        ),
-        constMeta:
-            kCrateApiMinimalFrbInternalLoggingSetupDartLoggingOutputConstMeta,
-        argValues: [],
-        apiImpl: this,
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_bool,
+        decodeErrorData: null,
       ),
-    );
+      constMeta:
+          kCrateApiMinimalFrbInternalLoggingSetupDartLoggingOutputConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
   }
 
   TaskConstMeta
-  get kCrateApiMinimalFrbInternalLoggingSetupDartLoggingOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "frb_internal_logging_setup_dart_logging_output",
+      get kCrateApiMinimalFrbInternalLoggingSetupDartLoggingOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "frb_internal_logging_setup_dart_logging_output",
+            argNames: [],
+          );
+
+  @override
+  Future<void> crateApiMinimalInitApp() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 5, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalInitAppConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
+        debugName: "init_app",
         argNames: [],
       );
 
   @override
-  Future<void> crateApiMinimalInitApp() {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 5,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: null,
-        ),
-        constMeta: kCrateApiMinimalInitAppConstMeta,
-        argValues: [],
-        apiImpl: this,
-      ),
-    );
-  }
-
-  TaskConstMeta get kCrateApiMinimalInitAppConstMeta =>
-      const TaskConstMeta(debugName: "init_app", argNames: []);
-
-  @override
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b}) {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          sse_encode_i_32(a, serializer);
-          sse_encode_i_32(b, serializer);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 6,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_i_32,
-          decodeErrorData: null,
-        ),
-        constMeta: kCrateApiMinimalMinimalAdderConstMeta,
-        argValues: [a, b],
-        apiImpl: this,
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(a, serializer);
+        sse_encode_i_32(b, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 6, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
       ),
-    );
+      constMeta: kCrateApiMinimalMinimalAdderConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+    ));
   }
 
   TaskConstMeta get kCrateApiMinimalMinimalAdderConstMeta =>
-      const TaskConstMeta(debugName: "minimal_adder", argNames: ["a", "b"]);
+      const TaskConstMeta(
+        debugName: "minimal_adder",
+        argNames: ["a", "b"],
+      );
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
@@ -296,8 +276,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<FrbLogRecord> dco_decode_StreamSink_frb_log_record_Sse(
-    dynamic raw,
-  ) {
+      dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -387,8 +366,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<FrbLogRecord> sse_decode_StreamSink_frb_log_record_Sse(
-    SseDeserializer deserializer,
-  ) {
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
@@ -422,13 +400,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_file = sse_decode_opt_String(deserializer);
     var var_line = sse_decode_opt_box_autoadd_u_32(deserializer);
     return FrbLogRecord(
-      level: var_level,
-      message: var_message,
-      target: var_target,
-      modulePath: var_modulePath,
-      file: var_file,
-      line: var_line,
-    );
+        level: var_level,
+        message: var_message,
+        target: var_target,
+        modulePath: var_modulePath,
+        file: var_file,
+        line: var_line);
   }
 
   @protected
@@ -485,28 +462,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_AnyhowException(
-    AnyhowException self,
-    SseSerializer serializer,
-  ) {
+      AnyhowException self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.message, serializer);
   }
 
   @protected
   void sse_encode_StreamSink_frb_log_record_Sse(
-    RustStreamSink<FrbLogRecord> self,
-    SseSerializer serializer,
-  ) {
+      RustStreamSink<FrbLogRecord> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
-      self.setupAndSerialize(
-        codec: SseCodec(
+        self.setupAndSerialize(
+            codec: SseCodec(
           decodeSuccessData: sse_decode_frb_log_record,
           decodeErrorData: sse_decode_AnyhowException,
-        ),
-      ),
-      serializer,
-    );
+        )),
+        serializer);
   }
 
   @protected
@@ -546,9 +517,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_list_prim_u_8_strict(
-    Uint8List self,
-    SseSerializer serializer,
-  ) {
+      Uint8List self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);

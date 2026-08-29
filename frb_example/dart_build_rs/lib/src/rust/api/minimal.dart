@@ -6,13 +6,13 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> minimalAdder({required int a, required int b}) =>
-    RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+// These functions are ignored because they are not marked as `pub`: `frb_log_record_to_console`, `frb_parse_logging_max_level`, `load_sink`, `swap_sink`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `FrbDartLogger`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `enabled`, `flush`, `fmt`, `log`
 
 Stream<FrbLogRecord> frbInternalInitLogger({required String maxLevel}) =>
-    RustLib.instance.api.crateApiMinimalFrbInternalInitLogger(
-      maxLevel: maxLevel,
-    );
+    RustLib.instance.api
+        .crateApiMinimalFrbInternalInitLogger(maxLevel: maxLevel);
 
 void frbInternalDisposeLogger() =>
     RustLib.instance.api.crateApiMinimalFrbInternalDisposeLogger();
@@ -22,6 +22,9 @@ String frbInternalLoggingMaxLevel() =>
 
 bool frbInternalLoggingSetupDartLoggingOutput() => RustLib.instance.api
     .crateApiMinimalFrbInternalLoggingSetupDartLoggingOutput();
+
+Future<int> minimalAdder({required int a, required int b}) =>
+    RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 class FrbLogRecord {
   final String level;
