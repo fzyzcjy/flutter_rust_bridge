@@ -52,6 +52,10 @@ fn expand_known_macros(items: &mut Vec<syn::Item>) -> anyhow::Result<()> {
     for item in std::mem::take(items) {
         match item {
             syn::Item::Macro(item_macro) if is_frb_logging_macro(&item_macro) => {
+                ensure!(
+                    item_macro.attrs.is_empty(),
+                    "Attributes on enable_frb_rust_to_dart_logging are unsupported during build.rs code generation"
+                );
                 output.extend(frb_logging_api_items()?);
             }
             syn::Item::Mod(mut item_mod) => {
@@ -69,15 +73,17 @@ fn expand_known_macros(items: &mut Vec<syn::Item>) -> anyhow::Result<()> {
 }
 
 fn is_frb_logging_macro(item: &syn::ItemMacro) -> bool {
-    (item.mac.path.segments.last())
-        .is_some_and(|segment| segment.ident == "enable_frb_rust_to_dart_logging")
+    let segments = &item.mac.path.segments;
+    segments.len() == 2
+        && segments[0].ident == "flutter_rust_bridge"
+        && segments[1].ident == "enable_frb_rust_to_dart_logging"
 }
 
 fn frb_logging_api_items() -> anyhow::Result<Vec<syn::Item>> {
     Ok(syn::parse_file(
         r##"
 #[doc(hidden)]
-#[flutter_rust_bridge::frb(init_dart_code = r#"
+#[flutter_rust_bridge::frb(internal_logging, init_dart_code = r#"
     kFrbDartLogging.init(
       rustLogStream: frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
       mapRecord: (record) => FrbLogRecordData(
@@ -98,17 +104,17 @@ pub fn frb_internal_init_logger(
 ) {}
 
 #[doc(hidden)]
-#[flutter_rust_bridge::frb(sync)]
+#[flutter_rust_bridge::frb(internal_logging, sync)]
 pub fn frb_internal_dispose_logger() {}
 
 #[doc(hidden)]
-#[flutter_rust_bridge::frb(sync)]
+#[flutter_rust_bridge::frb(internal_logging, sync)]
 pub fn frb_internal_logging_max_level() -> String {
     unreachable!()
 }
 
 #[doc(hidden)]
-#[flutter_rust_bridge::frb(sync)]
+#[flutter_rust_bridge::frb(internal_logging, sync)]
 pub fn frb_internal_logging_setup_dart_logging_output() -> bool {
     unreachable!()
 }
@@ -166,6 +172,7 @@ static FRB_DART_LOGGER: std::sync::OnceLock<FrbDartLogger> = std::sync::OnceLock
 fn frb_parse_logging_max_level(max_level: &str) -> log::LevelFilter {
     unreachable!()
 }
+
 "##,
     )?
     .items)
@@ -249,5 +256,31 @@ mod tests {
             matches!(&items[3], syn::Item::Fn(item) if item.sig.ident == "frb_internal_logging_setup_dart_logging_output")
         );
         assert!(matches!(&items[4], syn::Item::Struct(item) if item.ident == "FrbLogRecord"));
+    }
+
+    #[test]
+    /// Verify pseudo expansion leaves an unrelated same-named macro unchanged.
+    fn test_expand_known_frb_logging_macro_ignores_other_crates() {
+        let mut items = syn::parse_file("other::enable_frb_rust_to_dart_logging!();")
+            .unwrap()
+            .items;
+
+        expand_known_macros(&mut items).unwrap();
+
+        assert!(
+            matches!(&items[0], syn::Item::Macro(item) if item.mac.path.segments[0].ident == "other")
+        );
+    }
+
+    #[test]
+    /// Verify conditional logging macros fail instead of producing mismatched bindings.
+    fn test_expand_known_frb_logging_macro_rejects_attributes() {
+        let mut items = syn::parse_file(
+            "#[cfg(feature = \"logging\")] flutter_rust_bridge::enable_frb_rust_to_dart_logging!();",
+        )
+        .unwrap()
+        .items;
+
+        assert!(expand_known_macros(&mut items).is_err());
     }
 }
