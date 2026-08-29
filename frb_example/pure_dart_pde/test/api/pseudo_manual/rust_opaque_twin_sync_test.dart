@@ -13,9 +13,7 @@ import 'package:test/test.dart';
 
 import '../../test_utils.dart';
 
-Future<void> main({
-  bool skipRustLibInit = false,
-}) async {
+Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('create and dispose', () async {
