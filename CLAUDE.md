@@ -26,4 +26,5 @@ When adding or testing feature flags, read `frb-feature-flag`.
 - `frb-prepare-pr` - PR preparation
 - `frb-fix-ci` - CI fixes
 - `frb-fix-main-ci` - Default-branch CI regression triage
-- `frb-docker` - Docker/devcontainer usage and dev image publishing
+- `frb-docker` - Ordinary Docker/devcontainer usage and local validation
+- `frb-upgrade-docker` - Dev Docker image upgrades and publishing
