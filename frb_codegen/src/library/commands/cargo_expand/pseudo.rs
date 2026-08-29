@@ -220,6 +220,9 @@ fn get_module_file_path_candidates(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use proc_macro2::{Delimiter, TokenTree};
+    use quote::quote;
+    use syn::parse_quote;
 
     #[test]
     fn test_get_module_file_path_candidates_simple() {
@@ -259,6 +262,15 @@ mod tests {
     }
 
     #[test]
+    /// Verify pseudo logging declarations stay aligned with the canonical macro.
+    fn test_frb_logging_api_items_match_canonical_macro() {
+        let canonical = canonical_frb_logging_api_items();
+        let pseudo = frb_logging_api_items().unwrap();
+
+        assert_eq!(project_items(pseudo), project_items(canonical));
+    }
+
+    #[test]
     /// Verify pseudo expansion leaves an unrelated same-named macro unchanged.
     fn test_expand_known_frb_logging_macro_ignores_other_crates() {
         let mut items = syn::parse_file("other::enable_frb_rust_to_dart_logging!();")
@@ -282,5 +294,69 @@ mod tests {
         .items;
 
         assert!(expand_known_macros(&mut items).is_err());
+    }
+
+    fn canonical_frb_logging_api_items() -> Vec<syn::Item> {
+        let path =
+            Path::new(env!("CARGO_MANIFEST_DIR")).join("../frb_rust/src/misc/frb_logging.rs");
+        let file = syn::parse_file(&fs::read_to_string(path).unwrap()).unwrap();
+        let item_macro = file
+            .items
+            .into_iter()
+            .find_map(|item| match item {
+                syn::Item::Macro(item) if item.mac.path.is_ident("macro_rules") => Some(item),
+                _ => None,
+            })
+            .unwrap();
+        let final_arm = item_macro
+            .mac
+            .tokens
+            .into_iter()
+            .filter_map(|token| match token {
+                TokenTree::Group(group) if group.delimiter() == Delimiter::Brace => Some(group),
+                _ => None,
+            })
+            .collect_vec()
+            .pop()
+            .unwrap();
+        let source = final_arm
+            .stream()
+            .to_string()
+            .replace("$ crate", "flutter_rust_bridge")
+            .replace("$ max_level", "log::LevelFilter::Info")
+            .replace("$ setup_dart_logging_output", "true");
+
+        syn::parse_file(&source).unwrap().items
+    }
+
+    fn project_items(items: Vec<syn::Item>) -> Vec<String> {
+        let mut output = items.into_iter().filter_map(project_item).collect_vec();
+        output.sort();
+        output
+    }
+
+    fn project_item(mut item: syn::Item) -> Option<String> {
+        match &mut item {
+            syn::Item::Fn(item) => item.block = Box::new(parse_quote!({})),
+            syn::Item::Impl(item) if is_derived_impl(item) => return None,
+            syn::Item::Impl(item) => {
+                for impl_item in &mut item.items {
+                    if let syn::ImplItem::Fn(function) = impl_item {
+                        function.block = parse_quote!({});
+                    }
+                }
+            }
+            syn::Item::Static(item) => item.expr = Box::new(parse_quote!(())),
+            _ => {}
+        }
+
+        Some(quote!(#item).to_string().split_whitespace().join(" "))
+    }
+
+    fn is_derived_impl(item: &syn::ItemImpl) -> bool {
+        item.trait_
+            .as_ref()
+            .and_then(|(_, path, _)| path.segments.last())
+            .is_some_and(|segment| segment.ident == "Clone" || segment.ident == "Debug")
     }
 }
