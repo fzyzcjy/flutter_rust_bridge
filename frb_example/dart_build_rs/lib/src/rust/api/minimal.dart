@@ -8,3 +8,56 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Stream<FrbLogRecord> frbInternalInitLogger({required String maxLevel}) =>
+    RustLib.instance.api.crateApiMinimalFrbInternalInitLogger(
+      maxLevel: maxLevel,
+    );
+
+void frbInternalDisposeLogger() =>
+    RustLib.instance.api.crateApiMinimalFrbInternalDisposeLogger();
+
+String frbInternalLoggingMaxLevel() =>
+    RustLib.instance.api.crateApiMinimalFrbInternalLoggingMaxLevel();
+
+bool frbInternalLoggingSetupDartLoggingOutput() => RustLib.instance.api
+    .crateApiMinimalFrbInternalLoggingSetupDartLoggingOutput();
+
+class FrbLogRecord {
+  final String level;
+  final String message;
+  final String target;
+  final String? modulePath;
+  final String? file;
+  final int? line;
+
+  const FrbLogRecord({
+    required this.level,
+    required this.message,
+    required this.target,
+    this.modulePath,
+    this.file,
+    this.line,
+  });
+
+  @override
+  int get hashCode =>
+      level.hashCode ^
+      message.hashCode ^
+      target.hashCode ^
+      modulePath.hashCode ^
+      file.hashCode ^
+      line.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FrbLogRecord &&
+          runtimeType == other.runtimeType &&
+          level == other.level &&
+          message == other.message &&
+          target == other.target &&
+          modulePath == other.modulePath &&
+          file == other.file &&
+          line == other.line;
+}
