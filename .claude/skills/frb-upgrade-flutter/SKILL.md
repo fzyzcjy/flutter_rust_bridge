@@ -19,18 +19,6 @@ Use this as the single-file workflow for Flutter stable bumps in `flutter_rust_b
    - `frb-pr-review` before treating the upgrade PR as ready.
    - `frb-fix-ci` when CI starts failing.
 
-## Non-Negotiables
-
-- Keep `.github/workflows/ci.yaml` and `.github/workflows/post_release.yaml` toolchain env values in sync.
-- Treat `.devcontainer/Dockerfile` `ARG` values as the source of truth for dev image tags.
-- Dry-run the dev Docker image before depending on a new derived image tag in the PR.
-- After changing `.devcontainer/Dockerfile`, build a fresh local image from that Dockerfile and use a
-  container based on that fresh image for local validation. Do not keep using an older per-worktree
-  container whose Flutter, Dart, Rust, Android, or browser tooling may still be stale.
-- After the upgrade PR merges, trigger the dev Docker image publish workflow on `master`.
-- Do not hand-edit generated files as the final state.
-- Classify scaffold drift by source: integration template, Apple scaffold, Cargokit, or example output.
-
 ## Workflow
 
 ### Step 1: Review the Flutter Release
@@ -227,6 +215,18 @@ docker buildx imagetools inspect fzyzcjy/flutter_rust_bridge_dev:flutter-<flutte
 ```
 
 BuildKit attestation manifests can appear as `unknown/unknown`; those are not platform images.
+
+## Non-Negotiables
+
+- Keep `.github/workflows/ci.yaml` and `.github/workflows/post_release.yaml` toolchain env values in sync.
+- Treat `.devcontainer/Dockerfile` `ARG` values as the source of truth for dev image tags.
+- Dry-run the dev Docker image before depending on a new derived image tag in the PR.
+- After changing `.devcontainer/Dockerfile`, build a fresh local image from that Dockerfile and use a
+  container based on that fresh image for local validation. Do not keep using an older per-worktree
+  container whose Flutter, Dart, Rust, Android, or browser tooling may still be stale.
+- After the upgrade PR merges, trigger the dev Docker image publish workflow on `master`.
+- Do not hand-edit generated files as the final state.
+- Classify scaffold drift by source: integration template, Apple scaffold, Cargokit, or example output.
 
 ## PR Notes
 
