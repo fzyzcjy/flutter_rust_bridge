@@ -53,65 +53,29 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 - Put `ci-manual-dispatch` on dormant predecessors unless a predecessor specifically needs GitHub-only validation.
 - Do not move incidental skill or workflow cleanup into the upgrade PR when it can stand alone against `master`.
 
-### Step 4: Upgrade the Devcontainer First
+# 4 Upgrade the development toolchain
 
-Update `.devcontainer/Dockerfile`:
+- Update `.devcontainer/Dockerfile` inputs, including Flutter and any required Rust, Rust nightly, Node, Playwright,
+  Chrome, system package, Java, or Android changes.
+- Update tests that assert the derived dev image tag.
+- Use `frb-dev-env` for the standard per-worktree environment. When the Dockerfile changes, use the local-image
+  workflow in `frb-docker` to build and validate the unpublished image instead of reusing the stale container.
+- Dry-run the publish workflow before depending on a new derived image tag.
+- If Apple pins, simulators, or host tooling change, continue with the Tart workflow routed by `frb-dev-env` and
+  read `frb-tart-prepare` before provisioning or validation.
 
-- `ARG FLUTTER_VERSION`
-- Required Rust, Rust nightly, Node, Playwright, Chrome, system package, Java, or Android tooling changes
+# 5 Synchronize CI and post-release pins
 
-Update metadata tests that assert the derived dev image tag.
-
-Build and smoke-test locally when practical. If an old per-worktree container already exists, do not
-use it for this step; create a fresh container from the newly built image, or rebuild/recreate the
-per-worktree container so it uses the updated Dockerfile contents.
-
-```shell
-docker build -f .devcontainer/Dockerfile -t frb-dev .devcontainer
-docker run --rm -v "$PWD:/workspace" -w /workspace frb-dev bash -lc './frb_internal --help'
-docker run --rm -v "$PWD:/workspace" -w /workspace frb-dev bash -lc '
-set -euo pipefail
-flutter --version
-dart --version
-node --version
-npm --version
-cargo --version
-wasm-pack --version
-"${CHROME_BIN}" --version
-'
-```
-
-If local build is too expensive, dry-run the workflow:
-
-```shell
-gh workflow run publish_dev_docker.yaml --ref <branch> -f publish=false
-```
-
-### Step 5: Sync CI and Post-Release Pins
-
-Update top-level env values together in `.github/workflows/ci.yaml` and
-`.github/workflows/post_release.yaml`:
-
-- `FRB_MAIN_FLUTTER_VERSION`
-- `FRB_MAIN_DART_VERSION`
-- `FRB_MAIN_RUST_VERSION` if the Flutter or tooling bump requires newer Rust
-- `FRB_RUSTFMT_NIGHTLY_VERSION` only if formatting or nightly-only `rust-src` behavior requires it
-
-`post_release.yaml` intentionally says it should stay in sync with `ci.yaml`. It verifies released
-quickstart and codegen installation modes, so do not leave it pinned to old Flutter/Dart versions.
-
-Scan workflow assumptions:
-
-- `flutter-actions/setup-flutter`
-- `dart-lang/setup-dart`
-- Java setup for Android jobs
-- Linux desktop package prerequisites
-- iOS simulator names and macOS runner labels
-- Windows ARM runner coverage
-- Chrome/chromedriver setup for web jobs
-- Post-release `codegen_install_mode` coverage for `cargo-install`, `cargo-binstall`, `scoop`, and
-  `homebrew`
-- Any commented job that says it was waiting for a CI Flutter upgrade
+- Update the top-level toolchain values together in `.github/workflows/ci.yaml` and
+  `.github/workflows/post_release.yaml`:
+  - `FRB_MAIN_FLUTTER_VERSION`;
+  - `FRB_MAIN_DART_VERSION`;
+  - `FRB_MAIN_RUST_VERSION` when the upgraded tooling requires it;
+  - `FRB_RUSTFMT_NIGHTLY_VERSION` only when formatting or nightly `rust-src` behavior requires it.
+- Keep a retained minimum Dart floor explicit and independently exercised; do not substitute the primary Dart pin for
+  that compatibility lane.
+- Review Java, Android SDK/NDK, Chrome/chromedriver, macOS runner, simulator, Windows ARM, and post-release install-mode
+  assumptions.
 
 ### Step 6: Regenerate and Classify Drift
 
