@@ -77,51 +77,12 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 - Review Java, Android SDK/NDK, Chrome/chromedriver, macOS runner, simulator, Windows ARM, and post-release install-mode
   assumptions.
 
-# 6 Regenerate to convergence
+# 6 Regenerate through owner workflows
 
-- Read `frb-code-generation` and run the narrowest owning generator before broad generation.
-- Normalize the intended source inputs, resolve dependencies, run final code generation, and format with the target
-  toolchain. Do not hand formatter-unstable intermediate text to a different generation lane.
-- Run the owning generation command a second time and require a clean diff. A single successful run is not convergence.
-- Preserve semantic equivalence in templates. Do not move construction, scope, lifetime, or callback boundaries merely
-  to make new formatter output look smaller.
-- Classify every changed path by provenance:
+- Follow `frb-code-generation` for command selection, convergence, generated-output provenance, legacy scaffold migrations, and OHOS integrate composition.
+- Follow `frb-cargokit` and `frb-cargokit-dev` for CargoKit ownership and synchronization.
 
-| Provenance | Required action |
-| --- | --- |
-| Integration template | Change the template source and regenerate consumers |
-| Apple scaffold asset | Refresh through the owning scaffold workflow |
-| CargoKit copy | Follow the CargoKit ownership rules below |
-| Generated example output | Keep the generator and snapshot together |
-| Flutter migrator edit in a legacy example | Apply the exact current scaffold migration and record it as direct |
-| Unexplained manual edit | Revert it or identify its owning source before proceeding |
-
-- When an old example has no supported regeneration entry point, compare it with a fresh target-Flutter scaffold and
-  directly apply only required tool-defined migrations. Record those files separately from automatic output.
-
-# 7 Preserve the OHOS composition contract
-
-- Treat the checked-in package and the older OHOS Flutter fork as two distinct sources of truth:
-  - generic Flutter scaffold files come from the target stable Flutter package;
-  - overlay only explicit OHOS-owned paths from the OHOS fork;
-  - include `ohos` and, when required by the package, `rust_builder/ohos` and `rust_builder/pubspec.yaml`;
-  - exclude transient trees such as `node_modules`;
-  - preserve intentional deletions instead of silently resurrecting stale files.
-- Make preservation transactional. Stage and validate the composed result before replacing the canonical package, and
-  restore the original package if create, dependency resolution, code generation, formatting, or the final swap fails.
-- Test both success and failure paths. Do not add production APIs whose only purpose is exposing internals to tests.
-
-# 8 Route CargoKit changes correctly
-
-- Use `frb-cargokit` to determine whether a diff is an upstream source change, an FRB copy-sync change, or generated
-  integration output.
-- Use `frb-cargokit-dev` and a separate upstream change only when behavior belongs in the external CargoKit repository.
-- Use the owning sync command for source-copy updates; do not manually patch every copied CargoKit tree.
-- Keep `precommit-integrate` and CargoKit copy synchronization conceptually separate.
-- Treat nested `cargokit/build_tool` packages according to their own Dart package metadata even when the parent package
-  is a Flutter package.
-
-# 9 Validate in dependency order
+# 7 Validate in dependency order
 
 - Use the environment selected by `frb-dev-env`. When the Dockerfile changed, validate with the fresh local-image
   workflow from `frb-docker`.
@@ -136,7 +97,7 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 - Before creating or updating the PR, run `frb-prepare-pr`.
 - Before declaring it ready, run the independent review gate in `frb-pr-review`.
 
-# 10 Triage CI and finish
+# 8 Triage CI and finish
 
 - Read `frb-fix-ci` before deep CI debugging.
 - Triage failures in dependency order: environment setup, generation, integration, platform builds, post-release,
@@ -146,7 +107,7 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 - After the upgrade merges, publish the dev Docker image from `master` when `.devcontainer/Dockerfile` changed, then
   verify the expected `linux/amd64` and `linux/arm64` manifests.
 
-# 11 PR notes
+# 9 PR notes
 
 - Record old and new Flutter and primary Dart versions.
 - Record the retained or raised minimum Dart SDK floor and its validation lane.
