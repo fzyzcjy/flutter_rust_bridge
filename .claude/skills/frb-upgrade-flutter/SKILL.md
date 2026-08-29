@@ -121,82 +121,36 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 - Treat nested `cargokit/build_tool` packages according to their own Dart package metadata even when the parent package
   is a Flutter package.
 
-### Step 7: Validate Locally
+# 9 Validate in dependency order
 
-Read `frb-lint` and `frb-test` for exact command guidance. Tom's FRB environment runs tests locally,
-usually through the per-worktree Docker container.
+- Use the environment selected by `frb-dev-env`. When the Dockerfile changed, validate with the fresh local-image
+  workflow from `frb-docker`.
+- Read `frb-lint` and `frb-test` for exact commands.
+- Validate in this order:
+  1. dev-image metadata and tool versions;
+  2. Dart analysis, tests, and the retained minimum-SDK lane;
+  3. internal generation and second-pass cleanliness;
+  4. integration generation and CargoKit synchronization;
+  5. focused legacy Android and Apple platform builds affected by migrations;
+  6. representative native and web examples.
+- Before creating or updating the PR, run `frb-prepare-pr`.
+- Before declaring it ready, run the independent review gate in `frb-pr-review`.
 
-If the Flutter upgrade changed `.devcontainer/Dockerfile`, first ensure local validation is running
-inside the fresh image built in Step 4. Seeing an old Dart or Flutter version locally means the
-container is stale; recreate it before trusting any validation result.
+# 10 Triage CI and finish
 
-Recommended minimum validation:
+- Read `frb-fix-ci` before deep CI debugging.
+- Triage failures in dependency order: environment setup, generation, integration, platform builds, post-release,
+  then coverage or uploads.
+- Compare platform failures with target-Flutter release notes and fresh scaffold output before adding workarounds.
+- Keep full CI on the top upgrade PR. Follow `frb-pr-chain-split` for filtered or deferred predecessor CI.
+- After the upgrade merges, publish the dev Docker image from `master` when `.devcontainer/Dockerfile` changed, then
+  verify the expected `linux/amd64` and `linux/arm64` manifests.
 
-```shell
-./frb_internal lint --fix
-./frb_internal test-dart-native --package frb_example/pure_dart
-./frb_internal test-dart-native --package frb_example/pure_dart_pde
-./frb_internal test-flutter-native --package frb_example/flutter_via_create
-./frb_internal test-flutter-web --package frb_example/gallery
-```
+# 11 PR notes
 
-For CI or Docker plumbing-only changes, dev image dry-run and focused metadata tests may be enough
-before opening the PR. Let CI cover the full matrix.
-
-Before treating the upgrade PR as ready, run the review gate in `frb-pr-review`.
-
-### Step 8: Triage CI in Dependency Order
-
-Read `frb-fix-ci` before deep debugging.
-
-1. Dev Docker publish or dry-run failures
-2. Lint/setup failures caused by incompatible tool versions
-3. Generate and Generate Internal failures
-4. Integrate scaffold failures
-5. Build and platform tests
-6. Post-release quickstart failures
-7. Coverage, benchmark, website, and upload jobs
-
-When a platform starts failing after the Flutter bump, compare against release notes before patching
-symptoms. Flutter stable bumps often intentionally change generated platform projects.
-
-### Step 9: Publish the Dev Docker Image After Merge
-
-After the single upgrade PR is merged into `master`, trigger the publish workflow from `master` so the
-new derived dev image tag exists for future CI and developer workflows:
-
-```shell
-gh workflow run publish_dev_docker.yaml --ref master
-```
-
-After it completes, verify both `linux/amd64` and `linux/arm64`:
-
-```shell
-docker buildx imagetools inspect fzyzcjy/flutter_rust_bridge_dev:latest
-docker buildx imagetools inspect fzyzcjy/flutter_rust_bridge_dev:flutter-<flutter>-rust-<rust>-nightly-<nightly>
-```
-
-BuildKit attestation manifests can appear as `unknown/unknown`; those are not platform images.
-
-## Non-Negotiables
-
-- Keep `.github/workflows/ci.yaml` and `.github/workflows/post_release.yaml` toolchain env values in sync.
-- Treat `.devcontainer/Dockerfile` `ARG` values as the source of truth for dev image tags.
-- Dry-run the dev Docker image before depending on a new derived image tag in the PR.
-- After changing `.devcontainer/Dockerfile`, build a fresh local image from that Dockerfile and use a
-  container based on that fresh image for local validation. Do not keep using an older per-worktree
-  container whose Flutter, Dart, Rust, Android, or browser tooling may still be stale.
-- After the upgrade PR merges, trigger the dev Docker image publish workflow on `master`.
-- Do not hand-edit generated files as the final state.
-- Classify scaffold drift by source: integration template, Apple scaffold, Cargokit, or example output.
-
-## PR Notes
-
-For the single upgrade PR, include:
-
-- Old and new Flutter/Dart versions
-- Whether the dev image was dry-run or published
-- Exact version tag of the dev image
-- Generated/scaffold sources that changed
-- Local validation commands and CI status
-- Any known remaining platform-specific follow-up
+- Record old and new Flutter and primary Dart versions.
+- Record the retained or raised minimum Dart SDK floor and its validation lane.
+- List generated files, direct Flutter migrator edits, CargoKit changes, and OHOS overlays by provenance.
+- Link predecessor PRs and identify which ones intentionally use manual CI.
+- Record the fresh dev-image tag, exact local validations, generation convergence result, and CI status.
+- Call out any platform-specific follow-up that remains intentionally out of scope.
