@@ -5,9 +5,11 @@ description: Use for ordinary flutter_rust_bridge Docker/devcontainer setup, loc
 
 # FRB Docker
 
-Use this skill for ordinary FRB Docker/devcontainer work: local container usage, Apple Silicon behavior, and local Dockerfile validation.
+Use this skill for ordinary FRB Docker/devcontainer work: local container usage, Apple Silicon behavior, and local
+Dockerfile validation.
 
-Read `frb-upgrade-docker` before changing toolchain inputs or publishing `fzyzcjy/flutter_rust_bridge_dev`.
+Read `frb-upgrade-docker` before changing toolchain inputs or publishing `fzyzcjy/flutter_rust_bridge_dev`. It owns
+PR boundaries, candidate tags, stable-tag promotion, and registry workflow policy.
 
 ## Source of Truth
 
@@ -68,9 +70,7 @@ Apple Silicon Macs use the same commands as other platforms. Do not add `--platf
 
 Docker should select `linux/arm64` automatically for multi-arch images. If a command only works with `--platform linux/amd64`, treat that as a regression to investigate.
 
-## Publishing
-
-### Local Validation
+## Local Dockerfile Validation
 
 For Dockerfile changes, validate at least:
 
@@ -102,3 +102,6 @@ docker run --rm -v "$PWD:/workspace" -w /workspace/frb_rust frb-dev bash -lc 'ca
 ```
 
 If generated files drift during lint/codegen, do not manually edit generated files. Restore unrelated generated drift unless the task intentionally changes generation outputs.
+
+Do not publish from this ordinary-use workflow. Continue with `frb-upgrade-docker` when validation must produce a
+candidate or stable registry image.
