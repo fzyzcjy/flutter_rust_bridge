@@ -139,7 +139,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
-        let src_lineno = func.item_fn.span().start().line;
+        let src_lineno = compute_src_lineno_pseudo(func);
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
 
         if func.is_public() == Some(false) {
@@ -268,6 +268,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             impl_mode,
             src_lineno_pseudo: src_lineno,
         }))
+    }
+}
+
+fn compute_src_lineno_pseudo(func: &HirFlatFunction) -> usize {
+    match func.item_fn.name().as_str() {
+        "frb_internal_dispose_logger"
+        | "frb_internal_init_logger"
+        | "frb_internal_logging_max_level"
+        | "frb_internal_logging_setup_dart_logging_output" => 0,
+        _ => func.item_fn.span().start().line,
     }
 }
 

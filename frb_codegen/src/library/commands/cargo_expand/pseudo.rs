@@ -76,15 +76,7 @@ fn is_frb_logging_macro(item: &syn::ItemMacro) -> bool {
 fn frb_logging_api_items() -> anyhow::Result<Vec<syn::Item>> {
     Ok(syn::parse_file(
         r##"
-pub struct FrbLogRecord {
-    pub level: String,
-    pub message: String,
-    pub target: String,
-    pub module_path: Option<String>,
-    pub file: Option<String>,
-    pub line: Option<u32>,
-}
-
+#[doc(hidden)]
 #[flutter_rust_bridge::frb(init_dart_code = r#"
     kFrbDartLogging.init(
       rustLogStream: frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
@@ -105,16 +97,73 @@ pub fn frb_internal_init_logger(
     max_level: String,
 ) {}
 
+#[doc(hidden)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn frb_internal_dispose_logger() {}
 
+#[doc(hidden)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn frb_internal_logging_max_level() -> String {
     unreachable!()
 }
 
+#[doc(hidden)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn frb_internal_logging_setup_dart_logging_output() -> bool {
+    unreachable!()
+}
+
+#[derive(Clone, Debug)]
+pub struct FrbLogRecord {
+    pub level: String,
+    pub message: String,
+    pub target: String,
+    pub module_path: Option<String>,
+    pub file: Option<String>,
+    pub line: Option<u32>,
+}
+
+impl Clone for FrbLogRecord {
+    fn clone(&self) -> Self {
+        unreachable!()
+    }
+}
+
+impl std::fmt::Debug for FrbLogRecord {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        unreachable!()
+    }
+}
+
+type FrbLogSink = crate::frb_generated::StreamSink<FrbLogRecord>;
+
+struct FrbDartLogger {
+    sink: std::sync::RwLock<Option<std::sync::Arc<FrbLogSink>>>,
+}
+
+impl log::Log for FrbDartLogger {
+    fn enabled(&self, metadata: &log::Metadata) -> bool {
+        unreachable!()
+    }
+
+    fn log(&self, record: &log::Record) {}
+
+    fn flush(&self) {}
+}
+
+impl FrbDartLogger {
+    fn load_sink(&self) -> Option<std::sync::Arc<FrbLogSink>> {
+        unreachable!()
+    }
+
+    fn swap_sink(&self, sink: Option<FrbLogSink>) {}
+}
+
+fn frb_log_record_to_console(record: &log::Record) {}
+
+static FRB_DART_LOGGER: std::sync::OnceLock<FrbDartLogger> = std::sync::OnceLock::new();
+
+fn frb_parse_logging_max_level(max_level: &str) -> log::LevelFilter {
     unreachable!()
 }
 "##,
@@ -186,19 +235,19 @@ mod tests {
 
         expand_known_macros(&mut items).unwrap();
 
-        assert_eq!(items.len(), 5);
-        assert!(matches!(&items[0], syn::Item::Struct(item) if item.ident == "FrbLogRecord"));
+        assert_eq!(items.len(), 14);
         assert!(
-            matches!(&items[1], syn::Item::Fn(item) if item.sig.ident == "frb_internal_init_logger")
+            matches!(&items[0], syn::Item::Fn(item) if item.sig.ident == "frb_internal_init_logger")
         );
         assert!(
-            matches!(&items[2], syn::Item::Fn(item) if item.sig.ident == "frb_internal_dispose_logger")
+            matches!(&items[1], syn::Item::Fn(item) if item.sig.ident == "frb_internal_dispose_logger")
         );
         assert!(
-            matches!(&items[3], syn::Item::Fn(item) if item.sig.ident == "frb_internal_logging_max_level")
+            matches!(&items[2], syn::Item::Fn(item) if item.sig.ident == "frb_internal_logging_max_level")
         );
         assert!(
-            matches!(&items[4], syn::Item::Fn(item) if item.sig.ident == "frb_internal_logging_setup_dart_logging_output")
+            matches!(&items[3], syn::Item::Fn(item) if item.sig.ident == "frb_internal_logging_setup_dart_logging_output")
         );
+        assert!(matches!(&items[4], syn::Item::Struct(item) if item.ident == "FrbLogRecord"));
     }
 }
