@@ -40,3 +40,43 @@ fn parse_functions(
         })
         .collect_vec()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+    use crate::utils::namespace::Namespace;
+    use syn::parse_quote;
+
+    /// Records a trait and only its function members.
+    #[test]
+    fn parses_trait_functions_with_trait_owner() {
+        let meta = HirNaiveFlatItemMeta {
+            namespace: Namespace::new_raw("crate::api".to_owned()),
+            sources: vec![HirGenerationSource::Normal],
+            is_module_public: true,
+        };
+        let mut pack = HirFlatPack::default();
+        parse_syn_item_trait(
+            &mut pack,
+            parse_quote!(
+                #[frb]
+                pub trait Service {
+                    fn run(&self);
+                    const ID: u8;
+                    type Output;
+                }
+            ),
+            &meta,
+        );
+
+        assert_eq!(pack.traits.len(), 1);
+        assert_eq!(pack.traits[0].name.rust_style(), "crate::api::Service");
+        assert_eq!(pack.functions.len(), 1);
+        assert!(matches!(
+            pack.functions[0].owner,
+            HirFlatFunctionOwner::TraitDef { ref trait_def_name }
+                if trait_def_name.rust_style() == "crate::api::Service"
+        ));
+    }
+}

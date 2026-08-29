@@ -24,3 +24,21 @@ impl MirTypeTrait for MirTypeDynamic {
         true
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Keeps the dynamic ABI identity and clone semantics stable.
+    #[test]
+    fn dynamic_type_uses_the_dart_abi_contract() {
+        let ty = MirTypeDynamic;
+
+        assert_eq!(ty.safe_ident(), "dartabi");
+        assert_eq!(
+            ty.rust_api_type(),
+            "flutter_rust_bridge::for_generated::DartAbi"
+        );
+        assert!(ty.cloned_getter_semantics_reasonable());
+    }
+}

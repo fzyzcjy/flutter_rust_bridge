@@ -134,3 +134,49 @@ pub(crate) fn generate_platform_generalized_uint8list_params(
         },
     ]
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Uses target-specific port and byte-list ABI types while retaining Dart names.
+    #[test]
+    fn sse_entrypoint_params_cover_common_io_and_web_abis() {
+        assert_eq!(
+            create_port_param(TargetOrCommon::Io, "bridge").rust_type,
+            "i64"
+        );
+        assert_eq!(
+            create_port_param(TargetOrCommon::Web, "bridge").rust_type,
+            "bridge::for_generated::MessagePort"
+        );
+        assert_eq!(
+            generate_platform_generalized_uint8list_params(TargetOrCommon::Io, "bridge")[0],
+            ExternFuncParam {
+                name: "ptr_".into(),
+                rust_type: "*mut u8".into(),
+                dart_type: "PlatformGeneralizedUint8ListPtr".into(),
+            }
+        );
+        assert_eq!(
+            generate_platform_generalized_uint8list_params(TargetOrCommon::Common, "bridge")[0]
+                .rust_type,
+            "bridge::for_generated::PlatformGeneralizedUint8ListPtr"
+        );
+        assert_eq!(
+            generate_platform_generalized_uint8list_params(TargetOrCommon::Web, "bridge")[1..],
+            [
+                ExternFuncParam {
+                    name: "rust_vec_len_".into(),
+                    rust_type: "i32".into(),
+                    dart_type: "int".into()
+                },
+                ExternFuncParam {
+                    name: "data_len_".into(),
+                    rust_type: "i32".into(),
+                    dart_type: "int".into()
+                },
+            ]
+        );
+    }
+}

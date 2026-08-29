@@ -83,3 +83,73 @@ pub(crate) enum DartFnOutputAction {
     Success = 0,
     Error = 1,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::test_utils;
+    use crate::codegen::ir::mir::ty::dart_fn::{MirDartFnOutput, MirTypeDartFn};
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::MirType;
+
+    fn generated_body(api_fallible: bool) -> String {
+        let pack = test_utils::pack();
+        let wire_dart_config = test_utils::wire_dart_config(false);
+        let wire_rust_config = test_utils::wire_rust_config(false);
+        let api_dart_config = test_utils::api_dart_config();
+        let generator = DartFnWireRustGenerator::new(
+            MirTypeDartFn {
+                inputs: vec![MirType::Primitive(MirTypePrimitive::I32)],
+                output: Box::new(MirDartFnOutput {
+                    normal: MirType::Primitive(MirTypePrimitive::I32),
+                    error: MirType::Primitive(MirTypePrimitive::Bool),
+                    api_fallible,
+                }),
+            },
+            WireRustGeneratorContext {
+                mir_pack: &pack,
+                config: &wire_rust_config,
+                wire_dart_config: &wire_dart_config,
+                api_dart_config: &api_dart_config,
+            },
+        );
+
+        generator.generate_related_funcs().common.body
+    }
+
+    /// Keeps Rust and Dart callback result action bytes distinct and stable.
+    #[test]
+    fn output_actions_use_the_wire_protocol_discriminants() {
+        assert_eq!(DartFnOutputAction::Success as i32, 0);
+        assert_eq!(DartFnOutputAction::Error as i32, 1);
+    }
+
+    /// Emits both callback result actions, completes decoding, and preserves fallibility.
+    #[test]
+    fn related_function_decodes_success_error_and_fallible_results() {
+        let body = generated_body(true);
+
+        assert!(body.contains("fn decode_DartFn_Inputs_i_32_Output_i_32_bool("));
+        assert!(body.contains("async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, arg0: i32) -> std::result::Result<i32, bool>"));
+        assert!(body.contains("0 => std::result::Result::Ok(<i32>::sse_decode(&mut deserializer))"));
+        assert!(
+            body.contains("1 => std::result::Result::Err(<bool>::sse_decode(&mut deserializer))")
+        );
+        assert!(body.contains("deserializer.end();"));
+        assert!(!body.contains("Dart throws exception but Rust side assume it is not failable"));
+    }
+
+    /// Unwraps callback failures only for infallible Rust API function types.
+    #[test]
+    fn related_function_unwraps_only_infallible_results() {
+        let body = generated_body(false);
+
+        assert!(body.contains(
+            "async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, arg0: i32) -> i32"
+        ));
+        assert!(body.contains("let ans = ans.expect(\"Dart throws exception but Rust side assume it is not failable\");"));
+        assert!(body.contains("move |arg0: i32| {"));
+        assert!(body.contains("convert_into_dart_fn_future(body("));
+        assert!(body.contains("dart_opaque.clone(), arg0"));
+    }
+}

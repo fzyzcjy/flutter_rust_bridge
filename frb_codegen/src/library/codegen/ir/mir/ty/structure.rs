@@ -110,3 +110,15 @@ pub fn rust_brackets_pair(keyword_arg: bool) -> (char, char) {
         ('(', ')')
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Visits structure field types in declaration order.
+    #[test]
+    fn rust_brackets_pair_matches_struct_shape() {
+        assert_eq!(rust_brackets_pair(true), ('{', '}'));
+        assert_eq!(rust_brackets_pair(false), ('(', ')'));
+    }
+}

@@ -81,3 +81,57 @@ impl WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'_> {
         }))
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::test_utils;
+    use crate::codegen::ir::mir::ty::dart_fn::{MirDartFnOutput, MirTypeDartFn};
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::MirType;
+
+    /// Emits callback decoding, both result encodings, and delivery for Dart functions.
+    #[test]
+    fn dart_function_extra_functions_encode_success_error_and_delivery() {
+        let pack = test_utils::pack();
+        let api_dart_config = test_utils::api_dart_config();
+        let wire_dart_config = test_utils::wire_dart_config(false);
+        let wire_rust_config = test_utils::wire_rust_config(false);
+        let mir = MirTypeDartFn {
+            inputs: vec![MirType::Primitive(MirTypePrimitive::I32)],
+            output: Box::new(MirDartFnOutput {
+                normal: MirType::Primitive(MirTypePrimitive::I32),
+                error: MirType::Primitive(MirTypePrimitive::Bool),
+                api_fallible: true,
+            }),
+        };
+        let mir_safe_ident = mir.safe_ident();
+        let generator = DartFnWireDartGenerator::new(
+            mir,
+            WireDartGeneratorContext {
+                mir_pack: &pack,
+                config: &wire_dart_config,
+                wire_rust_config: &wire_rust_config,
+                api_dart_config: &api_dart_config,
+            },
+        );
+
+        let output = generator.generate_extra_functions().unwrap();
+        let body = &output.common.api_impl_class_body;
+        assert!(body.contains(&format!("encode_{mir_safe_ident}")));
+        assert!(body.contains("final arg0 = dco_decode_i_32(rawArg0);"));
+        assert!(body.contains("try {"));
+        assert!(body.contains("} catch (e, s) {"));
+        assert!(body.contains("sse_encode_i_32(rawOutput.value, serializer);"));
+        assert!(body.contains("sse_encode_bool(rawError!.value, serializer);"));
+        assert!(body.contains(&format!(
+            "serializer.buffer.putUint8({});",
+            DartFnOutputAction::Success as i32
+        )));
+        assert!(body.contains(&format!(
+            "serializer.buffer.putUint8({});",
+            DartFnOutputAction::Error as i32
+        )));
+        assert!(body.contains("generalizedFrbRustBinding.dartFnDeliverOutput("));
+    }
+}

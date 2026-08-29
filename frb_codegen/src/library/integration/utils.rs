@@ -73,3 +73,82 @@ pub(crate) fn replace_string_content(content: &str, replacements: &HashMap<&str,
 
     result
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{compute_effective_path, overlay_dir, replace_file_content};
+    use include_dir::{include_dir, Dir};
+    use std::collections::HashMap;
+    use std::fs;
+    use std::path::{Path, PathBuf};
+
+    const TEMPLATE_DIR: Dir<'static> =
+        include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template/cargokit/app");
+
+    /// Replaces placeholders in a path without changing its path structure.
+    #[test]
+    fn compute_effective_path_replaces_components() {
+        let replacements = HashMap::from([
+            ("REPLACE_ME_RUST_CRATE_NAME", "my_crate"),
+            (".template", ""),
+        ]);
+
+        assert_eq!(
+            compute_effective_path(
+                Path::new("target/REPLACE_ME_RUST_CRATE_NAME/Cargo.toml.template"),
+                &replacements,
+            ),
+            PathBuf::from("target/my_crate/Cargo.toml"),
+        );
+    }
+
+    /// Leaves binary file contents unchanged when they are not valid UTF-8.
+    #[test]
+    fn replace_file_content_preserves_invalid_utf8() {
+        let content = [b'a', 0xff, b'b'];
+        let replacements = HashMap::from([("a", "z")]);
+
+        assert_eq!(replace_file_content(&content, &replacements), content);
+    }
+
+    /// Overlays recursively, filters entries, and lets modifiers skip and rename files.
+    #[test]
+    fn overlay_dir_applies_filter_modifier_and_existing_content() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let target = temp_dir.path();
+        let existing_path = target.join("rust_builder/macos/Classes/dummy_file.c");
+        fs::create_dir_all(existing_path.parent().unwrap()).unwrap();
+        fs::write(&existing_path, "existing").unwrap();
+        let replacements = HashMap::from([("REPLACE_ME_RUST_CRATE_NAME", "my_crate")]);
+
+        overlay_dir(
+            &TEMPLATE_DIR,
+            &replacements,
+            target,
+            &|path, reference_content, existing_content| {
+                if path.ends_with("run_build_tool.cmd") {
+                    return None;
+                }
+                if path.ends_with("macos/Classes/dummy_file.c") {
+                    assert_eq!(existing_content.as_deref(), Some(&b"existing"[..]));
+                    return Some((path.with_file_name("renamed.c"), b"modified".to_vec()));
+                }
+                Some((path.to_path_buf(), reference_content.to_vec()))
+            },
+            &|path| !path.ends_with("build_tool"),
+        )
+        .unwrap();
+
+        assert!(target.join("rust_builder/macos").is_dir());
+        assert_eq!(
+            fs::read(target.join("rust_builder/macos/Classes/renamed.c")).unwrap(),
+            b"modified",
+        );
+        assert_eq!(fs::read(existing_path).unwrap(), b"existing");
+        assert!(!target.join("rust_builder/cargokit/build_tool").exists());
+        assert!(!target
+            .join("rust_builder/cargokit/run_build_tool.cmd")
+            .exists());
+        assert!(target.join("rust_builder/ios/my_crate.podspec").exists());
+    }
+}

@@ -99,6 +99,21 @@ mod tests {
     use super::*;
     use indicatif::ProgressDrawTarget;
 
+    /// Reuses one progress bar and finishes it when a handle is dropped.
+    #[test]
+    fn reuses_and_finishes_the_progress_bar() {
+        let progress_bar = SimpleProgressBar::new("Generate", 1);
+        let first_handle = progress_bar.start();
+        let second_handle = progress_bar.start();
+
+        assert_eq!(first_handle.pb.message(), "Generate");
+        assert!(!second_handle.pb.is_finished());
+
+        drop(first_handle);
+
+        assert!(second_handle.pb.is_finished());
+    }
+
     #[test]
     fn test_progress_bar_message_hints_verbose_unless_already_debug() {
         assert_eq!(

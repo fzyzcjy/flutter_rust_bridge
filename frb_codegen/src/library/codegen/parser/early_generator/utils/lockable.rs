@@ -259,3 +259,59 @@ fn generate_match_raw(variants: &[VariantInfo], branch: impl Fn(&VariantInfo) ->
         }}"
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{generate, VariantInfo};
+
+    /// Generates immutable lockable code without mutable guard access.
+    #[test]
+    fn generates_immutable_lockable_code() -> anyhow::Result<()> {
+        let blocks = generate(
+            "Thing",
+            "Target",
+            false,
+            &[VariantInfo {
+                enum_variant_name: "Variant0".to_owned(),
+                ty_name: "Item".to_owned(),
+                deref_extra_code: ".value()".to_owned(),
+            }],
+        )?;
+
+        assert_eq!(blocks.len(), 2);
+        assert!(blocks[0].should_parse);
+        assert!(blocks[0].code.contains("pub enum Thing"));
+        assert!(blocks[1].code.contains("unreachable!()"));
+        assert!(blocks[1].code.contains("inner.deref().value()"));
+        Ok(())
+    }
+
+    /// Generates mutable lockable code with every supplied variant.
+    #[test]
+    fn generates_mutable_lockable_code_for_all_variants() -> anyhow::Result<()> {
+        let blocks = generate(
+            "Thing",
+            "Target",
+            true,
+            &[
+                VariantInfo {
+                    enum_variant_name: "First".to_owned(),
+                    ty_name: "Alpha".to_owned(),
+                    deref_extra_code: "".to_owned(),
+                },
+                VariantInfo {
+                    enum_variant_name: "Second".to_owned(),
+                    ty_name: "Beta".to_owned(),
+                    deref_extra_code: "".to_owned(),
+                },
+            ],
+        )?;
+
+        assert!(blocks[1].code.contains("Self::First(inner)"));
+        assert!(blocks[1].code.contains("Self::Second(inner)"));
+        assert!(blocks[1].code.contains("inner.blocking_write()"));
+        assert!(blocks[1].code.contains("impl std::ops::DerefMut"));
+        assert!(!blocks[1].code.contains("unreachable!()"));
+        Ok(())
+    }
+}

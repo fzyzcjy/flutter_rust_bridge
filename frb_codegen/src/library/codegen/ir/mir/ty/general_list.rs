@@ -42,3 +42,27 @@ pub(crate) fn mir_list(inner: MirType, strict_dart_type: bool) -> MirType {
         }),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Specializes non-boolean primitives while preserving boolean lists.
+    #[test]
+    fn list_factory_selects_the_required_wire_representation() {
+        let integer = mir_list(MirType::Primitive(MirTypePrimitive::U16), false);
+        let boolean = mir_list(MirType::Primitive(MirTypePrimitive::Bool), true);
+
+        assert!(matches!(
+            integer,
+            MirType::PrimitiveList(MirTypePrimitiveList {
+                primitive: MirTypePrimitive::U16,
+                strict_dart_type: false
+            })
+        ));
+        assert!(matches!(
+            boolean,
+            MirType::GeneralList(MirTypeGeneralList { .. })
+        ));
+    }
+}

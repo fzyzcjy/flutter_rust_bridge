@@ -269,3 +269,37 @@ fn generate_function_dart_return_type(
 
     inner
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn param(required: bool, name: &str, default_value: &str) -> ApiDartGeneratedFunctionParam {
+        ApiDartGeneratedFunctionParam {
+            is_required: required,
+            type_str: "int".into(),
+            name_str: name.into(),
+            default_value: default_value.into(),
+        }
+    }
+
+    /// Preserves positional parameters while wrapping named parameters in braces.
+    #[test]
+    fn params_string_distinguishes_positional_and_named_arguments() {
+        let params = vec![param(true, "first", ""), param(false, "second", "= 2")];
+        assert_eq!(
+            compute_params_str(&params, MirFuncArgMode::Positional),
+            "int first, int second"
+        );
+        assert_eq!(
+            compute_params_str(&params, MirFuncArgMode::Named),
+            "{required int first , int second = 2}"
+        );
+    }
+
+    /// Leaves empty named parameter groups unwrapped.
+    #[test]
+    fn params_string_keeps_empty_parameter_list_empty() {
+        assert_eq!(compute_params_str(&[], MirFuncArgMode::Named), "");
+    }
+}

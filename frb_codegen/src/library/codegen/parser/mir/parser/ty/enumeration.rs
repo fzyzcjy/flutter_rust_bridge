@@ -268,3 +268,155 @@ fn compute_enum_mode(variants: &[MirEnumVariant]) -> MirEnumMode {
         MirEnumMode::Simple
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::record::MirTypeRecord;
+    use crate::codegen::ir::mir::ty::structure::MirStructIdent;
+
+    /// Nests generated enum-variant structures under their enum namespace.
+    #[test]
+    fn compute_enum_variant_kind_struct_name_nests_variant_under_enum() {
+        let enum_name =
+            NamespacedName::new(Namespace::new_raw("crate::models".into()), "Event".into());
+        let variant_name = MirIdent::new("r#Created".into(), None);
+
+        assert_eq!(
+            compute_enum_variant_kind_struct_name(&enum_name, &variant_name).rust_style(),
+            "crate::models::Event::Created",
+        );
+    }
+
+    /// Classifies fieldless variants as a simple enum.
+    #[test]
+    fn compute_enum_mode_classifies_value_only_variants_as_simple() {
+        let variants = vec![MirEnumVariant {
+            name: MirIdent::new("Ready".into(), None),
+            wrapper_name: MirIdent::new("Event_Ready".into(), None),
+            comments: vec![],
+            kind: MirVariantKind::Value,
+        }];
+
+        assert_eq!(compute_enum_mode(&variants), MirEnumMode::Simple);
+    }
+
+    /// Boxes recursive complex-variant fields but preserves non-recursive fields.
+    #[test]
+    fn maybe_field_wrap_box_boxes_struct_enum_and_record_fields_for_complex_enums() {
+        let namespace = Namespace::new_raw("crate::models".into());
+        let struct_ident =
+            MirStructIdent(NamespacedName::new(namespace.clone(), "StructField".into()));
+        let enum_ident = MirEnumIdent(NamespacedName::new(namespace.clone(), "EnumField".into()));
+        let record_ident = MirStructIdent(NamespacedName::new(namespace, "RecordField".into()));
+        let variants = vec![MirEnumVariant {
+            name: MirIdent::new("Payload".into(), None),
+            wrapper_name: MirIdent::new("Event_Payload".into(), None),
+            comments: vec![],
+            kind: MirVariantKind::Struct(MirStruct {
+                name: NamespacedName::new(
+                    Namespace::new_raw("crate::models".into()),
+                    "Payload".into(),
+                ),
+                wrapper_name: None,
+                fields: vec![
+                    test_field(MirType::StructRef(
+                        crate::codegen::ir::mir::ty::structure::MirTypeStructRef {
+                            ident: struct_ident,
+                            is_exception: false,
+                        },
+                    )),
+                    test_field(MirType::EnumRef(MirTypeEnumRef {
+                        ident: enum_ident,
+                        is_exception: false,
+                    })),
+                    test_field(MirType::Record(MirTypeRecord {
+                        inner: crate::codegen::ir::mir::ty::structure::MirTypeStructRef {
+                            ident: record_ident,
+                            is_exception: false,
+                        },
+                        values: vec![MirType::Primitive(MirTypePrimitive::U8)].into_boxed_slice(),
+                    })),
+                    test_field(MirType::Primitive(MirTypePrimitive::U8)),
+                ],
+                is_fields_named: true,
+                dart_metadata_raw: vec![],
+                ignore: false,
+                needs_json_serializable: false,
+                generate_hash: true,
+                generate_eq: true,
+                dart_collection_deep_equality: false,
+                ui_state: false,
+                comments: vec![],
+            }),
+        }];
+
+        assert_eq!(compute_enum_mode(&variants), MirEnumMode::Complex);
+        let wrapped = maybe_field_wrap_box(variants, MirEnumMode::Complex);
+        let MirVariantKind::Struct(payload) = &wrapped[0].kind else {
+            panic!("expected struct variant")
+        };
+
+        assert!(matches!(payload.fields[0].ty, MirType::Boxed(_)));
+        assert!(matches!(payload.fields[1].ty, MirType::Boxed(_)));
+        assert!(matches!(payload.fields[2].ty, MirType::Boxed(_)));
+        assert!(matches!(
+            payload.fields[3].ty,
+            MirType::Primitive(MirTypePrimitive::U8)
+        ));
+    }
+
+    /// Leaves struct fields unboxed when the enum remains in simple mode.
+    #[test]
+    fn maybe_field_wrap_box_keeps_struct_fields_unboxed_for_simple_enums() {
+        let field_type =
+            MirType::StructRef(crate::codegen::ir::mir::ty::structure::MirTypeStructRef {
+                ident: MirStructIdent(NamespacedName::new(
+                    Namespace::new_raw("crate::models".into()),
+                    "StructField".into(),
+                )),
+                is_exception: false,
+            });
+        let variants = vec![MirEnumVariant {
+            name: MirIdent::new("Payload".into(), None),
+            wrapper_name: MirIdent::new("Event_Payload".into(), None),
+            comments: vec![],
+            kind: MirVariantKind::Struct(MirStruct {
+                name: NamespacedName::new(
+                    Namespace::new_raw("crate::models".into()),
+                    "Payload".into(),
+                ),
+                wrapper_name: None,
+                fields: vec![test_field(field_type)],
+                is_fields_named: true,
+                dart_metadata_raw: vec![],
+                ignore: false,
+                needs_json_serializable: false,
+                generate_hash: true,
+                generate_eq: true,
+                dart_collection_deep_equality: false,
+                ui_state: false,
+                comments: vec![],
+            }),
+        }];
+
+        let wrapped = maybe_field_wrap_box(variants, MirEnumMode::Simple);
+        let MirVariantKind::Struct(payload) = &wrapped[0].kind else {
+            panic!("expected struct variant")
+        };
+
+        assert!(matches!(payload.fields[0].ty, MirType::StructRef(_)));
+    }
+
+    fn test_field(ty: MirType) -> MirField {
+        MirField {
+            ty,
+            name: MirIdent::new("field".into(), None),
+            is_final: true,
+            is_rust_public: Some(true),
+            comments: vec![],
+            default: None,
+            settings: MirFieldSettings::default(),
+        }
+    }
+}

@@ -62,3 +62,34 @@ fn ensure_one_lifetime(
 pub(crate) struct ParseFunctionLifetimeOutput {
     pub needs_extend_lifetime_per_arg: Vec<bool>,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::parse_function_lifetime;
+    use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
+    use syn::ItemFn;
+
+    /// Extends only inputs whose named lifetime appears in the returned type.
+    #[test]
+    fn marks_only_inputs_sharing_the_output_lifetime() -> anyhow::Result<()> {
+        let function: ItemFn = syn::parse_str(
+            "fn example<'a>(first: &'a u8, second: &'static u8) -> &'a u8 { first }",
+        )?;
+
+        let output = parse_function_lifetime(&function.sig, &MirFuncOwnerInfo::Function)?;
+
+        assert_eq!(output.needs_extend_lifetime_per_arg, vec![true, false]);
+        Ok(())
+    }
+
+    /// Rejects signatures that require more than one distinct named lifetime.
+    #[test]
+    fn rejects_multiple_distinct_lifetimes() -> anyhow::Result<()> {
+        let function: ItemFn = syn::parse_str(
+            "fn example<'a, 'b>(first: &'a u8, second: &'b u8) { let _ = (first, second); }",
+        )?;
+
+        assert!(parse_function_lifetime(&function.sig, &MirFuncOwnerInfo::Function).is_err());
+        Ok(())
+    }
+}

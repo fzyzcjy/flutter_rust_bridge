@@ -143,3 +143,31 @@ fn remove_ty_path_prefix(raw: &str) -> String {
     }
     REGEX.replace_all(raw, "").to_string()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use syn::parse_quote;
+
+    /// Separates shared, mutable, and owned ownership modes from a type.
+    #[test]
+    fn split_ownership_from_ty_preserves_inner_type() {
+        let shared: Type = parse_quote!(&Widget);
+        let mutable: Type = parse_quote!(&mut Widget);
+        let owned: Type = parse_quote!(Widget);
+
+        assert_eq!(split_ownership_from_ty(&shared).1, OwnershipMode::Ref);
+        assert_eq!(split_ownership_from_ty(&mutable).1, OwnershipMode::RefMut);
+        assert_eq!(split_ownership_from_ty(&owned).1, OwnershipMode::Owned);
+        assert_eq!(split_ownership_from_ty(&mutable).0, parse_quote!(Widget));
+    }
+
+    /// Removes every simple namespace prefix while preserving generic syntax.
+    #[test]
+    fn remove_ty_path_prefix_keeps_the_terminal_type() {
+        assert_eq!(
+            remove_ty_path_prefix("crate::module::Item<inner::Value>"),
+            "Item<Value>"
+        );
+    }
+}

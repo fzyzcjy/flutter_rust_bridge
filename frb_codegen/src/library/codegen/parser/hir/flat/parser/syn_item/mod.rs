@@ -34,3 +34,66 @@ pub(crate) fn parse_syn_item(
     }
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+    use crate::utils::namespace::Namespace;
+    use syn::parse_quote;
+
+    fn meta() -> HirNaiveFlatItemMeta {
+        HirNaiveFlatItemMeta {
+            namespace: Namespace::new_raw("crate::api".to_owned()),
+            sources: vec![HirGenerationSource::Normal],
+            is_module_public: true,
+        }
+    }
+
+    /// Dispatches supported item kinds and gates constants by configuration.
+    #[test]
+    fn dispatches_items_and_honors_constant_flag() {
+        let mut pack = HirFlatPack::default();
+        parse_syn_item(
+            parse_quote!(
+                pub struct Widget;
+            ),
+            &meta(),
+            &mut pack,
+            false,
+        )
+        .unwrap();
+        parse_syn_item(
+            parse_quote!(
+                pub fn run() {}
+            ),
+            &meta(),
+            &mut pack,
+            false,
+        )
+        .unwrap();
+        parse_syn_item(
+            parse_quote!(
+                pub const ID: u8 = 1;
+            ),
+            &meta(),
+            &mut pack,
+            false,
+        )
+        .unwrap();
+        parse_syn_item(
+            parse_quote!(
+                pub const ENABLED: u8 = 2;
+            ),
+            &meta(),
+            &mut pack,
+            true,
+        )
+        .unwrap();
+
+        assert_eq!(pack.structs.len(), 1);
+        assert_eq!(pack.functions.len(), 1);
+        assert_eq!(pack.constants.len(), 1);
+        assert_eq!(pack.constants[0].item_const.ident, "ENABLED");
+    }
+}

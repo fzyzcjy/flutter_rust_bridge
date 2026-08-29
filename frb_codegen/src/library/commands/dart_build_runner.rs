@@ -156,7 +156,7 @@ fn percent_encode_uri_path(path: &str) -> String {
 
 #[cfg(test)]
 mod tests {
-    use super::{build_runner_args, build_runner_output_filters};
+    use super::{build_runner_args, build_runner_output_filters, dart_run_extra_env};
     use std::path::Path;
 
     /// Limits build runner to generated outputs beneath a nested Dart output directory.
@@ -174,6 +174,21 @@ mod tests {
                 "--build-filter=package:example/src/rust/**.freezed.dart",
                 "--build-filter=package:example/src/rust/**.g.dart",
             ]
+        );
+    }
+
+    /// Includes JSON serialization output only when the generator requires it.
+    #[test]
+    fn test_build_runner_output_filters_without_json_serializable() {
+        assert_eq!(
+            build_runner_output_filters(
+                Path::new("/project"),
+                Path::new("/project/lib/src/rust"),
+                "example",
+                false,
+            )
+            .unwrap(),
+            vec!["--build-filter=package:example/src/rust/**.freezed.dart"]
         );
     }
 
@@ -263,6 +278,15 @@ mod tests {
                 "--delete-conflicting-outputs",
                 "--build-filter=lib/**.freezed.dart",
             ]
+        );
+    }
+
+    /// Sets the build-script bypass required by every Dart subprocess.
+    #[test]
+    fn test_dart_run_extra_env() {
+        assert_eq!(
+            dart_run_extra_env().get("FRB_SIMPLE_BUILD_SKIP"),
+            Some(&"1".to_owned())
         );
     }
 }

@@ -51,3 +51,55 @@ fn has_frb_attributes(f: &HirFlatFunction) -> bool {
 }
 
 pub(crate) const WHITELIST_TRAIT_NAMES: [&str; 1] = ["Default"];
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
+    use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+    use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
+    use crate::utils::namespace::Namespace;
+
+    fn trait_function(trait_name: &str, attributes: &str) -> HirFlatFunction {
+        HirFlatFunction {
+            namespace: Namespace::default(),
+            owner: HirFlatFunctionOwner::StructOrEnum {
+                impl_ty: syn::parse_str("Example").unwrap(),
+                trait_def_name: Some(trait_name.to_owned()),
+            },
+            sources: vec![HirGenerationSource::Normal],
+            item_fn: GeneralizedItemFn::ItemFn(
+                syn::parse_str(&format!("{attributes} fn method() {{}}")).unwrap(),
+            ),
+        }
+    }
+
+    /// Retains methods whose defining trait is present in the parsed trait set.
+    #[test]
+    fn retains_method_for_defined_trait() {
+        let function = trait_function("Defined", "");
+
+        assert!(should_retain(
+            &function,
+            &HashSet::from(["Defined".to_owned()])
+        ));
+    }
+
+    /// Retains whitelisted and explicitly annotated methods without their trait definition.
+    #[test]
+    fn retains_whitelisted_or_annotated_method_without_trait_definition() {
+        let whitelisted = trait_function("Default", "");
+        let annotated = trait_function("Missing", "#[frb(ignore)]");
+
+        assert!(should_retain(&whitelisted, &HashSet::new()));
+        assert!(should_retain(&annotated, &HashSet::new()));
+    }
+
+    /// Removes an unannotated method whose trait definition is absent.
+    #[test]
+    fn removes_method_for_undefined_trait_without_attribute() {
+        let function = trait_function("Missing", "");
+
+        assert!(!should_retain(&function, &HashSet::new()));
+    }
+}

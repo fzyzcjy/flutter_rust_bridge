@@ -127,3 +127,35 @@ fn generate_dart_fn_deliver_output(target: Target) -> ExternFunc {
         needs_ffigen: false,
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::generate_target_pde_dispatcher_mode;
+    use crate::codegen::generator::misc::target::Target;
+    use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::FfiDispatcherMode;
+
+    /// Primary dispatchers receive a port and do not return a synchronous wire value.
+    #[test]
+    fn primary_dispatcher_has_port_and_no_return_value() {
+        let function = generate_target_pde_dispatcher_mode(Target::Io, FfiDispatcherMode::Primary);
+
+        assert_eq!(function.partial_func_name, "frb_pde_ffi_dispatcher_primary");
+        assert_eq!(function.params.len(), 5);
+        assert_eq!(function.params[0].name, "func_id");
+        assert_eq!(function.return_type, None);
+    }
+
+    /// Synchronous dispatchers omit the port and return the synchronous wire value.
+    #[test]
+    fn sync_dispatcher_omits_port_and_returns_wire_value() {
+        let function = generate_target_pde_dispatcher_mode(Target::Io, FfiDispatcherMode::Sync);
+
+        assert_eq!(function.partial_func_name, "frb_pde_ffi_dispatcher_sync");
+        assert_eq!(function.params.len(), 4);
+        assert_eq!(function.params[0].name, "func_id");
+        assert_eq!(
+            function.return_type.as_deref(),
+            Some("$crate::for_generated::WireSyncRust2DartSse")
+        );
+    }
+}

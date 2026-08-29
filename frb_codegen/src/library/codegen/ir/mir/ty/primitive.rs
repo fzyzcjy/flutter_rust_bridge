@@ -62,3 +62,18 @@ impl MirTypeTrait for MirTypePrimitive {
         true
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Maps representative scalar and unit primitives to Rust syntax.
+    #[test]
+    fn primitive_types_keep_identifier_and_rust_syntax_contracts() {
+        assert_eq!(MirTypePrimitive::U64.safe_ident(), "u_64");
+        assert_eq!(MirTypePrimitive::F32.rust_api_type(), "f32");
+        assert_eq!(MirTypePrimitive::Bool.rust_api_type(), "bool");
+        assert_eq!(MirTypePrimitive::Unit.rust_api_type(), "()");
+        assert!(MirTypePrimitive::I8.as_primitive().is_some());
+    }
+}

@@ -139,3 +139,119 @@ impl<T> Acc<Vec<T>> {
         self.web.push(web);
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    /// Keeps target slots distinct while constructing and mapping values.
+    fn constructs_and_maps_each_target_slot() {
+        let acc = Acc::new(|target| target.to_string());
+        let mapped = acc.map(|value, target| format!("{target}:{value}"));
+
+        assert_eq!(mapped.common, "Common:Common");
+        assert_eq!(mapped.io, "Io:Io");
+        assert_eq!(mapped.web, "Web:Web");
+    }
+
+    #[test]
+    /// Maps borrowed values without consuming their original target slots.
+    fn maps_references_without_consuming_values() {
+        let acc = Acc::new(|target| target.to_string());
+        let mapped = acc.map_ref(|value, target| format!("{target}:{value}"));
+
+        assert_eq!(mapped.common, "Common:Common");
+        assert_eq!(acc.io, "Io");
+    }
+
+    #[test]
+    /// Initializes common and platform-specific accumulators in their intended slots.
+    fn initializes_common_and_platform_specific_values() {
+        assert_eq!(Acc::new_common("common").common, "common");
+        assert_eq!(Acc::new_io("io").io, "io");
+
+        let distributed = Acc::new_io_web("platform");
+        assert_eq!(distributed.common, "");
+        assert_eq!(distributed.io, "platform");
+        assert_eq!(distributed.web, "platform");
+
+        let distribute = Acc::distribute("distributed");
+        assert_eq!(distribute.common, "");
+        assert_eq!(distribute.io, "distributed");
+        assert_eq!(distribute.web, "distributed");
+    }
+
+    #[test]
+    /// Converts a shared string into only the common optional code slot.
+    fn converts_common_values_to_optional_code() {
+        let acc: Acc<Option<String>> = "shared".into();
+
+        assert_eq!(acc.common.as_deref(), Some("shared"));
+        assert_eq!(acc.io, None);
+        assert_eq!(acc.web, None);
+    }
+
+    #[test]
+    /// Appends a scalar accumulator to each matching target vector.
+    fn pushes_each_accumulator_slot_explicitly() {
+        let mut values = Acc::<Vec<_>>::default();
+        values.push_acc(Acc {
+            common: 1,
+            io: 2,
+            web: 3,
+        });
+
+        assert_eq!(values.common, vec![1]);
+        assert_eq!(values.io, vec![2]);
+        assert_eq!(values.web, vec![3]);
+    }
+
+    #[test]
+    /// Merges vector accumulators into their matching target slots.
+    fn add_assign_merges_matching_target_vectors() {
+        let mut left = Acc {
+            common: vec![1],
+            io: vec![2],
+            web: vec![3],
+        };
+        left += Acc {
+            common: vec![4],
+            io: vec![5],
+            web: vec![6],
+        };
+
+        assert_eq!(left.common, vec![1, 4]);
+        assert_eq!(left.io, vec![2, 5]);
+        assert_eq!(left.web, vec![3, 6]);
+    }
+
+    #[test]
+    /// Preserves target order when collecting scalar and vector accumulators.
+    fn collects_and_merges_accumulators_in_target_order() {
+        let scalar: Acc<Vec<_>> = [Acc::new_common(1), Acc::new_io_web(2)]
+            .into_iter()
+            .collect();
+        assert_eq!(scalar.common, vec![1, 0]);
+        assert_eq!(scalar.io, vec![0, 2]);
+        assert_eq!(scalar.web, vec![0, 2]);
+
+        let vectors: Acc<Vec<i32>> = [
+            Acc {
+                common: vec![1],
+                io: vec![2],
+                web: vec![3],
+            },
+            Acc {
+                common: vec![4],
+                io: vec![5],
+                web: vec![6],
+            },
+        ]
+        .into_iter()
+        .collect();
+        assert_eq!(vectors.common, vec![1, 4]);
+        assert_eq!(vectors.io, vec![2, 5]);
+        assert_eq!(vectors.web, vec![3, 6]);
+    }
+}

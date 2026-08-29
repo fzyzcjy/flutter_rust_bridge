@@ -283,6 +283,7 @@ fn generate_import_dart_api_layer(
 mod tests {
     use super::generate_execute_dart_initializers;
 
+    /// Appends one newline after each Dart initializer while preserving multiline code.
     #[test]
     fn test_generate_execute_dart_initializers() {
         let actual = generate_execute_dart_initializers(

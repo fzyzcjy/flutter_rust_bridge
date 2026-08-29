@@ -42,3 +42,34 @@ macro_rules! enum_map {
         }
     };
 }
+
+#[cfg(test)]
+mod tests {
+    #[derive(Clone, Copy)]
+    pub enum Flavor {
+        Vanilla,
+        Chocolate,
+    }
+
+    crate::enum_map!(FlavorMap, Flavor; Vanilla, Chocolate; vanilla, chocolate;);
+
+    /// Indexes, extracts, and vectorizes values in declaration order.
+    #[test]
+    fn test_enum_map_indexes_extracts_and_preserves_declared_order() {
+        let map = FlavorMap {
+            vanilla: "vanilla",
+            chocolate: "chocolate",
+        };
+
+        assert_eq!(map[Flavor::Vanilla], "vanilla");
+        assert_eq!(map[Flavor::Chocolate], "chocolate");
+        assert_eq!(map.clone().get(Flavor::Chocolate), "chocolate");
+        assert_eq!(map.into_vec(), vec!["vanilla", "chocolate"]);
+    }
+
+    /// Uses the value type default for every generated field.
+    #[test]
+    fn test_enum_map_default_initializes_every_declared_field() {
+        assert_eq!(FlavorMap::<u8>::default().into_vec(), vec![0, 0]);
+    }
+}

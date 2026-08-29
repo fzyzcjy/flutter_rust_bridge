@@ -77,10 +77,31 @@ mod tests {
     use crate::RustOpaqueNom;
     use std::sync::Arc;
 
+    /// Wraps a standard Arc while retaining dereference access.
     #[test]
     fn test_from_arc() {
         let arc = Arc::new(42);
         let opaque: RustOpaqueNom<_> = arc.into();
         assert_eq!(*opaque, 42);
+    }
+
+    /// Unwraps only after every competing opaque reference is gone.
+    #[test]
+    fn unwraps_only_unique_opaque_reference() {
+        let opaque = RustOpaqueNom::new(42);
+        let clone = opaque.clone();
+
+        let opaque = opaque.try_unwrap().unwrap_err();
+        drop(clone);
+
+        assert_eq!(opaque.into_inner(), Some(42));
+    }
+
+    /// Builds the default value inside a Rust opaque wrapper.
+    #[test]
+    fn defaults_wrapped_value() {
+        let opaque = RustOpaqueNom::<Vec<u8>>::default();
+
+        assert!(opaque.is_empty());
     }
 }

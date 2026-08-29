@@ -176,8 +176,47 @@ fn cargo_expand_install_args(version: Option<&str>) -> Vec<PathBuf> {
 
 #[cfg(test)]
 mod tests {
-    use super::{cargo_expand_fallback_version, cargo_expand_install_args};
+    use super::{
+        cargo_expand_fallback_version, cargo_expand_install_args, decode_macro_frb_encoded_comments,
+    };
 
+    /// Decodes every encoded macro comment, including adjacent comments.
+    #[test]
+    fn test_decode_macro_frb_encoded_comments_decodes_multiple_adjacent_comments() {
+        let code = concat!(
+            "#[doc = \"frb_encoded(666f6f)\"]",
+            "#[doc = \"frb_encoded(626172)\"]"
+        );
+
+        assert_eq!(decode_macro_frb_encoded_comments(code), "foobar");
+    }
+
+    /// Decodes a macro comment whose attribute formatting spans lines.
+    #[test]
+    fn test_decode_macro_frb_encoded_comments_decodes_multiline_attribute() {
+        let code = "#[doc =\n \"frb_encoded(666f6f)\"]";
+
+        assert_eq!(decode_macro_frb_encoded_comments(code), "foo");
+    }
+
+    /// Borrows the original code when no encoded macro comment is present.
+    #[test]
+    fn test_decode_macro_frb_encoded_comments_keeps_unmatched_code_borrowed() {
+        let code = "#[doc = \"ordinary documentation\"]";
+        let decoded = decode_macro_frb_encoded_comments(code);
+
+        assert!(matches!(decoded, std::borrow::Cow::Borrowed(_)));
+        assert_eq!(decoded, code);
+    }
+
+    /// Panics for invalid encoded-comment payloads, preserving the existing contract.
+    #[test]
+    #[should_panic]
+    fn test_decode_macro_frb_encoded_comments_panics_for_invalid_hex() {
+        let _ = decode_macro_frb_encoded_comments("#[doc = \"frb_encoded(not-hex)\"]");
+    }
+
+    /// Selects the pinned fallback when the latest cargo-expand needs newer Rust.
     #[test]
     fn test_cargo_expand_fallback_version_when_latest_requires_newer_rustc() {
         let stderr =
@@ -185,11 +224,24 @@ mod tests {
         assert_eq!(cargo_expand_fallback_version(stderr), Some("1.0.112"));
     }
 
+    /// Does not select a fallback for unrelated installation errors.
     #[test]
     fn test_cargo_expand_fallback_version_when_error_is_unrelated() {
         assert_eq!(cargo_expand_fallback_version("network timeout"), None);
     }
 
+    /// Uses the unpinned latest cargo-expand installation arguments by default.
+    #[test]
+    fn test_cargo_expand_install_args_for_latest() {
+        let args = cargo_expand_install_args(None);
+        let args = args
+            .into_iter()
+            .map(|item| item.into_os_string().into_string().unwrap())
+            .collect::<Vec<_>>();
+        assert_eq!(args, vec!["install", "cargo-expand"]);
+    }
+
+    /// Pins and locks cargo-expand when installing the compatibility fallback.
     #[test]
     fn test_cargo_expand_install_args_for_fallback_uses_locked() {
         let args = cargo_expand_install_args(Some("1.0.112"));

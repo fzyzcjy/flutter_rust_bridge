@@ -42,3 +42,43 @@ impl BaseMerger for FunctionFrbOverrideMerger {
     }
     // frb-coverage:ignore-end
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
+    use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
+    use crate::utils::namespace::Namespace;
+
+    fn function(sources: Vec<HirGenerationSource>) -> HirFlatFunction {
+        HirFlatFunction {
+            namespace: Namespace::default(),
+            owner: HirFlatFunctionOwner::Function,
+            sources,
+            item_fn: GeneralizedItemFn::ItemFn(syn::parse_str("fn original() {}").unwrap()),
+        }
+    }
+
+    /// Selects an override function only when it carries the FRB override source.
+    #[test]
+    fn merges_function_from_frb_override_source() {
+        let base = function(vec![HirGenerationSource::Normal]);
+        let overrider = function(vec![HirGenerationSource::FromFrbOverride]);
+
+        let merged = FunctionFrbOverrideMerger.merge_functions(&base, &overrider);
+
+        assert!(merged.is_some());
+        assert_eq!(merged.unwrap().sources, overrider.sources);
+    }
+
+    /// Leaves a normal function unmerged when it is not an FRB override.
+    #[test]
+    fn does_not_merge_function_without_frb_override_source() {
+        let base = function(vec![HirGenerationSource::Normal]);
+        let overrider = function(vec![HirGenerationSource::Normal]);
+
+        assert!(FunctionFrbOverrideMerger
+            .merge_functions(&base, &overrider)
+            .is_none());
+    }
+}

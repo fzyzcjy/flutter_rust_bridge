@@ -35,6 +35,7 @@ mod tests {
     use super::*;
     use syn::parse_quote;
 
+    /// Keeps aliases without generic parameters.
     #[test]
     fn keeps_non_generic_alias() {
         let alias = parse_syn_item_type(parse_quote!(
@@ -45,6 +46,7 @@ mod tests {
         assert!(alias.type_params.is_empty());
     }
 
+    /// Keeps aliases whose parameters are all types.
     #[test]
     fn keeps_type_param_only_alias() {
         let alias = parse_syn_item_type(parse_quote!(
@@ -55,6 +57,7 @@ mod tests {
         assert_eq!(alias.type_params, vec!["T".to_owned()]);
     }
 
+    /// Skips aliases with const parameters.
     #[test]
     fn skips_alias_with_const_generic() {
         // `N` would be silently dropped during substitution, so it must be skipped.
@@ -64,6 +67,7 @@ mod tests {
         .is_none());
     }
 
+    /// Skips aliases with lifetime parameters.
     #[test]
     fn skips_alias_with_lifetime() {
         assert!(parse_syn_item_type(parse_quote!(
@@ -72,6 +76,7 @@ mod tests {
         .is_none());
     }
 
+    /// Skips aliases constrained by a where clause.
     #[test]
     fn skips_alias_with_where_clause() {
         // `where` clauses are not supported yet, so such aliases are skipped.

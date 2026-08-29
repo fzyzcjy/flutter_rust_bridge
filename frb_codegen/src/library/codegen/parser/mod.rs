@@ -80,24 +80,28 @@ mod tests {
     use serial_test::serial;
     use std::path::{Path, PathBuf};
 
+    /// Parses the baseline fixture into the expected MIR.
     #[test]
     #[serial]
     fn test_simple() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/simple", None)
     }
 
+    /// Preserves initialization Dart code in the MIR output.
     #[test]
     #[serial]
     fn test_init_dart_code() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/init_dart_code", None)
     }
 
+    /// Parses method declarations into the expected MIR.
     #[test]
     #[serial]
     fn test_methods() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/methods", None)
     }
 
+    /// Resolves APIs across multiple input namespaces.
     #[test]
     #[serial]
     fn test_multi_input_file() -> anyhow::Result<()> {
@@ -113,36 +117,42 @@ mod tests {
         )
     }
 
+    /// Resolves a type imported from another Rust file.
     #[test]
     #[serial]
     fn test_use_type_in_another_file() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/use_type_in_another_file", None)
     }
 
+    /// Parses qualified Rust names.
     #[test]
     #[serial]
     fn test_qualified_names() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/qualified_names", None)
     }
 
+    /// Parses non-qualified Rust names.
     #[test]
     #[serial]
     fn test_non_qualified_names() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/non_qualified_names", None)
     }
 
+    /// Parses generic declarations.
     #[test]
     #[serial]
     fn test_generics() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/generics", None)
     }
 
+    /// Retains unused structs and enums in the MIR.
     #[test]
     #[serial]
     fn test_unused_struct_enum() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/unused_struct_enum", None)
     }
 
+    /// Parses generic type aliases.
     #[test]
     #[serial]
     fn test_generic_type_alias() -> anyhow::Result<()> {

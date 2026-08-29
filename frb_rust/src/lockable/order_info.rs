@@ -16,3 +16,21 @@ impl LockableOrderInfo {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::for_generated::Lockable;
+    use crate::RustAutoOpaqueNom;
+
+    #[test]
+    /// Records the source order, argument index, and mutability.
+    fn records_lockable_metadata() {
+        let opaque = RustAutoOpaqueNom::new(42);
+        let info = LockableOrderInfo::new(&opaque.0, 3, true);
+
+        assert!(info.object_order == opaque.0.lockable_order());
+        assert_eq!(info.index, 3);
+        assert!(info.mutable);
+    }
+}

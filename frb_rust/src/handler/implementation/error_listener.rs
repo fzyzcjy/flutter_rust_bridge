@@ -17,6 +17,22 @@ impl ErrorListener for NoOpErrorListener {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::NoOpErrorListener;
+    use crate::handler::error::Error;
+    use crate::handler::error_listener::ErrorListener;
+
+    /// Accepts recoverable and panic errors without escalating either one.
+    #[test]
+    fn test_no_op_listener_accepts_all_error_kinds() {
+        let listener = NoOpErrorListener;
+
+        listener.on_error(Error::CustomError);
+        listener.on_error(Error::Panic(Box::new("panic")));
+    }
+}
+
 pub(crate) fn handle_non_sync_panic_error<Rust2DartCodec: BaseCodec>(
     error_listener: impl ErrorListener,
     port: MessagePort,

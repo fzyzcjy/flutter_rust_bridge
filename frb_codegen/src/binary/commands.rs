@@ -379,6 +379,7 @@ mod tests {
     use super::{Cli, Commands, IntegrationBackendArg};
     use clap::Parser;
 
+    /// Parses create platform selection and the default backend.
     #[test]
     fn test_create_command_parses_platforms() {
         let cli = Cli::parse_from([
@@ -397,6 +398,7 @@ mod tests {
         assert_eq!(args.integration_backend, IntegrationBackendArg::Cargokit);
     }
 
+    /// Parses integrate platform selection and the default backend.
     #[test]
     fn test_integrate_command_parses_platforms() {
         let cli = Cli::parse_from([
@@ -414,6 +416,7 @@ mod tests {
         assert_eq!(args.integration_backend, IntegrationBackendArg::Cargokit);
     }
 
+    /// Parses the native-assets backend for project creation.
     #[test]
     fn test_create_command_parses_native_assets_backend() {
         let cli = Cli::parse_from([
@@ -437,6 +440,7 @@ mod tests {
         );
     }
 
+    /// Parses the native-assets backend for integration.
     #[test]
     fn test_integrate_command_parses_native_assets_backend() {
         let cli = Cli::parse_from([

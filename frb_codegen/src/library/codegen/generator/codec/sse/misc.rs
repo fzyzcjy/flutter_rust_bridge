@@ -17,3 +17,27 @@ pub(crate) fn with_sse_extra_types(raw: &[MirType]) -> Vec<MirType> {
     .unique()
     .collect_vec()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Appends required SSE bookkeeping types once while preserving input order.
+    #[test]
+    fn extra_types_are_unique_and_keep_existing_order() {
+        let output = with_sse_extra_types(&[
+            MirType::Primitive(MirTypePrimitive::Bool),
+            MirType::Primitive(MirTypePrimitive::U8),
+            MirType::Primitive(MirTypePrimitive::I32),
+        ]);
+
+        assert_eq!(
+            output,
+            [
+                MirType::Primitive(MirTypePrimitive::Bool),
+                MirType::Primitive(MirTypePrimitive::U8),
+                MirType::Primitive(MirTypePrimitive::I32),
+            ]
+        );
+    }
+}

@@ -59,3 +59,67 @@ impl WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCstGene
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::super::test_utils;
+    use super::*;
+    use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
+
+    /// Covers typed-list allocation, 64-bit inner access, and unsupported pointer-sized values.
+    #[test]
+    fn primitive_list_encoder_covers_supported_and_unsupported_primitives() {
+        let pack = test_utils::pack();
+        let api_dart_config = test_utils::api_dart_config();
+        let wire_dart_config = test_utils::wire_dart_config(true);
+        let wire_rust_config = test_utils::wire_rust_config(true);
+        let context = test_utils::context(
+            &pack,
+            &wire_dart_config,
+            &wire_rust_config,
+            &api_dart_config,
+        );
+        let i64 = PrimitiveListWireDartCodecCstGenerator::new(
+            MirTypePrimitiveList {
+                primitive: MirTypePrimitive::I64,
+                strict_dart_type: true,
+            },
+            context,
+        )
+        .generate_encode_func_body();
+        let ordinary = PrimitiveListWireDartCodecCstGenerator::new(
+            MirTypePrimitiveList {
+                primitive: MirTypePrimitive::I32,
+                strict_dart_type: true,
+            },
+            context,
+        )
+        .generate_encode_func_body();
+        let unsupported = PrimitiveListWireDartCodecCstGenerator::new(
+            MirTypePrimitiveList {
+                primitive: MirTypePrimitive::Usize,
+                strict_dart_type: true,
+            },
+            context,
+        )
+        .generate_encode_func_body();
+
+        assert_eq!(
+            i64.io.as_deref(),
+            Some(
+                "final ans = wire.cst_new_list_prim_i_64_strict(raw.length);\n                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);\n                return ans;"
+            )
+        );
+        assert_eq!(i64.web.as_deref(), Some("return raw.inner.jsify()!;"));
+        assert_eq!(
+            ordinary.io.as_deref(),
+            Some(
+                "final ans = wire.cst_new_list_prim_i_32_strict(raw.length);\n                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);\n                return ans;"
+            )
+        );
+        assert_eq!(
+            unsupported.io.as_deref(),
+            Some("throw UnimplementedError('Not implemented in this codec');")
+        );
+    }
+}

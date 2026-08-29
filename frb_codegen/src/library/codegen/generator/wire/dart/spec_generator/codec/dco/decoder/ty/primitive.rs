@@ -17,3 +17,29 @@ impl WireDartCodecDcoGeneratorDecoderTrait for PrimitiveWireDartCodecDcoGenerato
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::test_utils;
+
+    /// Emits the dedicated scalar and fallback casts for every primitive family.
+    #[test]
+    fn primitive_decoder_covers_unit_integer_and_simple_cast_branches() {
+        let pack = test_utils::pack();
+        let config = test_utils::config();
+        let context = test_utils::context(&pack, &config);
+
+        for (primitive, expected) in [
+            (MirTypePrimitive::Unit, "return;"),
+            (MirTypePrimitive::I64, "return dcoDecodeI64(raw);"),
+            (MirTypePrimitive::Isize, "return dcoDecodeI64(raw);"),
+            (MirTypePrimitive::U64, "return dcoDecodeU64(raw);"),
+            (MirTypePrimitive::Usize, "return dcoDecodeU64(raw);"),
+            (MirTypePrimitive::I32, "return raw as int;"),
+        ] {
+            let generator = PrimitiveWireDartCodecDcoGenerator::new(primitive, context);
+            assert_eq!(generator.generate_impl_decode_body(), expected);
+        }
+    }
+}

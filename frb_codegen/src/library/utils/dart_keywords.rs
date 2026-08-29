@@ -72,3 +72,30 @@ const DART_KEYWORDS: [&str; 63] = [
     "implements",
     "set",
 ];
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    /// Escapes every reserved Dart identifier.
+    fn escapes_every_dart_keyword() {
+        for keyword in DART_KEYWORDS {
+            assert_eq!(escape(keyword.to_owned()), format!("{keyword}_"));
+        }
+    }
+
+    #[test]
+    /// Preserves identifiers that are not reserved Dart keywords.
+    fn preserves_non_keywords_and_keyword_prefixes() {
+        for identifier in [
+            "identifier",
+            "Abstract",
+            "class_name",
+            "className",
+            "class_",
+        ] {
+            assert_eq!(escape(identifier.to_owned()), identifier);
+        }
+    }
+}

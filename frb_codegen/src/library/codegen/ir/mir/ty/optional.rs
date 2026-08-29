@@ -52,3 +52,25 @@ impl MirTypeOptional {
         matches!(&*self.inner, Boxed(boxed) if boxed.exist_in_real_api && boxed.inner.is_primitive())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    /// Separates automatic primitive wrappers from real boxed primitives.
+    #[test]
+    fn optional_primitive_helpers_preserve_box_origin() {
+        let automatic =
+            MirTypeOptional::new_with_boxed_wrapper(MirType::Primitive(MirTypePrimitive::U8));
+        let real = MirTypeOptional::new(MirType::Boxed(MirTypeBoxed {
+            exist_in_real_api: true,
+            inner: Box::new(MirType::Primitive(MirTypePrimitive::U8)),
+        }));
+
+        assert!(automatic.is_primitive());
+        assert!(!automatic.is_boxed_primitive());
+        assert!(!real.is_primitive());
+        assert!(real.is_boxed_primitive());
+    }
+}

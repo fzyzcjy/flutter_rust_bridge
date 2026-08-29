@@ -177,3 +177,85 @@ fn generate_rust2dart_codec_object(func: &MirFunc) -> String {
         "
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+    use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+    use crate::codegen::ir::mir::func::{
+        MirFuncImplMode, MirFuncInput, MirFuncOutput, MirFuncOwnerInfo,
+    };
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::MirType;
+    use crate::utils::namespace::Namespace;
+
+    fn func(mode: MirFuncMode, error: Option<MirType>) -> MirFunc {
+        MirFunc {
+            namespace: Namespace::default(),
+            name: MirIdent::new("calculate".into(), None),
+            id: None,
+            inputs: vec![MirFuncInput {
+                ownership_mode: None,
+                inner: MirField {
+                    ty: MirType::Primitive(MirTypePrimitive::I32),
+                    name: MirIdent::new("input_value".into(), None),
+                    is_final: false,
+                    is_rust_public: None,
+                    comments: vec![],
+                    default: None,
+                    settings: MirFieldSettings::default(),
+                },
+                needs_extend_lifetime: false,
+            }],
+            output: MirFuncOutput {
+                normal: MirType::Primitive(MirTypePrimitive::I32),
+                error,
+            },
+            owner: MirFuncOwnerInfo::Function,
+            mode,
+            stream_dart_await: false,
+            rust_async: false,
+            initializer: false,
+            init_dart_code: None,
+            arg_mode: MirFuncArgMode::Named,
+            accessor: None,
+            comments: vec![],
+            codec_mode_pack: CodecModePack {
+                dart2rust: CodecMode::Cst,
+                rust2dart: CodecMode::Cst,
+            },
+            rust_call_code: None,
+            rust_aop_after: None,
+            impl_mode: MirFuncImplMode::Normal,
+            src_lineno_pseudo: 0,
+        }
+    }
+
+    /// Selects task, FFI, argument, and codec output fragments from function metadata.
+    #[test]
+    fn api_impl_helpers_cover_modes_arguments_and_fallibility() {
+        let normal = func(
+            MirFuncMode::Normal,
+            Some(MirType::Primitive(MirTypePrimitive::Bool)),
+        );
+        let sync = func(MirFuncMode::Sync, None);
+
+        assert_eq!(generate_execute_func_name(&normal), "executeNormal");
+        assert_eq!(generate_task_class(&normal), "NormalTask");
+        assert_eq!(generate_call_ffi_args(&normal), "port_");
+        assert_eq!(generate_arg_values(&normal), "inputValue");
+        assert_eq!(generate_execute_func_name(&sync), "executeSync");
+        assert_eq!(generate_task_class(&sync), "SyncTask");
+        assert_eq!(generate_call_ffi_args(&sync), "");
+        assert_eq!(
+            generate_rust2dart_codec_object(&normal),
+            "\n        CstCodec(\n          decodeSuccessData: cst_decode_i_32,\n          decodeErrorData: cst_decode_bool,\n        )\n        "
+        );
+        assert_eq!(
+            generate_rust2dart_codec_object(&sync),
+            "\n        CstCodec(\n          decodeSuccessData: cst_decode_i_32,\n          decodeErrorData: null,\n        )\n        "
+        );
+    }
+}
