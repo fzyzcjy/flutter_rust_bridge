@@ -1,4 +1,4 @@
-use crate::utils::console::SimpleProgressBar;
+use crate::utils::console::{progress_bar_message, SimpleProgressBar};
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::Namespace;
 use lazy_static::lazy_static;
@@ -30,7 +30,10 @@ impl GeneratorProgressBarPack {
             generate_cbindgen: SimpleProgressBar::new("Run cbindgen", 1),
             generate_ffigen: SimpleProgressBar::new("Run ffigen", 1),
             polish: SimpleProgressBar::new("Polish", 0),
-            polish_dart_build_runner: SimpleProgressBar::new("Run Dart build_runner", 1),
+            polish_dart_build_runner: SimpleProgressBar::new(
+                &progress_bar_message("Run Dart build_runner"),
+                1,
+            ),
             polish_dart_fix: SimpleProgressBar::new("Run Dart fix", 1),
             polish_dart_formatter: SimpleProgressBar::new("Run Dart formatter", 1),
             polish_rust_formatter: SimpleProgressBar::new("Run Rust formatter", 1),

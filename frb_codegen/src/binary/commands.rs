@@ -10,7 +10,7 @@ use std::path::PathBuf;
 #[derive(Debug, Parser)]
 #[command(author, version, about, long_about = None)]
 pub(crate) struct Cli {
-    /// Show debug messages.
+    /// Show debug messages and stream child command output.
     #[arg(short, long)]
     pub verbose: bool,
 

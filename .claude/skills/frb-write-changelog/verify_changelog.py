@@ -167,9 +167,18 @@ def extract_thanks_authors(section: str) -> list[str]:
 
 
 def find_thanks_order_violations(section: str) -> list[str]:
+    in_beta_group = False
     seen_entry_without_thanks = False
     violations: list[str] = []
-    for entry in extract_pr_entry_lines(section):
+    for line in section.splitlines():
+        if re.match(r"^\* \d+\.\d+\.\d+-beta\.\d+$", line) is not None:
+            in_beta_group = True
+            seen_entry_without_thanks = False
+            continue
+        if not in_beta_group or re.match(r"^\s+\* .*#\d+", line) is None:
+            continue
+
+        entry = line.strip()
         if "(thanks @" in entry:
             if seen_entry_without_thanks:
                 violations.append(entry)
@@ -177,14 +186,6 @@ def find_thanks_order_violations(section: str) -> list[str]:
             seen_entry_without_thanks = True
 
     return violations
-
-
-def extract_pr_entry_lines(section: str) -> list[str]:
-    return [
-        line.strip()
-        for line in section.splitlines()
-        if line.startswith("* ") and re.search(r"#\d+", line) is not None
-    ]
 
 
 def find_duplicates(values: list[DuplicateValue]) -> list[DuplicateValue]:

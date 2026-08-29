@@ -70,6 +70,8 @@ With automatic `build_runner` invocation enabled, code generation runs `build_ru
 
 Run `build_runner` separately when the Dart package contains unrelated builders whose outputs live outside `dart_output`. The automatic invocation uses output filters to scope work to FRB-generated outputs. For non-library output paths that build_runner 1.7 cannot represent safely as filters, it falls back to an unfiltered build to preserve generation correctness.
 
+Code generation streams child command output, including `build_runner`, when run with `--verbose`. If Polish looks stuck, re-run with `--verbose` and look at those lines first (for example `freezed on N inputs` or an analyzer exception).
+
 Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/330
 
 ## `Can't create typedef from non-function type.`

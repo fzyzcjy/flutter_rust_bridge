@@ -1,9 +1,7 @@
 ---
 name: frb-ci-filter
-description: Use when running focused flutter_rust_bridge GitHub Actions CI via ci_filter, adding/removing the ci-manual-dispatch PR label, choosing exact CI jobs or matrix entries, or documenting intentionally partial CI runs.
+description: Use when running focused flutter_rust_bridge GitHub Actions CI via ci_filter, adding/removing the ci-manual-dispatch PR label, choosing exact CI jobs or matrix entries, documenting intentionally partial CI runs, or repeatedly validating an exact CI target on one commit.
 ---
-
-# FRB CI Filter
 
 Use this skill when CI feedback is too expensive and the current task needs a focused GitHub Actions signal instead of automatic full CI.
 
@@ -15,7 +13,7 @@ gh workflow run ci.yaml --ref <branch> -f 'ci_filter=<filter>'
 
 Do not temporarily hack workflow jobs just to get partial CI unless the formal filter cannot express the target.
 
-## Filter Syntax
+# 1 Filter Syntax
 
 ```text
 full
@@ -38,7 +36,7 @@ job_a,job_b[dimension=value]
 - Values may contain spaces, e.g. iOS simulator device names.
 - Unknown jobs, unknown dimensions, malformed filters, and filters matching no matrix entries fail in the `Plan :: CI` job.
 
-## Manual Dispatch Label
+# 2 Manual Dispatch Label
 
 Use the `ci-manual-dispatch` PR label when an agent or human wants to prevent automatic PR CI from running the full surface while iterating.
 
@@ -60,11 +58,11 @@ gh pr edit <pr-number> --remove-label ci-manual-dispatch
 
 Then let the normal full CI surface run. Removing the label triggers PR CI because the workflow listens to `labeled` and `unlabeled` pull request events.
 
-## Manual Dispatch PR Comment
+# 3 Manual Dispatch PR Comment
 
 Manual `workflow_dispatch` runs of `.github/workflows/ci.yaml` comment from `Plan :: CI` on the matching open PR with the selected `ci_filter` and run link; normal `push` and `pull_request` runs do not comment.
 
-## Local Planning
+# 4 Local Planning
 
 Before dispatching an expensive manual run, smoke the filter locally:
 
@@ -87,7 +85,64 @@ fromJSON(needs.plan_ci.outputs.plan).test_dart_web.matrix
 
 That output shape is intentional; each CI job has its own top-level entry containing `enable`, and matrix jobs also contain `matrix`.
 
-## Examples
+# 5 Repeated Precise Validation
+
+Use repeated precise validation when a flaky fix needs several independent executions of one CI job or matrix entry on exactly the same commit.
+
+- **Fix the commit**: Push the branch once, record its SHA, and do not move the branch until all runs finish.
+- **Smoke the filter**: Run `./frb_internal plan-ci --filter '<filter>'` before dispatching.
+- **Dispatch independently**: Create five separate `workflow_dispatch` runs, not one run with five matrix copies and not five attempts of one run.
+- **Keep the filter identical**: Pass the same exact `ci_filter` to every dispatch.
+- **Verify the SHA**: Confirm every selected run reports the recorded `headSha`; a branch name alone is not evidence that queued runs used the same commit.
+- **Count target jobs**: Count the conclusion of the selected job or matrix entry, not the workflow conclusion or skipped jobs.
+- **Preserve every run link**: Report all five run URLs, the fixed SHA, the filter, and the target-job result.
+- **Do not move or cancel**: A new commit invalidates the comparison; cancellation does not count as a completed validation.
+
+Record the immutable input:
+
+```bash
+branch=codex/example-fix
+expected_sha=$(git rev-parse HEAD)
+filter='test_dart_web[package=frb_example--pure_dart]'
+git push -u origin "$branch"
+```
+
+Dispatch five independent runs. Manual dispatches use unique concurrency groups, so these runs do not cancel one another:
+
+```bash
+for run_number in 1 2 3 4 5; do
+  gh workflow run ci.yaml --ref "$branch" -f "ci_filter=$filter"
+done
+```
+
+List the candidate runs once, then select the five runs created for this validation window:
+
+```bash
+gh run list \
+  --workflow ci.yaml \
+  --branch "$branch" \
+  --event workflow_dispatch \
+  --limit 10 \
+  --json databaseId,createdAt,headSha,status,conclusion,url
+```
+
+For each selected run:
+
+- Confirm `headSha == expected_sha`.
+- Confirm `Plan :: CI` creates only the requested job or matrix entry.
+- Wait for the target job to complete.
+- If it fails, archive and inspect that job's complete log.
+- Report a result only after all five target jobs finish.
+
+Do not claim “5/5” from any of these shapes:
+
+- One workflow run containing five matrix entries.
+- One workflow run rerun five times.
+- Five workflow runs whose `headSha` values differ.
+- Five workflow conclusions where the target job was skipped, cancelled, or never started.
+- Fewer than five completed target jobs plus queued or in-progress jobs.
+
+# 6 Examples
 
 These examples are protected by `tools/frb_internal/test/ci_plan_test.dart`; update that test whenever adding or changing examples here.
 
@@ -193,7 +248,7 @@ One benchmark runner:
 gh workflow run ci.yaml --ref <branch> -f 'ci_filter=bench_dart_native[image=ubuntu-24.04]'
 ```
 
-## Choosing Evidence
+# 7 Choosing Evidence
 
 For intentional red reproduction PRs:
 
@@ -208,7 +263,7 @@ For ordinary iteration branches:
 - Say in PR status/comments when only filtered CI has run.
 - Before final review or merge readiness, remove `ci-manual-dispatch` and run normal CI.
 
-## Validation
+# 8 Validation
 
 Before pushing changes to the filter mechanism or examples:
 
