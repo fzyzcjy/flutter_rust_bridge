@@ -38,6 +38,7 @@ mod tests {
 
     #[test]
     #[serial]
+    /// Splits a normal extension into platform-specific output paths.
     fn test_compute_path_map() -> anyhow::Result<()> {
         let result = super::compute_path_map(&PathBuf::from("src/api/api.rs"))?;
         assert_eq!(result.common, PathBuf::from("src/api/api.rs"));
@@ -48,6 +49,7 @@ mod tests {
 
     #[test]
     #[serial]
+    /// Splits glob file names while preserving the glob prefix.
     fn test_compute_path_map_with_glob() -> anyhow::Result<()> {
         let result = super::compute_path_map(&PathBuf::from("src/api/*.rs"))?;
         assert_eq!(result.common, PathBuf::from("src/api/*.rs"));
@@ -58,6 +60,7 @@ mod tests {
 
     #[test]
     #[serial]
+    /// Rejects a path that lacks a file extension.
     fn test_compute_path_map_faulty() -> anyhow::Result<()> {
         let result = super::compute_path_map(&PathBuf::from("src/api"));
         assert!(result.is_err());
@@ -66,6 +69,52 @@ mod tests {
             .unwrap()
             .to_string()
             .contains("Cannot use the path configuration"));
+        Ok(())
+    }
+
+    /// Uses the final extension when file names contain several dots.
+    #[test]
+    fn uses_final_extension_for_multi_dot_file_names() -> anyhow::Result<()> {
+        let result = compute_path_map(Path::new("lib/generated.bindings.dart"))?;
+
+        assert_eq!(result.common, PathBuf::from("lib/generated.bindings.dart"));
+        assert_eq!(result.io, PathBuf::from("lib/generated.bindings.io.dart"));
+        assert_eq!(result.web, PathBuf::from("lib/generated.bindings.web.dart"));
+        Ok(())
+    }
+
+    /// Preserves a trailing dot as an empty extension in platform output paths.
+    #[test]
+    fn preserves_empty_extension_after_trailing_dot() -> anyhow::Result<()> {
+        let result = compute_path_map(Path::new("lib/generated."))?;
+
+        assert_eq!(result.common, PathBuf::from("lib/generated."));
+        assert_eq!(result.io, PathBuf::from("lib/generated.io."));
+        assert_eq!(result.web, PathBuf::from("lib/generated.web."));
+        Ok(())
+    }
+
+    /// Creates declaration and implementation paths under the configured directory.
+    #[test]
+    fn computes_complete_output_pack() -> anyhow::Result<()> {
+        let pack = compute_dart_output_path_pack(Path::new("project/lib/src"))?;
+
+        assert_eq!(
+            pack.dart_decl_base_output_path,
+            PathBuf::from("project/lib/src")
+        );
+        assert_eq!(
+            pack.dart_impl_output_path.common,
+            PathBuf::from("project/lib/src/frb_generated.dart")
+        );
+        assert_eq!(
+            pack.dart_impl_output_path.io,
+            PathBuf::from("project/lib/src/frb_generated.io.dart")
+        );
+        assert_eq!(
+            pack.dart_impl_output_path.web,
+            PathBuf::from("project/lib/src/frb_generated.web.dart")
+        );
         Ok(())
     }
 }

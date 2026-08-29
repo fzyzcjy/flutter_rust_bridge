@@ -59,3 +59,19 @@ impl From<&syn::Lifetime> for Lifetime {
         Self(value.ident.to_string())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Extracts nested named lifetimes while excluding static lifetimes.
+    #[test]
+    fn extracts_nested_lifetimes_skipping_static() {
+        let ty: Type = syn::parse_str("Result<&'a Item, Cow<'static, Wrapper<'b>>>").unwrap();
+
+        assert_eq!(
+            LifetimeExtractor::extract_skipping_static(&ty),
+            vec![Lifetime("a".to_owned()), Lifetime("b".to_owned())]
+        );
+    }
+}

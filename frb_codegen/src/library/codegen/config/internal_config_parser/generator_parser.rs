@@ -205,3 +205,159 @@ fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, S
         .flatten()
         .collect())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{
+        compute_c_symbol_prefix, compute_dart_type_rename, compute_default_external_library_loader,
+        compute_default_external_library_relative_directory, fallback_llvm_path,
+    };
+    use crate::codegen::Config;
+    use serial_test::serial;
+    use std::collections::HashMap;
+    use std::fs;
+    use std::path::Path;
+    use tempfile::tempdir;
+
+    /// Keeps the LLVM fallback search order stable across supported platforms.
+    #[test]
+    fn fallback_llvm_path_has_stable_supported_platform_order() {
+        assert_eq!(
+            fallback_llvm_path(),
+            vec![
+                "/opt/homebrew/opt/llvm",
+                "/usr/local/opt/llvm",
+                "/usr/lib/llvm-9",
+                "/usr/lib/llvm-10",
+                "/usr/lib/llvm-11",
+                "/usr/lib/llvm-12",
+                "/usr/lib/llvm-13",
+                "/usr/lib/llvm-14",
+                "/usr/lib/",
+                "/usr/lib64/",
+                "C:/Program Files/llvm",
+                "C:/msys64/mingw64",
+            ]
+        );
+    }
+
+    /// Derives the C symbol prefix from the Dart pubspec package name.
+    #[test]
+    fn computes_c_symbol_prefix_from_dart_package_name() -> anyhow::Result<()> {
+        let temp_dir = tempdir()?;
+        fs::write(
+            temp_dir.path().join("pubspec.yaml"),
+            "name: bridge_package\n",
+        )?;
+
+        assert_eq!(
+            compute_c_symbol_prefix(temp_dir.path())?,
+            "frbgen_bridge_package_"
+        );
+        Ok(())
+    }
+
+    /// Produces a slash-normalized relative release loader directory.
+    #[test]
+    fn computes_relative_loader_directory_with_normalized_slashes() -> anyhow::Result<()> {
+        let directory = compute_default_external_library_relative_directory(
+            Path::new("project/native"),
+            Path::new("project/dart"),
+        )?;
+
+        assert_eq!(directory, "../native/target/release/");
+        assert!(!directory.contains('\\'));
+        Ok(())
+    }
+
+    /// Falls back when Cargo metadata cannot identify a Rust library package.
+    #[test]
+    #[serial]
+    fn loader_uses_unknown_fallbacks_when_cargo_metadata_fails() -> anyhow::Result<()> {
+        let temp_dir = tempdir()?;
+        let dart_root = temp_dir.path().join("dart");
+        let rust_crate_dir = temp_dir.path().join("native");
+        fs::create_dir_all(&dart_root)?;
+        fs::create_dir_all(&rust_crate_dir)?;
+
+        let loader = compute_default_external_library_loader(
+            &rust_crate_dir,
+            &dart_root,
+            &Config::default(),
+        );
+
+        assert_eq!(loader.stem, "UNKNOWN");
+        assert_eq!(loader.io_directory, "../native/target/release/");
+        assert_eq!(loader.web_prefix, "pkg/");
+        assert_eq!(loader.wasm_bindgen_name, "wasm_bindgen");
+        Ok(())
+    }
+
+    /// Applies loader overrides while reading a real minimal Cargo package.
+    #[test]
+    #[serial]
+    fn loader_uses_cargo_metadata_and_configured_defaults() -> anyhow::Result<()> {
+        let temp_dir = tempdir()?;
+        let dart_root = temp_dir.path().join("dart");
+        let rust_crate_dir = temp_dir.path().join("native");
+        fs::create_dir_all(rust_crate_dir.join("src"))?;
+        fs::create_dir_all(&dart_root)?;
+        fs::write(
+            rust_crate_dir.join("Cargo.toml"),
+            "[package]\nname = \"native-bridge\"\nversion = \"0.1.0\"\nedition = \"2021\"\n",
+        )?;
+        fs::write(rust_crate_dir.join("src/lib.rs"), "")?;
+
+        let loader = compute_default_external_library_loader(
+            &rust_crate_dir,
+            &dart_root,
+            &Config {
+                default_external_library_loader_web_prefix: Some("assets/".to_owned()),
+                wasm_bindgen_name: Some("custom_wasm".to_owned()),
+                ..Default::default()
+            },
+        );
+
+        assert_eq!(loader.stem, "native_bridge");
+        assert_eq!(loader.io_directory, "../native/target/release/");
+        assert_eq!(loader.web_prefix, "assets/");
+        assert_eq!(loader.wasm_bindgen_name, "custom_wasm");
+        Ok(())
+    }
+
+    /// Maps each rename to canonical raw and RustAutoOpaqueInner type keys.
+    #[test]
+    fn dart_type_rename_canonicalizes_raw_and_auto_opaque_types() -> anyhow::Result<()> {
+        let rename = compute_dart_type_rename(&Config {
+            dart_type_rename: Some(HashMap::from([(
+                "crate::Type < u8 >".to_owned(),
+                "DartType".to_owned(),
+            )])),
+            ..Default::default()
+        })?;
+
+        assert_eq!(rename.len(), 2);
+        assert_eq!(
+            rename.get("crate :: Type < u8 >"),
+            Some(&"DartType".to_owned())
+        );
+        assert_eq!(
+            rename.get(
+                "flutter_rust_bridge :: for_generated :: RustAutoOpaqueInner < crate :: Type < u8 > >"
+            ),
+            Some(&"DartType".to_owned())
+        );
+        Ok(())
+    }
+
+    /// Propagates invalid Rust syntax from configured Dart type rename keys.
+    #[test]
+    fn dart_type_rename_rejects_invalid_rust_type() {
+        let result = compute_dart_type_rename(&Config {
+            dart_type_rename: Some(HashMap::from([("Vec<".to_owned(), "DartType".to_owned())])),
+            ..Default::default()
+        });
+
+        assert!(result.is_err());
+    }
+}

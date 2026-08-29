@@ -15,3 +15,27 @@ pub unsafe fn ouroboros_change_lifetime_mut<'old, 'new: 'old, T: 'new>(
 ) -> &'new mut T {
     &mut *(data as *mut _)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    /// Preserves the referenced value when changing an immutable lifetime.
+    fn changes_immutable_lifetime() {
+        let value = 42;
+        let reference = unsafe { ouroboros_change_lifetime(&value) };
+
+        assert_eq!(*reference, 42);
+    }
+
+    #[test]
+    /// Preserves mutable access when changing a lifetime.
+    fn changes_mutable_lifetime() {
+        let mut value = 42;
+        let reference = unsafe { ouroboros_change_lifetime_mut(&mut value) };
+        *reference = 100;
+
+        assert_eq!(value, 100);
+    }
+}

@@ -56,3 +56,73 @@ fn parse_trait_impl(item_impl: &ItemImpl, trait_name: &str) -> HirFlatTraitImpl 
         impl_ty: *item_impl.self_ty.clone(),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+    use crate::utils::namespace::Namespace;
+    use quote::ToTokens;
+    use syn::parse_quote;
+
+    /// Records trait implementations and inherits impl attributes for methods.
+    #[test]
+    fn parses_trait_impl_methods_and_metadata() {
+        let meta = HirNaiveFlatItemMeta {
+            namespace: Namespace::new_raw("crate::api".to_owned()),
+            sources: vec![HirGenerationSource::Normal],
+            is_module_public: true,
+        };
+        let mut pack = HirFlatPack::default();
+        parse_syn_item_impl(
+            &mut pack,
+            parse_quote!(
+                #[frb(opaque)]
+                impl Service for Widget {
+                    fn run(&self) {}
+                    const ID: u8 = 1;
+                }
+            ),
+            &meta,
+        );
+
+        assert_eq!(pack.trait_impls.len(), 1);
+        assert_eq!(pack.trait_impls[0].trait_name, "Service");
+        assert_eq!(pack.functions.len(), 1);
+        assert_eq!(pack.functions[0].item_fn.name(), "run");
+        assert!(matches!(
+            pack.functions[0].owner,
+            HirFlatFunctionOwner::StructOrEnum { ref trait_def_name, .. }
+                if trait_def_name.as_deref() == Some("Service")
+        ));
+        assert_eq!(
+            pack.functions[0].item_fn.attrs()[0]
+                .to_token_stream()
+                .to_string(),
+            "# [frb (opaque)]"
+        );
+    }
+
+    /// Keeps inherent methods without recording a trait implementation.
+    #[test]
+    fn parses_inherent_impl_methods() {
+        let meta = HirNaiveFlatItemMeta {
+            namespace: Namespace::new_raw("crate::api".to_owned()),
+            sources: vec![],
+            is_module_public: true,
+        };
+        let mut pack = HirFlatPack::default();
+        parse_syn_item_impl(
+            &mut pack,
+            parse_quote!(impl Widget { pub fn new() {} }),
+            &meta,
+        );
+
+        assert!(pack.trait_impls.is_empty());
+        assert!(matches!(
+            pack.functions[0].owner,
+            HirFlatFunctionOwner::StructOrEnum { ref trait_def_name, .. }
+                if trait_def_name.is_none()
+        ));
+    }
+}

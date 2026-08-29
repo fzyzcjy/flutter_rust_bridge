@@ -92,3 +92,44 @@ fn auto_add_base_class_abstract_method(raw: WireDartCodecOutputSpec) -> WireDart
         inner: Acc { common, io, web },
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Copies common method signatures into both platform abstract outputs.
+    #[test]
+    fn auto_add_base_class_abstract_method_distributes_signature_only_methods() {
+        let raw = WireDartCodecOutputSpec {
+            inner: Acc {
+                common: vec![WireDartOutputCode {
+                    api_impl_class_methods: vec![DartApiImplClassMethod {
+                        signature: "int decode(int raw)".into(),
+                        body: Some("return raw;".into()),
+                    }],
+                    ..Default::default()
+                }],
+                io: vec![WireDartOutputCode::default()],
+                web: vec![WireDartOutputCode::default()],
+            },
+        };
+
+        let output = auto_add_base_class_abstract_method(raw);
+
+        for target_output in [&output.inner.io, &output.inner.web] {
+            assert_eq!(target_output.len(), 2);
+            assert_eq!(target_output[1].api_impl_class_methods.len(), 1);
+            assert_eq!(
+                target_output[1].api_impl_class_methods[0].signature,
+                "int decode(int raw)"
+            );
+            assert_eq!(target_output[1].api_impl_class_methods[0].body, None);
+        }
+        assert_eq!(
+            output.inner.common[0].api_impl_class_methods[0]
+                .body
+                .as_deref(),
+            Some("return raw;")
+        );
+    }
+}

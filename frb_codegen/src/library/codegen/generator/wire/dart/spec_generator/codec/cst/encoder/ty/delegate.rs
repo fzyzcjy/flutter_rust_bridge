@@ -173,3 +173,59 @@ fn uint8list_safe_ident(strict_dart_type: bool) -> String {
     }
     .safe_ident()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::super::test_utils;
+    use super::*;
+
+    /// Distinguishes strict and non-strict Uint8List wire identifiers.
+    #[test]
+    fn uint8_list_safe_ident_preserves_strict_dart_type() {
+        assert_eq!(uint8list_safe_ident(true), "list_prim_u_8_strict");
+        assert_eq!(uint8list_safe_ident(false), "list_prim_u_8_loose");
+    }
+
+    /// Emits target-specific string, duration, and unsupported delegate encoders.
+    #[test]
+    fn delegate_encoder_covers_string_time_and_unimplemented_branches() {
+        let pack = test_utils::pack();
+        let api_dart_config = test_utils::api_dart_config();
+        let wire_dart_config = test_utils::wire_dart_config(true);
+        let wire_rust_config = test_utils::wire_rust_config(true);
+        let context = test_utils::context(
+            &pack,
+            &wire_dart_config,
+            &wire_rust_config,
+            &api_dart_config,
+        );
+        let string = DelegateWireDartCodecCstGenerator::new(MirTypeDelegate::String, context)
+            .generate_encode_func_body();
+        let duration = DelegateWireDartCodecCstGenerator::new(
+            MirTypeDelegate::Time(MirTypeDelegateTime::Duration),
+            context,
+        )
+        .generate_encode_func_body();
+        let unsupported =
+            DelegateWireDartCodecCstGenerator::new(MirTypeDelegate::AnyhowException, context)
+                .generate_encode_func_body();
+
+        assert_eq!(
+            string.io.as_deref(),
+            Some("return cst_encode_list_prim_u_8_strict(utf8.encoder.convert(raw));")
+        );
+        assert_eq!(string.web.as_deref(), Some("return raw;"));
+        assert_eq!(
+            duration.io.as_deref(),
+            Some("return cst_encode_i_64(raw.inMicroseconds);")
+        );
+        assert_eq!(
+            duration.web.as_deref(),
+            Some("return cst_encode_i_64(BigInt.from(raw.inMilliseconds));")
+        );
+        assert_eq!(
+            unsupported.io.as_deref(),
+            Some("throw UnimplementedError();")
+        );
+    }
+}

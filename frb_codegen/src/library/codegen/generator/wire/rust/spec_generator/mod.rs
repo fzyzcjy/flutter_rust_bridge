@@ -59,3 +59,43 @@ fn generate_extern_struct_names(
         .unique()
         .collect_vec()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::acc::Acc;
+    use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
+        ExternClass, ExternClassMode,
+    };
+    use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+
+    fn codec_spec(names: &[&str]) -> WireRustCodecOutputSpec {
+        WireRustCodecOutputSpec {
+            inner: Acc::new_io(vec![WireRustOutputCode {
+                body: String::new(),
+                extern_funcs: vec![],
+                extern_classes: names
+                    .iter()
+                    .map(|name| ExternClass {
+                        name: (*name).into(),
+                        mode: ExternClassMode::Struct,
+                        body: String::new(),
+                        needs_ffigen: false,
+                    })
+                    .collect(),
+            }]),
+        }
+    }
+
+    /// Collects unique native class names in first-occurrence order across codecs.
+    #[test]
+    fn collects_unique_extern_struct_names_from_both_codec_directions() {
+        let dart2rust = codec_spec(&["Alpha", "Shared"]);
+        let rust2dart = codec_spec(&["Shared", "Beta"]);
+
+        assert_eq!(
+            generate_extern_struct_names(&dart2rust, &rust2dart),
+            ["Alpha", "Shared", "Beta"]
+        );
+    }
+}

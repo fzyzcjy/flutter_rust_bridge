@@ -204,7 +204,10 @@ fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
 }
 #[cfg(test)]
 mod tests {
-    use super::{remove_files_in_dir, remove_unnecessary_plugin_files};
+    use super::{
+        remove_files_in_dir, remove_package_ffi_pubspec_dependencies, remove_unnecessary_app_files,
+        remove_unnecessary_plugin_files,
+    };
     use crate::misc::IntegrationBackend;
     use std::fs;
     use std::path::Path;
@@ -214,6 +217,28 @@ mod tests {
             fs::create_dir_all(parent).unwrap();
         }
         fs::write(path, "x").unwrap();
+    }
+
+    /// Removes the initial app files but keeps the directories ready for integration output.
+    #[test]
+    fn remove_unnecessary_app_files_clears_flat_lib_and_test_directories() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let dart_root = temp_dir.path();
+        write_file(&dart_root.join("lib/main.dart"));
+        write_file(&dart_root.join("test/widget_test.dart"));
+
+        remove_unnecessary_app_files(dart_root).unwrap();
+
+        assert!(dart_root.join("lib").is_dir());
+        assert!(dart_root.join("test").is_dir());
+        assert!(fs::read_dir(dart_root.join("lib"))
+            .unwrap()
+            .next()
+            .is_none());
+        assert!(fs::read_dir(dart_root.join("test"))
+            .unwrap()
+            .next()
+            .is_none());
     }
 
     #[test]
@@ -299,6 +324,7 @@ dev_dependencies:
         let pubspec = fs::read_to_string(dart_root.join("pubspec.yaml")).unwrap();
         assert!(!pubspec.contains("code_assets:"));
         assert!(!pubspec.contains("hooks:"));
+        assert!(!pubspec.contains("logging:"));
         assert!(!pubspec.contains("native_toolchain_c:"));
         assert!(!pubspec.contains("ffi:"));
         assert!(!pubspec.contains("ffigen:"));
@@ -366,5 +392,41 @@ dev_dependencies:
         assert!(pubspec.contains("ffigen:"));
         assert!(pubspec.contains("test:"));
         assert!(pubspec.contains("keep_me:"));
+    }
+
+    /// Removes only complete package-ffi dependency entries from both dependency sections.
+    #[test]
+    fn remove_package_ffi_pubspec_dependencies_keeps_similarly_named_entries() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let dart_root = temp_dir.path();
+        fs::write(
+            dart_root.join("pubspec.yaml"),
+            "dependencies:\n  ffi: ^2.0.0\n  ffi_helper: ^1.0.0\n  logging: ^1.0.0\ndev_dependencies:\n  test: ^1.0.0\n  tester: ^1.0.0\n",
+        )
+        .unwrap();
+
+        remove_package_ffi_pubspec_dependencies(dart_root).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(dart_root.join("pubspec.yaml")).unwrap(),
+            "dependencies:\n  ffi_helper: ^1.0.0\ndev_dependencies:\n  tester: ^1.0.0\n",
+        );
+    }
+
+    /// Reports missing generated directories instead of silently treating the cleanup as complete.
+    #[test]
+    fn remove_unnecessary_plugin_files_rejects_missing_template_layout() {
+        let temp_dir = tempfile::tempdir().unwrap();
+
+        let err = remove_unnecessary_plugin_files(temp_dir.path(), IntegrationBackend::Cargokit)
+            .unwrap_err();
+
+        assert_eq!(
+            err.root_cause()
+                .downcast_ref::<std::io::Error>()
+                .unwrap()
+                .kind(),
+            std::io::ErrorKind::NotFound,
+        );
     }
 }

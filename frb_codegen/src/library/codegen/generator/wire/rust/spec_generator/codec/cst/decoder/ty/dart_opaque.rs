@@ -23,3 +23,43 @@ impl WireRustCodecCstGeneratorDecoderTrait for DartOpaqueWireRustCodecCstGenerat
         .into()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::test_utils;
+    use crate::codegen::ir::mir::ty::dart_opaque::MirTypeDartOpaque;
+
+    /// Emits opaque decoding and target-specific pointer versus JavaScript wire types.
+    #[test]
+    fn dart_opaque_decoder_covers_shared_decode_and_target_wire_types() {
+        let pack = test_utils::pack();
+        let wire_dart_config = test_utils::wire_dart_config(true);
+        let wire_rust_config = test_utils::wire_rust_config(true);
+        let api_dart_config = test_utils::api_dart_config();
+        let dart_context = test_utils::context(
+            &pack,
+            &wire_dart_config,
+            &wire_rust_config,
+            &api_dart_config,
+        );
+        let context = dart_context.as_wire_rust_context();
+        let generator = DartOpaqueWireRustCodecCstGenerator::new(MirTypeDartOpaque, context);
+
+        assert_eq!(
+            generator.generate_impl_decode_body().io.as_deref(),
+            Some(
+                "unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }"
+            )
+        );
+        assert_eq!(
+            generator.generate_impl_decode_body().web,
+            generator.generate_impl_decode_body().io
+        );
+        assert_eq!(
+            generator.rust_wire_type(Target::Io),
+            "*const std::ffi::c_void"
+        );
+        assert_eq!(generator.rust_wire_type(Target::Web), JS_VALUE);
+    }
+}

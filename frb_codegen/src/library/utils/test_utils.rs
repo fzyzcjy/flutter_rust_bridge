@@ -13,6 +13,22 @@ pub(crate) fn get_test_fixture_dir(fixture_name: &str) -> PathBuf {
         .unwrap()
 }
 
+pub(crate) struct CurrentDirGuard(PathBuf);
+
+impl CurrentDirGuard {
+    pub(crate) fn change_to(path: &Path) -> anyhow::Result<Self> {
+        let previous = env::current_dir()?;
+        env::set_current_dir(path)?;
+        Ok(Self(previous))
+    }
+}
+
+impl Drop for CurrentDirGuard {
+    fn drop(&mut self) {
+        env::set_current_dir(&self.0).expect("restore current directory");
+    }
+}
+
 /// "golden" means comparison tests
 /// see, for example, https://api.flutter.dev/flutter/flutter_test/matchesGoldenFile.html
 /// for more information

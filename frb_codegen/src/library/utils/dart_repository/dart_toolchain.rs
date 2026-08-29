@@ -54,3 +54,35 @@ impl DartToolchain {
             .success()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    /// Displays the executable name for each supported toolchain.
+    fn displays_each_toolchain_name() {
+        assert_eq!(DartToolchain::Dart.to_string(), "dart");
+        assert_eq!(DartToolchain::Flutter.to_string(), "flutter");
+    }
+
+    #[test]
+    /// Uses the standard manifest and lock filenames for both toolchains.
+    fn uses_standard_pubspec_filenames() {
+        assert_eq!(DartToolchain::manifest_filename(), "pubspec.yaml");
+        assert_eq!(DartToolchain::lock_filename(), "pubspec.lock");
+    }
+
+    #[test]
+    /// Builds commands appropriate for Dart and Flutter package operations.
+    fn builds_toolchain_specific_run_commands() {
+        assert_eq!(
+            DartToolchain::Dart.as_run_command(),
+            vec![PathBuf::from("dart")]
+        );
+        assert_eq!(
+            DartToolchain::Flutter.as_run_command(),
+            vec![PathBuf::from("flutter"), PathBuf::from("pub")]
+        );
+    }
+}

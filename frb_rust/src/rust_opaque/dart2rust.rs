@@ -22,3 +22,18 @@ macro_rules! frb_generated_rust_opaque_dart2rust {
         }
     };
 }
+
+#[cfg(test)]
+mod tests {
+    use super::decode_rust_opaque_nom;
+    use crate::RustOpaqueNom;
+
+    /// Recovers a Rust opaque value from its transferred raw Arc pointer.
+    #[test]
+    fn decodes_raw_nominal_opaque_pointer() {
+        let raw = RustOpaqueNom::new(42).sse_encode_raw().0;
+        let decoded = unsafe { decode_rust_opaque_nom::<i32>(raw) };
+
+        assert_eq!(*decoded, 42);
+    }
+}

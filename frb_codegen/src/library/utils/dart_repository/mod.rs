@@ -28,6 +28,7 @@ pub(crate) fn get_dart_package_name(dart_root: &Path) -> anyhow::Result<String> 
 mod tests {
     use super::dart_repo::DartRepository;
     use super::dart_toolchain::DartToolchain;
+    use super::get_dart_package_name;
     use crate::utils::{
         dart_repository::{
             dart_repo::DartDependencyMode,
@@ -40,8 +41,10 @@ mod tests {
     use semver::Op;
     use std::{
         collections::HashMap,
+        fs,
         path::{Path, PathBuf},
     };
+    use tempfile::TempDir;
 
     lazy_static! {
         static ref FRB_EXAMPLES_FOLDER: PathBuf = {
@@ -57,6 +60,7 @@ mod tests {
         assert_eq!(repo.toolchain, expect_toolchain);
     }
 
+    /// Detects the Dart toolchain from a repository manifest.
     #[test]
     fn guess_dart_toolchain() {
         guess_toolchain_base(
@@ -65,6 +69,7 @@ mod tests {
         );
     }
 
+    /// Detects the Flutter toolchain from a repository manifest.
     #[test]
     fn guess_flutter_toolchain() {
         guess_toolchain_base(
@@ -73,11 +78,13 @@ mod tests {
         );
     }
 
+    /// Rejects Dart ranges that lack Cargo's required comparator separator.
     #[test]
     fn cannot_parse_dart_range_syntax() {
         assert!(VersionReq::parse(">=0.1.2 <0.2.0").is_err());
     }
 
+    /// Accepts Dart caret syntax as a Cargo version requirement.
     #[test]
     fn can_parse_dart_caret_syntax() {
         let caret = VersionReq::parse("^0.1.2");
@@ -85,6 +92,7 @@ mod tests {
         assert_eq!(caret.unwrap().comparators.first().unwrap().op, Op::Caret);
     }
 
+    /// Preserves semantic differences between distinct version requirement operators.
     #[test]
     fn cannot_compare_version_req_with_different_op() {
         assert_ne!(
@@ -93,6 +101,7 @@ mod tests {
         );
     }
 
+    /// Parses inline, explicit, and absent dependency declarations.
     #[test]
     fn can_parse_pubspec_deps() {
         let yaml = "
@@ -121,6 +130,7 @@ mod tests {
         assert_eq!(pubspec.dependencies, Some(expected));
     }
 
+    /// Discovers workspace roots for roots, children, and standalone repositories.
     #[test]
     fn can_determine_workspace() {
         let ws_dir = get_test_fixture_dir("library/utils/dart_repository/workspace_pubspecs");
@@ -142,6 +152,7 @@ mod tests {
         assert_eq!(non_ws_repo.workspace_root, non_ws_dir);
     }
 
+    /// Resolves direct and transitive dependencies from a workspace lock file.
     #[test]
     fn can_determine_workspace_dependencies() {
         let gt_eq_ver_one = VersionReq::parse(">=1.0.0").expect("Failed to parse version");
@@ -207,5 +218,28 @@ mod tests {
         assert!(ws_repo
             .has_installed("test_dev_dep", DartDependencyMode::Dev, &gt_eq_ver_one)
             .is_ok());
+    }
+
+    /// Reads a package name from the repository manifest.
+    #[test]
+    fn reads_dart_package_name() {
+        let directory = TempDir::new().unwrap();
+        fs::write(directory.path().join("pubspec.yaml"), "name: my_package\n").unwrap();
+
+        assert_eq!(
+            get_dart_package_name(directory.path()).unwrap(),
+            "my_package"
+        );
+    }
+
+    /// Rejects manifests with absent or non-string package names.
+    #[test]
+    fn rejects_invalid_dart_package_name() {
+        for pubspec in ["description: unnamed\n", "name: [not, a, string]\n"] {
+            let directory = TempDir::new().unwrap();
+            fs::write(directory.path().join("pubspec.yaml"), pubspec).unwrap();
+
+            assert!(get_dart_package_name(directory.path()).is_err());
+        }
     }
 }

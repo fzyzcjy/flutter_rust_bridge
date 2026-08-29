@@ -83,3 +83,19 @@ fn generate_impl_decode_code_block(api: &str, wire: &str, body: &str) -> String 
         }}",
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Wraps trimmed decoder bodies in the CST decode implementation.
+    #[test]
+    fn generates_decode_impl_with_codec_comment_and_trimmed_body() {
+        let output = generate_impl_decode_code_block("ApiType", "WireType", "\n  decode()\n");
+
+        assert_eq!(
+            output,
+            "impl CstDecode<ApiType> for WireType {\n            // Codec=Cst (C-struct based), see doc to use other codecs\n            fn cst_decode(self) -> ApiType {\n                decode()\n            }\n        }"
+        );
+    }
+}

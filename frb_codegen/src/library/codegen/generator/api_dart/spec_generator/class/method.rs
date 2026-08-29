@@ -297,3 +297,195 @@ fn generate_implementation(
         },
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+    use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::pack::MirPack;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::MirType;
+    use crate::utils::namespace::Namespace;
+    use std::collections::HashMap;
+    use std::path::PathBuf;
+
+    fn method_info(
+        mode: MirFuncOwnerInfoMethodMode,
+        name: &str,
+        dart_name: Option<&str>,
+    ) -> MirFuncOwnerInfoMethod {
+        MirFuncOwnerInfoMethod {
+            owner_ty: MirType::Primitive(MirTypePrimitive::I32),
+            owner_ty_raw: "i32".into(),
+            actual_method_name: name.into(),
+            actual_method_dart_name: dart_name.map(str::to_owned),
+            mode,
+            trait_def: None,
+        }
+    }
+
+    fn context<'a>(
+        mir_pack: &'a MirPack,
+        config: &'a GeneratorApiDartInternalConfig,
+    ) -> ApiDartGeneratorContext<'a> {
+        ApiDartGeneratorContext { mir_pack, config }
+    }
+
+    fn config() -> GeneratorApiDartInternalConfig {
+        GeneratorApiDartInternalConfig {
+            dart_collection_deep_equality: false,
+            dart_enums_style: true,
+            dart3: true,
+            dart_decl_base_output_path: PathBuf::new(),
+            dart_impl_output_path: Default::default(),
+            dart_entrypoint_class_name: "Entrypoint".into(),
+            dart_preamble: String::new(),
+            dart_type_rename: HashMap::new(),
+        }
+    }
+
+    fn pack(funcs_all: Vec<MirFunc>) -> MirPack {
+        MirPack {
+            funcs_all,
+            extra_types_all: vec![],
+            struct_pool: Default::default(),
+            enum_pool: Default::default(),
+            dart_code_of_type: Default::default(),
+            existing_handler: None,
+            skips: vec![],
+            trait_impls: vec![],
+            extra_rust_output_code: String::new(),
+            extra_dart_output_code: Default::default(),
+        }
+    }
+
+    fn constructor_func() -> MirFunc {
+        MirFunc {
+            namespace: Namespace::default(),
+            name: MirIdent::new("new".into(), None),
+            id: None,
+            inputs: vec![],
+            output: crate::codegen::ir::mir::func::MirFuncOutput {
+                normal: MirType::Primitive(MirTypePrimitive::I32),
+                error: None,
+            },
+            owner: MirFuncOwnerInfo::Method(method_info(
+                MirFuncOwnerInfoMethodMode::Static,
+                "new",
+                None,
+            )),
+            mode: crate::codegen::ir::mir::func::MirFuncMode::Sync,
+            stream_dart_await: false,
+            rust_async: false,
+            initializer: false,
+            init_dart_code: None,
+            arg_mode: crate::codegen::ir::mir::func::MirFuncArgMode::Named,
+            accessor: None,
+            comments: vec![],
+            codec_mode_pack: CodecModePack {
+                dart2rust: CodecMode::Cst,
+                rust2dart: CodecMode::Cst,
+            },
+            rust_call_code: None,
+            rust_aop_after: None,
+            impl_mode: MirFuncImplMode::Normal,
+            src_lineno_pseudo: 0,
+        }
+    }
+
+    #[test]
+    /// Selects the configured emission mode for static and instance methods.
+    fn selects_method_mode_by_receiver_kind() {
+        let config = GenerateApiMethodConfig {
+            mode_static: GenerateApiMethodMode::DeclOnly,
+            mode_non_static: GenerateApiMethodMode::Nothing,
+        };
+
+        assert!(matches!(
+            config.get(&MirFuncOwnerInfoMethodMode::Static),
+            GenerateApiMethodMode::DeclOnly
+        ));
+        assert!(matches!(
+            config.get(&MirFuncOwnerInfoMethodMode::Instance),
+            GenerateApiMethodMode::Nothing
+        ));
+    }
+
+    #[test]
+    /// Omits only the synthetic receiver parameter for instance methods.
+    fn computes_skip_names_from_method_receiver_kind() {
+        assert_eq!(
+            compute_skip_names(&method_info(
+                MirFuncOwnerInfoMethodMode::Static,
+                "call",
+                None
+            )),
+            Vec::<&str>::new()
+        );
+        assert_eq!(
+            compute_skip_names(&method_info(
+                MirFuncOwnerInfoMethodMode::Instance,
+                "call",
+                None
+            )),
+            vec!["that"]
+        );
+    }
+
+    #[test]
+    /// Generates constructor, escaped Rust-name, and explicit Dart-name method identifiers.
+    fn generates_method_names_for_constructor_keyword_and_override_cases() {
+        assert_eq!(
+            generate_method_name(
+                &method_info(MirFuncOwnerInfoMethodMode::Static, "new", None),
+                Some(MirFuncDefaultConstructorMode::DartConstructor),
+            ),
+            "newInstance"
+        );
+        assert_eq!(
+            generate_method_name(
+                &method_info(MirFuncOwnerInfoMethodMode::Static, "Class", None),
+                None
+            ),
+            "class_"
+        );
+        assert_eq!(
+            generate_method_name(
+                &method_info(
+                    MirFuncOwnerInfoMethodMode::Static,
+                    "ignored",
+                    Some("preferred_name")
+                ),
+                None
+            ),
+            "preferredName"
+        );
+    }
+
+    #[test]
+    /// Adds the raw postfix exactly when the owner has a synchronous default constructor.
+    fn adds_constructor_postfix_only_for_default_dart_constructors() {
+        let config = config();
+        let without_constructor = pack(vec![]);
+        assert_eq!(
+            dart_constructor_postfix(
+                "int",
+                &without_constructor.funcs_all,
+                context(&without_constructor, &config)
+            ),
+            ""
+        );
+
+        let with_constructor = pack(vec![constructor_func()]);
+        assert_eq!(
+            dart_constructor_postfix(
+                "int",
+                &with_constructor.funcs_all,
+                context(&with_constructor, &config)
+            ),
+            ".raw"
+        );
+    }
+}

@@ -51,8 +51,9 @@ pub fn decode_uuid(id: Vec<u8>) -> uuid::Uuid {
 #[cfg(test)]
 #[cfg(feature = "chrono")]
 mod tests {
+    /// Decodes positive and negative timestamps at the platform precision.
     #[test]
-    fn test_decode_timestamp() {
+    fn test_decode_timestamp_preserves_seconds_and_nanoseconds() {
         #[cfg(not(target_family = "wasm"))]
         {
             // input in microseconds
@@ -70,5 +71,26 @@ mod tests {
             assert_eq!(s, 3_496);
             assert_eq!(ns, 567_000_000);
         }
+
+        let super::Timestamp { s, ns } = super::decode_timestamp(-1);
+        assert_eq!(s, 0);
+        #[cfg(not(target_family = "wasm"))]
+        assert_eq!(ns, 999_999_000);
+        #[cfg(target_family = "wasm")]
+        assert_eq!(ns, 999_000_000);
+    }
+}
+
+#[cfg(test)]
+#[cfg(feature = "uuid")]
+mod uuid_tests {
+    /// Decodes UUID bytes and rejects an invalid byte count.
+    #[test]
+    fn test_decode_uuid_validates_the_input_length() {
+        let bytes = [7_u8; super::UUID_SIZE_IN_BYTES];
+        assert_eq!(super::decode_uuid(bytes.to_vec()).as_bytes(), &bytes);
+
+        let result = std::panic::catch_unwind(|| super::decode_uuid(vec![7; 15]));
+        assert!(result.is_err());
     }
 }

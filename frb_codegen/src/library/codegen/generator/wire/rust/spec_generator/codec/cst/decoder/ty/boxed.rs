@@ -133,3 +133,53 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
                 && !self.mir.inner.is_primitive()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::test_utils;
+    use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+
+    /// Distinguishes API and auto-added boxed primitive decoding and allocation.
+    #[test]
+    fn boxed_decoder_covers_primitive_ownership_and_web_wire_types() {
+        let pack = test_utils::pack();
+        let wire_dart_config = test_utils::wire_dart_config(true);
+        let wire_rust_config = test_utils::wire_rust_config(true);
+        let api_dart_config = test_utils::api_dart_config();
+        let dart_context = test_utils::context(
+            &pack,
+            &wire_dart_config,
+            &wire_rust_config,
+            &api_dart_config,
+        );
+        let context = dart_context.as_wire_rust_context();
+
+        for (exist_in_real_api, expected) in [
+            (
+                true,
+                "unsafe {  flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }",
+            ),
+            (
+                false,
+                "unsafe { * flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }",
+            ),
+        ] {
+            let generator = BoxedWireRustCodecCstGenerator::new(
+                MirTypeBoxed {
+                    exist_in_real_api,
+                    inner: Box::new(MirType::Primitive(MirTypePrimitive::I32)),
+                },
+                context,
+            );
+            assert_eq!(
+                generator.generate_impl_decode_body().io.as_deref(),
+                Some(expected)
+            );
+            assert_eq!(generator.rust_wire_type(Target::Web), JS_VALUE);
+            assert!(!generator.rust_wire_is_pointer(Target::Web));
+            assert_eq!(generator.generate_allocate_funcs().io.extern_funcs.len(), 1);
+        }
+    }
+}

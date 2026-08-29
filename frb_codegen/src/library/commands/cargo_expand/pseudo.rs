@@ -222,8 +222,25 @@ mod tests {
     use super::*;
     use proc_macro2::{Delimiter, TokenTree};
     use quote::quote;
+    use quote::ToTokens;
+    use std::fs;
     use syn::parse_quote;
+    use tempfile::TempDir;
 
+    fn write_crate_file(temp_dir: &TempDir, relative_path: &str, content: &str) {
+        let path = temp_dir.path().join(relative_path);
+        fs::create_dir_all(path.parent().unwrap()).unwrap();
+        fs::write(path, content).unwrap();
+    }
+
+    fn parsed_tokens(temp_dir: &TempDir) -> String {
+        run(temp_dir.path(), None)
+            .unwrap()
+            .into_token_stream()
+            .to_string()
+    }
+
+    /// Lists file candidates in Rust's module resolution order.
     #[test]
     fn test_get_module_file_path_candidates_simple() {
         let actual = get_module_file_path_candidates("api", &PathBuf::from("/hello/src/main.rs"));
@@ -358,5 +375,44 @@ mod tests {
             .as_ref()
             .and_then(|(_, path, _)| path.segments.last())
             .is_some_and(|segment| segment.ident == "Clone" || segment.ident == "Debug")
+    }
+
+    /// Expands an external module stored in the sibling Rust source file.
+    #[test]
+    fn test_run_expands_external_module_from_file() {
+        let temp_dir = TempDir::new().unwrap();
+        write_crate_file(&temp_dir, "src/lib.rs", "mod foo;");
+        write_crate_file(&temp_dir, "src/foo.rs", "pub struct Foo;");
+
+        assert_eq!(parsed_tokens(&temp_dir), "mod foo { pub struct Foo ; }");
+    }
+
+    /// Expands an external module stored in the conventional mod.rs file.
+    #[test]
+    fn test_run_expands_external_module_from_mod_rs() {
+        let temp_dir = TempDir::new().unwrap();
+        write_crate_file(&temp_dir, "src/lib.rs", "mod foo;");
+        write_crate_file(&temp_dir, "src/foo/mod.rs", "pub struct Foo;");
+
+        assert_eq!(parsed_tokens(&temp_dir), "mod foo { pub struct Foo ; }");
+    }
+
+    /// Leaves an external module untouched when its source file is absent.
+    #[test]
+    fn test_run_leaves_missing_external_module_unchanged() {
+        let temp_dir = TempDir::new().unwrap();
+        write_crate_file(&temp_dir, "src/lib.rs", "mod missing;");
+
+        assert_eq!(parsed_tokens(&temp_dir), "mod missing ;");
+    }
+
+    /// Returns the parser error when an external module contains malformed Rust.
+    #[test]
+    fn test_run_returns_error_for_malformed_external_module() {
+        let temp_dir = TempDir::new().unwrap();
+        write_crate_file(&temp_dir, "src/lib.rs", "mod foo;");
+        write_crate_file(&temp_dir, "src/foo.rs", "pub struct Foo {");
+
+        assert!(run(temp_dir.path(), None).is_err());
     }
 }

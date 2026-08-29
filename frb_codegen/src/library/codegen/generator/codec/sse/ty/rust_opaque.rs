@@ -100,3 +100,92 @@ pub(super) fn generate_generalized_rust_opaque_encode(
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+    use crate::codegen::generator::codec::sse::lang::rust::RustLang;
+    use std::collections::HashMap;
+    use std::path::PathBuf;
+
+    fn pack() -> MirPack {
+        MirPack {
+            funcs_all: vec![],
+            extra_types_all: vec![],
+            struct_pool: Default::default(),
+            enum_pool: Default::default(),
+            dart_code_of_type: Default::default(),
+            existing_handler: None,
+            skips: vec![],
+            trait_impls: vec![],
+            extra_rust_output_code: String::new(),
+            extra_dart_output_code: Default::default(),
+        }
+    }
+
+    fn config() -> GeneratorApiDartInternalConfig {
+        GeneratorApiDartInternalConfig {
+            dart_collection_deep_equality: false,
+            dart_enums_style: true,
+            dart3: true,
+            dart_decl_base_output_path: PathBuf::new(),
+            dart_impl_output_path: Default::default(),
+            dart_entrypoint_class_name: "Entrypoint".into(),
+            dart_preamble: String::new(),
+            dart_type_rename: HashMap::new(),
+        }
+    }
+
+    /// Emits codec-specific Rust opaque decode calls with the required safety boundary.
+    #[test]
+    fn rust_opaque_decode_uses_codec_specific_safety() {
+        assert_eq!(
+            generate_decode_rust_opaque("inner", RustOpaqueCodecMode::Nom),
+            "unsafe { decode_rust_opaque_nom(inner) } "
+        );
+        assert_eq!(
+            generate_decode_rust_opaque("inner", RustOpaqueCodecMode::Moi),
+            "decode_rust_opaque_moi(inner)"
+        );
+    }
+
+    /// Preserves expressions unless the caller explicitly requires an unsafe block.
+    #[test]
+    fn maybe_unsafe_wraps_only_unsafe_expressions() {
+        assert_eq!(
+            generate_maybe_unsafe("decode(value)", false),
+            "decode(value)"
+        );
+        assert_eq!(
+            generate_maybe_unsafe("decode(value)", true),
+            "unsafe { decode(value) } "
+        );
+    }
+
+    /// Emits Rust opaque pointer-size encoding and delegated decoding for both codecs.
+    #[test]
+    fn generalized_rust_opaque_paths_emit_rust_encode_and_decode_bodies() {
+        let pack = pack();
+        let config = config();
+        let context = CodecSseTyContext::new(&pack, &config);
+        let lang = Lang::RustLang(RustLang);
+        let encode = generate_generalized_rust_opaque_encode(
+            &lang,
+            "ignored",
+            Primitive(MirTypePrimitive::I32),
+            context,
+        );
+        assert!(encode.contains("self.sse_encode_raw()"));
+        assert!(encode.contains("<usize>::sse_encode(ptr, serializer)"));
+        assert!(encode.contains("<i32>::sse_encode(size, serializer)"));
+        let decode = generate_generalized_rust_opaque_decode(
+            &lang,
+            Primitive(MirTypePrimitive::I32),
+            RustOpaqueCodecMode::Nom,
+            context,
+        );
+        assert!(decode.contains("<usize>::sse_decode(deserializer)"));
+        assert!(decode.contains("unsafe { decode_rust_opaque_nom(inner) }"));
+    }
+}

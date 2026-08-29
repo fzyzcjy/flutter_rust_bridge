@@ -85,3 +85,45 @@ impl PathText {
         Self { path, text }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn path_text(path: &str, text: &str) -> PathText {
+        PathText::new(PathBuf::from(path), GeneralCode::new_rust(text.to_owned()))
+    }
+
+    /// Concatenates path-text collections and merges text that targets one path.
+    #[test]
+    fn concatenates_and_merges_path_texts() {
+        let combined = PathTexts(vec![path_text("shared.rs", "first")])
+            + PathTexts(vec![
+                path_text("shared.rs", "second"),
+                path_text("other.rs", "third"),
+            ]);
+        let merged = combined.merge();
+
+        assert_eq!(merged.0.len(), 2);
+        assert_eq!(
+            merged
+                .0
+                .iter()
+                .find(|item| item.path == std::path::Path::new("shared.rs"))
+                .unwrap()
+                .text
+                .all_code(),
+            "firstsecond"
+        );
+        assert_eq!(
+            merged
+                .0
+                .iter()
+                .find(|item| item.path == std::path::Path::new("other.rs"))
+                .unwrap()
+                .text
+                .all_code(),
+            "third"
+        );
+    }
+}

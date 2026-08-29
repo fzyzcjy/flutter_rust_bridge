@@ -282,3 +282,15 @@ impl ApiDartGeneratorInfoTrait for TraitDefApiDartGenerator<'_> {
         self.mir.name.name.to_string()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::make_dart_type_nullable;
+
+    /// Adds one nullable suffix without duplicating an existing suffix.
+    #[test]
+    fn nullable_type_suffix_is_idempotent() {
+        assert_eq!(make_dart_type_nullable("String".into()), "String?");
+        assert_eq!(make_dart_type_nullable("String?".into()), "String?");
+    }
+}

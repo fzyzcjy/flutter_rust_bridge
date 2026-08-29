@@ -85,18 +85,18 @@ mod tests {
         syn::parse_str(s).unwrap()
     }
 
+    /// Substitutes a single alias parameter in its result position.
     #[test]
     fn test_substitute_simple_result_alias() {
-        // type AppResult<T> = Result<T, AppError>; use site AppResult<MyDto>
         let target: Type = parse_quote!(Result<T, AppError>);
         let args = vec![parse("MyDto")];
         let output = substitute_type_params(&["T".to_owned()], &target, &args).unwrap();
         assert_eq!(output, parse_quote!(Result<MyDto, AppError>));
     }
 
+    /// Preserves the caller-supplied order while substituting multiple parameters.
     #[test]
     fn test_substitute_multiple_params() {
-        // type Pair<A, B> = (B, A); use site Pair<i32, String>
         let target: Type = parse_quote!((B, A));
         let args = vec![parse("i32"), parse("String")];
         let output =
@@ -104,15 +104,16 @@ mod tests {
         assert_eq!(output, parse_quote!((String, i32)));
     }
 
+    /// Rewrites parameters inside nested generic arguments.
     #[test]
     fn test_substitute_nested_param() {
-        // type Wrap<T> = Vec<Option<T>>; use site Wrap<MyDto>
         let target: Type = parse_quote!(Vec<Option<T>>);
         let args = vec![parse("MyDto")];
         let output = substitute_type_params(&["T".to_owned()], &target, &args).unwrap();
         assert_eq!(output, parse_quote!(Vec<Option<MyDto>>));
     }
 
+    /// Rejects aliases whose supplied argument count does not match.
     #[test]
     fn test_substitute_arg_count_mismatch_returns_none() {
         let target: Type = parse_quote!(Result<T, AppError>);
@@ -120,34 +121,47 @@ mod tests {
         assert!(substitute_type_params(&["T".to_owned()], &target, &args).is_none());
     }
 
+    /// Extracts the sole type argument from a generic path.
     #[test]
     fn test_extract_generic_type_args() {
         let args = extract_generic_type_args(&parse("AppResult<MyDto>")).unwrap();
         assert_eq!(args, vec![parse("MyDto")]);
     }
 
+    /// Extracts every type argument from a multi-argument path.
     #[test]
     fn test_extract_generic_type_args_multiple() {
         let args = extract_generic_type_args(&parse("Map<String, i32>")).unwrap();
         assert_eq!(args, vec![parse("String"), parse("i32")]);
     }
 
+    /// Reports no arguments for a path without angle brackets.
     #[test]
     fn test_extract_generic_type_args_none_for_plain_path() {
         assert!(extract_generic_type_args(&parse("PlainType")).is_none());
     }
 
+    /// Reads arguments from the last segment of a qualified path.
     #[test]
     fn test_extract_generic_type_args_qualified_path() {
-        // Arguments live on the *last* segment of a qualified path.
         let args = extract_generic_type_args(&parse("std::result::Result<MyDto>")).unwrap();
         assert_eq!(args, vec![parse("MyDto")]);
     }
 
+    /// Excludes lifetime and const arguments from the extracted type list.
     #[test]
     fn test_extract_generic_type_args_skips_non_type_args() {
-        // Lifetime (and const) arguments are not types and are filtered out.
         let args = extract_generic_type_args(&parse("Cow<'a, str>")).unwrap();
         assert_eq!(args, vec![parse("str")]);
+    }
+
+    /// Leaves qualified paths named like a parameter unchanged.
+    #[test]
+    fn test_substitute_does_not_replace_qualified_parameter_name() {
+        let target: Type = parse_quote!(module::T);
+        let output =
+            substitute_type_params(&["T".to_owned()], &target, &[parse("String")]).unwrap();
+
+        assert_eq!(output, parse_quote!(module::T));
     }
 }

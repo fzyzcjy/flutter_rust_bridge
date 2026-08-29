@@ -32,3 +32,59 @@ impl StructOrRecord {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::codec::sse::lang::{dart::DartLang, rust::RustLang};
+    use crate::codegen::ir::mir::field::MirFieldSettings;
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::MirType;
+
+    fn field() -> MirField {
+        MirField {
+            ty: MirType::Primitive(MirTypePrimitive::I32),
+            name: MirIdent::new("r#field_name".to_owned(), Some("dartName".to_owned())),
+            is_final: false,
+            is_rust_public: None,
+            comments: vec![],
+            default: None,
+            settings: MirFieldSettings::default(),
+        }
+    }
+
+    /// Formats struct and record fields for Dart's named and positional syntax.
+    #[test]
+    fn formats_dart_struct_and_record_field_names() {
+        let field = field();
+
+        assert_eq!(
+            StructOrRecord::Struct.field_name(2, &field, true, &Lang::DartLang(DartLang)),
+            "dartName"
+        );
+        assert_eq!(
+            StructOrRecord::Record.field_name(2, &field, true, &Lang::DartLang(DartLang)),
+            "$3"
+        );
+    }
+
+    /// Formats Rust named and unnamed struct fields plus record fields by index.
+    #[test]
+    fn formats_rust_struct_and_record_field_names() {
+        let field = field();
+
+        assert_eq!(
+            StructOrRecord::Struct.field_name(2, &field, true, &Lang::RustLang(RustLang)),
+            "r#field_name"
+        );
+        assert_eq!(
+            StructOrRecord::Struct.field_name(2, &field, false, &Lang::RustLang(RustLang)),
+            "2"
+        );
+        assert_eq!(
+            StructOrRecord::Record.field_name(2, &field, true, &Lang::RustLang(RustLang)),
+            "2"
+        );
+    }
+}

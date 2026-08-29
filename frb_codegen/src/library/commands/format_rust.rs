@@ -58,3 +58,56 @@ fn with_extension(mut path: PathBuf, ext: &str) -> PathBuf {
     path.set_extension(ext);
     path
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+    use tempfile::tempdir;
+
+    #[test]
+    /// Converts a descendant path into a path relative to the formatter root.
+    fn prepares_a_relative_path() -> anyhow::Result<()> {
+        let directory = tempdir()?;
+        let source = directory.path().join("src").join("lib.rs");
+        fs::create_dir_all(source.parent().unwrap())?;
+        fs::write(&source, "")?;
+
+        assert_eq!(
+            prepare_paths(&[source], directory.path(), &[])?,
+            vec![PathBuf::from("src/lib.rs")]
+        );
+        Ok(())
+    }
+
+    #[test]
+    /// Uses the dot path when formatting the formatter root itself.
+    fn prepares_the_base_path_as_dot() -> anyhow::Result<()> {
+        let directory = tempdir()?;
+
+        assert_eq!(
+            prepare_paths(&[directory.path().to_owned()], directory.path(), &[])?,
+            vec![PathBuf::from(".")]
+        );
+        Ok(())
+    }
+
+    #[test]
+    /// Replaces a path extension without changing its parent directory.
+    fn replaces_a_path_extension() {
+        assert_eq!(
+            with_extension(PathBuf::from("nested/api.rs"), "dart"),
+            PathBuf::from("nested/api.dart")
+        );
+    }
+
+    #[cfg(unix)]
+    #[test]
+    /// Rejects a path that cannot be represented as UTF-8.
+    fn rejects_a_non_utf8_path() {
+        use std::os::unix::ffi::OsStringExt;
+
+        let path = PathBuf::from(std::ffi::OsString::from_vec(vec![0xff]));
+        assert!(prepare_paths(&[path], Path::new("."), &[]).is_err());
+    }
+}

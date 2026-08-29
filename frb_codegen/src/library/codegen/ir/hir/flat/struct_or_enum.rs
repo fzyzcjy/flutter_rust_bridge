@@ -30,3 +30,27 @@ impl<Item: SynItemStructOrEnum> HirFlatComponent<NamespacedName> for HirFlatStru
 
 pub type HirFlatStruct = HirFlatStructOrEnum<ItemStruct>;
 pub type HirFlatEnum = HirFlatStructOrEnum<ItemEnum>;
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::misc::visibility::HirVisibility;
+    use crate::utils::namespace::Namespace;
+
+    /// Uses the namespaced type name as the sort key.
+    #[test]
+    fn sort_key_uses_namespaced_type_name() {
+        let item: HirFlatStruct = HirFlatStructOrEnum {
+            name: NamespacedName::new(
+                Namespace::new_raw("crate::models".to_owned()),
+                "Widget".to_owned(),
+            ),
+            visibility: HirVisibility::Public,
+            sources: vec![],
+            mirror: false,
+            src: syn::parse_str("struct Widget;").unwrap(),
+        };
+
+        assert_eq!(item.sort_key().rust_style(), "crate::models::Widget");
+    }
+}

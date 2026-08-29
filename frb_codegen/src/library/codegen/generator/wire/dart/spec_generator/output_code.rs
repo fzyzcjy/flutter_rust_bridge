@@ -141,3 +141,74 @@ impl WireDartOutputCode {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn class_names() -> DartOutputClassNamePack {
+        DartOutputClassNamePack {
+            entrypoint_class_name: "Entrypoint".into(),
+            api_class_name: "Api".into(),
+            api_impl_class_name: "ApiImpl".into(),
+            api_impl_platform_class_name: "ApiImplPlatform".into(),
+            wire_class_name: "Wire".into(),
+            wasm_module_name: "Wasm".into(),
+        }
+    }
+
+    /// Preserves parsed Dart imports and body text.
+    #[test]
+    fn parse_separates_dart_header_from_body() {
+        let output = WireDartOutputCode::parse("import 'dart:ffi' as ffi;\n\nclass Wire {}");
+
+        assert_eq!(output.header.import, "import 'dart:ffi' as ffi;");
+        assert_eq!(output.body, "\nclass Wire {}");
+    }
+
+    /// Builds concrete common and abstract platform API classes.
+    #[test]
+    fn all_code_uses_target_specific_class_shapes() {
+        let output = WireDartOutputCode {
+            api_class_body: "void apiMethod();".into(),
+            api_impl_class_body: "void sharedMethod() {}".into(),
+            api_impl_class_methods: vec![DartApiImplClassMethod {
+                signature: "int platformMethod()".into(),
+                body: None,
+            }],
+            ..Default::default()
+        };
+
+        let common = output.all_code(TargetOrCommon::Common, &class_names()).body;
+        assert!(common.contains("abstract class Api extends BaseApi"));
+        assert!(common.contains("class ApiImpl extends ApiImplPlatform implements Api"));
+        assert!(common.contains("@protected int platformMethod();"));
+
+        let io = WireDartOutputCode {
+            api_class_body: String::new(),
+            ..output
+        }
+        .all_code(TargetOrCommon::Io, &class_names())
+        .body;
+        assert!(!io.contains("abstract class Api extends BaseApi"));
+        assert!(io.contains("abstract class ApiImplPlatform extends BaseApiImpl<Wire>"));
+        assert_eq!(io.matches("@protected int platformMethod();").count(), 1);
+    }
+
+    /// Renders concrete protected methods with their supplied bodies.
+    #[test]
+    fn all_code_renders_protected_method_body_when_present() {
+        let output = WireDartOutputCode {
+            api_impl_class_methods: vec![DartApiImplClassMethod {
+                signature: "int platformMethod()".into(),
+                body: Some("return 7;".into()),
+            }],
+            ..Default::default()
+        };
+
+        let common = output.all_code(TargetOrCommon::Common, &class_names()).body;
+
+        assert!(common.contains("@protected int platformMethod(){ return 7; }"));
+        assert!(!common.contains("@protected int platformMethod();"));
+    }
+}

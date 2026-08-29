@@ -1,6 +1,6 @@
 ---
 name: frb-code-generation
-description: Use when modifying Rust API, codegen, or example code in flutter_rust_bridge to determine which generation commands to run
+description: Use when modifying Rust APIs, codegen, generated examples, or platform scaffolds in flutter_rust_bridge to select generation commands and preserve source-of-truth and convergence rules
 ---
 
 # FRB Code Generation
@@ -61,3 +61,35 @@ For `pure_dart` / `pure_dart_pde` generation issues, treat `frb_example/pure_dar
 If CI repair has already entered repeated package-level drift, you MUST stop choosing narrower commands and switch to `frb-fix-ci`.
 
 Do not manually patch generated files as the final fix. The final accepted result should be produced by the corresponding generation command in a clean matching environment.
+
+### Generation Convergence
+
+- Run the narrowest owning generator before broad generation.
+- Normalize the intended source inputs, resolve dependencies, run final code generation, and format with the target toolchain. Do not hand formatter-unstable intermediate text to a different generation lane.
+- Run the owning generation command a second time and require a clean diff. A single successful run is not convergence.
+- Preserve semantic equivalence in templates. Do not move construction, scope, lifetime, or callback boundaries merely to make new formatter output look smaller.
+
+### Generated Output Provenance
+
+Classify every changed path before accepting generated drift:
+
+| Provenance | Required action |
+| --- | --- |
+| Integration template | Change the template source and regenerate consumers |
+| Apple scaffold asset | Refresh through the owning scaffold workflow |
+| CargoKit copy | Read `frb-cargokit` and follow its ownership and synchronization rules |
+| Generated example output | Keep the generator and snapshot together |
+| Flutter migrator edit in a legacy example | Apply the exact current scaffold migration and record it as direct |
+| Unexplained manual edit | Revert it or identify its owning source before proceeding |
+
+- When an old example has no supported regeneration entry point, compare it with a fresh target-Flutter scaffold and directly apply only required tool-defined migrations.
+- Record direct legacy scaffold migrations separately from automatic output.
+
+### OHOS Integrate Composition
+
+- Treat the checked-in package and the older OHOS Flutter fork as two distinct sources of truth.
+- Generate generic Flutter scaffold files with the current Flutter package.
+- Overlay only explicit OHOS-owned paths from the OHOS fork: `ohos` and, when required by the package, `rust_builder/ohos` and `rust_builder/pubspec.yaml`.
+- Exclude transient trees such as `node_modules` and preserve intentional deletions instead of resurrecting stale files.
+- Stage and validate the composed result before replacing the canonical package. Restore the original package if create, dependency resolution, code generation, formatting, or the final swap fails.
+- Test both success and failure paths. Do not add production APIs whose only purpose is exposing internals to tests.

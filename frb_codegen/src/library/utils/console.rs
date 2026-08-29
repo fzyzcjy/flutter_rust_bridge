@@ -34,6 +34,37 @@ impl SimpleProgressBar {
     }
 }
 
+pub(crate) fn progress_bar_message(message: &str) -> String {
+    progress_bar_message_with_level(message, log::max_level())
+}
+
+fn progress_bar_message_with_level(message: &str, max_level: log::LevelFilter) -> String {
+    if max_level >= log::LevelFilter::Debug {
+        message.to_owned()
+    } else {
+        format!("{message} (use --verbose for logs)")
+    }
+}
+
+pub(crate) fn println_over_progress(line: impl AsRef<str>) {
+    println_over_progress_inner(&MULTI_PROGRESS, line.as_ref(), |line| eprintln!("{line}"));
+}
+
+fn println_over_progress_inner(
+    multi_progress: &MultiProgress,
+    line: &str,
+    fallback: impl FnOnce(&str),
+) {
+    if multi_progress.is_hidden() {
+        fallback(line);
+    } else {
+        // CI draw targets are hidden; llvm-cov never observes a real TTY.
+        // frb-coverage:ignore-start
+        let _ = multi_progress.println(line);
+        // frb-coverage:ignore-end
+    }
+}
+
 pub(crate) struct SimpleProgressBarHandle {
     pb: ProgressBar,
 }
@@ -61,4 +92,50 @@ fn create_simple_progress_bar(message: String, level: usize) -> ProgressBar {
     pb.enable_steady_tick(Duration::from_millis(50));
     pb.set_message(message);
     pb
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use indicatif::ProgressDrawTarget;
+
+    /// Reuses one progress bar and finishes it when a handle is dropped.
+    #[test]
+    fn reuses_and_finishes_the_progress_bar() {
+        let progress_bar = SimpleProgressBar::new("Generate", 1);
+        let first_handle = progress_bar.start();
+        let second_handle = progress_bar.start();
+
+        assert_eq!(first_handle.pb.message(), "Generate");
+        assert!(!second_handle.pb.is_finished());
+
+        drop(first_handle);
+
+        assert!(second_handle.pb.is_finished());
+    }
+
+    #[test]
+    fn test_progress_bar_message_hints_verbose_unless_already_debug() {
+        assert_eq!(
+            progress_bar_message_with_level("Run Dart build_runner", log::LevelFilter::Info),
+            "Run Dart build_runner (use --verbose for logs)"
+        );
+        assert_eq!(
+            progress_bar_message_with_level("Run Dart build_runner", log::LevelFilter::Debug),
+            "Run Dart build_runner"
+        );
+    }
+
+    #[test]
+    /// Hidden progress targets must still forward diagnostics to the fallback writer.
+    fn test_println_over_progress_hidden_target_uses_fallback() {
+        let multi_progress = MultiProgress::with_draw_target(ProgressDrawTarget::hidden());
+        let mut actual = None;
+
+        println_over_progress_inner(&multi_progress, "diagnostic", |line| {
+            actual = Some(line.to_owned());
+        });
+
+        assert_eq!(actual.as_deref(), Some("diagnostic"));
+    }
 }

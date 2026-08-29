@@ -144,3 +144,52 @@ pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String
         raw.to_owned()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
+    use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::{
+        MirRustAutoOpaqueRaw, MirTypeRustAutoOpaqueImplicit,
+    };
+    use crate::codegen::ir::mir::ty::rust_opaque::{
+        MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
+    };
+    use crate::utils::namespace::Namespace;
+
+    fn implicit(mode: OwnershipMode) -> MirType {
+        MirType::RustAutoOpaqueImplicit(MirTypeRustAutoOpaqueImplicit {
+            ownership_mode: mode,
+            inner: MirTypeRustOpaque {
+                namespace: Namespace::default(),
+                inner: MirRustOpaqueInner(MirLifetimeAwareType::new("crate::api::Handle".into())),
+                codec: RustOpaqueCodecMode::Nom,
+                dart_api_type: None,
+                brief_name: false,
+            },
+            raw: MirRustAutoOpaqueRaw {
+                string: MirLifetimeAwareType::new("crate::api::Handle".into()),
+                segments: vec![],
+            },
+            reason: None,
+            ignore: false,
+        })
+    }
+
+    /// Selects borrowed opaque lock modes while excluding owned values.
+    #[test]
+    fn lockable_interest_selector_covers_owned_ref_and_ref_mut_implicit_opaque() {
+        assert_eq!(
+            compute_interest_field_ownership_mode(&implicit(OwnershipMode::Owned)),
+            None
+        );
+        assert_eq!(
+            compute_interest_field_ownership_mode(&implicit(OwnershipMode::Ref)),
+            Some(OwnershipMode::Ref)
+        );
+        assert_eq!(
+            compute_interest_field_ownership_mode(&implicit(OwnershipMode::RefMut)),
+            Some(OwnershipMode::RefMut)
+        );
+    }
+}

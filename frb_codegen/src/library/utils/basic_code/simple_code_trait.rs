@@ -63,3 +63,37 @@ macro_rules! impl_add_by_add_assign {
         // }
     };
 }
+
+#[cfg(test)]
+mod tests {
+    use super::SimpleCodeTrait;
+    use std::ops::AddAssign;
+
+    #[derive(Default)]
+    struct TestCode {
+        body: String,
+        metadata: usize,
+    }
+
+    impl AddAssign for TestCode {
+        fn add_assign(&mut self, rhs: Self) {
+            self.body += &rhs.body;
+            self.metadata += rhs.metadata;
+        }
+    }
+
+    crate::simple_code_trait_impl!(TestCode);
+
+    /// Creates simple code values and appends their generated bodies.
+    #[test]
+    fn creates_and_appends_simple_code_values() {
+        let from_str: TestCode = "left".into();
+        let from_string: TestCode = String::from("right").into();
+        let created = TestCode::new_body("created".to_owned());
+
+        assert_eq!(from_str.body(), "left");
+        assert_eq!(from_string.body(), "right");
+        assert_eq!(created.body(), "created");
+        assert_eq!((from_str + from_string).body(), "leftright");
+    }
+}

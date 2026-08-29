@@ -87,12 +87,14 @@ mod tests {
     use serial_test::serial;
     use std::env;
 
+    /// The generate CLI accepts the dart_minimal fixture configuration.
     #[test]
     #[serial]
     fn test_execute_generate_on_frb_example_dart_minimal() -> anyhow::Result<()> {
         body_execute_generate("dart_minimal")
     }
 
+    /// The generate CLI accepts the pure_dart fixture configuration.
     #[test]
     #[serial]
     fn test_execute_generate_on_frb_example_pure_dart() -> anyhow::Result<()> {

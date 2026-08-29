@@ -112,3 +112,60 @@ generate_merge!(
     dump_all,
     rust_features,
 );
+
+#[cfg(test)]
+mod tests {
+    use super::Config;
+    use std::collections::HashMap;
+
+    /// Merges representative field shapes with high-priority values.
+    #[test]
+    fn merges_representative_field_shapes_with_high_priority_values() {
+        let high = Config {
+            rust_input: Some("high_input".to_owned()),
+            dart3: Some(false),
+            dart_type_rename: Some(HashMap::from([("High".to_owned(), "Value".to_owned())])),
+            rust_features: Some(vec!["high_feature".to_owned()]),
+            ..Default::default()
+        };
+        let low = Config {
+            rust_input: Some("low_input".to_owned()),
+            dart_output: Some("low_output.dart".to_owned()),
+            dart3: Some(true),
+            dart_type_rename: Some(HashMap::from([("Low".to_owned(), "Value".to_owned())])),
+            rust_features: Some(vec!["low_feature".to_owned()]),
+            ..Default::default()
+        };
+
+        let merged = Config::merge(high, low);
+
+        assert_eq!(merged.rust_input.as_deref(), Some("high_input"));
+        assert_eq!(merged.dart_output.as_deref(), Some("low_output.dart"));
+        assert_eq!(merged.dart3, Some(false));
+        assert_eq!(
+            merged.dart_type_rename,
+            Some(HashMap::from([("High".to_owned(), "Value".to_owned())]))
+        );
+        assert_eq!(merged.rust_features, Some(vec!["high_feature".to_owned()]));
+    }
+
+    /// Preserves absent fields when neither side provides one.
+    #[test]
+    fn leaves_fields_none_when_both_configs_omit_them() {
+        let merged = Config::merge(Config::default(), Config::default());
+
+        assert_eq!(merged.base_dir, None);
+        assert_eq!(merged.rust_input, None);
+        assert_eq!(merged.dart3, None);
+        assert_eq!(merged.rust_features, None);
+    }
+
+    /// Rejects misspelled configuration fields during deserialization.
+    #[test]
+    fn rejects_unknown_configuration_fields() {
+        let error = serde_yaml::from_str::<Config>("rust_input: crate::api\nmisspelled: true\n")
+            .unwrap_err();
+
+        assert!(error.to_string().contains("misspelled"));
+    }
+}

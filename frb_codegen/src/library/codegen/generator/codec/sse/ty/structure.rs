@@ -103,3 +103,104 @@ impl<'a> GeneralizedStructGenerator<'a> {
         format!("{decode_fields}return {ctor};")
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+    use crate::codegen::generator::codec::sse::lang::{dart::DartLang, rust::RustLang};
+    use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::utils::namespace::{Namespace, NamespacedName};
+    use std::collections::HashMap;
+    use std::path::PathBuf;
+
+    fn field(name: &str, ty: MirType) -> MirField {
+        MirField {
+            ty,
+            name: MirIdent::new(name.into(), None),
+            is_final: false,
+            is_rust_public: None,
+            comments: vec![],
+            default: None,
+            settings: MirFieldSettings::default(),
+        }
+    }
+    fn pack() -> MirPack {
+        MirPack {
+            funcs_all: vec![],
+            extra_types_all: vec![],
+            struct_pool: Default::default(),
+            enum_pool: Default::default(),
+            dart_code_of_type: Default::default(),
+            existing_handler: None,
+            skips: vec![],
+            trait_impls: vec![],
+            extra_rust_output_code: String::new(),
+            extra_dart_output_code: Default::default(),
+        }
+    }
+    fn config() -> GeneratorApiDartInternalConfig {
+        GeneratorApiDartInternalConfig {
+            dart_collection_deep_equality: false,
+            dart_enums_style: true,
+            dart3: true,
+            dart_decl_base_output_path: PathBuf::new(),
+            dart_impl_output_path: Default::default(),
+            dart_entrypoint_class_name: "Entrypoint".into(),
+            dart_preamble: String::new(),
+            dart_type_rename: HashMap::new(),
+        }
+    }
+    fn structure() -> MirStruct {
+        MirStruct {
+            name: NamespacedName::new(Namespace::new_raw("crate".into()), "Pair".into()),
+            wrapper_name: None,
+            fields: vec![
+                field("first", Primitive(MirTypePrimitive::I32)),
+                field("second", Primitive(MirTypePrimitive::Bool)),
+            ],
+            is_fields_named: false,
+            dart_metadata_raw: vec![],
+            ignore: false,
+            needs_json_serializable: false,
+            generate_hash: false,
+            generate_eq: false,
+            dart_collection_deep_equality: false,
+            ui_state: false,
+            comments: vec![],
+        }
+    }
+
+    /// Encodes structure fields in declaration order for Rust output.
+    #[test]
+    fn generalized_structure_encode_preserves_field_declaration_order() {
+        let pack = pack();
+        let config = config();
+        let generator = GeneralizedStructGenerator::new(
+            structure(),
+            CodecSseTyContext::new(&pack, &config),
+            Struct,
+        );
+        let output = generator.generate_encode(&Lang::RustLang(RustLang));
+        assert!(output.find("self.0").unwrap() < output.find("self.1").unwrap());
+        assert!(output.contains("<i32>::sse_encode(self.0, serializer)"));
+        assert!(output.contains("<bool>::sse_encode(self.1, serializer)"));
+    }
+
+    /// Decodes record fields into a positional tuple constructor.
+    #[test]
+    fn generalized_record_decode_uses_positional_constructor() {
+        let pack = pack();
+        let config = config();
+        let generator = GeneralizedStructGenerator::new(
+            structure(),
+            CodecSseTyContext::new(&pack, &config),
+            StructOrRecord::Record,
+        );
+        let output = generator.generate_decode(&Lang::DartLang(DartLang), None, true);
+        assert!(output.contains("var var_first = sse_decode_i_32(deserializer)"));
+        assert!(output.contains("var var_second = sse_decode_bool(deserializer)"));
+        assert!(output.contains("return (var_first, var_second);"));
+    }
+}

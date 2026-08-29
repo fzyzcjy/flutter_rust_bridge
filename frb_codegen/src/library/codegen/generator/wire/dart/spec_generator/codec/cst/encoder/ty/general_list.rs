@@ -57,3 +57,69 @@ impl WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenera
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::super::test_utils;
+    use super::*;
+    use crate::codegen::ir::mir::ty::general_list::MirTypeGeneralList;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::structure::{MirStructIdent, MirTypeStructRef};
+    use crate::utils::namespace::{Namespace, NamespacedName};
+
+    /// Uses direct and fill-to-wire element encoders and enables web list mapping.
+    #[test]
+    fn general_list_encoder_emits_io_allocation_and_web_mapping() {
+        let pack = test_utils::pack();
+        let api_dart_config = test_utils::api_dart_config();
+        let wire_dart_config = test_utils::wire_dart_config(true);
+        let wire_rust_config = test_utils::wire_rust_config(true);
+        let generator = GeneralListWireDartCodecCstGenerator::new(
+            MirTypeGeneralList {
+                inner: Box::new(MirType::Primitive(MirTypePrimitive::I32)),
+            },
+            test_utils::context(
+                &pack,
+                &wire_dart_config,
+                &wire_rust_config,
+                &api_dart_config,
+            ),
+        );
+
+        let output = generator.generate_encode_func_body();
+        assert_eq!(
+            output.io.as_deref(),
+            Some(
+                "final ans = wire.cst_new_list_i_32(raw.length);\n                for (var i = 0; i < raw.length; ++i) {\n                    ans.ref.ptr[i] = cst_encode_i_32(raw[i]);\n                }\n                return ans;\n                "
+            )
+        );
+        assert_eq!(
+            output.web.as_deref(),
+            Some("return raw.map(cst_encode_i_32).toList().jsify()!;")
+        );
+
+        let struct_generator = GeneralListWireDartCodecCstGenerator::new(
+            MirTypeGeneralList {
+                inner: Box::new(MirType::StructRef(MirTypeStructRef {
+                    ident: MirStructIdent(NamespacedName::new(
+                        Namespace::default(),
+                        "Point".into(),
+                    )),
+                    is_exception: false,
+                })),
+            },
+            test_utils::context(
+                &pack,
+                &wire_dart_config,
+                &wire_rust_config,
+                &api_dart_config,
+            ),
+        );
+        assert_eq!(
+            struct_generator.generate_encode_func_body().io.as_deref(),
+            Some(
+                "final ans = wire.cst_new_list_point(raw.length);\n                for (var i = 0; i < raw.length; ++i) {\n                    cst_api_fill_to_wire_point(raw[i], ans.ref.ptr[i]);\n                }\n                return ans;\n                "
+            )
+        );
+    }
+}

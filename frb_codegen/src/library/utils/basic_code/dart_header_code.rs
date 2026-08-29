@@ -42,7 +42,8 @@ mod tests {
     use super::*;
 
     #[test]
-    pub fn test_optimize_imports_simple() {
+    /// Sorts and deduplicates imports separated by whitespace and newlines.
+    fn sorts_and_deduplicates_imports() {
         assert_eq!(
             optimize_imports(
                 "
@@ -56,10 +57,54 @@ mod tests {
     }
 
     #[test]
-    pub fn test_optimize_imports_missing_newline() {
+    /// Recognizes semicolon-delimited imports without trailing newlines.
+    fn recognizes_semicolon_delimited_imports() {
         assert_eq!(
             optimize_imports(" import 'orange.dart'; import 'apple.dart';import 'orange.dart';"),
             "import 'apple.dart';\nimport 'orange.dart';"
         );
+    }
+
+    #[test]
+    /// Drops blank fragments while preserving a final import without a semicolon.
+    fn drops_blank_fragments_and_keeps_an_unterminated_import() {
+        assert_eq!(
+            optimize_imports("\nimport 'b.dart';\n\nimport 'a.dart'"),
+            "import 'a.dart'\nimport 'b.dart';"
+        );
+    }
+
+    #[test]
+    /// Renders file sections around normalized imports.
+    fn renders_file_sections_around_normalized_imports() {
+        let header = DartHeaderCode {
+            file_top: "// generated".to_owned(),
+            import: "import 'z.dart';\nimport 'a.dart';\nimport 'z.dart';".to_owned(),
+            part: "part 'output.dart';".to_owned(),
+        };
+
+        assert_eq!(
+            header.all_code(),
+            "// generated\nimport 'a.dart';\nimport 'z.dart';\npart 'output.dart';"
+        );
+    }
+
+    #[test]
+    /// Concatenates every header section during addition.
+    fn concatenates_every_header_section_during_addition() {
+        let mut header = DartHeaderCode {
+            file_top: "first".to_owned(),
+            import: "one".to_owned(),
+            part: "alpha".to_owned(),
+        };
+        header += DartHeaderCode {
+            file_top: "second".to_owned(),
+            import: "two".to_owned(),
+            part: "beta".to_owned(),
+        };
+
+        assert_eq!(header.file_top, "firstsecond");
+        assert_eq!(header.import, "onetwo");
+        assert_eq!(header.part, "alphabeta");
     }
 }

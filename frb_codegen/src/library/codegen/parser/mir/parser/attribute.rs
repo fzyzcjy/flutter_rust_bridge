@@ -1080,7 +1080,7 @@ mod tests {
 
     #[test]
     fn test_frb_attribute_default_value() -> anyhow::Result<()> {
-        for (text, expect_mir_default_value) in vec![
+        for (text, expect_mir_default_value) in [
             (
                 "\"Hello\"",
                 MirDefaultValue::String {

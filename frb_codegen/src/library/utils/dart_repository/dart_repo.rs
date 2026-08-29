@@ -431,9 +431,29 @@ impl PubspecLockPackage {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::fs;
+    use tempfile::TempDir;
 
+    fn write_file(directory: &Path, filename: &str, content: &str) {
+        fs::write(directory.join(filename), content).unwrap();
+    }
+
+    fn create_repository(pubspec: &str, lockfile: Option<&str>) -> TempDir {
+        let directory = TempDir::new().unwrap();
+        write_file(directory.path(), "pubspec.yaml", pubspec);
+        if let Some(lockfile) = lockfile {
+            write_file(directory.path(), "pubspec.lock", lockfile);
+        }
+        directory
+    }
+
+    fn version_requirement(requirement: &str) -> VersionReq {
+        VersionReq::parse(requirement).unwrap()
+    }
+
+    /// Renders dependency modes and package version variants for diagnostics.
     #[test]
-    pub fn test_display() {
+    fn renders_dependency_modes_and_versions() {
         assert_eq!(
             format!("{}", DartDependencyMode::Main),
             "dependencies".to_owned()
@@ -457,5 +477,170 @@ mod tests {
             ),
             ">=1.0.0".to_owned()
         );
+    }
+
+    /// Maps dependency declarations to their matching lock-file classes.
+    #[test]
+    fn maps_dependency_modes_to_lock_modes() {
+        assert_eq!(
+            DartDependencyLockMode::from(DartDependencyMode::Main),
+            DartDependencyLockMode::Main
+        );
+        assert_eq!(
+            DartDependencyLockMode::from(DartDependencyMode::Dev),
+            DartDependencyLockMode::Dev
+        );
+        assert_eq!(
+            format!("{}", DartDependencyLockMode::Transitive),
+            "transitive"
+        );
+    }
+
+    /// Recognizes the lock-file dependency categories accepted by Pub.
+    #[test]
+    fn recognizes_lock_file_dependency_categories() {
+        for (dependency, expected) in [
+            ("direct main", Some(DartDependencyLockMode::Main)),
+            ("direct dev", Some(DartDependencyLockMode::Dev)),
+            ("transitive", Some(DartDependencyLockMode::Transitive)),
+            ("unknown", None),
+        ] {
+            let package = PubspecLockPackage {
+                dependency: dependency.to_owned(),
+                version: DartDependencyVersion("1.0.0".to_owned()),
+            };
+            assert_eq!(package.installed_in(), expected);
+        }
+    }
+
+    /// Classifies standalone repositories and workspace roots from their manifests.
+    #[test]
+    fn classifies_repository_and_workspace_root() {
+        let standalone = create_repository("name: standalone\n", None);
+        let standalone_repository = DartRepository::from_path(standalone.path()).unwrap();
+        assert!(!standalone_repository.is_workspace);
+        assert_eq!(standalone_repository.workspace_root, standalone.path());
+
+        let workspace = create_repository("name: workspace\nworkspace: []\n", None);
+        let workspace_repository = DartRepository::from_path(workspace.path()).unwrap();
+        assert!(workspace_repository.is_workspace);
+        assert_eq!(workspace_repository.workspace_root, workspace.path());
+    }
+
+    /// Finds a workspace root for a child declaring workspace resolution.
+    #[test]
+    fn finds_workspace_root_for_nested_repository() {
+        let workspace = create_repository("name: workspace\nworkspace: [child]\n", None);
+        let child = workspace.path().join("child");
+        fs::create_dir(&child).unwrap();
+        write_file(
+            &child,
+            "pubspec.yaml",
+            "name: child\nresolution: workspace\n",
+        );
+
+        let repository = DartRepository::from_path(&child).unwrap();
+        assert!(repository.is_workspace);
+        assert_eq!(repository.workspace_root, workspace.path());
+    }
+
+    /// Reports malformed manifests instead of silently treating them as repositories.
+    #[test]
+    fn rejects_malformed_manifest() {
+        let repository = create_repository("dependencies: [\n", None);
+
+        assert!(DartRepository::from_path(repository.path()).is_err());
+    }
+
+    /// Requires requested dependencies in the matching manifest section.
+    #[test]
+    fn checks_requested_manifest_dependency_section() {
+        let repository = create_repository(
+            "name: package\ndependencies:\n  main: ^1.0.0\ndev_dependencies:\n  dev: ^1.0.0\n",
+            None,
+        );
+        let repository = DartRepository::from_path(repository.path()).unwrap();
+        let requirement = version_requirement(">=1.0.0");
+
+        assert!(repository
+            .has_specified("main", DartDependencyMode::Main, &requirement)
+            .is_ok());
+        assert!(repository
+            .has_specified("main", DartDependencyMode::Dev, &requirement)
+            .is_err());
+        assert!(repository
+            .has_specified("missing", DartDependencyMode::Main, &requirement)
+            .is_err());
+    }
+
+    /// Accepts matching direct lock-file dependencies and skips absent lock files.
+    #[test]
+    fn accepts_matching_lock_dependencies_and_missing_lock_file() {
+        let repository = create_repository(
+            "name: package\n",
+            Some("packages:\n  main:\n    dependency: direct main\n    version: 1.2.3\n"),
+        );
+        let repository = DartRepository::from_path(repository.path()).unwrap();
+        assert!(repository
+            .has_installed(
+                "main",
+                DartDependencyMode::Main,
+                &version_requirement("^1.2.0")
+            )
+            .is_ok());
+
+        let without_lock = create_repository("name: package\n", None);
+        let without_lock = DartRepository::from_path(without_lock.path()).unwrap();
+        assert!(without_lock
+            .has_installed(
+                "anything",
+                DartDependencyMode::Dev,
+                &version_requirement("^1.0.0")
+            )
+            .is_ok());
+    }
+
+    /// Rejects missing, mismatched, ranged, and invalid-version locked dependencies.
+    #[test]
+    fn rejects_invalid_lock_dependencies() {
+        let requirement = version_requirement("^1.0.0");
+        for (package, dependency, version) in [
+            ("wrong_mode", "direct dev", "1.0.0"),
+            ("outdated", "direct main", "2.0.0"),
+            ("range", "direct main", ">=1.0.0"),
+            ("malformed", "direct main", "not-a-version"),
+        ] {
+            let repository = create_repository(
+                "name: package\n",
+                Some(&format!(
+                    "packages:\n  {package}:\n    dependency: {dependency}\n    version: {version}\n"
+                )),
+            );
+            let repository = DartRepository::from_path(repository.path()).unwrap();
+            assert!(repository
+                .has_installed(package, DartDependencyMode::Main, &requirement)
+                .is_err());
+        }
+
+        let repository = create_repository("name: package\n", Some("packages: {}\n"));
+        let repository = DartRepository::from_path(repository.path()).unwrap();
+        assert!(repository
+            .has_installed("missing", DartDependencyMode::Main, &requirement)
+            .is_err());
+    }
+
+    /// Reports syntactically malformed lock files instead of accepting their dependencies.
+    #[test]
+    fn rejects_malformed_lock_file() {
+        let repository = create_repository("name: package\n", Some("packages: [\n"));
+        let repository = DartRepository::from_path(repository.path()).unwrap();
+
+        assert!(repository
+            .has_installed(
+                "main",
+                DartDependencyMode::Main,
+                &version_requirement("^1.0.0")
+            )
+            .is_err());
     }
 }
