@@ -77,35 +77,27 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 - Review Java, Android SDK/NDK, Chrome/chromedriver, macOS runner, simulator, Windows ARM, and post-release install-mode
   assumptions.
 
-### Step 6: Regenerate and Classify Drift
+# 6 Regenerate to convergence
 
-Read `frb-code-generation` first.
+- Read `frb-code-generation` and run the narrowest owning generator before broad generation.
+- Normalize the intended source inputs, resolve dependencies, run final code generation, and format with the target
+  toolchain. Do not hand formatter-unstable intermediate text to a different generation lane.
+- Run the owning generation command a second time and require a clean diff. A single successful run is not convergence.
+- Preserve semantic equivalence in templates. Do not move construction, scope, lifetime, or callback boundaries merely
+  to make new formatter output look smaller.
+- Classify every changed path by provenance:
 
-Expect drift in:
+| Provenance | Required action |
+| --- | --- |
+| Integration template | Change the template source and regenerate consumers |
+| Apple scaffold asset | Refresh through the owning scaffold workflow |
+| CargoKit copy | Follow the CargoKit ownership rules below |
+| Generated example output | Keep the generator and snapshot together |
+| Flutter migrator edit in a legacy example | Apply the exact current scaffold migration and record it as direct |
+| Unexplained manual edit | Revert it or identify its owning source before proceeding |
 
-- `pubspec.lock` Dart SDK constraints
-- `flutter create` / `flutter integrate` scaffold output
-- Android Gradle, Kotlin, Java, NDK, and manifest files
-- iOS/macOS Xcode project files, CocoaPods files, or SwiftPM package files
-- Windows/Linux desktop scaffold files
-- Generated `frb_generated.*` files if Dart formatting, analyzer behavior, or codegen dependencies changed
-
-Classify by source:
-
-- Template-driven drift belongs in `frb_codegen/assets/integration_template/**`.
-- Apple scaffold drift may belong in `tools/frb_internal/assets/apple_scaffold/**`.
-- Cargokit drift may belong in the upstream Cargokit repo.
-- Example-only drift should come from the relevant `./frb_internal generate-*` or `precommit-*` command.
-
-Run focused generation first when possible, then broaden:
-
-```shell
-./frb_internal precommit-generate
-./frb_internal precommit-integrate
-```
-
-If multiple generated-output CI failures rotate across packages, stop package-by-package fixes and run
-a clean full `./frb_internal precommit-generate`.
+- When an old example has no supported regeneration entry point, compare it with a fresh target-Flutter scaffold and
+  directly apply only required tool-defined migrations. Record those files separately from automatic output.
 
 ### Step 7: Validate Locally
 
