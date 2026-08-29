@@ -9,7 +9,8 @@ description: >-
 
 - Confirm the target Flutter stable release from official Flutter sources.
 - Read `frb-dev-env` before running setup, generation, lint, or tests. Use its per-worktree local Docker workflow.
-- Read `frb-docker` before changing `.devcontainer/**` or publishing the dev image.
+- Read `frb-upgrade-docker` when the target toolchain changes the development image.
+- Read `frb-docker` for ordinary local Docker usage.
 - Read `frb-code-generation` before accepting generated or scaffold drift.
 - Read `frb-cargokit` before changing any copied CargoKit file. Read `frb-cargokit-dev` only when the source
   change belongs in the external CargoKit repository.
@@ -45,6 +46,8 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 
 # 3 Choose PR boundaries before implementation
 
+- When the development image changes, make its upgrade the first independent predecessor PR targeting `master`.
+  Follow `frb-upgrade-docker` for its contents, candidate image, merge order, and stable-tag promotion.
 - Keep generated snapshots, their generator changes, required tests, and upgrade-specific compatibility migrations in
   the main upgrade PR.
 - Split independent bug fixes, hardening, and reusable prerequisites into predecessor PRs according to
@@ -55,12 +58,10 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 
 # 4 Upgrade the development toolchain
 
-- Update `.devcontainer/Dockerfile` inputs, including Flutter and any required Rust, Rust nightly, Node, Playwright,
-  Chrome, system package, Java, or Android changes.
-- Update tests that assert the derived dev image tag.
-- Use `frb-dev-env` for the standard per-worktree environment. When the Dockerfile changes, use the local-image
-  workflow in `frb-docker` to build and validate the unpublished image instead of reusing the stale container.
-- Dry-run the publish workflow before depending on a new derived image tag.
+- Complete the independent Docker predecessor through `frb-upgrade-docker` before relying on the upgraded image.
+- Use its immutable candidate tag for pre-merge validation when necessary; never move `latest` from a PR branch.
+- After the predecessor merges and publishes stable tags, merge latest `master` into the remaining upgrade chain and
+  use the canonical version tag.
 - If Apple pins, simulators, or host tooling change, continue with the Tart workflow routed by `frb-dev-env` and
   read `frb-tart-prepare` before provisioning or validation.
 
@@ -84,8 +85,8 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
 
 # 7 Validate in dependency order
 
-- Use the environment selected by `frb-dev-env`. When the Dockerfile changed, validate with the fresh local-image
-  workflow from `frb-docker`.
+- Use the environment selected by `frb-dev-env`. When the Docker image changed, use the candidate or canonical image
+  selected by `frb-upgrade-docker`; do not reuse a stale per-worktree container.
 - Read `frb-lint` and `frb-test` for exact commands.
 - Validate in this order:
   1. dev-image metadata and tool versions;
@@ -104,8 +105,8 @@ rg -n "flutter_rust_bridge_dev|stable|nightly|minimum.*version|deployment.*targe
   then coverage or uploads.
 - Compare platform failures with target-Flutter release notes and fresh scaffold output before adding workarounds.
 - Keep full CI on the top upgrade PR. Follow `frb-pr-chain-split` for filtered or deferred predecessor CI.
-- After the upgrade merges, publish the dev Docker image from `master` when `.devcontainer/Dockerfile` changed, then
-  verify the expected `linux/amd64` and `linux/arm64` manifests.
+- The Docker predecessor must already be merged and stably published through `frb-upgrade-docker`; do not defer image
+  publication until the main Flutter upgrade PR merges.
 
 # 9 PR notes
 
