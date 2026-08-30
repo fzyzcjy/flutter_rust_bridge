@@ -12,6 +12,9 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
+import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/dart_sdk.dart';
+import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/runner.dart';
+import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/sanitizer.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -49,6 +52,231 @@ void main() {
     expect(
       dartValgrindOutputExecutablePathForTesting(),
       'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint',
+    );
+  });
+
+  test('sanitized Dart release defaults to checked-in artifact tag', () {
+    expect(
+      sanitizedDartReleaseName(environment: {}),
+      kDefaultSanitizedDartReleaseName,
+    );
+  });
+
+  test('sanitized Dart release can be overridden by environment', () {
+    expect(
+      sanitizedDartReleaseName(
+        environment: {'FRB_SANITIZED_DART_RELEASE_NAME': ' Build_test '},
+      ),
+      'Build_test',
+    );
+  });
+
+  test('sanitized Dart cache path remains outside the repository', () {
+    expect(
+      sanitizedDartCacheRelativePathForTesting(
+        repoRootPath:
+            '/home/runner/work/flutter_rust_bridge/flutter_rust_bridge',
+        cacheRootPath: '/tmp/frb_sanitized_dart/release',
+      ),
+      '../../../../../tmp/frb_sanitized_dart/release',
+    );
+  });
+
+  test('sanitized Dart version check is skipped without main Dart env', () {
+    checkSanitizedDartVersionForTesting(
+      versionOutput: 'Dart SDK version: 3.11.0 (stable)',
+      environment: {},
+    );
+  });
+
+  test('sanitized Dart version check accepts matching main Dart env', () {
+    checkSanitizedDartVersionForTesting(
+      versionOutput: 'Dart SDK version: 3.11.0 (stable)',
+      environment: {'FRB_MAIN_DART_VERSION': '3.11.0'},
+    );
+  });
+
+  test('sanitized Dart version check rejects stale artifact version', () {
+    expect(
+      () => checkSanitizedDartVersionForTesting(
+        versionOutput: 'Dart SDK version: 3.10.0 (stable)',
+        environment: {'FRB_MAIN_DART_VERSION': '3.11.0'},
+      ),
+      throwsA(
+        isA<Exception>().having(
+          (error) => error.toString(),
+          'message',
+          contains('Build a new sanitized Dart artifact'),
+        ),
+      ),
+    );
+  });
+
+  test('ASAN rustflags enable only the sanitizer teardown cfg', () {
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.asan),
+      '-Zsanitizer=address --cfg frb_sanitize_runtime_shutdown',
+    );
+  });
+
+  test('sanitizer rustflags keep full MSAN instrumentation', () {
+    expect(sanitizerRustflagsForTesting(Sanitizer.msan), '-Zsanitizer=memory');
+  });
+
+  test('LSAN rustflags enable only the sanitizer teardown cfg', () {
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.lsan),
+      '-Zsanitizer=leak --cfg frb_sanitize_runtime_shutdown',
+    );
+  });
+
+  test('TSAN rustflags preserve production synchronization semantics', () {
+    expect(sanitizerRustflagsForTesting(Sanitizer.tsan), '-Zsanitizer=thread');
+  });
+
+  test(
+    'runtime shutdown excludes sanitizers affected by its synchronization',
+    () {
+      expect(sanitizerUsesRuntimeShutdownForTesting(Sanitizer.asan), isTrue);
+      expect(sanitizerUsesRuntimeShutdownForTesting(Sanitizer.lsan), isTrue);
+      expect(sanitizerUsesRuntimeShutdownForTesting(Sanitizer.msan), isFalse);
+      expect(sanitizerUsesRuntimeShutdownForTesting(Sanitizer.tsan), isFalse);
+    },
+  );
+
+  test('known sanitizer failures require the complete allowed shape', () {
+    final summary = allowedLeakSummaryForTesting(
+      sanitizer: Sanitizer.lsan,
+      package: 'frb_example/pure_dart',
+    );
+
+    expect(
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 23,
+        stderr:
+            '==123==ERROR: LeakSanitizer: detected memory leaks\n$summary\n',
+        expectedExitCode: 23,
+        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
+        expectedSummaries: [summary!],
+        expectedTrailingLinesAfterSummary: const [],
+      ),
+      isTrue,
+    );
+    const alternateSummary =
+        'SUMMARY: LeakSanitizer: 1048 byte(s) leaked in 95 allocation(s).';
+    expect(
+      allowedLeakSummariesForTesting(
+        sanitizer: Sanitizer.lsan,
+        package: 'frb_example/pure_dart',
+      ),
+      [summary, alternateSummary],
+    );
+    expect(
+      allowedLeakSummariesForTesting(
+        sanitizer: Sanitizer.asan,
+        package: 'frb_example/pure_dart',
+      ),
+      ['SUMMARY: AddressSanitizer: 1056 byte(s) leaked in 96 allocation(s).'],
+    );
+    expect(
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 23,
+        stderr:
+            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+            '$alternateSummary\n',
+        expectedExitCode: 23,
+        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
+        expectedSummaries: [summary, alternateSummary],
+        expectedTrailingLinesAfterSummary: const [],
+      ),
+      isTrue,
+    );
+    expect(
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 23,
+        stderr:
+            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+            'SUMMARY: LeakSanitizer: 400 byte(s) leaked in 25 allocation(s).\n',
+        expectedExitCode: 23,
+        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
+        expectedSummaries: [summary],
+        expectedTrailingLinesAfterSummary: const [],
+      ),
+      isFalse,
+    );
+    expect(
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 23,
+        stderr:
+            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+            '$summary\nSUMMARY: LeakSanitizer: 1 byte(s) leaked in 1 allocation(s).\n',
+        expectedExitCode: 23,
+        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
+        expectedSummaries: [summary],
+        expectedTrailingLinesAfterSummary: const [],
+      ),
+      isFalse,
+    );
+    expect(
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 23,
+        stderr:
+            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+            '$summary\nUnhandled exception: teardown failed\n',
+        expectedExitCode: 23,
+        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
+        expectedSummaries: [summary],
+        expectedTrailingLinesAfterSummary: const [],
+      ),
+      isFalse,
+    );
+    expect(
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 23,
+        stderr:
+            'Fatal error: unrelated teardown failure\n'
+            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+            '$summary\n',
+        expectedExitCode: 23,
+        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
+        expectedSummaries: [summary],
+        expectedTrailingLinesAfterSummary: const [],
+      ),
+      isFalse,
+    );
+    const threadSummary =
+        'SUMMARY: ThreadSanitizer: thread leak ??:? in pthread_create';
+    expect(
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 66,
+        stderr:
+            'WARNING: ThreadSanitizer: thread leak (pid=123)\n'
+            '$threadSummary\n'
+            '==================\n'
+            'ThreadSanitizer: reported 1 warnings\n',
+        expectedExitCode: 66,
+        expectedReportHeader: 'WARNING: ThreadSanitizer: thread leak',
+        expectedSummaries: const [threadSummary],
+        expectedTrailingLinesAfterSummary: const [
+          '==================',
+          'ThreadSanitizer: reported 1 warnings',
+        ],
+      ),
+      isTrue,
+    );
+    expect(
+      allowedLeakSummaryForTesting(
+        sanitizer: Sanitizer.tsan,
+        package: 'frb_example/pure_dart_pde',
+      ),
+      threadSummary,
+    );
+    expect(
+      allowedLeakSummaryForTesting(
+        sanitizer: Sanitizer.tsan,
+        package: 'frb_example/dart_minimal',
+      ),
+      isNull,
     );
   });
 
