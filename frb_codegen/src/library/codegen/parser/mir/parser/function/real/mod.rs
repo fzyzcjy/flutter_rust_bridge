@@ -139,8 +139,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
-        let src_lineno = func.item_fn.span().start().line;
         let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
+        let src_lineno = if attributes.internal_logging() {
+            0
+        } else {
+            func.item_fn.span().start().line
+        };
 
         if func.is_public() == Some(false) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionNotPub));

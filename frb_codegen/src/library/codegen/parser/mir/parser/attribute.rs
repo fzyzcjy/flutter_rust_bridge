@@ -106,6 +106,10 @@ impl FrbAttributes {
         (!ans.is_empty()).then_some(ans)
     }
 
+    pub(crate) fn internal_logging(&self) -> bool {
+        self.any_eq(&FrbAttribute::InternalLogging)
+    }
+
     pub(crate) fn ignore(&self) -> bool {
         self.any_eq(&FrbAttribute::Ignore)
     }
@@ -301,6 +305,7 @@ mod frb_keyword {
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(ignore_all);
     syn::custom_keyword!(init_dart_code);
+    syn::custom_keyword!(internal_logging);
     syn::custom_keyword!(unignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(non_opaque);
@@ -353,6 +358,7 @@ enum FrbAttribute {
     Ignore,
     IgnoreAll,
     InitDartCode(FrbAttributeInitDartCode),
+    InternalLogging,
     Unignore,
     Init,
     Mirror(FrbAttributeMirror),
@@ -406,6 +412,14 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<getter, _>(input, &lookahead, getter, Getter))
             .or_else(|| parse_keyword::<setter, _>(input, &lookahead, setter, Setter))
             .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
+            .or_else(|| {
+                parse_keyword::<internal_logging, _>(
+                    input,
+                    &lookahead,
+                    internal_logging,
+                    InternalLogging,
+                )
+            })
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
             .or_else(|| parse_keyword::<ignore_all, _>(input, &lookahead, ignore_all, IgnoreAll))
             .or_else(|| parse_keyword::<unignore, _>(input, &lookahead, unignore, Unignore))

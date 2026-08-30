@@ -6,5 +6,61 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored because they are not marked as `pub`: `frb_log_record_to_console`, `frb_parse_logging_max_level`, `load_sink`, `swap_sink`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `FrbDartLogger`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `enabled`, `flush`, `fmt`, `log`
+
+void frbInternalDisposeLogger() =>
+    RustLib.instance.api.crateApiMinimalFrbInternalDisposeLogger();
+
+Stream<FrbLogRecord> frbInternalInitLogger({required String maxLevel}) =>
+    RustLib.instance.api
+        .crateApiMinimalFrbInternalInitLogger(maxLevel: maxLevel);
+
+String frbInternalLoggingMaxLevel() =>
+    RustLib.instance.api.crateApiMinimalFrbInternalLoggingMaxLevel();
+
+bool frbInternalLoggingSetupDartLoggingOutput() => RustLib.instance.api
+    .crateApiMinimalFrbInternalLoggingSetupDartLoggingOutput();
+
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+class FrbLogRecord {
+  final String level;
+  final String message;
+  final String target;
+  final String? modulePath;
+  final String? file;
+  final int? line;
+
+  const FrbLogRecord({
+    required this.level,
+    required this.message,
+    required this.target,
+    this.modulePath,
+    this.file,
+    this.line,
+  });
+
+  @override
+  int get hashCode =>
+      level.hashCode ^
+      message.hashCode ^
+      target.hashCode ^
+      modulePath.hashCode ^
+      file.hashCode ^
+      line.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FrbLogRecord &&
+          runtimeType == other.runtimeType &&
+          level == other.level &&
+          message == other.message &&
+          target == other.target &&
+          modulePath == other.modulePath &&
+          file == other.file &&
+          line == other.line;
+}
