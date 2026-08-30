@@ -54,10 +54,10 @@ Future<void> applyCheckedInAppleScaffoldSourceOfTruth({
   required String package,
   required String generatedPackageDir,
 }) async {
-  for (final relativePath in _integrateAppleScaffoldSourceOfTruthPaths(
+  for (final relativePath in integrateAppleScaffoldSourceOfTruthPaths(
     package,
   )) {
-    _restorePathIfExists(
+    restorePathIfExists(
       source: _integrateAppleScaffoldSourceOfTruthAssetPath(
         package: package,
         relativePath: relativePath,
@@ -73,18 +73,33 @@ Future<void> preserveCheckedInOhosScaffold({
   required String generatedPackageDir,
 }) async {
   for (final relativePath in _preservedOhosScaffoldPaths(package)) {
-    _restorePathIfExists(
+    restorePathIfExists(
       source: path.join(originalPackageDir, relativePath),
       destination: path.join(generatedPackageDir, relativePath),
     );
   }
 }
 
-List<String> _integrateAppleScaffoldSourceOfTruthPaths(String package) =>
-    _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [];
+List<String> integrateAppleScaffoldSourceOfTruthPaths(String package) =>
+    List.unmodifiable(
+      _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [],
+    );
 
 List<String> _preservedOhosScaffoldPaths(String package) =>
     _kPreservedOhosScaffoldPaths[package] ?? const [];
+
+List<String> integrateAppleScaffoldSourceOfTruthAssetPaths({
+  required String repoRootPath,
+  required String package,
+}) => List.unmodifiable(
+  integrateAppleScaffoldSourceOfTruthPaths(package).map(
+    (relativePath) => _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
+      repoRootPath: repoRootPath,
+      package: package,
+      relativePath: relativePath,
+    ),
+  ),
+);
 
 String _integrateAppleScaffoldSourceOfTruthAssetPath({
   required String package,
@@ -114,29 +129,10 @@ String _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot({
 }
 
 @visibleForTesting
-List<String> integrateAppleScaffoldSourceOfTruthPathsForTesting(
-  String package,
-) => List.unmodifiable(_integrateAppleScaffoldSourceOfTruthPaths(package));
-
-@visibleForTesting
 List<String> preservedOhosScaffoldPathsForTesting(String package) =>
     List.unmodifiable(_preservedOhosScaffoldPaths(package));
 
-@visibleForTesting
-List<String> integrateAppleScaffoldSourceOfTruthAssetPathsForTesting({
-  required String repoRootPath,
-  required String package,
-}) => List.unmodifiable(
-  _integrateAppleScaffoldSourceOfTruthPaths(package).map(
-    (relativePath) => _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
-      repoRootPath: repoRootPath,
-      package: package,
-      relativePath: relativePath,
-    ),
-  ),
-);
-
-void _restorePathIfExists({
+void restorePathIfExists({
   required String source,
   required String destination,
 }) {
@@ -165,7 +161,7 @@ void _restorePathIfExists({
       File(destination).parent.createSync(recursive: true);
       File(source).copySync(destination);
     case FileSystemEntityType.directory:
-      _copyDirectoryRecursive(
+      copyDirectoryRecursive(
         source: Directory(source),
         destination: Directory(destination),
       );
@@ -181,7 +177,7 @@ void _restorePathIfExists({
   }
 }
 
-void _copyDirectoryRecursive({
+void copyDirectoryRecursive({
   required Directory source,
   required Directory destination,
 }) {
@@ -194,7 +190,7 @@ void _copyDirectoryRecursive({
     if (entity is File) {
       entity.copySync(destinationPath);
     } else if (entity is Directory) {
-      _copyDirectoryRecursive(
+      copyDirectoryRecursive(
         source: entity,
         destination: Directory(destinationPath),
       );
@@ -206,12 +202,4 @@ void _copyDirectoryRecursive({
       );
     }
   }
-}
-
-@visibleForTesting
-void copyDirectoryRecursiveForTesting({
-  required Directory source,
-  required Directory destination,
-}) {
-  _copyDirectoryRecursive(source: source, destination: destination);
 }

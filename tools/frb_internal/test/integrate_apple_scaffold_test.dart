@@ -35,14 +35,14 @@ void main() {
         'frb_example/flutter_via_create',
         'frb_example/flutter_via_create_native_assets',
       ]) {
-        expect(
-          integrateAppleScaffoldSourceOfTruthPathsForTesting(package),
-          ['.metadata', 'ios', 'macos/Podfile'],
-          reason: package,
-        );
+        expect(integrateAppleScaffoldSourceOfTruthPaths(package), [
+          '.metadata',
+          'ios',
+          'macos/Podfile',
+        ], reason: package);
 
         expect(
-          integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
+          integrateAppleScaffoldSourceOfTruthAssetPaths(
             repoRootPath: '/workspace/flutter_rust_bridge/',
             package: package,
           ),
@@ -64,14 +64,14 @@ void main() {
         'frb_example/flutter_via_integrate',
         'frb_example/flutter_via_integrate_native_assets',
       ]) {
-        expect(
-          integrateAppleScaffoldSourceOfTruthPathsForTesting(package),
-          ['.metadata', 'ios', 'macos/Podfile'],
-          reason: package,
-        );
+        expect(integrateAppleScaffoldSourceOfTruthPaths(package), [
+          '.metadata',
+          'ios',
+          'macos/Podfile',
+        ], reason: package);
 
         expect(
-          integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
+          integrateAppleScaffoldSourceOfTruthAssetPaths(
             repoRootPath: '/workspace/flutter_rust_bridge/',
             package: package,
           ),
@@ -91,14 +91,15 @@ void main() {
       'frb_example/flutter_package',
       'frb_example/flutter_package_native_assets',
     ]) {
-      expect(
-        integrateAppleScaffoldSourceOfTruthPathsForTesting(package),
-        ['.metadata', 'pubspec.yaml', 'example/ios', 'example/macos/Podfile'],
-        reason: package,
-      );
+      expect(integrateAppleScaffoldSourceOfTruthPaths(package), [
+        '.metadata',
+        'pubspec.yaml',
+        'example/ios',
+        'example/macos/Podfile',
+      ], reason: package);
 
       expect(
-        integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
+        integrateAppleScaffoldSourceOfTruthAssetPaths(
           repoRootPath: '/workspace/flutter_rust_bridge/',
           package: package,
         ),
@@ -117,14 +118,12 @@ void main() {
     'integrate apple scaffold source of truth is empty for unrelated package',
     () {
       expect(
-        integrateAppleScaffoldSourceOfTruthPathsForTesting(
-          'frb_example/gallery',
-        ),
+        integrateAppleScaffoldSourceOfTruthPaths('frb_example/gallery'),
         isEmpty,
       );
 
       expect(
-        integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
+        integrateAppleScaffoldSourceOfTruthAssetPaths(
           repoRootPath: '/workspace/flutter_rust_bridge/',
           package: 'frb_example/gallery',
         ),
@@ -240,7 +239,7 @@ void main() {
       '${source.path}/.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings',
     ).writeAsStringSync('<plist/>');
 
-    copyDirectoryRecursiveForTesting(source: source, destination: destination);
+    copyDirectoryRecursive(source: source, destination: destination);
 
     expect(
       File('${destination.path}/.gitignore').readAsStringSync(),
