@@ -11,8 +11,76 @@ Future<void> generateDartTestEntrypoints(
   Package package, {
   required Uri dartRoot,
 }) async {
+  await _generateDartSanitizerRuntimeShutdown(package, dartRoot: dartRoot);
   await _generateDartValgrindTestEntrypoint(package, dartRoot: dartRoot);
   await _generateDartWebTestEntrypoint(package, dartRoot: dartRoot);
+}
+
+Future<void> _generateDartSanitizerRuntimeShutdown(
+  Package package, {
+  required Uri dartRoot,
+}) async {
+  final ioCode =
+      '''
+$_kPrelude
+
+import 'dart:ffi' as ffi;
+import 'dart:io';
+
+Future<void> shutdownSanitizerRuntime() async {
+  final nativeLibraryDir =
+      Platform.environment['FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR']!;
+  final dylib = ffi.DynamicLibrary.open(
+    '\$nativeLibraryDir/lib${package.dartPackageName}.so',
+  );
+  final shutdown = dylib
+      .lookupFunction<ffi.Void Function(), void Function()>(
+        'frb_shutdown_sanitizer_runtime',
+      );
+  final pendingDropCount = dylib
+      .lookupFunction<ffi.UintPtr Function(), int Function()>(
+        'frb_dart_opaque_pending_drop_count',
+      );
+  final drainFailedDrops = dylib
+      .lookupFunction<ffi.Void Function(), void Function()>(
+        'frb_dart_opaque_drain_failed_drops',
+      );
+  shutdown();
+
+  final deadline = DateTime.now().add(const Duration(seconds: 10));
+  while (true) {
+    drainFailedDrops();
+    if (pendingDropCount() == 0) {
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+      drainFailedDrops();
+      if (pendingDropCount() == 0) {
+        break;
+      }
+    }
+    if (DateTime.now().isAfter(deadline)) {
+      throw StateError('Timed out draining pending DartOpaque drops');
+    }
+    await Future<void>.delayed(Duration.zero);
+  }
+}
+  ''';
+  const stubCode =
+      '''
+$_kPrelude
+
+Future<void> shutdownSanitizerRuntime() async {}
+  ''';
+
+  await _writeToFile(
+    dartRoot,
+    'test/dart_sanitizer_runtime_shutdown_io.dart',
+    ioCode,
+  );
+  await _writeToFile(
+    dartRoot,
+    'test/dart_sanitizer_runtime_shutdown_stub.dart',
+    stubCode,
+  );
 }
 
 Future<void> _generateDartWebTestEntrypoint(
@@ -81,6 +149,9 @@ import 'package:${package.dartPackageName}/src/rust/frb_generated.dart';
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';
+import 'dart_sanitizer_runtime_shutdown_stub.dart'
+    if (dart.library.io) 'dart_sanitizer_runtime_shutdown_io.dart';
+import 'utils/test_flutter_memory_leak_utility.dart';
 
 ${imports.join("")}
 
@@ -99,8 +170,22 @@ Future<void> main() async {
       printPath: false,
     ),
   );
+  print('FRB_DART_TEST_RESULT: \${success ? 'success' : 'failure'}');
 
-  exit(success ? 0 : 1);
+  if (Platform.environment['FRB_SANITIZER_SHUTDOWN_RUNTIME'] == '1') {
+    final vmService = await VmServiceUtil.create();
+    if (vmService == null) {
+      throw StateError('Sanitizer test requires the Dart VM service');
+    }
+    await vmService.gc();
+    await Future<void>.delayed(const Duration(milliseconds: 10));
+    await shutdownSanitizerRuntime();
+    await vmService.gc();
+    await Future<void>.delayed(const Duration(milliseconds: 10));
+    vmService.dispose();
+  }
+  RustLib.dispose();
+  exitCode = success ? 0 : 1;
 }
 
 Future<void> callFileEntrypoints({

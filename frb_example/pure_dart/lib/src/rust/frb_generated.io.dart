@@ -45047,6 +45047,17 @@ class RustLibWire implements BaseWire {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
+  void frb_shutdown_sanitizer_runtime() {
+    return _frb_shutdown_sanitizer_runtime();
+  }
+
+  late final _frb_shutdown_sanitizer_runtimePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
+    'frb_shutdown_sanitizer_runtime',
+  );
+  late final _frb_shutdown_sanitizer_runtime =
+      _frb_shutdown_sanitizer_runtimePtr.asFunction<void Function()>();
+
   void benchmark_raw_void_sync() {
     return _benchmark_raw_void_sync();
   }

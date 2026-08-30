@@ -6,6 +6,9 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';
+import 'dart_sanitizer_runtime_shutdown_stub.dart'
+    if (dart.library.io) 'dart_sanitizer_runtime_shutdown_io.dart';
+import 'utils/test_flutter_memory_leak_utility.dart';
 
 import 'api/array_test.dart' as array_test;
 import 'api/async_misc_test.dart' as async_misc_test;
@@ -463,8 +466,22 @@ Future<void> main() async {
       printPath: false,
     ),
   );
+  print('FRB_DART_TEST_RESULT: ${success ? 'success' : 'failure'}');
 
-  exit(success ? 0 : 1);
+  if (Platform.environment['FRB_SANITIZER_SHUTDOWN_RUNTIME'] == '1') {
+    final vmService = await VmServiceUtil.create();
+    if (vmService == null) {
+      throw StateError('Sanitizer test requires the Dart VM service');
+    }
+    await vmService.gc();
+    await Future<void>.delayed(const Duration(milliseconds: 10));
+    await shutdownSanitizerRuntime();
+    await vmService.gc();
+    await Future<void>.delayed(const Duration(milliseconds: 10));
+    vmService.dispose();
+  }
+  RustLib.dispose();
+  exitCode = success ? 0 : 1;
 }
 
 Future<void> callFileEntrypoints({
