@@ -322,7 +322,10 @@ mod tests {
             .into_iter()
             .find_map(|item| match item {
                 syn::Item::Macro(item) if item.mac.path.is_ident("macro_rules") => Some(item),
+                // The canonical file contains only the exported logging macro.
+                // frb-coverage:ignore-start
                 _ => None,
+                // frb-coverage:ignore-end
             })
             .unwrap();
         let final_arm = item_macro
