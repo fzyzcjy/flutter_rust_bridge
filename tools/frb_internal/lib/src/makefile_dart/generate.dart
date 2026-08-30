@@ -23,7 +23,6 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
-import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
 
@@ -452,14 +451,13 @@ Future<void> generateAppleScaffold() async {
   await wrapMaybeSetExitIfChangedRaw(true, () async {
     for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
       await generateRunFrbCodegenCommandIntegrate(
-        generateAppleScaffoldPackageConfigForTesting(package),
+        generateAppleScaffoldPackageConfig(package),
       );
     }
   });
 }
 
-@visibleForTesting
-GenerateIntegratePackageConfig generateAppleScaffoldPackageConfigForTesting(
+GenerateIntegratePackageConfig generateAppleScaffoldPackageConfig(
   String package,
 ) => GenerateIntegratePackageConfig(
   setExitIfChanged: false,

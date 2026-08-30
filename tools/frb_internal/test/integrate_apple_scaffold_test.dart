@@ -17,7 +17,7 @@ void main() {
   });
 
   test('integrate apple scaffold generation does not compare OHOS', () {
-    final config = generateAppleScaffoldPackageConfigForTesting(
+    final config = generateAppleScaffoldPackageConfig(
       'frb_example/flutter_via_create',
     );
 
