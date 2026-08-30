@@ -5,7 +5,7 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH"
 export LANG="en_US.UTF-8"
 
 RUST_VERSION="1.93.1"
-FLUTTER_VERSION="${FRB_TART_FLUTTER_VERSION:-3.44.0}"
+FLUTTER_VERSION="${FRB_TART_FLUTTER_VERSION:-3.47.0}"
 FLUTTER_ROOT="$HOME/flutter"
 
 log() {
@@ -144,7 +144,7 @@ log "Printing tool versions"
 sw_vers
 xcodebuild -version
 flutter --version
-flutter --version --machine | python3 -c 'import json,os,sys; version=json.load(sys.stdin)["frameworkVersion"]; expected=os.environ.get("FRB_TART_FLUTTER_VERSION", "3.44.0"); assert version == expected, f"Expected Flutter {expected}, found {version}"'
+flutter --version --machine | python3 -c 'import json,os,sys; version=json.load(sys.stdin)["frameworkVersion"]; expected=os.environ.get("FRB_TART_FLUTTER_VERSION", "3.47.0"); assert version == expected, f"Expected Flutter {expected}, found {version}"'
 pod --version
 rustc --version
 cargo --version

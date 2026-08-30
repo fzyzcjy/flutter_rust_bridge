@@ -21,8 +21,7 @@ class PlanCiCommand extends Command<void> {
       ..addOption(
         'filter',
         defaultsTo: 'full',
-        help:
-            'Filter such as test_dart_web[package=frb_example--pure_dart_pde], or full.',
+        help: 'Filter such as test_dart_web[package=frb_example--pure_dart_pde], or full.',
       )
       ..addOption(
         'automatic-ci-disabled',

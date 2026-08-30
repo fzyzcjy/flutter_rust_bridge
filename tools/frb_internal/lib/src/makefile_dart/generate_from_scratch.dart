@@ -6,68 +6,46 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:path/path.dart' as path;
 
-const _kBuildCliDependency = '  build_cli: ^2.2.5';
-const _kDisabledBuildCliDependency =
-    '  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed\n'
-    '  # build_cli: ^2.2.5';
-const _kBuildCliPackages = ['frb_dart', 'frb_utils'];
-
 Future<void> generateRunFrbCodegenCommandGenerateFromScratch() async {
   await wrapMaybeSetExitIfChangedRaw(true, () async {
-    await _withBuildCliEnabled(() async {
-      final expectedGeneratedFiles =
-          await deleteTrackedGeneratedFilesForFromScratch();
-      await _prepareFromScratchCodegenDependencies();
-      const generateConfig = GenerateConfig(
-        setExitIfChanged: false,
-        coverage: false,
+    final expectedGeneratedFiles =
+        await deleteTrackedGeneratedFilesForFromScratch();
+    await _prepareFromScratchCodegenDependencies();
+    const generateConfig = GenerateConfig(
+      setExitIfChanged: false,
+      coverage: false,
+    );
+    await generateInternalRust(generateConfig);
+    await generateInternalBuildRunner(generateConfig);
+    for (final package in [
+      'frb_example/pure_dart',
+      'frb_example/pure_dart_pde',
+    ]) {
+      await generateRunFrbCodegenCommandGenerate(
+        GeneratePackageConfig(
+          setExitIfChanged: false,
+          package: package,
+          coverage: false,
+        ),
       );
-      await generateInternalRust(generateConfig);
-      await generateInternalBuildRunner(generateConfig);
-      for (final package in [
-        'frb_example/pure_dart',
-        'frb_example/pure_dart_pde',
-      ]) {
-        await generateRunFrbCodegenCommandGenerate(
-          GeneratePackageConfig(
-            setExitIfChanged: false,
-            package: package,
-            coverage: false,
-          ),
-        );
-      }
-      await generateInternal(generateConfig);
-      await precommitGenerate();
-      verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
-    });
+    }
+    await generateInternal(generateConfig);
+    await precommitGenerate();
+    await _generateExampleBuildRunnerOutputs();
+    verifyTrackedGeneratedFilesRestored(expectedGeneratedFiles);
   });
 }
 
-Future<void> _withBuildCliEnabled(Future<void> Function() action) async {
-  _setBuildCliEnabled(enabled: true);
-  try {
-    await action();
-  } finally {
-    _setBuildCliEnabled(enabled: false);
-  }
-}
-
-void _setBuildCliEnabled({required bool enabled}) {
-  final expected = enabled
-      ? _kDisabledBuildCliDependency
-      : _kBuildCliDependency;
-  final replacement = enabled
-      ? _kBuildCliDependency
-      : _kDisabledBuildCliDependency;
-  for (final package in _kBuildCliPackages) {
-    final pubspec = File(path.join(exec.pwd!, package, 'pubspec.yaml'));
-    final contents = pubspec.readAsStringSync();
-    if (!contents.contains(expected)) {
-      throw StateError(
-        'Expected build_cli state not found in ${pubspec.path}.',
-      );
-    }
-    pubspec.writeAsStringSync(contents.replaceFirst(expected, replacement));
+Future<void> _generateExampleBuildRunnerOutputs() async {
+  for (final package in [
+    'frb_example/pure_dart',
+    'frb_example/pure_dart_pde',
+  ]) {
+    await exec(
+      'dart run build_runner build --delete-conflicting-outputs',
+      relativePwd: package,
+    );
+    await exec('dart format lib', relativePwd: package);
   }
 }
 
@@ -128,7 +106,10 @@ List<String> _selectTrackedGeneratedFilesForFromScratch(
 ];
 
 bool _isFrbGeneratedFile(String file) =>
-    _fileName(file).startsWith('frb_generated.');
+    _fileName(file).startsWith('frb_generated.') ||
+    (file.startsWith('frb_example/') &&
+        file.contains('/lib/src/rust/') &&
+        file.endsWith('.dart'));
 
 bool _isDartBuilderOutput(String file) =>
     file.endsWith('.g.dart') || file.endsWith('.freezed.dart');

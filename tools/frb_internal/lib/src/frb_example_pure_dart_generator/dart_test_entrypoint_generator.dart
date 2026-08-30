@@ -25,6 +25,7 @@ $_kPrelude
 
 import 'package:flutter_rust_bridge_utils/flutter_rust_bridge_utils_web.dart';
 import 'package:${package.dartPackageName}/src/rust/frb_generated.dart';
+
 import 'dart_valgrind_test_entrypoint.dart' as dart_valgrind_test_entrypoint;
 
 Future<void> main() async {

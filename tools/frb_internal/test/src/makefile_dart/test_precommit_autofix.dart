@@ -42,9 +42,8 @@ void main() {
         repo: repo,
         outputPath: outputPath,
         precommitRunner: (_) async {
-          File(
-            path.join(repo.path, 'tracked.txt'),
-          ).writeAsStringSync('hello world\n');
+          File(path.join(repo.path, 'tracked.txt'))
+              .writeAsStringSync('hello world\n');
         },
       );
 
@@ -69,12 +68,10 @@ void main() {
         repo: repo,
         outputPath: outputPath,
         precommitRunner: (_) async {
-          File(
-            path.join(repo.path, 'generated', 'new_file.txt'),
-          ).createSync(recursive: true);
-          File(
-            path.join(repo.path, 'generated', 'new_file.txt'),
-          ).writeAsStringSync('new content\n');
+          File(path.join(repo.path, 'generated', 'new_file.txt'))
+              .createSync(recursive: true);
+          File(path.join(repo.path, 'generated', 'new_file.txt'))
+              .writeAsStringSync('new content\n');
         },
       );
 
@@ -125,8 +122,7 @@ void main() {
       );
       await _commitFile(
         repo: repo,
-        relativePath:
-            'frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig',
+        relativePath: 'frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig',
         contents:
             '#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"\n'
             '#include "ephemeral/Flutter-Generated.xcconfig"\n',
@@ -149,51 +145,52 @@ void main() {
       expect(result.summary.status, PrecommitAutofixStatus.clean);
     });
 
-    test('excluded integrate drift is omitted while real changes remain', () async {
-      final repo = await _createCommittedRepo(
-        fileName: 'tracked.txt',
-        fileContents: 'hello\n',
-      );
-      addTearDown(() => repo.delete(recursive: true));
+    test(
+      'excluded integrate drift is omitted while real changes remain',
+      () async {
+        final repo = await _createCommittedRepo(
+          fileName: 'tracked.txt',
+          fileContents: 'hello\n',
+        );
+        addTearDown(() => repo.delete(recursive: true));
 
-      final excludedPath = path.join(
-        repo.path,
-        'frb_example',
-        'flutter_via_create',
-        'macos',
-        'Flutter',
-        'Flutter-Debug.xcconfig',
-      );
-      await _commitFile(
-        repo: repo,
-        relativePath:
-            'frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig',
-        contents:
-            '#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"\n'
-            '#include "ephemeral/Flutter-Generated.xcconfig"\n',
-        message: 'add excluded integrate drift fixture',
-      );
+        final excludedPath = path.join(
+          repo.path,
+          'frb_example',
+          'flutter_via_create',
+          'macos',
+          'Flutter',
+          'Flutter-Debug.xcconfig',
+        );
+        await _commitFile(
+          repo: repo,
+          relativePath: 'frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig',
+          contents:
+              '#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"\n'
+              '#include "ephemeral/Flutter-Generated.xcconfig"\n',
+          message: 'add excluded integrate drift fixture',
+        );
 
-      final outputPath = path.join(repo.path, 'artifacts', 'precommit.diff');
-      final result = await _runService(
-        repo: repo,
-        outputPath: outputPath,
-        precommitRunner: (_) async {
-          File(
-            path.join(repo.path, 'tracked.txt'),
-          ).writeAsStringSync('hello world\n');
-          File(excludedPath).writeAsStringSync(
-            '#include "ephemeral/Flutter-Generated.xcconfig"\n',
-          );
-        },
-      );
+        final outputPath = path.join(repo.path, 'artifacts', 'precommit.diff');
+        final result = await _runService(
+          repo: repo,
+          outputPath: outputPath,
+          precommitRunner: (_) async {
+            File(path.join(repo.path, 'tracked.txt'))
+                .writeAsStringSync('hello world\n');
+            File(excludedPath).writeAsStringSync(
+              '#include "ephemeral/Flutter-Generated.xcconfig"\n',
+            );
+          },
+        );
 
-      final patchText = File(outputPath).readAsStringSync();
+        final patchText = File(outputPath).readAsStringSync();
 
-      expect(result.hasPatch, isTrue);
-      expect(patchText, contains('tracked.txt'));
-      expect(patchText, isNot(contains('Flutter-Debug.xcconfig')));
-    });
+        expect(result.hasPatch, isTrue);
+        expect(patchText, contains('tracked.txt'));
+        expect(patchText, isNot(contains('Flutter-Debug.xcconfig')));
+      },
+    );
 
     test('dirty-before-run repo fails with actionable error', () async {
       final repo = await _createCommittedRepo(
@@ -202,9 +199,8 @@ void main() {
       );
       addTearDown(() => repo.delete(recursive: true));
 
-      File(
-        path.join(repo.path, 'tracked.txt'),
-      ).writeAsStringSync('dirty before run\n');
+      File(path.join(repo.path, 'tracked.txt'))
+          .writeAsStringSync('dirty before run\n');
 
       var precommitInvoked = false;
 

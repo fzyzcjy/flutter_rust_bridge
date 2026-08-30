@@ -75,8 +75,9 @@ enum CodegenInstallMode { cargoInstall, cargoBinstall, scoop, homebrew }
 
 enum ReleaseChannel { stable, unstable }
 
-typedef CratesIoMetadataFetcher =
-    Future<Map<String, dynamic>> Function(String package);
+typedef CratesIoMetadataFetcher = Future<Map<String, dynamic>> Function(
+  String package,
+);
 
 const _codegenPackageName = 'flutter_rust_bridge_codegen';
 

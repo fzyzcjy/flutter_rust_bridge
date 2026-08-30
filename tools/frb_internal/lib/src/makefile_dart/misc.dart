@@ -145,6 +145,7 @@ Future<void> precommit(PrecommitConfig config) async {
       const GenerateConfig(setExitIfChanged: false, coverage: false),
       canSkipAllContributor: true,
     );
+    await lintDartFormat(const LintConfig(fix: true));
     await testRust(const TestRustConfig(updateGoldens: true, coverage: false));
     await pubGetAll();
     await cargoFetchAll();
@@ -166,6 +167,7 @@ Future<void> precommitGenerate() async {
         ),
       ),
   ]);
+  await lintDartFormat(const LintConfig(fix: true));
 }
 
 Future<void> ensureCargoExpandInstalledForPrecommitGenerate() async {

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/build_cli.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate_from_scratch.dart';
@@ -108,8 +109,7 @@ void main() {
   test('release guard rejects uninitialized submodules', () {
     expect(
       () => verifyReleaseSubmodules(
-        submoduleStatus:
-            '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+        submoduleStatus: '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
       ),
       throwsA(
         isA<Exception>().having(
@@ -150,9 +150,8 @@ void main() {
     'pure dart generator resolves package from repo root instead of cwd',
     () {
       expect(
-        pureDartUriForTesting(
-          repoRootPath: '/workspace/flutter_rust_bridge/',
-        ).toFilePath(),
+        pureDartUriForTesting(repoRootPath: '/workspace/flutter_rust_bridge/')
+            .toFilePath(),
         '/workspace/flutter_rust_bridge/frb_example/pure_dart/',
       );
     },
@@ -199,53 +198,47 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
-  test(
-    'integrate Cargo.lock source of truth keeps local crate after flutter_rust_bridge',
-    () {
-      for (final (package, crateName) in [
-        (
-          'frb_example/flutter_via_create/rust/Cargo.lock',
-          'rust_lib_flutter_via_create',
-        ),
-        (
-          'frb_example/flutter_via_integrate/rust/Cargo.lock',
-          'rust_lib_flutter_via_integrate',
-        ),
-        (
-          'frb_example/flutter_via_create_native_assets/rust/Cargo.lock',
-          'rust_lib_flutter_via_create_native_assets',
-        ),
-        (
-          'frb_example/flutter_via_integrate_native_assets/rust/Cargo.lock',
-          'rust_lib_flutter_via_integrate_native_assets',
-        ),
-      ]) {
-        final content = File('../../$package').readAsStringSync();
-        final localCrateIndex = content.indexOf('name = "$crateName"');
-        final frbIndex = content.indexOf('name = "flutter_rust_bridge"');
+  test('integrate Cargo.lock source of truth keeps local crate after flutter_rust_bridge', () {
+    for (final (package, crateName) in [
+      (
+        'frb_example/flutter_via_create/rust/Cargo.lock',
+        'rust_lib_flutter_via_create',
+      ),
+      (
+        'frb_example/flutter_via_integrate/rust/Cargo.lock',
+        'rust_lib_flutter_via_integrate',
+      ),
+      (
+        'frb_example/flutter_via_create_native_assets/rust/Cargo.lock',
+        'rust_lib_flutter_via_create_native_assets',
+      ),
+      (
+        'frb_example/flutter_via_integrate_native_assets/rust/Cargo.lock',
+        'rust_lib_flutter_via_integrate_native_assets',
+      ),
+    ]) {
+      final content = File('../../$package').readAsStringSync();
+      final localCrateIndex = content.indexOf('name = "$crateName"');
+      final frbIndex = content.indexOf('name = "flutter_rust_bridge"');
 
-        expect(localCrateIndex, greaterThanOrEqualTo(0), reason: package);
-        expect(frbIndex, greaterThanOrEqualTo(0), reason: package);
-        expect(localCrateIndex, greaterThan(frbIndex), reason: package);
-      }
-    },
-  );
+      expect(localCrateIndex, greaterThanOrEqualTo(0), reason: package);
+      expect(frbIndex, greaterThanOrEqualTo(0), reason: package);
+      expect(localCrateIndex, greaterThan(frbIndex), reason: package);
+    }
+  });
 
-  test(
-    'resolveBuildWebPackage uses replacement package for flutter package example',
-    () {
-      expect(
-        resolveBuildWebPackage('frb_example/flutter_package/example'),
-        'frb_example/flutter_package',
-      );
-      expect(
-        resolveBuildWebPackage(
-          'frb_example/flutter_package_native_assets/example',
-        ),
-        'frb_example/flutter_package_native_assets',
-      );
-    },
-  );
+  test('resolveBuildWebPackage uses replacement package for flutter package example', () {
+    expect(
+      resolveBuildWebPackage('frb_example/flutter_package/example'),
+      'frb_example/flutter_package',
+    );
+    expect(
+      resolveBuildWebPackage(
+        'frb_example/flutter_package_native_assets/example',
+      ),
+      'frb_example/flutter_package_native_assets',
+    );
+  });
 
   test('resolveBuildWebPackage keeps package when no replacement exists', () {
     expect(
@@ -269,12 +262,73 @@ plain
     );
   });
 
+  test('build_cli state is restored when internal generation fails', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_build_cli_');
+    addTearDown(() => tempDir.delete(recursive: true));
+    final pubspecs = [
+      File('${tempDir.path}/frb_dart/pubspec.yaml'),
+      File('${tempDir.path}/frb_utils/pubspec.yaml'),
+    ];
+    const disabledContents = '''
+dev_dependencies:
+  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
+  # build_cli: ^2.2.5
+''';
+    for (final pubspec in pubspecs) {
+      await pubspec.parent.create(recursive: true);
+      await pubspec.writeAsString(disabledContents);
+    }
+
+    await expectLater(
+      withBuildCliEnabled(
+        repoRootPath: tempDir.path,
+        action: () async {
+          for (final pubspec in pubspecs) {
+            expect(
+              await pubspec.readAsString(),
+              contains('\n  build_cli: ^2.2.5'),
+            );
+          }
+          throw StateError('generation failed');
+        },
+      ),
+      throwsStateError,
+    );
+    for (final pubspec in pubspecs) {
+      expect(await pubspec.readAsString(), disabledContents);
+    }
+  });
+
+  test('build_cli validates every pubspec before changing files', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_build_cli_');
+    addTearDown(() => tempDir.delete(recursive: true));
+    final firstPubspec = File('${tempDir.path}/frb_dart/pubspec.yaml');
+    final secondPubspec = File('${tempDir.path}/frb_utils/pubspec.yaml');
+    await firstPubspec.parent.create(recursive: true);
+    await secondPubspec.parent.create(recursive: true);
+    const disabledContents = '''
+dev_dependencies:
+  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
+  # build_cli: ^2.2.5
+''';
+    await firstPubspec.writeAsString(disabledContents);
+    await secondPubspec.writeAsString('dev_dependencies:\n');
+
+    await expectLater(
+      withBuildCliEnabled(repoRootPath: tempDir.path, action: () async {}),
+      throwsStateError,
+    );
+    expect(await firstPubspec.readAsString(), disabledContents);
+  });
+
   test('from-scratch selection keeps every tracked generated output', () {
     expect(
       selectTrackedGeneratedFilesForFromScratchForTesting([
         'frb_example/example/frb_generated.h',
         'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.dart',
         'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/src/rust/third_party/binding.dart',
         'frb_example/example/lib/unrelated_model.g.dart',
         'frb_example/rust_ui/src/frb_generated.rs',
         'frb_rust/src/internal_generated/mod.rs',
@@ -287,7 +341,9 @@ plain
       [
         'frb_example/example/frb_generated.h',
         'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.dart',
         'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/src/rust/third_party/binding.dart',
         'frb_example/example/lib/unrelated_model.g.dart',
         'frb_example/rust_ui/src/frb_generated.rs',
         'frb_rust/src/internal_generated/mod.rs',
@@ -410,6 +466,16 @@ plain
         QuickstartSmokeTarget.ios,
       ),
       const Duration(minutes: 10),
+    );
+  });
+
+  test('quickstart smoke disables DDS for Android runs', () {
+    expect(
+      quickstartSmokeFlutterRunArgsForTesting(
+        target: QuickstartSmokeTarget.android,
+        deviceId: 'emulator-5554',
+      ),
+      ['run', '-d', 'emulator-5554', '--no-dds'],
     );
   });
 

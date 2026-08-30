@@ -112,9 +112,8 @@ Directory _findRepoRoot() {
   var directory = Directory.current.absolute;
   while (true) {
     if (File(path.join(directory.path, 'frb_internal')).existsSync() &&
-        Directory(
-          path.join(directory.path, 'tools', 'frb_internal'),
-        ).existsSync()) {
+        Directory(path.join(directory.path, 'tools', 'frb_internal'))
+            .existsSync()) {
       return directory;
     }
 

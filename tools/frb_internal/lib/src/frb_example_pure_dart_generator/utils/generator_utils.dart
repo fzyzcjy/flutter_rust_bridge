@@ -44,9 +44,8 @@ abstract class BaseGenerator {
 
   void _writeCodeFiles(Map<String, String> textOfPathMap) {
     for (final entry in textOfPathMap.entries) {
-      File(
-        interestDir.resolve(entry.key).toFilePath(),
-      ).writeAsStringSync(entry.value);
+      File(interestDir.resolve(entry.key).toFilePath())
+          .writeAsStringSync(entry.value);
     }
   }
 }

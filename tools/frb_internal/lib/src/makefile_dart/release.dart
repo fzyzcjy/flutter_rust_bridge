@@ -195,10 +195,8 @@ Future<void> releasePublishAll() async {
 
 @visibleForTesting
 String dartPublishCommand(String package) => switch (package) {
-  'frb_dart' =>
-    'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org',
-  'frb_hooks' =>
-    'cd frb_hooks && dart pub publish --force --server=https://pub.dartlang.org',
+  'frb_dart' => 'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org',
+  'frb_hooks' => 'cd frb_hooks && dart pub publish --force --server=https://pub.dartlang.org',
   _ => throw ArgumentError.value(package, 'package'),
 };
 

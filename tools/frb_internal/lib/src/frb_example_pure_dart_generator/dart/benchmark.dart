@@ -401,8 +401,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       argValues: argValues,
       setupDataType: 'BinaryTreeProtobuf',
       setup: 'setupData = _createTreeProtobuf(depth);',
-      run:
-          'benchmarkBinaryTreeInputProtobufTwinSync(raw: setupData.writeToBuffer());',
+      run: 'benchmarkBinaryTreeInputProtobufTwinSync(raw: setupData.writeToBuffer());',
       extra: '''
         static BinaryTreeProtobuf _createTreeProtobuf(int depth) {
           if (depth == 0) {
@@ -443,8 +442,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       setupDataType: 'BenchmarkBinaryTreeTwinSync',
       setup:
           'setupData = BinaryTree_Frb_Input_Sync_Benchmark._createTree(depth);',
-      run:
-          'benchmarkBinaryTreeInputJsonTwinSync(raw: jsonEncode(setupData, toEncodable: _toJson));',
+      run: 'benchmarkBinaryTreeInputJsonTwinSync(raw: jsonEncode(setupData, toEncodable: _toJson));',
       extra: '''
         // Normally use `json_serializable`, but we only use for benchmark so manually write
         static Map<String, dynamic> _toJson(dynamic tree) => {
@@ -549,8 +547,7 @@ List<_Benchmark> _benchmarkBlob() {
       argValues: argValues,
       setupDataType: 'BenchmarkBlobTwinSyncSse',
       setup: setupDataSimple(sse: true),
-      run:
-          'benchmarkBlobInputJsonTwinSync(raw: jsonEncode(setupData, toEncodable: _toJson));',
+      run: 'benchmarkBlobInputJsonTwinSync(raw: jsonEncode(setupData, toEncodable: _toJson));',
       extra: '''
         // Normally use `json_serializable`, but we only use for benchmark so manually write
         static Map<String, dynamic> _toJson(dynamic blob) => {
