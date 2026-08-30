@@ -26,8 +26,8 @@ run-name: ${{ github.event_name == 'workflow_dispatch' && format('CI ({0})', inp
 env:
   CARGO_TERM_COLOR: always
   FRB_MAIN_RUST_VERSION: 1.93.1
-  FRB_MAIN_DART_VERSION: 3.11.0
-  FRB_MAIN_FLUTTER_VERSION: 3.44.0
+  FRB_MAIN_DART_VERSION: 3.13.0
+  FRB_MAIN_FLUTTER_VERSION: 3.47.0
   FRB_RUSTFMT_NIGHTLY_VERSION: nightly-2025-02-01
   FRB_OHOS_FLUTTER_REF: 6d7e5b43fb43bb85ba0a59e3469299ebcf45a637
   FRB_OHOS_TOOLCHAIN_VERSION: 6.1.1.280
@@ -437,6 +437,11 @@ jobs:
           git -C $GITHUB_WORKSPACE/flutter checkout -B oh-3.41.9-dev $FRB_OHOS_FLUTTER_REF
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.platforms == 'ohos'
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
+      - if: matrix.platforms == 'ohos'
         name: Export OHOS_SDK_HOME
         shell: bash
         run: |
@@ -655,6 +660,11 @@ jobs:
           git clone -b oh-3.41.9-dev --single-branch https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
           git -C $GITHUB_WORKSPACE/flutter checkout -B oh-3.41.9-dev $FRB_OHOS_FLUTTER_REF
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
+      - if: matrix.info.target == 'ohos'
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
       - if: matrix.info.target == 'ohos'
         name: Export OHOS_SDK_HOME
         shell: bash

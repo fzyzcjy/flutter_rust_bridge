@@ -4,13 +4,12 @@ import 'dart:io';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:path/path.dart' as path;
 
-typedef DevDockerWorkflowCommandRunner =
-    Future<RunCommandOutput> Function(
-      String command, {
-      String? relativePwd,
-      Map<String, String>? extraEnv,
-      bool? checkExitCode,
-    });
+typedef DevDockerWorkflowCommandRunner = Future<RunCommandOutput> Function(
+  String command, {
+  String? relativePwd,
+  Map<String, String>? extraEnv,
+  bool? checkExitCode,
+});
 
 String shellEscape(String value) {
   return "'${value.replaceAll("'", r"'\''")}'";

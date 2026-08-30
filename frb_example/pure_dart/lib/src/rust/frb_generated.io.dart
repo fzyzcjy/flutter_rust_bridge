@@ -133831,9 +133831,13 @@ class RustLibWire implements BaseWire {
 typedef DartPostCObjectFnType
     = ffi.Pointer<ffi.NativeFunction<DartPostCObjectFnTypeFunction>>;
 typedef DartPostCObjectFnTypeFunction = ffi.Bool Function(
-    DartPort port_id, ffi.Pointer<ffi.Void> message);
+  DartPort port_id,
+  ffi.Pointer<ffi.Void> message,
+);
 typedef DartDartPostCObjectFnTypeFunction = bool Function(
-    DartDartPort port_id, ffi.Pointer<ffi.Void> message);
+  DartDartPort port_id,
+  ffi.Pointer<ffi.Void> message,
+);
 typedef DartPort = ffi.Int64;
 typedef DartDartPort = int;
 

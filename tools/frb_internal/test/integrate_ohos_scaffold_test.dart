@@ -31,16 +31,13 @@ void main() {
       final original = Directory('${tempDir.path}/original');
       final generated = Directory('${tempDir.path}/generated');
       Directory('${original.path}/ohos').createSync(recursive: true);
-      Directory(
-        '${original.path}/rust_builder/ohos',
-      ).createSync(recursive: true);
+      Directory('${original.path}/rust_builder/ohos')
+          .createSync(recursive: true);
       File('${original.path}/ohos/marker.txt').writeAsStringSync('root-ohos');
-      File(
-        '${original.path}/rust_builder/ohos/marker.txt',
-      ).writeAsStringSync('builder-ohos');
-      File(
-        '${original.path}/rust_builder/pubspec.yaml',
-      ).writeAsStringSync('plugin:\n  platforms:\n    ohos:\n');
+      File('${original.path}/rust_builder/ohos/marker.txt')
+          .writeAsStringSync('builder-ohos');
+      File('${original.path}/rust_builder/pubspec.yaml')
+          .writeAsStringSync('plugin:\n  platforms:\n    ohos:\n');
       Directory(generated.path).createSync(recursive: true);
 
       await preserveCheckedInOhosScaffold(
@@ -54,9 +51,8 @@ void main() {
         'root-ohos',
       );
       expect(
-        File(
-          '${generated.path}/rust_builder/ohos/marker.txt',
-        ).readAsStringSync(),
+        File('${generated.path}/rust_builder/ohos/marker.txt')
+            .readAsStringSync(),
         'builder-ohos',
       );
       expect(
@@ -75,9 +71,8 @@ void main() {
     final original = Directory('${tempDir.path}/original');
     final generated = Directory('${tempDir.path}/generated');
     Directory('${original.path}/ohos').createSync(recursive: true);
-    File(
-      '${original.path}/ohos/ohos_device_smoke_main.dart',
-    ).writeAsStringSync('void main() {}');
+    File('${original.path}/ohos/ohos_device_smoke_main.dart')
+        .writeAsStringSync('void main() {}');
     Directory(generated.path).createSync(recursive: true);
 
     await preserveCheckedInOhosScaffold(
@@ -87,9 +82,8 @@ void main() {
     );
 
     expect(
-      File(
-        '${generated.path}/ohos/ohos_device_smoke_main.dart',
-      ).readAsStringSync(),
+      File('${generated.path}/ohos/ohos_device_smoke_main.dart')
+          .readAsStringSync(),
       'void main() {}',
     );
   });
@@ -273,104 +267,90 @@ void main() {
     expect(Directory('${tempDir.path}/staged_ohos').existsSync(), isFalse);
   });
 
-  test(
-    'restoreOriginalPackageWithGeneratedOhosScaffold rejects nested source symlink',
-    () async {
-      if (Platform.isWindows) return;
+  test('restoreOriginalPackageWithGeneratedOhosScaffold rejects nested source symlink', () async {
+    if (Platform.isWindows) return;
 
-      final tempDir = Directory.systemTemp.createTempSync(
-        'frb-retain-ohos-nested-symlink-',
-      );
-      addTearDown(() => tempDir.deleteSync(recursive: true));
+    final tempDir = Directory.systemTemp.createTempSync(
+      'frb-retain-ohos-nested-symlink-',
+    );
+    addTearDown(() => tempDir.deleteSync(recursive: true));
 
-      final original = Directory('${tempDir.path}/original');
-      final generated = Directory('${tempDir.path}/generated');
-      final linkedDirectory = Directory('${tempDir.path}/linked-directory');
-      File('${original.path}/generic.txt')
-        ..createSync(recursive: true)
-        ..writeAsStringSync('original');
-      File('${original.path}/ohos/original.txt')
-        ..createSync(recursive: true)
-        ..writeAsStringSync('original-ohos');
-      Directory('${generated.path}/ohos').createSync(recursive: true);
-      linkedDirectory.createSync(recursive: true);
-      Link(
-        '${generated.path}/ohos/nested-link',
-      ).createSync(linkedDirectory.path);
+    final original = Directory('${tempDir.path}/original');
+    final generated = Directory('${tempDir.path}/generated');
+    final linkedDirectory = Directory('${tempDir.path}/linked-directory');
+    File('${original.path}/generic.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('original');
+    File('${original.path}/ohos/original.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('original-ohos');
+    Directory('${generated.path}/ohos').createSync(recursive: true);
+    linkedDirectory.createSync(recursive: true);
+    Link('${generated.path}/ohos/nested-link').createSync(linkedDirectory.path);
 
-      await expectLater(
-        restoreOriginalPackageWithGeneratedOhosScaffold(
-          package: 'frb_example/flutter_via_create_native_assets',
-          originalPackageDir: original.path,
-          generatedPackageDir: generated.path,
-          temporaryDirectory: tempDir.path,
-        ),
-        throwsUnimplementedError,
-      );
+    await expectLater(
+      restoreOriginalPackageWithGeneratedOhosScaffold(
+        package: 'frb_example/flutter_via_create_native_assets',
+        originalPackageDir: original.path,
+        generatedPackageDir: generated.path,
+        temporaryDirectory: tempDir.path,
+      ),
+      throwsUnimplementedError,
+    );
 
-      expect(
-        File('${original.path}/generic.txt').readAsStringSync(),
-        'original',
-      );
-      expect(Link('${generated.path}/ohos/nested-link').existsSync(), isTrue);
-      expect(Directory('${tempDir.path}/staged_ohos').existsSync(), isFalse);
-    },
-  );
+    expect(File('${original.path}/generic.txt').readAsStringSync(), 'original');
+    expect(Link('${generated.path}/ohos/nested-link').existsSync(), isTrue);
+    expect(Directory('${tempDir.path}/staged_ohos').existsSync(), isFalse);
+  });
 
-  test(
-    'restoreOriginalPackageWithGeneratedOhosScaffold rejects invalid destination before overlay',
-    () async {
-      final tempDir = Directory.systemTemp.createTempSync(
-        'frb-retain-ohos-rollback-',
-      );
-      addTearDown(() => tempDir.deleteSync(recursive: true));
+  test('restoreOriginalPackageWithGeneratedOhosScaffold rejects invalid destination before overlay', () async {
+    final tempDir = Directory.systemTemp.createTempSync(
+      'frb-retain-ohos-rollback-',
+    );
+    addTearDown(() => tempDir.deleteSync(recursive: true));
 
-      final original = Directory('${tempDir.path}/original');
-      final generated = Directory('${tempDir.path}/generated');
-      File('${original.path}/generic.txt')
-        ..createSync(recursive: true)
-        ..writeAsStringSync('original');
-      File('${original.path}/ohos/original.txt')
-        ..createSync(recursive: true)
-        ..writeAsStringSync('original-ohos');
-      File('${original.path}/rust_builder')
-        ..createSync(recursive: true)
-        ..writeAsStringSync('blocks-overlay');
-      File('${generated.path}/ohos/generated.txt')
-        ..createSync(recursive: true)
-        ..writeAsStringSync('generated-ohos');
-      File('${generated.path}/rust_builder/ohos/generated.txt')
-        ..createSync(recursive: true)
-        ..writeAsStringSync('generated-builder-ohos');
-      File('${generated.path}/rust_builder/pubspec.yaml')
-        ..createSync(recursive: true)
-        ..writeAsStringSync('generated-pubspec');
+    final original = Directory('${tempDir.path}/original');
+    final generated = Directory('${tempDir.path}/generated');
+    File('${original.path}/generic.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('original');
+    File('${original.path}/ohos/original.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('original-ohos');
+    File('${original.path}/rust_builder')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('blocks-overlay');
+    File('${generated.path}/ohos/generated.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-ohos');
+    File('${generated.path}/rust_builder/ohos/generated.txt')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-builder-ohos');
+    File('${generated.path}/rust_builder/pubspec.yaml')
+      ..createSync(recursive: true)
+      ..writeAsStringSync('generated-pubspec');
 
-      await expectLater(
-        restoreOriginalPackageWithGeneratedOhosScaffold(
-          package: 'frb_example/flutter_via_integrate',
-          originalPackageDir: original.path,
-          generatedPackageDir: generated.path,
-          temporaryDirectory: tempDir.path,
-        ),
-        throwsStateError,
-      );
+    await expectLater(
+      restoreOriginalPackageWithGeneratedOhosScaffold(
+        package: 'frb_example/flutter_via_integrate',
+        originalPackageDir: original.path,
+        generatedPackageDir: generated.path,
+        temporaryDirectory: tempDir.path,
+      ),
+      throwsStateError,
+    );
 
-      expect(
-        File('${original.path}/generic.txt').readAsStringSync(),
-        'original',
-      );
-      expect(
-        File('${generated.path}/ohos/generated.txt').readAsStringSync(),
-        'generated-ohos',
-      );
-      expect(
-        File('${original.path}/rust_builder').readAsStringSync(),
-        'blocks-overlay',
-      );
-      expect(Directory('${tempDir.path}/staged_ohos').existsSync(), isFalse);
-    },
-  );
+    expect(File('${original.path}/generic.txt').readAsStringSync(), 'original');
+    expect(
+      File('${generated.path}/ohos/generated.txt').readAsStringSync(),
+      'generated-ohos',
+    );
+    expect(
+      File('${original.path}/rust_builder').readAsStringSync(),
+      'blocks-overlay',
+    );
+    expect(Directory('${tempDir.path}/staged_ohos').existsSync(), isFalse);
+  });
 
   test('failed OHOS generation restores the original package', () async {
     final tempDir = Directory.systemTemp.createTempSync(

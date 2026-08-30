@@ -28,63 +28,57 @@ void main() {
     expect(config.skipCheckedInAppleScaffold, isTrue);
   });
 
-  test(
-    'integrate apple scaffold source of truth is explicit for flutter_via_create',
-    () {
-      for (final package in [
-        'frb_example/flutter_via_create',
-        'frb_example/flutter_via_create_native_assets',
-      ]) {
-        expect(integrateAppleScaffoldSourceOfTruthPaths(package), [
-          '.metadata',
-          'ios',
-          'macos/Podfile',
-        ], reason: package);
+  test('integrate apple scaffold source of truth is explicit for flutter_via_create', () {
+    for (final package in [
+      'frb_example/flutter_via_create',
+      'frb_example/flutter_via_create_native_assets',
+    ]) {
+      expect(integrateAppleScaffoldSourceOfTruthPaths(package), [
+        '.metadata',
+        'ios',
+        'macos/Podfile',
+      ], reason: package);
 
-        expect(
-          integrateAppleScaffoldSourceOfTruthAssetPaths(
-            repoRootPath: '/workspace/flutter_rust_bridge/',
-            package: package,
-          ),
-          [
-            '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/.metadata',
-            '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/ios',
-            '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/macos/Podfile',
-          ],
-          reason: package,
-        );
-      }
-    },
-  );
+      expect(
+        integrateAppleScaffoldSourceOfTruthAssetPaths(
+          repoRootPath: '/workspace/flutter_rust_bridge/',
+          package: package,
+        ),
+        [
+          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/.metadata',
+          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/ios',
+          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/macos/Podfile',
+        ],
+        reason: package,
+      );
+    }
+  });
 
-  test(
-    'integrate apple scaffold source of truth is explicit for flutter_via_integrate',
-    () {
-      for (final package in [
-        'frb_example/flutter_via_integrate',
-        'frb_example/flutter_via_integrate_native_assets',
-      ]) {
-        expect(integrateAppleScaffoldSourceOfTruthPaths(package), [
-          '.metadata',
-          'ios',
-          'macos/Podfile',
-        ], reason: package);
+  test('integrate apple scaffold source of truth is explicit for flutter_via_integrate', () {
+    for (final package in [
+      'frb_example/flutter_via_integrate',
+      'frb_example/flutter_via_integrate_native_assets',
+    ]) {
+      expect(integrateAppleScaffoldSourceOfTruthPaths(package), [
+        '.metadata',
+        'ios',
+        'macos/Podfile',
+      ], reason: package);
 
-        expect(
-          integrateAppleScaffoldSourceOfTruthAssetPaths(
-            repoRootPath: '/workspace/flutter_rust_bridge/',
-            package: package,
-          ),
-          [
-            '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/.metadata',
-            '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/ios',
-            '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/macos/Podfile',
-          ],
-          reason: package,
-        );
-      }
-    },
-  );
+      expect(
+        integrateAppleScaffoldSourceOfTruthAssetPaths(
+          repoRootPath: '/workspace/flutter_rust_bridge/',
+          package: package,
+        ),
+        [
+          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/.metadata',
+          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/ios',
+          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/$package/macos/Podfile',
+        ],
+        reason: package,
+      );
+    }
+  });
 
   test('integrate apple scaffold source of truth is explicit for flutter_package', () {
     for (final package in [
@@ -138,9 +132,8 @@ void main() {
 
     final source = Directory('${tempDir.path}/source');
     final destination = Directory('${tempDir.path}/destination');
-    Directory(
-      '${source.path}/.xcodeproj/project.xcworkspace/xcshareddata',
-    ).createSync(recursive: true);
+    Directory('${source.path}/.xcodeproj/project.xcworkspace/xcshareddata')
+        .createSync(recursive: true);
     File('${source.path}/.gitignore').writeAsStringSync('DerivedData\n');
     File(
       '${source.path}/.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings',

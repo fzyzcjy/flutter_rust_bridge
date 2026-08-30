@@ -3,41 +3,33 @@ import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test(
-    'ensurePrecommitAutofixImage builds local image when published tag is missing',
-    () async {
-      final commands = <String>[];
+  test('ensurePrecommitAutofixImage builds local image when published tag is missing', () async {
+    final commands = <String>[];
 
-      await ensurePrecommitAutofixImage(
-        buildIfMissing: true,
-        commandRunner:
-            (
-              cmd, {
-              String? relativePwd,
-              Map<String, String>? extraEnv,
-              bool? checkExitCode,
-            }) async {
-              commands.add(cmd);
-              if (cmd.startsWith('docker pull ')) {
-                throw Exception('missing image');
-              }
-              return const RunCommandOutput(
-                stdout: '',
-                stderr: '',
-                exitCode: 0,
-              );
-            },
-        dockerfilePath: '/repo/.devcontainer/Dockerfile',
-        imageRef:
-            'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01',
-      );
+    await ensurePrecommitAutofixImage(
+      buildIfMissing: true,
+      commandRunner:
+          (
+            cmd, {
+            String? relativePwd,
+            Map<String, String>? extraEnv,
+            bool? checkExitCode,
+          }) async {
+            commands.add(cmd);
+            if (cmd.startsWith('docker pull ')) {
+              throw Exception('missing image');
+            }
+            return const RunCommandOutput(stdout: '', stderr: '', exitCode: 0);
+          },
+      dockerfilePath: '/repo/.devcontainer/Dockerfile',
+      imageRef: 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.47.0-rust-1.93.1-nightly-2025-02-01',
+    );
 
-      expect(commands, [
-        "docker pull 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01'",
-        "docker build -f '/repo/.devcontainer/Dockerfile' -t 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01' '/repo/.devcontainer'",
-      ]);
-    },
-  );
+    expect(commands, [
+      "docker pull 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.47.0-rust-1.93.1-nightly-2025-02-01'",
+      "docker build -f '/repo/.devcontainer/Dockerfile' -t 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.47.0-rust-1.93.1-nightly-2025-02-01' '/repo/.devcontainer'",
+    ]);
+  });
 
   test(
     'validatePrecommitAutofixPatch runs git apply check in repo root',
@@ -73,38 +65,38 @@ void main() {
     },
   );
 
+  test('buildPrecommitAutofixApplyCommand uses concrete run id when provided', () {
+    expect(
+      buildPrecommitAutofixApplyCommand(
+        artifactName: 'precommit-autofix-diff',
+        githubRunId: '12345',
+        patchFileName: 'precommit-autofix.diff',
+      ),
+      'artifact_dir="\$(mktemp -d)" && '
+      'gh run download 12345 -n precommit-autofix-diff -D "\$artifact_dir" && '
+      'git apply "\$artifact_dir/precommit-autofix.diff" && '
+      'rm -rf "\$artifact_dir" && '
+      'git add -A && '
+      'git commit -m "Apply precommit autofix" && '
+      'git push',
+    );
+  });
+
   test(
-    'buildPrecommitAutofixApplyCommand uses concrete run id when provided',
+    'buildPrecommitAutofixApplyCommand falls back to placeholder run id',
     () {
       expect(
         buildPrecommitAutofixApplyCommand(
           artifactName: 'precommit-autofix-diff',
-          githubRunId: '12345',
+          githubRunId: null,
           patchFileName: 'precommit-autofix.diff',
         ),
-        'artifact_dir="\$(mktemp -d)" && '
-        'gh run download 12345 -n precommit-autofix-diff -D "\$artifact_dir" && '
-        'git apply "\$artifact_dir/precommit-autofix.diff" && '
-        'rm -rf "\$artifact_dir" && '
-        'git add -A && '
-        'git commit -m "Apply precommit autofix" && '
-        'git push',
+        contains(
+          'gh run download <run-id> -n precommit-autofix-diff -D "\$artifact_dir"',
+        ),
       );
     },
   );
-
-  test('buildPrecommitAutofixApplyCommand falls back to placeholder run id', () {
-    expect(
-      buildPrecommitAutofixApplyCommand(
-        artifactName: 'precommit-autofix-diff',
-        githubRunId: null,
-        patchFileName: 'precommit-autofix.diff',
-      ),
-      contains(
-        'gh run download <run-id> -n precommit-autofix-diff -D "\$artifact_dir"',
-      ),
-    );
-  });
 
   test('buildPrecommitAutofixGithubOutput emits expected keys', () {
     final output = buildPrecommitAutofixGithubOutput(
@@ -113,8 +105,7 @@ void main() {
       githubHeadSha: 'abc123',
       githubRunId: '456',
       hasPatch: true,
-      imageRef:
-          'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01',
+      imageRef: 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.47.0-rust-1.93.1-nightly-2025-02-01',
       outputPath: '/tmp/precommit-autofix.diff',
     );
 

@@ -36,9 +36,8 @@ Future<void> getReleasedVersion(GetReleasedVersionConfig config) async {
     targetVersion: config.version,
   );
   print(
-    const JsonEncoder.withIndent(
-      '  ',
-    ).convert(buildReleasePackageStatusOutput(statuses)),
+    const JsonEncoder.withIndent('  ')
+        .convert(buildReleasePackageStatusOutput(statuses)),
   );
 }
 

@@ -2,6 +2,13 @@ analyzer:
   exclude:
     - rust/target/**.dart # contains dumped debug info, instead of normal code
     - rust_builder/cargokit/**
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 
 linter:
   rules:

@@ -332,8 +332,7 @@ void _replaceCustomMessageText(String customMessageText) {
     '${exec.pwd}README.md',
     (raw) => simpleReplaceSection(
       raw,
-      prelude:
-          '<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->',
+      prelude: '<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->',
       postlude: '<!-- CUSTOM-MESSAGE:END -->',
       inside: customMessageText,
     ),
@@ -438,7 +437,7 @@ Future<void> _formatPackageAfterGenerate(String package) async {
     case 'frb_example/pure_dart':
       await exec('dart format lib test benchmark', relativePwd: package);
     default:
-      return;
+      await exec('dart format .', relativePwd: package);
   }
 }
 
@@ -547,7 +546,17 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
             originalPackageDir: dirTempOriginal,
             generatedPackageDir: dirPackage,
           );
-        } else {
+        }
+        normalizePubspecFiles(packageRoot: dirPackage);
+        await runPubGet(config.package, kDartModeOfPackage[config.package]!);
+        await executeFrbCodegen(
+          'generate',
+          relativePwd: config.package,
+          coverage: false,
+          coverageName: 'GenerateRunFrbCodegenCommandIntegrateFinal',
+        );
+        await exec('dart format .', relativePwd: config.package);
+        if (config.includeOhos) {
           await restoreOriginalPackageWithGeneratedOhosScaffold(
             package: config.package,
             originalPackageDir: dirTempOriginal,

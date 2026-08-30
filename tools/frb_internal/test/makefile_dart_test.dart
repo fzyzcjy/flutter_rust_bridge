@@ -93,8 +93,7 @@ void main() {
   test('release guard rejects uninitialized submodules', () {
     expect(
       () => verifyReleaseSubmodules(
-        submoduleStatus:
-            '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+        submoduleStatus: '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
       ),
       throwsA(
         isA<Exception>().having(
@@ -135,9 +134,8 @@ void main() {
     'pure dart generator resolves package from repo root instead of cwd',
     () {
       expect(
-        pureDartUriForTesting(
-          repoRootPath: '/workspace/flutter_rust_bridge/',
-        ).toFilePath(),
+        pureDartUriForTesting(repoRootPath: '/workspace/flutter_rust_bridge/')
+            .toFilePath(),
         '/workspace/flutter_rust_bridge/frb_example/pure_dart/',
       );
     },
@@ -184,53 +182,47 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
-  test(
-    'integrate Cargo.lock source of truth keeps local crate after flutter_rust_bridge',
-    () {
-      for (final (package, crateName) in [
-        (
-          'frb_example/flutter_via_create/rust/Cargo.lock',
-          'rust_lib_flutter_via_create',
-        ),
-        (
-          'frb_example/flutter_via_integrate/rust/Cargo.lock',
-          'rust_lib_flutter_via_integrate',
-        ),
-        (
-          'frb_example/flutter_via_create_native_assets/rust/Cargo.lock',
-          'rust_lib_flutter_via_create_native_assets',
-        ),
-        (
-          'frb_example/flutter_via_integrate_native_assets/rust/Cargo.lock',
-          'rust_lib_flutter_via_integrate_native_assets',
-        ),
-      ]) {
-        final content = File('../../$package').readAsStringSync();
-        final localCrateIndex = content.indexOf('name = "$crateName"');
-        final frbIndex = content.indexOf('name = "flutter_rust_bridge"');
+  test('integrate Cargo.lock source of truth keeps local crate after flutter_rust_bridge', () {
+    for (final (package, crateName) in [
+      (
+        'frb_example/flutter_via_create/rust/Cargo.lock',
+        'rust_lib_flutter_via_create',
+      ),
+      (
+        'frb_example/flutter_via_integrate/rust/Cargo.lock',
+        'rust_lib_flutter_via_integrate',
+      ),
+      (
+        'frb_example/flutter_via_create_native_assets/rust/Cargo.lock',
+        'rust_lib_flutter_via_create_native_assets',
+      ),
+      (
+        'frb_example/flutter_via_integrate_native_assets/rust/Cargo.lock',
+        'rust_lib_flutter_via_integrate_native_assets',
+      ),
+    ]) {
+      final content = File('../../$package').readAsStringSync();
+      final localCrateIndex = content.indexOf('name = "$crateName"');
+      final frbIndex = content.indexOf('name = "flutter_rust_bridge"');
 
-        expect(localCrateIndex, greaterThanOrEqualTo(0), reason: package);
-        expect(frbIndex, greaterThanOrEqualTo(0), reason: package);
-        expect(localCrateIndex, greaterThan(frbIndex), reason: package);
-      }
-    },
-  );
+      expect(localCrateIndex, greaterThanOrEqualTo(0), reason: package);
+      expect(frbIndex, greaterThanOrEqualTo(0), reason: package);
+      expect(localCrateIndex, greaterThan(frbIndex), reason: package);
+    }
+  });
 
-  test(
-    'resolveBuildWebPackage uses replacement package for flutter package example',
-    () {
-      expect(
-        resolveBuildWebPackage('frb_example/flutter_package/example'),
-        'frb_example/flutter_package',
-      );
-      expect(
-        resolveBuildWebPackage(
-          'frb_example/flutter_package_native_assets/example',
-        ),
-        'frb_example/flutter_package_native_assets',
-      );
-    },
-  );
+  test('resolveBuildWebPackage uses replacement package for flutter package example', () {
+    expect(
+      resolveBuildWebPackage('frb_example/flutter_package/example'),
+      'frb_example/flutter_package',
+    );
+    expect(
+      resolveBuildWebPackage(
+        'frb_example/flutter_package_native_assets/example',
+      ),
+      'frb_example/flutter_package_native_assets',
+    );
+  });
 
   test('resolveBuildWebPackage keeps package when no replacement exists', () {
     expect(
@@ -458,6 +450,16 @@ dev_dependencies:
         QuickstartSmokeTarget.ios,
       ),
       const Duration(minutes: 10),
+    );
+  });
+
+  test('quickstart smoke disables DDS for Android runs', () {
+    expect(
+      quickstartSmokeFlutterRunArgsForTesting(
+        target: QuickstartSmokeTarget.android,
+        deviceId: 'emulator-5554',
+      ),
+      ['run', '-d', 'emulator-5554', '--no-dds'],
     );
   });
 
