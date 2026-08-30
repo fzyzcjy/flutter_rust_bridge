@@ -26,4 +26,15 @@ void main() {
       await expectLater(completer.future, throwsA(isA<TypeError>()));
     },
   );
+
+  test('singleCompletePort can close before receiving a message', () async {
+    final completer = Completer<int>();
+    final port = singleCompletePort<int, Object?>(completer);
+
+    port.close();
+    port.sendPort.send(42);
+    await Future<void>.delayed(Duration.zero);
+
+    expect(completer.isCompleted, isFalse);
+  });
 }
