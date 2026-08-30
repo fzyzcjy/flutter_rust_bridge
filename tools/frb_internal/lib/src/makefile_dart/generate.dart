@@ -16,6 +16,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate_from_scratch.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_ohos_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalizer.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
@@ -501,47 +502,68 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       final packageName = path.basename(config.package);
       final backendArgs = _integrateBackendArgs(recipe.backend);
 
-      switch (recipe.recipe) {
-        case IntegrateExampleRecipe.createApp:
-          await executeFrbCodegen(
-            'create $packageName --local$backendArgs',
-            relativePwd: 'frb_example',
-            coverage: config.coverage,
-            coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
-            extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
-          );
+      try {
+        switch (recipe.recipe) {
+          case IntegrateExampleRecipe.createApp:
+            await executeFrbCodegen(
+              'create $packageName --local$backendArgs',
+              relativePwd: 'frb_example',
+              coverage: config.coverage,
+              coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+              extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
+            );
 
-        case IntegrateExampleRecipe.integrateApp:
-          await exec('flutter create $packageName', relativePwd: 'frb_example');
-          await executeFrbCodegen(
-            'integrate --local$backendArgs',
-            relativePwd: config.package,
-            coverage: config.coverage,
-            coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
-            extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
-          );
-        case IntegrateExampleRecipe.createPlugin:
-          await executeFrbCodegen(
-            'create --local --template plugin $packageName$backendArgs',
-            relativePwd: 'frb_example',
-            coverage: config.coverage,
-            coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
-            extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
-          );
-      }
+          case IntegrateExampleRecipe.integrateApp:
+            await exec(
+              'flutter create $packageName',
+              relativePwd: 'frb_example',
+            );
+            await executeFrbCodegen(
+              'integrate --local$backendArgs',
+              relativePwd: config.package,
+              coverage: config.coverage,
+              coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+              extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
+            );
+          case IntegrateExampleRecipe.createPlugin:
+            await executeFrbCodegen(
+              'create --local --template plugin $packageName$backendArgs',
+              relativePwd: 'frb_example',
+              coverage: config.coverage,
+              coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+              extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
+            );
+        }
 
-      if (!config.skipCheckedInAppleScaffold) {
-        await applyCheckedInAppleScaffoldSourceOfTruth(
-          package: config.package,
-          generatedPackageDir: dirPackage,
-        );
-      }
-      if (!config.includeOhos) {
-        await preserveCheckedInOhosScaffold(
-          package: config.package,
-          originalPackageDir: dirTempOriginal,
-          generatedPackageDir: dirPackage,
-        );
+        if (!config.skipCheckedInAppleScaffold) {
+          await applyCheckedInAppleScaffoldSourceOfTruth(
+            package: config.package,
+            generatedPackageDir: dirPackage,
+          );
+        }
+        if (!config.includeOhos) {
+          await preserveCheckedInOhosScaffold(
+            package: config.package,
+            originalPackageDir: dirTempOriginal,
+            generatedPackageDir: dirPackage,
+          );
+        } else {
+          await restoreOriginalPackageWithGeneratedOhosScaffold(
+            package: config.package,
+            originalPackageDir: dirTempOriginal,
+            generatedPackageDir: dirPackage,
+            temporaryDirectory: dirTemp,
+          );
+        }
+      } catch (_) {
+        if (config.includeOhos && Directory(dirTempOriginal).existsSync()) {
+          await restoreOriginalPackageAfterFailedOhosGeneration(
+            originalPackageDir: dirTempOriginal,
+            generatedPackageDir: dirPackage,
+            temporaryDirectory: dirTemp,
+          );
+        }
+        rethrow;
       }
 
       // move back compilation cache to speed up future usage
