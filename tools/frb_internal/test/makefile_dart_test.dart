@@ -14,6 +14,22 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('dart valgrind command uses the Dart AOT suppression file', () {
+    expect(
+      dartValgrindCommandForTesting(),
+      contains('--suppressions=../../tools/dart_valgrind.supp'),
+    );
+    expect(File('../../tools/dart_valgrind.supp').existsSync(), true);
+  });
+
+  test('dart valgrind command treats only checked leak kinds as errors', () {
+    expect(dartValgrindCommandForTesting(), contains('--error-exitcode=1'));
+    expect(
+      dartValgrindCommandForTesting(),
+      contains('--errors-for-leak-kinds=definite,indirect'),
+    );
+  });
+
   test('dart valgrind compile command uses dart build output directory', () {
     expect(
       dartValgrindCompileCommandForTesting(),
@@ -853,10 +869,10 @@ version: 9.9.8
   });
 
   group('test checkValgrindOutput', () {
-    test('good', () {
-      checkValgrindOutput('''
-00:00 +1: All tests passed!
-
+    test('accepts a clean run', () {
+      checkValgrindOutput(
+        stdout: '00:00 +1: All tests passed!',
+        stderr: '''
 ==3667== LEAK SUMMARY:
 ==3667==    definitely lost: 0 bytes in 0 blocks
 ==3667==    indirectly lost: 0 bytes in 0 blocks
@@ -865,31 +881,16 @@ version: 9.9.8
 ==3667==         suppressed: 0 bytes in 0 blocks
 ==3667== Reachable blocks (those to which a pointer was found) are not shown.
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    ''');
-    });
-
-    test('some dart tests failed', () {
-      // no "All tests passed!" line
-      expect(
-        () => checkValgrindOutput('''
-==3667== LEAK SUMMARY:
-==3667==    definitely lost: 0 bytes in 0 blocks
-==3667==    indirectly lost: 0 bytes in 0 blocks
-==3667==      possibly lost: 1,216 bytes in 4 blocks
-==3667==    still reachable: 16,530 bytes in 202 blocks
-==3667==         suppressed: 0 bytes in 0 blocks
-==3667== Reachable blocks (those to which a pointer was found) are not shown.
-==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    '''),
-        throwsA(isA<Exception>()),
+    ''',
+        exitCode: 0,
       );
     });
 
-    test('has definitely lost bytes', () {
+    test('rejects an error reported only on stderr', () {
       expect(
-        () => checkValgrindOutput('''
-00:00 +1: All tests passed!
-
+        () => checkValgrindOutput(
+          stdout: '00:00 +1: All tests passed!',
+          stderr: '''
 ==3667== LEAK SUMMARY:
 ==3667==    definitely lost: 4 bytes in 0 blocks
 ==3667==    indirectly lost: 0 bytes in 0 blocks
@@ -898,16 +899,34 @@ version: 9.9.8
 ==3667==         suppressed: 0 bytes in 0 blocks
 ==3667== Reachable blocks (those to which a pointer was found) are not shown.
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    '''),
+    ''',
+          exitCode: 0,
+        ),
         throwsA(isA<Exception>()),
       );
     });
 
-    test('has indirectly lost bytes', () {
+    test('rejects an error reported only on stdout', () {
       expect(
-        () => checkValgrindOutput('''
+        () => checkValgrindOutput(
+          stdout: '''
 00:00 +1: All tests passed!
+==3667== LEAK SUMMARY:
+==3667==    definitely lost: 4 bytes in 0 blocks
+==3667==    indirectly lost: 0 bytes in 0 blocks
+    ''',
+          stderr: '',
+          exitCode: 0,
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
 
+    test('rejects indirectly lost bytes', () {
+      expect(
+        () => checkValgrindOutput(
+          stdout: '00:00 +1: All tests passed!',
+          stderr: '''
 ==3667== LEAK SUMMARY:
 ==3667==    definitely lost: 0 bytes in 0 blocks
 ==3667==    indirectly lost: 4 bytes in 0 blocks
@@ -916,7 +935,40 @@ version: 9.9.8
 ==3667==         suppressed: 0 bytes in 0 blocks
 ==3667== Reachable blocks (those to which a pointer was found) are not shown.
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    '''),
+    ''',
+          exitCode: 0,
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
+
+    test('rejects a nonzero exit code', () {
+      expect(
+        () => checkValgrindOutput(
+          stdout: '00:00 +1: All tests passed!',
+          stderr: '',
+          exitCode: 1,
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
+
+    test('rejects output without the test success marker', () {
+      expect(
+        () => checkValgrindOutput(
+          stdout: '',
+          stderr: '''
+==3667== LEAK SUMMARY:
+==3667==    definitely lost: 0 bytes in 0 blocks
+==3667==    indirectly lost: 0 bytes in 0 blocks
+==3667==      possibly lost: 1,216 bytes in 4 blocks
+==3667==    still reachable: 16,530 bytes in 202 blocks
+==3667==         suppressed: 0 bytes in 0 blocks
+==3667== Reachable blocks (those to which a pointer was found) are not shown.
+==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+    ''',
+          exitCode: 0,
+        ),
         throwsA(isA<Exception>()),
       );
     });
