@@ -190,8 +190,6 @@ class _WebMessagePort extends _WebPortLike {
 // A named MessageChannel exposes its receiving endpoint as a port.
 class _WebBroadcastPort extends _WebPortLike {
   final _WebBroadcastChannel _channel;
-  int _received = 0;
-  JSArray<JSAny?>? _pendingClose;
 
   @override
   web.MessagePort get _nativePort => _channel._channel.port1;
@@ -200,7 +198,18 @@ class _WebBroadcastPort extends _WebPortLike {
 
   @override
   Stream<web.MessageEvent> get _onMessage =>
-      super._onMessage.expand(_receiveMessage);
+      super._onMessage.expand(_WebStreamClose()._receiveMessage);
+
+  @override
+  void _start() => _nativePort.start();
+
+  @override
+  void _close() => _channel._close();
+}
+
+class _WebStreamClose {
+  int _received = 0;
+  JSArray<JSAny?>? _pendingClose;
 
   Iterable<web.MessageEvent> _receiveMessage(web.MessageEvent event) sync* {
     final data = event.data;
@@ -223,9 +232,4 @@ class _WebBroadcastPort extends _WebPortLike {
     }
   }
 
-  @override
-  void _start() => _nativePort.start();
-
-  @override
-  void _close() => _channel._close();
 }
