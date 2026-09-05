@@ -11,6 +11,11 @@ pub fn func_stream_return_error_twin_normal(_sink: StreamSink<String>) -> anyhow
     Err(anyhow!("deliberate error"))
 }
 
+pub fn immediate_stream(sink: StreamSink<i32>) {
+    sink.add(0).unwrap();
+    sink.add(1).unwrap();
+}
+
 #[frb(stream_dart_await)]
 pub fn func_stream_return_panic_twin_normal(_sink: StreamSink<String>) -> anyhow::Result<()> {
     panic!("deliberate panic")

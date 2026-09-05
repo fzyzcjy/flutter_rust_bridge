@@ -12,6 +12,18 @@ import '../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
+  test('new worker streams deliver the complete initial burst and close',
+      () async {
+    for (var iteration = 0; iteration < 1000; iteration++) {
+      final streams = List.generate(8, (_) => immediateStream().toList());
+      final results =
+          await Future.wait(streams).timeout(const Duration(seconds: 2));
+      for (final values in results) {
+        expect(values, [0, 1], reason: 'iteration=$iteration');
+      }
+    }
+  });
+
   test('dart call funcStreamSinkArgPositionTwinNormal', () async {
     // We only care about whether the codegen can understand StreamSink
     // as non-first argument in Rust, thus we do not test the return values.
