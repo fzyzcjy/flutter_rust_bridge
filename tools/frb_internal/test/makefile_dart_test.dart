@@ -113,23 +113,31 @@ void main() {
   });
 
   test('ASAN rustflags keep production runtime semantics', () {
-    expect(sanitizerRustflagsForTesting(Sanitizer.asan),
-        '-Zsanitizer=address -Zmerge-functions=disabled -Cdebuginfo=1');
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.asan),
+      '-Zsanitizer=address -Zmerge-functions=disabled -Cdebuginfo=1',
+    );
   });
 
   test('sanitizer rustflags keep full MSAN instrumentation', () {
-    expect(sanitizerRustflagsForTesting(Sanitizer.msan),
-        '-Zsanitizer=memory -Zmerge-functions=disabled -Cdebuginfo=1');
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.msan),
+      '-Zsanitizer=memory -Zmerge-functions=disabled -Cdebuginfo=1',
+    );
   });
 
   test('LSAN rustflags keep production runtime semantics', () {
-    expect(sanitizerRustflagsForTesting(Sanitizer.lsan),
-        '-Zsanitizer=leak -Zmerge-functions=disabled -Cdebuginfo=1');
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.lsan),
+      '-Zsanitizer=leak -Zmerge-functions=disabled -Cdebuginfo=1',
+    );
   });
 
   test('TSAN rustflags preserve production synchronization semantics', () {
-    expect(sanitizerRustflagsForTesting(Sanitizer.tsan),
-        '-Zsanitizer=thread -Zmerge-functions=disabled -Cdebuginfo=1');
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.tsan),
+      '-Zsanitizer=thread -Zmerge-functions=disabled -Cdebuginfo=1',
+    );
   });
 
   test(
