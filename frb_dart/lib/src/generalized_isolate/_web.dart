@@ -176,15 +176,21 @@ class _WebBroadcastPort extends _WebPortLike {
   _WebBroadcastPort(this._nativePort) : super._();
 
   @override
-  Stream<JSAny?> get _messages async* {
+  Stream<JSAny?> get _messages {
+    if (!_nativePort.name.startsWith('__frb_streamsink_')) {
+      return super._messages;
+    }
     var nextSequence = 0;
     final pending = <int, JSArray<JSAny?>>{};
-    await for (final message in super._messages) {
+    return super._messages.expand((message) sync* {
       if (message != null && message.isA<JSArray>()) {
         final frame = message as JSArray<JSAny?>;
         if (frame.toDart.isNotEmpty && frame[0].isA<JSString>()) {
           final tag = (frame[0] as JSString).toDart;
           if (tag == '__frb_stream_failed') {
+            if (frame.length != 1) {
+              throw StateError('Invalid Web stream failure frame');
+            }
             throw StateError('Web stream transport failed');
           }
           if (tag == '__frb_stream') {
@@ -205,12 +211,12 @@ class _WebBroadcastPort extends _WebPortLike {
               final ready = pending.remove(nextSequence++)!;
               if (ready.length == 3) yield ready[2];
             }
-            continue;
+            return;
           }
         }
       }
       yield message;
-    }
+    });
   }
 
   @override
