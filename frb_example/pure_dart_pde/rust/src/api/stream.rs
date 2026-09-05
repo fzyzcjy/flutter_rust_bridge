@@ -23,6 +23,9 @@ pub fn immediate_stream_twin_normal(sink: StreamSink<i32>) {
 pub fn stream_worker_transfer_twin_normal(sink: StreamSink<i32>) {
     #[cfg(target_family = "wasm")]
     {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        use std::sync::Arc;
+
         let rejected = FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().with(|pool| {
             pool.execute(TransferClosure::new(
                 vec![js_sys::Function::new_no_args("return 0").into()],
@@ -36,6 +39,8 @@ pub fn stream_worker_transfer_twin_normal(sink: StreamSink<i32>) {
         bytes.set_index(0, 11);
         let buffer = bytes.buffer();
         let sink_in_worker = sink.clone();
+        let finished = Arc::new(AtomicBool::new(false));
+        let finished_in_worker = finished.clone();
         FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().with(|pool| {
             pool.execute(TransferClosure::new(
                 vec![values.clone().into(), buffer.clone().into()],
@@ -47,12 +52,21 @@ pub fn stream_worker_transfer_twin_normal(sink: StreamSink<i32>) {
                     for value in [i32::from(rejected), original_value, original_byte] {
                         sink_in_worker.add(value).unwrap();
                     }
+                    drop(sink_in_worker);
+                    finished_in_worker.store(true, Ordering::Release);
                 },
             ))
             .unwrap();
         });
         assert_eq!(buffer.byte_length(), 0);
         values.set(0, 99.into());
+        let deadline = js_sys::Date::now() + 5000.0;
+        while !finished.load(Ordering::Acquire) {
+            assert!(
+                js_sys::Date::now() < deadline,
+                "nested worker did not finish"
+            );
+        }
     }
     #[cfg(not(target_family = "wasm"))]
     drop(sink);

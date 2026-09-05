@@ -60,7 +60,10 @@ pub fn stream_worker_transfer_twin_normal(sink: StreamSink<i32>) {
         values.set(0, 99.into());
         let deadline = js_sys::Date::now() + 5000.0;
         while !finished.load(Ordering::Acquire) {
-            assert!(js_sys::Date::now() < deadline, "nested worker did not finish");
+            assert!(
+                js_sys::Date::now() < deadline,
+                "nested worker did not finish"
+            );
         }
     }
     #[cfg(not(target_family = "wasm"))]
