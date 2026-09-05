@@ -32,6 +32,8 @@ pub fn stream_worker_transfer_twin_sse(sink: StreamSink<i32, flutter_rust_bridge
     {
         use std::sync::atomic::{AtomicBool, Ordering};
         use std::sync::Arc;
+        use wasm_bindgen::{closure::Closure, JsCast, JsValue};
+        use web_sys::{MessageChannel, MessagePort};
 
         let rejected = FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().with(|pool| {
             pool.execute(TransferClosure::new(
@@ -48,32 +50,57 @@ pub fn stream_worker_transfer_twin_sse(sink: StreamSink<i32, flutter_rust_bridge
         let sink_in_worker = sink.clone();
         let finished = Arc::new(AtomicBool::new(false));
         let finished_in_worker = finished.clone();
+        let coordination = MessageChannel::new().unwrap();
+        let parent_port = coordination.port1();
+        let child_port = coordination.port2();
         FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().with(|pool| {
             pool.execute(TransferClosure::new(
-                vec![values.clone().into(), buffer.clone().into()],
-                vec![buffer.clone().into()],
+                vec![
+                    values.clone().into(),
+                    buffer.clone().into(),
+                    child_port.clone().into(),
+                ],
+                vec![buffer.clone().into(), child_port.into()],
                 move |data| {
                     let original_value =
                         js_sys::Array::from(&data[0]).get(0).as_f64().unwrap() as i32;
                     let original_byte = js_sys::Uint8Array::new(&data[1]).get_index(0) as i32;
-                    for value in [i32::from(rejected), original_value, original_byte] {
-                        sink_in_worker.add(value).unwrap();
-                    }
-                    drop(sink_in_worker);
-                    finished_in_worker.store(true, Ordering::Release);
+                    let port: MessagePort = data[2].clone().unchecked_into();
+                    let port_in_callback = port.clone();
+                    let callback = Closure::once_into_js(move || {
+                        for value in [i32::from(rejected), original_value, original_byte] {
+                            sink_in_worker.add(value).unwrap();
+                        }
+                        drop(sink_in_worker);
+                        finished_in_worker.store(true, Ordering::Release);
+                        port_in_callback.set_onmessage(None);
+                        port_in_callback.close();
+                    });
+                    port.set_onmessage(Some(callback.unchecked_ref()));
+                    port.post_message(&JsValue::NULL).unwrap();
                 },
             ))
             .unwrap();
         });
         assert_eq!(buffer.byte_length(), 0);
         values.set(0, 99.into());
-        let deadline = js_sys::Date::now() + 5000.0;
-        while !finished.load(Ordering::Acquire) {
-            assert!(
-                js_sys::Date::now() < deadline,
-                "nested worker did not finish"
-            );
-        }
+        let parent_port_in_callback = parent_port.clone();
+        let callback = Closure::once_into_js(move || {
+            parent_port_in_callback
+                .post_message(&JsValue::NULL)
+                .unwrap();
+            let deadline = js_sys::Date::now() + 5000.0;
+            while !finished.load(Ordering::Acquire) {
+                assert!(
+                    js_sys::Date::now() < deadline,
+                    "nested worker did not finish"
+                );
+            }
+            parent_port_in_callback.set_onmessage(None);
+            parent_port_in_callback.close();
+            drop(sink);
+        });
+        parent_port.set_onmessage(Some(callback.unchecked_ref()));
     }
     #[cfg(not(target_family = "wasm"))]
     drop(sink);

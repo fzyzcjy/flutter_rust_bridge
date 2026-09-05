@@ -46,7 +46,11 @@ pub fn stream_worker_transfer_twin_normal(sink: StreamSink<i32>) {
         let child_port = coordination.port2();
         FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().with(|pool| {
             pool.execute(TransferClosure::new(
-                vec![values.clone().into(), buffer.clone().into(), child_port.clone().into()],
+                vec![
+                    values.clone().into(),
+                    buffer.clone().into(),
+                    child_port.clone().into(),
+                ],
                 vec![buffer.clone().into(), child_port.into()],
                 move |data| {
                     let original_value =
@@ -73,10 +77,15 @@ pub fn stream_worker_transfer_twin_normal(sink: StreamSink<i32>) {
         values.set(0, 99.into());
         let parent_port_in_callback = parent_port.clone();
         let callback = Closure::once_into_js(move || {
-            parent_port_in_callback.post_message(&JsValue::NULL).unwrap();
+            parent_port_in_callback
+                .post_message(&JsValue::NULL)
+                .unwrap();
             let deadline = js_sys::Date::now() + 5000.0;
             while !finished.load(Ordering::Acquire) {
-                assert!(js_sys::Date::now() < deadline, "nested worker did not finish");
+                assert!(
+                    js_sys::Date::now() < deadline,
+                    "nested worker did not finish"
+                );
             }
             parent_port_in_callback.set_onmessage(None);
             parent_port_in_callback.close();
