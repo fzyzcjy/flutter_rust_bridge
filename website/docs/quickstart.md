@@ -156,11 +156,12 @@ flutter run
 
 <TabItem value="Web">
 
-Build the Rust WebAssembly module first because Flutter Web does not have a build hook yet
+P.S. The `build-web` command: Because Flutter Web does not have a build hook yet
 ([corresponding issue](https://github.com/flutter/flutter/issues/138992)).
 
 ```shell
 flutter_rust_bridge_codegen build-web
+# ... or any other standard Flutter ways
 flutter run --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
 ```
 
