@@ -15,7 +15,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for RecordWireDartCodecDcoGenerator<'
             .collect_vec()
             .join(",");
         format!(
-            "final arr = raw as List<dynamic>;
+            "final arr = dcoDecodeList(raw);
             if (arr.length != {len}) {{
                 throw Exception('Expected {len} elements, got ${{arr.length}}');
             }}
@@ -56,7 +56,7 @@ mod tests {
 
         assert_eq!(
             output,
-            "final arr = raw as List<dynamic>;\n            if (arr.length != 2) {\n                throw Exception('Expected 2 elements, got ${arr.length}');\n            }\n            return (dco_decode_i_32(arr[0]),dco_decode_bool(arr[1]),);"
+            "final arr = dcoDecodeList(raw);\n            if (arr.length != 2) {\n                throw Exception('Expected 2 elements, got ${arr.length}');\n            }\n            return (dco_decode_i_32(arr[0]),dco_decode_bool(arr[1]),);"
         );
     }
 }

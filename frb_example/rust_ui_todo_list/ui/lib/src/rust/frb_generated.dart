@@ -466,7 +466,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AnyhowException(raw as String);
+    return AnyhowException(dcoDecodeString(raw));
   }
 
   @protected
@@ -474,7 +474,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BaseRustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BaseRustStateImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -482,7 +482,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return RustStateImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -490,7 +490,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BaseRustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BaseRustStateImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -498,7 +498,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return RustStateImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -506,7 +506,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return RustStateImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -514,7 +514,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BaseRustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BaseRustStateImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -522,7 +522,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return RustStateImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -534,7 +534,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as String;
+    return dcoDecodeString(raw);
   }
 
   @protected
@@ -546,19 +546,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Filter dco_decode_filter(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return Filter.values[raw as int];
+    return Filter.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
   Item dco_decode_item(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return Item(
@@ -571,7 +571,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<Item> dco_decode_list_item(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_item).toList();
+    return dcoDecodeList(raw).map(dco_decode_item).toList();
   }
 
   @protected
@@ -583,7 +583,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected

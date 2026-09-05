@@ -21,8 +21,11 @@ class DcoCodec<S, E extends Object>
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @override
   S decodeObject(dynamic raw) {
-    final rawList = raw as List<dynamic>;
-    return _DcoSimpleDecoder(this, rawList).decode(rawList[0]);
+    final rawList = dcoDecodeList(raw);
+    return _DcoSimpleDecoder(
+      this,
+      rawList,
+    ).decode(dcoDecodePrimitiveInt(rawList[0]));
   }
 
   @override
