@@ -145,7 +145,7 @@ mod tests {
                 .body
                 .as_deref(),
             Some(
-                "// Codec=Dco (DartCObject based), see doc to use other codecs\nreturn raw as int;"
+                "// Codec=Dco (DartCObject based), see doc to use other codecs\nreturn dcoDecodePrimitiveInt(raw);"
             )
         );
         assert!(entrypoint
