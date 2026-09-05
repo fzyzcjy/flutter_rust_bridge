@@ -26,9 +26,10 @@ String dcoDecodeString(Object? raw) {
     if (raw.typeofEquals('string')) return (raw as JSString).toDart;
     final dartified = raw.dartify();
     if (dartified is String) return dartified;
-    return String.fromCharCode(dcoDecodePrimitiveInt(dartified));
   }
-  return String.fromCharCode(dcoDecodePrimitiveInt(raw));
+  throw Exception(
+    'dcoDecodeString see unexpected type=${raw.runtimeType} value=$raw',
+  );
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

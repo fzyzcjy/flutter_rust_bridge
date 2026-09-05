@@ -15,10 +15,7 @@ List<dynamic> wireSyncRust2DartDcoIntoDart(WireSyncRust2DartDco syncReturn) =>
 int dcoDecodePrimitiveInt(Object? raw) => raw as int;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-String dcoDecodeString(Object? raw) {
-  if (raw is String) return raw;
-  return String.fromCharCode(dcoDecodePrimitiveInt(raw));
-}
+String dcoDecodeString(Object? raw) => raw as String;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 List<dynamic> dcoDecodeList(Object? raw) => raw as List<dynamic>;

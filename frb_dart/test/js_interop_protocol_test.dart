@@ -58,8 +58,8 @@ void main() {
     );
   });
 
-  test('DCO string decoder accepts integer character codes', () {
-    expect(dcoDecodeString(65), 'A');
+  test('DCO string decoder rejects integer character codes', () {
+    expect(() => dcoDecodeString(65), throwsA(isA<TypeError>()));
   });
 
   test('Fake binding encodes Dart opaque values as null pointers', () {
