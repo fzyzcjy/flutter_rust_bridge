@@ -30,6 +30,9 @@ pub(crate) fn generate(
     inner += (types.iter())
         .map(|ty| Acc::new_io(generate_encode_api_fill_to_wire_func(ty, context)))
         .collect();
+    inner += (types.iter())
+        .map(|ty| Acc::new_common(super::validate::generate(ty, context)))
+        .collect();
     WireDartCodecOutputSpec { inner }
 }
 
