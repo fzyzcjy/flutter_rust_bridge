@@ -16,33 +16,34 @@ pub(crate) fn dispatch_after_channel_registration(
     worker: Worker,
     task: TransferClosure<JsValue>,
 ) -> Result<(), JsValue> {
-    let immediate = REGISTRATION.with(|state| {
-        let mut state = state.borrow_mut();
-        if !state.dirty && state.pending.is_empty() {
-            return Ok::<_, JsValue>(Some((worker, task)));
-        }
+    let defer = REGISTRATION.with(|state| {
+        let state = state.borrow();
+        state.dirty || !state.pending.is_empty()
+    });
+    if !defer {
+        return task.apply(&worker);
+    }
+    let task = task.snapshot()?;
 
+    REGISTRATION.with(|state| {
+        let mut state = state.borrow_mut();
         if state.barrier.is_none() {
             state.barrier = Some(Barrier::new()?);
         }
+        let mut epoch = state.epoch;
         if state.dirty {
-            state.epoch = state.epoch.checked_add(1).expect("Channel epoch overflow");
+            epoch = epoch.checked_add(1).expect("Channel epoch overflow");
+            state.barrier.as_mut().unwrap().post(epoch)?;
+            state.epoch = epoch;
             state.dirty = false;
         }
-        let epoch = state.epoch;
         state.pending.push_back(PendingDispatch {
             epoch,
             worker,
             task,
         });
-        state.barrier.as_mut().unwrap().post(epoch)?;
-        Ok(None)
-    })?;
-
-    if let Some((worker, task)) = immediate {
-        task.apply(&worker)?;
-    }
-    Ok(())
+        Ok(())
+    })
 }
 
 fn confirm_registration(event: MessageEvent) {
@@ -62,8 +63,14 @@ fn confirm_registration(event: MessageEvent) {
         }
         ready
     });
+    let mut first_error = None;
     for PendingDispatch { worker, task, .. } in ready {
-        task.apply(&worker).unwrap_throw();
+        if let Err(error) = task.apply(&worker) {
+            first_error.get_or_insert(error);
+        }
+    }
+    if let Some(error) = first_error {
+        wasm_bindgen::throw_val(error);
     }
 }
 

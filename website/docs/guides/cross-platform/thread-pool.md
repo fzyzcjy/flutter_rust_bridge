@@ -20,3 +20,4 @@ We may improve the API in the future.
 - A Web worker can run before the browser has registered a newly created stream's `BroadcastChannel` receiver.
 - Before dispatching work that follows channel creation, the Web thread pool confirms registration with a same-context `BroadcastChannel` round trip. Work without pending channel registrations dispatches immediately.
 - Only registration probes are retried. Stream data and close messages are sent once, so applications can emit their first values immediately without adding sleeps.
+- Queued task data is cloned and transferables are detached when `execute` is called, preserving immediate validation and transfer ownership. A later dispatch error is reported to the browser without discarding other queued tasks.

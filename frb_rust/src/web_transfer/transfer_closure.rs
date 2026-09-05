@@ -50,6 +50,23 @@ impl TransferClosure<JsValue> {
                 err
             })
     }
+
+    pub(crate) fn snapshot(mut self) -> Result<Self, JsValue> {
+        let transfer = Array::from_iter(self.transfer.iter().filter(|value| value.is_truthy()));
+        let envelope = Array::of2(&Array::from_iter(&self.data), &transfer);
+        let options = js_sys::Object::new();
+        js_sys::Reflect::set(&options, &JsValue::from_str("transfer"), &transfer)?;
+        let snapshot = structured_clone(&envelope, &options)?;
+        self.data = Array::from(&snapshot.get(0)).to_vec();
+        self.transfer = Array::from(&snapshot.get(1)).to_vec();
+        Ok(self)
+    }
+}
+
+#[wasm_bindgen]
+extern "C" {
+    #[wasm_bindgen(js_name = structuredClone, catch)]
+    fn structured_clone(value: &JsValue, options: &JsValue) -> Result<Array, JsValue>;
 }
 
 // Copied and modified from the wasm_bindgen raytrace-parallel example
