@@ -246,7 +246,7 @@ void main() {
   });
 
   test(
-    'sanitizer failure matching requires the complete normalized report',
+    'sanitizer entrypoints reject every nonzero exit regardless of report',
     () {
       const knownReport =
           '==123==ERROR: LeakSanitizer: detected memory leaks\n'
@@ -256,42 +256,9 @@ void main() {
           '    #1 0xabcd known_runtime_function '
           '(libfrb_example_pure_dart.so+0x11f0446) (BuildId: 012345)\n'
           'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n';
-      final normalizedKnownReport = normalizeSanitizerReportForTesting(
-        knownReport,
-      );
-
-      expect(
-        isOnlyAllowedSanitizerFailureForTesting(
-          exitCode: 23,
-          stderr: knownReport,
-          expectedExitCode: 23,
-          expectedNormalizedReports: [normalizedKnownReport],
-        ),
-        isTrue,
-      );
-      expect(
-        isOnlyAllowedSanitizerFailureForTesting(
-          exitCode: 23,
-          stderr:
-              '==123==ERROR: LeakSanitizer: detected memory leaks\n'
-              'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n',
-          expectedExitCode: 23,
-          expectedNormalizedReports: [normalizedKnownReport],
-        ),
-        isFalse,
-      );
       final unrelatedStackReport = knownReport.replaceFirst(
         'known_runtime_function',
         'new_regression_function',
-      );
-      expect(
-        isOnlyAllowedSanitizerFailureForTesting(
-          exitCode: 23,
-          stderr: unrelatedStackReport,
-          expectedExitCode: 23,
-          expectedNormalizedReports: [normalizedKnownReport],
-        ),
-        isFalse,
       );
       final unstableValuesChanged = knownReport
           .replaceAll('0x1234', '0x9999')
@@ -300,21 +267,74 @@ void main() {
           .replaceAll('/tmp/sdk/out/dartvm', '/other/sdk/dartvm')
           .replaceAll('abcdef', 'fedcba')
           .replaceAll('012345', '543210');
-      expect(
-        normalizeSanitizerReportForTesting(unstableValuesChanged),
-        normalizedKnownReport,
-      );
-      expect(
-        isOnlyAllowedSanitizerFailureForTesting(
-          exitCode: 23,
-          stderr: knownReport,
-          expectedExitCode: 23,
-          expectedNormalizedReports: const [],
-        ),
-        isFalse,
-      );
+      for (final exitCode in [1, 23, 66, 137, -9]) {
+        for (final report in [
+          '',
+          knownReport,
+          'ERROR: AddressSanitizer: heap-use-after-free\n$knownReport',
+          'WARNING: ThreadSanitizer: data race\n$knownReport',
+          'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n',
+          unrelatedStackReport,
+          unstableValuesChanged,
+          '$knownReport\n$unrelatedStackReport',
+        ]) {
+          expect(
+            () => checkSanitizerResultForTesting(
+              exitCode: exitCode,
+              stdout: 'FRB_DART_TEST_RESULT: success',
+              stderr: report,
+              expectSucceed: true,
+              expectStdoutContains: 'FRB_DART_TEST_RESULT: success',
+            ),
+            throwsException,
+            reason: 'Nonzero exit $exitCode must not be forgiven by a report',
+          );
+        }
+      }
     },
   );
+
+  test('sanitizer entrypoints require their success marker on stdout', () {
+    const marker = 'FRB_DART_TEST_RESULT: success';
+    for (final stdout in ['', 'FRB_DART_TEST_RESULT: failure', marker]) {
+      expect(
+        () => checkSanitizerResultForTesting(
+          exitCode: 0,
+          stdout: stdout,
+          stderr: marker,
+          expectSucceed: true,
+          expectStdoutContains: marker,
+        ),
+        stdout == marker ? returnsNormally : throwsException,
+      );
+    }
+  });
+
+  test('sanitizer negative controls require failure and the diagnostic', () {
+    for (final diagnostic in [
+      'ERROR: AddressSanitizer: heap-use-after-free',
+      'ERROR: LeakSanitizer: detected memory leaks',
+      'WARNING: MemorySanitizer: use-of-uninitialized-value',
+      'WARNING: ThreadSanitizer: data race',
+    ]) {
+      for (final exitCode in [0, 1, 23, 66]) {
+        for (final stderr in ['', 'unrelated failure', diagnostic]) {
+          expect(
+            () => checkSanitizerResultForTesting(
+              exitCode: exitCode,
+              stdout: diagnostic,
+              stderr: stderr,
+              expectSucceed: false,
+              expectStderrContains: diagnostic,
+            ),
+            exitCode != 0 && stderr == diagnostic
+                ? returnsNormally
+                : throwsException,
+          );
+        }
+      }
+    }
+  });
 
   test('linux build bundle path follows the current machine architecture', () {
     expect(
