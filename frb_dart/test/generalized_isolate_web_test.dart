@@ -7,23 +7,26 @@ import 'package:web/web.dart' as web;
 
 void main() {
   for (final closeFirst in [true, false]) {
-    test('stream receives every value before close, closeFirst=$closeFirst', () async {
-      final receivePort = broadcastPort('stream close order');
-      addTearDown(receivePort.close);
-      final sender = receivePort.sendPort.nativePort as web.MessagePort;
-      final received = receivePort
-          .take(3)
-          .map((value) => (value as JSString).toDart)
-          .toList();
-      final close = ['__frb_stream_close', 2, 'closed'].jsify();
+    test(
+      'stream receives every value before close, closeFirst=$closeFirst',
+      () async {
+        final receivePort = broadcastPort('stream close order');
+        addTearDown(receivePort.close);
+        final sender = receivePort.sendPort.nativePort as web.MessagePort;
+        final received = receivePort
+            .take(3)
+            .map((value) => (value as JSString).toDart)
+            .toList();
+        final close = ['__frb_stream_close', 2, 'closed'].jsify();
 
-      if (closeFirst) sender.postMessage(close);
-      sender.postMessage('first'.toJS);
-      sender.postMessage('second'.toJS);
-      if (!closeFirst) sender.postMessage(close);
+        if (closeFirst) sender.postMessage(close);
+        sender.postMessage('first'.toJS);
+        sender.postMessage('second'.toJS);
+        if (!closeFirst) sender.postMessage(close);
 
-      expect(await received, ['first', 'second', 'closed']);
-    });
+        expect(await received, ['first', 'second', 'closed']);
+      },
+    );
   }
 
   test('empty stream closes without waiting for a value', () async {

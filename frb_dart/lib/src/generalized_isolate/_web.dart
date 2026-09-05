@@ -141,12 +141,12 @@ class _WebBroadcastChannel implements _WebChannel {
   SendPort get _sendPort => SendPort._(_channel.port2);
 
   @override
-  _WebPortLike get _receivePort =>
-      _WebBroadcastPort(this);
+  _WebPortLike get _receivePort => _WebBroadcastPort(this);
 
   void _close() {
     final ports = _namedPorts;
-    if (ports != null && ports.getProperty<JSAny?>(_name.toJS) == _channel.port2) {
+    if (ports != null &&
+        ports.getProperty<JSAny?>(_name.toJS) == _channel.port2) {
       ports.delete(_name.toJS);
     }
     _channel.port1.close();
