@@ -133,7 +133,8 @@ void main() {
   });
 
   test('Valgrind does not suppress FRB serializer or CST allocations', () {
-    final suppressions = File('../../tools/dart_valgrind.supp').readAsStringSync();
+    final suppressions = File('../../tools/dart_valgrind.supp')
+        .readAsStringSync();
     expect(suppressions, isNot(contains('frbgen_')));
     expect(suppressions, isNot(contains('frb_rust_vec_u8_new')));
   });
