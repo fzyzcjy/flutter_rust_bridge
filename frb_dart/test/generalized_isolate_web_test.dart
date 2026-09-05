@@ -2,7 +2,7 @@
 import 'dart:js_interop';
 import 'dart:js_interop_unsafe';
 
-import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
+import 'package:flutter_rust_bridge/src/generalized_isolate/_web.dart';
 import 'package:test/test.dart';
 import 'package:web/web.dart' as web;
 
@@ -44,20 +44,29 @@ void main() {
     expect((await received as JSString).toDart, 'closed');
   });
 
-  test('each listener independently waits for all values before close', () async {
-    final receivePort = broadcastPort('multiple listeners');
-    addTearDown(receivePort.close);
-    final first = receivePort.take(3).map((value) => (value as JSString).toDart).toList();
-    final second = receivePort.take(3).map((value) => (value as JSString).toDart).toList();
-    final sender = receivePort.sendPort.nativePort as web.MessagePort;
+  test(
+    'each listener independently waits for all values before close',
+    () async {
+      final receivePort = broadcastPort('multiple listeners');
+      addTearDown(receivePort.close);
+      final first = receivePort
+          .take(3)
+          .map((value) => (value as JSString).toDart)
+          .toList();
+      final second = receivePort
+          .take(3)
+          .map((value) => (value as JSString).toDart)
+          .toList();
+      final sender = receivePort.sendPort.nativePort as web.MessagePort;
 
-    sender.postMessage(['__frb_stream_close', 2, 'closed'].jsify());
-    sender.postMessage('first'.toJS);
-    sender.postMessage('second'.toJS);
+      sender.postMessage(['__frb_stream_close', 2, 'closed'].jsify());
+      sender.postMessage('first'.toJS);
+      sender.postMessage('second'.toJS);
 
-    expect(await first, ['first', 'second', 'closed']);
-    expect(await second, ['first', 'second', 'closed']);
-  });
+      expect(await first, ['first', 'second', 'closed']);
+      expect(await second, ['first', 'second', 'closed']);
+    },
+  );
 
   test('ordinary ports deliver close-shaped user data unchanged', () async {
     final receivePort = ReceivePort();
@@ -68,7 +77,11 @@ void main() {
 
     sender.postMessage(['__frb_stream_close', 0, 'user data'].jsify());
 
-    expect((await received as JSArray).dartify(), ['__frb_stream_close', 0, 'user data']);
+    expect((await received as JSArray).dartify(), [
+      '__frb_stream_close',
+      0,
+      'user data',
+    ]);
   });
 
   test('closing an old named port preserves its replacement', () async {

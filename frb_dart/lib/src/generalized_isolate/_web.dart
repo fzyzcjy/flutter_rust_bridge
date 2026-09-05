@@ -25,9 +25,8 @@ external JSObject? get _namedPorts;
 external set _namedPorts(JSObject value);
 
 /// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
-  RawReceivePort._raw(_WebChannel(channelName)),
-);
+ReceivePort broadcastPort(String channelName) =>
+    ReceivePort._raw(RawReceivePort._raw(_WebChannel(channelName)));
 
 /// {@template flutter_rust_bridge.same_as_native}
 /// Web implementation of the one with same name in native.
@@ -49,11 +48,11 @@ class ReceivePort extends Stream<dynamic> {
     bool? cancelOnError,
   }) {
     final subscription = _rawReceivePort._webChannel._messages.listen(
-          onData,
-          onError: onError,
-          onDone: onDone,
-          cancelOnError: cancelOnError,
-        );
+      onData,
+      onError: onError,
+      onDone: onDone,
+      cancelOnError: cancelOnError,
+    );
     _rawReceivePort._webChannel._start();
     return subscription;
   }
@@ -86,7 +85,6 @@ class RawReceivePort {
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _webChannel._sendPort;
-
 }
 
 /// {@macro flutter_rust_bridge.same_as_native}
@@ -125,19 +123,19 @@ class _WebChannel {
     var received = 0;
     JSArray<JSAny?>? pendingClose;
     return messages.expand((data) sync* {
-    if (data.isA<JSArray<JSAny?>>() &&
-        (data as JSArray<JSAny?>).length == 3 &&
-        data[0] == '__frb_stream_close'.toJS) {
-      pendingClose = data;
-    } else {
-      received++;
-      yield data;
-    }
-    final close = pendingClose;
-    if (close != null && (close[1] as JSNumber).toDartDouble == received) {
-      pendingClose = null;
-      yield close[2];
-    }
+      if (data.isA<JSArray<JSAny?>>() &&
+          (data as JSArray<JSAny?>).length == 3 &&
+          data[0] == '__frb_stream_close'.toJS) {
+        pendingClose = data;
+      } else {
+        received++;
+        yield data;
+      }
+      final close = pendingClose;
+      if (close != null && (close[1] as JSNumber).toDartDouble == received) {
+        pendingClose = null;
+        yield close[2];
+      }
     });
   }
 
@@ -147,7 +145,8 @@ class _WebChannel {
     final name = _name;
     if (name != null) {
       final ports = _namedPorts;
-      if (ports != null && ports.getProperty<JSAny?>(name.toJS) == _channel.port2) {
+      if (ports != null &&
+          ports.getProperty<JSAny?>(name.toJS) == _channel.port2) {
         ports.delete(name.toJS);
       }
       _channel.port2.close();
