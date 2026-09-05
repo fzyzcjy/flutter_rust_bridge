@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io';
+
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/dart_sdk.dart';
@@ -42,7 +44,47 @@ Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
     config.sanitizer,
     relativePwd: config.package,
     allowedFailure: _allowedSanitizerFailure(config),
+    sanitizerEnvironment: sanitizerEntrypointEnvironmentForTesting(
+      package: config.package,
+      sanitizer: config.sanitizer,
+      environment: Platform.environment,
+    ),
   );
+}
+
+Map<String, String> sanitizerEntrypointEnvironmentForTesting({
+  required String package,
+  required Sanitizer sanitizer,
+  required Map<String, String> environment,
+}) {
+  if (package != 'frb_example/pure_dart_pde' || sanitizer != Sanitizer.tsan) {
+    return {};
+  }
+  final existing = environment['TSAN_OPTIONS'];
+  return {
+    'TSAN_OPTIONS': [
+      if (existing != null && existing.isNotEmpty) existing,
+      'report_thread_leaks=1',
+      'print_suppressions=1',
+      'suppressions=../../tools/dart_tsan_pde.supp',
+    ].join(':'),
+  };
+}
+
+void checkPdeThreadLeakSuppressionForTesting(String stderr) {
+  const prefix = 'ThreadSanitizer: Matched ';
+  if (!stderr.contains(prefix)) return;
+  const expectedRule =
+      'thread:frb_example_pure_dart_pde::api::async_spawn::'
+      'simple_use_async_spawn_blocking::';
+  final matches = RegExp(
+    r'^ThreadSanitizer: Matched 1 suppressions \(pid=\d+\):\r?\n'
+    '1 ${RegExp.escape(expectedRule)}\r?\n',
+    multiLine: true,
+  ).allMatches(stderr);
+  if (matches.length != 1 || prefix.allMatches(stderr).length != 1) {
+    throw Exception('Unexpected TSAN suppression count or rule');
+  }
 }
 
 String _expectedTestResultMarker(String package) {
@@ -282,6 +324,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
   Sanitizer sanitizer, {
   required String relativePwd,
   _AllowedSanitizerFailure? allowedFailure,
+  Map<String, String> sanitizerEnvironment = const {},
 }) async {
   print('====== execAndCheckWithSanitizerEnvVar name=${info.name} ======');
 
@@ -303,9 +346,14 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
       ...kEnvEnableRustBacktrace,
+      ...sanitizerEnvironment,
     },
     checkExitCode: false,
   );
+
+  if (sanitizerEnvironment.containsKey('TSAN_OPTIONS')) {
+    checkPdeThreadLeakSuppressionForTesting(output.stderr);
+  }
 
   final hasOnlyAllowedFailure = isOnlyAllowedSanitizerFailureForTesting(
     exitCode: output.exitCode,

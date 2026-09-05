@@ -18,6 +18,56 @@ import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/sani
 import 'package:test/test.dart';
 
 void main() {
+  test('PDE thread suppression is limited to its TSAN entrypoint', () {
+    for (final package in [
+      'frb_example/pure_dart_pde',
+      'frb_example/pure_dart',
+      'frb_example/deliberate_bad',
+      'frb_example/dart_minimal',
+    ]) {
+      for (final sanitizer in Sanitizer.values) {
+        final environment = sanitizerEntrypointEnvironmentForTesting(
+          package: package,
+          sanitizer: sanitizer,
+          environment: const {'TSAN_OPTIONS': 'halt_on_error=1'},
+        );
+        expect(
+          environment,
+          package == 'frb_example/pure_dart_pde' && sanitizer == Sanitizer.tsan
+              ? {
+                  'TSAN_OPTIONS': 'halt_on_error=1:report_thread_leaks=1:'
+                      'print_suppressions=1:'
+                      'suppressions=../../tools/dart_tsan_pde.supp',
+                }
+              : <String, String>{},
+        );
+      }
+    }
+  });
+
+  test('PDE thread suppression accepts only one known creation path', () {
+    const rule = 'thread:frb_example_pure_dart_pde::api::async_spawn::'
+        'simple_use_async_spawn_blocking::';
+    expect(File('../../tools/dart_tsan_pde.supp').readAsStringSync(), '$rule\n');
+    const report = 'ThreadSanitizer: Matched 1 suppressions (pid=123):\n'
+        '1 $rule\n';
+    expect(() => checkPdeThreadLeakSuppressionForTesting(''), returnsNormally);
+    expect(() => checkPdeThreadLeakSuppressionForTesting(report), returnsNormally);
+    for (final unexpected in [
+      report.replaceAll('Matched 1', 'Matched 2'),
+      report.replaceAll('1 thread:', '2 thread:'),
+      report.replaceAll('thread:', 'race:'),
+      report.replaceAll('simple_use_async_spawn_blocking::', 'different_api::'),
+      '$report$report',
+      'ThreadSanitizer: Matched malformed summary\n',
+    ]) {
+      expect(
+        () => checkPdeThreadLeakSuppressionForTesting(unexpected),
+        throwsException,
+      );
+    }
+  });
+
   test('dart valgrind command uses the Dart AOT suppression file', () {
     expect(
       dartValgrindCommandForTesting(),
