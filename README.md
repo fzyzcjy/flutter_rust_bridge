@@ -95,7 +95,7 @@ This package is [officially Flutter Favorite](https://medium.com/flutter/progres
 * **Parsing third-party packages**: Scan and use existing Rust packages in Dart (experimental).
 * **Auto safety**: Focus on your code, and forget memory safety, malloc/free, or undefined behavior completely.
 * **Customizable & bare-metal mode**: Provide sensible defaults, but everything (loader, handler, ...) can be customized. You can even throw all away and only use the bare minimum calling.
-* **Cross-platform**: Support Android, iOS, Windows, Linux, MacOS, and Web.
+* **Cross-platform**: Support Android, iOS, Windows, Linux, MacOS, and Web (both JavaScript and WebAssembly).
 * Other features, e.g. support whole folders as input, pure-Dart compatible, instance and static methods, ...
 
 </details>
