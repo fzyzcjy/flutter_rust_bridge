@@ -1,20 +1,18 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/dart_sdk.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/sanitizer.dart';
-import 'package:yaml/yaml.dart';
+import 'package:path/path.dart' as path;
 
 // for rust san also ref
 // * https://doc.rust-lang.org/beta/unstable-book/compiler-flags/sanitizer.html
 // * https://github.com/japaric/rust-san
 Future<void> run(TestDartSanitizerConfig config) async {
-  await _lowerSdkMinVersion(package: config.package);
-
+  await _printSanitizerToolchainInfo(config);
   await runPubGet(config.package, kDartModeOfPackage[config.package]!);
 
   // Otherwise it seems the sanitized dart binary does not compile native assets
@@ -30,44 +28,149 @@ Future<void> run(TestDartSanitizerConfig config) async {
   }
 }
 
-Future<void> _lowerSdkMinVersion({required String package}) async {
-  await _modifySdkMinVersion(path: '${exec.pwd}$package/pubspec.yaml');
-  await _modifySdkMinVersion(path: '${exec.pwd}frb_dart/pubspec.yaml');
-}
-
-Future<void> _modifySdkMinVersion({required String path}) async {
-  print('modifySdkMinVersion(path=$path)');
-
-  final file = File(path);
-
-  final contentRaw = loadYaml(file.readAsStringSync());
-  final content = jsonDecode(jsonEncode(contentRaw));
-
-  // Lower the version since the custom compiled Dart SDK is done before,
-  // and we do not really need new sdk version when on native platform.
-  content['environment']['sdk'] = '>=3.2.0';
-  file.writeAsStringSync(jsonEncode(content));
-
-  print('modifySdkMinVersion path=$path content=${file.readAsStringSync()}');
-}
-
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
+  await _buildPackageNativeLibraryForDart(config);
+
   final sanitizedDart = await getSanitizedDartBinary(config);
   await _execAndCheckWithSanitizerEnvVar(
-    '$sanitizedDart run test/dart_valgrind_test_entrypoint.dart',
-    const _Info(
+    '$sanitizedDart --enable-vm-service=0 --disable-service-auth-codes '
+    'run test/dart_valgrind_test_entrypoint.dart',
+    _Info(
       name: 'entrypoint',
       expectSucceed: true,
       expectStderrContains: '',
+      expectStdoutContains: _expectedTestResultMarker(config.package),
     ),
     config.sanitizer,
     relativePwd: config.package,
+    allowedFailure: _allowedSanitizerFailure(config),
+    sanitizerEnvironment: sanitizerEntrypointEnvironmentForTesting(
+      package: config.package,
+      sanitizer: config.sanitizer,
+      environment: Platform.environment,
+    ),
   );
+}
+
+Map<String, String> sanitizerEntrypointEnvironmentForTesting({
+  required String package,
+  required Sanitizer sanitizer,
+  required Map<String, String> environment,
+}) {
+  final suppressionFile = switch (package) {
+    'frb_example/pure_dart' => 'dart_tsan_pure.supp',
+    'frb_example/pure_dart_pde' => 'dart_tsan_pde.supp',
+    _ => null,
+  };
+  if (suppressionFile == null || sanitizer != Sanitizer.tsan) {
+    return {};
+  }
+  final existing = environment['TSAN_OPTIONS'];
+  return {
+    'TSAN_OPTIONS': [
+      if (existing != null && existing.isNotEmpty) existing,
+      'report_thread_leaks=1',
+      'print_suppressions=1',
+      'suppressions=../../tools/$suppressionFile',
+    ].join(':'),
+  };
+}
+
+void checkPdeThreadLeakSuppressionForTesting(String stderr) {
+  _checkThreadLeakSuppression(
+    stderr,
+    expectedRule:
+        'thread:frb_example_pure_dart_pde::api::async_spawn::'
+        'simple_use_async_spawn_blocking::',
+  );
+}
+
+void checkPureThreadLeakSuppressionForTesting(String stderr) {
+  _checkThreadLeakSuppression(
+    stderr,
+    expectedRule:
+        'thread:frb_example_pure_dart::api::async_spawn::'
+        'simple_use_async_spawn_blocking::',
+  );
+}
+
+void _checkThreadLeakSuppression(
+  String stderr, {
+  required String expectedRule,
+}) {
+  const prefix = 'ThreadSanitizer: Matched ';
+  if (!stderr.contains(prefix)) return;
+  final matches = RegExp(
+    r'^ThreadSanitizer: Matched 1 suppressions \(pid=\d+\):\r?\n'
+    '1 ${RegExp.escape(expectedRule)}\r?\n',
+    multiLine: true,
+  ).allMatches(stderr);
+  if (matches.length != 1 || prefix.allMatches(stderr).length != 1) {
+    throw Exception('Unexpected TSAN suppression count or rule');
+  }
+}
+
+String _expectedTestResultMarker(String package) {
+  return switch (package) {
+    'frb_example/pure_dart' ||
+    'frb_example/pure_dart_pde' => 'FRB_DART_TEST_RESULT: success',
+    _ => '',
+  };
+}
+
+_AllowedSanitizerFailure? _allowedSanitizerFailure(
+  TestDartSanitizerConfig config,
+) {
+  return switch (config.sanitizer) {
+    Sanitizer.asan => const _AllowedSanitizerFailure(
+      exitCode: 1,
+      normalizedReports: [],
+    ),
+    Sanitizer.lsan => const _AllowedSanitizerFailure(
+      exitCode: 23,
+      normalizedReports: [],
+    ),
+    Sanitizer.tsan => const _AllowedSanitizerFailure(
+      exitCode: 66,
+      normalizedReports: [],
+    ),
+    _ => null,
+  };
 }
 
 Future<void> _runPackageDeliberateBad(TestDartSanitizerConfig config) async {
   await _runPackageDeliberateBadRustOnly(config);
+  await _buildPackageNativeLibraryForDart(config);
   await _runPackageDeliberateBadWithDart(config);
+}
+
+Future<void> _buildPackageNativeLibraryForDart(
+  TestDartSanitizerConfig config,
+) async {
+  final crateName = path.basename(config.package);
+  final libraryName = 'libfrb_example_$crateName.so';
+  final featureArgs = _cargoFeatureArgs(config);
+  await _execAndCheckWithSanitizerEnvVar(
+    'cargo +nightly build --release $_cargoBuildExtraArgs$featureArgs'
+    ' && mkdir -p target/release'
+    ' && cp target/x86_64-unknown-linux-gnu/release/$libraryName'
+    ' target/release/$libraryName',
+    const _Info(
+      name: 'BuildNativeLibraryForDart',
+      expectSucceed: true,
+      expectStderrContains: '',
+    ),
+    config.sanitizer,
+    relativePwd: '${config.package}/rust',
+  );
+}
+
+String _cargoFeatureArgs(TestDartSanitizerConfig config) {
+  return switch (config.package) {
+    'frb_example/pure_dart' ||
+    'frb_example/pure_dart_pde' => ' --features internal_feature_for_testing',
+    _ => '',
+  };
 }
 
 Future<void> _runPackageDeliberateBadRustOnly(
@@ -139,11 +242,10 @@ Future<void> _runPackageDeliberateBadWithDart(
     ),
     ...switch (config.sanitizer) {
       Sanitizer.asan => [
-        // NOTE ASAN does not report this as buggy...
         const _Info(
           name: 'DartOnly_HeapUseAfterFree',
-          expectSucceed: true,
-          expectStderrContains: '',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
         ),
       ],
       Sanitizer.msan => [
@@ -219,11 +321,23 @@ class _Info {
   final String name;
   final bool expectSucceed;
   final String expectStderrContains;
+  final String expectStdoutContains;
 
   const _Info({
     required this.name,
     required this.expectSucceed,
     required this.expectStderrContains,
+    this.expectStdoutContains = '',
+  });
+}
+
+class _AllowedSanitizerFailure {
+  final int exitCode;
+  final List<String> normalizedReports;
+
+  const _AllowedSanitizerFailure({
+    required this.exitCode,
+    required this.normalizedReports,
   });
 }
 
@@ -232,24 +346,49 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
   _Info info,
   Sanitizer sanitizer, {
   required String relativePwd,
+  _AllowedSanitizerFailure? allowedFailure,
+  Map<String, String> sanitizerEnvironment = const {},
 }) async {
   print('====== execAndCheckWithSanitizerEnvVar name=${info.name} ======');
+
+  final rustflags = sanitizer.rustflags;
+  final rustSanitizerEnv = rustflags == null
+      ? <String, String>{}
+      : {
+          'NIX_FRB_RUSTFLAGS': rustflags,
+          'RUSTFLAGS': rustflags,
+          'NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
+          'NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
+        };
 
   final output = await exec(
     cmd,
     relativePwd: relativePwd,
     extraEnv: {
-      'NIX_FRB_RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
-      'NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
-      'NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
+      ...rustSanitizerEnv,
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
       ...kEnvEnableRustBacktrace,
+      ...sanitizerEnvironment,
     },
     checkExitCode: false,
   );
 
-  if ((output.exitCode == 0) != info.expectSucceed) {
+  if (sanitizerEnvironment.containsKey('TSAN_OPTIONS')) {
+    if (relativePwd == 'frb_example/pure_dart') {
+      checkPureThreadLeakSuppressionForTesting(output.stderr);
+    } else {
+      checkPdeThreadLeakSuppressionForTesting(output.stderr);
+    }
+  }
+
+  final hasOnlyAllowedFailure = isOnlyAllowedSanitizerFailureForTesting(
+    exitCode: output.exitCode,
+    stderr: output.stderr,
+    expectedExitCode: allowedFailure?.exitCode,
+    expectedNormalizedReports: allowedFailure?.normalizedReports,
+  );
+  if ((output.exitCode == 0) != info.expectSucceed && !hasOnlyAllowedFailure) {
     throw Exception(
       'Bad exitCode=${output.exitCode}, while expectSucceed=${info.expectSucceed}',
     );
@@ -260,8 +399,67 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
       'Bad stderr which does not contain `${info.expectStderrContains}`',
     );
   }
+  if (!output.stdout.contains(info.expectStdoutContains)) {
+    throw Exception(
+      'Bad stdout which does not contain `${info.expectStdoutContains}`',
+    );
+  }
 
   print('Pass check for ${info.name}');
+}
+
+bool isOnlyAllowedSanitizerFailureForTesting({
+  required int exitCode,
+  required String stderr,
+  required int? expectedExitCode,
+  required List<String>? expectedNormalizedReports,
+}) {
+  return expectedExitCode != null &&
+      expectedNormalizedReports != null &&
+      exitCode == expectedExitCode &&
+      expectedNormalizedReports.contains(
+        normalizeSanitizerReportForTesting(stderr),
+      );
+}
+
+String normalizeSanitizerReportForTesting(String report) {
+  return report
+      .split('\n')
+      .map((line) => line.trimRight())
+      .map(
+        (line) => line
+            .replaceFirst(RegExp(r'^\d{4}-\d\d-\d\dT\S+Z '), '')
+            .replaceAll(RegExp(r'==\d+=='), '==<pid>==')
+            .replaceAll(RegExp(r'\(pid=\d+\)'), '(pid=<pid>)')
+            .replaceAll(RegExp(r'\btid=\d+\b'), 'tid=<tid>')
+            .replaceAll(RegExp(r'\bThread T\d+\b'), 'Thread T<id>')
+            .replaceAll(RegExp(r'\bthread T\d+\b'), 'thread T<id>')
+            .replaceAll(RegExp(r'(?<!\+)0x[0-9a-fA-F]+'), '0x<address>')
+            .replaceAll(RegExp(r'\s+\(BuildId: [^)]+\)'), '')
+            .replaceAll(RegExp(r'\([^)]*/dartvm\+'), '(<dartvm>+'),
+      )
+      .join('\n');
+}
+
+Future<void> _printSanitizerToolchainInfo(
+  TestDartSanitizerConfig config,
+) async {
+  final releaseName = config.useLocalSanitizedDartBinary
+      ? '<local-sanitized-dart>'
+      : sanitizedDartReleaseName();
+  print(
+    'sanitizer config: sanitizer=${config.sanitizer.name} '
+    'package=${config.package} sanitizedDartReleaseName=$releaseName',
+  );
+
+  final rustcOutput = await exec(
+    'rustc +nightly --version',
+    checkExitCode: false,
+  );
+  print(
+    'Rust nightly version: '
+    'stdout=${rustcOutput.stdout.trim()} stderr=${rustcOutput.stderr.trim()}',
+  );
 }
 
 const _cargoBuildExtraArgs = '-Zbuild-std --target x86_64-unknown-linux-gnu';

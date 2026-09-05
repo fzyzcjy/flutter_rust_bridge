@@ -977,10 +977,15 @@ jobs:
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y llvm
+          /usr/bin/llvm-symbolizer --version
 
       # execute
       - run: ./frb_internal test-dart-sanitizer --package ${{ matrix.package }} --sanitizer ${{ matrix.sanitizer }}
         env:
+          ASAN_SYMBOLIZER_PATH: /usr/bin/llvm-symbolizer
           GITHUB_TOKEN: ${{ github.token }}
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4

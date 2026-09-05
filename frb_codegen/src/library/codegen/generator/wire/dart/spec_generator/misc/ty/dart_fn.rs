@@ -59,6 +59,7 @@ impl WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'_> {
                 }}
 
                 final serializer = SseSerializer(generalizedFrbRustBinding);
+                try {{
                 assert((rawOutput != null) ^ (rawError != null));
                 if (rawOutput != null) {{
                     serializer.buffer.putUint8({action_normal});
@@ -66,6 +67,10 @@ impl WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'_> {
                 }} else {{
                     serializer.buffer.putUint8({action_error});
                     sse_encode_{output_error_safe_ident}(rawError!.value, serializer);
+                }}
+                }} catch (_) {{
+                    serializer.dispose();
+                    rethrow;
                 }}
                 final output = serializer.intoRaw();
 
@@ -133,5 +138,13 @@ mod tests {
             DartFnOutputAction::Error as i32
         )));
         assert!(body.contains("generalizedFrbRustBinding.dartFnDeliverOutput("));
+        let cleanup = body.find("serializer.dispose();").unwrap();
+        let transfer = body.find("final output = serializer.intoRaw();").unwrap();
+        let delivery = body
+            .find("generalizedFrbRustBinding.dartFnDeliverOutput(")
+            .unwrap();
+        assert!(cleanup < transfer);
+        assert!(transfer < delivery);
+        assert!(body[cleanup..transfer].contains("rethrow;\n                }"));
     }
 }
