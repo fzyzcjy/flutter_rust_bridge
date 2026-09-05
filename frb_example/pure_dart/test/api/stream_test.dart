@@ -12,6 +12,12 @@ import '../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
+  if (kIsWeb) {
+    test('queued worker transfers validate and snapshot data before returning', () async {
+      expect(await streamWorkerTransferTwinNormal().toList(), [1, 7, 11, 1]);
+    });
+  }
+
   test('new worker streams deliver the complete initial burst and close',
       () async {
     for (var iteration = 0; iteration < 1000; iteration++) {
