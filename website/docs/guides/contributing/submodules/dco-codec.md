@@ -28,7 +28,7 @@ Rust Worker ->> Dart: port2.postMessage
 
 - Dart creates one physical BroadcastChannel receiver and confirms readiness during initialization.
 - Each invocation receives a logical port name and a local MessagePort queue. Its string handle contains both the physical channel name and logical port name.
-- Each Rust thread caches a sender for the physical channel and posts `[logicalPortName, payload]`.
+- Each Rust thread caches a sender for the current synchronous batch and posts `[logicalPortName, payload]`. A microtask then closes its senders, avoiding broadcasts to idle workers.
 - Dart dispatches the payload to the matching local queue. Closing a logical port removes it without closing the physical channel.
 - The final stream close includes the number of successfully sent values. Dart waits for those values before exposing the close, including when sink clones send from different workers.
 
