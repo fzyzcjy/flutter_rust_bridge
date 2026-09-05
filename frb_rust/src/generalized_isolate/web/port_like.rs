@@ -18,6 +18,7 @@ extern "C" {
 impl PortLike {
     /// Create a [`BroadcastChannel`] with the specified name.
     pub fn broadcast(name: &str) -> Self {
+        super::channel_registration::mark_channel_created();
         BroadcastChannel::new(name)
             .expect("Failed to create broadcast channel")
             .unchecked_into()

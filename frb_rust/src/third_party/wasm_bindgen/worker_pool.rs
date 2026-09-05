@@ -173,7 +173,11 @@ impl WorkerPool {
     // NOTE: It is originally named `execute`, but rename to align with crate `threadpool`
     fn execute_raw(&self, closure: TransferClosure<JsValue>) -> Result<Worker, JsValue> {
         let worker = self.worker()?;
-        closure.apply(&worker).map(|_| worker)
+        crate::generalized_isolate::channel_registration::dispatch_after_channel_registration(
+            worker.clone(),
+            closure,
+        )?;
+        Ok(worker)
     }
 
     /// Configures an `onmessage` callback for the `worker` specified for the

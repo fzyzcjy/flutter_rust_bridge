@@ -1,5 +1,5 @@
-use flutter_rust_bridge::frb;
 use crate::frb_generated::StreamSink;
+use flutter_rust_bridge::frb;
 
 #[frb(init)]
 pub fn init_app() {

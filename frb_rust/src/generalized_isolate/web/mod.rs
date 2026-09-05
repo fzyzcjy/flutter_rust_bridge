@@ -1,4 +1,5 @@
 mod channel;
+pub(crate) mod channel_registration;
 mod into_dart;
 mod port_like;
 
