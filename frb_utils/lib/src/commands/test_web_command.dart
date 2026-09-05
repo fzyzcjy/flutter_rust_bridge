@@ -27,4 +27,7 @@ class TestWebConfig {
 
   @CliOption(help: 'Rust feature flags to set during build')
   late List<String> rustFeatures;
+
+  @CliOption(help: 'Compile the Dart test entrypoint with dart2wasm')
+  late bool wasm;
 }
