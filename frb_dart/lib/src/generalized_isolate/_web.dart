@@ -40,13 +40,12 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    final subscription = _rawReceivePort._webReceivePort._messages
-        .listen(
-          onData,
-          onError: onError,
-          onDone: onDone,
-          cancelOnError: cancelOnError,
-        );
+    final subscription = _rawReceivePort._webReceivePort._messages.listen(
+      onData,
+      onError: onError,
+      onDone: onDone,
+      cancelOnError: cancelOnError,
+    );
     _rawReceivePort._webReceivePort._start();
     return subscription;
   }
@@ -183,7 +182,7 @@ class _WebBroadcastPort extends _WebPortLike {
     await for (final message in super._messages) {
       if (message != null && message.isA<JSArray>()) {
         final frame = message as JSArray<JSAny?>;
-        if (frame.length > 0 && frame[0].isA<JSString>()) {
+        if (frame.toDart.isNotEmpty && frame[0].isA<JSString>()) {
           final tag = (frame[0] as JSString).toDart;
           if (tag == '__frb_stream_failed') {
             throw StateError('Web stream transport failed');
