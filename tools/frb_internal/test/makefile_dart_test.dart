@@ -34,7 +34,8 @@ void main() {
         expect(
           environment,
           (package == 'frb_example/pure_dart_pde' ||
-                  package == 'frb_example/pure_dart') && sanitizer == Sanitizer.tsan
+                      package == 'frb_example/pure_dart') &&
+                  sanitizer == Sanitizer.tsan
               ? {
                   'TSAN_OPTIONS':
                       'halt_on_error=1:report_thread_leaks=1:'
@@ -82,12 +83,18 @@ void main() {
     const rule =
         'thread:frb_example_pure_dart::api::async_spawn::'
         'simple_use_async_spawn_blocking::';
-    expect(File('../../tools/dart_tsan_pure.supp').readAsStringSync(), '$rule\n');
+    expect(
+      File('../../tools/dart_tsan_pure.supp').readAsStringSync(),
+      '$rule\n',
+    );
     const report =
         'ThreadSanitizer: Matched 1 suppressions (pid=123):\n'
         '1 $rule\n';
     expect(() => checkPureThreadLeakSuppressionForTesting(''), returnsNormally);
-    expect(() => checkPureThreadLeakSuppressionForTesting(report), returnsNormally);
+    expect(
+      () => checkPureThreadLeakSuppressionForTesting(report),
+      returnsNormally,
+    );
     for (final unexpected in [
       report.replaceAll('Matched 1', 'Matched 2'),
       report.replaceAll('1 thread:', '2 thread:'),
@@ -97,9 +104,15 @@ void main() {
       '$report$report',
       'ThreadSanitizer: Matched malformed summary\n',
     ]) {
-      expect(() => checkPureThreadLeakSuppressionForTesting(unexpected), throwsException);
+      expect(
+        () => checkPureThreadLeakSuppressionForTesting(unexpected),
+        throwsException,
+      );
     }
-    expect(() => checkPdeThreadLeakSuppressionForTesting(report), throwsException);
+    expect(
+      () => checkPdeThreadLeakSuppressionForTesting(report),
+      throwsException,
+    );
   });
 
   test('dart valgrind command uses the Dart AOT suppression file', () {
