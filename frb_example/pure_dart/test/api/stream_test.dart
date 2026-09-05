@@ -15,7 +15,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('new worker streams deliver the complete initial burst and close',
       () async {
     for (var iteration = 0; iteration < 1000; iteration++) {
-      final streams = List.generate(8, (_) => immediateStream().toList());
+      final streams = List.generate(8, (_) => immediateStreamTwinNormal().toList());
       final results =
           await Future.wait(streams).timeout(const Duration(seconds: 2));
       for (final values in results) {
