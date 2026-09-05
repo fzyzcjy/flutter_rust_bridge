@@ -225,6 +225,7 @@ void main() {
         wasmPackRustupToolchain: 'nightly-2026-01-01',
         wasmPackRustflags: '-C target-feature=+atomics',
         dartCompileJsEntrypoint: null,
+        dartCompileWasmEntrypoint: null,
       ),
       runCommandImpl:
           (
@@ -319,6 +320,7 @@ void main() {
           wasmPackRustupToolchain: null,
           wasmPackRustflags: null,
           dartCompileJsEntrypoint: null,
+          dartCompileWasmEntrypoint: null,
         ),
         runCommandImpl:
             (

@@ -81,7 +81,7 @@ class BuildWebArgs {
     required this.wasmPackRustupToolchain,
     required this.wasmPackRustflags,
     required this.dartCompileJsEntrypoint,
-    this.dartCompileWasmEntrypoint,
+    required this.dartCompileWasmEntrypoint,
     this.features = const [],
   });
 }
