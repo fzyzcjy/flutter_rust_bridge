@@ -70,3 +70,100 @@ pub(crate) fn generate_serialize_inputs(func: &MirFunc) -> String {
         }}"
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+    use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
+    use crate::codegen::ir::mir::func::{
+        MirFuncArgMode, MirFuncImplMode, MirFuncInput, MirFuncMode, MirFuncOutput, MirFuncOwnerInfo,
+    };
+    use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::utils::namespace::Namespace;
+
+    fn func(mode: MirFuncMode, has_input: bool) -> MirFunc {
+        MirFunc {
+            namespace: Namespace::default(),
+            name: MirIdent::new("calculate".into(), None),
+            id: Some(42),
+            inputs: has_input
+                .then(|| MirFuncInput {
+                    ownership_mode: None,
+                    inner: MirField {
+                        ty: MirType::Primitive(MirTypePrimitive::I32),
+                        name: MirIdent::new("input_value".into(), None),
+                        is_final: false,
+                        is_rust_public: None,
+                        comments: vec![],
+                        default: None,
+                        settings: MirFieldSettings::default(),
+                    },
+                    needs_extend_lifetime: false,
+                })
+                .into_iter()
+                .collect(),
+            output: MirFuncOutput {
+                normal: MirType::Primitive(MirTypePrimitive::I32),
+                error: None,
+            },
+            owner: MirFuncOwnerInfo::Function,
+            mode,
+            stream_dart_await: false,
+            rust_async: false,
+            initializer: false,
+            init_dart_code: None,
+            arg_mode: MirFuncArgMode::Named,
+            accessor: None,
+            comments: vec![],
+            codec_mode_pack: CodecModePack {
+                dart2rust: CodecMode::Sse,
+                rust2dart: CodecMode::Sse,
+            },
+            rust_call_code: None,
+            rust_aop_after: None,
+            impl_mode: MirFuncImplMode::Normal,
+            src_lineno_pseudo: 0,
+        }
+    }
+
+    fn assert_cleanup_precedes_transfer_and_ffi(output: &str) {
+        let catch_start = output.find("} catch (_) {").unwrap();
+        let dispose = output.find("serializer.dispose();").unwrap();
+        let rethrow = output.find("rethrow;").unwrap();
+        let catch_end = rethrow + output[rethrow..].find('}').unwrap();
+        let transfer = output.find("serializer.intoRaw()").unwrap();
+        let ffi = output.find("return wire.calculate(").unwrap();
+
+        assert!(catch_start < dispose);
+        assert!(dispose < rethrow);
+        assert!(rethrow < catch_end);
+        assert!(catch_end < transfer);
+        assert!(transfer < ffi);
+    }
+
+    /// Keeps serializer cleanup scoped to encoding before SSE transfer and FFI calls.
+    #[test]
+    fn dart2rust_generation_cleans_up_encoding_failures_before_sse_handoff() {
+        for mode in [MirFuncMode::Normal, MirFuncMode::Sync] {
+            let output = SseWireDartCodecEntrypoint
+                .generate_dart2rust_inner_func_stmt(&func(mode, true), "calculate");
+
+            assert_cleanup_precedes_transfer_and_ffi(&output);
+            assert_eq!(
+                output.contains("wire.calculate(port_,"),
+                mode == MirFuncMode::Normal
+            );
+        }
+    }
+
+    /// Omits encoding cleanup when SSE calls have no serialized inputs.
+    #[test]
+    fn dart2rust_generation_omits_encoding_cleanup_without_sse_inputs() {
+        let output = SseWireDartCodecEntrypoint
+            .generate_dart2rust_inner_func_stmt(&func(MirFuncMode::Normal, false), "calculate");
+
+        assert!(!output.contains("catch (_)") && !output.contains("serializer.dispose()"));
+    }
+}
