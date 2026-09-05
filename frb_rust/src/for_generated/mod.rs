@@ -70,7 +70,7 @@ pub use crate::web_transfer::transfer_closure::TransferClosure;
 pub use anyhow;
 pub use byteorder;
 #[cfg(target_family = "wasm")]
-pub use cast::{slice_from_byte_buffer, slice_from_js_typed_array, JsTypedArray};
+pub use cast::slice_from_byte_buffer;
 #[cfg(feature = "rust-async")]
 pub use futures;
 #[cfg(target_family = "wasm")]
