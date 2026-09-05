@@ -8,7 +8,7 @@ extension SanitizerMetadata on Sanitizer {
     final value = rustflagValue;
     if (value == null) return null;
 
-    return '-Zsanitizer=$value';
+    return '-Zsanitizer=$value -Zmerge-functions=disabled -Cdebuginfo=1';
   }
 
   String? get rustflagValue {
