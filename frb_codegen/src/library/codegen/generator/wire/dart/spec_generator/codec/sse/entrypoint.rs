@@ -49,12 +49,20 @@ impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
 }
 
 pub(crate) fn generate_serialize_inputs(func: &MirFunc) -> String {
-    (func.inputs.iter())
+    let inputs = (func.inputs.iter())
         .map(|input| {
             format!(
                 "{};",
                 DartLang.call_encode(&input.inner.ty, &input.inner.name.dart_style())
             )
         })
-        .join("\n")
+        .join("\n");
+    format!(
+        "try {{
+            {inputs}
+        }} catch (_) {{
+            serializer.dispose();
+            rethrow;
+        }}"
+    )
 }
