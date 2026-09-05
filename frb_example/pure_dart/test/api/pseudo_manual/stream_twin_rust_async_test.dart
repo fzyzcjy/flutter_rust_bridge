@@ -17,9 +17,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   if (kIsWeb) {
-    test('queued worker transfers validate and snapshot data before returning',
+    test('worker transfers validate and snapshot data before returning',
         () async {
-      expect(await streamWorkerTransferTwinRustAsync().toList(), [1, 7, 11, 1]);
+      expect(await streamWorkerTransferTwinRustAsync().toList(), [1, 7, 11]);
     });
   }
 
