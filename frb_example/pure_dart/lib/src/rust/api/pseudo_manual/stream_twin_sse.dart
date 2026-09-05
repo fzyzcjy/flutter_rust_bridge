@@ -15,6 +15,12 @@ import 'stream_twin_rust_async.dart';
 Future<Stream<String>> funcStreamReturnErrorTwinSse() => RustLib.instance.api
     .crateApiPseudoManualStreamTwinSseFuncStreamReturnErrorTwinSse();
 
+Stream<int> immediateStreamTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinSseImmediateStreamTwinSse();
+
+Stream<int> streamWorkerTransferTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinSseStreamWorkerTransferTwinSse();
+
 Future<Stream<String>> funcStreamReturnPanicTwinSse() => RustLib.instance.api
     .crateApiPseudoManualStreamTwinSseFuncStreamReturnPanicTwinSse();
 

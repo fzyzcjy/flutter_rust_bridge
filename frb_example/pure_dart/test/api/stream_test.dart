@@ -13,7 +13,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   if (kIsWeb) {
-    test('queued worker transfers validate and snapshot data before returning', () async {
+    test('queued worker transfers validate and snapshot data before returning',
+        () async {
       expect(await streamWorkerTransferTwinNormal().toList(), [1, 7, 11, 1]);
     });
   }
@@ -21,7 +22,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('new worker streams deliver the complete initial burst and close',
       () async {
     for (var iteration = 0; iteration < 1000; iteration++) {
-      final streams = List.generate(8, (_) => immediateStreamTwinNormal().toList());
+      final streams =
+          List.generate(8, (_) => immediateStreamTwinNormal().toList());
       final results =
           await Future.wait(streams).timeout(const Duration(seconds: 2));
       for (final values in results) {

@@ -16,6 +16,12 @@ Future<Stream<String>> funcStreamReturnErrorTwinRustAsync() => RustLib
     .instance.api
     .crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnErrorTwinRustAsync();
 
+Stream<int> immediateStreamTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncImmediateStreamTwinRustAsync();
+
+Stream<int> streamWorkerTransferTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncStreamWorkerTransferTwinRustAsync();
+
 Future<Stream<String>> funcStreamReturnPanicTwinRustAsync() => RustLib
     .instance.api
     .crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnPanicTwinRustAsync();

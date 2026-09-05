@@ -90480,6 +90480,111 @@ class RustLibWire implements BaseWire {
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire__crate__api__stream__immediate_stream_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
+  ) {
+    return _wire__crate__api__stream__immediate_stream_twin_normal(port_, sink);
+  }
+
+  late final _wire__crate__api__stream__immediate_stream_twin_normalPtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__stream__immediate_stream_twin_normal',
+  );
+  late final _wire__crate__api__stream__immediate_stream_twin_normal =
+      _wire__crate__api__stream__immediate_stream_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
+  ) {
+    return _wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_async(
+      port_,
+      sink,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_asyncPtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_async',
+  );
+  late final _wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_async =
+      _wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_asyncPtr
+          .asFunction<
+              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_ssePtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<ffi.Uint8>,
+                ffi.Int32,
+                ffi.Int32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_sse',
+  );
+  late final _wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_sse =
+      _wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_ssePtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<ffi.Uint8>,
+                ffi.Int32,
+                ffi.Int32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_sse',
+  );
+  late final _wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_sse =
+      _wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire__crate__api__customization__init_app(int port_) {
     return _wire__crate__api__customization__init_app(port_);
   }
@@ -114949,6 +115054,115 @@ class RustLibWire implements BaseWire {
           .asFunction<
               WireSyncRust2DartSse Function(
                   ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire__crate__api__stream__stream_worker_transfer_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
+  ) {
+    return _wire__crate__api__stream__stream_worker_transfer_twin_normal(
+      port_,
+      sink,
+    );
+  }
+
+  late final _wire__crate__api__stream__stream_worker_transfer_twin_normalPtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__stream__stream_worker_transfer_twin_normal',
+  );
+  late final _wire__crate__api__stream__stream_worker_transfer_twin_normal =
+      _wire__crate__api__stream__stream_worker_transfer_twin_normalPtr
+          .asFunction<
+              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
+  ) {
+    return _wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_async(
+      port_,
+      sink,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_asyncPtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_async',
+  );
+  late final _wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_async =
+      _wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_asyncPtr
+          .asFunction<
+              void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_ssePtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<ffi.Uint8>,
+                ffi.Int32,
+                ffi.Int32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_sse',
+  );
+  late final _wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_sse =
+      _wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void
+      wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_ssePtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<ffi.Uint8>,
+                ffi.Int32,
+                ffi.Int32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_sse',
+  );
+  late final _wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_sse =
+      _wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void
       wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal(

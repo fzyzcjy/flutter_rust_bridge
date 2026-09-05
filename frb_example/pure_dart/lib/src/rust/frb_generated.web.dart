@@ -54565,6 +54565,35 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__how_long_does_it_take_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__stream__immediate_stream_twin_normal(
+          NativePortType port_, String sink) =>
+      wasmModule.wire__crate__api__stream__immediate_stream_twin_normal(
+          port_, sink);
+
+  void wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_async(
+          NativePortType port_, String sink) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_async(
+              port_, sink);
+
+  void wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__customization__init_app(NativePortType port_) =>
       wasmModule.wire__crate__api__customization__init_app(port_);
 
@@ -61787,6 +61816,35 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__stream_sink_throw_anyhow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__stream__stream_worker_transfer_twin_normal(
+          NativePortType port_, String sink) =>
+      wasmModule.wire__crate__api__stream__stream_worker_transfer_twin_normal(
+          port_, sink);
+
+  void wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_async(
+          NativePortType port_, String sink) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_async(
+              port_, sink);
+
+  void wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__comment__struct_with_comments_twin_normal_instance_method_twin_normal(
           NativePortType port_, JSAny that) =>
@@ -75232,6 +75290,27 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external void wire__crate__api__stream__immediate_stream_twin_normal(
+      NativePortType port_, String sink);
+
+  external void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_async(
+          NativePortType port_, String sink);
+
+  external void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void wire__crate__api__customization__init_app(NativePortType port_);
 
   external void wire__crate__api__mirror__is_app_embedded_twin_normal(
@@ -80276,6 +80355,27 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__stream_sink_throw_anyhow_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__stream__stream_worker_transfer_twin_normal(
+      NativePortType port_, String sink);
+
+  external void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_async(
+          NativePortType port_, String sink);
+
+  external void
+      wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_sse(
+          NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

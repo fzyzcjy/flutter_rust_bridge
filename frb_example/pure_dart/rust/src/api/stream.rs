@@ -4,11 +4,14 @@ use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::{frb, transfer};
 #[cfg(target_family = "wasm")]
 use flutter_rust_bridge::for_generated::{js_sys, MessagePort, TransferClosure};
+use flutter_rust_bridge::{frb, transfer};
 #[cfg(target_family = "wasm")]
-use std::sync::{atomic::{AtomicBool, Ordering}, Arc};
+use std::sync::{
+    atomic::{AtomicBool, Ordering},
+    Arc,
+};
 
 #[frb(stream_dart_await)]
 pub fn func_stream_return_error_twin_normal(_sink: StreamSink<String>) -> anyhow::Result<()> {
@@ -23,13 +26,16 @@ pub fn immediate_stream_twin_normal(sink: StreamSink<i32>) {
 pub fn stream_worker_transfer_twin_normal(sink: StreamSink<i32>) {
     #[cfg(target_family = "wasm")]
     {
-        MessagePort::broadcast("__frb_transfer_snapshot_test").close().unwrap();
+        MessagePort::broadcast("__frb_transfer_snapshot_test")
+            .close()
+            .unwrap();
         let rejected = FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().with(|pool| {
             pool.execute(TransferClosure::new(
                 vec![js_sys::Function::new_no_args("return 0").into()],
                 vec![],
                 |_| {},
-            )).is_err()
+            ))
+            .is_err()
         });
         let values = js_sys::Array::of1(&7.into());
         let bytes = js_sys::Uint8Array::new_with_length(1);
@@ -42,13 +48,20 @@ pub fn stream_worker_transfer_twin_normal(sink: StreamSink<i32>) {
                 vec![values.clone().into(), buffer.clone().into()],
                 vec![buffer.clone().into()],
                 move |data| {
-                    let original_value = js_sys::Array::from(&data[0]).get(0).as_f64().unwrap() as i32;
+                    let original_value =
+                        js_sys::Array::from(&data[0]).get(0).as_f64().unwrap() as i32;
                     let original_byte = js_sys::Uint8Array::new(&data[1]).get_index(0) as i32;
-                    for value in [i32::from(rejected), original_value, original_byte, i32::from(detached_in_worker.load(Ordering::SeqCst))] {
+                    for value in [
+                        i32::from(rejected),
+                        original_value,
+                        original_byte,
+                        i32::from(detached_in_worker.load(Ordering::SeqCst)),
+                    ] {
                         sink.add(value).unwrap();
                     }
                 },
-            )).unwrap();
+            ))
+            .unwrap();
         });
         detached.store(buffer.byte_length() == 0, Ordering::SeqCst);
         values.set(0, 99.into());

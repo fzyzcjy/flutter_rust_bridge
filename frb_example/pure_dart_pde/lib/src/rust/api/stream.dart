@@ -15,6 +15,12 @@ import 'pseudo_manual/stream_twin_rust_async.dart';
 Future<Stream<String>> funcStreamReturnErrorTwinNormal() =>
     RustLib.instance.api.crateApiStreamFuncStreamReturnErrorTwinNormal();
 
+Stream<int> immediateStreamTwinNormal() =>
+    RustLib.instance.api.crateApiStreamImmediateStreamTwinNormal();
+
+Stream<int> streamWorkerTransferTwinNormal() =>
+    RustLib.instance.api.crateApiStreamStreamWorkerTransferTwinNormal();
+
 Future<Stream<String>> funcStreamReturnPanicTwinNormal() =>
     RustLib.instance.api.crateApiStreamFuncStreamReturnPanicTwinNormal();
 
