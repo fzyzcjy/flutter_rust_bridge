@@ -79,27 +79,24 @@ void main() {
 
     test('reports failure when the wasm module loader is missing', () async {
       final result = Completer<bool>();
-      final handler = Cascade()
-          .add(
-            webSocketHandler((channel) {
-              channel.stream.listen((message) {
-                final decoded = jsonDecode(message as String);
-                if (decoded is Map && decoded.containsKey(kTestResultKey)) {
-                  result.complete(decoded[kTestResultKey] as bool);
-                }
-              });
-            }),
-          )
-          .add((request) {
-            if (request.url.path == 'test_entrypoint.html') {
-              return Response.ok(
-                testEntrypointHtmlContent(kWasmEntrypointScript),
-                headers: {HttpHeaders.contentTypeHeader: 'text/html'},
-              );
+      final handler = Cascade().add(
+        webSocketHandler((channel) {
+          channel.stream.listen((message) {
+            final decoded = jsonDecode(message as String);
+            if (decoded is Map && decoded.containsKey(kTestResultKey)) {
+              result.complete(decoded[kTestResultKey] as bool);
             }
-            return Response.notFound(null);
-          })
-          .handler;
+          });
+        }),
+      ).add((request) {
+        if (request.url.path == 'test_entrypoint.html') {
+          return Response.ok(
+            testEntrypointHtmlContent(kWasmEntrypointScript),
+            headers: {HttpHeaders.contentTypeHeader: 'text/html'},
+          );
+        }
+        return Response.notFound(null);
+      }).handler;
       final server = await shelf_io.serve(
         handler,
         InternetAddress.loopbackIPv4,
