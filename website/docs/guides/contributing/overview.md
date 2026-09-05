@@ -55,13 +55,15 @@ There is no need to read it word by word, since it serves as a reference to find
 - `.github`: GitHub-related.
     - `workflows/ci.yaml`: Definition of CI workflows.
 
-## Code generator overview
+## Native tests
 
 The `pure_dart` and `pure_dart_pde` test suites run serially, as configured in
 `dart_test.yaml`. Native suites share a process-global Rust logger: initializing
 or disposing it in one suite can replace or clear another suite's logging sink.
 Keep suite concurrency at one when running these tests, including direct
 `dart test` invocations.
+
+## Code generator overview
 
 :::tip
 
