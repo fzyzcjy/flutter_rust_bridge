@@ -128,73 +128,76 @@ void main() {
     expect(sanitizerRustflagsForTesting(Sanitizer.tsan), '-Zsanitizer=thread');
   });
 
-  test('sanitizer failure matching requires the complete normalized report', () {
-    const knownReport =
-        '==123==ERROR: LeakSanitizer: detected memory leaks\n'
-        'Direct leak of 16 byte(s) in 1 object(s) allocated from:\n'
-        '    #0 0x1234  (/tmp/sdk/out/dartvm+0x217a63f) '
-        '(BuildId: abcdef)\n'
-        '    #1 0xabcd known_runtime_function '
-        '(libfrb_example_pure_dart.so+0x11f0446) (BuildId: 012345)\n'
-        'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n';
-    final normalizedKnownReport = normalizeSanitizerReportForTesting(
-      knownReport,
-    );
+  test(
+    'sanitizer failure matching requires the complete normalized report',
+    () {
+      const knownReport =
+          '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+          'Direct leak of 16 byte(s) in 1 object(s) allocated from:\n'
+          '    #0 0x1234  (/tmp/sdk/out/dartvm+0x217a63f) '
+          '(BuildId: abcdef)\n'
+          '    #1 0xabcd known_runtime_function '
+          '(libfrb_example_pure_dart.so+0x11f0446) (BuildId: 012345)\n'
+          'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n';
+      final normalizedKnownReport = normalizeSanitizerReportForTesting(
+        knownReport,
+      );
 
-    expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr: knownReport,
-        expectedExitCode: 23,
-        expectedNormalizedReports: [normalizedKnownReport],
-      ),
-      isTrue,
-    );
-    expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr:
-            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
-            'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n',
-        expectedExitCode: 23,
-        expectedNormalizedReports: [normalizedKnownReport],
-      ),
-      isFalse,
-    );
-    final unrelatedStackReport = knownReport.replaceFirst(
-      'known_runtime_function',
-      'new_regression_function',
-    );
-    expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr: unrelatedStackReport,
-        expectedExitCode: 23,
-        expectedNormalizedReports: [normalizedKnownReport],
-      ),
-      isFalse,
-    );
-    final unstableValuesChanged = knownReport
-        .replaceAll('0x1234', '0x9999')
-        .replaceAll('0xabcd', '0x8888')
-        .replaceAll('==123==', '==987==')
-        .replaceAll('/tmp/sdk/out/dartvm', '/other/sdk/dartvm')
-        .replaceAll('abcdef', 'fedcba')
-        .replaceAll('012345', '543210');
-    expect(
-      normalizeSanitizerReportForTesting(unstableValuesChanged),
-      normalizedKnownReport,
-    );
-    expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr: knownReport,
-        expectedExitCode: 23,
-        expectedNormalizedReports: const [],
-      ),
-      isFalse,
-    );
-  });
+      expect(
+        isOnlyAllowedSanitizerFailureForTesting(
+          exitCode: 23,
+          stderr: knownReport,
+          expectedExitCode: 23,
+          expectedNormalizedReports: [normalizedKnownReport],
+        ),
+        isTrue,
+      );
+      expect(
+        isOnlyAllowedSanitizerFailureForTesting(
+          exitCode: 23,
+          stderr:
+              '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+              'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n',
+          expectedExitCode: 23,
+          expectedNormalizedReports: [normalizedKnownReport],
+        ),
+        isFalse,
+      );
+      final unrelatedStackReport = knownReport.replaceFirst(
+        'known_runtime_function',
+        'new_regression_function',
+      );
+      expect(
+        isOnlyAllowedSanitizerFailureForTesting(
+          exitCode: 23,
+          stderr: unrelatedStackReport,
+          expectedExitCode: 23,
+          expectedNormalizedReports: [normalizedKnownReport],
+        ),
+        isFalse,
+      );
+      final unstableValuesChanged = knownReport
+          .replaceAll('0x1234', '0x9999')
+          .replaceAll('0xabcd', '0x8888')
+          .replaceAll('==123==', '==987==')
+          .replaceAll('/tmp/sdk/out/dartvm', '/other/sdk/dartvm')
+          .replaceAll('abcdef', 'fedcba')
+          .replaceAll('012345', '543210');
+      expect(
+        normalizeSanitizerReportForTesting(unstableValuesChanged),
+        normalizedKnownReport,
+      );
+      expect(
+        isOnlyAllowedSanitizerFailureForTesting(
+          exitCode: 23,
+          stderr: knownReport,
+          expectedExitCode: 23,
+          expectedNormalizedReports: const [],
+        ),
+        isFalse,
+      );
+    },
+  );
 
   test('linux build bundle path follows the current machine architecture', () {
     expect(
