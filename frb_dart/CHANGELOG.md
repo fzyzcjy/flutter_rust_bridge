@@ -14,7 +14,6 @@
 * Refactor Apple scaffold generation helpers #3416
 * Improve CI, Docker release, and Flutter upgrade workflows #3415 #3412 #3411 #3405 #3404
 * Expand package unit tests and make Valgrind failures a hard gate #3376 #3374
-* Support Android 16 KB page sizes with Native Assets #3421
 
 ## 2.13.0
 
