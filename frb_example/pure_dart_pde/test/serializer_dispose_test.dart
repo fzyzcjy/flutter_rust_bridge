@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 @TestOn('vm')
 library;
 
@@ -8,8 +10,8 @@ import 'package:flutter_rust_bridge/src/droppable/_common.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_uint8list/rust_vec_u8.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
-import 'package:frb_example_pure_dart/src/rust/api/proxy.dart';
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/api/proxy.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
