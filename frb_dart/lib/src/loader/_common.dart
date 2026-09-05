@@ -19,4 +19,11 @@ class ExternalLibraryLoaderConfig {
     required this.webPrefix,
     this.wasmBindgenName = 'wasm_bindgen',
   });
+
+  /// Arguments of `loadExternalLibrary` for native-only output
+  const ExternalLibraryLoaderConfig.io({
+    required this.stem,
+    required this.ioDirectory,
+  }) : webPrefix = '',
+       wasmBindgenName = 'wasm_bindgen';
 }
