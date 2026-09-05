@@ -103,9 +103,7 @@ impl WorkerPool {
             importScripts('{script_src}');
             const FRB_ACTION_PANIC = 3;
             onmessage = event => {{
-                const [module, memory, router] = event.data;
-                globalThis.__frb_message_router = router;
-                let init = {wasm_bindgen_name}(module, memory).catch(err => {{
+                let init = {wasm_bindgen_name}(...event.data).catch(err => {{
                     setTimeout(() => {{ throw err }})
                     throw err
                 }})
@@ -132,17 +130,13 @@ impl WorkerPool {
         )?;
         let url = Url::create_object_url_with_blob(&blob)?;
         let worker: Worker = Worker::new(&url)?;
-        let router = crate::generalized_isolate::create_message_router()?;
 
         // With a worker spun up send it the module/memory so it can start
         // instantiating the wasm module. Later it might receive further
         // messages about code to run on the wasm module.
         let module = wasm_bindgen::module();
         let memory = wasm_bindgen::memory();
-        worker.post_message_with_transfer(
-            &Array::of3(&module, &memory, &router),
-            &Array::of1(&router),
-        )?;
+        worker.post_message(&Array::of2(&module, &memory))?;
 
         Ok(worker)
     }

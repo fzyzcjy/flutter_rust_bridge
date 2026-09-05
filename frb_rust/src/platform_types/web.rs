@@ -1,4 +1,5 @@
 use crate::generalized_isolate::PortLike;
+use wasm_bindgen::JsCast;
 
 pub type WireSyncRust2DartDco = wasm_bindgen::JsValue;
 pub type WireSyncRust2DartSse = wasm_bindgen::JsValue;
@@ -11,7 +12,7 @@ pub type DartAbi = wasm_bindgen::JsValue;
 pub struct SendableMessagePortHandle(String);
 
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
-    SendableMessagePortHandle(port.channel_name().expect("Not a named message port"))
+    SendableMessagePortHandle(port.channel_name().or_else(|| port.dyn_ref::<web_sys::BroadcastChannel>().map(|channel| channel.name())).expect("Not a named message port"))
 }
 
 pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort {

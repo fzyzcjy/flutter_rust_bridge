@@ -1,6 +1,12 @@
 use js_sys::{Array, Object, Reflect};
+use std::cell::RefCell;
+use std::collections::HashMap;
 use wasm_bindgen::prelude::*;
-use web_sys::{MessageChannel, MessageEvent, MessagePort};
+use web_sys::BroadcastChannel;
+
+thread_local! {
+    static BROADCAST_CHANNELS: RefCell<HashMap<String, BroadcastChannel>> = RefCell::new(HashMap::new());
+}
 
 #[wasm_bindgen]
 extern "C" {
@@ -22,6 +28,9 @@ extern "C" {
 impl PortLike {
     /// Create a message port handle with the specified name.
     pub fn broadcast(name: &str) -> Self {
+        if !name.starts_with("__frb_broadcast_") {
+            return BroadcastChannel::new(name).unwrap_throw().unchecked_into();
+        }
         let port = Object::new();
         Reflect::set(&port, &"__frb_port_name".into(), &name.into()).unwrap_throw();
         port.unchecked_into()
@@ -42,46 +51,14 @@ impl PortLike {
     }
 }
 
-pub(crate) fn create_message_router() -> Result<MessagePort, JsValue> {
-    let channel = MessageChannel::new()?;
-    match message_router()? {
-        Some(router) => router
-            .post_message_with_transferable(&channel.port1(), &Array::of1(&channel.port1()))?,
-        None => receive_routed_messages(channel.port1()),
-    }
-    Ok(channel.port2())
-}
-
 fn post_named_message(name: &str, value: &JsValue) -> Result<(), JsValue> {
-    if let Some(router) = message_router()? {
-        return router.post_message(&Array::of2(&name.into(), value));
-    }
-    let ports = Reflect::get(&js_sys::global(), &"__frb_named_ports".into())?;
-    if !ports.is_undefined() && !ports.is_null() {
-        let port = Reflect::get(&ports, &name.into())?;
-        if !port.is_undefined() {
-            return port.unchecked_into::<PortLike>().post_message_raw(value);
-        }
-    }
-    Ok(())
-}
-
-fn message_router() -> Result<Option<MessagePort>, JsValue> {
-    let router = Reflect::get(&js_sys::global(), &"__frb_message_router".into())?;
-    Ok((!router.is_undefined()).then(|| router.unchecked_into()))
-}
-
-fn receive_routed_messages(port: MessagePort) {
-    let callback = Closure::<dyn FnMut(MessageEvent)>::new(|event: MessageEvent| {
-        let data = event.data();
-        if let Some(port) = data.dyn_ref::<MessagePort>() {
-            receive_routed_messages(port.clone());
-        } else {
-            let data = data.unchecked_ref::<Array>();
-            post_named_message(&data.get(0).as_string().unwrap_throw(), &data.get(1))
-                .unwrap_throw();
-        }
-    });
-    port.set_onmessage(Some(callback.as_ref().unchecked_ref()));
-    let _ = callback.into_js_value();
+    let (channel_name, port_name) = name.split_once('/').ok_or_else(|| JsValue::from_str("Invalid broadcast port name"))?;
+    BROADCAST_CHANNELS.with(|channels| {
+        let mut channels = channels.borrow_mut();
+        let channel = match channels.entry(channel_name.to_owned()) {
+            std::collections::hash_map::Entry::Occupied(entry) => entry.into_mut(),
+            std::collections::hash_map::Entry::Vacant(entry) => entry.insert(BroadcastChannel::new(channel_name)?),
+        };
+        channel.post_message(&Array::of2(&port_name.into(), value))
+    })
 }

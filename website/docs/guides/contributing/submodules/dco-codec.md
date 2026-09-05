@@ -12,7 +12,7 @@ and our job here is to pass the return value back to Dart.
 
 ## Cross-scope communication in the browser
 
-On Web platforms, for lack of a proper `SendPort` there exists replacements from `dart:html`.
+On Web platforms, browser messaging APIs replace native `SendPort`s.
 
 **MessagePort** replaces `dart:ffi`'s `SendPort` and is created from `MessageChannel`. The Dart
 thread creates a channel, keeps the receive port and transfers the send port to the workers.
@@ -24,24 +24,24 @@ Rust ->> Rust Worker: port2
 Rust Worker ->> Dart: port2.postMessage
 ```
 
-**BroadcastChannel** replaces `dart:ffi`'s `SendPort` for `StreamSink`s, due to the fact that wasm_bindgen
-keeps the ports in a JS-local scope that cannot be shared with other threads. A broadcast channel
-is created by Dart, then passed to the main Rust thread. Rust then transfers its name to the workers.
-When other workers refer to a `StreamSink` from another worker, e.g. if the sink was put in a static variable,
-a new `BroadcastChannel` will be created from its name.
+**BroadcastChannel** carries `StreamSink` values and Dart callbacks because wasm_bindgen keeps JS ports local to their context. Rust shares a string handle across threads instead of sharing a JS object. This also supports sinks stored in static variables and workers supplied by custom thread pools.
 
-`BroadcastChannel`s are guaranteed to be unique for each invocation.[^1]
+- Dart creates one physical BroadcastChannel receiver and confirms readiness during initialization.
+- Each invocation receives a logical port name and a local MessagePort queue. Its string handle contains both the physical channel name and logical port name.
+- Each Rust thread caches a sender for the physical channel and posts `[logicalPortName, payload]`.
+- Dart dispatches the payload to the matching local queue. Closing a logical port removes it without closing the physical channel.
+- The final stream close includes the number of successfully sent values. Dart waits for those values before exposing the close, including when sink clones send from different workers.
+
+Keeping the physical receiver alive avoids racing receiver registration against every new stream. See [Web stream delivery](../../cross-platform/thread-pool.md#web-stream-delivery) for lifecycle and runtime compatibility requirements.
 
 ```mermaid
 sequenceDiagram
-Dart ->> Rust: channel
-Rust ->> Rust Worker 1: channel.name
-Rust Worker 1 ->> Dart: channel.postMessage
-Rust ->> Rust Worker 2: channel.name
-Rust Worker 2 ->> Dart: channel.postMessage
+Dart ->> Rust: physical channel name + logical port name
+Rust ->> Rust Worker 1: string handle
+Rust Worker 1 ->> Dart: BroadcastChannel.postMessage([port, value])
+Rust ->> Rust Worker 2: string handle
+Rust Worker 2 ->> Dart: BroadcastChannel.postMessage([port, value])
 ```
 
 It is theoretically possible to have a one-to-one implementation of Isolate using only web primitives,
 `BroadcastChannel`s and `Worker`s, but it remains to be seen how practical such an approach would be.
-
-[^1]: This is currently implemented as a monotonically-increasing index.

@@ -13,6 +13,9 @@ String serializeNativePort(NativePortType port) {
   if (name != null) {
     return name.toDart;
   }
+  if (port.isA<web.BroadcastChannel>()) {
+    return (port as web.BroadcastChannel).name;
+  }
   throw UnimplementedError(
     "serializeNativePort see unknown port=$port (type=${port.runtimeType})",
   );
@@ -23,6 +26,43 @@ external JSObject? get _namedPorts;
 
 @JS('globalThis.__frb_named_ports')
 external set _namedPorts(JSObject value);
+
+final _broadcastChannel = web.BroadcastChannel(
+  '__frb_broadcast_${_randomUUID()}',
+);
+final _broadcastChannelReady = _initializeBroadcastChannel();
+
+@JS('globalThis.crypto.randomUUID')
+external String _randomUUID();
+
+Future<void> initializeBroadcastChannel() => _broadcastChannelReady;
+
+Future<void> _initializeBroadcastChannel() async {
+  final ready = Completer<void>();
+  _broadcastChannel.onmessage = ((web.MessageEvent event) {
+    final data = event.data;
+    if (data == '__frb_ready'.toJS) {
+      if (!ready.isCompleted) ready.complete();
+      return;
+    }
+    if (!data.isA<JSArray<JSAny?>>()) return;
+    final message = data as JSArray<JSAny?>;
+    if (message.length != 2 || !message[0].isA<JSString>()) return;
+    final port = _namedPorts?.getProperty<web.MessagePort?>(message[0] as JSString);
+    port?.postMessage(message[1]);
+  }).toJS;
+  final sender = web.BroadcastChannel(_broadcastChannel.name);
+  final timer = Timer.periodic(const Duration(milliseconds: 10), (_) {
+    sender.postMessage('__frb_ready'.toJS);
+  });
+  try {
+    sender.postMessage('__frb_ready'.toJS);
+    await ready.future.timeout(const Duration(seconds: 10));
+  } finally {
+    timer.cancel();
+    sender.close();
+  }
+}
 
 /// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName) =>
@@ -108,7 +148,10 @@ class _WebChannel {
     // Both endpoints remain owned by this channel until it closes.
     final ports = _namedPorts ?? JSObject();
     _namedPorts = ports;
-    _channel.port2.setProperty('__frb_port_name'.toJS, name.toJS);
+    _channel.port2.setProperty(
+      '__frb_port_name'.toJS,
+      '${_broadcastChannel.name}/$name'.toJS,
+    );
     ports.setProperty(name.toJS, _channel.port2);
   }
 

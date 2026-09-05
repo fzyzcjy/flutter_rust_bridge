@@ -38,6 +38,8 @@ impl Transfer for PortLike {
     fn serialize(self) -> JsValue {
         if let Some(name) = self.channel_name() {
             name.into()
+        } else if let Some(channel) = self.dyn_ref::<web_sys::BroadcastChannel>() {
+            channel.name().into()
         } else {
             self.into()
         }

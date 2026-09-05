@@ -1,9 +1,9 @@
 mod channel;
 mod into_dart;
 mod port_like;
+
 pub use channel::*;
 pub use into_dart::*;
-pub(crate) use port_like::create_message_router;
 pub use port_like::*;
 
 #[derive(Debug)]
