@@ -26,9 +26,8 @@ Future<String> getSanitizedDartBinary(TestDartSanitizerConfig config) async {
     releaseName,
   );
   await Directory(pathCacheRoot).create(recursive: true);
-  final lock = await File(
-    path.join(pathCacheRoot, '.lock'),
-  ).open(mode: FileMode.append);
+  final lock = await File(path.join(pathCacheRoot, '.lock'))
+      .open(mode: FileMode.append);
   await lock.lock(FileLock.exclusive);
   try {
     return await _getCachedSanitizedDartBinary(
@@ -173,9 +172,8 @@ void checkSanitizedDartVersionForTesting({
   final expectedVersion = environment[_kMainDartVersionEnv]?.trim();
   if (expectedVersion == null || expectedVersion.isEmpty) return;
 
-  final match = RegExp(
-    r'Dart SDK version:\s*([0-9]+\.[0-9]+\.[0-9]+)',
-  ).firstMatch(versionOutput);
+  final match = RegExp(r'Dart SDK version:\s*([0-9]+\.[0-9]+\.[0-9]+)')
+      .firstMatch(versionOutput);
   if (match == null) {
     throw Exception(
       'Cannot parse sanitized Dart version from output: $versionOutput',
