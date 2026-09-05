@@ -17997,7 +17997,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: [],
       );
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
           FutureOr<void> Function(AudioProcessingEvent) raw) {
     return (callId, rawArg0) async {
@@ -18025,14 +18025,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
           FutureOr<void> Function(Event) raw) {
     return (callId, rawArg0) async {
@@ -18060,14 +18060,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
           FutureOr<void> Function(OfflineAudioCompletionEvent) raw) {
     return (callId, rawArg0) async {
@@ -18095,14 +18095,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
     };
   }
 
-  Future<void> Function(int, dynamic)
+  Future<void> Function(dynamic, dynamic)
       encode_DartFn_Inputs_String_Output_unit_AnyhowException(
           FutureOr<void> Function(String) raw) {
     return (callId, rawArg0) async {
@@ -18128,7 +18128,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
+          callId: dcoDecodePrimitiveInt(callId),
           ptr: output.ptr,
           rustVecLen: output.rustVecLen,
           dataLen: output.dataLen);
@@ -18488,7 +18488,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AnyhowException(raw as String);
+    return AnyhowException(dcoDecodeString(raw));
   }
 
   @protected
@@ -18712,7 +18712,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AnalyserNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AnalyserNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18720,7 +18720,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioBufferImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioBufferImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18728,7 +18728,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioBufferSourceNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioBufferSourceNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18736,7 +18736,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioContextImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioContextImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18744,7 +18744,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioDestinationNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioDestinationNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18752,7 +18752,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioListenerImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioListenerImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18760,7 +18760,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioParamImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioParamImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18768,7 +18768,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioParamIdImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioParamIdImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18776,7 +18776,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioProcessingEventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioProcessingEventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18784,7 +18784,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioRenderCapacityImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioRenderCapacityImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18793,7 +18793,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AudioRenderCapacityEventImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -18801,7 +18801,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioWorkletNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioWorkletNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18809,7 +18809,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BiquadFilterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BiquadFilterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18817,7 +18817,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BlobEventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BlobEventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18825,7 +18825,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelConfigImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ChannelConfigImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18833,7 +18833,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelMergerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ChannelMergerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18841,7 +18841,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelSplitterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ChannelSplitterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18850,7 +18850,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConcreteBaseAudioContextImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -18858,7 +18858,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ConstantSourceNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ConstantSourceNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18866,7 +18866,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ConvolverNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ConvolverNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18874,7 +18874,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DelayNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DelayNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18882,7 +18882,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DummyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DummyStructImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18890,8 +18890,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DynamicsCompressorNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return DynamicsCompressorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18899,7 +18898,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return EventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18907,7 +18906,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return GainNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return GainNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18915,7 +18914,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return IirFilterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return IirFilterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18924,7 +18923,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaElementAudioSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -18932,7 +18931,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaRecorderImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaRecorderImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18940,7 +18939,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaStreamImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18949,7 +18948,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamAudioDestinationNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -18958,7 +18957,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamAudioSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -18966,8 +18965,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamConstraintsImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return MediaStreamConstraintsImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18975,7 +18973,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamTrackImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaStreamTrackImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -18984,7 +18982,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamTrackAudioSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -18992,7 +18990,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaElementImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19001,7 +18999,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return OfflineAudioCompletionEventImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19009,7 +19007,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OfflineAudioContextImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OfflineAudioContextImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19017,7 +19015,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OscillatorNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OscillatorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19025,7 +19023,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PannerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return PannerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19033,7 +19031,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PeriodicWaveImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return PeriodicWaveImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19041,7 +19039,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ScriptProcessorNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ScriptProcessorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19049,7 +19047,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return StereoPannerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return StereoPannerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19057,7 +19055,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WaveShaperNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return WaveShaperNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19065,7 +19063,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AnalyserNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AnalyserNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19073,7 +19071,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioBufferImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioBufferImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19081,7 +19079,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioBufferSourceNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioBufferSourceNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19089,7 +19087,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioProcessingEventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioProcessingEventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19098,7 +19096,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AudioRenderCapacityEventImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19106,7 +19104,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BiquadFilterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BiquadFilterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19114,7 +19112,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BlobEventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BlobEventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19122,7 +19120,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ConstantSourceNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ConstantSourceNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19130,7 +19128,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ConvolverNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ConvolverNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19138,7 +19136,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaElementImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19147,7 +19145,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return OfflineAudioCompletionEventImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19155,7 +19153,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OfflineAudioContextImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OfflineAudioContextImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19163,7 +19161,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OscillatorNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OscillatorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19171,7 +19169,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PannerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return PannerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19179,7 +19177,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WaveShaperNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return WaveShaperNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19187,7 +19185,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AnalyserNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AnalyserNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19195,7 +19193,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioBufferImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioBufferImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19203,7 +19201,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioBufferSourceNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioBufferSourceNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19211,7 +19209,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioContextImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioContextImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19220,7 +19218,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AudioContextRegistrationImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19228,7 +19226,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioDestinationNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioDestinationNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19236,7 +19234,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioListenerImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioListenerImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19244,7 +19242,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioParamImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioParamImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19252,7 +19250,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioProcessingEventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioProcessingEventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19260,7 +19258,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioRenderCapacityImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioRenderCapacityImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19269,7 +19267,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AudioRenderCapacityEventImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19277,7 +19275,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioWorkletNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioWorkletNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19285,7 +19283,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BiquadFilterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BiquadFilterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19293,7 +19291,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BlobEventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BlobEventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19301,7 +19299,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelMergerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ChannelMergerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19309,7 +19307,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelSplitterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ChannelSplitterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19318,7 +19316,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConcreteBaseAudioContextImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19326,7 +19324,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ConstantSourceNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ConstantSourceNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19334,7 +19332,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ConvolverNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ConvolverNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19342,7 +19340,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DelayNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DelayNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19350,8 +19348,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DynamicsCompressorNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return DynamicsCompressorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19359,7 +19356,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return EventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19367,7 +19364,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return GainNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return GainNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19375,7 +19372,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return IirFilterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return IirFilterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19384,7 +19381,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaElementAudioSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19392,7 +19389,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaRecorderImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaRecorderImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19400,7 +19397,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaStreamImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19409,7 +19406,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamAudioDestinationNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19418,7 +19415,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamAudioSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19426,7 +19423,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamTrackImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaStreamTrackImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19435,7 +19432,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamTrackAudioSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19443,7 +19440,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaElementImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19452,7 +19449,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return OfflineAudioCompletionEventImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19460,7 +19457,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OfflineAudioContextImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OfflineAudioContextImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19468,7 +19465,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OscillatorNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OscillatorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19476,7 +19473,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PannerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return PannerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19484,7 +19481,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ScriptProcessorNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ScriptProcessorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19492,7 +19489,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return StereoPannerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return StereoPannerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19500,7 +19497,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WaveShaperNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return WaveShaperNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19873,7 +19870,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AnalyserNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AnalyserNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19881,7 +19878,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioBufferImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioBufferImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19889,7 +19886,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioBufferSourceNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioBufferSourceNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19897,7 +19894,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioContextImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioContextImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19906,7 +19903,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AudioContextRegistrationImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19914,7 +19911,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioDestinationNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioDestinationNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19922,7 +19919,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioListenerImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioListenerImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19930,7 +19927,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioParamImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioParamImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19938,7 +19935,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioParamIdImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioParamIdImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19946,7 +19943,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioProcessingEventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioProcessingEventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19954,7 +19951,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioRenderCapacityImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioRenderCapacityImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19963,7 +19960,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AudioRenderCapacityEventImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -19971,7 +19968,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioWorkletNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return AudioWorkletNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19979,7 +19976,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BiquadFilterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BiquadFilterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19987,7 +19984,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BlobEventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return BlobEventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -19995,7 +19992,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelConfigImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ChannelConfigImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20003,7 +20000,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelMergerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ChannelMergerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20011,7 +20008,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelSplitterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ChannelSplitterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20020,7 +20017,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConcreteBaseAudioContextImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -20028,7 +20025,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ConstantSourceNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ConstantSourceNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20036,7 +20033,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ConvolverNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ConvolverNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20044,7 +20041,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DelayNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DelayNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20052,7 +20049,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DummyStructImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return DummyStructImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20060,8 +20057,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DynamicsCompressorNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return DynamicsCompressorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20069,7 +20065,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EventImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return EventImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20077,7 +20073,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return GainNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return GainNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20085,7 +20081,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return IirFilterNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return IirFilterNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20094,7 +20090,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaElementAudioSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -20102,7 +20098,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaRecorderImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaRecorderImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20110,7 +20106,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaStreamImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20119,7 +20115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamAudioDestinationNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -20128,7 +20124,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamAudioSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -20136,8 +20132,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamConstraintsImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+    return MediaStreamConstraintsImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20145,7 +20140,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamTrackImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaStreamTrackImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20154,7 +20149,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamTrackAudioSourceNodeImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -20162,7 +20157,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaElementImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return MediaElementImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20171,7 +20166,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return OfflineAudioCompletionEventImpl.frbInternalDcoDecode(
-        raw as List<dynamic>);
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -20179,7 +20174,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OfflineAudioContextImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OfflineAudioContextImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20187,7 +20182,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OscillatorNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return OscillatorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20195,7 +20190,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PannerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return PannerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20203,7 +20198,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PeriodicWaveImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return PeriodicWaveImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20211,7 +20206,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ScriptProcessorNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return ScriptProcessorNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20219,7 +20214,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return StereoPannerNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return StereoPannerNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -20227,13 +20222,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WaveShaperNodeImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return WaveShaperNodeImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as String;
+    return dcoDecodeString(raw);
   }
 
   @protected
@@ -20480,7 +20475,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AnalyserOptions dco_decode_analyser_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 5)
       throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return AnalyserOptions(
@@ -20495,7 +20490,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AudioBufferOptions dco_decode_audio_buffer_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return AudioBufferOptions(
@@ -20508,7 +20503,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AudioBufferSourceOptions dco_decode_audio_buffer_source_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return AudioBufferSourceOptions(
@@ -20527,7 +20522,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   AudioContextLatencyCategory dco_decode_audio_context_latency_category(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return AudioContextLatencyCategory_Balanced();
       case 1:
@@ -20536,7 +20532,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return AudioContextLatencyCategory_Playback();
       case 3:
         return AudioContextLatencyCategory_Custom(
-          dco_decode_f_64(raw[1]),
+          dco_decode_f_64(arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -20546,7 +20542,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AudioContextOptions dco_decode_audio_context_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return AudioContextOptions(
@@ -20561,133 +20557,134 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   AudioContextRenderSizeCategory dco_decode_audio_context_render_size_category(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioContextRenderSizeCategory.values[raw as int];
+    return AudioContextRenderSizeCategory.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   AudioContextState dco_decode_audio_context_state(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AudioContextState.values[raw as int];
+    return AudioContextState.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   AudioNodeImplementor dco_decode_audio_node_implementor(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return AudioNodeImplementor_Variant0(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-              raw[1]),
+              arr[1]),
         );
       case 1:
         return AudioNodeImplementor_Variant1(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-              raw[1]),
+              arr[1]),
         );
       case 2:
         return AudioNodeImplementor_Variant2(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-              raw[1]),
+              arr[1]),
         );
       case 3:
         return AudioNodeImplementor_Variant3(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-              raw[1]),
+              arr[1]),
         );
       case 4:
         return AudioNodeImplementor_Variant4(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-              raw[1]),
+              arr[1]),
         );
       case 5:
         return AudioNodeImplementor_Variant5(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              raw[1]),
+              arr[1]),
         );
       case 6:
         return AudioNodeImplementor_Variant6(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-              raw[1]),
+              arr[1]),
         );
       case 7:
         return AudioNodeImplementor_Variant7(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-              raw[1]),
+              arr[1]),
         );
       case 8:
         return AudioNodeImplementor_Variant8(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-              raw[1]),
+              arr[1]),
         );
       case 9:
         return AudioNodeImplementor_Variant9(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-              raw[1]),
+              arr[1]),
         );
       case 10:
         return AudioNodeImplementor_Variant10(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-              raw[1]),
+              arr[1]),
         );
       case 11:
         return AudioNodeImplementor_Variant11(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              raw[1]),
+              arr[1]),
         );
       case 12:
         return AudioNodeImplementor_Variant12(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-              raw[1]),
+              arr[1]),
         );
       case 13:
         return AudioNodeImplementor_Variant13(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-              raw[1]),
+              arr[1]),
         );
       case 14:
         return AudioNodeImplementor_Variant14(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-              raw[1]),
+              arr[1]),
         );
       case 15:
         return AudioNodeImplementor_Variant15(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-              raw[1]),
+              arr[1]),
         );
       case 16:
         return AudioNodeImplementor_Variant16(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-              raw[1]),
+              arr[1]),
         );
       case 17:
         return AudioNodeImplementor_Variant17(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-              raw[1]),
+              arr[1]),
         );
       case 18:
         return AudioNodeImplementor_Variant18(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-              raw[1]),
+              arr[1]),
         );
       case 19:
         return AudioNodeImplementor_Variant19(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              raw[1]),
+              arr[1]),
         );
       case 20:
         return AudioNodeImplementor_Variant20(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-              raw[1]),
+              arr[1]),
         );
       case 21:
         return AudioNodeImplementor_Variant21(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-              raw[1]),
+              arr[1]),
         );
       case 22:
         return AudioNodeImplementor_Variant22(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-              raw[1]),
+              arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -20697,7 +20694,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AudioNodeOptions dco_decode_audio_node_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return AudioNodeOptions(
@@ -20710,7 +20707,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AudioParamDescriptor dco_decode_audio_param_descriptor(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 5)
       throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return AudioParamDescriptor(
@@ -20726,7 +20723,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   AudioRenderCapacityOptions dco_decode_audio_render_capacity_options(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return AudioRenderCapacityOptions(
@@ -20739,166 +20736,167 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-              raw[1]),
+              arr[1]),
         );
       case 1:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-              raw[1]),
+              arr[1]),
         );
       case 2:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              raw[1]),
+              arr[1]),
         );
       case 3:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              raw[1]),
+              arr[1]),
         );
       case 4:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              raw[1]),
+              arr[1]),
         );
       case 5:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              raw[1]),
+              arr[1]),
         );
       case 6:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              raw[1]),
+              arr[1]),
         );
       case 7:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              raw[1]),
+              arr[1]),
         );
       case 8:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              raw[1]),
+              arr[1]),
         );
       case 9:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              raw[1]),
+              arr[1]),
         );
       case 10:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              raw[1]),
+              arr[1]),
         );
       case 11:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              raw[1]),
+              arr[1]),
         );
       case 12:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              raw[1]),
+              arr[1]),
         );
       case 13:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              raw[1]),
+              arr[1]),
         );
       case 14:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              raw[1]),
+              arr[1]),
         );
       case 15:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-              raw[1]),
+              arr[1]),
         );
       case 16:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-              raw[1]),
+              arr[1]),
         );
       case 17:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              raw[1]),
+              arr[1]),
         );
       case 18:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              raw[1]),
+              arr[1]),
         );
       case 19:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              raw[1]),
+              arr[1]),
         );
       case 20:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              raw[1]),
+              arr[1]),
         );
       case 21:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              raw[1]),
+              arr[1]),
         );
       case 22:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-              raw[1]),
+              arr[1]),
         );
       case 23:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-              raw[1]),
+              arr[1]),
         );
       case 24:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-              raw[1]),
+              arr[1]),
         );
       case 25:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              raw[1]),
+              arr[1]),
         );
       case 26:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              raw[1]),
+              arr[1]),
         );
       case 27:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              raw[1]),
+              arr[1]),
         );
       case 28:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              raw[1]),
+              arr[1]),
         );
       case 29:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              raw[1]),
+              arr[1]),
         );
       case 30:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              raw[1]),
+              arr[1]),
         );
       case 31:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-              raw[1]),
+              arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -20910,11 +20908,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
       case 0:
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0(
           dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-              raw[1]),
+              arr[1]),
         );
       default:
         throw Exception("unreachable");
@@ -20924,13 +20923,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   AutomationRate dco_decode_automation_rate(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return AutomationRate.values[raw as int];
+    return AutomationRate.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   BiquadFilterOptions dco_decode_biquad_filter_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return BiquadFilterOptions(
@@ -20946,7 +20945,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BiquadFilterType dco_decode_biquad_filter_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BiquadFilterType.values[raw as int];
+    return BiquadFilterType.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
@@ -21041,19 +21040,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ChannelCountMode dco_decode_channel_count_mode(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelCountMode.values[raw as int];
+    return ChannelCountMode.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   ChannelInterpretation dco_decode_channel_interpretation(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ChannelInterpretation.values[raw as int];
+    return ChannelInterpretation.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   ChannelMergerOptions dco_decode_channel_merger_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return ChannelMergerOptions(
@@ -21065,7 +21064,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ChannelSplitterOptions dco_decode_channel_splitter_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return ChannelSplitterOptions(
@@ -21077,7 +21076,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ConstantSourceOptions dco_decode_constant_source_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConstantSourceOptions(
@@ -21088,7 +21087,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ConvolverOptions dco_decode_convolver_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return ConvolverOptions(
@@ -21103,7 +21102,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   DelayOptions dco_decode_delay_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return DelayOptions(
@@ -21116,14 +21115,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   DistanceModelType dco_decode_distance_model_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return DistanceModelType.values[raw as int];
+    return DistanceModelType.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   DynamicsCompressorOptions dco_decode_dynamics_compressor_options(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return DynamicsCompressorOptions(
@@ -21151,7 +21150,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   GainOptions dco_decode_gain_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return GainOptions(
@@ -21163,7 +21162,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
@@ -21177,7 +21176,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
+    return dcoDecodeList(raw)
         .map(
             dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack)
         .toList();
@@ -21187,17 +21186,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<AudioParamDescriptor> dco_decode_list_audio_param_descriptor(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_audio_param_descriptor)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_audio_param_descriptor).toList();
   }
 
   @protected
   List<Float32List> dco_decode_list_list_prim_f_32_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>)
-        .map(dco_decode_list_prim_f_32_strict)
-        .toList();
+    return dcoDecodeList(raw).map(dco_decode_list_prim_f_32_strict).toList();
   }
 
   @protected
@@ -21233,7 +21228,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MediaStreamTrackState dco_decode_media_stream_track_state(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MediaStreamTrackState.values[raw as int];
+    return MediaStreamTrackState.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
@@ -21273,7 +21268,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OscillatorOptions dco_decode_oscillator_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 5)
       throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return OscillatorOptions(
@@ -21290,19 +21285,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OscillatorType dco_decode_oscillator_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OscillatorType.values[raw as int];
+    return OscillatorType.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   OverSampleType dco_decode_over_sample_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return OverSampleType.values[raw as int];
+    return OverSampleType.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   PannerOptions dco_decode_panner_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 15)
       throw Exception('unexpected arr length: expect 15 but see ${arr.length}');
     return PannerOptions(
@@ -21327,13 +21322,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PanningModelType dco_decode_panning_model_type(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return PanningModelType.values[raw as int];
+    return PanningModelType.values[dcoDecodePrimitiveInt(raw)];
   }
 
   @protected
   PeriodicWaveOptions dco_decode_periodic_wave_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return PeriodicWaveOptions(
@@ -21350,7 +21345,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ) dco_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
@@ -21365,7 +21360,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StereoPannerOptions dco_decode_stereo_panner_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return StereoPannerOptions(
@@ -21377,7 +21372,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
@@ -21395,7 +21390,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   WaveShaperOptions dco_decode_wave_shaper_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
+    final arr = dcoDecodeList(raw);
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return WaveShaperOptions(

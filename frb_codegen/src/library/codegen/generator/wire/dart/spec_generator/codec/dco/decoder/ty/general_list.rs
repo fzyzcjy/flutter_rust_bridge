@@ -17,7 +17,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for GeneralListWireDartCodecDcoGenera
         }
 
         format!(
-            "return (raw as List<dynamic>).map(dco_decode_{}).toList();",
+            "return dcoDecodeList(raw).map(dco_decode_{}).toList();",
             self.mir.inner.safe_ident()
         )
     }
@@ -55,7 +55,7 @@ mod tests {
         );
         assert_eq!(
             generic.generate_impl_decode_body(),
-            "return (raw as List<dynamic>).map(dco_decode_i_32).toList();"
+            "return dcoDecodeList(raw).map(dco_decode_i_32).toList();"
         );
     }
 }

@@ -50,7 +50,7 @@ mod tests {
 
         assert_eq!(
             generator.generate_impl_decode_body(),
-            "return HandleImpl.frbInternalDcoDecode(raw as List<dynamic>);"
+            "return HandleImpl.frbInternalDcoDecode(dcoDecodeList(raw));"
         );
     }
 }
