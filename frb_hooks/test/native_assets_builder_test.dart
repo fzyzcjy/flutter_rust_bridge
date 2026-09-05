@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:code_assets/code_assets.dart';
 import 'package:flutter_rust_bridge_hooks/flutter_rust_bridge_hooks.dart';
 import 'package:native_toolchain_rust/native_toolchain_rust.dart'
     as native_toolchain_rust;
@@ -23,6 +24,161 @@ void main() {
     );
 
     expect(builder.buildMode, native_toolchain_rust.BuildMode.debug);
+  });
+
+  test('builder environment keeps non-code-asset inputs unchanged', () async {
+    final input = _createBuildInput(outputDirectoryShared: '/tmp/frb-no-code');
+    const extraCargoEnvironmentVariables = {'RUSTFLAGS': '-C opt-level=2'};
+
+    expect(input.config.buildCodeAssets, isFalse);
+    expect(
+      await cargoEnvironmentForInput(
+        input: input,
+        isWindows: false,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+      ),
+      same(extraCargoEnvironmentVariables),
+    );
+  });
+
+  group('cargoEnvironmentWithAndroidPageSize', () {
+    test('wraps the Android arm64 linker without changing rustflags', () async {
+      final outputDirectory = await _createTemporaryOutputDirectory();
+      const extraCargoEnvironmentVariables = {
+        'RUSTFLAGS': '-C opt-level=2',
+        'CARGO_TARGET_AARCH64_LINUX_ANDROID_RUSTFLAGS': '-C debuginfo=1',
+      };
+
+      final environment = await cargoEnvironmentWithAndroidPageSize(
+        targetOS: OS.android,
+        targetArchitecture: Architecture.arm64,
+        compiler: Uri.file('/android/ndk/toolchains/llvm/bin/clang'),
+        outputDirectory: outputDirectory.uri,
+        isWindows: true,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+      );
+      final wrapper = File(
+        environment['CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER']!,
+      );
+
+      expect(environment, {
+        ...extraCargoEnvironmentVariables,
+        'CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER': wrapper.path,
+      });
+      expect(
+        await wrapper.readAsString(),
+        contains('aarch64-linux-android35-clang.cmd'),
+      );
+      expect(
+        await wrapper.readAsString(),
+        contains(
+          '-z max-page-size=16384 '
+          '-z common-page-size=16384',
+        ),
+      );
+    });
+
+    test('wraps an explicit Android x64 linker', () async {
+      final outputDirectory = await _createTemporaryOutputDirectory();
+      const linkerEnvironmentVariable =
+          'CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER';
+      const extraCargoEnvironmentVariables = {
+        linkerEnvironmentVariable: '/custom/android-linker',
+        'CARGO_ENCODED_RUSTFLAGS': '-C\x1fopt-level=2',
+      };
+
+      final environment = await cargoEnvironmentWithAndroidPageSize(
+        targetOS: OS.android,
+        targetArchitecture: Architecture.x64,
+        compiler: Uri.file('/android/ndk/toolchains/llvm/bin/clang'),
+        outputDirectory: outputDirectory.uri,
+        isWindows: true,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+      );
+
+      expect(environment['CARGO_ENCODED_RUSTFLAGS'], '-C\x1fopt-level=2');
+      expect(
+        await File(environment[linkerEnvironmentVariable]!).readAsString(),
+        contains('"/custom/android-linker" %*'),
+      );
+    });
+
+    test('forwards raw flags to an explicit POSIX linker', () async {
+      if (Platform.isWindows) {
+        return;
+      }
+
+      final outputDirectory = await _createTemporaryOutputDirectory();
+      const linkerEnvironmentVariable =
+          'CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER';
+      final environment = await cargoEnvironmentWithAndroidPageSize(
+        targetOS: OS.android,
+        targetArchitecture: Architecture.x64,
+        compiler: Uri.file('/android/ndk/toolchains/llvm/bin/clang'),
+        outputDirectory: outputDirectory.uri,
+        isWindows: false,
+        extraCargoEnvironmentVariables: const {
+          linkerEnvironmentVariable: '/bin/echo',
+        },
+      );
+      final wrapper = File(environment[linkerEnvironmentVariable]!);
+      final result = await Process.run(wrapper.path, ['input.so']);
+
+      expect(result.exitCode, 0);
+      expect(
+        (result.stdout as String).trim(),
+        'input.so -z max-page-size=16384 '
+        '-z common-page-size=16384',
+      );
+    });
+
+    test('requires a compiler for Android 64-bit targets', () async {
+      final outputDirectory = await _createTemporaryOutputDirectory();
+
+      expect(
+        () => cargoEnvironmentWithAndroidPageSize(
+          targetOS: OS.android,
+          targetArchitecture: Architecture.arm64,
+          compiler: null,
+          outputDirectory: outputDirectory.uri,
+          isWindows: false,
+          extraCargoEnvironmentVariables: const {},
+        ),
+        throwsA(isA<UnsupportedError>()),
+      );
+    });
+
+    test('keeps non-Android targets unchanged', () async {
+      const extraCargoEnvironmentVariables = {'RUSTFLAGS': '-C opt-level=2'};
+
+      expect(
+        await cargoEnvironmentWithAndroidPageSize(
+          targetOS: OS.linux,
+          targetArchitecture: Architecture.x64,
+          compiler: null,
+          outputDirectory: Uri.directory('/unused/'),
+          isWindows: false,
+          extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+        ),
+        same(extraCargoEnvironmentVariables),
+      );
+    });
+
+    test('keeps Android 32-bit targets unchanged', () async {
+      const extraCargoEnvironmentVariables = {'RUSTFLAGS': '-C opt-level=2'};
+
+      expect(
+        await cargoEnvironmentWithAndroidPageSize(
+          targetOS: OS.android,
+          targetArchitecture: Architecture.arm,
+          compiler: null,
+          outputDirectory: Uri.directory('/unused/'),
+          isWindows: false,
+          extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+        ),
+        same(extraCargoEnvironmentVariables),
+      );
+    });
   });
 
   test('buildInputForHost uses short Windows output directory', () async {
@@ -59,6 +215,14 @@ void main() {
       same(input),
     );
   });
+}
+
+Future<Directory> _createTemporaryOutputDirectory() async {
+  final directory = await Directory.systemTemp.createTemp(
+    'frb_native_assets_builder_test_',
+  );
+  addTearDown(() => directory.delete(recursive: true));
+  return directory;
 }
 
 BuildInput _createBuildInput({required String outputDirectoryShared}) {
