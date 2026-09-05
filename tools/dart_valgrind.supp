@@ -16,14 +16,6 @@
    obj:*dart_valgrind_test_entrypoint
 }
 {
-   frb_sse_serializer_error_rust_vec_u8_leak
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:calloc
-   fun:frb_rust_vec_u8_new
-   obj:*dart_valgrind_test_entrypoint
-}
-{
    pure_dart_speed_twin_box_process_exit_leak
    Memcheck:Leak
    match-leak-kinds: definite
