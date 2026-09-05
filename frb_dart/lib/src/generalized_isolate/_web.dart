@@ -190,11 +190,38 @@ class _WebMessagePort extends _WebPortLike {
 // A named MessageChannel exposes its receiving endpoint as a port.
 class _WebBroadcastPort extends _WebPortLike {
   final _WebBroadcastChannel _channel;
+  int _received = 0;
+  JSArray<JSAny?>? _pendingClose;
 
   @override
   web.MessagePort get _nativePort => _channel._channel.port1;
 
   _WebBroadcastPort(this._channel) : super._();
+
+  @override
+  Stream<web.MessageEvent> get _onMessage =>
+      super._onMessage.expand(_receiveMessage);
+
+  Iterable<web.MessageEvent> _receiveMessage(web.MessageEvent event) sync* {
+    final data = event.data;
+    if (data.isA<JSArray<JSAny?>>() &&
+        (data as JSArray<JSAny?>).length == 3 &&
+        data[0] == '__frb_stream_close'.toJS) {
+      _pendingClose = data;
+    } else {
+      _received++;
+      yield event;
+    }
+    final pendingClose = _pendingClose;
+    if (pendingClose != null &&
+        (pendingClose[1] as JSNumber).toDartDouble == _received) {
+      _pendingClose = null;
+      yield web.MessageEvent(
+        'message',
+        web.MessageEventInit(data: pendingClose[2]),
+      );
+    }
+  }
 
   @override
   void _start() => _nativePort.start();
