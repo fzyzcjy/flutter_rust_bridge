@@ -8,21 +8,24 @@ import 'package:test/test.dart';
 import 'package:web/web.dart' as web;
 
 void main() {
-  test('lazy broadcast ports preserve reserved-looking user payloads', () async {
-    final port = broadcastPort('__frb_lazy_port_protocol_test');
-    final sender = port.sendPort.nativePort as web.BroadcastChannel;
-    addTearDown(port.close);
-    addTearDown(() => sender.close());
-    final received = port.take(2).toList();
+  test(
+    'lazy broadcast ports preserve reserved-looking user payloads',
+    () async {
+      final port = broadcastPort('__frb_lazy_port_protocol_test');
+      final sender = port.sendPort.nativePort as web.BroadcastChannel;
+      addTearDown(port.close);
+      addTearDown(() => sender.close());
+      final received = port.take(2).toList();
 
-    sender.postMessage(['__frb_stream', 0, 'user data'].jsify());
-    sender.postMessage(['__frb_stream_failed'].jsify());
+      sender.postMessage(['__frb_stream', 0, 'user data'].jsify());
+      sender.postMessage(['__frb_stream_failed'].jsify());
 
-    expect((await received).map((value) => (value as JSArray).dartify()), [
-      ['__frb_stream', 0, 'user data'],
-      ['__frb_stream_failed'],
-    ]);
-  });
+      expect((await received).map((value) => (value as JSArray).dartify()), [
+        ['__frb_stream', 0, 'user data'],
+        ['__frb_stream_failed'],
+      ]);
+    },
+  );
 
   test(
     'broadcast stream values precede an early close in sequence order',
