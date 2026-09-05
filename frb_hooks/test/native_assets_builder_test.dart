@@ -57,8 +57,8 @@ void main() {
       expect(
         await wrapper.readAsString(),
         contains(
-          '-Wl,-z,max-page-size=16384 '
-          '-Wl,-z,common-page-size=16384',
+          '-z max-page-size=16384 '
+          '-z common-page-size=16384',
         ),
       );
     });
@@ -88,7 +88,7 @@ void main() {
       );
     });
 
-    test('writes an executable POSIX linker wrapper', () async {
+    test('forwards raw flags to an explicit POSIX linker', () async {
       if (Platform.isWindows) {
         return;
       }
@@ -112,8 +112,8 @@ void main() {
       expect(result.exitCode, 0);
       expect(
         (result.stdout as String).trim(),
-        'input.so -Wl,-z,max-page-size=16384 '
-        '-Wl,-z,common-page-size=16384',
+        'input.so -z max-page-size=16384 '
+        '-z common-page-size=16384',
       );
     });
 

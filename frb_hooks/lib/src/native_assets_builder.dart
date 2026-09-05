@@ -151,8 +151,10 @@ Future<Map<String, String>> cargoEnvironmentWithAndroidPageSize({
 }
 
 const _androidPageSizeLinkerArguments = [
-  '-Wl,-z,max-page-size=16384',
-  '-Wl,-z,common-page-size=16384',
+  '-z',
+  'max-page-size=16384',
+  '-z',
+  'common-page-size=16384',
 ];
 
 String _posixLinkerWrapper(String linker) =>

@@ -34,6 +34,8 @@ For existing projects that already use Cargokit, see [Migrate from Cargokit to N
 
 The Native Assets builder passes the Android linker flags needed to align arm64-v8a and x86_64 Rust libraries for 16 KB page-size devices. This also covers projects that must remain on Android NDK r27; NDK r28 and later enable 16 KB ELF alignment by default.
 
+The builder wraps the target linker selected by Native Assets or `CARGO_TARGET_<TRIPLE>_LINKER`. A Rust `-C linker=...` flag takes precedence over that target linker and bypasses the wrapper; if you use this explicit override, configure equivalent 16 KB page-size flags for the custom linker.
+
 The Android application still needs Android Gradle Plugin 8.5.1 or later for correct 16 KB APK packaging. Verify separately that any prebuilt native libraries from other dependencies support 16 KB page sizes.
 
 ## Rust crate requirements
