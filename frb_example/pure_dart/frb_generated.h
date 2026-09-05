@@ -8058,8 +8058,9 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_dispose_logger(void);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_init_logger(struct wire_cst_list_prim_u_8_strict *sink,
-                                                                                                          struct wire_cst_list_prim_u_8_strict *max_level);
+void frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_init_logger(int64_t port_,
+                                                                                          struct wire_cst_list_prim_u_8_strict *sink,
+                                                                                          struct wire_cst_list_prim_u_8_strict *max_level);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_logging_max_level(void);
 

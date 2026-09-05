@@ -21242,6 +21242,7 @@ fn wire__crate__api__frb_logging__frb_internal_dispose_logger_impl(
     )
 }
 fn wire__crate__api__frb_logging__frb_internal_init_logger_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     sink: impl CstDecode<
         StreamSink<
             crate::api::frb_logging::FrbLogRecord,
@@ -21249,22 +21250,24 @@ fn wire__crate__api__frb_logging__frb_internal_init_logger_impl(
         >,
     >,
     max_level: impl CstDecode<String>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "frb_internal_init_logger",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let api_sink = sink.cst_decode();
             let api_max_level = max_level.cst_decode();
-            transform_result_dco::<_, _, ()>((move || {
-                let output_ok = Ok::<_, ()>({
-                    crate::api::frb_logging::frb_internal_init_logger(api_sink, api_max_level);
-                })?;
-                std::result::Result::Ok(output_ok)
-            })())
+            move |context| {
+                transform_result_dco::<_, _, ()>((move || {
+                    let output_ok = Ok::<_, ()>({
+                        crate::api::frb_logging::frb_internal_init_logger(api_sink, api_max_level);
+                    })?;
+                    std::result::Result::Ok(output_ok)
+                })())
+            }
         },
     )
 }
@@ -139769,10 +139772,11 @@ field1: Default::default(), }
 
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_init_logger(
+        port_: i64,
         sink: *mut wire_cst_list_prim_u_8_strict,
         max_level: *mut wire_cst_list_prim_u_8_strict,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__frb_logging__frb_internal_init_logger_impl(sink, max_level)
+    ) {
+        wire__crate__api__frb_logging__frb_internal_init_logger_impl(port_, sink, max_level)
     }
 
     #[unsafe(no_mangle)]
@@ -195294,10 +195298,11 @@ mod web {
 
     #[wasm_bindgen]
     pub fn wire__crate__api__frb_logging__frb_internal_init_logger(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
         sink: String,
         max_level: String,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__frb_logging__frb_internal_init_logger_impl(sink, max_level)
+    ) {
+        wire__crate__api__frb_logging__frb_internal_init_logger_impl(port_, sink, max_level)
     }
 
     #[wasm_bindgen]

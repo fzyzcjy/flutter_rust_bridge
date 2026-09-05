@@ -50461,11 +50461,10 @@ class RustLibWire implements BaseWire {
       wire__crate__api__frb_logging__frb_internal_dispose_logger() => wasmModule
           .wire__crate__api__frb_logging__frb_internal_dispose_logger();
 
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__frb_logging__frb_internal_init_logger(
-              String sink, String max_level) =>
-          wasmModule.wire__crate__api__frb_logging__frb_internal_init_logger(
-              sink, max_level);
+  void wire__crate__api__frb_logging__frb_internal_init_logger(
+          NativePortType port_, String sink, String max_level) =>
+      wasmModule.wire__crate__api__frb_logging__frb_internal_init_logger(
+          port_, sink, max_level);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__frb_logging__frb_internal_logging_max_level() =>
@@ -72365,9 +72364,8 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__frb_logging__frb_internal_dispose_logger();
 
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__frb_logging__frb_internal_init_logger(
-          String sink, String max_level);
+  external void wire__crate__api__frb_logging__frb_internal_init_logger(
+      NativePortType port_, String sink, String max_level);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__frb_logging__frb_internal_logging_max_level();

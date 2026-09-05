@@ -14110,15 +14110,16 @@ fn wire__crate__api__frb_logging__frb_internal_dispose_logger_impl(
     )
 }
 fn wire__crate__api__frb_logging__frb_internal_init_logger_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "frb_internal_init_logger",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -14136,12 +14137,14 @@ fn wire__crate__api__frb_logging__frb_internal_init_logger_impl(
             >>::sse_decode(&mut deserializer);
             let api_max_level = <String>::sse_decode(&mut deserializer);
             deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let output_ok = Ok::<_, ()>({
-                    crate::api::frb_logging::frb_internal_init_logger(api_sink, api_max_level);
-                })?;
-                std::result::Result::Ok(output_ok)
-            })())
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Ok::<_, ()>({
+                        crate::api::frb_logging::frb_internal_init_logger(api_sink, api_max_level);
+                    })?;
+                    std::result::Result::Ok(output_ok)
+                })())
+            }
         },
     )
 }
@@ -44590,6 +44593,7 @@ fn pde_ffi_dispatcher_primary_impl(
 624 => wire__crate__api__misc_no_twin_example_a__for_impl(port, ptr, rust_vec_len, data_len),
 625 => wire__crate__api__rust_opaque__frb_generator_test_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 626 => wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__frb_generator_test_twin_rust_async_impl(port, ptr, rust_vec_len, data_len),
+629 => wire__crate__api__frb_logging__frb_internal_init_logger_impl(port, ptr, rust_vec_len, data_len),
 635 => wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 636 => wire__crate__api__async_misc__func_async_simple_add_twin_normal_impl(port, ptr, rust_vec_len, data_len),
 637 => wire__crate__api__async_misc__func_async_void_twin_normal_impl(port, ptr, rust_vec_len, data_len),
@@ -45338,7 +45342,6 @@ fn pde_ffi_dispatcher_sync_impl(
 623 => wire__crate__api__pseudo_manual__mirror_twin_sync__first_sequence_twin_sync_impl(ptr, rust_vec_len, data_len),
 627 => wire__crate__api__pseudo_manual__rust_opaque_twin_sync__frb_generator_test_twin_sync_impl(ptr, rust_vec_len, data_len),
 628 => wire__crate__api__frb_logging__frb_internal_dispose_logger_impl(ptr, rust_vec_len, data_len),
-629 => wire__crate__api__frb_logging__frb_internal_init_logger_impl(ptr, rust_vec_len, data_len),
 630 => wire__crate__api__frb_logging__frb_internal_logging_max_level_impl(ptr, rust_vec_len, data_len),
 631 => wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output_impl(ptr, rust_vec_len, data_len),
 634 => wire__crate__api__rust_opaque_sync__frb_sync_generator_test_twin_normal_impl(ptr, rust_vec_len, data_len),

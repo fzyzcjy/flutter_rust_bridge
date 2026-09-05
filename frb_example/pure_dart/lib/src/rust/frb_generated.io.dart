@@ -76242,11 +76242,13 @@ class RustLibWire implements BaseWire {
       _wire__crate__api__frb_logging__frb_internal_dispose_loggerPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
-  WireSyncRust2DartDco wire__crate__api__frb_logging__frb_internal_init_logger(
+  void wire__crate__api__frb_logging__frb_internal_init_logger(
+    int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> sink,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> max_level,
   ) {
     return _wire__crate__api__frb_logging__frb_internal_init_logger(
+      port_,
       sink,
       max_level,
     );
@@ -76255,7 +76257,8 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__frb_logging__frb_internal_init_loggerPtr =
       _lookup<
           ffi.NativeFunction<
-              WireSyncRust2DartDco Function(
+              ffi.Void Function(
+                ffi.Int64,
                 ffi.Pointer<wire_cst_list_prim_u_8_strict>,
                 ffi.Pointer<wire_cst_list_prim_u_8_strict>,
               )>>(
@@ -76263,7 +76266,8 @@ class RustLibWire implements BaseWire {
   );
   late final _wire__crate__api__frb_logging__frb_internal_init_logger =
       _wire__crate__api__frb_logging__frb_internal_init_loggerPtr.asFunction<
-          WireSyncRust2DartDco Function(
+          void Function(
+            int,
             ffi.Pointer<wire_cst_list_prim_u_8_strict>,
             ffi.Pointer<wire_cst_list_prim_u_8_strict>,
           )>();
