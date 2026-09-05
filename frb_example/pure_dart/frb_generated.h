@@ -12775,8 +12775,7 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_moi__rust_auto_opaque_stream_sink_twin_moi(int64_t port_,
                                                                                                                                     struct wire_cst_list_prim_u_8_strict *sink);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(int64_t port_,
-                                                                                                               struct wire_cst_list_prim_u_8_strict *sink);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__rust_auto_opaque__rust_auto_opaque_stream_sink_twin_normal(struct wire_cst_list_prim_u_8_strict *sink);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_auto_opaque_twin_rust_async__rust_auto_opaque_stream_sink_twin_rust_async(int64_t port_,
                                                                                                                                                   struct wire_cst_list_prim_u_8_strict *sink);
