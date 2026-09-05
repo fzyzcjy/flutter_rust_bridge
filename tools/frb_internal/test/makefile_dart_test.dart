@@ -18,7 +18,7 @@ import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/sani
 import 'package:test/test.dart';
 
 void main() {
-  test('PDE thread suppression is limited to its TSAN entrypoint', () {
+  test('known thread suppressions are limited to their TSAN entrypoints', () {
     for (final package in [
       'frb_example/pure_dart_pde',
       'frb_example/pure_dart',
@@ -33,12 +33,13 @@ void main() {
         );
         expect(
           environment,
-          package == 'frb_example/pure_dart_pde' && sanitizer == Sanitizer.tsan
+          (package == 'frb_example/pure_dart_pde' ||
+                  package == 'frb_example/pure_dart') && sanitizer == Sanitizer.tsan
               ? {
                   'TSAN_OPTIONS':
                       'halt_on_error=1:report_thread_leaks=1:'
                       'print_suppressions=1:'
-                      'suppressions=../../tools/dart_tsan_pde.supp',
+                      'suppressions=../../tools/dart_tsan_${package.endsWith('_pde') ? 'pde' : 'pure'}.supp',
                 }
               : <String, String>{},
         );
@@ -75,6 +76,30 @@ void main() {
         throwsException,
       );
     }
+  });
+
+  test('pure thread suppression accepts only its one known creation path', () {
+    const rule =
+        'thread:frb_example_pure_dart::api::async_spawn::'
+        'simple_use_async_spawn_blocking::';
+    expect(File('../../tools/dart_tsan_pure.supp').readAsStringSync(), '$rule\n');
+    const report =
+        'ThreadSanitizer: Matched 1 suppressions (pid=123):\n'
+        '1 $rule\n';
+    expect(() => checkPureThreadLeakSuppressionForTesting(''), returnsNormally);
+    expect(() => checkPureThreadLeakSuppressionForTesting(report), returnsNormally);
+    for (final unexpected in [
+      report.replaceAll('Matched 1', 'Matched 2'),
+      report.replaceAll('1 thread:', '2 thread:'),
+      report.replaceAll('thread:', 'race:'),
+      report.replaceAll('simple_use_async_spawn_blocking::', 'different_api::'),
+      report.replaceAll('pure_dart::', 'pure_dart_pde::'),
+      '$report$report',
+      'ThreadSanitizer: Matched malformed summary\n',
+    ]) {
+      expect(() => checkPureThreadLeakSuppressionForTesting(unexpected), throwsException);
+    }
+    expect(() => checkPdeThreadLeakSuppressionForTesting(report), throwsException);
   });
 
   test('dart valgrind command uses the Dart AOT suppression file', () {
