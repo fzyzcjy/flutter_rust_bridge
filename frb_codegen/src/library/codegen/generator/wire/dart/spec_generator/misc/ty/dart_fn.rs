@@ -45,7 +45,7 @@ impl WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'_> {
 
         let api_impl_body = format!(
             r#"
-            Future<void> Function(int, {repeated_dynamics})
+            Future<void> Function(dynamic, {repeated_dynamics})
                 encode_{mir_safe_ident}({dart_api_type} raw) {{
               return (callId, {raw_parameter_names}) async {{
                 {decode_block}
@@ -70,7 +70,7 @@ impl WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'_> {
                 final output = serializer.intoRaw();
 
                 generalizedFrbRustBinding.dartFnDeliverOutput(
-                  callId: callId, ptr: output.ptr, rustVecLen: output.rustVecLen, dataLen: output.dataLen);
+                  callId: dcoDecodePrimitiveInt(callId), ptr: output.ptr, rustVecLen: output.rustVecLen, dataLen: output.dataLen);
               }};
             }}
             "#,
@@ -119,6 +119,7 @@ mod tests {
         let output = generator.generate_extra_functions().unwrap();
         let body = &output.common.api_impl_class_body;
         assert!(body.contains(&format!("encode_{mir_safe_ident}")));
+        assert!(body.contains("Future<void> Function(dynamic, dynamic)"));
         assert!(body.contains("final arg0 = dco_decode_i_32(rawArg0);"));
         assert!(body.contains("try {"));
         assert!(body.contains("} catch (e, s) {"));
@@ -133,5 +134,6 @@ mod tests {
             DartFnOutputAction::Error as i32
         )));
         assert!(body.contains("generalizedFrbRustBinding.dartFnDeliverOutput("));
+        assert!(body.contains("callId: dcoDecodePrimitiveInt(callId)"));
     }
 }
