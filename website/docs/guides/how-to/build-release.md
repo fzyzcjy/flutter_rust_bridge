@@ -8,7 +8,19 @@ as if the Flutter+Rust app is a Flutter-only one.
 
 ## Web
 
-For the Web platform only, besides following Flutter's documentation, there are two extra things to do:
+Build the Rust WebAssembly module before the Flutter application:
 
-1. Just like what is already done when developing the app, execute `flutter_rust_bridge_codegen build-web --release`
-2. Add [cross-origin headers](../../manual/miscellaneous/web-cross-origin) to your web server configuration.
+```shell
+flutter_rust_bridge_codegen build-web --release
+```
+
+Choose the Dart compiler for the Flutter application:
+
+| Dart compiler | Command |
+| --- | --- |
+| WebAssembly | `flutter build web --wasm` |
+| JavaScript | `flutter build web` |
+
+Deploy the complete `build/web` directory and add the required [cross-origin headers](../../manual/miscellaneous/web-cross-origin) to your web server configuration.
+
+See [Build for Web](web) for pure Dart commands, generated artifacts, browser compatibility, and fallback behavior.

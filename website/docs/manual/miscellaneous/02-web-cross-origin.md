@@ -2,7 +2,7 @@
 
 ## Background
 
-When using Rust (WASM) and Flutter on the web platform,
+When using Rust WebAssembly and Flutter or Dart on the web platform,
 the web server needs to respond with the following headers to enable shared buffers:
 
 - `Cross-Origin-Opener-Policy`: `same-origin`
@@ -13,6 +13,7 @@ You can read more about crossOriginIsolation [here](https://developer.mozilla.or
 
 The `flutter_rust_bridge_codegen build-web` command emits the default Rust flags required by modern threaded WASM builds.
 If you override `--wasm-pack-rustflags`, you are responsible for preserving those defaults; otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.
+These headers are required by the threaded Rust module regardless of whether the Dart application uses `dart2js` or `dart2wasm`.
 
 ## When `flutter run`
 

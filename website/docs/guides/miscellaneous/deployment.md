@@ -1,6 +1,8 @@
 # Deployment
 
-Please follow the standard Flutter's deployment guides, with one extra bit:
+Please follow Flutter's standard deployment guides.
 
-If you are deploying the web platform (only),
-please check [this doc](../../manual/miscellaneous/web-cross-origin) and configure a few HTTP headers.
+For Web deployment:
+
+- Follow [Build for Web](../how-to/web) to choose `dart2js` or `dart2wasm` and produce the complete deployable output.
+- Configure the required [cross-origin headers](../../manual/miscellaneous/web-cross-origin).

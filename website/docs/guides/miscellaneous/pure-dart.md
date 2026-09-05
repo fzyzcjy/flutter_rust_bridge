@@ -25,3 +25,15 @@ and contains a lot of tests of this library.
 This example currently uses some glue of internal frb_utils to build Rust code.
 However, this is just temporary before [the official toolchain](https://github.com/dart-lang/native/issues/883) is released.
 Therefore, those temporary glue are not made as a publishable package.
+
+## Web
+
+Pure Dart web applications can use either Dart compiler:
+
+| Dart compiler | `build-web` option | Main output |
+| --- | --- | --- |
+| WebAssembly | `--dart-compile-wasm-entrypoint <entrypoint>` | `web/main.dart.wasm` and `web/main.dart.mjs` |
+| JavaScript | `--dart-compile-js-entrypoint <entrypoint>` | `web/main.dart.js` |
+
+The Rust library is compiled to WebAssembly in both cases.
+See [Build for Web](../how-to/web) for complete commands, loader HTML, compatibility, and deployment requirements.

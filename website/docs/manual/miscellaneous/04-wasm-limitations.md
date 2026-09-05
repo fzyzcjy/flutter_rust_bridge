@@ -19,12 +19,9 @@
   or `&mut T` while an async Rust function is still borrowing the same object. On the browser event
   loop, such calls fail immediately; use an async API and `await` it instead. Worker contexts that can
   safely block may still use the normal blocking lock path.
-- `Int64List` and `Uint64List` throws when used on Web platforms. They are left intentionally
-  unimplemented by the Dart language developers, perhaps due to the differences between `int` and `BigInt`.
-  This library provides a barebones pure Dart shim whose behavior may differ from the specifications,
-  so please create an issue/PR if you encounter any significant digression.
-- `Int64List` and `Uint64List` arithmetics clamp on native platforms, but wrap on the Web. If your use-case
-  requires precision around large integer values, please be mindful of these platform-specific differences.
+- flutter_rust_bridge provides Web implementations of `Int64List` and `Uint64List` based on `BigInt`.
+  These wrappers support bridge transport with both `dart2js` and `dart2wasm`, but do not implement every
+  `dart:typed_data` view and sublist constructor.
 - Support for the various components of WASM is not universal among browsers. Here is a (non-exhaustive) list
   of trackers for how widely available some of the features are across browsers:
   - [`MessagePort` error events](https://caniuse.com/mdn-api_messageport_messageerror_event)
@@ -36,3 +33,5 @@
   - [WebAssembly](https://caniuse.com/wasm)
   - [WebAssembly roadmap](https://webassembly.org/roadmap/)
 - JavaScript runtimes (Node.js, Deno, etc.) support is not yet implemented.
+
+See [Build for Web](../../guides/how-to/web) for Dart compiler selection, generated artifacts, and deployment.
