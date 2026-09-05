@@ -34921,6 +34921,2174 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_weekdays_twin_sync(WeekdaysTwinSync raw);
 
   @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
+          MyNodeTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          OpaqueItemTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRustAutoOpaqueFieldWithManyDeriveInner(
+          StructWithRustAutoOpaqueFieldWithManyDeriveInner raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
+          BoxAnyMyDartTypeRename raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+          BoxFnStringString raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinMoiSendSync(
+          BoxMyTraitTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
+          BoxMyTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          BoxMyTraitTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
+          BoxMyTraitTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncMoiSendSync(
+          BoxMyTraitTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
+          BoxMyTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+          ConstructorOpaqueStructTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          CustomHasherTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          CustomHasherTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          CustomHasherTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+          DeliberateFailSanityCheckTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+          DroppableTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+          DroppableTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+          DroppableTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
+          EnumWithGoodAndOpaqueWithoutOptionTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
+          EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
+          EnumWithGoodAndOpaqueWithoutOptionTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+          ItemContainerSolutionOneTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+          MyImplTraitWithSelfTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+          MyImplTraitWithSelfTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+          MyImplTraitWithSelfTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+          MyImplTraitWithSelfTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+          MyStructWithTryFromTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinMoi(
+          NonCloneSimpleEnumTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
+          NonCloneSimpleEnumTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
+          NonCloneSimpleEnumTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsyncMoi(
+          NonCloneSimpleEnumTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
+          NonCloneSimpleEnumTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSyncMoi(
+          NonCloneSimpleEnumTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          OpaqueItemTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi(
+          OpaqueOneTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
+          OpaqueOneTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
+          OpaqueOneTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsyncMoi(
+          OpaqueOneTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
+          OpaqueOneTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSyncMoi(
+          OpaqueOneTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          OpaqueStructWithDartCodeTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinMoi(
+          OpaqueTwoTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
+          OpaqueTwoTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
+          OpaqueTwoTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsyncMoi(
+          OpaqueTwoTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
+          OpaqueTwoTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncMoi(
+          OpaqueTwoTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
+          SimpleLogger raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+          SimpleOpaqueExternalStructWithMethod raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
+          StaticGetterOnlyTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
+          StaticGetterOnlyTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
+          StaticGetterOnlyTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          StructOneWithTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+          StructOneWithTraitTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+          StructOneWithTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+          StructOneWithTraitTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          StructTwoWithTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+          StructTwoWithTraitTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+          StructTwoWithTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+          StructTwoWithTraitTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRustAutoOpaqueFieldWithManyDeriveInner(
+          StructWithRustAutoOpaqueFieldWithManyDeriveInner raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          TypeForIgnore raw);
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+          ConstructorOpaqueStructTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+          DeliberateFailSanityCheckTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+          DroppableTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+          DroppableTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+          DroppableTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+          ItemContainerSolutionOneTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          StructOneWithTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+          StructOneWithTraitTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+          StructOneWithTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+          StructOneWithTraitTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          StructTwoWithTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+          StructTwoWithTraitTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+          StructTwoWithTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+          StructTwoWithTraitTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+          ConstructorOpaqueStructTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+          DeliberateFailSanityCheckTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+          DroppableTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+          DroppableTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+          DroppableTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+          ItemContainerSolutionOneTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+          MyImplTraitWithSelfTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+          MyImplTraitWithSelfTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+          MyImplTraitWithSelfTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+          MyImplTraitWithSelfTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+          MyStructWithTryFromTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinMoi(
+          NonCloneSimpleEnumTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
+          NonCloneSimpleEnumTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
+          NonCloneSimpleEnumTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsyncMoi(
+          NonCloneSimpleEnumTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
+          NonCloneSimpleEnumTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSyncMoi(
+          NonCloneSimpleEnumTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          OpaqueStructWithDartCodeTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
+          SimpleLogger raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+          SimpleOpaqueExternalStructWithMethod raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          StructOneWithTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+          StructOneWithTraitTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+          StructOneWithTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+          StructOneWithTraitTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          StructTwoWithTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+          StructTwoWithTraitTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+          StructTwoWithTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+          StructTwoWithTraitTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSync raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          TypeForIgnore raw);
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll raw);
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinMoi(BoxDartDebugTwinMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinNormal(
+      BoxDartDebugTwinNormal raw);
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinRustAsync(
+      BoxDartDebugTwinRustAsync raw);
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinRustAsyncMoi(
+      BoxDartDebugTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinSync(
+      BoxDartDebugTwinSync raw);
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinSyncMoi(
+      BoxDartDebugTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinMoi(
+      FrbOpaqueReturnTwinMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinNormal(
+      FrbOpaqueReturnTwinNormal raw);
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinRustAsync(
+      FrbOpaqueReturnTwinRustAsync raw);
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinRustAsyncMoi(
+      FrbOpaqueReturnTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinSync(
+      FrbOpaqueReturnTwinSync raw);
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinSyncMoi(
+      FrbOpaqueReturnTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueSyncReturnTwinMoi(
+      FrbOpaqueSyncReturnTwinMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
+      FrbOpaqueSyncReturnTwinNormal raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataAnotherTwinMoi(
+      HideDataAnotherTwinMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataAnotherTwinNormal(
+      HideDataAnotherTwinNormal raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinMoi(HideDataTwinMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinMoi_array_2(
+      HideDataTwinMoiArray2 raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinNormal(HideDataTwinNormal raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinNormal_array_2(
+      HideDataTwinNormalArray2 raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinRustAsync(HideDataTwinRustAsync raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(
+      HideDataTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinRustAsyncMoi_array_2(
+      HideDataTwinRustAsyncMoiArray2 raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinRustAsync_array_2(
+      HideDataTwinRustAsyncArray2 raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinSync(HideDataTwinSync raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinSyncMoi(HideDataTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinSyncMoi_array_2(
+      HideDataTwinSyncMoiArray2 raw);
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinSync_array_2(
+      HideDataTwinSyncArray2 raw);
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinMoi(MutexHideDataTwinMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinNormal(
+      MutexHideDataTwinNormal raw);
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinRustAsync(
+      MutexHideDataTwinRustAsync raw);
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinRustAsyncMoi(
+      MutexHideDataTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinSync(MutexHideDataTwinSync raw);
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinSyncMoi(
+      MutexHideDataTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinMoi(NonCloneDataTwinMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinNormal(
+      NonCloneDataTwinNormal raw);
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinRustAsync(
+      NonCloneDataTwinRustAsync raw);
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinRustAsyncMoi(
+      NonCloneDataTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinSync(NonCloneDataTwinSync raw);
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinSyncMoi(
+      NonCloneDataTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinMoi(RwLockHideDataTwinMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinNormal(
+      RwLockHideDataTwinNormal raw);
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinRustAsync(
+      RwLockHideDataTwinRustAsync raw);
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinRustAsyncMoi(
+      RwLockHideDataTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinSync(
+      RwLockHideDataTwinSync raw);
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinSyncMoi(
+      RwLockHideDataTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
+          BoxAnyMyDartTypeRename raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+          BoxFnStringString raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinMoiSendSync(
+          BoxMyTraitTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
+          BoxMyTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          BoxMyTraitTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
+          BoxMyTraitTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncMoiSendSync(
+          BoxMyTraitTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
+          BoxMyTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+          ConstructorOpaqueStructTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          CustomHasherTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          CustomHasherTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          CustomHasherTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+          DeliberateFailSanityCheckTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+          DroppableTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+          DroppableTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+          DroppableTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
+          EnumWithGoodAndOpaqueWithoutOptionTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
+          EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
+          EnumWithGoodAndOpaqueWithoutOptionTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+          ItemContainerSolutionOneTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+          MyImplTraitWithSelfTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+          MyImplTraitWithSelfTwinSse raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+          MyImplTraitWithSelfTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+          MyImplTraitWithSelfTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
+          MyNodeTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+          MyStructWithTryFromTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinMoi(
+          NonCloneSimpleEnumTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
+          NonCloneSimpleEnumTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
+          NonCloneSimpleEnumTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsyncMoi(
+          NonCloneSimpleEnumTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
+          NonCloneSimpleEnumTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSyncMoi(
+          NonCloneSimpleEnumTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          OpaqueItemTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi(
+          OpaqueOneTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
+          OpaqueOneTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
+          OpaqueOneTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsyncMoi(
+          OpaqueOneTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
+          OpaqueOneTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSyncMoi(
+          OpaqueOneTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          OpaqueStructWithDartCodeTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinMoi(
+          OpaqueTwoTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
+          OpaqueTwoTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
+          OpaqueTwoTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsyncMoi(
+          OpaqueTwoTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
+          OpaqueTwoTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncMoi(
+          OpaqueTwoTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
+          SimpleLogger raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+          SimpleOpaqueExternalStructWithMethod raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
+          StaticGetterOnlyTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
+          StaticGetterOnlyTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
+          StaticGetterOnlyTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          StructOneWithTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+          StructOneWithTraitTwinSse raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+          StructOneWithTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+          StructOneWithTraitTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          StructTwoWithTraitTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+          StructTwoWithTraitTwinSse raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+          StructTwoWithTraitTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+          StructTwoWithTraitTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSse raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSync raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRustAutoOpaqueFieldWithManyDeriveInner(
+          StructWithRustAutoOpaqueFieldWithManyDeriveInner raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          TypeForIgnore raw);
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll raw);
+
+  @protected
+  void cst_validate_RustOpaque_i16(I16 raw);
+
+  @protected
+  void cst_validate_RustOpaque_i32(I32 raw);
+
+  @protected
+  void cst_validate_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
+          raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataAnotherTwinMoi(
+      HideDataAnotherTwinMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataAnotherTwinNormal(
+      HideDataAnotherTwinNormal raw);
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinMoi(HideDataTwinMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinNormal(
+      HideDataTwinNormal raw);
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinRustAsync(
+      HideDataTwinRustAsync raw);
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinRustAsyncMoi(
+      HideDataTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinSync(
+      HideDataTwinSync raw);
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinSyncMoi(
+      HideDataTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
+          raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_moi(EnumOpaqueTwinMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_normal(
+      EnumOpaqueTwinNormal raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_rust_async(
+      EnumOpaqueTwinRustAsync raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_rust_async_moi(
+      EnumOpaqueTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_sync(EnumOpaqueTwinSync raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_sync_moi(
+      EnumOpaqueTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync raw);
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal raw);
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_moi(OpaqueNestedTwinMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_normal(
+      OpaqueNestedTwinNormal raw);
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync raw);
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_rust_async_moi(
+      OpaqueNestedTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_sync(
+      OpaqueNestedTwinSync raw);
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_sync_moi(
+      OpaqueNestedTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_simple_trait_for_dyn_twin_normal_implementor(
+      SimpleTraitForDynTwinNormalImplementor raw);
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
+      StructWithExplicitAutoOpaqueFieldTwinMoi raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
+          StructWithExplicitAutoOpaqueFieldTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
+          StructWithExplicitAutoOpaqueFieldTwinSync raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          StructWithExplicitAutoOpaqueFieldTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_moi(
+      StructWithGoodAndOpaqueFieldTwinMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
+      StructWithGoodAndOpaqueFieldTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async(
+          StructWithGoodAndOpaqueFieldTwinRustAsync raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async_moi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_sync(
+      StructWithGoodAndOpaqueFieldTwinSync raw);
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_sync_moi(
+      StructWithGoodAndOpaqueFieldTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_rust_auto_opaque_field_with_many_derive(
+          StructWithRustAutoOpaqueFieldWithManyDerive raw);
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          StructWithRustAutoOpaqueWithNonCloneData raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_moi(EnumOpaqueTwinMoi raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_moi_array_5(EnumOpaqueTwinMoiArray5 raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_normal_array_5(
+      EnumOpaqueTwinNormalArray5 raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_rust_async(EnumOpaqueTwinRustAsync raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_rust_async_array_5(
+      EnumOpaqueTwinRustAsyncArray5 raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_rust_async_moi(
+      EnumOpaqueTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_rust_async_moi_array_5(
+      EnumOpaqueTwinRustAsyncMoiArray5 raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_sync(EnumOpaqueTwinSync raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_sync_array_5(EnumOpaqueTwinSyncArray5 raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_sync_moi(EnumOpaqueTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_enum_opaque_twin_sync_moi_array_5(
+      EnumOpaqueTwinSyncMoiArray5 raw);
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi raw);
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal raw);
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync raw);
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync raw);
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal raw);
+
+  @protected
+  void
+      cst_validate_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          List<OpaqueItemTwinNormal> raw);
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          List<NonCloneSimpleTwinMoi> raw);
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          List<NonCloneSimpleTwinNormal> raw);
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          List<NonCloneSimpleTwinRustAsync> raw);
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          List<NonCloneSimpleTwinRustAsyncMoi> raw);
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          List<NonCloneSimpleTwinSync> raw);
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          List<NonCloneSimpleTwinSyncMoi> raw);
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          List<OpaqueItemTwinNormal> raw);
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinMoi(List<HideDataTwinMoi> raw);
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinNormal(
+      List<HideDataTwinNormal> raw);
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinRustAsync(
+      List<HideDataTwinRustAsync> raw);
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinRustAsyncMoi(
+      List<HideDataTwinRustAsyncMoi> raw);
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinSync(
+      List<HideDataTwinSync> raw);
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinSyncMoi(
+      List<HideDataTwinSyncMoi> raw);
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_moi(List<EnumOpaqueTwinMoi> raw);
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_normal(
+      List<EnumOpaqueTwinNormal> raw);
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_rust_async(
+      List<EnumOpaqueTwinRustAsync> raw);
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_rust_async_moi(
+      List<EnumOpaqueTwinRustAsyncMoi> raw);
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_sync(List<EnumOpaqueTwinSync> raw);
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_sync_moi(
+      List<EnumOpaqueTwinSyncMoi> raw);
+
+  @protected
+  void cst_validate_opaque_nested_twin_moi(OpaqueNestedTwinMoi raw);
+
+  @protected
+  void cst_validate_opaque_nested_twin_normal(OpaqueNestedTwinNormal raw);
+
+  @protected
+  void cst_validate_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync raw);
+
+  @protected
+  void cst_validate_opaque_nested_twin_rust_async_moi(
+      OpaqueNestedTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_opaque_nested_twin_sync(OpaqueNestedTwinSync raw);
+
+  @protected
+  void cst_validate_opaque_nested_twin_sync_moi(OpaqueNestedTwinSyncMoi raw);
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi? raw);
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal? raw);
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync? raw);
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi? raw);
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync? raw);
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi? raw);
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataAnotherTwinMoi(
+      HideDataAnotherTwinMoi? raw);
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataAnotherTwinNormal(
+      HideDataAnotherTwinNormal? raw);
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinMoi(
+      HideDataTwinMoi? raw);
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinNormal(
+      HideDataTwinNormal? raw);
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinRustAsync(
+      HideDataTwinRustAsync? raw);
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinRustAsyncMoi(
+      HideDataTwinRustAsyncMoi? raw);
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinSync(
+      HideDataTwinSync? raw);
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinSyncMoi(
+      HideDataTwinSyncMoi? raw);
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_moi(
+          (OpaqueOneTwinMoi, OpaqueTwoTwinMoi) raw);
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_normal_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_normal(
+          (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) raw);
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_rust_async_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_rust_async(
+          (OpaqueOneTwinRustAsync, OpaqueTwoTwinRustAsync) raw);
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_rust_async_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_rust_async_moi(
+          (OpaqueOneTwinRustAsyncMoi, OpaqueTwoTwinRustAsyncMoi) raw);
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync(
+          (OpaqueOneTwinSync, OpaqueTwoTwinSync) raw);
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync_moi(
+          (OpaqueOneTwinSyncMoi, OpaqueTwoTwinSyncMoi) raw);
+
+  @protected
+  void cst_validate_simple_trait_for_dyn_twin_normal_implementor(
+      SimpleTraitForDynTwinNormalImplementor raw);
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_moi(
+      StructWithExplicitAutoOpaqueFieldTwinMoi raw);
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_normal(
+      StructWithExplicitAutoOpaqueFieldTwinNormal raw);
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_rust_async(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsync raw);
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_sync(
+      StructWithExplicitAutoOpaqueFieldTwinSync raw);
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+      StructWithExplicitAutoOpaqueFieldTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_moi(
+      StructWithGoodAndOpaqueFieldTwinMoi raw);
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_normal(
+      StructWithGoodAndOpaqueFieldTwinNormal raw);
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_rust_async(
+      StructWithGoodAndOpaqueFieldTwinRustAsync raw);
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_rust_async_moi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw);
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_sync(
+      StructWithGoodAndOpaqueFieldTwinSync raw);
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_sync_moi(
+      StructWithGoodAndOpaqueFieldTwinSyncMoi raw);
+
+  @protected
+  void cst_validate_struct_with_rust_auto_opaque_field_with_many_derive(
+      StructWithRustAutoOpaqueFieldWithManyDerive raw);
+
+  @protected
+  void cst_validate_struct_with_rust_auto_opaque_with_non_clone_data(
+      StructWithRustAutoOpaqueWithNonCloneData raw);
+
+  @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer);
 
