@@ -40,8 +40,7 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    final subscription = _rawReceivePort._webReceivePort._onMessage
-        .map(_extractData)
+    final subscription = _rawReceivePort._webReceivePort._messages
         .listen(
           onData,
           onError: onError,
@@ -51,8 +50,6 @@ class ReceivePort extends Stream<dynamic> {
     _rawReceivePort._webReceivePort._start();
     return subscription;
   }
-
-  static dynamic _extractData(web.MessageEvent event) => event.data;
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _rawReceivePort.sendPort;
@@ -73,7 +70,7 @@ class RawReceivePort {
 
   /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
-    _webReceivePort._onMessage.listen((event) => handler(event.data));
+    _webReceivePort._messages.listen(handler);
     _webReceivePort._start();
   }
 
@@ -152,6 +149,8 @@ abstract class _WebPortLike {
 
   Stream<web.MessageEvent> get _onMessage =>
       _kMessageEvent.forTarget(_nativePort);
+
+  Stream<JSAny?> get _messages => _onMessage.map((event) => event.data);
   static const _kMessageEvent = web.EventStreamProvider<web.MessageEvent>(
     'message',
   );
@@ -176,6 +175,44 @@ class _WebBroadcastPort extends _WebPortLike {
   final web.BroadcastChannel _nativePort;
 
   _WebBroadcastPort(this._nativePort) : super._();
+
+  @override
+  Stream<JSAny?> get _messages async* {
+    var nextSequence = 0;
+    final pending = <int, JSArray<JSAny?>>{};
+    await for (final message in super._messages) {
+      if (message != null && message.isA<JSArray>()) {
+        final frame = message as JSArray<JSAny?>;
+        if (frame.length > 0 && frame[0].isA<JSString>()) {
+          final tag = (frame[0] as JSString).toDart;
+          if (tag == '__frb_stream_failed') {
+            throw StateError('Web stream transport failed');
+          }
+          if (tag == '__frb_stream') {
+            if ((frame.length != 2 && frame.length != 3) ||
+                !frame[1].isA<JSNumber>()) {
+              throw StateError('Invalid Web stream frame');
+            }
+            final sequence = (frame[1] as JSNumber).toDartDouble;
+            if (!sequence.isFinite ||
+                sequence != sequence.truncateToDouble() ||
+                sequence < nextSequence ||
+                sequence > 9007199254740991 ||
+                pending.containsKey(sequence.toInt())) {
+              throw StateError('Invalid Web stream sequence');
+            }
+            pending[sequence.toInt()] = frame;
+            while (pending.containsKey(nextSequence)) {
+              final ready = pending.remove(nextSequence++)!;
+              if (ready.length == 3) yield ready[2];
+            }
+            continue;
+          }
+        }
+      }
+      yield message;
+    }
+  }
 
   @override
   void _start() {}

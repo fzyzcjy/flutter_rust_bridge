@@ -37,7 +37,32 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
     pub fn add_raw(&self, value: Rust2DartCodec::Message) -> Result<(), Rust2DartSendError> {
-        sender(&self.sendable_channel_handle).send(value.into_dart_abi())
+        let message = value.into_dart_abi();
+        let sender = sender(&self.sendable_channel_handle);
+        #[cfg(target_family = "wasm")]
+        {
+            use std::sync::atomic::Ordering;
+
+            if self._closer.failed.load(Ordering::Relaxed) {
+                return Err(Rust2DartSendError);
+            }
+            let sequence = self._closer.next_sequence.fetch_add(1, Ordering::Relaxed);
+            let frame = js_sys::Array::of3(&"__frb_stream".into(), &(sequence as f64).into(), &message);
+            let result = sender.send(wasm_bindgen::JsValue::from(frame));
+            if result.is_err()
+                && sender
+                    .send(wasm_bindgen::JsValue::from(js_sys::Array::of2(
+                        &"__frb_stream".into(),
+                        &(sequence as f64).into(),
+                    )))
+                    .is_err()
+            {
+                self._closer.failed.store(true, Ordering::Relaxed);
+            }
+            result
+        }
+        #[cfg(not(target_family = "wasm"))]
+        sender.send(message)
     }
 }
 
