@@ -59,6 +59,7 @@ There is no need to read it word by word, since it serves as a reference to find
 
 - Dart sanitizer CI uses Dart 3.13.0 ASAN, LSAN, MSAN, and TSAN SDKs from `Build_2026.09.05_10-13-20`; downloads are checksum-verified before extraction.
 - Dart sanitizer CI installs LLVM and sets `ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer` so native allocation reports include function names.
+- Sanitizer Rust builds retain release optimization but disable identical-function merging and emit debug information, keeping allocation reports tied to the originating function rather than an unrelated merged alias.
 - For local Linux reproduction, install the `llvm` package and set the same environment variable before running `./frb_internal test-dart-sanitizer --package frb_example/pure_dart --sanitizer asan`.
 - Symbolization does not disable leak detection or change sanitizer failure handling.
 
