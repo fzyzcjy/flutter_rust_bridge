@@ -79,7 +79,8 @@ Map<String, String> sanitizerEntrypointEnvironmentForTesting({
 void checkPdeThreadLeakSuppressionForTesting(String stderr) {
   _checkThreadLeakSuppression(
     stderr,
-    expectedRule: 'thread:frb_example_pure_dart_pde::api::async_spawn::'
+    expectedRule:
+        'thread:frb_example_pure_dart_pde::api::async_spawn::'
         'simple_use_async_spawn_blocking::',
   );
 }
@@ -87,12 +88,16 @@ void checkPdeThreadLeakSuppressionForTesting(String stderr) {
 void checkPureThreadLeakSuppressionForTesting(String stderr) {
   _checkThreadLeakSuppression(
     stderr,
-    expectedRule: 'thread:frb_example_pure_dart::api::async_spawn::'
+    expectedRule:
+        'thread:frb_example_pure_dart::api::async_spawn::'
         'simple_use_async_spawn_blocking::',
   );
 }
 
-void _checkThreadLeakSuppression(String stderr, {required String expectedRule}) {
+void _checkThreadLeakSuppression(
+  String stderr, {
+  required String expectedRule,
+}) {
   const prefix = 'ThreadSanitizer: Matched ';
   if (!stderr.contains(prefix)) return;
   final matches = RegExp(
