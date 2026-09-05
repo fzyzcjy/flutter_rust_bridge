@@ -704,7 +704,9 @@ Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
   );
 }
 
-Future<void> _activateMacosQuickstartSmokeApp(String absolutePackagePath) async {
+Future<void> _activateMacosQuickstartSmokeApp(
+  String absolutePackagePath,
+) async {
   final result = await Process.run(
     'open',
     quickstartSmokeMacosActivationArgsForTesting(absolutePackagePath),
