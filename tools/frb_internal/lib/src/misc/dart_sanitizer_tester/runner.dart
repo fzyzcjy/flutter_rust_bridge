@@ -56,174 +56,19 @@ String _expectedTestResultMarker(String package) {
 _AllowedSanitizerFailure? _allowedSanitizerFailure(
   TestDartSanitizerConfig config,
 ) {
-  final summaries = _allowedLeakSummaries(config);
-  if (summaries.isEmpty) return null;
-
   return switch (config.sanitizer) {
     Sanitizer.asan => _AllowedSanitizerFailure(
       exitCode: 1,
-      reportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
-      summaries: summaries,
-      trailingLinesAfterSummary: const [],
-      reportLineCountsBySummary: _allowedReportLineCountsBySummary(config),
-      reportFragments: _allowedReportFragments(config),
+      normalizedReports: const [],
     ),
     Sanitizer.lsan => _AllowedSanitizerFailure(
       exitCode: 23,
-      reportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
-      summaries: summaries,
-      trailingLinesAfterSummary: const [],
-      reportLineCountsBySummary: _allowedReportLineCountsBySummary(config),
-      reportFragments: _allowedReportFragments(config),
+      normalizedReports: const [],
     ),
     Sanitizer.tsan => _AllowedSanitizerFailure(
       exitCode: 66,
-      reportHeader: 'WARNING: ThreadSanitizer: thread leak',
-      summaries: summaries,
-      trailingLinesAfterSummary: const [
-        '==================',
-        'ThreadSanitizer: reported 1 warnings',
-      ],
-      reportLineCountsBySummary: _allowedReportLineCountsBySummary(config),
-      reportFragments: _allowedReportFragments(config),
+      normalizedReports: const [],
     ),
-    _ => null,
-  };
-}
-
-Map<String, Map<String, int>> _allowedReportLineCountsBySummary(
-  TestDartSanitizerConfig config,
-) {
-  return {
-    for (final summary in _allowedLeakSummaries(config))
-      summary: allowedReportLineCountsForTesting(
-        sanitizer: config.sanitizer,
-        package: config.package,
-        summary: summary,
-      ),
-  };
-}
-
-List<String> _allowedReportFragments(TestDartSanitizerConfig config) {
-  final library = 'lib${config.package.replaceAll('/', '_')}.so';
-  return switch (config.sanitizer) {
-    Sanitizer.asan || Sanitizer.lsan => ['/dartvm+', library],
-    Sanitizer.tsan => [
-      library,
-      'tokio::runtime::blocking::pool::spawn_blocking',
-      'simple_use_async_spawn_blocking',
-    ],
-    _ => const [],
-  };
-}
-
-Map<String, int> allowedReportLineCountsForTesting({
-  required Sanitizer sanitizer,
-  required String package,
-  required String summary,
-}) {
-  return switch ((sanitizer, package, summary)) {
-    (
-      Sanitizer.asan,
-      'frb_example/pure_dart',
-      'SUMMARY: AddressSanitizer: 1056 byte(s) leaked in 96 allocation(s).',
-    ) => const {
-      'Direct leak of 16 byte(s) in 1 object(s) allocated from:': 24,
-      'Direct leak of 480 byte(s) in 60 object(s) allocated from:': 1,
-      'Indirect leak of 192 byte(s) in 12 object(s) allocated from:': 1,
-    },
-    (
-      Sanitizer.asan,
-      'frb_example/pure_dart_pde',
-      'SUMMARY: AddressSanitizer: 240 byte(s) leaked in 30 allocation(s).',
-    ) => const {
-      'Direct leak of 240 byte(s) in 30 object(s) allocated from:': 1,
-    },
-    (
-      Sanitizer.lsan,
-      'frb_example/pure_dart',
-      'SUMMARY: LeakSanitizer: 1056 byte(s) leaked in 96 allocation(s).',
-    ) => const {
-      'Direct leak of 16 byte(s) in 1 object(s) allocated from:': 24,
-      'Direct leak of 16 byte(s) in 2 object(s) allocated from:': 6,
-      'Direct leak of 8 byte(s) in 1 object(s) allocated from:': 48,
-      'Indirect leak of 16 byte(s) in 1 object(s) allocated from:': 12,
-    },
-    (
-      Sanitizer.lsan,
-      'frb_example/pure_dart',
-      'SUMMARY: LeakSanitizer: 1048 byte(s) leaked in 95 allocation(s).',
-    ) => const {
-      'Direct leak of 16 byte(s) in 1 object(s) allocated from:': 24,
-      'Direct leak of 16 byte(s) in 2 object(s) allocated from:': 5,
-      'Direct leak of 8 byte(s) in 1 object(s) allocated from:': 49,
-      'Indirect leak of 16 byte(s) in 1 object(s) allocated from:': 12,
-    },
-    (
-      Sanitizer.lsan,
-      'frb_example/pure_dart_pde',
-      'SUMMARY: LeakSanitizer: 240 byte(s) leaked in 30 allocation(s).',
-    ) => const {
-      'Direct leak of 16 byte(s) in 2 object(s) allocated from:': 3,
-      'Direct leak of 8 byte(s) in 1 object(s) allocated from:': 24,
-    },
-    (Sanitizer.tsan, _, _) => const {},
-    _ => throw StateError('Missing sanitizer report fingerprint for $summary'),
-  };
-}
-
-List<String> _allowedLeakSummaries(TestDartSanitizerConfig config) {
-  return allowedLeakSummariesForTesting(
-    sanitizer: config.sanitizer,
-    package: config.package,
-  );
-}
-
-List<String> allowedLeakSummariesForTesting({
-  required Sanitizer sanitizer,
-  required String package,
-}) {
-  final primary = allowedLeakSummaryForTesting(
-    sanitizer: sanitizer,
-    package: package,
-  );
-  if (primary == null) return const [];
-
-  if (sanitizer == Sanitizer.lsan && package == 'frb_example/pure_dart') {
-    return [
-      primary,
-      'SUMMARY: LeakSanitizer: 1048 byte(s) leaked in 95 allocation(s).',
-    ];
-  }
-
-  return [primary];
-}
-
-String? allowedLeakSummaryForTesting({
-  required Sanitizer sanitizer,
-  required String package,
-}) {
-  final sanitizerName = switch (sanitizer) {
-    Sanitizer.asan => 'AddressSanitizer',
-    Sanitizer.lsan => 'LeakSanitizer',
-    Sanitizer.tsan => 'ThreadSanitizer',
-    _ => null,
-  };
-  if (sanitizerName == null) return null;
-
-  if (sanitizer == Sanitizer.tsan) {
-    return switch (package) {
-      'frb_example/pure_dart' || 'frb_example/pure_dart_pde' =>
-        'SUMMARY: ThreadSanitizer: thread leak ??:? in pthread_create',
-      _ => null,
-    };
-  }
-
-  return switch (package) {
-    'frb_example/pure_dart' =>
-      'SUMMARY: $sanitizerName: 1056 byte(s) leaked in 96 allocation(s).',
-    'frb_example/pure_dart_pde' =>
-      'SUMMARY: $sanitizerName: 240 byte(s) leaked in 30 allocation(s).',
     _ => null,
   };
 }
@@ -423,19 +268,11 @@ class _Info {
 
 class _AllowedSanitizerFailure {
   final int exitCode;
-  final String reportHeader;
-  final List<String> summaries;
-  final List<String> trailingLinesAfterSummary;
-  final Map<String, Map<String, int>> reportLineCountsBySummary;
-  final List<String> reportFragments;
+  final List<String> normalizedReports;
 
   const _AllowedSanitizerFailure({
     required this.exitCode,
-    required this.reportHeader,
-    required this.summaries,
-    required this.trailingLinesAfterSummary,
-    required this.reportLineCountsBySummary,
-    required this.reportFragments,
+    required this.normalizedReports,
   });
 }
 
@@ -474,13 +311,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
     exitCode: output.exitCode,
     stderr: output.stderr,
     expectedExitCode: allowedFailure?.exitCode,
-    expectedReportHeader: allowedFailure?.reportHeader,
-    expectedSummaries: allowedFailure?.summaries,
-    expectedTrailingLinesAfterSummary:
-        allowedFailure?.trailingLinesAfterSummary,
-    expectedReportLineCountsBySummary:
-        allowedFailure?.reportLineCountsBySummary,
-    expectedReportFragments: allowedFailure?.reportFragments,
+    expectedNormalizedReports: allowedFailure?.normalizedReports,
   );
   if ((output.exitCode == 0) != info.expectSucceed && !hasOnlyAllowedFailure) {
     throw Exception(
@@ -506,80 +337,36 @@ bool isOnlyAllowedSanitizerFailureForTesting({
   required int exitCode,
   required String stderr,
   required int? expectedExitCode,
-  required String? expectedReportHeader,
-  required List<String>? expectedSummaries,
-  required List<String>? expectedTrailingLinesAfterSummary,
-  required Map<String, Map<String, int>>? expectedReportLineCountsBySummary,
-  required List<String>? expectedReportFragments,
+  required List<String>? expectedNormalizedReports,
 }) {
-  final lines = stderr.split('\n').map((line) => line.trimRight()).toList();
-  final sanitizerSummaries = lines
-      .where((line) => line.startsWith('SUMMARY: '))
-      .toList();
-  final diagnosticHeaders = lines.where(_isFatalDiagnosticHeader).toList();
-  final reportRecordHeaders = lines
-      .where(_isSanitizerReportRecordHeader)
-      .toList();
-  final nonEmptyLines = lines.where((line) => line.isNotEmpty).toList();
-  final summary = sanitizerSummaries.length == 1
-      ? sanitizerSummaries.single
-      : null;
-  final expectedReportLineCounts = summary == null
-      ? null
-      : expectedReportLineCountsBySummary?[summary];
-
   return expectedExitCode != null &&
-      expectedReportHeader != null &&
-      expectedSummaries != null &&
-      expectedTrailingLinesAfterSummary != null &&
-      expectedReportLineCounts != null &&
-      expectedReportFragments != null &&
+      expectedNormalizedReports != null &&
       exitCode == expectedExitCode &&
-      sanitizerSummaries.length == 1 &&
-      expectedSummaries.contains(sanitizerSummaries.single) &&
-      diagnosticHeaders.length == 1 &&
-      diagnosticHeaders.single.contains(expectedReportHeader) &&
-      reportRecordHeaders.length ==
-          expectedReportLineCounts.values.fold(0, (sum, count) => sum + count) &&
-      expectedReportLineCounts.entries.every(
-        (entry) => lines.where((line) => line == entry.key).length == entry.value,
-      ) &&
-      expectedReportFragments.every(stderr.contains) &&
-      nonEmptyLines.length >= expectedTrailingLinesAfterSummary.length + 1 &&
-      _iterableEquals(
-        nonEmptyLines.skip(
-          nonEmptyLines.length - expectedTrailingLinesAfterSummary.length - 1,
-        ),
-        [sanitizerSummaries.single, ...expectedTrailingLinesAfterSummary],
+      expectedNormalizedReports.contains(
+        normalizeSanitizerReportForTesting(stderr),
       );
 }
 
-bool _isSanitizerReportRecordHeader(String line) {
-  return line.startsWith('Direct leak of ') ||
-      line.startsWith('Indirect leak of ');
-}
-
-bool _isFatalDiagnosticHeader(String line) {
-  final trimmed = line.trimLeft();
-  return (trimmed.startsWith('==') && trimmed.contains('==ERROR:')) ||
-      (trimmed.startsWith('WARNING: ') && trimmed.contains('Sanitizer:')) ||
-      trimmed.startsWith('FATAL:') ||
-      trimmed.startsWith('Fatal error') ||
-      trimmed.startsWith('runtime error:') ||
-      trimmed.startsWith('Unhandled exception:') ||
-      trimmed.contains('Sanitizer:DEADLYSIGNAL');
-}
-
-bool _iterableEquals(Iterable<String> left, Iterable<String> right) {
-  final leftIterator = left.iterator;
-  final rightIterator = right.iterator;
-  while (leftIterator.moveNext()) {
-    if (!rightIterator.moveNext() ||
-        leftIterator.current != rightIterator.current) {
-      return false;
-    }
-  }
-  return !rightIterator.moveNext();
+String normalizeSanitizerReportForTesting(String report) {
+  return report
+      .split('\n')
+      .map((line) => line.trimRight())
+      .map(
+        (line) => line
+            .replaceFirst(RegExp(r'^\d{4}-\d\d-\d\dT\S+Z '), '')
+            .replaceAll(RegExp(r'==\d+=='), '==<pid>==')
+            .replaceAll(RegExp(r'\(pid=\d+\)'), '(pid=<pid>)')
+            .replaceAll(RegExp(r'\btid=\d+\b'), 'tid=<tid>')
+            .replaceAll(RegExp(r'\bThread T\d+\b'), 'Thread T<id>')
+            .replaceAll(RegExp(r'\bthread T\d+\b'), 'thread T<id>')
+            .replaceAll(RegExp(r'(?<!\+)0x[0-9a-fA-F]+'), '0x<address>')
+            .replaceAll(RegExp(r'\s+\(BuildId: [^)]+\)'), '')
+            .replaceAll(
+              RegExp(r'\([^)]*/dartvm\+'),
+              '(<dartvm>+',
+            ),
+      )
+      .join('\n');
 }
 
 Future<void> _printSanitizerToolchainInfo(
