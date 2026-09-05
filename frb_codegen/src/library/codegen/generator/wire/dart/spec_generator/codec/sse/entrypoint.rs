@@ -49,6 +49,10 @@ impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
 }
 
 pub(crate) fn generate_serialize_inputs(func: &MirFunc) -> String {
+    if func.inputs.is_empty() {
+        return String::new();
+    }
+
     let inputs = (func.inputs.iter())
         .map(|input| {
             format!(
