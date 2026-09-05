@@ -129,170 +129,71 @@ void main() {
     expect(sanitizerRustflagsForTesting(Sanitizer.tsan), '-Zsanitizer=thread');
   });
 
-  test('known sanitizer failures require the complete allowed shape', () {
-    final summary = allowedLeakSummaryForTesting(
-      sanitizer: Sanitizer.lsan,
-      package: 'frb_example/pure_dart',
-    )!;
-    const alternateSummary =
-        'SUMMARY: LeakSanitizer: 1048 byte(s) leaked in 95 allocation(s).';
-    const reportLine =
-        'Direct leak of 16 byte(s) in 1 object(s) allocated from:';
-    const reportFragment = 'known-runtime-origin';
-    final reportLineCountsBySummary = {
-      summary: {reportLine: 1},
-      alternateSummary: {reportLine: 1},
-    };
-
-    bool matches(
-      String stderr, {
-      List<String> summaries = const [],
-      List<String> trailingLines = const [],
-      List<String> fragments = const [reportFragment],
-    }) => isOnlyAllowedSanitizerFailureForTesting(
-      exitCode: trailingLines.isEmpty ? 23 : 66,
-      stderr: stderr,
-      expectedExitCode: trailingLines.isEmpty ? 23 : 66,
-      expectedReportHeader: trailingLines.isEmpty
-          ? 'ERROR: LeakSanitizer: detected memory leaks'
-          : 'WARNING: ThreadSanitizer: thread leak',
-      expectedSummaries: summaries.isEmpty ? [summary] : summaries,
-      expectedTrailingLinesAfterSummary: trailingLines,
-      expectedReportLineCountsBySummary: reportLineCountsBySummary,
-      expectedReportFragments: fragments,
-    );
-
-    String leakReport(String reportSummary, String origin) =>
+  test('sanitizer failure matching requires the complete normalized report', () {
+    const knownReport =
         '==123==ERROR: LeakSanitizer: detected memory leaks\n'
-        '$reportLine\n'
-        '#0 $origin\n'
-        '$reportSummary\n';
+        'Direct leak of 16 byte(s) in 1 object(s) allocated from:\n'
+        '    #0 0x1234  (/tmp/sdk/out/dartvm+0x217a63f) '
+        '(BuildId: abcdef)\n'
+        '    #1 0xabcd known_runtime_function '
+        '(libfrb_example_pure_dart.so+0x11f0446) (BuildId: 012345)\n'
+        'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n';
+    final normalizedKnownReport = normalizeSanitizerReportForTesting(
+      knownReport,
+    );
 
     expect(
-      matches(leakReport(summary, reportFragment)),
-      isTrue,
-    );
-    expect(
-      matches(
-        '==123==ERROR: LeakSanitizer: detected memory leaks\n$summary\n',
-      ),
-      isFalse,
-    );
-    expect(
-      allowedLeakSummariesForTesting(
-        sanitizer: Sanitizer.lsan,
-        package: 'frb_example/pure_dart',
-      ),
-      [summary, alternateSummary],
-    );
-    expect(
-      allowedLeakSummariesForTesting(
-        sanitizer: Sanitizer.asan,
-        package: 'frb_example/pure_dart',
-      ),
-      ['SUMMARY: AddressSanitizer: 1056 byte(s) leaked in 96 allocation(s).'],
-    );
-    expect(
-      matches(
-        leakReport(alternateSummary, reportFragment),
-        summaries: [summary, alternateSummary],
-      ),
-      isTrue,
-    );
-    expect(
-      matches(
-        leakReport(
-          'SUMMARY: LeakSanitizer: 400 byte(s) leaked in 25 allocation(s).',
-          reportFragment,
-        ),
-      ),
-      isFalse,
-    );
-    expect(
-      matches(
-        '${leakReport(summary, reportFragment)}'
-        'SUMMARY: LeakSanitizer: 1 byte(s) leaked in 1 allocation(s).\n',
-      ),
-      isFalse,
-    );
-    expect(
-      matches(
-        '${leakReport(summary, reportFragment)}'
-        'Unhandled exception: teardown failed\n',
-      ),
-      isFalse,
-    );
-    expect(
-      matches(
-        'Fatal error: unrelated teardown failure\n'
-        '${leakReport(summary, reportFragment)}',
-      ),
-      isFalse,
-    );
-    expect(
-      matches(leakReport(summary, 'new-regression-origin')),
-      isFalse,
-    );
-    const threadSummary =
-        'SUMMARY: ThreadSanitizer: thread leak ??:? in pthread_create';
-    final threadReportLineCountsBySummary = {
-      threadSummary: <String, int>{},
-    };
-    expect(
       isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 66,
-        stderr:
-            'WARNING: ThreadSanitizer: thread leak (pid=123)\n'
-            '#0 known-tokio-runtime-origin\n'
-            '$threadSummary\n'
-            '==================\n'
-            'ThreadSanitizer: reported 1 warnings\n',
-        expectedExitCode: 66,
-        expectedReportHeader: 'WARNING: ThreadSanitizer: thread leak',
-        expectedSummaries: const [threadSummary],
-        expectedTrailingLinesAfterSummary: const [
-          '==================',
-          'ThreadSanitizer: reported 1 warnings',
-        ],
-        expectedReportLineCountsBySummary: threadReportLineCountsBySummary,
-        expectedReportFragments: const ['known-tokio-runtime-origin'],
+        exitCode: 23,
+        stderr: knownReport,
+        expectedExitCode: 23,
+        expectedNormalizedReports: [normalizedKnownReport],
       ),
       isTrue,
     );
     expect(
       isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 66,
+        exitCode: 23,
         stderr:
-            'WARNING: ThreadSanitizer: thread leak (pid=123)\n'
-            '#0 new-regression-origin\n'
-            '$threadSummary\n'
-            '==================\n'
-            'ThreadSanitizer: reported 1 warnings\n',
-        expectedExitCode: 66,
-        expectedReportHeader: 'WARNING: ThreadSanitizer: thread leak',
-        expectedSummaries: const [threadSummary],
-        expectedTrailingLinesAfterSummary: const [
-          '==================',
-          'ThreadSanitizer: reported 1 warnings',
-        ],
-        expectedReportLineCountsBySummary: threadReportLineCountsBySummary,
-        expectedReportFragments: const ['known-tokio-runtime-origin'],
+            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+            'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n',
+        expectedExitCode: 23,
+        expectedNormalizedReports: [normalizedKnownReport],
       ),
       isFalse,
     );
-    expect(
-      allowedLeakSummaryForTesting(
-        sanitizer: Sanitizer.tsan,
-        package: 'frb_example/pure_dart_pde',
-      ),
-      threadSummary,
+    final unrelatedStackReport = knownReport.replaceFirst(
+      'known_runtime_function',
+      'new_regression_function',
     );
     expect(
-      allowedLeakSummaryForTesting(
-        sanitizer: Sanitizer.tsan,
-        package: 'frb_example/dart_minimal',
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 23,
+        stderr: unrelatedStackReport,
+        expectedExitCode: 23,
+        expectedNormalizedReports: [normalizedKnownReport],
       ),
-      isNull,
+      isFalse,
+    );
+    final unstableValuesChanged = knownReport
+        .replaceAll('0x1234', '0x9999')
+        .replaceAll('0xabcd', '0x8888')
+        .replaceAll('==123==', '==987==')
+        .replaceAll('/tmp/sdk/out/dartvm', '/other/sdk/dartvm')
+        .replaceAll('abcdef', 'fedcba')
+        .replaceAll('012345', '543210');
+    expect(
+      normalizeSanitizerReportForTesting(unstableValuesChanged),
+      normalizedKnownReport,
+    );
+    expect(
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 23,
+        stderr: knownReport,
+        expectedExitCode: 23,
+        expectedNormalizedReports: const [],
+      ),
+      isFalse,
     );
   });
 
