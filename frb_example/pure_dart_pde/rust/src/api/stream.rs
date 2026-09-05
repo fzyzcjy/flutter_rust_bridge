@@ -74,9 +74,39 @@ pub fn stream_worker_transfer_twin_normal(sink: StreamSink<i32>) {
                         let rejected_value = sink_in_worker.add(-1).is_err();
                         js_sys::Reflect::set(&prototype, &"postMessage".into(), &original).unwrap();
                         assert!(rejected_value);
-                        for value in [i32::from(rejected), original_value, original_byte] {
-                            sink_in_worker.add(value).unwrap();
-                        }
+                        let sink_in_callback = sink_in_worker.clone();
+                        let reenter = Closure::once_into_js(move || {
+                            sink_in_callback.add(original_value).unwrap();
+                        });
+                        let reentrant_post = js_sys::Function::new_with_args(
+                            "original, callback",
+                            "return function(message) { BroadcastChannel.prototype.postMessage = original; callback(); return original.call(this, message); }",
+                        ).call2(&JsValue::NULL, &original, &reenter).unwrap();
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &reentrant_post).unwrap();
+                        let result = sink_in_worker.add(i32::from(rejected));
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &original).unwrap();
+                        result.unwrap();
+                        sink_in_worker.add(original_byte).unwrap();
+
+                        use flutter_rust_bridge::for_generated::{DcoCodec, Rust2DartAction, StreamSinkBase};
+                        let failed_sink = StreamSinkBase::<i32, DcoCodec>::deserialize("__frb_broadcast_failure_probe/unused".to_owned());
+                        let calls = js_sys::Array::new();
+                        let reject_twice = js_sys::Function::new_with_args(
+                            "original, calls",
+                            "return function(message) { calls.push(message); if (calls.length <= 2) throw new DOMException('injected send failure', 'DataCloneError'); return original.call(this, message); }",
+                        ).call2(&JsValue::NULL, &original, &calls).unwrap();
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &reject_twice).unwrap();
+                        let first_failed = failed_sink.add_raw(DcoCodec::encode(Rust2DartAction::Success, 1)).is_err();
+                        let second_failed = failed_sink.add_raw(DcoCodec::encode(Rust2DartAction::Success, 2)).is_err();
+                        let calls_before_drop = calls.length();
+                        drop(failed_sink);
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &original).unwrap();
+                        assert!(first_failed && second_failed);
+                        assert_eq!(calls_before_drop, 2);
+                        assert_eq!(calls.length(), 3);
+                        let failure = js_sys::Array::from(&js_sys::Array::from(&calls.get(2)).get(1));
+                        assert_eq!(failure.length(), 1);
+                        assert_eq!(failure.get(0).as_string().unwrap(), "__frb_stream_failed");
                         drop(sink_in_worker);
                         finished_in_worker.store(true, Ordering::Release);
                         port_in_callback.set_onmessage(None);
