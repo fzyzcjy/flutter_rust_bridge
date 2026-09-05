@@ -403,11 +403,11 @@ void main() {
     });
 
     for (final example in [
-      _CiFilterExample(
+      const _CiFilterExample(
         filter: 'lint_dart_primary',
         enabledJobs: {'lint_dart_primary'},
       ),
-      const _CiFilterExample(
+      _CiFilterExample(
         filter: 'lint_dart_primary,test_dart_web',
         enabledJobs: {'lint_dart_primary', 'test_dart_web'},
         matrixByJob: {
