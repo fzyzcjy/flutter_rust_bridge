@@ -43,7 +43,6 @@ Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
     ),
     config.sanitizer,
     relativePwd: config.package,
-    allowedFailure: _allowedSanitizerFailure(config),
     sanitizerEnvironment: sanitizerEntrypointEnvironmentForTesting(
       package: config.package,
       sanitizer: config.sanitizer,
@@ -115,26 +114,6 @@ String _expectedTestResultMarker(String package) {
     'frb_example/pure_dart' ||
     'frb_example/pure_dart_pde' => 'FRB_DART_TEST_RESULT: success',
     _ => '',
-  };
-}
-
-_AllowedSanitizerFailure? _allowedSanitizerFailure(
-  TestDartSanitizerConfig config,
-) {
-  return switch (config.sanitizer) {
-    Sanitizer.asan => const _AllowedSanitizerFailure(
-      exitCode: 1,
-      normalizedReports: [],
-    ),
-    Sanitizer.lsan => const _AllowedSanitizerFailure(
-      exitCode: 23,
-      normalizedReports: [],
-    ),
-    Sanitizer.tsan => const _AllowedSanitizerFailure(
-      exitCode: 66,
-      normalizedReports: [],
-    ),
-    _ => null,
   };
 }
 
@@ -331,22 +310,11 @@ class _Info {
   });
 }
 
-class _AllowedSanitizerFailure {
-  final int exitCode;
-  final List<String> normalizedReports;
-
-  const _AllowedSanitizerFailure({
-    required this.exitCode,
-    required this.normalizedReports,
-  });
-}
-
 Future<void> _execAndCheckWithSanitizerEnvVar(
   String cmd,
   _Info info,
   Sanitizer sanitizer, {
   required String relativePwd,
-  _AllowedSanitizerFailure? allowedFailure,
   Map<String, String> sanitizerEnvironment = const {},
 }) async {
   print('====== execAndCheckWithSanitizerEnvVar name=${info.name} ======');
@@ -382,63 +350,42 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
     }
   }
 
-  final hasOnlyAllowedFailure = isOnlyAllowedSanitizerFailureForTesting(
+  checkSanitizerResultForTesting(
     exitCode: output.exitCode,
+    stdout: output.stdout,
     stderr: output.stderr,
-    expectedExitCode: allowedFailure?.exitCode,
-    expectedNormalizedReports: allowedFailure?.normalizedReports,
+    expectSucceed: info.expectSucceed,
+    expectStderrContains: info.expectStderrContains,
+    expectStdoutContains: info.expectStdoutContains,
   );
-  if ((output.exitCode == 0) != info.expectSucceed && !hasOnlyAllowedFailure) {
-    throw Exception(
-      'Bad exitCode=${output.exitCode}, while expectSucceed=${info.expectSucceed}',
-    );
-  }
-
-  if (!output.stderr.contains(info.expectStderrContains)) {
-    throw Exception(
-      'Bad stderr which does not contain `${info.expectStderrContains}`',
-    );
-  }
-  if (!output.stdout.contains(info.expectStdoutContains)) {
-    throw Exception(
-      'Bad stdout which does not contain `${info.expectStdoutContains}`',
-    );
-  }
 
   print('Pass check for ${info.name}');
 }
 
-bool isOnlyAllowedSanitizerFailureForTesting({
+void checkSanitizerResultForTesting({
   required int exitCode,
+  required String stdout,
   required String stderr,
-  required int? expectedExitCode,
-  required List<String>? expectedNormalizedReports,
+  required bool expectSucceed,
+  String expectStderrContains = '',
+  String expectStdoutContains = '',
 }) {
-  return expectedExitCode != null &&
-      expectedNormalizedReports != null &&
-      exitCode == expectedExitCode &&
-      expectedNormalizedReports.contains(
-        normalizeSanitizerReportForTesting(stderr),
-      );
-}
+  if ((exitCode == 0) != expectSucceed) {
+    throw Exception(
+      'Bad exitCode=$exitCode, while expectSucceed=$expectSucceed',
+    );
+  }
 
-String normalizeSanitizerReportForTesting(String report) {
-  return report
-      .split('\n')
-      .map((line) => line.trimRight())
-      .map(
-        (line) => line
-            .replaceFirst(RegExp(r'^\d{4}-\d\d-\d\dT\S+Z '), '')
-            .replaceAll(RegExp(r'==\d+=='), '==<pid>==')
-            .replaceAll(RegExp(r'\(pid=\d+\)'), '(pid=<pid>)')
-            .replaceAll(RegExp(r'\btid=\d+\b'), 'tid=<tid>')
-            .replaceAll(RegExp(r'\bThread T\d+\b'), 'Thread T<id>')
-            .replaceAll(RegExp(r'\bthread T\d+\b'), 'thread T<id>')
-            .replaceAll(RegExp(r'(?<!\+)0x[0-9a-fA-F]+'), '0x<address>')
-            .replaceAll(RegExp(r'\s+\(BuildId: [^)]+\)'), '')
-            .replaceAll(RegExp(r'\([^)]*/dartvm\+'), '(<dartvm>+'),
-      )
-      .join('\n');
+  if (!stderr.contains(expectStderrContains)) {
+    throw Exception(
+      'Bad stderr which does not contain `$expectStderrContains`',
+    );
+  }
+  if (!stdout.contains(expectStdoutContains)) {
+    throw Exception(
+      'Bad stdout which does not contain `$expectStdoutContains`',
+    );
+  }
 }
 
 Future<void> _printSanitizerToolchainInfo(
