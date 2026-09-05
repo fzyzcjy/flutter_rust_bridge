@@ -361,10 +361,7 @@ String normalizeSanitizerReportForTesting(String report) {
             .replaceAll(RegExp(r'\bthread T\d+\b'), 'thread T<id>')
             .replaceAll(RegExp(r'(?<!\+)0x[0-9a-fA-F]+'), '0x<address>')
             .replaceAll(RegExp(r'\s+\(BuildId: [^)]+\)'), '')
-            .replaceAll(
-              RegExp(r'\([^)]*/dartvm\+'),
-              '(<dartvm>+',
-            ),
+            .replaceAll(RegExp(r'\([^)]*/dartvm\+'), '(<dartvm>+'),
       )
       .join('\n');
 }
