@@ -3,7 +3,7 @@ library;
 
 import 'dart:ffi';
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge/src/droppable/_common.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_uint8list/rust_vec_u8.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
