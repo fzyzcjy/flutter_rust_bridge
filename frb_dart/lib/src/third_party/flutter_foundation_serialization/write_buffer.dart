@@ -261,6 +261,7 @@ class WriteBuffer {
     return (ptr: raw.ptr, rustVecLen: raw.length, dataLen: _currentSize);
   }
 
+  /// Releases the buffer, rejecting repeated disposal or prior ownership transfer.
   void dispose() {
     if (_isDone) {
       throw StateError('The $runtimeType has already released its buffer.');
