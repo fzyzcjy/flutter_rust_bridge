@@ -55,6 +55,12 @@ There is no need to read it word by word, since it serves as a reference to find
 - `.github`: GitHub-related.
     - `workflows/ci.yaml`: Definition of CI workflows.
 
+## Quickstart smoke checks
+
+- Quickstart smoke CI requires a screenshot whose OCR contains `Hello, Tom`; build success or Flutter readiness alone does not pass the check.
+- On macOS desktop, the screenshot helper activates the tested package's absolute `build/macos/Build/Products/Debug/<package-name>.app` bundle. The default and native-assets examples have different product names.
+- App activation does not apply to Web smoke checks running on macOS. Adding build modes or flavors requires updating the desktop bundle path alongside the Flutter run arguments.
+
 ## Code generator overview
 
 :::tip
