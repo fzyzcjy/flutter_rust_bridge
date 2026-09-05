@@ -51,7 +51,7 @@ Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge
     --release-ref HEAD
   ```
 
-  Stop and wait for normal CI if the script reports any `BLOCK` path. The script is intentionally conservative: release-surface paths such as `Cargo.toml`, `frb_dart/pubspec.yaml`, `frb_codegen/**`, `frb_macros/**`, `frb_rust/**`, `frb_dart/**`, `frb_utils/**`, `frb_example/**`, `tools/frb_internal/**`, `pubspec.yaml`, `melos.yaml`, and lockfiles are not in the allowlist. `CHANGELOG.md` is allowed because adding the target release section is a normal release-preparation step and is reviewed directly before publishing. This exception is for changelog-only release preparation, docs, agent tooling, devcontainer, selected CI configuration, and other explicitly non-release paths only.
+  Stop and wait for normal CI if the script reports any `BLOCK` path. The script is intentionally conservative: release-surface paths such as `Cargo.toml`, `frb_dart/pubspec.yaml`, `frb_codegen/**`, `frb_macros/**`, `frb_rust/**`, `frb_utils/**`, `frb_example/**`, `tools/frb_internal/**`, `pubspec.yaml`, `melos.yaml`, and lockfiles are not in the allowlist. Release metadata and its generated copies are allowed: `CHANGELOG.md`, `frb_dart/CHANGELOG.md`, `frb_hooks/CHANGELOG.md`, `.all-contributors-custom.yaml`, `.all-contributorsrc`, `README.md`, `frb_dart/README.md`, and `website/**`. These files are reviewed directly before publishing and do not affect package execution. Other `frb_dart/**` and `frb_hooks/**` paths remain blocked. This exception is for release metadata, docs, agent tooling, devcontainer, selected CI configuration, and other explicitly non-release paths only.
 
 ### 2. Reconcile Contributors
 
