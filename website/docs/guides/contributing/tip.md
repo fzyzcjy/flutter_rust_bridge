@@ -33,6 +33,12 @@ The final PR should run the normal CI surface again, so reviewers can trust that
 To run the `flutter_rust_bridge_codegen`, but using the local code (instead of a released version),
 please replace it with `just codegen`.
 
+## Native example test scheduling
+
+- `pure_dart` and its generated `pure_dart_pde` copy run test files with `concurrency: 1` in `dart_test.yaml`.
+- Dart test isolates share the native Rust library's process-global logger. Concurrent initialization and disposal in different test files can replace or clear another file's logging sink.
+- Serial file scheduling preserves every test and assertion. Tests that explicitly create isolates, workers, or concurrent streams still exercise that concurrency within their test file.
+
 ## Draw a flamegraph for performance
 
 If you are not working on improving performance, please ignore this subsection.

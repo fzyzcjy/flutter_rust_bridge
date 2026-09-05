@@ -3,8 +3,10 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::api_dart::spec_generator::function::{
     compute_params_str, ApiDartGeneratedFunction,
 };
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
+use crate::codegen::generator::wire::dart::spec_generator::codec::cst::validate;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::misc::function::wire_func_name;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncArgMode, MirFuncMode};
@@ -27,6 +29,22 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let wire_func_name = wire_func_name(func);
     let inner_func_stmt = dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &wire_func_name);
+    let inner_func_stmt = if func.codec_mode_pack.dart2rust == CodecMode::Cst {
+        let validation = func
+            .inputs
+            .iter()
+            .map(|input| {
+                validate::generate_call(
+                    &input.inner.ty,
+                    &input.inner.name.dart_style(),
+                    context.mir_pack,
+                )
+            })
+            .join("\n");
+        format!("{validation}\n{inner_func_stmt}")
+    } else {
+        inner_func_stmt
+    };
     let execute_func_name = generate_execute_func_name(func);
 
     let codec = generate_rust2dart_codec_object(func);
@@ -182,14 +200,59 @@ fn generate_rust2dart_codec_object(func: &MirFunc) -> String {
 mod tests {
     use super::*;
     use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+    use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::test_utils;
     use crate::codegen::ir::mir::field::{MirField, MirFieldSettings};
     use crate::codegen::ir::mir::func::{
         MirFuncImplMode, MirFuncInput, MirFuncOutput, MirFuncOwnerInfo,
     };
     use crate::codegen::ir::mir::ident::MirIdent;
+    use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
+    use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
     use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::rust_opaque::{
+        MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
+    };
     use crate::codegen::ir::mir::ty::MirType;
     use crate::utils::namespace::Namespace;
+
+    /// Validates a later opaque argument before allocating the earlier string argument.
+    #[test]
+    fn validates_all_cst_inputs_before_encoding_any_argument() {
+        let mut function = func(MirFuncMode::Normal, None);
+        function.id = Some(1);
+        function.inputs[0].inner.ty = MirType::Delegate(MirTypeDelegate::String);
+        let mut handle = function.inputs[0].clone();
+        handle.inner.name = MirIdent::new("handle".into(), None);
+        handle.inner.ty = MirType::RustOpaque(MirTypeRustOpaque {
+            namespace: Namespace::default(),
+            inner: MirRustOpaqueInner(MirLifetimeAwareType::new("Handle".into())),
+            codec: RustOpaqueCodecMode::Nom,
+            dart_api_type: Some("Handle".into()),
+            brief_name: false,
+        });
+        let validation_name = format!("cst_validate_{}(handle);", handle.inner.ty.safe_ident());
+        function.inputs.push(handle);
+        let pack = test_utils::pack();
+        let wire_config = test_utils::wire_dart_config(true);
+        let rust_config = test_utils::wire_rust_config(true);
+        let api_config = test_utils::api_dart_config();
+        let output = generate_api_impl_normal_function(
+            &function,
+            WireDartGeneratorContext {
+                mir_pack: &pack,
+                config: &wire_config,
+                wire_rust_config: &rust_config,
+                api_dart_config: &api_config,
+            },
+        )
+        .unwrap()
+        .api_impl_class_body;
+
+        assert!(
+            output.find(&validation_name).unwrap()
+                < output.find("cst_encode_String(inputValue)").unwrap()
+        );
+    }
 
     fn func(mode: MirFuncMode, error: Option<MirType>) -> MirFunc {
         MirFunc {

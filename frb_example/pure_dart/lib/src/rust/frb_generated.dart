@@ -376,7 +376,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.14.0-beta.1';
 
   @override
-  int get rustContentHash => -703344157;
+  int get rustContentHash => -261923507;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -6837,6 +6837,16 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualChronoTypeTwinSyncSseHowLongDoesItTakeTwinSyncSse(
           {required FeatureChronoTwinSyncSse mine});
 
+  Stream<int> crateApiStreamImmediateStreamTwinNormal();
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncImmediateStreamTwinRustAsync();
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseImmediateStreamTwinRustAsyncSse();
+
+  Stream<int> crateApiPseudoManualStreamTwinSseImmediateStreamTwinSse();
+
   Future<void> crateApiCustomizationInitApp();
 
   Future<bool> crateApiMirrorIsAppEmbeddedTwinNormal(
@@ -10260,6 +10270,16 @@ abstract class RustLibApi extends BaseApi {
   Stream<String>
       crateApiPseudoManualExceptionTwinSyncSseStreamSinkThrowAnyhowTwinSyncSse();
 
+  Stream<int> crateApiStreamStreamWorkerTransferTwinNormal();
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStreamWorkerTransferTwinRustAsync();
+
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStreamWorkerTransferTwinRustAsyncSse();
+
+  Stream<int> crateApiPseudoManualStreamTwinSseStreamWorkerTransferTwinSse();
+
   Future<void>
       crateApiCommentStructWithCommentsTwinNormalInstanceMethodTwinNormal(
           {required StructWithCommentsTwinNormal that});
@@ -13036,6 +13056,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required ConstructorOpaqueStructTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
                 that);
@@ -13067,6 +13089,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required ConstructorOpaqueStructTwinNormal that, required String one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
                 that);
@@ -13099,6 +13124,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required ConstructorOpaqueStructTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
                 that);
@@ -13158,6 +13185,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required ConstructorOpaqueSyncStructTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
                 that);
@@ -13191,6 +13220,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
                 that);
@@ -13223,6 +13255,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required ConstructorOpaqueSyncStructTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
                 that);
@@ -13281,6 +13315,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required DeliberateFailSanityCheckTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13313,6 +13349,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required DeliberateFailSanityCheckTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13346,6 +13384,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required DeliberateFailSanityCheckTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13379,6 +13419,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required DeliberateFailSanityCheckTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13410,6 +13452,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required DeliberateFailSanityCheckTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13442,6 +13486,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required DeliberateFailSanityCheckTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13476,6 +13522,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required Uint8List deliberateBadFieldA}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13510,6 +13559,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required OpaqueItemTwinNormal deliberateBadFieldB}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+            deliberateBadFieldB);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13546,6 +13599,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required List<OpaqueItemTwinNormal> deliberateBadFieldC}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
+        cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+            deliberateBadFieldC);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13582,6 +13639,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String goodFieldA}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13616,6 +13676,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int goodFieldB}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13650,6 +13713,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required OpaqueItemTwinNormal goodFieldC}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+            that);
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+            goodFieldC);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
                 that);
@@ -13713,6 +13780,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     final sink = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
                 that);
@@ -13796,6 +13866,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required DroppableTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
                 that);
@@ -13957,6 +14029,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     final sink = RustStreamSink<int>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
                 that);
@@ -14045,6 +14120,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required DroppableTwinRustAsync that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
                 that);
@@ -14328,6 +14405,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     final sink = RustStreamSink<int>();
     handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
                 that);
@@ -14413,6 +14493,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required DroppableTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
                 that);
@@ -14444,6 +14526,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required ItemContainerSolutionOneTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
                 that);
@@ -14477,6 +14561,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String name}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
                 that);
@@ -14538,6 +14625,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required ItemContainerSolutionOneTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
                 that);
@@ -15660,6 +15749,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required MyImplTraitWithSelfTwinNormal another}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+            that);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+            another);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
                 that);
@@ -15695,6 +15788,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required MyImplTraitWithSelfTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
                 that);
@@ -15729,6 +15824,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required MyImplTraitWithSelfTwinSse another}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+            that);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+            another);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
                 that);
@@ -15764,6 +15863,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required MyImplTraitWithSelfTwinSse that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
                 that);
@@ -15798,6 +15899,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required MyImplTraitWithSelfTwinSyncSse another}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+            that);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+            another);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
                 that);
@@ -15833,6 +15938,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required MyImplTraitWithSelfTwinSyncSse that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
                 that);
@@ -15867,6 +15974,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required MyImplTraitWithSelfTwinSync another}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+            that);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+            another);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
                 that);
@@ -15902,6 +16013,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required MyImplTraitWithSelfTwinSync that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
                 that);
@@ -15992,6 +16105,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required MyStructWithTryFromTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
                 that);
@@ -16023,6 +16138,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 that);
@@ -16055,6 +16172,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            that);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 that);
@@ -16087,6 +16206,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 that);
@@ -16118,6 +16239,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 that);
@@ -16149,6 +16272,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 that);
@@ -16266,6 +16391,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 arg);
@@ -16298,6 +16425,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 arg);
@@ -16330,6 +16459,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 arg);
@@ -16390,6 +16521,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 that);
@@ -16422,6 +16555,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 that);
@@ -16454,6 +16589,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 that);
@@ -16486,6 +16623,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 that);
@@ -16518,6 +16657,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 that);
@@ -16635,6 +16776,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 arg);
@@ -16667,6 +16810,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            arg);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 arg);
@@ -16699,6 +16844,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 arg);
@@ -16760,6 +16907,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 that);
@@ -16792,6 +16941,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 that);
@@ -16824,6 +16975,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 that);
@@ -16856,6 +17009,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 that);
@@ -16888,6 +17043,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 that);
@@ -17007,6 +17164,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 arg);
@@ -17039,6 +17198,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 arg);
@@ -17071,6 +17232,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 arg);
@@ -17909,6 +18072,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 that);
@@ -17941,6 +18106,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            that);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 that);
@@ -17973,6 +18140,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            that);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 that);
@@ -18005,6 +18174,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 that);
@@ -18037,6 +18208,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 that);
@@ -18156,6 +18329,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 arg);
@@ -18188,6 +18363,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            arg);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 arg);
@@ -18220,6 +18397,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 arg);
@@ -19050,6 +19229,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 that);
@@ -19082,6 +19263,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 that);
@@ -19114,6 +19297,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 that);
@@ -19145,6 +19330,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinSyncMoi that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 that);
@@ -19177,6 +19364,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 that);
@@ -19293,6 +19482,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 arg);
@@ -19325,6 +19516,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 arg);
@@ -19357,6 +19550,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 arg);
@@ -20191,6 +20386,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 that);
@@ -20223,6 +20420,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 that);
@@ -20255,6 +20454,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 that);
@@ -20286,6 +20487,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 that);
@@ -20318,6 +20521,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 that);
@@ -20432,6 +20637,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 arg);
@@ -20464,6 +20671,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            arg);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 arg);
@@ -20496,6 +20705,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 arg);
@@ -20555,6 +20766,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required OpaqueStructWithDartCodeTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
                 that);
@@ -20586,6 +20799,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required SimpleLogger that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
                 that);
@@ -20670,6 +20885,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required SimpleOpaqueExternalStructWithMethod that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
                 that);
@@ -20869,6 +21086,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructInMiscNoTwinExampleA that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
                 that);
@@ -20900,6 +21119,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructInMiscNoTwinExampleB that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
                 that);
@@ -20933,6 +21154,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructInMiscNoTwinExampleB that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
                 that);
@@ -20963,6 +21186,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructOneWithTraitForDynTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
                 that);
@@ -20994,6 +21219,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructOneWithTraitForDynTwinNormal that, required int one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
                 that);
@@ -21091,6 +21319,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructOneWithTraitTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
                 that);
@@ -21121,6 +21351,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructOneWithTraitTwinNormal that, required int one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
                 that);
@@ -21153,6 +21386,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructOneWithTraitTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
                 that);
@@ -21243,6 +21478,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructOneWithTraitTwinSse that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
                 that);
@@ -21274,6 +21511,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructOneWithTraitTwinSse that, required int one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
                 that);
@@ -21306,6 +21546,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructOneWithTraitTwinSse that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
                 that);
@@ -21395,6 +21637,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructOneWithTraitTwinSyncSse that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
                 that);
@@ -21426,6 +21670,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructOneWithTraitTwinSyncSse that, required int one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
                 that);
@@ -21458,6 +21705,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructOneWithTraitTwinSyncSse that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
                 that);
@@ -21548,6 +21797,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructOneWithTraitTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
                 that);
@@ -21579,6 +21830,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructOneWithTraitTwinSync that, required int one}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
                 that);
@@ -21611,6 +21865,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructOneWithTraitTwinSync that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
                 that);
@@ -21700,6 +21956,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructTwoWithTraitForDynTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
                 that);
@@ -21731,6 +21989,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructTwoWithTraitForDynTwinNormal that, required int two}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
                 that);
@@ -21828,6 +22089,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructTwoWithTraitTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
                 that);
@@ -21858,6 +22121,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructTwoWithTraitTwinNormal that, required int two}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
                 that);
@@ -21890,6 +22156,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructTwoWithTraitTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
                 that);
@@ -21980,6 +22248,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructTwoWithTraitTwinSse that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
                 that);
@@ -22011,6 +22281,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructTwoWithTraitTwinSse that, required int two}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
                 that);
@@ -22043,6 +22316,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructTwoWithTraitTwinSse that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
                 that);
@@ -22132,6 +22407,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructTwoWithTraitTwinSyncSse that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
                 that);
@@ -22163,6 +22440,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructTwoWithTraitTwinSyncSse that, required int two}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
                 that);
@@ -22195,6 +22475,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructTwoWithTraitTwinSyncSse that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
                 that);
@@ -22285,6 +22567,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructTwoWithTraitTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
                 that);
@@ -22316,6 +22600,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructTwoWithTraitTwinSync that, required int two}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
                 that);
@@ -22348,6 +22635,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructTwoWithTraitTwinSync that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
                 that);
@@ -22438,6 +22727,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
                 that);
@@ -22471,6 +22762,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
                 that);
@@ -22504,6 +22798,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
                 that);
@@ -22537,6 +22833,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
                 that);
@@ -22571,6 +22870,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
               that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
                 that);
@@ -22605,6 +22906,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
                 that);
@@ -22639,6 +22943,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
               that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
                 that);
@@ -22673,6 +22979,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
                 that);
@@ -22707,6 +23016,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
               that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
                 that);
@@ -22741,6 +23052,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
                 that);
@@ -22775,6 +23089,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
               that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
                 that);
@@ -22808,6 +23124,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
                 that);
@@ -22841,6 +23160,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
                 that);
@@ -22874,6 +23195,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
                 that);
@@ -22907,6 +23231,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSse that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
                 that);
@@ -22940,6 +23266,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
                 that);
@@ -22974,6 +23303,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
               that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
                 that);
@@ -23007,6 +23338,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
                 that);
@@ -23041,6 +23375,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
               that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
                 that);
@@ -23075,6 +23411,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
                 that);
@@ -23109,6 +23448,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
               that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
                 that);
@@ -23142,6 +23483,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
                 that);
@@ -23175,6 +23519,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSync that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
                 that);
@@ -23208,6 +23554,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required String good}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
                 that);
@@ -23241,6 +23590,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithImplBlockInMultiFile that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
                 that);
@@ -23272,6 +23623,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithImplBlockInMultiFile that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
                 that);
@@ -23331,6 +23684,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructWithSimpleSetterTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
                 that);
@@ -23389,6 +23744,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructWithSimpleSetterTwinNormal that, required int value}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
                 that);
@@ -23421,6 +23779,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructWithSimpleSetterTwinNormal that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
                 that);
@@ -23451,6 +23811,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructWithSimpleSetterTwinNormal that, required int value}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
                 that);
@@ -23482,6 +23845,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required TypeForIgnoreAll that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
                 that);
@@ -23512,6 +23877,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required TypeForIgnoreAll that, required int field2}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+            that);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
                 that);
@@ -23569,6 +23937,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required TypeForIgnoreAll that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
                 that);
@@ -23648,6 +24018,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required TypeForIgnore that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+            that);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
                 that);
@@ -32127,6 +32499,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {HideDataTwinMoi? opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinMoi(opaque);
         var arg0 =
             cst_encode_opt_box_autoadd_RustOpaque_HideDataTwinMoi(opaque);
         return wire
@@ -32157,6 +32530,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {HideDataTwinNormal? opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinNormal(opaque);
         var arg0 =
             cst_encode_opt_box_autoadd_RustOpaque_HideDataTwinNormal(opaque);
         return wire
@@ -32186,6 +32560,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {HideDataTwinRustAsync? opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinRustAsync(opaque);
         var arg0 =
             cst_encode_opt_box_autoadd_RustOpaque_HideDataTwinRustAsync(opaque);
         return wire
@@ -32217,6 +32592,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {HideDataTwinRustAsyncMoi? opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinRustAsyncMoi(
+            opaque);
         var arg0 =
             cst_encode_opt_box_autoadd_RustOpaque_HideDataTwinRustAsyncMoi(
                 opaque);
@@ -32381,6 +32758,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {HideDataTwinSync? opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinSync(opaque);
         var arg0 =
             cst_encode_opt_box_autoadd_RustOpaque_HideDataTwinSync(opaque);
         return wire
@@ -32412,6 +32790,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {HideDataTwinSyncMoi? opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinSyncMoi(opaque);
         var arg0 =
             cst_encode_opt_box_autoadd_RustOpaque_HideDataTwinSyncMoi(opaque);
         return wire
@@ -56312,6 +56691,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BoxAnyMyDartTypeRename a}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
+            a);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
                 a);
@@ -66593,6 +66974,125 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Stream<int> crateApiStreamImmediateStreamTwinNormal() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        return wire.wire__crate__api__stream__immediate_stream_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamImmediateStreamTwinNormalConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta get kCrateApiStreamImmediateStreamTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "immediate_stream_twin_normal",
+        argNames: ["sink"],
+      );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncImmediateStreamTwinRustAsync() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__immediate_stream_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncImmediateStreamTwinRustAsyncConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncImmediateStreamTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "immediate_stream_twin_rust_async",
+            argNames: ["sink"],
+          );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseImmediateStreamTwinRustAsyncSse() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__immediate_stream_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseImmediateStreamTwinRustAsyncSseConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseImmediateStreamTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "immediate_stream_twin_rust_async_sse",
+            argNames: ["sink"],
+          );
+
+  @override
+  Stream<int> crateApiPseudoManualStreamTwinSseImmediateStreamTwinSse() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__immediate_stream_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseImmediateStreamTwinSseConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseImmediateStreamTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "immediate_stream_twin_sse",
+            argNames: ["sink"],
+          );
+
+  @override
   Future<void> crateApiCustomizationInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -66821,6 +67321,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required ItemContainerSolutionTwoTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_item_container_solution_two_twin_normal(that);
         var arg0 =
             cst_encode_box_autoadd_item_container_solution_two_twin_normal(
                 that);
@@ -71314,6 +71815,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinMoiArray2 data}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinMoi_array_2(data);
         var arg0 = cst_encode_RustOpaque_HideDataTwinMoi_array_2(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_array_run_twin_moi(
@@ -71342,6 +71844,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinNormalArray2 data}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinNormal_array_2(data);
         var arg0 = cst_encode_RustOpaque_HideDataTwinNormal_array_2(data);
         return wire.wire__crate__api__rust_opaque__opaque_array_run_twin_normal(
             port_, arg0);
@@ -71368,6 +71871,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required HideDataTwinRustAsyncArray2 data}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinRustAsync_array_2(data);
         var arg0 = cst_encode_RustOpaque_HideDataTwinRustAsync_array_2(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_array_run_twin_rust_async(
@@ -71397,6 +71901,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required HideDataTwinRustAsyncMoiArray2 data}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinRustAsyncMoi_array_2(data);
         var arg0 = cst_encode_RustOpaque_HideDataTwinRustAsyncMoi_array_2(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_array_run_twin_rust_async_moi(
@@ -71549,6 +72054,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinSyncArray2 data}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_HideDataTwinSync_array_2(data);
         var arg0 = cst_encode_RustOpaque_HideDataTwinSync_array_2(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_array_run_twin_sync(
@@ -71577,6 +72083,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinSyncMoiArray2 data}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_HideDataTwinSyncMoi_array_2(data);
         var arg0 = cst_encode_RustOpaque_HideDataTwinSyncMoi_array_2(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_array_run_twin_sync_moi(
@@ -71998,6 +72505,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<HideDataTwinMoi> data}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_list_RustOpaque_HideDataTwinMoi(data);
         var arg0 = cst_encode_list_RustOpaque_HideDataTwinMoi(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__opaque_vec_run_twin_moi(
@@ -72026,6 +72534,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<HideDataTwinNormal> data}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_list_RustOpaque_HideDataTwinNormal(data);
         var arg0 = cst_encode_list_RustOpaque_HideDataTwinNormal(data);
         return wire.wire__crate__api__rust_opaque__opaque_vec_run_twin_normal(
             port_, arg0);
@@ -72052,6 +72561,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<HideDataTwinRustAsync> data}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_list_RustOpaque_HideDataTwinRustAsync(data);
         var arg0 = cst_encode_list_RustOpaque_HideDataTwinRustAsync(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__opaque_vec_run_twin_rust_async(
@@ -72081,6 +72591,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required List<HideDataTwinRustAsyncMoi> data}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_list_RustOpaque_HideDataTwinRustAsyncMoi(data);
         var arg0 = cst_encode_list_RustOpaque_HideDataTwinRustAsyncMoi(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__opaque_vec_run_twin_rust_async_moi(
@@ -72232,6 +72743,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<HideDataTwinSync> data}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_list_RustOpaque_HideDataTwinSync(data);
         var arg0 = cst_encode_list_RustOpaque_HideDataTwinSync(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__opaque_vec_run_twin_sync(
@@ -72260,6 +72772,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<HideDataTwinSyncMoi> data}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_list_RustOpaque_HideDataTwinSyncMoi(data);
         var arg0 = cst_encode_list_RustOpaque_HideDataTwinSyncMoi(data);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__opaque_vec_run_twin_sync_moi(
@@ -76595,6 +77108,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required EnumOpaqueTwinMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_enum_opaque_twin_moi(opaque);
         var arg0 = cst_encode_box_autoadd_enum_opaque_twin_moi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi(
@@ -76623,6 +77137,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required EnumOpaqueTwinNormal opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_enum_opaque_twin_normal(opaque);
         var arg0 = cst_encode_box_autoadd_enum_opaque_twin_normal(opaque);
         return wire.wire__crate__api__rust_opaque__run_enum_opaque_twin_normal(
             port_, arg0);
@@ -76649,6 +77164,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required EnumOpaqueTwinRustAsync opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_enum_opaque_twin_rust_async(opaque);
         var arg0 = cst_encode_box_autoadd_enum_opaque_twin_rust_async(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_enum_opaque_twin_rust_async(
@@ -76678,6 +77194,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required EnumOpaqueTwinRustAsyncMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_enum_opaque_twin_rust_async_moi(opaque);
         var arg0 =
             cst_encode_box_autoadd_enum_opaque_twin_rust_async_moi(opaque);
         return wire
@@ -76832,6 +77349,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required EnumOpaqueTwinSync opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_enum_opaque_twin_sync(opaque);
         var arg0 = cst_encode_box_autoadd_enum_opaque_twin_sync(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_enum_opaque_twin_sync(
@@ -76860,6 +77378,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required EnumOpaqueTwinSyncMoi opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_enum_opaque_twin_sync_moi(opaque);
         var arg0 = cst_encode_box_autoadd_enum_opaque_twin_sync_moi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_enum_opaque_twin_sync_moi(
@@ -76950,6 +77469,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required OpaqueNestedTwinMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_opaque_nested_twin_moi(opaque);
         var arg0 = cst_encode_box_autoadd_opaque_nested_twin_moi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_nested_opaque_twin_moi(
@@ -76978,6 +77498,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required OpaqueNestedTwinNormal opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_opaque_nested_twin_normal(opaque);
         var arg0 = cst_encode_box_autoadd_opaque_nested_twin_normal(opaque);
         return wire
             .wire__crate__api__rust_opaque__run_nested_opaque_twin_normal(
@@ -77005,6 +77526,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required OpaqueNestedTwinRustAsync opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_opaque_nested_twin_rust_async(opaque);
         var arg0 = cst_encode_box_autoadd_opaque_nested_twin_rust_async(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_nested_opaque_twin_rust_async(
@@ -77034,6 +77556,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required OpaqueNestedTwinRustAsyncMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_opaque_nested_twin_rust_async_moi(opaque);
         var arg0 =
             cst_encode_box_autoadd_opaque_nested_twin_rust_async_moi(opaque);
         return wire
@@ -77188,6 +77711,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required OpaqueNestedTwinSync opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_opaque_nested_twin_sync(opaque);
         var arg0 = cst_encode_box_autoadd_opaque_nested_twin_sync(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_nested_opaque_twin_sync(
@@ -77216,6 +77740,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required OpaqueNestedTwinSyncMoi opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_opaque_nested_twin_sync_moi(opaque);
         var arg0 = cst_encode_box_autoadd_opaque_nested_twin_sync_moi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_nested_opaque_twin_sync_moi(
@@ -77306,6 +77831,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneDataTwinMoi clone}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_NonCloneDataTwinMoi(clone);
         var arg0 = cst_encode_RustOpaque_NonCloneDataTwinMoi(clone);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_non_clone_twin_moi(
@@ -77334,6 +77860,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneDataTwinNormal clone}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_NonCloneDataTwinNormal(clone);
         var arg0 = cst_encode_RustOpaque_NonCloneDataTwinNormal(clone);
         return wire.wire__crate__api__rust_opaque__run_non_clone_twin_normal(
             port_, arg0);
@@ -77360,6 +77887,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneDataTwinRustAsync clone}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_NonCloneDataTwinRustAsync(clone);
         var arg0 = cst_encode_RustOpaque_NonCloneDataTwinRustAsync(clone);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_non_clone_twin_rust_async(
@@ -77389,6 +77917,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneDataTwinRustAsyncMoi clone}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_NonCloneDataTwinRustAsyncMoi(clone);
         var arg0 = cst_encode_RustOpaque_NonCloneDataTwinRustAsyncMoi(clone);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_non_clone_twin_rust_async_moi(
@@ -77540,6 +78069,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneDataTwinSync clone}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_NonCloneDataTwinSync(clone);
         var arg0 = cst_encode_RustOpaque_NonCloneDataTwinSync(clone);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_non_clone_twin_sync(
@@ -77568,6 +78098,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneDataTwinSyncMoi clone}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_NonCloneDataTwinSyncMoi(clone);
         var arg0 = cst_encode_RustOpaque_NonCloneDataTwinSyncMoi(clone);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_non_clone_twin_sync_moi(
@@ -77656,6 +78187,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinMoi(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinMoi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_opaque_twin_moi(
@@ -77684,6 +78216,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinNormal opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinNormal(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinNormal(opaque);
         return wire.wire__crate__api__rust_opaque__run_opaque_twin_normal(
             port_, arg0);
@@ -77710,6 +78243,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required HideDataTwinRustAsync opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinRustAsync(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinRustAsync(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_twin_rust_async(
@@ -77739,6 +78273,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required HideDataTwinRustAsyncMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinRustAsyncMoi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_opaque_twin_rust_async_moi(
@@ -77889,6 +78424,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinSync opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_HideDataTwinSync(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinSync(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_twin_sync(
@@ -77917,6 +78453,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinSyncMoi opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_HideDataTwinSyncMoi(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinSyncMoi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_opaque_twin_sync_moi(
@@ -78005,6 +78542,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinMoi(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinMoi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_opaque_with_delay_twin_moi(
@@ -78033,6 +78571,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinNormal opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinNormal(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinNormal(opaque);
         return wire
             .wire__crate__api__rust_opaque__run_opaque_with_delay_twin_normal(
@@ -78060,6 +78599,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required HideDataTwinRustAsync opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinRustAsync(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinRustAsync(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__run_opaque_with_delay_twin_rust_async(
@@ -78089,6 +78629,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required HideDataTwinRustAsyncMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinRustAsyncMoi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__run_opaque_with_delay_twin_rust_async_moi(
@@ -78240,6 +78781,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinSync opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_HideDataTwinSync(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinSync(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__run_opaque_with_delay_twin_sync(
@@ -78268,6 +78810,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinSyncMoi opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_HideDataTwinSyncMoi(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinSyncMoi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__run_opaque_with_delay_twin_sync_moi(
@@ -78358,6 +78901,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 arg);
@@ -78389,6 +78935,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinNormal arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 arg);
@@ -78421,6 +78970,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 arg);
@@ -78453,6 +79005,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 arg);
@@ -78618,6 +79173,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync arg, required int expect}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 arg);
@@ -78650,6 +79208,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi arg, required int expect}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 arg);
@@ -78750,6 +79311,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int adder}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            arg);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 arg);
@@ -78784,6 +79348,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required int adder}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 arg);
@@ -78819,6 +79386,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int adder}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            arg);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 arg);
@@ -78854,6 +79424,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int adder}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 arg);
@@ -79034,6 +79607,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int adder}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            arg);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 arg);
@@ -79069,6 +79645,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int adder}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 arg);
@@ -79174,6 +79753,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 arg);
@@ -79206,6 +79787,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 arg);
@@ -79238,6 +79821,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 arg);
@@ -79271,6 +79856,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 arg);
@@ -79438,6 +80025,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 arg);
@@ -79470,6 +80059,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 arg);
@@ -79569,6 +80160,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 arg);
@@ -79600,6 +80194,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinNormal arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 arg);
@@ -79631,6 +80228,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 arg);
@@ -79663,6 +80263,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 arg);
@@ -79827,6 +80430,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinSync arg, required int expect}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 arg);
@@ -79859,6 +80465,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi arg, required int expect}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 arg);
@@ -79958,6 +80567,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required List<int> expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            arg);
+
         var arg0 =
             cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 arg);
@@ -79990,6 +80602,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required List<int> expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 arg);
@@ -80023,6 +80638,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required List<int> expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            arg);
+
         var arg0 =
             cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 arg);
@@ -80056,6 +80674,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required List<int> expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 arg);
@@ -80225,6 +80846,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required List<int> expect}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            arg);
+
         var arg0 =
             cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 arg);
@@ -80258,6 +80882,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required List<int> expect}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 arg);
@@ -80359,6 +80986,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinMoi b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            a);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            b);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 a);
@@ -80393,6 +81024,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required NonCloneSimpleTwinNormal b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            a);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            b);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 a);
@@ -80428,6 +81063,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinRustAsync b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            a);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            b);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 a);
@@ -80463,6 +81102,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinRustAsyncMoi b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            a);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            b);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 a);
@@ -80637,6 +81280,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinSync a, required NonCloneSimpleTwinSync b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            a);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            b);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 a);
@@ -80671,6 +81318,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required NonCloneSimpleTwinSyncMoi b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            a);
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            b);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 a);
@@ -80774,6 +81425,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinMoi mutBorrow}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            borrow);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            mutBorrow);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 borrow);
@@ -80808,6 +81463,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required NonCloneSimpleTwinNormal mutBorrow}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            borrow);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            mutBorrow);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 borrow);
@@ -80843,6 +81502,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinRustAsync mutBorrow}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            borrow);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            mutBorrow);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 borrow);
@@ -80878,6 +81541,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinRustAsyncMoi mutBorrow}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            borrow);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            mutBorrow);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 borrow);
@@ -81055,6 +81722,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required NonCloneSimpleTwinSync mutBorrow}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            borrow);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            mutBorrow);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 borrow);
@@ -81089,6 +81760,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required NonCloneSimpleTwinSyncMoi mutBorrow}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            borrow);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            mutBorrow);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 borrow);
@@ -81192,6 +81867,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxFnStringString arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
                 arg);
@@ -81222,6 +81899,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BoxFnStringString arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
                 arg);
@@ -81253,6 +81932,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxFnStringString arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
                 arg);
@@ -81284,6 +81965,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxFnStringString arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
                 arg);
@@ -81443,6 +82126,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxFnStringString arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
                 arg);
@@ -81474,6 +82159,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxFnStringString arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
                 arg);
@@ -81917,6 +82604,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required EnumWithGoodAndOpaqueWithoutOptionTwinMoi b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinMoi(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
                 a);
@@ -81951,6 +82642,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required EnumWithGoodAndOpaqueWithoutOptionTwinNormal b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
                 a);
@@ -81985,6 +82680,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
                 a);
@@ -82020,6 +82719,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
                 a);
@@ -82195,6 +82898,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required EnumWithGoodAndOpaqueWithoutOptionTwinSync b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
                 a);
@@ -82230,6 +82937,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
                 a);
@@ -82334,6 +83045,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleEnumTwinMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinMoi(
                 arg);
@@ -82364,6 +83077,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleEnumTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
                 arg);
@@ -82395,6 +83110,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleEnumTwinRustAsync arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
                 arg);
@@ -82426,6 +83143,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleEnumTwinRustAsyncMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsyncMoi(
                 arg);
@@ -82586,6 +83305,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleEnumTwinSync arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
                 arg);
@@ -82617,6 +83338,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleEnumTwinSyncMoi arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSyncMoi(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSyncMoi(
                 arg);
@@ -83059,6 +83782,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required EnumWithGoodAndOpaqueTwinMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_enum_with_good_and_opaque_twin_moi(arg);
         var arg0 =
             cst_encode_box_autoadd_enum_with_good_and_opaque_twin_moi(arg);
         return wire
@@ -83090,6 +83814,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required EnumWithGoodAndOpaqueTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_enum_with_good_and_opaque_twin_normal(arg);
         var arg0 =
             cst_encode_box_autoadd_enum_with_good_and_opaque_twin_normal(arg);
         return wire
@@ -83121,6 +83846,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required EnumWithGoodAndOpaqueTwinRustAsync arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_enum_with_good_and_opaque_twin_rust_async(arg);
         var arg0 =
             cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
                 arg);
@@ -83153,6 +83879,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required EnumWithGoodAndOpaqueTwinRustAsyncMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
                 arg);
@@ -83317,6 +84045,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required EnumWithGoodAndOpaqueTwinSync arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_enum_with_good_and_opaque_twin_sync(arg);
         var arg0 =
             cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync(arg);
         return wire
@@ -83348,6 +84077,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required EnumWithGoodAndOpaqueTwinSyncMoi arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(arg);
         var arg0 =
             cst_encode_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(arg);
         return wire
@@ -84145,6 +84875,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            arg);
+
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 arg);
@@ -84176,6 +84909,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinNormal arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 arg);
@@ -84208,6 +84944,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            arg);
+
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 arg);
@@ -84240,6 +84979,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi arg, required int expect}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 arg);
@@ -84405,6 +85147,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync arg, required int expect}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            arg);
+
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 arg);
@@ -84437,6 +85182,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi arg, required int expect}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            arg);
+
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 arg);
@@ -85259,6 +86007,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithExplicitAutoOpaqueFieldTwinMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
                 arg);
@@ -85289,6 +86039,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructWithExplicitAutoOpaqueFieldTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
                 arg);
@@ -85320,6 +86072,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithExplicitAutoOpaqueFieldTwinRustAsync arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
                 arg);
@@ -85351,6 +86105,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
                 arg);
@@ -85511,6 +86267,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithExplicitAutoOpaqueFieldTwinSync arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
                 arg);
@@ -85542,6 +86300,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithExplicitAutoOpaqueFieldTwinSyncMoi arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
                 arg);
@@ -85637,6 +86397,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinMoi a, required String b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            a);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 a);
@@ -85668,6 +86431,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinNormal a, required String b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            a);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 a);
@@ -85700,6 +86466,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsync a, required String b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            a);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 a);
@@ -85732,6 +86501,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinRustAsyncMoi a, required String b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            a);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 a);
@@ -85899,6 +86671,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSync a, required String b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            a);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 a);
@@ -85931,6 +86706,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required NonCloneSimpleTwinSyncMoi a, required String b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            a);
+
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 a);
@@ -86030,6 +86808,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxMyTraitTwinMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinMoiSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinMoiSendSync(
                 arg);
@@ -86060,6 +86840,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BoxMyTraitTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
                 arg);
@@ -86091,6 +86873,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxMyTraitTwinRustAsync arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
                 arg);
@@ -86122,6 +86906,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxMyTraitTwinRustAsyncMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncMoiSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncMoiSendSync(
                 arg);
@@ -86281,6 +87067,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxMyTraitTwinSync arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
                 arg);
@@ -86312,6 +87100,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required BoxMyTraitTwinSyncMoi arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncMoiSendSync(
+            arg);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncMoiSendSync(
                 arg);
@@ -88183,6 +88973,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinMoi orange}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            apple);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            orange);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 apple);
@@ -88217,6 +89011,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required NonCloneSimpleTwinNormal orange}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            apple);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            orange);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 apple);
@@ -88251,6 +89049,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinRustAsync orange}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            apple);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            orange);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 apple);
@@ -88286,6 +89088,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinRustAsyncMoi orange}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            apple);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            orange);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 apple);
@@ -88460,6 +89266,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required NonCloneSimpleTwinSync orange}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            apple);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            orange);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 apple);
@@ -88494,6 +89304,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required NonCloneSimpleTwinSyncMoi orange}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            apple);
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            orange);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 apple);
@@ -88986,6 +89800,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldTwinMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_moi(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_moi(
                 arg);
@@ -89018,6 +89834,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
                 arg);
@@ -89050,6 +89868,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldTwinRustAsync arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async(
                 arg);
@@ -89082,6 +89902,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldTwinRustAsyncMoi arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async_moi(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async_moi(
                 arg);
@@ -89246,6 +90068,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldTwinSync arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_sync(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_sync(
                 arg);
@@ -89278,6 +90102,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithGoodAndOpaqueFieldTwinSyncMoi arg}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_sync_moi(
+            arg);
         var arg0 =
             cst_encode_box_autoadd_struct_with_good_and_opaque_field_twin_sync_moi(
                 arg);
@@ -89735,6 +90561,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinMoi b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
                 a);
@@ -89769,6 +90599,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required NonCloneSimpleTwinNormal b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
                 a);
@@ -89804,6 +90638,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinRustAsync b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
                 a);
@@ -89839,6 +90677,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinRustAsyncMoi b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
                 a);
@@ -90012,6 +90854,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinSync a, required NonCloneSimpleTwinSync b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
                 a);
@@ -90047,6 +90893,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required NonCloneSimpleTwinSyncMoi b}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            a);
+        cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+            b);
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
                 a);
@@ -90152,6 +91002,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int adder}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -90279,6 +91132,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RustAutoOpaqueWebLockingDataTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+            arg);
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -90342,6 +91197,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required RustAutoOpaqueWebLockingDataTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+            arg);
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -90407,6 +91264,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required int adder}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -90473,6 +91333,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int delayMillis}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -91805,6 +92668,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int adder}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -91931,6 +92797,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RustOpaqueWebLockingDataTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg);
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -91994,6 +92862,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required RustOpaqueWebLockingDataTwinNormal arg}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg);
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -92058,6 +92928,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RustOpaqueWebLockingDataTwinNormal arg, required int adder}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -92124,6 +92997,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int delayMillis}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+            arg);
+
         var arg0 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
                 arg);
@@ -95846,6 +96722,126 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Stream<int> crateApiStreamStreamWorkerTransferTwinNormal() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        return wire
+            .wire__crate__api__stream__stream_worker_transfer_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiStreamStreamWorkerTransferTwinNormalConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta get kCrateApiStreamStreamWorkerTransferTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "stream_worker_transfer_twin_normal",
+        argNames: ["sink"],
+      );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncStreamWorkerTransferTwinRustAsync() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_StreamSink_i_32_Dco(sink);
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async__stream_worker_transfer_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncStreamWorkerTransferTwinRustAsyncConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncStreamWorkerTransferTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_worker_transfer_twin_rust_async",
+            argNames: ["sink"],
+          );
+
+  @override
+  Stream<int>
+      crateApiPseudoManualStreamTwinRustAsyncSseStreamWorkerTransferTwinRustAsyncSse() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_rust_async_sse__stream_worker_transfer_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinRustAsyncSseStreamWorkerTransferTwinRustAsyncSseConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinRustAsyncSseStreamWorkerTransferTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_worker_transfer_twin_rust_async_sse",
+            argNames: ["sink"],
+          );
+
+  @override
+  Stream<int> crateApiPseudoManualStreamTwinSseStreamWorkerTransferTwinSse() {
+    final sink = RustStreamSink<int>();
+    unawaited(handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_StreamSink_i_32_Sse(sink, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__stream_twin_sse__stream_worker_transfer_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualStreamTwinSseStreamWorkerTransferTwinSseConstMeta,
+      argValues: [sink],
+      apiImpl: this,
+    )));
+    return sink.stream;
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualStreamTwinSseStreamWorkerTransferTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "stream_worker_transfer_twin_sse",
+            argNames: ["sink"],
+          );
+
+  @override
   Future<void>
       crateApiCommentStructWithCommentsTwinNormalInstanceMethodTwinNormal(
           {required StructWithCommentsTwinNormal that}) {
@@ -96330,6 +97326,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithRustAutoOpaqueFieldWithManyDerive that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_rust_auto_opaque_field_with_many_derive(
+            that);
         var arg0 =
             cst_encode_box_autoadd_struct_with_rust_auto_opaque_field_with_many_derive(
                 that);
@@ -96361,6 +97359,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required StructWithRustAutoOpaqueWithNonCloneData that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+            that);
         var arg0 =
             cst_encode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
                 that);
@@ -100413,6 +101413,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinMoi(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinMoi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__unwrap_rust_opaque_twin_moi(
@@ -100441,6 +101442,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinNormal opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinNormal(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinNormal(opaque);
         return wire
             .wire__crate__api__rust_opaque__unwrap_rust_opaque_twin_normal(
@@ -100468,6 +101470,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required HideDataTwinRustAsync opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinRustAsync(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinRustAsync(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__unwrap_rust_opaque_twin_rust_async(
@@ -100497,6 +101500,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           {required HideDataTwinRustAsyncMoi opaque}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
+        cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinRustAsyncMoi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__unwrap_rust_opaque_twin_rust_async_moi(
@@ -100648,6 +101652,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinSync opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_HideDataTwinSync(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinSync(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__unwrap_rust_opaque_twin_sync(
@@ -100676,6 +101681,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required HideDataTwinSyncMoi opaque}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
+        cst_validate_RustOpaque_HideDataTwinSyncMoi(opaque);
         var arg0 = cst_encode_RustOpaque_HideDataTwinSyncMoi(opaque);
         return wire
             .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__unwrap_rust_opaque_twin_sync_moi(
@@ -153946,6 +154952,4032 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int cst_encode_weekdays_twin_sync(WeekdaysTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
+          MyNodeTwinNormal raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          OpaqueItemTwinNormal raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRustAutoOpaqueFieldWithManyDeriveInner(
+          StructWithRustAutoOpaqueFieldWithManyDeriveInner raw) {
+    cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRustAutoOpaqueFieldWithManyDeriveInner(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
+          BoxAnyMyDartTypeRename raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+          BoxFnStringString raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinMoiSendSync(
+          BoxMyTraitTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
+          BoxMyTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          BoxMyTraitTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
+          BoxMyTraitTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncMoiSendSync(
+          BoxMyTraitTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
+          BoxMyTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+          ConstructorOpaqueStructTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          CustomHasherTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          CustomHasherTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          CustomHasherTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+          DeliberateFailSanityCheckTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+          DroppableTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+          DroppableTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+          DroppableTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
+          EnumWithGoodAndOpaqueWithoutOptionTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
+          EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
+          EnumWithGoodAndOpaqueWithoutOptionTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+          ItemContainerSolutionOneTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+          MyImplTraitWithSelfTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+          MyImplTraitWithSelfTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+          MyImplTraitWithSelfTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+          MyImplTraitWithSelfTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+          MyStructWithTryFromTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinMoi(
+          NonCloneSimpleEnumTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
+          NonCloneSimpleEnumTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
+          NonCloneSimpleEnumTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsyncMoi(
+          NonCloneSimpleEnumTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
+          NonCloneSimpleEnumTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSyncMoi(
+          NonCloneSimpleEnumTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          OpaqueItemTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi(
+          OpaqueOneTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
+          OpaqueOneTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
+          OpaqueOneTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsyncMoi(
+          OpaqueOneTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
+          OpaqueOneTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSyncMoi(
+          OpaqueOneTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          OpaqueStructWithDartCodeTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinMoi(
+          OpaqueTwoTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
+          OpaqueTwoTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
+          OpaqueTwoTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsyncMoi(
+          OpaqueTwoTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
+          OpaqueTwoTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncMoi(
+          OpaqueTwoTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
+          SimpleLogger raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+          SimpleOpaqueExternalStructWithMethod raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
+          StaticGetterOnlyTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
+          StaticGetterOnlyTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
+          StaticGetterOnlyTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          StructOneWithTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+          StructOneWithTraitTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+          StructOneWithTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+          StructOneWithTraitTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          StructTwoWithTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+          StructTwoWithTraitTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+          StructTwoWithTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+          StructTwoWithTraitTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRustAutoOpaqueFieldWithManyDeriveInner(
+          StructWithRustAutoOpaqueFieldWithManyDeriveInner raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          TypeForIgnore raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+          ConstructorOpaqueStructTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+          DeliberateFailSanityCheckTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+          DroppableTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+          DroppableTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+          DroppableTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+          ItemContainerSolutionOneTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          StructOneWithTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+          StructOneWithTraitTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+          StructOneWithTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+          StructOneWithTraitTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          StructTwoWithTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+          StructTwoWithTraitTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+          StructTwoWithTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+          StructTwoWithTraitTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+          ConstructorOpaqueStructTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+          DeliberateFailSanityCheckTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+          DroppableTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+          DroppableTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+          DroppableTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+          ItemContainerSolutionOneTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+          MyImplTraitWithSelfTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+          MyImplTraitWithSelfTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+          MyImplTraitWithSelfTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+          MyImplTraitWithSelfTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+          MyStructWithTryFromTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinMoi(
+          NonCloneSimpleEnumTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
+          NonCloneSimpleEnumTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
+          NonCloneSimpleEnumTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsyncMoi(
+          NonCloneSimpleEnumTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
+          NonCloneSimpleEnumTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSyncMoi(
+          NonCloneSimpleEnumTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          OpaqueStructWithDartCodeTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
+          SimpleLogger raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+          SimpleOpaqueExternalStructWithMethod raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          StructOneWithTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+          StructOneWithTraitTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+          StructOneWithTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+          StructOneWithTraitTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          StructTwoWithTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+          StructTwoWithTraitTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+          StructTwoWithTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+          StructTwoWithTraitTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          TypeForIgnore raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinMoi(BoxDartDebugTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinNormal(
+      BoxDartDebugTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinRustAsync(
+      BoxDartDebugTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinRustAsyncMoi(
+      BoxDartDebugTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinSync(
+      BoxDartDebugTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_BoxdynDartDebugTwinSyncMoi(
+      BoxDartDebugTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinMoi(
+      FrbOpaqueReturnTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinNormal(
+      FrbOpaqueReturnTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinRustAsync(
+      FrbOpaqueReturnTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinRustAsyncMoi(
+      FrbOpaqueReturnTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinSync(
+      FrbOpaqueReturnTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueReturnTwinSyncMoi(
+      FrbOpaqueReturnTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueSyncReturnTwinMoi(
+      FrbOpaqueSyncReturnTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_FrbOpaqueSyncReturnTwinNormal(
+      FrbOpaqueSyncReturnTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataAnotherTwinMoi(
+      HideDataAnotherTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataAnotherTwinNormal(
+      HideDataAnotherTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinMoi(HideDataTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinMoi_array_2(
+      HideDataTwinMoiArray2 raw) {
+    cst_validate_list_RustOpaque_HideDataTwinMoi(raw);
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinNormal(HideDataTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinNormal_array_2(
+      HideDataTwinNormalArray2 raw) {
+    cst_validate_list_RustOpaque_HideDataTwinNormal(raw);
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinRustAsync(
+      HideDataTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(
+      HideDataTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinRustAsyncMoi_array_2(
+      HideDataTwinRustAsyncMoiArray2 raw) {
+    cst_validate_list_RustOpaque_HideDataTwinRustAsyncMoi(raw);
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinRustAsync_array_2(
+      HideDataTwinRustAsyncArray2 raw) {
+    cst_validate_list_RustOpaque_HideDataTwinRustAsync(raw);
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinSync(HideDataTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinSyncMoi(HideDataTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinSyncMoi_array_2(
+      HideDataTwinSyncMoiArray2 raw) {
+    cst_validate_list_RustOpaque_HideDataTwinSyncMoi(raw);
+  }
+
+  @protected
+  void cst_validate_RustOpaque_HideDataTwinSync_array_2(
+      HideDataTwinSyncArray2 raw) {
+    cst_validate_list_RustOpaque_HideDataTwinSync(raw);
+  }
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinMoi(MutexHideDataTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinNormal(
+      MutexHideDataTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinRustAsync(
+      MutexHideDataTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinRustAsyncMoi(
+      MutexHideDataTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinSync(
+      MutexHideDataTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_MutexHideDataTwinSyncMoi(
+      MutexHideDataTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinMoi(NonCloneDataTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinNormal(
+      NonCloneDataTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinRustAsync(
+      NonCloneDataTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinRustAsyncMoi(
+      NonCloneDataTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinSync(NonCloneDataTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_NonCloneDataTwinSyncMoi(
+      NonCloneDataTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinMoi(
+      RwLockHideDataTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinNormal(
+      RwLockHideDataTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinRustAsync(
+      RwLockHideDataTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinRustAsyncMoi(
+      RwLockHideDataTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinSync(
+      RwLockHideDataTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_RwLockHideDataTwinSyncMoi(
+      RwLockHideDataTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynAnySendSyncstatic(
+          BoxAnyMyDartTypeRename raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynFnStringStringSendSync(
+          BoxFnStringString raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinMoiSendSync(
+          BoxMyTraitTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinNormalSendSync(
+          BoxMyTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          BoxMyTraitTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinRustAsyncSendSync(
+          BoxMyTraitTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncMoiSendSync(
+          BoxMyTraitTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBoxdynMyTraitTwinSyncSendSync(
+          BoxMyTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
+          ConstructorOpaqueStructTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          ConstructorOpaqueSyncStructTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          CustomHasherTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          CustomHasherTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          CustomHasherTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
+          DeliberateFailSanityCheckTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinNormal(
+          DroppableTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinRustAsync(
+          DroppableTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
+          DroppableTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinNormal(
+          EnumWithGoodAndOpaqueWithoutOptionTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsync(
+          EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSync(
+          EnumWithGoodAndOpaqueWithoutOptionTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi(
+          EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
+          ItemContainerSolutionOneTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinNormal(
+          MyImplTraitWithSelfTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSse(
+          MyImplTraitWithSelfTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSync(
+          MyImplTraitWithSelfTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyImplTraitWithSelfTwinSyncSse(
+          MyImplTraitWithSelfTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
+          MyNodeTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyStructWithTryFromTwinNormal(
+          MyStructWithTryFromTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+          NonCloneDataRaw raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinMoi(
+          NonCloneSimpleEnumTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinNormal(
+          NonCloneSimpleEnumTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsync(
+          NonCloneSimpleEnumTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinRustAsyncMoi(
+          NonCloneSimpleEnumTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSync(
+          NonCloneSimpleEnumTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleEnumTwinSyncMoi(
+          NonCloneSimpleEnumTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          OpaqueItemTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi(
+          OpaqueOneTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
+          OpaqueOneTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
+          OpaqueOneTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsyncMoi(
+          OpaqueOneTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
+          OpaqueOneTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSyncMoi(
+          OpaqueOneTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueStructWithDartCodeTwinNormal(
+          OpaqueStructWithDartCodeTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinMoi(
+          OpaqueTwoTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
+          OpaqueTwoTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
+          OpaqueTwoTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsyncMoi(
+          OpaqueTwoTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
+          OpaqueTwoTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncMoi(
+          OpaqueTwoTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
+          RustAutoOpaqueWebLockingDataTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
+          RustOpaqueWebLockingDataTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleLogger(
+          SimpleLogger raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSimpleOpaqueExternalStructWithMethod(
+          SimpleOpaqueExternalStructWithMethod raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinNormal(
+          StaticGetterOnlyTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinRustAsync(
+          StaticGetterOnlyTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStaticGetterOnlyTwinSync(
+          StaticGetterOnlyTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          StructOneWithTraitForDynTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinNormal(
+          StructOneWithTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSse(
+          StructOneWithTraitTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSync(
+          StructOneWithTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitTwinSyncSse(
+          StructOneWithTraitTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          StructTwoWithTraitForDynTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinNormal(
+          StructTwoWithTraitTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSse(
+          StructTwoWithTraitTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSync(
+          StructTwoWithTraitTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitTwinSyncSse(
+          StructTwoWithTraitTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinNormal(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSync(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSync raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSse raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncSseMoi raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRustAutoOpaqueFieldWithManyDeriveInner(
+          StructWithRustAutoOpaqueFieldWithManyDeriveInner raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          StructWithSimpleSetterTwinNormal raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          TypeForIgnore raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void
+      cst_validate_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_i16(I16 raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_RustOpaque_i32(I32 raw) {
+    if (raw.isDisposed) {
+      throw DroppableDisposedException(raw.runtimeType.toString());
+    }
+  }
+
+  @protected
+  void cst_validate_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
+          raw) {
+    if (raw
+        is Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0) {
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
+          raw.field0);
+    }
+    if (raw
+        is Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1) {
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal(
+          raw.field0);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+        raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataAnotherTwinMoi(
+      HideDataAnotherTwinMoi raw) {
+    cst_validate_RustOpaque_HideDataAnotherTwinMoi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataAnotherTwinNormal(
+      HideDataAnotherTwinNormal raw) {
+    cst_validate_RustOpaque_HideDataAnotherTwinNormal(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinMoi(
+      HideDataTwinMoi raw) {
+    cst_validate_RustOpaque_HideDataTwinMoi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinNormal(
+      HideDataTwinNormal raw) {
+    cst_validate_RustOpaque_HideDataTwinNormal(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinRustAsync(
+      HideDataTwinRustAsync raw) {
+    cst_validate_RustOpaque_HideDataTwinRustAsync(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinRustAsyncMoi(
+      HideDataTwinRustAsyncMoi raw) {
+    cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinSync(
+      HideDataTwinSync raw) {
+    cst_validate_RustOpaque_HideDataTwinSync(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_RustOpaque_HideDataTwinSyncMoi(
+      HideDataTwinSyncMoi raw) {
+    cst_validate_RustOpaque_HideDataTwinSyncMoi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
+          raw) {
+    cst_validate_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+        raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_moi(EnumOpaqueTwinMoi raw) {
+    cst_validate_enum_opaque_twin_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_normal(
+      EnumOpaqueTwinNormal raw) {
+    cst_validate_enum_opaque_twin_normal(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_rust_async(
+      EnumOpaqueTwinRustAsync raw) {
+    cst_validate_enum_opaque_twin_rust_async(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_rust_async_moi(
+      EnumOpaqueTwinRustAsyncMoi raw) {
+    cst_validate_enum_opaque_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
+    cst_validate_enum_opaque_twin_sync(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_opaque_twin_sync_moi(
+      EnumOpaqueTwinSyncMoi raw) {
+    cst_validate_enum_opaque_twin_sync_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi raw) {
+    cst_validate_enum_with_good_and_opaque_twin_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal raw) {
+    cst_validate_enum_with_good_and_opaque_twin_normal(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync raw) {
+    cst_validate_enum_with_good_and_opaque_twin_rust_async(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi raw) {
+    cst_validate_enum_with_good_and_opaque_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync raw) {
+    cst_validate_enum_with_good_and_opaque_twin_sync(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi raw) {
+    cst_validate_enum_with_good_and_opaque_twin_sync_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal raw) {
+    cst_validate_item_container_solution_two_twin_normal(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_moi(
+      OpaqueNestedTwinMoi raw) {
+    cst_validate_opaque_nested_twin_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_normal(
+      OpaqueNestedTwinNormal raw) {
+    cst_validate_opaque_nested_twin_normal(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync raw) {
+    cst_validate_opaque_nested_twin_rust_async(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_rust_async_moi(
+      OpaqueNestedTwinRustAsyncMoi raw) {
+    cst_validate_opaque_nested_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_sync(
+      OpaqueNestedTwinSync raw) {
+    cst_validate_opaque_nested_twin_sync(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_opaque_nested_twin_sync_moi(
+      OpaqueNestedTwinSyncMoi raw) {
+    cst_validate_opaque_nested_twin_sync_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_simple_trait_for_dyn_twin_normal_implementor(
+      SimpleTraitForDynTwinNormalImplementor raw) {
+    cst_validate_simple_trait_for_dyn_twin_normal_implementor(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
+      StructWithExplicitAutoOpaqueFieldTwinMoi raw) {
+    cst_validate_struct_with_explicit_auto_opaque_field_twin_moi(raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
+          StructWithExplicitAutoOpaqueFieldTwinNormal raw) {
+    cst_validate_struct_with_explicit_auto_opaque_field_twin_normal(raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsync raw) {
+    cst_validate_struct_with_explicit_auto_opaque_field_twin_rust_async(raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi raw) {
+    cst_validate_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+        raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
+          StructWithExplicitAutoOpaqueFieldTwinSync raw) {
+    cst_validate_struct_with_explicit_auto_opaque_field_twin_sync(raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          StructWithExplicitAutoOpaqueFieldTwinSyncMoi raw) {
+    cst_validate_struct_with_explicit_auto_opaque_field_twin_sync_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_moi(
+      StructWithGoodAndOpaqueFieldTwinMoi raw) {
+    cst_validate_struct_with_good_and_opaque_field_twin_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
+      StructWithGoodAndOpaqueFieldTwinNormal raw) {
+    cst_validate_struct_with_good_and_opaque_field_twin_normal(raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async(
+          StructWithGoodAndOpaqueFieldTwinRustAsync raw) {
+    cst_validate_struct_with_good_and_opaque_field_twin_rust_async(raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_rust_async_moi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw) {
+    cst_validate_struct_with_good_and_opaque_field_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_sync(
+      StructWithGoodAndOpaqueFieldTwinSync raw) {
+    cst_validate_struct_with_good_and_opaque_field_twin_sync(raw);
+  }
+
+  @protected
+  void cst_validate_box_autoadd_struct_with_good_and_opaque_field_twin_sync_moi(
+      StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
+    cst_validate_struct_with_good_and_opaque_field_twin_sync_moi(raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_rust_auto_opaque_field_with_many_derive(
+          StructWithRustAutoOpaqueFieldWithManyDerive raw) {
+    cst_validate_struct_with_rust_auto_opaque_field_with_many_derive(raw);
+  }
+
+  @protected
+  void
+      cst_validate_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          StructWithRustAutoOpaqueWithNonCloneData raw) {
+    cst_validate_struct_with_rust_auto_opaque_with_non_clone_data(raw);
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_moi(EnumOpaqueTwinMoi raw) {
+    if (raw is EnumOpaqueTwinMoi_Struct) {
+      cst_validate_RustOpaque_HideDataTwinMoi(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinMoi_Primitive) {
+      cst_validate_RustOpaque_i16(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinMoi_TraitObj) {
+      cst_validate_RustOpaque_BoxdynDartDebugTwinMoi(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinMoi_Mutex) {
+      cst_validate_RustOpaque_MutexHideDataTwinMoi(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinMoi_RwLock) {
+      cst_validate_RustOpaque_RwLockHideDataTwinMoi(raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_moi_array_5(EnumOpaqueTwinMoiArray5 raw) {
+    cst_validate_list_enum_opaque_twin_moi(raw);
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw) {
+    if (raw is EnumOpaqueTwinNormal_Struct) {
+      cst_validate_RustOpaque_HideDataTwinNormal(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinNormal_Primitive) {
+      cst_validate_RustOpaque_i32(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinNormal_TraitObj) {
+      cst_validate_RustOpaque_BoxdynDartDebugTwinNormal(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinNormal_Mutex) {
+      cst_validate_RustOpaque_MutexHideDataTwinNormal(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinNormal_RwLock) {
+      cst_validate_RustOpaque_RwLockHideDataTwinNormal(raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_normal_array_5(
+      EnumOpaqueTwinNormalArray5 raw) {
+    cst_validate_list_enum_opaque_twin_normal(raw);
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_rust_async(EnumOpaqueTwinRustAsync raw) {
+    if (raw is EnumOpaqueTwinRustAsync_Struct) {
+      cst_validate_RustOpaque_HideDataTwinRustAsync(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinRustAsync_Primitive) {
+      cst_validate_RustOpaque_i32(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinRustAsync_TraitObj) {
+      cst_validate_RustOpaque_BoxdynDartDebugTwinRustAsync(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinRustAsync_Mutex) {
+      cst_validate_RustOpaque_MutexHideDataTwinRustAsync(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinRustAsync_RwLock) {
+      cst_validate_RustOpaque_RwLockHideDataTwinRustAsync(raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_rust_async_array_5(
+      EnumOpaqueTwinRustAsyncArray5 raw) {
+    cst_validate_list_enum_opaque_twin_rust_async(raw);
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_rust_async_moi(
+      EnumOpaqueTwinRustAsyncMoi raw) {
+    if (raw is EnumOpaqueTwinRustAsyncMoi_Struct) {
+      cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinRustAsyncMoi_Primitive) {
+      cst_validate_RustOpaque_i16(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinRustAsyncMoi_TraitObj) {
+      cst_validate_RustOpaque_BoxdynDartDebugTwinRustAsyncMoi(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinRustAsyncMoi_Mutex) {
+      cst_validate_RustOpaque_MutexHideDataTwinRustAsyncMoi(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinRustAsyncMoi_RwLock) {
+      cst_validate_RustOpaque_RwLockHideDataTwinRustAsyncMoi(raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_rust_async_moi_array_5(
+      EnumOpaqueTwinRustAsyncMoiArray5 raw) {
+    cst_validate_list_enum_opaque_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
+    if (raw is EnumOpaqueTwinSync_Struct) {
+      cst_validate_RustOpaque_HideDataTwinSync(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinSync_Primitive) {
+      cst_validate_RustOpaque_i32(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinSync_TraitObj) {
+      cst_validate_RustOpaque_BoxdynDartDebugTwinSync(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinSync_Mutex) {
+      cst_validate_RustOpaque_MutexHideDataTwinSync(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinSync_RwLock) {
+      cst_validate_RustOpaque_RwLockHideDataTwinSync(raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_sync_array_5(
+      EnumOpaqueTwinSyncArray5 raw) {
+    cst_validate_list_enum_opaque_twin_sync(raw);
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_sync_moi(EnumOpaqueTwinSyncMoi raw) {
+    if (raw is EnumOpaqueTwinSyncMoi_Struct) {
+      cst_validate_RustOpaque_HideDataTwinSyncMoi(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinSyncMoi_Primitive) {
+      cst_validate_RustOpaque_i16(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinSyncMoi_TraitObj) {
+      cst_validate_RustOpaque_BoxdynDartDebugTwinSyncMoi(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinSyncMoi_Mutex) {
+      cst_validate_RustOpaque_MutexHideDataTwinSyncMoi(raw.field0);
+    }
+    if (raw is EnumOpaqueTwinSyncMoi_RwLock) {
+      cst_validate_RustOpaque_RwLockHideDataTwinSyncMoi(raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_opaque_twin_sync_moi_array_5(
+      EnumOpaqueTwinSyncMoiArray5 raw) {
+    cst_validate_list_enum_opaque_twin_sync_moi(raw);
+  }
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_moi(
+      EnumWithGoodAndOpaqueTwinMoi raw) {
+    if (raw is EnumWithGoodAndOpaqueTwinMoi_Good) {}
+    if (raw is EnumWithGoodAndOpaqueTwinMoi_Opaque) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_normal(
+      EnumWithGoodAndOpaqueTwinNormal raw) {
+    if (raw is EnumWithGoodAndOpaqueTwinNormal_Good) {}
+    if (raw is EnumWithGoodAndOpaqueTwinNormal_Opaque) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_rust_async(
+      EnumWithGoodAndOpaqueTwinRustAsync raw) {
+    if (raw is EnumWithGoodAndOpaqueTwinRustAsync_Good) {}
+    if (raw is EnumWithGoodAndOpaqueTwinRustAsync_Opaque) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_rust_async_moi(
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi raw) {
+    if (raw is EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good) {}
+    if (raw is EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_sync(
+      EnumWithGoodAndOpaqueTwinSync raw) {
+    if (raw is EnumWithGoodAndOpaqueTwinSync_Good) {}
+    if (raw is EnumWithGoodAndOpaqueTwinSync_Opaque) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_enum_with_good_and_opaque_twin_sync_moi(
+      EnumWithGoodAndOpaqueTwinSyncMoi raw) {
+    if (raw is EnumWithGoodAndOpaqueTwinSyncMoi_Good) {}
+    if (raw is EnumWithGoodAndOpaqueTwinSyncMoi_Opaque) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_item_container_solution_two_twin_normal(
+      ItemContainerSolutionTwoTwinNormal raw) {
+    cst_validate_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+        raw.items);
+  }
+
+  @protected
+  void
+      cst_validate_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          List<OpaqueItemTwinNormal> raw) {
+    for (final item in raw) {
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          item);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          List<NonCloneSimpleTwinMoi> raw) {
+    for (final item in raw) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          item);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          List<NonCloneSimpleTwinNormal> raw) {
+    for (final item in raw) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          item);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          List<NonCloneSimpleTwinRustAsync> raw) {
+    for (final item in raw) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          item);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          List<NonCloneSimpleTwinRustAsyncMoi> raw) {
+    for (final item in raw) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          item);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          List<NonCloneSimpleTwinSync> raw) {
+    for (final item in raw) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          item);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          List<NonCloneSimpleTwinSyncMoi> raw) {
+    for (final item in raw) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          item);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          List<OpaqueItemTwinNormal> raw) {
+    for (final item in raw) {
+      cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinMoi(List<HideDataTwinMoi> raw) {
+    for (final item in raw) {
+      cst_validate_RustOpaque_HideDataTwinMoi(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinNormal(
+      List<HideDataTwinNormal> raw) {
+    for (final item in raw) {
+      cst_validate_RustOpaque_HideDataTwinNormal(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinRustAsync(
+      List<HideDataTwinRustAsync> raw) {
+    for (final item in raw) {
+      cst_validate_RustOpaque_HideDataTwinRustAsync(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinRustAsyncMoi(
+      List<HideDataTwinRustAsyncMoi> raw) {
+    for (final item in raw) {
+      cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinSync(
+      List<HideDataTwinSync> raw) {
+    for (final item in raw) {
+      cst_validate_RustOpaque_HideDataTwinSync(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_RustOpaque_HideDataTwinSyncMoi(
+      List<HideDataTwinSyncMoi> raw) {
+    for (final item in raw) {
+      cst_validate_RustOpaque_HideDataTwinSyncMoi(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_moi(List<EnumOpaqueTwinMoi> raw) {
+    for (final item in raw) {
+      cst_validate_enum_opaque_twin_moi(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_normal(
+      List<EnumOpaqueTwinNormal> raw) {
+    for (final item in raw) {
+      cst_validate_enum_opaque_twin_normal(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_rust_async(
+      List<EnumOpaqueTwinRustAsync> raw) {
+    for (final item in raw) {
+      cst_validate_enum_opaque_twin_rust_async(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_rust_async_moi(
+      List<EnumOpaqueTwinRustAsyncMoi> raw) {
+    for (final item in raw) {
+      cst_validate_enum_opaque_twin_rust_async_moi(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_sync(List<EnumOpaqueTwinSync> raw) {
+    for (final item in raw) {
+      cst_validate_enum_opaque_twin_sync(item);
+    }
+  }
+
+  @protected
+  void cst_validate_list_enum_opaque_twin_sync_moi(
+      List<EnumOpaqueTwinSyncMoi> raw) {
+    for (final item in raw) {
+      cst_validate_enum_opaque_twin_sync_moi(item);
+    }
+  }
+
+  @protected
+  void cst_validate_opaque_nested_twin_moi(OpaqueNestedTwinMoi raw) {
+    cst_validate_RustOpaque_HideDataTwinMoi(raw.first);
+    cst_validate_RustOpaque_HideDataTwinMoi(raw.second);
+  }
+
+  @protected
+  void cst_validate_opaque_nested_twin_normal(OpaqueNestedTwinNormal raw) {
+    cst_validate_RustOpaque_HideDataTwinNormal(raw.first);
+    cst_validate_RustOpaque_HideDataTwinNormal(raw.second);
+  }
+
+  @protected
+  void cst_validate_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync raw) {
+    cst_validate_RustOpaque_HideDataTwinRustAsync(raw.first);
+    cst_validate_RustOpaque_HideDataTwinRustAsync(raw.second);
+  }
+
+  @protected
+  void cst_validate_opaque_nested_twin_rust_async_moi(
+      OpaqueNestedTwinRustAsyncMoi raw) {
+    cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(raw.first);
+    cst_validate_RustOpaque_HideDataTwinRustAsyncMoi(raw.second);
+  }
+
+  @protected
+  void cst_validate_opaque_nested_twin_sync(OpaqueNestedTwinSync raw) {
+    cst_validate_RustOpaque_HideDataTwinSync(raw.first);
+    cst_validate_RustOpaque_HideDataTwinSync(raw.second);
+  }
+
+  @protected
+  void cst_validate_opaque_nested_twin_sync_moi(OpaqueNestedTwinSyncMoi raw) {
+    cst_validate_RustOpaque_HideDataTwinSyncMoi(raw.first);
+    cst_validate_RustOpaque_HideDataTwinSyncMoi(raw.second);
+  }
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          NonCloneSimpleTwinMoi? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+          raw);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          NonCloneSimpleTwinNormal? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+          raw);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+          raw);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+          raw);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          NonCloneSimpleTwinSync? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+          raw);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+          raw);
+    }
+  }
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataAnotherTwinMoi(
+      HideDataAnotherTwinMoi? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_RustOpaque_HideDataAnotherTwinMoi(raw);
+    }
+  }
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataAnotherTwinNormal(
+      HideDataAnotherTwinNormal? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_RustOpaque_HideDataAnotherTwinNormal(raw);
+    }
+  }
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinMoi(
+      HideDataTwinMoi? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_RustOpaque_HideDataTwinMoi(raw);
+    }
+  }
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinNormal(
+      HideDataTwinNormal? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_RustOpaque_HideDataTwinNormal(raw);
+    }
+  }
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinRustAsync(
+      HideDataTwinRustAsync? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_RustOpaque_HideDataTwinRustAsync(raw);
+    }
+  }
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinRustAsyncMoi(
+      HideDataTwinRustAsyncMoi? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_RustOpaque_HideDataTwinRustAsyncMoi(raw);
+    }
+  }
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinSync(
+      HideDataTwinSync? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_RustOpaque_HideDataTwinSync(raw);
+    }
+  }
+
+  @protected
+  void cst_validate_opt_box_autoadd_RustOpaque_HideDataTwinSyncMoi(
+      HideDataTwinSyncMoi? raw) {
+    if (raw != null) {
+      cst_validate_box_autoadd_RustOpaque_HideDataTwinSyncMoi(raw);
+    }
+  }
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_moi(
+          (OpaqueOneTwinMoi, OpaqueTwoTwinMoi) raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinMoi(
+        raw.$1);
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinMoi(
+        raw.$2);
+  }
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_normal_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_normal(
+          (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinNormal(
+        raw.$1);
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinNormal(
+        raw.$2);
+  }
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_rust_async_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_rust_async(
+          (OpaqueOneTwinRustAsync, OpaqueTwoTwinRustAsync) raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsync(
+        raw.$1);
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsync(
+        raw.$2);
+  }
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_rust_async_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_rust_async_moi(
+          (OpaqueOneTwinRustAsyncMoi, OpaqueTwoTwinRustAsyncMoi) raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinRustAsyncMoi(
+        raw.$1);
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinRustAsyncMoi(
+        raw.$2);
+  }
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync(
+          (OpaqueOneTwinSync, OpaqueTwoTwinSync) raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSync(
+        raw.$1);
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSync(
+        raw.$2);
+  }
+
+  @protected
+  void
+      cst_validate_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync_moi(
+          (OpaqueOneTwinSyncMoi, OpaqueTwoTwinSyncMoi) raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueOneTwinSyncMoi(
+        raw.$1);
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncMoi(
+        raw.$2);
+  }
+
+  @protected
+  void cst_validate_simple_trait_for_dyn_twin_normal_implementor(
+      SimpleTraitForDynTwinNormalImplementor raw) {
+    if (raw is SimpleTraitForDynTwinNormalImplementor_Variant0) {
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructOneWithTraitForDynTwinNormal(
+          raw.field0);
+    }
+    if (raw is SimpleTraitForDynTwinNormalImplementor_Variant1) {
+      cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructTwoWithTraitForDynTwinNormal(
+          raw.field0);
+    }
+  }
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_moi(
+      StructWithExplicitAutoOpaqueFieldTwinMoi raw) {
+    cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+        raw.autoOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_normal(
+      StructWithExplicitAutoOpaqueFieldTwinNormal raw) {
+    cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+        raw.autoOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_rust_async(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsync raw) {
+    cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+        raw.autoOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi raw) {
+    cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+        raw.autoOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_sync(
+      StructWithExplicitAutoOpaqueFieldTwinSync raw) {
+    cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+        raw.autoOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+      StructWithExplicitAutoOpaqueFieldTwinSyncMoi raw) {
+    cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+        raw.autoOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_moi(
+      StructWithGoodAndOpaqueFieldTwinMoi raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+        raw.opaque);
+    cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinMoi(
+        raw.optionOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_normal(
+      StructWithGoodAndOpaqueFieldTwinNormal raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+        raw.opaque);
+    cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinNormal(
+        raw.optionOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_rust_async(
+      StructWithGoodAndOpaqueFieldTwinRustAsync raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+        raw.opaque);
+    cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsync(
+        raw.optionOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_rust_async_moi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+        raw.opaque);
+    cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinRustAsyncMoi(
+        raw.optionOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_sync(
+      StructWithGoodAndOpaqueFieldTwinSync raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+        raw.opaque);
+    cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync(
+        raw.optionOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_good_and_opaque_field_twin_sync_moi(
+      StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
+    cst_validate_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+        raw.opaque);
+    cst_validate_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi(
+        raw.optionOpaque);
+  }
+
+  @protected
+  void cst_validate_struct_with_rust_auto_opaque_field_with_many_derive(
+      StructWithRustAutoOpaqueFieldWithManyDerive raw) {
+    cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithRustAutoOpaqueFieldWithManyDeriveInner(
+        raw.content);
+  }
+
+  @protected
+  void cst_validate_struct_with_rust_auto_opaque_with_non_clone_data(
+      StructWithRustAutoOpaqueWithNonCloneData raw) {
+    cst_validate_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
+        raw.content);
   }
 
   @protected
