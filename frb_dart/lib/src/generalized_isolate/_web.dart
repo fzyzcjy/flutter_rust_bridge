@@ -165,22 +165,24 @@ class _WebChannel {
         .forTarget(_channel.port1)
         .map((event) => event.data);
     if (_name == null) return messages;
-    var received = 0;
-    JSArray<JSAny?>? pendingClose;
+    var nextSequence = 0;
+    final pending = <int, JSArray<JSAny?>>{};
     return messages.expand((data) sync* {
-      if (data.isA<JSArray<JSAny?>>() &&
-          (data as JSArray<JSAny?>).length == 3 &&
-          data[0] == '__frb_stream_close'.toJS) {
-        pendingClose = data;
-      } else {
-        received++;
-        yield data;
+      if (data.isA<JSArray<JSAny?>>()) {
+        final frame = data as JSArray<JSAny?>;
+        if (frame.length == 1 && frame[0] == '__frb_stream_failed'.toJS) {
+          throw StateError('Web stream delivery failed');
+        }
+        if ((frame.length == 2 || frame.length == 3) && frame[0] == '__frb_stream'.toJS) {
+          pending[(frame[1] as JSNumber).toDartInt] = frame;
+          while (pending.containsKey(nextSequence)) {
+            final ready = pending.remove(nextSequence++)!;
+            if (ready.length == 3) yield ready[2];
+          }
+          return;
+        }
       }
-      final close = pendingClose;
-      if (close != null && (close[1] as JSNumber).toDartDouble == received) {
-        pendingClose = null;
-        yield close[2];
-      }
+      yield data;
     });
   }
 

@@ -19,11 +19,11 @@ void main() {
             .take(3)
             .map((value) => (value as JSString).toDart)
             .toList();
-        final close = ['__frb_stream_close', 2, 'closed'].jsify();
+        final close = ['__frb_stream', 2, 'closed'].jsify();
 
         if (closeFirst) sender.postMessage(close);
-        sender.postMessage('first'.toJS);
-        sender.postMessage('second'.toJS);
+        sender.postMessage(['__frb_stream', 0, 'first'].jsify());
+        sender.postMessage(['__frb_stream', 1, 'second'].jsify());
         if (!closeFirst) sender.postMessage(close);
 
         expect(await received, ['first', 'second', 'closed']);
@@ -37,9 +37,41 @@ void main() {
     final received = receivePort.first;
     final sender = receivePort.sendPort.nativePort as web.MessagePort;
 
-    sender.postMessage(['__frb_stream_close', 0, 'closed'].jsify());
+    sender.postMessage(['__frb_stream', 0, 'closed'].jsify());
 
     expect((await received as JSString).toDart, 'closed');
+  });
+
+  test('reversed stream values are delivered in sending order', () async {
+    final port = broadcastPort('reversed values');
+    addTearDown(port.close);
+    final received = port.take(3).map((value) => (value as JSString).toDart).toList();
+    final sender = port.sendPort.nativePort as web.MessagePort;
+    sender.postMessage(['__frb_stream', 2, 'closed'].jsify());
+    sender.postMessage(['__frb_stream', 1, 'second'].jsify());
+    sender.postMessage(['__frb_stream', 0, 'first'].jsify());
+    expect(await received, ['first', 'second', 'closed']);
+  });
+
+  test('a rejected send does not block later values or close', () async {
+    final port = broadcastPort('rejected value');
+    addTearDown(port.close);
+    final received = port.take(2).map((value) => (value as JSString).toDart).toList();
+    final sender = port.sendPort.nativePort as web.MessagePort;
+    sender.postMessage(['__frb_stream', 2, 'closed'].jsify());
+    sender.postMessage(['__frb_stream', 1, 'value'].jsify());
+    sender.postMessage(['__frb_stream', 0].jsify());
+    expect(await received, ['value', 'closed']);
+  });
+
+  test('transport failure reports an error instead of waiting for a gap', () async {
+    final port = broadcastPort('transport failure');
+    addTearDown(port.close);
+    final received = port.first;
+    final sender = port.sendPort.nativePort as web.MessagePort;
+    sender.postMessage(['__frb_stream', 1, 'value'].jsify());
+    sender.postMessage(['__frb_stream_failed'].jsify());
+    await expectLater(received, throwsStateError);
   });
 
   test(
@@ -57,9 +89,9 @@ void main() {
           .toList();
       final sender = receivePort.sendPort.nativePort as web.MessagePort;
 
-      sender.postMessage(['__frb_stream_close', 2, 'closed'].jsify());
-      sender.postMessage('first'.toJS);
-      sender.postMessage('second'.toJS);
+      sender.postMessage(['__frb_stream', 2, 'closed'].jsify());
+      sender.postMessage(['__frb_stream', 0, 'first'].jsify());
+      sender.postMessage(['__frb_stream', 1, 'second'].jsify());
 
       expect(await first, ['first', 'second', 'closed']);
       expect(await second, ['first', 'second', 'closed']);
@@ -73,10 +105,10 @@ void main() {
     addTearDown(() => sender.close());
     final received = receivePort.first;
 
-    sender.postMessage(['__frb_stream_close', 0, 'user data'].jsify());
+    sender.postMessage(['__frb_stream', 0, 'user data'].jsify());
 
     expect((await received as JSArray).dartify(), [
-      '__frb_stream_close',
+      '__frb_stream',
       0,
       'user data',
     ]);
@@ -122,9 +154,9 @@ void main() {
           const separator = name.indexOf('/');
           const channel = new BroadcastChannel(name.slice(0, separator));
           const port = name.slice(separator + 1);
-          channel.postMessage([port, 'first']);
-          channel.postMessage([port, 'second']);
-          channel.postMessage([port, ['__frb_stream_close', 2, 'closed']]);
+          channel.postMessage([port, ['__frb_stream', 0, 'first']]);
+          channel.postMessage([port, ['__frb_stream', 1, 'second']]);
+          channel.postMessage([port, ['__frb_stream', 2, 'closed']]);
           channel.close();
         }
       };
