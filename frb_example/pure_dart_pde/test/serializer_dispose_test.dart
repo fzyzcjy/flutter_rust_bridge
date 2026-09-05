@@ -13,6 +13,7 @@ import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:flutter_rust_bridge/src/main_components/port_manager.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/api/lifetimeable.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.io.dart';
 import 'package:test/test.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
