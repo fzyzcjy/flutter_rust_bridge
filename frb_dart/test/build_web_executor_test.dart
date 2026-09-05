@@ -9,9 +9,7 @@ import 'package:test/test.dart';
 void main() {
   test('wasm-pack retains unrelated wrappers without cargo llvm-cov', () {
     expect(
-      computeWasmPackRemovedParentEnvKeys(const {
-        'RUSTC_WRAPPER': 'sccache',
-      }),
+      computeWasmPackRemovedParentEnvKeys(const {'RUSTC_WRAPPER': 'sccache'}),
       isEmpty,
     );
   });
