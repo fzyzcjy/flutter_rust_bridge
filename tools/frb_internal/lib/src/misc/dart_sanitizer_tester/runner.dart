@@ -57,7 +57,12 @@ Map<String, String> sanitizerEntrypointEnvironmentForTesting({
   required Sanitizer sanitizer,
   required Map<String, String> environment,
 }) {
-  if (package != 'frb_example/pure_dart_pde' || sanitizer != Sanitizer.tsan) {
+  final suppressionFile = switch (package) {
+    'frb_example/pure_dart' => 'dart_tsan_pure.supp',
+    'frb_example/pure_dart_pde' => 'dart_tsan_pde.supp',
+    _ => null,
+  };
+  if (suppressionFile == null || sanitizer != Sanitizer.tsan) {
     return {};
   }
   final existing = environment['TSAN_OPTIONS'];
@@ -66,17 +71,30 @@ Map<String, String> sanitizerEntrypointEnvironmentForTesting({
       if (existing != null && existing.isNotEmpty) existing,
       'report_thread_leaks=1',
       'print_suppressions=1',
-      'suppressions=../../tools/dart_tsan_pde.supp',
+      'suppressions=../../tools/$suppressionFile',
     ].join(':'),
   };
 }
 
 void checkPdeThreadLeakSuppressionForTesting(String stderr) {
+  _checkThreadLeakSuppression(
+    stderr,
+    expectedRule: 'thread:frb_example_pure_dart_pde::api::async_spawn::'
+        'simple_use_async_spawn_blocking::',
+  );
+}
+
+void checkPureThreadLeakSuppressionForTesting(String stderr) {
+  _checkThreadLeakSuppression(
+    stderr,
+    expectedRule: 'thread:frb_example_pure_dart::api::async_spawn::'
+        'simple_use_async_spawn_blocking::',
+  );
+}
+
+void _checkThreadLeakSuppression(String stderr, {required String expectedRule}) {
   const prefix = 'ThreadSanitizer: Matched ';
   if (!stderr.contains(prefix)) return;
-  const expectedRule =
-      'thread:frb_example_pure_dart_pde::api::async_spawn::'
-      'simple_use_async_spawn_blocking::';
   final matches = RegExp(
     r'^ThreadSanitizer: Matched 1 suppressions \(pid=\d+\):\r?\n'
     '1 ${RegExp.escape(expectedRule)}\r?\n',
@@ -352,7 +370,11 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
   );
 
   if (sanitizerEnvironment.containsKey('TSAN_OPTIONS')) {
-    checkPdeThreadLeakSuppressionForTesting(output.stderr);
+    if (relativePwd == 'frb_example/pure_dart') {
+      checkPureThreadLeakSuppressionForTesting(output.stderr);
+    } else {
+      checkPdeThreadLeakSuppressionForTesting(output.stderr);
+    }
   }
 
   final hasOnlyAllowedFailure = isOnlyAllowedSanitizerFailureForTesting(
