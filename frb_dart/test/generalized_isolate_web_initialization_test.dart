@@ -14,9 +14,7 @@ void main() {
   test('broadcast initialization can retry after a send error', () async {
     final original = _postMessage;
     try {
-      _postMessage = ((JSAny? value) {
-        throw StateError('injected initialization failure');
-      }).toJS;
+      _postMessage = _failPostMessage.toJS;
       await expectLater(initializeBroadcastChannel(), throwsA(anything));
     } finally {
       _postMessage = original;
@@ -24,4 +22,8 @@ void main() {
 
     await initializeBroadcastChannel();
   });
+}
+
+void _failPostMessage(JSAny? value) {
+  throw StateError('injected initialization failure');
 }

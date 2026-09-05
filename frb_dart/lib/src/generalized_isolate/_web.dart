@@ -5,7 +5,6 @@ import 'dart:async';
 import 'dart:js_interop_unsafe';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
-import 'package:meta/meta.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
@@ -34,7 +33,10 @@ external String _randomUUID();
 
 @internal
 Future<void> initializeBroadcastChannel() =>
-    _broadcastChannelReady ??= _initializeBroadcastChannel().onError((Object error, StackTrace stackTrace) {
+    _broadcastChannelReady ??= _initializeBroadcastChannel().onError((
+      Object error,
+      StackTrace stackTrace,
+    ) {
       _broadcastChannelReady = null;
       Error.throwWithStackTrace(error, stackTrace);
     });
