@@ -45,7 +45,7 @@ impl PortLike {
 pub(crate) fn create_message_router() -> Result<MessagePort, JsValue> {
     let channel = MessageChannel::new()?;
     match message_router()? {
-        Some(router) => router.post_message_with_transfer(
+        Some(router) => router.post_message_with_transferable(
             &channel.port1(),
             &Array::of1(&channel.port1()),
         )?,
