@@ -1115,6 +1115,9 @@ jobs:
 
       # execute
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
+      - if: matrix.info.platform == 'linux' && matrix.info.package == 'frb_example--flutter_package_native_assets--example'
+        working-directory: frb_example/flutter_package_native_assets
+        run: dart run bin/pure_dart_smoke.dart
 
   test_flutter_web:
     needs: plan_ci
