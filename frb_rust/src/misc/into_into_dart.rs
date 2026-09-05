@@ -284,10 +284,44 @@ mod chrono_impls {
 
 #[cfg(test)]
 mod tests {
+    use super::IntoIntoDart;
+    use std::collections::{HashMap, HashSet};
+
+    /// Converts nested standard containers without changing their contents.
+    #[test]
+    fn test_standard_container_conversions_preserve_values() {
+        let values: Option<i32> = Some(1);
+        let converted: Option<i32> = values.into_into_dart();
+        assert_eq!(converted, Some(1));
+
+        let values = vec![1_u8, 2];
+        let converted: Vec<u8> = values.into_into_dart();
+        assert_eq!(converted, vec![1, 2]);
+
+        let boxed: Box<String> = Box::new("bridge".to_owned());
+        let converted: String = boxed.into_into_dart();
+        assert_eq!(converted, "bridge");
+    }
+
+    /// Converts map, set, and tuple implementations element by element.
+    #[test]
+    fn test_collection_and_tuple_conversions_preserve_entries() {
+        let map = HashMap::from([("one".to_owned(), 1_i32)]);
+        let converted: HashMap<String, i32> = map.into_into_dart();
+        assert_eq!(converted.get("one"), Some(&1));
+
+        let set = HashSet::from([1_i32, 2]);
+        let converted: HashSet<i32> = set.into_into_dart();
+        assert_eq!(converted, HashSet::from([1, 2]));
+
+        let converted: (i32, String, bool) = (7_i32, "dart".to_owned(), true).into_into_dart();
+        assert_eq!(converted, (7, "dart".to_owned(), true));
+    }
+
     #[cfg(not(target_family = "wasm"))]
+    /// Converts a zero-copy buffer while retaining its bytes.
     #[test]
     fn test_zero_copy_buffer() {
-        use crate::misc::into_into_dart::IntoIntoDart;
         let raw: allo_isolate::ZeroCopyBuffer<Vec<u8>> = allo_isolate::ZeroCopyBuffer(vec![10]);
         assert_eq!(raw.into_into_dart().0, vec![10]);
     }

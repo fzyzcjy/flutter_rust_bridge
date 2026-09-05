@@ -50,3 +50,19 @@ fn vec_to_map_with_warn<'a, T, K: Eq + Hash + Display, V: Debug + 'a>(
     }
     ans
 }
+
+#[cfg(test)]
+mod tests {
+    use super::vec_to_map_with_warn;
+
+    /// Keeps the last value when duplicate keys are exported.
+    #[test]
+    fn keeps_last_value_for_duplicate_keys() {
+        let items = [("first", 1), ("second", 2), ("first", 3)];
+        let map = vec_to_map_with_warn(&items, |(key, value)| (*key, *value));
+
+        assert_eq!(map.len(), 2);
+        assert_eq!(map["first"], 3);
+        assert_eq!(map["second"], 2);
+    }
+}

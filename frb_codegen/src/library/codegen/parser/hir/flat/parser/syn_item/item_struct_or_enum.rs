@@ -51,3 +51,56 @@ fn parse_syn_item_struct_or_enum<I: SynItemStructOrEnum>(
         })
         .collect_vec())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
+    use crate::codegen::ir::hir::misc::visibility::HirVisibility;
+    use crate::utils::namespace::Namespace;
+    use syn::parse_quote;
+
+    /// Preserves struct visibility and metadata in the flat item.
+    #[test]
+    fn parses_struct_with_namespace_and_sources() {
+        let meta = HirNaiveFlatItemMeta {
+            namespace: Namespace::new_raw("crate::api".to_owned()),
+            sources: vec![HirGenerationSource::Normal],
+            is_module_public: true,
+        };
+        let parsed = parse_syn_item_struct(
+            &parse_quote!(
+                pub struct Widget;
+            ),
+            &meta,
+        )
+        .unwrap();
+
+        assert_eq!(parsed.len(), 1);
+        assert_eq!(parsed[0].name.rust_style(), "crate::api::Widget");
+        assert_eq!(parsed[0].visibility, HirVisibility::Public);
+        assert_eq!(parsed[0].sources, meta.sources);
+        assert!(!parsed[0].mirror);
+    }
+
+    /// Mirrors items from a non-self crate namespace.
+    #[test]
+    fn mirrors_external_enum() {
+        let meta = HirNaiveFlatItemMeta {
+            namespace: Namespace::new_raw("dependency::api".to_owned()),
+            sources: vec![],
+            is_module_public: true,
+        };
+        let parsed = parse_syn_item_enum(
+            &parse_quote!(
+                pub enum Status {
+                    Ready,
+                }
+            ),
+            &meta,
+        )
+        .unwrap();
+
+        assert!(parsed[0].mirror);
+    }
+}

@@ -1,6 +1,6 @@
 ---
 name: frb-issue-to-green-pr
-description: "Use when implementing a GitHub issue, bug fix, or feature in flutter_rust_bridge end-to-end: develop the change, add regression coverage, prepare and open a PR, monitor CI until green, and keep following up on a 5 minute cadence until the PR is ready."
+description: "Use when implementing a GitHub issue, bug fix, or feature in flutter_rust_bridge end-to-end: develop the change, add regression coverage, prepare and open a PR, and use sdev-ci-waiter to monitor CI until the PR is ready."
 ---
 
 # FRB Issue to Green PR
@@ -24,6 +24,7 @@ Read these when entering the matching phase:
 - `frb-prepare-pr` before pushing or opening the PR.
 - `frb-pr-review` before treating a non-trivial PR as ready.
 - `frb-fix-ci` before diagnosing any CI failure.
+- `sdev-ci-waiter` when waiting between CI state changes after the PR is opened or updated.
 - `frb-manual-test` before writing a manual regression test report under `tools/manual_tests/`.
 - `frb-ci-filter` before creating an intentional red CI reproduction PR or using filtered CI.
 - `gh-actions-live-logs` before reading GitHub Actions logs.
@@ -31,10 +32,10 @@ Read these when entering the matching phase:
 
 ## Workflow
 
-### 1. Start a 5 minute completion loop
+### 1. Start the completion loop
 
-- Create or update a thread heartbeat automation at a 5 minute cadence before doing substantial work.
-- The heartbeat must say to continue this skill until all stop conditions are met; update it with the PR URL, branch, and repository once they are known.
+- Keep the task active until all stop conditions are met.
+- Once the PR URL is known, use `sdev-ci-waiter` between CI processing actions. When it returns, handle the reported state and invoke it again until the PR is ready.
 
 ### 2. Understand the GitHub issue or requested change
 
@@ -94,13 +95,13 @@ Read these when entering the matching phase:
 
 ## Automation Rules
 
-- Prefer a heartbeat attached to the current thread for short follow-up intervals such as every 5 minutes.
-- The heartbeat prompt must be self-contained: include the PR URL/number, branch, repository, and the requirement to inspect CI and review state, fix issues, commit, push, and continue until ready.
-- Do not create a duplicate heartbeat if one already exists for the same PR; update the existing automation instead.
-- Cancel or leave inactive any PR-specific heartbeat once the stop conditions are met.
+- Call `sdev-ci-waiter` with the PR URL after each push, rerun, or handled CI event.
+- Treat its return as a wake-up signal, not a CI verdict. Inspect the reported checks, fix or rerun as required, then call the waiter again.
+- Do not add a separate time-based heartbeat or detached polling loop for the same PR.
+- Stop invoking the waiter once the stop conditions are met.
 
 ## Failure Handling
 
 - If blocked by permissions, missing credentials, a required external reviewer delay, or unavailable infrastructure, explain the concrete blocker and keep the PR state explicit.
-- If a CI run is queued for a long time, keep the heartbeat active rather than stopping.
+- If a CI run is queued for a long time, keep invoking `sdev-ci-waiter` rather than stopping.
 - If new user instructions arrive, let the newest instruction steer the workflow while preserving already-completed work.

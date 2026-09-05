@@ -175,3 +175,125 @@ impl MirContext for MirPack {
         &self.enum_pool
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json::json;
+
+    struct EmptyMirContext {
+        structs: MirStructPool,
+        enums: MirEnumPool,
+    }
+
+    impl EmptyMirContext {
+        fn new() -> Self {
+            Self {
+                structs: MirStructPool::new(),
+                enums: MirEnumPool::new(),
+            }
+        }
+    }
+
+    impl MirContext for EmptyMirContext {
+        fn struct_pool(&self) -> &MirStructPool {
+            &self.structs
+        }
+
+        fn enum_pool(&self) -> &MirEnumPool {
+            &self.enums
+        }
+    }
+
+    /// Checks primitive identifiers and Rust API type contracts.
+    #[test]
+    fn primitive_type_contracts_are_stable() {
+        let ty = MirType::Primitive(MirTypePrimitive::I32);
+
+        assert_eq!(ty.safe_ident(), "i_32");
+        assert_eq!(ty.rust_api_type(), "i32");
+        assert!(ty.is_primitive());
+        assert!(!ty.is_array());
+        assert!(ty.cloned_getter_semantics_reasonable());
+    }
+
+    /// Checks preorder traversal and stopping at a matching node.
+    #[test]
+    fn nested_type_visitor_is_preorder_and_stops_at_requested_nodes() {
+        let ty = MirType::Optional(optional::MirTypeOptional::new(MirType::GeneralList(
+            general_list::MirTypeGeneralList {
+                inner: Box::new(MirType::Primitive(MirTypePrimitive::Bool)),
+            },
+        )));
+        let context = EmptyMirContext::new();
+        let mut visited = Vec::new();
+
+        ty.visit_types(
+            &mut |current| {
+                visited.push(current.safe_ident());
+                false
+            },
+            &context,
+        );
+
+        assert_eq!(visited, ["opt_list_bool", "list_bool", "bool"]);
+
+        let mut stopped = Vec::new();
+        ty.visit_types(
+            &mut |current| {
+                stopped.push(current.safe_ident());
+                matches!(current, MirType::GeneralList(_) | MirType::Optional(_))
+            },
+            &context,
+        );
+        assert_eq!(stopped, ["opt_list_bool"]);
+
+        let list_ty = MirType::GeneralList(general_list::MirTypeGeneralList {
+            inner: Box::new(MirType::Primitive(MirTypePrimitive::Bool)),
+        });
+        let mut stopped_at_list = Vec::new();
+        list_ty.visit_types(
+            &mut |current| {
+                stopped_at_list.push(current.safe_ident());
+                matches!(current, MirType::GeneralList(_) | MirType::Optional(_))
+            },
+            &context,
+        );
+        assert_eq!(stopped_at_list, ["list_bool"]);
+    }
+
+    /// Checks the tagged MirType serialization schema for a boxed primitive.
+    #[test]
+    fn serialized_type_has_variant_identity_safe_ident_and_data() {
+        let ty = MirType::Boxed(boxed::MirTypeBoxed {
+            exist_in_real_api: true,
+            inner: Box::new(MirType::Primitive(MirTypePrimitive::U64)),
+        });
+
+        assert_eq!(
+            serde_json::to_value(ty).unwrap(),
+            json!({
+                "type": "Boxed",
+            "safe_ident": "box_u_64",
+                "data": {
+                    "exist_in_real_api": true,
+                    "inner": {
+                        "type": "Primitive",
+                    "safe_ident": "u_64",
+                        "data": "U64"
+                    }
+                }
+            })
+        );
+    }
+
+    /// Checks primitive-list specialization and the bool general-list exception.
+    #[test]
+    fn list_factory_preserves_bool_as_general_list_and_specializes_other_primitives() {
+        let bool_list = general_list::mir_list(MirType::Primitive(MirTypePrimitive::Bool), true);
+        let integer_list = general_list::mir_list(MirType::Primitive(MirTypePrimitive::I16), true);
+
+        assert!(matches!(bool_list, MirType::GeneralList(_)));
+        assert!(matches!(integer_list, MirType::PrimitiveList(_)));
+    }
+}

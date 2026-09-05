@@ -43,7 +43,7 @@ packer init .
 packer build \
   -var 'source_vm=ghcr.io/cirruslabs/macos-sonoma-xcode:16.1' \
   -var 'target_vm=frb-tart-base-candidate' \
-  -var 'flutter_version=3.44.0' \
+  -var 'flutter_version=3.47.0' \
   -var 'host_proxy_url=http://192.168.64.1:7897' \
   -var 'allow_insecure=false' \
   .
@@ -160,7 +160,7 @@ packer init .
 packer build \
   -var 'source_vm=127.0.0.1:5000/cirruslabs/macos-sonoma-xcode:16.1' \
   -var 'target_vm=frb-tart-base-candidate' \
-  -var 'flutter_version=3.44.0' \
+  -var 'flutter_version=3.47.0' \
   -var 'host_proxy_url=http://192.168.64.1:7897' \
   -var 'allow_insecure=true' \
   .
@@ -183,7 +183,7 @@ Do not boot and mutate `frb-tart-base` during verification. If you need to inspe
 tart clone frb-tart-base-candidate frb-tart-probe
 tart run --no-graphics frb-tart-probe
 tart ip frb-tart-probe --wait 180
-tart exec frb-tart-probe /bin/zsh -lc 'sw_vers && xcodebuild -version && flutter --version && flutter --version --machine | python3 -c '"'"'import json,sys; assert json.load(sys.stdin)["frameworkVersion"] == "3.44.0"'"'"' && pod --version && rustc --version && cargo --version && rustup target list --installed | grep aarch64-apple-ios-sim && rustup target list --installed | grep x86_64-apple-ios && rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep aarch64-apple-ios-sim && rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep x86_64-apple-ios'
+tart exec frb-tart-probe /bin/zsh -lc 'sw_vers && xcodebuild -version && flutter --version && flutter --version --machine | python3 -c '"'"'import json,sys; assert json.load(sys.stdin)["frameworkVersion"] == "3.47.0"'"'"' && pod --version && rustc --version && cargo --version && rustup target list --installed | grep aarch64-apple-ios-sim && rustup target list --installed | grep x86_64-apple-ios && rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep aarch64-apple-ios-sim && rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep x86_64-apple-ios'
 tart stop frb-tart-probe
 tart delete frb-tart-probe
 ```

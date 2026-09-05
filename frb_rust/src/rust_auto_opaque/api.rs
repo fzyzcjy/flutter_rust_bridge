@@ -69,6 +69,7 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
 mod tests {
     use crate::RustAutoOpaqueNom;
 
+    /// Supports all synchronous lock acquisition APIs.
     #[test]
     fn test_api_sync() {
         let opaque = RustAutoOpaqueNom::new(42);
@@ -79,6 +80,7 @@ mod tests {
     }
 
     #[cfg(not(target_family = "wasm"))]
+    /// Supports asynchronous read and write lock acquisition.
     #[tokio::test]
     async fn test_api_async() {
         let opaque = RustAutoOpaqueNom::new(42);
@@ -86,6 +88,7 @@ mod tests {
         assert_eq!(*opaque.write().await, 42);
     }
 
+    /// Shares the same locked value across clones.
     #[test]
     fn test_clone() {
         let a = RustAutoOpaqueNom::new(42);

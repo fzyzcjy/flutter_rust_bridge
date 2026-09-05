@@ -219,6 +219,7 @@ macro_rules! frb_generated_moi_arc_impl_value {
 mod tests {
     crate::frb_generated_moi_arc_def!();
 
+    /// Wraps generated object identifiers after their maximum value.
     #[test]
     fn test_next_id() {
         let mut pool = MoiArcPoolInner::<String>::default();

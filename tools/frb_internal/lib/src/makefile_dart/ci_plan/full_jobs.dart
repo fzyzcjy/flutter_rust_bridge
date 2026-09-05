@@ -53,6 +53,7 @@ final kCiJobs = [
             {'image': image, 'package': package},
     ]),
   ),
+  const CiJob('generate_run_frb_codegen_command_generate_from_scratch'),
   CiJob(
     'generate_run_frb_codegen_command_integrate',
     matrix: CiMatrix([
@@ -309,7 +310,7 @@ List<Map<String, Object?>> _quickstartSmokeEntries(String package) {
     if (package == 'frb_example--flutter_via_create')
       {
         'image': 'ubuntu-latest',
-        'platform': 'nix',
+        'platform': 'nixos',
         'target': 'desktop',
         'device': 'linux',
         'package': package,

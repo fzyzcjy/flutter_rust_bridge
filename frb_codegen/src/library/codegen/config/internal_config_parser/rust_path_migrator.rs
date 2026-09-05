@@ -34,6 +34,7 @@ mod tests {
     use super::*;
 
     #[test]
+    /// Migrates exactly the supported legacy glob configuration.
     fn test_previous_config_auto_migrated() {
         let actual = migrate_rust_input_config(&None, "rust/src/api/**/*.rs").unwrap();
         assert_eq!(
@@ -46,11 +47,13 @@ mod tests {
     }
 
     #[test]
+    /// Rejects unsupported legacy glob configurations.
     fn test_previous_config_unsupported() {
         assert!(migrate_rust_input_config(&None, "native/src/hello/**/*.rs").is_err());
     }
 
     #[test]
+    /// Keeps current syntax and an explicitly supplied root unchanged.
     fn test_current_config() {
         assert_eq!(
             migrate_rust_input_config(&None, "crate::apple").unwrap(),
@@ -67,5 +70,29 @@ mod tests {
                 rust_input: "crate::orange".into()
             }
         );
+    }
+
+    /// Rejects every unsupported wildcard and dot form in current syntax.
+    #[test]
+    fn rejects_wildcards_and_dots_except_the_exact_legacy_value() {
+        for input in [
+            "crate::*",
+            "crate::api.*",
+            "native/src/api/**/*.rs",
+            "foo.bar",
+        ] {
+            let error = migrate_rust_input_config(&None, input).unwrap_err();
+            assert!(error.to_string().contains("Please migrate configuration"));
+        }
+    }
+
+    /// Uses the supplied root for modern input syntax.
+    #[test]
+    fn preserves_supplied_root_for_modern_input() -> anyhow::Result<()> {
+        let result = migrate_rust_input_config(&Some("custom-root/".to_owned()), "crate::api")?;
+
+        assert_eq!(result.rust_root, "custom-root/");
+        assert_eq!(result.rust_input, "crate::api");
+        Ok(())
     }
 }

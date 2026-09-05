@@ -33,3 +33,33 @@ pub(crate) fn generate_impl_into_into_dart(name: &str, wrapper_name: &Option<Str
 "
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Emits the DCO conversion traits with the supplied conversion body.
+    #[test]
+    fn generate_impl_into_dart_preserves_name_body_and_codec_marker() {
+        let output = generate_impl_into_dart("ApiType", "convert(self)");
+
+        assert!(output.contains("// Codec=Dco (DartCObject based)"));
+        assert!(output.contains("impl flutter_rust_bridge::IntoDart for ApiType"));
+        assert!(output.contains("convert(self)"));
+        assert!(output.contains("IntoDartExceptPrimitive for ApiType"));
+    }
+
+    /// Selects identity conversion unless a wrapper type is requested.
+    #[test]
+    fn generate_impl_into_into_dart_selects_identity_or_wrapper_conversion() {
+        let identity = generate_impl_into_into_dart("ApiType", &None);
+        let wrapped = generate_impl_into_into_dart("ApiType", &Some("WireType".into()));
+
+        assert!(identity.contains("IntoIntoDart<ApiType> for ApiType"));
+        assert!(identity.contains("fn into_into_dart(self) -> ApiType {\n                self"));
+        assert!(wrapped.contains("IntoIntoDart<WireType> for ApiType"));
+        assert!(
+            wrapped.contains("fn into_into_dart(self) -> WireType {\n                self.into()")
+        );
+    }
+}

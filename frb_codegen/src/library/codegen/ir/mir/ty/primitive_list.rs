@@ -41,3 +41,19 @@ impl MirTypeTrait for MirTypePrimitiveList {
         format!("Vec<{}>", self.primitive.rust_api_type())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Delegates primitive-list identity and Rust type formatting.
+    #[test]
+    fn primitive_list_contracts_are_stable() {
+        let loose = MirTypePrimitiveList {
+            primitive: MirTypePrimitive::I32,
+            strict_dart_type: false,
+        };
+        assert_eq!(loose.safe_ident(), "list_prim_i_32_loose");
+        assert_eq!(loose.rust_api_type(), "Vec<i32>");
+    }
+}

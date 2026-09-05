@@ -9,7 +9,4 @@ part of 'structs.dart';
 // **************************************************************************
 
 Map<String, dynamic> _$CiPlanJobOutputToJson(CiPlanJobOutput instance) =>
-    <String, dynamic>{
-      'enable': instance.enable,
-      if (instance.matrix case final value?) 'matrix': value,
-    };
+    <String, dynamic>{'enable': instance.enable, 'matrix': ?instance.matrix};

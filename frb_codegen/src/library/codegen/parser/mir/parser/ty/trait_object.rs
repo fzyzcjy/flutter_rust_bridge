@@ -76,3 +76,34 @@ fn extract_trait_name_path(type_trait_object: &TypeTraitObject) -> Option<syn::P
         trait_bound.path.clone()
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use quote::ToTokens;
+    use syn::parse_quote;
+
+    /// Extracts the only trait bound from a supported trait object.
+    #[test]
+    fn extract_trait_name_path_accepts_one_trait_bound() {
+        let ty: TypeTraitObject = parse_quote!(dyn crate::Worker);
+
+        assert_eq!(
+            extract_trait_name_path(&ty)
+                .unwrap()
+                .to_token_stream()
+                .to_string(),
+            "crate :: Worker"
+        );
+    }
+
+    /// Rejects trait objects with additional bounds or non-trait bounds.
+    #[test]
+    fn extract_trait_name_path_rejects_unsupported_bounds() {
+        let multiple: TypeTraitObject = parse_quote!(dyn Worker + Send);
+        let lifetime: TypeTraitObject = parse_quote!(dyn Worker + 'static);
+
+        assert!(extract_trait_name_path(&multiple).is_none());
+        assert!(extract_trait_name_path(&lifetime).is_none());
+    }
+}

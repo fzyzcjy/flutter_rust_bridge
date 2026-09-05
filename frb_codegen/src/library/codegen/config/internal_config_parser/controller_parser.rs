@@ -21,3 +21,44 @@ pub(super) fn parse(
         max_count: None,
     })
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::path::PathBuf;
+
+    /// Builds exact watch and exclusion paths when watching is enabled.
+    #[test]
+    fn builds_paths_with_enabled_watch() -> anyhow::Result<()> {
+        let config = MetaConfig { watch: true };
+        let result = parse(
+            &config,
+            Path::new("native"),
+            Path::new("native/src/frb_generated.rs"),
+        )?;
+
+        assert!(result.watch);
+        assert_eq!(result.watching_paths, vec![PathBuf::from("native/src")]);
+        assert_eq!(
+            result.exclude_paths,
+            vec![PathBuf::from("native/src/frb_generated.rs")]
+        );
+        assert_eq!(result.max_count, None);
+        Ok(())
+    }
+
+    /// Preserves disabled watching without changing derived paths.
+    #[test]
+    fn preserves_disabled_watch() -> anyhow::Result<()> {
+        let config = MetaConfig { watch: false };
+        let result = parse(&config, Path::new("crate"), Path::new("crate/generated.rs"))?;
+
+        assert!(!result.watch);
+        assert_eq!(result.watching_paths, vec![PathBuf::from("crate/src")]);
+        assert_eq!(
+            result.exclude_paths,
+            vec![PathBuf::from("crate/generated.rs")]
+        );
+        Ok(())
+    }
+}

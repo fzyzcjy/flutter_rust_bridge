@@ -84,3 +84,28 @@ const RESERVED_KEYWORDS: &[&str] = &[
     "wchar_t",
     "while",
 ];
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    /// Escapes every reserved C++ identifier.
+    fn escapes_every_cbindgen_keyword() {
+        for keyword in RESERVED_KEYWORDS {
+            let mut identifier = keyword.to_string();
+            escape(&mut identifier);
+            assert_eq!(identifier, format!("{keyword}_"));
+        }
+    }
+
+    #[test]
+    /// Preserves identifiers outside the reserved C++ keyword list.
+    fn preserves_non_keywords_and_keyword_prefixes() {
+        for original in ["identifier", "Class", "class_name", "className", "class_"] {
+            let mut identifier = original.to_owned();
+            escape(&mut identifier);
+            assert_eq!(identifier, original);
+        }
+    }
+}

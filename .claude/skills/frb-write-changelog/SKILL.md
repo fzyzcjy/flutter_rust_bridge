@@ -60,8 +60,18 @@ Match the existing changelog style.
 - Append `(thanks @username)` for every third-party human-authored PR in the release range, including docs, CI, chore, tooling, and feature PRs.
 - When a changelog entry combines local maintainer PRs with a third-party PR, append the third-party thanks to that combined entry.
 - If multiple third-party authors appear in one combined entry, include each author in the same entry.
-- Place entries with `(thanks @username)` before entries without thanks.
-- Within the thanks group and the no-thanks group, keep items in merge order from newest to oldest unless the surrounding section clearly uses another order.
+- For an ordinary beta release section, place entries with `(thanks @username)` before entries without thanks. Within each group, keep merge order from newest to oldest unless the surrounding section clearly uses another order.
+
+For a stable release that follows betas of the same version series, use a grouped stable section:
+
+- Put only changes merged after the latest beta release first as ordinary top-level entries. Do not include an older change solely because the beta changelogs omitted it.
+- Then add one top-level parent entry per beta, using the canonical version label such as `* 2.13.0-beta.6`, ordered from the latest beta to the earliest beta.
+- Copy that beta's substantive entries exactly beneath its parent as nested bullets. Preserve wording, PR references, and thanks attribution.
+- Keep the generic "what's new" entry only once at the top of the stable section.
+- Never fold a post-latest-beta PR into a copied beta entry. Keep it in the leading group even when its subject is related to a beta entry.
+- Apply thanks-first ordering independently within each copied beta group. In the post-latest-beta group, user-visible-before-internal ordering takes precedence over thanks placement.
+
+For newly written entries, keep every user-visible feature, fix, behavior change, published-package change, and user-facing documentation PR as its own entry. Do not join such changes with `and` or fold multiple PRs into a shared summary. Combining multiple PRs is allowed only for user-invisible internal work such as CI, tests, agent or release tooling, and code outside published packages. Order the user-visible entries first, then put all user-invisible internal entries at the end of the post-latest-beta group immediately before the first beta parent entry. Copied beta entries remain exact copies even if they predate this rule.
 
 Edit only `CHANGELOG.md`. Do not manually edit generated files for this task.
 
@@ -90,7 +100,7 @@ The verifier checks that:
 
 - PR numbers in the target section are complete, not duplicated, and not unexpected.
 - Third-party thanks authors are complete and not unexpected, including ordinary documentation PR authors. The same author may be thanked on multiple entries.
-- Entries with third-party thanks appear before entries without thanks.
+- Entries with third-party thanks appear before entries without thanks within each copied beta group.
 - `docs: add <name> as a contributor ...` all-contributors PRs are ignored.
 
 Use `--ignore-pr <NUMBER>` only for a documented intentional exclusion. Use `--extra-local-pr <NUMBER>` for a stacked local maintainer PR that belongs in the changelog but is not present in the merged PR JSON yet. Use `--extra-thanks-author <LOGIN>` only for a verified co-author or contributor credited by a release-range PR even though their source PR falls outside the release range; record the source PR and reason in the release journal.
@@ -111,7 +121,7 @@ Run the mechanical verifier again after the user finishes manual edits.
 
 - Confirm there are no missing, duplicated, or extra PR numbers.
 - Confirm there are no missing or unexpected third-party thanks authors.
-- Confirm entries with third-party thanks appear before entries without thanks.
+- Confirm entries with third-party thanks appear before entries without thanks within each copied beta group.
 - Apply any confirmed fixes, then do one final diff check.
 
 If the user explicitly wants an independent review, ask a separate reviewer or subagent to compare the final `CHANGELOG.md` against the same merged PR list.

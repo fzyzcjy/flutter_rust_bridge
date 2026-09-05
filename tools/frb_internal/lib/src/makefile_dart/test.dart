@@ -564,9 +564,8 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   await runPubGetIfNotRunYet(config.package);
   await exec(_dartValgrindCompileCommand(), relativePwd: config.package);
 
-  const valgrindCommand =
-      'valgrind '
-      '--error-exitcode=1 '
+  final valgrindCommand =
+      '${_dartValgrindCommand()} '
       '--leak-check=full '
       '--trace-children=yes '
       // Used for implicit null checks.
@@ -577,12 +576,24 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   final output = await exec(
     '$valgrindCommand ${_dartValgrindOutputExecutablePath()}',
     relativePwd: config.package,
-    checkExitCode: false,
     extraEnv: kEnvEnableRustBacktrace,
   );
 
-  checkValgrindOutput(output.stdout);
+  checkValgrindOutput(
+    stdout: output.stdout,
+    stderr: output.stderr,
+    exitCode: output.exitCode,
+  );
 }
+
+String _dartValgrindCommand() =>
+    'valgrind '
+    '--suppressions=../../tools/dart_valgrind.supp '
+    '--error-exitcode=1 '
+    '--errors-for-leak-kinds=definite,indirect';
+
+@visibleForTesting
+String dartValgrindCommandForTesting() => _dartValgrindCommand();
 
 String _dartValgrindCompileCommand() {
   return 'dart build cli '
@@ -608,7 +619,16 @@ String dartValgrindOutputExecutablePathForTesting() =>
     _dartValgrindOutputExecutablePath();
 
 @visibleForTesting
-void checkValgrindOutput(String output) {
+void checkValgrindOutput({
+  required String stdout,
+  required String stderr,
+  required int exitCode,
+}) {
+  if (exitCode != 0) {
+    throw Exception('Valgrind failed with exit code $exitCode');
+  }
+
+  final output = '$stdout\n$stderr';
   const kDartAllTestsPassedStr = 'All tests passed!';
   if (!output.contains(kDartAllTestsPassedStr)) {
     throw Exception(

@@ -45,3 +45,42 @@ impl BaseMerger for TraitDefDefaultImplMerger {
     }
     // frb-coverage:ignore-end
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::flat::function::HirFlatFunctionOwner;
+    use crate::codegen::ir::hir::misc::item_fn::GeneralizedItemFn;
+    use crate::utils::namespace::Namespace;
+
+    fn function(sources: Vec<HirGenerationSource>) -> HirFlatFunction {
+        HirFlatFunction {
+            namespace: Namespace::default(),
+            owner: HirFlatFunctionOwner::Function,
+            sources,
+            item_fn: GeneralizedItemFn::ItemFn(syn::parse_str("fn implementation() {}").unwrap()),
+        }
+    }
+
+    /// Replaces a copied trait default with the normal implementation.
+    #[test]
+    fn merges_copied_trait_default_with_normal_implementation() {
+        let base = function(vec![HirGenerationSource::CopyFromTraitDef]);
+        let overrider = function(vec![HirGenerationSource::Normal]);
+
+        let merged = TraitDefDefaultImplMerger.merge_functions(&base, &overrider);
+
+        assert_eq!(merged.unwrap().sources, overrider.sources);
+    }
+
+    /// Rejects a default implementation when the replacement is not normal source code.
+    #[test]
+    fn does_not_merge_non_normal_replacement() {
+        let base = function(vec![HirGenerationSource::CopyFromTraitDef]);
+        let overrider = function(vec![HirGenerationSource::FromFrbOverride]);
+
+        assert!(TraitDefDefaultImplMerger
+            .merge_functions(&base, &overrider)
+            .is_none());
+    }
+}

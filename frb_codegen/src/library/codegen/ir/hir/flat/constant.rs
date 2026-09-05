@@ -15,3 +15,20 @@ impl HirFlatComponent<String> for HirFlatConstant {
         self.item_const.ident.to_string()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Uses the constant identifier as its sort key.
+    #[test]
+    fn sort_key_uses_constant_identifier() {
+        let item_const: syn::ItemConst = syn::parse_str("const ANSWER: u8 = 42;").unwrap();
+        let constant = HirFlatConstant {
+            namespace: Namespace::new_raw("crate::values".to_owned()),
+            item_const,
+        };
+
+        assert_eq!(constant.sort_key(), "ANSWER");
+    }
+}

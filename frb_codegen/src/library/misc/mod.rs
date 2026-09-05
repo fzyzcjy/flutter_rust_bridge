@@ -35,6 +35,7 @@ impl FvmInstallMode {
 mod tests {
     use super::*;
 
+    /// CLI skip flags select the matching FVM install behavior.
     #[test]
     fn from_skip_fvm_install_maps_cli_flag_to_mode() {
         assert_eq!(

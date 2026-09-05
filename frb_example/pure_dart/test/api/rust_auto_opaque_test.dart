@@ -7,7 +7,10 @@ import 'package:test/test.dart';
 
 import '../test_utils.dart';
 
-Future<void> main({bool skipRustLibInit = false}) async {
+Future<void> main({
+  bool skipRustLibInit = false,
+  bool skipDisposedRustAutoOpaqueArgumentTest = false,
+}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('simple functions', () {
@@ -25,19 +28,23 @@ Future<void> main({bool skipRustLibInit = false}) async {
         );
       });
 
-      test('after call, the object cannot be used again', () async {
-        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-        await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100),
-        );
+      test(
+        'after call, the object cannot be used again',
+        () async {
+          final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+          await futurizeVoidTwinNormal(
+            rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100),
+          );
 
-        expect(obj.isDisposed, true);
+          expect(obj.isDisposed, true);
 
-        await expectLater(
-          () => rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-          throwsA(isA<DroppableDisposedException>()),
-        );
-      });
+          await expectLater(
+            () => rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
+            throwsA(isA<DroppableDisposedException>()),
+          );
+        },
+        skip: skipDisposedRustAutoOpaqueArgumentTest,
+      );
     });
 
     group('arg ref', () {

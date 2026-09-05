@@ -51,6 +51,7 @@ impl fmt::Display for Rust2DartSendError {
 mod tests {
     use crate::Rust2DartSendError;
 
+    /// Formats the send error consistently for display and debug output.
     #[test]
     fn test_rust2dart_send_error() {
         assert!(format!("{Rust2DartSendError}").contains("post message"));

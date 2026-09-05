@@ -25,6 +25,7 @@ $_kPrelude
 
 import 'package:flutter_rust_bridge_utils/flutter_rust_bridge_utils_web.dart';
 import 'package:${package.dartPackageName}/src/rust/frb_generated.dart';
+
 import 'dart_valgrind_test_entrypoint.dart' as dart_valgrind_test_entrypoint;
 
 Future<void> main() async {
@@ -57,8 +58,17 @@ Future<void> _generateDartValgrindTestEntrypoint(
       "import '${path.relative(file, from: dirTest.toFilePath()).replaceAll(r'\', '/')}' as ${path.basenameWithoutExtension(file)};\n",
   ];
   final entrypoints = [
-    for (final file in files) //
-      '${path.basenameWithoutExtension(file)}.main,\n',
+    for (final file in files)
+      if (_shouldSkipDisposedRustAutoOpaqueArgumentTest(
+        package: package,
+        fileStem: path.basenameWithoutExtension(file),
+      ))
+        '''({bool skipRustLibInit = false}) => ${path.basenameWithoutExtension(file)}.main(
+          skipRustLibInit: skipRustLibInit,
+          skipDisposedRustAutoOpaqueArgumentTest: skipDisposedRustAutoOpaqueArgumentTest,
+        ),\n'''
+      else
+        '${path.basenameWithoutExtension(file)}.main,\n',
   ];
 
   final code =
@@ -78,7 +88,9 @@ Future<void> main() async {
   await RustLib.init();
 
   final success = await directRunTests(
-    () async => callFileEntrypoints(),
+    () async {
+      await callFileEntrypoints(skipDisposedRustAutoOpaqueArgumentTest: true);
+    },
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
@@ -91,7 +103,9 @@ Future<void> main() async {
   exit(success ? 0 : 1);
 }
 
-Future<void> callFileEntrypoints() async {
+Future<void> callFileEntrypoints({
+  bool skipDisposedRustAutoOpaqueArgumentTest = false,
+}) async {
   final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
     ${entrypoints.join("")}
   ];
@@ -104,6 +118,20 @@ Future<void> callFileEntrypoints() async {
 
   await _writeToFile(dartRoot, 'test/dart_valgrind_test_entrypoint.dart', code);
 }
+
+bool _shouldSkipDisposedRustAutoOpaqueArgumentTest({
+  required Package package,
+  required String fileStem,
+}) => switch (package) {
+  Package.pureDart => {
+    'rust_auto_opaque_twin_rust_async_sse_test',
+    'rust_auto_opaque_twin_sync_sse_test',
+  }.contains(fileStem),
+  Package.pureDartPde => {
+    'rust_auto_opaque_twin_rust_async_test',
+    'rust_auto_opaque_twin_sync_test',
+  }.contains(fileStem),
+};
 
 Future<void> _writeToFile(
   Uri dartRoot,

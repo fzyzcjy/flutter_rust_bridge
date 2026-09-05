@@ -27,3 +27,26 @@ impl RustInputNamespacePack {
         (self.rust_input_namespace_prefixes.iter()).any(|prefix| prefix.is_prefix_of(namespace))
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::RustInputNamespacePack;
+    use crate::utils::namespace::Namespace;
+
+    /// Matches configured namespaces and their descendants only.
+    #[test]
+    fn recognizes_interesting_namespace_prefixes() {
+        let pack = RustInputNamespacePack {
+            rust_input_namespace_prefixes: vec![Namespace::new(vec!["crate".into(), "api".into()])],
+            rust_output_path_namespace: Namespace::default(),
+        };
+
+        assert!(pack.is_interest(&Namespace::new(vec!["crate".into(), "api".into()])));
+        assert!(pack.is_interest(&Namespace::new(vec![
+            "crate".into(),
+            "api".into(),
+            "nested".into(),
+        ])));
+        assert!(!pack.is_interest(&Namespace::new(vec!["crate".into(), "other".into()])));
+    }
+}

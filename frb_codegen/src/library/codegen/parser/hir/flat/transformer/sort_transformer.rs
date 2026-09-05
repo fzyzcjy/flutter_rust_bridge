@@ -17,3 +17,39 @@ impl HirFlatPackComponentVisitor for Visitor {
         items.sort_by_cached_key(|item| item.sort_key());
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
+
+    /// Sorts type aliases by their component-specific identifier keys.
+    #[test]
+    fn sorts_type_aliases_by_identifier() {
+        let mut pack = HirFlatPack {
+            types: vec![
+                HirFlatTypeAlias {
+                    ident: "Zebra".to_owned(),
+                    target: syn::parse_str("i32").unwrap(),
+                    type_params: vec![],
+                },
+                HirFlatTypeAlias {
+                    ident: "Apple".to_owned(),
+                    target: syn::parse_str("u32").unwrap(),
+                    type_params: vec![],
+                },
+            ],
+            ..HirFlatPack::default()
+        };
+
+        sort_hir_flat_pack(&mut pack);
+
+        assert_eq!(
+            pack.types
+                .iter()
+                .map(|alias| &alias.ident)
+                .collect::<Vec<_>>(),
+            ["Apple", "Zebra"]
+        );
+    }
+}

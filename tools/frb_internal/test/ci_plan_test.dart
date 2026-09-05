@@ -21,6 +21,11 @@ void main() {
           kCiJobs.map((job) => job.id).toSet(),
           reason: filter,
         );
+        expect(
+          plan.enabledJobs,
+          contains('generate_run_frb_codegen_command_generate_from_scratch'),
+          reason: filter,
+        );
         expect(plan.matrixByJob['test_dart_web'], {
           'include': [
             {'package': 'frb_dart'},
@@ -150,8 +155,7 @@ void main() {
     test('excluded matrix combinations stay excluded before filtering', () {
       expect(
         () => buildCiPlan(
-          filter:
-              'test_dart_native[image=windows-2025,package=tools--frb_internal]',
+          filter: 'test_dart_native[image=windows-2025,package=tools--frb_internal]',
           automaticCiDisabled: false,
         ),
         throwsFormatException,
@@ -160,8 +164,7 @@ void main() {
 
     test('nested info dimensions can be filtered by platform and package', () {
       final plan = buildCiPlan(
-        filter:
-            'test_flutter_native_desktop[platform=linux,package=frb_example--gallery|frb_example--flutter_via_integrate]',
+        filter: 'test_flutter_native_desktop[platform=linux,package=frb_example--gallery|frb_example--flutter_via_integrate]',
         automaticCiDisabled: false,
       );
 
@@ -207,8 +210,7 @@ void main() {
 
     test('numeric matrix values are matched as strings', () {
       final plan = buildCiPlan(
-        filter:
-            'test_flutter_native_android[package=frb_example--flutter_via_create,device=pixel,api-level=35]',
+        filter: 'test_flutter_native_android[package=frb_example--flutter_via_create,device=pixel,api-level=35]',
         automaticCiDisabled: false,
       );
 
@@ -226,8 +228,7 @@ void main() {
 
     test('quickstart smoke matrix can be filtered by platform and device', () {
       final plan = buildCiPlan(
-        filter:
-            'test_flutter_quickstart_smoke[platform=web,device=chrome,package=frb_example--flutter_via_create]',
+        filter: 'test_flutter_quickstart_smoke[platform=web,device=chrome,package=frb_example--flutter_via_create]',
         automaticCiDisabled: false,
       );
 
@@ -248,9 +249,9 @@ void main() {
       });
     });
 
-    test('single Nix Flutter smoke filter selects one entry', () {
+    test('single NixOS Flutter smoke filter selects one entry', () {
       final plan = buildCiPlan(
-        filter: 'test_flutter_quickstart_smoke[platform=nix]',
+        filter: 'test_flutter_quickstart_smoke[platform=nixos]',
         automaticCiDisabled: false,
       );
 
@@ -260,7 +261,7 @@ void main() {
           {
             'info': {
               'image': 'ubuntu-latest',
-              'platform': 'nix',
+              'platform': 'nixos',
               'target': 'desktop',
               'device': 'linux',
               'package': 'frb_example--flutter_via_create',
@@ -273,8 +274,7 @@ void main() {
 
     test('values containing spaces are accepted verbatim', () {
       final plan = buildCiPlan(
-        filter:
-            'test_flutter_native_ios[device=iPhone 17 Pro Max Simulator (26.5),package=frb_example--rust_ui_counter--ui]',
+        filter: 'test_flutter_native_ios[device=iPhone 17 Pro Max Simulator (26.5),package=frb_example--rust_ui_counter--ui]',
         automaticCiDisabled: false,
       );
 
@@ -306,8 +306,7 @@ void main() {
 
     test('repeated matrix job filters are unioned', () {
       final plan = buildCiPlan(
-        filter:
-            'test_rust[image=ubuntu-latest,version=nightly],test_rust[image=ubuntu-latest,version=1.85.0]',
+        filter: 'test_rust[image=ubuntu-latest,version=nightly],test_rust[image=ubuntu-latest,version=1.85.0]',
         automaticCiDisabled: false,
       );
 
@@ -324,26 +323,27 @@ void main() {
       });
     });
 
-    test('repeated matrix job filters deduplicate by original matrix order', () {
-      final plan = buildCiPlan(
-        filter:
-            'test_dart_web[package=frb_example--pure_dart_pde],test_dart_web[package=frb_dart|frb_example--pure_dart_pde]',
-        automaticCiDisabled: false,
-      );
+    test(
+      'repeated matrix job filters deduplicate by original matrix order',
+      () {
+        final plan = buildCiPlan(
+          filter: 'test_dart_web[package=frb_example--pure_dart_pde],test_dart_web[package=frb_dart|frb_example--pure_dart_pde]',
+          automaticCiDisabled: false,
+        );
 
-      expect(plan.enabledJobs, {'test_dart_web'});
-      expect(plan.matrixByJob['test_dart_web'], {
-        'include': [
-          {'package': 'frb_dart'},
-          {'package': 'frb_example--pure_dart_pde'},
-        ],
-      });
-    });
+        expect(plan.enabledJobs, {'test_dart_web'});
+        expect(plan.matrixByJob['test_dart_web'], {
+          'include': [
+            {'package': 'frb_dart'},
+            {'package': 'frb_example--pure_dart_pde'},
+          ],
+        });
+      },
+    );
 
     test('generated JSON output keeps GitHub Actions shape', () {
       final plan = buildCiPlan(
-        filter:
-            'lint_rust_primary,test_dart_web[package=frb_example--pure_dart_pde]',
+        filter: 'lint_rust_primary,test_dart_web[package=frb_example--pure_dart_pde]',
         automaticCiDisabled: false,
       );
 
@@ -429,8 +429,7 @@ void main() {
         },
       ),
       const _CiFilterExample(
-        filter:
-            'test_dart_web[package=frb_dart|frb_example--pure_dart_pde],lint_rust_primary',
+        filter: 'test_dart_web[package=frb_dart|frb_example--pure_dart_pde],lint_rust_primary',
         enabledJobs: {'test_dart_web', 'lint_rust_primary'},
         matrixByJob: {
           'test_dart_web': {
@@ -470,8 +469,7 @@ void main() {
         },
       ),
       const _CiFilterExample(
-        filter:
-            'test_rust[image=ubuntu-latest,version=nightly],test_rust[image=ubuntu-latest,version=1.85.0]',
+        filter: 'test_rust[image=ubuntu-latest,version=nightly],test_rust[image=ubuntu-latest,version=1.85.0]',
         enabledJobs: {'test_rust'},
         matrixByJob: {
           'test_rust': {
@@ -487,8 +485,7 @@ void main() {
         },
       ),
       const _CiFilterExample(
-        filter:
-            'test_flutter_native_desktop[platform=linux,package=frb_example--gallery]',
+        filter: 'test_flutter_native_desktop[platform=linux,package=frb_example--gallery]',
         enabledJobs: {'test_flutter_native_desktop'},
         matrixByJob: {
           'test_flutter_native_desktop': {
@@ -505,8 +502,7 @@ void main() {
         },
       ),
       const _CiFilterExample(
-        filter:
-            'test_flutter_native_android[package=frb_example--flutter_via_create,device=pixel,api-level=35]',
+        filter: 'test_flutter_native_android[package=frb_example--flutter_via_create,device=pixel,api-level=35]',
         enabledJobs: {'test_flutter_native_android'},
         matrixByJob: {
           'test_flutter_native_android': {
@@ -521,8 +517,7 @@ void main() {
         },
       ),
       const _CiFilterExample(
-        filter:
-            'test_flutter_native_ios[device=iPhone 17 Pro Max Simulator (26.5),package=frb_example--rust_ui_counter--ui]',
+        filter: 'test_flutter_native_ios[device=iPhone 17 Pro Max Simulator (26.5),package=frb_example--rust_ui_counter--ui]',
         enabledJobs: {'test_flutter_native_ios'},
         matrixByJob: {
           'test_flutter_native_ios': {
@@ -536,8 +531,7 @@ void main() {
         },
       ),
       const _CiFilterExample(
-        filter:
-            'generate_run_frb_codegen_command_generate[image=ubuntu-24.04,package=frb_example--integrate_third_party]',
+        filter: 'generate_run_frb_codegen_command_generate[image=ubuntu-24.04,package=frb_example--integrate_third_party]',
         enabledJobs: {'generate_run_frb_codegen_command_generate'},
         matrixByJob: {
           'generate_run_frb_codegen_command_generate': {
@@ -593,8 +587,7 @@ void main() {
         },
       ),
       const _CiFilterExample(
-        filter:
-            'test_dart_sanitizer[sanitizer=asan,package=frb_example--pure_dart]',
+        filter: 'test_dart_sanitizer[sanitizer=asan,package=frb_example--pure_dart]',
         enabledJobs: {'test_dart_sanitizer'},
         matrixByJob: {
           'test_dart_sanitizer': {

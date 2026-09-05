@@ -105,6 +105,7 @@ mod tests {
     use std::collections::HashMap;
     use syn::{parse_str, Type};
 
+    /// Resolves an alias through a nested primary alias.
     #[test]
     fn test_topo_resolve_primary_type_with_nest() {
         let input = HashMap::from([
@@ -119,6 +120,7 @@ mod tests {
         assert_eq!(output, expect);
     }
 
+    /// Preserves a primary type alias unchanged.
     #[test]
     fn test_topo_resolve_primary_type() {
         let input = HashMap::from([("id".to_string(), parse_str::<Type>("i32").unwrap())]);
@@ -128,6 +130,7 @@ mod tests {
         assert_eq!(output, expect);
     }
 
+    /// Preserves an alias whose function-pointer target cannot be eagerly resolved.
     #[test]
     fn test_topo_resolve3_unhandle_case() {
         let input = HashMap::from([("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap())]);
@@ -136,6 +139,7 @@ mod tests {
         assert_eq!(output, expect);
     }
 
+    /// Propagates an unsupported target through a dependent alias.
     #[test]
     fn test_topo_resolve_unhandle_case_with_nest() {
         let input = HashMap::from([
@@ -151,5 +155,56 @@ mod tests {
         ]);
         let output = resolve_type_aliases(input);
         assert_eq!(&output, &expect);
+    }
+
+    /// Preserves generic aliases while eagerly resolving non-generic aliases.
+    #[test]
+    fn transform_preserves_generic_aliases() -> anyhow::Result<()> {
+        let pack = HirFlatPack {
+            types: vec![
+                HirFlatTypeAlias {
+                    ident: "RawId".to_owned(),
+                    target: parse_str("i32").unwrap(),
+                    type_params: vec![],
+                },
+                HirFlatTypeAlias {
+                    ident: "Id".to_owned(),
+                    target: parse_str("RawId").unwrap(),
+                    type_params: vec![],
+                },
+                HirFlatTypeAlias {
+                    ident: "ResultAlias".to_owned(),
+                    target: parse_str("Result<T, Id>").unwrap(),
+                    type_params: vec!["T".to_owned()],
+                },
+            ],
+            ..HirFlatPack::default()
+        };
+
+        let transformed = transform(pack)?;
+
+        let raw_id = transformed
+            .types
+            .iter()
+            .find(|alias| alias.ident == "RawId")
+            .unwrap();
+        let id = transformed
+            .types
+            .iter()
+            .find(|alias| alias.ident == "Id")
+            .unwrap();
+        let result_alias = transformed
+            .types
+            .iter()
+            .find(|alias| alias.ident == "ResultAlias")
+            .unwrap();
+
+        assert_eq!(raw_id.type_params, Vec::<String>::new());
+        assert_eq!(raw_id.target, parse_str("i32").unwrap());
+        assert_eq!(id.type_params, Vec::<String>::new());
+        assert_eq!(id.target, parse_str("i32").unwrap());
+        assert_eq!(result_alias.target, parse_str("Result<T, Id>").unwrap());
+        assert_eq!(result_alias.type_params, vec!["T"]);
+        Ok(())
     }
 }

@@ -11,6 +11,36 @@ pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment<'
         .collect()
 }
 
+#[cfg(test)]
+mod tests {
+    use super::splay_segments;
+    use crate::codegen::ir::mir::ty::rust_opaque::NameComponent;
+    use syn::parse_quote;
+
+    /// Preserves qualified segment names and their generic arguments.
+    #[test]
+    fn splay_segments_preserves_names_and_arguments() {
+        let segments = vec![
+            NameComponent {
+                ident: "crate".into(),
+                args: vec![],
+            },
+            NameComponent {
+                ident: "Container".into(),
+                args: vec![parse_quote!(String), parse_quote!(Vec<u8>)],
+            },
+        ];
+
+        let actual = splay_segments(&segments);
+
+        assert_eq!(actual.len(), 2);
+        assert_eq!(actual[0].0, "crate");
+        assert!(actual[0].1.is_empty());
+        assert_eq!(actual[1].0, "Container");
+        assert_eq!(actual[1].1, &[parse_quote!(String), parse_quote!(Vec<u8>)]);
+    }
+}
+
 // TODO
 // pub(crate) fn parse_path_type_to_unencodable(
 //     type_path: &TypePath,

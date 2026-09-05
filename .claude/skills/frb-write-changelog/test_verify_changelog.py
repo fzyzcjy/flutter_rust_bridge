@@ -166,7 +166,7 @@ def test_verify_changelog_accepts_duplicate_thanks_author() -> None:
 
 
 def test_verify_changelog_reports_thanks_order_problems() -> None:
-    """Verifier reports thanks entries placed after entries without thanks."""
+    """Verifier reports thanks ordering problems inside a copied beta group."""
 
     merged_prs = [
         make_pr(number=4, author_login="alice"),
@@ -179,9 +179,10 @@ def test_verify_changelog_reports_thanks_order_problems() -> None:
 ## 2.0.0
 
 * Please refer to https://example.com for what's changed.
-* Add first feature #4 (thanks @alice)
-* Improve CI #3
-* Add second feature #2 (thanks @bob)
+* 2.0.0-beta.1
+  * Add first feature #4 (thanks @alice)
+  * Improve CI #3
+  * Add second feature #2 (thanks @bob)
 
 ## 1.0.0
 """
@@ -200,6 +201,46 @@ def test_verify_changelog_reports_thanks_order_problems() -> None:
 
     assert result.ok is False
     assert result.thanks_order_violations == ["* Add second feature #2 (thanks @bob)"]
+
+
+def test_verify_changelog_resets_thanks_order_for_each_beta_group() -> None:
+    """Verifier applies thanks-first ordering independently to each beta group."""
+
+    merged_prs = [
+        make_pr(number=5),
+        make_pr(number=4, author_login="alice"),
+        make_pr(number=3),
+        make_pr(number=2, author_login="bob"),
+    ]
+    changelog_text = """
+# Changelog
+
+## 2.0.0
+
+* Stable-only change #5
+* 2.0.0-beta.2
+  * Beta 2 contribution #4 (thanks @alice)
+  * Beta 2 local change #3
+* 2.0.0-beta.1
+  * Beta 1 contribution #2 (thanks @bob)
+
+## 1.0.0
+"""
+
+    result = verify_changelog.verify_changelog(
+        changelog_text=changelog_text,
+        merged_prs=merged_prs,
+        version="2.0.0",
+        previous_release_time=verify_changelog.parse_datetime("2026-01-01T00:00:00Z"),
+        release_time=None,
+        local_authors={"fzyzcjy"},
+        ignored_pr_numbers=set(),
+        extra_local_pr_numbers=set(),
+        extra_thanks_authors=set(),
+    )
+
+    assert result.ok is True
+    assert result.thanks_order_violations == []
 
 
 def test_verify_changelog_accepts_stacked_local_pr() -> None:

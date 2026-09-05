@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: dc27559385e905ad30838356c5f5d574014ba39872d732111cd07ac0beff4c57
+      sha256: da0d9209ca76bde579f2da330aeb9df62b6319c834fa7baae052021b0462401f
       url: "https://pub.dev"
     source: hosted
-    version: "80.0.0"
+    version: "85.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
-      sha256: "192d1c5b944e7e53b24b5586db760db934b177d4147c42fbca8c8c5f1eb8d11e"
+      sha256: "974859dc0ff5f37bc4313244b3218c791810d03ab3470a579580279ba971a48d"
       url: "https://pub.dev"
     source: hosted
-    version: "7.3.0"
+    version: "7.7.1"
   archive:
     dependency: transitive
     description:
@@ -239,7 +239,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "2.13.0-beta.6"
+    version: "2.14.0-beta.1"
   flutter_rust_bridge_utils:
     dependency: "direct main"
     description:
@@ -347,10 +347,10 @@ packages:
     dependency: "direct dev"
     description:
       name: json_serializable
-      sha256: b0a98230538fe5d0b60a22fb6bf1b6cb03471b53e3324ff6069c591679dd59c9
+      sha256: c50ef5fc083d5b5e12eef489503ba3bf5ccc899e487d691584699b4bdefeea8c
       url: "https://pub.dev"
     source: hosted
-    version: "6.9.3"
+    version: "6.9.5"
   lints:
     dependency: "direct main"
     description:

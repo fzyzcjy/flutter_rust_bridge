@@ -37,3 +37,47 @@ fn generate_decode(mir: &MirTypeRustAutoOpaqueImplicit) -> Option<String> {
         None
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::llfetime_aware_type::MirLifetimeAwareType;
+    use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirRustAutoOpaqueRaw;
+    use crate::codegen::ir::mir::ty::rust_opaque::{
+        MirRustOpaqueInner, MirTypeRustOpaque, RustOpaqueCodecMode,
+    };
+    use crate::utils::namespace::Namespace;
+
+    fn implicit_opaque(ownership_mode: OwnershipMode) -> MirTypeRustAutoOpaqueImplicit {
+        MirTypeRustAutoOpaqueImplicit {
+            ownership_mode,
+            inner: MirTypeRustOpaque {
+                namespace: Namespace::default(),
+                inner: MirRustOpaqueInner(MirLifetimeAwareType::new("crate::api::Handle".into())),
+                codec: RustOpaqueCodecMode::Nom,
+                dart_api_type: None,
+                brief_name: false,
+            },
+            raw: MirRustAutoOpaqueRaw {
+                string: MirLifetimeAwareType::new("crate::api::Handle".into()),
+                segments: vec![],
+            },
+            reason: None,
+            ignore: false,
+        }
+    }
+
+    /// Generates decoding only for owned implicit opaque values.
+    #[test]
+    fn generate_decode_distinguishes_owned_and_borrowed_implicit_opaque_values() {
+        let owned = generate_decode(&implicit_opaque(OwnershipMode::Owned))
+            .expect("owned implicit opaque values must decode");
+
+        assert!(owned.contains("CstDecode::<RustOpaqueNom<crate::api::Handle>>::cst_decode(self)"));
+        assert_eq!(generate_decode(&implicit_opaque(OwnershipMode::Ref)), None);
+        assert_eq!(
+            generate_decode(&implicit_opaque(OwnershipMode::RefMut)),
+            None
+        );
+    }
+}

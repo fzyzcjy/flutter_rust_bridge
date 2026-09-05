@@ -131,15 +131,10 @@ class _QuickstartSmokeContext {
     return context;
   }
 
-  List<String> get flutterRunArgs => [
-    'run',
-    '-d',
-    resolvedDeviceId,
-    if (target == QuickstartSmokeTarget.web) ...[
-      '--web-header=Cross-Origin-Opener-Policy=same-origin',
-      '--web-header=Cross-Origin-Embedder-Policy=require-corp',
-    ],
-  ];
+  List<String> get flutterRunArgs => quickstartSmokeFlutterRunArgsForTesting(
+    target: target,
+    deviceId: resolvedDeviceId,
+  );
 
   Map<String, String> get environment => {
     if (Platform.isLinux) 'DISPLAY': Platform.environment['DISPLAY'] ?? ':99',
@@ -164,6 +159,21 @@ class _QuickstartSmokeContext {
     }
   }
 }
+
+@visibleForTesting
+List<String> quickstartSmokeFlutterRunArgsForTesting({
+  required QuickstartSmokeTarget target,
+  required String deviceId,
+}) => [
+  'run',
+  '-d',
+  deviceId,
+  if (target == QuickstartSmokeTarget.android) '--no-dds',
+  if (target == QuickstartSmokeTarget.web) ...[
+    '--web-header=Cross-Origin-Opener-Policy=same-origin',
+    '--web-header=Cross-Origin-Embedder-Policy=require-corp',
+  ],
+];
 
 class _QuickstartSmokeFlutterRun {
   final Process process;

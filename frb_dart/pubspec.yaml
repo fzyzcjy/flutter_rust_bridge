@@ -1,6 +1,6 @@
 name: flutter_rust_bridge
 description: Flutter/Dart <-> Rust binding generator, feature-rich, but seamless and simple
-version: 2.13.0-beta.6
+version: 2.14.0-beta.1
 repository: https://github.com/fzyzcjy/flutter_rust_bridge
 environment:
   # OHOS currently only supports Dart 3.9.2.
@@ -15,7 +15,7 @@ dependencies:
   web: '>=0.5.0 <2.0.0'
 dev_dependencies:
   # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
-  # build_cli: ^2.2.4
+  # build_cli: ^2.2.5
   build_runner: ^2.2.0
   ffigen: ^20.1.1
   flutter_lints: ^3.0.1

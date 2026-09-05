@@ -48,3 +48,28 @@ where
 {
     tokio::task::spawn_blocking(f)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{spawn_blocking_with, BaseAsyncRuntime, SimpleAsyncRuntime};
+
+    /// Runs spawned futures on the dedicated Tokio runtime.
+    #[test]
+    fn test_simple_async_runtime_spawns_futures() {
+        let runtime = SimpleAsyncRuntime::default();
+        let output = runtime.0.block_on(runtime.spawn(async { 7 }));
+
+        assert_eq!(output.unwrap(), 7);
+    }
+
+    /// Runs blocking work on Tokio's blocking executor.
+    #[test]
+    fn test_spawn_blocking_with_returns_the_closure_result() {
+        let runtime = SimpleAsyncRuntime::default();
+        let output = runtime
+            .0
+            .block_on(async { spawn_blocking_with(|| 11, ()).await });
+
+        assert_eq!(output.unwrap(), 11);
+    }
+}

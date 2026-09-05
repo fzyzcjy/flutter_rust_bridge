@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/build_cli.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate_from_scratch.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
@@ -13,6 +15,22 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('dart valgrind command uses the Dart AOT suppression file', () {
+    expect(
+      dartValgrindCommandForTesting(),
+      contains('--suppressions=../../tools/dart_valgrind.supp'),
+    );
+    expect(File('../../tools/dart_valgrind.supp').existsSync(), true);
+  });
+
+  test('dart valgrind command treats only checked leak kinds as errors', () {
+    expect(dartValgrindCommandForTesting(), contains('--error-exitcode=1'));
+    expect(
+      dartValgrindCommandForTesting(),
+      contains('--errors-for-leak-kinds=definite,indirect'),
+    );
+  });
+
   test('dart valgrind compile command uses dart build output directory', () {
     expect(
       dartValgrindCompileCommandForTesting(),
@@ -81,11 +99,17 @@ void main() {
     expect(File(releaseCargoLockTemplatePathForTesting()).existsSync(), true);
   });
 
+  test('release publishes every shared Dart package', () {
+    expect(kDartPublishedPackages.map(dartPublishCommand), [
+      'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org',
+      'cd frb_hooks && dart pub publish --force --server=https://pub.dartlang.org',
+    ]);
+  });
+
   test('release guard rejects uninitialized submodules', () {
     expect(
       () => verifyReleaseSubmodules(
-        submoduleStatus:
-            '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
+        submoduleStatus: '-6f7144d frb_codegen/assets/integration_template/cargokit/app/rust_builder/cargokit',
       ),
       throwsA(
         isA<Exception>().having(
@@ -126,9 +150,8 @@ void main() {
     'pure dart generator resolves package from repo root instead of cwd',
     () {
       expect(
-        pureDartUriForTesting(
-          repoRootPath: '/workspace/flutter_rust_bridge/',
-        ).toFilePath(),
+        pureDartUriForTesting(repoRootPath: '/workspace/flutter_rust_bridge/')
+            .toFilePath(),
         '/workspace/flutter_rust_bridge/frb_example/pure_dart/',
       );
     },
@@ -175,53 +198,47 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
-  test(
-    'integrate Cargo.lock source of truth keeps local crate after flutter_rust_bridge',
-    () {
-      for (final (package, crateName) in [
-        (
-          'frb_example/flutter_via_create/rust/Cargo.lock',
-          'rust_lib_flutter_via_create',
-        ),
-        (
-          'frb_example/flutter_via_integrate/rust/Cargo.lock',
-          'rust_lib_flutter_via_integrate',
-        ),
-        (
-          'frb_example/flutter_via_create_native_assets/rust/Cargo.lock',
-          'rust_lib_flutter_via_create_native_assets',
-        ),
-        (
-          'frb_example/flutter_via_integrate_native_assets/rust/Cargo.lock',
-          'rust_lib_flutter_via_integrate_native_assets',
-        ),
-      ]) {
-        final content = File('../../$package').readAsStringSync();
-        final localCrateIndex = content.indexOf('name = "$crateName"');
-        final frbIndex = content.indexOf('name = "flutter_rust_bridge"');
+  test('integrate Cargo.lock source of truth keeps local crate after flutter_rust_bridge', () {
+    for (final (package, crateName) in [
+      (
+        'frb_example/flutter_via_create/rust/Cargo.lock',
+        'rust_lib_flutter_via_create',
+      ),
+      (
+        'frb_example/flutter_via_integrate/rust/Cargo.lock',
+        'rust_lib_flutter_via_integrate',
+      ),
+      (
+        'frb_example/flutter_via_create_native_assets/rust/Cargo.lock',
+        'rust_lib_flutter_via_create_native_assets',
+      ),
+      (
+        'frb_example/flutter_via_integrate_native_assets/rust/Cargo.lock',
+        'rust_lib_flutter_via_integrate_native_assets',
+      ),
+    ]) {
+      final content = File('../../$package').readAsStringSync();
+      final localCrateIndex = content.indexOf('name = "$crateName"');
+      final frbIndex = content.indexOf('name = "flutter_rust_bridge"');
 
-        expect(localCrateIndex, greaterThanOrEqualTo(0), reason: package);
-        expect(frbIndex, greaterThanOrEqualTo(0), reason: package);
-        expect(localCrateIndex, greaterThan(frbIndex), reason: package);
-      }
-    },
-  );
+      expect(localCrateIndex, greaterThanOrEqualTo(0), reason: package);
+      expect(frbIndex, greaterThanOrEqualTo(0), reason: package);
+      expect(localCrateIndex, greaterThan(frbIndex), reason: package);
+    }
+  });
 
-  test(
-    'resolveBuildWebPackage uses replacement package for flutter package example',
-    () {
-      expect(
-        resolveBuildWebPackage('frb_example/flutter_package/example'),
-        'frb_example/flutter_package',
-      );
-      expect(
-        resolveBuildWebPackage(
-          'frb_example/flutter_package_native_assets/example',
-        ),
-        'frb_example/flutter_package_native_assets',
-      );
-    },
-  );
+  test('resolveBuildWebPackage uses replacement package for flutter package example', () {
+    expect(
+      resolveBuildWebPackage('frb_example/flutter_package/example'),
+      'frb_example/flutter_package',
+    );
+    expect(
+      resolveBuildWebPackage(
+        'frb_example/flutter_package_native_assets/example',
+      ),
+      'frb_example/flutter_package_native_assets',
+    );
+  });
 
   test('resolveBuildWebPackage keeps package when no replacement exists', () {
     expect(
@@ -243,6 +260,133 @@ line with spaces
 plain
 ''',
     );
+  });
+
+  test('build_cli state is restored when internal generation fails', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_build_cli_');
+    addTearDown(() => tempDir.delete(recursive: true));
+    final pubspecs = [
+      File('${tempDir.path}/frb_dart/pubspec.yaml'),
+      File('${tempDir.path}/frb_utils/pubspec.yaml'),
+    ];
+    const disabledContents = '''
+dev_dependencies:
+  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
+  # build_cli: ^2.2.5
+''';
+    for (final pubspec in pubspecs) {
+      await pubspec.parent.create(recursive: true);
+      await pubspec.writeAsString(disabledContents);
+    }
+
+    await expectLater(
+      withBuildCliEnabled(
+        repoRootPath: tempDir.path,
+        action: () async {
+          for (final pubspec in pubspecs) {
+            expect(
+              await pubspec.readAsString(),
+              contains('\n  build_cli: ^2.2.5'),
+            );
+          }
+          throw StateError('generation failed');
+        },
+      ),
+      throwsStateError,
+    );
+    for (final pubspec in pubspecs) {
+      expect(await pubspec.readAsString(), disabledContents);
+    }
+  });
+
+  test('build_cli validates every pubspec before changing files', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_build_cli_');
+    addTearDown(() => tempDir.delete(recursive: true));
+    final firstPubspec = File('${tempDir.path}/frb_dart/pubspec.yaml');
+    final secondPubspec = File('${tempDir.path}/frb_utils/pubspec.yaml');
+    await firstPubspec.parent.create(recursive: true);
+    await secondPubspec.parent.create(recursive: true);
+    const disabledContents = '''
+dev_dependencies:
+  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
+  # build_cli: ^2.2.5
+''';
+    await firstPubspec.writeAsString(disabledContents);
+    await secondPubspec.writeAsString('dev_dependencies:\n');
+
+    await expectLater(
+      withBuildCliEnabled(repoRootPath: tempDir.path, action: () async {}),
+      throwsStateError,
+    );
+    expect(await firstPubspec.readAsString(), disabledContents);
+  });
+
+  test('from-scratch selection keeps every tracked generated output', () {
+    expect(
+      selectTrackedGeneratedFilesForFromScratchForTesting([
+        'frb_example/example/frb_generated.h',
+        'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.dart',
+        'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/src/rust/third_party/binding.dart',
+        'frb_example/example/lib/unrelated_model.g.dart',
+        'frb_example/rust_ui/src/frb_generated.rs',
+        'frb_rust/src/internal_generated/mod.rs',
+        'frb_dart/lib/src/ffigen_generated/multi_package.dart',
+        'frb_dart/lib/src/cli/build_web/entrypoint.g.dart',
+        'frb_codegen/assets/integration_template/shared/lib/src/rust/frb_generated.dart',
+        'frb_codegen/assets/integration_template/shared/lib/model.g.dart',
+        'frb_example/example/lib/model.dart',
+      ]),
+      [
+        'frb_example/example/frb_generated.h',
+        'frb_example/example/lib/src/rust/frb_generated.dart',
+        'frb_example/example/lib/src/rust/api/model.dart',
+        'frb_example/example/lib/src/rust/api/model.freezed.dart',
+        'frb_example/example/lib/src/rust/third_party/binding.dart',
+        'frb_example/example/lib/unrelated_model.g.dart',
+        'frb_example/rust_ui/src/frb_generated.rs',
+        'frb_rust/src/internal_generated/mod.rs',
+        'frb_dart/lib/src/ffigen_generated/multi_package.dart',
+        'frb_dart/lib/src/cli/build_web/entrypoint.g.dart',
+      ],
+    );
+  });
+
+  test('from-scratch restoration check reports every missing output', () async {
+    final tempDir = await Directory.systemTemp.createTemp(
+      'frb_generated_restore_',
+    );
+    try {
+      final restoredFile = File('${tempDir.path}/restored.g.dart');
+      await restoredFile.writeAsString('restored');
+
+      expect(
+        () => verifyGeneratedFilesRestoredForTesting(
+          repoRoot: tempDir.path,
+          expectedGeneratedFiles: [
+            'restored.g.dart',
+            'missing.freezed.dart',
+            'rust/src/frb_generated.rs',
+          ],
+        ),
+        throwsA(
+          isA<StateError>()
+              .having(
+                (error) => error.message,
+                'message',
+                contains('missing.freezed.dart'),
+              )
+              .having(
+                (error) => error.message,
+                'message',
+                contains('rust/src/frb_generated.rs'),
+              ),
+        ),
+      );
+    } finally {
+      await tempDir.delete(recursive: true);
+    }
   });
 
   test('pub get guard refreshes stale package config roots', () async {
@@ -322,6 +466,16 @@ plain
         QuickstartSmokeTarget.ios,
       ),
       const Duration(minutes: 10),
+    );
+  });
+
+  test('quickstart smoke disables DDS for Android runs', () {
+    expect(
+      quickstartSmokeFlutterRunArgsForTesting(
+        target: QuickstartSmokeTarget.android,
+        deviceId: 'emulator-5554',
+      ),
+      ['run', '-d', 'emulator-5554', '--no-dds'],
     );
   });
 
@@ -566,36 +720,132 @@ plain
         statuses.map((status) => status.manifestVersion),
         everyElement('9.9.9'),
       );
+      expect(statuses.map((status) => (status.registry, status.name)), [
+        ('crates.io', 'flutter_rust_bridge_codegen'),
+        ('crates.io', 'flutter_rust_bridge_macros'),
+        ('crates.io', 'flutter_rust_bridge'),
+        ('pub.dev', 'flutter_rust_bridge'),
+        ('pub.dev', 'flutter_rust_bridge_hooks'),
+      ]);
       expect(statuses.map((status) => status.isReleased), everyElement(true));
     });
 
     test(
-      'uses local Dart manifest version as pub.dev target version',
+      'reports hooks as unreleased when its target version is absent',
+      () async {
+        final statuses = await fetchReleasePackageStatuses(
+          targetVersion: '9.9.9',
+          fetcher: (uri) async {
+            if (uri.host == 'crates.io') {
+              return {
+                'crate': {'max_version': '9.9.9'},
+              };
+            }
+            if (uri.path.endsWith('/flutter_rust_bridge_hooks')) {
+              return {'versions': <Map<String, String>>[]};
+            }
+            return {
+              'versions': [
+                {'version': '9.9.9'},
+              ],
+            };
+          },
+        );
+
+        final output = buildReleasePackageStatusOutput(statuses);
+        final hooksStatus = statuses.singleWhere(
+          (status) => status.name == 'flutter_rust_bridge_hooks',
+        );
+        expect(output['allReleased'], false);
+        expect(hooksStatus.releasedVersion, isNull);
+        expect(hooksStatus.isReleased, false);
+      },
+    );
+
+    test(
+      'reports hooks as unreleased when only another version exists',
+      () async {
+        final statuses = await fetchReleasePackageStatuses(
+          targetVersion: '9.9.9',
+          fetcher: (uri) async {
+            if (uri.host == 'crates.io') {
+              return {
+                'crate': {'max_version': '9.9.9'},
+              };
+            }
+            final version = uri.path.endsWith('/flutter_rust_bridge_hooks')
+                ? '9.9.8'
+                : '9.9.9';
+            return {
+              'latest': {'version': version},
+              'versions': [
+                {'version': version},
+              ],
+            };
+          },
+        );
+
+        final output = buildReleasePackageStatusOutput(statuses);
+        final hooksStatus = statuses.singleWhere(
+          (status) => status.name == 'flutter_rust_bridge_hooks',
+        );
+        expect(output['allReleased'], false);
+        expect(hooksStatus.releasedVersion, '9.9.8');
+        expect(hooksStatus.isReleased, false);
+      },
+    );
+
+    test(
+      'uses each local Dart manifest version as its pub.dev target',
       () async {
         final rustVersion = getWorkspaceRustVersion();
-        final dartVersion = getFrbDartVersion();
 
         final statuses = await fetchReleasePackageStatuses(
+          dartPackageManifestFetcher: (package) => switch (package) {
+            'frb_dart' =>
+              '''
+name: flutter_rust_bridge
+version: 9.9.9
+''',
+            'frb_hooks' =>
+              '''
+name: flutter_rust_bridge_hooks
+version: 9.9.8
+''',
+            _ => throw StateError('Unexpected Dart package: $package'),
+          },
           fetcher: (uri) async {
             if (uri.host == 'crates.io') {
               return {
                 'crate': {'max_version': rustVersion},
               };
             }
+            final version = uri.path.endsWith('/flutter_rust_bridge_hooks')
+                ? '9.9.8'
+                : '9.9.9';
             return {
-              'latest': {'version': '2.12.0'},
               'versions': [
-                {'version': dartVersion},
+                {'version': version},
               ],
             };
           },
         );
 
-        final pubDevStatus = statuses.singleWhere(
+        final pubDevStatuses = statuses.where(
           (status) => status.registry == 'pub.dev',
         );
-        expect(pubDevStatus.releasedVersion, dartVersion);
-        expect(pubDevStatus.isReleased, true);
+        expect(pubDevStatuses, hasLength(2));
+        expect(
+          pubDevStatuses.map((status) => (status.name, status.manifestVersion)),
+          [
+            ('flutter_rust_bridge', '9.9.9'),
+            ('flutter_rust_bridge_hooks', '9.9.8'),
+          ],
+        );
+        expect(
+          pubDevStatuses.map((status) => status.isReleased),
+          everyElement(true),
+        );
       },
     );
   });
@@ -685,10 +935,10 @@ plain
   });
 
   group('test checkValgrindOutput', () {
-    test('good', () {
-      checkValgrindOutput('''
-00:00 +1: All tests passed!
-
+    test('accepts a clean run', () {
+      checkValgrindOutput(
+        stdout: '00:00 +1: All tests passed!',
+        stderr: '''
 ==3667== LEAK SUMMARY:
 ==3667==    definitely lost: 0 bytes in 0 blocks
 ==3667==    indirectly lost: 0 bytes in 0 blocks
@@ -697,31 +947,16 @@ plain
 ==3667==         suppressed: 0 bytes in 0 blocks
 ==3667== Reachable blocks (those to which a pointer was found) are not shown.
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    ''');
-    });
-
-    test('some dart tests failed', () {
-      // no "All tests passed!" line
-      expect(
-        () => checkValgrindOutput('''
-==3667== LEAK SUMMARY:
-==3667==    definitely lost: 0 bytes in 0 blocks
-==3667==    indirectly lost: 0 bytes in 0 blocks
-==3667==      possibly lost: 1,216 bytes in 4 blocks
-==3667==    still reachable: 16,530 bytes in 202 blocks
-==3667==         suppressed: 0 bytes in 0 blocks
-==3667== Reachable blocks (those to which a pointer was found) are not shown.
-==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    '''),
-        throwsA(isA<Exception>()),
+    ''',
+        exitCode: 0,
       );
     });
 
-    test('has definitely lost bytes', () {
+    test('rejects an error reported only on stderr', () {
       expect(
-        () => checkValgrindOutput('''
-00:00 +1: All tests passed!
-
+        () => checkValgrindOutput(
+          stdout: '00:00 +1: All tests passed!',
+          stderr: '''
 ==3667== LEAK SUMMARY:
 ==3667==    definitely lost: 4 bytes in 0 blocks
 ==3667==    indirectly lost: 0 bytes in 0 blocks
@@ -730,16 +965,34 @@ plain
 ==3667==         suppressed: 0 bytes in 0 blocks
 ==3667== Reachable blocks (those to which a pointer was found) are not shown.
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    '''),
+    ''',
+          exitCode: 0,
+        ),
         throwsA(isA<Exception>()),
       );
     });
 
-    test('has indirectly lost bytes', () {
+    test('rejects an error reported only on stdout', () {
       expect(
-        () => checkValgrindOutput('''
+        () => checkValgrindOutput(
+          stdout: '''
 00:00 +1: All tests passed!
+==3667== LEAK SUMMARY:
+==3667==    definitely lost: 4 bytes in 0 blocks
+==3667==    indirectly lost: 0 bytes in 0 blocks
+    ''',
+          stderr: '',
+          exitCode: 0,
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
 
+    test('rejects indirectly lost bytes', () {
+      expect(
+        () => checkValgrindOutput(
+          stdout: '00:00 +1: All tests passed!',
+          stderr: '''
 ==3667== LEAK SUMMARY:
 ==3667==    definitely lost: 0 bytes in 0 blocks
 ==3667==    indirectly lost: 4 bytes in 0 blocks
@@ -748,7 +1001,40 @@ plain
 ==3667==         suppressed: 0 bytes in 0 blocks
 ==3667== Reachable blocks (those to which a pointer was found) are not shown.
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    '''),
+    ''',
+          exitCode: 0,
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
+
+    test('rejects a nonzero exit code', () {
+      expect(
+        () => checkValgrindOutput(
+          stdout: '00:00 +1: All tests passed!',
+          stderr: '',
+          exitCode: 1,
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
+
+    test('rejects output without the test success marker', () {
+      expect(
+        () => checkValgrindOutput(
+          stdout: '',
+          stderr: '''
+==3667== LEAK SUMMARY:
+==3667==    definitely lost: 0 bytes in 0 blocks
+==3667==    indirectly lost: 0 bytes in 0 blocks
+==3667==      possibly lost: 1,216 bytes in 4 blocks
+==3667==    still reachable: 16,530 bytes in 202 blocks
+==3667==         suppressed: 0 bytes in 0 blocks
+==3667== Reachable blocks (those to which a pointer was found) are not shown.
+==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+    ''',
+          exitCode: 0,
+        ),
         throwsA(isA<Exception>()),
       );
     });

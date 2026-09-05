@@ -126,3 +126,71 @@ fn generate_inline_mod(mod_body: &str, target: Target) -> String {
         "
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::codec::structs::CodecMode;
+    use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+    use std::path::PathBuf;
+
+    fn config(web_enabled: bool) -> GeneratorWireRustInternalConfig {
+        GeneratorWireRustInternalConfig {
+            rust_crate_dir: PathBuf::new(),
+            web_enabled,
+            rust_output_path: PathBuf::new(),
+            c_symbol_prefix: "frb_".into(),
+            has_ffigen: false,
+            default_stream_sink_codec: CodecMode::Sse,
+            default_rust_opaque_codec: RustOpaqueCodecMode::Moi,
+            rust_preamble: String::new(),
+        }
+    }
+
+    /// Emits platform modules only for populated targets with their exact cfg attributes.
+    #[test]
+    fn merges_common_io_and_web_code_with_platform_specific_wrappers() {
+        let text = merge_rust_acc_into_one_file(Acc {
+            common: Some("common_code".into()),
+            io: Some("io_code".into()),
+            web: Some("web_code".into()),
+        });
+
+        assert!(text.contains("common_code"));
+        assert!(text.contains("#[cfg(not(target_family = \"wasm\"))]"));
+        assert!(text.contains("mod io {\n            io_code"));
+        assert!(text.contains("pub use io::*;"));
+        assert!(text.contains("/// cbindgen:ignore\n        #[cfg(target_family = \"wasm\")]"));
+        assert!(text.contains("mod web {\n            web_code"));
+        assert!(text.contains("pub use web::*;"));
+
+        let common_only = merge_rust_acc_into_one_file(Acc {
+            common: Some("shared".into()),
+            io: None,
+            web: None,
+        });
+        assert!(common_only.contains("shared"));
+        assert!(!common_only.contains("mod io"));
+        assert!(!common_only.contains("mod web"));
+    }
+
+    /// Keeps or removes web text according to the configured web flag.
+    #[test]
+    fn filters_web_text_while_preserving_common_and_io_text() {
+        let core = Acc {
+            common: "common".into(),
+            io: "io".into(),
+            web: "web".into(),
+        };
+
+        let enabled = generate_text_from_merged_code(&config(true), &core).unwrap();
+        let disabled = generate_text_from_merged_code(&config(false), &core).unwrap();
+
+        assert_eq!(enabled.common.as_deref(), Some("common"));
+        assert_eq!(enabled.io.as_deref(), Some("io"));
+        assert_eq!(enabled.web.as_deref(), Some("web"));
+        assert_eq!(disabled.common.as_deref(), Some("common"));
+        assert_eq!(disabled.io.as_deref(), Some("io"));
+        assert_eq!(disabled.web, None);
+    }
+}

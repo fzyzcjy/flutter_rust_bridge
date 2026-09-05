@@ -20,3 +20,38 @@ pub(crate) struct PolisherInternalConfig {
     pub enable_auto_upgrade: bool,
     pub fvm_install_mode: FvmInstallMode,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::PolisherInternalConfig;
+    use crate::misc::FvmInstallMode;
+    use std::path::PathBuf;
+
+    /// Round-trips the polisher declaration without invoking polishing commands.
+    #[test]
+    fn test_polisher_internal_config_is_a_serde_declaration_carrier() {
+        let config = PolisherInternalConfig {
+            duplicated_c_output_path: vec![PathBuf::from("duplicate.h")],
+            dart_format_line_length: 100,
+            dart_format: true,
+            dart_fix: true,
+            rust_format: true,
+            add_mod_to_lib: true,
+            build_runner: true,
+            web_enabled: true,
+            dart_output: PathBuf::from("dart/output.dart"),
+            dart_root: PathBuf::from("dart"),
+            rust_crate_dir: PathBuf::from("rust"),
+            rust_output_path: PathBuf::from("rust/src/bridge.rs"),
+            c_output_path: Some(PathBuf::from("bridge.h")),
+            enable_auto_upgrade: true,
+            fvm_install_mode: FvmInstallMode::Skip,
+        };
+
+        let encoded = serde_json::to_string(&config).unwrap();
+        assert_eq!(
+            serde_json::from_str::<PolisherInternalConfig>(&encoded).unwrap(),
+            config
+        );
+    }
+}

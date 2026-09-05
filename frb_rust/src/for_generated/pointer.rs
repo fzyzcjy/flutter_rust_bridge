@@ -41,3 +41,54 @@ pub fn new_leak_box_ptr<T>(t: T) -> *mut T {
 pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
     Box::from_raw(ptr)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{
+        box_from_leak_ptr, from_vec_to_array, into_leak_vec_ptr, new_leak_box_ptr,
+        new_leak_vec_ptr, vec_from_leak_ptr,
+    };
+
+    /// Restores a vector leaked from an existing allocation.
+    #[test]
+    fn restores_leaked_vector() {
+        let (ptr, len) = into_leak_vec_ptr(vec![10, 20, 30]);
+
+        let recovered = unsafe { vec_from_leak_ptr(ptr, len) };
+
+        assert_eq!(recovered, vec![10, 20, 30]);
+    }
+
+    /// Restores a filled vector leaked through the convenience function.
+    #[test]
+    fn restores_filled_leaked_vector() {
+        let ptr = new_leak_vec_ptr("value", 3);
+
+        let recovered = unsafe { vec_from_leak_ptr(ptr, 3) };
+
+        assert_eq!(recovered, vec!["value", "value", "value"]);
+    }
+
+    /// Converts a vector with the requested length into an array.
+    #[test]
+    fn converts_vector_with_matching_length() {
+        assert_eq!(from_vec_to_array::<_, 3>(vec![1, 2, 3]), [1, 2, 3]);
+    }
+
+    /// Rejects a vector whose length differs from the target array.
+    #[test]
+    #[should_panic(expected = "Expected a Vec of length 2 but it was 3")]
+    fn rejects_vector_with_mismatched_length() {
+        let _ = from_vec_to_array::<_, 2>(vec![1, 2, 3]);
+    }
+
+    /// Restores a boxed value leaked through its raw pointer.
+    #[test]
+    fn restores_leaked_box() {
+        let ptr = new_leak_box_ptr(String::from("value"));
+
+        let recovered = unsafe { box_from_leak_ptr(ptr) };
+
+        assert_eq!(*recovered, "value");
+    }
+}

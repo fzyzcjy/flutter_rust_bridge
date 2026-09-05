@@ -229,3 +229,45 @@ fn generate_decode_set(mir: &MirTypeDelegateSet) -> String {
         mir.inner.rust_api_type()
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::test_utils;
+
+    /// Emits scalar delegate decoding for UTF-8 strings and JavaScript characters.
+    #[test]
+    fn delegate_decoder_covers_string_and_character_platform_branches() {
+        let pack = test_utils::pack();
+        let wire_dart_config = test_utils::wire_dart_config(true);
+        let wire_rust_config = test_utils::wire_rust_config(true);
+        let api_dart_config = test_utils::api_dart_config();
+        let dart_context = test_utils::context(
+            &pack,
+            &wire_dart_config,
+            &wire_rust_config,
+            &api_dart_config,
+        );
+        let context = dart_context.as_wire_rust_context();
+
+        let string = DelegateWireRustCodecCstGenerator::new(MirTypeDelegate::String, context);
+        assert_eq!(
+            string.generate_impl_decode_body().io.as_deref(),
+            Some("let vec: Vec<u8> = self.cst_decode(); String::from_utf8(vec).unwrap()")
+        );
+        assert_eq!(
+            string.generate_impl_decode_body().web.as_deref(),
+            Some("self")
+        );
+
+        let character = DelegateWireRustCodecCstGenerator::new(MirTypeDelegate::Char, context);
+        assert_eq!(
+            character.generate_impl_decode_body().io,
+            character.generate_impl_decode_body().web
+        );
+        assert_eq!(
+            character.generate_impl_decode_jsvalue_body().as_deref(),
+            Some("CstDecode::<String>::cst_decode(self).chars().next().unwrap()")
+        );
+    }
+}

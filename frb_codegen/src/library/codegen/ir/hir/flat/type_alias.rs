@@ -18,3 +18,20 @@ impl HirFlatComponent<String> for HirFlatTypeAlias {
         self.ident.to_string()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Uses the alias identifier as its sort key.
+    #[test]
+    fn sort_key_uses_alias_identifier() {
+        let alias = HirFlatTypeAlias {
+            ident: "ResultAlias".to_owned(),
+            target: syn::parse_str("Result<T, Error>").unwrap(),
+            type_params: vec!["T".to_owned()],
+        };
+
+        assert_eq!(alias.sort_key(), "ResultAlias");
+    }
+}

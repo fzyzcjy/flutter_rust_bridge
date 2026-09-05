@@ -45,3 +45,54 @@ fn parse_comment(input: &str) -> MirComment {
         format!("///{input}")
     })
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use syn::parse_quote;
+
+    /// Returns the first path segment for simple and qualified path types.
+    #[test]
+    fn convert_ident_str_uses_first_path_segment() {
+        assert_eq!(
+            convert_ident_str(&parse_quote!(crate::model::Value)),
+            Some("crate".into())
+        );
+        assert_eq!(
+            convert_ident_str(&parse_quote!(Value)),
+            Some("Value".into())
+        );
+    }
+
+    /// Rejects non-path types that cannot name an alias target.
+    #[test]
+    fn convert_ident_str_rejects_non_path_types() {
+        assert_eq!(convert_ident_str(&parse_quote!((u8, u16))), None);
+    }
+
+    /// Converts single-line and multiline Rust documentation to Dart comments.
+    #[test]
+    fn parse_comments_preserves_documentation_shape() {
+        let attrs: Vec<Attribute> = vec![
+            parse_quote!(#[doc = " One line "]),
+            parse_quote!(#[doc = "first\nsecond"]),
+        ];
+
+        assert_eq!(
+            parse_comments(&attrs)
+                .into_iter()
+                .map(|comment| comment.0)
+                .collect::<Vec<_>>(),
+            vec!["/// One line ", "///first\n///second"],
+        );
+    }
+
+    /// Ignores attributes that are not string-valued documentation.
+    #[test]
+    fn parse_comments_ignores_non_documentation_attributes() {
+        let attrs: Vec<Attribute> =
+            vec![parse_quote!(#[derive(Clone)]), parse_quote!(#[doc(hidden)])];
+
+        assert!(parse_comments(&attrs).is_empty());
+    }
+}

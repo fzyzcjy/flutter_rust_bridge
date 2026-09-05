@@ -146,24 +146,31 @@ mod tests {
     use tempfile::tempdir;
 
     struct RecordingUpgrader {
+        check_result: Result<bool>,
+        upgrade_result: Result<()>,
         forwarded_mode: Cell<Option<FvmInstallMode>>,
     }
 
     impl Upgrader for RecordingUpgrader {
         fn check(&self) -> Result<bool> {
-            Ok(false)
+            match &self.check_result {
+                Ok(value) => Ok(*value),
+                Err(error) => Err(anyhow!(error.to_string())),
+            }
         }
 
         fn upgrade(&self, fvm_install_mode: FvmInstallMode) -> Result<()> {
             self.forwarded_mode.set(Some(fvm_install_mode));
-            Ok(())
+            match &self.upgrade_result {
+                Ok(()) => Ok(()),
+                Err(error) => Err(anyhow!(error.to_string())),
+            }
         }
     }
 
-    #[test]
-    fn upgrader_forwards_fvm_install_mode_from_config() {
+    fn config(enable_auto_upgrade: bool) -> PolisherInternalConfig {
         let temp_dir = tempdir().unwrap();
-        let config = PolisherInternalConfig {
+        PolisherInternalConfig {
             duplicated_c_output_path: vec![],
             dart_format_line_length: 80,
             dart_format: false,
@@ -177,16 +184,69 @@ mod tests {
             rust_crate_dir: temp_dir.path().join("rust_crate"),
             rust_output_path: temp_dir.path().join("rust_output"),
             c_output_path: None,
-            enable_auto_upgrade: true,
+            enable_auto_upgrade,
             fvm_install_mode: FvmInstallMode::Skip,
-        };
+        }
+    }
+
+    #[test]
+    fn upgrader_forwards_fvm_install_mode_from_config() {
+        let config = config(true);
         let upgrader = RecordingUpgrader {
+            check_result: Ok(false),
+            upgrade_result: Ok(()),
             forwarded_mode: Cell::new(None),
         };
 
         upgrader.execute(&config).unwrap();
 
         assert_eq!(upgrader.forwarded_mode.get(), Some(FvmInstallMode::Skip));
+    }
+
+    /// Leaves a mismatched dependency untouched when automatic upgrades are disabled.
+    #[test]
+    fn test_upgrader_skips_upgrade_when_disabled() {
+        let upgrader = RecordingUpgrader {
+            check_result: Ok(false),
+            upgrade_result: Ok(()),
+            forwarded_mode: Cell::new(None),
+        };
+
+        upgrader.execute(&config(false)).unwrap();
+
+        assert_eq!(upgrader.forwarded_mode.get(), None);
+    }
+
+    /// Does not upgrade a dependency that already has the current version.
+    #[test]
+    fn test_upgrader_skips_current_dependency() {
+        let upgrader = RecordingUpgrader {
+            check_result: Ok(true),
+            upgrade_result: Ok(()),
+            forwarded_mode: Cell::new(None),
+        };
+
+        upgrader.execute(&config(true)).unwrap();
+
+        assert_eq!(upgrader.forwarded_mode.get(), None);
+    }
+
+    /// Propagates failures from dependency checking and upgrade commands.
+    #[test]
+    fn test_upgrader_propagates_check_and_upgrade_errors() {
+        let check_error = RecordingUpgrader {
+            check_result: Err(anyhow!("check failed")),
+            upgrade_result: Ok(()),
+            forwarded_mode: Cell::new(None),
+        };
+        let upgrade_error = RecordingUpgrader {
+            check_result: Ok(false),
+            upgrade_result: Err(anyhow!("upgrade failed")),
+            forwarded_mode: Cell::new(None),
+        };
+
+        assert!(check_error.execute(&config(true)).is_err());
+        assert!(upgrade_error.execute(&config(true)).is_err());
     }
 
     fn parse_manifest(text: &str) -> Manifest {
@@ -236,5 +296,46 @@ mod tests {
 
         assert_eq!(target_name, None);
         assert_eq!(dependency.req(), "=2.0.0");
+    }
+
+    /// Reports a manifest that does not declare flutter_rust_bridge.
+    #[test]
+    fn test_get_dependency_reports_missing_dependency() {
+        let manifest = parse_manifest(
+            r#"
+                [package]
+                name = "demo"
+                version = "0.1.0"
+                edition = "2021"
+            "#,
+        );
+
+        assert!(RustUpgrader::get_dependency(manifest, "flutter_rust_bridge").is_err());
+    }
+
+    /// Distinguishes current and old Rust dependency requirements.
+    #[test]
+    fn test_rust_upgrader_checks_current_and_old_versions() {
+        let temp_dir = tempdir().unwrap();
+        let current_dir = temp_dir.path().join("current");
+        let old_dir = temp_dir.path().join("old");
+        std::fs::create_dir_all(&current_dir).unwrap();
+        std::fs::create_dir_all(&old_dir).unwrap();
+        std::fs::write(
+            current_dir.join("Cargo.toml"),
+            format!(
+                "[package]\nname = \"current\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\nflutter_rust_bridge = \"={}\"\n",
+                env!("CARGO_PKG_VERSION")
+            ),
+        )
+        .unwrap();
+        std::fs::write(
+            old_dir.join("Cargo.toml"),
+            "[package]\nname = \"old\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\nflutter_rust_bridge = \"=0.0.1\"\n",
+        )
+        .unwrap();
+
+        assert!(RustUpgrader::new(&current_dir).unwrap().check().unwrap());
+        assert!(!RustUpgrader::new(&old_dir).unwrap().check().unwrap());
     }
 }

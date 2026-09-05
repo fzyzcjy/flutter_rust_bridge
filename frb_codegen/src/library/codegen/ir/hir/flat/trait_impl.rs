@@ -13,3 +13,19 @@ impl HirFlatComponent<String> for HirFlatTraitImpl {
         self.trait_name.clone()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Uses the implemented trait name as the sort key.
+    #[test]
+    fn sort_key_uses_trait_name() {
+        let item = HirFlatTraitImpl {
+            trait_name: "Display".to_owned(),
+            impl_ty: syn::parse_str("Widget").unwrap(),
+        };
+
+        assert_eq!(item.sort_key(), "Display");
+    }
+}

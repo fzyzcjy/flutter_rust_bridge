@@ -146,8 +146,9 @@ fn char_not_alphanumeric(c: char) -> bool {
 mod tests {
     use super::*;
 
+    /// Removes implementation wrappers when forming opaque type identifiers.
     #[test]
-    pub fn test_rust_type_to_sanitized_type() {
+    fn rust_type_to_sanitized_type_removes_implementation_wrappers() {
         assert_eq!(&rust_type_to_sanitized_type("SomeType", true), "SomeType");
         assert_eq!(
             &rust_type_to_sanitized_type(
@@ -157,5 +158,14 @@ mod tests {
             "AnotherOpaqueType"
         );
         assert_eq!(&rust_type_to_sanitized_type("flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::simple::MyOpaqueType,crate::api::simple::AnotherOpaqueType,)>", true), "MyOpaqueTypeAnotherOpaqueType");
+    }
+
+    /// Keeps codec-specific wrapper and unsafe requirements aligned.
+    #[test]
+    fn opaque_codec_modes_choose_their_runtime_contracts() {
+        assert_eq!(RustOpaqueCodecMode::Nom.arc_ty(), "StdArc");
+        assert_eq!(RustOpaqueCodecMode::Moi.arc_ty(), "MoiArc");
+        assert!(RustOpaqueCodecMode::Nom.needs_unsafe_block());
+        assert!(!RustOpaqueCodecMode::Moi.needs_unsafe_block());
     }
 }

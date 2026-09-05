@@ -73,8 +73,7 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
       ..addFlag(
         'build-if-missing',
         defaultsTo: false,
-        help:
-            'Build the dev Docker image locally if pulling the published tag fails.',
+        help: 'Build the dev Docker image locally if pulling the published tag fails.',
       );
   }
 

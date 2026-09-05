@@ -33,3 +33,28 @@ fn parse_has_executor(item: &syn::Item) -> bool {
     let code = quote::quote!(#item).to_string();
     code.contains(&format!("static {HANDLER_NAME}"))
 }
+
+#[cfg(test)]
+mod tests {
+    use super::parse_has_executor;
+
+    /// Recognizes a handler static despite source formatting.
+    #[test]
+    fn recognizes_handler_static() {
+        let item: syn::Item = syn::parse_quote!(
+            static FLUTTER_RUST_BRIDGE_HANDLER: u8 = 0;
+        );
+
+        assert!(parse_has_executor(&item));
+    }
+
+    /// Rejects statics whose names do not match the handler constant.
+    #[test]
+    fn rejects_unrelated_static() {
+        let item: syn::Item = syn::parse_quote!(
+            static OTHER_HANDLER: u8 = 0;
+        );
+
+        assert!(!parse_has_executor(&item));
+    }
+}
