@@ -26,6 +26,21 @@ void main() {
     expect(builder.buildMode, native_toolchain_rust.BuildMode.debug);
   });
 
+  test('builder environment keeps non-code-asset inputs unchanged', () async {
+    final input = _createBuildInput(outputDirectoryShared: '/tmp/frb-no-code');
+    const extraCargoEnvironmentVariables = {'RUSTFLAGS': '-C opt-level=2'};
+
+    expect(input.config.buildCodeAssets, isFalse);
+    expect(
+      await cargoEnvironmentForInput(
+        input: input,
+        isWindows: false,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+      ),
+      same(extraCargoEnvironmentVariables),
+    );
+  });
+
   group('cargoEnvironmentWithAndroidPageSize', () {
     test('wraps the Android arm64 linker without changing rustflags', () async {
       final outputDirectory = await _createTemporaryOutputDirectory();

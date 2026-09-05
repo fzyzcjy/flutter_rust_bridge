@@ -63,16 +63,11 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
         isWindows: Platform.isWindows,
         input: input,
       );
-      final codeConfig = effectiveInput.config.code;
-      final effectiveCargoEnvironment =
-          await cargoEnvironmentWithAndroidPageSize(
-            targetOS: codeConfig.targetOS,
-            targetArchitecture: codeConfig.targetArchitecture,
-            compiler: codeConfig.cCompiler?.compiler,
-            outputDirectory: effectiveInput.outputDirectory,
-            isWindows: Platform.isWindows,
-            extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
-          );
+      final effectiveCargoEnvironment = await cargoEnvironmentForInput(
+        input: effectiveInput,
+        isWindows: Platform.isWindows,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+      );
       await native_toolchain_rust.RustBuilder(
         assetName: assetName,
         cratePath: cratePath,
@@ -89,6 +84,27 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
       );
     });
   }
+}
+
+@visibleForTesting
+Future<Map<String, String>> cargoEnvironmentForInput({
+  required BuildInput input,
+  required bool isWindows,
+  required Map<String, String> extraCargoEnvironmentVariables,
+}) async {
+  if (!input.config.buildCodeAssets) {
+    return extraCargoEnvironmentVariables;
+  }
+
+  final codeConfig = input.config.code;
+  return cargoEnvironmentWithAndroidPageSize(
+    targetOS: codeConfig.targetOS,
+    targetArchitecture: codeConfig.targetArchitecture,
+    compiler: codeConfig.cCompiler?.compiler,
+    outputDirectory: input.outputDirectory,
+    isWindows: isWindows,
+    extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+  );
 }
 
 @visibleForTesting
