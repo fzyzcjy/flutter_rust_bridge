@@ -110,6 +110,25 @@ TestDartConfig parseTestDartConfig(List<String> args) {
   return _$parseTestDartConfigResult(result);
 }
 
+TestDartWebConfig _$parseTestDartWebConfigResult(ArgResults result) =>
+    TestDartWebConfig(
+      package: convertConfigPackage(result['package'] as String),
+      wasm: result['wasm'] as bool,
+    );
+
+ArgParser _$populateTestDartWebConfigParser(ArgParser parser) => parser
+  ..addOption('package')
+  ..addFlag('wasm');
+
+final _$parserForTestDartWebConfig = _$populateTestDartWebConfigParser(
+  ArgParser(),
+);
+
+TestDartWebConfig parseTestDartWebConfig(List<String> args) {
+  final result = _$parserForTestDartWebConfig.parse(args);
+  return _$parseTestDartWebConfigResult(result);
+}
+
 TestDartNativeConfig _$parseTestDartNativeConfigResult(ArgResults result) =>
     TestDartNativeConfig(
       package: convertConfigPackage(result['package'] as String),
@@ -186,11 +205,13 @@ TestFlutterWebConfig _$parseTestFlutterWebConfigResult(ArgResults result) =>
     TestFlutterWebConfig(
       package: convertConfigPackage(result['package'] as String),
       coverage: result['coverage'] as bool,
+      wasm: result['wasm'] as bool,
     );
 
 ArgParser _$populateTestFlutterWebConfigParser(ArgParser parser) => parser
   ..addOption('package')
-  ..addFlag('coverage');
+  ..addFlag('coverage')
+  ..addFlag('wasm');
 
 final _$parserForTestFlutterWebConfig = _$populateTestFlutterWebConfigParser(
   ArgParser(),
