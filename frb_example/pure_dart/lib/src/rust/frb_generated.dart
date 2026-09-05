@@ -50408,12 +50408,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<FrbLogRecord> crateApiFrbLoggingFrbInternalInitLogger(
       {required String maxLevel}) {
     final sink = RustStreamSink<FrbLogRecord>();
-    unawaited(handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_StreamSink_frb_log_record_Dco(sink);
         var arg1 = cst_encode_String(maxLevel);
         return wire.wire__crate__api__frb_logging__frb_internal_init_logger(
-            port_, arg0, arg1);
+            arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -50422,7 +50422,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       constMeta: kCrateApiFrbLoggingFrbInternalInitLoggerConstMeta,
       argValues: [sink, maxLevel],
       apiImpl: this,
-    )));
+    ));
     return sink.stream;
   }
 
