@@ -183875,15 +183875,10 @@ mod web {
     impl CstDecode<Vec<i64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> Vec<i64> {
-            let buf = self
-                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>()
-                .unwrap();
-            let byte_length = buf.byte_length();
-            assert_eq!(byte_length, buf.length() * 8);
-            let byte_offset = buf.byte_offset();
-            let buffer = buf.buffer();
-            let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new_with_byte_offset_and_length(&buffer, byte_offset, byte_length);
-            flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
+            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>()
+                .unwrap()
+                .to_vec()
+                .into()
         }
     }
     impl CstDecode<Vec<i8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -183913,15 +183908,10 @@ mod web {
     impl CstDecode<Vec<u64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> Vec<u64> {
-            let buf = self
-                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigUint64Array>()
-                .unwrap();
-            let byte_length = buf.byte_length();
-            assert_eq!(byte_length, buf.length() * 8);
-            let byte_offset = buf.byte_offset();
-            let buffer = buf.buffer();
-            let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new_with_byte_offset_and_length(&buffer, byte_offset, byte_length);
-            flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
+            self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigUint64Array>()
+                .unwrap()
+                .to_vec()
+                .into()
         }
     }
     impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
