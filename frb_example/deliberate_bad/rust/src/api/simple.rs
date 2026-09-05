@@ -31,11 +31,17 @@ pub fn make_memory_leak() {
 
 pub fn make_data_race() {
     // https://github.com/japaric/rust-san?tab=readme-ov-file#data-race
-    let t1 = std::thread::spawn(|| unsafe { ANSWER = 42 });
+    let barrier = std::sync::Arc::new(std::sync::Barrier::new(2));
+    let thread_barrier = barrier.clone();
+    let t1 = std::thread::spawn(move || {
+        thread_barrier.wait();
+        unsafe { std::ptr::write_volatile(&raw mut ANSWER, 42) };
+    });
+    barrier.wait();
     unsafe {
-        ANSWER = 24;
+        std::ptr::write_volatile(&raw mut ANSWER, 24);
     }
-    t1.join().ok();
+    t1.join().unwrap();
 }
 
 static mut ANSWER: i32 = 0;
