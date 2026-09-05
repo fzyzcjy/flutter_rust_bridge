@@ -15,31 +15,3 @@
    obj:*dart_valgrind_test_entrypoint
    obj:*dart_valgrind_test_entrypoint
 }
-{
-   pure_dart_speed_twin_box_process_exit_leak
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:frbgen_frb_example_pure_dart_cst_new_box_speed_twin_sync
-}
-{
-   pure_dart_autoadd_note_twin_box_process_exit_leak
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:calloc
-   fun:frbgen_frb_example_pure_dart_cst_new_box_autoadd_note_twin_sync
-}
-{
-   pure_dart_hide_data_twin_list_process_exit_leak
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinMoi
-}
-{
-   pure_dart_hide_data_twin_list_buffer_process_exit_leak
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:calloc
-   fun:frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinMoi
-}
