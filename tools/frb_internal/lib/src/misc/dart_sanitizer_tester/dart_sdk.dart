@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/sanitizer.dart';
 import 'package:path/path.dart' as path;
 
-const kDefaultSanitizedDartReleaseName = 'Build_2026.09.05_07-36-00';
+const kDefaultSanitizedDartReleaseName = 'Build_2026.09.05_10-13-20';
 const _kSanitizedDartReleaseNameEnv = 'FRB_SANITIZED_DART_RELEASE_NAME';
 const _kMainDartVersionEnv = 'FRB_MAIN_DART_VERSION';
 Future<String> getSanitizedDartBinary(TestDartSanitizerConfig config) async {
