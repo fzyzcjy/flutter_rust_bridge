@@ -10,6 +10,8 @@ import 'package:web/web.dart' as web;
 external JSObject get _namedPorts;
 
 void main() {
+  setUpAll(initializeBroadcastChannel);
+
   for (final closeFirst in [true, false]) {
     test(
       'stream receives every value before close, closeFirst=$closeFirst',
@@ -72,7 +74,7 @@ void main() {
     final receivePort = ReceivePort();
     addTearDown(receivePort.close);
     final sender = receivePort.sendPort.nativePort as web.MessagePort;
-    addTearDown(sender.close);
+    addTearDown(() => sender.close());
     final received = receivePort.first;
 
     sender.postMessage(['__frb_stream_close', 0, 'user data'].jsify());
@@ -109,6 +111,41 @@ void main() {
 
     final received = await receivePort.first as JSArray<JSNumber>;
     expect(received[0].toDartInt, 7);
-    expect(serializeNativePort(sender), 'buffered stream');
+    expect(serializeNativePort(sender), endsWith('/buffered stream'));
+  });
+
+  test('workers send by name without an FRB worker bootstrap', () async {
+    final url = web.URL.createObjectURL(web.Blob([
+      '''
+      onmessage = ({data: names}) => {
+        for (const name of names) {
+          const separator = name.indexOf('/');
+          const channel = new BroadcastChannel(name.slice(0, separator));
+          const port = name.slice(separator + 1);
+          channel.postMessage([port, 'first']);
+          channel.postMessage([port, 'second']);
+          channel.postMessage([port, ['__frb_stream_close', 2, 'closed']]);
+          channel.close();
+        }
+      };
+      '''.toJS,
+    ].toJS));
+    addTearDown(() => web.URL.revokeObjectURL(url));
+    final worker = web.Worker(url);
+    addTearDown(() => worker.terminate());
+    for (var batch = 0; batch < 100; batch++) {
+      final ports = List.generate(8, (index) => broadcastPort('worker/$batch/$index'));
+      final received = ports.map((port) => port.take(3).map((value) => (value as JSString).toDart).toList()).toList();
+      try {
+        worker.postMessage(ports.map((port) => serializeNativePort(port.sendPort.nativePort).toJS).toList().toJS);
+        for (final values in received) {
+          expect(await values, ['first', 'second', 'closed']);
+        }
+      } finally {
+        for (final port in ports) {
+          port.close();
+        }
+      }
+    }
   });
 }
