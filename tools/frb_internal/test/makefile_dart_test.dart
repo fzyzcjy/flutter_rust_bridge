@@ -445,6 +445,23 @@ dev_dependencies:
     );
   });
 
+  test('quickstart smoke activates the tested macOS app bundle', () {
+    for (final package in [
+      'flutter_via_create',
+      'flutter_via_create_native_assets',
+    ]) {
+      expect(
+        quickstartSmokeMacosActivationArgsForTesting(
+          '/workspace with spaces/frb_example/$package/',
+        ),
+        [
+          '-a',
+          '/workspace with spaces/frb_example/$package/build/macos/Build/Products/Debug/$package.app',
+        ],
+      );
+    }
+  });
+
   test(
     'quickstart smoke waits for Flutter run readiness before screenshot',
     () {

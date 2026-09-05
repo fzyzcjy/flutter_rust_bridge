@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:meta/meta.dart';
+import 'package:path/path.dart' as path;
 
 enum QuickstartSmokeTarget { web, desktop, android, ios }
 
@@ -335,6 +336,22 @@ List<String> quickstartSmokeMacosScreenshotArgsForTesting(
   String screenshotPath,
 ) => ['-x', '-T', '1', screenshotPath];
 
+@visibleForTesting
+List<String> quickstartSmokeMacosActivationArgsForTesting(
+  String absolutePackagePath,
+) => [
+  '-a',
+  path.posix.join(
+    absolutePackagePath,
+    'build',
+    'macos',
+    'Build',
+    'Products',
+    'Debug',
+    '${path.posix.basename(path.posix.normalize(absolutePackagePath))}.app',
+  ),
+];
+
 Future<_QuickstartSmokeFlutterRun> _startQuickstartSmokeFlutterRun(
   _QuickstartSmokeContext context,
 ) async {
@@ -544,6 +561,9 @@ void _validateQuickstartSmokeResult({
 Future<void> _captureAndOcrQuickstartSmokeScreenshotFromContext(
   _QuickstartSmokeContext context,
 ) async {
+  if (context.target == QuickstartSmokeTarget.desktop && Platform.isMacOS) {
+    await _activateMacosQuickstartSmokeApp(context.absolutePackage.path);
+  }
   await _captureAndOcrQuickstartSmokeScreenshot(
     target: context.target,
     deviceId: context.resolvedDeviceId,
@@ -677,7 +697,6 @@ Future<void> _captureQuickstartSmokeScreenshot({
 Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
   File screenshotFile,
 ) async {
-  await _activateMacosQuickstartSmokeApp();
   return Process.run(
     'screencapture',
     quickstartSmokeMacosScreenshotArgsForTesting(screenshotFile.path),
@@ -685,11 +704,12 @@ Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
   );
 }
 
-Future<void> _activateMacosQuickstartSmokeApp() async {
-  final result = await Process.run('osascript', [
-    '-e',
-    'tell application "flutter_via_create" to activate',
-  ], stderrEncoding: systemEncoding);
+Future<void> _activateMacosQuickstartSmokeApp(String absolutePackagePath) async {
+  final result = await Process.run(
+    'open',
+    quickstartSmokeMacosActivationArgsForTesting(absolutePackagePath),
+    stderrEncoding: systemEncoding,
+  );
   if (result.exitCode != 0) {
     print(
       'Failed to activate macOS quickstart app before screenshot '
