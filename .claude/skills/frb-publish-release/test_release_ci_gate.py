@@ -25,10 +25,16 @@ def test_classify_release_ci_gate_allows_non_release_paths() -> None:
 
     result = release_ci_gate.classify_release_ci_gate(
         changed_paths=[
+            ".all-contributors-custom.yaml",
+            ".all-contributorsrc",
             "CHANGELOG.md",
+            "README.md",
             ".claude/skills/frb-publish-release/SKILL.md",
             ".devcontainer/Dockerfile",
             ".github/workflows/publish_dev_docker.yaml",
+            "frb_dart/CHANGELOG.md",
+            "frb_dart/README.md",
+            "frb_hooks/CHANGELOG.md",
             "website/docs/index.md",
         ],
         base_ref="green",
