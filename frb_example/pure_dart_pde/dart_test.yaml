@@ -1,0 +1,1 @@
+concurrency: 1 # Suites share a Rust logger; init/dispose can disrupt other suites.
