@@ -140,7 +140,9 @@ mod tests {
         assert!(body.contains("generalizedFrbRustBinding.dartFnDeliverOutput("));
         let cleanup = body.find("serializer.dispose();").unwrap();
         let transfer = body.find("final output = serializer.intoRaw();").unwrap();
-        let delivery = body.find("generalizedFrbRustBinding.dartFnDeliverOutput(").unwrap();
+        let delivery = body
+            .find("generalizedFrbRustBinding.dartFnDeliverOutput(")
+            .unwrap();
         assert!(cleanup < transfer);
         assert!(transfer < delivery);
         assert!(body[cleanup..transfer].contains("rethrow;\n                }"));
