@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:code_assets/code_assets.dart';
 import 'package:hooks/hooks.dart';
 import 'package:logging/logging.dart';
 import 'package:meta/meta.dart';
@@ -62,6 +63,7 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
         isWindows: Platform.isWindows,
         input: input,
       );
+      final codeConfig = effectiveInput.config.code;
       await native_toolchain_rust.RustBuilder(
         assetName: assetName,
         cratePath: cratePath,
@@ -69,7 +71,12 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
         enableDefaultFeatures: enableDefaultFeatures,
         features: features,
         extraCargoBuildArgs: extraCargoBuildArgs,
-        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+        extraCargoEnvironmentVariables: cargoEnvironmentWithAndroidPageSize(
+          targetOS: codeConfig.targetOS,
+          targetArchitecture: codeConfig.targetArchitecture,
+          parentEnvironment: Platform.environment,
+          extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+        ),
       ).run(
         input: effectiveInput,
         output: output,
@@ -79,6 +86,75 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
     });
   }
 }
+
+@visibleForTesting
+Map<String, String> cargoEnvironmentWithAndroidPageSize({
+  required OS targetOS,
+  required Architecture targetArchitecture,
+  required Map<String, String> parentEnvironment,
+  required Map<String, String> extraCargoEnvironmentVariables,
+}) {
+  final String? targetRustFlagsVariable = switch ((
+    targetOS,
+    targetArchitecture,
+  )) {
+    (OS.android, Architecture.arm64) =>
+      'CARGO_TARGET_AARCH64_LINUX_ANDROID_RUSTFLAGS',
+    (OS.android, Architecture.x64) =>
+      'CARGO_TARGET_X86_64_LINUX_ANDROID_RUSTFLAGS',
+    _ => null,
+  };
+  if (targetRustFlagsVariable == null) {
+    return extraCargoEnvironmentVariables;
+  }
+
+  final Map<String, String> effectiveEnvironment = {
+    ...parentEnvironment,
+    ...extraCargoEnvironmentVariables,
+  };
+  final String rustFlagsVariable;
+  final String separator;
+  if (effectiveEnvironment.containsKey('CARGO_ENCODED_RUSTFLAGS')) {
+    rustFlagsVariable = 'CARGO_ENCODED_RUSTFLAGS';
+    separator = '\x1f';
+  } else if (effectiveEnvironment.containsKey('RUSTFLAGS')) {
+    rustFlagsVariable = 'RUSTFLAGS';
+    separator = ' ';
+  } else if (effectiveEnvironment.containsKey(targetRustFlagsVariable)) {
+    rustFlagsVariable = targetRustFlagsVariable;
+    separator = ' ';
+  } else if (effectiveEnvironment.containsKey('CARGO_BUILD_RUSTFLAGS')) {
+    rustFlagsVariable = 'CARGO_BUILD_RUSTFLAGS';
+    separator = ' ';
+  } else {
+    rustFlagsVariable = targetRustFlagsVariable;
+    separator = ' ';
+  }
+  final existingRustFlags = effectiveEnvironment[rustFlagsVariable] ?? '';
+  final List<String> additionalRustFlags = [
+    for (final linkerArgument in _androidPageSizeLinkerArguments)
+      if (!existingRustFlags.contains(linkerArgument)) ...[
+        '-C',
+        linkerArgument,
+      ],
+  ];
+  if (additionalRustFlags.isEmpty) {
+    return extraCargoEnvironmentVariables;
+  }
+
+  return {
+    ...extraCargoEnvironmentVariables,
+    rustFlagsVariable: [
+      if (existingRustFlags.isNotEmpty) existingRustFlags,
+      ...additionalRustFlags,
+    ].join(separator),
+  };
+}
+
+const _androidPageSizeLinkerArguments = [
+  'link-arg=-Wl,-z,max-page-size=16384',
+  'link-arg=-Wl,-z,common-page-size=16384',
+];
 
 /// Returns a build input adjusted for host-specific Native Assets behavior.
 @visibleForTesting

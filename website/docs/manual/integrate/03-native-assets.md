@@ -30,6 +30,12 @@ If the project already has `hook/build.dart`, `integrate` preserves it and print
 
 For existing projects that already use Cargokit, see [Migrate from Cargokit to Native Assets](migrate-cargokit-to-native-assets).
 
+## Android 16 KB page sizes
+
+The Native Assets builder passes the Android linker flags needed to align arm64-v8a and x86_64 Rust libraries for 16 KB page-size devices. This also covers projects that must remain on Android NDK r27 or earlier; NDK r28 and later enable 16 KB ELF alignment by default.
+
+The Android application still needs Android Gradle Plugin 8.5.1 or later for correct 16 KB APK packaging. Verify separately that any prebuilt native libraries from other dependencies support 16 KB page sizes.
+
 ## Rust crate requirements
 
 The Rust crate must be buildable by Cargo for the requested target platform.
