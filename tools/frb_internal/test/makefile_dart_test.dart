@@ -132,22 +132,51 @@ void main() {
     final summary = allowedLeakSummaryForTesting(
       sanitizer: Sanitizer.lsan,
       package: 'frb_example/pure_dart',
-    );
-
-    expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr:
-            '==123==ERROR: LeakSanitizer: detected memory leaks\n$summary\n',
-        expectedExitCode: 23,
-        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
-        expectedSummaries: [summary!],
-        expectedTrailingLinesAfterSummary: const [],
-      ),
-      isTrue,
-    );
+    )!;
     const alternateSummary =
         'SUMMARY: LeakSanitizer: 1048 byte(s) leaked in 95 allocation(s).';
+    const reportLine =
+        'Direct leak of 16 byte(s) in 1 object(s) allocated from:';
+    const reportFragment = 'known-runtime-origin';
+    final reportLineCountsBySummary = {
+      summary: {reportLine: 1},
+      alternateSummary: {reportLine: 1},
+    };
+
+    bool matches(
+      String stderr, {
+      List<String> summaries = const [],
+      List<String> trailingLines = const [],
+      List<String> fragments = const [reportFragment],
+    }) => isOnlyAllowedSanitizerFailureForTesting(
+      exitCode: trailingLines.isEmpty ? 23 : 66,
+      stderr: stderr,
+      expectedExitCode: trailingLines.isEmpty ? 23 : 66,
+      expectedReportHeader: trailingLines.isEmpty
+          ? 'ERROR: LeakSanitizer: detected memory leaks'
+          : 'WARNING: ThreadSanitizer: thread leak',
+      expectedSummaries: summaries.isEmpty ? [summary] : summaries,
+      expectedTrailingLinesAfterSummary: trailingLines,
+      expectedReportLineCountsBySummary: reportLineCountsBySummary,
+      expectedReportFragments: fragments,
+    );
+
+    String leakReport(String reportSummary, String origin) =>
+        '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+        '$reportLine\n'
+        '#0 $origin\n'
+        '$reportSummary\n';
+
+    expect(
+      matches(leakReport(summary, reportFragment)),
+      isTrue,
+    );
+    expect(
+      matches(
+        '==123==ERROR: LeakSanitizer: detected memory leaks\n$summary\n',
+      ),
+      isFalse,
+    );
     expect(
       allowedLeakSummariesForTesting(
         sanitizer: Sanitizer.lsan,
@@ -163,78 +192,57 @@ void main() {
       ['SUMMARY: AddressSanitizer: 1056 byte(s) leaked in 96 allocation(s).'],
     );
     expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr:
-            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
-            '$alternateSummary\n',
-        expectedExitCode: 23,
-        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
-        expectedSummaries: [summary, alternateSummary],
-        expectedTrailingLinesAfterSummary: const [],
+      matches(
+        leakReport(alternateSummary, reportFragment),
+        summaries: [summary, alternateSummary],
       ),
       isTrue,
     );
     expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr:
-            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
-            'SUMMARY: LeakSanitizer: 400 byte(s) leaked in 25 allocation(s).\n',
-        expectedExitCode: 23,
-        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
-        expectedSummaries: [summary],
-        expectedTrailingLinesAfterSummary: const [],
+      matches(
+        leakReport(
+          'SUMMARY: LeakSanitizer: 400 byte(s) leaked in 25 allocation(s).',
+          reportFragment,
+        ),
       ),
       isFalse,
     );
     expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr:
-            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
-            '$summary\nSUMMARY: LeakSanitizer: 1 byte(s) leaked in 1 allocation(s).\n',
-        expectedExitCode: 23,
-        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
-        expectedSummaries: [summary],
-        expectedTrailingLinesAfterSummary: const [],
+      matches(
+        '${leakReport(summary, reportFragment)}'
+        'SUMMARY: LeakSanitizer: 1 byte(s) leaked in 1 allocation(s).\n',
       ),
       isFalse,
     );
     expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr:
-            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
-            '$summary\nUnhandled exception: teardown failed\n',
-        expectedExitCode: 23,
-        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
-        expectedSummaries: [summary],
-        expectedTrailingLinesAfterSummary: const [],
+      matches(
+        '${leakReport(summary, reportFragment)}'
+        'Unhandled exception: teardown failed\n',
       ),
       isFalse,
     );
     expect(
-      isOnlyAllowedSanitizerFailureForTesting(
-        exitCode: 23,
-        stderr:
-            'Fatal error: unrelated teardown failure\n'
-            '==123==ERROR: LeakSanitizer: detected memory leaks\n'
-            '$summary\n',
-        expectedExitCode: 23,
-        expectedReportHeader: 'ERROR: LeakSanitizer: detected memory leaks',
-        expectedSummaries: [summary],
-        expectedTrailingLinesAfterSummary: const [],
+      matches(
+        'Fatal error: unrelated teardown failure\n'
+        '${leakReport(summary, reportFragment)}',
       ),
+      isFalse,
+    );
+    expect(
+      matches(leakReport(summary, 'new-regression-origin')),
       isFalse,
     );
     const threadSummary =
         'SUMMARY: ThreadSanitizer: thread leak ??:? in pthread_create';
+    final threadReportLineCountsBySummary = {
+      threadSummary: <String, int>{},
+    };
     expect(
       isOnlyAllowedSanitizerFailureForTesting(
         exitCode: 66,
         stderr:
             'WARNING: ThreadSanitizer: thread leak (pid=123)\n'
+            '#0 known-tokio-runtime-origin\n'
             '$threadSummary\n'
             '==================\n'
             'ThreadSanitizer: reported 1 warnings\n',
@@ -245,8 +253,31 @@ void main() {
           '==================',
           'ThreadSanitizer: reported 1 warnings',
         ],
+        expectedReportLineCountsBySummary: threadReportLineCountsBySummary,
+        expectedReportFragments: const ['known-tokio-runtime-origin'],
       ),
       isTrue,
+    );
+    expect(
+      isOnlyAllowedSanitizerFailureForTesting(
+        exitCode: 66,
+        stderr:
+            'WARNING: ThreadSanitizer: thread leak (pid=123)\n'
+            '#0 new-regression-origin\n'
+            '$threadSummary\n'
+            '==================\n'
+            'ThreadSanitizer: reported 1 warnings\n',
+        expectedExitCode: 66,
+        expectedReportHeader: 'WARNING: ThreadSanitizer: thread leak',
+        expectedSummaries: const [threadSummary],
+        expectedTrailingLinesAfterSummary: const [
+          '==================',
+          'ThreadSanitizer: reported 1 warnings',
+        ],
+        expectedReportLineCountsBySummary: threadReportLineCountsBySummary,
+        expectedReportFragments: const ['known-tokio-runtime-origin'],
+      ),
+      isFalse,
     );
     expect(
       allowedLeakSummaryForTesting(
