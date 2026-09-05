@@ -10,7 +10,8 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart'
+    as released_version;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -634,7 +635,7 @@ dev_dependencies:
   group('release version check', () {
     test('parses crates.io package metadata', () {
       expect(
-        parseCratesIoReleasedVersion({
+        released_version.parseCratesIoReleasedVersion({
           'crate': {'max_version': '2.12.0'},
         }),
         '2.12.0',
@@ -643,7 +644,7 @@ dev_dependencies:
 
     test('parses pub.dev package metadata', () {
       expect(
-        parsePubDevReleasedVersion({
+        released_version.parsePubDevReleasedVersion({
           'latest': {'version': '2.12.0'},
         }),
         '2.12.0',
@@ -652,7 +653,7 @@ dev_dependencies:
 
     test('finds pub.dev prerelease target version outside latest', () {
       expect(
-        parsePubDevReleasedVersion({
+        released_version.parsePubDevReleasedVersion({
           'latest': {'version': '2.12.0'},
           'versions': [
             {'version': '2.12.0'},
@@ -664,14 +665,14 @@ dev_dependencies:
     });
 
     test('summarizes whether every package is published', () {
-      final output = buildReleasePackageStatusOutput([
-        const ReleasePackageStatus(
+      final output = released_version.buildReleasePackageStatusOutput([
+        const released_version.ReleasePackageStatus(
           registry: 'crates.io',
           name: 'flutter_rust_bridge',
           manifestVersion: '2.12.0',
           releasedVersion: '2.12.0',
         ),
-        const ReleasePackageStatus(
+        const released_version.ReleasePackageStatus(
           registry: 'pub.dev',
           name: 'flutter_rust_bridge',
           manifestVersion: '2.12.0',
@@ -699,7 +700,7 @@ dev_dependencies:
     });
 
     test('uses explicit target version for every published package', () async {
-      final statuses = await fetchReleasePackageStatuses(
+      final statuses = await released_version.fetchReleasePackageStatuses(
         targetVersion: '9.9.9',
         fetcher: (uri) async {
           if (uri.host == 'crates.io') {
@@ -733,7 +734,7 @@ dev_dependencies:
     test(
       'reports hooks as unreleased when its target version is absent',
       () async {
-        final statuses = await fetchReleasePackageStatuses(
+        final statuses = await released_version.fetchReleasePackageStatuses(
           targetVersion: '9.9.9',
           fetcher: (uri) async {
             if (uri.host == 'crates.io') {
@@ -752,7 +753,9 @@ dev_dependencies:
           },
         );
 
-        final output = buildReleasePackageStatusOutput(statuses);
+        final output = released_version.buildReleasePackageStatusOutput(
+          statuses,
+        );
         final hooksStatus = statuses.singleWhere(
           (status) => status.name == 'flutter_rust_bridge_hooks',
         );
@@ -765,7 +768,7 @@ dev_dependencies:
     test(
       'reports hooks as unreleased when only another version exists',
       () async {
-        final statuses = await fetchReleasePackageStatuses(
+        final statuses = await released_version.fetchReleasePackageStatuses(
           targetVersion: '9.9.9',
           fetcher: (uri) async {
             if (uri.host == 'crates.io') {
@@ -785,7 +788,9 @@ dev_dependencies:
           },
         );
 
-        final output = buildReleasePackageStatusOutput(statuses);
+        final output = released_version.buildReleasePackageStatusOutput(
+          statuses,
+        );
         final hooksStatus = statuses.singleWhere(
           (status) => status.name == 'flutter_rust_bridge_hooks',
         );
@@ -798,9 +803,8 @@ dev_dependencies:
     test(
       'uses each local Dart manifest version as its pub.dev target',
       () async {
-        final rustVersion = getWorkspaceRustVersion();
-
-        final statuses = await fetchReleasePackageStatuses(
+        final rustVersion = released_version.getWorkspaceRustVersion();
+        final statuses = await released_version.fetchReleasePackageStatuses(
           dartPackageManifestFetcher: (package) => switch (package) {
             'frb_dart' =>
               '''
