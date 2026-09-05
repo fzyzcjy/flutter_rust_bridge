@@ -8,8 +8,7 @@ as if the Flutter+Rust app is a Flutter-only one.
 
 ## Web
 
-1. Run `flutter_rust_bridge_codegen build-web --release`.
-2. Run `flutter build web`, adding `--wasm` for Dart WebAssembly.
-3. Deploy `build/web` with [cross-origin headers](../../manual/miscellaneous/web-cross-origin).
+For the Web platform only, besides following Flutter's documentation, there are two extra things to do:
 
-See [Build for Web](web) for details.
+1. Just like what is already done when developing the app, execute `flutter_rust_bridge_codegen build-web --release`
+2. Add [cross-origin headers](../../manual/miscellaneous/web-cross-origin) to your web server configuration.

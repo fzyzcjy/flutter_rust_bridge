@@ -1,3 +1,6 @@
 # Deployment
 
-Follow Flutter's deployment guides. For Web, see [Build for Web](../how-to/web) and configure [cross-origin headers](../../manual/miscellaneous/web-cross-origin).
+Please follow the standard Flutter's deployment guides, with one extra bit:
+
+If you are deploying the web platform (only),
+please check [this doc](../../manual/miscellaneous/web-cross-origin) and configure a few HTTP headers.

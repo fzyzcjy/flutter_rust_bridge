@@ -165,7 +165,7 @@ flutter_rust_bridge_codegen build-web
 flutter run --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
 ```
 
-For Dart WebAssembly, add `--wasm` to `flutter run`. See [Build for Web](guides/how-to/web) for details.
+For Dart WebAssembly, add `--wasm` to `flutter run` or `flutter build web`.
 
 </TabItem>
 

@@ -19,8 +19,12 @@
   or `&mut T` while an async Rust function is still borrowing the same object. On the browser event
   loop, such calls fail immediately; use an async API and `await` it instead. Worker contexts that can
   safely block may still use the normal blocking lock path.
-- FRB's `BigInt`-based `Int64List` and `Uint64List` support both Dart web compilers,
-  but lack some `dart:typed_data` view and sublist constructors.
+- `Int64List` and `Uint64List` throws when used on Web platforms. They are left intentionally
+  unimplemented by the Dart language developers, perhaps due to the differences between `int` and `BigInt`.
+  This library provides a barebones pure Dart shim whose behavior may differ from the specifications,
+  so please create an issue/PR if you encounter any significant digression.
+- `Int64List` and `Uint64List` arithmetics clamp on native platforms, but wrap on the Web. If your use-case
+  requires precision around large integer values, please be mindful of these platform-specific differences.
 - Support for the various components of WASM is not universal among browsers. Here is a (non-exhaustive) list
   of trackers for how widely available some of the features are across browsers:
   - [`MessagePort` error events](https://caniuse.com/mdn-api_messageport_messageerror_event)

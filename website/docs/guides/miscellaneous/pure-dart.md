@@ -25,7 +25,3 @@ and contains a lot of tests of this library.
 This example currently uses some glue of internal frb_utils to build Rust code.
 However, this is just temporary before [the official toolchain](https://github.com/dart-lang/native/issues/883) is released.
 Therefore, those temporary glue are not made as a publishable package.
-
-## Web
-
-Both `dart2js` and `dart2wasm` are supported. See [Build for Web](../how-to/web).
