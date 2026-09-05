@@ -45,7 +45,10 @@ void main() {
   test('reversed stream values are delivered in sending order', () async {
     final port = broadcastPort('reversed values');
     addTearDown(port.close);
-    final received = port.take(3).map((value) => (value as JSString).toDart).toList();
+    final received = port
+        .take(3)
+        .map((value) => (value as JSString).toDart)
+        .toList();
     final sender = port.sendPort.nativePort as web.MessagePort;
     sender.postMessage(['__frb_stream', 2, 'closed'].jsify());
     sender.postMessage(['__frb_stream', 1, 'second'].jsify());
@@ -56,7 +59,10 @@ void main() {
   test('a rejected send does not block later values or close', () async {
     final port = broadcastPort('rejected value');
     addTearDown(port.close);
-    final received = port.take(2).map((value) => (value as JSString).toDart).toList();
+    final received = port
+        .take(2)
+        .map((value) => (value as JSString).toDart)
+        .toList();
     final sender = port.sendPort.nativePort as web.MessagePort;
     sender.postMessage(['__frb_stream', 2, 'closed'].jsify());
     sender.postMessage(['__frb_stream', 1, 'value'].jsify());
@@ -64,15 +70,18 @@ void main() {
     expect(await received, ['value', 'closed']);
   });
 
-  test('transport failure reports an error instead of waiting for a gap', () async {
-    final port = broadcastPort('transport failure');
-    addTearDown(port.close);
-    final received = port.first;
-    final sender = port.sendPort.nativePort as web.MessagePort;
-    sender.postMessage(['__frb_stream', 1, 'value'].jsify());
-    sender.postMessage(['__frb_stream_failed'].jsify());
-    await expectLater(received, throwsStateError);
-  });
+  test(
+    'transport failure reports an error instead of waiting for a gap',
+    () async {
+      final port = broadcastPort('transport failure');
+      addTearDown(port.close);
+      final received = port.first;
+      final sender = port.sendPort.nativePort as web.MessagePort;
+      sender.postMessage(['__frb_stream', 1, 'value'].jsify());
+      sender.postMessage(['__frb_stream_failed'].jsify());
+      await expectLater(received, throwsStateError);
+    },
+  );
 
   test(
     'each listener independently waits for all values before close',

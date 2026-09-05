@@ -173,7 +173,8 @@ class _WebChannel {
         if (frame.length == 1 && frame[0] == '__frb_stream_failed'.toJS) {
           throw StateError('Web stream delivery failed');
         }
-        if ((frame.length == 2 || frame.length == 3) && frame[0] == '__frb_stream'.toJS) {
+        if ((frame.length == 2 || frame.length == 3) &&
+            frame[0] == '__frb_stream'.toJS) {
           pending[(frame[1] as JSNumber).toDartInt] = frame;
           while (pending.containsKey(nextSequence)) {
             final ready = pending.remove(nextSequence++)!;

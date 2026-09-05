@@ -56,7 +56,7 @@ impl PortLike {
 
 fn post_named_message(name: &str, value: &JsValue) -> Result<(), JsValue> {
     let (channel_name, port_name) = name.split_once('/').ok_or_else(|| JsValue::from_str("Invalid broadcast port name"))?;
-    BROADCAST_CHANNELS.with(|channels| {
+    let channel = BROADCAST_CHANNELS.with(|channels| {
         let mut channels = channels.borrow_mut();
         if channels.is_empty() {
             queue_microtask(Closure::once_into_js(close_broadcast_channels).unchecked_ref());
@@ -65,8 +65,9 @@ fn post_named_message(name: &str, value: &JsValue) -> Result<(), JsValue> {
             std::collections::hash_map::Entry::Occupied(entry) => entry.into_mut(),
             std::collections::hash_map::Entry::Vacant(entry) => entry.insert(BroadcastChannel::new(channel_name)?),
         };
-        channel.post_message(&Array::of2(&port_name.into(), value))
-    })
+        Ok::<_, JsValue>(channel.clone())
+    })?;
+    channel.post_message(&Array::of2(&port_name.into(), value))
 }
 
 fn close_broadcast_channels() {

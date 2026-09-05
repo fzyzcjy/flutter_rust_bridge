@@ -72,6 +72,19 @@ pub async fn stream_worker_transfer_twin_rust_async_sse(
                     let port: MessagePort = data[2].clone().unchecked_into();
                     let port_in_callback = port.clone();
                     let callback = Closure::once_into_js(move || {
+                        let prototype = js_sys::Reflect::get(
+                            &js_sys::Reflect::get(&js_sys::global(), &"BroadcastChannel".into()).unwrap(),
+                            &"prototype".into(),
+                        ).unwrap();
+                        let original = js_sys::Reflect::get(&prototype, &"postMessage".into()).unwrap();
+                        let reject_once = js_sys::Function::new_with_args(
+                            "original",
+                            "let first = true; return function(message) { if (first) { first = false; message[1][2] = () => {}; } return original.call(this, message); }",
+                        ).call1(&JsValue::NULL, &original).unwrap();
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &reject_once).unwrap();
+                        let rejected_value = sink_in_worker.add(-1).is_err();
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &original).unwrap();
+                        assert!(rejected_value);
                         for value in [i32::from(rejected), original_value, original_byte] {
                             sink_in_worker.add(value).unwrap();
                         }
