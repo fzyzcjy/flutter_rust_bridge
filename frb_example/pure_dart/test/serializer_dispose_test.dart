@@ -8,7 +8,7 @@ import 'package:flutter_rust_bridge/src/droppable/_common.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_uint8list/rust_vec_u8.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
-import 'package:frb_example_pure_dart/src/rust/api/proxy.dart';
+import 'package:frb_example_pure_dart/src/rust/api/lifetimeable.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -25,13 +25,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('disposed opaque encoding releases the serializer allocation', () async {
-    final probe = await MyAudioParamTwinNormal.createTwinNormal(value: 'probe');
+    final probe = await LtOwnedStructTwinNormal.createTwinNormal(value: 'probe');
     probe.dispose();
     final binding = _AllocationBinding();
     final api = _RecordingApi(RustLib.instance.api as RustLibApiImpl, binding);
 
     expect(
-      () => api.crateApiProxyMyAudioParamTwinNormalMyMethodTwinNormal(
+      () => api.crateApiLifetimeableLtOwnedStructTwinNormalComputeTypeWithLifetimeTwinNormal(
           that: probe),
       throwsA(isA<DroppableDisposedException>()),
     );
