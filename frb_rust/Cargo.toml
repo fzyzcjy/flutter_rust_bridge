@@ -40,6 +40,7 @@ web-sys = { version = "0.3.58", features = [
     "DedicatedWorkerGlobalScope",
     "MessageEvent",
     "MessagePort",
+    "MessageChannel",
     "ErrorEvent",
     "Blob",
     "BlobPropertyBag",

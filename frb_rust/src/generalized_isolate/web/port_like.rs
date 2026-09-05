@@ -1,6 +1,6 @@
 use wasm_bindgen::prelude::*;
 use js_sys::{Array, Object, Reflect};
-use web_sys::{DedicatedWorkerGlobalScope, MessageEvent, Worker};
+use web_sys::{MessageChannel, MessageEvent, MessagePort};
 
 #[wasm_bindgen]
 extern "C" {
@@ -42,32 +42,23 @@ impl PortLike {
     }
 }
 
-pub(crate) fn install_message_forwarding(worker: &Worker) -> Result<(), JsValue> {
-    let callback = Closure::<dyn FnMut(MessageEvent)>::new(|event: MessageEvent| {
-        let data = event.data();
-        if !Array::is_array(&data) {
-            return;
-        }
-        let data = Array::from(&data);
-        if data.length() != 3 || data.get(0).as_string().as_deref() != Some("__frb_named_message") {
-            return;
-        }
-        event.stop_immediate_propagation();
-        post_named_message(&data.get(1).as_string().unwrap_throw(), &data.get(2)).unwrap_throw();
-    });
-    worker.add_event_listener_with_callback("message", callback.as_ref().unchecked_ref())?;
-    let _ = callback.into_js_value();
-    Ok(())
+pub(crate) fn create_message_router() -> Result<MessagePort, JsValue> {
+    let channel = MessageChannel::new()?;
+    match message_router()? {
+        Some(router) => router.post_message_with_transfer(
+            &channel.port1(),
+            &Array::of1(&channel.port1()),
+        )?,
+        None => receive_routed_messages(channel.port1()),
+    }
+    Ok(channel.port2())
 }
 
 fn post_named_message(name: &str, value: &JsValue) -> Result<(), JsValue> {
-    let global = js_sys::global();
-    if Reflect::get(&global, &"__frb_rust_worker".into())?.is_truthy() {
-        return global
-            .unchecked_into::<DedicatedWorkerGlobalScope>()
-            .post_message(&Array::of3(&"__frb_named_message".into(), &name.into(), value));
+    if let Some(router) = message_router()? {
+        return router.post_message(&Array::of2(&name.into(), value));
     }
-    let ports = Reflect::get(&global, &"__frb_named_ports".into())?;
+    let ports = Reflect::get(&js_sys::global(), &"__frb_named_ports".into())?;
     if !ports.is_undefined() && !ports.is_null() {
         let port = Reflect::get(&ports, &name.into())?;
         if !port.is_undefined() {
@@ -75,4 +66,23 @@ fn post_named_message(name: &str, value: &JsValue) -> Result<(), JsValue> {
         }
     }
     Ok(())
+}
+
+fn message_router() -> Result<Option<MessagePort>, JsValue> {
+    let router = Reflect::get(&js_sys::global(), &"__frb_message_router".into())?;
+    Ok((!router.is_undefined()).then(|| router.unchecked_into()))
+}
+
+fn receive_routed_messages(port: MessagePort) {
+    let callback = Closure::<dyn FnMut(MessageEvent)>::new(|event: MessageEvent| {
+        let data = event.data();
+        if let Some(port) = data.dyn_ref::<MessagePort>() {
+            receive_routed_messages(port.clone());
+        } else {
+            let data = Array::from(&data);
+            post_named_message(&data.get(0).as_string().unwrap_throw(), &data.get(1)).unwrap_throw();
+        }
+    });
+    port.set_onmessage(Some(callback.as_ref().unchecked_ref()));
+    let _ = callback.into_js_value();
 }
