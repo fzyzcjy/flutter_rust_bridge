@@ -55,7 +55,9 @@ impl PortLike {
 }
 
 fn post_named_message(name: &str, value: &JsValue) -> Result<(), JsValue> {
-    let (channel_name, port_name) = name.split_once('/').ok_or_else(|| JsValue::from_str("Invalid broadcast port name"))?;
+    let (channel_name, port_name) = name
+        .split_once('/')
+        .ok_or_else(|| JsValue::from_str("Invalid broadcast port name"))?;
     let channel = BROADCAST_CHANNELS.with(|channels| {
         let mut channels = channels.borrow_mut();
         if channels.is_empty() {
@@ -63,7 +65,9 @@ fn post_named_message(name: &str, value: &JsValue) -> Result<(), JsValue> {
         }
         let channel = match channels.entry(channel_name.to_owned()) {
             std::collections::hash_map::Entry::Occupied(entry) => entry.into_mut(),
-            std::collections::hash_map::Entry::Vacant(entry) => entry.insert(BroadcastChannel::new(channel_name)?),
+            std::collections::hash_map::Entry::Vacant(entry) => {
+                entry.insert(BroadcastChannel::new(channel_name)?)
+            }
         };
         Ok::<_, JsValue>(channel.clone())
     })?;

@@ -39,7 +39,8 @@ impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
                 &"__frb_stream".into(),
                 &(self.next_sequence.load(Ordering::Relaxed) as f64).into(),
                 &message,
-            ).into()
+            )
+            .into()
         };
         super::stream_sink::sender(&self.sendable_channel_handle).send_or_warn(message);
         release_channel_handle(&self.sendable_channel_handle);
