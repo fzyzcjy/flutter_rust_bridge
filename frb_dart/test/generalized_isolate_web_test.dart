@@ -1,13 +1,9 @@
 @TestOn('browser')
 import 'dart:js_interop';
-import 'dart:js_interop_unsafe';
 
 import 'package:flutter_rust_bridge/src/generalized_isolate/_web.dart';
 import 'package:test/test.dart';
 import 'package:web/web.dart' as web;
-
-@JS('globalThis.__frb_named_ports')
-external JSObject get _namedPorts;
 
 void main() {
   setUpAll(initializeBroadcastChannel);
@@ -94,8 +90,10 @@ void main() {
     final received = replacement.first;
 
     oldPort.close();
-    final sender = _namedPorts.getProperty<web.MessagePort>('replacement'.toJS);
-    sender.postMessage('new port'.toJS);
+    final name = serializeNativePort(replacement.sendPort.nativePort);
+    final sender = web.BroadcastChannel(name.split('/').first);
+    addTearDown(() => sender.close());
+    sender.postMessage(['replacement', 'new port'].jsify());
 
     expect((await received as JSString).toDart, 'new port');
   });
@@ -115,8 +113,10 @@ void main() {
   });
 
   test('workers send by name without an FRB worker bootstrap', () async {
-    final url = web.URL.createObjectURL(web.Blob([
-      '''
+    final url = web.URL.createObjectURL(
+      web.Blob(
+        [
+          '''
       onmessage = ({data: names}) => {
         for (const name of names) {
           const separator = name.indexOf('/');
@@ -128,16 +128,34 @@ void main() {
           channel.close();
         }
       };
-      '''.toJS,
-    ].toJS));
+      '''
+              .toJS,
+        ].toJS,
+      ),
+    );
     addTearDown(() => web.URL.revokeObjectURL(url));
-    final worker = web.Worker(url);
+    final worker = web.Worker(url.toJS);
     addTearDown(() => worker.terminate());
     for (var batch = 0; batch < 100; batch++) {
-      final ports = List.generate(8, (index) => broadcastPort('worker/$batch/$index'));
-      final received = ports.map((port) => port.take(3).map((value) => (value as JSString).toDart).toList()).toList();
+      final ports = List.generate(
+        8,
+        (index) => broadcastPort('worker/$batch/$index'),
+      );
+      final received = ports
+          .map(
+            (port) => port
+                .take(3)
+                .map((value) => (value as JSString).toDart)
+                .toList(),
+          )
+          .toList();
       try {
-        worker.postMessage(ports.map((port) => serializeNativePort(port.sendPort.nativePort).toJS).toList().toJS);
+        worker.postMessage(
+          ports
+              .map((port) => serializeNativePort(port.sendPort.nativePort).toJS)
+              .toList()
+              .toJS,
+        );
         for (final values in received) {
           expect(await values, ['first', 'second', 'closed']);
         }

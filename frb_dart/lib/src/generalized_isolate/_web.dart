@@ -5,6 +5,7 @@ import 'dart:async';
 import 'dart:js_interop_unsafe';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
+import 'package:meta/meta.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
@@ -21,11 +22,7 @@ String serializeNativePort(NativePortType port) {
   );
 }
 
-@JS('globalThis.__frb_named_ports')
-external JSObject? get _namedPorts;
-
-@JS('globalThis.__frb_named_ports')
-external set _namedPorts(JSObject value);
+final _namedPorts = <String, web.MessagePort>{};
 
 final _broadcastChannel = web.BroadcastChannel(
   '__frb_broadcast_${_randomUUID()}',
@@ -35,6 +32,7 @@ final _broadcastChannelReady = _initializeBroadcastChannel();
 @JS('globalThis.crypto.randomUUID')
 external String _randomUUID();
 
+@internal
 Future<void> initializeBroadcastChannel() => _broadcastChannelReady;
 
 Future<void> _initializeBroadcastChannel() async {
@@ -48,7 +46,7 @@ Future<void> _initializeBroadcastChannel() async {
     if (!data.isA<JSArray<JSAny?>>()) return;
     final message = data as JSArray<JSAny?>;
     if (message.length != 2 || !message[0].isA<JSString>()) return;
-    final port = _namedPorts?.getProperty<web.MessagePort?>(message[0] as JSString);
+    final port = _namedPorts[(message[0] as JSString).toDart];
     port?.postMessage(message[1]);
   }).toJS;
   final sender = web.BroadcastChannel(_broadcastChannel.name);
@@ -146,13 +144,11 @@ class _WebChannel {
     // Note: Sender and receiver use different MessagePort endpoints,
     // because MessageChannel transfers messages to the other endpoint.
     // Both endpoints remain owned by this channel until it closes.
-    final ports = _namedPorts ?? JSObject();
-    _namedPorts = ports;
     _channel.port2.setProperty(
       '__frb_port_name'.toJS,
       '${_broadcastChannel.name}/$name'.toJS,
     );
-    ports.setProperty(name.toJS, _channel.port2);
+    _namedPorts[name] = _channel.port2;
   }
 
   /// {@macro flutter_rust_bridge.same_as_native}
@@ -187,10 +183,8 @@ class _WebChannel {
   void _close() {
     final name = _name;
     if (name != null) {
-      final ports = _namedPorts;
-      if (ports != null &&
-          ports.getProperty<JSAny?>(name.toJS) == _channel.port2) {
-        ports.delete(name.toJS);
+      if (_namedPorts[name] == _channel.port2) {
+        _namedPorts.remove(name);
       }
       _channel.port2.close();
     }

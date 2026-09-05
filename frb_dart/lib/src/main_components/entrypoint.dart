@@ -1,5 +1,6 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
-import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart' show initializeBroadcastChannel;
+import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart'
+    show initializeBroadcastChannel;
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/loader/loader.dart';
 import 'package:flutter_rust_bridge/src/logging/frb_logging.dart';
