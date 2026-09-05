@@ -5,21 +5,10 @@ use crate::dart_opaque::action::DartHandlerPortAction;
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::Channel;
 use crate::generalized_isolate::IntoDart;
-#[cfg(not(frb_sanitize_runtime_shutdown))]
 use crate::misc::logs::log_warn_or_println;
 use crate::platform_types::{handle_to_message_port, SendableMessagePortHandle};
-#[cfg(frb_sanitize_runtime_shutdown)]
-use std::sync::{
-    atomic::{AtomicUsize, Ordering},
-    Mutex,
-};
 #[cfg(target_family = "wasm")]
 use wasm_bindgen::prelude::*;
-
-#[cfg(frb_sanitize_runtime_shutdown)]
-static PENDING_DROP_COUNT: AtomicUsize = AtomicUsize::new(0);
-#[cfg(frb_sanitize_runtime_shutdown)]
-static FAILED_DROP_POINTERS: Mutex<Vec<usize>> = Mutex::new(Vec::new());
 
 #[derive(Debug)]
 pub(super) struct DartOpaqueNonClone {
@@ -87,27 +76,18 @@ fn drop_thread_box_persistent_handle_via_port(
     let channel = Channel::new(handle_to_message_port(dart_handler_port));
     let ptr = new_leak_box_ptr(persistent_handle) as usize;
 
-    #[cfg(frb_sanitize_runtime_shutdown)]
-    PENDING_DROP_COUNT.fetch_add(1, Ordering::SeqCst);
-
     let msg = [
         DartHandlerPortAction::DartOpaqueDrop.into_dart(),
         ptr.into_dart(),
     ];
 
     if !channel.post(msg) {
-        #[cfg(frb_sanitize_runtime_shutdown)]
-        FAILED_DROP_POINTERS.lock().unwrap().push(ptr);
-
-        #[cfg(not(frb_sanitize_runtime_shutdown))]
-        {
-            // We do not care about the detailed error message
-            // frb-coverage:ignore-start
-            log_warn_or_println(
-                "Drop DartOpaque after closing the port, thus the object will be leaked forever.",
-            );
-            // frb-coverage:ignore-end
-        }
+        // We do not care about the detailed error message
+        // frb-coverage:ignore-start
+        log_warn_or_println(
+            "Drop DartOpaque after closing the port, thus the object will be leaked forever.",
+        );
+        // frb-coverage:ignore-end
     };
 }
 
@@ -127,21 +107,4 @@ unsafe fn frb_dart_opaque_drop_thread_box_persistent_handle_inner(ptr: usize) {
     let value: GeneralizedDartHandleBox<GeneralizedAutoDropDartPersistentHandle> =
         *box_from_leak_ptr(ptr as _);
     drop(value);
-
-    #[cfg(frb_sanitize_runtime_shutdown)]
-    PENDING_DROP_COUNT.fetch_sub(1, Ordering::SeqCst);
-}
-
-#[cfg(all(frb_sanitize_runtime_shutdown, not(target_family = "wasm")))]
-#[no_mangle]
-pub extern "C" fn frb_dart_opaque_pending_drop_count() -> usize {
-    PENDING_DROP_COUNT.load(Ordering::SeqCst)
-}
-
-#[cfg(all(frb_sanitize_runtime_shutdown, not(target_family = "wasm")))]
-#[no_mangle]
-pub unsafe extern "C" fn frb_dart_opaque_drain_failed_drops() {
-    for ptr in FAILED_DROP_POINTERS.lock().unwrap().drain(..) {
-        frb_dart_opaque_drop_thread_box_persistent_handle_inner(ptr);
-    }
 }

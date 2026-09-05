@@ -372,7 +372,6 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
     relativePwd: relativePwd,
     extraEnv: {
       ...rustSanitizerEnv,
-      if (sanitizer.usesRuntimeShutdown) 'FRB_SANITIZER_SHUTDOWN_RUNTIME': '1',
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
       ...kEnvEnableRustBacktrace,
