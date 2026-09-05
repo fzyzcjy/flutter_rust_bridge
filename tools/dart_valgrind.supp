@@ -21,6 +21,7 @@
    match-leak-kinds: definite
    fun:calloc
    fun:frb_rust_vec_u8_new
+   obj:*dart_valgrind_test_entrypoint
 }
 {
    pure_dart_speed_twin_box_process_exit_leak
