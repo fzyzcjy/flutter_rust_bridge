@@ -61,6 +61,12 @@ There is no need to read it word by word, since it serves as a reference to find
 - On macOS desktop, the screenshot helper activates the tested package's absolute `build/macos/Build/Products/Debug/<package-name>.app` bundle. The default and native-assets examples have different product names.
 - App activation does not apply to Web smoke checks running on macOS. Adding build modes or flavors requires updating the desktop bundle path alongside the Flutter run arguments.
 
+## Sanitizer diagnostics
+
+- Dart sanitizer CI installs LLVM and sets `ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer` so native allocation reports include function names.
+- For local Linux reproduction, install the `llvm` package and set the same environment variable before running `./frb_internal test-dart-sanitizer --package frb_example/pure_dart --sanitizer asan`.
+- Symbolization does not disable leak detection or change sanitizer failure handling.
+
 ## Code generator overview
 
 :::tip
