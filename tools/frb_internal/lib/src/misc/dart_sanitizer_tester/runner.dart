@@ -57,17 +57,17 @@ _AllowedSanitizerFailure? _allowedSanitizerFailure(
   TestDartSanitizerConfig config,
 ) {
   return switch (config.sanitizer) {
-    Sanitizer.asan => _AllowedSanitizerFailure(
+    Sanitizer.asan => const _AllowedSanitizerFailure(
       exitCode: 1,
-      normalizedReports: const [],
+      normalizedReports: [],
     ),
-    Sanitizer.lsan => _AllowedSanitizerFailure(
+    Sanitizer.lsan => const _AllowedSanitizerFailure(
       exitCode: 23,
-      normalizedReports: const [],
+      normalizedReports: [],
     ),
-    Sanitizer.tsan => _AllowedSanitizerFailure(
+    Sanitizer.tsan => const _AllowedSanitizerFailure(
       exitCode: 66,
-      normalizedReports: const [],
+      normalizedReports: [],
     ),
     _ => null,
   };
