@@ -77,7 +77,7 @@ fn receive_routed_messages(port: MessagePort) {
         if let Some(port) = data.dyn_ref::<MessagePort>() {
             receive_routed_messages(port.clone());
         } else {
-            let data = Array::from(&data);
+            let data = data.unchecked_ref::<Array>();
             post_named_message(&data.get(0).as_string().unwrap_throw(), &data.get(1))
                 .unwrap_throw();
         }

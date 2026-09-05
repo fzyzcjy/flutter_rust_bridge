@@ -18,6 +18,7 @@ We may improve the API in the future.
 ## Web stream delivery
 
 - Web streams and Dart callbacks use named `MessageChannel` endpoints owned by the Dart context. Closing a receive port removes its name and closes both endpoints.
+- Named and ordinary local ports share the same channel implementation. Each stream subscription independently tracks its received values and pending close.
 - Each Rust worker has a direct `MessageChannel` connection to the Dart context, including workers created by other workers. Delivery remains possible while a parent worker executes synchronous Rust code.
 - The Dart context delivers named messages to the matching local `MessagePort`, which queues messages until its listener starts. This routing adds one structured clone on the Dart context.
 - The last stream sink reports the total number of successfully sent values when it closes. Dart delivers the close only after receiving that many values, even when sink clones run in different workers. Values retain each worker's sending order; there is no cross-worker data reordering.
