@@ -12,7 +12,7 @@ void main() {
     final port = broadcastPort('ordered stream');
     final sender = port.sendPort.nativePort as web.BroadcastChannel;
     addTearDown(port.close);
-    addTearDown(sender.close);
+    addTearDown(() => sender.close());
     final received = port.take(3).map((value) => (value as JSString).toDart).toList();
 
     sender.postMessage(['__frb_stream', 2, 'closed'].jsify());
@@ -26,7 +26,7 @@ void main() {
     final port = broadcastPort('rejected stream payload');
     final sender = port.sendPort.nativePort as web.BroadcastChannel;
     addTearDown(port.close);
-    addTearDown(sender.close);
+    addTearDown(() => sender.close());
     final received = port.take(2).map((value) => (value as JSString).toDart).toList();
 
     sender.postMessage(['__frb_stream', 2, 'closed'].jsify());
@@ -40,7 +40,7 @@ void main() {
     final port = broadcastPort('failed stream');
     final sender = port.sendPort.nativePort as web.BroadcastChannel;
     addTearDown(port.close);
-    addTearDown(sender.close);
+    addTearDown(() => sender.close());
     final received = port.first;
 
     sender.postMessage(['__frb_stream_failed'].jsify());
@@ -52,7 +52,7 @@ void main() {
     final port = ReceivePort();
     final sender = port.sendPort.nativePort as web.MessagePort;
     addTearDown(port.close);
-    addTearDown(sender.close);
+    addTearDown(() => sender.close());
     final received = port.first;
 
     sender.postMessage(['__frb_stream', 0, 'user data'].jsify());
