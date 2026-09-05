@@ -7,6 +7,28 @@ import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('wasm-pack retains unrelated wrappers without cargo llvm-cov', () {
+    expect(
+      computeWasmPackRemovedParentEnvKeys(const {
+        'RUSTC_WRAPPER': 'sccache',
+      }),
+      isEmpty,
+    );
+  });
+
+  test('wasm-pack removes cargo llvm-cov environment', () {
+    final removedKeys = computeWasmPackRemovedParentEnvKeys(const {
+      'CARGO_LLVM_COV': '1',
+      'LLVM_PROFILE_FILE': 'coverage-%p.profraw',
+      'RUSTC_WRAPPER': 'cargo-llvm-cov',
+    });
+
+    expect(
+      removedKeys,
+      containsAll(['CARGO_LLVM_COV', 'LLVM_PROFILE_FILE', 'RUSTC_WRAPPER']),
+    );
+  });
+
   test('default path returns full threaded wasm rustflags', () {
     final resolution = computeWasmPackRustflagsResolution(argsOverride: null);
 
@@ -173,7 +195,10 @@ void main() {
         wasmPack.env,
         containsPair('RUSTFLAGS', buildWebDefaultWasmPackRustflags),
       );
-      expect(wasmPack.removedParentEnvKeys, contains('LLVM_PROFILE_FILE'));
+      expect(
+        wasmPack.removedParentEnvKeys,
+        computeWasmPackRemovedParentEnvKeys(Platform.environment),
+      );
 
       final dartCompiles = calls
           .where((call) => call.command == 'dart')

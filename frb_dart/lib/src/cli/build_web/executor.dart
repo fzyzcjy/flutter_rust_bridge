@@ -19,6 +19,13 @@ const _cargoLlvmCovEnvKeys = [
   'CARGO_LLVM_COV_BUILD_DIR',
 ];
 
+@visibleForTesting
+List<String> computeWasmPackRemovedParentEnvKeys(
+  Map<String, String> parentEnvironment,
+) => parentEnvironment['CARGO_LLVM_COV'] == '1'
+    ? _cargoLlvmCovEnvKeys
+    : const [];
+
 /// Command runner used by build-web, injectable by tests.
 @visibleForTesting
 typedef BuildWebCommandRunner =
@@ -254,9 +261,9 @@ Future<void> _executeWasmPack(
       'RUSTFLAGS': rustflagsResolution.rustflags,
       if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
     },
-    removedParentEnvKeys: Platform.environment['CARGO_LLVM_COV'] == '1'
-        ? _cargoLlvmCovEnvKeys
-        : const [],
+    removedParentEnvKeys: computeWasmPackRemovedParentEnvKeys(
+      Platform.environment,
+    ),
   );
 }
 
