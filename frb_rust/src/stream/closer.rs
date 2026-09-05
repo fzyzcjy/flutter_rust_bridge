@@ -1,6 +1,9 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::{release_channel_handle, SendableChannelHandle};
+use crate::generalized_isolate::{
+    handle_to_channel, release_channel_handle, SendableChannelHandle,
+};
+use crate::rust2dart::sender::Rust2DartSender;
 use std::marker::PhantomData;
 #[cfg(target_family = "wasm")]
 use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
@@ -26,6 +29,10 @@ impl<Rust2DartCodec: BaseCodec> StreamSinkCloser<Rust2DartCodec> {
             failed: AtomicBool::new(false),
         }
     }
+
+    pub(super) fn sender(&self) -> Rust2DartSender {
+        Rust2DartSender::new(handle_to_channel(&self.sendable_channel_handle))
+    }
 }
 
 impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
@@ -42,7 +49,7 @@ impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
             )
             .into()
         };
-        super::stream_sink::sender(&self.sendable_channel_handle).send_or_warn(message);
+        self.sender().send_or_warn(message);
         release_channel_handle(&self.sendable_channel_handle);
     }
 }
