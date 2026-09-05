@@ -47,7 +47,8 @@ const _kTestEntrypointHtmlContentTemplate = r'''
     </style>
   </body>
   <script>
-    const log = console.log;
+    const nativeLog = console.log.bind(console);
+    const nativeError = console.error.bind(console);
     const output = document.getElementById("output");
     const linkRegex = /(http:\/\/.*\.(js|wasm))/g;
     const colorize = (value) => {
@@ -74,7 +75,7 @@ const _kTestEntrypointHtmlContentTemplate = r'''
     const channel = new WebSocket(href);
     globalThis.sendTestResult = (result) =>
       new Promise((resolve, reject) => {
-        console.log(`sendResult result=${result} to url=${href}`);
+        nativeLog(`sendResult result=${result} to url=${href}`);
         const resultChannel = new WebSocket(href);
         resultChannel.onopen = () => {
           resultChannel.send(JSON.stringify({ __result__: result }));
@@ -85,17 +86,20 @@ const _kTestEntrypointHtmlContentTemplate = r'''
     console.log = (...args) => {
       for (const a of args) {
         output.appendChild(colorize(a));
-        channel.send(JSON.stringify(a));
+        if (channel.readyState === WebSocket.OPEN) {
+          channel.send(JSON.stringify(a));
+        }
       }
-      log(...args);
+      nativeLog(...args);
     };
-    const error = console.error;
     console.error = (...args) => {
       for (const a of args) {
         output.append(decorateError(a));
-        channel.send(JSON.stringify(a));
+        if (channel.readyState === WebSocket.OPEN) {
+          channel.send(JSON.stringify(a));
+        }
       }
-      error(...args);
+      nativeError(...args);
     };
   </script>
   @@ENTRYPOINT_SCRIPT@@
@@ -115,7 +119,7 @@ const kWasmEntrypointScript = r'''
       const instance = await app.instantiate({});
       instance.invokeMain();
     } catch (error) {
-      console.error(error);
+      nativeError(error);
       await globalThis.sendTestResult(false);
     }
   </script>
