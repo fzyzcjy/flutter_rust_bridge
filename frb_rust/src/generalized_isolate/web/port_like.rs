@@ -1,5 +1,5 @@
-use wasm_bindgen::prelude::*;
 use js_sys::{Array, Object, Reflect};
+use wasm_bindgen::prelude::*;
 use web_sys::{MessageChannel, MessageEvent, MessagePort};
 
 #[wasm_bindgen]
@@ -45,10 +45,8 @@ impl PortLike {
 pub(crate) fn create_message_router() -> Result<MessagePort, JsValue> {
     let channel = MessageChannel::new()?;
     match message_router()? {
-        Some(router) => router.post_message_with_transferable(
-            &channel.port1(),
-            &Array::of1(&channel.port1()),
-        )?,
+        Some(router) => router
+            .post_message_with_transferable(&channel.port1(), &Array::of1(&channel.port1()))?,
         None => receive_routed_messages(channel.port1()),
     }
     Ok(channel.port2())
@@ -80,7 +78,8 @@ fn receive_routed_messages(port: MessagePort) {
             receive_routed_messages(port.clone());
         } else {
             let data = Array::from(&data);
-            post_named_message(&data.get(0).as_string().unwrap_throw(), &data.get(1)).unwrap_throw();
+            post_named_message(&data.get(0).as_string().unwrap_throw(), &data.get(1))
+                .unwrap_throw();
         }
     });
     port.set_onmessage(Some(callback.as_ref().unchecked_ref()));

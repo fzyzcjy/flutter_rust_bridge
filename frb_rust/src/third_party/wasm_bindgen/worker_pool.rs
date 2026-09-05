@@ -139,7 +139,10 @@ impl WorkerPool {
         // messages about code to run on the wasm module.
         let module = wasm_bindgen::module();
         let memory = wasm_bindgen::memory();
-        worker.post_message_with_transfer(&Array::of3(&module, &memory, &router), &Array::of1(&router))?;
+        worker.post_message_with_transfer(
+            &Array::of3(&module, &memory, &router),
+            &Array::of1(&router),
+        )?;
 
         Ok(worker)
     }

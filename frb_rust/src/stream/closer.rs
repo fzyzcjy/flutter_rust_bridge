@@ -34,8 +34,7 @@ impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
             &message,
         )
         .into();
-        super::stream_sink::sender(&self.sendable_channel_handle)
-            .send_or_warn(message);
+        super::stream_sink::sender(&self.sendable_channel_handle).send_or_warn(message);
         release_channel_handle(&self.sendable_channel_handle);
     }
 }
