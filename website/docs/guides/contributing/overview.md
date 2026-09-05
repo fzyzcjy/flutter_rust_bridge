@@ -55,6 +55,12 @@ There is no need to read it word by word, since it serves as a reference to find
 - `.github`: GitHub-related.
     - `workflows/ci.yaml`: Definition of CI workflows.
 
+## Sanitizer diagnostics
+
+- Dart sanitizer CI installs LLVM and sets `ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer` so native allocation reports include function names.
+- For local Linux reproduction, install the `llvm` package and set the same environment variable before running `./frb_internal test-dart-sanitizer --package frb_example/pure_dart --sanitizer asan`.
+- Symbolization does not disable leak detection or change sanitizer failure handling.
+
 ## Code generator overview
 
 :::tip
