@@ -101,6 +101,7 @@ impl WorkerPool {
         let script = format!(
             "{worker_js_preamble}
             importScripts('{script_src}');
+            globalThis.__frb_rust_worker = true;
             const FRB_ACTION_PANIC = 3;
             onmessage = event => {{
                 let init = {wasm_bindgen_name}(...event.data).catch(err => {{
@@ -130,6 +131,7 @@ impl WorkerPool {
         )?;
         let url = Url::create_object_url_with_blob(&blob)?;
         let worker: Worker = Worker::new(&url)?;
+        crate::generalized_isolate::install_message_forwarding(&worker)?;
 
         // With a worker spun up send it the module/memory so it can start
         // instantiating the wasm module. Later it might receive further
@@ -173,17 +175,7 @@ impl WorkerPool {
     // NOTE: It is originally named `execute`, but rename to align with crate `threadpool`
     fn execute_raw(&self, closure: TransferClosure<JsValue>) -> Result<Worker, JsValue> {
         let worker = self.worker()?;
-        let result = crate::generalized_isolate::channel_registration::dispatch_after_channel_registration(
-            worker.clone(),
-            closure,
-        );
-        match result {
-            Ok(()) => Ok(worker),
-            Err(error) => {
-                self.state.push(worker);
-                Err(error)
-            }
-        }
+        closure.apply(&worker).map(|_| worker)
     }
 
     /// Configures an `onmessage` callback for the `worker` specified for the

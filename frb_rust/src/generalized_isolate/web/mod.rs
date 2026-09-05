@@ -1,7 +1,7 @@
 mod channel;
-pub(crate) mod channel_registration;
 mod into_dart;
 mod port_like;
+pub(crate) use port_like::install_message_forwarding;
 
 pub use channel::*;
 pub use into_dart::*;

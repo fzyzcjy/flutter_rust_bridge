@@ -15,9 +15,9 @@ The `transfer!` macro is there in case you need to move data to that thread
 (which needs a bit of trick in WASM, encapsulated inside the macro).
 We may improve the API in the future.
 
-## Web stream initialization
+## Web stream delivery
 
-- A Web worker can run before the browser has registered a newly created stream's `BroadcastChannel` receiver.
-- Before dispatching work that follows channel creation, the Web thread pool confirms registration with a same-context `BroadcastChannel` round trip. Work without pending channel registrations dispatches immediately.
-- Only registration probes are retried. Stream data and close messages are sent once, so applications can emit their first values immediately without adding sleeps.
-- Queued task data is cloned and transferables are detached when `execute` is called, preserving immediate validation and transfer ownership. A later dispatch error is reported to the browser without discarding other queued tasks.
+- Web streams and Dart callbacks use named `MessageChannel` endpoints owned by the Dart context. Closing a receive port removes its name and closes both endpoints.
+- Rust workers forward named messages through their parent worker connection. The Dart context delivers them to the matching `MessagePort`, which queues messages until its listener starts.
+- Stream values and close messages follow the same path. Delivery does not rely on `BroadcastChannel` registration, sleeps, retries, or message reordering.
+- Named ports remain in the Dart context; ordinary transferable ports and buffers retain their existing transfer semantics. Update the Dart and Rust runtimes together because named port delivery is a paired runtime protocol.
