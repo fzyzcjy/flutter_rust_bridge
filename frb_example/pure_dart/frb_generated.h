@@ -3635,8 +3635,6 @@ typedef struct wire_cst_vec_of_primitive_pack_twin_sync {
   struct wire_cst_list_bool *bool_list;
 } wire_cst_vec_of_primitive_pack_twin_sync;
 
-void frb_shutdown_sanitizer_runtime(void);
-
 void benchmark_raw_void_sync(void);
 
 struct benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(int32_t len);
