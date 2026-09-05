@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.14.0-beta.1
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Stream `build_runner` output during codegen polish #3353 (thanks @dbsxdbsx)
+* Preserve OHOS scaffolds transactionally during integration #3417
+* Restore `build_cli` state after internal generation #3397
+* Regenerate all checked-in Dart outputs from scratch #3396
+* Use Dart pub for CargoKit build tools #3395
+* Upgrade the primary Flutter toolchain to 3.47 #3362
+* Warn when Native Assets integration preserves an existing build hook #3304
+* Fix generated BigInt DCO decoders under strict Dart analysis #3286
+* Refactor Apple scaffold generation helpers #3416
+* Improve CI, Docker release, and Flutter upgrade workflows #3415 #3412 #3411 #3405 #3404
+* Expand package unit tests and make Valgrind failures a hard gate #3376 #3374
+
 ## 2.13.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
