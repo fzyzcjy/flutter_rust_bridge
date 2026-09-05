@@ -41,7 +41,8 @@ impl WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCstGene
             )),
             web: Some(
                 match self.mir.primitive {
-                    MirTypePrimitive::I64 | MirTypePrimitive::U64 => "return raw.inner.jsify()!;",
+                    MirTypePrimitive::I64 => "return cstEncodeInt64List(raw.inner);",
+                    MirTypePrimitive::U64 => "return cstEncodeUint64List(raw.inner);",
                     _ => "return raw.jsify()!;",
                 }
                 .into(),
@@ -110,7 +111,10 @@ mod tests {
                 "final ans = wire.cst_new_list_prim_i_64_strict(raw.length);\n                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);\n                return ans;"
             )
         );
-        assert_eq!(i64.web.as_deref(), Some("return raw.inner.jsify()!;"));
+        assert_eq!(
+            i64.web.as_deref(),
+            Some("return cstEncodeInt64List(raw.inner);")
+        );
         assert_eq!(
             ordinary.io.as_deref(),
             Some(

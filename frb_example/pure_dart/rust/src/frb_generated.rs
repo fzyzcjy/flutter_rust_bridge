@@ -183878,7 +183878,11 @@ mod web {
             let buf = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>()
                 .unwrap();
-            let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
+            let byte_length = buf.byte_length();
+            assert_eq!(byte_length, buf.length() * 8);
+            let byte_offset = buf.byte_offset();
+            let buffer = buf.buffer();
+            let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new_with_byte_offset_and_length(&buffer, byte_offset, byte_length);
             flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
         }
     }
@@ -183912,7 +183916,11 @@ mod web {
             let buf = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigUint64Array>()
                 .unwrap();
-            let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
+            let byte_length = buf.byte_length();
+            assert_eq!(byte_length, buf.length() * 8);
+            let byte_offset = buf.byte_offset();
+            let buffer = buf.buffer();
+            let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new_with_byte_offset_and_length(&buffer, byte_offset, byte_length);
             flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
         }
     }

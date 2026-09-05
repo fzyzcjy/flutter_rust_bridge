@@ -55,10 +55,8 @@ impl WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGene
             // frb-coverage:ignore-end
             MirTypePrimitive::I64 | MirTypePrimitive::U64 => Some(
                 format!(
-                    "let buf = self.dyn_into::<{}>().unwrap();
-                    let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
-                    flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()",
-                    rust_web_wire_type(&self.mir)
+                    "self.dyn_into::<{}>().unwrap().to_vec().into()",
+                    rust_web_wire_type(&self.mir),
                 )
                     .into(),
             ),
