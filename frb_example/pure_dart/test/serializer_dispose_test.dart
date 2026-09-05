@@ -25,14 +25,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('disposed opaque encoding releases the serializer allocation', () async {
-    final probe = await LtOwnedStructTwinNormal.createTwinNormal(value: 'probe');
+    final probe =
+        await LtOwnedStructTwinNormal.createTwinNormal(value: 'probe');
     probe.dispose();
     final binding = _AllocationBinding();
     final api = _RecordingApi(RustLib.instance.api as RustLibApiImpl, binding);
 
     expect(
-      () => api.crateApiLifetimeableLtOwnedStructTwinNormalComputeTypeWithLifetimeTwinNormal(
-          that: probe),
+      () => api
+          .crateApiLifetimeableLtOwnedStructTwinNormalComputeTypeWithLifetimeTwinNormal(
+              that: probe),
       throwsA(isA<DroppableDisposedException>()),
     );
     expect(binding.freedLength, 8);
