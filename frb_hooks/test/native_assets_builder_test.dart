@@ -27,113 +27,138 @@ void main() {
   });
 
   group('cargoEnvironmentWithAndroidPageSize', () {
-    const pageSizeRustFlags =
-        '-C link-arg=-Wl,-z,max-page-size=16384 '
-        '-C link-arg=-Wl,-z,common-page-size=16384';
+    test('wraps the Android arm64 linker without changing rustflags', () async {
+      final outputDirectory = await _createTemporaryOutputDirectory();
+      const extraCargoEnvironmentVariables = {
+        'RUSTFLAGS': '-C opt-level=2',
+        'CARGO_TARGET_AARCH64_LINUX_ANDROID_RUSTFLAGS': '-C debuginfo=1',
+      };
 
-    test('adds target flags for Android arm64', () {
+      final environment = await cargoEnvironmentWithAndroidPageSize(
+        targetOS: OS.android,
+        targetArchitecture: Architecture.arm64,
+        compiler: Uri.file('/android/ndk/toolchains/llvm/bin/clang'),
+        outputDirectory: outputDirectory.uri,
+        isWindows: true,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+      );
+      final wrapper = File(
+        environment['CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER']!,
+      );
+
+      expect(environment, {
+        ...extraCargoEnvironmentVariables,
+        'CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER': wrapper.path,
+      });
       expect(
-        cargoEnvironmentWithAndroidPageSize(
+        await wrapper.readAsString(),
+        contains('aarch64-linux-android35-clang.cmd'),
+      );
+      expect(
+        await wrapper.readAsString(),
+        contains(
+          '-Wl,-z,max-page-size=16384 '
+          '-Wl,-z,common-page-size=16384',
+        ),
+      );
+    });
+
+    test('wraps an explicit Android x64 linker', () async {
+      final outputDirectory = await _createTemporaryOutputDirectory();
+      const linkerEnvironmentVariable =
+          'CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER';
+      const extraCargoEnvironmentVariables = {
+        linkerEnvironmentVariable: '/custom/android-linker',
+        'CARGO_ENCODED_RUSTFLAGS': '-C\x1fopt-level=2',
+      };
+
+      final environment = await cargoEnvironmentWithAndroidPageSize(
+        targetOS: OS.android,
+        targetArchitecture: Architecture.x64,
+        compiler: Uri.file('/android/ndk/toolchains/llvm/bin/clang'),
+        outputDirectory: outputDirectory.uri,
+        isWindows: true,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+      );
+
+      expect(environment['CARGO_ENCODED_RUSTFLAGS'], '-C\x1fopt-level=2');
+      expect(
+        await File(environment[linkerEnvironmentVariable]!).readAsString(),
+        contains('"/custom/android-linker" %*'),
+      );
+    });
+
+    test('writes an executable POSIX linker wrapper', () async {
+      if (Platform.isWindows) {
+        return;
+      }
+
+      final outputDirectory = await _createTemporaryOutputDirectory();
+      const linkerEnvironmentVariable =
+          'CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER';
+      final environment = await cargoEnvironmentWithAndroidPageSize(
+        targetOS: OS.android,
+        targetArchitecture: Architecture.x64,
+        compiler: Uri.file('/android/ndk/toolchains/llvm/bin/clang'),
+        outputDirectory: outputDirectory.uri,
+        isWindows: false,
+        extraCargoEnvironmentVariables: const {
+          linkerEnvironmentVariable: '/bin/echo',
+        },
+      );
+      final wrapper = File(environment[linkerEnvironmentVariable]!);
+      final result = await Process.run(wrapper.path, ['input.so']);
+
+      expect(result.exitCode, 0);
+      expect(
+        (result.stdout as String).trim(),
+        'input.so -Wl,-z,max-page-size=16384 '
+        '-Wl,-z,common-page-size=16384',
+      );
+    });
+
+    test('requires a compiler for Android 64-bit targets', () async {
+      final outputDirectory = await _createTemporaryOutputDirectory();
+
+      expect(
+        () => cargoEnvironmentWithAndroidPageSize(
           targetOS: OS.android,
           targetArchitecture: Architecture.arm64,
-          parentEnvironment: const {},
+          compiler: null,
+          outputDirectory: outputDirectory.uri,
+          isWindows: false,
           extraCargoEnvironmentVariables: const {},
         ),
-        const {
-          'CARGO_TARGET_AARCH64_LINUX_ANDROID_RUSTFLAGS': pageSizeRustFlags,
-        },
+        throwsA(isA<UnsupportedError>()),
       );
     });
 
-    test('appends to target flags for Android x64', () {
-      expect(
-        cargoEnvironmentWithAndroidPageSize(
-          targetOS: OS.android,
-          targetArchitecture: Architecture.x64,
-          parentEnvironment: const {},
-          extraCargoEnvironmentVariables: const {
-            'CARGO_TARGET_X86_64_LINUX_ANDROID_RUSTFLAGS': '-C opt-level=2',
-          },
-        ),
-        const {
-          'CARGO_TARGET_X86_64_LINUX_ANDROID_RUSTFLAGS':
-              '-C opt-level=2 $pageSizeRustFlags',
-        },
-      );
-    });
-
-    test('appends to active global RUSTFLAGS', () {
-      expect(
-        cargoEnvironmentWithAndroidPageSize(
-          targetOS: OS.android,
-          targetArchitecture: Architecture.arm64,
-          parentEnvironment: const {'RUSTFLAGS': '-C opt-level=2'},
-          extraCargoEnvironmentVariables: const {
-            'CARGO_TARGET_AARCH64_LINUX_ANDROID_RUSTFLAGS': '-C debuginfo=1',
-          },
-        ),
-        const {
-          'CARGO_TARGET_AARCH64_LINUX_ANDROID_RUSTFLAGS': '-C debuginfo=1',
-          'RUSTFLAGS': '-C opt-level=2 $pageSizeRustFlags',
-        },
-      );
-    });
-
-    test('appends encoded flags with Cargo unit separators', () {
-      expect(
-        cargoEnvironmentWithAndroidPageSize(
-          targetOS: OS.android,
-          targetArchitecture: Architecture.x64,
-          parentEnvironment: const {
-            'CARGO_ENCODED_RUSTFLAGS': '-C\x1fopt-level=2',
-          },
-          extraCargoEnvironmentVariables: const {},
-        ),
-        const {
-          'CARGO_ENCODED_RUSTFLAGS':
-              '-C\x1fopt-level=2\x1f-C\x1f'
-              'link-arg=-Wl,-z,max-page-size=16384\x1f-C\x1f'
-              'link-arg=-Wl,-z,common-page-size=16384',
-        },
-      );
-    });
-
-    test('does not duplicate existing page-size flags', () {
-      expect(
-        cargoEnvironmentWithAndroidPageSize(
-          targetOS: OS.android,
-          targetArchitecture: Architecture.x64,
-          parentEnvironment: const {},
-          extraCargoEnvironmentVariables: const {
-            'RUSTFLAGS': pageSizeRustFlags,
-          },
-        ),
-        const {'RUSTFLAGS': pageSizeRustFlags},
-      );
-    });
-
-    test('keeps non-Android targets unchanged', () {
+    test('keeps non-Android targets unchanged', () async {
       const extraCargoEnvironmentVariables = {'RUSTFLAGS': '-C opt-level=2'};
 
       expect(
-        cargoEnvironmentWithAndroidPageSize(
+        await cargoEnvironmentWithAndroidPageSize(
           targetOS: OS.linux,
           targetArchitecture: Architecture.x64,
-          parentEnvironment: const {},
+          compiler: null,
+          outputDirectory: Uri.directory('/unused/'),
+          isWindows: false,
           extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
         ),
         same(extraCargoEnvironmentVariables),
       );
     });
 
-    test('keeps Android 32-bit targets unchanged', () {
+    test('keeps Android 32-bit targets unchanged', () async {
       const extraCargoEnvironmentVariables = {'RUSTFLAGS': '-C opt-level=2'};
 
       expect(
-        cargoEnvironmentWithAndroidPageSize(
+        await cargoEnvironmentWithAndroidPageSize(
           targetOS: OS.android,
           targetArchitecture: Architecture.arm,
-          parentEnvironment: const {},
+          compiler: null,
+          outputDirectory: Uri.directory('/unused/'),
+          isWindows: false,
           extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
         ),
         same(extraCargoEnvironmentVariables),
@@ -175,6 +200,14 @@ void main() {
       same(input),
     );
   });
+}
+
+Future<Directory> _createTemporaryOutputDirectory() async {
+  final directory = await Directory.systemTemp.createTemp(
+    'frb_native_assets_builder_test_',
+  );
+  addTearDown(() => directory.delete(recursive: true));
+  return directory;
 }
 
 BuildInput _createBuildInput({required String outputDirectoryShared}) {
