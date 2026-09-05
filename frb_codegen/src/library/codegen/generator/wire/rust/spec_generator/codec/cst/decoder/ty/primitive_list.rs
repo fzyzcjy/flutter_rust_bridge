@@ -58,14 +58,14 @@ impl WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGene
                     "self.dyn_into::<{}>().unwrap().to_vec().into()",
                     rust_web_wire_type(&self.mir),
                 )
-                    .into(),
+                .into(),
             ),
             _ => Some(
                 format!(
                     "self.unchecked_into::<{}>().to_vec().into()",
                     rust_web_wire_type(&self.mir)
                 )
-                    .into(),
+                .into(),
             ),
         }
     }

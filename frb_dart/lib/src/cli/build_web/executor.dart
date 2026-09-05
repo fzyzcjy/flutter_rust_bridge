@@ -19,6 +19,7 @@ const _cargoLlvmCovEnvKeys = [
   'CARGO_LLVM_COV_BUILD_DIR',
 ];
 
+/// Returns cargo-llvm-cov variables that must not reach wasm-pack.
 @visibleForTesting
 List<String> computeWasmPackRemovedParentEnvKeys(
   Map<String, String> parentEnvironment,

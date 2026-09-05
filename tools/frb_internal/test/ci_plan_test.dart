@@ -28,10 +28,14 @@ void main() {
         );
         expect(plan.matrixByJob['test_dart_web'], {
           'include': [
-            {'package': 'frb_dart'},
-            {'package': 'frb_example--dart_minimal'},
-            {'package': 'frb_example--pure_dart'},
-            {'package': 'frb_example--pure_dart_pde'},
+            for (final package in [
+              'frb_dart',
+              'frb_example--dart_minimal',
+              'frb_example--pure_dart',
+              'frb_example--pure_dart_pde',
+            ])
+              for (final wasm in [false, true])
+                {'package': package, 'wasm': wasm},
           ],
         }, reason: filter);
       }
@@ -70,7 +74,8 @@ void main() {
       expect(plan.enabledJobs, {'lint_dart_primary', 'test_dart_web'});
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_example--pure_dart'},
+          for (final wasm in [false, true])
+            {'package': 'frb_example--pure_dart', 'wasm': wasm},
         ],
       });
     });
@@ -84,10 +89,14 @@ void main() {
       expect(plan.enabledJobs, {'lint_dart_primary', 'test_dart_web'});
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_dart'},
-          {'package': 'frb_example--dart_minimal'},
-          {'package': 'frb_example--pure_dart'},
-          {'package': 'frb_example--pure_dart_pde'},
+          for (final package in [
+            'frb_dart',
+            'frb_example--dart_minimal',
+            'frb_example--pure_dart',
+            'frb_example--pure_dart_pde',
+          ])
+            for (final wasm in [false, true])
+              {'package': package, 'wasm': wasm},
         ],
       });
     });
@@ -117,7 +126,22 @@ void main() {
       expect(plan.enabledJobs, {'test_dart_web'});
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_example--pure_dart_pde'},
+          for (final wasm in [false, true])
+            {'package': 'frb_example--pure_dart_pde', 'wasm': wasm},
+        ],
+      });
+    });
+
+    test('wasm dimension filter selects one dart web entry', () {
+      final plan = buildCiPlan(
+        filter: 'test_dart_web[package=frb_example--pure_dart_pde,wasm=true]',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'test_dart_web'});
+      expect(plan.matrixByJob['test_dart_web'], {
+        'include': [
+          {'package': 'frb_example--pure_dart_pde', 'wasm': true},
         ],
       });
     });
@@ -131,8 +155,9 @@ void main() {
       expect(plan.enabledJobs, {'test_dart_web'});
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_dart'},
-          {'package': 'frb_example--pure_dart_pde'},
+          for (final package in ['frb_dart', 'frb_example--pure_dart_pde'])
+            for (final wasm in [false, true])
+              {'package': package, 'wasm': wasm},
         ],
       });
     });
@@ -298,8 +323,9 @@ void main() {
 
       expect(plan.matrixByJob['test_dart_web'], {
         'include': [
-          {'package': 'frb_dart'},
-          {'package': 'frb_example--pure_dart'},
+          for (final package in ['frb_dart', 'frb_example--pure_dart'])
+            for (final wasm in [false, true])
+              {'package': package, 'wasm': wasm},
         ],
       });
     });
@@ -334,8 +360,9 @@ void main() {
         expect(plan.enabledJobs, {'test_dart_web'});
         expect(plan.matrixByJob['test_dart_web'], {
           'include': [
-            {'package': 'frb_dart'},
-            {'package': 'frb_example--pure_dart_pde'},
+            for (final package in ['frb_dart', 'frb_example--pure_dart_pde'])
+              for (final wasm in [false, true])
+                {'package': package, 'wasm': wasm},
           ],
         });
       },
@@ -354,7 +381,8 @@ void main() {
         'enable': true,
         'matrix': {
           'include': [
-            {'package': 'frb_example--pure_dart_pde'},
+            for (final wasm in [false, true])
+              {'package': 'frb_example--pure_dart_pde', 'wasm': wasm},
           ],
         },
       });
@@ -379,63 +407,71 @@ void main() {
         filter: 'lint_dart_primary',
         enabledJobs: {'lint_dart_primary'},
       ),
-      const _CiFilterExample(
+      _CiFilterExample(
         filter: 'lint_dart_primary,test_dart_web',
         enabledJobs: {'lint_dart_primary', 'test_dart_web'},
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_dart'},
-              {'package': 'frb_example--dart_minimal'},
-              {'package': 'frb_example--pure_dart'},
-              {'package': 'frb_example--pure_dart_pde'},
+              for (final package in [
+                'frb_dart',
+                'frb_example--dart_minimal',
+                'frb_example--pure_dart',
+                'frb_example--pure_dart_pde',
+              ])
+                for (final wasm in [false, true])
+                  {'package': package, 'wasm': wasm},
             ],
           },
         },
       ),
-      const _CiFilterExample(
+      _CiFilterExample(
         filter:
             'lint_dart_primary,test_dart_web[package=frb_example--pure_dart]',
         enabledJobs: {'lint_dart_primary', 'test_dart_web'},
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_example--pure_dart'},
+              for (final wasm in [false, true])
+                {'package': 'frb_example--pure_dart', 'wasm': wasm},
             ],
           },
         },
       ),
-      const _CiFilterExample(
+      _CiFilterExample(
         filter: 'test_dart_web[package=frb_example--pure_dart_pde]',
         enabledJobs: {'test_dart_web'},
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_example--pure_dart_pde'},
+              for (final wasm in [false, true])
+                {'package': 'frb_example--pure_dart_pde', 'wasm': wasm},
             ],
           },
         },
       ),
-      const _CiFilterExample(
+      _CiFilterExample(
         filter: 'test_dart_web[package=frb_dart|frb_example--pure_dart_pde]',
         enabledJobs: {'test_dart_web'},
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_dart'},
-              {'package': 'frb_example--pure_dart_pde'},
+              for (final package in ['frb_dart', 'frb_example--pure_dart_pde'])
+                for (final wasm in [false, true])
+                  {'package': package, 'wasm': wasm},
             ],
           },
         },
       ),
-      const _CiFilterExample(
+      _CiFilterExample(
         filter: 'test_dart_web[package=frb_dart|frb_example--pure_dart_pde],lint_rust_primary',
         enabledJobs: {'test_dart_web', 'lint_rust_primary'},
         matrixByJob: {
           'test_dart_web': {
             'include': [
-              {'package': 'frb_dart'},
-              {'package': 'frb_example--pure_dart_pde'},
+              for (final package in ['frb_dart', 'frb_example--pure_dart_pde'])
+                for (final wasm in [false, true])
+                  {'package': package, 'wasm': wasm},
             ],
           },
         },
