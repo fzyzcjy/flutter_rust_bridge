@@ -27,13 +27,17 @@ final _namedPorts = <String, web.MessagePort>{};
 final _broadcastChannel = web.BroadcastChannel(
   '__frb_broadcast_${_randomUUID()}',
 );
-final _broadcastChannelReady = _initializeBroadcastChannel();
+Future<void>? _broadcastChannelReady;
 
 @JS('globalThis.crypto.randomUUID')
 external String _randomUUID();
 
 @internal
-Future<void> initializeBroadcastChannel() => _broadcastChannelReady;
+Future<void> initializeBroadcastChannel() =>
+    _broadcastChannelReady ??= _initializeBroadcastChannel().onError((Object error, StackTrace stackTrace) {
+      _broadcastChannelReady = null;
+      Error.throwWithStackTrace(error, stackTrace);
+    });
 
 Future<void> _initializeBroadcastChannel() async {
   final ready = Completer<void>();
