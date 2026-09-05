@@ -112,37 +112,21 @@ void main() {
     );
   });
 
-  test('ASAN rustflags enable only the sanitizer teardown cfg', () {
-    expect(
-      sanitizerRustflagsForTesting(Sanitizer.asan),
-      '-Zsanitizer=address --cfg frb_sanitize_runtime_shutdown',
-    );
+  test('ASAN rustflags keep production runtime semantics', () {
+    expect(sanitizerRustflagsForTesting(Sanitizer.asan), '-Zsanitizer=address');
   });
 
   test('sanitizer rustflags keep full MSAN instrumentation', () {
     expect(sanitizerRustflagsForTesting(Sanitizer.msan), '-Zsanitizer=memory');
   });
 
-  test('LSAN rustflags enable only the sanitizer teardown cfg', () {
-    expect(
-      sanitizerRustflagsForTesting(Sanitizer.lsan),
-      '-Zsanitizer=leak --cfg frb_sanitize_runtime_shutdown',
-    );
+  test('LSAN rustflags keep production runtime semantics', () {
+    expect(sanitizerRustflagsForTesting(Sanitizer.lsan), '-Zsanitizer=leak');
   });
 
   test('TSAN rustflags preserve production synchronization semantics', () {
     expect(sanitizerRustflagsForTesting(Sanitizer.tsan), '-Zsanitizer=thread');
   });
-
-  test(
-    'runtime shutdown excludes sanitizers affected by its synchronization',
-    () {
-      expect(sanitizerUsesRuntimeShutdownForTesting(Sanitizer.asan), isTrue);
-      expect(sanitizerUsesRuntimeShutdownForTesting(Sanitizer.lsan), isTrue);
-      expect(sanitizerUsesRuntimeShutdownForTesting(Sanitizer.msan), isFalse);
-      expect(sanitizerUsesRuntimeShutdownForTesting(Sanitizer.tsan), isFalse);
-    },
-  );
 
   test('known sanitizer failures require the complete allowed shape', () {
     final summary = allowedLeakSummaryForTesting(
