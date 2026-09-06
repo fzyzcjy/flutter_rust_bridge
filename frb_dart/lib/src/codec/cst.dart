@@ -1,7 +1,5 @@
 import 'package:flutter_rust_bridge/src/codec/base.dart';
-import 'package:flutter_rust_bridge/src/droppable/_common.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
-import 'package:flutter_rust_bridge/src/misc/rust_opaque.dart';
 
 // This is nothing but "unreachable", so by definition it will not be covered
 // coverage:ignore-start
@@ -24,9 +22,3 @@ class CstCodec<S, E extends Object> extends BaseCodec<S, E, dynamic> {
 }
 
 // coverage:ignore-end
-
-void cstValidateRustOpaque(RustOpaqueInterface raw) {
-  if (raw.isDisposed) {
-    throw DroppableDisposedException(raw.runtimeType.toString());
-  }
-}

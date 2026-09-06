@@ -31,7 +31,6 @@ For the latter half of the story, please refer to the [DCO Codec](dco-codec) par
 ## Disposed opaque inputs
 
 - Generated CST calls validate opaque inputs before encoding any argument. Validation traverses containers and reports an already disposed opaque with `DroppableDisposedException`.
-- All opaque types use the same runtime leaf check through `RustOpaqueInterface`; generated validators only describe the surrounding containers and fields.
 - Checking all arguments first prevents native container allocations from leaking when a later field, list element, or argument is already disposed.
 - Validation does not clone or move opaque handles. It does not provide general rollback for exceptions raised during encoding, such as a throwing user-defined getter or repeated moves of the same object.
 

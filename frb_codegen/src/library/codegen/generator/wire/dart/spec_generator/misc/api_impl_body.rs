@@ -230,7 +230,7 @@ mod tests {
             dart_api_type: Some("Handle".into()),
             brief_name: false,
         });
-        let validation_name = "cstValidateRustOpaque(handle);";
+        let validation_name = format!("cst_validate_{}(handle);", handle.inner.ty.safe_ident());
         function.inputs.push(handle);
         let pack = test_utils::pack();
         let wire_config = test_utils::wire_dart_config(true);
@@ -249,7 +249,7 @@ mod tests {
         .api_impl_class_body;
 
         assert!(
-            output.find(validation_name).unwrap()
+            output.find(&validation_name).unwrap()
                 < output.find("cst_encode_String(inputValue)").unwrap()
         );
     }

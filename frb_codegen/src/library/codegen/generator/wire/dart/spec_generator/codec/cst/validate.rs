@@ -21,7 +21,8 @@ pub(crate) fn generate(
     let call = |ty: &MirType, value: &str| generate_call(ty, value, context.mir_pack);
     let body = match ty {
         MirType::RustOpaque(_) | MirType::RustAutoOpaqueImplicit(_) => {
-            return WireDartOutputCode::default();
+            "if (raw.isDisposed) { throw DroppableDisposedException(raw.runtimeType.toString()); }"
+                .to_owned()
         }
         MirType::Boxed(inner) => call(&inner.inner, "raw"),
         MirType::Optional(inner) => format!("if (raw != null) {{ {} }}", call(&inner.inner, "raw")),
@@ -88,14 +89,10 @@ pub(crate) fn generate(
 }
 
 pub(crate) fn generate_call(ty: &MirType, value: &str, pack: &MirPack) -> String {
-    match ty {
-        MirType::RustOpaque(_) | MirType::RustAutoOpaqueImplicit(_) => {
-            format!("cstValidateRustOpaque({value});")
-        }
-        _ if needs_validation(ty, pack) => {
-            format!("cst_validate_{}({value});", ty.safe_ident())
-        }
-        _ => String::new(),
+    if needs_validation(ty, pack) {
+        format!("cst_validate_{}({value});", ty.safe_ident())
+    } else {
+        String::new()
     }
 }
 
