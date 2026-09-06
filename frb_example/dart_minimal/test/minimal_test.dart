@@ -16,4 +16,13 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+  test('worker stream preserves every value on first send', () async {
+    for (var iteration = 0; iteration < 2000; iteration++) {
+      expect(
+        await minimalStream().toList().timeout(const Duration(seconds: 5)),
+        [0, 1, 2, 3, 4],
+        reason: 'iteration $iteration',
+      );
+    }
+  });
 }
