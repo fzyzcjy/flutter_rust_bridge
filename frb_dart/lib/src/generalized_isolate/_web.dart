@@ -6,6 +6,7 @@ import 'dart:js_interop_unsafe';
 import 'dart:math';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
+import 'package:meta/meta.dart';
 import 'package:web/web.dart' as web;
 
 dynamic _extractData(JSAny? data) => data.dartify();
@@ -36,6 +37,7 @@ web.BroadcastChannel _createBroadcastChannel() {
   return web.BroadcastChannel('__frb_broadcast_$nonce');
 }
 
+@internal
 Future<void> initializeBroadcastChannel() =>
     _broadcastChannelReady ??= _initializeBroadcastChannel().onError((
       Object error,
