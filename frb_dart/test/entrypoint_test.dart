@@ -1,10 +1,32 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_common.dart';
 import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;
+import 'package:flutter_rust_bridge/src/misc/version.dart';
 import 'package:flutter_rust_bridge/src/cli/build_web/entrypoint.dart'
     as build_web;
 import 'package:test/test.dart';
 
 void main() {
+  test('initialization rejects state installed during readiness', () async {
+    final entrypoint = _FakeBaseEntrypointWithCodegenVersion(
+      kFlutterRustBridgeRuntimeVersion,
+    );
+    final pending = entrypoint._initialize();
+    final api = _FakeApi();
+    entrypoint._mock(api);
+
+    await expectLater(
+      pending,
+      throwsA(
+        isA<StateError>().having(
+          (error) => error.message,
+          'message',
+          'Should not initialize flutter_rust_bridge twice',
+        ),
+      ),
+    );
+    expect(entrypoint.api, same(api));
+  });
+
   test('Should be ready when initMock is called', () async {
     final entrypoint = _FakeBaseEntrypoint();
 
@@ -128,6 +150,10 @@ void main() {
 
 class _FakeBaseEntrypointWithCodegenVersion extends _FakeBaseEntrypoint {
   _FakeBaseEntrypointWithCodegenVersion(this.codegenVersion);
+
+  Future<void> _initialize() => initImpl(api: _FakeApi());
+
+  void _mock(BaseApi api) => initMockImpl(api: api);
 
   @override
   final String codegenVersion;
