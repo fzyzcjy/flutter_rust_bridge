@@ -17,7 +17,10 @@ impl Channel {
 
     pub fn post(&self, msg: impl IntoDart) -> bool {
         let message = msg.into_dart();
-        let handle = self.port.dyn_ref::<web_sys::BroadcastChannel>().map(|channel| channel.name());
+        let handle = self
+            .port
+            .dyn_ref::<web_sys::BroadcastChannel>()
+            .map(|channel| channel.name());
         crate::console_error!(
             "FRB_TRACE post_begin time={} channel={:?} data={:?}",
             js_sys::Date::now(),
