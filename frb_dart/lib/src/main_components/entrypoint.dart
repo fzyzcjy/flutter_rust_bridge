@@ -1,4 +1,6 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart'
+    show initializeBroadcastChannel;
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/loader/loader.dart';
 import 'package:flutter_rust_bridge/src/logging/frb_logging.dart';
@@ -46,11 +48,11 @@ abstract class BaseEntrypoint<
     ExternalLibrary? externalLibrary,
     bool forceSameCodegenVersion = true,
   }) async {
-    if (__state != null) {
-      throw StateError('Should not initialize flutter_rust_bridge twice');
-    }
-
+    _ensureUninitialized();
     _sanityCheckCodegenVersion(forceSameCodegenVersion);
+
+    await initializeBroadcastChannel();
+    _ensureUninitialized();
 
     externalLibrary ??= await _loadDefaultExternalLibrary();
     handler ??= BaseHandler();
@@ -78,9 +80,7 @@ abstract class BaseEntrypoint<
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   void initMockImpl({required A api}) {
-    if (__state != null) {
-      throw StateError('Should not initialize flutter_rust_bridge twice');
-    }
+    _ensureUninitialized();
 
     __state = _FakeEntrypointState(api: api);
   }
@@ -103,6 +103,12 @@ abstract class BaseEntrypoint<
       'WARN: resetState() (should only be used in internal tests, never be used by normal users)',
     );
     __state = null;
+  }
+
+  void _ensureUninitialized() {
+    if (__state != null) {
+      throw StateError('Should not initialize flutter_rust_bridge twice');
+    }
   }
 
   void _sanityCheckCodegenVersion(bool forceSameCodegenVersion) {
