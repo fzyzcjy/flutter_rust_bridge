@@ -1276,6 +1276,21 @@ jobs:
           arch: x86_64
           profile: ${{ matrix.info.device }}
           script: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target android --device-id emulator-5554
+      - if: ${{ matrix.info.target == 'android' && matrix.info.package == 'frb_example--flutter_via_create_native_assets' }}
+        name: Verify Android 16 KB ELF alignment
+        shell: bash
+        run: |-
+          native_library="${{ matrix.info.package_path }}/build/app/intermediates/flutter/debug/native_assets/jniLibs/lib/x86_64/librust_lib_flutter_via_create_native_assets.so"
+          readelf="$ANDROID_HOME/ndk/27.2.12479018/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-readelf"
+          program_headers="$("$readelf" -lW "$native_library")"
+          printf '%s\n' "$program_headers"
+          printf '%s\n' "$program_headers" | awk -v library="$native_library" '
+            $1 == "LOAD" && $NF != "0x4000" {
+              printf "ELF LOAD segment alignment is %s, expected 0x4000: %s\n", $NF, library
+              failed = 1
+            }
+            END { exit failed }
+          '
       - if: ${{ matrix.info.platform == 'nixos' }}
         shell: bash
         run: |-

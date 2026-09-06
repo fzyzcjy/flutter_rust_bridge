@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "com.example.flutter_via_create_native_assets"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.2.12479018"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
