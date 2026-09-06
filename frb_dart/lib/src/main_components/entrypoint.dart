@@ -48,13 +48,13 @@ abstract class BaseEntrypoint<
     ExternalLibrary? externalLibrary,
     bool forceSameCodegenVersion = true,
   }) async {
+    await initializeBroadcastChannel();
+
     if (__state != null) {
       throw StateError('Should not initialize flutter_rust_bridge twice');
     }
 
     _sanityCheckCodegenVersion(forceSameCodegenVersion);
-
-    await initializeBroadcastChannel();
 
     externalLibrary ??= await _loadDefaultExternalLibrary();
     handler ??= BaseHandler();
