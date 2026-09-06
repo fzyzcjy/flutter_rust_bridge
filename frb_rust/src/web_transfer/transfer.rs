@@ -29,7 +29,7 @@ impl<T: Transfer> Transfer for Option<T> {
 impl Transfer for PortLike {
     fn deserialize(value: &JsValue) -> Self {
         if let Some(name) = value.as_string() {
-            BroadcastChannel::new(&name).unwrap().unchecked_into()
+            PortLike::broadcast(&name)
         } else if value.dyn_ref::<web_sys::MessagePort>().is_some() {
             value.unchecked_ref::<Self>().clone()
         } else {
@@ -37,14 +37,18 @@ impl Transfer for PortLike {
         }
     }
     fn serialize(self) -> JsValue {
-        if let Some(channel) = self.dyn_ref::<BroadcastChannel>() {
+        if let Some(name) = self.channel_name() {
+            name.into()
+        } else if let Some(channel) = self.dyn_ref::<BroadcastChannel>() {
             channel.name().into()
         } else {
             self.into()
         }
     }
     fn transferables(&self) -> Vec<JsValue> {
-        if let Some(port) = self.dyn_ref::<web_sys::MessagePort>() {
+        if self.channel_name().is_some() {
+            vec![]
+        } else if let Some(port) = self.dyn_ref::<web_sys::MessagePort>() {
             vec![port.clone().into()]
         } else {
             vec![]

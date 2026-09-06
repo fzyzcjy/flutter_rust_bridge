@@ -24,24 +24,28 @@ Rust ->> Rust Worker: port2
 Rust Worker ->> Dart: port2.postMessage
 ```
 
-**BroadcastChannel** replaces `dart:ffi`'s `SendPort` for `StreamSink`s, due to the fact that wasm_bindgen
-keeps the ports in a JS-local scope that cannot be shared with other threads. A broadcast channel
-is created by Dart, then passed to the main Rust thread. Rust then transfers its name to the workers.
-When other workers refer to a `StreamSink` from another worker, e.g. if the sink was put in a static variable,
-a new `BroadcastChannel` will be created from its name.
+**BroadcastChannel** carries named `StreamSink` messages between workers, because wasm_bindgen keeps JavaScript ports in a scope that cannot be shared with other threads.
 
-`BroadcastChannel`s are guaranteed to be unique for each invocation.[^1]
+- Dart creates one persistent broadcast receiver per library and verifies a round trip before starting Rust. Its name includes a cryptographically generated 128-bit nonce.
+- Each sink has a distinct logical name and a local `MessageChannel`. Rust receives a handle containing the shared receiver name and the logical name.
+- Workers open senders for the shared receiver and post `[logicalName, payload]`. Dart routes each payload to its local message port. Worker senders are reused within the current microtask and closed afterward.
+- Closing a sink removes its logical route and closes its local ports without closing the shared receiver.
+- Stream values and close frames share a sequence counter across Rust sink clones.
+- Dart buffers out-of-order frames and delivers only consecutive sequence numbers, so an early close cannot discard preceding values.
+- A rejected payload is followed by an empty frame for its reserved sequence number. If that frame also fails, the final sink drop sends a transport-error frame instead of a normal close.
+- This framing applies only to stream broadcast channels; ordinary message ports retain their original payloads.
 
 ```mermaid
 sequenceDiagram
-Dart ->> Rust: channel
-Rust ->> Rust Worker 1: channel.name
-Rust Worker 1 ->> Dart: channel.postMessage
-Rust ->> Rust Worker 2: channel.name
-Rust Worker 2 ->> Dart: channel.postMessage
+Dart ->> Dart: Verify shared receiver readiness
+Dart ->> Rust: sharedReceiverName/logicalName
+Rust ->> Rust Worker 1: sharedReceiverName/logicalName
+Rust Worker 1 ->> Dart: postMessage([logicalName, frame])
+Dart ->> Dart: Route frame to the sink's local MessagePort
+Rust ->> Rust Worker 2: sharedReceiverName/logicalName
+Rust Worker 2 ->> Dart: postMessage([logicalName, frame])
+Dart ->> Dart: Route frame to the sink's local MessagePort
 ```
 
 It is theoretically possible to have a one-to-one implementation of Isolate using only web primitives,
 `BroadcastChannel`s and `Worker`s, but it remains to be seen how practical such an approach would be.
-
-[^1]: This is currently implemented as a monotonically-increasing index.

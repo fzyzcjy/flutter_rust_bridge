@@ -2,20 +2,78 @@
 library html_isolate;
 
 import 'dart:async';
+import 'dart:js_interop_unsafe';
+import 'dart:math';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:web/web.dart' as web;
 
-dynamic _extractData(web.MessageEvent event) => event.data.dartify();
+dynamic _extractData(JSAny? data) => data.dartify();
 
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) {
+  final name = port.getProperty<JSString?>('__frb_port_name'.toJS);
+  if (name != null) {
+    return name.toDart;
+  }
   if (port.isA<web.BroadcastChannel>()) {
     return (port as web.BroadcastChannel).name;
   }
   throw UnimplementedError(
     "serializeNativePort see unknown port=$port (type=${port.runtimeType})",
   );
+}
+
+final _namedPorts = <String, web.MessagePort>{};
+
+// Indeed a BroadcastChannel, not a Broadcast "Port"
+final _broadcastChannel = _createBroadcastChannel();
+Future<void>? _broadcastChannelReady;
+
+web.BroadcastChannel _createBroadcastChannel() {
+  final random = Random.secure();
+  final nonce = List.generate(4, (_) => random.nextInt(0x100000000)).join('_');
+  return web.BroadcastChannel('__frb_broadcast_$nonce');
+}
+
+@internal
+Future<void> initializeBroadcastChannel() =>
+    _broadcastChannelReady ??= _initializeBroadcastChannel().onError((
+      Object error,
+      StackTrace stackTrace,
+    ) {
+      _broadcastChannelReady = null;
+      Error.throwWithStackTrace(error, stackTrace);
+    });
+
+Future<void> _initializeBroadcastChannel() async {
+  final ready = Completer<void>();
+  _broadcastChannel.onmessage = ((web.MessageEvent event) {
+    final data = event.data;
+    if (data == '__frb_ready'.toJS) {
+      if (!ready.isCompleted) ready.complete();
+      return;
+    }
+    if (!data.isA<JSArray<JSAny?>>()) return;
+    final message = data as JSArray<JSAny?>;
+    if (message.length != 2 || !message[0].isA<JSString>()) return;
+    final port = _namedPorts[(message[0] as JSString).toDart];
+    port?.postMessage(message[1]);
+  }).toJS;
+  // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
+  // because HTML BroadcastChannel spec says that, the event will not be fired
+  // at the object which sends it. Therefore, we need two different objects.
+  final sender = web.BroadcastChannel(_broadcastChannel.name);
+  final timer = Timer.periodic(const Duration(milliseconds: 10), (_) {
+    sender.postMessage('__frb_ready'.toJS);
+  });
+  try {
+    sender.postMessage('__frb_ready'.toJS);
+    await ready.future.timeout(const Duration(seconds: 10));
+  } finally {
+    timer.cancel();
+    sender.close();
+  }
 }
 
 /// {@macro flutter_rust_bridge.internal}
@@ -42,7 +100,7 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    final subscription = _rawReceivePort._webReceivePort._onMessage
+    final subscription = _rawReceivePort._webReceivePort._messages
         .map(_extractData)
         .listen(
           onData,
@@ -73,7 +131,7 @@ class RawReceivePort {
 
   /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
-    _webReceivePort._onMessage.listen((event) => handler(_extractData(event)));
+    _webReceivePort._messages.map(_extractData).listen(handler);
     _webReceivePort._start();
   }
 
@@ -116,22 +174,30 @@ class _WebMessageChannel implements _WebChannel {
 }
 
 class _WebBroadcastChannel implements _WebChannel {
-  final web.BroadcastChannel _sendChannel;
-  final web.BroadcastChannel _receiveChannel;
+  final _channel = web.MessageChannel();
+  final String _name;
 
-  _WebBroadcastChannel(String channelName)
-    // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
-    // because HTML BroadcastChannel spec says that, the event will not be fired
-    // at the object which sends it. Therefore, we need two different objects.
-    : _sendChannel = web.BroadcastChannel(channelName),
-      _receiveChannel = web.BroadcastChannel(channelName);
-
-  @override
-  SendPort get _sendPort => SendPort._(_sendChannel);
+  _WebBroadcastChannel(this._name) {
+    _channel.port2.setProperty(
+      '__frb_port_name'.toJS,
+      '${_broadcastChannel.name}/$_name'.toJS,
+    );
+    _namedPorts[_name] = _channel.port2;
+  }
 
   @override
-  _WebPortLike get _receivePort =>
-      _WebPortLike._broadcastChannel(_receiveChannel);
+  SendPort get _sendPort => SendPort._(_channel.port2);
+
+  @override
+  _WebPortLike get _receivePort => _WebBroadcastPort(this);
+
+  void _close() {
+    if (_namedPorts[_name] == _channel.port2) {
+      _namedPorts.remove(_name);
+    }
+    _channel.port1.close();
+    _channel.port2.close();
+  }
 }
 
 /// {@macro flutter_rust_bridge.same_as_native}
@@ -139,9 +205,6 @@ abstract class _WebPortLike {
   const _WebPortLike._();
 
   factory _WebPortLike._messagePort(web.MessagePort port) = _WebMessagePort;
-
-  factory _WebPortLike._broadcastChannel(web.BroadcastChannel channel) =
-      _WebBroadcastPort;
 
   void _start();
 
@@ -152,6 +215,8 @@ abstract class _WebPortLike {
 
   Stream<web.MessageEvent> get _onMessage =>
       _kMessageEvent.forTarget(_nativePort);
+
+  Stream<JSAny?> get _messages => _onMessage.map((event) => event.data);
   static const _kMessageEvent = web.EventStreamProvider<web.MessageEvent>(
     'message',
   );
@@ -170,16 +235,61 @@ class _WebMessagePort extends _WebPortLike {
   void _close() => _nativePort.close();
 }
 
-// Indeed a BroadcastChannel, not a Broadcast "Port"
 class _WebBroadcastPort extends _WebPortLike {
-  @override
-  final web.BroadcastChannel _nativePort;
-
-  _WebBroadcastPort(this._nativePort) : super._();
+  final _WebBroadcastChannel _channel;
 
   @override
-  void _start() {}
+  web.MessagePort get _nativePort => _channel._channel.port1;
+
+  _WebBroadcastPort(this._channel) : super._();
 
   @override
-  void _close() => _nativePort.close();
+  Stream<JSAny?> get _messages {
+    if (!_channel._name.startsWith('__frb_streamsink_')) {
+      return super._messages;
+    }
+    var nextSequence = 0;
+    final pending = <int, JSArray<JSAny?>>{};
+    return super._messages.expand((message) sync* {
+      if (message != null && message.isA<JSArray>()) {
+        final frame = message as JSArray<JSAny?>;
+        if (frame.toDart.isNotEmpty && frame[0].isA<JSString>()) {
+          final tag = (frame[0] as JSString).toDart;
+          if (tag == '__frb_stream_failed') {
+            if (frame.length != 1) {
+              throw StateError('Invalid Web stream failure frame');
+            }
+            throw StateError('Web stream transport failed');
+          }
+          if (tag == '__frb_stream') {
+            if ((frame.length != 2 && frame.length != 3) ||
+                !frame[1].isA<JSNumber>()) {
+              throw StateError('Invalid Web stream frame');
+            }
+            final sequence = (frame[1] as JSNumber).toDartDouble;
+            if (!sequence.isFinite ||
+                sequence != sequence.truncateToDouble() ||
+                sequence < nextSequence ||
+                sequence > 9007199254740991 ||
+                pending.containsKey(sequence.toInt())) {
+              throw StateError('Invalid Web stream sequence');
+            }
+            pending[sequence.toInt()] = frame;
+            while (pending.containsKey(nextSequence)) {
+              final ready = pending.remove(nextSequence++)!;
+              if (ready.length == 3) yield ready[2];
+            }
+            return;
+          }
+        }
+      }
+      yield message;
+    });
+  }
+
+  @override
+  void _start() => _nativePort.start();
+
+  @override
+  void _close() => _channel._close();
 }
