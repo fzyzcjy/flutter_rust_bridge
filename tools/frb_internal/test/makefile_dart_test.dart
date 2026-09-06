@@ -13,9 +13,109 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart'
     as released_version;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
+import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/dart_sdk.dart';
+import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/runner.dart';
+import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/sanitizer.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('known thread suppressions are limited to their TSAN entrypoints', () {
+    for (final package in [
+      'frb_example/pure_dart_pde',
+      'frb_example/pure_dart',
+      'frb_example/deliberate_bad',
+      'frb_example/dart_minimal',
+    ]) {
+      for (final sanitizer in Sanitizer.values) {
+        final environment = sanitizerEntrypointEnvironmentForTesting(
+          package: package,
+          sanitizer: sanitizer,
+          environment: const {'TSAN_OPTIONS': 'halt_on_error=1'},
+        );
+        expect(
+          environment,
+          (package == 'frb_example/pure_dart_pde' ||
+                      package == 'frb_example/pure_dart') &&
+                  sanitizer == Sanitizer.tsan
+              ? {
+                  'TSAN_OPTIONS':
+                      'halt_on_error=1:report_thread_leaks=1:'
+                      'print_suppressions=1:'
+                      'suppressions=../../tools/dart_tsan_${package.endsWith('_pde') ? 'pde' : 'pure'}.supp',
+                }
+              : <String, String>{},
+        );
+      }
+    }
+  });
+
+  test('PDE thread suppression accepts only one known creation path', () {
+    const rule =
+        'thread:frb_example_pure_dart_pde::api::async_spawn::'
+        'simple_use_async_spawn_blocking::';
+    expect(
+      File('../../tools/dart_tsan_pde.supp').readAsStringSync(),
+      '$rule\n',
+    );
+    const report =
+        'ThreadSanitizer: Matched 1 suppressions (pid=123):\n'
+        '1 $rule\n';
+    expect(() => checkPdeThreadLeakSuppressionForTesting(''), returnsNormally);
+    expect(
+      () => checkPdeThreadLeakSuppressionForTesting(report),
+      returnsNormally,
+    );
+    for (final unexpected in [
+      report.replaceAll('Matched 1', 'Matched 2'),
+      report.replaceAll('1 thread:', '2 thread:'),
+      report.replaceAll('thread:', 'race:'),
+      report.replaceAll('simple_use_async_spawn_blocking::', 'different_api::'),
+      '$report$report',
+      'ThreadSanitizer: Matched malformed summary\n',
+    ]) {
+      expect(
+        () => checkPdeThreadLeakSuppressionForTesting(unexpected),
+        throwsException,
+      );
+    }
+  });
+
+  test('pure thread suppression accepts only its one known creation path', () {
+    const rule =
+        'thread:frb_example_pure_dart::api::async_spawn::'
+        'simple_use_async_spawn_blocking::';
+    expect(
+      File('../../tools/dart_tsan_pure.supp').readAsStringSync(),
+      '$rule\n',
+    );
+    const report =
+        'ThreadSanitizer: Matched 1 suppressions (pid=123):\n'
+        '1 $rule\n';
+    expect(() => checkPureThreadLeakSuppressionForTesting(''), returnsNormally);
+    expect(
+      () => checkPureThreadLeakSuppressionForTesting(report),
+      returnsNormally,
+    );
+    for (final unexpected in [
+      report.replaceAll('Matched 1', 'Matched 2'),
+      report.replaceAll('1 thread:', '2 thread:'),
+      report.replaceAll('thread:', 'race:'),
+      report.replaceAll('simple_use_async_spawn_blocking::', 'different_api::'),
+      report.replaceAll('pure_dart::', 'pure_dart_pde::'),
+      '$report$report',
+      'ThreadSanitizer: Matched malformed summary\n',
+    ]) {
+      expect(
+        () => checkPureThreadLeakSuppressionForTesting(unexpected),
+        throwsException,
+      );
+    }
+    expect(
+      () => checkPdeThreadLeakSuppressionForTesting(report),
+      throwsException,
+    );
+  });
+
   test('dart valgrind command uses the Dart AOT suppression file', () {
     expect(
       dartValgrindCommandForTesting(),
@@ -30,6 +130,13 @@ void main() {
       dartValgrindCommandForTesting(),
       contains('--errors-for-leak-kinds=definite,indirect'),
     );
+  });
+
+  test('Valgrind does not suppress FRB serializer or CST allocations', () {
+    final suppressions = File('../../tools/dart_valgrind.supp')
+        .readAsStringSync();
+    expect(suppressions, isNot(contains('frbgen_')));
+    expect(suppressions, isNot(contains('frb_rust_vec_u8_new')));
   });
 
   test('dart valgrind compile command uses dart build output directory', () {
@@ -51,6 +158,182 @@ void main() {
       dartValgrindOutputExecutablePathForTesting(),
       'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint',
     );
+  });
+
+  test('sanitized Dart release defaults to checked-in artifact tag', () {
+    expect(
+      sanitizedDartReleaseName(environment: {}),
+      kDefaultSanitizedDartReleaseName,
+    );
+  });
+
+  test('sanitized Dart release can be overridden by environment', () {
+    expect(
+      sanitizedDartReleaseName(
+        environment: {'FRB_SANITIZED_DART_RELEASE_NAME': ' Build_test '},
+      ),
+      'Build_test',
+    );
+  });
+
+  test('sanitized Dart cache path remains outside the repository', () {
+    expect(
+      sanitizedDartCacheRelativePathForTesting(
+        repoRootPath:
+            '/home/runner/work/flutter_rust_bridge/flutter_rust_bridge',
+        cacheRootPath: '/tmp/frb_sanitized_dart/release',
+      ),
+      '../../../../../tmp/frb_sanitized_dart/release',
+    );
+  });
+
+  test('sanitized Dart version check is skipped without main Dart env', () {
+    checkSanitizedDartVersionForTesting(
+      versionOutput: 'Dart SDK version: 3.11.0 (stable)',
+      environment: {},
+    );
+  });
+
+  test('sanitized Dart version check accepts matching main Dart env', () {
+    checkSanitizedDartVersionForTesting(
+      versionOutput: 'Dart SDK version: 3.11.0 (stable)',
+      environment: {'FRB_MAIN_DART_VERSION': '3.11.0'},
+    );
+  });
+
+  test('sanitized Dart version check rejects stale artifact version', () {
+    expect(
+      () => checkSanitizedDartVersionForTesting(
+        versionOutput: 'Dart SDK version: 3.10.0 (stable)',
+        environment: {'FRB_MAIN_DART_VERSION': '3.11.0'},
+      ),
+      throwsA(
+        isA<Exception>().having(
+          (error) => error.toString(),
+          'message',
+          contains('Build a new sanitized Dart artifact'),
+        ),
+      ),
+    );
+  });
+
+  test('ASAN rustflags keep production runtime semantics', () {
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.asan),
+      '-Zsanitizer=address -Zmerge-functions=disabled -Cdebuginfo=1',
+    );
+  });
+
+  test('sanitizer rustflags keep full MSAN instrumentation', () {
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.msan),
+      '-Zsanitizer=memory -Zmerge-functions=disabled -Cdebuginfo=1',
+    );
+  });
+
+  test('LSAN rustflags keep production runtime semantics', () {
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.lsan),
+      '-Zsanitizer=leak -Zmerge-functions=disabled -Cdebuginfo=1',
+    );
+  });
+
+  test('TSAN rustflags preserve production synchronization semantics', () {
+    expect(
+      sanitizerRustflagsForTesting(Sanitizer.tsan),
+      '-Zsanitizer=thread -Zmerge-functions=disabled -Cdebuginfo=1',
+    );
+  });
+
+  test(
+    'sanitizer entrypoints reject every nonzero exit regardless of report',
+    () {
+      const knownReport =
+          '==123==ERROR: LeakSanitizer: detected memory leaks\n'
+          'Direct leak of 16 byte(s) in 1 object(s) allocated from:\n'
+          '    #0 0x1234  (/tmp/sdk/out/dartvm+0x217a63f) '
+          '(BuildId: abcdef)\n'
+          '    #1 0xabcd known_runtime_function '
+          '(libfrb_example_pure_dart.so+0x11f0446) (BuildId: 012345)\n'
+          'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n';
+      final unrelatedStackReport = knownReport.replaceFirst(
+        'known_runtime_function',
+        'new_regression_function',
+      );
+      final unstableValuesChanged = knownReport
+          .replaceAll('0x1234', '0x9999')
+          .replaceAll('0xabcd', '0x8888')
+          .replaceAll('==123==', '==987==')
+          .replaceAll('/tmp/sdk/out/dartvm', '/other/sdk/dartvm')
+          .replaceAll('abcdef', 'fedcba')
+          .replaceAll('012345', '543210');
+      for (final exitCode in [1, 23, 66, 137, -9]) {
+        for (final report in [
+          '',
+          knownReport,
+          'ERROR: AddressSanitizer: heap-use-after-free\n$knownReport',
+          'WARNING: ThreadSanitizer: data race\n$knownReport',
+          'SUMMARY: LeakSanitizer: 16 byte(s) leaked in 1 allocation(s).\n',
+          unrelatedStackReport,
+          unstableValuesChanged,
+          '$knownReport\n$unrelatedStackReport',
+        ]) {
+          expect(
+            () => checkSanitizerResultForTesting(
+              exitCode: exitCode,
+              stdout: 'FRB_DART_TEST_RESULT: success',
+              stderr: report,
+              expectSucceed: true,
+              expectStdoutContains: 'FRB_DART_TEST_RESULT: success',
+            ),
+            throwsException,
+            reason: 'Nonzero exit $exitCode must not be forgiven by a report',
+          );
+        }
+      }
+    },
+  );
+
+  test('sanitizer entrypoints require their success marker on stdout', () {
+    const marker = 'FRB_DART_TEST_RESULT: success';
+    for (final stdout in ['', 'FRB_DART_TEST_RESULT: failure', marker]) {
+      expect(
+        () => checkSanitizerResultForTesting(
+          exitCode: 0,
+          stdout: stdout,
+          stderr: marker,
+          expectSucceed: true,
+          expectStdoutContains: marker,
+        ),
+        stdout == marker ? returnsNormally : throwsException,
+      );
+    }
+  });
+
+  test('sanitizer negative controls require failure and the diagnostic', () {
+    for (final diagnostic in [
+      'ERROR: AddressSanitizer: heap-use-after-free',
+      'ERROR: LeakSanitizer: detected memory leaks',
+      'WARNING: MemorySanitizer: use-of-uninitialized-value',
+      'WARNING: ThreadSanitizer: data race',
+    ]) {
+      for (final exitCode in [0, 1, 23, 66]) {
+        for (final stderr in ['', 'unrelated failure', diagnostic]) {
+          expect(
+            () => checkSanitizerResultForTesting(
+              exitCode: exitCode,
+              stdout: diagnostic,
+              stderr: stderr,
+              expectSucceed: false,
+              expectStderrContains: diagnostic,
+            ),
+            exitCode != 0 && stderr == diagnostic
+                ? returnsNormally
+                : throwsException,
+          );
+        }
+      }
+    }
   });
 
   test('linux build bundle path follows the current machine architecture', () {

@@ -48,6 +48,7 @@ class RustVecU8 implements BaseGeneralizedUint8List<ffi.Pointer<ffi.Uint8>> {
     // Set ptr to null before calling free to avoid potential
     // double-free when error happens
     final ptr = _ptr!;
+    final length = _length;
     _forget();
     binding.rustVecU8Free(ptr, length);
   }

@@ -1,7 +1,17 @@
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 
+String? sanitizerRustflagsForTesting(Sanitizer sanitizer) =>
+    sanitizer.rustflags;
+
 extension SanitizerMetadata on Sanitizer {
-  String get rustflagValue {
+  String? get rustflags {
+    final value = rustflagValue;
+    if (value == null) return null;
+
+    return '-Zsanitizer=$value -Zmerge-functions=disabled -Cdebuginfo=1';
+  }
+
+  String? get rustflagValue {
     return switch (this) {
       Sanitizer.asan => 'address',
       Sanitizer.msan => 'memory',

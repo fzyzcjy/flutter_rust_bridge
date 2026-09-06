@@ -90,6 +90,9 @@ class SseSerializer {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   WriteBufferRaw intoRaw() => buffer.intoRaw();
+
+  /// Releases the buffer when encoding fails before ownership is transferred.
+  void dispose() => buffer.dispose();
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

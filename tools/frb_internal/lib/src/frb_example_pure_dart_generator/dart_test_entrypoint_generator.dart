@@ -99,8 +99,10 @@ Future<void> main() async {
       printPath: false,
     ),
   );
+  print('FRB_DART_TEST_RESULT: \${success ? 'success' : 'failure'}');
 
-  exit(success ? 0 : 1);
+  RustLib.dispose();
+  exitCode = success ? 0 : 1;
 }
 
 Future<void> callFileEntrypoints({
