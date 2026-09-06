@@ -89,9 +89,12 @@ extern "C" {
 
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
     SendableMessagePortHandle(
-        port.dyn_ref::<BroadcastChannel>()
-            .map(|channel| channel.name())
-            .expect("Not a BroadcastChannel"),
+        port.channel_name()
+            .or_else(|| {
+                port.dyn_ref::<BroadcastChannel>()
+                    .map(|channel| channel.name())
+            })
+            .expect("Not a named message port"),
     )
 }
 

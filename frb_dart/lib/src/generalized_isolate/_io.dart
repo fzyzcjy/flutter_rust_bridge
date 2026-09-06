@@ -4,6 +4,8 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 export 'dart:ffi' show NativePort;
 export 'dart:isolate';
 
+Future<void> initializeBroadcastChannel() async {}
+
 /// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName) => ReceivePort(channelName);
 

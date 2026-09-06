@@ -105,6 +105,25 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 
+  test('fresh worker streams preserve every value TwinRustAsyncSse', () async {
+    for (var batch = 0; batch < 250; batch++) {
+      final streams = List.generate(
+        8,
+        (_) => ConcatenateWithTwinRustAsyncSse
+                .handleSomeStaticStreamSinkSingleArgTwinRustAsyncSse()
+            .toList(),
+      );
+      final results = await Future.wait(streams);
+      for (var index = 0; index < results.length; index++) {
+        expect(
+          results[index],
+          [0, 1, 2, 3, 4],
+          reason: 'batch $batch stream $index',
+        );
+      }
+    }
+  });
+
   test('getter', () async {
     final concatenateWith = ConcatenateWithTwinRustAsyncSse(a: "apple");
     expect(await concatenateWith.simpleGetterTwinRustAsyncSse, equals("apple"));
