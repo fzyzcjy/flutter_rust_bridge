@@ -10,9 +10,6 @@ thread_local! {
 
 #[wasm_bindgen]
 extern "C" {
-    #[wasm_bindgen(js_name = queueMicrotask)]
-    fn queue_microtask(callback: &js_sys::Function);
-
     /// Objects implementing the interface of [`web_sys::MessagePort`].
     ///
     /// Attempts to coerce [`JsValue`]s into this interface using [`dyn_into`][JsCast::dyn_into]
@@ -60,9 +57,6 @@ fn post_named_message(name: &str, value: &JsValue) -> Result<(), JsValue> {
         .ok_or_else(|| JsValue::from_str("Invalid broadcast port name"))?;
     let channel = BROADCAST_CHANNELS.with(|channels| {
         let mut channels = channels.borrow_mut();
-        if channels.is_empty() {
-            queue_microtask(Closure::once_into_js(close_broadcast_channels).unchecked_ref());
-        }
         let channel = match channels.entry(channel_name.to_owned()) {
             std::collections::hash_map::Entry::Occupied(entry) => entry.into_mut(),
             std::collections::hash_map::Entry::Vacant(entry) => {
@@ -72,12 +66,4 @@ fn post_named_message(name: &str, value: &JsValue) -> Result<(), JsValue> {
         Ok::<_, JsValue>(channel.clone())
     })?;
     channel.post_message(&Array::of2(&port_name.into(), value))
-}
-
-fn close_broadcast_channels() {
-    BROADCAST_CHANNELS.with(|channels| {
-        for (_, channel) in channels.borrow_mut().drain() {
-            channel.close();
-        }
-    });
 }
