@@ -844,6 +844,10 @@ jobs:
           architecture: x64
       - run: cargo install cargo-llvm-cov --version 0.6.24 --locked
 
+      - name: Allow Chrome sandbox user namespaces
+        if: runner.os == 'Linux' && matrix.package == 'frb_utils'
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+
       # execute
       - run: ./frb_internal test-dart-native --package ${{ matrix.package }} --coverage
 
