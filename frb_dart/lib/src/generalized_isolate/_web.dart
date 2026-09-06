@@ -178,8 +178,20 @@ class _WebBroadcastPort extends _WebPortLike {
   _WebBroadcastPort(this._nativePort) : super._();
 
   @override
+  Stream<web.MessageEvent> get _onMessage {
+    print('FRB_TRACE subscribe time=${DateTime.now().millisecondsSinceEpoch} channel=${_nativePort.name}');
+    return super._onMessage.map((event) {
+      print('FRB_TRACE receive time=${DateTime.now().millisecondsSinceEpoch} channel=${_nativePort.name} data=${event.data.dartify()}');
+      return event;
+    });
+  }
+
+  @override
   void _start() {}
 
   @override
-  void _close() => _nativePort.close();
+  void _close() {
+    print('FRB_TRACE receiver_close time=${DateTime.now().millisecondsSinceEpoch} channel=${_nativePort.name}');
+    _nativePort.close();
+  }
 }

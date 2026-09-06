@@ -15,12 +15,17 @@ impl Channel {
     }
 
     pub fn post(&self, msg: impl IntoDart) -> bool {
-        self.port
-            .post_message(&msg.into_dart())
+        let message = msg.into_dart();
+        let handle = message_port_to_handle(&self.port);
+        crate::console_log!("FRB_TRACE post_begin time={} channel={:?} data={:?}", js_sys::Date::now(), handle, message);
+        let result = self.port
+            .post_message(&message)
             .map_err(|err| {
                 crate::console_error!("post: {:?}", err);
             })
-            .is_ok()
+            .is_ok();
+        crate::console_log!("FRB_TRACE post_end time={} channel={:?} success={}", js_sys::Date::now(), handle, result);
+        result
     }
 
     // TODO unused, rm?

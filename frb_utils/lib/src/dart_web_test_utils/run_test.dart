@@ -135,6 +135,7 @@ Future<Browser> _launchBrowser({
       environment: createWebTestBrowserEnvironment(),
     );
     final page = await browser.newPage();
+    print('FRB_TRACE browser=${await page.evaluate("navigator.userAgent")}');
     _configurePageLogging(page);
     await page.goto('$baseAddr/$_kTestEntrypointHttpName');
     return browser;
