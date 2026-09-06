@@ -38,6 +38,8 @@ impl<Rust2DartCodec: BaseCodec> StreamSinkCloser<Rust2DartCodec> {
 impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
     fn drop(&mut self) {
         let message = Rust2DartCodec::encode_close_stream().into_dart_abi();
+        // Web integration tests cover this, but native llvm-cov cannot observe wasm.
+        // frb-coverage:ignore-start
         #[cfg(target_family = "wasm")]
         let message: wasm_bindgen::JsValue = if self.failed.load(Ordering::Relaxed) {
             js_sys::Array::of1(&"__frb_stream_failed".into()).into()
@@ -49,6 +51,7 @@ impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
             )
             .into()
         };
+        // frb-coverage:ignore-end
         self.sender().send_or_warn(message);
         release_channel_handle(&self.sendable_channel_handle);
     }

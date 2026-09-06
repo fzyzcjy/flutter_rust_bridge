@@ -34,6 +34,8 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     pub fn add_raw(&self, value: Rust2DartCodec::Message) -> Result<(), Rust2DartSendError> {
         let message = value.into_dart_abi();
         let sender = self._closer.sender();
+        // Web integration tests cover this, but native llvm-cov cannot observe wasm.
+        // frb-coverage:ignore-start
         #[cfg(target_family = "wasm")]
         {
             use std::sync::atomic::Ordering;
@@ -56,6 +58,7 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
             }
             result
         }
+        // frb-coverage:ignore-end
         #[cfg(not(target_family = "wasm"))]
         sender.send(message)
     }

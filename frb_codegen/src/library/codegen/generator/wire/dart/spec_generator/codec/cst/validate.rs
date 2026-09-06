@@ -71,9 +71,15 @@ pub(crate) fn generate(
             MirTypeDelegate::Array(_) | MirTypeDelegate::RustAutoOpaqueExplicit(_) => {
                 call(&inner.get_delegate(), "raw")
             }
+            // needs_validation rejects every other delegate before this match.
+            // frb-coverage:ignore-start
             _ => unreachable!(),
+            // frb-coverage:ignore-end
         },
+        // needs_validation rejects every other type before this match.
+        // frb-coverage:ignore-start
         _ => unreachable!(),
+        // frb-coverage:ignore-end
     };
     WireDartOutputCode {
         api_impl_class_methods: vec![DartApiImplClassMethod {
