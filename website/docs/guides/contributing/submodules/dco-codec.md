@@ -35,11 +35,6 @@ Rust Worker ->> Dart: port2.postMessage
 - A rejected payload is followed by an empty frame for its reserved sequence number. If that frame also fails, the final sink drop sends a transport-error frame instead of a normal close.
 - This framing applies only to stream broadcast channels; ordinary message ports retain their original payloads.
 
-- Stream values and close frames share a sequence counter across Rust sink clones.
-- Dart buffers out-of-order frames and delivers only consecutive sequence numbers, so an early close cannot discard preceding values.
-- A rejected payload is followed by an empty frame for its reserved sequence number. If that frame also fails, the final sink drop sends a transport-error frame instead of a normal close.
-- This framing applies only to stream broadcast channels; ordinary message ports retain their original payloads.
-
 ```mermaid
 sequenceDiagram
 Dart ->> Dart: Verify shared receiver readiness
