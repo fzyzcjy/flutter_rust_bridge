@@ -2,6 +2,8 @@ use flutter_rust_bridge::frb;
 use crate::frb_generated::{StreamSink, FLUTTER_RUST_BRIDGE_HANDLER};
 use flutter_rust_bridge::for_generated::BaseThreadPool;
 use flutter_rust_bridge::transfer;
+#[cfg(target_family = "wasm")]
+use flutter_rust_bridge::for_generated::wasm_bindgen;
 
 #[frb(init)]
 pub fn init_app() {
