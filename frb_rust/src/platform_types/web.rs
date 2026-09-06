@@ -45,7 +45,11 @@ impl BroadcastChannelState {
         }
 
         let port = PortLike::broadcast(name);
-        crate::console_log!("FRB_TRACE sender_create time={} channel={}", js_sys::Date::now(), name);
+        crate::console_error!(
+            "FRB_TRACE sender_create time={} channel={}",
+            js_sys::Date::now(),
+            name
+        );
         self.channel_of_name.insert(name.to_owned(), port.clone());
         port
     }
@@ -75,7 +79,11 @@ impl BroadcastChannelState {
     fn close_pending_message_ports(&mut self) {
         self.close_scheduled = false;
         for port in self.pending_close.drain(..) {
-            crate::console_log!("FRB_TRACE sender_close time={} channel={:?}", js_sys::Date::now(), message_port_to_handle(&port));
+            crate::console_error!(
+                "FRB_TRACE sender_close time={} channel={:?}",
+                js_sys::Date::now(),
+                message_port_to_handle(&port)
+            );
             if let Err(error) = port.close() {
                 crate::console_error!("close broadcast channel: {:?}", error);
             }

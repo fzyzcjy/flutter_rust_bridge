@@ -3,6 +3,7 @@ use crate::platform_types::handle_to_message_port;
 use crate::platform_types::release_message_port_handle;
 use crate::platform_types::MessagePort;
 use crate::platform_types::{message_port_to_handle, SendableMessagePortHandle};
+use wasm_bindgen::JsCast;
 
 #[derive(Clone)]
 pub struct Channel {
@@ -16,15 +17,26 @@ impl Channel {
 
     pub fn post(&self, msg: impl IntoDart) -> bool {
         let message = msg.into_dart();
-        let handle = message_port_to_handle(&self.port);
-        crate::console_log!("FRB_TRACE post_begin time={} channel={:?} data={:?}", js_sys::Date::now(), handle, message);
-        let result = self.port
+        let handle = self.port.dyn_ref::<web_sys::BroadcastChannel>().map(|channel| channel.name());
+        crate::console_error!(
+            "FRB_TRACE post_begin time={} channel={:?} data={:?}",
+            js_sys::Date::now(),
+            handle,
+            message
+        );
+        let result = self
+            .port
             .post_message(&message)
             .map_err(|err| {
                 crate::console_error!("post: {:?}", err);
             })
             .is_ok();
-        crate::console_log!("FRB_TRACE post_end time={} channel={:?} success={}", js_sys::Date::now(), handle, result);
+        crate::console_error!(
+            "FRB_TRACE post_end time={} channel={:?} success={}",
+            js_sys::Date::now(),
+            handle,
+            result
+        );
         result
     }
 

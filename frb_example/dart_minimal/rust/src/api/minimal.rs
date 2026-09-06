@@ -1,9 +1,9 @@
-use flutter_rust_bridge::frb;
 use crate::frb_generated::{StreamSink, FLUTTER_RUST_BRIDGE_HANDLER};
-use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::transfer;
 #[cfg(target_family = "wasm")]
 use flutter_rust_bridge::for_generated::wasm_bindgen;
+use flutter_rust_bridge::for_generated::BaseThreadPool;
+use flutter_rust_bridge::frb;
+use flutter_rust_bridge::transfer;
 
 #[frb(init)]
 pub fn init_app() {
@@ -16,9 +16,11 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 #[frb(sync)]
 pub fn minimal_stream(sink: StreamSink<u32>) {
-    FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().execute(transfer!(|| {
-        for value in 0..5 {
-            sink.add(value).unwrap();
-        }
-    }));
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .thread_pool()
+        .execute(transfer!(|| {
+            for value in 0..5 {
+                sink.add(value).unwrap();
+            }
+        }));
 }
