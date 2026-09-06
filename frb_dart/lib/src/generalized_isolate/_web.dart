@@ -2,12 +2,17 @@
 library html_isolate;
 
 import 'dart:async';
+import 'dart:js_interop_unsafe';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
 String serializeNativePort(NativePortType port) {
+  final name = port.getProperty<JSString?>('__frb_port_name'.toJS);
+  if (name != null) {
+    return name.toDart;
+  }
   if (port.isA<web.BroadcastChannel>()) {
     return (port as web.BroadcastChannel).name;
   }
@@ -16,10 +21,56 @@ String serializeNativePort(NativePortType port) {
   );
 }
 
-/// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
-  RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)),
+final _namedPorts = <String, web.MessagePort>{};
+
+final _broadcastChannel = web.BroadcastChannel(
+  '__frb_broadcast_${_randomUUID()}',
 );
+Future<void>? _broadcastChannelReady;
+
+@JS('globalThis.crypto.randomUUID')
+external String _randomUUID();
+
+@internal
+Future<void> initializeBroadcastChannel() =>
+    _broadcastChannelReady ??= _initializeBroadcastChannel().onError((
+      Object error,
+      StackTrace stackTrace,
+    ) {
+      _broadcastChannelReady = null;
+      Error.throwWithStackTrace(error, stackTrace);
+    });
+
+Future<void> _initializeBroadcastChannel() async {
+  final ready = Completer<void>();
+  _broadcastChannel.onmessage = ((web.MessageEvent event) {
+    final data = event.data;
+    if (data == '__frb_ready'.toJS) {
+      if (!ready.isCompleted) ready.complete();
+      return;
+    }
+    if (!data.isA<JSArray<JSAny?>>()) return;
+    final message = data as JSArray<JSAny?>;
+    if (message.length != 2 || !message[0].isA<JSString>()) return;
+    final port = _namedPorts[(message[0] as JSString).toDart];
+    port?.postMessage(message[1]);
+  }).toJS;
+  final sender = web.BroadcastChannel(_broadcastChannel.name);
+  final timer = Timer.periodic(const Duration(milliseconds: 10), (_) {
+    sender.postMessage('__frb_ready'.toJS);
+  });
+  try {
+    sender.postMessage('__frb_ready'.toJS);
+    await ready.future.timeout(const Duration(seconds: 10));
+  } finally {
+    timer.cancel();
+    sender.close();
+  }
+}
+
+/// {@macro flutter_rust_bridge.internal}
+ReceivePort broadcastPort(String channelName) =>
+    ReceivePort._raw(RawReceivePort._raw(_WebChannel(channelName)));
 
 /// {@template flutter_rust_bridge.same_as_native}
 /// Web implementation of the one with same name in native.
@@ -40,19 +91,15 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    final subscription = _rawReceivePort._webReceivePort._onMessage
-        .map(_extractData)
-        .listen(
-          onData,
-          onError: onError,
-          onDone: onDone,
-          cancelOnError: cancelOnError,
-        );
-    _rawReceivePort._webReceivePort._start();
+    final subscription = _rawReceivePort._webChannel._messages.listen(
+      onData,
+      onError: onError,
+      onDone: onDone,
+      cancelOnError: cancelOnError,
+    );
+    _rawReceivePort._webChannel._start();
     return subscription;
   }
-
-  static dynamic _extractData(web.MessageEvent event) => event.data;
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _rawReceivePort.sendPort;
@@ -69,21 +116,19 @@ class RawReceivePort {
   factory RawReceivePort() => RawReceivePort._raw();
 
   RawReceivePort._raw([_WebChannel? channel])
-    : _webChannel = channel ?? _WebChannel.messageChannel();
+    : _webChannel = channel ?? _WebChannel();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
-    _webReceivePort._onMessage.listen((event) => handler(event.data));
-    _webReceivePort._start();
+    _webChannel._messages.listen(handler);
+    _webChannel._start();
   }
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  void close() => _webReceivePort._close();
+  void close() => _webChannel._close();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _webChannel._sendPort;
-
-  _WebPortLike get _webReceivePort => _webChannel._receivePort;
 }
 
 /// {@macro flutter_rust_bridge.same_as_native}
@@ -94,92 +139,68 @@ class SendPort {
   const SendPort._(this.nativePort);
 }
 
-abstract class _WebChannel {
-  SendPort get _sendPort;
-
-  _WebPortLike get _receivePort;
-
-  factory _WebChannel.messageChannel() = _WebMessageChannel;
-
-  factory _WebChannel.broadcastChannel(String channelName) =
-      _WebBroadcastChannel;
-}
-
-class _WebMessageChannel implements _WebChannel {
-  final _channel = web.MessageChannel();
-
-  @override
-  SendPort get _sendPort => SendPort._(_channel.port2);
-
-  @override
-  _WebPortLike get _receivePort => _WebPortLike._messagePort(_channel.port1);
-}
-
-class _WebBroadcastChannel implements _WebChannel {
-  final web.BroadcastChannel _sendChannel;
-  final web.BroadcastChannel _receiveChannel;
-
-  _WebBroadcastChannel(String channelName)
-    // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
-    // because HTML BroadcastChannel spec says that, the event will not be fired
-    // at the object which sends it. Therefore, we need two different objects.
-    : _sendChannel = web.BroadcastChannel(channelName),
-      _receiveChannel = web.BroadcastChannel(channelName);
-
-  @override
-  SendPort get _sendPort => SendPort._(_sendChannel);
-
-  @override
-  _WebPortLike get _receivePort =>
-      _WebPortLike._broadcastChannel(_receiveChannel);
-}
-
 /// {@macro flutter_rust_bridge.same_as_native}
-abstract class _WebPortLike {
-  const _WebPortLike._();
+// A named MessageChannel exposes its receiving endpoint as a port.
+class _WebChannel {
+  final _channel = web.MessageChannel();
+  final String? _name;
 
-  factory _WebPortLike._messagePort(web.MessagePort port) = _WebMessagePort;
-
-  factory _WebPortLike._broadcastChannel(web.BroadcastChannel channel) =
-      _WebBroadcastPort;
-
-  void _start();
-
-  void _close();
+  _WebChannel([String? name]) : _name = name {
+    if (name == null) return;
+    // Note: Sender and receiver use different MessagePort endpoints,
+    // because MessageChannel transfers messages to the other endpoint.
+    // Both endpoints remain owned by this channel until it closes.
+    _channel.port2.setProperty(
+      '__frb_port_name'.toJS,
+      '${_broadcastChannel.name}/$name'.toJS,
+    );
+    _namedPorts[name] = _channel.port2;
+  }
 
   /// {@macro flutter_rust_bridge.same_as_native}
-  web.EventTarget get _nativePort;
+  SendPort get _sendPort => SendPort._(_channel.port2);
 
-  Stream<web.MessageEvent> get _onMessage =>
-      _kMessageEvent.forTarget(_nativePort);
+  Stream<JSAny?> get _messages {
+    final messages = _kMessageEvent
+        .forTarget(_channel.port1)
+        .map((event) => event.data);
+    if (_name == null) return messages;
+    var nextSequence = 0;
+    final pending = <int, JSArray<JSAny?>>{};
+    return messages.expand((data) sync* {
+      if (data.isA<JSArray<JSAny?>>()) {
+        final frame = data as JSArray<JSAny?>;
+        if (frame.length == 1 && frame[0] == '__frb_stream_failed'.toJS) {
+          throw StateError('Web stream delivery failed');
+        }
+        if ((frame.length == 2 || frame.length == 3) &&
+            frame[0] == '__frb_stream'.toJS) {
+          pending[(frame[1] as JSNumber).toDartInt] = frame;
+          while (pending.containsKey(nextSequence)) {
+            final ready = pending.remove(nextSequence++)!;
+            if (ready.length == 3) yield ready[2];
+          }
+          return;
+        }
+      }
+      yield data;
+    });
+  }
+
+  void _start() => _channel.port1.start();
+
+  void _close() {
+    final name = _name;
+    if (name != null) {
+      if (_namedPorts[name] == _channel.port2) {
+        _namedPorts.remove(name);
+      }
+      _channel.port2.close();
+    }
+    _channel.port1.close();
+  }
+
   static const _kMessageEvent = web.EventStreamProvider<web.MessageEvent>(
     'message',
   );
-}
-
-class _WebMessagePort extends _WebPortLike {
-  @override
-  final web.MessagePort _nativePort;
-
-  _WebMessagePort(this._nativePort) : super._();
-
-  @override
-  void _start() => _nativePort.start();
-
-  @override
-  void _close() => _nativePort.close();
-}
-
-// Indeed a BroadcastChannel, not a Broadcast "Port"
-class _WebBroadcastPort extends _WebPortLike {
-  @override
-  final web.BroadcastChannel _nativePort;
-
-  _WebBroadcastPort(this._nativePort) : super._();
-
-  @override
-  void _start() {}
-
-  @override
-  void _close() => _nativePort.close();
 }

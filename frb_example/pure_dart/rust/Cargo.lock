@@ -338,6 +338,7 @@ dependencies = [
  "tokio",
  "uuid",
  "wasm-bindgen",
+ "web-sys",
 ]
 
 [[package]]

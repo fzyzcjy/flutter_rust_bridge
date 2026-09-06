@@ -8,6 +8,8 @@ use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
+#[cfg(target_family = "wasm")]
+use flutter_rust_bridge::for_generated::{js_sys, TransferClosure};
 use flutter_rust_bridge::{frb, transfer};
 
 #[frb(stream_dart_await)]
@@ -16,6 +18,139 @@ pub async fn func_stream_return_error_twin_rust_async_sse(
     _sink: StreamSink<String, flutter_rust_bridge::SseCodec>,
 ) -> anyhow::Result<()> {
     Err(anyhow!("deliberate error"))
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn immediate_stream_twin_rust_async_sse(
+    sink: StreamSink<i32, flutter_rust_bridge::SseCodec>,
+) {
+    sink.add(0).unwrap();
+    sink.add(1).unwrap();
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn stream_worker_transfer_twin_rust_async_sse(
+    sink: StreamSink<i32, flutter_rust_bridge::SseCodec>,
+) {
+    #[cfg(target_family = "wasm")]
+    {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        use std::sync::Arc;
+        use wasm_bindgen::{closure::Closure, JsCast, JsValue};
+        use web_sys::{MessageChannel, MessagePort};
+
+        let rejected = FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().with(|pool| {
+            pool.execute(TransferClosure::new(
+                vec![js_sys::Function::new_no_args("return 0").into()],
+                vec![],
+                |_| {},
+            ))
+            .is_err()
+        });
+        let values = js_sys::Array::of1(&7.into());
+        let bytes = js_sys::Uint8Array::new_with_length(1);
+        bytes.set_index(0, 11);
+        let buffer = bytes.buffer();
+        let sink_in_worker = sink.clone();
+        let finished = Arc::new(AtomicBool::new(false));
+        let finished_in_worker = finished.clone();
+        let coordination = MessageChannel::new().unwrap();
+        let parent_port = coordination.port1();
+        let child_port = coordination.port2();
+        FLUTTER_RUST_BRIDGE_HANDLER.thread_pool().with(|pool| {
+            pool.execute(TransferClosure::new(
+                vec![
+                    values.clone().into(),
+                    buffer.clone().into(),
+                    child_port.clone().into(),
+                ],
+                vec![buffer.clone().into(), child_port.into()],
+                move |data| {
+                    let original_value =
+                        js_sys::Array::from(&data[0]).get(0).as_f64().unwrap() as i32;
+                    let original_byte = js_sys::Uint8Array::new(&data[1]).get_index(0) as i32;
+                    let port: MessagePort = data[2].clone().unchecked_into();
+                    let port_in_callback = port.clone();
+                    let callback = Closure::once_into_js(move || {
+                        let prototype = js_sys::Reflect::get(
+                            &js_sys::Reflect::get(&js_sys::global(), &"BroadcastChannel".into()).unwrap(),
+                            &"prototype".into(),
+                        ).unwrap();
+                        let original = js_sys::Reflect::get(&prototype, &"postMessage".into()).unwrap();
+                        let reject_once = js_sys::Function::new_with_args(
+                            "original",
+                            "let first = true; return function(message) { if (first) { first = false; message[1][2] = () => {}; } return original.call(this, message); }",
+                        ).call1(&JsValue::NULL, &original).unwrap();
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &reject_once).unwrap();
+                        let rejected_value = sink_in_worker.add(-1).is_err();
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &original).unwrap();
+                        assert!(rejected_value);
+                        let sink_in_callback = sink_in_worker.clone();
+                        let reenter = Closure::once_into_js(move || {
+                            sink_in_callback.add(original_value).unwrap();
+                        });
+                        let reentrant_post = js_sys::Function::new_with_args(
+                            "original, callback",
+                            "return function(message) { BroadcastChannel.prototype.postMessage = original; callback(); return original.call(this, message); }",
+                        ).call2(&JsValue::NULL, &original, &reenter).unwrap();
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &reentrant_post).unwrap();
+                        let result = sink_in_worker.add(i32::from(rejected));
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &original).unwrap();
+                        result.unwrap();
+                        sink_in_worker.add(original_byte).unwrap();
+
+                        use flutter_rust_bridge::for_generated::{DcoCodec, Rust2DartAction, StreamSinkBase};
+                        let failed_sink = StreamSinkBase::<i32, DcoCodec>::deserialize("__frb_broadcast_failure_probe/unused".to_owned());
+                        let calls = js_sys::Array::new();
+                        let reject_twice = js_sys::Function::new_with_args(
+                            "original, calls",
+                            "return function(message) { calls.push(message); if (calls.length <= 2) throw new DOMException('injected send failure', 'DataCloneError'); return original.call(this, message); }",
+                        ).call2(&JsValue::NULL, &original, &calls).unwrap();
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &reject_twice).unwrap();
+                        let first_failed = failed_sink.add_raw(DcoCodec::encode(Rust2DartAction::Success, 1)).is_err();
+                        let second_failed = failed_sink.add_raw(DcoCodec::encode(Rust2DartAction::Success, 2)).is_err();
+                        let calls_before_drop = calls.length();
+                        drop(failed_sink);
+                        js_sys::Reflect::set(&prototype, &"postMessage".into(), &original).unwrap();
+                        assert!(first_failed && second_failed);
+                        assert_eq!(calls_before_drop, 2);
+                        assert_eq!(calls.length(), 3);
+                        let failure = js_sys::Array::from(&js_sys::Array::from(&calls.get(2)).get(1));
+                        assert_eq!(failure.length(), 1);
+                        assert_eq!(failure.get(0).as_string().unwrap(), "__frb_stream_failed");
+                        drop(sink_in_worker);
+                        finished_in_worker.store(true, Ordering::Release);
+                        port_in_callback.set_onmessage(None);
+                        port_in_callback.close();
+                    });
+                    port.set_onmessage(Some(callback.unchecked_ref()));
+                    port.post_message(&JsValue::NULL).unwrap();
+                },
+            ))
+            .unwrap();
+        });
+        assert_eq!(buffer.byte_length(), 0);
+        values.set(0, 99.into());
+        let parent_port_in_callback = parent_port.clone();
+        let callback = Closure::once_into_js(move || {
+            parent_port_in_callback
+                .post_message(&JsValue::NULL)
+                .unwrap();
+            let deadline = js_sys::Date::now() + 5000.0;
+            while !finished.load(Ordering::Acquire) {
+                assert!(
+                    js_sys::Date::now() < deadline,
+                    "nested worker did not finish"
+                );
+            }
+            parent_port_in_callback.set_onmessage(None);
+            parent_port_in_callback.close();
+            drop(sink);
+        });
+        parent_port.set_onmessage(Some(callback.unchecked_ref()));
+    }
+    #[cfg(not(target_family = "wasm"))]
+    drop(sink);
 }
 
 #[frb(stream_dart_await)]
