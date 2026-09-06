@@ -32,7 +32,7 @@ Future<void>? _broadcastChannelReady;
 
 web.BroadcastChannel _createBroadcastChannel() {
   final random = Random.secure();
-  final nonce = List.generate(4, (_) => random.nextInt(1 << 32)).join('_');
+  final nonce = List.generate(4, (_) => random.nextInt(0x100000000)).join('_');
   return web.BroadcastChannel('__frb_broadcast_$nonce');
 }
 
