@@ -180,11 +180,13 @@ class _WebBroadcastPort extends _WebPortLike {
   @override
   Stream<web.MessageEvent> get _onMessage {
     web.console.log(
-      'FRB_TRACE subscribe time=${DateTime.now().millisecondsSinceEpoch} channel=${_nativePort.name}'.toJS,
+      'FRB_TRACE subscribe time=${DateTime.now().millisecondsSinceEpoch} channel=${_nativePort.name}'
+          .toJS,
     );
     return super._onMessage.map((event) {
       web.console.log(
-        'FRB_TRACE receive time=${DateTime.now().millisecondsSinceEpoch} channel=${_nativePort.name} data=${event.data.dartify()}'.toJS,
+        'FRB_TRACE receive time=${DateTime.now().millisecondsSinceEpoch} channel=${_nativePort.name} data=${event.data.dartify()}'
+            .toJS,
       );
       return event;
     });
@@ -196,7 +198,8 @@ class _WebBroadcastPort extends _WebPortLike {
   @override
   void _close() {
     web.console.log(
-      'FRB_TRACE receiver_close time=${DateTime.now().millisecondsSinceEpoch} channel=${_nativePort.name}'.toJS,
+      'FRB_TRACE receiver_close time=${DateTime.now().millisecondsSinceEpoch} channel=${_nativePort.name}'
+          .toJS,
     );
     _nativePort.close();
   }
