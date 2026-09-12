@@ -95,12 +95,18 @@ fn run_raw(
 
     if let Some(target_dir) = target_dir {
         args.extend([PathBuf::from("--target-dir"), target_dir]);
+        if let Some(target) = env::var_os("TARGET") {
+            args.extend([PathBuf::from("--target"), PathBuf::from(target)]);
+        }
     }
 
-    let mut extra_env: HashMap<String, String> = [(
-        "RUSTFLAGS".to_owned(),
-        env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
-    ), (CODEGEN_RUNNING_ENV.to_owned(), "1".to_owned())]
+    let mut extra_env: HashMap<String, String> = [
+        (
+            "RUSTFLAGS".to_owned(),
+            env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
+        ),
+        (CODEGEN_RUNNING_ENV.to_owned(), "1".to_owned()),
+    ]
     .into();
 
     if let Ok(flags) = env::var("CARGO_ENCODED_RUSTFLAGS") {
@@ -199,8 +205,8 @@ fn cargo_expand_install_args(version: Option<&str>) -> Vec<PathBuf> {
 #[cfg(test)]
 mod tests {
     use super::{
-        append_encoded_rustflags,
-        cargo_expand_fallback_version, cargo_expand_install_args, decode_macro_frb_encoded_comments,
+        append_encoded_rustflags, cargo_expand_fallback_version, cargo_expand_install_args,
+        decode_macro_frb_encoded_comments,
     };
 
     /// Build-script encoded flags preserve arguments and include the expansion cfg.

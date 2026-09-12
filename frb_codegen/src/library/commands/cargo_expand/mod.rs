@@ -15,4 +15,3 @@ pub(crate) fn run_cargo_expand(
 ) -> Result<syn::File> {
     real::run(rust_crate_dir, interest_crate_name, dumper, features)
 }
-
