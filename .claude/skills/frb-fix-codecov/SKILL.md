@@ -60,7 +60,7 @@ If the computed output disagrees with Codecov:
 - Check whether Git has both SHAs locally; fetch the PR head/base if needed.
 - For a truncated file path in the comment, get the full path from the Codecov URL's `filepath=` query.
 - Verify `Misc :: Codecov` downloaded all expected `*-coverage` artifacts before upload; use the
-  `frb-ci` skill for GitHub Actions logs.
+  user's `tom-ci` skill for GitHub Actions logs.
 
 ### Step 2: Choose the Fix
 

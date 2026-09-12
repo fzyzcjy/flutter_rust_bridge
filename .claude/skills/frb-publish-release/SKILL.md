@@ -152,11 +152,11 @@ For beta releases, `get-released-version --version <VERSION>` must verify the pu
 
 - Keep watching the release commit's normal CI until it is green.
 - After `./frb_internal get-released-version` reports `allReleased: true`, trigger `.github/workflows/post_release.yaml` for the release commit or `master`.
-- Babysit post-release CI until it is green. Use `frb-ci` when reading GitHub Actions logs.
+- Babysit post-release CI until it is green. Use the user's `tom-ci` skill when reading GitHub Actions logs.
 - If post-release fails, classify the failure by release channel (`stable` or `unstable`) and install mode (`cargo-install`, `cargo-binstall`, `scoop`, or `homebrew`) before changing code or rerunning.
 
 ## Related Skills
 
 - `frb-write-changelog` for the release section.
 - `frb-fix-ci` or `frb-fix-main-ci` for CI failures.
-- `frb-ci` for GitHub Actions logs.
+- The user's `tom-ci` skill for GitHub Actions logs.

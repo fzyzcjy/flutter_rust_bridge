@@ -1,6 +1,6 @@
 ---
 name: frb-issue-to-green-pr
-description: "Use when implementing a GitHub issue, bug fix, or feature in flutter_rust_bridge end-to-end: develop the change, add regression coverage, prepare and open a PR, and follow frb-ci to monitor CI until the PR is ready."
+description: "Use when implementing a GitHub issue, bug fix, or feature in flutter_rust_bridge end-to-end: develop the change, add regression coverage, prepare and open a PR, and use the user's tom-ci skill to monitor CI until the PR is ready."
 ---
 
 # FRB Issue to Green PR
@@ -24,7 +24,7 @@ Read these when entering the matching phase:
 - `frb-prepare-pr` before pushing or opening the PR.
 - `frb-pr-review` before treating a non-trivial PR as ready.
 - `frb-fix-ci` before diagnosing any CI failure.
-- `frb-ci` for CI waiting, status inspection, and GitHub Actions logs.
+- The user's `tom-ci` skill for CI waiting, status inspection, and GitHub Actions logs.
 - `frb-manual-test` before writing a manual regression test report under `tools/manual_tests/`.
 - `frb-ci-filter` before creating an intentional red CI reproduction PR or using filtered CI.
 - `frb-debugging` when generated code is surprising or codegen behavior is unclear.
@@ -34,7 +34,7 @@ Read these when entering the matching phase:
 ### 1. Start the completion loop
 
 - Keep the task active until all stop conditions are met.
-- Once the PR URL is known, follow the waiting workflow in `frb-ci` between CI processing actions until the PR is ready.
+- Once the PR URL is known, follow the waiting workflow in the user's `tom-ci` skill between CI processing actions until the PR is ready.
 
 ### 2. Understand the GitHub issue or requested change
 
@@ -84,7 +84,7 @@ Read these when entering the matching phase:
 - On each wake-up, inspect the latest PR checks, not stale runs.
 - For bug-fix PRs with an intentional red CI reproduction PR, explicitly find the same job family or CI path that failed in the reproduction branch and verify that it is now green on the fix PR.
 - For bug-fix PRs with a manual-test report PR, state whether the manual regression was re-run, who or what ran it, and whether the observed behavior now matches the fixed expectation.
-- If CI fails, read `frb-fix-ci` and `frb-ci`, diagnose the latest relevant failure, fix it, commit, push, and continue monitoring.
+- If CI fails, read `frb-fix-ci` and the user's `tom-ci` skill, diagnose the latest relevant failure, fix it, commit, push, and continue monitoring.
 - If CI appears flaky, rerun only failed jobs when appropriate, then keep monitoring.
 
 ### 8. Stop only when ready
@@ -94,7 +94,7 @@ Read these when entering the matching phase:
 
 ## Automation Rules
 
-- Follow `frb-ci` to wait on the PR URL after each push, rerun, or handled CI event.
+- Follow the user's `tom-ci` skill to wait on the PR URL after each push, rerun, or handled CI event.
 - Treat its return as a wake-up signal, not a CI verdict. Inspect the reported checks, fix or rerun as required, then call the waiter again.
 - Do not add a separate time-based heartbeat or detached polling loop for the same PR.
 - Stop invoking the waiter once the stop conditions are met.
@@ -102,5 +102,5 @@ Read these when entering the matching phase:
 ## Failure Handling
 
 - If blocked by permissions, missing credentials, a required external reviewer delay, or unavailable infrastructure, explain the concrete blocker and keep the PR state explicit.
-- If a CI run is queued for a long time, continue bounded waits using `frb-ci`.
+- If a CI run is queued for a long time, continue bounded waits using the user's `tom-ci` skill.
 - If new user instructions arrive, let the newest instruction steer the workflow while preserving already-completed work.
