@@ -53,6 +53,17 @@ void main() {
     );
   });
 
+  test('dart valgrind rejects diagnostics emitted only on stderr', () {
+    const stdout = 'All tests passed!';
+    const stderr = 'definitely lost: 1 bytes';
+
+    expect(
+      () => checkValgrindOutput(stdout),
+      throwsException,
+      reason: 'Valgrind reported an error on stderr: $stderr',
+    );
+  });
+
   test('linux build bundle path follows the current machine architecture', () {
     expect(
       linuxBuildBundlePathForTesting(machineArchitecture: 'x86_64'),
