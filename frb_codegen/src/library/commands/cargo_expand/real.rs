@@ -1,4 +1,4 @@
-use super::{features::feature_args, CODEGEN_RUNNING_ENV};
+use super::CODEGEN_RUNNING_ENV;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::command_args;
@@ -15,6 +15,7 @@ use std::borrow::Cow;
 use std::collections::HashMap;
 use std::env;
 use std::path::{Path, PathBuf};
+use std::str::FromStr;
 
 const CARGO_EXPAND_FALLBACK_VERSION: &str = "1.0.112";
 
@@ -75,7 +76,12 @@ fn run_raw(
         vec![]
     };
 
-    let args_features = feature_args(rust_crate_dir, interest_crate_name, features)?;
+    let args_features: Vec<PathBuf> = features
+        .unwrap_or_default()
+        .iter()
+        .flat_map(|feature| vec!["--features", feature])
+        .map(PathBuf::from_str)
+        .try_collect()?;
 
     let target_dir = env::var_os("OUT_DIR").map(|path| PathBuf::from(path).join("frb-expand"));
     let mut args = command_args!(
