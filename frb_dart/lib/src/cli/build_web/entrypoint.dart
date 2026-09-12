@@ -66,7 +66,7 @@ class Config {
 
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(
-    help: 'Override RUSTFLAGS environment variable when running wasm-pack',
+    help: 'Override WebAssembly target Rust compiler flags when running wasm-pack',
   )
   late String? wasmPackRustflags;
 

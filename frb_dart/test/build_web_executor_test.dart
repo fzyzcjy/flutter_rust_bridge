@@ -10,7 +10,17 @@ void main() {
   test('wasm-pack retains unrelated wrappers without cargo llvm-cov', () {
     expect(
       computeWasmPackRemovedParentEnvKeys(const {'RUSTC_WRAPPER': 'sccache'}),
-      isEmpty,
+      isNot(contains('RUSTC_WRAPPER')),
+    );
+  });
+
+  test('wasm-pack removes inherited flags that override target rustflags', () {
+    expect(
+      computeWasmPackRemovedParentEnvKeys(const {
+        'RUSTFLAGS': '--cfg inherited',
+        'CARGO_ENCODED_RUSTFLAGS': '--cfg\u001finherited',
+      }),
+      containsAll(['RUSTFLAGS', 'CARGO_ENCODED_RUSTFLAGS']),
     );
   });
 
@@ -191,7 +201,10 @@ void main() {
       expect(wasmPack.env, containsPair('RUSTUP_TOOLCHAIN', 'nightly'));
       expect(
         wasmPack.env,
-        containsPair('RUSTFLAGS', buildWebDefaultWasmPackRustflags),
+        containsPair(
+          'CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUSTFLAGS',
+          buildWebDefaultWasmPackRustflags,
+        ),
       );
       expect(
         wasmPack.removedParentEnvKeys,
@@ -299,7 +312,10 @@ void main() {
     );
     expect(
       wasmPack.env,
-      containsPair('RUSTFLAGS', '-C target-feature=+atomics'),
+      containsPair(
+        'CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUSTFLAGS',
+        '-C target-feature=+atomics',
+      ),
     );
 
     final wasmBindgen = calls.singleWhere(
