@@ -121,8 +121,10 @@ mod tests {
             environment.insert("CARGO_CFG_FEATURE".into(), features.into());
             let args = feature_args_with_env(fixture.path(), None, None, &environment).unwrap();
             let output = Command::new("cargo")
-                .args(["expand", "--lib", "--ugly"])
+                .args(["rustc", "--lib"])
                 .args(args)
+                .args(["--", "-Zunpretty=expanded"])
+                .env("RUSTC_BOOTSTRAP", "1")
                 .current_dir(fixture.path())
                 .output()
                 .unwrap();
