@@ -33,7 +33,7 @@ void main() {
           environment: const {'TSAN_OPTIONS': 'halt_on_error=1'},
         );
         expect(
-          environment,
+          Map.of(environment)..remove('LSAN_OPTIONS'),
           (package == 'frb_example/pure_dart_pde' ||
                       package == 'frb_example/pure_dart') &&
                   sanitizer == Sanitizer.tsan
@@ -47,6 +47,89 @@ void main() {
         );
       }
     }
+  });
+
+  test('CST leak suppressions apply only to pure Dart leak detectors', () {
+    for (final package in kDartModeOfPackage.keys) {
+      for (final sanitizer in Sanitizer.values) {
+        final environment = sanitizerEntrypointEnvironmentForTesting(
+          package: package,
+          sanitizer: sanitizer,
+          environment: const {'LSAN_OPTIONS': 'verbosity=1'},
+        );
+        expect(
+          environment['LSAN_OPTIONS'],
+          package == 'frb_example/pure_dart' &&
+                  (sanitizer == Sanitizer.asan || sanitizer == Sanitizer.lsan)
+              ? 'verbosity=1:detect_leaks=1:exitcode=23:print_suppressions=1:'
+                    'suppressions=../../tools/dart_lsan_cst.supp'
+              : isNull,
+        );
+      }
+    }
+  });
+
+  test('CST leak suppression rejects unknown rules and excess leaks', () {
+    const rule =
+        '^frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinMoi\$';
+    const report =
+        '-----------------------------------------------------\n'
+        'Suppressions used:\n'
+        '  count bytes template\n'
+        '     35   560 $rule\n'
+        '-----------------------------------------------------\n';
+    expect(() => checkCstLeakSuppressionForTesting(''), returnsNormally);
+    expect(() => checkCstLeakSuppressionForTesting(report), returnsNormally);
+    for (final unexpected in [
+      report.replaceAll('35   560', '36   560'),
+      report.replaceAll('35   560', '35   561'),
+      report.replaceAll(rule, 'frb_rust_vec_u8_new'),
+      report.replaceAll(rule, '*'),
+      report.replaceAll('35   560 $rule', '35   560 $rule\n1 16 $rule'),
+      '$report$report',
+      'Suppressions used:\nmalformed\n',
+    ]) {
+      expect(
+        () => checkCstLeakSuppressionForTesting(unexpected),
+        throwsException,
+      );
+    }
+    expect(
+      () => checkSanitizerResultForTesting(
+        exitCode: 23,
+        stdout: 'FRB_DART_TEST_RESULT: success',
+        stderr: '$report\nERROR: LeakSanitizer: detected memory leaks',
+        expectSucceed: true,
+      ),
+      throwsException,
+    );
+  });
+
+  test('LSAN rules name only the observed CST container allocators', () {
+    final rules = File('../../tools/dart_lsan_cst.supp').readAsLinesSync();
+    final expected = {
+      for (final kind in ['enum_opaque', 'opaque_nested'])
+        for (final variant in [
+          'moi',
+          'normal',
+          'rust_async',
+          'rust_async_moi',
+          'sync',
+          'sync_moi',
+        ])
+          'leak:^frbgen_frb_example_pure_dart_cst_new_box_autoadd_${kind}_twin_$variant\$',
+      for (final variant in [
+        'Moi',
+        'Normal',
+        'RustAsync',
+        'RustAsyncMoi',
+        'Sync',
+        'SyncMoi',
+      ])
+        'leak:^frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwin$variant\$',
+    };
+    expect(rules.toSet(), expected);
+    expect(rules.length, expected.length);
   });
 
   test('PDE thread suppression accepts only one known creation path', () {
@@ -132,10 +215,18 @@ void main() {
     );
   });
 
-  test('Valgrind does not suppress FRB serializer or CST allocations', () {
+  test('Valgrind suppresses only the known CST allocators', () {
     final suppressions = File('../../tools/dart_valgrind.supp')
         .readAsStringSync();
-    expect(suppressions, isNot(contains('frbgen_')));
+    expect(
+      RegExp(r'fun:(frbgen_\S+)').allMatches(suppressions).map((m) => m[1]),
+      [
+        'frbgen_frb_example_pure_dart_cst_new_box_speed_twin_sync',
+        'frbgen_frb_example_pure_dart_cst_new_box_autoadd_note_twin_sync',
+        'frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinMoi',
+        'frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinMoi',
+      ],
+    );
     expect(suppressions, isNot(contains('frb_rust_vec_u8_new')));
   });
 

@@ -56,6 +56,19 @@ Map<String, String> sanitizerEntrypointEnvironmentForTesting({
   required Sanitizer sanitizer,
   required Map<String, String> environment,
 }) {
+  if (package == 'frb_example/pure_dart' &&
+      (sanitizer == Sanitizer.lsan || sanitizer == Sanitizer.asan)) {
+    final existing = environment['LSAN_OPTIONS'];
+    return {
+      'LSAN_OPTIONS': [
+        if (existing != null && existing.isNotEmpty) existing,
+        'detect_leaks=1',
+        'exitcode=23',
+        'print_suppressions=1',
+        'suppressions=../../tools/dart_lsan_cst.supp',
+      ].join(':'),
+    };
+  }
   final suppressionFile = switch (package) {
     'frb_example/pure_dart' => 'dart_tsan_pure.supp',
     'frb_example/pure_dart_pde' => 'dart_tsan_pde.supp',
@@ -73,6 +86,36 @@ Map<String, String> sanitizerEntrypointEnvironmentForTesting({
       'suppressions=../../tools/$suppressionFile',
     ].join(':'),
   };
+}
+
+void checkCstLeakSuppressionForTesting(String stderr) {
+  const header = 'Suppressions used:';
+  if (!stderr.contains(header)) return;
+
+  final tables = RegExp(
+    r'Suppressions used:\r?\n\s*count\s+bytes\s+template\r?\n'
+    r'((?:\s*\d+\s+\d+\s+[^\r\n]+\r?\n)+)-+\r?\n',
+  ).allMatches(stderr);
+  if (tables.length != 1 || header.allMatches(stderr).length != 1) {
+    throw Exception('Unexpected LSAN suppression summary');
+  }
+  final rules = File('../../tools/dart_lsan_cst.supp')
+      .readAsLinesSync()
+      .map((line) => line.substring('leak:'.length))
+      .toSet();
+  var count = 0;
+  var bytes = 0;
+  for (final row in tables.single.group(1)!.trim().split('\n')) {
+    final fields = row.trim().split(RegExp(r'\s+'));
+    if (fields.length != 3 || !rules.remove(fields[2])) {
+      throw Exception('Unexpected LSAN suppression rule');
+    }
+    count += int.parse(fields[0]);
+    bytes += int.parse(fields[1]);
+  }
+  if (count > 35 || bytes > 560) {
+    throw Exception('Known CST leak suppression exceeded its budget');
+  }
 }
 
 void checkPdeThreadLeakSuppressionForTesting(String stderr) {
@@ -342,6 +385,9 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
     checkExitCode: false,
   );
 
+  if (sanitizerEnvironment.containsKey('LSAN_OPTIONS')) {
+    checkCstLeakSuppressionForTesting(output.stderr);
+  }
   if (sanitizerEnvironment.containsKey('TSAN_OPTIONS')) {
     if (relativePwd == 'frb_example/pure_dart') {
       checkPureThreadLeakSuppressionForTesting(output.stderr);
