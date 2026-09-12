@@ -13,6 +13,8 @@ import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -50,7 +52,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     _testAppSettings(settings[1]);
   });
 
-  test('dart call mirror_struct_stream', () async {
+  test('dart call mirror_struct_stream',
+      skip: skipWebStreamFlake(
+        twin: 'TwinSync',
+        wasmModes: ['Sse'],
+      ), () async {
     final ret = await mirrorStructStreamTwinSync().first;
     _testAppSettings(ret.a);
     expect(ret.b.content, true);

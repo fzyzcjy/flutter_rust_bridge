@@ -1,5 +1,6 @@
 # Limitations of WASM
 
+- Rust-to-Dart streams can be flaky; see [Web streams](../../guides/types/translatable/stream#web-limitation).
 - Safari cannot spawn nested `Worker`s. A workaround is to build two variants of the library,
   one with multithreading and one without, and serve Safari users the single-threaded variant.
   For a more general solution, check out [wasm-feature-detect](https://github.com/GoogleChromeLabs/wasm-feature-detect)
