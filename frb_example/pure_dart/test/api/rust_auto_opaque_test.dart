@@ -308,7 +308,7 @@ Future<void> main({
     );
   });
 
-  test('stream sink', () async {
+  test('stream sink', skip: skipWebStream, () async {
     final stream = rustAutoOpaqueStreamSinkTwinNormal();
     final obj = (await stream.toList()).single;
     await futurizeVoidTwinNormal(

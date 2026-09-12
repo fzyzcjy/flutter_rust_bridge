@@ -79,6 +79,11 @@ const bool kIsDartWasm = kIsWeb && !identical(0, 0.0);
 String? skipWeb([String reason = 'unspecified']) =>
     kIsWeb ? 'Skipped on web (reason: $reason)' : null;
 
+String? get skipWebStream => skipWeb(
+      'Rust-to-Dart streams are currently unreliable on Web: '
+      'https://cjycode.com/flutter_rust_bridge/guides/types/translatable/stream',
+    );
+
 bool get releaseMode {
   var ans = true;
   assert(() {
