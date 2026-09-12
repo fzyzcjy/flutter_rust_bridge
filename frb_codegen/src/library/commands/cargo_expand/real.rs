@@ -12,6 +12,7 @@ use lazy_static::lazy_static;
 use log::{debug, info};
 use regex::{Captures, Regex};
 use std::borrow::Cow;
+use std::collections::HashMap;
 use std::env;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
@@ -96,11 +97,18 @@ fn run_raw(
         args.extend([PathBuf::from("--target-dir"), target_dir]);
     }
 
-    let extra_env = [(
+    let mut extra_env: HashMap<String, String> = [(
         "RUSTFLAGS".to_owned(),
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
     ), (CODEGEN_RUNNING_ENV.to_owned(), "1".to_owned())]
     .into();
+
+    if let Ok(flags) = env::var("CARGO_ENCODED_RUSTFLAGS") {
+        extra_env.insert(
+            "CARGO_ENCODED_RUSTFLAGS".to_owned(),
+            append_encoded_rustflags(&flags, extra_rustflags),
+        );
+    }
 
     let output = execute_command(
         "cargo",
@@ -135,6 +143,14 @@ fn run_raw(
     }
 
     Ok(stdout.lines().skip(1).join("\n"))
+}
+
+fn append_encoded_rustflags(existing: &str, extra: &str) -> String {
+    existing
+        .split('\u{1f}')
+        .filter(|flag| !flag.is_empty())
+        .chain(extra.split_whitespace())
+        .join("\u{1f}")
 }
 
 fn install_cargo_expand() -> Result<()> {
@@ -183,8 +199,22 @@ fn cargo_expand_install_args(version: Option<&str>) -> Vec<PathBuf> {
 #[cfg(test)]
 mod tests {
     use super::{
+        append_encoded_rustflags,
         cargo_expand_fallback_version, cargo_expand_install_args, decode_macro_frb_encoded_comments,
     };
+
+    /// Build-script encoded flags preserve arguments and include the expansion cfg.
+    #[test]
+    fn test_encoded_rustflags_preserve_existing_arguments() {
+        assert_eq!(
+            append_encoded_rustflags("--cfg\u{1f}custom=\"with spaces\"", "--cfg frb_expand"),
+            "--cfg\u{1f}custom=\"with spaces\"\u{1f}--cfg\u{1f}frb_expand"
+        );
+        assert_eq!(
+            append_encoded_rustflags("", "--cfg frb_expand"),
+            "--cfg\u{1f}frb_expand"
+        );
+    }
 
     /// Decodes every encoded macro comment, including adjacent comments.
     #[test]
