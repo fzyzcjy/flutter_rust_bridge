@@ -12,15 +12,14 @@ import '../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('dart call funcStreamSinkArgPositionTwinNormal', skip: skipWebStream,
-      () async {
+  test('dart call funcStreamSinkArgPositionTwinNormal', () async {
     // We only care about whether the codegen can understand StreamSink
     // as non-first argument in Rust, thus we do not test the return values.
     // ignore: unawaited_futures
     funcStreamSinkArgPositionTwinNormal(a: 100, b: 200);
   });
 
-  test('call funcStreamReturnErrorTwinNormal', skip: skipWebStream, () async {
+  test('call funcStreamReturnErrorTwinNormal', () async {
     await expectLater(
       () async {
         await for (final _ in await funcStreamReturnErrorTwinNormal()) {}
@@ -62,20 +61,26 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   }
 
-  test('dart call handle_stream_sink_at_1', skip: skipWebStream, () async {
+  test('dart call handle_stream_sink_at_1', skip: skipWebStreamFlake(
+    twin: 'TwinNormal',
+    jsModes: ['RustAsyncSse'],
+  ), () async {
     await testHandleStream(handleStreamSinkAt1TwinNormal);
   });
 
-  test('dart call handle_stream_sink_at_2', skip: skipWebStream, () async {
+  test('dart call handle_stream_sink_at_2', skip: skipWebStreamFlake(
+    twin: 'TwinNormal',
+    wasmModes: ['RustAsync'],
+    pde: true,
+  ), () async {
     await testHandleStream(handleStreamSinkAt2TwinNormal);
   });
 
-  test('dart call handle_stream_sink_at_3', skip: skipWebStream, () async {
+  test('dart call handle_stream_sink_at_3', () async {
     await testHandleStream(handleStreamSinkAt3TwinNormal);
   });
 
-  test('stream_sink_fixed_sized_primitive_array_twin_normal',
-      skip: skipWebStream, () async {
+  test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
     final output =
         await streamSinkFixedSizedPrimitiveArrayTwinNormal().toList();
     expect(output, [
@@ -84,14 +89,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     ]);
   });
 
-  test('stream_sink_inside_vec_twin_normal', skip: skipWebStream, () async {
+  test('stream_sink_inside_vec_twin_normal', () async {
     final sinks = [RustStreamSink<int>(), RustStreamSink<int>()];
     await streamSinkInsideVecTwinNormal(arg: sinks);
     expect(await sinks[0].stream.toList(), [100, 200]);
     expect(await sinks[1].stream.toList(), [100, 200]);
   });
 
-  test('stream_sink_inside_struct_twin_normal', skip: skipWebStream, () async {
+  test('stream_sink_inside_struct_twin_normal', () async {
     final arg = MyStructContainingStreamSinkTwinNormal(
       a: 1000,
       b: RustStreamSink<int>(),
@@ -100,8 +105,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await arg.b.stream.toList(), [1000]);
   });
 
-  test('func_stream_add_value_and_error_twin_normal', skip: skipWebStream,
-      () async {
+  test('func_stream_add_value_and_error_twin_normal', () async {
     final stream = await funcStreamAddValueAndErrorTwinNormal();
     final events = <String>[];
     final onDone = Completer<void>();
