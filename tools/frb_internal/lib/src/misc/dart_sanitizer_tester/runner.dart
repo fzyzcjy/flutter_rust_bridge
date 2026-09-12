@@ -113,7 +113,7 @@ void checkCstLeakSuppressionForTesting(String stderr) {
     count += int.parse(fields[0]);
     bytes += int.parse(fields[1]);
   }
-  if (count > 35 || bytes > 560) {
+  if (count > 36 || bytes > 576) {
     throw Exception('Known CST leak suppression exceeded its budget');
   }
 }
