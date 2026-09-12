@@ -47,19 +47,45 @@ Future<String> _getCachedSanitizedDartBinary({
   required String pathCacheRoot,
 }) async {
   final baseName = '${config.sanitizer.dartSdkBuildOutDir}_dart-sdk';
+  final pathTarGz = await _getVerifiedSanitizedDartArchive(
+    releaseName: releaseName,
+    pathCacheRoot: pathCacheRoot,
+    baseName: baseName,
+  );
+  final pathUnzippedDir = path.join(pathCacheRoot, baseName);
+  final relativePathBin =
+      'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart';
+  final pathBin = path.join(pathUnzippedDir, relativePathBin);
+
+  if (!await File(path.join(pathUnzippedDir, '.complete')).exists() ||
+      !await File(pathBin).exists()) {
+    await _extractSanitizedDartArchive(
+      pathTarGz: pathTarGz,
+      pathUnzippedDir: pathUnzippedDir,
+      relativePathBin: relativePathBin,
+    );
+  }
+
+  if (!await File(pathBin).exists()) {
+    throw Exception('$pathBin still not exist');
+  }
+
+  await _printSanitizedDartVersion(pathBin);
+  return pathBin;
+}
+
+Future<String> _getVerifiedSanitizedDartArchive({
+  required String releaseName,
+  required String pathCacheRoot,
+  required String baseName,
+}) async {
   final fileNameTarGz = '$baseName.tar.gz';
   final fileNameChecksum = '$fileNameTarGz.sha256';
   final pathTarGz = path.join(pathCacheRoot, fileNameTarGz);
   final pathChecksum = path.join(pathCacheRoot, fileNameChecksum);
-  final pathUnzippedDir = path.join(pathCacheRoot, baseName);
-  final pathExtractionComplete = path.join(pathUnzippedDir, '.complete');
   final relativePathCacheRoot = sanitizedDartCacheRelativePathForTesting(
     repoRootPath: Directory.current.parent.parent.path,
     cacheRootPath: pathCacheRoot,
-  );
-  final pathBin = path.join(
-    pathUnzippedDir,
-    'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart',
   );
 
   if (!await File(pathTarGz).exists()) {
@@ -102,40 +128,35 @@ Future<String> _getCachedSanitizedDartBinary({
     );
   }
 
-  if (!await File(pathExtractionComplete).exists() ||
-      !await File(pathBin).exists()) {
-    final pathTemporaryDirectory =
-        '$pathUnzippedDir.part-${pid}_'
-        '${DateTime.now().microsecondsSinceEpoch}';
-    await Directory(pathTemporaryDirectory).create(recursive: true);
-    try {
-      await exec('tar -xvzf $pathTarGz -C $pathTemporaryDirectory');
-      final pathTemporaryBin = path.join(
-        pathTemporaryDirectory,
-        'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart',
-      );
-      if (!await File(pathTemporaryBin).exists()) {
-        throw Exception('$pathTemporaryBin still not exist');
-      }
-      await File(path.join(pathTemporaryDirectory, '.complete')).create();
+  return pathTarGz;
+}
 
-      if (await Directory(pathUnzippedDir).exists()) {
-        await Directory(pathUnzippedDir).delete(recursive: true);
-      }
-      await Directory(pathTemporaryDirectory).rename(pathUnzippedDir);
-    } finally {
-      if (await Directory(pathTemporaryDirectory).exists()) {
-        await Directory(pathTemporaryDirectory).delete(recursive: true);
-      }
+Future<void> _extractSanitizedDartArchive({
+  required String pathTarGz,
+  required String pathUnzippedDir,
+  required String relativePathBin,
+}) async {
+  final pathTemporaryDirectory =
+      '$pathUnzippedDir.part-${pid}_'
+      '${DateTime.now().microsecondsSinceEpoch}';
+  await Directory(pathTemporaryDirectory).create(recursive: true);
+  try {
+    await exec('tar -xvzf $pathTarGz -C $pathTemporaryDirectory');
+    final pathTemporaryBin = path.join(pathTemporaryDirectory, relativePathBin);
+    if (!await File(pathTemporaryBin).exists()) {
+      throw Exception('$pathTemporaryBin still not exist');
+    }
+    await File(path.join(pathTemporaryDirectory, '.complete')).create();
+
+    if (await Directory(pathUnzippedDir).exists()) {
+      await Directory(pathUnzippedDir).delete(recursive: true);
+    }
+    await Directory(pathTemporaryDirectory).rename(pathUnzippedDir);
+  } finally {
+    if (await Directory(pathTemporaryDirectory).exists()) {
+      await Directory(pathTemporaryDirectory).delete(recursive: true);
     }
   }
-
-  if (!await File(pathBin).exists()) {
-    throw Exception('$pathBin still not exist');
-  }
-
-  await _printSanitizedDartVersion(pathBin);
-  return pathBin;
 }
 
 String sanitizedDartReleaseName({Map<String, String>? environment}) {
@@ -203,36 +224,12 @@ Future<void> _downloadSanitizedDartBinaryArtifact({
   print('Download artifact from $publicUrl to $pathDestination...');
 
   try {
-    try {
-      await Dio().download(publicUrl, pathTemporary);
-    } on DioException {
-      final token =
-          Platform.environment['GITHUB_TOKEN'] ??
-          Platform.environment['GH_TOKEN'];
-      if (token == null || token.isEmpty) rethrow;
-
-      print(
-        'Public artifact download failed; retry via GitHub API asset download',
-      );
-
-      final assetId = await _findGitHubReleaseAssetId(
-        releaseName: releaseName,
-        fileName: fileName,
-        token: token,
-      );
-      final response = await Dio().get<List<int>>(
-        'https://api.github.com/repos/fzyzcjy/dart_lang_ci/releases/assets/$assetId',
-        options: Options(
-          responseType: ResponseType.bytes,
-          headers: {
-            HttpHeaders.authorizationHeader: 'Bearer $token',
-            HttpHeaders.acceptHeader: 'application/octet-stream',
-            HttpHeaders.userAgentHeader: 'flutter-rust-bridge-ci',
-          },
-        ),
-      );
-      await File(pathTemporary).writeAsBytes(response.data!);
-    }
+    await _downloadSanitizedDartArtifactToFile(
+      publicUrl: publicUrl,
+      releaseName: releaseName,
+      fileName: fileName,
+      pathTemporary: pathTemporary,
+    );
 
     if (await File(pathDestination).exists()) {
       await File(pathTemporary).delete();
@@ -243,6 +240,44 @@ Future<void> _downloadSanitizedDartBinaryArtifact({
     if (await File(pathTemporary).exists()) {
       await File(pathTemporary).delete();
     }
+  }
+}
+
+Future<void> _downloadSanitizedDartArtifactToFile({
+  required String publicUrl,
+  required String releaseName,
+  required String fileName,
+  required String pathTemporary,
+}) async {
+  try {
+    await Dio().download(publicUrl, pathTemporary);
+  } on DioException {
+    final token =
+        Platform.environment['GITHUB_TOKEN'] ??
+        Platform.environment['GH_TOKEN'];
+    if (token == null || token.isEmpty) rethrow;
+
+    print(
+      'Public artifact download failed; retry via GitHub API asset download',
+    );
+
+    final assetId = await _findGitHubReleaseAssetId(
+      releaseName: releaseName,
+      fileName: fileName,
+      token: token,
+    );
+    final response = await Dio().get<List<int>>(
+      'https://api.github.com/repos/fzyzcjy/dart_lang_ci/releases/assets/$assetId',
+      options: Options(
+        responseType: ResponseType.bytes,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $token',
+          HttpHeaders.acceptHeader: 'application/octet-stream',
+          HttpHeaders.userAgentHeader: 'flutter-rust-bridge-ci',
+        },
+      ),
+    );
+    await File(pathTemporary).writeAsBytes(response.data!);
   }
 }
 
