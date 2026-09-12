@@ -80,7 +80,15 @@ void main() {
         '-----------------------------------------------------\n';
     expect(() => checkCstLeakSuppressionForTesting(''), returnsNormally);
     expect(() => checkCstLeakSuppressionForTesting(report), returnsNormally);
+    final secondRule = rule.replaceAll('TwinMoi', 'TwinNormal');
+    final multiple = report.replaceAll(
+      '35   560 $rule',
+      '20 320 $rule\n15 240 $secondRule',
+    );
+    expect(() => checkCstLeakSuppressionForTesting(multiple), returnsNormally);
     for (final unexpected in [
+      multiple.replaceAll('15 240', '16 240'),
+      multiple.replaceAll('15 240', '15 241'),
       report.replaceAll('35   560', '36   560'),
       report.replaceAll('35   560', '35   561'),
       report.replaceAll(rule, 'frb_rust_vec_u8_new'),
