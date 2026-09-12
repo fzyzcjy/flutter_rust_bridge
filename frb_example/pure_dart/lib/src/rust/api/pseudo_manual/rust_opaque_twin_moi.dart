@@ -75,6 +75,12 @@ Future<String> unwrapRustOpaqueTwinMoi({required HideDataTwinMoi opaque}) =>
 Future<FrbOpaqueReturnTwinMoi> frbGeneratorTestTwinMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinMoiFrbGeneratorTestTwinMoi();
 
+Future<void> reproduceMoiArcReleaseContentionTwinMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinMoiReproduceMoiArcReleaseContentionTwinMoi();
+
+Future<int> moiArcContentionValueDropCountTwinMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinMoiMoiArcContentionValueDropCountTwinMoi();
+
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinMoi >>
 abstract class BoxDartDebugTwinMoi implements RustOpaqueInterface {}
 

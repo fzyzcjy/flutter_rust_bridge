@@ -87,6 +87,12 @@ FrbOpaqueReturnTwinSyncSseMoi frbGeneratorTestTwinSyncSseMoi() => RustLib
     .instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncSseMoiFrbGeneratorTestTwinSyncSseMoi();
 
+void reproduceMoiArcReleaseContentionTwinSyncSseMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncSseMoiReproduceMoiArcReleaseContentionTwinSyncSseMoi();
+
+int moiArcContentionValueDropCountTwinSyncSseMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncSseMoiMoiArcContentionValueDropCountTwinSyncSseMoi();
+
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinSyncSseMoi >>
 abstract class BoxDartDebugTwinSyncSseMoi implements RustOpaqueInterface {}
 

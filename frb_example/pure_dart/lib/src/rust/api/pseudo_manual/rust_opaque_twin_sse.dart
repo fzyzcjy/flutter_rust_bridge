@@ -76,6 +76,12 @@ Future<String> unwrapRustOpaqueTwinSse({required HideDataTwinSse opaque}) =>
 Future<FrbOpaqueReturnTwinSse> frbGeneratorTestTwinSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSseFrbGeneratorTestTwinSse();
 
+Future<void> reproduceMoiArcReleaseContentionTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSseReproduceMoiArcReleaseContentionTwinSse();
+
+Future<int> moiArcContentionValueDropCountTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSseMoiArcContentionValueDropCountTwinSse();
+
 // Rust type: RustOpaqueNom<Box < dyn DartDebugTwinSse >>
 abstract class BoxDartDebugTwinSse implements RustOpaqueInterface {}
 

@@ -14,6 +14,16 @@ import '../../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
+  test('Web MoiArc release completes after pool contention', () async {
+    await reproduceMoiArcReleaseContentionTwinMoi();
+    final deadline = DateTime.now().add(const Duration(seconds: 5));
+    while (await moiArcContentionValueDropCountTwinMoi() == 0 &&
+        DateTime.now().isBefore(deadline)) {
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+    }
+    expect(await moiArcContentionValueDropCountTwinMoi(), 1);
+  }, skip: !kIsWeb);
+
   test('create and dispose', () async {
     var futureData = createOpaqueTwinMoi();
     var data = await createOpaqueTwinMoi();

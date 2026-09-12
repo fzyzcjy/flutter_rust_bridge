@@ -93,6 +93,14 @@ Future<FrbOpaqueReturnTwinRustAsyncSse> frbGeneratorTestTwinRustAsyncSse() =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncSseFrbGeneratorTestTwinRustAsyncSse();
 
+Future<void> reproduceMoiArcReleaseContentionTwinRustAsyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustOpaqueTwinRustAsyncSseReproduceMoiArcReleaseContentionTwinRustAsyncSse();
+
+Future<int> moiArcContentionValueDropCountTwinRustAsyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiArcContentionValueDropCountTwinRustAsyncSse();
+
 // Rust type: RustOpaqueNom<Box < dyn DartDebugTwinRustAsyncSse >>
 abstract class BoxDartDebugTwinRustAsyncSse implements RustOpaqueInterface {}
 
