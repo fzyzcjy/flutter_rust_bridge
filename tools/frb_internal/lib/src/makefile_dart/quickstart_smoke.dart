@@ -688,7 +688,9 @@ Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
   );
 }
 
-Future<void> _activateMacosQuickstartSmokeApp(Directory packageDirectory) async {
+Future<void> _activateMacosQuickstartSmokeApp(
+  Directory packageDirectory,
+) async {
   final appPath = quickstartSmokeMacosAppPathForTesting(packageDirectory);
   print('Activating macOS quickstart app: $appPath');
   final result = await Process.run('open', [

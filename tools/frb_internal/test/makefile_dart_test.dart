@@ -464,10 +464,16 @@ dev_dependencies:
       '${package.path}/build/macos/Build/Products/Debug',
     )..createSync(recursive: true);
 
-    expect(() => quickstartSmokeMacosAppPathForTesting(package), throwsStateError);
+    expect(
+      () => quickstartSmokeMacosAppPathForTesting(package),
+      throwsStateError,
+    );
     Directory('${products.path}/first.app').createSync();
     Directory('${products.path}/second.app').createSync();
-    expect(() => quickstartSmokeMacosAppPathForTesting(package), throwsStateError);
+    expect(
+      () => quickstartSmokeMacosAppPathForTesting(package),
+      throwsStateError,
+    );
   });
 
   test(
