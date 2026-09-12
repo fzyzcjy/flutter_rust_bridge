@@ -101,6 +101,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       skip: skipWebStreamFlake(
         twin: 'TwinSync',
         wasmModes: ['Sync'],
+        pde: null,
       ), () async {
     final stream =
         ConcatenateWithTwinSync.handleSomeStaticStreamSinkSingleArgTwinSync();
