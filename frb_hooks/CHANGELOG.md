@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.14.0-beta.2
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix `StreamSubscription.cancel()` hanging for an idle `RustStreamSink` #3366 (thanks @dbsxdbsx)
+* Document Dart WebAssembly support #3437
+* Support Dart Wasm output in `build-web` #3431
+* Preserve 64-bit typed arrays in web CST #3430
+* Normalize web callback and opaque interop #3429
+* Normalize web DCO values across Dart compilers #3428
+* Expand Dart WebAssembly test coverage and fix web CI setup #3438 #3182 #3433 #3432
+* Clarify PR size and complexity guidelines #3439
+* Fix flaky native logging tests #3436
+* Skip inactive Homebrew release updates #3427
+
 ## 2.14.0-beta.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
