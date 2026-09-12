@@ -21,14 +21,6 @@ and here is a brief list:
 * Test steps mentioned in quickstart
 * ...
 
-### Sanitizer checks
-
-* Sanitizer jobs exercise the production runtime behavior with instrumented Rust and Dart builds.
-* The sanitized Dart SDK must match the Dart version required by CI; an older artifact is a failure, not a reason to lower SDK constraints.
-* The `deliberate_bad` package checks that the sanitizers detect known invalid operations.
-* Known-bug suppressions must identify the affected allocation or complete diagnostic. Matching only a total leaked-byte count is insufficient.
-* Suppressing a known sanitizer report does not replace successful completion of the integration tests.
-
 ## Usage
 
 This library seems to be used by (I want to say "is used by" but I need to be humble ;) ) many people
