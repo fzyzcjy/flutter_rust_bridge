@@ -159,12 +159,10 @@ pub fn frb_generator_test_twin_normal() -> RustOpaque<FrbOpaqueReturnTwinNormal>
     panic!("dummy code");
 }
 
-#[flutter_rust_bridge::frb(sync)]
 pub fn reproduce_moi_arc_release_contention_twin_normal() {
     contention_repro_twin_normal::release_while_pool_is_read_locked();
 }
 
-#[flutter_rust_bridge::frb(sync)]
 pub fn moi_arc_contention_value_drop_count_twin_normal() -> usize {
     contention_repro_twin_normal::drop_count()
 }
