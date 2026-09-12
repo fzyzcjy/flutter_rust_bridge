@@ -60,7 +60,7 @@ If the computed output disagrees with Codecov:
 - Check whether Git has both SHAs locally; fetch the PR head/base if needed.
 - For a truncated file path in the comment, get the full path from the Codecov URL's `filepath=` query.
 - Verify `Misc :: Codecov` downloaded all expected `*-coverage` artifacts before upload; use the
-  `gh-actions-live-logs` skill for GitHub Actions logs.
+  `frb-ci` skill for GitHub Actions logs.
 
 ### Step 2: Choose the Fix
 
@@ -125,7 +125,7 @@ Use the relevant skills after choosing the test path:
 
 - `frb-develop-feature` for feature/bug regression coverage.
 - `frb-test` for selecting local test commands.
-- `tom-frb-env` before running FRB tests or setup commands in Tom's environment.
+- `frb-dev-env` before running FRB tests or setup commands in Tom's environment.
 
 If the behavior matters but a focused test would be brittle, very expensive, or require a product decision,
 summarize the exact missing lines, the suspected reason they are uncovered, and the realistic options, then

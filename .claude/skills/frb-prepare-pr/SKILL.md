@@ -5,7 +5,7 @@ description: Use when about to create a PR or push changes in flutter_rust_bridg
 
 # FRB Prepare for PR
 
-> **Note:** Check your user-level `remote-testing` rules before running commands. Codegen, lint, and tests may require remote execution.
+> **Note:** Read `frb-dev-env` before running commands and follow the active user's environment rules.
 
 ## Overview
 
@@ -13,7 +13,7 @@ Before creating a PR, ensure generated code is up to date, lint passes, and bug 
 
 **Core principle:** Generate → Lint → Commit → PR.
 
-> **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+> **After codegen:** Follow `frb-dev-env` and verify generated output is present in the selected worktree before reviewing the diff.
 
 ## Workflow
 
@@ -34,7 +34,7 @@ Before creating a PR, ensure generated code is up to date, lint passes, and bug 
    |
    +-- 7. Commit all changes
    |
-   +-- 8. Create PR (use creating-pull-requests skill)
+   +-- 8. Create PR (follow the active user-level PR workflow)
 ```
 
 ## Quick Checklist
@@ -72,4 +72,4 @@ If the PR changes integrate-generated example output but not `frb_codegen/assets
 - `frb-test` - For local debugging when CI fails
 - `frb-pr-review` - PR readiness review gate
 - `frb-ci-filter` - Filtered CI dispatch rules
-- `creating-pull-requests` - Standard PR creation process
+- Follow the active user-level PR workflow when available; otherwise use `gh pr create` with the repository's title and body conventions.

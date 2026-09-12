@@ -5,7 +5,7 @@ description: Use when generated code looks wrong, code generation fails, or you 
 
 # FRB Debugging
 
-> **Note:** Check your user-level `remote-testing` rules before running commands. Codegen and debugging may require remote execution.
+> **Note:** Read `frb-dev-env` before running commands and follow the active user's environment rules.
 
 ## When to Use
 

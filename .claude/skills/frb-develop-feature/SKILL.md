@@ -5,7 +5,7 @@ description: Use when fixing bugs, adding regression tests, adding new features,
 
 # FRB Develop Feature or Bug Fix
 
-> **Note:** Check your user-level `remote-testing` rules before running commands. Tests and codegen may require remote execution.
+> **Note:** Read `frb-dev-env` before running commands and follow the active user's environment rules.
 
 ## Overview
 
@@ -120,7 +120,7 @@ digraph workflow {
    ./frb_internal test-dart-native --package frb_example/dart_minimal
    ```
 
-   > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+   > **After codegen:** Follow `frb-dev-env` and verify generated output is present in the selected worktree before reviewing the diff.
 
 5. **Iterate until test passes**
 
@@ -157,7 +157,7 @@ digraph workflow {
    ./frb_internal test-dart-web --package frb_example/pure_dart_pde
    ```
 
-   > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+   > **After codegen:** Follow `frb-dev-env` and verify generated output is present in the selected worktree before reviewing the diff.
 
    Native tests must pass - they test different codegen configurations. Web tests are optional but recommended for web platform coverage.
 
