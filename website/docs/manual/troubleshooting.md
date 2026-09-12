@@ -48,6 +48,16 @@ generated rs file is not included when building is being done.
 [ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Invalid argument(s): Failed to lookup symbol 'store_dart_post_cobject': target/debug/libadder.so: undefined symbol: store_dart_post_cobject
 ```
 
+## Google Play reports missing 16 KB page size support
+
+If Google Play Console reports that your Rust `.so` library does not support 16 KB page sizes when using the Native Assets backend, try the following:
+
+- Upgrade Android Gradle Plugin (AGP) to **8.5.1 or higher**.
+- Ensure the native build uses **Android NDK r28 or higher**, including on CI.
+- Rebuild the app and verify its shared libraries using the [Android 16 KB page size guide](https://developer.android.com/guide/practices/page-sizes#build).
+
+In [#3421](https://github.com/fzyzcjy/flutter_rust_bridge/issues/3421), upgrading AGP and NDK resolved the warning without changing linker flags. Prebuilt native dependencies must also support 16 KB page sizes; see the Android guide for verification and instructions for older toolchains.
+
 ## Error running `cargo ndk`: `ld: error: unable to find library -lgcc`
 
 Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.com/bbqsrc/cargo-ndk/issues/22)
