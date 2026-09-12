@@ -1,0 +1,21 @@
+Suppressions used:
+  count      bytes template
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_moi$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_normal$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_rust_async$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_rust_async_moi$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_sync$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_sync_moi$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_moi$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_normal$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_rust_async$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_rust_async_moi$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_sync$
+      1         16 ^frbgen_frb_example_pure_dart_cst_new_box_autoadd_opaque_nested_twin_sync_moi$
+      4         64 ^frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinMoi$
+      4         64 ^frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinNormal$
+      4         64 ^frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinRustAsync$
+      4         64 ^frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinRustAsyncMoi$
+      4         64 ^frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinSync$
+      4         64 ^frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinSyncMoi$
+-----------------------------------------------------

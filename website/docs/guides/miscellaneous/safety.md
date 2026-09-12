@@ -3,7 +3,7 @@
 ## CI
 
 We heavily use CI to ensure everything is going well, including but not limited to memory safety.
-Shortly speaking, we deploy not only `Valgrind` but also sanitizers (`ASAN`, `MSAN`, `LSAN`) in the CI,
+Shortly speaking, we deploy not only `Valgrind` but also sanitizers (`ASAN`, `MSAN`, `LSAN`, `TSAN`) in the CI,
 which are commonly used tools to check safety issues.
 
 As for all things that CI checks,
@@ -12,7 +12,7 @@ for full details,
 and here is a brief list:
 
 * Use Valgrind to check safety
-* Use Sanitizers (ASAN, MSAN, LSAN) to check safety
+* Use Sanitizers (ASAN, MSAN, LSAN, TSAN) to check safety
 * Testing (on Android, iOS, Windows, MacOS, Linux, Web)
 * Run performance benchmarks
 * Run `flutter_rust_bridge_codegen`
