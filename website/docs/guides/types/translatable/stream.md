@@ -2,10 +2,7 @@
 
 ## Web limitation
 
-- Some Rust-to-Dart stream configurations have intermittent failures on Web, observed with both Dart-to-JavaScript and Dart-to-WebAssembly compilation.
-- Observed failures include missing or reordered values and streams that do not complete. The underlying cause is not fully resolved.
-- Only the specific Web test configurations with recorded failures are temporarily skipped; other stream tests remain enabled. See the [failure evidence and affected configurations](https://github.com/fzyzcjy/flutter_rust_bridge/pull/3458). Passing Web CI does not establish reliability for the excluded configurations.
-- If your application needs Rust-to-Dart streams on Web, please [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose) describing your use case, browser, compilation target, and a minimal example if available.
+Rust-to-Dart streams can be flaky on Web. If you need this combination, please [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose).
 
 ## Introduction
 
