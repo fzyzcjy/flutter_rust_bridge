@@ -36,6 +36,7 @@ pub fn generate_with_fvm_install_mode(
     fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<()> {
     if std::env::var_os(crate::library::commands::cargo_expand::CODEGEN_RUNNING_ENV).is_some() {
+        debug!("Skipping code generation during nested Cargo expansion");
         return Ok(());
     }
 
