@@ -11,7 +11,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('Web MoiArc release completes after pool contention', () async {
-    await reproduceMoiArcReleaseContentionTwinNormal();
+    await Future<void>.sync(reproduceMoiArcReleaseContentionTwinNormal);
     final deadline = DateTime.now().add(const Duration(seconds: 5));
     while (await moiArcContentionValueDropCountTwinNormal() == 0 &&
         DateTime.now().isBefore(deadline)) {
