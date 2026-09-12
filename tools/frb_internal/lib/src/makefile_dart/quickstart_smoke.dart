@@ -693,8 +693,13 @@ Future<void> _activateMacosQuickstartSmokeApp(
 ) async {
   final appPath = quickstartSmokeMacosAppPathForTesting(packageDirectory);
   print('Activating macOS quickstart app: $appPath');
-  final result = await Process.run('open', [
-    '-a',
+  final result = await Process.run('osascript', [
+    '-e',
+    'on run argv',
+    '-e',
+    'tell application (item 1 of argv) to activate',
+    '-e',
+    'end run',
     appPath,
   ], stderrEncoding: systemEncoding);
   if (result.exitCode != 0) {
