@@ -48,6 +48,12 @@ generated rs file is not included when building is being done.
 [ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Invalid argument(s): Failed to lookup symbol 'store_dart_post_cobject': target/debug/libadder.so: undefined symbol: store_dart_post_cobject
 ```
 
+## Google Play reports missing 16 KB page size support
+
+For Native Assets, try upgrading Android Gradle Plugin (AGP) to **8.5.1+** and using **NDK r28+**, then rebuild. This resolved [#3421](https://github.com/fzyzcjy/flutter_rust_bridge/issues/3421) without changing linker flags.
+
+See the [Android guide](https://developer.android.com/guide/practices/page-sizes#build) for verification and prebuilt dependency requirements.
+
 ## Error running `cargo ndk`: `ld: error: unable to find library -lgcc`
 
 Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.com/bbqsrc/cargo-ndk/issues/22)
