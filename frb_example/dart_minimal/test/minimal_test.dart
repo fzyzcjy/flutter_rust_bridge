@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -25,5 +24,5 @@ Future<void> main() async {
       await Future<void>.delayed(const Duration(milliseconds: 10));
     }
     expect(moiArcContentionValueWasDropped(), isTrue);
-  }, skip: !kIsWeb);
+  }, skip: !const bool.fromEnvironment('dart.library.js_interop'));
 }
