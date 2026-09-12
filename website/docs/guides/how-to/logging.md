@@ -38,6 +38,8 @@ Then enable the bridge with one macro call in a Rust file covered by `rust_input
 flutter_rust_bridge::enable_frb_rust_to_dart_logging!();
 ```
 
+In your Rust initializer, replace `flutter_rust_bridge::setup_default_user_utils()` with `flutter_rust_bridge::setup_backtrace()`. The default utilities register a platform logger on Android, Apple platforms, and Web. Rust's `log` crate accepts only one global logger, so that logger would prevent the Rust-to-Dart bridge from receiving records.
+
 After code generation, `RustLib.init()` automatically initializes the generated log stream and connects it to Dart logging. By default, FRB also installs a simple Dart-side output listener, so items logged via the standard Rust calls like `log::info!` are visible in `flutter run`.
 
 ### Customize Dart output
