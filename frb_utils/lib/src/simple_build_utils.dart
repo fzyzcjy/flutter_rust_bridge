@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, implementation_imports
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
@@ -45,12 +46,13 @@ Future<void> simpleBuild(
 
     final featureArgs = features.expand((f) => ['--features', f]).toList();
 
-    await runCommand(
+    final buildOutput = await runCommand(
       'cargo',
       [
         if (cargoNightly) '+nightly',
         'build',
         '--release',
+        '--message-format=json-render-diagnostics',
         ...cargoExtraArgs,
         ...featureArgs,
       ],
@@ -63,6 +65,18 @@ Future<void> simpleBuild(
     );
 
     output.dependencies.add(rustCrateDir);
+    for (final line in const LineSplitter().convert(buildOutput.stdout)) {
+      final message = jsonDecode(line) as Map<String, dynamic>;
+      if (message['reason'] == 'compiler-artifact') {
+        for (final filename in (message['filenames'] as List).cast<String>()) {
+          if (filename.endsWith('.so') ||
+              filename.endsWith('.dylib') ||
+              filename.endsWith('.dll')) {
+            output.dependencies.add(File(filename).uri);
+          }
+        }
+      }
+    }
 
     print('dependencies: ${output.dependencies}');
   });

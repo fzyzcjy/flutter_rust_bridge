@@ -6,7 +6,12 @@ import 'dart:isolate';
 import 'package:test/test.dart';
 
 void main() {
-  for (final change in ['build.rs', '.cargo/config.toml', 'cargo clean']) {
+  for (final change in [
+    'build.rs',
+    '.cargo/config.toml',
+    'cargo clean',
+    'library removal'
+  ]) {
     test('cached simpleBuild rebuilds after $change', () async {
       final fixture = await Directory.systemTemp.createTemp('frb_hook_cache_');
       addTearDown(() => fixture.delete(recursive: true));
@@ -26,9 +31,9 @@ void main() {
       final outputFile = File(output.path);
       var cached = false;
       for (var attempt = 0; attempt < 4; attempt++) {
-        final before = await outputFile.readAsString();
+        final before = await outputFile.lastModified();
         await _expectAnswer(fixture, 1);
-        if (await outputFile.readAsString() == before) {
+        if (await outputFile.lastModified() == before) {
           cached = true;
           break;
         }
@@ -50,9 +55,18 @@ void main() {
         case 'cargo clean':
           await _run(Directory.fromUri(fixture.uri.resolve('rust/')), 'cargo',
               ['clean']);
+        case 'library removal':
+          final name = Platform.isWindows
+              ? 'cache_probe.dll'
+              : Platform.isMacOS
+                  ? 'libcache_probe.dylib'
+                  : 'libcache_probe.so';
+          await File.fromUri(fixture.uri.resolve('rust/target/release/$name'))
+              .delete();
       }
 
-      await _expectAnswer(fixture, change == 'cargo clean' ? 1 : 2);
+      await _expectAnswer(fixture,
+          change == 'build.rs' || change == '.cargo/config.toml' ? 2 : 1);
     }, timeout: const Timeout(Duration(minutes: 5)));
   }
 }
