@@ -5,7 +5,6 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:meta/meta.dart';
-import 'package:path/path.dart' as path;
 
 enum QuickstartSmokeTarget { web, desktop, android, ios }
 
@@ -336,22 +335,6 @@ List<String> quickstartSmokeMacosScreenshotArgsForTesting(
   String screenshotPath,
 ) => ['-x', '-T', '1', screenshotPath];
 
-@visibleForTesting
-List<String> quickstartSmokeMacosActivationArgsForTesting(
-  String absolutePackagePath,
-) => [
-  '-a',
-  path.posix.join(
-    absolutePackagePath,
-    'build',
-    'macos',
-    'Build',
-    'Products',
-    'Debug',
-    '${path.posix.basename(path.posix.normalize(absolutePackagePath))}.app',
-  ),
-];
-
 Future<_QuickstartSmokeFlutterRun> _startQuickstartSmokeFlutterRun(
   _QuickstartSmokeContext context,
 ) async {
@@ -561,9 +544,10 @@ void _validateQuickstartSmokeResult({
 Future<void> _captureAndOcrQuickstartSmokeScreenshotFromContext(
   _QuickstartSmokeContext context,
 ) async {
-  if (context.target == QuickstartSmokeTarget.desktop && Platform.isMacOS) {
-    await _activateMacosQuickstartSmokeApp(context.absolutePackage.path);
+  if (Platform.isMacOS && context.target == QuickstartSmokeTarget.desktop) {
+    await _activateMacosQuickstartSmokeApp(context.absolutePackage);
   }
+
   await _captureAndOcrQuickstartSmokeScreenshot(
     target: context.target,
     deviceId: context.resolvedDeviceId,
@@ -705,19 +689,44 @@ Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
 }
 
 Future<void> _activateMacosQuickstartSmokeApp(
-  String absolutePackagePath,
+  Directory packageDirectory,
 ) async {
-  final result = await Process.run(
-    'open',
-    quickstartSmokeMacosActivationArgsForTesting(absolutePackagePath),
-    stderrEncoding: systemEncoding,
-  );
+  final appPath = quickstartSmokeMacosAppPathForTesting(packageDirectory);
+  print('Activating macOS quickstart app: $appPath');
+  final result = await Process.run('osascript', [
+    '-e',
+    'on run argv',
+    '-e',
+    'tell application (item 1 of argv) to activate',
+    '-e',
+    'end run',
+    appPath,
+  ], stderrEncoding: systemEncoding);
   if (result.exitCode != 0) {
     print(
       'Failed to activate macOS quickstart app before screenshot '
       '(exitCode=${result.exitCode}, stderr=${result.stderr})',
     );
   }
+}
+
+@visibleForTesting
+String quickstartSmokeMacosAppPathForTesting(Directory packageDirectory) {
+  final products = Directory(
+    '${packageDirectory.path}/build/macos/Build/Products/Debug',
+  );
+  final apps = products
+      .listSync()
+      .whereType<Directory>()
+      .where((directory) => directory.path.endsWith('.app'))
+      .toList();
+  if (apps.length != 1) {
+    throw StateError(
+      'Expected one macOS quickstart app in ${products.path}, '
+      'found ${apps.length}',
+    );
+  }
+  return apps.single.absolute.path;
 }
 
 Future<ProcessResult> _captureWindowsQuickstartSmokeScreenshot(

@@ -445,21 +445,35 @@ dev_dependencies:
     );
   });
 
-  test('quickstart smoke activates the tested macOS app bundle', () {
-    for (final package in [
-      'flutter_via_create',
-      'flutter_via_create_native_assets',
-    ]) {
-      expect(
-        quickstartSmokeMacosActivationArgsForTesting(
-          '/workspace with spaces/frb_example/$package/',
-        ),
-        [
-          '-a',
-          '/workspace with spaces/frb_example/$package/build/macos/Build/Products/Debug/$package.app',
-        ],
-      );
-    }
+  test('quickstart smoke selects the built macOS app regardless of name', () {
+    final package = Directory.systemTemp.createTempSync('quickstart-app-');
+    addTearDown(() => package.deleteSync(recursive: true));
+    final products = '${package.path}/build/macos/Build/Products/Debug';
+    final app = Directory('$products/flutter_via_create_native_assets.app')
+      ..createSync(recursive: true);
+    Directory('$products/FlutterMacOS.framework').createSync();
+    File('$products/not-an-app.app').writeAsStringSync('');
+
+    expect(quickstartSmokeMacosAppPathForTesting(package), app.absolute.path);
+  });
+
+  test('quickstart smoke rejects missing or ambiguous macOS apps', () {
+    final package = Directory.systemTemp.createTempSync('quickstart-app-');
+    addTearDown(() => package.deleteSync(recursive: true));
+    final products = Directory(
+      '${package.path}/build/macos/Build/Products/Debug',
+    )..createSync(recursive: true);
+
+    expect(
+      () => quickstartSmokeMacosAppPathForTesting(package),
+      throwsStateError,
+    );
+    Directory('${products.path}/first.app').createSync();
+    Directory('${products.path}/second.app').createSync();
+    expect(
+      () => quickstartSmokeMacosAppPathForTesting(package),
+      throwsStateError,
+    );
   });
 
   test(

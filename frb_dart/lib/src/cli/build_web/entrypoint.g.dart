@@ -45,7 +45,8 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
   )
   ..addOption(
     'wasm-pack-rustflags',
-    help: 'Override RUSTFLAGS environment variable when running wasm-pack',
+    help:
+        'Override WebAssembly target Rust compiler flags when running wasm-pack',
   )
   ..addOption(
     'dart-compile-js-entrypoint',
