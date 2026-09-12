@@ -53,7 +53,14 @@ edition = "2021"
         if (command == 'wasm-pack') {
           final result = await runCommand(
             'cargo',
-            ['install', '--offline', '--path', source.path, '--root', temp.path],
+            [
+              'install',
+              '--offline',
+              '--path',
+              source.path,
+              '--root',
+              temp.path
+            ],
             pwd: source.path,
             env: env,
             removedParentEnvKeys: removedParentEnvKeys,
@@ -70,7 +77,8 @@ edition = "2021"
     );
 
     expect(installed, isTrue);
-    final executable = Platform.isWindows ? 'frb-host-tool.exe' : 'frb-host-tool';
+    final executable =
+        Platform.isWindows ? 'frb-host-tool.exe' : 'frb-host-tool';
     final output = await runCommand('${temp.path}/bin/$executable', []);
     expect(output.stdout.trim(), 'host-tool-ready');
   }, timeout: const Timeout(Duration(minutes: 2)));
