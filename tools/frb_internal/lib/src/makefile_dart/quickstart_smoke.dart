@@ -544,6 +544,10 @@ void _validateQuickstartSmokeResult({
 Future<void> _captureAndOcrQuickstartSmokeScreenshotFromContext(
   _QuickstartSmokeContext context,
 ) async {
+  if (Platform.isMacOS && context.target == QuickstartSmokeTarget.desktop) {
+    await _activateMacosQuickstartSmokeApp(context.absolutePackage);
+  }
+
   await _captureAndOcrQuickstartSmokeScreenshot(
     target: context.target,
     deviceId: context.resolvedDeviceId,
@@ -677,7 +681,6 @@ Future<void> _captureQuickstartSmokeScreenshot({
 Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
   File screenshotFile,
 ) async {
-  await _activateMacosQuickstartSmokeApp();
   return Process.run(
     'screencapture',
     quickstartSmokeMacosScreenshotArgsForTesting(screenshotFile.path),
@@ -685,10 +688,12 @@ Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
   );
 }
 
-Future<void> _activateMacosQuickstartSmokeApp() async {
-  final result = await Process.run('osascript', [
-    '-e',
-    'tell application "flutter_via_create" to activate',
+Future<void> _activateMacosQuickstartSmokeApp(Directory packageDirectory) async {
+  final appPath = quickstartSmokeMacosAppPathForTesting(packageDirectory);
+  print('Activating macOS quickstart app: $appPath');
+  final result = await Process.run('open', [
+    '-a',
+    appPath,
   ], stderrEncoding: systemEncoding);
   if (result.exitCode != 0) {
     print(
@@ -696,6 +701,25 @@ Future<void> _activateMacosQuickstartSmokeApp() async {
       '(exitCode=${result.exitCode}, stderr=${result.stderr})',
     );
   }
+}
+
+@visibleForTesting
+String quickstartSmokeMacosAppPathForTesting(Directory packageDirectory) {
+  final products = Directory(
+    '${packageDirectory.path}/build/macos/Build/Products/Debug',
+  );
+  final apps = products
+      .listSync()
+      .whereType<Directory>()
+      .where((directory) => directory.path.endsWith('.app'))
+      .toList();
+  if (apps.length != 1) {
+    throw StateError(
+      'Expected one macOS quickstart app in ${products.path}, '
+      'found ${apps.length}',
+    );
+  }
+  return apps.single.absolute.path;
 }
 
 Future<ProcessResult> _captureWindowsQuickstartSmokeScreenshot(
