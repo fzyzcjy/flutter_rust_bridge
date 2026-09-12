@@ -1,9 +1,5 @@
 # Stream / Iterator
 
-## Web limitation
-
-Rust-to-Dart streams can be flaky on Web. If you need this combination, please [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose).
-
 ## Introduction
 
 What is `Stream`? In short: call once, return multiple times; like `Iterator`s.
@@ -192,3 +188,7 @@ pub struct MyStruct {
 
 pub fn f(arr: Vec<StreamSink<i32>>, st: MyStruct) {}
 ```
+
+## Web limitation
+
+Rust-to-Dart streams can be flaky on Web. If you need this combination, please [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose).
