@@ -16,7 +16,8 @@ Future<void> main() async {
   });
   print('Action: Configure tests (end)');
 
-  test('build.rs bindings deliver Rust logs to Dart logging (fix #3402)', () async {
+  test('build.rs bindings deliver Rust logs to Dart logging (fix #3402)',
+      () async {
     const message = 'build.rs logging regression';
     final previousLevel = Logger.root.level;
     Logger.root.level = Level.ALL;
