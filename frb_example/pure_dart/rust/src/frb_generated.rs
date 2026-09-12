@@ -113,7 +113,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueNom,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.14.0-beta.2";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -703344157;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1291160248;
 
 // Section: executor
 
@@ -32536,6 +32536,154 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_vec_enum_stream
                      let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::mirror_twin_sync_sse::mirror_vec_enum_stream_twin_sync_sse(api_sink); })?;   std::result::Result::Ok(output_ok)
                 })()) })
 }
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__moi_arc_contention_value_drop_count_twin_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { move |context|  {
+                    transform_result_dco::<_, _, ()>((move ||  {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_moi::moi_arc_contention_value_drop_count_twin_moi())?;   std::result::Result::Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__rust_opaque__moi_arc_contention_value_drop_count_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "moi_arc_contention_value_drop_count_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| {
+                transform_result_dco::<_, _, ()>((move || {
+                    let output_ok = Ok::<_, ()>(
+                        crate::api::rust_opaque::moi_arc_contention_value_drop_count_twin_normal(),
+                    )?;
+                    std::result::Result::Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__moi_arc_contention_value_drop_count_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { move |context| async move {
+                    transform_result_dco::<_, _, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async::moi_arc_contention_value_drop_count_twin_rust_async().await)?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__moi_arc_contention_value_drop_count_twin_rust_async_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { move |context| async move {
+                    transform_result_dco::<_, _, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::moi_arc_contention_value_drop_count_twin_rust_async_moi().await)?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__moi_arc_contention_value_drop_count_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::moi_arc_contention_value_drop_count_twin_rust_async_sse().await)?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__moi_arc_contention_value_drop_count_twin_rust_async_sse_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::moi_arc_contention_value_drop_count_twin_rust_async_sse_moi().await)?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__moi_arc_contention_value_drop_count_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sse::moi_arc_contention_value_drop_count_twin_sse())?;   std::result::Result::Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__moi_arc_contention_value_drop_count_twin_sse_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sse_moi::moi_arc_contention_value_drop_count_twin_sse_moi())?;   std::result::Result::Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__moi_arc_contention_value_drop_count_twin_sync_impl(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+                transform_result_dco::<_, _, ()>((move || {
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sync::moi_arc_contention_value_drop_count_twin_sync())?;   std::result::Result::Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__moi_arc_contention_value_drop_count_twin_sync_moi_impl(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_sync_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+                transform_result_dco::<_, _, ()>((move || {
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sync_moi::moi_arc_contention_value_drop_count_twin_sync_moi())?;   std::result::Result::Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__moi_arc_contention_value_drop_count_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sync_sse::moi_arc_contention_value_drop_count_twin_sync_sse())?;   std::result::Result::Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__moi_arc_contention_value_drop_count_twin_sync_sse_moi_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "moi_arc_contention_value_drop_count_twin_sync_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::moi_arc_contention_value_drop_count_twin_sync_sse_moi())?;   std::result::Result::Ok(output_ok)
+                })()) })
+}
 fn wire__crate__api__enumeration__multiply_by_ten_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     measure: impl CstDecode<crate::api::enumeration::MeasureTwinNormal>,
@@ -35622,6 +35770,154 @@ fn wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_s
             })())
         },
     )
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__reproduce_moi_arc_release_contention_twin_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { move |context|  {
+                    transform_result_dco::<_, _, ()>((move ||  {
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_moi::reproduce_moi_arc_release_contention_twin_moi(); })?;   std::result::Result::Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__rust_opaque__reproduce_moi_arc_release_contention_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "reproduce_moi_arc_release_contention_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| {
+                transform_result_dco::<_, _, ()>((move || {
+                    let output_ok = Ok::<_, ()>({
+                        crate::api::rust_opaque::reproduce_moi_arc_release_contention_twin_normal();
+                    })?;
+                    std::result::Result::Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__reproduce_moi_arc_release_contention_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { move |context| async move {
+                    transform_result_dco::<_, _, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_rust_async::reproduce_moi_arc_release_contention_twin_rust_async().await; })?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__reproduce_moi_arc_release_contention_twin_rust_async_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { move |context| async move {
+                    transform_result_dco::<_, _, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::reproduce_moi_arc_release_contention_twin_rust_async_moi().await; })?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__reproduce_moi_arc_release_contention_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::reproduce_moi_arc_release_contention_twin_rust_async_sse().await; })?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__reproduce_moi_arc_release_contention_twin_rust_async_sse_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::reproduce_moi_arc_release_contention_twin_rust_async_sse_moi().await; })?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__reproduce_moi_arc_release_contention_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_sse::reproduce_moi_arc_release_contention_twin_sse(); })?;   std::result::Result::Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__reproduce_moi_arc_release_contention_twin_sse_moi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                         let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_sse_moi::reproduce_moi_arc_release_contention_twin_sse_moi(); })?;   std::result::Result::Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__reproduce_moi_arc_release_contention_twin_sync_impl(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+                transform_result_dco::<_, _, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_sync::reproduce_moi_arc_release_contention_twin_sync(); })?;   std::result::Result::Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__reproduce_moi_arc_release_contention_twin_sync_moi_impl(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_sync_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+                transform_result_dco::<_, _, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_sync_moi::reproduce_moi_arc_release_contention_twin_sync_moi(); })?;   std::result::Result::Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__reproduce_moi_arc_release_contention_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_sync_sse::reproduce_moi_arc_release_contention_twin_sync_sse(); })?;   std::result::Result::Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__reproduce_moi_arc_release_contention_twin_sync_sse_moi_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "reproduce_moi_arc_release_contention_twin_sync_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>({ crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::reproduce_moi_arc_release_contention_twin_sync_sse_moi(); })?;   std::result::Result::Ok(output_ok)
+                })()) })
 }
 fn wire__crate__api__init_dart_code__request_init_dart_code_message_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -146025,6 +146321,104 @@ field1: Default::default(), }
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_moi__moi_arc_contention_value_drop_count_twin_moi(
+        port_: i64,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_moi__moi_arc_contention_value_drop_count_twin_moi_impl(port_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__moi_arc_contention_value_drop_count_twin_normal(
+        port_: i64,
+    ) {
+        wire__crate__api__rust_opaque__moi_arc_contention_value_drop_count_twin_normal_impl(port_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__moi_arc_contention_value_drop_count_twin_rust_async(
+        port_: i64,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__moi_arc_contention_value_drop_count_twin_rust_async_impl(port_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__moi_arc_contention_value_drop_count_twin_rust_async_moi(
+        port_: i64,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__moi_arc_contention_value_drop_count_twin_rust_async_moi_impl(port_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__moi_arc_contention_value_drop_count_twin_rust_async_sse(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__moi_arc_contention_value_drop_count_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__moi_arc_contention_value_drop_count_twin_rust_async_sse_moi(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__moi_arc_contention_value_drop_count_twin_rust_async_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sse__moi_arc_contention_value_drop_count_twin_sse(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sse__moi_arc_contention_value_drop_count_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__moi_arc_contention_value_drop_count_twin_sse_moi(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__moi_arc_contention_value_drop_count_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sync__moi_arc_contention_value_drop_count_twin_sync(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync__moi_arc_contention_value_drop_count_twin_sync_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__moi_arc_contention_value_drop_count_twin_sync_moi(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__moi_arc_contention_value_drop_count_twin_sync_moi_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__moi_arc_contention_value_drop_count_twin_sync_sse(
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__moi_arc_contention_value_drop_count_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__moi_arc_contention_value_drop_count_twin_sync_sse_moi(
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__moi_arc_contention_value_drop_count_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__enumeration__multiply_by_ten_twin_normal(
         port_: i64,
         measure: *mut wire_cst_measure_twin_normal,
@@ -147607,6 +148001,104 @@ field1: Default::default(), }
             rust_vec_len_,
             data_len_,
         )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_moi__reproduce_moi_arc_release_contention_twin_moi(
+        port_: i64,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_moi__reproduce_moi_arc_release_contention_twin_moi_impl(port_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__rust_opaque__reproduce_moi_arc_release_contention_twin_normal(
+        port_: i64,
+    ) {
+        wire__crate__api__rust_opaque__reproduce_moi_arc_release_contention_twin_normal_impl(port_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__reproduce_moi_arc_release_contention_twin_rust_async(
+        port_: i64,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__reproduce_moi_arc_release_contention_twin_rust_async_impl(port_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__reproduce_moi_arc_release_contention_twin_rust_async_moi(
+        port_: i64,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__reproduce_moi_arc_release_contention_twin_rust_async_moi_impl(port_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__reproduce_moi_arc_release_contention_twin_rust_async_sse(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__reproduce_moi_arc_release_contention_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__reproduce_moi_arc_release_contention_twin_rust_async_sse_moi(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__reproduce_moi_arc_release_contention_twin_rust_async_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sse__reproduce_moi_arc_release_contention_twin_sse(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sse__reproduce_moi_arc_release_contention_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__reproduce_moi_arc_release_contention_twin_sse_moi(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__reproduce_moi_arc_release_contention_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sync__reproduce_moi_arc_release_contention_twin_sync(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync__reproduce_moi_arc_release_contention_twin_sync_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__reproduce_moi_arc_release_contention_twin_sync_moi(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__reproduce_moi_arc_release_contention_twin_sync_moi_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__reproduce_moi_arc_release_contention_twin_sync_sse(
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__reproduce_moi_arc_release_contention_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__reproduce_moi_arc_release_contention_twin_sync_sse_moi(
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__reproduce_moi_arc_release_contention_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[unsafe(no_mangle)]
@@ -201549,6 +202041,104 @@ mod web {
     }
 
     #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__moi_arc_contention_value_drop_count_twin_moi(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_moi__moi_arc_contention_value_drop_count_twin_moi_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__rust_opaque__moi_arc_contention_value_drop_count_twin_normal(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__rust_opaque__moi_arc_contention_value_drop_count_twin_normal_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__moi_arc_contention_value_drop_count_twin_rust_async(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__moi_arc_contention_value_drop_count_twin_rust_async_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__moi_arc_contention_value_drop_count_twin_rust_async_moi(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__moi_arc_contention_value_drop_count_twin_rust_async_moi_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__moi_arc_contention_value_drop_count_twin_rust_async_sse(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__moi_arc_contention_value_drop_count_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__moi_arc_contention_value_drop_count_twin_rust_async_sse_moi(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__moi_arc_contention_value_drop_count_twin_rust_async_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__moi_arc_contention_value_drop_count_twin_sse(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sse__moi_arc_contention_value_drop_count_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__moi_arc_contention_value_drop_count_twin_sse_moi(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__moi_arc_contention_value_drop_count_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__moi_arc_contention_value_drop_count_twin_sync(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync__moi_arc_contention_value_drop_count_twin_sync_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__moi_arc_contention_value_drop_count_twin_sync_moi(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__moi_arc_contention_value_drop_count_twin_sync_moi_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__moi_arc_contention_value_drop_count_twin_sync_sse(
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__moi_arc_contention_value_drop_count_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__moi_arc_contention_value_drop_count_twin_sync_sse_moi(
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__moi_arc_contention_value_drop_count_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
     pub fn wire__crate__api__enumeration__multiply_by_ten_twin_normal(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         measure: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -203131,6 +203721,104 @@ mod web {
             rust_vec_len_,
             data_len_,
         )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_moi__reproduce_moi_arc_release_contention_twin_moi(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_moi__reproduce_moi_arc_release_contention_twin_moi_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__rust_opaque__reproduce_moi_arc_release_contention_twin_normal(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__rust_opaque__reproduce_moi_arc_release_contention_twin_normal_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__reproduce_moi_arc_release_contention_twin_rust_async(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__reproduce_moi_arc_release_contention_twin_rust_async_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__reproduce_moi_arc_release_contention_twin_rust_async_moi(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__reproduce_moi_arc_release_contention_twin_rust_async_moi_impl(port_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__reproduce_moi_arc_release_contention_twin_rust_async_sse(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__reproduce_moi_arc_release_contention_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__reproduce_moi_arc_release_contention_twin_rust_async_sse_moi(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__reproduce_moi_arc_release_contention_twin_rust_async_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse__reproduce_moi_arc_release_contention_twin_sse(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sse__reproduce_moi_arc_release_contention_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__reproduce_moi_arc_release_contention_twin_sse_moi(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__reproduce_moi_arc_release_contention_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync__reproduce_moi_arc_release_contention_twin_sync(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync__reproduce_moi_arc_release_contention_twin_sync_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__reproduce_moi_arc_release_contention_twin_sync_moi(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__reproduce_moi_arc_release_contention_twin_sync_moi_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__reproduce_moi_arc_release_contention_twin_sync_sse(
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__reproduce_moi_arc_release_contention_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__reproduce_moi_arc_release_contention_twin_sync_sse_moi(
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__reproduce_moi_arc_release_contention_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[wasm_bindgen]

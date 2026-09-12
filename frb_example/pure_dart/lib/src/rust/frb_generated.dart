@@ -376,7 +376,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.14.0-beta.2';
 
   @override
-  int get rustContentHash => -703344157;
+  int get rustContentHash => 1291160248;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -7194,6 +7194,37 @@ abstract class RustLibApi extends BaseApi {
   Stream<List<ApplicationMode>>
       crateApiPseudoManualMirrorTwinSyncSseMirrorVecEnumStreamTwinSyncSse();
 
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinMoiMoiArcContentionValueDropCountTwinMoi();
+
+  Future<int> crateApiRustOpaqueMoiArcContentionValueDropCountTwinNormal();
+
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncMoiArcContentionValueDropCountTwinRustAsync();
+
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncMoiMoiArcContentionValueDropCountTwinRustAsyncMoi();
+
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiArcContentionValueDropCountTwinRustAsyncSse();
+
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiMoiArcContentionValueDropCountTwinRustAsyncSseMoi();
+
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinSseMoiArcContentionValueDropCountTwinSse();
+
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinSseMoiMoiArcContentionValueDropCountTwinSseMoi();
+
+  int crateApiPseudoManualRustOpaqueTwinSyncMoiArcContentionValueDropCountTwinSync();
+
+  int crateApiPseudoManualRustOpaqueTwinSyncMoiMoiArcContentionValueDropCountTwinSyncMoi();
+
+  int crateApiPseudoManualRustOpaqueTwinSyncSseMoiArcContentionValueDropCountTwinSyncSse();
+
+  int crateApiPseudoManualRustOpaqueTwinSyncSseMoiMoiArcContentionValueDropCountTwinSyncSseMoi();
+
   Future<MeasureTwinNormal?> crateApiEnumerationMultiplyByTenTwinNormal(
       {required MeasureTwinNormal measure});
 
@@ -7737,6 +7768,41 @@ abstract class RustLibApi extends BaseApi {
 
   Sequences crateApiPseudoManualMirrorTwinSyncSseRepeatSequenceTwinSyncSse(
       {required int seq, required BigInt times});
+
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinMoiReproduceMoiArcReleaseContentionTwinMoi();
+
+  Future<void> crateApiRustOpaqueReproduceMoiArcReleaseContentionTwinNormal();
+
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncReproduceMoiArcReleaseContentionTwinRustAsync();
+
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncMoiReproduceMoiArcReleaseContentionTwinRustAsyncMoi();
+
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncSseReproduceMoiArcReleaseContentionTwinRustAsyncSse();
+
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiReproduceMoiArcReleaseContentionTwinRustAsyncSseMoi();
+
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinSseReproduceMoiArcReleaseContentionTwinSse();
+
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinSseMoiReproduceMoiArcReleaseContentionTwinSseMoi();
+
+  void
+      crateApiPseudoManualRustOpaqueTwinSyncReproduceMoiArcReleaseContentionTwinSync();
+
+  void
+      crateApiPseudoManualRustOpaqueTwinSyncMoiReproduceMoiArcReleaseContentionTwinSyncMoi();
+
+  void
+      crateApiPseudoManualRustOpaqueTwinSyncSseReproduceMoiArcReleaseContentionTwinSyncSse();
+
+  void
+      crateApiPseudoManualRustOpaqueTwinSyncSseMoiReproduceMoiArcReleaseContentionTwinSyncSseMoi();
 
   Future<void> crateApiInitDartCodeRequestInitDartCodeMessage();
 
@@ -69964,6 +70030,338 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinMoiMoiArcContentionValueDropCountTwinMoi() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__moi_arc_contention_value_drop_count_twin_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinMoiMoiArcContentionValueDropCountTwinMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinMoiMoiArcContentionValueDropCountTwinMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "moi_arc_contention_value_drop_count_twin_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<int> crateApiRustOpaqueMoiArcContentionValueDropCountTwinNormal() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__rust_opaque__moi_arc_contention_value_drop_count_twin_normal(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiRustOpaqueMoiArcContentionValueDropCountTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiRustOpaqueMoiArcContentionValueDropCountTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "moi_arc_contention_value_drop_count_twin_normal",
+            argNames: [],
+          );
+
+  @override
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncMoiArcContentionValueDropCountTwinRustAsync() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__moi_arc_contention_value_drop_count_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinRustAsyncMoiArcContentionValueDropCountTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinRustAsyncMoiArcContentionValueDropCountTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "moi_arc_contention_value_drop_count_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncMoiMoiArcContentionValueDropCountTwinRustAsyncMoi() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__moi_arc_contention_value_drop_count_twin_rust_async_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinRustAsyncMoiMoiArcContentionValueDropCountTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinRustAsyncMoiMoiArcContentionValueDropCountTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "moi_arc_contention_value_drop_count_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiArcContentionValueDropCountTwinRustAsyncSse() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__moi_arc_contention_value_drop_count_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiArcContentionValueDropCountTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiArcContentionValueDropCountTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "moi_arc_contention_value_drop_count_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiMoiArcContentionValueDropCountTwinRustAsyncSseMoi() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__moi_arc_contention_value_drop_count_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiMoiArcContentionValueDropCountTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiMoiArcContentionValueDropCountTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "moi_arc_contention_value_drop_count_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinSseMoiArcContentionValueDropCountTwinSse() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sse__moi_arc_contention_value_drop_count_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSseMoiArcContentionValueDropCountTwinSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSseMoiArcContentionValueDropCountTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "moi_arc_contention_value_drop_count_twin_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<int>
+      crateApiPseudoManualRustOpaqueTwinSseMoiMoiArcContentionValueDropCountTwinSseMoi() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__moi_arc_contention_value_drop_count_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSseMoiMoiArcContentionValueDropCountTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSseMoiMoiArcContentionValueDropCountTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "moi_arc_contention_value_drop_count_twin_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  int crateApiPseudoManualRustOpaqueTwinSyncMoiArcContentionValueDropCountTwinSync() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__moi_arc_contention_value_drop_count_twin_sync();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSyncMoiArcContentionValueDropCountTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSyncMoiArcContentionValueDropCountTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "moi_arc_contention_value_drop_count_twin_sync",
+            argNames: [],
+          );
+
+  @override
+  int crateApiPseudoManualRustOpaqueTwinSyncMoiMoiArcContentionValueDropCountTwinSyncMoi() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__moi_arc_contention_value_drop_count_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSyncMoiMoiArcContentionValueDropCountTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSyncMoiMoiArcContentionValueDropCountTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "moi_arc_contention_value_drop_count_twin_sync_moi",
+            argNames: [],
+          );
+
+  @override
+  int crateApiPseudoManualRustOpaqueTwinSyncSseMoiArcContentionValueDropCountTwinSyncSse() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__moi_arc_contention_value_drop_count_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSyncSseMoiArcContentionValueDropCountTwinSyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSyncSseMoiArcContentionValueDropCountTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "moi_arc_contention_value_drop_count_twin_sync_sse",
+            argNames: [],
+          );
+
+  @override
+  int crateApiPseudoManualRustOpaqueTwinSyncSseMoiMoiArcContentionValueDropCountTwinSyncSseMoi() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__moi_arc_contention_value_drop_count_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSyncSseMoiMoiArcContentionValueDropCountTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSyncSseMoiMoiArcContentionValueDropCountTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "moi_arc_contention_value_drop_count_twin_sync_sse_moi",
+            argNames: [],
+          );
+
+  @override
   Future<MeasureTwinNormal?> crateApiEnumerationMultiplyByTenTwinNormal(
       {required MeasureTwinNormal measure}) {
     return handler.executeNormal(NormalTask(
@@ -74655,6 +75053,342 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName: "repeat_sequence_twin_sync_sse",
             argNames: ["seq", "times"],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinMoiReproduceMoiArcReleaseContentionTwinMoi() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__reproduce_moi_arc_release_contention_twin_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinMoiReproduceMoiArcReleaseContentionTwinMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinMoiReproduceMoiArcReleaseContentionTwinMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "reproduce_moi_arc_release_contention_twin_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void> crateApiRustOpaqueReproduceMoiArcReleaseContentionTwinNormal() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__rust_opaque__reproduce_moi_arc_release_contention_twin_normal(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiRustOpaqueReproduceMoiArcReleaseContentionTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiRustOpaqueReproduceMoiArcReleaseContentionTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "reproduce_moi_arc_release_contention_twin_normal",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncReproduceMoiArcReleaseContentionTwinRustAsync() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__reproduce_moi_arc_release_contention_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinRustAsyncReproduceMoiArcReleaseContentionTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinRustAsyncReproduceMoiArcReleaseContentionTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "reproduce_moi_arc_release_contention_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncMoiReproduceMoiArcReleaseContentionTwinRustAsyncMoi() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__reproduce_moi_arc_release_contention_twin_rust_async_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinRustAsyncMoiReproduceMoiArcReleaseContentionTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinRustAsyncMoiReproduceMoiArcReleaseContentionTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "reproduce_moi_arc_release_contention_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncSseReproduceMoiArcReleaseContentionTwinRustAsyncSse() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__reproduce_moi_arc_release_contention_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinRustAsyncSseReproduceMoiArcReleaseContentionTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinRustAsyncSseReproduceMoiArcReleaseContentionTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "reproduce_moi_arc_release_contention_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiReproduceMoiArcReleaseContentionTwinRustAsyncSseMoi() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__reproduce_moi_arc_release_contention_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiReproduceMoiArcReleaseContentionTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinRustAsyncSseMoiReproduceMoiArcReleaseContentionTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "reproduce_moi_arc_release_contention_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinSseReproduceMoiArcReleaseContentionTwinSse() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sse__reproduce_moi_arc_release_contention_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSseReproduceMoiArcReleaseContentionTwinSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSseReproduceMoiArcReleaseContentionTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "reproduce_moi_arc_release_contention_twin_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      crateApiPseudoManualRustOpaqueTwinSseMoiReproduceMoiArcReleaseContentionTwinSseMoi() {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__reproduce_moi_arc_release_contention_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSseMoiReproduceMoiArcReleaseContentionTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSseMoiReproduceMoiArcReleaseContentionTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "reproduce_moi_arc_release_contention_twin_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  void
+      crateApiPseudoManualRustOpaqueTwinSyncReproduceMoiArcReleaseContentionTwinSync() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__reproduce_moi_arc_release_contention_twin_sync();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSyncReproduceMoiArcReleaseContentionTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSyncReproduceMoiArcReleaseContentionTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "reproduce_moi_arc_release_contention_twin_sync",
+            argNames: [],
+          );
+
+  @override
+  void
+      crateApiPseudoManualRustOpaqueTwinSyncMoiReproduceMoiArcReleaseContentionTwinSyncMoi() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__reproduce_moi_arc_release_contention_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSyncMoiReproduceMoiArcReleaseContentionTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSyncMoiReproduceMoiArcReleaseContentionTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "reproduce_moi_arc_release_contention_twin_sync_moi",
+            argNames: [],
+          );
+
+  @override
+  void
+      crateApiPseudoManualRustOpaqueTwinSyncSseReproduceMoiArcReleaseContentionTwinSyncSse() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__reproduce_moi_arc_release_contention_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSyncSseReproduceMoiArcReleaseContentionTwinSyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSyncSseReproduceMoiArcReleaseContentionTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "reproduce_moi_arc_release_contention_twin_sync_sse",
+            argNames: [],
+          );
+
+  @override
+  void
+      crateApiPseudoManualRustOpaqueTwinSyncSseMoiReproduceMoiArcReleaseContentionTwinSyncSseMoi() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__reproduce_moi_arc_release_contention_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualRustOpaqueTwinSyncSseMoiReproduceMoiArcReleaseContentionTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualRustOpaqueTwinSyncSseMoiReproduceMoiArcReleaseContentionTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "reproduce_moi_arc_release_contention_twin_sync_sse_moi",
+            argNames: [],
           );
 
   @override

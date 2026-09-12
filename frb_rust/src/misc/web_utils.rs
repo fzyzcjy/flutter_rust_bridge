@@ -1,4 +1,10 @@
 use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsCast;
+
+pub fn schedule_callback(callback: impl FnOnce() + 'static) {
+    let callback = Closure::once_into_js(callback);
+    js_set_timeout(callback.unchecked_ref(), 0).expect("Failed to schedule Web callback");
+}
 
 #[macro_export]
 macro_rules! console_error {
@@ -12,6 +18,9 @@ macro_rules! console_error {
 
 #[wasm_bindgen]
 extern "C" {
+    #[wasm_bindgen(js_name = setTimeout, catch)]
+    fn js_set_timeout(callback: &js_sys::Function, delay: i32) -> Result<JsValue, JsValue>;
+
     #[wasm_bindgen(js_namespace = console, js_name = "log")]
     pub fn js_console_log(msg: &str);
 

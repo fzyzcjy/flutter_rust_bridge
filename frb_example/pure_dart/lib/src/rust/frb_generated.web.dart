@@ -55410,6 +55410,94 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__mirror_vec_enum_stream_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_moi__moi_arc_contention_value_drop_count_twin_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__moi_arc_contention_value_drop_count_twin_moi(
+              port_);
+
+  void wire__crate__api__rust_opaque__moi_arc_contention_value_drop_count_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__rust_opaque__moi_arc_contention_value_drop_count_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__moi_arc_contention_value_drop_count_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__moi_arc_contention_value_drop_count_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__moi_arc_contention_value_drop_count_twin_rust_async_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__moi_arc_contention_value_drop_count_twin_rust_async_moi(
+              port_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__moi_arc_contention_value_drop_count_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__moi_arc_contention_value_drop_count_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__moi_arc_contention_value_drop_count_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__moi_arc_contention_value_drop_count_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_sse__moi_arc_contention_value_drop_count_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_sse__moi_arc_contention_value_drop_count_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__moi_arc_contention_value_drop_count_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__moi_arc_contention_value_drop_count_twin_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync__moi_arc_contention_value_drop_count_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__moi_arc_contention_value_drop_count_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__moi_arc_contention_value_drop_count_twin_sync_moi() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__moi_arc_contention_value_drop_count_twin_sync_moi();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__moi_arc_contention_value_drop_count_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__moi_arc_contention_value_drop_count_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__moi_arc_contention_value_drop_count_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__moi_arc_contention_value_drop_count_twin_sync_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__enumeration__multiply_by_ten_twin_normal(
           NativePortType port_, JSAny measure) =>
       wasmModule.wire__crate__api__enumeration__multiply_by_ten_twin_normal(
@@ -56609,6 +56697,94 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_moi__reproduce_moi_arc_release_contention_twin_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_moi__reproduce_moi_arc_release_contention_twin_moi(
+              port_);
+
+  void wire__crate__api__rust_opaque__reproduce_moi_arc_release_contention_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__rust_opaque__reproduce_moi_arc_release_contention_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__reproduce_moi_arc_release_contention_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__reproduce_moi_arc_release_contention_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__reproduce_moi_arc_release_contention_twin_rust_async_moi(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__reproduce_moi_arc_release_contention_twin_rust_async_moi(
+              port_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__reproduce_moi_arc_release_contention_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__reproduce_moi_arc_release_contention_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__reproduce_moi_arc_release_contention_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__reproduce_moi_arc_release_contention_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_sse__reproduce_moi_arc_release_contention_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_sse__reproduce_moi_arc_release_contention_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__reproduce_moi_arc_release_contention_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__reproduce_moi_arc_release_contention_twin_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync__reproduce_moi_arc_release_contention_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_opaque_twin_sync__reproduce_moi_arc_release_contention_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__reproduce_moi_arc_release_contention_twin_sync_moi() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__reproduce_moi_arc_release_contention_twin_sync_moi();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__reproduce_moi_arc_release_contention_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__reproduce_moi_arc_release_contention_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__reproduce_moi_arc_release_contention_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__reproduce_moi_arc_release_contention_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__init_dart_code__request_init_dart_code_message(
@@ -75815,6 +75991,68 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_moi__moi_arc_contention_value_drop_count_twin_moi(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__rust_opaque__moi_arc_contention_value_drop_count_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__moi_arc_contention_value_drop_count_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__moi_arc_contention_value_drop_count_twin_rust_async_moi(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__moi_arc_contention_value_drop_count_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__moi_arc_contention_value_drop_count_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sse__moi_arc_contention_value_drop_count_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__moi_arc_contention_value_drop_count_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync__moi_arc_contention_value_drop_count_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__moi_arc_contention_value_drop_count_twin_sync_moi();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__moi_arc_contention_value_drop_count_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__moi_arc_contention_value_drop_count_twin_sync_sse_moi(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void wire__crate__api__enumeration__multiply_by_ten_twin_normal(
       NativePortType port_, JSAny measure);
 
@@ -76653,6 +76891,68 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_moi__reproduce_moi_arc_release_contention_twin_moi(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__rust_opaque__reproduce_moi_arc_release_contention_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async__reproduce_moi_arc_release_contention_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_moi__reproduce_moi_arc_release_contention_twin_rust_async_moi(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse__reproduce_moi_arc_release_contention_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_rust_async_sse_moi__reproduce_moi_arc_release_contention_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sse__reproduce_moi_arc_release_contention_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sse_moi__reproduce_moi_arc_release_contention_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync__reproduce_moi_arc_release_contention_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_moi__reproduce_moi_arc_release_contention_twin_sync_moi();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse__reproduce_moi_arc_release_contention_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__reproduce_moi_arc_release_contention_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

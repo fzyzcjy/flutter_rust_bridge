@@ -117,7 +117,20 @@ macro_rules! frb_generated_moi_arc_def {
             }
 
             pub fn decrement_strong_count(raw: usize) {
+                #[cfg(target_family = "wasm")]
+                let mut pool = match T::get_pool().try_write() {
+                    Ok(pool) => pool,
+                    Err(std::sync::TryLockError::WouldBlock) => {
+                        $crate::for_generated::web_utils::schedule_callback(move || {
+                            Self::decrement_strong_count(raw);
+                        });
+                        return;
+                    }
+                    Err(std::sync::TryLockError::Poisoned(error)) => panic!("{error}"),
+                };
+                #[cfg(not(target_family = "wasm"))]
                 let mut pool = T::get_pool().write().unwrap();
+
                 let object = Self::decrement_strong_count_raw(raw, &mut pool);
                 drop(pool);
                 drop(object);

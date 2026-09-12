@@ -71,6 +71,13 @@ Future<String> unwrapRustOpaqueTwinNormal(
 Future<FrbOpaqueReturnTwinNormal> frbGeneratorTestTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueFrbGeneratorTestTwinNormal();
 
+Future<void> reproduceMoiArcReleaseContentionTwinNormal() =>
+    RustLib.instance.api
+        .crateApiRustOpaqueReproduceMoiArcReleaseContentionTwinNormal();
+
+Future<int> moiArcContentionValueDropCountTwinNormal() => RustLib.instance.api
+    .crateApiRustOpaqueMoiArcContentionValueDropCountTwinNormal();
+
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinNormal >>
 abstract class BoxDartDebugTwinNormal implements RustOpaqueInterface {}
 

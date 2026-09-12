@@ -80,6 +80,12 @@ String unwrapRustOpaqueTwinSyncMoi({required HideDataTwinSyncMoi opaque}) =>
 FrbOpaqueReturnTwinSyncMoi frbGeneratorTestTwinSyncMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncMoiFrbGeneratorTestTwinSyncMoi();
 
+void reproduceMoiArcReleaseContentionTwinSyncMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncMoiReproduceMoiArcReleaseContentionTwinSyncMoi();
+
+int moiArcContentionValueDropCountTwinSyncMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncMoiMoiArcContentionValueDropCountTwinSyncMoi();
+
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinSyncMoi >>
 abstract class BoxDartDebugTwinSyncMoi implements RustOpaqueInterface {}
 
