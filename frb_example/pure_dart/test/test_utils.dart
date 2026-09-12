@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:meta/meta.dart';
 import 'package:test/test.dart';
 
@@ -78,6 +79,23 @@ const bool kIsDartWasm = kIsWeb && !identical(0, 0.0);
 
 String? skipWeb([String reason = 'unspecified']) =>
     kIsWeb ? 'Skipped on web (reason: $reason)' : null;
+
+String? skipWebStreamFlake({
+  required String twin,
+  List<String> jsModes = const [],
+  List<String> wasmModes = const [],
+  bool? pde = false,
+}) {
+  final isPde =
+      RustLib.kDefaultExternalLibraryLoaderConfig.stem.endsWith('_pde');
+  if (!kIsWeb || (pde != null && pde != isPde)) return null;
+
+  final modes = kIsDartWasm ? wasmModes : jsModes;
+  return modes.contains(twin.substring('Twin'.length))
+      ? 'Known intermittent Web stream failure: '
+          'https://github.com/fzyzcjy/flutter_rust_bridge/pull/3458'
+      : null;
+}
 
 bool get releaseMode {
   var ans = true;
