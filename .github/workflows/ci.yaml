@@ -173,7 +173,7 @@ jobs:
         with:
           mdbook-version: "latest"
       - name: Setup `mdbook-mermaid`
-        run: cargo install mdbook-mermaid
+        run: cargo install mdbook-mermaid --version 0.17.1 --locked
 
       # execute
       - run: ./frb_internal generate-website
