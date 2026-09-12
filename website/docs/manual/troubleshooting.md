@@ -50,13 +50,9 @@ generated rs file is not included when building is being done.
 
 ## Google Play reports missing 16 KB page size support
 
-If Google Play Console reports that your Rust `.so` library does not support 16 KB page sizes when using the Native Assets backend, try the following:
+For Native Assets, try upgrading Android Gradle Plugin (AGP) to **8.5.1+** and using **NDK r28+**, including on CI, then rebuild. This resolved [#3421](https://github.com/fzyzcjy/flutter_rust_bridge/issues/3421) without changing linker flags.
 
-- Upgrade Android Gradle Plugin (AGP) to **8.5.1 or higher**.
-- Ensure the native build uses **Android NDK r28 or higher**, including on CI.
-- Rebuild the app and verify its shared libraries using the [Android 16 KB page size guide](https://developer.android.com/guide/practices/page-sizes#build).
-
-In [#3421](https://github.com/fzyzcjy/flutter_rust_bridge/issues/3421), upgrading AGP and NDK resolved the warning without changing linker flags. Prebuilt native dependencies must also support 16 KB page sizes; see the Android guide for verification and instructions for older toolchains.
+See the [Android guide](https://developer.android.com/guide/practices/page-sizes#build) for verification and prebuilt dependency requirements.
 
 ## Error running `cargo ndk`: `ld: error: unable to find library -lgcc`
 
