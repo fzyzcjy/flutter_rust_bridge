@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:hooks/hooks.dart';
+import 'package:path/path.dart' as path;
 
 /// New simpleBuild for Dart 3.10+ hooks.
 ///
@@ -59,7 +60,12 @@ Future<void> simpleBuild(
       env: {if (rustflags != null) 'RUSTFLAGS': rustflags},
     );
 
-    output.dependencies.add(rustCrateDir);
+    await for (final entity
+        in Directory.fromUri(rustCrateDir).list(followLinks: false)) {
+      if (path.basename(entity.path) != 'target') {
+        output.dependencies.add(entity.uri);
+      }
+    }
 
     print('dependencies: ${output.dependencies}');
   });
