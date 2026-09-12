@@ -158,3 +158,44 @@ pub fn unwrap_rust_opaque_twin_normal(opaque: RustOpaque<HideDataTwinNormal>) ->
 pub fn frb_generator_test_twin_normal() -> RustOpaque<FrbOpaqueReturnTwinNormal> {
     panic!("dummy code");
 }
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn reproduce_moi_arc_release_contention_twin_normal() {
+    contention_repro_twin_normal::release_while_pool_is_read_locked();
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn moi_arc_contention_value_drop_count_twin_normal() -> usize {
+    contention_repro_twin_normal::drop_count()
+}
+
+#[flutter_rust_bridge::frb(ignore)]
+mod contention_repro_twin_normal {
+    use flutter_rust_bridge::for_generated::BaseArc;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+
+    flutter_rust_bridge::frb_generated_moi_arc_def!();
+    flutter_rust_bridge::frb_generated_moi_arc_impl_value!(ContentionValue);
+
+    static DROPPED: AtomicUsize = AtomicUsize::new(0);
+
+    pub(super) fn release_while_pool_is_read_locked() {
+        DROPPED.store(0, Ordering::SeqCst);
+        let raw = MoiArc::new(ContentionValue).into_raw();
+        let guard = ContentionValue::get_pool().read().unwrap();
+        MoiArc::<ContentionValue>::decrement_strong_count(raw);
+        drop(guard);
+    }
+
+    pub(super) fn drop_count() -> usize {
+        DROPPED.load(Ordering::SeqCst)
+    }
+
+    struct ContentionValue;
+
+    impl Drop for ContentionValue {
+        fn drop(&mut self) {
+            DROPPED.fetch_add(1, Ordering::SeqCst);
+        }
+    }
+}

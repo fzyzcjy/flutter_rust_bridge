@@ -16,13 +16,4 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
-
-  test('Web MoiArc release completes after pool contention', () async {
-    reproduceMoiArcReleaseContention();
-    final deadline = DateTime.now().add(const Duration(seconds: 5));
-    while (!moiArcContentionValueWasDropped() && DateTime.now().isBefore(deadline)) {
-      await Future<void>.delayed(const Duration(milliseconds: 10));
-    }
-    expect(moiArcContentionValueWasDropped(), isTrue);
-  }, skip: !const bool.fromEnvironment('dart.library.js_interop'));
 }
