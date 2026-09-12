@@ -163,19 +163,19 @@ pub fn reproduce_moi_arc_release_contention_twin_normal() {
     contention_repro_twin_normal::release_while_pool_is_read_locked();
 }
 
-pub fn moi_arc_contention_value_drop_count_twin_normal() -> usize {
+pub fn moi_arc_contention_value_drop_count_twin_normal() -> u32 {
     contention_repro_twin_normal::drop_count()
 }
 
 #[flutter_rust_bridge::frb(ignore)]
 mod contention_repro_twin_normal {
     use flutter_rust_bridge::for_generated::BaseArc;
-    use std::sync::atomic::{AtomicUsize, Ordering};
+    use std::sync::atomic::{AtomicU32, Ordering};
 
     flutter_rust_bridge::frb_generated_moi_arc_def!();
     flutter_rust_bridge::frb_generated_moi_arc_impl_value!(ContentionValue);
 
-    static DROPPED: AtomicUsize = AtomicUsize::new(0);
+    static DROPPED: AtomicU32 = AtomicU32::new(0);
 
     pub(super) fn release_while_pool_is_read_locked() {
         DROPPED.store(0, Ordering::SeqCst);
@@ -185,7 +185,7 @@ mod contention_repro_twin_normal {
         drop(guard);
     }
 
-    pub(super) fn drop_count() -> usize {
+    pub(super) fn drop_count() -> u32 {
         DROPPED.load(Ordering::SeqCst)
     }
 
