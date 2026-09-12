@@ -98,6 +98,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       skip: skipWebStreamFlake(
         twin: 'TwinNormal',
         wasmModes: ['Sync'],
+        pde: null,
       ), () async {
     final stream = ConcatenateWithTwinNormal
         .handleSomeStaticStreamSinkSingleArgTwinNormal();
