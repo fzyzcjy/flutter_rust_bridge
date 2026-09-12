@@ -308,11 +308,12 @@ Future<void> main({
     );
   });
 
-  test('stream sink', skip: skipWebStreamFlake(
-    twin: 'TwinNormal',
-    jsModes: ['Normal', 'Moi', 'SseMoi'],
-    pde: null,
-  ), () async {
+  test('stream sink',
+      skip: skipWebStreamFlake(
+        twin: 'TwinNormal',
+        jsModes: ['Normal', 'Moi', 'SseMoi'],
+        pde: null,
+      ), () async {
     final stream = rustAutoOpaqueStreamSinkTwinNormal();
     final obj = (await stream.toList()).single;
     await futurizeVoidTwinNormal(

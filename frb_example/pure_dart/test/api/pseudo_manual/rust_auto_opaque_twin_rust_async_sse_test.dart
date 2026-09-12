@@ -328,7 +328,12 @@ Future<void> main({
     );
   });
 
-  test('stream sink', skip: skipWebStream, () async {
+  test('stream sink',
+      skip: skipWebStreamFlake(
+        twin: 'TwinRustAsyncSse',
+        jsModes: ['Normal', 'Moi', 'SseMoi'],
+        pde: null,
+      ), () async {
     final stream = rustAutoOpaqueStreamSinkTwinRustAsyncSse();
     final obj = (await stream.toList()).single;
     await futurizeVoidTwinRustAsyncSse(

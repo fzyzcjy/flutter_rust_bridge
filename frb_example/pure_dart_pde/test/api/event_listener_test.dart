@@ -15,8 +15,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   const cancellationTimeout = Duration(seconds: 5);
 
-  test('dart register event listener & create event with delay',
-      skip: skipWebStream, () async {
+  test('dart register event listener & create event with delay', () async {
     unawaited(
       expectLater(
         await registerEventListenerTwinNormal(),
@@ -29,8 +28,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   // #1836
-  test('when send event before async gap, should receive it',
-      skip: skipWebStream, () async {
+  test('when send event before async gap, should receive it', () async {
     final logs = <String>[];
 
     final stream = await registerEventListenerTwinNormal();
@@ -50,8 +48,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START
   // #1836
-  test('when Rust send event after Dart close stream', skip: skipWebStream,
-      () async {
+  test('when Rust send event after Dart close stream', () async {
     final stream = await registerEventListenerTwinNormal();
     await Future.delayed(Duration.zero);
     final subscription = stream.listen((_) {});
@@ -64,8 +61,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
   // FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END
 
-  test('idle event listener subscription cancels immediately',
-      skip: skipWebStream, () async {
+  test('idle event listener subscription cancels immediately', () async {
     final stream = await registerEventListenerTwinNormal();
     addTearDown(closeEventListenerTwinNormal);
     final subscription = stream.listen((_) {});
@@ -76,8 +72,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     if (!kIsWeb) expect(sent, isFalse);
   });
 
-  test('settled idle event listener subscription cancels', skip: skipWebStream,
-      () async {
+  test('settled idle event listener subscription cancels', () async {
     final stream = await registerEventListenerTwinNormal();
     addTearDown(closeEventListenerTwinNormal);
     final subscription = stream.listen((_) {});
@@ -86,8 +81,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await subscription.cancel().timeout(cancellationTimeout);
   });
 
-  test('paused idle event listener subscription cancels', skip: skipWebStream,
-      () async {
+  test('paused idle event listener subscription cancels', () async {
     final stream = await registerEventListenerTwinNormal();
     addTearDown(closeEventListenerTwinNormal);
     final subscription = stream.listen((_) {})..pause();
@@ -95,8 +89,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await subscription.cancel().timeout(cancellationTimeout);
   });
 
-  test('event listener subscription cancels inside onData', skip: skipWebStream,
-      () async {
+  test('event listener subscription cancels inside onData',
+      skip: skipWebStreamFlake(
+        twin: 'TwinNormal',
+        jsModes: ['Sse'],
+      ), () async {
     final stream = await registerEventListenerTwinNormal();
     addTearDown(closeEventListenerTwinNormal);
     final cancelled = Completer<void>();
@@ -150,7 +147,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   }, skip: kIsWeb);
 
   test('new event listener works after previous subscription cancels',
-      skip: skipWebStream, () async {
+      () async {
     final firstStream = await registerEventListenerTwinNormal();
     addTearDown(closeEventListenerTwinNormal);
     final firstSubscription = firstStream.listen((_) {});
@@ -167,8 +164,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
   });
 
-  test('event listener supports repeated register and cancel cycles',
-      skip: skipWebStream, () async {
+  test('event listener supports repeated register and cancel cycles', () async {
     addTearDown(closeEventListenerTwinNormal);
 
     for (var index = 0; index < 10; index++) {

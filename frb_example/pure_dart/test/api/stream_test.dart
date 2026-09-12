@@ -61,18 +61,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   }
 
-  test('dart call handle_stream_sink_at_1', skip: skipWebStreamFlake(
-    twin: 'TwinNormal',
-    jsModes: ['RustAsyncSse'],
-  ), () async {
+  test('dart call handle_stream_sink_at_1',
+      skip: skipWebStreamFlake(
+        twin: 'TwinNormal',
+        jsModes: ['RustAsyncSse'],
+      ), () async {
     await testHandleStream(handleStreamSinkAt1TwinNormal);
   });
 
-  test('dart call handle_stream_sink_at_2', skip: skipWebStreamFlake(
-    twin: 'TwinNormal',
-    wasmModes: ['RustAsync'],
-    pde: true,
-  ), () async {
+  test('dart call handle_stream_sink_at_2',
+      skip: skipWebStreamFlake(
+        twin: 'TwinNormal',
+        wasmModes: ['RustAsync'],
+        pde: true,
+      ), () async {
     await testHandleStream(handleStreamSinkAt2TwinNormal);
   });
 

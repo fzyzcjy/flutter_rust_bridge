@@ -8,12 +8,10 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/stream_misc_twi
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-import '../../test_utils.dart';
-
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('dart call funcStreamRealisticTwinSse', skip: skipWebStream, () async {
+  test('dart call funcStreamRealisticTwinSse', () async {
     final stream = funcStreamRealisticTwinSse(arg: 'hello');
     var cnt = 0;
     await for (final value in stream) {
@@ -23,7 +21,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, 10);
   });
 
-  test('streamSinkDartAsyncTwinSse', skip: skipWebStream, () async {
+  test('streamSinkDartAsyncTwinSse', () async {
     final stream = await streamSinkDartAsyncTwinSse();
     expect(await stream.toList(), [100]);
   });

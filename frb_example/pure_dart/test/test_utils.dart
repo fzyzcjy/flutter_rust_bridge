@@ -86,7 +86,8 @@ String? skipWebStreamFlake({
   List<String> wasmModes = const [],
   bool? pde = false,
 }) {
-  final isPde = RustLib.kDefaultExternalLibraryLoaderConfig.stem.endsWith('_pde');
+  final isPde =
+      RustLib.kDefaultExternalLibraryLoaderConfig.stem.endsWith('_pde');
   if (!kIsWeb || (pde != null && pde != isPde)) return null;
 
   final modes = kIsDartWasm ? wasmModes : jsModes;

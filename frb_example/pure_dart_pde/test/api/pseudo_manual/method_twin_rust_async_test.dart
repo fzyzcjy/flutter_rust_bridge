@@ -61,7 +61,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await sumWithList[2].sumTwinRustAsync(y: 12, z: 23), 12 + 23 + 67);
   });
 
-  test('ConcatenateWith stream sink test', skip: skipWebStream, () async {
+  test('ConcatenateWith stream sink test', () async {
     final ConcatenateWithTwinRustAsync concatenateWith =
         ConcatenateWithTwinRustAsync(
       a: "hello ",
@@ -81,8 +81,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   });
 
-  test('ConcatenateWith static stream sink test', skip: skipWebStream,
-      () async {
+  test('ConcatenateWith static stream sink test',
+      skip: skipWebStreamFlake(
+        twin: 'TwinRustAsync',
+        jsModes: ['Sync'],
+        pde: true,
+      ), () async {
     final int key = 10;
     final int max = 5;
     final stream =
@@ -99,8 +103,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   });
 
-  test('ConcatenateWith static stream sink at 1 test', skip: skipWebStream,
-      () async {
+  test('ConcatenateWith static stream sink at 1 test',
+      skip: skipWebStreamFlake(
+        twin: 'TwinRustAsync',
+        wasmModes: ['Sync'],
+      ), () async {
     final stream = ConcatenateWithTwinRustAsync
         .handleSomeStaticStreamSinkSingleArgTwinRustAsync();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));

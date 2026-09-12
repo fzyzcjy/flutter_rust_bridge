@@ -255,7 +255,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         );
       });
 
-      test('Stream sink throw anyhow error', skip: skipWebStream, () async {
+      test('Stream sink throw anyhow error', () async {
         expect(
           () async {
             await for (final _ in await streamSinkThrowAnyhowTwinNormal()) {}

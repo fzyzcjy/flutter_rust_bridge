@@ -48,10 +48,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     _testAppSettings(settings[1]);
   });
 
-  test('dart call mirror_struct_stream', skip: skipWebStreamFlake(
-    twin: 'TwinNormal',
-    wasmModes: ['Sse'],
-  ), () async {
+  test('dart call mirror_struct_stream',
+      skip: skipWebStreamFlake(
+        twin: 'TwinNormal',
+        wasmModes: ['Sse'],
+      ), () async {
     final ret = await mirrorStructStreamTwinNormal().first;
     _testAppSettings(ret.a);
     expect(ret.b.content, true);
