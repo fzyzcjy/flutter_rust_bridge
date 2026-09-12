@@ -28,7 +28,7 @@ Future<String> getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   await Directory(pathCacheRoot).create(recursive: true);
   final lock = await File(path.join(pathCacheRoot, '.lock'))
       .open(mode: FileMode.append);
-  await lock.lock(FileLock.exclusive);
+  await lock.lock(FileLock.blockingExclusive);
   try {
     return await _getCachedSanitizedDartBinary(
       config: config,
