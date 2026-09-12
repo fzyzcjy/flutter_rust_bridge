@@ -19,13 +19,15 @@ const _cargoLlvmCovEnvKeys = [
   'CARGO_LLVM_COV_BUILD_DIR',
 ];
 
-/// Returns cargo-llvm-cov variables that must not reach wasm-pack.
+/// Returns parent variables that must not reach wasm-pack.
 @visibleForTesting
 List<String> computeWasmPackRemovedParentEnvKeys(
   Map<String, String> parentEnvironment,
-) => parentEnvironment['CARGO_LLVM_COV'] == '1'
-    ? _cargoLlvmCovEnvKeys
-    : const [];
+) => [
+  'RUSTFLAGS',
+  'CARGO_ENCODED_RUSTFLAGS',
+  if (parentEnvironment['CARGO_LLVM_COV'] == '1') ..._cargoLlvmCovEnvKeys,
+];
 
 /// Command runner used by build-web, injectable by tests.
 @visibleForTesting
@@ -259,7 +261,8 @@ Future<void> _executeWasmPack(
     ],
     env: {
       'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
-      'RUSTFLAGS': rustflagsResolution.rustflags,
+      'CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUSTFLAGS':
+          rustflagsResolution.rustflags,
       if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
     },
     removedParentEnvKeys: computeWasmPackRemovedParentEnvKeys(
@@ -268,9 +271,9 @@ Future<void> _executeWasmPack(
   );
 }
 
-/// Resolved `RUSTFLAGS` output for a `wasm-pack` invocation.
+/// Resolved WebAssembly rustflags for a `wasm-pack` invocation.
 class WasmPackRustflagsResolution {
-  /// The `RUSTFLAGS` value that will be passed to `wasm-pack`.
+  /// The target-specific rustflags value that will be passed to `wasm-pack`.
   final String rustflags;
 
   /// Optional warning shown when user-provided overrides drop required defaults.
@@ -318,7 +321,7 @@ WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
 
   final warning = _containsDefaultWasmPackRustflags(argsOverride)
       ? null
-      : 'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default threaded-WASM flags `$buildWebDefaultWasmPackRustflags`. Keep the default flags when overriding `--wasm-pack-rustflags`, otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.';
+      : 'WARN: WebAssembly rustflags will be `$argsOverride`, which does not contain the default threaded-WASM flags `$buildWebDefaultWasmPackRustflags`. Keep the default flags when overriding `--wasm-pack-rustflags`, otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.';
   return WasmPackRustflagsResolution(rustflags: argsOverride, warning: warning);
 }
 
