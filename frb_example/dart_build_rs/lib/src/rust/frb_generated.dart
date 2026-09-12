@@ -126,7 +126,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_String(message, serializer);
+        try {
+          sse_encode_String(message, serializer);
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1, port: port_);
       },
@@ -176,8 +181,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_frb_log_record_Sse(sink, serializer);
-        sse_encode_String(maxLevel, serializer);
+        try {
+          sse_encode_StreamSink_frb_log_record_Sse(sink, serializer);
+          sse_encode_String(maxLevel, serializer);
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 3, port: port_);
       },
