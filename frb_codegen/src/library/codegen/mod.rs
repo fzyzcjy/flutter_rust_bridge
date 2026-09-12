@@ -35,6 +35,11 @@ pub fn generate_with_fvm_install_mode(
     meta_config: MetaConfig,
     fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<()> {
+    if std::env::var_os(crate::library::commands::cargo_expand::CODEGEN_RUNNING_ENV).is_some() {
+        debug!("Skipping code generation during nested Cargo expansion");
+        return Ok(());
+    }
+
     debug!("config={config:?} meta_config={meta_config:?}");
 
     let mut internal_config = InternalConfig::parse(&config, &meta_config)?;
@@ -51,6 +56,35 @@ pub fn generate_with_fvm_install_mode(
     })?;
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{generate, Config, MetaConfig};
+    use crate::library::commands::cargo_expand::CODEGEN_RUNNING_ENV;
+    use serial_test::serial;
+    use std::ffi::OsString;
+
+    struct RunningGuard(Option<OsString>);
+
+    impl Drop for RunningGuard {
+        fn drop(&mut self) {
+            match &self.0 {
+                Some(value) => std::env::set_var(CODEGEN_RUNNING_ENV, value),
+                None => std::env::remove_var(CODEGEN_RUNNING_ENV),
+            }
+        }
+    }
+
+    /// Nested expansion skips generation before parsing even an invalid configuration.
+    #[test]
+    #[serial]
+    fn test_nested_expansion_skips_generation() {
+        let _guard = RunningGuard(std::env::var_os(CODEGEN_RUNNING_ENV));
+        std::env::set_var(CODEGEN_RUNNING_ENV, "1");
+
+        generate(Config::default(), MetaConfig::default()).unwrap();
+    }
 }
 
 fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::Result<()> {
