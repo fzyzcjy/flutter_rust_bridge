@@ -72,7 +72,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   });
 
-  test('ConcatenateWith static stream sink test', skip: skipWebStream, () async {
+  test('ConcatenateWith static stream sink test', skip: skipWebStream,
+      () async {
     final int key = 10;
     final int max = 5;
     final stream =
@@ -89,7 +90,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   });
 
-  test('ConcatenateWith static stream sink at 1 test', skip: skipWebStream, () async {
+  test('ConcatenateWith static stream sink at 1 test', skip: skipWebStream,
+      () async {
     final stream = ConcatenateWithTwinNormal
         .handleSomeStaticStreamSinkSingleArgTwinNormal();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));

@@ -12,7 +12,8 @@ import '../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('dart call funcStreamSinkArgPositionTwinNormal', skip: skipWebStream, () async {
+  test('dart call funcStreamSinkArgPositionTwinNormal', skip: skipWebStream,
+      () async {
     // We only care about whether the codegen can understand StreamSink
     // as non-first argument in Rust, thus we do not test the return values.
     // ignore: unawaited_futures
@@ -73,7 +74,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await testHandleStream(handleStreamSinkAt3TwinNormal);
   });
 
-  test('stream_sink_fixed_sized_primitive_array_twin_normal', skip: skipWebStream, () async {
+  test('stream_sink_fixed_sized_primitive_array_twin_normal',
+      skip: skipWebStream, () async {
     final output =
         await streamSinkFixedSizedPrimitiveArrayTwinNormal().toList();
     expect(output, [
@@ -98,7 +100,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await arg.b.stream.toList(), [1000]);
   });
 
-  test('func_stream_add_value_and_error_twin_normal', skip: skipWebStream, () async {
+  test('func_stream_add_value_and_error_twin_normal', skip: skipWebStream,
+      () async {
     final stream = await funcStreamAddValueAndErrorTwinNormal();
     final events = <String>[];
     final onDone = Completer<void>();

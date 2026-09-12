@@ -6,6 +6,8 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/method_twin_syn
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -55,7 +57,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await sumWithList[2].sumTwinSync(y: 12, z: 23), 12 + 23 + 67);
   });
 
-  test('ConcatenateWith stream sink test', () async {
+  test('ConcatenateWith stream sink test', skip: skipWebStream, () async {
     final ConcatenateWithTwinSync concatenateWith = ConcatenateWithTwinSync(
       a: "hello ",
     );
@@ -74,7 +76,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   });
 
-  test('ConcatenateWith static stream sink test', () async {
+  test('ConcatenateWith static stream sink test', skip: skipWebStream,
+      () async {
     final int key = 10;
     final int max = 5;
     final stream = ConcatenateWithTwinSync.handleSomeStaticStreamSinkTwinSync(
@@ -90,7 +93,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   });
 
-  test('ConcatenateWith static stream sink at 1 test', () async {
+  test('ConcatenateWith static stream sink at 1 test', skip: skipWebStream,
+      () async {
     final stream =
         ConcatenateWithTwinSync.handleSomeStaticStreamSinkSingleArgTwinSync();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));

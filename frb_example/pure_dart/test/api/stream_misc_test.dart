@@ -9,7 +9,8 @@ import '../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('dart call funcStreamRealisticTwinNormal', skip: skipWebStream, () async {
+  test('dart call funcStreamRealisticTwinNormal', skip: skipWebStream,
+      () async {
     final stream = funcStreamRealisticTwinNormal(arg: 'hello');
     var cnt = 0;
     await for (final value in stream) {

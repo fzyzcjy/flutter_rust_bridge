@@ -16,14 +16,15 @@ import '../../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('dart call funcStreamSinkArgPositionTwinSse', () async {
+  test('dart call funcStreamSinkArgPositionTwinSse', skip: skipWebStream,
+      () async {
     // We only care about whether the codegen can understand StreamSink
     // as non-first argument in Rust, thus we do not test the return values.
     // ignore: unawaited_futures
     funcStreamSinkArgPositionTwinSse(a: 100, b: 200);
   });
 
-  test('call funcStreamReturnErrorTwinSse', () async {
+  test('call funcStreamReturnErrorTwinSse', skip: skipWebStream, () async {
     await expectLater(
       () async {
         await for (final _ in await funcStreamReturnErrorTwinSse()) {}
@@ -65,19 +66,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   }
 
-  test('dart call handle_stream_sink_at_1', () async {
+  test('dart call handle_stream_sink_at_1', skip: skipWebStream, () async {
     await testHandleStream(handleStreamSinkAt1TwinSse);
   });
 
-  test('dart call handle_stream_sink_at_2', () async {
+  test('dart call handle_stream_sink_at_2', skip: skipWebStream, () async {
     await testHandleStream(handleStreamSinkAt2TwinSse);
   });
 
-  test('dart call handle_stream_sink_at_3', () async {
+  test('dart call handle_stream_sink_at_3', skip: skipWebStream, () async {
     await testHandleStream(handleStreamSinkAt3TwinSse);
   });
 
-  test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
+  test('stream_sink_fixed_sized_primitive_array_twin_normal',
+      skip: skipWebStream, () async {
     final output = await streamSinkFixedSizedPrimitiveArrayTwinSse().toList();
     expect(output, [
       orderedEquals([1, 2]),
@@ -85,14 +87,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     ]);
   });
 
-  test('stream_sink_inside_vec_twin_normal', () async {
+  test('stream_sink_inside_vec_twin_normal', skip: skipWebStream, () async {
     final sinks = [RustStreamSink<int>(), RustStreamSink<int>()];
     await streamSinkInsideVecTwinSse(arg: sinks);
     expect(await sinks[0].stream.toList(), [100, 200]);
     expect(await sinks[1].stream.toList(), [100, 200]);
   });
 
-  test('stream_sink_inside_struct_twin_normal', () async {
+  test('stream_sink_inside_struct_twin_normal', skip: skipWebStream, () async {
     final arg = MyStructContainingStreamSinkTwinSse(
       a: 1000,
       b: RustStreamSink<int>(),
@@ -101,7 +103,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await arg.b.stream.toList(), [1000]);
   });
 
-  test('func_stream_add_value_and_error_twin_normal', () async {
+  test('func_stream_add_value_and_error_twin_normal', skip: skipWebStream,
+      () async {
     final stream = await funcStreamAddValueAndErrorTwinSse();
     final events = <String>[];
     final onDone = Completer<void>();
