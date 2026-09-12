@@ -60,6 +60,7 @@ Future<void> simpleBuild(
       printCommandInStderr: true,
       env: {
         if (rustflags != null) 'RUSTFLAGS': rustflags,
+        // Hacky workaround for internal FRB tooling only.
         if (Platform.isWindows) 'CARGO_INCREMENTAL': '0',
       },
     );
