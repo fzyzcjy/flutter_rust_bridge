@@ -113,6 +113,12 @@ void main() {
     );
   });
 
+  test('CST leak suppression accepts the complete known CI workload', () {
+    final report = File('test/fixtures/cst_lsan_suppressions.txt')
+        .readAsStringSync();
+    expect(() => checkCstLeakSuppressionForTesting(report), returnsNormally);
+  });
+
   test('LSAN rules name only the observed CST container allocators', () {
     final rules = File('../../tools/dart_lsan_cst.supp').readAsLinesSync();
     final expected = {
