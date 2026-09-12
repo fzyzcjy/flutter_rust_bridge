@@ -21,6 +21,35 @@ and here is a brief list:
 * Test steps mentioned in quickstart
 * ...
 
+### Sanitizer checks
+
+* The full CI matrix runs ASAN (address), MSAN (uninitialized memory), LSAN (leaks), and TSAN (thread races) on Linux x64 for `dart_minimal`, `pure_dart`, `pure_dart_pde`, and `deliberate_bad`.
+* Both the Rust native library and the Dart SDK are instrumented. Rust builds use nightly with `-Zbuild-std`; debug information and disabled function merging keep allocation symbols distinguishable in reports.
+* The `deliberate_bad` package checks good cases and known invalid operations against their expected exit status and diagnostic. Detection has limits: the Dart-to-Rust stack-buffer-overflow case currently expects success because ASAN does not detect it.
+* The `pure_dart` and `pure_dart_pde` integration runs must exit successfully and print `FRB_DART_TEST_RESULT: success`. Suppressing a known report does not replace successful test completion.
+
+#### Running a sanitizer check
+
+Run from the repository root in a Linux x64 development environment with Dart, Rust nightly, the nightly `rust-src` component, and LLVM's symbolizer available:
+
+```bash
+ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer ./frb_internal test-dart-sanitizer --package frb_example--pure_dart --sanitizer asan
+```
+
+* Select `asan`, `msan`, `lsan`, or `tsan`; use `frb_example--deliberate_bad` to check that known invalid operations are detected as expected.
+* The runner downloads a sanitized Dart SDK, verifies its SHA-256 checksum, and caches it by release under the system temporary directory. `FRB_SANITIZED_DART_RELEASE_NAME` overrides the release selected in [the SDK helper](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/tools/frb_internal/lib/src/misc/dart_sanitizer_tester/dart_sdk.dart).
+* CI sets `FRB_MAIN_DART_VERSION` and requires the sanitized SDK to match it. Set that variable locally for the same check. Build a matching SDK artifact when upgrading Dart; do not lower package SDK constraints to accommodate an older artifact.
+* `--use-local-sanitized-dart-binary` selects a locally built SDK under `~/dart-sdk/sdk/out/Release{ASAN,MSAN,LSAN,TSAN}X64/dart-sdk/bin/dart` instead of downloading one.
+
+#### Known-report suppressions
+
+* Suppressions must identify the affected allocation or diagnostic. Matching only a total leaked-byte count is insufficient.
+* `pure_dart` ASAN/LSAN runs use exact allocation-symbol rules in [dart_lsan_cst.supp](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/tools/dart_lsan_cst.supp). The runner also rejects suppression totals above 36 allocations or 576 bytes, and unexpected or repeated rules.
+* TSAN runs for `pure_dart` and `pure_dart_pde` use package-specific rules for `simple_use_async_spawn_blocking`. The runner checks any reported matches for the expected rule and exactly one suppression; thread-leak reporting remains enabled.
+* When changing a suppression, inspect the symbolized report and retain the integration success checks and `deliberate_bad` detection checks. Keep the rules narrowly scoped to the known report.
+
+See [the CI matrix](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/tools/frb_internal/lib/src/makefile_dart/ci_plan/full_jobs.dart) and [the sanitizer runner](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/tools/frb_internal/lib/src/misc/dart_sanitizer_tester/runner.dart) for the current coverage and result checks.
+
 ## Usage
 
 This library seems to be used by (I want to say "is used by" but I need to be humble ;) ) many people
