@@ -50,7 +50,7 @@ generated rs file is not included when building is being done.
 
 ## Google Play reports missing 16 KB page size support
 
-For Native Assets, try upgrading Android Gradle Plugin (AGP) to **8.5.1+** and using **NDK r28+**, including on CI, then rebuild. This resolved [#3421](https://github.com/fzyzcjy/flutter_rust_bridge/issues/3421) without changing linker flags.
+For Native Assets, try upgrading Android Gradle Plugin (AGP) to **8.5.1+** and using **NDK r28+**, then rebuild. This resolved [#3421](https://github.com/fzyzcjy/flutter_rust_bridge/issues/3421) without changing linker flags.
 
 See the [Android guide](https://developer.android.com/guide/practices/page-sizes#build) for verification and prebuilt dependency requirements.
 
