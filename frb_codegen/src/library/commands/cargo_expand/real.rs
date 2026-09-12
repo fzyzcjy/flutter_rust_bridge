@@ -1,3 +1,4 @@
+use super::CODEGEN_RUNNING_ENV;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::command_args;
@@ -81,7 +82,8 @@ fn run_raw(
         .map(PathBuf::from_str)
         .try_collect()?;
 
-    let args = command_args!(
+    let target_dir = env::var_os("OUT_DIR").map(|path| PathBuf::from(path).join("frb-expand"));
+    let mut args = command_args!(
         "expand",
         "--lib",
         "--theme=none",
@@ -90,10 +92,14 @@ fn run_raw(
         *args_features
     );
 
+    if let Some(target_dir) = target_dir {
+        args.extend([PathBuf::from("--target-dir"), target_dir]);
+    }
+
     let extra_env = [(
         "RUSTFLAGS".to_owned(),
         env::var("RUSTFLAGS").map(|x| x + " ").unwrap_or_default() + extra_rustflags,
-    )]
+    ), (CODEGEN_RUNNING_ENV.to_owned(), "1".to_owned())]
     .into();
 
     let output = execute_command(
