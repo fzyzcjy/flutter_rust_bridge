@@ -5,7 +5,7 @@ description: Use when needing to run tests locally in flutter_rust_bridge, or wh
 
 # FRB Testing
 
-> **Note:** Check your user-level `remote-testing` rules before running commands. Tests may require remote execution.
+> **Note:** Read `frb-dev-env` before running commands and follow the active user's environment rules.
 
 ## Overview
 

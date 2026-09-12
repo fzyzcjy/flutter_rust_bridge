@@ -18,7 +18,7 @@ Use this path when the failure looks like a known FRB CI shape: flaky job, gener
 Read `frb-fix-ci` and repair the failure directly:
 
 - Check the latest relevant run, not stale status.
-- Use `gh-actions-live-logs` when reading GitHub Actions job logs.
+- Use the user's `tom-ci` skill when reading GitHub Actions job logs.
 - Classify flakes, generated diffs, lint drift, dependency-order failures, and propagated downstream symptoms before deep debugging.
 - Prefer fixing prerequisite jobs such as `Generate`, `Integrate`, or high-relevance `Generate Internal` before chasing later build/test symptoms.
 

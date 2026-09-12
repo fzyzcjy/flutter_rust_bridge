@@ -5,7 +5,7 @@ description: Use when CI fails in flutter_rust_bridge - before deep investigatio
 
 # FRB Fix CI
 
-> **Note:** Check your user-level `remote-testing` rules before running commands. Tests and codegen may require remote execution.
+> **Note:** Read `frb-dev-env` before running commands and follow the active user's environment rules.
 > **Note:** When reproducing FRB failures remotely, do not run multiple remote commands in parallel against the same workspace/container. Serialize them unless you have isolated workspaces.
 
 ## Overview
@@ -22,7 +22,7 @@ Use this order before diving into individual failure types:
 
 1. Check the latest relevant run or job first. Do not reason from stale CI state.
 2. If the failure looks flaky, rerun only the failed jobs.
-3. Reproduce the exact failing `./frb_internal ...` command from CI, but first check your user-level `remote-testing` rules instead of assuming local execution is correct.
+3. Reproduce the exact failing `./frb_internal ...` command from CI, using `frb-dev-env` and the active user's environment rules.
    If reproducing remotely, keep one remote workspace single-writer: do not run multiple FRB reproduction commands in parallel against that same workspace.
    Also do not trust a dirty remote workspace by default: FRB remote runs often leave stray generated or untracked files behind, so prefer `git reset --hard HEAD && git clean -fdx` before a meaningful reproduction.
 4. Decide where the failure sits in the dependency graph: is it more likely a prerequisite cause (`Generate`, `Integrate`, or a high-relevance `Generate Internal` stage) or a downstream symptom (`Build :: Flutter`, native tests)?
@@ -43,7 +43,7 @@ When CI feedback is slow and only one job family matters for the current investi
 | Flaky test (passes sometimes) | `gh run rerun --failed` |
 | Git diff shown in CI | `git apply` OR regenerate |
 | Lint/format errors | Add `--fix` flag |
-| Can't reproduce locally | Use same `./frb_internal` command from CI, following `remote-testing` rules |
+| Can't reproduce locally | Use same `./frb_internal` command from CI, following `frb-dev-env` |
 
 ## Dependency Order
 
@@ -208,7 +208,7 @@ pbpaste | git apply   # macOS
 ./frb_internal precommit-generate
 ```
 
-> **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+> **After codegen:** Follow `frb-dev-env` and verify generated output is present in the selected worktree before reviewing the diff.
 
 Both are correct. Option A is faster; Option B is more thorough.
 
@@ -218,7 +218,7 @@ You may use CI diffs only as a diagnosis aid to understand what changed, but the
 
 ### Can't Reproduce Locally
 
-CI shows the command it ran. Before running it, check your user-level `remote-testing` rules to determine whether this repo requires remote execution.
+CI shows the command it ran. Read `frb-dev-env` before running it.
 
 Before reproducing, make sure the toolchain versions match CI closely enough to be meaningful. In practice this usually means Flutter, Dart, Rust, cargo subcommands, and any pinned template or helper dependency should match the versions used by CI.
 

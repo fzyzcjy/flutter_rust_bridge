@@ -5,7 +5,7 @@ description: Use when modifying Rust APIs, codegen, generated examples, or platf
 
 # FRB Code Generation
 
-> **Note:** Check your user-level `remote-testing` rules before running commands. Codegen may require remote execution.
+> **Note:** Read `frb-dev-env` before running commands and follow the active user's environment rules.
 
 ## Overview
 
@@ -15,7 +15,7 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 
 **Validation rule:** If regenerated outputs cause previously green non-`Generate` jobs to fail, treat the generated outputs as suspect until they are validated from a clean environment.
 
-> **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+> **After codegen:** Follow `frb-dev-env` and verify generated output is present in the selected worktree before reviewing the diff.
 
 ## Quick Reference
 
