@@ -30,8 +30,8 @@ import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.
 /// The [completer] may be a synchronous completer. It is only
 /// completed in response to another event, either a port message or a timer.
 ///
-/// Returns the `SendPort` expecting the single message.
-SendPort singleCompletePort<R, P>(
+/// Returns the port expecting the single message.
+({SendPort sendPort, void Function() close}) singleCompletePort<R, P>(
   Completer<R> completer,
   // {
   // FutureOr<R> Function(P message)? callback,
@@ -93,15 +93,17 @@ SendPort singleCompletePort<R, P>(
 ///
 /// Replace [singleCallbackPort] with this
 /// when removing the deprecated parameters.
-SendPort _singleCallbackPort<P>(void Function(P) callback) {
-  var responsePort = RawReceivePort();
+({SendPort sendPort, void Function() close}) _singleCallbackPort<P>(
+  void Function(P) callback,
+) {
+  final responsePort = RawReceivePort();
   var zone = Zone.current;
   callback = zone.registerUnaryCallback(callback);
   responsePort.handler = (response) {
     responsePort.close();
     zone.runUnary(callback, response as P);
   };
-  return responsePort.sendPort;
+  return (sendPort: responsePort.sendPort, close: responsePort.close);
 }
 
 // Helper function that casts an object to a type and completes a
