@@ -1,0 +1,5 @@
+rust_input: crate::api
+rust_root: .
+dart_output: .
+c_output: frb_generated.h
+web: false
