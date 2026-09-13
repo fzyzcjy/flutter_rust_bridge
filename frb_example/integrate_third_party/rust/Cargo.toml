@@ -10,8 +10,8 @@ crate-type = ["cdylib", "staticlib"]
 flutter_rust_bridge = { path = "../../../frb_rust" }
 web-audio-api = { version = "1.0.0-rc.6", default-features = false }
 extend = "1.2.0"
-anyhow = "1.0.86"
-paste = "1.0.15"
+anyhow = "1.0.103"
+pastey = "0.2.3"
 delegate-attr = "0.3.0"
 
 [lints.rust]
