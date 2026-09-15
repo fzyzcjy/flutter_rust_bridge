@@ -57,8 +57,8 @@ It has the following dependencies:
 [dependencies]
 futures = "0.3"
 reqwest = "0.11.6"
-tokio = { version = "1.14.0", features = ["rt", "macros"] }
-anyhow = { version = "1.0.49" }
+tokio = { version = "1.38.2", features = ["rt", "macros"] }
+anyhow = { version = "1.0.103" }
 ```
 
 ## Approach 2 (runtime)
@@ -80,8 +80,8 @@ It has the following dependencies:
 [dependencies]
 futures = "0.3"
 reqwest = "0.11.6"
-tokio = { version = "1.14.0", features = ["rt-multi-thread"] }
-anyhow = { version = "1.0.49" }
+tokio = { version = "1.38.2", features = ["rt-multi-thread"] }
+anyhow = { version = "1.0.103" }
 ```
 
 ## Plain futures
@@ -123,6 +123,6 @@ It has the following dependencies:
 [dependencies]
 futures = "0.3"
 reqwest = { version = "0.11.6", features = ["blocking"] }
-anyhow = { version = "1.0.49" }
+anyhow = { version = "1.0.103" }
 ```
 

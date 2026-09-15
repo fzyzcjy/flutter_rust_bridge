@@ -1,7 +1,6 @@
 use crate::codegen::ir::hir::misc::serializers::serialize_vec_syn;
 use crate::codegen::ir::hir::misc::visibility::HirVisibility;
 use crate::utils::namespace::Namespace;
-use derivative::Derivative;
 use itertools::concat;
 use serde::Serialize;
 
@@ -15,8 +14,7 @@ pub struct HirTreeModule {
 
 // This is surely used, but not counted by coverage tools
 // frb-coverage:ignore-start
-#[derive(Clone, Derivative, Serialize)]
-#[derivative(Debug)]
+#[derive(Clone, Debug, Serialize)]
 pub struct HirTreeModuleMeta {
     pub parent_vis: Vec<HirVisibility>,
     pub vis: HirVisibility,
