@@ -30,13 +30,6 @@ class PlanCiCommand extends Command<void> {
             'Disable normal automatic CI jobs, used for PRs labeled $kCiManualDispatchLabel.',
       )
       ..addOption(
-        'security-audit-changed',
-        defaultsTo: 'true',
-        help:
-            'Whether files watched by security_audit job were changed. '
-            'If true, security_audit will be added to the CI plan.',
-      )
-      ..addOption(
         'github-output',
         help: 'Path to GitHub Actions GITHUB_OUTPUT.',
       );
@@ -48,9 +41,6 @@ class PlanCiCommand extends Command<void> {
       filter: argResults!['filter'] as String?,
       automaticCiDisabled:
           (argResults!['automatic-ci-disabled'] as String).toLowerCase() ==
-          'true',
-      securityAuditChanged:
-          (argResults!['security-audit-changed'] as String).toLowerCase() ==
           'true',
     );
     final githubOutputPath = argResults!['github-output'] as String?;
@@ -68,7 +58,6 @@ class PlanCiCommand extends Command<void> {
 CiPlan buildCiPlan({
   required String? filter,
   required bool automaticCiDisabled,
-  bool securityAuditChanged = true,
 }) {
   if (automaticCiDisabled) {
     return _emptyCiPlan();
@@ -78,15 +67,12 @@ CiPlan buildCiPlan({
   if (normalizedFilter.isEmpty ||
       normalizedFilter == 'full' ||
       normalizedFilter == '*') {
-    return securityAuditChanged
-        ? _fullCiPlan()
-        : (_fullCiPlan()..enabledJobs.remove('security_audit'));
+    return _fullCiPlan();
   }
 
   final specs = _parseFilter(normalizedFilter);
   final enabledJobs = <String>{};
   final matrixByJob = _emptyMatrixByJob();
-
   for (final spec in specs) {
     final job = _jobById[spec.jobId];
     if (job == null) {
@@ -117,10 +103,6 @@ CiPlan buildCiPlan({
         additions: entries,
       ),
     };
-  }
-
-  if (!securityAuditChanged) {
-    enabledJobs.remove('security_audit');
   }
 
   return CiPlan(enabledJobs: enabledJobs, matrixByJob: matrixByJob);
