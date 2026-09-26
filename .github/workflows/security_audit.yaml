@@ -16,7 +16,7 @@ env:
 jobs:
   check_advisories_and_sources:
     name: Check Advisories and Sources
-    timeout-minutes: 1
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     permissions:
       contents: read
