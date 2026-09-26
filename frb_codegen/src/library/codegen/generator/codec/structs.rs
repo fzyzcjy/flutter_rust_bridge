@@ -54,7 +54,7 @@ macro_rules! codegen_codec_structs {
         );
     );
     (@private $partial_name:ident ; $($name:ident),*,) => (
-        paste::paste! {
+        pastey::paste! {
             pub(crate) struct [<Wire $partial_name CodecEntrypoint>]<'a>(
                 Box<dyn [<Wire $partial_name CodecEntrypointTrait>]<'a>>
             );

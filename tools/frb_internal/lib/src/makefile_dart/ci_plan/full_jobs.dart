@@ -24,6 +24,7 @@ const _flutterNativePackages = [
 ];
 
 final kCiJobs = [
+  const CiJob('security_audit'),
   const CiJob('deploy_website'),
   const CiJob('lint_rust_primary'),
   const CiJob('lint_dart_primary'),

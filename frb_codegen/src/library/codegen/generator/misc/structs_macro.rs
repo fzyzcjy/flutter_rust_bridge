@@ -48,7 +48,7 @@ macro_rules! codegen_generator_structs {
         use $crate::codegen::ir::mir::ty::MirType::*;
 
 
-        paste::paste! {
+        pastey::paste! {
             $(
             #[$attribute]
             )*

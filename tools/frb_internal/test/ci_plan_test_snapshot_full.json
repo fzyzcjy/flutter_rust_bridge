@@ -1,6 +1,9 @@
 {
   "jobs": [
     {
+      "id": "security_audit"
+    },
+    {
       "id": "deploy_website"
     },
     {

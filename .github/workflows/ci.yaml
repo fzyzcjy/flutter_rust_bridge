@@ -140,6 +140,14 @@ jobs:
               core.warning(`Could not write manual CI dispatch PR comment: ${error.message}`);
             }
 
+  # ------------------------------- security audit -------------------------------
+
+  security_audit:
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).security_audit.enable == true }}
+    name: Security Audit
+    uses: ./.github/workflows/security_audit.yaml
+
   # ----------------------------------- deploy -----------------------------------
 
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions

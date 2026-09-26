@@ -44,8 +44,8 @@ clap = { version = "4.4.8", features = ["derive"] }
 cbindgen = { version = "0.28.0", default-features = false }
 serial_test = "2.0.0"
 glob = "0.3.1"
-derivative = "2.2.0"
-paste = "1.0.14"
+derive-where = "1.6.1"
+pastey = "0.2.3"
 proc-macro2 = { version = "1.0.66", features = ["span-locations"] }
 include_dir = "0.7.3"
 indicatif = "0.18.0"
