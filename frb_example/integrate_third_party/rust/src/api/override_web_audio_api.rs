@@ -126,7 +126,7 @@ handle_audio_node_trait_impls_override!(WaveShaperNode);
 
 macro_rules! handle_audio_scheduled_source_node_trait_impls_override {
     ($name:ident) => {
-        paste::paste! {
+        pastey::paste! {
             #[ext(name=[<$name ScheduledSourceNodeMiscExt>])]
             pub impl $name {
                 // NOTE: The original name was `set_onended` and here the new name has `_`

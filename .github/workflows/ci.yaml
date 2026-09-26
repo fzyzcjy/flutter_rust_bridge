@@ -56,11 +56,35 @@ jobs:
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
+      - id: security-audit-files
+        shell: bash
+        run: |-
+          mark_changed_and_exit() {
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+            exit 0
+          }
+
+          if [[ ${{ github.event_name }} == 'workflow_dispatch' ]]; then
+            git fetch --no-tags --deepen=1 origin '${{ github.sha }}' || mark_changed_and_exit
+            before_sha=$(git rev-parse '${{ github.sha }}^1') || mark_changed_and_exit
+          elif [[ ${{ github.event_name }} == 'pull_request' ]]; then
+            before_sha='${{ github.event.pull_request.base.sha }}'
+          else
+            before_sha='${{ github.event.before }}'
+          fi
+
+          [[ -n "$before_sha" && ! "$before_sha" =~ ^0+$ ]] || mark_changed_and_exit
+          git fetch --no-tags --depth=1 origin "$before_sha" || mark_changed_and_exit
+
+          git diff --quiet "$before_sha" '${{ github.sha }}' -- Cargo.lock Cargo.toml deny.toml || mark_changed_and_exit
+
+          echo 'changed=false' >> "$GITHUB_OUTPUT"
       - id: plan
         run: |-
           ./frb_internal plan-ci \
             --filter '${{ inputs.ci_filter || 'full' }}' \
             --automatic-ci-disabled=${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'ci-manual-dispatch') }} \
+            --security-audit-changed=${{ steps.security-audit-files.outputs.changed }} \
             --github-output "$GITHUB_OUTPUT"
       - name: Comment on matching pull request
         if: ${{ always() && github.event_name == 'workflow_dispatch' }}
@@ -139,6 +163,14 @@ jobs:
             } catch (error) {
               core.warning(`Could not write manual CI dispatch PR comment: ${error.message}`);
             }
+
+  # ------------------------------- security audit -------------------------------
+
+  security_audit:
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).security_audit.enable == true }}
+    name: Security Audit
+    uses: ./.github/workflows/security_audit.yaml
 
   # ----------------------------------- deploy -----------------------------------
 

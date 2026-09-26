@@ -54,6 +54,41 @@ void main() {
       }
     });
 
+    test('security_audit is added to the plan'
+        ' depending on securityAuditChanged parameter', () {
+      const filters = ['', '*', 'full', 'security_audit'];
+
+      for (final filter in filters) {
+        // should be added
+
+        var plan = buildCiPlan(
+          filter: filter,
+          automaticCiDisabled: false,
+          securityAuditChanged: true,
+        );
+
+        expect(
+          plan.enabledJobs,
+          contains('security_audit'),
+          reason: "Input: filter='$filter'",
+        );
+
+        // should NOT be added
+
+        plan = buildCiPlan(
+          filter: filter,
+          automaticCiDisabled: false,
+          securityAuditChanged: false,
+        );
+
+        expect(
+          plan.enabledJobs,
+          isNot(contains('security_audit')),
+          reason: "Input: filter='$filter'",
+        );
+      }
+    });
+
     test('single non-matrix job filter enables just that job', () {
       final plan = buildCiPlan(
         filter: 'lint_rust_primary',
