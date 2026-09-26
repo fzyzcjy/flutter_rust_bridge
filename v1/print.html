@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-80fb5052.js";
+            window.path_to_searchindex_js = "searchindex-9a6f40c9.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-57eaf856.js"></script>
@@ -4516,8 +4516,8 @@ async fn get() -&gt; anyhow::Result&lt;String&gt; {
 <pre><code class="language-toml">[dependencies]
 futures = "0.3"
 reqwest = "0.11.6"
-tokio = { version = "1.14.0", features = ["rt", "macros"] }
-anyhow = { version = "1.0.49" }
+tokio = { version = "1.38.2", features = ["rt", "macros"] }
+anyhow = { version = "1.0.103" }
 </code></pre>
 <h2 id="approach-2-runtime"><a class="header" href="#approach-2-runtime">Approach 2 (runtime)</a></h2>
 <pre><code class="language-rust ignore">use anyhow;
@@ -4535,8 +4535,8 @@ fn get() -&gt; anyhow::Result&lt;String&gt; {
 <pre><code class="language-toml">[dependencies]
 futures = "0.3"
 reqwest = "0.11.6"
-tokio = { version = "1.14.0", features = ["rt-multi-thread"] }
-anyhow = { version = "1.0.49" }
+tokio = { version = "1.38.2", features = ["rt-multi-thread"] }
+anyhow = { version = "1.0.103" }
 </code></pre>
 <h2 id="plain-futures"><a class="header" href="#plain-futures">Plain futures</a></h2>
 <p>If you are using the plain futures crate without runtimes like Tokio, you should be safe to wrap the asynchronous code in an async block and use the <a href="https://docs.rs/futures/0.3.18/futures/executor/fn.block_on.html"><code>futures::executor::block_on</code></a> to run the future to completion:</p>
@@ -4569,7 +4569,7 @@ fn get() -&gt; anyhow::Result&lt;String&gt; {
 <pre><code class="language-toml">[dependencies]
 futures = "0.3"
 reqwest = { version = "0.11.6", features = ["blocking"] }
-anyhow = { version = "1.0.49" }
+anyhow = { version = "1.0.103" }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="generating-multiple-files"><a class="header" href="#generating-multiple-files">Generating multiple files</a></h1>
