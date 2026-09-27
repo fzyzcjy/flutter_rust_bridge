@@ -126,7 +126,7 @@ ohosArchiveListerCandidatesForTesting() => const [
 bool ohosHapContainsRustLibraryForTesting(
   Iterable<String> entries, {
   required String expectedLibrary,
+  String abi = 'arm64-v8a',
 }) => entries.any(
-  (entry) =>
-      entry.trim().replaceAll('\\', '/') == 'libs/arm64-v8a/$expectedLibrary',
+  (entry) => entry.trim().replaceAll('\\', '/') == 'libs/$abi/$expectedLibrary',
 );
