@@ -1,4 +1,5 @@
 use crate::codegen::parser::mir::internal_config::RustInputNamespacePack;
+use crate::misc::ToolInstallMode;
 use crate::utils::crate_name::CrateName;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
@@ -10,4 +11,5 @@ pub(crate) struct ParserHirInternalConfig {
     pub third_party_crate_names: Vec<CrateName>,
     pub rust_features: Option<Vec<String>>,
     pub parse_const: bool,
+    pub tool_install_mode: ToolInstallMode,
 }

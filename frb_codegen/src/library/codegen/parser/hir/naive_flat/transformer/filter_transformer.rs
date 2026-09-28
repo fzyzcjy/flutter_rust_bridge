@@ -53,6 +53,7 @@ mod tests {
             third_party_crate_names: vec![],
             rust_features: None,
             parse_const: false,
+            tool_install_mode: crate::misc::ToolInstallMode::Normal,
         }
     }
 

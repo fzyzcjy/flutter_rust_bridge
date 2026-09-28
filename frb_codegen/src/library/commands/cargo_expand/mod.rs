@@ -1,6 +1,7 @@
 mod real;
 
 use crate::codegen::dumper::Dumper;
+use crate::misc::ToolInstallMode;
 use crate::utils::crate_name::CrateName;
 use anyhow::Result;
 use std::path::Path;
@@ -12,6 +13,13 @@ pub(crate) fn run_cargo_expand(
     interest_crate_name: Option<&CrateName>,
     dumper: &Dumper,
     features: Option<&[String]>,
+    tool_install_mode: ToolInstallMode,
 ) -> Result<syn::File> {
-    real::run(rust_crate_dir, interest_crate_name, dumper, features)
+    real::run(
+        rust_crate_dir,
+        interest_crate_name,
+        dumper,
+        features,
+        tool_install_mode,
+    )
 }

@@ -9,7 +9,7 @@ use crate::binary::commands::{Cli, Commands, CreateOrIntegrateCommandCommonArgs}
 use crate::binary::commands_parser::{compute_codegen_config, compute_codegen_meta_config};
 use clap::Parser;
 use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
-use lib_flutter_rust_bridge_codegen::misc::FvmInstallMode;
+use lib_flutter_rust_bridge_codegen::misc::{FvmInstallMode, ToolInstallMode};
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
 use log::{debug, warn};
@@ -28,10 +28,11 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
         Commands::Generate(args) => {
             let meta_config = compute_codegen_meta_config(&args);
             let config = compute_codegen_config(args.primary)?;
-            codegen::generate_with_fvm_install_mode(
+            codegen::generate_with_install_modes(
                 config,
                 meta_config,
                 FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
+                ToolInstallMode::from_skip_tool_install(args.skip_tool_install),
             )?
         }
         Commands::Create(args) => integration::create(CreateConfig {
