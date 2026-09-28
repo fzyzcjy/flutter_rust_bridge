@@ -152,7 +152,7 @@ class CargoKitPlugin implements Plugin<Project> {
 
             // The task name depends on plugin properties, which are not available
             // at this point
-            project.getGradle().afterProject {
+            project.afterEvaluate {
                 def taskName = "cargokitCargoBuild${project.cargokit.libname.capitalize()}${buildType.capitalize()}";
 
                 if (project.tasks.findByName(taskName)) {
@@ -163,7 +163,7 @@ class CargoKitPlugin implements Plugin<Project> {
                     throw new GradleException("Please set 'android.ndkVersion' in 'app/build.gradle'.")
                 }
 
-                def task = project.tasks.create(taskName, CargoKitBuildTask.class) {
+                project.tasks.create(taskName, CargoKitBuildTask.class) {
                     buildMode = variant.buildType.name
                     buildDir = cargoBuildDir
                     outputDir = cargoOutputDir
@@ -174,15 +174,26 @@ class CargoKitPlugin implements Plugin<Project> {
                     targetPlatforms = platforms
                     pluginFile = CargoKitPlugin.file
                 }
-                def onTask = { newTask ->
-                    if (newTask.name == "merge${buildType.capitalize()}NativeLibs") {
-                        newTask.dependsOn task
+            }
+        }
+
+        project.getGradle().projectsEvaluated {
+            project.tasks.findAll { it.name.startsWith("cargokitCargoBuild") }.each { cargoTask ->
+                def buildType = cargoTask.buildMode.capitalize()
+                def taskNames = [
+                    "merge${buildType}NativeLibs",
+                    "merge${buildType}JniLibFolders",
+                    "copy${buildType}JniLibsProjectOnly",
+                    "copy${buildType}JniLibsProjectAndLocalJars",
+                ]
+                taskNames.each { taskName ->
+                    def consumerTask = project.tasks.findByName(taskName)
+                    if (consumerTask != null) {
+                        consumerTask.dependsOn cargoTask
                         // Fix gradle 7.4.2 not picking up JNI library changes
-                        newTask.outputs.upToDateWhen { false }
+                        consumerTask.outputs.upToDateWhen { false }
                     }
                 }
-                project.tasks.each onTask
-                project.tasks.whenTaskAdded onTask
             }
         }
     }
