@@ -81,6 +81,9 @@ class BuildWebArgs {
   final List<String> features;
 
   /// {@macro flutter_rust_bridge.cli}
+  final bool skipToolInstall;
+
+  /// {@macro flutter_rust_bridge.cli}
   const BuildWebArgs({
     required this.output,
     required this.release,
@@ -93,6 +96,7 @@ class BuildWebArgs {
     required this.dartCompileJsEntrypoint,
     required this.dartCompileWasmEntrypoint,
     this.features = const [],
+    this.skipToolInstall = false,
   });
 }
 
@@ -155,6 +159,7 @@ Future<void> _sanityChecks(
         'wasm-pack is required, but not found in the path.\n'
         'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
         'or running `cargo install wasm-pack`.',
+    skipInstall: args.skipToolInstall,
     runCommandImpl: runCommandImpl,
   );
 
@@ -166,6 +171,7 @@ Future<void> _sanityChecks(
       hint:
           'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
           'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
+      skipInstall: args.skipToolInstall,
       runCommandImpl: runCommandImpl,
     );
   }
@@ -183,6 +189,7 @@ Future<void> _ensurePackageInstalled({
   required String binaryName,
   required Future<void> Function() install,
   required String hint,
+  required bool skipInstall,
   required BuildWebCommandRunner runCommandImpl,
 }) async {
   Future<bool> isBinaryInstalled() async {
@@ -195,6 +202,8 @@ Future<void> _ensurePackageInstalled({
   }
 
   if (await isBinaryInstalled()) return;
+
+  if (skipInstall) bail(hint);
 
   print('Try to install `$binaryName`');
   await install();

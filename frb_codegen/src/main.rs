@@ -59,12 +59,17 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             platforms: args.platforms,
             fvm_install_mode: FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
         })?,
-        Commands::BuildWeb(args) => build_web::build(
-            args.dart_root,
-            args.dart_coverage,
-            args.args,
-            FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
-        )?,
+        Commands::BuildWeb(mut args) => {
+            if args.skip_tool_install {
+                args.args.push("--skip-tool-install".to_owned());
+            }
+            build_web::build(
+                args.dart_root,
+                args.dart_coverage,
+                args.args,
+                FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
+            )?
+        }
         Commands::InternalGenerate(_args) => internal::generate()?,
     }
     Ok(())

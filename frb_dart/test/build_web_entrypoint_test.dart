@@ -27,5 +27,14 @@ void main() {
     final args = parseBuildWebConfigToArgs(config);
 
     expect(args.output, path.join('.', 'web'));
+    expect(args.skipToolInstall, isFalse);
+  });
+
+  test('build-web parser forwards skip tool install flag', () {
+    final config = parseConfig(['--skip-tool-install']);
+
+    final args = parseBuildWebConfigToArgs(config);
+
+    expect(args.skipToolInstall, isTrue);
   });
 }
