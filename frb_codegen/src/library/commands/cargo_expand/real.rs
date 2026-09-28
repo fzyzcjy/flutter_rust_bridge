@@ -139,45 +139,31 @@ fn run_raw(
     let stderr = String::from_utf8(output.stderr)?;
 
     if stdout.is_empty() {
-        if stderr.contains("no such command: `expand`") && allow_auto_install {
-            info!("Cargo expand is not installed. Automatically install and re-run.");
-            install_cargo_expand()?;
-            return run_raw(
-                rust_crate_dir,
-                interest_crate_name,
-                extra_rustflags,
-                false,
-                features,
+        if stderr.contains("no such command: `expand`") {
+            if allow_auto_install {
+                info!("Cargo expand is not installed. Automatically install and re-run.");
+                install_cargo_expand()?;
+                return run_raw(
+                    rust_crate_dir,
+                    interest_crate_name,
+                    extra_rustflags,
+                    false,
+                    features,
+                );
+            }
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
+            bail!(
+                "cargo-expand is required but not installed. Install it with \
+                 `cargo install cargo-expand`, or run without `--skip-tool-install` \
+                 to let flutter_rust_bridge install it automatically."
             );
+            // frb-coverage:ignore-end
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
         bail!("cargo expand returned empty output");
         // frb-coverage:ignore-end
-
-        // if stderr.contains("no such command: `expand`") {
-        //     if allow_auto_install {
-        //         info!("Cargo expand is not installed. Automatically install and re-run.");
-        //         install_cargo_expand()?;
-        //         return run_raw(
-        //             rust_crate_dir,
-        //             interest_crate_name,
-        //             extra_rustflags,
-        //             false,
-        //             features,
-        //         );
-        //     }
-        //     // frb-coverage:ignore-start
-        //     bail!(
-        //         "cargo-expand is required but not installed. Install it with \
-        //                  `cargo install cargo-expand`, or run without `--skip-tool-install` \
-        //                  to let flutter_rust_bridge install it automatically."
-        //     );
-        //     // frb-coverage:ignore-end
-        // }
-        // // frb-coverage:ignore-start
-        // bail!("cargo expand returned empty output");
-        // // frb-coverage:ignore-end
     }
 
     Ok(stdout.lines().skip(1).join("\n"))
