@@ -66,6 +66,17 @@ List<String> _flutterViaCreateExclusions(
   '$package/macos/Flutter/Flutter-Release.xcconfig',
   '$package/pubspec.lock',
   '$package/pubspec.yaml',
+  // The OHOS smoke API is an intentional addition to this checked-in
+  // example; it is not part of the generic Flutter create template.
+  if (package == 'frb_example/flutter_via_create') ...[
+    '$package/lib/src/rust/api/ohos_smoke.dart',
+    '$package/lib/src/rust/frb_generated.dart',
+    '$package/lib/src/rust/frb_generated.io.dart',
+    '$package/lib/src/rust/frb_generated.web.dart',
+    '$package/rust/src/api/mod.rs',
+    '$package/rust/src/api/ohos_smoke.rs',
+    '$package/rust/src/frb_generated.rs',
+  ],
   if (needCompareOhos) '$package/android/',
   if (needCompareOhos) '$package/macos/',
   if (needCompareOhos) '$package/windows/',
