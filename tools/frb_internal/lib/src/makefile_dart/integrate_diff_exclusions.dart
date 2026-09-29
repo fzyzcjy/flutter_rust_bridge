@@ -54,6 +54,7 @@ Map<String, List<String>> _integrateSetExitIfChangedExcludedPathsByPackage({
     package: [
       '$package/example/macos/Flutter/Flutter-Debug.xcconfig',
       '$package/example/macos/Flutter/Flutter-Release.xcconfig',
+      '$package/example/pubspec.lock',
     ],
 };
 
@@ -76,6 +77,8 @@ List<String> _flutterViaCreateExclusions(
     '$package/rust/src/api/mod.rs',
     '$package/rust/src/api/ohos_smoke.rs',
     '$package/rust/src/frb_generated.rs',
+    '$package/ohos/entry/src/main/module.json5',
+    '$package/ohos/ohos_device_smoke_main.dart',
   ],
   if (needCompareOhos) '$package/android/',
   if (needCompareOhos) '$package/macos/',
