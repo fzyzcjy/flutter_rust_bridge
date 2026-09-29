@@ -203,7 +203,10 @@ Future<void> _ensurePackageInstalled({
 
   if (await isBinaryInstalled()) return;
 
+  // Exits the process when a required tool is missing, so it cannot run inside unit tests.
+  // coverage:ignore-start
   if (skipInstall) bail(hint);
+  // coverage:ignore-end
 
   print('Try to install `$binaryName`');
   await install();
