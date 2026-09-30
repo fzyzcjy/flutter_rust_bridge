@@ -1,0 +1,11 @@
+{
+  "name": "rust_lib_flutter_via_integrate",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "librust_lib_flutter_via_integrate.so": "file:./src/main/cpp/types/librust_lib_flutter_via_integrate"
+  }
+}

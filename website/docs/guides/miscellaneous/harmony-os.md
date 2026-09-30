@@ -36,9 +36,13 @@ The CI workflow pins these values instead of following the latest OHOS SDK or
 Flutter fork automatically. Other toolchain combinations can work, but are not
 release-gated yet. x86_64, armv7, profile, Native Assets, plugin consumption,
 and CI-controlled real-device execution remain experimental or unverified until
-their test matrix is added. A dedicated test entrypoint provides a deterministic
-synchronous Dart-to-Rust device smoke marker; broader FRB API coverage is not
-yet a release gate.
+their test matrix is added. A dedicated test entrypoint exercises representative
+FRB values on one signed device build; this broader API smoke is not yet a
+release gate.
+
+Use the CargoKit backend for OHOS builds. The Native Assets path still depends
+on `native_toolchain_rust` target mappings that do not cover OHOS, so selecting
+that backend does not provide a supported OHOS build today.
 
 ## `OHOS_SDK_HOME`
 
@@ -90,6 +94,33 @@ Flutter SDK advertises the `ohos` platform, and verifies that JDK's `jar` tool i
 available or that `unzip` can be used as a HAP inspection fallback. The
 successful preflight log also prints the Flutter target, Rust target, HAP ABI,
 and selected native SDK path.
+
+The OHOS Flutter fork may ship an older Dart SDK than the repository's internal
+development tools. Keep the OHOS Flutter executable first on `PATH` for Flutter
+builds, and set `FRB_INTERNAL_DART` to a separate Dart 3.13 or newer executable
+when running `frb_internal`:
+
+```shell
+export FRB_INTERNAL_DART=/opt/dart/3.13/bin/dart
+./frb_internal ohos-device-smoke --help
+```
+
+If `FRB_INTERNAL_DART` is unset, `frb_internal` uses the `dart` executable on
+`PATH` as before.
+
+When DevEco Studio is installed on macOS, use its bundled Hvigor wrapper and
+Node runtime for Hvigor and `ohpm`. Put the matching Hvigor directory before a
+standalone command-line-tools installation; mixing Hvigor releases can fail
+with errors such as `WithParamReplacement is not a function`. Adjust these
+paths for your installation:
+
+```shell
+export HVIGOR_HOME=/Applications/DevEco-Studio.app/Contents/tools/hvigor
+export NODE_HOME=/Applications/DevEco-Studio.app/Contents/tools/node
+export PATH="$HVIGOR_HOME/bin:$NODE_HOME/bin:$PATH"
+command -v hvigorw
+hvigorw --version
+```
 
 You can perform the equivalent core checks locally before a build:
 
@@ -212,11 +243,12 @@ When more than one device is connected, select one explicitly:
   --device-id DEVICE_UDID
 ```
 
-The dedicated entrypoint emits `FRB_OHOS_SMOKE_RESULT=PASS` only after its
-synchronous `greet` call returns the expected value. For a broader device test
-fixture, pass its deterministic marker with `--expected-log`. The command also
-checks that `--bundle` matches the HAP metadata before installation. Logs are
-saved under `target/ohos_device_smoke` by default. Use a dedicated bundle name
+The dedicated entrypoint emits `FRB_OHOS_SMOKE_RESULT=PASS` only after it
+exercises the synchronous string call, byte-array and struct codecs, an async
+call, a fallible call, and a stream. For a broader device test fixture, pass its
+deterministic marker with `--expected-log`. The command also checks that
+`--bundle` matches the HAP metadata before installation. Logs are saved under
+`target/ohos_device_smoke` by default. Use a dedicated bundle name
 whose application is not already installed on the device; the command
 intentionally aborts instead of overwriting user application data. To use a
 dedicated name, change `bundleName` in `ohos/AppScope/app.json5` before building
@@ -227,13 +259,43 @@ signature in DevEco Studio or sign the HAP through your existing secure signing
 workflow before running it. Do not commit `.p12`, provision profiles, passwords,
 or generated signing configuration.
 
+The build gate defaults to `ohos-arm64` and checks the matching `arm64-v8a`
+Rust library. To build another supported target, set
+`FRB_OHOS_TARGET_PLATFORM` before running the repository build command:
+
+```shell
+FRB_OHOS_TARGET_PLATFORM=ohos-x64 ./frb_internal build-flutter \
+  --package frb_example/flutter_via_create \
+  --target ohos
+```
+
+The supported target mapping is `ohos-arm64`/`arm64-v8a` and
+`ohos-x64`/`x86_64`. The current HarmonyOS Hvigor toolchain rejects the
+`armeabi-v7a` ABI, so `ohos-arm` is rejected before Flutter starts instead of
+failing late during HAP configuration. Keep the existing CMake mapping only as
+forward-compatible scaffolding for a future toolchain that supports armv7.
+
+The build gate uses release mode by default. To validate the same packaging
+checks against a different Flutter mode, set `FRB_OHOS_BUILD_MODE` to `debug`,
+`profile`, or `release`:
+
+```shell
+FRB_OHOS_BUILD_MODE=profile ./frb_internal build-flutter \
+  --package frb_example/flutter_via_create \
+  --target ohos
+```
+
+The mode value is validated before Flutter starts so a typo cannot silently
+produce a different artifact.
+
 ## HarmonyOS PC and OpenHarmony device types
 
 Some Flutter OHOS templates generate an entry module that only declares the
 `phone` device type. On an OpenHarmony PC or 2-in-1 SDK this can produce an empty
-system-capability intersection during the Hvigor build. If the build reports
-that `phone` is unsupported, update the application entry module's
-`deviceTypes` for the target product, for example:
+system-capability intersection during the Hvigor build. The checked-in
+quickstart entry module includes the broad `default` and `tablet` types. For an
+existing application, update the application entry module's `deviceTypes` for
+the target product when the generated `phone` type is unsupported, for example:
 
 ```json5
 "deviceTypes": [

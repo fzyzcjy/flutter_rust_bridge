@@ -10,6 +10,15 @@ void main() {
       "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
       "':(exclude)$package/pubspec.lock' "
       "':(exclude)$package/pubspec.yaml' "
+      "':(exclude)$package/lib/src/rust/api/ohos_smoke.dart' "
+      "':(exclude)$package/lib/src/rust/frb_generated.dart' "
+      "':(exclude)$package/lib/src/rust/frb_generated.io.dart' "
+      "':(exclude)$package/lib/src/rust/frb_generated.web.dart' "
+      "':(exclude)$package/rust/src/api/mod.rs' "
+      "':(exclude)$package/rust/src/api/ohos_smoke.rs' "
+      "':(exclude)$package/rust/src/frb_generated.rs' "
+      "':(exclude)$package/ohos/entry/src/main/module.json5' "
+      "':(exclude)$package/ohos/ohos_device_smoke_main.dart' "
       "':(exclude)$package/ohos/' "
       "':(exclude)$package/rust_builder/ohos/' "
       "':(exclude)$package/rust_builder/pubspec.yaml'",
@@ -41,6 +50,15 @@ void main() {
         "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
         "':(exclude)$package/pubspec.lock' "
         "':(exclude)$package/pubspec.yaml' "
+        "':(exclude)$package/lib/src/rust/api/ohos_smoke.dart' "
+        "':(exclude)$package/lib/src/rust/frb_generated.dart' "
+        "':(exclude)$package/lib/src/rust/frb_generated.io.dart' "
+        "':(exclude)$package/lib/src/rust/frb_generated.web.dart' "
+        "':(exclude)$package/rust/src/api/mod.rs' "
+        "':(exclude)$package/rust/src/api/ohos_smoke.rs' "
+        "':(exclude)$package/rust/src/frb_generated.rs' "
+        "':(exclude)$package/ohos/entry/src/main/module.json5' "
+        "':(exclude)$package/ohos/ohos_device_smoke_main.dart' "
         "':(exclude)$package/android/' "
         "':(exclude)$package/macos/' "
         "':(exclude)$package/windows/'",
@@ -70,7 +88,8 @@ void main() {
       expect(
         integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
         "':(exclude)$package/example/macos/Flutter/Flutter-Debug.xcconfig' "
-        "':(exclude)$package/example/macos/Flutter/Flutter-Release.xcconfig'",
+        "':(exclude)$package/example/macos/Flutter/Flutter-Release.xcconfig' "
+        "':(exclude)$package/example/pubspec.lock'",
         reason: package,
       );
     }
