@@ -20,7 +20,8 @@ Config _$parseConfigResult(ArgResults result) => Config()
   ..wasmPackRustflags = result['wasm-pack-rustflags'] as String?
   ..dartCompileJsEntrypoint = result['dart-compile-js-entrypoint'] as String?
   ..dartCompileWasmEntrypoint =
-      result['dart-compile-wasm-entrypoint'] as String?;
+      result['dart-compile-wasm-entrypoint'] as String?
+  ..skipToolInstall = result['skip-tool-install'] as bool;
 
 ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addOption('dart-root', help: 'Root folder of dart package')
@@ -57,6 +58,12 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
     'dart-compile-wasm-entrypoint',
     help:
         'If specified, compile Dart into WebAssembly and use this option as entrypoint',
+  )
+  ..addFlag(
+    'skip-tool-install',
+    help:
+        'Do not automatically install missing tools (wasm-pack, wasm-bindgen-cli)',
+    negatable: false,
   );
 
 final _$parserForConfig = _$populateConfigParser(ArgParser());

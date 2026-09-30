@@ -100,7 +100,8 @@
         ],
         "rust_output_path_namespace": "crate::frb_generated"
       },
-      "third_party_crate_names": []
+      "third_party_crate_names": [],
+      "tool_install_mode": "Normal"
     },
     "mir": {
       "default_dart_async": true,

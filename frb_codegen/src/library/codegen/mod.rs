@@ -14,7 +14,7 @@ use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::misc::FvmInstallMode;
+use crate::misc::{FvmInstallMode, ToolInstallMode};
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
 pub use ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -35,6 +35,21 @@ pub fn generate_with_fvm_install_mode(
     meta_config: MetaConfig,
     fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<()> {
+    generate_with_install_modes(
+        config,
+        meta_config,
+        fvm_install_mode,
+        ToolInstallMode::Normal,
+    )
+}
+
+/// Execute the main code generator with an explicit FVM and tool install mode.
+pub fn generate_with_install_modes(
+    config: Config,
+    meta_config: MetaConfig,
+    fvm_install_mode: FvmInstallMode,
+    tool_install_mode: ToolInstallMode,
+) -> anyhow::Result<()> {
     if std::env::var_os(crate::library::commands::cargo_expand::CODEGEN_RUNNING_ENV).is_some() {
         debug!("Skipping code generation during nested Cargo expansion");
         return Ok(());
@@ -44,6 +59,7 @@ pub fn generate_with_fvm_install_mode(
 
     let mut internal_config = InternalConfig::parse(&config, &meta_config)?;
     internal_config.polisher.fvm_install_mode = fvm_install_mode;
+    internal_config.parser.hir.tool_install_mode = tool_install_mode;
     debug!("internal_config={internal_config:?}");
 
     let dumper = Dumper::new(&internal_config.dumper);

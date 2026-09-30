@@ -116,6 +116,7 @@ impl InternalConfig {
                     third_party_crate_names,
                     rust_features: config.rust_features.clone(),
                     parse_const: config.parse_const.unwrap_or_default(),
+                    tool_install_mode: crate::misc::ToolInstallMode::Normal,
                 },
                 mir: ParserMirInternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),

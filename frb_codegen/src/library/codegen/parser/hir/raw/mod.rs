@@ -23,6 +23,7 @@ pub(crate) fn parse(
                 (!crate_name.is_self_crate()).then_some(crate_name),
                 dumper,
                 config.rust_features.as_deref(),
+                config.tool_install_mode,
             )?,
         })
     })
