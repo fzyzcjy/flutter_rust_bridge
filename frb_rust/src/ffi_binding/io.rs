@@ -160,10 +160,8 @@ mod tests {
 
         let mut ran = false;
         count.decrement(|| {
-            assert!(
-                matches!(count.0.try_lock(), Err(TryLockError::WouldBlock)),
-                "`on_last` runs after the lock is released"
-            );
+            let locked = matches!(count.0.try_lock(), Err(TryLockError::WouldBlock));
+            assert!(locked, "`on_last` runs after the lock is released");
             ran = true;
         });
         assert!(ran);
@@ -202,10 +200,8 @@ mod tests {
         // Long enough for that thread to get in if nothing keeps it out.
         // Correct code cannot fail here, however the threads are scheduled.
         thread::sleep(Duration::from_millis(100));
-        assert!(
-            !counted_in.load(Ordering::SeqCst),
-            "counted in while `on_last` was still running"
-        );
+        let counted_in_early = counted_in.load(Ordering::SeqCst);
+        assert!(!counted_in_early, "counted in during `on_last`");
 
         release_tx.send(()).unwrap();
         shutting_down.join().unwrap();
