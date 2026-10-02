@@ -105,6 +105,25 @@ abstract class BaseEntrypoint<
     __state = null;
   }
 
+  /// Connects the Rust side to this isolate, in the one order that is safe.
+  ///
+  /// The isolate is counted (the shutdown watcher) BEFORE the post function is
+  /// installed. The shutdown callback of the last counted isolate replaces the
+  /// post function with a no-op; in the opposite order it could run after the
+  /// install and before the count, leaving this isolate alive with the no-op
+  /// and every async call waiting forever.
+  ///
+  /// {@macro flutter_rust_bridge.internal}
+  @internal
+  @visibleForTesting
+  static void initializeRustBinding(
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) {
+    _initializeShutdownWatcher(generalizedFrbRustBinding);
+    _setUpRustToDartCommunication(generalizedFrbRustBinding);
+    _initializeApiDlData(generalizedFrbRustBinding);
+  }
+
   void _sanityCheckCodegenVersion(bool forceSameCodegenVersion) {
     if (codegenVersion == kFlutterRustBridgeRuntimeVersion) {
       return;
@@ -195,9 +214,7 @@ class _EntrypointState<A extends BaseApi> {
     required this.portManager,
     required this.api,
   }) {
-    _setUpRustToDartCommunication(generalizedFrbRustBinding);
-    _initializeApiDlData(generalizedFrbRustBinding);
-    _initializeShutdownWatcher(generalizedFrbRustBinding);
+    BaseEntrypoint.initializeRustBinding(generalizedFrbRustBinding);
   }
 
   void dispose() {
