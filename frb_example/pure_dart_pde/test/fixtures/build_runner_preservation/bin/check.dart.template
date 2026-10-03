@@ -1,0 +1,8 @@
+import 'package:frb_build_runner_preservation/unrelated_model.dart';
+
+void main() {
+  final model = UnrelatedModel.fromJson({'value': 17});
+  if (model.value != 17 || const UnrelatedModel(23).toJson()['value'] != 23) {
+    throw StateError('The unrelated JSON serializer returned incorrect data');
+  }
+}

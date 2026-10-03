@@ -9,6 +9,7 @@ use crate::utils::path_utils::path_to_string;
 use anyhow::{bail, Context};
 use log::debug;
 use std::collections::HashMap;
+use std::fs;
 use std::path::{Path, MAIN_SEPARATOR};
 
 pub fn dart_build_runner(
@@ -20,12 +21,18 @@ pub fn dart_build_runner(
     debug!("Running build_runner at dart_root={dart_root:?} dart_output={dart_output:?}");
 
     let repo = DartRepository::from_path(dart_root)?;
-    let output_filters = build_runner_output_filters(
+    let mut output_filters = build_runner_output_filters(
         dart_root,
         dart_output,
         &get_dart_package_name(dart_root)?,
         needs_json_serializable,
     )?;
+    if !output_filters.is_empty()
+        && has_excluded_generated_outputs(dart_root, dart_output, needs_json_serializable)?
+    {
+        debug!("Running unfiltered build_runner to rebuild existing excluded outputs");
+        output_filters.clear();
+    }
     let args = build_runner_args(output_filters);
     let out = command_run!(
         call_shell[Some(dart_root), Some(ExecuteCommandOptions {
@@ -56,6 +63,44 @@ pub(super) fn dart_run_extra_env() -> HashMap<String, String> {
     // Otherwise every call to `ffigen`, `build_runner`, etc will need to
     // trigger `build.dart`, which takes minutes to compile the `./rust` crate
     [("FRB_SIMPLE_BUILD_SKIP".to_owned(), "1".to_owned())].into()
+}
+
+fn has_excluded_generated_outputs(
+    dart_root: &Path,
+    dart_output: &Path,
+    needs_json_serializable: bool,
+) -> anyhow::Result<bool> {
+    let mut directories = vec![dart_root.to_owned()];
+    while let Some(directory) = directories.pop() {
+        for entry in fs::read_dir(&directory)
+            .with_context(|| format!("Cannot inspect build_runner outputs in {directory:?}"))?
+        {
+            let entry = entry?;
+            let path = entry.path();
+            let file_type = entry.file_type()?;
+            let name = entry.file_name();
+            if file_type.is_dir() {
+                if name.to_string_lossy().starts_with('.')
+                    || name == "node_modules"
+                    || (directory == dart_root && (name == "build" || name == "target"))
+                    || (name == "target" && directory.join("Cargo.toml").is_file())
+                {
+                    continue;
+                }
+                directories.push(path);
+            } else if file_type.is_file() {
+                let name = name.to_string_lossy();
+                let is_freezed = name.ends_with(".freezed.dart");
+                let is_json = name.ends_with(".g.dart");
+                if (is_freezed || is_json)
+                    && !(path.starts_with(dart_output) && (is_freezed || needs_json_serializable))
+                {
+                    return Ok(true);
+                }
+            }
+        }
+    }
+    Ok(false)
 }
 
 fn build_runner_output_filters(
@@ -156,8 +201,73 @@ fn percent_encode_uri_path(path: &str) -> String {
 
 #[cfg(test)]
 mod tests {
-    use super::{build_runner_args, build_runner_output_filters, dart_run_extra_env};
+    use super::{
+        build_runner_args, build_runner_output_filters, dart_run_extra_env,
+        has_excluded_generated_outputs,
+    };
+    use std::fs;
     use std::path::Path;
+
+    #[test]
+    fn test_existing_generated_outputs() {
+        for (file, needs_json, expected) in [
+            ("lib/unrelated.g.dart", false, true),
+            ("lib/unrelated.g.dart", true, true),
+            ("lib/unrelated.freezed.dart", true, true),
+            ("test/models/example.g.dart", true, true),
+            ("lib/types [#]/example.g.dart", true, true),
+            ("lib/src/rust/api.freezed.dart", false, false),
+            ("lib/src/rust/api.g.dart", false, true),
+            ("lib/src/rust/api.g.dart", true, false),
+            ("lib/unrelated.dart", false, false),
+            ("lib/build/example.g.dart", true, true),
+            (".dart_tool/build/example.g.dart", true, false),
+            ("build/example.g.dart", true, false),
+            ("target/example.g.dart", true, false),
+            ("node_modules/example.g.dart", true, false),
+        ] {
+            let root = tempfile::tempdir().unwrap();
+            let path = root.path().join(file);
+            fs::create_dir_all(path.parent().unwrap()).unwrap();
+            fs::write(path, "generated output").unwrap();
+            assert_eq!(
+                has_excluded_generated_outputs(
+                    root.path(),
+                    &root.path().join("lib/src/rust"),
+                    needs_json,
+                )
+                .unwrap(),
+                expected,
+                "file={file} needs_json={needs_json}",
+            );
+        }
+    }
+
+    #[test]
+    fn test_existing_generated_outputs_at_package_root() {
+        let root = tempfile::tempdir().unwrap();
+        fs::write(root.path().join("example.g.dart"), "generated output").unwrap();
+        assert!(has_excluded_generated_outputs(root.path(), root.path(), false).unwrap());
+        assert!(!has_excluded_generated_outputs(root.path(), root.path(), true).unwrap());
+    }
+
+    #[test]
+    fn test_existing_generated_outputs_ignore_rust_target() {
+        let root = tempfile::tempdir().unwrap();
+        let rust = root.path().join("native/rust");
+        fs::create_dir_all(rust.join("target")).unwrap();
+        fs::write(rust.join("Cargo.toml"), "").unwrap();
+        fs::write(rust.join("target/example.g.dart"), "generated output").unwrap();
+        assert!(!has_excluded_generated_outputs(root.path(), root.path(), true).unwrap());
+    }
+
+    #[test]
+    fn test_existing_generated_outputs_propagate_read_errors() {
+        let root = tempfile::tempdir().unwrap();
+        let file = root.path().join("not_a_directory");
+        fs::write(&file, "").unwrap();
+        assert!(has_excluded_generated_outputs(&file, &file, true).is_err());
+    }
 
     /// Limits build runner to generated outputs beneath a nested Dart output directory.
     #[test]
