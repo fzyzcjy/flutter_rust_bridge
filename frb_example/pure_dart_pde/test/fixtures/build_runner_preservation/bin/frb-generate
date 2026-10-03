@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Set fast-fails
+set -euo pipefail
+
+# dir preparation
+ORIGINAL_WORK_DIR="$(pwd)"
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+cd "${SCRIPT_DIR}"
+
+# cd out of bin directory
+cd ..
+
+exit_hook() {
+    cd "${ORIGINAL_WORK_DIR}"
+}
+
+trap exit_hook EXIT
+
+flutter_rust_bridge_codegen generate && dart run build_runner build --delete-conflicting-outputs
