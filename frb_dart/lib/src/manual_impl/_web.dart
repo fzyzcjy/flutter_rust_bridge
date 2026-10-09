@@ -22,9 +22,9 @@ int dcoDecodePrimitiveInt(Object? raw) {
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 String dcoDecodeString(Object? raw) {
   if (raw is String) return raw;
-  if (raw is JSAny) {
-    if (raw.typeofEquals('string')) return (raw as JSString).toDart;
-    final dartified = raw.dartify();
+  // `is JSAny` is not consistent on dart2wasm and fails the Wasm dry run.
+  if (raw.isA<JSAny>()) {
+    final dartified = raw.jsify().dartify();
     if (dartified is String) return dartified;
   }
   throw Exception(
@@ -35,8 +35,8 @@ String dcoDecodeString(Object? raw) {
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 List<dynamic> dcoDecodeList(Object? raw) {
   if (raw is List<dynamic>) return raw;
-  if (raw is JSAny) {
-    final dartified = raw.dartify();
+  if (raw.isA<JSAny>()) {
+    final dartified = raw.jsify().dartify();
     if (dartified is List<dynamic>) return dartified;
   }
   throw Exception(

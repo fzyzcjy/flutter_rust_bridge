@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Fix Wasm dry-run failures from `is JSAny` checks in the web runtime
+
 ## 2.14.0-beta.2
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

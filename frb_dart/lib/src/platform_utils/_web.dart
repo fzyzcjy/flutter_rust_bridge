@@ -45,8 +45,9 @@ BigInt jsBigIntToDartBigInt(Object? raw) {
 
 /// {@macro flutter_rust_bridge.internal}
 Object? maybeDartify(Object? object) {
-  if (object is JSAny) {
-    return object.dartify();
+  // `is JSAny` is not consistent on dart2wasm and fails the Wasm dry run.
+  if (object.isA<JSAny>()) {
+    return object.jsify().dartify();
   }
   return object;
 }
