@@ -21,18 +21,17 @@ pub fn dart_build_runner(
     debug!("Running build_runner at dart_root={dart_root:?} dart_output={dart_output:?}");
 
     let repo = DartRepository::from_path(dart_root)?;
-    let mut output_filters = build_runner_output_filters(
+    let output_filters = clear_filters_for_excluded_outputs(
+        build_runner_output_filters(
+            dart_root,
+            dart_output,
+            &get_dart_package_name(dart_root)?,
+            needs_json_serializable,
+        )?,
         dart_root,
         dart_output,
-        &get_dart_package_name(dart_root)?,
         needs_json_serializable,
     )?;
-    if !output_filters.is_empty()
-        && has_excluded_generated_outputs(dart_root, dart_output, needs_json_serializable)?
-    {
-        debug!("Running unfiltered build_runner to rebuild existing excluded outputs");
-        output_filters.clear();
-    }
     let args = build_runner_args(output_filters);
     let out = command_run!(
         call_shell[Some(dart_root), Some(ExecuteCommandOptions {
@@ -63,6 +62,21 @@ pub(super) fn dart_run_extra_env() -> HashMap<String, String> {
     // Otherwise every call to `ffigen`, `build_runner`, etc will need to
     // trigger `build.dart`, which takes minutes to compile the `./rust` crate
     [("FRB_SIMPLE_BUILD_SKIP".to_owned(), "1".to_owned())].into()
+}
+
+fn clear_filters_for_excluded_outputs(
+    output_filters: Vec<String>,
+    dart_root: &Path,
+    dart_output: &Path,
+    needs_json_serializable: bool,
+) -> anyhow::Result<Vec<String>> {
+    if output_filters.is_empty()
+        || !has_excluded_generated_outputs(dart_root, dart_output, needs_json_serializable)?
+    {
+        return Ok(output_filters);
+    }
+    debug!("Running unfiltered build_runner to rebuild existing excluded outputs");
+    Ok(Vec::new())
 }
 
 fn has_excluded_generated_outputs(
@@ -202,11 +216,47 @@ fn percent_encode_uri_path(path: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::{
-        build_runner_args, build_runner_output_filters, dart_run_extra_env,
-        has_excluded_generated_outputs,
+        build_runner_args, build_runner_output_filters, clear_filters_for_excluded_outputs,
+        dart_run_extra_env, has_excluded_generated_outputs,
     };
     use std::fs;
     use std::path::Path;
+
+    #[test]
+    fn test_clear_filters_for_excluded_outputs() {
+        let filters = vec!["--build-filter=lib/src/rust/**.freezed.dart".to_owned()];
+        for (file, expected) in [
+            ("lib/unrelated.g.dart", Vec::new()),
+            ("lib/src/rust/api.freezed.dart", filters.clone()),
+        ] {
+            let root = tempfile::tempdir().unwrap();
+            let path = root.path().join(file);
+            fs::create_dir_all(path.parent().unwrap()).unwrap();
+            fs::write(path, "generated output").unwrap();
+            let actual = clear_filters_for_excluded_outputs(
+                filters.clone(),
+                root.path(),
+                &root.path().join("lib/src/rust"),
+                true,
+            )
+            .unwrap();
+            assert_eq!(actual, expected, "file={file}");
+        }
+    }
+
+    #[test]
+    fn test_clear_filters_for_excluded_outputs_read_errors() {
+        let root = tempfile::tempdir().unwrap();
+        let file = root.path().join("not_a_directory");
+        fs::write(&file, "").unwrap();
+        let filters = vec!["--build-filter=lib/src/rust/**.freezed.dart".to_owned()];
+        assert!(
+            clear_filters_for_excluded_outputs(Vec::new(), &file, &file, true)
+                .unwrap()
+                .is_empty()
+        );
+        assert!(clear_filters_for_excluded_outputs(filters, &file, &file, true).is_err());
+    }
 
     #[test]
     fn test_existing_generated_outputs() {
