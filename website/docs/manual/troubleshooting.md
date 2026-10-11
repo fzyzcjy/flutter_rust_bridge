@@ -74,7 +74,7 @@ You can install llvm using `brew install llvm` and it will be installed at `/usr
 
 With automatic `build_runner` invocation enabled, code generation runs `build_runner` 1.7.0 or newer for required `.freezed.dart` outputs and, when JSON serialization is needed, `.g.dart` outputs under the configured `dart_output` directory. If those files seem outdated, ensure `build_runner`, `freezed`, and the corresponding annotations are installed.
 
-Run `build_runner` separately when the Dart package contains unrelated builders whose outputs live outside `dart_output`. The automatic invocation uses output filters to scope work to FRB-generated outputs. For non-library output paths that build_runner 1.7 cannot represent safely as filters, it falls back to an unfiltered build to preserve generation correctness.
+The automatic invocation also adds exact output filters for existing compound Dart filenames, such as `.g.dart` or `.mapper.dart`, outside the FRB filters. This lets their enabled builders recreate those files after build_runner clears its cache, while keeping builders for other outputs out of the build. Run `build_runner` separately to create unrelated outputs that do not exist yet or use non-Dart extensions. Hidden files and FRB platform files are excluded from detection. If existing outputs cannot be inspected, a non-library path cannot be represented safely as a filter, or the filter list exceeds the shell command budget, the automatic invocation falls back to an unfiltered build.
 
 Code generation streams child command output, including `build_runner`, when run with `--verbose`. If Polish looks stuck, re-run with `--verbose` and look at those lines first (for example `freezed on N inputs` or an analyzer exception).
 
