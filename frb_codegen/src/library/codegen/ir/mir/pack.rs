@@ -122,7 +122,7 @@ impl DistinctTypeGatherer {
         if let Some(&index) = self.seen_idents.get(&ident) {
             // A type can be seen as a normal type (e.g. an argument) before it is seen as an error.
             // It is an exception as long as any usage is an error, regardless of the visiting order.
-            if is_exception(ty) && !is_exception(&self.ans[index]) {
+            if compute_ty_priority(ty) > compute_ty_priority(&self.ans[index]) {
                 self.ans[index] = ty.clone();
             }
             return true;
@@ -141,11 +141,12 @@ impl DistinctTypeGatherer {
     }
 }
 
-fn is_exception(ty: &MirType) -> bool {
+/// When the same type is seen multiple times, the usage with the higher priority wins.
+fn compute_ty_priority(ty: &MirType) -> u8 {
     match ty {
-        MirType::StructRef(inner) => inner.is_exception,
-        MirType::EnumRef(inner) => inner.is_exception,
-        _ => false,
+        MirType::StructRef(inner) if inner.is_exception => 1,
+        MirType::EnumRef(inner) if inner.is_exception => 1,
+        _ => 0,
     }
 }
 
@@ -277,7 +278,7 @@ mod tests {
         }
         let ans = gatherer.gather();
         assert_eq!(ans.len(), 1);
-        is_exception(&ans[0])
+        compute_ty_priority(&ans[0]) > 0
     }
 
     /// Treats a type as an exception if any usage is an error, regardless of the visiting order.
@@ -295,5 +296,6 @@ mod tests {
             struct_ref(false),
             struct_ref(false)
         ]));
+        assert!(gathered_is_exception(&[struct_ref(true), struct_ref(true)]));
     }
 }
