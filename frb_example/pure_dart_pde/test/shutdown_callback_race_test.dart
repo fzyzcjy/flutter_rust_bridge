@@ -1,12 +1,7 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
-// The shutdown callback of the last counted isolate replaces the function Rust
-// uses to post to Dart with a no-op. An isolate that initializes while another
-// one shuts down must still end up with the real function, or its
-// `RustLib.init()` (or its first async call) never completes.
-//
-// This isolate itself never calls `RustLib.init()`: a counted isolate that
-// stays alive keeps the count above zero, and then the race cannot happen.
+// This isolate never calls `RustLib.init()`: once counted, it would keep the
+// isolate count above zero, and the race could not happen.
 @TestOn('vm')
 library;
 
@@ -39,8 +34,7 @@ Future<String> _initAndCallInNewIsolate() async {
     onError: port.sendPort,
   );
   try {
-    // Without the post function the reply never comes, however long one
-    // waits; the limit only has to be far above what an init takes.
+    // A hung init never replies, so any limit far above an init will do.
     final reply = await port.first.timeout(
       const Duration(seconds: 10),
       onTimeout: () => 'hang',
@@ -59,10 +53,8 @@ Future<void> _initAndCall(SendPort reply) async {
 
 typedef _ShutdownCallback = Void Function(Pointer<Void>);
 
-/// An isolate that does to the isolate count, as fast as it can, what an
-/// isolate does when it is initialized and shut down: take a shutdown
-/// callback, then call it. Whenever the count drops to zero, the callback
-/// installs the no-op.
+/// An isolate that takes and calls shutdown callbacks in a loop, so that the
+/// count keeps dropping to zero and installing the no-op.
 class _Hammer {
   _Hammer._(this._control, this._messages);
 
@@ -87,9 +79,7 @@ class _Hammer {
     return _Hammer._(control, messages);
   }
 
-  /// Stops the hammer after a complete take-and-call, so that it leaves the
-  /// count as it found it. Killing it could leave one callback taken and never
-  /// called, and then the count would never drop to zero again.
+  /// Stops between take-and-calls; a kill could leave the count above zero.
   Future<void> stop() async {
     _control.send(null);
     await _messages.moveNext();

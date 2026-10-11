@@ -61,9 +61,6 @@ void main() {
 
     BaseEntrypoint.initializeRustBinding(binding);
 
-    // The shutdown callback of the last counted isolate disables posting. An
-    // isolate that installed the post function first could have it disabled
-    // before it is counted, and would then never hear from Rust again.
     verifyInOrder([
       () => binding.initShutdownWatcher(),
       () => binding.storeDartPostCObject(),

@@ -36,17 +36,8 @@ pub unsafe extern "C" fn frb_free_wire_sync_rust2dart_sse(value: WireSyncRust2Da
     let _ = Rust2DartMessageSse::from_raw_wire_sync(value);
 }
 
-/// How many isolates hold a shutdown callback.
-///
-/// A lock rather than an atomic, because counting down to zero and disabling
-/// the post function must be one step as seen by a new isolate. With an
-/// atomic, a callback that has already counted down to zero but not yet stored
-/// `devnull` can be overtaken by a new isolate that counts itself and stores
-/// the real function; the late `devnull` then silences an isolate that is
-/// alive.
-///
-/// The other direction needs no lock, only an order: Dart counts the isolate
-/// (`frb_create_shutdown_callback`) before it stores the post function.
+/// How many isolates hold a shutdown callback. Locked, so that no isolate is
+/// counted in between the last count-down and the `devnull` store.
 struct IsolateCount(Mutex<u64>);
 
 impl IsolateCount {
@@ -55,9 +46,7 @@ impl IsolateCount {
     }
 
     fn lock(&self) -> MutexGuard<'_, u64> {
-        // A poisoned lock is still usable here, and `unwrap` would put a panic
-        // path into the shutdown callback, which must not unwind across the
-        // FFI boundary.
+        // No `unwrap`: the shutdown callback must not panic.
         self.0.lock().unwrap_or_else(PoisonError::into_inner)
     }
 
@@ -66,12 +55,9 @@ impl IsolateCount {
         *count = count.saturating_add(1);
     }
 
-    /// Counts one isolate out and, if it was the last one, runs `on_last`
-    /// before any other isolate can be counted in.
+    /// Runs `on_last`, still under the lock, if no isolate is left.
     fn decrement(&self, on_last: impl FnOnce()) {
         let mut count = self.lock();
-        // Saturating, like `increment`: an unbalanced call must not panic
-        // inside the shutdown callback either.
         *count = count.saturating_sub(1);
         if *count == 0 {
             on_last();
@@ -92,8 +78,7 @@ pub unsafe extern "C" fn frb_create_shutdown_callback() -> unsafe extern "C" fn(
 
     ISOLATES_NUM.increment();
 
-    /// Called by Dart's `NativeFinalizer` when the isolate that took it shuts
-    /// down.
+    /// Called by Dart's `NativeFinalizer` when its isolate shuts down.
     unsafe extern "C" fn frb_shutdown_callback(_: *mut c_void) {
         unsafe extern "C" fn devnull(_: DartPort, _: *mut DartCObject) -> bool {
             // Returning true is wrong since message is not enqueued and this
@@ -128,8 +113,6 @@ mod tests {
     use std::time::Duration;
 
     #[test]
-    /// `on_last` runs for the last isolate only, and again for the last one of
-    /// a later generation (another test file, a hot restart).
     fn isolate_count_runs_on_last_only_when_no_isolate_is_left() {
         let count = IsolateCount::new();
         let last = AtomicUsize::new(0);
@@ -152,8 +135,6 @@ mod tests {
     }
 
     #[test]
-    /// `on_last` runs while the count is still locked, so that no isolate can
-    /// be counted in before the post function has been disabled.
     fn isolate_count_runs_on_last_under_the_lock() {
         let count = IsolateCount::new();
         count.increment();
@@ -168,10 +149,7 @@ mod tests {
     }
 
     #[test]
-    /// A new isolate is not counted in while the last shutdown is still inside
-    /// `on_last`, that is, before the post function has been disabled. With an
-    /// atomic counter it would be, and the post function it then stores would
-    /// be overwritten by the one `on_last` stores.
+    /// Otherwise `on_last` would overwrite a new isolate's post function.
     fn isolate_count_keeps_new_isolates_out_until_on_last_is_done() {
         let count = Arc::new(IsolateCount::new());
         count.increment();
@@ -197,8 +175,7 @@ mod tests {
                 counted_in.store(true, Ordering::SeqCst);
             })
         };
-        // Long enough for that thread to get in if nothing keeps it out.
-        // Correct code cannot fail here, however the threads are scheduled.
+        // Time for that thread to get in if nothing keeps it out.
         thread::sleep(Duration::from_millis(100));
         let counted_in_early = counted_in.load(Ordering::SeqCst);
         assert!(!counted_in_early, "counted in during `on_last`");
