@@ -36,9 +36,9 @@ The CI workflow pins these values instead of following the latest OHOS SDK or
 Flutter fork automatically. Other toolchain combinations can work, but are not
 release-gated yet. x86_64, armv7, profile, Native Assets, plugin consumption,
 and CI-controlled real-device execution remain experimental or unverified until
-their test matrix is added. A dedicated test entrypoint exercises representative
-FRB values on one signed device build; this broader API smoke is not yet a
-release gate.
+their test matrix is added. A dedicated test entrypoint provides a deterministic
+synchronous Dart-to-Rust device smoke marker; broader FRB API coverage is not
+yet a release gate.
 
 Use the CargoKit backend for OHOS builds. The Native Assets path still depends
 on `native_toolchain_rust` target mappings that do not cover OHOS, so selecting
@@ -243,10 +243,9 @@ When more than one device is connected, select one explicitly:
   --device-id DEVICE_UDID
 ```
 
-The dedicated entrypoint emits `FRB_OHOS_SMOKE_RESULT=PASS` only after it
-exercises the synchronous string call, byte-array and struct codecs, an async
-call, a fallible call, and a stream. For a broader device test fixture, pass its
-deterministic marker with `--expected-log`. The command also checks that
+The dedicated entrypoint emits `FRB_OHOS_SMOKE_RESULT=PASS` after completing a
+synchronous Dart-to-Rust string call. For a broader device test fixture, pass
+its deterministic marker with `--expected-log`. The command also checks that
 `--bundle` matches the HAP metadata before installation. Logs are saved under
 `target/ohos_device_smoke` by default. Use a dedicated bundle name
 whose application is not already installed on the device; the command

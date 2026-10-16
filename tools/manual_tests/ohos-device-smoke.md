@@ -4,7 +4,7 @@
 
 Verify that a signed arm64 HAP produced from the CargoKit create example can be
 installed on an OHOS/HarmonyOS device, start `EntryAbility`, load the packaged
-Rust library, exercise representative FRB codecs and call modes, and clean up
+Rust library, complete a Dart-to-Rust call, and clean up
 the test application.
 
 ## Source
