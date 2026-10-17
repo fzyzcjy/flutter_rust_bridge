@@ -13,12 +13,26 @@ void main() {
         isTrue,
       );
       expect(
+        ohosHapContainsRustLibraryForTesting([
+          'libs/x86_64/librust_lib_example.so',
+        ], expectedLibrary: 'librust_lib_example.so'),
+        isFalse,
+      );
+      expect(
         ohosHapContainsRustLibraryForTesting(
           ['libs/x86_64/librust_lib_example.so'],
           expectedLibrary: 'librust_lib_example.so',
           abi: 'x86_64',
         ),
         isTrue,
+      );
+      expect(
+        ohosHapContainsRustLibraryForTesting(
+          ['libs/arm64-v8a/librust_lib_example.so'],
+          expectedLibrary: 'librust_lib_example.so',
+          abi: 'x86_64',
+        ),
+        isFalse,
       );
       expect(
         ohosHapContainsRustLibraryForTesting([
