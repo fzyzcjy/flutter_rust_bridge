@@ -71,6 +71,12 @@ List<String> _flutterViaCreateExclusions(
   if (needCompareOhos) '$package/android/',
   if (needCompareOhos) '$package/macos/',
   if (needCompareOhos) '$package/windows/',
+  // The device smoke entrypoint and ability metadata are checked-in test
+  // fixtures, rather than output produced by the generic Flutter scaffold.
+  if (needCompareOhos && package == 'frb_example/flutter_via_create') ...[
+    '$package/ohos/ohos_device_smoke_main.dart',
+    '$package/ohos/entry/src/main/module.json5',
+  ],
   if (!needCompareOhos) '$package/ohos/',
   if (!needCompareOhos && hasRustBuilder) '$package/rust_builder/ohos/',
   if (!needCompareOhos && hasRustBuilder) '$package/rust_builder/pubspec.yaml',

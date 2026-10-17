@@ -43,7 +43,9 @@ void main() {
         "':(exclude)$package/pubspec.yaml' "
         "':(exclude)$package/android/' "
         "':(exclude)$package/macos/' "
-        "':(exclude)$package/windows/'",
+        "':(exclude)$package/windows/' "
+        "':(exclude)$package/ohos/ohos_device_smoke_main.dart' "
+        "':(exclude)$package/ohos/entry/src/main/module.json5'",
       );
     },
   );
