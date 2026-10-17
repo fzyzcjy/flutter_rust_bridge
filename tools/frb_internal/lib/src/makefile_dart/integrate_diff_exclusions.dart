@@ -46,6 +46,7 @@ Map<String, List<String>> _integrateSetExitIfChangedExcludedPathsByPackage({
     package: [
       '$package/macos/Flutter/Flutter-Debug.xcconfig',
       '$package/macos/Flutter/Flutter-Release.xcconfig',
+      '$package/pubspec.lock',
     ],
   for (final package in [
     'frb_example/flutter_package',

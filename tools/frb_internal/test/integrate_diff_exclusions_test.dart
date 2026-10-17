@@ -56,7 +56,8 @@ void main() {
       expect(
         integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
         "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
-        "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig'",
+        "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
+        "':(exclude)$package/pubspec.lock'",
         reason: package,
       );
     }
