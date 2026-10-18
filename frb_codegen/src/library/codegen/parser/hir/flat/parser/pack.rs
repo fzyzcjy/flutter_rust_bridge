@@ -44,6 +44,7 @@ mod tests {
             third_party_crate_names: vec![],
             rust_features: None,
             parse_const: true,
+            tool_install_mode: crate::misc::ToolInstallMode::Normal,
         };
         let meta = HirNaiveFlatItemMeta {
             namespace: Namespace::new_raw("crate::api".to_owned()),
