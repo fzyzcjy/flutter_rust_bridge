@@ -1,9 +1,9 @@
 # Tool installation
 
-`flutter_rust_bridge_codegen` automatically installs missing tools when needed:
-`cargo-expand` for code generation, plus `wasm-pack` and `wasm-bindgen-cli` for web builds.
+`flutter_rust_bridge_codegen` automatically installs missing tools when needed
+(`cargo-expand` for code generation, and `wasm-pack` and `wasm-bindgen-cli` for web builds).
 
-If you manage your toolchain yourself (for example, with mise or in Docker),
+If you manage your toolchain yourself (for example, with `mise` or in Docker),
 pass `--skip-tool-install` to report missing tools instead of installing them:
 
 ```shell
