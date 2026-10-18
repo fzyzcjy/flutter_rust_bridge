@@ -74,14 +74,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
             CustomNestedErrorInnerTwinRustAsync.four(42),
           ),
         ],
-        equals);
+        (value) => allOf(isA<FrbException>(), equals(value)));
 
     addTestsErrorFunctionCall(
         customStructErrorReturnErrorTwinRustAsync,
         [
           const CustomStructErrorTwinRustAsync(a: 'hello'),
         ],
-        equals);
+        (value) => allOf(isA<FrbException>(), equals(value)));
   });
 
   group('example-based tests', () {
