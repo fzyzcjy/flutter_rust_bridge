@@ -10,7 +10,7 @@ use crate::utils::crate_name::CrateName;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use lazy_static::lazy_static;
-use log::{debug, info};
+use log::{debug, info, warn};
 use regex::{Captures, Regex};
 use std::borrow::Cow;
 use std::collections::HashMap;
@@ -130,6 +130,7 @@ fn run_raw(
         Some(rust_crate_dir),
         Some(ExecuteCommandOptions {
             envs: Some(extra_env),
+            log_when_error: Some(false),
             ..Default::default()
         }),
     )
@@ -162,8 +163,15 @@ fn run_raw(
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
-        bail!("cargo expand returned empty output");
+        bail!("cargo expand returned empty output: {stderr}");
         // frb-coverage:ignore-end
+    }
+
+    if !output.status.success() {
+        warn!(
+            "cargo expand exited with {} but produced expanded output; using it. stderr={}",
+            output.status, stderr
+        );
     }
 
     Ok(stdout.lines().skip(1).join("\n"))
