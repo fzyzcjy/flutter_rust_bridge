@@ -1,0 +1,28 @@
+import 'package:build/build.dart';
+
+Builder customOutput(BuilderOptions options) => _CustomOutput();
+
+class _CustomOutput implements Builder {
+  @override
+  final buildExtensions = const {
+    '.input': ['.custom.dart'],
+    '.meta': ['.bin'],
+  };
+
+  @override
+  Future<void> build(BuildStep step) async {
+    if (step.inputId.path.endsWith('.meta')) {
+      await step.writeAsBytes(step.inputId.changeExtension('.bin'), [
+        0,
+        255,
+        10,
+      ]);
+      return;
+    }
+    final value = await step.readAsString(step.inputId);
+    await step.writeAsString(
+      step.inputId.changeExtension('.custom.dart'),
+      'const customValue = $value\n',
+    );
+  }
+}
