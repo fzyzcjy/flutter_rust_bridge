@@ -31,6 +31,13 @@ part 'generate.g.dart';
 
 const _kRefreshCargoLockOrderingEnv = 'FRB_REFRESH_CARGO_LOCK_ORDERING';
 
+// `flutter create` does not include the OHOS platform when no `--platforms`
+// argument is passed, even when the active Flutter fork supports OHOS. Keep
+// the complete application platform set here so the integrate example gets a
+// real OHOS application scaffold while retaining the other checked-in targets.
+const _kFlutterCreatePlatformsWithOhos =
+    'android,ios,linux,macos,ohos,web,windows';
+
 List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand(
@@ -448,13 +455,21 @@ Future<void> generateAppleScaffold() async {
     );
   }
 
+  final extraArgs = integrateAppleScaffoldSourceOfTruthPackages()
+      .map(
+        (package) =>
+            integrateDiffExclusionArgs(package, needCompareOhos: false),
+      )
+      .where((args) => args.isNotEmpty)
+      .join(' ');
+
   await wrapMaybeSetExitIfChangedRaw(true, () async {
     for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
       await generateRunFrbCodegenCommandIntegrate(
         generateAppleScaffoldPackageConfig(package),
       );
     }
-  });
+  }, extraArgs: extraArgs);
 }
 
 GenerateIntegratePackageConfig generateAppleScaffoldPackageConfig(
@@ -514,7 +529,10 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 
           case IntegrateExampleRecipe.integrateApp:
             await exec(
-              'flutter create $packageName',
+              flutterCreateCommandForIntegrateForTesting(
+                packageName: packageName,
+                includeOhos: config.includeOhos,
+              ),
               relativePwd: 'frb_example',
             );
             await executeFrbCodegen(
@@ -583,6 +601,13 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     },
   );
 }
+
+String flutterCreateCommandForIntegrateForTesting({
+  required String packageName,
+  required bool includeOhos,
+}) =>
+    'flutter create $packageName'
+    '${includeOhos ? ' --platforms $_kFlutterCreatePlatformsWithOhos' : ''}';
 
 IntegrateExamplePackage _integrateRecipeForPackage(String package) {
   for (final config in kDartExampleIntegratePackageConfigs) {

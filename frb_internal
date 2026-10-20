@@ -3,6 +3,20 @@ SCRIPT=$(readlink -f "$0")
 SCRIPT_PATH=$(dirname "$SCRIPT")
 
 PACKAGE_CONFIG="$SCRIPT_PATH/tools/frb_internal/.dart_tool/package_config.json"
+DART_BIN="${FRB_INTERNAL_DART:-dart}"
+
+if ! command -v "$DART_BIN" >/dev/null 2>&1; then
+  echo "Cannot find Dart executable: $DART_BIN" >&2
+  echo "Set FRB_INTERNAL_DART to a Dart 3.13+ executable when the active Flutter SDK ships an older Dart." >&2
+  exit 1
+fi
+
+if [[ "$DART_BIN" == */* ]]; then
+  DART_DIR=$(cd "$(dirname "$DART_BIN")" && pwd)
+  DART_BIN="$DART_DIR/$(basename "$DART_BIN")"
+  export PATH="$DART_DIR:$PATH"
+fi
+
 if [[ -f "$PACKAGE_CONFIG" ]]; then
   while IFS= read -r root_uri; do
     root_path="${root_uri#file://}"
@@ -15,7 +29,7 @@ fi
 
 cd "$SCRIPT_PATH"/tools/frb_internal
 if [[ ! -f .dart_tool/package_config.json ]]; then
-  dart pub get
+  "$DART_BIN" pub get
 fi
 
-exec dart run flutter_rust_bridge_internal "$@"
+exec "$DART_BIN" run flutter_rust_bridge_internal "$@"

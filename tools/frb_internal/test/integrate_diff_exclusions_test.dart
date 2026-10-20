@@ -43,7 +43,8 @@ void main() {
         "':(exclude)$package/pubspec.yaml' "
         "':(exclude)$package/android/' "
         "':(exclude)$package/macos/' "
-        "':(exclude)$package/windows/'",
+        "':(exclude)$package/windows/' "
+        "':(exclude)$package/ohos/entry/src/main/module.json5'",
       );
     },
   );
@@ -56,7 +57,8 @@ void main() {
       expect(
         integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
         "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
-        "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig'",
+        "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
+        "':(exclude)$package/pubspec.lock'",
         reason: package,
       );
     }
@@ -70,7 +72,8 @@ void main() {
       expect(
         integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
         "':(exclude)$package/example/macos/Flutter/Flutter-Debug.xcconfig' "
-        "':(exclude)$package/example/macos/Flutter/Flutter-Release.xcconfig'",
+        "':(exclude)$package/example/macos/Flutter/Flutter-Release.xcconfig' "
+        "':(exclude)$package/example/pubspec.lock'",
         reason: package,
       );
     }

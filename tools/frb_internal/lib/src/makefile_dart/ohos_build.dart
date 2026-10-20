@@ -8,24 +8,38 @@ import 'package:path/path.dart' as path;
 import 'package:toml/toml.dart';
 
 Future<void> buildOhos(String package) async {
-  await _runOhosBuildPreflight();
-  final hapBackup = stashOhosHapOutputForTesting(
-    Directory('${exec.pwd}$package/build/ohos/hap'),
+  final target = resolveOhosTargetForTesting(
+    Platform.environment['FRB_OHOS_TARGET_PLATFORM'],
+  );
+  final buildMode = resolveOhosBuildModeForTesting(
+    Platform.environment['FRB_OHOS_BUILD_MODE'],
+  );
+  await _runOhosBuildPreflight(
+    targetPlatform: target.flutterTargetPlatform,
+    buildMode: buildMode,
+  );
+  final hapBackup = stashOhosHapOutputsForTesting(
+    ohosHapOutputDirectoriesForTesting('${exec.pwd}$package'),
   );
   try {
     await exec(
-      'flutter build hap --no-codesign --release --target-platform ohos-arm64 --verbose',
+      'flutter build hap --no-codesign --$buildMode '
+      '--target-platform ${target.flutterTargetPlatform} --verbose',
       relativePwd: package,
     );
-    await _verifyOhosHapContainsRustLibrary(package);
+    await _verifyOhosHapContainsRustLibrary(package, abi: target.hapAbi);
+    normalizeOhosHapOutputForTesting('${exec.pwd}$package');
   } catch (_) {
-    restoreOhosHapOutputForTesting(hapBackup);
+    restoreOhosHapOutputsForTesting(hapBackup);
     rethrow;
   }
-  hapBackup.backup?.deleteSync(recursive: true);
+  deleteOhosHapBackupsForTesting(hapBackup);
 }
 
-Future<void> _runOhosBuildPreflight() async {
+Future<void> _runOhosBuildPreflight({
+  required String targetPlatform,
+  required String buildMode,
+}) async {
   final sdkHome = Platform.environment['OHOS_SDK_HOME'];
   final errors = validateOhosSdkHomeForTesting(
     sdkHome: sdkHome,
@@ -72,9 +86,58 @@ Future<void> _runOhosBuildPreflight() async {
 
   print(
     'OHOS build environment preflight passed: '
-    'SDK=$sdkHome, Flutter target=ohos-arm64, '
-    'Rust target=aarch64-unknown-linux-ohos, HAP ABI=arm64-v8a',
+    'SDK=$sdkHome, Flutter target=$targetPlatform, build mode=$buildMode, '
+    'Rust target=${resolveOhosTargetForTesting(targetPlatform).rustTarget}, '
+    'HAP ABI=${resolveOhosTargetForTesting(targetPlatform).hapAbi}',
   );
+}
+
+String resolveOhosBuildModeForTesting(String? requestedBuildMode) {
+  final buildMode = requestedBuildMode?.trim().isNotEmpty == true
+      ? requestedBuildMode!.trim()
+      : 'release';
+  switch (buildMode) {
+    case 'debug':
+    case 'profile':
+    case 'release':
+      return buildMode;
+    default:
+      throw ArgumentError.value(
+        buildMode,
+        'buildMode',
+        'expected debug, profile, or release',
+      );
+  }
+}
+
+({String flutterTargetPlatform, String rustTarget, String hapAbi})
+resolveOhosTargetForTesting(String? requestedTargetPlatform) {
+  final targetPlatform = requestedTargetPlatform?.trim().isNotEmpty == true
+      ? requestedTargetPlatform!.trim()
+      : 'ohos-arm64';
+  return switch (targetPlatform) {
+    'ohos-arm64' => (
+      flutterTargetPlatform: 'ohos-arm64',
+      rustTarget: 'aarch64-unknown-linux-ohos',
+      hapAbi: 'arm64-v8a',
+    ),
+    'ohos-x64' => (
+      flutterTargetPlatform: 'ohos-x64',
+      rustTarget: 'x86_64-unknown-linux-ohos',
+      hapAbi: 'x86_64',
+    ),
+    'ohos-arm' => throw ArgumentError.value(
+      targetPlatform,
+      'targetPlatform',
+      'ohos-arm is not supported by the current HarmonyOS HAP toolchain; '
+          'use ohos-arm64 or ohos-x64',
+    ),
+    _ => throw ArgumentError.value(
+      targetPlatform,
+      'targetPlatform',
+      'expected ohos-arm64 or ohos-x64',
+    ),
+  };
 }
 
 List<String> validateOhosSdkHomeForTesting({
@@ -178,7 +241,34 @@ void restoreOhosHapOutputForTesting(
   }
 }
 
-Future<void> _verifyOhosHapContainsRustLibrary(String package) async {
+({List<({Directory output, Directory? backup})> entries})
+stashOhosHapOutputsForTesting(Iterable<Directory> outputs) => (
+  entries: [for (final output in outputs) stashOhosHapOutputForTesting(output)],
+);
+
+void restoreOhosHapOutputsForTesting(
+  ({List<({Directory output, Directory? backup})> entries}) state,
+) {
+  for (final entry in state.entries) {
+    restoreOhosHapOutputForTesting(entry);
+  }
+}
+
+void deleteOhosHapBackupsForTesting(
+  ({List<({Directory output, Directory? backup})> entries}) state,
+) {
+  for (final entry in state.entries) {
+    final backup = entry.backup;
+    if (backup != null && backup.existsSync()) {
+      backup.deleteSync(recursive: true);
+    }
+  }
+}
+
+Future<void> _verifyOhosHapContainsRustLibrary(
+  String package, {
+  required String abi,
+}) async {
   final packageDir = '${exec.pwd}$package';
   final cargoTomlPath = ohosRustCargoTomlPathForTesting(
     packageDir: packageDir,
@@ -186,18 +276,20 @@ Future<void> _verifyOhosHapContainsRustLibrary(String package) async {
   );
   final cargoToml = File(cargoTomlPath).readAsStringSync();
   final expectedLibrary = ohosRustLibraryNameForTesting(cargoToml);
-  final hapDirectory = Directory('$packageDir/build/ohos/hap');
-  final hapFiles = hapDirectory.existsSync()
-      ? hapDirectory
+  final hapDirectories = ohosHapOutputDirectoriesForTesting(packageDir);
+  final hapFiles = [
+    for (final hapDirectory in hapDirectories)
+      if (hapDirectory.existsSync())
+        ...hapDirectory
             .listSync(recursive: true)
             .whereType<File>()
-            .where((file) => file.path.endsWith('.hap'))
-            .toList()
-      : <File>[];
+            .where((file) => file.path.endsWith('.hap')),
+  ];
 
   if (hapFiles.isEmpty) {
     throw StateError(
-      'OHOS build produced no HAP files in ${hapDirectory.path}',
+      'OHOS build produced no HAP files in '
+      '${hapDirectories.map((directory) => directory.path).join(', ')}',
     );
   }
 
@@ -208,25 +300,55 @@ Future<void> _verifyOhosHapContainsRustLibrary(String package) async {
   validateOhosHapRustLibrariesForTesting(
     entriesByHap,
     expectedLibrary: expectedLibrary,
+    abi: abi,
   );
+}
+
+List<Directory> ohosHapOutputDirectoriesForTesting(String packageDir) => [
+  Directory(path.join(packageDir, 'build', 'ohos', 'hap')),
+  // Recent Hvigor versions keep the final HAP under the entry module when
+  // Flutter does not mirror it into build/ohos/hap.
+  Directory(path.join(packageDir, 'ohos', 'entry', 'build')),
+];
+
+Directory normalizeOhosHapOutputForTesting(String packageDir) {
+  final directories = ohosHapOutputDirectoriesForTesting(packageDir);
+  final canonical = directories.first;
+  final existingHaps = [
+    for (final directory in directories.skip(1))
+      if (directory.existsSync())
+        ...directory
+            .listSync(recursive: true)
+            .whereType<File>()
+            .where((file) => file.path.endsWith('.hap')),
+  ];
+  if (existingHaps.isEmpty) return canonical;
+
+  canonical.createSync(recursive: true);
+  for (final hap in existingHaps) {
+    hap.copySync(path.join(canonical.path, path.basename(hap.path)));
+  }
+  return canonical;
 }
 
 void validateOhosHapRustLibrariesForTesting(
   Map<String, Iterable<String>> entriesByHap, {
   required String expectedLibrary,
+  String abi = 'arm64-v8a',
 }) {
   final invalidHaps = entriesByHap.entries
       .where(
         (entry) => !ohosHapContainsRustLibraryForTesting(
           entry.value,
           expectedLibrary: expectedLibrary,
+          abi: abi,
         ),
       )
       .map((entry) => entry.key)
       .toList();
   if (invalidHaps.isNotEmpty) {
     throw StateError(
-      'OHOS HAPs do not contain $expectedLibrary for arm64-v8a: '
+      'OHOS HAPs do not contain $expectedLibrary for $abi: '
       '${invalidHaps.join(', ')}',
     );
   }

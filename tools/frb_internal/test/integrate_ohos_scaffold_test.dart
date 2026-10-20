@@ -18,6 +18,8 @@ void main() {
     );
     expect(preservedOhosScaffoldPaths('frb_example/flutter_via_integrate'), [
       'ohos',
+      'rust_builder/ohos',
+      'rust_builder/pubspec.yaml',
     ]);
     expect(preservedOhosScaffoldPaths('frb_example/flutter_package'), isEmpty);
   });
@@ -71,8 +73,13 @@ void main() {
     final original = Directory('${tempDir.path}/original');
     final generated = Directory('${tempDir.path}/generated');
     Directory('${original.path}/ohos').createSync(recursive: true);
+    Directory('${original.path}/rust_builder/ohos').createSync(recursive: true);
     File('${original.path}/ohos/ohos_device_smoke_main.dart')
         .writeAsStringSync('void main() {}');
+    File('${original.path}/rust_builder/ohos/CMakeLists.txt')
+        .writeAsStringSync('cmake');
+    File('${original.path}/rust_builder/pubspec.yaml')
+        .writeAsStringSync('plugin:\n  platforms:\n    ohos:\n');
     Directory(generated.path).createSync(recursive: true);
 
     await preserveCheckedInOhosScaffold(
@@ -85,6 +92,15 @@ void main() {
       File('${generated.path}/ohos/ohos_device_smoke_main.dart')
           .readAsStringSync(),
       'void main() {}',
+    );
+    expect(
+      File('${generated.path}/rust_builder/ohos/CMakeLists.txt')
+          .readAsStringSync(),
+      'cmake',
+    );
+    expect(
+      File('${generated.path}/rust_builder/pubspec.yaml').readAsStringSync(),
+      'plugin:\n  platforms:\n    ohos:\n',
     );
   });
 

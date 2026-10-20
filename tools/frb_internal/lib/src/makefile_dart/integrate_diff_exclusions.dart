@@ -46,6 +46,7 @@ Map<String, List<String>> _integrateSetExitIfChangedExcludedPathsByPackage({
     package: [
       '$package/macos/Flutter/Flutter-Debug.xcconfig',
       '$package/macos/Flutter/Flutter-Release.xcconfig',
+      '$package/pubspec.lock',
     ],
   for (final package in [
     'frb_example/flutter_package',
@@ -54,6 +55,7 @@ Map<String, List<String>> _integrateSetExitIfChangedExcludedPathsByPackage({
     package: [
       '$package/example/macos/Flutter/Flutter-Debug.xcconfig',
       '$package/example/macos/Flutter/Flutter-Release.xcconfig',
+      '$package/example/pubspec.lock',
     ],
 };
 
@@ -69,6 +71,10 @@ List<String> _flutterViaCreateExclusions(
   if (needCompareOhos) '$package/android/',
   if (needCompareOhos) '$package/macos/',
   if (needCompareOhos) '$package/windows/',
+  // The example's device types intentionally differ from the Flutter scaffold.
+  if (needCompareOhos && package == 'frb_example/flutter_via_create') ...[
+    '$package/ohos/entry/src/main/module.json5',
+  ],
   if (!needCompareOhos) '$package/ohos/',
   if (!needCompareOhos && hasRustBuilder) '$package/rust_builder/ohos/',
   if (!needCompareOhos && hasRustBuilder) '$package/rust_builder/pubspec.yaml',
