@@ -19,22 +19,15 @@ extern "C" {
     pub fn js_console_error(msg: &str);
 }
 
-/// Copied from https://github.com/chemicstry/wasm_thread/blob/main/src/script_path.js
+/// Followed solution from https://stackoverflow.com/a/27369985
 /// Extracts current script file path from artificially generated stack trace
 pub(crate) fn script_path() -> Option<String> {
-    js_sys::eval(
-        r#"
-(() => {
-    try {
-        throw new Error("Harmless thrown-and-caught error to get script_path");
-    } catch (e) {
-        let parts = e.stack.match(/(?:\(|@)(\S+):\d+:\d+/);
-        return parts[1];
-    }
-})()"#,
-    )
-    .ok()?
-    .as_string()
+    web_sys::window()?.document().and_then(|doc| {
+        doc.current_script()?.get_attribute("src").or_else(|| {
+            let scripts = doc.get_elements_by_tag_name("script");
+            scripts.item(scripts.length() - 1)?.get_attribute("src")
+        })
+    })
 }
 
 #[cfg(feature = "log")]
