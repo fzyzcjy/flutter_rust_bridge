@@ -15,11 +15,25 @@ Future<void> initializeWasmModule({
   final script = web.HTMLScriptElement()..src = '$root.js';
   web.document.head!.append(script);
 
+  final wasmBindgenCompleter = Completer<JSObject>();
+
+  void listener(JSObject event) {
+    final hasBindGen = event.has(wasmBindgenName);
+    if (event is web.Event && hasBindGen) {
+      event.stopPropagation();
+      final wasmBindgen = event.getProperty(wasmBindgenName.toJS);
+      wasmBindgenCompleter.complete(wasmBindgen as JSObject);
+    }
+  }
+
+  web.window.addEventListener('wasm_bindgen_registered', listener.toJS);
+
   await script.onLoad.first;
 
-  jsEval('window.$wasmBindgenName = $wasmBindgenName');
+  final jsObject = await wasmBindgenCompleter.future;
 
-  final jsObject = web.window.getProperty(wasmBindgenName.toJS) as JSObject;
+  web.window.setProperty(wasmBindgenName.toJS, jsObject);
+
   final wasmBindgen = _JSWasmBindgen(jsObject);
   await wasmBindgen('${root}_bg.wasm'.toJS).toDart;
 }

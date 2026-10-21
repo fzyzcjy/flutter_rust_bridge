@@ -34,8 +34,8 @@ bytemuck = "1.11.0"
 console_error_panic_hook = { version = "0.1.7", optional = true }
 js-sys = { version = "0.3.69" }
 tokio = { version = "1.38.2", optional = true, features = ["sync"] }
-wasm-bindgen = { version = "0.2.92" }
-wasm-bindgen-futures = { version = "0.4.42", optional = true }
+wasm-bindgen = { version = "0.2.128" }
+wasm-bindgen-futures = { version = "0.4.78", optional = true }
 web-sys = { version = "0.3.58", features = [
     "DedicatedWorkerGlobalScope",
     "MessageEvent",
@@ -46,6 +46,10 @@ web-sys = { version = "0.3.58", features = [
     "Worker",
     "Url",
     "BroadcastChannel",
+    "Document",
+    "Window",
+    "HtmlCollection",
+    "Element"
 ] }
 
 [target.'cfg(target_os = "android")'.dependencies]

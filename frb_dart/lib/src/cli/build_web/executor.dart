@@ -143,6 +143,8 @@ Future<void> executeBuildWeb(
   if (args.dartCompileWasmEntrypoint != null) {
     await _executeDartCompileWasm(args, runCommandImpl: runCommandImpl);
   }
+
+  await _executePostCompile(args, rustCrateName: rustCrateName);
 }
 
 final _commandWhich = Platform.isWindows ? 'where.exe' : 'which';
@@ -384,4 +386,35 @@ Future<void> _executeDartCompileWasm(
     if (args.verbose) '--verbose',
     args.dartCompileWasmEntrypoint!,
   ]);
+}
+
+Future<void> _executePostCompile(
+  BuildWebArgs args, {
+  required String rustCrateName,
+}) async {
+  stdout.writeln("[INFO] executing post compile step");
+  final generatedBindingsFilePath = [
+    args.rustCrateDir,
+    args.outputWasm,
+    '$rustCrateName.js',
+  ].join(Platform.pathSeparator);
+  final generatedBindingsFile = File(generatedBindingsFilePath);
+  if (!await generatedBindingsFile.exists()) {
+    bail('Could not find generated bindings under $generatedBindingsFilePath');
+  }
+  await generatedBindingsFile.writeAsString(
+    '''
+
+// This snippet dispatches the 'wasm_bindgen_registered' event after the wasm_bindgen object is available.
+// It's used to notify any listeners that the wasm_bindgen object is now available.
+// Used in WASM bridge initialization to signal that the wasm_bindgen object is ready and can be used to start interacting with the WASM module.
+
+let wasmBindgenRegisteredEvent = new Event('wasm_bindgen_registered');
+wasmBindgenRegisteredEvent.wasm_bindgen = wasm_bindgen;
+window.dispatchEvent(wasmBindgenRegisteredEvent);
+''',
+    mode: FileMode.writeOnlyAppend,
+    flush: true,
+  );
+  stdout.writeln("[INFO] JS bindings event registration appended");
 }
