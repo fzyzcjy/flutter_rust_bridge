@@ -22,8 +22,21 @@ impl TypeParserWithContext<'_, '_, '_> {
 }
 
 fn compute_matcher_types(info: &MirCustomSerDes) -> Vec<String> {
-    vec![
+    let mut ans = Vec::new();
+    for ty in [
         info.rust_api_type.rust_api_type(),
         info.cleared_rust_api_type(),
-    ]
+    ] {
+        // A type that already has a built-in delegate renders fully qualified
+        // (`uuid::Uuid`, `std::net::Ipv4Addr`), while the caller matches against
+        // the bare path segment. Without the segment the custom ser/des never
+        // matches and the built-in silently wins.
+        let last = ty.rsplit("::").next().unwrap_or(&ty).to_owned();
+        for candidate in [ty, last] {
+            if !ans.contains(&candidate) {
+                ans.push(candidate);
+            }
+        }
+    }
+    ans
 }
