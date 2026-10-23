@@ -3,6 +3,7 @@ import 'dart:js_interop';
 import 'dart:js_interop_unsafe';
 
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
+import 'package:flutter_rust_bridge/src/wasm_module/wasm_bindgen_registration.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
@@ -26,7 +27,7 @@ Future<void> initializeWasmModule({
     }
   }
 
-  web.window.addEventListener('wasm_bindgen_registered', listener.toJS);
+  web.window.addEventListener(wasmBindgenRegisteredEventName, listener.toJS);
 
   await script.onLoad.first;
 

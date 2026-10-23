@@ -5,7 +5,9 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:flutter_rust_bridge/src/wasm_module/wasm_bindgen_registration.dart';
 import 'package:meta/meta.dart';
+import 'package:path/path.dart' as path;
 
 const _cargoLlvmCovEnvKeys = [
   'LLVM_PROFILE_FILE',
@@ -393,26 +395,17 @@ Future<void> _executePostCompile(
   required String rustCrateName,
 }) async {
   stdout.writeln("[INFO] executing post compile step");
-  final generatedBindingsFilePath = [
+  final generatedBindingsFilePath = path.join(
     args.rustCrateDir,
     args.outputWasm,
     '$rustCrateName.js',
-  ].join(Platform.pathSeparator);
+  );
   final generatedBindingsFile = File(generatedBindingsFilePath);
   if (!await generatedBindingsFile.exists()) {
     bail('Could not find generated bindings under $generatedBindingsFilePath');
   }
   await generatedBindingsFile.writeAsString(
-    '''
-
-// This snippet dispatches the 'wasm_bindgen_registered' event after the wasm_bindgen object is available.
-// It's used to notify any listeners that the wasm_bindgen object is now available.
-// Used in WASM bridge initialization to signal that the wasm_bindgen object is ready and can be used to start interacting with the WASM module.
-
-let wasmBindgenRegisteredEvent = new Event('wasm_bindgen_registered');
-wasmBindgenRegisteredEvent.wasm_bindgen = wasm_bindgen;
-window.dispatchEvent(wasmBindgenRegisteredEvent);
-''',
+    wasmBindgenRegisteredEventSnippet,
     mode: FileMode.writeOnlyAppend,
     flush: true,
   );
