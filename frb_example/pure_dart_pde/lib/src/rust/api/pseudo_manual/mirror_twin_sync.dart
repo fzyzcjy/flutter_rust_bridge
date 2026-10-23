@@ -117,6 +117,9 @@ class AnotherTwinSync {
   });
 
   @override
+  String toString() => 'AnotherTwinSync(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override
@@ -135,6 +138,10 @@ class ContainsMirroredSubStructTwinSync {
     required this.test,
     required this.test2,
   });
+
+  @override
+  String toString() =>
+      'ContainsMirroredSubStructTwinSync(test: $test, test2: $test2)';
 
   @override
   int get hashCode => test.hashCode ^ test2.hashCode;
@@ -160,6 +167,9 @@ class MirrorStructTwinSync {
     required this.c,
     required this.d,
   });
+
+  @override
+  String toString() => 'MirrorStructTwinSync(a: $a, b: $b, c: $c, d: $d)';
 
   @override
   int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;

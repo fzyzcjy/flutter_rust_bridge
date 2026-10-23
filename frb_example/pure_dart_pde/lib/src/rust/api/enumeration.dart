@@ -170,6 +170,9 @@ class NoteTwinNormal {
   });
 
   @override
+  String toString() => 'NoteTwinNormal(day: $day, body: $body)';
+
+  @override
   int get hashCode => day.hashCode ^ body.hashCode;
 
   @override

@@ -101,6 +101,10 @@ class BenchmarkBinaryTreeTwinNormal {
   });
 
   @override
+  String toString() =>
+      'BenchmarkBinaryTreeTwinNormal(name: $name, left: $left, right: $right)';
+
+  @override
   int get hashCode => name.hashCode ^ left.hashCode ^ right.hashCode;
 
   @override
@@ -123,6 +127,10 @@ class BenchmarkBlobTwinNormal {
     required this.second,
     required this.third,
   });
+
+  @override
+  String toString() =>
+      'BenchmarkBlobTwinNormal(first: $first, second: $second, third: $third)';
 
   @override
   int get hashCode => first.hashCode ^ second.hashCode ^ third.hashCode;

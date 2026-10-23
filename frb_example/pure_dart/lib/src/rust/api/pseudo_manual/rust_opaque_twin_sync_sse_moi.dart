@@ -171,6 +171,10 @@ class OpaqueNestedTwinSyncSseMoi {
   });
 
   @override
+  String toString() =>
+      'OpaqueNestedTwinSyncSseMoi(first: $first, second: $second)';
+
+  @override
   int get hashCode => first.hashCode ^ second.hashCode;
 
   @override

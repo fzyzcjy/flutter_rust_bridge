@@ -77,6 +77,9 @@ class LogTwinRustAsync {
   });
 
   @override
+  String toString() => 'LogTwinRustAsync(key: $key, value: $value)';
+
+  @override
   int get hashCode => key.hashCode ^ value.hashCode;
 
   @override
@@ -94,6 +97,9 @@ class MyStreamEntryTwinRustAsync {
   const MyStreamEntryTwinRustAsync({
     required this.hello,
   });
+
+  @override
+  String toString() => 'MyStreamEntryTwinRustAsync(hello: $hello)';
 
   @override
   int get hashCode => hello.hashCode;
@@ -114,6 +120,10 @@ class MyStructContainingStreamSinkTwinRustAsync {
     required this.a,
     required this.b,
   });
+
+  @override
+  String toString() =>
+      'MyStructContainingStreamSinkTwinRustAsync(a: $a, b: $b)';
 
   @override
   int get hashCode => a.hashCode ^ b.hashCode;

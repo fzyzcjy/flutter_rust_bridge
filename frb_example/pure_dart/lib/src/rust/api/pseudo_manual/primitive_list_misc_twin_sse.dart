@@ -42,6 +42,10 @@ class VecOfPrimitivePackTwinSse {
   });
 
   @override
+  String toString() =>
+      'VecOfPrimitivePackTwinSse(int8List: $int8List, uint8List: $uint8List, int16List: $int16List, uint16List: $uint16List, uint32List: $uint32List, int32List: $int32List, uint64List: $uint64List, int64List: $int64List, float32List: $float32List, float64List: $float64List, boolList: $boolList)';
+
+  @override
   int get hashCode =>
       int8List.hashCode ^
       uint8List.hashCode ^

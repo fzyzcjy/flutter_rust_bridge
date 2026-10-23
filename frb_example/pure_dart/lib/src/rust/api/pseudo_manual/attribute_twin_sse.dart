@@ -36,6 +36,10 @@ class CustomizedTwinSse {
   });
 
   @override
+  String toString() =>
+      'CustomizedTwinSse(finalField: $finalField, nonFinalField: $nonFinalField)';
+
+  @override
   int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
 
   @override

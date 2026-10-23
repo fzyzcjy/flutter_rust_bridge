@@ -43,6 +43,9 @@ class FeatureSerdeJsonTwinNormal {
   });
 
   @override
+  String toString() => 'FeatureSerdeJsonTwinNormal(data: $data)';
+
+  @override
   int get hashCode => data.hashCode;
 
   @override

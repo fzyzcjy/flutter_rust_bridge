@@ -151,6 +151,9 @@ class BasicStructTwinSyncSse {
   });
 
   @override
+  String toString() => 'BasicStructTwinSyncSse(apple: $apple, orange: $orange)';
+
+  @override
   int get hashCode => apple.hashCode ^ orange.hashCode;
 
   @override

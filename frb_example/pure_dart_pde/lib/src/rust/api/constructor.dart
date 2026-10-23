@@ -49,6 +49,9 @@ class ConstructorTranslatableStructTwinNormal {
           .crateApiConstructorConstructorTranslatableStructTwinNormalNew();
 
   @override
+  String toString() => 'ConstructorTranslatableStructTwinNormal(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override
@@ -68,6 +71,9 @@ class ConstructorTranslatableSyncStructTwinNormal {
 
   factory ConstructorTranslatableSyncStructTwinNormal() => RustLib.instance.api
       .crateApiConstructorConstructorTranslatableSyncStructTwinNormalNew();
+
+  @override
+  String toString() => 'ConstructorTranslatableSyncStructTwinNormal(one: $one)';
 
   @override
   int get hashCode => one.hashCode;

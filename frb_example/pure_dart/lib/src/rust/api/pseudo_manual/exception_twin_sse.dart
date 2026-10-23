@@ -176,6 +176,9 @@ class CustomStructErrorAnotherTwinSse implements FrbException {
   });
 
   @override
+  String toString() => 'CustomStructErrorAnotherTwinSse(message: $message)';
+
+  @override
   int get hashCode => message.hashCode;
 
   @override
@@ -192,6 +195,9 @@ class CustomStructErrorTwinSse implements FrbException {
   const CustomStructErrorTwinSse({
     required this.a,
   });
+
+  @override
+  String toString() => 'CustomStructErrorTwinSse(a: $a)';
 
   @override
   int get hashCode => a.hashCode;
@@ -234,6 +240,9 @@ class CustomStructTwinSse {
       .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseStaticReturnCustomStructOkTwinSse();
 
   @override
+  String toString() => 'CustomStructTwinSse(message: $message)';
+
+  @override
   int get hashCode => message.hashCode;
 
   @override
@@ -271,6 +280,9 @@ class SomeStructTwinSse {
 
   static Future<int> staticReturnOkCustomErrorTwinSse() => RustLib.instance.api
       .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseStaticReturnOkCustomErrorTwinSse();
+
+  @override
+  String toString() => 'SomeStructTwinSse(value: $value)';
 
   @override
   int get hashCode => value.hashCode;
