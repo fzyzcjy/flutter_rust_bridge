@@ -45,6 +45,7 @@ impl StructRefApiDartGenerator<'_> {
         } else {
             "".to_owned()
         };
+        let to_string = generate_to_string(&src.fields, class_name);
 
         format!(
             "{comments}{metadata}class {class_name} {implements_exception} {{
@@ -54,6 +55,8 @@ impl StructRefApiDartGenerator<'_> {
 
                 {methods_str}
                 {extra_body}
+
+                {to_string}
 
                 {hashcode}
 
@@ -104,6 +107,23 @@ impl StructRefApiDartGenerator<'_> {
 
         ans
     }
+}
+
+fn generate_to_string(fields: &[MirField], struct_name: &str) -> String {
+    let fields = fields
+        .iter()
+        .map(|f| {
+            let name = f.name.dart_style();
+            format!("{name}: ${name}")
+        })
+        .join(", ");
+
+    format!(
+        "
+        @override
+        String toString() => '{struct_name}({fields})';
+        "
+    )
 }
 
 fn generate_hashcode(fields: &[MirField], dart_collection_deep_equality: bool) -> String {
@@ -184,7 +204,20 @@ mod tests {
     use crate::codegen::ir::mir::ty::optional::MirTypeOptional;
     use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
     use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
+    use crate::codegen::ir::mir::{field::MirFieldSettings, ident::MirIdent};
     use crate::utils::namespace::Namespace;
+
+    fn test_field(name: &str) -> MirField {
+        MirField {
+            ty: MirType::Primitive(MirTypePrimitive::U8),
+            name: MirIdent::new(name.into(), None),
+            is_final: true,
+            is_rust_public: None,
+            comments: vec![],
+            default: None,
+            settings: MirFieldSettings::default(),
+        }
+    }
 
     /// Identifies collection types after boxed and optional wrappers.
     #[test]
@@ -220,18 +253,21 @@ mod tests {
     /// Generates direct equality and hash expressions when deep equality is disabled.
     #[test]
     fn equality_and_hashcode_use_direct_field_operations_without_deep_equality() {
-        let fields = vec![MirField {
-            ty: MirType::Primitive(MirTypePrimitive::U8),
-            name: crate::codegen::ir::mir::ident::MirIdent::new("value".into(), None),
-            is_final: true,
-            is_rust_public: None,
-            comments: vec![],
-            default: None,
-            settings: crate::codegen::ir::mir::field::MirFieldSettings::default(),
-        }];
+        let fields = vec![test_field("value")];
 
         assert!(generate_hashcode(&fields, false).contains("value.hashCode"));
         assert!(generate_equals(&fields, "Value", false).contains("other is Value"));
         assert!(generate_equals(&fields, "Value", false).contains("value == other.value"));
+    }
+
+    /// Generates field-based Dart display text for non-freezed structs.
+    #[test]
+    fn to_string_lists_field_names_and_values() {
+        let fields = vec![test_field("code"), test_field("message")];
+
+        let code = generate_to_string(&fields, "MyStructErr");
+
+        assert!(code.contains("@override"));
+        assert!(code.contains("String toString() => 'MyStructErr(code: $code, message: $message)'"));
     }
 }

@@ -36,6 +36,10 @@ class MoreThanJustOneRawStringStructTwinSyncSse {
   });
 
   @override
+  String toString() =>
+      'MoreThanJustOneRawStringStructTwinSyncSse(regular: $regular, type: $type, async_: $async_, another: $another)';
+
+  @override
   int get hashCode =>
       regular.hashCode ^ type.hashCode ^ async_.hashCode ^ another.hashCode;
 
@@ -68,6 +72,9 @@ class RawStringItemStructTwinSyncSse {
   const RawStringItemStructTwinSyncSse({
     required this.type,
   });
+
+  @override
+  String toString() => 'RawStringItemStructTwinSyncSse(type: $type)';
 
   @override
   int get hashCode => type.hashCode;
