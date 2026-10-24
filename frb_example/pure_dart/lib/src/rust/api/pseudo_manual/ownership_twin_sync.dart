@@ -40,6 +40,9 @@ class SimpleStructForBorrowTwinSync {
   });
 
   @override
+  String toString() => 'SimpleStructForBorrowTwinSync(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override

@@ -29,6 +29,9 @@ class FeatureUuidTwinNormal {
   });
 
   @override
+  String toString() => 'FeatureUuidTwinNormal(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override

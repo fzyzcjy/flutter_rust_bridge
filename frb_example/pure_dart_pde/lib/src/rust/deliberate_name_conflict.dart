@@ -16,6 +16,9 @@ class StructInUpperLevel {
   });
 
   @override
+  String toString() => 'StructInUpperLevel(upper: $upper)';
+
+  @override
   int get hashCode => upper.hashCode;
 
   @override

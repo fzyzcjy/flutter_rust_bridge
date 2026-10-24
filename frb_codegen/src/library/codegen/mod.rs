@@ -74,35 +74,6 @@ pub fn generate_with_install_modes(
     Ok(())
 }
 
-#[cfg(test)]
-mod tests {
-    use super::{generate, Config, MetaConfig};
-    use crate::library::commands::cargo_expand::CODEGEN_RUNNING_ENV;
-    use serial_test::serial;
-    use std::ffi::OsString;
-
-    struct RunningGuard(Option<OsString>);
-
-    impl Drop for RunningGuard {
-        fn drop(&mut self) {
-            match &self.0 {
-                Some(value) => std::env::set_var(CODEGEN_RUNNING_ENV, value),
-                None => std::env::remove_var(CODEGEN_RUNNING_ENV),
-            }
-        }
-    }
-
-    /// Nested expansion skips generation before parsing even an invalid configuration.
-    #[test]
-    #[serial]
-    fn test_nested_expansion_skips_generation() {
-        let _guard = RunningGuard(std::env::var_os(CODEGEN_RUNNING_ENV));
-        std::env::set_var(CODEGEN_RUNNING_ENV, "1");
-
-        generate(Config::default(), MetaConfig::default()).unwrap();
-    }
-}
-
 fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::Result<()> {
     let progress_bar_pack = GeneratorProgressBarPack::new();
 
@@ -140,4 +111,33 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     println!("Done!");
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{generate, Config, MetaConfig};
+    use crate::library::commands::cargo_expand::CODEGEN_RUNNING_ENV;
+    use serial_test::serial;
+    use std::ffi::OsString;
+
+    struct RunningGuard(Option<OsString>);
+
+    impl Drop for RunningGuard {
+        fn drop(&mut self) {
+            match &self.0 {
+                Some(value) => std::env::set_var(CODEGEN_RUNNING_ENV, value),
+                None => std::env::remove_var(CODEGEN_RUNNING_ENV),
+            }
+        }
+    }
+
+    /// Nested expansion skips generation before parsing even an invalid configuration.
+    #[test]
+    #[serial]
+    fn test_nested_expansion_skips_generation() {
+        let _guard = RunningGuard(std::env::var_os(CODEGEN_RUNNING_ENV));
+        std::env::set_var(CODEGEN_RUNNING_ENV, "1");
+
+        generate(Config::default(), MetaConfig::default()).unwrap();
+    }
 }

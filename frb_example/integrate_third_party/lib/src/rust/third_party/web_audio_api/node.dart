@@ -1429,6 +1429,10 @@ class AnalyserOptions {
       RustLib.instance.api.webAudioApiNodeAnalyserOptionsDefault();
 
   @override
+  String toString() =>
+      'AnalyserOptions(fftSize: $fftSize, maxDecibels: $maxDecibels, minDecibels: $minDecibels, smoothingTimeConstant: $smoothingTimeConstant, audioNodeOptions: $audioNodeOptions)';
+
+  @override
   int get hashCode =>
       fftSize.hashCode ^
       maxDecibels.hashCode ^
@@ -1468,6 +1472,10 @@ class AudioBufferSourceOptions {
 
   static Future<AudioBufferSourceOptions> default_() =>
       RustLib.instance.api.webAudioApiNodeAudioBufferSourceOptionsDefault();
+
+  @override
+  String toString() =>
+      'AudioBufferSourceOptions(buffer: $buffer, detune: $detune, loop: $loop, loopStart: $loopStart, loopEnd: $loopEnd, playbackRate: $playbackRate)';
 
   @override
   int get hashCode =>
@@ -1512,6 +1520,10 @@ class AudioNodeOptions {
       RustLib.instance.api.webAudioApiNodeAudioNodeOptionsDefault();
 
   @override
+  String toString() =>
+      'AudioNodeOptions(channelCount: $channelCount, channelCountMode: $channelCountMode, channelInterpretation: $channelInterpretation)';
+
+  @override
   int get hashCode =>
       channelCount.hashCode ^
       channelCountMode.hashCode ^
@@ -1547,6 +1559,10 @@ class BiquadFilterOptions {
 
   static Future<BiquadFilterOptions> default_() =>
       RustLib.instance.api.webAudioApiNodeBiquadFilterOptionsDefault();
+
+  @override
+  String toString() =>
+      'BiquadFilterOptions(q: $q, detune: $detune, frequency: $frequency, gain: $gain, type: $type, audioNodeOptions: $audioNodeOptions)';
 
   @override
   int get hashCode =>
@@ -1644,6 +1660,10 @@ class ChannelMergerOptions {
       RustLib.instance.api.webAudioApiNodeChannelMergerOptionsDefault();
 
   @override
+  String toString() =>
+      'ChannelMergerOptions(numberOfInputs: $numberOfInputs, audioNodeOptions: $audioNodeOptions)';
+
+  @override
   int get hashCode => numberOfInputs.hashCode ^ audioNodeOptions.hashCode;
 
   @override
@@ -1669,6 +1689,10 @@ class ChannelSplitterOptions {
       RustLib.instance.api.webAudioApiNodeChannelSplitterOptionsDefault();
 
   @override
+  String toString() =>
+      'ChannelSplitterOptions(numberOfOutputs: $numberOfOutputs, audioNodeOptions: $audioNodeOptions)';
+
+  @override
   int get hashCode => numberOfOutputs.hashCode ^ audioNodeOptions.hashCode;
 
   @override
@@ -1691,6 +1715,9 @@ class ConstantSourceOptions {
 
   static Future<ConstantSourceOptions> default_() =>
       RustLib.instance.api.webAudioApiNodeConstantSourceOptionsDefault();
+
+  @override
+  String toString() => 'ConstantSourceOptions(offset: $offset)';
 
   @override
   int get hashCode => offset.hashCode;
@@ -1724,6 +1751,10 @@ class ConvolverOptions {
       RustLib.instance.api.webAudioApiNodeConvolverOptionsDefault();
 
   @override
+  String toString() =>
+      'ConvolverOptions(buffer: $buffer, disableNormalization: $disableNormalization, audioNodeOptions: $audioNodeOptions)';
+
+  @override
   int get hashCode =>
       buffer.hashCode ^
       disableNormalization.hashCode ^
@@ -1753,6 +1784,10 @@ class DelayOptions {
 
   static Future<DelayOptions> default_() =>
       RustLib.instance.api.webAudioApiNodeDelayOptionsDefault();
+
+  @override
+  String toString() =>
+      'DelayOptions(maxDelayTime: $maxDelayTime, delayTime: $delayTime, audioNodeOptions: $audioNodeOptions)';
 
   @override
   int get hashCode =>
@@ -1801,6 +1836,10 @@ class DynamicsCompressorOptions {
       RustLib.instance.api.webAudioApiNodeDynamicsCompressorOptionsDefault();
 
   @override
+  String toString() =>
+      'DynamicsCompressorOptions(attack: $attack, knee: $knee, ratio: $ratio, release: $release, threshold: $threshold, audioNodeOptions: $audioNodeOptions)';
+
+  @override
   int get hashCode =>
       attack.hashCode ^
       knee.hashCode ^
@@ -1834,6 +1873,10 @@ class GainOptions {
 
   static Future<GainOptions> default_() =>
       RustLib.instance.api.webAudioApiNodeGainOptionsDefault();
+
+  @override
+  String toString() =>
+      'GainOptions(gain: $gain, audioNodeOptions: $audioNodeOptions)';
 
   @override
   int get hashCode => gain.hashCode ^ audioNodeOptions.hashCode;
@@ -1874,6 +1917,10 @@ class OscillatorOptions {
 
   static Future<OscillatorOptions> default_() =>
       RustLib.instance.api.webAudioApiNodeOscillatorOptionsDefault();
+
+  @override
+  String toString() =>
+      'OscillatorOptions(type: $type, frequency: $frequency, detune: $detune, periodicWave: $periodicWave, audioNodeOptions: $audioNodeOptions)';
 
   @override
   int get hashCode =>
@@ -1973,6 +2020,10 @@ class PannerOptions {
       RustLib.instance.api.webAudioApiNodePannerOptionsDefault();
 
   @override
+  String toString() =>
+      'PannerOptions(panningModel: $panningModel, distanceModel: $distanceModel, positionX: $positionX, positionY: $positionY, positionZ: $positionZ, orientationX: $orientationX, orientationY: $orientationY, orientationZ: $orientationZ, refDistance: $refDistance, maxDistance: $maxDistance, rolloffFactor: $rolloffFactor, coneInnerAngle: $coneInnerAngle, coneOuterAngle: $coneOuterAngle, coneOuterGain: $coneOuterGain, audioNodeOptions: $audioNodeOptions)';
+
+  @override
   int get hashCode =>
       panningModel.hashCode ^
       distanceModel.hashCode ^
@@ -2039,6 +2090,10 @@ class StereoPannerOptions {
       RustLib.instance.api.webAudioApiNodeStereoPannerOptionsDefault();
 
   @override
+  String toString() =>
+      'StereoPannerOptions(pan: $pan, audioNodeOptions: $audioNodeOptions)';
+
+  @override
   int get hashCode => pan.hashCode ^ audioNodeOptions.hashCode;
 
   @override
@@ -2069,6 +2124,10 @@ class WaveShaperOptions {
 
   static Future<WaveShaperOptions> default_() =>
       RustLib.instance.api.webAudioApiNodeWaveShaperOptionsDefault();
+
+  @override
+  String toString() =>
+      'WaveShaperOptions(curve: $curve, oversample: $oversample, audioNodeOptions: $audioNodeOptions)';
 
   @override
   int get hashCode =>

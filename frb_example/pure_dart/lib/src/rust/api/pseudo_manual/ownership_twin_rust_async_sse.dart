@@ -50,6 +50,9 @@ class SimpleStructForBorrowTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'SimpleStructForBorrowTwinRustAsyncSse(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override

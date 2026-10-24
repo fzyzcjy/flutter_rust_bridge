@@ -48,6 +48,9 @@ class FeatureSerdeJsonTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'FeatureSerdeJsonTwinRustAsyncSse(data: $data)';
+
+  @override
   int get hashCode => data.hashCode;
 
   @override

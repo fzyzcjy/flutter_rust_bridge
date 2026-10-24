@@ -23,6 +23,9 @@ class StructWithImplBlockInAnotherFileDependency {
   const StructWithImplBlockInAnotherFileDependency();
 
   @override
+  String toString() => 'StructWithImplBlockInAnotherFileDependency()';
+
+  @override
   int get hashCode => 0;
 
   @override

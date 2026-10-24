@@ -177,6 +177,10 @@ class OpaqueNestedTwinRustAsyncSse {
   });
 
   @override
+  String toString() =>
+      'OpaqueNestedTwinRustAsyncSse(first: $first, second: $second)';
+
+  @override
   int get hashCode => first.hashCode ^ second.hashCode;
 
   @override

@@ -141,6 +141,9 @@ class BasicStructTwinNormal {
   });
 
   @override
+  String toString() => 'BasicStructTwinNormal(apple: $apple, orange: $orange)';
+
+  @override
   int get hashCode => apple.hashCode ^ orange.hashCode;
 
   @override

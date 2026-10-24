@@ -67,6 +67,9 @@ class LogTwinNormal {
   });
 
   @override
+  String toString() => 'LogTwinNormal(key: $key, value: $value)';
+
+  @override
   int get hashCode => key.hashCode ^ value.hashCode;
 
   @override
@@ -84,6 +87,9 @@ class MyStreamEntryTwinNormal {
   const MyStreamEntryTwinNormal({
     required this.hello,
   });
+
+  @override
+  String toString() => 'MyStreamEntryTwinNormal(hello: $hello)';
 
   @override
   int get hashCode => hello.hashCode;
@@ -104,6 +110,9 @@ class MyStructContainingStreamSinkTwinNormal {
     required this.a,
     required this.b,
   });
+
+  @override
+  String toString() => 'MyStructContainingStreamSinkTwinNormal(a: $a, b: $b)';
 
   @override
   int get hashCode => a.hashCode ^ b.hashCode;
