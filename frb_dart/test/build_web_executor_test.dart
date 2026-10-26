@@ -4,6 +4,8 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/build_web/executor.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:flutter_rust_bridge/src/wasm_module/wasm_bindgen_registration.dart';
+import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 
 void main() {
@@ -161,6 +163,7 @@ void main() {
                   removedParentEnvKeys: removedParentEnvKeys,
                 ),
               );
+              await _writeFakeWasmPackBindings(command, arguments);
               if (command == 'cargo' && arguments.first == 'read-manifest') {
                 return RunCommandOutput(
                   stdout: jsonEncode({
@@ -286,6 +289,7 @@ void main() {
                 removedParentEnvKeys: removedParentEnvKeys,
               ),
             );
+            await _writeFakeWasmPackBindings(command, arguments);
             if (command == 'cargo' && arguments.first == 'read-manifest') {
               return RunCommandOutput(
                 stdout: jsonEncode({
@@ -390,6 +394,7 @@ void main() {
                   throw Exception('wasm-bindgen missing');
                 }
               }
+              await _writeFakeWasmPackBindings(command, arguments);
               if (command == 'cargo' && arguments.first == 'read-manifest') {
                 return RunCommandOutput(
                   stdout: jsonEncode({
@@ -425,7 +430,139 @@ void main() {
       );
     },
   );
+
+  test(
+    'executeBuildWeb appends wasm_bindgen registration to generated bindings',
+    () async {
+      final crateDir = await _createTempCrateDir();
+
+      await executeBuildWeb(
+        _postCompileArgs(output: 'web', rustCrateDir: crateDir.path),
+        runCommandImpl: _recordingRunner([]),
+      );
+
+      final bindings = await File(
+        path.join(crateDir.path, 'web', 'pkg', 'demo_crate.js'),
+      ).readAsString();
+      expect(bindings, startsWith(_kFakeWasmPackBindings));
+      expect(bindings, endsWith(wasmBindgenRegisteredEventSnippet));
+      expect(
+        bindings,
+        contains("new Event('$wasmBindgenRegisteredEventName')"),
+      );
+    },
+  );
+
+  test(
+    'executeBuildWeb appends wasm_bindgen registration for absolute output',
+    () async {
+      // `flutter_rust_bridge_codegen build-web` passes a canonicalized
+      // `--dart-root`, so the default output directory is absolute.
+      final crateDir = await _createTempCrateDir();
+      final outputDir = await _createTempDir();
+
+      await executeBuildWeb(
+        _postCompileArgs(output: outputDir.path, rustCrateDir: crateDir.path),
+        runCommandImpl: _recordingRunner([]),
+      );
+
+      final bindings = await File(
+        path.join(outputDir.path, 'pkg', 'demo_crate.js'),
+      ).readAsString();
+      expect(bindings, startsWith(_kFakeWasmPackBindings));
+      expect(bindings, endsWith(wasmBindgenRegisteredEventSnippet));
+    },
+  );
 }
+
+const _kFakeWasmPackBindings = 'let wasm_bindgen = function () {};\n';
+
+/// Mimics wasm-pack, which resolves `-d` relative to the crate directory.
+Future<void> _writeFakeWasmPackBindings(
+  String command,
+  List<String> arguments,
+) async {
+  if (command != 'wasm-pack') return;
+  final outDir = arguments[arguments.indexOf('-d') + 1];
+  final outName = arguments[arguments.indexOf('--out-name') + 1];
+  final crateDir = arguments[arguments.indexOf('--') - 1];
+  final file = File(path.join(crateDir, outDir, '$outName.js'));
+  await file.create(recursive: true);
+  await file.writeAsString(_kFakeWasmPackBindings);
+}
+
+Future<Directory> _createTempDir() async {
+  final dir = await Directory.systemTemp.createTemp('frb_build_web_test_');
+  addTearDown(() async {
+    if (await dir.exists()) {
+      await dir.delete(recursive: true);
+    }
+  });
+  return dir;
+}
+
+Future<Directory> _createTempCrateDir() async {
+  final crateDir = await _createTempDir();
+  await File('${crateDir.path}/Cargo.toml').writeAsString('[package]\n');
+  return crateDir;
+}
+
+BuildWebArgs _postCompileArgs({
+  required String output,
+  required String rustCrateDir,
+}) => BuildWebArgs(
+  output: output,
+  release: false,
+  verbose: false,
+  rustCrateDir: rustCrateDir,
+  cargoBuildArgs: const [],
+  wasmBindgenArgs: const [],
+  wasmPackRustupToolchain: null,
+  wasmPackRustflags: null,
+  dartCompileJsEntrypoint: null,
+  dartCompileWasmEntrypoint: null,
+);
+
+BuildWebCommandRunner _recordingRunner(List<_CommandCall> calls) =>
+    (
+      command,
+      arguments, {
+      pwd,
+      env,
+      shell = true,
+      silent = false,
+      checkExitCode,
+      printCommandInStderr = false,
+      removedParentEnvKeys = const [],
+      timeout,
+    }) async {
+      calls.add(
+        _CommandCall(
+          command: command,
+          arguments: arguments,
+          pwd: pwd,
+          env: env,
+          silent: silent,
+          removedParentEnvKeys: removedParentEnvKeys,
+        ),
+      );
+      await _writeFakeWasmPackBindings(command, arguments);
+      if (command == 'cargo' && arguments.first == 'read-manifest') {
+        return RunCommandOutput(
+          stdout: jsonEncode({
+            'targets': [
+              {
+                'kind': ['cdylib'],
+                'name': 'demo_crate',
+              },
+            ],
+          }),
+          stderr: '',
+          exitCode: 0,
+        );
+      }
+      return const RunCommandOutput(stdout: '', stderr: '', exitCode: 0);
+    };
 
 class _CommandCall {
   final String command;

@@ -5,7 +5,9 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:flutter_rust_bridge/src/wasm_module/wasm_bindgen_registration.dart';
 import 'package:meta/meta.dart';
+import 'package:path/path.dart' as path;
 
 const _cargoLlvmCovEnvKeys = [
   'LLVM_PROFILE_FILE',
@@ -143,6 +145,8 @@ Future<void> executeBuildWeb(
   if (args.dartCompileWasmEntrypoint != null) {
     await _executeDartCompileWasm(args, runCommandImpl: runCommandImpl);
   }
+
+  await _executePostCompile(args, rustCrateName: rustCrateName);
 }
 
 final _commandWhich = Platform.isWindows ? 'where.exe' : 'which';
@@ -384,4 +388,26 @@ Future<void> _executeDartCompileWasm(
     if (args.verbose) '--verbose',
     args.dartCompileWasmEntrypoint!,
   ]);
+}
+
+Future<void> _executePostCompile(
+  BuildWebArgs args, {
+  required String rustCrateName,
+}) async {
+  stdout.writeln("[INFO] executing post compile step");
+  final generatedBindingsFilePath = path.join(
+    args.rustCrateDir,
+    args.outputWasm,
+    '$rustCrateName.js',
+  );
+  final generatedBindingsFile = File(generatedBindingsFilePath);
+  if (!await generatedBindingsFile.exists()) {
+    bail('Could not find generated bindings under $generatedBindingsFilePath');
+  }
+  await generatedBindingsFile.writeAsString(
+    wasmBindgenRegisteredEventSnippet,
+    mode: FileMode.writeOnlyAppend,
+    flush: true,
+  );
+  stdout.writeln("[INFO] JS bindings event registration appended");
 }

@@ -3,6 +3,7 @@ import 'dart:js_interop';
 import 'dart:js_interop_unsafe';
 
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
+import 'package:flutter_rust_bridge/src/wasm_module/wasm_bindgen_registration.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
@@ -15,11 +16,25 @@ Future<void> initializeWasmModule({
   final script = web.HTMLScriptElement()..src = '$root.js';
   web.document.head!.append(script);
 
+  final wasmBindgenCompleter = Completer<JSObject>();
+
+  void listener(JSObject event) {
+    final hasBindGen = event.has(wasmBindgenName);
+    if (event is web.Event && hasBindGen) {
+      event.stopPropagation();
+      final wasmBindgen = event.getProperty(wasmBindgenName.toJS);
+      wasmBindgenCompleter.complete(wasmBindgen as JSObject);
+    }
+  }
+
+  web.window.addEventListener(wasmBindgenRegisteredEventName, listener.toJS);
+
   await script.onLoad.first;
 
-  jsEval('window.$wasmBindgenName = $wasmBindgenName');
+  final jsObject = await wasmBindgenCompleter.future;
 
-  final jsObject = web.window.getProperty(wasmBindgenName.toJS) as JSObject;
+  web.window.setProperty(wasmBindgenName.toJS, jsObject);
+
   final wasmBindgen = _JSWasmBindgen(jsObject);
   await wasmBindgen('${root}_bg.wasm'.toJS).toDart;
 }
