@@ -1,11 +1,5 @@
 [advisories]
 unmaintained = "workspace"
-ignore = [
-    # Patched tokio (1.51.6 and >=1.53.3) requires Rust 1.71. frb_rust still
-    # declares 1.70, and this repository does not call AsyncFd or enable
-    # tokio's `net` feature.
-    { id = "RUSTSEC-2026-0386", reason = "patched tokio requires Rust 1.71; keep the declared 1.70 MSRV" },
-]
 
 [sources]
 required-git-spec = "rev"
