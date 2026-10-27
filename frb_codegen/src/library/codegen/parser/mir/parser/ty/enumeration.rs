@@ -23,7 +23,7 @@ use crate::if_then_some;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use std::collections::HashMap;
-use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
+use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant};
 
 impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_path_data_enum(
@@ -139,7 +139,8 @@ impl TypeParserWithContext<'_, '_, '_> {
                             c.with_struct_or_enum_attributes(attributes.clone())
                         })?,
                         is_final: true,
-                        is_rust_public: Some(matches!(field.vis, Visibility::Public(_))),
+                        // Enum variant fields cannot declare `pub`; they share the enum's visibility
+                        is_rust_public: Some(true),
                         comments: parse_comments(&field.attrs),
                         default: FrbAttributes::parse(&field.attrs)?.default_value(),
                         settings: MirFieldSettings {
@@ -272,8 +273,60 @@ fn compute_enum_mode(variants: &[MirEnumVariant]) -> MirEnumMode {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::codegen::generator::codec::structs::CodecMode;
+    use crate::codegen::ir::hir::misc::visibility::HirVisibility;
     use crate::codegen::ir::mir::ty::record::MirTypeRecord;
+    use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::ir::mir::ty::structure::MirStructIdent;
+    use crate::codegen::parser::mir::parser::ty::TypeParser;
+    use crate::codegen::parser::mir::ParseMode;
+    use syn::parse_quote;
+
+    /// Keeps third-party enums with data-carrying variants translatable, since
+    /// variant fields inherit the enum's visibility rather than declaring `pub`.
+    #[test]
+    fn parse_third_party_enum_with_fields_is_not_opaque() -> anyhow::Result<()> {
+        let src_enum = HirFlatEnum {
+            name: NamespacedName::new(Namespace::new_raw("dependency".into()), "Event".into()),
+            visibility: HirVisibility::Public,
+            sources: vec![],
+            mirror: false,
+            src: parse_quote!(
+                pub enum Event {
+                    Unit,
+                    Named { id: i32 },
+                    Tuple(i32),
+                }
+            ),
+        };
+        let mut type_parser = TypeParser::new(
+            HashMap::new(),
+            HashMap::from([("Event".to_owned(), &src_enum)]),
+            HashMap::new(),
+            HashMap::new(),
+            HashMap::new(),
+            vec![],
+            vec![],
+        );
+        let context = TypeParserParsingContext {
+            initiated_namespace: Namespace::new_raw("crate".into()),
+            func_attributes: FrbAttributes::parse(&[])?,
+            struct_or_enum_attributes: None,
+            rust_output_path_namespace: Namespace::new_raw("crate".into()),
+            default_stream_sink_codec: CodecMode::Dco,
+            default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
+            owner: None,
+            enable_lifetime: false,
+            type_64bit_int: false,
+            forbid_type_self: false,
+            parse_mode: ParseMode::Normal,
+        };
+
+        let ty = type_parser.parse_type(&parse_quote!(Event), &context)?;
+
+        assert!(matches!(ty, EnumRef(_)), "expected EnumRef, got {ty:?}");
+        Ok(())
+    }
 
     /// Nests generated enum-variant structures under their enum namespace.
     #[test]
