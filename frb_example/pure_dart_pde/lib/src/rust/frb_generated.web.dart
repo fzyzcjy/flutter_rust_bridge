@@ -126,6 +126,8 @@ import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/pseudo_manual/stream_twin_rust_async.dart';
 import 'api/pseudo_manual/structure_twin_rust_async.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
+import 'api/pseudo_manual/third_party_enum_twin_rust_async.dart';
+import 'api/pseudo_manual/third_party_enum_twin_sync.dart';
 import 'api/pseudo_manual/tuple_twin_rust_async.dart';
 import 'api/pseudo_manual/tuple_twin_sync.dart';
 import 'api/pseudo_manual/type_alias_twin_rust_async.dart';
@@ -142,6 +144,7 @@ import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/stream_misc.dart';
 import 'api/structure.dart';
+import 'api/third_party_enum.dart';
 import 'api/tuple.dart';
 import 'api/type_alias.dart';
 import 'api/uuid_type.dart';
@@ -155,6 +158,7 @@ import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';
+import 'third_party/frb_example_pure_dart_example_third_party_lib.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -3236,6 +3240,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   TestIdTwinSync dco_decode_box_autoadd_test_id_twin_sync(dynamic raw);
 
   @protected
+  ThirdPartyEnumWithFields dco_decode_box_autoadd_third_party_enum_with_fields(
+      dynamic raw);
+
+  @protected
   TranslatableStructWithDartCodeTwinNormal
       dco_decode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
           dynamic raw);
@@ -5302,6 +5310,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   TestModelTwinSync dco_decode_test_model_twin_sync(dynamic raw);
+
+  @protected
+  ThirdPartyEnumWithFields dco_decode_third_party_enum_with_fields(dynamic raw);
 
   @protected
   TranslatableStructWithDartCodeTwinNormal
@@ -8194,6 +8205,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  ThirdPartyEnumWithFields sse_decode_box_autoadd_third_party_enum_with_fields(
+      SseDeserializer deserializer);
+
+  @protected
   TranslatableStructWithDartCodeTwinNormal
       sse_decode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
           SseDeserializer deserializer);
@@ -10555,6 +10570,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   TestModelTwinSync sse_decode_test_model_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ThirdPartyEnumWithFields sse_decode_third_party_enum_with_fields(
       SseDeserializer deserializer);
 
   @protected
@@ -13472,6 +13491,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       TestIdTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_third_party_enum_with_fields(
+      ThirdPartyEnumWithFields self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
       TranslatableStructWithDartCodeTwinNormal self, SseSerializer serializer);
 
@@ -15775,6 +15798,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_test_model_twin_sync(
       TestModelTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_third_party_enum_with_fields(
+      ThirdPartyEnumWithFields self, SseSerializer serializer);
 
   @protected
   void sse_encode_translatable_struct_with_dart_code_twin_normal(

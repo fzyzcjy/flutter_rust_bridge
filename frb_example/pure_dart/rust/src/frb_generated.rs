@@ -113,7 +113,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueNom,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.14.0-beta.2";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -703344157;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1684921946;
 
 // Section: executor
 
@@ -48657,6 +48657,77 @@ fn wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_twin_sync_ss
         },
     )
 }
+fn wire__crate__api__third_party_enum__third_party_enum_with_fields_roundtrip_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "third_party_enum_with_fields_roundtrip_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {let api_arg = arg.cst_decode(); move |context|  {
+                    transform_result_dco::<_, _, ()>((move ||  {
+                         let output_ok = Ok::<_, ()>(crate::api::third_party_enum::third_party_enum_with_fields_roundtrip_twin_normal(api_arg))?;   std::result::Result::Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_enum_with_fields_roundtrip_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "third_party_enum_with_fields_roundtrip_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {let api_arg = arg.cst_decode(); move |context| async move {
+                    transform_result_dco::<_, _, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::third_party_enum_twin_rust_async::third_party_enum_with_fields_roundtrip_twin_rust_async(api_arg).await)?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_enum_with_fields_roundtrip_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "third_party_enum_with_fields_roundtrip_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse::<_, ()>((move || async move {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::third_party_enum_twin_rust_async_sse::third_party_enum_with_fields_roundtrip_twin_rust_async_sse(api_arg).await)?;   std::result::Result::Ok(output_ok)
+                    })().await)
+                } })
+}
+fn wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_enum_with_fields_roundtrip_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "third_party_enum_with_fields_roundtrip_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse::<_, ()>((move ||  {
+                         let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::third_party_enum_twin_sse::third_party_enum_with_fields_roundtrip_twin_sse(api_arg))?;   std::result::Result::Ok(output_ok)
+                    })())
+                } })
+}
+fn wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_enum_with_fields_roundtrip_twin_sync_impl(
+    arg: impl CstDecode<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "third_party_enum_with_fields_roundtrip_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {let api_arg = arg.cst_decode();
+                transform_result_dco::<_, _, ()>((move || {
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::third_party_enum_twin_sync::third_party_enum_with_fields_roundtrip_twin_sync(api_arg))?;   std::result::Result::Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "third_party_enum_with_fields_roundtrip_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Ok::<_, ()>(crate::api::pseudo_manual::third_party_enum_twin_sync_sse::third_party_enum_with_fields_roundtrip_twin_sync_sse(api_arg))?;   std::result::Result::Ok(output_ok)
+                })()) })
+}
 fn wire__crate__api__exception__throw_anyhow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
@@ -49571,6 +49642,19 @@ const _: fn() = || {
         let StructWithHashMap = None::<crate::api::mirror::StructWithHashMap>.unwrap();
         let _: std::collections::HashMap<String, crate::api::mirror::HashMapValue> =
             StructWithHashMap.map;
+    }
+    match None::<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>.unwrap() {
+        frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Unit => {}
+        frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Named {
+            id,
+            name,
+        } => {
+            let _: i32 = id;
+            let _: String = name;
+        }
+        frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Tuple(field0) => {
+            let _: i32 = field0;
+        }
     }
 };
 
@@ -72118,6 +72202,30 @@ impl SseDecode for crate::api::pseudo_manual::type_alias_twin_sync_sse::TestMode
     }
 }
 
+impl SseDecode for frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                return frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Unit;
+            }
+            1 => {
+                let mut var_id = <i32>::sse_decode(deserializer);
+                let mut var_name = <String>::sse_decode(deserializer);
+                return frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Named{id: var_id, name: var_name};
+            }
+            2 => {
+                let mut var_field0 = <i32>::sse_decode(deserializer);
+                return frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Tuple(var_field0);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseDecode for crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -89767,6 +89875,48 @@ impl
         self,
     ) -> crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse {
         self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for FrbWrapper<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Unit => {
+                [0.into_dart()].into_dart()
+            }
+            frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Named {
+                id,
+                name,
+            } => [
+                1.into_dart(),
+                id.into_into_dart().into_dart(),
+                name.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
+            frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Tuple(
+                field0,
+            ) => [2.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        FrbWrapper<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>,
+    > for frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields
+{
+    fn into_into_dart(
+        self,
+    ) -> FrbWrapper<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields> {
+        self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -109306,6 +109456,34 @@ impl SseEncode for crate::api::pseudo_manual::type_alias_twin_sync_sse::TestMode
     }
 }
 
+impl SseEncode for frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Unit => {
+                <i32>::sse_encode(0, serializer);
+            }
+            frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Named {
+                id,
+                name,
+            } => {
+                <i32>::sse_encode(1, serializer);
+                <i32>::sse_encode(id, serializer);
+                <String>::sse_encode(name, serializer);
+            }
+            frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Tuple(
+                field0,
+            ) => {
+                <i32>::sse_encode(2, serializer);
+                <i32>::sse_encode(field0, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseEncode for crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -117342,6 +117520,17 @@ mod io {
             .into()
         }
     }
+    impl CstDecode<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>
+        for *mut wire_cst_third_party_enum_with_fields
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>::cst_decode(*wrap).into()
+        }
+    }
     impl CstDecode<crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal>
         for *mut wire_cst_translatable_struct_with_dart_code_twin_normal
     {
@@ -123813,6 +124002,32 @@ mod io {
             }
         }
     }
+    impl CstDecode<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>
+        for wire_cst_third_party_enum_with_fields
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields {
+            match self.tag {
+                0 => frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Unit,
+                1 => {
+                    let ans = unsafe { self.kind.Named };
+                    frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Named {
+                        id: ans.id.cst_decode(),
+                        name: ans.name.cst_decode(),
+                    }
+                }
+                2 => {
+                    let ans = unsafe { self.kind.Tuple };
+                    frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Tuple(
+                        ans.field0.cst_decode(),
+                    )
+                }
+                _ => unreachable!(),
+            }
+        }
+    }
     impl CstDecode<crate::api::dart_code::TranslatableStructWithDartCodeTwinNormal>
         for wire_cst_translatable_struct_with_dart_code_twin_normal
     {
@@ -128467,6 +128682,19 @@ field1: Default::default(), }
         }
     }
     impl Default for wire_cst_test_model_twin_sync {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_third_party_enum_with_fields {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                tag: -1,
+                kind: ThirdPartyEnumWithFieldsKind { nil__: () },
+            }
+        }
+    }
+    impl Default for wire_cst_third_party_enum_with_fields {
         fn default() -> Self {
             Self::new_with_null_ptr()
         }
@@ -155135,6 +155363,60 @@ field1: Default::default(), }
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__third_party_enum__third_party_enum_with_fields_roundtrip_twin_normal(
+        port_: i64,
+        arg: *mut wire_cst_third_party_enum_with_fields,
+    ) {
+        wire__crate__api__third_party_enum__third_party_enum_with_fields_roundtrip_twin_normal_impl(
+            port_, arg,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_enum_with_fields_roundtrip_twin_rust_async(
+        port_: i64,
+        arg: *mut wire_cst_third_party_enum_with_fields,
+    ) {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_enum_with_fields_roundtrip_twin_rust_async_impl(port_, arg)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_enum_with_fields_roundtrip_twin_rust_async_sse(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_enum_with_fields_roundtrip_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_enum_with_fields_roundtrip_twin_sse(
+        port_: i64,
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_enum_with_fields_roundtrip_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_enum_with_fields_roundtrip_twin_sync(
+        arg: *mut wire_cst_third_party_enum_with_fields,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_enum_with_fields_roundtrip_twin_sync_impl(arg)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse(
+        ptr_: *mut u8,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__exception__throw_anyhow_twin_normal(
         port_: i64,
     ) {
@@ -162144,6 +162426,14 @@ field1: Default::default(), }
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_third_party_enum_with_fields(
+    ) -> *mut wire_cst_third_party_enum_with_fields {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_third_party_enum_with_fields::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_translatable_struct_with_dart_code_twin_normal(
     ) -> *mut wire_cst_translatable_struct_with_dart_code_twin_normal {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -168614,6 +168904,30 @@ items: *mut wire_cst_list_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generat
         name: *mut wire_cst_list_prim_u_8_strict,
         alias_enum: i32,
         alias_struct: wire_cst_my_struct,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_third_party_enum_with_fields {
+        tag: i32,
+        kind: ThirdPartyEnumWithFieldsKind,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub union ThirdPartyEnumWithFieldsKind {
+        Named: wire_cst_ThirdPartyEnumWithFields_Named,
+        Tuple: wire_cst_ThirdPartyEnumWithFields_Tuple,
+        nil__: (),
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_ThirdPartyEnumWithFields_Named {
+        id: i32,
+        name: *mut wire_cst_list_prim_u_8_strict,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_ThirdPartyEnumWithFields_Tuple {
+        field0: i32,
     }
     #[repr(C)]
     #[derive(Clone, Copy)]
@@ -177697,6 +178011,31 @@ mod web {
                 name: self_.get(1).cst_decode(),
                 alias_enum: self_.get(2).cst_decode(),
                 alias_struct: self_.get(3).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields {
+            let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+            match self_.get(0).unchecked_into_f64() as _ {
+                0 => frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Unit,
+                1 => {
+                    frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Named {
+                        id: self_.get(1).cst_decode(),
+                        name: self_.get(2).cst_decode(),
+                    }
+                }
+                2 => {
+                    frb_example_pure_dart_example_third_party_lib::ThirdPartyEnumWithFields::Tuple(
+                        self_.get(1).cst_decode(),
+                    )
+                }
+                _ => unreachable!(),
             }
         }
     }
@@ -210656,6 +210995,60 @@ mod web {
             rust_vec_len_,
             data_len_,
         )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__third_party_enum__third_party_enum_with_fields_roundtrip_twin_normal(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) {
+        wire__crate__api__third_party_enum__third_party_enum_with_fields_roundtrip_twin_normal_impl(
+            port_, arg,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_enum_with_fields_roundtrip_twin_rust_async(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_enum_with_fields_roundtrip_twin_rust_async_impl(port_, arg)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_enum_with_fields_roundtrip_twin_rust_async_sse(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_enum_with_fields_roundtrip_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_enum_with_fields_roundtrip_twin_sse(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_enum_with_fields_roundtrip_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_enum_with_fields_roundtrip_twin_sync(
+        arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_enum_with_fields_roundtrip_twin_sync_impl(arg)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse(
+        ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+        rust_vec_len_: i32,
+        data_len_: i32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+        wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
     }
 
     #[wasm_bindgen]

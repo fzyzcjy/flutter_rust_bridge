@@ -252,6 +252,11 @@ import 'api/pseudo_manual/structure_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/structure_twin_sse.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync_sse.dart';
+import 'api/pseudo_manual/third_party_enum_twin_rust_async.dart';
+import 'api/pseudo_manual/third_party_enum_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/third_party_enum_twin_sse.dart';
+import 'api/pseudo_manual/third_party_enum_twin_sync.dart';
+import 'api/pseudo_manual/third_party_enum_twin_sync_sse.dart';
 import 'api/pseudo_manual/tuple_twin_rust_async.dart';
 import 'api/pseudo_manual/tuple_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/tuple_twin_sse.dart';
@@ -277,6 +282,7 @@ import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/stream_misc.dart';
 import 'api/structure.dart';
+import 'api/third_party_enum.dart';
 import 'api/tuple.dart';
 import 'api/type_alias.dart';
 import 'api/uuid_type.dart';
@@ -290,6 +296,7 @@ import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';
+import 'third_party/frb_example_pure_dart_example_third_party_lib.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -6727,6 +6734,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   TestIdTwinSyncSse dco_decode_box_autoadd_test_id_twin_sync_sse(dynamic raw);
 
   @protected
+  ThirdPartyEnumWithFields dco_decode_box_autoadd_third_party_enum_with_fields(
+      dynamic raw);
+
+  @protected
   TranslatableStructWithDartCodeTwinNormal
       dco_decode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
           dynamic raw);
@@ -10623,6 +10634,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   TestModelTwinSyncSse dco_decode_test_model_twin_sync_sse(dynamic raw);
+
+  @protected
+  ThirdPartyEnumWithFields dco_decode_third_party_enum_with_fields(dynamic raw);
 
   @protected
   TranslatableStructWithDartCodeTwinNormal
@@ -16479,6 +16493,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  ThirdPartyEnumWithFields sse_decode_box_autoadd_third_party_enum_with_fields(
+      SseDeserializer deserializer);
+
+  @protected
   TranslatableStructWithDartCodeTwinNormal
       sse_decode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
           SseDeserializer deserializer);
@@ -20928,6 +20946,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  ThirdPartyEnumWithFields sse_decode_third_party_enum_with_fields(
+      SseDeserializer deserializer);
+
+  @protected
   TranslatableStructWithDartCodeTwinNormal
       sse_decode_translatable_struct_with_dart_code_twin_normal(
           SseDeserializer deserializer);
@@ -24123,6 +24145,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_test_id_twin_sync(TestIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_test_id_twin_sync(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_third_party_enum_with_fields(
+      ThirdPartyEnumWithFields raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_third_party_enum_with_fields(raw);
   }
 
   @protected
@@ -29538,6 +29567,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_my_enum(raw.aliasEnum),
       cst_encode_my_struct(raw.aliasStruct)
     ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_third_party_enum_with_fields(ThirdPartyEnumWithFields raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is ThirdPartyEnumWithFields_Unit) {
+      return [0].jsify()!;
+    }
+    if (raw is ThirdPartyEnumWithFields_Named) {
+      return [1, cst_encode_i_32(raw.id), cst_encode_String(raw.name)].jsify()!;
+    }
+    if (raw is ThirdPartyEnumWithFields_Tuple) {
+      return [2, cst_encode_i_32(raw.field0)].jsify()!;
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -36810,6 +36855,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       TestIdTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_third_party_enum_with_fields(
+      ThirdPartyEnumWithFields self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
       TranslatableStructWithDartCodeTwinNormal self, SseSerializer serializer);
 
@@ -41058,6 +41107,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_test_model_twin_sync_sse(
       TestModelTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_third_party_enum_with_fields(
+      ThirdPartyEnumWithFields self, SseSerializer serializer);
 
   @protected
   void sse_encode_translatable_struct_with_dart_code_twin_normal(
@@ -62867,6 +62920,52 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__third_party_enum__third_party_enum_with_fields_roundtrip_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__third_party_enum__third_party_enum_with_fields_roundtrip_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_enum_with_fields_roundtrip_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_enum_with_fields_roundtrip_twin_rust_async(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_enum_with_fields_roundtrip_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_enum_with_fields_roundtrip_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_enum_with_fields_roundtrip_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_enum_with_fields_roundtrip_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_enum_with_fields_roundtrip_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_enum_with_fields_roundtrip_twin_sync(
+                  arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__exception__throw_anyhow_twin_normal(
           NativePortType port_) =>
       wasmModule.wire__crate__api__exception__throw_anyhow_twin_normal(port_);
@@ -81021,6 +81120,38 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__tuple_twin_sync_sse__test_tuple_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__third_party_enum__third_party_enum_with_fields_roundtrip_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_enum_with_fields_roundtrip_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_enum_with_fields_roundtrip_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_enum_with_fields_roundtrip_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_enum_with_fields_roundtrip_twin_sync(
+          JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

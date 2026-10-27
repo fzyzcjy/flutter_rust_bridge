@@ -253,6 +253,11 @@ import 'api/pseudo_manual/structure_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/structure_twin_sse.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync_sse.dart';
+import 'api/pseudo_manual/third_party_enum_twin_rust_async.dart';
+import 'api/pseudo_manual/third_party_enum_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/third_party_enum_twin_sse.dart';
+import 'api/pseudo_manual/third_party_enum_twin_sync.dart';
+import 'api/pseudo_manual/third_party_enum_twin_sync_sse.dart';
 import 'api/pseudo_manual/tuple_twin_rust_async.dart';
 import 'api/pseudo_manual/tuple_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/tuple_twin_sse.dart';
@@ -278,6 +283,7 @@ import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/stream_misc.dart';
 import 'api/structure.dart';
+import 'api/third_party_enum.dart';
 import 'api/tuple.dart';
 import 'api/type_alias.dart';
 import 'api/uuid_type.dart';
@@ -294,6 +300,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';
+import 'third_party/frb_example_pure_dart_example_third_party_lib.dart';
 part 'frb_generated.freezed.dart';
 
 /// Main entrypoint of the Rust API
@@ -376,7 +383,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.14.0-beta.2';
 
   @override
-  int get rustContentHash => -703344157;
+  int get rustContentHash => 1684921946;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -10722,6 +10729,30 @@ abstract class RustLibApi extends BaseApi {
 
   (String, int) crateApiPseudoManualTupleTwinSyncSseTestTupleTwinSyncSse(
       {(String, int)? value});
+
+  Future<ThirdPartyEnumWithFields>
+      crateApiThirdPartyEnumThirdPartyEnumWithFieldsRoundtripTwinNormal(
+          {required ThirdPartyEnumWithFields arg});
+
+  Future<ThirdPartyEnumWithFields>
+      crateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyEnumWithFieldsRoundtripTwinRustAsync(
+          {required ThirdPartyEnumWithFields arg});
+
+  Future<ThirdPartyEnumWithFields>
+      crateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyEnumWithFieldsRoundtripTwinRustAsyncSse(
+          {required ThirdPartyEnumWithFields arg});
+
+  Future<ThirdPartyEnumWithFields>
+      crateApiPseudoManualThirdPartyEnumTwinSseThirdPartyEnumWithFieldsRoundtripTwinSse(
+          {required ThirdPartyEnumWithFields arg});
+
+  ThirdPartyEnumWithFields
+      crateApiPseudoManualThirdPartyEnumTwinSyncThirdPartyEnumWithFieldsRoundtripTwinSync(
+          {required ThirdPartyEnumWithFields arg});
+
+  ThirdPartyEnumWithFields
+      crateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyEnumWithFieldsRoundtripTwinSyncSse(
+          {required ThirdPartyEnumWithFields arg});
 
   Future<void> crateApiExceptionThrowAnyhowTwinNormal();
 
@@ -105493,6 +105524,202 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Future<ThirdPartyEnumWithFields>
+      crateApiThirdPartyEnumThirdPartyEnumWithFieldsRoundtripTwinNormal(
+          {required ThirdPartyEnumWithFields arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_third_party_enum_with_fields(arg);
+        return wire
+            .wire__crate__api__third_party_enum__third_party_enum_with_fields_roundtrip_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_third_party_enum_with_fields,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiThirdPartyEnumThirdPartyEnumWithFieldsRoundtripTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiThirdPartyEnumThirdPartyEnumWithFieldsRoundtripTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "third_party_enum_with_fields_roundtrip_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<ThirdPartyEnumWithFields>
+      crateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyEnumWithFieldsRoundtripTwinRustAsync(
+          {required ThirdPartyEnumWithFields arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_third_party_enum_with_fields(arg);
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_enum_with_fields_roundtrip_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_third_party_enum_with_fields,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyEnumWithFieldsRoundtripTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyEnumWithFieldsRoundtripTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "third_party_enum_with_fields_roundtrip_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<ThirdPartyEnumWithFields>
+      crateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyEnumWithFieldsRoundtripTwinRustAsyncSse(
+          {required ThirdPartyEnumWithFields arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        try {
+          sse_encode_box_autoadd_third_party_enum_with_fields(arg, serializer);
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_enum_with_fields_roundtrip_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_third_party_enum_with_fields,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyEnumWithFieldsRoundtripTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyEnumWithFieldsRoundtripTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "third_party_enum_with_fields_roundtrip_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<ThirdPartyEnumWithFields>
+      crateApiPseudoManualThirdPartyEnumTwinSseThirdPartyEnumWithFieldsRoundtripTwinSse(
+          {required ThirdPartyEnumWithFields arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        try {
+          sse_encode_box_autoadd_third_party_enum_with_fields(arg, serializer);
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_enum_with_fields_roundtrip_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_third_party_enum_with_fields,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinSseThirdPartyEnumWithFieldsRoundtripTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinSseThirdPartyEnumWithFieldsRoundtripTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "third_party_enum_with_fields_roundtrip_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  ThirdPartyEnumWithFields
+      crateApiPseudoManualThirdPartyEnumTwinSyncThirdPartyEnumWithFieldsRoundtripTwinSync(
+          {required ThirdPartyEnumWithFields arg}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_third_party_enum_with_fields(arg);
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_enum_with_fields_roundtrip_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_third_party_enum_with_fields,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinSyncThirdPartyEnumWithFieldsRoundtripTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinSyncThirdPartyEnumWithFieldsRoundtripTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "third_party_enum_with_fields_roundtrip_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  ThirdPartyEnumWithFields
+      crateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyEnumWithFieldsRoundtripTwinSyncSse(
+          {required ThirdPartyEnumWithFields arg}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        try {
+          sse_encode_box_autoadd_third_party_enum_with_fields(arg, serializer);
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_third_party_enum_with_fields,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyEnumWithFieldsRoundtripTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyEnumWithFieldsRoundtripTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "third_party_enum_with_fields_roundtrip_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
   Future<void> crateApiExceptionThrowAnyhowTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -119910,6 +120137,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  ThirdPartyEnumWithFields dco_decode_box_autoadd_third_party_enum_with_fields(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_third_party_enum_with_fields(raw);
+  }
+
+  @protected
   TranslatableStructWithDartCodeTwinNormal
       dco_decode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
           dynamic raw) {
@@ -132038,6 +132272,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  ThirdPartyEnumWithFields dco_decode_third_party_enum_with_fields(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = dcoDecodeList(raw);
+    switch (dcoDecodePrimitiveInt(arr[0])) {
+      case 0:
+        return ThirdPartyEnumWithFields_Unit();
+      case 1:
+        return ThirdPartyEnumWithFields_Named(
+          id: dco_decode_i_32(arr[1]),
+          name: dco_decode_String(arr[2]),
+        );
+      case 2:
+        return ThirdPartyEnumWithFields_Tuple(
+          dco_decode_i_32(arr[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
   TranslatableStructWithDartCodeTwinNormal
       dco_decode_translatable_struct_with_dart_code_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -143186,6 +143442,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_test_id_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  ThirdPartyEnumWithFields sse_decode_box_autoadd_third_party_enum_with_fields(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_third_party_enum_with_fields(deserializer));
   }
 
   @protected
@@ -156111,6 +156374,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         name: var_name,
         aliasEnum: var_aliasEnum,
         aliasStruct: var_aliasStruct);
+  }
+
+  @protected
+  ThirdPartyEnumWithFields sse_decode_third_party_enum_with_fields(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return ThirdPartyEnumWithFields_Unit();
+      case 1:
+        var var_id = sse_decode_i_32(deserializer);
+        var var_name = sse_decode_String(deserializer);
+        return ThirdPartyEnumWithFields_Named(id: var_id, name: var_name);
+      case 2:
+        var var_field0 = sse_decode_i_32(deserializer);
+        return ThirdPartyEnumWithFields_Tuple(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
   }
 
   @protected
@@ -171219,6 +171503,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_third_party_enum_with_fields(
+      ThirdPartyEnumWithFields self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_third_party_enum_with_fields(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_translatable_struct_with_dart_code_twin_normal(
       TranslatableStructWithDartCodeTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -181761,6 +182052,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_String(self.name, serializer);
     sse_encode_my_enum(self.aliasEnum, serializer);
     sse_encode_my_struct(self.aliasStruct, serializer);
+  }
+
+  @protected
+  void sse_encode_third_party_enum_with_fields(
+      ThirdPartyEnumWithFields self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    switch (self) {
+      case ThirdPartyEnumWithFields_Unit():
+        sse_encode_i_32(0, serializer);
+      case ThirdPartyEnumWithFields_Named(id: final id, name: final name):
+        sse_encode_i_32(1, serializer);
+        sse_encode_i_32(id, serializer);
+        sse_encode_String(name, serializer);
+      case ThirdPartyEnumWithFields_Tuple(field0: final field0):
+        sse_encode_i_32(2, serializer);
+        sse_encode_i_32(field0, serializer);
+    }
   }
 
   @protected

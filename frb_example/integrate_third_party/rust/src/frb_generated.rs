@@ -67,7 +67,6 @@ use flutter_rust_bridge::for_generated::{transform_result_dco, Lifetimeable, Loc
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 use web_audio_api::context::BaseAudioContext;
 use web_audio_api::context::*;
-use web_audio_api::media_devices::*;
 use web_audio_api::media_recorder::*;
 use web_audio_api::media_streams::*;
 use web_audio_api::node::AudioNode;
@@ -27186,7 +27185,10 @@ fn wire__web_audio_api__media_devices__get_user_media_sync_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_constraints = <MediaStreamConstraints>::sse_decode(&mut deserializer);
+            let api_constraints =
+                <web_audio_api::media_devices::MediaStreamConstraints>::sse_decode(
+                    &mut deserializer,
+                );
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
@@ -27604,6 +27606,20 @@ const _: fn() = || {
         let _: f32 = GainOptions.gain;
         let _: web_audio_api::node::AudioNodeOptions = GainOptions.audio_node_options;
     }
+    match None::<web_audio_api::media_devices::MediaStreamConstraints>.unwrap() {
+        web_audio_api::media_devices::MediaStreamConstraints::Audio => {}
+        web_audio_api::media_devices::MediaStreamConstraints::AudioWithConstraints(field0) => {
+            let _: web_audio_api::media_devices::MediaTrackConstraints = field0;
+        }
+    }
+    {
+        let MediaTrackConstraints =
+            None::<web_audio_api::media_devices::MediaTrackConstraints>.unwrap();
+        let _: Option<f32> = MediaTrackConstraints.sample_rate;
+        let _: Option<f64> = MediaTrackConstraints.latency;
+        let _: Option<u32> = MediaTrackConstraints.channel_count;
+        let _: Option<String> = MediaTrackConstraints.device_id;
+    }
     {
         let OscillatorOptions = None::<web_audio_api::node::OscillatorOptions>.unwrap();
         let _: web_audio_api::node::OscillatorType = OscillatorOptions.type_;
@@ -27877,9 +27893,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrack>
@@ -29756,16 +29769,6 @@ impl SseDecode for MediaStreamAudioSourceNode {
     }
 }
 
-impl SseDecode for MediaStreamConstraints {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>,
-        >>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
-    }
-}
-
 impl SseDecode for MediaStreamTrack {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -30211,18 +30214,6 @@ impl SseDecode
 impl SseDecode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -31013,6 +31004,28 @@ impl SseDecode for Vec<u8> {
     }
 }
 
+impl SseDecode for web_audio_api::media_devices::MediaStreamConstraints {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                return web_audio_api::media_devices::MediaStreamConstraints::Audio;
+            }
+            1 => {
+                let mut var_field0 =
+                    <web_audio_api::media_devices::MediaTrackConstraints>::sse_decode(deserializer);
+                return web_audio_api::media_devices::MediaStreamConstraints::AudioWithConstraints(
+                    var_field0,
+                );
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseDecode for web_audio_api::media_streams::MediaStreamTrackState {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -31022,6 +31035,33 @@ impl SseDecode for web_audio_api::media_streams::MediaStreamTrackState {
             1 => web_audio_api::media_streams::MediaStreamTrackState::Ended,
             _ => unreachable!("Invalid variant for MediaStreamTrackState: {}", inner),
         };
+    }
+}
+
+impl SseDecode for web_audio_api::media_devices::MediaTrackConstraints {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_sampleRate = <Option<f32>>::sse_decode(deserializer);
+        let mut var_latency = <Option<f64>>::sse_decode(deserializer);
+        let mut var_channelCount = <Option<u32>>::sse_decode(deserializer);
+        let mut var_deviceId = <Option<String>>::sse_decode(deserializer);
+        return web_audio_api::media_devices::MediaTrackConstraints {
+            sample_rate: var_sampleRate,
+            latency: var_latency,
+            channel_count: var_channelCount,
+            device_id: var_deviceId,
+        };
+    }
+}
+
+impl SseDecode for Option<String> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<String>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
     }
 }
 
@@ -31052,6 +31092,28 @@ impl SseDecode for Option<f32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         if (<bool>::sse_decode(deserializer)) {
             return Some(<f32>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<f64> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<f64>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<u32> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<u32>::sse_decode(deserializer));
         } else {
             return None;
         }
@@ -31202,6 +31264,13 @@ impl SseDecode for web_audio_api::node::StereoPannerOptions {
             pan: var_pan,
             audio_node_options: var_audioNodeOptions,
         };
+    }
+}
+
+impl SseDecode for u32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_u32::<NativeEndian>().unwrap()
     }
 }
 
@@ -34958,26 +35027,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<MediaStreamAudioSourceNode>>
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<MediaStreamConstraints> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
-            .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<MediaStreamConstraints>
-{
-}
-
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<MediaStreamConstraints>>
-    for MediaStreamConstraints
-{
-    fn into_into_dart(self) -> FrbWrapper<MediaStreamConstraints> {
-        self.into()
-    }
-}
-
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<MediaStreamTrack> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
@@ -35867,6 +35916,37 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<web_audio_api::node::GainOptio
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart
+    for FrbWrapper<web_audio_api::media_devices::MediaStreamConstraints>
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            web_audio_api::media_devices::MediaStreamConstraints::Audio => {
+                [0.into_dart()].into_dart()
+            }
+            web_audio_api::media_devices::MediaStreamConstraints::AudioWithConstraints(field0) => {
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<web_audio_api::media_devices::MediaStreamConstraints>
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        FrbWrapper<web_audio_api::media_devices::MediaStreamConstraints>,
+    > for web_audio_api::media_devices::MediaStreamConstraints
+{
+    fn into_into_dart(self) -> FrbWrapper<web_audio_api::media_devices::MediaStreamConstraints> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
     for FrbWrapper<web_audio_api::media_streams::MediaStreamTrackState>
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
@@ -35887,6 +35967,33 @@ impl
     > for web_audio_api::media_streams::MediaStreamTrackState
 {
     fn into_into_dart(self) -> FrbWrapper<web_audio_api::media_streams::MediaStreamTrackState> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for FrbWrapper<web_audio_api::media_devices::MediaTrackConstraints>
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.sample_rate.into_into_dart().into_dart(),
+            self.0.latency.into_into_dart().into_dart(),
+            self.0.channel_count.into_into_dart().into_dart(),
+            self.0.device_id.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<web_audio_api::media_devices::MediaTrackConstraints>
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        FrbWrapper<web_audio_api::media_devices::MediaTrackConstraints>,
+    > for web_audio_api::media_devices::MediaTrackConstraints
+{
+    fn into_into_dart(self) -> FrbWrapper<web_audio_api::media_devices::MediaTrackConstraints> {
         self.into()
     }
 }
@@ -36562,18 +36669,6 @@ impl SseEncode for MediaStreamAudioSourceNode {
     }
 }
 
-impl SseEncode for MediaStreamConstraints {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>,
-        >>::sse_encode(
-            flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self),
-            serializer,
-        );
-    }
-}
-
 impl SseEncode for MediaStreamTrack {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -37026,19 +37121,6 @@ impl SseEncode
 impl SseEncode
     for RustOpaqueMoi<
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>,
-    >
-{
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -37757,6 +37839,26 @@ impl SseEncode for Vec<u8> {
     }
 }
 
+impl SseEncode for web_audio_api::media_devices::MediaStreamConstraints {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            web_audio_api::media_devices::MediaStreamConstraints::Audio => {
+                <i32>::sse_encode(0, serializer);
+            }
+            web_audio_api::media_devices::MediaStreamConstraints::AudioWithConstraints(field0) => {
+                <i32>::sse_encode(1, serializer);
+                <web_audio_api::media_devices::MediaTrackConstraints>::sse_encode(
+                    field0, serializer,
+                );
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseEncode for web_audio_api::media_streams::MediaStreamTrackState {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -37770,6 +37872,26 @@ impl SseEncode for web_audio_api::media_streams::MediaStreamTrackState {
             },
             serializer,
         );
+    }
+}
+
+impl SseEncode for web_audio_api::media_devices::MediaTrackConstraints {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Option<f32>>::sse_encode(self.sample_rate, serializer);
+        <Option<f64>>::sse_encode(self.latency, serializer);
+        <Option<u32>>::sse_encode(self.channel_count, serializer);
+        <Option<String>>::sse_encode(self.device_id, serializer);
+    }
+}
+
+impl SseEncode for Option<String> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <String>::sse_encode(value, serializer);
+        }
     }
 }
 
@@ -37799,6 +37921,26 @@ impl SseEncode for Option<f32> {
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <f32>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<f64> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <f64>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<u32> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <u32>::sse_encode(value, serializer);
         }
     }
 }
@@ -37922,6 +38064,13 @@ impl SseEncode for web_audio_api::node::StereoPannerOptions {
     }
 }
 
+impl SseEncode for u32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_u32::<NativeEndian>(self).unwrap();
+    }
+}
+
 impl SseEncode for u8 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -38003,7 +38152,6 @@ mod io {
     use flutter_rust_bridge::{Handler, IntoIntoDart};
     use web_audio_api::context::BaseAudioContext;
     use web_audio_api::context::*;
-    use web_audio_api::media_devices::*;
     use web_audio_api::media_recorder::*;
     use web_audio_api::media_streams::*;
     use web_audio_api::node::AudioNode;
@@ -38477,20 +38625,6 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>>::increment_strong_count(ptr as _);
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>>::decrement_strong_count(ptr as _);
-    }
-
-    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
         ptr: *const std::ffi::c_void,
     ) {
@@ -38712,7 +38846,6 @@ mod web {
     use flutter_rust_bridge::{Handler, IntoIntoDart};
     use web_audio_api::context::BaseAudioContext;
     use web_audio_api::context::*;
-    use web_audio_api::media_devices::*;
     use web_audio_api::media_recorder::*;
     use web_audio_api::media_streams::*;
     use web_audio_api::node::AudioNode;
@@ -39183,20 +39316,6 @@ mod web {
         ptr: *const std::ffi::c_void,
     ) {
         MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioSourceNode>>::decrement_strong_count(ptr as _);
-    }
-
-    #[wasm_bindgen]
-    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>>::increment_strong_count(ptr as _);
-    }
-
-    #[wasm_bindgen]
-    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-        ptr: *const std::ffi::c_void,
-    ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>>::decrement_strong_count(ptr as _);
     }
 
     #[wasm_bindgen]
