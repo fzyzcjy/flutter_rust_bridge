@@ -202,7 +202,7 @@ Here is my other open-source library :) https://github.com/fzyzcjy/flutter_smoot
 
 Firstly, I want to sincerely thank Dart, Flutter and Rust (alphabetical order). Dart provides a solid foundation for productive UI development, Flutter enables developers to make cross-platform apps with ease, and Rust empowers everyone to build reliable and efficient software. Without the languages and frameworks, this bridge connects absolutely nothing. Besides, I also want to express my thanks for conferring the official [Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites) honor to the package. In addition, I also want to say thanks to the Dart, Flutter and Rust team members as well as community members, who have helped me during the development of flutter_rust_bridge by valuable discussions, insights, and actions.
 
-Secondly, thanks goes to these wonderful contributors ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
+Secondly, thanks goes to these wonderful contributors ([emoji key](https://allcontributors.org/en/reference/emoji-key/) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
