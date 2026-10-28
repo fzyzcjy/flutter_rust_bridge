@@ -14,3 +14,10 @@ Future<ThirdPartyEnumWithFields> thirdPartyEnumWithFieldsRoundtripTwinNormal(
     RustLib.instance.api
         .crateApiThirdPartyEnumThirdPartyEnumWithFieldsRoundtripTwinNormal(
             arg: arg);
+
+Future<ThirdPartyNonExhaustiveStruct>
+    thirdPartyNonExhaustiveStructRoundtripTwinNormal(
+            {required ThirdPartyNonExhaustiveStruct arg}) =>
+        RustLib.instance.api
+            .crateApiThirdPartyEnumThirdPartyNonExhaustiveStructRoundtripTwinNormal(
+                arg: arg);

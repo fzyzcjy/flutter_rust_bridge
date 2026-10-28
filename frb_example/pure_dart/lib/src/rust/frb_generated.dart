@@ -383,7 +383,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.14.0-beta.2';
 
   @override
-  int get rustContentHash => 1684921946;
+  int get rustContentHash => 425328612;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -1640,6 +1640,17 @@ abstract class RustLibApi extends BaseApi {
 
   void crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleSetter(
       {required StructWithSimpleSetterTwinNormal that, required int value});
+
+  int frbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorGetValue(
+      {required ThirdPartyNonExhaustiveStruct that});
+
+  void
+      frbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorSetValue(
+          {required ThirdPartyNonExhaustiveStruct that, required int value});
+
+  Future<ThirdPartyNonExhaustiveStruct>
+      frbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructNew(
+          {required int value});
 
   int crateApiMiscNoTwinExampleATypeForIgnoreAllAutoAccessorGetField2(
       {required TypeForIgnoreAll that});
@@ -10754,6 +10765,30 @@ abstract class RustLibApi extends BaseApi {
       crateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyEnumWithFieldsRoundtripTwinSyncSse(
           {required ThirdPartyEnumWithFields arg});
 
+  Future<ThirdPartyNonExhaustiveStruct>
+      crateApiThirdPartyEnumThirdPartyNonExhaustiveStructRoundtripTwinNormal(
+          {required ThirdPartyNonExhaustiveStruct arg});
+
+  Future<ThirdPartyNonExhaustiveStruct>
+      crateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyNonExhaustiveStructRoundtripTwinRustAsync(
+          {required ThirdPartyNonExhaustiveStruct arg});
+
+  Future<ThirdPartyNonExhaustiveStruct>
+      crateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyNonExhaustiveStructRoundtripTwinRustAsyncSse(
+          {required ThirdPartyNonExhaustiveStruct arg});
+
+  Future<ThirdPartyNonExhaustiveStruct>
+      crateApiPseudoManualThirdPartyEnumTwinSseThirdPartyNonExhaustiveStructRoundtripTwinSse(
+          {required ThirdPartyNonExhaustiveStruct arg});
+
+  ThirdPartyNonExhaustiveStruct
+      crateApiPseudoManualThirdPartyEnumTwinSyncThirdPartyNonExhaustiveStructRoundtripTwinSync(
+          {required ThirdPartyNonExhaustiveStruct arg});
+
+  ThirdPartyNonExhaustiveStruct
+      crateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyNonExhaustiveStructRoundtripTwinSyncSse(
+          {required ThirdPartyNonExhaustiveStruct arg});
+
   Future<void> crateApiExceptionThrowAnyhowTwinNormal();
 
   Future<void>
@@ -12976,6 +13011,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_ThirdPartyNonExhaustiveStruct;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_ThirdPartyNonExhaustiveStruct;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_ThirdPartyNonExhaustiveStructPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_TypeForIgnore;
@@ -23956,6 +24000,98 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName: "StructWithSimpleSetterTwinNormal_simple_setter",
             argNames: ["that", "value"],
+          );
+
+  @override
+  int frbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorGetValue(
+      {required ThirdPartyNonExhaustiveStruct that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+                that);
+        return wire
+            .wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_auto_accessor_get_value(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kFrbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorGetValueConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kFrbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorGetValueConstMeta =>
+          const TaskConstMeta(
+            debugName: "ThirdPartyNonExhaustiveStruct_auto_accessor_get_value",
+            argNames: ["that"],
+          );
+
+  @override
+  void
+      frbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorSetValue(
+          {required ThirdPartyNonExhaustiveStruct that, required int value}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+                that);
+        var arg1 = cst_encode_i_32(value);
+        return wire
+            .wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_auto_accessor_set_value(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kFrbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorSetValueConstMeta,
+      argValues: [that, value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kFrbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorSetValueConstMeta =>
+          const TaskConstMeta(
+            debugName: "ThirdPartyNonExhaustiveStruct_auto_accessor_set_value",
+            argNames: ["that", "value"],
+          );
+
+  @override
+  Future<ThirdPartyNonExhaustiveStruct>
+      frbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructNew(
+          {required int value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(value);
+        return wire
+            .wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_new(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kFrbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructNewConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kFrbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructNewConstMeta =>
+          const TaskConstMeta(
+            debugName: "ThirdPartyNonExhaustiveStruct_new",
+            argNames: ["value"],
           );
 
   @override
@@ -105720,6 +105856,220 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Future<ThirdPartyNonExhaustiveStruct>
+      crateApiThirdPartyEnumThirdPartyNonExhaustiveStructRoundtripTwinNormal(
+          {required ThirdPartyNonExhaustiveStruct arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+                arg);
+        return wire
+            .wire__crate__api__third_party_enum__third_party_non_exhaustive_struct_roundtrip_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiThirdPartyEnumThirdPartyNonExhaustiveStructRoundtripTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiThirdPartyEnumThirdPartyNonExhaustiveStructRoundtripTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "third_party_non_exhaustive_struct_roundtrip_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<ThirdPartyNonExhaustiveStruct>
+      crateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyNonExhaustiveStructRoundtripTwinRustAsync(
+          {required ThirdPartyNonExhaustiveStruct arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+                arg);
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_non_exhaustive_struct_roundtrip_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyNonExhaustiveStructRoundtripTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyNonExhaustiveStructRoundtripTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "third_party_non_exhaustive_struct_roundtrip_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<ThirdPartyNonExhaustiveStruct>
+      crateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyNonExhaustiveStructRoundtripTwinRustAsyncSse(
+          {required ThirdPartyNonExhaustiveStruct arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        try {
+          sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+              arg, serializer);
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_non_exhaustive_struct_roundtrip_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyNonExhaustiveStructRoundtripTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyNonExhaustiveStructRoundtripTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "third_party_non_exhaustive_struct_roundtrip_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<ThirdPartyNonExhaustiveStruct>
+      crateApiPseudoManualThirdPartyEnumTwinSseThirdPartyNonExhaustiveStructRoundtripTwinSse(
+          {required ThirdPartyNonExhaustiveStruct arg}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        try {
+          sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+              arg, serializer);
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_non_exhaustive_struct_roundtrip_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinSseThirdPartyNonExhaustiveStructRoundtripTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinSseThirdPartyNonExhaustiveStructRoundtripTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "third_party_non_exhaustive_struct_roundtrip_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  ThirdPartyNonExhaustiveStruct
+      crateApiPseudoManualThirdPartyEnumTwinSyncThirdPartyNonExhaustiveStructRoundtripTwinSync(
+          {required ThirdPartyNonExhaustiveStruct arg}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+                arg);
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_non_exhaustive_struct_roundtrip_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinSyncThirdPartyNonExhaustiveStructRoundtripTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinSyncThirdPartyNonExhaustiveStructRoundtripTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "third_party_non_exhaustive_struct_roundtrip_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  ThirdPartyNonExhaustiveStruct
+      crateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyNonExhaustiveStructRoundtripTwinSyncSse(
+          {required ThirdPartyNonExhaustiveStruct arg}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        try {
+          sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+              arg, serializer);
+        } catch (_) {
+          serializer.dispose();
+          rethrow;
+        }
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_non_exhaustive_struct_roundtrip_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyNonExhaustiveStructRoundtripTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyNonExhaustiveStructRoundtripTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "third_party_non_exhaustive_struct_roundtrip_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
   Future<void> crateApiExceptionThrowAnyhowTwinNormal() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -109679,6 +110029,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_ThirdPartyNonExhaustiveStruct => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_ThirdPartyNonExhaustiveStruct => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_TypeForIgnore => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore;
 
@@ -111158,6 +111516,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  ThirdPartyNonExhaustiveStruct
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return ThirdPartyNonExhaustiveStructImpl.frbInternalDcoDecode(
+        dcoDecodeList(raw));
+  }
+
+  @protected
   TypeForIgnore
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           dynamic raw) {
@@ -111601,6 +111968,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalDcoDecode(
+        dcoDecodeList(raw));
+  }
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return ThirdPartyNonExhaustiveStructImpl.frbInternalDcoDecode(
         dcoDecodeList(raw));
   }
 
@@ -112278,6 +112654,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalDcoDecode(
+        dcoDecodeList(raw));
+  }
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return ThirdPartyNonExhaustiveStructImpl.frbInternalDcoDecode(
         dcoDecodeList(raw));
   }
 
@@ -115142,6 +115527,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalDcoDecode(
+        dcoDecodeList(raw));
+  }
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return ThirdPartyNonExhaustiveStructImpl.frbInternalDcoDecode(
         dcoDecodeList(raw));
   }
 
@@ -134338,6 +134732,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  ThirdPartyNonExhaustiveStruct
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return ThirdPartyNonExhaustiveStructImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   TypeForIgnore
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           SseDeserializer deserializer) {
@@ -134805,6 +135208,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return ThirdPartyNonExhaustiveStructImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -135510,6 +135922,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return ThirdPartyNonExhaustiveStructImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -138461,6 +138882,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StructWithSimpleSetterTwinNormalImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return ThirdPartyNonExhaustiveStructImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -157642,6 +158072,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+      ThirdPartyNonExhaustiveStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as ThirdPartyNonExhaustiveStructImpl)
+        .frbInternalCstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
       TypeForIgnore raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -157987,6 +158426,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
     return (raw as StructWithSimpleSetterTwinNormalImpl)
+        .frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+      ThirdPartyNonExhaustiveStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as ThirdPartyNonExhaustiveStructImpl)
         .frbInternalCstEncode(move: false);
   }
 
@@ -158480,6 +158928,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
     return (raw as StructWithSimpleSetterTwinNormalImpl)
+        .frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+      ThirdPartyNonExhaustiveStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as ThirdPartyNonExhaustiveStructImpl)
         .frbInternalCstEncode(move: false);
   }
 
@@ -159675,6 +160132,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
     return (raw as StructWithSimpleSetterTwinNormalImpl).frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+      ThirdPartyNonExhaustiveStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as ThirdPartyNonExhaustiveStructImpl).frbInternalCstEncode();
   }
 
   @protected
@@ -161657,6 +162122,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          ThirdPartyNonExhaustiveStruct self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as ThirdPartyNonExhaustiveStructImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           TypeForIgnore self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -162213,6 +162689,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithSimpleSetterTwinNormalImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          ThirdPartyNonExhaustiveStruct self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as ThirdPartyNonExhaustiveStructImpl)
             .frbInternalSseEncode(move: false),
         serializer);
   }
@@ -163058,6 +163545,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithSimpleSetterTwinNormalImpl)
+            .frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          ThirdPartyNonExhaustiveStruct self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as ThirdPartyNonExhaustiveStructImpl)
             .frbInternalSseEncode(move: false),
         serializer);
   }
@@ -166460,6 +166958,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as StructWithSimpleSetterTwinNormalImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          ThirdPartyNonExhaustiveStruct self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as ThirdPartyNonExhaustiveStructImpl)
             .frbInternalSseEncode(move: null),
         serializer);
   }
@@ -188533,6 +189042,37 @@ class StructWithSimpleSetterTwinNormalImpl extends RustOpaque
 
   set simpleSetter(int value) => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalSimpleSetter(
+          that: this, value: value);
+}
+
+@sealed
+class ThirdPartyNonExhaustiveStructImpl extends RustOpaque
+    implements ThirdPartyNonExhaustiveStruct {
+  // Not to be used by end users
+  ThirdPartyNonExhaustiveStructImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  ThirdPartyNonExhaustiveStructImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_ThirdPartyNonExhaustiveStruct,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ThirdPartyNonExhaustiveStruct,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_ThirdPartyNonExhaustiveStructPtr,
+  );
+
+  int get value => RustLib.instance.api
+          .frbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorGetValue(
+        that: this,
+      );
+
+  set value(int value) => RustLib.instance.api
+      .frbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructAutoAccessorSetValue(
           that: this, value: value);
 }
 

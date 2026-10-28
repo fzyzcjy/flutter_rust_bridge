@@ -15,4 +15,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     ThirdPartyEnumWithFields.named(id: 42, name: 'hi'),
     ThirdPartyEnumWithFields.tuple(100),
   ]);
+
+  test('third party non-exhaustive struct is opaque', () async {
+    final output = await thirdPartyNonExhaustiveStructRoundtripTwinNormal(
+        arg: await ThirdPartyNonExhaustiveStruct.newInstance(value: 42));
+    expect(output.value, 42);
+  });
 }

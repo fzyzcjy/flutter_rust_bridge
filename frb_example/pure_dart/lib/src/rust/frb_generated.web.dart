@@ -1223,6 +1223,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_ThirdPartyNonExhaustiveStructPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_TypeForIgnorePtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore;
 
@@ -2070,6 +2074,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  ThirdPartyNonExhaustiveStruct
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          dynamic raw);
+
+  @protected
   TypeForIgnore
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           dynamic raw);
@@ -2322,6 +2331,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic raw);
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
           dynamic raw);
 
   @protected
@@ -2707,6 +2721,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic raw);
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
           dynamic raw);
 
   @protected
@@ -4247,6 +4266,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic raw);
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
           dynamic raw);
 
   @protected
@@ -11620,6 +11644,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  ThirdPartyNonExhaustiveStruct
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          SseDeserializer deserializer);
+
+  @protected
   TypeForIgnore
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           SseDeserializer deserializer);
@@ -11872,6 +11901,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
           SseDeserializer deserializer);
 
   @protected
@@ -12257,6 +12291,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
           SseDeserializer deserializer);
 
   @protected
@@ -13793,6 +13832,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  ThirdPartyNonExhaustiveStruct
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
           SseDeserializer deserializer);
 
   @protected
@@ -30110,6 +30154,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithSimpleSetterTwinNormal raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+      ThirdPartyNonExhaustiveStruct raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
       TypeForIgnore raw);
 
@@ -30264,6 +30312,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
       StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+      ThirdPartyNonExhaustiveStruct raw);
 
   @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
@@ -30484,6 +30536,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
       StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+      ThirdPartyNonExhaustiveStruct raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
@@ -31060,6 +31116,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
       StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+      ThirdPartyNonExhaustiveStruct raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
@@ -32038,6 +32098,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          ThirdPartyNonExhaustiveStruct self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           TypeForIgnore self, SseSerializer serializer);
 
@@ -32302,6 +32367,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          ThirdPartyNonExhaustiveStruct self, SseSerializer serializer);
 
   @protected
   void
@@ -32699,6 +32769,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          ThirdPartyNonExhaustiveStruct self, SseSerializer serializer);
 
   @protected
   void
@@ -34316,6 +34391,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          ThirdPartyNonExhaustiveStruct self, SseSerializer serializer);
 
   @protected
   void
@@ -43710,6 +43790,26 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
                   that, value);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_auto_accessor_get_value(
+              int that) =>
+          wasmModule
+              .wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_auto_accessor_get_value(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_auto_accessor_set_value(
+              int that, int value) =>
+          wasmModule
+              .wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_auto_accessor_set_value(
+                  that, value);
+
+  void wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_new(
+          NativePortType port_, int value) =>
+      wasmModule
+          .wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_new(
+              port_, value);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_get_field_2(
@@ -62966,6 +63066,52 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_enum_with_fields_roundtrip_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__third_party_enum__third_party_non_exhaustive_struct_roundtrip_twin_normal(
+          NativePortType port_, int arg) =>
+      wasmModule
+          .wire__crate__api__third_party_enum__third_party_non_exhaustive_struct_roundtrip_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_non_exhaustive_struct_roundtrip_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_non_exhaustive_struct_roundtrip_twin_rust_async(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_non_exhaustive_struct_roundtrip_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_non_exhaustive_struct_roundtrip_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_non_exhaustive_struct_roundtrip_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_non_exhaustive_struct_roundtrip_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_non_exhaustive_struct_roundtrip_twin_sync(
+              int arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_non_exhaustive_struct_roundtrip_twin_sync(
+                  arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_non_exhaustive_struct_roundtrip_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_non_exhaustive_struct_roundtrip_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__exception__throw_anyhow_twin_normal(
           NativePortType port_) =>
       wasmModule.wire__crate__api__exception__throw_anyhow_twin_normal(port_);
@@ -66045,6 +66191,18 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
           int ptr) =>
       wasmModule
@@ -67729,6 +67887,18 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
           int that, int value);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_auto_accessor_get_value(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_auto_accessor_set_value(
+          int that, int value);
+
+  external void
+      wire__frb_example_pure_dart_example_third_party_lib__ThirdPartyNonExhaustiveStruct_new(
+          NativePortType port_, int value);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_get_field_2(
@@ -81156,6 +81326,38 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external void
+      wire__crate__api__third_party_enum__third_party_non_exhaustive_struct_roundtrip_twin_normal(
+          NativePortType port_, int arg);
+
+  external void
+      wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async__third_party_non_exhaustive_struct_roundtrip_twin_rust_async(
+          NativePortType port_, int arg);
+
+  external void
+      wire__crate__api__pseudo_manual__third_party_enum_twin_rust_async_sse__third_party_non_exhaustive_struct_roundtrip_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sse__third_party_non_exhaustive_struct_roundtrip_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sync__third_party_non_exhaustive_struct_roundtrip_twin_sync(
+          int arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__third_party_enum_twin_sync_sse__third_party_non_exhaustive_struct_roundtrip_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void wire__crate__api__exception__throw_anyhow_twin_normal(
       NativePortType port_);
 
@@ -83208,6 +83410,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerThirdPartyNonExhaustiveStruct(
           int ptr);
 
   external void

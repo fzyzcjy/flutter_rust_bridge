@@ -10,7 +10,21 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'frb_example_pure_dart_example_third_party_lib.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ThirdPartyNonExhaustiveStruct>>
+abstract class ThirdPartyNonExhaustiveStruct implements RustOpaqueInterface {
+  int get value;
+
+  set value(int value);
+
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+  static Future<ThirdPartyNonExhaustiveStruct> newInstance(
+          {required int value}) =>
+      RustLib.instance.api
+          .frbExamplePureDartExampleThirdPartyLibThirdPartyNonExhaustiveStructNew(
+              value: value);
+}
 
 @freezed
 sealed class ThirdPartyEnumWithFields with _$ThirdPartyEnumWithFields {

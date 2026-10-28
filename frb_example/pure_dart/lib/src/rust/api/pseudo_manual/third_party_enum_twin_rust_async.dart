@@ -14,3 +14,10 @@ Future<ThirdPartyEnumWithFields> thirdPartyEnumWithFieldsRoundtripTwinRustAsync(
     RustLib.instance.api
         .crateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyEnumWithFieldsRoundtripTwinRustAsync(
             arg: arg);
+
+Future<ThirdPartyNonExhaustiveStruct>
+    thirdPartyNonExhaustiveStructRoundtripTwinRustAsync(
+            {required ThirdPartyNonExhaustiveStruct arg}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualThirdPartyEnumTwinRustAsyncThirdPartyNonExhaustiveStructRoundtripTwinRustAsync(
+                arg: arg);

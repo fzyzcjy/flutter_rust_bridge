@@ -14,3 +14,9 @@ ThirdPartyEnumWithFields thirdPartyEnumWithFieldsRoundtripTwinSyncSse(
     RustLib.instance.api
         .crateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyEnumWithFieldsRoundtripTwinSyncSse(
             arg: arg);
+
+ThirdPartyNonExhaustiveStruct thirdPartyNonExhaustiveStructRoundtripTwinSyncSse(
+        {required ThirdPartyNonExhaustiveStruct arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualThirdPartyEnumTwinSyncSseThirdPartyNonExhaustiveStructRoundtripTwinSyncSse(
+            arg: arg);

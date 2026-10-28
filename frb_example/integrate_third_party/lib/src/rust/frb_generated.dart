@@ -2136,6 +2136,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_MediaStreamAudioSourceNodePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MediaStreamConstraints;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MediaStreamConstraints;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MediaStreamConstraintsPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MediaStreamTrack;
 
   RustArcDecrementStrongCountFnType
@@ -20372,7 +20381,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         try {
-          sse_encode_box_autoadd_media_stream_constraints(
+          sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
               constraints, serializer);
         } catch (_) {
           serializer.dispose();
@@ -21026,6 +21035,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MediaStreamConstraints => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MediaStreamConstraints => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MediaStreamTrack => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack;
 
@@ -21586,6 +21603,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamAudioSourceNodeImpl.frbInternalDcoDecode(
         dcoDecodeList(raw));
+  }
+
+  @protected
+  MediaStreamConstraints
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return MediaStreamConstraintsImpl.frbInternalDcoDecode(dcoDecodeList(raw));
   }
 
   @protected
@@ -22748,6 +22773,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MediaStreamConstraints
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return MediaStreamConstraintsImpl.frbInternalDcoDecode(dcoDecodeList(raw));
+  }
+
+  @protected
   MediaStreamTrack
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           dynamic raw) {
@@ -23643,36 +23676,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  double dco_decode_box_autoadd_f_64(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as double;
-  }
-
-  @protected
-  MediaStreamConstraints dco_decode_box_autoadd_media_stream_constraints(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_media_stream_constraints(raw);
-  }
-
-  @protected
-  MediaTrackConstraints dco_decode_box_autoadd_media_track_constraints(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_media_track_constraints(raw);
-  }
-
-  @protected
   PeriodicWaveOptions dco_decode_box_autoadd_periodic_wave_options(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_periodic_wave_options(raw);
-  }
-
-  @protected
-  int dco_decode_box_autoadd_u_32(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_u_32(raw);
   }
 
   @protected
@@ -23864,45 +23871,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MediaStreamConstraints dco_decode_media_stream_constraints(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = dcoDecodeList(raw);
-    switch (dcoDecodePrimitiveInt(arr[0])) {
-      case 0:
-        return MediaStreamConstraints_Audio();
-      case 1:
-        return MediaStreamConstraints_AudioWithConstraints(
-          dco_decode_box_autoadd_media_track_constraints(arr[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
-  @protected
   MediaStreamTrackState dco_decode_media_stream_track_state(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return MediaStreamTrackState.values[dcoDecodePrimitiveInt(raw)];
-  }
-
-  @protected
-  MediaTrackConstraints dco_decode_media_track_constraints(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = dcoDecodeList(raw);
-    if (arr.length != 4)
-      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return MediaTrackConstraints(
-      sampleRate: dco_decode_opt_box_autoadd_f_32(arr[0]),
-      latency: dco_decode_opt_box_autoadd_f_64(arr[1]),
-      channelCount: dco_decode_opt_box_autoadd_u_32(arr[2]),
-      deviceId: dco_decode_opt_String(arr[3]),
-    );
-  }
-
-  @protected
-  String? dco_decode_opt_String(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw == null ? null : dco_decode_String(raw);
   }
 
   @protected
@@ -23931,18 +23902,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   double? dco_decode_opt_box_autoadd_f_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_box_autoadd_f_32(raw);
-  }
-
-  @protected
-  double? dco_decode_opt_box_autoadd_f_64(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw == null ? null : dco_decode_box_autoadd_f_64(raw);
-  }
-
-  @protected
-  int? dco_decode_opt_box_autoadd_u_32(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw == null ? null : dco_decode_box_autoadd_u_32(raw);
   }
 
   @protected
@@ -24053,12 +24012,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       pan: dco_decode_f_32(arr[0]),
       audioNodeOptions: dco_decode_audio_node_options(arr[1]),
     );
-  }
-
-  @protected
-  int dco_decode_u_32(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodePrimitiveInt(raw);
   }
 
   @protected
@@ -24639,6 +24592,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return MediaStreamAudioSourceNodeImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MediaStreamConstraints
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return MediaStreamConstraintsImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -25816,6 +25778,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MediaStreamConstraints
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return MediaStreamConstraintsImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   MediaStreamTrack
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           SseDeserializer deserializer) {
@@ -26532,36 +26503,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  double sse_decode_box_autoadd_f_64(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_f_64(deserializer));
-  }
-
-  @protected
-  MediaStreamConstraints sse_decode_box_autoadd_media_stream_constraints(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_media_stream_constraints(deserializer));
-  }
-
-  @protected
-  MediaTrackConstraints sse_decode_box_autoadd_media_track_constraints(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_media_track_constraints(deserializer));
-  }
-
-  @protected
   PeriodicWaveOptions sse_decode_box_autoadd_periodic_wave_options(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_periodic_wave_options(deserializer));
-  }
-
-  @protected
-  int sse_decode_box_autoadd_u_32(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_u_32(deserializer));
   }
 
   @protected
@@ -26772,55 +26717,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MediaStreamConstraints sse_decode_media_stream_constraints(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var tag_ = sse_decode_i_32(deserializer);
-    switch (tag_) {
-      case 0:
-        return MediaStreamConstraints_Audio();
-      case 1:
-        var var_field0 =
-            sse_decode_box_autoadd_media_track_constraints(deserializer);
-        return MediaStreamConstraints_AudioWithConstraints(var_field0);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
   MediaStreamTrackState sse_decode_media_stream_track_state(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_i_32(deserializer);
     return MediaStreamTrackState.values[inner];
-  }
-
-  @protected
-  MediaTrackConstraints sse_decode_media_track_constraints(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_sampleRate = sse_decode_opt_box_autoadd_f_32(deserializer);
-    var var_latency = sse_decode_opt_box_autoadd_f_64(deserializer);
-    var var_channelCount = sse_decode_opt_box_autoadd_u_32(deserializer);
-    var var_deviceId = sse_decode_opt_String(deserializer);
-    return MediaTrackConstraints(
-        sampleRate: var_sampleRate,
-        latency: var_latency,
-        channelCount: var_channelCount,
-        deviceId: var_deviceId);
-  }
-
-  @protected
-  String? sse_decode_opt_String(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    if (sse_decode_bool(deserializer)) {
-      return (sse_decode_String(deserializer));
-    } else {
-      return null;
-    }
   }
 
   @protected
@@ -26857,28 +26758,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_f_32(deserializer));
-    } else {
-      return null;
-    }
-  }
-
-  @protected
-  double? sse_decode_opt_box_autoadd_f_64(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    if (sse_decode_bool(deserializer)) {
-      return (sse_decode_box_autoadd_f_64(deserializer));
-    } else {
-      return null;
-    }
-  }
-
-  @protected
-  int? sse_decode_opt_box_autoadd_u_32(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    if (sse_decode_bool(deserializer)) {
-      return (sse_decode_box_autoadd_u_32(deserializer));
     } else {
       return null;
     }
@@ -27009,12 +26888,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_audioNodeOptions = sse_decode_audio_node_options(deserializer);
     return StereoPannerOptions(
         pan: var_pan, audioNodeOptions: var_audioNodeOptions);
-  }
-
-  @protected
-  int sse_decode_u_32(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint32();
   }
 
   @protected
@@ -27572,6 +27445,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_usize(
         (self as MediaStreamAudioSourceNodeImpl)
             .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+          MediaStreamConstraints self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as MediaStreamConstraintsImpl).frbInternalSseEncode(move: true),
         serializer);
   }
 
@@ -29103,6 +28986,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+          MediaStreamConstraints self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as MediaStreamConstraintsImpl).frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
           MediaStreamTrack self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29750,36 +29643,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_autoadd_f_64(double self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_f_64(self, serializer);
-  }
-
-  @protected
-  void sse_encode_box_autoadd_media_stream_constraints(
-      MediaStreamConstraints self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_media_stream_constraints(self, serializer);
-  }
-
-  @protected
-  void sse_encode_box_autoadd_media_track_constraints(
-      MediaTrackConstraints self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_media_track_constraints(self, serializer);
-  }
-
-  @protected
   void sse_encode_box_autoadd_periodic_wave_options(
       PeriodicWaveOptions self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_periodic_wave_options(self, serializer);
-  }
-
-  @protected
-  void sse_encode_box_autoadd_u_32(int self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_u_32(self, serializer);
   }
 
   @protected
@@ -29962,43 +29829,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_media_stream_constraints(
-      MediaStreamConstraints self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    switch (self) {
-      case MediaStreamConstraints_Audio():
-        sse_encode_i_32(0, serializer);
-      case MediaStreamConstraints_AudioWithConstraints(field0: final field0):
-        sse_encode_i_32(1, serializer);
-        sse_encode_box_autoadd_media_track_constraints(field0, serializer);
-    }
-  }
-
-  @protected
   void sse_encode_media_stream_track_state(
       MediaStreamTrackState self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.index, serializer);
-  }
-
-  @protected
-  void sse_encode_media_track_constraints(
-      MediaTrackConstraints self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_opt_box_autoadd_f_32(self.sampleRate, serializer);
-    sse_encode_opt_box_autoadd_f_64(self.latency, serializer);
-    sse_encode_opt_box_autoadd_u_32(self.channelCount, serializer);
-    sse_encode_opt_String(self.deviceId, serializer);
-  }
-
-  @protected
-  void sse_encode_opt_String(String? self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    sse_encode_bool(self != null, serializer);
-    if (self != null) {
-      sse_encode_String(self, serializer);
-    }
   }
 
   @protected
@@ -30034,26 +29868,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_f_32(self, serializer);
-    }
-  }
-
-  @protected
-  void sse_encode_opt_box_autoadd_f_64(double? self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    sse_encode_bool(self != null, serializer);
-    if (self != null) {
-      sse_encode_box_autoadd_f_64(self, serializer);
-    }
-  }
-
-  @protected
-  void sse_encode_opt_box_autoadd_u_32(int? self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    sse_encode_bool(self != null, serializer);
-    if (self != null) {
-      sse_encode_box_autoadd_u_32(self, serializer);
     }
   }
 
@@ -30147,12 +29961,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_f_32(self.pan, serializer);
     sse_encode_audio_node_options(self.audioNodeOptions, serializer);
-  }
-
-  @protected
-  void sse_encode_u_32(int self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint32(self);
   }
 
   @protected
@@ -33511,6 +33319,28 @@ class MediaStreamAudioSourceNodeImpl extends RustOpaque
       RustLib.instance.api
           .webAudioApiNodeMediaStreamAudioSourceNodeSetOnProcessorError(
               that: this, callback: callback);
+}
+
+@sealed
+class MediaStreamConstraintsImpl extends RustOpaque
+    implements MediaStreamConstraints {
+  // Not to be used by end users
+  MediaStreamConstraintsImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  MediaStreamConstraintsImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_MediaStreamConstraints,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_MediaStreamConstraints,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_MediaStreamConstraintsPtr,
+  );
 }
 
 @sealed

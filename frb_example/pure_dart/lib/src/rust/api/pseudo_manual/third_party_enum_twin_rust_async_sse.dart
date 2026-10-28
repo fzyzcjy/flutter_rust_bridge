@@ -15,3 +15,10 @@ Future<
     RustLib.instance.api
         .crateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyEnumWithFieldsRoundtripTwinRustAsyncSse(
             arg: arg);
+
+Future<ThirdPartyNonExhaustiveStruct>
+    thirdPartyNonExhaustiveStructRoundtripTwinRustAsyncSse(
+            {required ThirdPartyNonExhaustiveStruct arg}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualThirdPartyEnumTwinRustAsyncSseThirdPartyNonExhaustiveStructRoundtripTwinRustAsyncSse(
+                arg: arg);
