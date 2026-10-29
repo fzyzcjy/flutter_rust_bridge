@@ -784,6 +784,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_GenericHolderStructForGenericArgPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_ItemContainerSolutionOneTwinNormalPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal;
 
@@ -1565,6 +1569,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  GenericHolderStructForGenericArg
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
           dynamic raw);
 
   @protected
@@ -2365,6 +2374,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DroppableTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  GenericHolderStructForGenericArg
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
           dynamic raw);
 
   @protected
@@ -3700,6 +3714,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  GenericHolderStructForGenericArg
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
           dynamic raw);
 
   @protected
@@ -11111,6 +11130,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  GenericHolderStructForGenericArg
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          SseDeserializer deserializer);
+
+  @protected
   ItemContainerSolutionOneTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
           SseDeserializer deserializer);
@@ -11908,6 +11932,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DroppableTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  GenericHolderStructForGenericArg
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
           SseDeserializer deserializer);
 
   @protected
@@ -13239,6 +13268,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  GenericHolderStructForGenericArg
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
           SseDeserializer deserializer);
 
   @protected
@@ -29805,6 +29839,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+      GenericHolderStructForGenericArg raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
       ItemContainerSolutionOneTwinNormal raw);
 
@@ -30247,6 +30285,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSync(
       DroppableTwinSync raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+      GenericHolderStructForGenericArg raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
@@ -30743,6 +30785,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi(
       EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+      GenericHolderStructForGenericArg raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
@@ -31482,6 +31528,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
           EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi self,
           SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          GenericHolderStructForGenericArg self, SseSerializer serializer);
 
   @protected
   void
@@ -32307,6 +32358,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDroppableTwinSyncSse(
           DroppableTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          GenericHolderStructForGenericArg self, SseSerializer serializer);
 
   @protected
   void
@@ -33717,6 +33773,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
           EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi self,
           SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          GenericHolderStructForGenericArg self, SseSerializer serializer);
 
   @protected
   void
@@ -45614,6 +45675,12 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__pseudo_manual__event_listener_twin_sse__create_event_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__misc_no_twin_example_a__create_generic_holder(
+          NativePortType port_, double value) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__create_generic_holder(
+              port_, value);
 
   void wire__crate__api__dart_opaque__create_nested_dart_opaque_twin_normal(
           NativePortType port_,
@@ -61918,6 +61985,11 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_with_non_clone_data_f(
               port_, that);
 
+  void wire__crate__api__misc_no_twin_example_a__sum_generic_holder(
+          NativePortType port_, int holder) =>
+      wasmModule.wire__crate__api__misc_no_twin_example_a__sum_generic_holder(
+          port_, holder);
+
   void wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
           NativePortType port_, JSAny that, int y, int z) =>
       wasmModule.wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
@@ -64648,6 +64720,18 @@ class RustLibWire implements BaseWire {
           int ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
@@ -68990,6 +69074,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external void wire__crate__api__misc_no_twin_example_a__create_generic_holder(
+      NativePortType port_, double value);
 
   external void
       wire__crate__api__dart_opaque__create_nested_dart_opaque_twin_normal(
@@ -80370,6 +80457,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_with_non_clone_data_f(
           NativePortType port_, JSAny that);
 
+  external void wire__crate__api__misc_no_twin_example_a__sum_generic_holder(
+      NativePortType port_, int holder);
+
   external void wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
       NativePortType port_, JSAny that, int y, int z);
 
@@ -82213,6 +82303,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
           int ptr);
 
   external void

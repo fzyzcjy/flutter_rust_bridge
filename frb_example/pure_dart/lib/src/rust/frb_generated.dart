@@ -376,7 +376,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.14.0-beta.2';
 
   @override
-  int get rustContentHash => -703344157;
+  int get rustContentHash => -1682166132;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -2560,6 +2560,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> crateApiPseudoManualEventListenerTwinSseCreateEventTwinSse(
       {required String address, required String payload});
+
+  Future<GenericHolderStructForGenericArg>
+      crateApiMiscNoTwinExampleACreateGenericHolder({required double value});
 
   Future<DartOpaqueNestedTwinNormal>
       crateApiDartOpaqueCreateNestedDartOpaqueTwinNormal(
@@ -10322,6 +10325,9 @@ abstract class RustLibApi extends BaseApi {
       crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueWithNonCloneDataF(
           {required StructWithRustAutoOpaqueWithNonCloneData that});
 
+  Future<double> crateApiMiscNoTwinExampleASumGenericHolder(
+      {required GenericHolderStructForGenericArg holder});
+
   Future<int> crateApiMethodSumWithTwinNormalSumTwinNormal(
       {required SumWithTwinNormal that, required int y, required int z});
 
@@ -11974,6 +11980,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_GenericHolderStructForGenericArg;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_GenericHolderStructForGenericArg;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_GenericHolderStructForGenericArgPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_ItemContainerSolutionOneTwinNormal;
@@ -32273,6 +32288,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             debugName: "create_event_twin_sse",
             argNames: ["address", "payload"],
           );
+
+  @override
+  Future<GenericHolderStructForGenericArg>
+      crateApiMiscNoTwinExampleACreateGenericHolder({required double value}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_64(value);
+        return wire
+            .wire__crate__api__misc_no_twin_example_a__create_generic_holder(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMiscNoTwinExampleACreateGenericHolderConstMeta,
+      argValues: [value],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMiscNoTwinExampleACreateGenericHolderConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_generic_holder",
+        argNames: ["value"],
+      );
 
   @override
   Future<DartOpaqueNestedTwinNormal>
@@ -101730,6 +101772,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  Future<double> crateApiMiscNoTwinExampleASumGenericHolder(
+      {required GenericHolderStructForGenericArg holder}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+                holder);
+        return wire
+            .wire__crate__api__misc_no_twin_example_a__sum_generic_holder(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMiscNoTwinExampleASumGenericHolderConstMeta,
+      argValues: [holder],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMiscNoTwinExampleASumGenericHolderConstMeta =>
+      const TaskConstMeta(
+        debugName: "sum_generic_holder",
+        argNames: ["holder"],
+      );
+
+  @override
   Future<int> crateApiMethodSumWithTwinNormalSumTwinNormal(
       {required SumWithTwinNormal that, required int y, required int z}) {
     return handler.executeNormal(NormalTask(
@@ -108588,6 +108658,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_GenericHolderStructForGenericArg => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_GenericHolderStructForGenericArg => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_ItemContainerSolutionOneTwinNormal =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal;
 
@@ -110070,6 +110148,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  GenericHolderStructForGenericArg
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return GenericHolderStructForGenericArgImpl.frbInternalDcoDecode(
+        dcoDecodeList(raw));
+  }
+
+  @protected
   ItemContainerSolutionOneTwinNormal
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
           dynamic raw) {
@@ -111459,6 +111546,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return DroppableTwinSyncSseImpl.frbInternalDcoDecode(dcoDecodeList(raw));
+  }
+
+  @protected
+  GenericHolderStructForGenericArg
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return GenericHolderStructForGenericArgImpl.frbInternalDcoDecode(
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -113975,6 +114071,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoiImpl
         .frbInternalDcoDecode(dcoDecodeList(raw));
+  }
+
+  @protected
+  GenericHolderStructForGenericArg
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return GenericHolderStructForGenericArgImpl.frbInternalDcoDecode(
+        dcoDecodeList(raw));
   }
 
   @protected
@@ -133178,6 +133283,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  GenericHolderStructForGenericArg
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return GenericHolderStructForGenericArgImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   ItemContainerSolutionOneTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
           SseDeserializer deserializer) {
@@ -134639,6 +134753,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return DroppableTwinSyncSseImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  GenericHolderStructForGenericArg
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return GenericHolderStructForGenericArgImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -137221,6 +137344,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoiImpl
         .frbInternalSseDecode(
             sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  GenericHolderStructForGenericArg
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return GenericHolderStructForGenericArgImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -156784,6 +156916,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+      GenericHolderStructForGenericArg raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as GenericHolderStructForGenericArgImpl)
+        .frbInternalCstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerItemContainerSolutionOneTwinNormal(
       ItemContainerSolutionOneTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -157764,6 +157905,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
     return (raw as DroppableTwinSyncImpl).frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+      GenericHolderStructForGenericArg raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as GenericHolderStructForGenericArgImpl)
+        .frbInternalCstEncode(move: false);
   }
 
   @protected
@@ -158823,6 +158973,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 // ignore: invalid_use_of_internal_member
     return (raw as EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoiImpl)
         .frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+      GenericHolderStructForGenericArg raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as GenericHolderStructForGenericArgImpl).frbInternalCstEncode();
   }
 
   @protected
@@ -160297,6 +160455,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoiImpl)
+            .frbInternalSseEncode(move: true),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          GenericHolderStructForGenericArg self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as GenericHolderStructForGenericArgImpl)
             .frbInternalSseEncode(move: true),
         serializer);
   }
@@ -162035,6 +162204,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as DroppableTwinSyncSseImpl).frbInternalSseEncode(move: false),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          GenericHolderStructForGenericArg self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as GenericHolderStructForGenericArgImpl)
+            .frbInternalSseEncode(move: false),
         serializer);
   }
 
@@ -165007,6 +165187,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
         (self as EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoiImpl)
+            .frbInternalSseEncode(move: null),
+        serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+          GenericHolderStructForGenericArg self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as GenericHolderStructForGenericArgImpl)
             .frbInternalSseEncode(move: null),
         serializer);
   }
@@ -183814,6 +184005,28 @@ class FrbOpaqueSyncReturnTwinSseMoiImpl extends RustOpaque
         .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSseMoi,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSseMoiPtr,
+  );
+}
+
+@sealed
+class GenericHolderStructForGenericArgImpl extends RustOpaque
+    implements GenericHolderStructForGenericArg {
+  // Not to be used by end users
+  GenericHolderStructForGenericArgImpl.frbInternalDcoDecode(List<dynamic> wire)
+      : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  GenericHolderStructForGenericArgImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_GenericHolderStructForGenericArg,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_GenericHolderStructForGenericArg,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_GenericHolderStructForGenericArgPtr,
   );
 }
 

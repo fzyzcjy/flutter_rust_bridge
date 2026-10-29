@@ -42,6 +42,7 @@ use crate::api::map_and_set::*;
 use crate::api::method::*;
 use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
+use crate::api::misc_no_twin_generic_arg::*;
 use crate::api::proxy::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async::*;
 use crate::api::pseudo_manual::dropping_twin_rust_async_sse::*;
@@ -113,7 +114,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueNom,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.14.0-beta.2";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -703344157;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1682166132;
 
 // Section: executor
 
@@ -12089,6 +12090,29 @@ fn wire__crate__api__pseudo_manual__event_listener_twin_sse__create_event_twin_s
                             api_payload,
                         );
                     })?;
+                    std::result::Result::Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__misc_no_twin_example_a__create_generic_holder_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    value: impl CstDecode<f64>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "create_generic_holder",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_value = value.cst_decode();
+            move |context| {
+                transform_result_dco::<_, _, ()>((move || {
+                    let output_ok = Ok::<_, ()>(
+                        crate::api::misc_no_twin_example_a::create_generic_holder(api_value),
+                    )?;
                     std::result::Result::Ok(output_ok)
                 })())
             }
@@ -46603,6 +46627,51 @@ fn wire__crate__api__misc_no_twin_example_a__struct_with_rust_auto_opaque_with_n
                     })())
                 } })
 }
+fn wire__crate__api__misc_no_twin_example_a__sum_generic_holder_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    holder: impl CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                GenericHolder<StructForGenericArg>,
+            >,
+        >,
+    >,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "sum_generic_holder",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_holder = holder.cst_decode();
+            move |context| {
+                transform_result_dco::<_, _, ()>((move || {
+                    let mut api_holder_guard = None;
+                    let decode_indices_ =
+                        flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                            flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                &api_holder,
+                                0,
+                                false,
+                            ),
+                        ]);
+                    for i in decode_indices_ {
+                        match i {
+                            0 => api_holder_guard = Some(api_holder.lockable_decode_sync_ref()),
+                            _ => unreachable!(),
+                        }
+                    }
+                    let api_holder_guard = api_holder_guard.unwrap();
+                    let output_ok = Ok::<_, ()>(
+                        crate::api::misc_no_twin_example_a::sum_generic_holder(&*api_holder_guard),
+                    )?;
+                    std::result::Result::Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
 fn wire__crate__api__method__sum_with_twin_normal_sum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<crate::api::method::SumWithTwinNormal>,
@@ -51759,6 +51828,18 @@ impl SseDecode for EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi {
     }
 }
 
+impl SseDecode for GenericHolder<StructForGenericArg> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                GenericHolder<StructForGenericArg>,
+            >,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
+    }
+}
+
 impl SseDecode for ItemContainerSolutionOneTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -54902,6 +54983,18 @@ impl SseDecode
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GenericHolder<StructForGenericArg>>,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
     }
 }
 
@@ -73457,6 +73550,26 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<EnumWithGoodAndOpaqueWithoutOp
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<GenericHolder<StructForGenericArg>> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<GenericHolder<StructForGenericArg>>
+{
+}
+
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<GenericHolder<StructForGenericArg>>>
+    for GenericHolder<StructForGenericArg>
+{
+    fn into_into_dart(self) -> FrbWrapper<GenericHolder<StructForGenericArg>> {
+        self.into()
+    }
+}
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<ItemContainerSolutionOneTwinNormal> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self.0)
@@ -91426,6 +91539,20 @@ impl SseEncode for EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi {
     }
 }
 
+impl SseEncode for GenericHolder<StructForGenericArg> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                GenericHolder<StructForGenericArg>,
+            >,
+        >>::sse_encode(
+            flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self),
+            serializer,
+        );
+    }
+}
+
 impl SseEncode for ItemContainerSolutionOneTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -94815,6 +94942,19 @@ impl SseEncode
         flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
             EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi,
         >,
+    >
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GenericHolder<StructForGenericArg>>,
     >
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -109806,6 +109946,7 @@ mod io {
     use crate::api::method::*;
     use crate::api::misc_no_twin_example_a::*;
     use crate::api::misc_no_twin_example_b::*;
+    use crate::api::misc_no_twin_generic_arg::*;
     use crate::api::proxy::*;
     use crate::api::pseudo_manual::dropping_twin_rust_async::*;
     use crate::api::pseudo_manual::dropping_twin_rust_async_sse::*;
@@ -110268,6 +110409,20 @@ mod io {
                 RustOpaqueMoi<
                     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
                         EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi,
+                    >,
+                >,
+            >::cst_decode(
+                self
+            ))
+        }
+    }
+    impl CstDecode<GenericHolder<StructForGenericArg>> for usize {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> GenericHolder<StructForGenericArg> {
+            flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+                RustOpaqueNom<
+                    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                        GenericHolder<StructForGenericArg>,
                     >,
                 >,
             >::cst_decode(
@@ -112460,6 +112615,26 @@ mod io {
             >,
         > {
             decode_rust_opaque_moi(self as _)
+        }
+    }
+    impl
+        CstDecode<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    GenericHolder<StructForGenericArg>,
+                >,
+            >,
+        > for usize
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                GenericHolder<StructForGenericArg>,
+            >,
+        > {
+            unsafe { decode_rust_opaque_nom(self as _) }
         }
     }
     impl
@@ -133922,6 +134097,14 @@ field1: Default::default(), }
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__create_generic_holder(
+        port_: i64,
+        value: f64,
+    ) {
+        wire__crate__api__misc_no_twin_example_a__create_generic_holder_impl(port_, value)
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__dart_opaque__create_nested_dart_opaque_twin_normal(
         port_: i64,
         opaque1: *const std::ffi::c_void,
@@ -153998,6 +154181,14 @@ field1: Default::default(), }
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__sum_generic_holder(
+        port_: i64,
+        holder: usize,
+    ) {
+        wire__crate__api__misc_no_twin_example_a__sum_generic_holder_impl(port_, holder)
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_frb_example_pure_dart_wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
         port_: i64,
         that: *mut wire_cst_sum_with_twin_normal,
@@ -157824,6 +158015,32 @@ field1: Default::default(), }
                 EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi,
             >,
         >::decrement_strong_count(ptr as _);
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    GenericHolder<StructForGenericArg>,
+                >,
+            >::increment_strong_count(ptr as _);
+        }
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    GenericHolder<StructForGenericArg>,
+                >,
+            >::decrement_strong_count(ptr as _);
+        }
     }
 
     #[unsafe(no_mangle)]
@@ -168741,6 +168958,7 @@ mod web {
     use crate::api::method::*;
     use crate::api::misc_no_twin_example_a::*;
     use crate::api::misc_no_twin_example_b::*;
+    use crate::api::misc_no_twin_generic_arg::*;
     use crate::api::proxy::*;
     use crate::api::pseudo_manual::dropping_twin_rust_async::*;
     use crate::api::pseudo_manual::dropping_twin_rust_async_sse::*;
@@ -178453,6 +178671,22 @@ mod web {
             ))
         }
     }
+    impl CstDecode<GenericHolder<StructForGenericArg>>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> GenericHolder<StructForGenericArg> {
+            flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+                RustOpaqueNom<
+                    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                        GenericHolder<StructForGenericArg>,
+                    >,
+                >,
+            >::cst_decode(
+                self
+            ))
+        }
+    }
     impl CstDecode<ItemContainerSolutionOneTwinNormal>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
@@ -181138,6 +181372,30 @@ mod web {
                 compile_error!("64-bit pointers are not supported.");
             }
             decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        }
+    }
+    impl
+        CstDecode<
+            RustOpaqueNom<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    GenericHolder<StructForGenericArg>,
+                >,
+            >,
+        > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                GenericHolder<StructForGenericArg>,
+            >,
+        > {
+            #[cfg(target_pointer_width = "64")]
+            {
+                compile_error!("64-bit pointers are not supported.");
+            }
+            unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
         }
     }
     impl
@@ -189443,6 +189701,14 @@ mod web {
             rust_vec_len_,
             data_len_,
         )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__api__misc_no_twin_example_a__create_generic_holder(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        value: f64,
+    ) {
+        wire__crate__api__misc_no_twin_example_a__create_generic_holder_impl(port_, value)
     }
 
     #[wasm_bindgen]
@@ -209522,6 +209788,14 @@ mod web {
     }
 
     #[wasm_bindgen]
+    pub fn wire__crate__api__misc_no_twin_example_a__sum_generic_holder(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        holder: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) {
+        wire__crate__api__misc_no_twin_example_a__sum_generic_holder_impl(port_, holder)
+    }
+
+    #[wasm_bindgen]
     pub fn wire__crate__api__method__sum_with_twin_normal_sum_twin_normal(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -213348,6 +213622,32 @@ mod web {
                 EnumWithGoodAndOpaqueWithoutOptionTwinSyncSseMoi,
             >,
         >::decrement_strong_count(ptr as _);
+    }
+
+    #[wasm_bindgen]
+    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    GenericHolder<StructForGenericArg>,
+                >,
+            >::increment_strong_count(ptr as _);
+        }
+    }
+
+    #[wasm_bindgen]
+    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGenericHolderStructForGenericArg(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<
+                    GenericHolder<StructForGenericArg>,
+                >,
+            >::decrement_strong_count(ptr as _);
+        }
     }
 
     #[wasm_bindgen]
