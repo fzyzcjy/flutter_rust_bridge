@@ -2,7 +2,12 @@ import 'dart:io';
 
 import 'package:path/path.dart' as path;
 
-const _kBuildCliDependency = '  build_cli: ^2.2.5';
+// build_cli 2.3 requires Dart >=3.12, while frb_dart still allows 3.9.2, so
+// pub stays on 2.2.13. That release clashes with source_helper 1.4's
+// toStringNonNullable extension.
+const _kBuildCliDependency =
+    '  build_cli: ^2.2.5\n'
+    '  source_helper: ">=1.3.10 <1.4.0"';
 const _kDisabledBuildCliDependency =
     '  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed\n'
     '  # build_cli: ^2.2.5';
