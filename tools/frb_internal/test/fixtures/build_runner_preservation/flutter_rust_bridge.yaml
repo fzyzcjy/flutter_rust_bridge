@@ -1,0 +1,10 @@
+rust_input: crate::api
+dart_output: lib/src/rust
+build_runner: false
+add_mod_to_lib: false
+auto_upgrade_dependency: false
+dart_fix: false
+dart_format: false
+rust_format: false
+deps_check: false
+web: false
