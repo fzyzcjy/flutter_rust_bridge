@@ -125,7 +125,9 @@ sealed class CustomNestedError1TwinNormal
 }
 
 @freezed
-sealed class CustomNestedError2TwinNormal with _$CustomNestedError2TwinNormal {
+sealed class CustomNestedError2TwinNormal
+    with _$CustomNestedError2TwinNormal
+    implements FrbException {
   const CustomNestedError2TwinNormal._();
 
   const factory CustomNestedError2TwinNormal.customNested2(
@@ -151,7 +153,8 @@ sealed class CustomNestedErrorInnerTwinNormal
 
 @freezed
 sealed class CustomNestedErrorOuterTwinNormal
-    with _$CustomNestedErrorOuterTwinNormal {
+    with _$CustomNestedErrorOuterTwinNormal
+    implements FrbException {
   const CustomNestedErrorOuterTwinNormal._();
 
   const factory CustomNestedErrorOuterTwinNormal.one(
@@ -180,7 +183,7 @@ class CustomStructErrorAnotherTwinNormal implements FrbException {
           message == other.message;
 }
 
-class CustomStructErrorTwinNormal {
+class CustomStructErrorTwinNormal implements FrbException {
   final String a;
 
   const CustomStructErrorTwinNormal({

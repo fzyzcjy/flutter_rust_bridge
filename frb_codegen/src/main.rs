@@ -9,7 +9,7 @@ use crate::binary::commands::{Cli, Commands, CreateOrIntegrateCommandCommonArgs}
 use crate::binary::commands_parser::{compute_codegen_config, compute_codegen_meta_config};
 use clap::Parser;
 use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
-use lib_flutter_rust_bridge_codegen::misc::FvmInstallMode;
+use lib_flutter_rust_bridge_codegen::misc::{FvmInstallMode, ToolInstallMode};
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
 use log::{debug, warn};
@@ -28,10 +28,11 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
         Commands::Generate(args) => {
             let meta_config = compute_codegen_meta_config(&args);
             let config = compute_codegen_config(args.primary)?;
-            codegen::generate_with_fvm_install_mode(
+            codegen::generate_with_install_modes(
                 config,
                 meta_config,
                 FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
+                ToolInstallMode::from_skip_tool_install(args.skip_tool_install),
             )?
         }
         Commands::Create(args) => integration::create(CreateConfig {
@@ -61,7 +62,7 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
         Commands::BuildWeb(args) => build_web::build(
             args.dart_root,
             args.dart_coverage,
-            args.args,
+            compute_build_web_dart_args(args.args, args.skip_tool_install),
             FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
         )?,
         Commands::InternalGenerate(_args) => internal::generate()?,
@@ -78,11 +79,18 @@ fn compute_rust_crate_dir(config: &CreateOrIntegrateCommandCommonArgs) -> String
     rust_crate_dir
 }
 
+fn compute_build_web_dart_args(mut args: Vec<String>, skip_tool_install: bool) -> Vec<String> {
+    if skip_tool_install {
+        args.push("--skip-tool-install".to_owned());
+    }
+    args
+}
+
 #[cfg(test)]
 mod tests {
     use crate::binary::commands::Cli;
     use crate::binary::test_utils::set_cwd_test_fixture;
-    use crate::main_given_cli;
+    use crate::{compute_build_web_dart_args, main_given_cli};
     use clap::Parser;
     use serial_test::serial;
     use std::env;
@@ -99,6 +107,20 @@ mod tests {
     #[serial]
     fn test_execute_generate_on_frb_example_pure_dart() -> anyhow::Result<()> {
         body_execute_generate("pure_dart")
+    }
+
+    /// The build-web CLI forwards the skip tool install flag to the Dart build-web command.
+    #[test]
+    fn test_compute_build_web_dart_args() {
+        let args = vec!["--release".to_owned()];
+        assert_eq!(
+            compute_build_web_dart_args(args.clone(), false),
+            vec!["--release"]
+        );
+        assert_eq!(
+            compute_build_web_dart_args(args, true),
+            vec!["--release", "--skip-tool-install"]
+        );
     }
 
     // we do not care about coverage of test themselves

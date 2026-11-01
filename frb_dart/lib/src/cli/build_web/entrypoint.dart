@@ -85,6 +85,14 @@ class Config {
   )
   late String? dartCompileWasmEntrypoint;
 
+  /// {@macro flutter_rust_bridge.cli}
+  @CliOption(
+    help:
+        'Do not automatically install missing tools (wasm-pack, wasm-bindgen-cli)',
+    negatable: false,
+  )
+  late bool skipToolInstall;
+
   // migrate to `wasmPackArgs`
   // /// {@macro flutter_rust_bridge.cli}
   // @CliOption(
@@ -129,6 +137,7 @@ BuildWebArgs parseBuildWebConfigToArgs(Config config) {
     wasmPackRustflags: config.wasmPackRustflags,
     dartCompileJsEntrypoint: config.dartCompileJsEntrypoint,
     dartCompileWasmEntrypoint: config.dartCompileWasmEntrypoint,
+    skipToolInstall: config.skipToolInstall,
   );
 }
 

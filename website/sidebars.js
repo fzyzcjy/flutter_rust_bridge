@@ -351,6 +351,7 @@ const sidebars = {
                         'guides/misc-features/ignoring',
                         'guides/misc-features/override-prefix',
                         'guides/misc-features/build-rs',
+                        'guides/misc-features/tool-installation',
                     ],
                 },
                 {
