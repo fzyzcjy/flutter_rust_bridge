@@ -49,7 +49,14 @@ impl TypeParserWithContext<'_, '_, '_> {
     ) -> Result<(MirRustAutoOpaqueRaw, MirTypeRustOpaque)> {
         let inner_str = inner.to_token_stream().to_string();
         let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, codec);
-        parse_type_rust_auto_opaque_common_raw(inner, info.namespace, info.codec, dart_api_type)
+        let generic_arg_namespaces = self.parse_generic_arg_namespaces(&inner);
+        parse_type_rust_auto_opaque_common_raw(
+            inner,
+            info.namespace,
+            generic_arg_namespaces,
+            info.codec,
+            dart_api_type,
+        )
     }
 
     fn get_or_insert_rust_auto_opaque_info(
@@ -106,6 +113,7 @@ pub(crate) fn split_ownership_from_ty(ty: &Type) -> (Type, OwnershipMode) {
 fn parse_type_rust_auto_opaque_common_raw(
     inner: Type,
     namespace: Namespace,
+    generic_arg_namespaces: Vec<Namespace>,
     codec: RustOpaqueCodecMode,
     dart_api_type: Option<String>,
 ) -> Result<(MirRustAutoOpaqueRaw, MirTypeRustOpaque)> {
@@ -123,6 +131,7 @@ fn parse_type_rust_auto_opaque_common_raw(
         },
         MirTypeRustOpaque {
             namespace,
+            generic_arg_namespaces,
             // TODO when all usages of a type do not require `&mut`, can drop this Mutex
             // TODO similarly, can use std instead of `tokio`'s lock
             inner: MirRustOpaqueInner(MirLifetimeAwareType::new(format!(

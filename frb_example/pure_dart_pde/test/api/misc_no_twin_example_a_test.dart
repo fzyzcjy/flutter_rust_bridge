@@ -97,4 +97,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await t.field1(), 1);
     expect(await t.field2, 0);
   });
+
+  test('opaque generic struct with argument from another module', () async {
+    final holder = await createGenericHolder(value: 1.5);
+    expect(await sumGenericHolder(holder: holder), 4.5);
+  });
 }

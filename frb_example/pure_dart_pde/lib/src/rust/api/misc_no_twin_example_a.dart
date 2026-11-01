@@ -42,6 +42,16 @@ int get constIntTwinNormal =>
 F32Array3 get constArrayTwinNormal =>
     RustLib.instance.api.crateApiMiscNoTwinExampleAConstArrayTwinNormal();
 
+Future<GenericHolderStructForGenericArg> createGenericHolder(
+        {required double value}) =>
+    RustLib.instance.api
+        .crateApiMiscNoTwinExampleACreateGenericHolder(value: value);
+
+Future<double> sumGenericHolder(
+        {required GenericHolderStructForGenericArg holder}) =>
+    RustLib.instance.api
+        .crateApiMiscNoTwinExampleASumGenericHolder(holder: holder);
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
 abstract class BoxAnyMyDartTypeRename implements RustOpaqueInterface {}
 
@@ -75,6 +85,10 @@ abstract class DeliberateFailSanityCheckTwinNormal
   static Future<void> dummyFunctionTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
 }
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<GenericHolder < StructForGenericArg >>>
+abstract class GenericHolderStructForGenericArg
+    implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
 abstract class ItemContainerSolutionOneTwinNormal
