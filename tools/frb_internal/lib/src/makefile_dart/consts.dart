@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
+const kAllContributorsCliPackage = 'all-contributors-cli@7.0.0';
+
 const kRustPackagesAllowWeb = [
   'frb_rust',
   'frb_example/dart_minimal/rust',
