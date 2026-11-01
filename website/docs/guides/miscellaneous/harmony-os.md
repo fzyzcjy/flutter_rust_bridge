@@ -97,16 +97,8 @@ and selected native SDK path.
 
 The OHOS Flutter fork may ship an older Dart SDK than the repository's internal
 development tools. Keep the OHOS Flutter executable first on `PATH` for Flutter
-builds, and set `FRB_INTERNAL_DART` to a separate Dart 3.13 or newer executable
-when running `frb_internal`:
-
-```shell
-export FRB_INTERNAL_DART=/opt/dart/3.13/bin/dart
-./frb_internal ohos-device-smoke --help
-```
-
-If `FRB_INTERNAL_DART` is unset, `frb_internal` uses the `dart` executable on
-`PATH` as before.
+builds, and put a Dart 3.13 or newer executable directory earlier on `PATH`
+than the fork's `bin` directory when running `frb_internal` commands.
 
 When DevEco Studio is installed on macOS, use its bundled Hvigor wrapper and
 Node runtime for Hvigor and `ohpm`. Put the matching Hvigor directory before a

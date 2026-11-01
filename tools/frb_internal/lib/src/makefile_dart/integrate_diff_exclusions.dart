@@ -46,7 +46,9 @@ Map<String, List<String>> _integrateSetExitIfChangedExcludedPathsByPackage({
     package: [
       '$package/macos/Flutter/Flutter-Debug.xcconfig',
       '$package/macos/Flutter/Flutter-Release.xcconfig',
-      '$package/pubspec.lock',
+      // The OHOS Flutter fork resolves different dependency versions, so only
+      // the OHOS comparison skips lockfile drift; ordinary runs still check it.
+      if (needCompareOhos) '$package/pubspec.lock',
     ],
   for (final package in [
     'frb_example/flutter_package',
@@ -55,7 +57,7 @@ Map<String, List<String>> _integrateSetExitIfChangedExcludedPathsByPackage({
     package: [
       '$package/example/macos/Flutter/Flutter-Debug.xcconfig',
       '$package/example/macos/Flutter/Flutter-Release.xcconfig',
-      '$package/example/pubspec.lock',
+      if (needCompareOhos) '$package/example/pubspec.lock',
     ],
 };
 

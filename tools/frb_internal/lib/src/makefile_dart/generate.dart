@@ -455,21 +455,13 @@ Future<void> generateAppleScaffold() async {
     );
   }
 
-  final extraArgs = integrateAppleScaffoldSourceOfTruthPackages()
-      .map(
-        (package) =>
-            integrateDiffExclusionArgs(package, needCompareOhos: false),
-      )
-      .where((args) => args.isNotEmpty)
-      .join(' ');
-
   await wrapMaybeSetExitIfChangedRaw(true, () async {
     for (final package in integrateAppleScaffoldSourceOfTruthPackages()) {
       await generateRunFrbCodegenCommandIntegrate(
         generateAppleScaffoldPackageConfig(package),
       );
     }
-  }, extraArgs: extraArgs);
+  });
 }
 
 GenerateIntegratePackageConfig generateAppleScaffoldPackageConfig(

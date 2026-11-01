@@ -52,13 +52,9 @@ Set `OHOS_SDK_HOME` to the installed native SDK directory. Configure a dedicated
 bundle name in `frb_example/flutter_via_create/ohos/AppScope/app.json5`, then
 configure local debug signing without committing the signing material.
 
-If the OHOS Flutter fork bundles an older Dart SDK, point repository commands at
-a separate Dart 3.13 or newer executable while keeping the OHOS Flutter SDK first
-on `PATH`:
-
-```bash
-export FRB_INTERNAL_DART=/absolute/path/to/dart-3.13/bin/dart
-```
+If the OHOS Flutter fork bundles an older Dart SDK, put a Dart 3.13 or newer
+executable directory earlier on `PATH` than the OHOS Flutter SDK's `bin`
+directory for repository `frb_internal` commands.
 
 Use the Hvigor wrapper and Node runtime from the same DevEco Studio installation
 for the build. Put that Hvigor directory before any standalone command-line-tools

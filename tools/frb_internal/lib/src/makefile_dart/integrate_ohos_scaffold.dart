@@ -10,11 +10,7 @@ const _kPreservedOhosScaffoldPaths = <String, List<String>>{
     'rust_builder/pubspec.yaml',
   ],
   'frb_example/flutter_via_create_native_assets': ['ohos'],
-  'frb_example/flutter_via_integrate': [
-    'ohos',
-    'rust_builder/ohos',
-    'rust_builder/pubspec.yaml',
-  ],
+  'frb_example/flutter_via_integrate': ['ohos'],
 };
 
 typedef _OhosScaffoldPath = ({String relativePath, FileSystemEntityType type});
