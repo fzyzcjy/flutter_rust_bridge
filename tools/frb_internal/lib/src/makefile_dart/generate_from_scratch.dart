@@ -55,7 +55,7 @@ Future<void> _prepareFromScratchCodegenDependencies() async {
     'rustup component add rustfmt --toolchain '
     '$kPinnedRustfmtNightly-x86_64-unknown-linux-gnu',
   );
-  await exec('yarn global add all-contributors-cli');
+  await exec('yarn global add $kAllContributorsCliPackage');
 }
 
 Future<List<String>> deleteTrackedGeneratedFilesForFromScratch() async {
