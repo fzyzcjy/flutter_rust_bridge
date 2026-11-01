@@ -36,6 +36,9 @@ class FeatureUuidTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'FeatureUuidTwinRustAsyncSse(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override

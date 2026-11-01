@@ -27,6 +27,9 @@ class MySize {
   });
 
   @override
+  String toString() => 'MySize(width: $width, height: $height)';
+
+  @override
   int get hashCode => width.hashCode ^ height.hashCode;
 
   @override
@@ -44,6 +47,9 @@ class MyStruct {
   const MyStruct({
     required this.content,
   });
+
+  @override
+  String toString() => 'MyStruct(content: $content)';
 
   @override
   int get hashCode => content.hashCode;

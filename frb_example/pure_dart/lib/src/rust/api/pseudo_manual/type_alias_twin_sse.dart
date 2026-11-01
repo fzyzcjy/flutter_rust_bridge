@@ -69,6 +69,10 @@ class TestModelTwinSse {
   });
 
   @override
+  String toString() =>
+      'TestModelTwinSse(id: $id, name: $name, aliasEnum: $aliasEnum, aliasStruct: $aliasStruct)';
+
+  @override
   int get hashCode =>
       id.hashCode ^ name.hashCode ^ aliasEnum.hashCode ^ aliasStruct.hashCode;
 

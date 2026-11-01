@@ -33,6 +33,9 @@ class FeatureUuidTwinSyncSse {
   });
 
   @override
+  String toString() => 'FeatureUuidTwinSyncSse(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override

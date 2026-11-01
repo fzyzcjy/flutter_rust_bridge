@@ -48,6 +48,10 @@ class StructWithCommentsTwinNormal {
       .crateApiCommentStructWithCommentsTwinNormalStaticMethodTwinNormal();
 
   @override
+  String toString() =>
+      'StructWithCommentsTwinNormal(fieldWithComments: $fieldWithComments)';
+
+  @override
   int get hashCode => fieldWithComments.hashCode;
 
   @override

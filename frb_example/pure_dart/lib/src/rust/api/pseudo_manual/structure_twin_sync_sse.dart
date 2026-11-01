@@ -60,6 +60,10 @@ class StructWithDartKeywordFieldTwinSyncSse {
   });
 
   @override
+  String toString() =>
+      'StructWithDartKeywordFieldTwinSyncSse(class_: $class_, interface_: $interface_)';
+
+  @override
   int get hashCode => class_.hashCode ^ interface_.hashCode;
 
   @override
@@ -79,6 +83,10 @@ class StructWithFieldRenameTwinSyncSse {
   });
 
   @override
+  String toString() =>
+      'StructWithFieldRenameTwinSyncSse(renamed_field: $renamed_field)';
+
+  @override
   int get hashCode => renamed_field.hashCode;
 
   @override
@@ -95,6 +103,9 @@ class StructWithOneFieldTwinSyncSse {
   const StructWithOneFieldTwinSyncSse({
     required this.a,
   });
+
+  @override
+  String toString() => 'StructWithOneFieldTwinSyncSse(a: $a)';
 
   @override
   int get hashCode => a.hashCode;
@@ -117,6 +128,9 @@ class StructWithTwoFieldTwinSyncSse {
   });
 
   @override
+  String toString() => 'StructWithTwoFieldTwinSyncSse(a: $a, b: $b)';
+
+  @override
   int get hashCode => a.hashCode ^ b.hashCode;
 
   @override
@@ -130,6 +144,9 @@ class StructWithTwoFieldTwinSyncSse {
 
 class StructWithZeroFieldTwinSyncSse {
   const StructWithZeroFieldTwinSyncSse();
+
+  @override
+  String toString() => 'StructWithZeroFieldTwinSyncSse()';
 
   @override
   int get hashCode => 0;
@@ -147,6 +164,9 @@ class TupleStructWithOneFieldTwinSyncSse {
   const TupleStructWithOneFieldTwinSyncSse({
     required this.field0,
   });
+
+  @override
+  String toString() => 'TupleStructWithOneFieldTwinSyncSse(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;
@@ -167,6 +187,10 @@ class TupleStructWithTwoFieldTwinSyncSse {
     required this.field0,
     required this.field1,
   });
+
+  @override
+  String toString() =>
+      'TupleStructWithTwoFieldTwinSyncSse(field0: $field0, field1: $field1)';
 
   @override
   int get hashCode => field0.hashCode ^ field1.hashCode;

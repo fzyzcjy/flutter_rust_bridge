@@ -39,4 +39,7 @@ class TranslatableStructWithDartCodeTwinNormal {
   int get hashCode => a.hashCode;
 
   int dartCodeMethod() => a * 2;
+
+  @override
+  String toString() => 'TranslatableStructWithDartCodeTwinNormal(a: $a)';
 }

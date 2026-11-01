@@ -83,6 +83,9 @@ class DemoStructForRustCallDartTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'DemoStructForRustCallDartTwinRustAsyncSse(name: $name)';
+
+  @override
   int get hashCode => name.hashCode;
 
   @override

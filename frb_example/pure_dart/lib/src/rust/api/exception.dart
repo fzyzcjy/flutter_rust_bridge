@@ -173,6 +173,9 @@ class CustomStructErrorAnotherTwinNormal implements FrbException {
   });
 
   @override
+  String toString() => 'CustomStructErrorAnotherTwinNormal(message: $message)';
+
+  @override
   int get hashCode => message.hashCode;
 
   @override
@@ -189,6 +192,9 @@ class CustomStructErrorTwinNormal implements FrbException {
   const CustomStructErrorTwinNormal({
     required this.a,
   });
+
+  @override
+  String toString() => 'CustomStructErrorTwinNormal(a: $a)';
 
   @override
   int get hashCode => a.hashCode;
@@ -233,6 +239,9 @@ class CustomStructTwinNormal {
       .crateApiExceptionCustomStructTwinNormalStaticReturnCustomStructOkTwinNormal();
 
   @override
+  String toString() => 'CustomStructTwinNormal(message: $message)';
+
+  @override
   int get hashCode => message.hashCode;
 
   @override
@@ -271,6 +280,9 @@ class SomeStructTwinNormal {
   static Future<int> staticReturnOkCustomErrorTwinNormal() => RustLib
       .instance.api
       .crateApiExceptionSomeStructTwinNormalStaticReturnOkCustomErrorTwinNormal();
+
+  @override
+  String toString() => 'SomeStructTwinNormal(value: $value)';
 
   @override
   int get hashCode => value.hashCode;

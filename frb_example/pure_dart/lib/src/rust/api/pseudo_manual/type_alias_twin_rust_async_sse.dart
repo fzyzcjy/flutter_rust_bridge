@@ -76,6 +76,10 @@ class TestModelTwinRustAsyncSse {
   });
 
   @override
+  String toString() =>
+      'TestModelTwinRustAsyncSse(id: $id, name: $name, aliasEnum: $aliasEnum, aliasStruct: $aliasStruct)';
+
+  @override
   int get hashCode =>
       id.hashCode ^ name.hashCode ^ aliasEnum.hashCode ^ aliasStruct.hashCode;
 

@@ -77,6 +77,9 @@ class ConcatenateWithTwinSyncSse {
       );
 
   @override
+  String toString() => 'ConcatenateWithTwinSyncSse(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override
@@ -95,6 +98,9 @@ class Log2TwinSyncSse {
     required this.key,
     required this.value,
   });
+
+  @override
+  String toString() => 'Log2TwinSyncSse(key: $key, value: $value)';
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -118,6 +124,9 @@ class MyCallableTwinSyncSse {
   String call({required String two}) => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSyncSseMyCallableTwinSyncSseCall(
           that: this, two: two);
+
+  @override
+  String toString() => 'MyCallableTwinSyncSse(one: $one)';
 
   @override
   int get hashCode => one.hashCode;
@@ -197,6 +206,9 @@ class SimpleStructTwinSyncSse {
               arg: arg);
 
   @override
+  String toString() => 'SimpleStructTwinSyncSse(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override
@@ -219,6 +231,9 @@ class StaticOnlyTwinSyncSse {
           a: a);
 
   @override
+  String toString() => 'StaticOnlyTwinSyncSse(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override
@@ -239,6 +254,9 @@ class SumWithTwinSyncSse {
   int sumTwinSyncSse({required int y, required int z}) => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSyncSseSumWithTwinSyncSseSumTwinSyncSse(
           that: this, y: y, z: z);
+
+  @override
+  String toString() => 'SumWithTwinSyncSse(x: $x)';
 
   @override
   int get hashCode => x.hashCode;
