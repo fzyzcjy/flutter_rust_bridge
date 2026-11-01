@@ -406,6 +406,16 @@ import 'api/pseudo_manual/structure_twin_sync_sse_test.dart'
     as structure_twin_sync_sse_test;
 import 'api/pseudo_manual/structure_twin_sync_test.dart'
     as structure_twin_sync_test;
+import 'api/pseudo_manual/third_party_enum_twin_rust_async_sse_test.dart'
+    as third_party_enum_twin_rust_async_sse_test;
+import 'api/pseudo_manual/third_party_enum_twin_rust_async_test.dart'
+    as third_party_enum_twin_rust_async_test;
+import 'api/pseudo_manual/third_party_enum_twin_sse_test.dart'
+    as third_party_enum_twin_sse_test;
+import 'api/pseudo_manual/third_party_enum_twin_sync_sse_test.dart'
+    as third_party_enum_twin_sync_sse_test;
+import 'api/pseudo_manual/third_party_enum_twin_sync_test.dart'
+    as third_party_enum_twin_sync_test;
 import 'api/pseudo_manual/tuple_twin_rust_async_sse_test.dart'
     as tuple_twin_rust_async_sse_test;
 import 'api/pseudo_manual/tuple_twin_rust_async_test.dart'
@@ -444,6 +454,7 @@ import 'api/simple_test.dart' as simple_test;
 import 'api/stream_misc_test.dart' as stream_misc_test;
 import 'api/stream_test.dart' as stream_test;
 import 'api/structure_test.dart' as structure_test;
+import 'api/third_party_enum_test.dart' as third_party_enum_test;
 import 'api/tuple_test.dart' as tuple_test;
 import 'api/type_alias_test.dart' as type_alias_test;
 import 'api/uuid_type_test.dart' as uuid_type_test;
@@ -711,6 +722,11 @@ Future<void> callFileEntrypoints({
     structure_twin_sse_test.main,
     structure_twin_sync_sse_test.main,
     structure_twin_sync_test.main,
+    third_party_enum_twin_rust_async_sse_test.main,
+    third_party_enum_twin_rust_async_test.main,
+    third_party_enum_twin_sse_test.main,
+    third_party_enum_twin_sync_sse_test.main,
+    third_party_enum_twin_sync_test.main,
     tuple_twin_rust_async_sse_test.main,
     tuple_twin_rust_async_test.main,
     tuple_twin_sse_test.main,
@@ -736,6 +752,7 @@ Future<void> callFileEntrypoints({
     stream_misc_test.main,
     stream_test.main,
     structure_test.main,
+    third_party_enum_test.main,
     tuple_test.main,
     type_alias_test.main,
     uuid_type_test.main,

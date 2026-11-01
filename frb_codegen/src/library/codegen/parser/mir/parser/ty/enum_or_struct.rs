@@ -58,6 +58,18 @@ where
                 )));
             }
 
+            // Other crates cannot construct `#[non_exhaustive]` structs or enum variants
+            if attrs_opaque.is_none()
+                && !namespaced_name.namespace.crate_name().is_self_crate()
+                && src_object.src.has_non_exhaustive_constructor()
+            {
+                debug!("Treat {name} as opaque since it is #[non_exhaustive] in another crate");
+                return Ok(Some((
+                    self.parse_opaque(&namespaced_name, path, &src_object)?,
+                    attrs,
+                )));
+            }
+
             let ident: Id = namespaced_name.clone().into();
 
             if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
@@ -218,8 +230,10 @@ pub(crate) fn parse_struct_or_enum_should_ignore<Item: SynItemStructOrEnum>(
 mod tests {
     use super::*;
     use crate::codegen::generator::codec::structs::CodecMode;
+    use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
     use crate::codegen::ir::hir::misc::generation_source::HirGenerationSource;
     use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
+    use crate::codegen::parser::mir::parser::ty::TypeParser;
     use crate::codegen::parser::mir::ParseMode;
     use syn::parse_quote;
 
@@ -332,6 +346,102 @@ mod tests {
             &crate_name,
             &test_context(false)
         ));
+    }
+
+    /// Treats `#[non_exhaustive]` structs and enum variants as opaque only when they come from
+    /// another crate, since only the defining crate may construct them.
+    #[test]
+    fn parse_non_exhaustive_is_opaque_only_outside_self_crate() -> anyhow::Result<()> {
+        let make_struct = |namespace: &str| HirFlatStruct {
+            name: NamespacedName::new(Namespace::new_raw(namespace.into()), "Config".into()),
+            visibility: HirVisibility::Public,
+            sources: vec![],
+            mirror: false,
+            src: parse_quote!(
+                #[non_exhaustive]
+                pub struct Config {
+                    pub value: i32,
+                }
+            ),
+        };
+        let make_enum = |src: syn::ItemEnum| HirFlatEnum {
+            name: NamespacedName::new(Namespace::new_raw("dependency".into()), "Event".into()),
+            visibility: HirVisibility::Public,
+            sources: vec![],
+            mirror: false,
+            src,
+        };
+        let parse = |structs: HashMap<String, &HirFlatStruct>,
+                     enums: HashMap<String, &HirFlatEnum>,
+                     ty: syn::Type| {
+            let mut type_parser = TypeParser::new(
+                structs,
+                enums,
+                HashMap::new(),
+                HashMap::new(),
+                HashMap::new(),
+                vec![],
+                vec![],
+            );
+            type_parser.parse_type(&ty, &test_context(false))
+        };
+
+        let third_party_struct = make_struct("dependency");
+        let self_crate_struct = make_struct("crate::models");
+        let non_exhaustive_enum = make_enum(parse_quote!(
+            #[non_exhaustive]
+            pub enum Event {
+                A,
+            }
+        ));
+        let non_exhaustive_variant = make_enum(parse_quote!(
+            pub enum Event {
+                #[non_exhaustive]
+                A { value: i32 },
+            }
+        ));
+
+        let ty = parse(
+            HashMap::from([("Config".to_owned(), &third_party_struct)]),
+            HashMap::new(),
+            parse_quote!(Config),
+        )?;
+        assert!(
+            matches!(ty, MirType::RustAutoOpaqueImplicit(_)),
+            "expected opaque, got {ty:?}"
+        );
+
+        let ty = parse(
+            HashMap::from([("Config".to_owned(), &self_crate_struct)]),
+            HashMap::new(),
+            parse_quote!(Config),
+        )?;
+        assert!(
+            matches!(ty, MirType::StructRef(_)),
+            "expected StructRef, got {ty:?}"
+        );
+
+        // Generated matches already have a wildcard arm, so only non-exhaustive variants matter
+        let ty = parse(
+            HashMap::new(),
+            HashMap::from([("Event".to_owned(), &non_exhaustive_enum)]),
+            parse_quote!(Event),
+        )?;
+        assert!(
+            !matches!(ty, MirType::RustAutoOpaqueImplicit(_)),
+            "expected translatable, got {ty:?}"
+        );
+
+        let ty = parse(
+            HashMap::new(),
+            HashMap::from([("Event".to_owned(), &non_exhaustive_variant)]),
+            parse_quote!(Event),
+        )?;
+        assert!(
+            matches!(ty, MirType::RustAutoOpaqueImplicit(_)),
+            "expected opaque, got {ty:?}"
+        );
+        Ok(())
     }
 
     fn test_object(

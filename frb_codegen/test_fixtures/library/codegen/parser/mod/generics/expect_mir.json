@@ -20,7 +20,7 @@
                   "comments": [],
                   "default": null,
                   "is_final": true,
-                  "is_rust_public": false,
+                  "is_rust_public": true,
                   "name": {
                     "dart_style": null,
                     "rust_style": "field0"
@@ -91,7 +91,7 @@
                   "comments": [],
                   "default": null,
                   "is_final": true,
-                  "is_rust_public": false,
+                  "is_rust_public": true,
                   "name": {
                     "dart_style": null,
                     "rust_style": "field0"
