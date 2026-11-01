@@ -10,7 +10,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use strum::IntoEnumIterator;
 
 pub type MirStructPool = HashMap<MirStructIdent, MirStruct>;
@@ -105,26 +105,31 @@ impl MirPackComputedCache {
 }
 
 pub(crate) struct DistinctTypeGatherer {
-    seen_idents: HashSet<String>,
+    seen_idents: HashMap<String, usize>,
     ans: Vec<MirType>,
 }
 
 impl DistinctTypeGatherer {
     pub fn new() -> Self {
         Self {
-            seen_idents: HashSet::default(),
+            seen_idents: HashMap::default(),
             ans: vec![],
         }
     }
 
     pub(crate) fn add(&mut self, ty: &MirType) -> bool {
         let ident = ty.safe_ident();
-        let contains = self.seen_idents.contains(&ident);
-        if !contains {
-            self.seen_idents.insert(ident);
-            self.ans.push(ty.clone());
+        if let Some(&index) = self.seen_idents.get(&ident) {
+            // A type can be seen as a normal type (e.g. an argument) before it is seen as an error.
+            // It is an exception as long as any usage is an error, regardless of the visiting order.
+            if compute_ty_priority(ty) > compute_ty_priority(&self.ans[index]) {
+                self.ans[index] = ty.clone();
+            }
+            return true;
         }
-        contains
+        self.seen_idents.insert(ident, self.ans.len());
+        self.ans.push(ty.clone());
+        false
     }
 
     pub(crate) fn gather(self) -> Vec<MirType> {
@@ -136,6 +141,15 @@ impl DistinctTypeGatherer {
     }
 }
 
+/// When the same type is seen multiple times, the usage with the higher priority wins.
+fn compute_ty_priority(ty: &MirType) -> u8 {
+    match ty {
+        MirType::StructRef(inner) if inner.is_exception => 1,
+        MirType::EnumRef(inner) if inner.is_exception => 1,
+        _ => 0,
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -144,6 +158,7 @@ mod tests {
     };
     use crate::codegen::ir::mir::ident::MirIdent;
     use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::structure::MirTypeStructRef;
     use crate::utils::namespace::Namespace;
 
     fn codec_mode_pack(dart2rust: CodecMode, rust2dart: CodecMode) -> CodecModePack {
@@ -244,5 +259,43 @@ mod tests {
             idents(cache.distinct_types_for_codec[&CodecMode::Pde].clone()),
             ["i_32", "u_8", "unit"]
         );
+    }
+
+    fn struct_ref(is_exception: bool) -> MirType {
+        MirType::StructRef(MirTypeStructRef {
+            ident: MirStructIdent(NamespacedName::new(
+                Namespace::new_raw("crate::api".to_owned()),
+                "MyError".to_owned(),
+            )),
+            is_exception,
+        })
+    }
+
+    fn gathered_is_exception(types: &[MirType]) -> bool {
+        let mut gatherer = DistinctTypeGatherer::new();
+        for ty in types {
+            gatherer.add(ty);
+        }
+        let ans = gatherer.gather();
+        assert_eq!(ans.len(), 1);
+        compute_ty_priority(&ans[0]) > 0
+    }
+
+    /// Treats a type as an exception if any usage is an error, regardless of the visiting order.
+    #[test]
+    fn distinct_type_gatherer_keeps_exception_flag_regardless_of_order() {
+        assert!(gathered_is_exception(&[
+            struct_ref(false),
+            struct_ref(true)
+        ]));
+        assert!(gathered_is_exception(&[
+            struct_ref(true),
+            struct_ref(false)
+        ]));
+        assert!(!gathered_is_exception(&[
+            struct_ref(false),
+            struct_ref(false)
+        ]));
+        assert!(gathered_is_exception(&[struct_ref(true), struct_ref(true)]));
     }
 }

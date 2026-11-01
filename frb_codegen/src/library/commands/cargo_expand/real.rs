@@ -5,11 +5,12 @@ use crate::command_args;
 use crate::library::commands::command_runner::{
     check_exit_code, execute_command, ExecuteCommandOptions,
 };
+use crate::misc::ToolInstallMode;
 use crate::utils::crate_name::CrateName;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use lazy_static::lazy_static;
-use log::{debug, info};
+use log::{debug, info, warn};
 use regex::{Captures, Regex};
 use std::borrow::Cow;
 use std::collections::HashMap;
@@ -24,8 +25,14 @@ pub(super) fn run(
     interest_crate_name: Option<&CrateName>,
     dumper: &Dumper,
     features: Option<&[String]>,
+    tool_install_mode: ToolInstallMode,
 ) -> Result<syn::File> {
-    let text = run_with_frb_aware(rust_crate_dir, interest_crate_name, features)?;
+    let text = run_with_frb_aware(
+        rust_crate_dir,
+        interest_crate_name,
+        features,
+        tool_install_mode,
+    )?;
     (dumper.with_content(ConfigDumpContent::Source)).dump_str("cargo_expand.rs", &text)?;
     Ok(syn::parse_file(&text)?)
 }
@@ -34,12 +41,13 @@ fn run_with_frb_aware(
     rust_crate_dir: &Path,
     interest_crate_name: Option<&CrateName>,
     features: Option<&[String]>,
+    tool_install_mode: ToolInstallMode,
 ) -> Result<String> {
     Ok(decode_macro_frb_encoded_comments(&run_raw(
         rust_crate_dir,
         interest_crate_name,
         "--cfg frb_expand",
-        true,
+        tool_install_mode == ToolInstallMode::Normal,
         features,
     )?)
     .into_owned())
@@ -122,6 +130,7 @@ fn run_raw(
         Some(rust_crate_dir),
         Some(ExecuteCommandOptions {
             envs: Some(extra_env),
+            log_when_error: Some(false),
             ..Default::default()
         }),
     )
@@ -131,21 +140,38 @@ fn run_raw(
     let stderr = String::from_utf8(output.stderr)?;
 
     if stdout.is_empty() {
-        if stderr.contains("no such command: `expand`") && allow_auto_install {
-            info!("Cargo expand is not installed. Automatically install and re-run.");
-            install_cargo_expand()?;
-            return run_raw(
-                rust_crate_dir,
-                interest_crate_name,
-                extra_rustflags,
-                false,
-                features,
+        if stderr.contains("no such command: `expand`") {
+            if allow_auto_install {
+                info!("Cargo expand is not installed. Automatically install and re-run.");
+                install_cargo_expand()?;
+                return run_raw(
+                    rust_crate_dir,
+                    interest_crate_name,
+                    extra_rustflags,
+                    false,
+                    features,
+                );
+            }
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
+            bail!(
+                "cargo-expand is required but not installed. Install it with \
+                 `cargo install cargo-expand`, or run without `--skip-tool-install` \
+                 to let flutter_rust_bridge install it automatically."
             );
+            // frb-coverage:ignore-end
         }
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
-        bail!("cargo expand returned empty output");
+        bail!("cargo expand returned empty output: {stderr}");
         // frb-coverage:ignore-end
+    }
+
+    if !output.status.success() {
+        warn!(
+            "cargo expand exited with {} but produced expanded output; using it. stderr={}",
+            output.status, stderr
+        );
     }
 
     Ok(stdout.lines().skip(1).join("\n"))

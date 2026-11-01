@@ -105,6 +105,19 @@ abstract class BaseEntrypoint<
     __state = null;
   }
 
+  /// {@macro flutter_rust_bridge.internal}
+  @internal
+  @visibleForTesting
+  static void initializeRustBinding(
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) {
+    // Count this isolate before storing the post function, or the last
+    // isolate's shutdown could replace it with a no-op in between.
+    _initializeShutdownWatcher(generalizedFrbRustBinding);
+    _setUpRustToDartCommunication(generalizedFrbRustBinding);
+    _initializeApiDlData(generalizedFrbRustBinding);
+  }
+
   void _sanityCheckCodegenVersion(bool forceSameCodegenVersion) {
     if (codegenVersion == kFlutterRustBridgeRuntimeVersion) {
       return;
@@ -195,9 +208,7 @@ class _EntrypointState<A extends BaseApi> {
     required this.portManager,
     required this.api,
   }) {
-    _setUpRustToDartCommunication(generalizedFrbRustBinding);
-    _initializeApiDlData(generalizedFrbRustBinding);
-    _initializeShutdownWatcher(generalizedFrbRustBinding);
+    BaseEntrypoint.initializeRustBinding(generalizedFrbRustBinding);
   }
 
   void dispose() {

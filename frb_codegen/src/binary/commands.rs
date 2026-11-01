@@ -50,6 +50,10 @@ pub(crate) struct GenerateCommandArgs {
     /// Skip fvm installation
     #[clap(long)]
     pub skip_fvm_install: bool,
+
+    /// Skip automatic tool installation
+    #[clap(long)]
+    pub skip_tool_install: bool,
 }
 
 // Deliberately decoupled from `codegen::Config`,
@@ -342,6 +346,10 @@ pub(crate) struct BuildWebCommandArgs {
     /// Skip fvm installation
     #[clap(long)]
     pub skip_fvm_install: bool,
+
+    /// Skip automatic tool installation
+    #[clap(long)]
+    pub skip_tool_install: bool,
 }
 
 #[derive(Debug, Args)]

@@ -129,7 +129,8 @@ sealed class CustomNestedError1TwinSyncSse
 
 @freezed
 sealed class CustomNestedError2TwinSyncSse
-    with _$CustomNestedError2TwinSyncSse {
+    with _$CustomNestedError2TwinSyncSse
+    implements FrbException {
   const CustomNestedError2TwinSyncSse._();
 
   const factory CustomNestedError2TwinSyncSse.customNested2(
@@ -155,7 +156,8 @@ sealed class CustomNestedErrorInnerTwinSyncSse
 
 @freezed
 sealed class CustomNestedErrorOuterTwinSyncSse
-    with _$CustomNestedErrorOuterTwinSyncSse {
+    with _$CustomNestedErrorOuterTwinSyncSse
+    implements FrbException {
   const CustomNestedErrorOuterTwinSyncSse._();
 
   const factory CustomNestedErrorOuterTwinSyncSse.one(
@@ -184,7 +186,7 @@ class CustomStructErrorAnotherTwinSyncSse implements FrbException {
           message == other.message;
 }
 
-class CustomStructErrorTwinSyncSse {
+class CustomStructErrorTwinSyncSse implements FrbException {
   final String a;
 
   const CustomStructErrorTwinSyncSse({

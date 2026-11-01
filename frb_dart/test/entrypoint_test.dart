@@ -2,6 +2,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_common.dar
 import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;
 import 'package:flutter_rust_bridge/src/cli/build_web/entrypoint.dart'
     as build_web;
+import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -53,6 +55,18 @@ void main() {
       throwsA(isA<ArgumentError>()),
     );
   }, skip: kIsWeb);
+
+  test('the isolate is counted before the post function is installed', () {
+    final binding = _MockBinding();
+
+    BaseEntrypoint.initializeRustBinding(binding);
+
+    verifyInOrder([
+      () => binding.initShutdownWatcher(),
+      () => binding.storeDartPostCObject(),
+    ]);
+    verify(() => binding.initFrbDartApiDl()).called(1);
+  });
 
   test('build-web parser applies generated defaults', () {
     final config = build_web.parseConfig([]);
@@ -166,3 +180,5 @@ class _FakeBaseEntrypoint extends BaseEntrypoint {
 }
 
 class _FakeApi implements BaseApi {}
+
+class _MockBinding extends Mock implements GeneralizedFrbRustBinding {}
