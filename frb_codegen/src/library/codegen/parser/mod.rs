@@ -159,6 +159,19 @@ mod tests {
         body("library/codegen/parser/mod/generic_type_alias", None)
     }
 
+    /// Rejects a user type whose generated identifier clashes with a primitive.
+    #[test]
+    #[serial]
+    fn test_safe_ident_collision() {
+        let message = execute_parse("library/codegen/parser/mod/safe_ident_collision", None)
+            .unwrap_err()
+            .to_string();
+        assert!(
+            message.contains("`()` and `crate::api::Unit` map to `unit`"),
+            "{message}"
+        );
+    }
+
     #[allow(clippy::type_complexity)]
     fn body(
         fixture_name: &str,
