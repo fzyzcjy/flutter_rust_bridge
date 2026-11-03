@@ -675,7 +675,10 @@ dev_dependencies:
           for (final pubspec in pubspecs) {
             expect(
               await pubspec.readAsString(),
-              contains('\n  build_cli: ^2.2.5'),
+              contains(
+                '\n  build_cli: ^2.2.5\n'
+                '  source_helper: ">=1.3.10 <1.4.0"',
+              ),
             );
           }
           throw StateError('generation failed');
