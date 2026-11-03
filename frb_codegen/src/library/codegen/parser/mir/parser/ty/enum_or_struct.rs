@@ -406,20 +406,14 @@ mod tests {
             HashMap::new(),
             parse_quote!(Config),
         )?;
-        assert!(
-            matches!(ty, MirType::RustAutoOpaqueImplicit(_)),
-            "expected opaque, got {ty:?}"
-        );
+        assert!(matches!(ty, MirType::RustAutoOpaqueImplicit(_)));
 
         let ty = parse(
             HashMap::from([("Config".to_owned(), &self_crate_struct)]),
             HashMap::new(),
             parse_quote!(Config),
         )?;
-        assert!(
-            matches!(ty, MirType::StructRef(_)),
-            "expected StructRef, got {ty:?}"
-        );
+        assert!(matches!(ty, MirType::StructRef(_)));
 
         // Generated matches already have a wildcard arm, so only non-exhaustive variants matter
         let ty = parse(
@@ -427,20 +421,14 @@ mod tests {
             HashMap::from([("Event".to_owned(), &non_exhaustive_enum)]),
             parse_quote!(Event),
         )?;
-        assert!(
-            !matches!(ty, MirType::RustAutoOpaqueImplicit(_)),
-            "expected translatable, got {ty:?}"
-        );
+        assert!(!matches!(ty, MirType::RustAutoOpaqueImplicit(_)));
 
         let ty = parse(
             HashMap::new(),
             HashMap::from([("Event".to_owned(), &non_exhaustive_variant)]),
             parse_quote!(Event),
         )?;
-        assert!(
-            matches!(ty, MirType::RustAutoOpaqueImplicit(_)),
-            "expected opaque, got {ty:?}"
-        );
+        assert!(matches!(ty, MirType::RustAutoOpaqueImplicit(_)));
         Ok(())
     }
 
