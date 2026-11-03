@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:code_assets/code_assets.dart';
 import 'package:hooks/hooks.dart';
 import 'package:logging/logging.dart';
 import 'package:meta/meta.dart';
@@ -62,6 +63,11 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
         isWindows: Platform.isWindows,
         input: input,
       );
+      final effectiveCargoEnvironment = await cargoEnvironmentForInput(
+        input: effectiveInput,
+        isWindows: Platform.isWindows,
+        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+      );
       await native_toolchain_rust.RustBuilder(
         assetName: assetName,
         cratePath: cratePath,
@@ -69,7 +75,7 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
         enableDefaultFeatures: enableDefaultFeatures,
         features: features,
         extraCargoBuildArgs: extraCargoBuildArgs,
-        extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+        extraCargoEnvironmentVariables: effectiveCargoEnvironment,
       ).run(
         input: effectiveInput,
         output: output,
@@ -79,6 +85,105 @@ final class FlutterRustBridgeNativeAssetsBuilder implements Builder {
     });
   }
 }
+
+@visibleForTesting
+Future<Map<String, String>> cargoEnvironmentForInput({
+  required BuildInput input,
+  required bool isWindows,
+  required Map<String, String> extraCargoEnvironmentVariables,
+}) async {
+  if (!input.config.buildCodeAssets) {
+    return extraCargoEnvironmentVariables;
+  }
+
+  final codeConfig = input.config.code;
+  return cargoEnvironmentWithAndroidPageSize(
+    targetOS: codeConfig.targetOS,
+    targetArchitecture: codeConfig.targetArchitecture,
+    compiler: codeConfig.cCompiler?.compiler,
+    outputDirectory: input.outputDirectory,
+    isWindows: isWindows,
+    extraCargoEnvironmentVariables: extraCargoEnvironmentVariables,
+  );
+}
+
+@visibleForTesting
+Future<Map<String, String>> cargoEnvironmentWithAndroidPageSize({
+  required OS targetOS,
+  required Architecture targetArchitecture,
+  required Uri? compiler,
+  required Uri outputDirectory,
+  required bool isWindows,
+  required Map<String, String> extraCargoEnvironmentVariables,
+}) async {
+  final String? targetTriple = switch ((targetOS, targetArchitecture)) {
+    (OS.android, Architecture.arm64) => 'aarch64-linux-android',
+    (OS.android, Architecture.x64) => 'x86_64-linux-android',
+    _ => null,
+  };
+  if (targetTriple == null) {
+    return extraCargoEnvironmentVariables;
+  }
+  if (compiler == null) {
+    throw UnsupportedError(
+      'CCompilerConfig is required for Android target $targetTriple',
+    );
+  }
+
+  final String linkerEnvironmentVariable =
+      'CARGO_TARGET_${targetTriple.replaceAll('-', '_').toUpperCase()}_LINKER';
+  final String defaultLinker = File.fromUri(compiler).parent.uri
+      .resolve('${targetTriple}35-clang${isWindows ? '.cmd' : ''}')
+      .toFilePath();
+  final String linker =
+      extraCargoEnvironmentVariables[linkerEnvironmentVariable] ??
+      defaultLinker;
+  final File wrapper = File.fromUri(
+    Directory.fromUri(outputDirectory).uri.resolve(
+      'flutter_rust_bridge_android_linker_${targetArchitecture.name}'
+      '${isWindows ? '.cmd' : '.sh'}',
+    ),
+  );
+  await wrapper.writeAsString(
+    isWindows ? _windowsLinkerWrapper(linker) : _posixLinkerWrapper(linker),
+  );
+  if (!isWindows) {
+    final ProcessResult chmod = await Process.run('chmod', [
+      '+x',
+      wrapper.path,
+    ]);
+    if (chmod.exitCode != 0) {
+      throw FileSystemException(
+        'Failed to make Android linker wrapper executable: ${chmod.stderr}',
+        wrapper.path,
+      );
+    }
+  }
+
+  return {
+    ...extraCargoEnvironmentVariables,
+    linkerEnvironmentVariable: wrapper.path,
+  };
+}
+
+const _androidPageSizeLinkerArguments = [
+  '-z',
+  'max-page-size=16384',
+  '-z',
+  'common-page-size=16384',
+];
+
+String _posixLinkerWrapper(String linker) =>
+    '#!/bin/sh\n'
+    'exec ${_posixShellQuote(linker)} "\$@" '
+    '${_androidPageSizeLinkerArguments.join(' ')}\n';
+
+String _windowsLinkerWrapper(String linker) =>
+    '@echo off\r\n'
+    '"$linker" %* ${_androidPageSizeLinkerArguments.join(' ')}\r\n';
+
+String _posixShellQuote(String value) =>
+    "'${value.replaceAll("'", "'\"'\"'")}'";
 
 /// Returns a build input adjusted for host-specific Native Assets behavior.
 @visibleForTesting
