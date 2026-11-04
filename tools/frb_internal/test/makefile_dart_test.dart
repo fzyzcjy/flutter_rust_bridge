@@ -16,6 +16,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/dart_sdk.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/runner.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester/sanitizer.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -977,6 +978,43 @@ dev_dependencies:
         ),
       ),
     );
+  });
+
+  group('SimpleExecutor inheritStdio', () {
+    test('returns the exit code without capturing output', () async {
+      final output = await const SimpleExecutor().call(
+        'git frb-definitely-not-a-command',
+        checkExitCode: false,
+        inheritStdio: true,
+      );
+      expect(output.exitCode, isNot(0));
+      expect(output.stdout, isEmpty);
+      expect(output.stderr, isEmpty);
+    });
+
+    test('throws on a failing command by default', () async {
+      await expectLater(
+        const SimpleExecutor().call(
+          'git frb-definitely-not-a-command',
+          inheritStdio: true,
+        ),
+        throwsA(
+          isA<ProcessException>().having(
+            (e) => e.message,
+            'message',
+            startsWith('Bad exit code'),
+          ),
+        ),
+      );
+    });
+
+    test('succeeds on a passing command', () async {
+      final output = await const SimpleExecutor().call(
+        'git --version',
+        inheritStdio: true,
+      );
+      expect(output.exitCode, 0);
+    });
   });
 
   group('git clean check', () {
