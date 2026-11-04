@@ -26,12 +26,13 @@ edition = "2021"
 
     // Use an already-installed toolchain: an uninstalled one (e.g. a pinned
     // nightly) makes rustup download it inside the 1-minute install timeout.
-    final activeToolchain =
-        (await runCommand('rustup', ['show', 'active-toolchain']))
-            .stdout
-            .trim()
-            .split(' ')
-            .first;
+    final activeToolchainResult =
+        await Process.run('rustup', ['show', 'active-toolchain']);
+    expect(activeToolchainResult.exitCode, 0);
+    final activeToolchain = (activeToolchainResult.stdout as String)
+        .trim()
+        .split(RegExp(r'\s+'))
+        .first;
 
     var installed = false;
     await executeBuildWeb(

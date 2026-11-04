@@ -130,6 +130,9 @@ pub fn release_message_port_handle(handle: &SendableMessagePortHandle) {
 /// re-posts them on its own channel. A worker's fresh `BroadcastChannel` registers with the
 /// browser asynchronously and independently of the main thread, so its first messages can
 /// overtake the registration of the Dart receiver and be silently dropped.
+///
+/// Messages keep their order per sending thread only: posts to one channel from different
+/// threads travel through different ports, as before.
 pub fn post_message_to_port(port: &MessagePort, msg: &JsValue) -> Result<(), JsValue> {
     if let Some(channel) = port.dyn_ref::<BroadcastChannel>() {
         let post = Array::of3(&RELAY_ACTION_POST.into(), &channel.name().into(), msg);
@@ -142,8 +145,9 @@ pub fn post_message_to_port(port: &MessagePort, msg: &JsValue) -> Result<(), JsV
 
 /// Creates the port that a new pool worker relays its Rust-to-Dart messages through.
 ///
-/// The other end is always listened to on the main thread, also for workers spawned by workers,
-/// so that relayed messages never wait for a busy intermediate worker.
+/// The other end is listened to by the thread hosting the outermost pool, i.e. the main thread
+/// in practice; workers spawned by pool workers hand their end over to it, so relayed messages
+/// never wait for a busy intermediate worker.
 pub fn create_rust2dart_relay_port() -> Result<web_sys::MessagePort, JsValue> {
     let channel = MessageChannel::new()?;
     let main_thread_end = channel.port1();

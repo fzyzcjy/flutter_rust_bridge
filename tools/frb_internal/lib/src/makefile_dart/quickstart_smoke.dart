@@ -685,27 +685,13 @@ Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
 ) async {
   // CI runners get no user input, so the display can fall asleep while the app
   // builds, and `screencapture` then silently writes a fully transparent image.
-  await _wakeMacosDisplay();
-  return Process.run(
-    'screencapture',
-    quickstartSmokeMacosScreenshotArgsForTesting(screenshotFile.path),
-    stderrEncoding: systemEncoding,
-  );
-}
-
-Future<void> _wakeMacosDisplay() async {
-  // `-u` declares user activity, which turns the display on if it is asleep.
-  final result = await Process.run('caffeinate', [
+  // `caffeinate -u` declares user activity, which turns the display on, and
+  // holds that assertion while the capture runs.
+  return Process.run('caffeinate', [
     '-u',
-    '-t',
-    '1',
+    'screencapture',
+    ...quickstartSmokeMacosScreenshotArgsForTesting(screenshotFile.path),
   ], stderrEncoding: systemEncoding);
-  if (result.exitCode != 0) {
-    print(
-      'Failed to wake macOS display before screenshot '
-      '(exitCode=${result.exitCode}, stderr=${result.stderr})',
-    );
-  }
 }
 
 Future<void> _activateMacosQuickstartSmokeApp(
