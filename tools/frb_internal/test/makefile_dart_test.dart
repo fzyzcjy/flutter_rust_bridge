@@ -892,6 +892,15 @@ dev_dependencies:
     );
   });
 
+  test('quickstart smoke gives Android NDK installation readiness time', () {
+    expect(
+      quickstartSmokeFlutterRunReadyTimeoutForTesting(
+        QuickstartSmokeTarget.android,
+      ),
+      const Duration(minutes: 10),
+    );
+  });
+
   test('quickstart smoke disables DDS for Android runs', () {
     expect(
       quickstartSmokeFlutterRunArgsForTesting(
