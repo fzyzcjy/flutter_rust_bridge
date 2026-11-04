@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
+import 'package:meta/meta.dart';
 
 /// Load the [ExternalLibrary], with the following cases in mind:
 /// 1. When `flutter run`, or when a real app is bundled.
@@ -34,28 +35,19 @@ ExternalLibrary loadExternalLibraryRaw({
   // * https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
   // * https://github.com/flutter/flutter/blob/8b6277e63868c2029f1e2327879b7899be44fbe2/packages/flutter_tools/templates/plugin_ffi/lib/projectName.dart.tmpl#L47-L58
 
-  ExternalLibrary tryAssumingNonPackaged(
+  ExternalLibrary openLibrary(
     String name,
-    ExternalLibrary Function(String debugInfo) fallback,
-  ) {
-    final effectiveNativeLibDir =
-        Platform.environment['FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR']
-            ?.toUriDirectory() ??
-        nativeLibDirWhenNonPackaged;
-
-    if (effectiveNativeLibDir == null) {
-      return fallback(
-        '(without trying effectiveNativeLibDir since it is null)',
-      );
-    }
-
-    final filePath = effectiveNativeLibDir.resolve(name).toFilePath();
-    if (!File(filePath).existsSync()) {
-      return fallback('(after trying $filePath but it does not exist)');
-    }
-
-    return ExternalLibrary.open(filePath);
-  }
+    ExternalLibrary Function(String debugInfo) openPackaged,
+  ) => openPreferringPackaged(
+    name: name,
+    overrideNativeLibDir: Platform
+        .environment['FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR']
+        ?.toUriDirectory(),
+    nativeLibDirWhenNonPackaged: nativeLibDirWhenNonPackaged,
+    openPackaged: openPackaged,
+    openPath: (path, debugInfo) =>
+        ExternalLibrary.open(path, debugInfo: debugInfo),
+  );
 
   if (Platform.isAndroid || Platform.operatingSystem == 'ohos') {
     return ExternalLibrary.open('lib$stem.so');
@@ -63,14 +55,14 @@ ExternalLibrary loadExternalLibraryRaw({
 
   if (Platform.isWindows) {
     final name = '$stem.dll';
-    return tryAssumingNonPackaged(
+    return openLibrary(
       name,
       (debugInfo) => ExternalLibrary.open(name, debugInfo: debugInfo),
     );
   }
 
   if (Platform.isIOS || Platform.isMacOS) {
-    return tryAssumingNonPackaged(
+    return openLibrary(
       'lib$stem.dylib',
       (debugInfo) => _tryOpen(
         'rust_builder.framework/rust_builder',
@@ -83,7 +75,7 @@ ExternalLibrary loadExternalLibraryRaw({
 
   if (Platform.isLinux) {
     final name = 'lib$stem.so';
-    return tryAssumingNonPackaged(
+    return openLibrary(
       name,
       (debugInfo) => ExternalLibrary.open(name, debugInfo: debugInfo),
     );
@@ -112,3 +104,34 @@ extension on String {
 }
 
 // coverage:ignore-end
+
+/// Open the library file [name], preferring the packaged copy.
+///
+/// [overrideNativeLibDir] is tried first when set. Otherwise
+/// [nativeLibDirWhenNonPackaged] is only tried when [openPackaged] fails, so
+/// a bundled app always loads its own library even if a non-packaged build
+/// also exists.
+@visibleForTesting
+T openPreferringPackaged<T>({
+  required String name,
+  required Uri? overrideNativeLibDir,
+  required Uri? nativeLibDirWhenNonPackaged,
+  required T Function(String debugInfo) openPackaged,
+  required T Function(String path, String debugInfo) openPath,
+}) {
+  if (overrideNativeLibDir != null) {
+    final filePath = overrideNativeLibDir.resolve(name).toFilePath();
+    if (!File(filePath).existsSync()) {
+      return openPackaged('(after trying $filePath but it does not exist)');
+    }
+    return openPath(filePath, '');
+  }
+
+  try {
+    return openPackaged('');
+  } on ArgumentError catch (e) {
+    final filePath = nativeLibDirWhenNonPackaged?.resolve(name).toFilePath();
+    if (filePath == null || !File(filePath).existsSync()) rethrow;
+    return openPath(filePath, '(after failing to open packaged library: $e)');
+  }
+}
