@@ -902,6 +902,15 @@ dev_dependencies:
     );
   });
 
+  test('quickstart smoke macOS diagnostics script is valid shell', () async {
+    final result = await Process.run('/bin/sh', [
+      '-n',
+      '-c',
+      quickstartSmokeMacosDiagnosticsScriptForTesting,
+    ]);
+    expect(result.exitCode, 0, reason: '${result.stderr}');
+  });
+
   test('quickstart smoke disables DDS for Android runs', () {
     expect(
       quickstartSmokeFlutterRunArgsForTesting(

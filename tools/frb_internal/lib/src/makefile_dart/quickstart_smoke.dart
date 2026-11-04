@@ -27,6 +27,9 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
 
   _QuickstartSmokeFlutterRun? flutterRun;
   try {
+    if (Platform.isMacOS && context.target == QuickstartSmokeTarget.desktop) {
+      await _recordMacosQuickstartSmokeDiagnostics(context, label: 'start');
+    }
     flutterRun = await _startQuickstartSmokeFlutterRun(context);
     final activeFlutterRun = flutterRun;
     final readyForScreenshot = await _waitForQuickstartSmokeFlutterRunReady(
@@ -70,6 +73,10 @@ class _QuickstartSmokeContext {
   final File preprocessedOcrOutputFile;
   final File logFile;
   final File? chromeWrapper;
+
+  File get macosDiagnosticsFile => File(
+    '${absoluteArtifactDir.path}/quickstart-$targetName-macos-diagnostics.txt',
+  );
 
   const _QuickstartSmokeContext({
     required this.package,
@@ -148,6 +155,7 @@ class _QuickstartSmokeContext {
       ocrOutputFile,
       preprocessedOcrOutputFile,
       logFile,
+      macosDiagnosticsFile,
     ]) {
       if (file.existsSync()) file.deleteSync();
     }
@@ -558,6 +566,13 @@ Future<void> _captureAndOcrQuickstartSmokeScreenshotFromContext(
     ocrOutputFile: context.ocrOutputFile,
     preprocessedOcrOutputFile: context.preprocessedOcrOutputFile,
   );
+
+  if (Platform.isMacOS && context.target == QuickstartSmokeTarget.desktop) {
+    await _recordMacosQuickstartSmokeDiagnostics(
+      context,
+      label: 'after capture',
+    );
+  }
 }
 
 Future<File?> _createChromeWrapperIfNeeded(String artifactDir) async {
@@ -683,16 +698,54 @@ Future<void> _captureQuickstartSmokeScreenshot({
 Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
   File screenshotFile,
 ) async {
-  // CI runners get no user input, so the display can fall asleep while the app
-  // builds, and `screencapture` then silently writes a fully transparent image.
-  // `caffeinate -u` declares user activity, which turns the display on, and
-  // holds that assertion while the capture runs.
-  return Process.run('caffeinate', [
-    '-u',
+  return Process.run(
     'screencapture',
-    ...quickstartSmokeMacosScreenshotArgsForTesting(screenshotFile.path),
-  ], stderrEncoding: systemEncoding);
+    quickstartSmokeMacosScreenshotArgsForTesting(screenshotFile.path),
+    stderrEncoding: systemEncoding,
+  );
 }
+
+/// Captures in CI sometimes come out fully transparent. Record the session
+/// state alongside every capture so a blank one can be compared with a working
+/// one.
+Future<void> _recordMacosQuickstartSmokeDiagnostics(
+  _QuickstartSmokeContext context, {
+  required String label,
+}) async {
+  final screenshot = context.screenshotFile;
+  final result = await Process.run('/bin/sh', [
+    '-c',
+    quickstartSmokeMacosDiagnosticsScriptForTesting,
+    'sh',
+    screenshot.existsSync() ? screenshot.path : '',
+  ], stderrEncoding: systemEncoding);
+  final report =
+      '===== macOS diagnostics: $label (${DateTime.now().toUtc()}) =====\n'
+      '${result.stdout}${result.stderr}';
+  print(report);
+  context.macosDiagnosticsFile.writeAsStringSync(
+    '$report\n',
+    mode: FileMode.append,
+  );
+}
+
+@visibleForTesting
+const quickstartSmokeMacosDiagnosticsScriptForTesting = r'''
+run() { echo "\$ $*"; "$@" 2>&1; }
+run uptime
+run sysctl -n kern.boottime
+ioreg -c IOHIDSystem | grep -m1 HIDIdleTime
+ioreg -n Root -d1 | grep IOConsoleUsers
+run pmset -g
+run pmset -g assertions
+run defaults -currentHost read com.apple.screensaver
+run defaults read com.apple.screensaver
+run pgrep -l 'ScreenSaverEngine|loginwindow'
+run system_profiler SPDisplaysDataType
+if [ -n "$1" ]; then
+  run convert "$1" -format 'alpha max=%[fx:maxima.a] mean=%[fx:mean]\n' info:
+fi
+''';
 
 Future<void> _activateMacosQuickstartSmokeApp(
   Directory packageDirectory,
