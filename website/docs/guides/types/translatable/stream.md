@@ -188,7 +188,3 @@ pub struct MyStruct {
 
 pub fn f(arr: Vec<StreamSink<i32>>, st: MyStruct) {}
 ```
-
-## Web limitation
-
-Rust-to-Dart streams can be flaky on Web. If you need this combination, please [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose).

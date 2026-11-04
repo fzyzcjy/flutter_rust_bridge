@@ -3,6 +3,7 @@
 //! File: https://github.com/rustwasm/wasm-bindgen/blob/main/examples/raytrace-parallel/src/pool.rs
 
 use crate::misc::web_utils::script_path;
+use crate::platform_types::create_rust2dart_relay_port;
 use crate::web_transfer::transfer_closure::TransferClosure;
 use js_sys::Array;
 use std::cell::RefCell;
@@ -103,7 +104,8 @@ impl WorkerPool {
             importScripts('{script_src}');
             const FRB_ACTION_PANIC = 3;
             onmessage = event => {{
-                const [module, memory] = event.data;
+                const [module, memory, rust2dartRelay] = event.data;
+                self.__frbRust2DartRelay = rust2dartRelay;
                 let init = {wasm_bindgen_name}(module, memory).catch(err => {{
                     setTimeout(() => {{ throw err }})
                     throw err
@@ -137,7 +139,11 @@ impl WorkerPool {
         // messages about code to run on the wasm module.
         let module = wasm_bindgen::module();
         let memory = wasm_bindgen::memory();
-        worker.post_message(&Array::of2(&module, &memory))?;
+        let rust2dart_relay: JsValue = create_rust2dart_relay_port()?.into();
+        worker.post_message_with_transfer(
+            &Array::of3(&module, &memory, &rust2dart_relay),
+            &Array::of1(&rust2dart_relay),
+        )?;
 
         Ok(worker)
     }

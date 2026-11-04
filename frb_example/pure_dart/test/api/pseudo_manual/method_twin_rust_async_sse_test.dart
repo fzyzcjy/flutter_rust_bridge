@@ -6,8 +6,6 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/method_twin_rus
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-import '../../test_utils.dart';
-
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -84,12 +82,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   });
 
-  test('ConcatenateWith static stream sink test',
-      skip: skipWebStreamFlake(
-        twin: 'TwinRustAsyncSse',
-        jsModes: ['Sync'],
-        pde: true,
-      ), () async {
+  test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
     final stream = ConcatenateWithTwinRustAsyncSse
@@ -106,12 +99,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   });
 
-  test('ConcatenateWith static stream sink at 1 test',
-      skip: skipWebStreamFlake(
-        twin: 'TwinRustAsyncSse',
-        wasmModes: ['Sync'],
-        pde: null,
-      ), () async {
+  test('ConcatenateWith static stream sink at 1 test', () async {
     final stream = ConcatenateWithTwinRustAsyncSse
         .handleSomeStaticStreamSinkSingleArgTwinRustAsyncSse();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
