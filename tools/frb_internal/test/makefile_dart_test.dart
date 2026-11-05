@@ -902,6 +902,14 @@ dev_dependencies:
     );
   });
 
+  test('quickstart smoke dumps widget, render and layer trees', () {
+    expect(quickstartSmokeFlutterTreeDumpKeysForTesting, [
+      ('w', 'widget'),
+      ('t', 'render'),
+      ('L', 'layer'),
+    ]);
+  });
+
   test('quickstart smoke macOS diagnostics script is valid shell', () async {
     final result = await Process.run('/bin/sh', [
       '-n',

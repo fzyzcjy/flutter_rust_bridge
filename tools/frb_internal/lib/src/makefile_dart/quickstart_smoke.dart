@@ -459,6 +459,10 @@ Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
     }
   } while (DateTime.now().isBefore(visibleTextDeadline));
 
+  if (Platform.isMacOS && context.target == QuickstartSmokeTarget.desktop) {
+    await _dumpQuickstartSmokeFlutterTrees(flutterRun);
+  }
+
   return _QuickstartSmokeScreenshotEvidence(
     readyForScreenshot: readyForScreenshot,
     ocrMatched: false,
@@ -728,6 +732,29 @@ Future<void> _recordMacosQuickstartSmokeDiagnostics(
     mode: FileMode.append,
   );
 }
+
+/// The macOS app window sometimes stays black even though the desktop captures
+/// fine. Ask `flutter run` to dump the app's trees into its log, to tell apart
+/// a UI that was never built from one that was built but never presented.
+Future<void> _dumpQuickstartSmokeFlutterTrees(
+  _QuickstartSmokeFlutterRun flutterRun,
+) async {
+  // flutter run ignores keys while a previous one is still being handled.
+  for (final (key, tree) in quickstartSmokeFlutterTreeDumpKeysForTesting) {
+    print('Asking flutter run to dump the $tree tree');
+    flutterRun.recordOutput('\n===== $tree tree dump =====\n');
+    flutterRun.process.stdin.write('$key\n');
+    await flutterRun.process.stdin.flush();
+    await Future<void>.delayed(const Duration(seconds: 5));
+  }
+}
+
+@visibleForTesting
+const quickstartSmokeFlutterTreeDumpKeysForTesting = [
+  ('w', 'widget'),
+  ('t', 'render'),
+  ('L', 'layer'),
+];
 
 @visibleForTesting
 const quickstartSmokeMacosDiagnosticsScriptForTesting = r'''
