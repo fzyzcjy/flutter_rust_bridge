@@ -1058,6 +1058,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoiPtr;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_ProxiedOpaqueStructWithDartCodeOwnerTwinNormalPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_ProxiedOpaqueStructWithDartCodeTwinNormalPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RustAutoOpaqueWebLockingDataTwinNormalPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormalPtr;
 
@@ -1333,6 +1341,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueItemTwinNormal
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
+          dynamic raw);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeOwnerTwinNormal
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
           dynamic raw);
 
   @protected
@@ -1873,6 +1886,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSyncSseMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeOwnerTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          dynamic raw);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
           dynamic raw);
 
   @protected
@@ -2551,6 +2574,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  ProxiedOpaqueStructWithDartCodeOwnerTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          dynamic raw);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+          dynamic raw);
+
+  @protected
   RustOpaqueWebLockingDataTwinNormal
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           dynamic raw);
@@ -3132,6 +3165,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      dco_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+          dynamic raw);
+
+  @protected
   MyAudioParamTwinNormal
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_one_twin_normal(
           dynamic raw);
@@ -3139,6 +3177,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyAudioParamTwinNormal
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_two_twin_normal(
+          dynamic raw);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal_inner_twin_normal(
           dynamic raw);
 
   @protected
@@ -4046,6 +4089,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  ProxiedOpaqueStructWithDartCodeOwnerTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          dynamic raw);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+          dynamic raw);
+
+  @protected
   RustAutoOpaqueWebLockingDataTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           dynamic raw);
@@ -4742,6 +4795,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum
+      dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+          dynamic raw);
+
+  @protected
   BTwinNormal dco_decode_b_twin_normal(dynamic raw);
 
   @protected
@@ -5121,6 +5179,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
       dco_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+          dynamic raw);
+
+  @protected
+  Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum
+      dco_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
           dynamic raw);
 
   @protected
@@ -10879,6 +10942,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  ProxiedOpaqueStructWithDartCodeOwnerTwinNormal
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
   RustAutoOpaqueWebLockingDataTwinNormal
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer);
@@ -11416,6 +11484,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSyncSseMoi
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi(
+          SseDeserializer deserializer);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeOwnerTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
           SseDeserializer deserializer);
 
   @protected
@@ -12094,6 +12172,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  ProxiedOpaqueStructWithDartCodeOwnerTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
   RustOpaqueWebLockingDataTwinNormal
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer);
@@ -12631,6 +12719,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      sse_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+          SseDeserializer deserializer);
+
+  @protected
   MyAudioParamTwinNormal
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_one_twin_normal(
           SseDeserializer deserializer);
@@ -12638,6 +12731,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyAudioParamTwinNormal
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_two_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal_inner_twin_normal(
           SseDeserializer deserializer);
 
   @protected
@@ -13585,6 +13683,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  ProxiedOpaqueStructWithDartCodeOwnerTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  ProxiedOpaqueStructWithDartCodeTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
   RustAutoOpaqueWebLockingDataTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           SseDeserializer deserializer);
@@ -14258,6 +14366,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum
+      sse_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+          SseDeserializer deserializer);
+
+  @protected
   BTwinNormal sse_decode_b_twin_normal(SseDeserializer deserializer);
 
   @protected
@@ -14685,6 +14798,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
       sse_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+          SseDeserializer deserializer);
+
+  @protected
+  Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum
+      sse_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
           SseDeserializer deserializer);
 
   @protected
@@ -21175,6 +21293,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  int cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+      ProxiedOpaqueStructWithDartCodeOwnerTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+        raw);
+  }
+
+  @protected
   int cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
       RustAutoOpaqueWebLockingDataTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -22424,6 +22550,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ptr = wire
         .cst_new_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum();
     cst_api_fill_to_wire_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<
+          wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum>
+      cst_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+          Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum
+              raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum();
+    cst_api_fill_to_wire_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
         raw, ptr.ref);
     return ptr;
   }
@@ -28007,6 +28147,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum
+          apiObj,
+      wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum
+          wireObj) {
+    if (apiObj
+        is Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum_Variant0) {
+      var pre_field0 =
+          cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+              apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind.Variant0.field0 = pre_field0;
+      return;
+    }
+  }
+
+  @protected
   void cst_api_fill_to_wire_b_twin_normal(
       BTwinNormal apiObj, wire_cst_b_twin_normal wireObj) {
     wireObj.b = cst_encode_i_32(apiObj.b);
@@ -28278,6 +28435,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
               wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum>
           wireObj) {
     cst_api_fill_to_wire_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum
+          apiObj,
+      ffi.Pointer<
+              wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum>
+          wireObj) {
+    cst_api_fill_to_wire_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
         apiObj, wireObj.ref);
   }
 
@@ -33723,6 +33891,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueTwoTwinSyncMoi raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+      ProxiedOpaqueStructWithDartCodeOwnerTwinNormal raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
       RustOpaqueWebLockingDataTwinNormal raw);
 
@@ -34671,6 +34843,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueTwoTwinSyncMoi raw);
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+      ProxiedOpaqueStructWithDartCodeOwnerTwinNormal raw);
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
       RustAutoOpaqueWebLockingDataTwinNormal raw);
 
@@ -35028,6 +35204,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal(
           OpaqueItemTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          ProxiedOpaqueStructWithDartCodeOwnerTwinNormal self,
+          SseSerializer serializer);
 
   @protected
   void
@@ -35582,6 +35764,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncSseMoi(
           OpaqueTwoTwinSyncSseMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          ProxiedOpaqueStructWithDartCodeOwnerTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+          ProxiedOpaqueStructWithDartCodeTwinNormal self,
+          SseSerializer serializer);
 
   @protected
   void
@@ -36285,6 +36479,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          ProxiedOpaqueStructWithDartCodeOwnerTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+          ProxiedOpaqueStructWithDartCodeTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustOpaqueWebLockingDataTwinNormal(
           RustOpaqueWebLockingDataTwinNormal self, SseSerializer serializer);
 
@@ -36915,6 +37121,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+          ProxiedOpaqueStructWithDartCodeTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_one_twin_normal(
           MyAudioParamTwinNormal self, SseSerializer serializer);
 
@@ -36922,6 +37134,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_two_twin_normal(
           MyAudioParamTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal_inner_twin_normal(
+          ProxiedOpaqueStructWithDartCodeTwinNormal self,
+          SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_BoxdynDartDebugTwinMoi(
@@ -37855,6 +38073,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+          ProxiedOpaqueStructWithDartCodeOwnerTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+          ProxiedOpaqueStructWithDartCodeTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
           RustAutoOpaqueWebLockingDataTwinNormal self,
           SseSerializer serializer);
@@ -38535,6 +38765,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseSerializer serializer);
 
   @protected
+  void sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum
+          self,
+      SseSerializer serializer);
+
+  @protected
   void sse_encode_b_twin_normal(BTwinNormal self, SseSerializer serializer);
 
   @protected
@@ -38957,6 +39193,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
       Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
+          self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum
           self,
       SseSerializer serializer);
 
@@ -50790,6 +51032,19 @@ class RustLibWire implements BaseWire {
       _wire__crate__api__pseudo_manual__rust_auto_opaque_twin_sync__NonCloneSimpleTwinSync_static_method_return_own_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
+  WireSyncRust2DartDco
+      wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_new() {
+    return _wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_new();
+  }
+
+  late final _wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_newPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_new',
+  );
+  late final _wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_new =
+      _wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_newPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
   void
       wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
     int port_,
@@ -50808,6 +51063,49 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal =
       _wire__crate__api__dart_code__OpaqueStructWithDartCodeTwinNormal_normal_method_twin_normalPtr
           .asFunction<void Function(int, int)>();
+
+  WireSyncRust2DartDco
+      wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeOwnerTwinNormal_new() {
+    return _wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeOwnerTwinNormal_new();
+  }
+
+  late final _wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeOwnerTwinNormal_newPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeOwnerTwinNormal_new',
+  );
+  late final _wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeOwnerTwinNormal_new =
+      _wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeOwnerTwinNormal_newPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
+  void
+      wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeTwinNormal_normal_method_twin_normalPtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                ffi.Int64,
+                ffi.Pointer<ffi.Uint8>,
+                ffi.Int32,
+                ffi.Int32,
+              )>>(
+    'frbgen_frb_example_pure_dart_wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal',
+  );
+  late final _wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeTwinNormal_normal_method_twin_normal =
+      _wire__crate__api__dart_code__ProxiedOpaqueStructWithDartCodeTwinNormal_normal_method_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartDco
       wire__crate__api__misc_no_twin_example_a__SimpleLogger_get_and_reset(
@@ -125988,6 +126286,74 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+    'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal',
+  );
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+    'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal',
+  );
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeOwnerTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+    'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal',
+  );
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+    'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal',
+  );
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
       rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustAutoOpaqueWebLockingDataTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -127898,6 +128264,27 @@ class RustLibWire implements BaseWire {
           .asFunction<
               ffi.Pointer<
                       wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum>
+                  Function()>();
+
+  ffi.Pointer<
+          wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum>
+      cst_new_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum() {
+    return _cst_new_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum();
+  }
+
+  late final _cst_new_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enumPtr =
+      _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<
+                      wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum>
+                  Function()>>(
+    'frbgen_frb_example_pure_dart_cst_new_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum',
+  );
+  late final _cst_new_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum =
+      _cst_new_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enumPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum>
                   Function()>();
 
   ffi.Pointer<wire_cst_b_twin_normal> cst_new_box_autoadd_b_twin_normal() {
@@ -137590,6 +137977,27 @@ final class wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_
   external int tag;
 
   external Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumKind
+      kind;
+}
+
+final class wire_cst_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum_Variant0
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int field0;
+}
+
+final class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnumKind
+    extends ffi.Union {
+  external wire_cst_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnum_Variant0
+      Variant0;
+}
+
+final class wire_cst_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_proxied_opaque_struct_with_dart_code_twin_normal_proxy_enum
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerProxiedOpaqueStructWithDartCodeTwinNormalProxyEnumKind
       kind;
 }
 

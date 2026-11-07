@@ -59,6 +59,21 @@ For the same reason `extend` doesn't work neither.
 
 Any valid Dart Code for a class body is allowed in the `#[frb(dart_code =...)]`. 
 
+## Opaque types
+
+For opaque types, the code is inserted into the generated abstract class,
+and the classes of objects returned from Rust mix it in.
+Therefore, instance members, including overrides such as `==`, `hashCode` and `toString`, work on those objects as well.
+
+Because the abstract class becomes a [mixin class](https://dart.dev/language/mixins#class-mixin-or-mixin-class),
+the code cannot declare generative constructors other than trivial ones such as `Foo._();`
+(factory constructors and static members are fine).
+It should not override `dispose` or `isDisposed` either, since they manage the underlying Rust object.
+
+Mixin classes require Dart 3. With `--no-dart3`, the code is not mixed in,
+so instance methods fail to compile and overrides such as `toString` are ignored;
+only static members and factory constructors work.
+
 ## Works only if rust code is callable
 
 As usual, if a struct is not used by any functions, flutter_rust_bridge will automatically ignore it, avoiding generating useless structs.

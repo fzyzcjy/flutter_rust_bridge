@@ -1,5 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
 
+#![allow(clippy::new_without_default)]
+
 use flutter_rust_bridge::frb;
 
 #[frb(
@@ -30,11 +32,70 @@ impl TranslatableStructWithDartCodeTwinNormal {
     }
 }
 
-#[frb(opaque, dart_code = "static int get dartCodeGetter => 123;")]
+#[frb(
+    opaque,
+    dart_code = "
+  static int get dartCodeGetter => 123;
+
+  Future<int> dartCodeMethod() async => await normalMethodTwinNormal() * 2;
+
+  @override
+  bool operator ==(Object other) => other is OpaqueStructWithDartCodeTwinNormal;
+
+  @override
+  int get hashCode => 7;
+
+  @override
+  String toString() => 'OpaqueStructWithDartCodeTwinNormal(dart_code)';
+"
+)]
 pub struct OpaqueStructWithDartCodeTwinNormal;
 
 impl OpaqueStructWithDartCodeTwinNormal {
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self
+    }
+
     pub fn normal_method_twin_normal(&self) -> i32 {
         100
+    }
+}
+
+#[frb(
+    opaque,
+    dart_code = "
+  Future<int> dartCodeMethod() async => await normalMethodTwinNormal() * 2;
+
+  @override
+  String toString() => 'ProxiedOpaqueStructWithDartCodeTwinNormal(dart_code)';
+"
+)]
+pub struct ProxiedOpaqueStructWithDartCodeTwinNormal;
+
+impl ProxiedOpaqueStructWithDartCodeTwinNormal {
+    #[frb(serialize)]
+    pub fn normal_method_twin_normal(&self) -> i32 {
+        100
+    }
+}
+
+#[frb(opaque)]
+pub struct ProxiedOpaqueStructWithDartCodeOwnerTwinNormal {
+    inner: ProxiedOpaqueStructWithDartCodeTwinNormal,
+}
+
+impl ProxiedOpaqueStructWithDartCodeOwnerTwinNormal {
+    #[frb(sync)]
+    pub fn new() -> Self {
+        Self {
+            inner: ProxiedOpaqueStructWithDartCodeTwinNormal,
+        }
+    }
+
+    #[frb(proxy)]
+    #[frb(serialize)]
+    pub fn inner_twin_normal(&self) -> &ProxiedOpaqueStructWithDartCodeTwinNormal {
+        &self.inner
     }
 }
