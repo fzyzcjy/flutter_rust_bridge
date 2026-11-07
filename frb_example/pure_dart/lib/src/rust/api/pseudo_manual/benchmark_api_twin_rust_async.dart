@@ -105,6 +105,10 @@ class BenchmarkBinaryTreeTwinRustAsync {
   });
 
   @override
+  String toString() =>
+      'BenchmarkBinaryTreeTwinRustAsync(name: $name, left: $left, right: $right)';
+
+  @override
   int get hashCode => name.hashCode ^ left.hashCode ^ right.hashCode;
 
   @override
@@ -127,6 +131,10 @@ class BenchmarkBlobTwinRustAsync {
     required this.second,
     required this.third,
   });
+
+  @override
+  String toString() =>
+      'BenchmarkBlobTwinRustAsync(first: $first, second: $second, third: $third)';
 
   @override
   int get hashCode => first.hashCode ^ second.hashCode ^ third.hashCode;

@@ -178,6 +178,10 @@ class CustomStructErrorAnotherTwinRustAsync implements FrbException {
   });
 
   @override
+  String toString() =>
+      'CustomStructErrorAnotherTwinRustAsync(message: $message)';
+
+  @override
   int get hashCode => message.hashCode;
 
   @override
@@ -194,6 +198,9 @@ class CustomStructErrorTwinRustAsync implements FrbException {
   const CustomStructErrorTwinRustAsync({
     required this.a,
   });
+
+  @override
+  String toString() => 'CustomStructErrorTwinRustAsync(a: $a)';
 
   @override
   int get hashCode => a.hashCode;
@@ -240,6 +247,9 @@ class CustomStructTwinRustAsync {
       .crateApiPseudoManualExceptionTwinRustAsyncCustomStructTwinRustAsyncStaticReturnCustomStructOkTwinRustAsync();
 
   @override
+  String toString() => 'CustomStructTwinRustAsync(message: $message)';
+
+  @override
   int get hashCode => message.hashCode;
 
   @override
@@ -282,6 +292,9 @@ class SomeStructTwinRustAsync {
   static Future<int> staticReturnOkCustomErrorTwinRustAsync() => RustLib
       .instance.api
       .crateApiPseudoManualExceptionTwinRustAsyncSomeStructTwinRustAsyncStaticReturnOkCustomErrorTwinRustAsync();
+
+  @override
+  String toString() => 'SomeStructTwinRustAsync(value: $value)';
 
   @override
   int get hashCode => value.hashCode;

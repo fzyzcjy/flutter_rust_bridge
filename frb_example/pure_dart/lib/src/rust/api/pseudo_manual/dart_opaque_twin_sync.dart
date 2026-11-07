@@ -99,6 +99,10 @@ class DartOpaqueNestedTwinSync {
   });
 
   @override
+  String toString() =>
+      'DartOpaqueNestedTwinSync(first: $first, second: $second)';
+
+  @override
   int get hashCode => first.hashCode ^ second.hashCode;
 
   @override

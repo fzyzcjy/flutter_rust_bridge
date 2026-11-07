@@ -81,6 +81,9 @@ class ConcatenateWithTwinRustAsyncSse {
       );
 
   @override
+  String toString() => 'ConcatenateWithTwinRustAsyncSse(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override
@@ -99,6 +102,9 @@ class Log2TwinRustAsyncSse {
     required this.key,
     required this.value,
   });
+
+  @override
+  String toString() => 'Log2TwinRustAsyncSse(key: $key, value: $value)';
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -122,6 +128,9 @@ class MyCallableTwinRustAsyncSse {
   Future<String> call({required String two}) => RustLib.instance.api
       .crateApiPseudoManualMethodTwinRustAsyncSseMyCallableTwinRustAsyncSseCall(
           that: this, two: two);
+
+  @override
+  String toString() => 'MyCallableTwinRustAsyncSse(one: $one)';
 
   @override
   int get hashCode => one.hashCode;
@@ -204,6 +213,9 @@ class SimpleStructTwinRustAsyncSse {
               arg: arg);
 
   @override
+  String toString() => 'SimpleStructTwinRustAsyncSse(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override
@@ -227,6 +239,9 @@ class StaticOnlyTwinRustAsyncSse {
           a: a);
 
   @override
+  String toString() => 'StaticOnlyTwinRustAsyncSse(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override
@@ -248,6 +263,9 @@ class SumWithTwinRustAsyncSse {
       .instance.api
       .crateApiPseudoManualMethodTwinRustAsyncSseSumWithTwinRustAsyncSseSumTwinRustAsyncSse(
           that: this, y: y, z: z);
+
+  @override
+  String toString() => 'SumWithTwinRustAsyncSse(x: $x)';
 
   @override
   int get hashCode => x.hashCode;

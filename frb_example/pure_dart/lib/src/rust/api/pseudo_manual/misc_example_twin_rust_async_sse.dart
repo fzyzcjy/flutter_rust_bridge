@@ -83,6 +83,9 @@ class ATwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'ATwinRustAsyncSse(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override
@@ -119,6 +122,9 @@ class BTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'BTwinRustAsyncSse(b: $b)';
+
+  @override
   int get hashCode => b.hashCode;
 
   @override
@@ -137,6 +143,10 @@ class BigBuffersTwinRustAsyncSse {
     required this.int64,
     required this.uint64,
   });
+
+  @override
+  String toString() =>
+      'BigBuffersTwinRustAsyncSse(int64: $int64, uint64: $uint64)';
 
   @override
   int get hashCode => int64.hashCode ^ uint64.hashCode;
@@ -158,6 +168,9 @@ class CTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'CTwinRustAsyncSse(c: $c)';
+
+  @override
   int get hashCode => c.hashCode;
 
   @override
@@ -176,6 +189,10 @@ class MyNestedStructTwinRustAsyncSse {
     required this.treeNode,
     required this.weekday,
   });
+
+  @override
+  String toString() =>
+      'MyNestedStructTwinRustAsyncSse(treeNode: $treeNode, weekday: $weekday)';
 
   @override
   int get hashCode => treeNode.hashCode ^ weekday.hashCode;
@@ -203,6 +220,10 @@ class MyTreeNodeTwinRustAsyncSse {
   });
 
   @override
+  String toString() =>
+      'MyTreeNodeTwinRustAsyncSse(valueI32: $valueI32, valueVecU8: $valueVecU8, valueBoolean: $valueBoolean, children: $children)';
+
+  @override
   int get hashCode =>
       valueI32.hashCode ^
       valueVecU8.hashCode ^
@@ -228,6 +249,10 @@ class StructWithEnumTwinRustAsyncSse {
     required this.abc1,
     required this.abc2,
   });
+
+  @override
+  String toString() =>
+      'StructWithEnumTwinRustAsyncSse(abc1: $abc1, abc2: $abc2)';
 
   @override
   int get hashCode => abc1.hashCode ^ abc2.hashCode;

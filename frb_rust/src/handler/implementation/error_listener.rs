@@ -17,6 +17,18 @@ impl ErrorListener for NoOpErrorListener {
     }
 }
 
+pub(crate) fn handle_non_sync_panic_error<Rust2DartCodec: BaseCodec>(
+    error_listener: impl ErrorListener,
+    port: MessagePort,
+    error: CatchUnwindWithBacktrace,
+) {
+    let message = Rust2DartCodec::encode_panic(&error.err, &error.backtrace).into_dart_abi();
+    error_listener.on_error(Error::Panic(error.err));
+    Rust2DartSender::new(Channel::new(port))
+        .send(message)
+        .unwrap();
+}
+
 #[cfg(test)]
 mod tests {
     use super::NoOpErrorListener;
@@ -31,16 +43,4 @@ mod tests {
         listener.on_error(Error::CustomError);
         listener.on_error(Error::Panic(Box::new("panic")));
     }
-}
-
-pub(crate) fn handle_non_sync_panic_error<Rust2DartCodec: BaseCodec>(
-    error_listener: impl ErrorListener,
-    port: MessagePort,
-    error: CatchUnwindWithBacktrace,
-) {
-    let message = Rust2DartCodec::encode_panic(&error.err, &error.backtrace).into_dart_abi();
-    error_listener.on_error(Error::Panic(error.err));
-    Rust2DartSender::new(Channel::new(port))
-        .send(message)
-        .unwrap();
 }

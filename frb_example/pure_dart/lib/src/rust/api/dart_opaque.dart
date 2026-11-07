@@ -108,6 +108,10 @@ class DartOpaqueNestedTwinNormal {
   });
 
   @override
+  String toString() =>
+      'DartOpaqueNestedTwinNormal(first: $first, second: $second)';
+
+  @override
   int get hashCode => first.hashCode ^ second.hashCode;
 
   @override

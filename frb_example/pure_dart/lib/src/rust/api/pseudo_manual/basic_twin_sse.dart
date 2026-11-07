@@ -148,6 +148,9 @@ class BasicStructTwinSse {
   });
 
   @override
+  String toString() => 'BasicStructTwinSse(apple: $apple, orange: $orange)';
+
+  @override
   int get hashCode => apple.hashCode ^ orange.hashCode;
 
   @override

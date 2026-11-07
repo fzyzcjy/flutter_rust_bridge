@@ -178,6 +178,9 @@ class NoteTwinSync {
   });
 
   @override
+  String toString() => 'NoteTwinSync(day: $day, body: $body)';
+
+  @override
   int get hashCode => day.hashCode ^ body.hashCode;
 
   @override

@@ -78,6 +78,9 @@ class BlobTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'BlobTwinRustAsyncSse(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -94,6 +97,9 @@ class FeedIdTwinRustAsyncSse {
   const FeedIdTwinRustAsyncSse({
     required this.field0,
   });
+
+  @override
+  String toString() => 'FeedIdTwinRustAsyncSse(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;
@@ -114,6 +120,9 @@ class MessageIdTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'MessageIdTwinRustAsyncSse(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -132,6 +141,9 @@ class PointTwinRustAsyncSse {
     required this.x,
     required this.y,
   });
+
+  @override
+  String toString() => 'PointTwinRustAsyncSse(x: $x, y: $y)';
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -167,6 +179,9 @@ class TestIdTwinRustAsyncSse {
   const TestIdTwinRustAsyncSse({
     required this.field0,
   });
+
+  @override
+  String toString() => 'TestIdTwinRustAsyncSse(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;

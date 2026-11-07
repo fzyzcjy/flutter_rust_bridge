@@ -70,6 +70,9 @@ class AttributeTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'AttributeTwinRustAsyncSse(key: $key, value: $value)';
+
+  @override
   int get hashCode => key.hashCode ^ value.hashCode;
 
   @override
@@ -96,6 +99,10 @@ class ElementTwinRustAsyncSse {
 
   static Future<ElementTwinRustAsyncSse> default_() => RustLib.instance.api
       .crateApiPseudoManualOptionalTwinRustAsyncSseElementTwinRustAsyncSseDefault();
+
+  @override
+  String toString() =>
+      'ElementTwinRustAsyncSse(tag: $tag, text: $text, attributes: $attributes, children: $children)';
 
   @override
   int get hashCode =>
@@ -144,6 +151,10 @@ class ExoticOptionalsTwinRustAsyncSse {
     this.nullableAttributes,
     this.newtypeint,
   });
+
+  @override
+  String toString() =>
+      'ExoticOptionalsTwinRustAsyncSse(int32: $int32, int64: $int64, float64: $float64, boolean: $boolean, zerocopy: $zerocopy, int8List: $int8List, uint8List: $uint8List, int32List: $int32List, float32List: $float32List, float64List: $float64List, attributes: $attributes, attributesNullable: $attributesNullable, nullableAttributes: $nullableAttributes, newtypeint: $newtypeint)';
 
   @override
   int get hashCode =>
@@ -195,6 +206,10 @@ class OptVecsTwinRustAsyncSse {
     required this.strings,
     required this.buffers,
   });
+
+  @override
+  String toString() =>
+      'OptVecsTwinRustAsyncSse(i32: $i32, enums: $enums, strings: $strings, buffers: $buffers)';
 
   @override
   int get hashCode =>

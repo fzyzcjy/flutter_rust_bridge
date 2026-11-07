@@ -326,6 +326,10 @@ class AudioBufferOptions {
   });
 
   @override
+  String toString() =>
+      'AudioBufferOptions(numberOfChannels: $numberOfChannels, length: $length, sampleRate: $sampleRate)';
+
+  @override
   int get hashCode =>
       numberOfChannels.hashCode ^ length.hashCode ^ sampleRate.hashCode;
 
@@ -354,6 +358,10 @@ class AudioParamDescriptor {
     required this.minValue,
     required this.maxValue,
   });
+
+  @override
+  String toString() =>
+      'AudioParamDescriptor(name: $name, automationRate: $automationRate, defaultValue: $defaultValue, minValue: $minValue, maxValue: $maxValue)';
 
   @override
   int get hashCode =>
@@ -386,6 +394,10 @@ class AudioRenderCapacityOptions {
 
   static Future<AudioRenderCapacityOptions> default_() =>
       RustLib.instance.api.webAudioApiAudioRenderCapacityOptionsDefault();
+
+  @override
+  String toString() =>
+      'AudioRenderCapacityOptions(updateInterval: $updateInterval)';
 
   @override
   int get hashCode => updateInterval.hashCode;
@@ -445,6 +457,10 @@ class PeriodicWaveOptions {
 
   static Future<PeriodicWaveOptions> default_() =>
       RustLib.instance.api.webAudioApiPeriodicWaveOptionsDefault();
+
+  @override
+  String toString() =>
+      'PeriodicWaveOptions(real: $real, imag: $imag, disableNormalization: $disableNormalization)';
 
   @override
   int get hashCode =>

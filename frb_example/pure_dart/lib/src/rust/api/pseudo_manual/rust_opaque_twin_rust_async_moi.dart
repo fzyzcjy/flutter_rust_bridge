@@ -177,6 +177,10 @@ class OpaqueNestedTwinRustAsyncMoi {
   });
 
   @override
+  String toString() =>
+      'OpaqueNestedTwinRustAsyncMoi(first: $first, second: $second)';
+
+  @override
   int get hashCode => first.hashCode ^ second.hashCode;
 
   @override

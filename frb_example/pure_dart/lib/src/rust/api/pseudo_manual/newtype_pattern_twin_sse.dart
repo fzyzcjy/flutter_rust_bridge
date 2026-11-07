@@ -24,6 +24,9 @@ class NewTypeIntTwinSse {
   });
 
   @override
+  String toString() => 'NewTypeIntTwinSse(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
