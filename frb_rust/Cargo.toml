@@ -24,7 +24,7 @@ serde_json = { workspace = true, optional = true }
 uuid = { workspace = true, optional = true }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
-allo-isolate = { workspace = true, features = ["anyhow", "backtrace", "zero-copy"] }
+allo-isolate = { workspace = true, features = ["anyhow", "zero-copy"] }
 dart-sys = { version = "4.1.5", optional = true }
 threadpool = { version = "1.8.1", optional = true }
 tokio = { version = "1.38.2", optional = true, features = ["rt-multi-thread", "sync"] }
