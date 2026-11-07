@@ -24,16 +24,26 @@ edition = "2021"
       'fn main() { println!("host-tool-ready"); }',
     );
 
+    // Use an already-installed toolchain: an uninstalled one (e.g. a pinned
+    // nightly) makes rustup download it inside the 1-minute install timeout.
+    final activeToolchainResult =
+        await Process.run('rustup', ['show', 'active-toolchain']);
+    expect(activeToolchainResult.exitCode, 0);
+    final activeToolchain = (activeToolchainResult.stdout as String)
+        .trim()
+        .split(RegExp(r'\s+'))
+        .first;
+
     var installed = false;
     await executeBuildWeb(
-      const BuildWebArgs(
+      BuildWebArgs(
         output: 'web',
         release: false,
         verbose: false,
         rustCrateDir: 'rust',
         cargoBuildArgs: [],
         wasmBindgenArgs: [],
-        wasmPackRustupToolchain: 'nightly-2025-02-01',
+        wasmPackRustupToolchain: activeToolchain,
         wasmPackRustflags: null,
         dartCompileJsEntrypoint: null,
         dartCompileWasmEntrypoint: null,
