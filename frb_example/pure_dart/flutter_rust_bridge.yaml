@@ -1,4 +1,5 @@
-rust_input: rust/src/api/**/*.rs
+rust_root: rust/
+rust_input: crate::api,frb_example_pure_dart_example_third_party_lib
 dart_output: lib/src/rust
 c_output: frb_generated.h
 full_dep: true

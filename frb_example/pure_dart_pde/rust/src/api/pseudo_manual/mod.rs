@@ -73,6 +73,8 @@ pub mod simple_twin_sync;
 pub mod stream_twin_rust_async;
 pub mod structure_twin_rust_async;
 pub mod structure_twin_sync;
+pub mod third_party_enum_twin_rust_async;
+pub mod third_party_enum_twin_sync;
 pub mod tuple_twin_rust_async;
 pub mod tuple_twin_sync;
 pub mod type_alias_twin_rust_async;
