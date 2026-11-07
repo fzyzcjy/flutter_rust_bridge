@@ -47,6 +47,7 @@ impl TypeParserWithContext<'_, '_, '_> {
         );
         Ok(RustOpaque(MirTypeRustOpaque {
             namespace: info.namespace,
+            generic_arg_namespaces: self.parse_generic_arg_namespaces(ty),
             inner: MirRustOpaqueInner(MirLifetimeAwareType::new(ty_str)),
             codec: info.codec,
             dart_api_type: None,

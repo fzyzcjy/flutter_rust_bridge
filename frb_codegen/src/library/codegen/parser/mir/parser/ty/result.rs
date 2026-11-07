@@ -101,6 +101,7 @@ mod tests {
             },
             inner: MirTypeRustOpaque {
                 namespace: Namespace::default(),
+                generic_arg_namespaces: vec![],
                 inner: MirRustOpaqueInner(MirLifetimeAwareType::new("Error".to_owned())),
                 codec: RustOpaqueCodecMode::Nom,
                 dart_api_type: None,

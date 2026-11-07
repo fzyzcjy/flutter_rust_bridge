@@ -11,11 +11,16 @@ use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
+use std::iter;
 
 impl WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'_> {
     fn generate_imports(&self) -> Option<Vec<Namespace>> {
-        // To expose the `pub use`s inside that file
-        Some(vec![self.mir.namespace.clone()])
+        // To expose the `pub use`s inside that file, and the types used in generic arguments
+        Some(
+            iter::once(self.mir.namespace.clone())
+                .chain(self.mir.generic_arg_namespaces.iter().cloned())
+                .collect(),
+        )
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
