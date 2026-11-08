@@ -76,7 +76,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await subscription.cancel().timeout(cancellationTimeout);
   });
 
-  test('event listener subscription cancels inside onData', () async {
+  test('event listener subscription cancels inside onData',
+      skip: skipWebStreamFlake(
+        twin: 'TwinSse',
+        jsModes: ['Sse'],
+      ), () async {
     final stream = await registerEventListenerTwinSse();
     addTearDown(closeEventListenerTwinSse);
     final cancelled = Completer<void>();

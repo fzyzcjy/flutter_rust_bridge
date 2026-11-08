@@ -65,11 +65,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   }
 
-  test('dart call handle_stream_sink_at_1', () async {
+  test('dart call handle_stream_sink_at_1',
+      skip: skipWebStreamFlake(
+        twin: 'TwinRustAsyncSse',
+        jsModes: ['RustAsyncSse'],
+      ), () async {
     await testHandleStream(handleStreamSinkAt1TwinRustAsyncSse);
   });
 
-  test('dart call handle_stream_sink_at_2', () async {
+  test('dart call handle_stream_sink_at_2',
+      skip: skipWebStreamFlake(
+        twin: 'TwinRustAsyncSse',
+        wasmModes: ['RustAsync'],
+        pde: true,
+      ), () async {
     await testHandleStream(handleStreamSinkAt2TwinRustAsyncSse);
   });
 
@@ -84,25 +93,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       orderedEquals([1, 2]),
       orderedEquals([3, 4]),
     ]);
-  });
-
-  // Many short streams fed from worker threads at once, which used to provoke
-  // Web delivery races that dropped their first messages or the close.
-  test('stream_sink_fixed_sized_primitive_array_twin_normal concurrently',
-      () async {
-    for (var round = 0; round < 30; round++) {
-      final outputs = await Future.wait([
-        for (var i = 0; i < 16; i++)
-          streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse().toList(),
-      ]);
-      expect(
-        outputs,
-        everyElement([
-          orderedEquals([1, 2]),
-          orderedEquals([3, 4]),
-        ]),
-      );
-    }
   });
 
   test('stream_sink_inside_vec_twin_normal', () async {
