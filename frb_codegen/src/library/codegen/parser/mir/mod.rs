@@ -2,6 +2,7 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::early_generator::pack::IrEarlyGeneratorPack;
 use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
+use crate::codegen::parser::mir::sanity_checker::safe_ident_collision_checker::check_safe_ident_collisions;
 
 pub(crate) mod internal_config;
 pub(crate) mod parser;
@@ -16,6 +17,9 @@ pub(crate) fn parse(
 ) -> anyhow::Result<MirPack> {
     let pack = parser::parse(config, ir_pack, parse_mode)?;
     dumper.dump("1_parse_pack.json", &pack)?;
+    if parse_mode == ParseMode::Normal {
+        check_safe_ident_collisions(&pack)?;
+    }
 
     let pack = transformer::filter_trait_impl_transformer::transform(pack)?;
     dumper.dump("2_filter_trait_impl_transformer.json", &pack)?;
