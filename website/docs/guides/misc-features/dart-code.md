@@ -61,18 +61,27 @@ Any valid Dart Code for a class body is allowed in the `#[frb(dart_code =...)]`.
 
 ## Opaque types
 
-For opaque types, the code is inserted into the generated abstract class,
+For opaque types, the code is inserted into the generated abstract class.
+Instance members are mixed into the objects returned from Rust only when that is enabled:
+set `dart_code_mixin: true` in `flutter_rust_bridge.yaml`, pass `--dart-code-mixin`,
+or put `#[frb(dart_code_mixin)]` on one type. `#[frb(ui_state)]` does not opt in.
+Static members and factory constructors work without it.
+
+When it is enabled and the code has instance members, the abstract class becomes a
+[mixin class](https://dart.dev/language/mixins#class-mixin-or-mixin-class)
 and the classes of objects returned from Rust mix it in.
-Therefore, instance members, including overrides such as `==`, `hashCode` and `toString`, work on those objects as well.
-
-Because the abstract class becomes a [mixin class](https://dart.dev/language/mixins#class-mixin-or-mixin-class),
-the code cannot declare generative constructors other than trivial ones such as `Foo._();`
+Instance members, including overrides such as `==`, `hashCode` and `toString`, then work on those objects as well.
+The code cannot declare generative constructors other than trivial ones such as `Foo._();`
 (factory constructors and static members are fine).
-It should not override `dispose` or `isDisposed` either, since they manage the underlying Rust object.
+It also cannot declare `dispose`, `isDisposed`, `move`, `frbInternalCstEncode` or `frbInternalSseEncode`.
+Those members belong to the Rust object: overriding `dispose` or `isDisposed` would leak or misreport it,
+and overriding `set move` would clone the value instead of moving it.
+Codegen rejects these names when mixing in.
 
-Mixin classes require Dart 3. With `--no-dart3`, the code is not mixed in,
-so instance methods fail to compile and overrides such as `toString` are ignored;
-only static members and factory constructors work.
+Mixin classes require Dart 3. With `--no-dart3`, the mixin is not applied.
+A `dart_code` that has instance members then makes the generated file fail to compile,
+because the generated class still `implements` the abstract class while that class has concrete members.
+Static members and factory constructors do not, since they are not mixed in.
 
 ## Works only if rust code is callable
 

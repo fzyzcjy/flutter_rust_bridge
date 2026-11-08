@@ -819,7 +819,7 @@ class _SyncTextFieldState extends State<SyncTextField> {
 // These functions are ignored because they are not marked as `pub`: `on_mutation`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BaseRustState>>
-abstract mixin class BaseRustState implements RustOpaqueInterface {
+abstract class BaseRustState implements RustOpaqueInterface {
   Stream<void> createNotifyUiStream();
 
   static BaseRustState empty() =>
@@ -833,7 +833,7 @@ abstract mixin class BaseRustState implements RustOpaqueInterface {
 }
 
 @sealed
-class BaseRustStateImpl extends RustOpaque with BaseRustState {
+class BaseRustStateImpl extends RustOpaque implements BaseRustState {
   // Not to be used by end users
   BaseRustStateImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);

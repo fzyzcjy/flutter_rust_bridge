@@ -5,6 +5,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::misc::generate_c
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
+use crate::codegen::ir::mir::pack::MirPack;
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::rust_opaque::MirTypeRustOpaque;
 use crate::codegen::ir::mir::ty::MirType;
@@ -134,23 +135,59 @@ struct Info {
     methods: GeneratedApiMethods,
 }
 
-/// Classes of objects returned from Rust only inherit `dart_code` members by mixing in the
-/// public class, which is a mixin class exactly when this returns true.
+/// Whether objects returned from Rust mix in the public class.
+///
+/// The public class, its `*Impl`, and proxy variants all use this. Mixing in requires Dart 3,
+/// `dart_code_mixin` or `#[frb(dart_code_mixin)]`, and instance members in `dart_code`.
+/// `#[frb(ui_state)]` never opts in. The parser stores `dart_code` on both the auto-opaque
+/// wrapper and the inner opaque type; a borrowed proxy is resolved through the inner type.
 pub(crate) fn mixes_in_dart_code(ty: &MirType, context: ApiDartGeneratorContext) -> bool {
-    // Mixin classes are a Dart 3 language feature.
     if !context.config.dart3 {
         return false;
     }
-    // Borrowed auto opaque types (e.g. proxies) are not keys of `dart_code_of_type`, but their
-    // inner opaque type is.
     let ty = match ty {
         MirType::RustAutoOpaqueImplicit(ty) => MirType::RustOpaque(ty.inner.clone()),
         ty => ty.clone(),
     };
-    !generate_class_extra_body(ty, &context.mir_pack.dart_code_of_type)
-        .body
-        .trim()
-        .is_empty()
+    let ident = ty.safe_ident();
+    if context.mir_pack.dart_code_mixin_blocked.contains(&ident) {
+        return false;
+    }
+    let enabled =
+        context.config.dart_code_mixin || context.mir_pack.dart_code_mixin_opt_in.contains(&ident);
+    if !enabled {
+        return false;
+    }
+    super::dart_code_body::has_instance_member(
+        &generate_class_extra_body(ty, &context.mir_pack.dart_code_of_type).body,
+    )
+}
+
+pub(crate) fn ensure_no_reserved_opaque_members(
+    pack: &MirPack,
+    config: &crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig,
+) -> anyhow::Result<()> {
+    if !config.dart3 {
+        return Ok(());
+    }
+    for (key, code) in &pack.dart_code_of_type {
+        if pack.dart_code_mixin_blocked.contains(key) {
+            continue;
+        }
+        let opaque_key = key.starts_with("RustOpaque_") || key.starts_with("Auto_");
+        let enabled =
+            opaque_key && (config.dart_code_mixin || pack.dart_code_mixin_opt_in.contains(key));
+        if !enabled || !super::dart_code_body::has_instance_member(&code.body) {
+            continue;
+        }
+        if let Some(name) = super::dart_code_body::reserved_instance_member(&code.body) {
+            anyhow::bail!(
+                "`dart_code` on `{key}` declares `{name}`, which would override the member that owns the Rust object once the class is mixed in. Remove that declaration. Reserved names: {}.",
+                super::dart_code_body::reserved_opaque_member_list()
+            );
+        }
+    }
+    Ok(())
 }
 
 fn generate_implements(
@@ -234,7 +271,7 @@ mod tests {
     use crate::codegen::ir::mir::ty::MirTypeTrait;
     use crate::utils::basic_code::parser::parse_dart_code;
     use crate::utils::namespace::Namespace;
-    use std::collections::HashMap;
+    use std::collections::{HashMap, HashSet};
     use std::path::PathBuf;
 
     fn rust_opaque() -> MirTypeRustOpaque {
@@ -260,9 +297,10 @@ mod tests {
         })
     }
 
-    fn config(dart3: bool) -> GeneratorApiDartInternalConfig {
+    fn config(dart3: bool, dart_code_mixin: bool) -> GeneratorApiDartInternalConfig {
         GeneratorApiDartInternalConfig {
             dart_collection_deep_equality: false,
+            dart_code_mixin,
             dart_enums_style: true,
             dart3,
             dart_decl_base_output_path: PathBuf::new(),
@@ -273,19 +311,38 @@ mod tests {
         }
     }
 
-    /// Mirrors the parser, which keys the `dart_code` of an opaque struct by its inner opaque type.
-    fn pack(dart_code: Option<&str>) -> MirPack {
+    /// The parser stores an opaque struct's `dart_code` under both its auto-opaque wrapper key
+    /// and its inner opaque key. `extra_keys` adds those, on top of the inner key.
+    fn pack(dart_code: Option<&str>, opt_in: bool, extra_keys: &[&str], blocked: bool) -> MirPack {
+        let inner_key = MirType::RustOpaque(rust_opaque()).safe_ident();
+        let mut dart_code_mixin_opt_in = HashSet::new();
+        let mut dart_code_mixin_blocked = HashSet::new();
+        if dart_code.is_some() {
+            if opt_in {
+                dart_code_mixin_opt_in.insert(inner_key.clone());
+                for key in extra_keys {
+                    dart_code_mixin_opt_in.insert((*key).to_owned());
+                }
+            }
+            if blocked {
+                dart_code_mixin_blocked.insert(inner_key.clone());
+            }
+        }
         MirPack {
             funcs_all: vec![],
             extra_types_all: vec![],
             struct_pool: Default::default(),
             enum_pool: Default::default(),
             dart_code_of_type: (dart_code.into_iter())
-                .map(|code| {
-                    let key = MirType::RustOpaque(rust_opaque()).safe_ident();
-                    (key, parse_dart_code(code))
+                .flat_map(|code| {
+                    let parsed = parse_dart_code(code);
+                    let mut keys = vec![inner_key.clone()];
+                    keys.extend(extra_keys.iter().map(|key| (*key).to_owned()));
+                    keys.into_iter().map(move |key| (key, parsed.clone()))
                 })
                 .collect(),
+            dart_code_mixin_opt_in,
+            dart_code_mixin_blocked,
             existing_handler: None,
             skips: vec![],
             trait_impls: vec![],
@@ -294,19 +351,32 @@ mod tests {
         }
     }
 
-    /// Mixes in only when `dart_code` has members (imports alone leave nothing to inherit) and
-    /// Dart 3 features, which mixin classes need, are enabled.
+    /// Mixes in only for opted-in Dart 3 types whose `dart_code` has an instance member.
     #[test]
-    fn mixes_in_dart_code_only_with_members() {
+    fn mixes_in_dart_code_only_with_instance_members() {
         let ty = MirType::RustOpaque(rust_opaque());
-        for (dart3, dart_code, expected) in [
-            (true, None, false),
-            (true, Some("import 'dart:math';\n"), false),
-            (true, Some("int extra() => 1;"), true),
-            (false, Some("int extra() => 1;"), false),
+        for (dart3, mixin, dart_code, expected) in [
+            (true, true, None, false),
+            (true, true, Some("import 'dart:math';\n"), false),
+            (true, true, Some("// only a comment\n"), false),
+            (
+                true,
+                true,
+                Some("static int get dartCodeGetter => 123;"),
+                false,
+            ),
+            (
+                true,
+                true,
+                Some("factory Foo() {\n  return Foo.empty();\n}"),
+                false,
+            ),
+            (true, true, Some("int extra() => 1;"), true),
+            (true, false, Some("int extra() => 1;"), false),
+            (false, true, Some("int extra() => 1;"), false),
         ] {
-            let config = config(dart3);
-            let pack = pack(dart_code);
+            let config = config(dart3, mixin);
+            let pack = pack(dart_code, false, &[], false);
             let context = ApiDartGeneratorContext {
                 mir_pack: &pack,
                 config: &config,
@@ -314,24 +384,81 @@ mod tests {
             assert_eq!(
                 mixes_in_dart_code(&ty, context),
                 expected,
-                "{dart3} {dart_code:?}"
+                "{dart3} {mixin} {dart_code:?}"
             );
         }
     }
 
-    /// Finds the `dart_code` of a borrowed auto opaque type, which is not a key itself.
+    /// An item attribute opts in while the package flag stays off.
     #[test]
-    fn mixes_in_dart_code_of_borrowed_auto_opaque_via_inner_type() {
-        let config = config(true);
-        let pack = pack(Some("int extra() => 1;"));
+    fn item_opt_in_mixes_without_the_package_flag() {
+        let ty = MirType::RustOpaque(rust_opaque());
+        let config = config(true, false);
+        let pack = pack(Some("int extra() => 1;"), true, &[], false);
         let context = ApiDartGeneratorContext {
             mir_pack: &pack,
             config: &config,
         };
-        let ty = borrowed_auto_opaque();
-
-        assert!(!pack.dart_code_of_type.contains_key(&ty.safe_ident()));
         assert!(mixes_in_dart_code(&ty, context));
+    }
+
+    /// `#[frb(ui_state)]` does not mix in, even when the package flag is on.
+    #[test]
+    fn ui_state_does_not_mix_in() {
+        let ty = MirType::RustOpaque(rust_opaque());
+        let config = config(true, true);
+        let pack = pack(Some("int extra() => 1;"), true, &[], true);
+        let context = ApiDartGeneratorContext {
+            mir_pack: &pack,
+            config: &config,
+        };
+        assert!(!mixes_in_dart_code(&ty, context));
+    }
+
+    /// The parser records both keys. The inner-only map still resolves a borrowed proxy.
+    #[test]
+    fn mixes_in_dart_code_of_borrowed_auto_opaque_via_inner_type() {
+        let config = config(true, false);
+        let ty = borrowed_auto_opaque();
+        let both = pack(Some("int extra() => 1;"), true, &[&ty.safe_ident()], false);
+        assert!(both.dart_code_of_type.contains_key(&ty.safe_ident()));
+        assert!(mixes_in_dart_code(
+            &ty,
+            ApiDartGeneratorContext {
+                mir_pack: &both,
+                config: &config,
+            }
+        ));
+
+        let inner_only = pack(Some("int extra() => 1;"), true, &[], false);
+        assert!(!inner_only.dart_code_of_type.contains_key(&ty.safe_ident()));
+        assert!(mixes_in_dart_code(
+            &ty,
+            ApiDartGeneratorContext {
+                mir_pack: &inner_only,
+                config: &config,
+            }
+        ));
+    }
+
+    /// Rejects members that would shadow the Rust object's own disposal and move.
+    #[test]
+    fn rejects_reserved_opaque_members_when_mixing_in() {
+        let config = config(true, false);
+        let reserved = pack(Some("void dispose() {}"), true, &[], false);
+        let error = ensure_no_reserved_opaque_members(&reserved, &config)
+            .expect_err("reserved member")
+            .to_string();
+        assert!(error.contains("dispose"));
+        assert!(error.contains("isDisposed"));
+
+        let allowed = pack(
+            Some("// void dispose()\nint extra() => 1;"),
+            true,
+            &[],
+            false,
+        );
+        assert!(ensure_no_reserved_opaque_members(&allowed, &config).is_ok());
     }
 
     /// Keeps the public class, its `Impl` and proxy variants consistent about mixing in.
@@ -342,9 +469,9 @@ mod tests {
             upstream: Box::new(MirType::Primitive(MirTypePrimitive::I32)),
             upstream_method_name: "borrow".into(),
         }));
-        let generate = |dart3, dart_code| {
-            let config = config(dart3);
-            let pack = pack(dart_code);
+        let generate = |dart3, mixin, dart_code| {
+            let config = config(dart3, mixin);
+            let pack = pack(dart_code, mixin, &[], false);
             let context = ApiDartGeneratorContext {
                 mir_pack: &pack,
                 config: &config,
@@ -357,13 +484,18 @@ mod tests {
             )
         };
 
-        let (class, impl_class, proxy_class) = generate(true, Some("int extra() => 1;"));
+        let (class, impl_class, proxy_class) = generate(true, true, Some("int extra() => 1;"));
         assert!(class.contains("abstract mixin class Thing implements RustOpaqueInterface {"));
         assert!(impl_class.contains("class ThingImpl extends RustOpaque with Thing {"));
         assert!(proxy_class.contains("with SimpleDisposable, Thing {"));
 
-        for (dart3, dart_code) in [(true, None), (false, Some("int extra() => 1;"))] {
-            let (class, impl_class, proxy_class) = generate(dart3, dart_code);
+        for (dart3, mixin, dart_code) in [
+            (true, true, None),
+            (true, true, Some("static int get onlyStatic => 1;")),
+            (true, false, Some("int extra() => 1;")),
+            (false, true, Some("int extra() => 1;")),
+        ] {
+            let (class, impl_class, proxy_class) = generate(dart3, mixin, dart_code);
             assert!(class.contains("abstract class Thing implements RustOpaqueInterface {"));
             assert!(impl_class.contains("class ThingImpl extends RustOpaque implements Thing {"));
             assert!(proxy_class.contains("with SimpleDisposable implements Thing {"));

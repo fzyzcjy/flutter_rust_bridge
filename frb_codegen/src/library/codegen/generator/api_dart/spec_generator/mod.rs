@@ -53,6 +53,10 @@ pub(crate) fn generate(
     config: &GeneratorApiDartInternalConfig,
     dumper: &Dumper,
 ) -> Result<ApiDartOutputSpec> {
+    crate::codegen::generator::api_dart::spec_generator::class::ty::rust_opaque::ensure_no_reserved_opaque_members(
+        mir_pack, config,
+    )?;
+
     let cache = MirPackComputedCache::compute(mir_pack);
     let context = ApiDartGeneratorContext { mir_pack, config };
 

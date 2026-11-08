@@ -23,6 +23,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('OpaqueStructWithDartCodeTwinNormal instance members', () async {
     final one = OpaqueStructWithDartCodeTwinNormal();
     final two = OpaqueStructWithDartCodeTwinNormal();
+    // Two objects, so equality below comes from the override. hashCode => 7 and
+    // universal == demonstrate an override; they are not a pattern to copy.
+    expect(identical(one, two), false);
     expect(await one.dartCodeMethod(), 200);
     expect(one.toString(), 'OpaqueStructWithDartCodeTwinNormal(dart_code)');
     expect(one.hashCode, 7);
@@ -40,6 +43,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(inner.toString(),
         'ProxiedOpaqueStructWithDartCodeTwinNormal(dart_code)');
 
+    // SimpleDisposable.dispose only flips this flag. It does not release the
+    // upstream Rust object.
     inner.dispose();
     expect(inner.isDisposed, true);
   });

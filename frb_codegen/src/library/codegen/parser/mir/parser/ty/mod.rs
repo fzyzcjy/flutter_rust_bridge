@@ -23,7 +23,7 @@ use crate::codegen::parser::mir::parser::ty::rust_opaque::RustOpaqueParserInfo;
 use crate::codegen::parser::mir::ParseMode;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::Namespace;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use syn::Type;
 
 pub(crate) mod array;
@@ -65,6 +65,8 @@ pub(crate) struct TypeParser<'a> {
     pub(super) trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     pub(super) custom_ser_des_infos: Vec<MirCustomSerDes>,
     dart_code_of_type: HashMap<String, GeneralDartCode>,
+    dart_code_mixin_opt_in: HashSet<String>,
+    dart_code_mixin_blocked: HashSet<String>,
     struct_parser_info: EnumOrStructParserInfo<MirStructIdent, MirStruct>,
     enum_parser_info: EnumOrStructParserInfo<MirEnumIdent, MirEnum>,
     rust_opaque_parser_info: RustOpaqueParserInfo,
@@ -105,6 +107,8 @@ impl<'a> TypeParser<'a> {
             trait_def_infos,
             custom_ser_des_infos: Default::default(),
             dart_code_of_type: HashMap::new(),
+            dart_code_mixin_opt_in: HashSet::new(),
+            dart_code_mixin_blocked: HashSet::new(),
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
             rust_opaque_parser_info: RustOpaqueParserInfo::default(),
@@ -114,11 +118,21 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    pub(crate) fn consume(self) -> (MirStructPool, MirEnumPool, HashMap<String, GeneralDartCode>) {
+    pub(crate) fn consume(
+        self,
+    ) -> (
+        MirStructPool,
+        MirEnumPool,
+        HashMap<String, GeneralDartCode>,
+        HashSet<String>,
+        HashSet<String>,
+    ) {
         (
             self.struct_parser_info.object_pool,
             self.enum_parser_info.object_pool,
             self.dart_code_of_type,
+            self.dart_code_mixin_opt_in,
+            self.dart_code_mixin_blocked,
         )
     }
 

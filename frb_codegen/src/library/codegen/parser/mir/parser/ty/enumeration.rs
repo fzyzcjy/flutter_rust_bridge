@@ -22,7 +22,7 @@ use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypePars
 use crate::if_then_some;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::{Namespace, NamespacedName};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
 
 impl TypeParserWithContext<'_, '_, '_> {
@@ -207,6 +207,14 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
 
     fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode> {
         &mut self.0.inner.dart_code_of_type
+    }
+
+    fn dart_code_mixin_opt_in(&mut self) -> &mut HashSet<String> {
+        &mut self.0.inner.dart_code_mixin_opt_in
+    }
+
+    fn dart_code_mixin_blocked(&mut self) -> &mut HashSet<String> {
+        &mut self.0.inner.dart_code_mixin_blocked
     }
 
     fn parse_type_rust_auto_opaque_implicit(

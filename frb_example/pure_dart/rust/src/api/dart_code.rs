@@ -34,6 +34,7 @@ impl TranslatableStructWithDartCodeTwinNormal {
 
 #[frb(
     opaque,
+    dart_code_mixin,
     dart_code = "
   static int get dartCodeGetter => 123;
 
@@ -64,6 +65,7 @@ impl OpaqueStructWithDartCodeTwinNormal {
 
 #[frb(
     opaque,
+    dart_code_mixin,
     dart_code = "
   Future<int> dartCodeMethod() async => await normalMethodTwinNormal() * 2;
 
