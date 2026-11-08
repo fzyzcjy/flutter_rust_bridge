@@ -4,7 +4,8 @@
 
 Verify that a signed arm64 HAP produced from the CargoKit create example can be
 installed on an OHOS/HarmonyOS device, start `EntryAbility`, load the packaged
-Rust library, complete a Dart-to-Rust call, and clean up the test application.
+Rust library, complete a Dart-to-Rust call, and clean up
+the test application.
 
 ## Source
 
@@ -33,7 +34,8 @@ entrypoint. Run before claiming real-device coverage in a PR or release.
 
 - OS: macOS, Linux, or Windows supported by the selected OHOS Flutter SDK.
 - Flutter: an OHOS-enabled Flutter version compatible with this checkout.
-- Dart: the version bundled with that Flutter SDK.
+- Dart: the version bundled with that Flutter SDK for Flutter commands; Dart
+  3.13 or newer for repository `frb_internal` commands.
 - Rust: stable with the `aarch64-unknown-linux-ohos` target installed.
 - Device or simulator: arm64 OHOS/HarmonyOS device reachable through `hdc`.
 - Browser or external service: not required.
@@ -49,6 +51,20 @@ rustup target add aarch64-unknown-linux-ohos
 Set `OHOS_SDK_HOME` to the installed native SDK directory. Configure a dedicated
 bundle name in `frb_example/flutter_via_create/ohos/AppScope/app.json5`, then
 configure local debug signing without committing the signing material.
+
+If the OHOS Flutter fork bundles an older Dart SDK, put a Dart 3.13 or newer
+executable directory earlier on `PATH` than the OHOS Flutter SDK's `bin`
+directory for repository `frb_internal` commands.
+
+Use the Hvigor wrapper and Node runtime from the same DevEco Studio installation
+for the build. Put that Hvigor directory before any standalone command-line-tools
+directory in `PATH`:
+
+```bash
+export HVIGOR_HOME=/Applications/DevEco-Studio.app/Contents/tools/hvigor
+export NODE_HOME=/Applications/DevEco-Studio.app/Contents/tools/node
+export PATH="$HVIGOR_HOME/bin:$NODE_HOME/bin:$PATH"
+```
 
 ## Test Data
 
