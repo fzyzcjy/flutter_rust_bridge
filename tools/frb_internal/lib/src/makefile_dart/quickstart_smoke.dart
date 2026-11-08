@@ -27,6 +27,9 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
 
   _QuickstartSmokeFlutterRun? flutterRun;
   try {
+    if (Platform.isMacOS && context.target == QuickstartSmokeTarget.desktop) {
+      await _recordMacosQuickstartSmokeDiagnostics(context, label: 'start');
+    }
     flutterRun = await _startQuickstartSmokeFlutterRun(context);
     final activeFlutterRun = flutterRun;
     final readyForScreenshot = await _waitForQuickstartSmokeFlutterRunReady(
@@ -70,6 +73,10 @@ class _QuickstartSmokeContext {
   final File preprocessedOcrOutputFile;
   final File logFile;
   final File? chromeWrapper;
+
+  File get macosDiagnosticsFile => File(
+    '${absoluteArtifactDir.path}/quickstart-$targetName-macos-diagnostics.txt',
+  );
 
   const _QuickstartSmokeContext({
     required this.package,
@@ -148,6 +155,7 @@ class _QuickstartSmokeContext {
       ocrOutputFile,
       preprocessedOcrOutputFile,
       logFile,
+      macosDiagnosticsFile,
     ]) {
       if (file.existsSync()) file.deleteSync();
     }
@@ -270,8 +278,10 @@ Duration quickstartSmokeFlutterRunReadyTimeoutForTesting(
     QuickstartSmokeTarget.desktop when effectiveIsMacOS => const Duration(
       minutes: 10,
     ),
-    QuickstartSmokeTarget.desktop ||
-    QuickstartSmokeTarget.android => const Duration(minutes: 5),
+    QuickstartSmokeTarget.desktop => const Duration(minutes: 5),
+    // Gradle downloads and unzips the NDK on every CI run before the app
+    // starts, which alone regularly takes 3-4 minutes.
+    QuickstartSmokeTarget.android ||
     QuickstartSmokeTarget.ios => const Duration(minutes: 10),
   };
 }
@@ -449,6 +459,10 @@ Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
     }
   } while (DateTime.now().isBefore(visibleTextDeadline));
 
+  if (Platform.isMacOS && context.target == QuickstartSmokeTarget.desktop) {
+    await _dumpQuickstartSmokeFlutterTrees(flutterRun);
+  }
+
   return _QuickstartSmokeScreenshotEvidence(
     readyForScreenshot: readyForScreenshot,
     ocrMatched: false,
@@ -556,6 +570,13 @@ Future<void> _captureAndOcrQuickstartSmokeScreenshotFromContext(
     ocrOutputFile: context.ocrOutputFile,
     preprocessedOcrOutputFile: context.preprocessedOcrOutputFile,
   );
+
+  if (Platform.isMacOS && context.target == QuickstartSmokeTarget.desktop) {
+    await _recordMacosQuickstartSmokeDiagnostics(
+      context,
+      label: 'after capture',
+    );
+  }
 }
 
 Future<File?> _createChromeWrapperIfNeeded(String artifactDir) async {
@@ -687,6 +708,71 @@ Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
     stderrEncoding: systemEncoding,
   );
 }
+
+/// Captures in CI sometimes come out fully transparent. Record the session
+/// state alongside every capture so a blank one can be compared with a working
+/// one.
+Future<void> _recordMacosQuickstartSmokeDiagnostics(
+  _QuickstartSmokeContext context, {
+  required String label,
+}) async {
+  final screenshot = context.screenshotFile;
+  final result = await Process.run('/bin/sh', [
+    '-c',
+    quickstartSmokeMacosDiagnosticsScriptForTesting,
+    'sh',
+    screenshot.existsSync() ? screenshot.path : '',
+  ], stderrEncoding: systemEncoding);
+  final report =
+      '===== macOS diagnostics: $label (${DateTime.now().toUtc()}) =====\n'
+      '${result.stdout}${result.stderr}';
+  print(report);
+  context.macosDiagnosticsFile.writeAsStringSync(
+    '$report\n',
+    mode: FileMode.append,
+  );
+}
+
+/// The macOS app window sometimes stays black even though the desktop captures
+/// fine. Ask `flutter run` to dump the app's trees into its log, to tell apart
+/// a UI that was never built from one that was built but never presented.
+Future<void> _dumpQuickstartSmokeFlutterTrees(
+  _QuickstartSmokeFlutterRun flutterRun,
+) async {
+  // flutter run ignores keys while a previous one is still being handled.
+  for (final (key, tree) in quickstartSmokeFlutterTreeDumpKeysForTesting) {
+    print('Asking flutter run to dump the $tree tree');
+    flutterRun.recordOutput('\n===== $tree tree dump =====\n');
+    flutterRun.process.stdin.write('$key\n');
+    await flutterRun.process.stdin.flush();
+    await Future<void>.delayed(const Duration(seconds: 5));
+  }
+}
+
+@visibleForTesting
+const quickstartSmokeFlutterTreeDumpKeysForTesting = [
+  ('w', 'widget'),
+  ('t', 'render'),
+  ('L', 'layer'),
+];
+
+@visibleForTesting
+const quickstartSmokeMacosDiagnosticsScriptForTesting = r'''
+run() { echo "\$ $*"; "$@" 2>&1; }
+run uptime
+run sysctl -n kern.boottime
+ioreg -c IOHIDSystem | grep -m1 HIDIdleTime
+ioreg -n Root -d1 | grep IOConsoleUsers
+run pmset -g
+run pmset -g assertions
+run defaults -currentHost read com.apple.screensaver
+run defaults read com.apple.screensaver
+run pgrep -l 'ScreenSaverEngine|loginwindow'
+run system_profiler SPDisplaysDataType
+if [ -n "$1" ]; then
+  run convert "$1" -format 'alpha max=%[fx:maxima.a] mean=%[fx:mean]\n' info:
+fi
+''';
 
 Future<void> _activateMacosQuickstartSmokeApp(
   Directory packageDirectory,
