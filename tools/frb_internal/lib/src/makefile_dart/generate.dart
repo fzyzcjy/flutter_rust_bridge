@@ -13,6 +13,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build_cli.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/freezed_lub.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate_from_scratch.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
@@ -647,7 +648,15 @@ Future<void> _wrapMaybeSetExitIfChanged(
 }
 
 Future<void> _normalizeGeneratedOutputBeforeDiff() async {
-  normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartModeOfPackage.keys);
+  final repoRootPath = exec.pwd!;
+  normalizePubspecs(
+    repoRootPath: repoRootPath,
+    packages: kDartModeOfPackage.keys,
+  );
+  // Pin only the dyn-trait getter whose interfaces make leastUpperBound
+  // ambiguous. A unique common type stays as generated. This runs before the
+  // cleanliness diff, including after from-scratch's raw build_runner.
+  normalizeUnstableFreezedLeastUpperBounds(repoRootPath: repoRootPath);
 }
 
 Future<void> wrapMaybeSetExitIfChangedRaw(

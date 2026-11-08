@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/build_cli.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/freezed_lub.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate_from_scratch.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
@@ -781,6 +782,296 @@ dev_dependencies:
     }
   });
 
+  test('ambiguous depth-1 interfaces pin the shared getter to Object', () {
+    const source = '''
+abstract class RustOpaqueInterface {}
+
+abstract class SimpleTraitForDynTwinNormal {}
+
+abstract class StructOneWithTraitForDynTwinNormal
+    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {}
+
+abstract class StructTwoWithTraitForDynTwinNormal
+    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {}
+
+mixin _\$SameTypeUnion {
+  int get field0 => throw _privateConstructorUsedError;
+}
+
+abstract class SameTypeUnion_Variant0 extends SameTypeUnion {
+  int get field0;
+}
+
+abstract class SameTypeUnion_Variant1 extends SameTypeUnion {
+  int get field0;
+}
+
+mixin _\$SimpleTraitForDynTwinNormalImplementor {
+  SimpleTraitForDynTwinNormal get field0 => throw _privateConstructorUsedError;
+  TResult when<TResult extends Object?>({
+    required TResult Function(StructOneWithTraitForDynTwinNormal field0)
+        variant0,
+    required TResult Function(StructTwoWithTraitForDynTwinNormal field0)
+        variant1,
+  }) =>
+      throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            SimpleTraitForDynTwinNormalImplementor_Variant0 value)
+        variant0,
+    required TResult Function(
+            SimpleTraitForDynTwinNormalImplementor_Variant1 value)
+        variant1,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+abstract class SimpleTraitForDynTwinNormalImplementor_Variant0
+    extends SimpleTraitForDynTwinNormalImplementor {
+  StructOneWithTraitForDynTwinNormal get field0;
+}
+
+abstract class SimpleTraitForDynTwinNormalImplementor_Variant1
+    extends SimpleTraitForDynTwinNormalImplementor {
+  StructTwoWithTraitForDynTwinNormal get field0;
+}
+''';
+
+    final normalized = normalizeUnstableFreezedLeastUpperBound(source);
+    const pinned = 'Object get field0 => throw _privateConstructorUsedError;';
+
+    expect(normalized, contains('int get field0 =>'));
+    expect(normalized, contains(pinned));
+    expect(
+      normalized,
+      isNot(contains('SimpleTraitForDynTwinNormal get field0')),
+    );
+    expect(
+      normalized,
+      contains(
+        'required TResult Function(StructOneWithTraitForDynTwinNormal field0)',
+      ),
+    );
+    expect(
+      normalized,
+      contains('SimpleTraitForDynTwinNormalImplementor_Variant0 value)'),
+    );
+    expect(
+      normalized,
+      contains('StructOneWithTraitForDynTwinNormal get field0;'),
+    );
+    expect(
+      normalized,
+      contains('StructTwoWithTraitForDynTwinNormal get field0;'),
+    );
+    expect(normalizeUnstableFreezedLeastUpperBound(normalized), normalized);
+
+    final opaqueChoice = source.replaceFirst(
+      'SimpleTraitForDynTwinNormal get field0 =>',
+      'RustOpaqueInterface get field0 =>',
+    );
+    final opaqueNormalized = normalizeUnstableFreezedLeastUpperBound(
+      opaqueChoice,
+    );
+    expect(opaqueNormalized, contains(pinned));
+    expect(opaqueNormalized, isNot(contains('RustOpaqueInterface get field0')));
+  });
+
+  test('stable common interface is not erased to Object', () {
+    const source = '''
+abstract class Animal {}
+
+abstract class Cat implements Animal {}
+
+abstract class Dog implements Animal {}
+
+abstract class Pet extends Animal {}
+
+abstract class CatWithPet implements Animal, Pet {}
+
+abstract class DogWithPet implements Animal, Pet {}
+
+mixin _\$PetUnion {
+  Animal get field0 => throw _privateConstructorUsedError;
+  TResult when<TResult extends Object?>({
+    required TResult Function(Cat field0) variant0,
+    required TResult Function(Dog field0) variant1,
+  }) =>
+      throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(PetUnion_Variant0 value) variant0,
+    required TResult Function(PetUnion_Variant1 value) variant1,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+abstract class PetUnion_Variant0 {
+  Cat get field0;
+}
+
+abstract class PetUnion_Variant1 {
+  Dog get field0;
+}
+
+mixin _\$RelatedUnion {
+  Pet get field0 => throw _privateConstructorUsedError;
+}
+
+abstract class RelatedUnion_Variant0 {
+  CatWithPet get field0;
+}
+
+abstract class RelatedUnion_Variant1 {
+  DogWithPet get field0;
+}
+
+mixin _\$NumberUnion {
+  num get field0 => throw _privateConstructorUsedError;
+}
+
+abstract class NumberUnion_Variant0 {
+  int get field0;
+}
+
+abstract class NumberUnion_Variant1 {
+  double get field0;
+}
+
+mixin _\$UndeclaredUnion {
+  Trait get field0 => throw _privateConstructorUsedError;
+}
+
+abstract class UndeclaredUnion_Variant0 {
+  One get field0;
+}
+
+abstract class UndeclaredUnion_Variant1 {
+  Two get field0;
+}
+''';
+
+    expect(normalizeUnstableFreezedLeastUpperBound(source), source);
+  });
+
+  test('checked-in dyn trait declarations pin only that getter', () {
+    final repo = _repoRootForFreezedLubTest();
+    final opaque = File('$repo/frb_dart/lib/src/misc/rust_opaque.dart')
+        .readAsStringSync();
+    final dyn = File(
+      '$repo/frb_example/pure_dart/lib/src/rust/api/dyn_trait.dart',
+    ).readAsStringSync();
+    final original = File(
+      '$repo/frb_example/pure_dart/lib/src/rust/frb_generated.freezed.dart',
+    ).readAsStringSync();
+    const objectIntro =
+        'mixin _\$SimpleTraitForDynTwinNormalImplementor {\n  Object get field0 =>';
+    const traitIntro =
+        'mixin _\$SimpleTraitForDynTwinNormalImplementor {\n  SimpleTraitForDynTwinNormal get field0 =>';
+    expect(original.contains(objectIntro), isTrue);
+
+    final kept = normalizeUnstableFreezedLeastUpperBound(
+      '$opaque\n$dyn\n$original',
+    );
+    expect(kept, '$opaque\n$dyn\n$original');
+
+    final flipped = original.replaceFirst(objectIntro, traitIntro);
+    final normalized = normalizeUnstableFreezedLeastUpperBound(
+      '$opaque\n$dyn\n$flipped',
+    );
+    expect(
+      normalized,
+      '$opaque\n$dyn\n${flipped.replaceFirst(traitIntro, objectIntro)}',
+    );
+  });
+
+  test('freezed normalizer ignores build output and test fixtures', () async {
+    final tempDir = await Directory.systemTemp.createTemp('frb_freezed_lub_');
+    try {
+      const declarations = '''
+abstract class RustOpaqueInterface {}
+
+abstract class SimpleTraitForDynTwinNormal {}
+
+abstract class StructOneWithTraitForDynTwinNormal
+    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {}
+
+abstract class StructTwoWithTraitForDynTwinNormal
+    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {}
+
+abstract class Animal {}
+
+abstract class Cat implements Animal {}
+
+abstract class Dog implements Animal {}
+''';
+      const unstable = '''
+mixin _\$Union {
+  SimpleTraitForDynTwinNormal get field0 => throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(Union_Variant0 value) variant0,
+    required TResult Function(Union_Variant1 value) variant1,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+abstract class Union_Variant0 {
+  StructOneWithTraitForDynTwinNormal get field0;
+}
+
+abstract class Union_Variant1 {
+  StructTwoWithTraitForDynTwinNormal get field0;
+}
+''';
+      const stable = '''
+mixin _\$Pet {
+  Animal get field0 => throw _privateConstructorUsedError;
+}
+
+abstract class Pet_Variant0 {
+  Cat get field0;
+}
+
+abstract class Pet_Variant1 {
+  Dog get field0;
+}
+''';
+      final declarationsFile = File('${tempDir.path}/lib/types.dart');
+      final generated = File('${tempDir.path}/lib/model.freezed.dart');
+      final stableFile = File('${tempDir.path}/lib/pet.freezed.dart');
+      final cached = File('${tempDir.path}/target/model.freezed.dart');
+      final fixture = File('${tempDir.path}/test/model.freezed.dart');
+      await declarationsFile.parent.create(recursive: true);
+      await cached.parent.create(recursive: true);
+      await fixture.parent.create(recursive: true);
+      await declarationsFile.writeAsString(declarations);
+      await generated.writeAsString(unstable);
+      await stableFile.writeAsString(stable);
+      await cached.writeAsString(unstable);
+      await fixture.writeAsString(unstable);
+
+      normalizeUnstableFreezedLeastUpperBounds(repoRootPath: tempDir.path);
+
+      expect(generated.readAsStringSync(), contains('Object get field0 =>'));
+      expect(
+        generated.readAsStringSync(),
+        contains('required TResult Function(Union_Variant0 value) variant0'),
+      );
+      expect(
+        generated.readAsStringSync(),
+        contains('StructOneWithTraitForDynTwinNormal get field0;'),
+      );
+      expect(stableFile.readAsStringSync(), stable);
+      expect(cached.readAsStringSync(), unstable);
+      expect(fixture.readAsStringSync(), unstable);
+      final pinned = generated.readAsStringSync();
+      normalizeUnstableFreezedLeastUpperBounds(repoRootPath: tempDir.path);
+      expect(generated.readAsStringSync(), pinned);
+      expect(stableFile.readAsStringSync(), stable);
+    } finally {
+      await tempDir.delete(recursive: true);
+    }
+  });
+
   test('pub get guard refreshes stale package config roots', () async {
     final tempDir = await Directory.systemTemp.createTemp('frb_pub_get_guard_');
     try {
@@ -1465,4 +1756,19 @@ version: 9.9.8
       );
     });
   });
+}
+
+String _repoRootForFreezedLubTest() {
+  var dir = Directory.current;
+  while (true) {
+    if (File('${dir.path}/frb_dart/pubspec.yaml').existsSync() &&
+        Directory('${dir.path}/frb_example').existsSync()) {
+      return dir.path;
+    }
+    final parent = dir.parent;
+    if (parent.path == dir.path) {
+      throw StateError('repo root not found from ${Directory.current.path}');
+    }
+    dir = parent;
+  }
 }
