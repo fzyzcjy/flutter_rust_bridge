@@ -38,6 +38,10 @@ class CustomizedTwinRustAsync {
   });
 
   @override
+  String toString() =>
+      'CustomizedTwinRustAsync(finalField: $finalField, nonFinalField: $nonFinalField)';
+
+  @override
   int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
 
   @override

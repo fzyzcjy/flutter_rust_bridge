@@ -22,6 +22,9 @@ class StructInLowerLevel {
   });
 
   @override
+  String toString() => 'StructInLowerLevel(inner: $inner)';
+
+  @override
   int get hashCode => inner.hashCode;
 
   @override

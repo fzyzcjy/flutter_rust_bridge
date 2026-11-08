@@ -31,6 +31,9 @@ class SimpleTranslatableExternalStructWithMethod {
       );
 
   @override
+  String toString() => 'SimpleTranslatableExternalStructWithMethod(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override

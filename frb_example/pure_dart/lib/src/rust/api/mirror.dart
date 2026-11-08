@@ -111,6 +111,9 @@ class AnotherTwinNormal {
   });
 
   @override
+  String toString() => 'AnotherTwinNormal(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override
@@ -127,6 +130,9 @@ class ApplicationEnv {
   const ApplicationEnv({
     required this.vars,
   });
+
+  @override
+  String toString() => 'ApplicationEnv(vars: $vars)';
 
   @override
   int get hashCode => vars.hashCode;
@@ -147,6 +153,9 @@ class ApplicationEnvVar {
     required this.field0,
     required this.field1,
   });
+
+  @override
+  String toString() => 'ApplicationEnvVar(field0: $field0, field1: $field1)';
 
   @override
   int get hashCode => field0.hashCode ^ field1.hashCode;
@@ -211,6 +220,10 @@ class ApplicationSettings {
   });
 
   @override
+  String toString() =>
+      'ApplicationSettings(name: $name, version: $version, mode: $mode, env: $env, envOptional: $envOptional)';
+
+  @override
   int get hashCode =>
       name.hashCode ^
       version.hashCode ^
@@ -240,6 +253,10 @@ class ContainsMirroredSubStructTwinNormal {
   });
 
   @override
+  String toString() =>
+      'ContainsMirroredSubStructTwinNormal(test: $test, test2: $test2)';
+
+  @override
   int get hashCode => test.hashCode ^ test2.hashCode;
 
   @override
@@ -259,6 +276,9 @@ class HashMapValue {
   });
 
   @override
+  String toString() => 'HashMapValue(inner: $inner)';
+
+  @override
   int get hashCode => inner.hashCode;
 
   @override
@@ -275,6 +295,9 @@ class ListOfNestedRawStringMirrored {
   const ListOfNestedRawStringMirrored({
     required this.raw,
   });
+
+  @override
+  String toString() => 'ListOfNestedRawStringMirrored(raw: $raw)';
 
   @override
   int get hashCode => raw.hashCode;
@@ -301,6 +324,9 @@ class MirrorStructTwinNormal {
   });
 
   @override
+  String toString() => 'MirrorStructTwinNormal(a: $a, b: $b, c: $c, d: $d)';
+
+  @override
   int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
 
   @override
@@ -322,6 +348,9 @@ class NestedRawStringMirrored {
   });
 
   @override
+  String toString() => 'NestedRawStringMirrored(raw: $raw)';
+
+  @override
   int get hashCode => raw.hashCode;
 
   @override
@@ -338,6 +367,9 @@ class Numbers {
   const Numbers({
     required this.field0,
   });
+
+  @override
+  String toString() => 'Numbers(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;
@@ -375,6 +407,9 @@ class RawStringMirrored {
   });
 
   @override
+  String toString() => 'RawStringMirrored(value: $value, type: $type)';
+
+  @override
   int get hashCode => value.hashCode ^ type.hashCode;
 
   @override
@@ -394,6 +429,9 @@ class Sequences {
   });
 
   @override
+  String toString() => 'Sequences(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -410,6 +448,9 @@ class StructWithHashMap {
   const StructWithHashMap({
     required this.map,
   });
+
+  @override
+  String toString() => 'StructWithHashMap(map: $map)';
 
   @override
   int get hashCode => map.hashCode;

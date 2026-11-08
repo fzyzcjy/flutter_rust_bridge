@@ -192,6 +192,9 @@ class NoteTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'NoteTwinRustAsyncSse(day: $day, body: $body)';
+
+  @override
   int get hashCode => day.hashCode ^ body.hashCode;
 
   @override

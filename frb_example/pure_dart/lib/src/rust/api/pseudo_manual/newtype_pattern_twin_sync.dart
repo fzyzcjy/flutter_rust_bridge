@@ -23,6 +23,9 @@ class NewTypeIntTwinSync {
   });
 
   @override
+  String toString() => 'NewTypeIntTwinSync(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override

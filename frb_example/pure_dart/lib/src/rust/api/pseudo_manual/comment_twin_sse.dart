@@ -47,6 +47,10 @@ class StructWithCommentsTwinSse {
       .crateApiPseudoManualCommentTwinSseStructWithCommentsTwinSseStaticMethodTwinSse();
 
   @override
+  String toString() =>
+      'StructWithCommentsTwinSse(fieldWithComments: $fieldWithComments)';
+
+  @override
   int get hashCode => fieldWithComments.hashCode;
 
   @override

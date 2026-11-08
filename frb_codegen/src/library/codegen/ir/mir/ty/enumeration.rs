@@ -145,6 +145,7 @@ mod tests {
             needs_json_serializable: false,
             generate_hash: false,
             generate_eq: false,
+            generate_to_string: false,
             dart_collection_deep_equality: false,
             ui_state: false,
             comments: vec![],

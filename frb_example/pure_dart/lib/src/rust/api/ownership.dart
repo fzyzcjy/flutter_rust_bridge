@@ -37,6 +37,9 @@ class SimpleStructForBorrowTwinNormal {
   });
 
   @override
+  String toString() => 'SimpleStructForBorrowTwinNormal(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override

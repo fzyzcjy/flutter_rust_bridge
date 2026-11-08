@@ -130,6 +130,9 @@ class AnotherTwinRustAsync {
   });
 
   @override
+  String toString() => 'AnotherTwinRustAsync(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override
@@ -148,6 +151,10 @@ class ContainsMirroredSubStructTwinRustAsync {
     required this.test,
     required this.test2,
   });
+
+  @override
+  String toString() =>
+      'ContainsMirroredSubStructTwinRustAsync(test: $test, test2: $test2)';
 
   @override
   int get hashCode => test.hashCode ^ test2.hashCode;
@@ -173,6 +180,9 @@ class MirrorStructTwinRustAsync {
     required this.c,
     required this.d,
   });
+
+  @override
+  String toString() => 'MirrorStructTwinRustAsync(a: $a, b: $b, c: $c, d: $d)';
 
   @override
   int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;

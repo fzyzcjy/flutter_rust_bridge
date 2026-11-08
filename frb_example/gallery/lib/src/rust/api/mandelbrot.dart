@@ -29,6 +29,9 @@ class Point {
   });
 
   @override
+  String toString() => 'Point(x: $x, y: $y)';
+
+  @override
   int get hashCode => x.hashCode ^ y.hashCode;
 
   @override
@@ -48,6 +51,9 @@ class Size {
     required this.width,
     required this.height,
   });
+
+  @override
+  String toString() => 'Size(width: $width, height: $height)';
 
   @override
   int get hashCode => width.hashCode ^ height.hashCode;

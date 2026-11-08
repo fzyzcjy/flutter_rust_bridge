@@ -26,3 +26,12 @@ If you want richer Dart value-class semantics, another option is to use `freezed
 Arbitrary equals/hash function can also be implemented by using the [extra Dart code](../misc-features/dart-code)
 feature.
 For example, `#[frb(dart_code = "int get hashCode { arbitrary_code_calling_whatever_Rust_and_Dart_things }")]`.
+
+## toString
+
+Non-freezed structs also get a field-style `toString`, such as `MyStruct(a: 1, b: 2)`.
+`#[frb(non_to_string)]` disables that member. A custom implementation can then be written with `dart_code`, in the same way as `==` and `hashCode`.
+
+A mirrored Rust method whose Dart name is already `toString`, such as `fn to_string(&self) -> String`, is kept, and the field-style member is not generated.
+
+Opaque types do not receive this generated member.

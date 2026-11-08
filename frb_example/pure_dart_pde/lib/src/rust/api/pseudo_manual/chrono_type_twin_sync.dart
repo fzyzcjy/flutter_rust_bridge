@@ -69,6 +69,10 @@ class FeatureChronoTwinSync {
   });
 
   @override
+  String toString() =>
+      'FeatureChronoTwinSync(utc: $utc, local: $local, duration: $duration, naiveDate: $naiveDate, naiveDateTime: $naiveDateTime)';
+
+  @override
   int get hashCode =>
       utc.hashCode ^
       local.hashCode ^
@@ -100,6 +104,10 @@ class TestChronoTwinSync {
     this.da,
     this.du,
   });
+
+  @override
+  String toString() =>
+      'TestChronoTwinSync(dt: $dt, dt2: $dt2, da: $da, du: $du)';
 
   @override
   int get hashCode => dt.hashCode ^ dt2.hashCode ^ da.hashCode ^ du.hashCode;

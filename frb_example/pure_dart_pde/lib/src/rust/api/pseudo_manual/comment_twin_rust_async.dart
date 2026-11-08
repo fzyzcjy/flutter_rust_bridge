@@ -48,6 +48,10 @@ class StructWithCommentsTwinRustAsync {
       .crateApiPseudoManualCommentTwinRustAsyncStructWithCommentsTwinRustAsyncStaticMethodTwinRustAsync();
 
   @override
+  String toString() =>
+      'StructWithCommentsTwinRustAsync(fieldWithComments: $fieldWithComments)';
+
+  @override
   int get hashCode => fieldWithComments.hashCode;
 
   @override

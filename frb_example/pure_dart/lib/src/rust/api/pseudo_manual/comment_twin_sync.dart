@@ -45,6 +45,10 @@ class StructWithCommentsTwinSync {
       .crateApiPseudoManualCommentTwinSyncStructWithCommentsTwinSyncStaticMethodTwinSync();
 
   @override
+  String toString() =>
+      'StructWithCommentsTwinSync(fieldWithComments: $fieldWithComments)';
+
+  @override
   int get hashCode => fieldWithComments.hashCode;
 
   @override

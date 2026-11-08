@@ -51,6 +51,10 @@ class StructWithCastedPrimitiveTwinNormal {
   });
 
   @override
+  String toString() =>
+      'StructWithCastedPrimitiveTwinNormal(fieldI64: $fieldI64, fieldU64: $fieldU64, fieldI32: $fieldI32, fieldVecU8: $fieldVecU8)';
+
+  @override
   int get hashCode =>
       fieldI64.hashCode ^
       fieldU64.hashCode ^

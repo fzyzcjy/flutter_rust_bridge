@@ -74,6 +74,9 @@ class DemoStructForRustCallDartTwinNormal {
   });
 
   @override
+  String toString() => 'DemoStructForRustCallDartTwinNormal(name: $name)';
+
+  @override
   int get hashCode => name.hashCode;
 
   @override

@@ -164,6 +164,7 @@
       ],
       "generate_eq": true,
       "generate_hash": true,
+      "generate_to_string": true,
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::another_file/StructInAnotherFile",

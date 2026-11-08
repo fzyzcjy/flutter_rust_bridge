@@ -81,7 +81,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         [
           const CustomStructErrorTwinSse(a: 'hello'),
         ],
-        (value) => allOf(isA<FrbException>(), equals(value)));
+        (value) => allOf(
+              isA<FrbException>(),
+              equals(value),
+              predicate(
+                (e) => e.toString() == 'CustomStructErrorTwinSse(a: hello)',
+                'has field-based toString',
+              ),
+            ));
   });
 
   group('example-based tests', () {
@@ -98,7 +105,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('Throw CustomStructError', () async {
         await expectLater(
           () async => returnCustomStructErrorTwinSse(),
-          throwsA(isA<CustomStructErrorAnotherTwinSse>()),
+          throwsA(
+            isA<CustomStructErrorAnotherTwinSse>().having(
+              (e) => e.toString(),
+              'toString',
+              'CustomStructErrorAnotherTwinSse(message: error message)',
+            ),
+          ),
         );
       });
 
@@ -116,12 +129,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Do not throw CustomStructError non static method', () async {
-        expect(
-          await CustomStructTwinSse(
-            message: "hello",
-          ).nonstaticReturnCustomStructOkTwinSse(),
-          3,
+        final value = CustomStructTwinSse(
+          message: "hello",
         );
+
+        expect(value.toString(), 'CustomStructTwinSse(message: hello)');
+        expect(await value.nonstaticReturnCustomStructOkTwinSse(), 3);
       });
 
       test('Throw CustomStructError static method', () async {

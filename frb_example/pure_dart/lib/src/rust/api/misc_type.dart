@@ -30,6 +30,9 @@ class EmptyTwinNormal {
   const EmptyTwinNormal();
 
   @override
+  String toString() => 'EmptyTwinNormal()';
+
+  @override
   int get hashCode => 0;
 
   @override

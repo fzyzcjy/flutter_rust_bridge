@@ -75,6 +75,9 @@ class ConcatenateWithTwinNormal {
       );
 
   @override
+  String toString() => 'ConcatenateWithTwinNormal(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override
@@ -93,6 +96,9 @@ class Log2TwinNormal {
     required this.key,
     required this.value,
   });
+
+  @override
+  String toString() => 'Log2TwinNormal(key: $key, value: $value)';
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -115,6 +121,9 @@ class MyCallableTwinNormal {
 
   Future<String> call({required String two}) => RustLib.instance.api
       .crateApiMethodMyCallableTwinNormalCall(that: this, two: two);
+
+  @override
+  String toString() => 'MyCallableTwinNormal(one: $one)';
 
   @override
   int get hashCode => one.hashCode;
@@ -192,6 +201,9 @@ class SimpleStructTwinNormal {
           .crateApiMethodSimpleStructTwinNormalVecSelfTwinNormal(arg: arg);
 
   @override
+  String toString() => 'SimpleStructTwinNormal(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override
@@ -214,6 +226,9 @@ class StaticOnlyTwinNormal {
           .crateApiMethodStaticOnlyTwinNormalStaticMethodTwinNormal(a: a);
 
   @override
+  String toString() => 'StaticOnlyTwinNormal(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override
@@ -234,6 +249,9 @@ class SumWithTwinNormal {
   Future<int> sumTwinNormal({required int y, required int z}) =>
       RustLib.instance.api
           .crateApiMethodSumWithTwinNormalSumTwinNormal(that: this, y: y, z: z);
+
+  @override
+  String toString() => 'SumWithTwinNormal(x: $x)';
 
   @override
   int get hashCode => x.hashCode;

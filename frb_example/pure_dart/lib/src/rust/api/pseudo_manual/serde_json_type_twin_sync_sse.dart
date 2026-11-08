@@ -47,6 +47,9 @@ class FeatureSerdeJsonTwinSyncSse {
   });
 
   @override
+  String toString() => 'FeatureSerdeJsonTwinSyncSse(data: $data)';
+
+  @override
   int get hashCode => data.hashCode;
 
   @override
