@@ -43,7 +43,8 @@ void main() {
         "':(exclude)$package/pubspec.yaml' "
         "':(exclude)$package/android/' "
         "':(exclude)$package/macos/' "
-        "':(exclude)$package/windows/'",
+        "':(exclude)$package/windows/' "
+        "':(exclude)$package/ohos/entry/src/main/module.json5'",
       );
     },
   );
@@ -61,6 +62,24 @@ void main() {
       );
     }
   });
+
+  test(
+    'integrate extra args exclude lockfile drift only for OHOS comparison',
+    () {
+      for (final package in [
+        'frb_example/flutter_via_integrate',
+        'frb_example/flutter_via_integrate_native_assets',
+      ]) {
+        expect(
+          integrateDiffExclusionArgsForTesting(package, needCompareOhos: true),
+          "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
+          "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
+          "':(exclude)$package/pubspec.lock'",
+          reason: package,
+        );
+      }
+    },
+  );
 
   test('integrate extra args are explicit for flutter_package', () {
     for (final package in [
