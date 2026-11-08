@@ -20,7 +20,9 @@ void main() {
       final temp = await Directory.systemTemp.createTemp('frb_build_runner_');
       addTearDown(() => temp.delete(recursive: true));
 
-      final fixture = Directory('test/fixtures/build_runner_preservation');
+      final fixture = Directory(
+        'integration_test/fixtures/build_runner_preservation',
+      );
       for (final entry in fixture.listSync(recursive: true)) {
         final relative = entry.path.substring(fixture.path.length + 1);
         final destination =

@@ -1,6 +1,6 @@
-use crate::command_args;
+use crate::command_run;
 use crate::commands::command_runner::call_shell;
-use crate::library::commands::command_runner::{call_shell_info, ExecuteCommandOptions};
+use crate::library::commands::command_runner::ExecuteCommandOptions;
 use crate::library::commands::fvm::command_arg_maybe_fvm;
 use crate::misc::FvmInstallMode;
 use crate::utils::dart_repository::dart_repo::DartRepository;
@@ -34,19 +34,16 @@ pub fn dart_build_runner(
         needs_json_serializable,
         &dart_package_name,
     );
-    let command_prefix = command_args!(
+    let args = build_runner_args(output_filters);
+    let out = command_run!(
+        call_shell[Some(dart_root), Some(ExecuteCommandOptions {
+            envs: Some(dart_run_extra_env()),
+            ..Default::default()
+        })],
         ?command_arg_maybe_fvm(Some(dart_root), fvm_install_mode),
         *repo.toolchain.as_run_command(),
         *repo.command_extra_args(),
-    );
-    let command = build_runner_command(command_prefix, output_filters);
-    let out = call_shell(
-        &command,
-        Some(dart_root),
-        Some(ExecuteCommandOptions {
-            envs: Some(dart_run_extra_env()),
-            ..Default::default()
-        }),
+        *args,
     )?;
     if !out.status.success() {
         // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -69,6 +66,11 @@ pub(super) fn dart_run_extra_env() -> HashMap<String, String> {
     [("FRB_SIMPLE_BUILD_SKIP".to_owned(), "1".to_owned())].into()
 }
 
+/// `--delete-conflicting-outputs` also deletes the outputs of other builders that the filters skip,
+/// so add a filter for every generated Dart file that already exists. Falls back to an unfiltered
+/// build when a file cannot be expressed as a filter or the filters would not fit on a command line.
+/// The budget is a conservative cap on all systems, well below the 8191 character limit of `cmd.exe`
+/// (which runs `flutter.bat`), so the rest of the command still fits.
 fn include_existing_outputs(
     mut output_filters: Vec<String>,
     dart_root: &Path,
@@ -76,84 +78,78 @@ fn include_existing_outputs(
     needs_json_serializable: bool,
     dart_package_name: &str,
 ) -> Vec<String> {
+    const MAX_EXTRA_FILTER_BYTES: usize = 6_000;
     if output_filters.is_empty() {
         return output_filters;
     }
-    let extra_filters = (|| -> anyhow::Result<Vec<String>> {
-        excluded_generated_outputs(dart_root, dart_output, needs_json_serializable)?
-            .into_iter()
-            .map(|path| {
-                let relative = path.strip_prefix(dart_root)?;
-                let relative = path_to_string(relative)?.replace(MAIN_SEPARATOR, "/");
-                let filter = build_filter_literal_path(&relative, dart_package_name)
-                    .with_context(|| format!("Cannot filter existing output {relative:?}"))?;
-                Ok(format!("--build-filter={filter}"))
-            })
-            .collect()
-    })();
+    let extra_filters = existing_generated_files(dart_root, dart_output, needs_json_serializable)
+        .and_then(|files| {
+            files
+                .iter()
+                .map(|file| {
+                    let relative = path_to_string(file.strip_prefix(dart_root)?)?;
+                    let relative = relative.replace(MAIN_SEPARATOR, "/");
+                    build_filter_literal_path(&relative, dart_package_name)
+                        .map(|path| format!("--build-filter={path}"))
+                        .with_context(|| format!("Cannot filter existing output {relative:?}"))
+                })
+                .collect::<anyhow::Result<Vec<_>>>()
+        });
     match extra_filters {
         Ok(mut filters) => {
+            if filters.iter().map(|x| x.len() + 1).sum::<usize>() > MAX_EXTRA_FILTER_BYTES {
+                debug!("Too many existing outputs to filter, using an unfiltered build");
+                return Vec::new();
+            }
             filters.sort();
             output_filters.extend(filters);
             output_filters
         }
-        Err(error) => {
-            debug!("Cannot filter existing outputs, using an unfiltered build: {error:#}");
+        Err(err) => {
+            debug!("Cannot filter existing outputs, using an unfiltered build: {err:?}");
             Vec::new()
         }
     }
 }
 
-fn excluded_generated_outputs(
+/// Generated Dart files (such as `*.g.dart` of other builders) that the FRB filters do not cover.
+fn existing_generated_files(
     dart_root: &Path,
     dart_output: &Path,
     needs_json_serializable: bool,
 ) -> anyhow::Result<Vec<PathBuf>> {
-    let mut outputs = Vec::new();
+    let mut files = Vec::new();
     let mut directories = vec![dart_root.to_owned()];
     while let Some(directory) = directories.pop() {
-        for entry in fs::read_dir(&directory)
-            .with_context(|| format!("Cannot inspect build_runner outputs in {directory:?}"))?
-        {
+        for entry in fs::read_dir(&directory)? {
             let entry = entry?;
             let path = entry.path();
-            let file_type = entry.file_type()?;
-            let name = entry.file_name();
-            if name.to_string_lossy().starts_with('.') {
+            let name = entry.file_name().to_string_lossy().into_owned();
+            if name.starts_with('.') {
                 continue;
             }
-            if file_type.is_dir() {
-                if name == "node_modules"
-                    || (directory == dart_root && (name == "build" || name == "target"))
-                    || (name == "target" && directory.join("Cargo.toml").is_file())
-                {
-                    continue;
+            if entry.file_type()?.is_dir() {
+                let is_build_dir = directory == dart_root && (name == "build" || name == "target");
+                let is_cargo_target = name == "target" && directory.join("Cargo.toml").is_file();
+                if name != "node_modules" && !is_build_dir && !is_cargo_target {
+                    directories.push(path);
                 }
-                directories.push(path);
-            } else if file_type.is_file() {
-                let name = name.to_string_lossy();
-                if directory == dart_output
-                    && matches!(
-                        name.as_ref(),
-                        "frb_generated.io.dart" | "frb_generated.web.dart"
-                    )
-                {
-                    continue;
-                }
-                let is_freezed = name.ends_with(".freezed.dart");
-                let is_json = name.ends_with(".g.dart");
-                let has_generated_suffix = name
-                    .strip_suffix(".dart")
-                    .is_some_and(|stem| stem.contains('.'));
-                let covered_by_frb_filter = path.starts_with(dart_output)
-                    && (is_freezed || (needs_json_serializable && is_json));
-                if has_generated_suffix && !covered_by_frb_filter {
-                    outputs.push(path);
+            } else if !entry.file_type()?.is_file() {
+                continue;
+            } else if let Some((_, extension)) = name
+                .strip_suffix(".dart")
+                .and_then(|stem| stem.rsplit_once('.'))
+            {
+                let is_frb_output = directory == dart_output && name.starts_with("frb_generated.");
+                let is_filtered = path.starts_with(dart_output)
+                    && (extension == "freezed" || (needs_json_serializable && extension == "g"));
+                if !is_frb_output && !is_filtered {
+                    files.push(path);
                 }
             }
         }
     }
-    Ok(outputs)
+    Ok(files)
 }
 
 fn build_runner_output_filters(
@@ -181,32 +177,6 @@ fn build_runner_output_filters(
         .into_iter()
         .map(|extension| format!("--build-filter={output_prefix}**.{extension}"))
         .collect())
-}
-
-fn build_runner_command(mut prefix: Vec<PathBuf>, output_filters: Vec<String>) -> Vec<PathBuf> {
-    let prefix_length = prefix.len();
-    prefix.extend(
-        build_runner_args(output_filters)
-            .into_iter()
-            .map(PathBuf::from),
-    );
-    let shell = call_shell_info(&prefix);
-    #[cfg(windows)]
-    let command_length = shell.program.encode_utf16().count()
-        + shell
-            .args
-            .iter()
-            .map(|arg| 2 * arg.encode_utf16().count() + 3)
-            .sum::<usize>();
-    #[cfg(not(windows))]
-    let command_length = shell.args.iter().map(|arg| arg.len() + 1).sum::<usize>();
-    let limit = if cfg!(windows) { 30_000 } else { 64 * 1024 };
-    if command_length > limit {
-        debug!("Output filters exceed the shell command budget, using an unfiltered build");
-        prefix.truncate(prefix_length);
-        prefix.extend(build_runner_args(Vec::new()).into_iter().map(PathBuf::from));
-    }
-    prefix
 }
 
 fn build_runner_args(output_filters: Vec<String>) -> Vec<String> {
@@ -284,167 +254,11 @@ fn percent_encode_uri_path(path: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::{
-        build_runner_args, build_runner_command, build_runner_output_filters, dart_run_extra_env,
-        excluded_generated_outputs, include_existing_outputs,
+        build_runner_args, build_runner_output_filters, dart_run_extra_env,
+        include_existing_outputs,
     };
     use std::fs;
-    use std::path::{Path, PathBuf};
-
-    #[test]
-    fn test_build_runner_command_handles_large_filter_lists() {
-        let prefix = vec![PathBuf::from("fvm"), PathBuf::from("dart")];
-        let filter = "--build-filter=package:example/other.generated.dart".to_owned();
-        let mut selected = prefix.clone();
-        selected.extend(
-            build_runner_args(vec![filter.clone()])
-                .into_iter()
-                .map(PathBuf::from),
-        );
-        assert_eq!(build_runner_command(prefix.clone(), vec![filter]), selected);
-
-        let filters = (0..3000)
-            .map(|index| {
-                format!("--build-filter=package:example/serializers/output_{index}.generated.dart")
-            })
-            .collect();
-        let mut unfiltered = prefix.clone();
-        unfiltered.extend(build_runner_args(Vec::new()).into_iter().map(PathBuf::from));
-        let command = build_runner_command(prefix, filters);
-        assert_eq!(
-            command.len(),
-            unfiltered.len(),
-            "Oversized filters must not reach the shell"
-        );
-        assert_eq!(command, unfiltered);
-    }
-
-    #[test]
-    fn test_include_existing_outputs() {
-        let root = tempfile::tempdir().unwrap();
-        for file in [
-            "lib/unrelated.g.dart",
-            "test/other.custom.dart",
-            "lib/types [#]/example.mapper.dart",
-            "lib/src/rust/api.freezed.dart",
-            "lib/src/rust/frb_generated.io.dart",
-            "test/.test_config.dart",
-        ] {
-            let path = root.path().join(file);
-            fs::create_dir_all(path.parent().unwrap()).unwrap();
-            fs::write(path, "output").unwrap();
-        }
-        assert_eq!(
-            include_existing_outputs(
-                vec!["--build-filter=package:example/src/rust/**.freezed.dart".to_owned()],
-                root.path(),
-                &root.path().join("lib/src/rust"),
-                false,
-                "example",
-            ),
-            vec![
-                "--build-filter=package:example/src/rust/**.freezed.dart",
-                "--build-filter=package:example/types%20%5C%5B%23%5C%5D/example.mapper.dart",
-                "--build-filter=package:example/unrelated.g.dart",
-                "--build-filter=test/other.custom.dart",
-            ]
-        );
-        assert!(
-            include_existing_outputs(Vec::new(), root.path(), root.path(), false, "example")
-                .is_empty()
-        );
-    }
-
-    #[test]
-    fn test_include_existing_outputs_unsafe_path() {
-        let root = tempfile::tempdir().unwrap();
-        fs::create_dir_all(root.path().join("test")).unwrap();
-        fs::write(root.path().join("test/model [x].custom.dart"), "output").unwrap();
-        assert!(include_existing_outputs(
-            vec!["--build-filter=**.freezed.dart".to_owned()],
-            root.path(),
-            root.path(),
-            false,
-            "example",
-        )
-        .is_empty());
-    }
-
-    #[test]
-    fn test_existing_generated_outputs() {
-        for (file, needs_json, expected) in [
-            ("lib/unrelated.g.dart", false, true),
-            ("lib/src/rust/frb_generated.io.dart", false, false),
-            ("lib/src/rust/frb_generated.web.dart", true, false),
-            ("lib/frb_generated.io.dart", true, true),
-            ("lib/src/rust/nested/frb_generated.web.dart", true, true),
-            ("lib/src/rust/frb_generated.custom.dart", true, true),
-            ("lib/unrelated.mapper.dart", true, true),
-            ("lib/src/rust/api.custom.dart", true, true),
-            ("lib/src/rust/api.custom.dart", false, true),
-            ("lib/unrelated.g.dart", true, true),
-            ("lib/unrelated.freezed.dart", true, true),
-            ("test/models/example.g.dart", true, true),
-            ("lib/types [#]/example.g.dart", true, true),
-            ("lib/src/rust/api.freezed.dart", false, false),
-            ("lib/src/rust/api.g.dart", false, true),
-            ("lib/src/rust/api.g.dart", true, false),
-            ("lib/unrelated.dart", false, false),
-            ("test/.test_config.dart", false, false),
-            ("lib/build/example.g.dart", true, true),
-            (".dart_tool/build/example.g.dart", true, false),
-            ("build/example.g.dart", true, false),
-            ("target/example.g.dart", true, false),
-            ("node_modules/example.g.dart", true, false),
-        ] {
-            let root = tempfile::tempdir().unwrap();
-            let path = root.path().join(file);
-            fs::create_dir_all(path.parent().unwrap()).unwrap();
-            fs::write(path, "generated output").unwrap();
-            assert_eq!(
-                !excluded_generated_outputs(
-                    root.path(),
-                    &root.path().join("lib/src/rust"),
-                    needs_json,
-                )
-                .unwrap()
-                .is_empty(),
-                expected,
-                "file={file} needs_json={needs_json}",
-            );
-        }
-    }
-
-    #[test]
-    fn test_existing_generated_outputs_at_package_root() {
-        let root = tempfile::tempdir().unwrap();
-        fs::write(root.path().join("example.g.dart"), "generated output").unwrap();
-        assert!(!excluded_generated_outputs(root.path(), root.path(), false)
-            .unwrap()
-            .is_empty());
-        assert!(excluded_generated_outputs(root.path(), root.path(), true)
-            .unwrap()
-            .is_empty());
-    }
-
-    #[test]
-    fn test_existing_generated_outputs_ignore_rust_target() {
-        let root = tempfile::tempdir().unwrap();
-        let rust = root.path().join("native/rust");
-        fs::create_dir_all(rust.join("target")).unwrap();
-        fs::write(rust.join("Cargo.toml"), "").unwrap();
-        fs::write(rust.join("target/example.g.dart"), "generated output").unwrap();
-        assert!(excluded_generated_outputs(root.path(), root.path(), true)
-            .unwrap()
-            .is_empty());
-    }
-
-    #[test]
-    fn test_existing_generated_outputs_propagate_read_errors() {
-        let root = tempfile::tempdir().unwrap();
-        let file = root.path().join("not_a_directory");
-        fs::write(&file, "").unwrap();
-        assert!(excluded_generated_outputs(&file, &file, true).is_err());
-    }
+    use std::path::Path;
 
     /// Limits build runner to generated outputs beneath a nested Dart output directory.
     #[test]
@@ -461,23 +275,6 @@ mod tests {
                 "--build-filter=package:example/src/rust/**.freezed.dart",
                 "--build-filter=package:example/src/rust/**.g.dart",
             ]
-        );
-    }
-
-    /// Uses the full build when inspecting existing outputs fails.
-    #[test]
-    fn test_clear_filters_falls_back_on_inspection_error() {
-        let temp = tempfile::tempdir().unwrap();
-        let missing = temp.path().join("missing");
-        assert_eq!(
-            include_existing_outputs(
-                vec!["--build-filter=package:example/src/rust/**.freezed.dart".to_owned()],
-                &missing,
-                &missing.join("lib/src/rust"),
-                false,
-                "example",
-            ),
-            Vec::<String>::new()
         );
     }
 
@@ -583,6 +380,95 @@ mod tests {
                 "--build-filter=lib/**.freezed.dart",
             ]
         );
+    }
+
+    #[test]
+    fn test_include_existing_outputs() {
+        let root = tempfile::tempdir().unwrap();
+        for file in [
+            "lib/unrelated.g.dart",
+            "test/other.custom.dart",
+            "lib/types [#]/example.mapper.dart",
+            "lib/src/rust/api.freezed.dart",
+            "lib/src/rust/api.g.dart",
+            "lib/src/rust/frb_generated.io.dart",
+            "lib/main.dart",
+            "test/.test_config.dart",
+            "build/out.g.dart",
+            "target/out.g.dart",
+            "node_modules/pkg/out.g.dart",
+            "rust/target/debug/out.g.dart",
+        ] {
+            let path = root.path().join(file);
+            fs::create_dir_all(path.parent().unwrap()).unwrap();
+            fs::write(path, "output").unwrap();
+        }
+        fs::write(root.path().join("rust/Cargo.toml"), "").unwrap();
+        let frb_filter = "--build-filter=package:example/src/rust/**.freezed.dart".to_owned();
+        let dart_output = root.path().join("lib/src/rust");
+        let include = |filters: Vec<String>, needs_json_serializable| {
+            include_existing_outputs(
+                filters,
+                root.path(),
+                &dart_output,
+                needs_json_serializable,
+                "example",
+            )
+        };
+
+        assert_eq!(
+            include(vec![frb_filter.clone()], true),
+            vec![
+                frb_filter.as_str(),
+                "--build-filter=package:example/types%20%5C%5B%23%5C%5D/example.mapper.dart",
+                "--build-filter=package:example/unrelated.g.dart",
+                "--build-filter=test/other.custom.dart",
+            ]
+        );
+        assert!(include(vec![frb_filter.clone()], false)
+            .contains(&"--build-filter=package:example/src/rust/api.g.dart".to_owned()));
+        assert!(include(Vec::new(), true).is_empty());
+    }
+
+    #[test]
+    fn test_include_existing_outputs_falls_back_to_unfiltered() {
+        let root = tempfile::tempdir().unwrap();
+        let include = || {
+            include_existing_outputs(
+                vec!["--build-filter=**.freezed.dart".to_owned()],
+                root.path(),
+                root.path(),
+                false,
+                "example",
+            )
+        };
+        let test_dir = root.path().join("test");
+        fs::create_dir_all(&test_dir).unwrap();
+
+        // A path that cannot be written as a filter
+        fs::write(test_dir.join("model [x].custom.dart"), "output").unwrap();
+        assert!(include().is_empty());
+        fs::remove_file(test_dir.join("model [x].custom.dart")).unwrap();
+
+        // More filters than fit on a command line
+        for index in 0..400 {
+            fs::write(
+                test_dir.join(format!("output_{index:04}.custom.dart")),
+                "output",
+            )
+            .unwrap();
+        }
+        assert!(include().is_empty());
+
+        // A directory that cannot be read
+        assert!(include_existing_outputs(
+            vec!["--build-filter=**.freezed.dart".to_owned()],
+            &root.path().join("missing"),
+            root.path(),
+            false,
+            "example",
+        )
+        .is_empty());
     }
 
     /// Sets the build-script bypass required by every Dart subprocess.

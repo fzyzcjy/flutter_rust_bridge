@@ -417,6 +417,9 @@
       ]
     },
     {
+      "id": "test_build_runner_preservation"
+    },
+    {
       "id": "test_mimic_quickstart",
       "matrix": [
         {
