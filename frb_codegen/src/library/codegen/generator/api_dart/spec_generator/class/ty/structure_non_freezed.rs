@@ -45,7 +45,12 @@ impl StructRefApiDartGenerator<'_> {
         } else {
             "".to_owned()
         };
-        let to_string = generate_to_string(&src.fields, class_name);
+        let to_string = generate_to_string_member(
+            &src.fields,
+            class_name,
+            src.generate_to_string,
+            &methods.names,
+        );
 
         format!(
             "{comments}{metadata}class {class_name} {implements_exception} {{
@@ -106,6 +111,19 @@ impl StructRefApiDartGenerator<'_> {
         };
 
         ans
+    }
+}
+
+fn generate_to_string_member(
+    fields: &[MirField],
+    struct_name: &str,
+    enabled: bool,
+    method_names: &[String],
+) -> String {
+    if enabled && !method_names.iter().any(|name| name == "toString") {
+        generate_to_string(fields, struct_name)
+    } else {
+        String::new()
     }
 }
 
@@ -269,5 +287,20 @@ mod tests {
 
         assert!(code.contains("@override"));
         assert!(code.contains("String toString() => 'MyStructErr(code: $code, message: $message)'"));
+    }
+
+    /// Skips the member when generation is disabled or a mirrored method is already named toString.
+    #[test]
+    fn to_string_member_is_skipped_when_disabled_or_already_mirrored() {
+        let fields = vec![test_field("value")];
+
+        assert!(generate_to_string_member(&fields, "Value", false, &[]).is_empty());
+        assert!(
+            generate_to_string_member(&fields, "Value", true, &["toString".to_owned()]).is_empty()
+        );
+        assert!(
+            generate_to_string_member(&fields, "Value", true, &["other".to_owned()])
+                .contains("String toString()")
+        );
     }
 }

@@ -139,6 +139,10 @@ impl FrbAttributes {
         !self.any_eq(&FrbAttribute::NonEq)
     }
 
+    pub(crate) fn generate_to_string(&self) -> bool {
+        !self.any_eq(&FrbAttribute::NonToString)
+    }
+
     pub(crate) fn dart_collection_deep_equality(&self) -> bool {
         self.any_eq(&FrbAttribute::DartCollectionDeepEquality)
     }
@@ -306,6 +310,7 @@ mod frb_keyword {
     syn::custom_keyword!(non_opaque);
     syn::custom_keyword!(non_hash);
     syn::custom_keyword!(non_eq);
+    syn::custom_keyword!(non_to_string);
     syn::custom_keyword!(positional);
     syn::custom_keyword!(proxy);
     syn::custom_keyword!(json_serializable);
@@ -361,6 +366,7 @@ enum FrbAttribute {
     NonFinal,
     NonHash,
     NonOpaque,
+    NonToString,
     Opaque,
     Positional,
     Proxy,
@@ -413,6 +419,9 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
             .or_else(|| parse_keyword::<non_hash, _>(input, &lookahead, non_hash, NonHash))
             .or_else(|| parse_keyword::<non_eq, _>(input, &lookahead, non_eq, NonEq))
+            .or_else(|| {
+                parse_keyword::<non_to_string, _>(input, &lookahead, non_to_string, NonToString)
+            })
             .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
             .or_else(|| parse_keyword::<proxy, _>(input, &lookahead, proxy, Proxy))
             .or_else(|| {
@@ -914,6 +923,11 @@ mod tests {
     #[test]
     fn test_non_eq() {
         simple_keyword_tester("non_eq", FrbAttribute::NonEq);
+    }
+
+    #[test]
+    fn test_non_to_string() {
+        simple_keyword_tester("non_to_string", FrbAttribute::NonToString);
     }
 
     #[test]
