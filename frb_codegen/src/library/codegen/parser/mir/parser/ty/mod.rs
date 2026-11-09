@@ -191,6 +191,36 @@ impl TypeParserParsingContext {
     }
 }
 
+#[cfg(test)]
+fn empty_type_parser() -> TypeParser<'static> {
+    TypeParser::new(
+        HashMap::<String, &'static HirFlatStruct>::new(),
+        HashMap::<String, &'static HirFlatEnum>::new(),
+        HashMap::<String, &'static HirFlatTrait>::new(),
+        HashMap::new(),
+        HashMap::new(),
+        Vec::new(),
+        Vec::new(),
+    )
+}
+
+#[cfg(test)]
+fn test_parsing_context() -> TypeParserParsingContext {
+    TypeParserParsingContext {
+        initiated_namespace: Namespace::new_raw("crate".into()),
+        func_attributes: FrbAttributes::parse(&[]).unwrap(),
+        struct_or_enum_attributes: None,
+        rust_output_path_namespace: Namespace::new_raw("crate".into()),
+        default_stream_sink_codec: CodecMode::Dco,
+        default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
+        owner: None,
+        enable_lifetime: false,
+        type_64bit_int: false,
+        forbid_type_self: false,
+        parse_mode: ParseMode::Normal,
+    }
+}
+
 impl MirContext for TypeParser<'_> {
     fn struct_pool(&self) -> &MirStructPool {
         &self.struct_parser_info.object_pool

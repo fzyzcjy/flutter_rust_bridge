@@ -348,4 +348,16 @@ mod tests {
         assert_eq!(reserved_instance_member("static void dispose() {}"), None);
         assert_eq!(reserved_instance_member("int extra() => 1;"), None);
     }
+
+    /// Covers annotation arguments, strings, and identifiers that only share a prefix with a modifier.
+    #[test]
+    fn annotations_strings_and_prefixed_words_are_classified() {
+        assert!(has_instance_member(
+            "@Bare;\n@Anno(x) int annotated() => 1;\n@Anno(int unclosed() => 1;\nint triple() => '''a''';\nint escaped() => 'a\\'b';\nstaticExtra() => 1"
+        ));
+        assert_eq!(
+            reserved_instance_member("int escaped() => 'dis\\'pose';"),
+            None
+        );
+    }
 }

@@ -128,6 +128,11 @@ where
         }
     }
 
+    #[cfg(test)]
+    fn record_dart_code_for_test(&mut self, raw_output: &Option<(MirType, FrbAttributes)>) {
+        self.handle_dart_code(raw_output);
+    }
+
     fn parse_opaque(
         &mut self,
         namespaced_name: &NamespacedName,

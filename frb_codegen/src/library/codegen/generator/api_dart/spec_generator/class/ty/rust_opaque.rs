@@ -381,11 +381,7 @@ mod tests {
                 mir_pack: &pack,
                 config: &config,
             };
-            assert_eq!(
-                mixes_in_dart_code(&ty, context),
-                expected,
-                "{dart3} {mixin} {dart_code:?}"
-            );
+            assert_eq!(mixes_in_dart_code(&ty, context), expected);
         }
     }
 
@@ -444,6 +440,7 @@ mod tests {
     /// Rejects members that would shadow the Rust object's own disposal and move.
     #[test]
     fn rejects_reserved_opaque_members_when_mixing_in() {
+        let without_dart3 = config(false, true);
         let config = config(true, false);
         let reserved = pack(Some("void dispose() {}"), true, &[], false);
         let error = ensure_no_reserved_opaque_members(&reserved, &config)
@@ -451,6 +448,10 @@ mod tests {
             .to_string();
         assert!(error.contains("dispose"));
         assert!(error.contains("isDisposed"));
+
+        assert!(ensure_no_reserved_opaque_members(&reserved, &without_dart3).is_ok());
+        let blocked = pack(Some("void dispose() {}"), true, &[], true);
+        assert!(ensure_no_reserved_opaque_members(&blocked, &config).is_ok());
 
         let allowed = pack(
             Some("// void dispose()\nint extra() => 1;"),
