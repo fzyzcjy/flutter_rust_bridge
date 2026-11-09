@@ -6,10 +6,14 @@ pub(crate) trait SynItemStructOrEnum: Clone {
     fn attrs_mut(&mut self) -> &mut Vec<Attribute>;
 
     fn generics(&self) -> &Generics;
+
+    /// Whether `#[non_exhaustive]` forbids other crates from constructing (part of) this item.
+    /// Whole-enum `#[non_exhaustive]` is excluded, since only matching needs a wildcard arm then.
+    fn has_non_exhaustive_constructor(&self) -> bool;
 }
 
 macro_rules! impl_trait {
-    ($name:ident) => {
+    ($name:ident, $has_non_exhaustive_constructor:ident) => {
         impl SynItemStructOrEnum for $name {
             fn attrs(&self) -> &[syn::Attribute] {
                 &self.attrs
@@ -22,12 +26,30 @@ macro_rules! impl_trait {
             fn generics(&self) -> &syn::Generics {
                 &self.generics
             }
+
+            fn has_non_exhaustive_constructor(&self) -> bool {
+                $has_non_exhaustive_constructor(self)
+            }
         }
     };
 }
 
-impl_trait!(ItemStruct);
-impl_trait!(ItemEnum);
+impl_trait!(ItemStruct, struct_has_non_exhaustive_constructor);
+impl_trait!(ItemEnum, enum_has_non_exhaustive_constructor);
+
+fn struct_has_non_exhaustive_constructor(item: &ItemStruct) -> bool {
+    has_non_exhaustive_attr(&item.attrs)
+}
+
+fn enum_has_non_exhaustive_constructor(item: &ItemEnum) -> bool {
+    (item.variants.iter()).any(|variant| has_non_exhaustive_attr(&variant.attrs))
+}
+
+fn has_non_exhaustive_attr(attrs: &[Attribute]) -> bool {
+    attrs
+        .iter()
+        .any(|attr| attr.path().is_ident("non_exhaustive"))
+}
 
 #[cfg(test)]
 mod tests {
@@ -50,5 +72,36 @@ mod tests {
 
         assert_item_access(item_struct);
         assert_item_access(item_enum);
+    }
+
+    /// Detects `#[non_exhaustive]` on structs and enum variants, but not on whole enums.
+    #[test]
+    fn detects_non_exhaustive() {
+        let struct_has_non_exhaustive_constructor = |s| {
+            syn::parse_str::<ItemStruct>(s)
+                .unwrap()
+                .has_non_exhaustive_constructor()
+        };
+        let enum_has_non_exhaustive_constructor = |s| {
+            syn::parse_str::<ItemEnum>(s)
+                .unwrap()
+                .has_non_exhaustive_constructor()
+        };
+
+        assert!(struct_has_non_exhaustive_constructor(
+            "#[non_exhaustive] struct A { pub x: i32 }"
+        ));
+        assert!(!struct_has_non_exhaustive_constructor(
+            "#[derive(Clone)] struct A { pub x: i32 }"
+        ));
+        assert!(!enum_has_non_exhaustive_constructor(
+            "#[non_exhaustive] enum B { X }"
+        ));
+        assert!(enum_has_non_exhaustive_constructor(
+            "enum B { #[non_exhaustive] X { y: i32 }, Z }"
+        ));
+        assert!(!enum_has_non_exhaustive_constructor(
+            "#[derive(Clone)] enum B { X, Z(i32) }"
+        ));
     }
 }
