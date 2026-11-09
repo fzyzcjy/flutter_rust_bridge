@@ -14,6 +14,9 @@ use syn::Type;
 crate::mir! {
 pub struct MirTypeRustOpaque {
     pub namespace: Namespace,
+    /// Namespaces of crate types referenced in generic arguments, e.g. `D` in `C<D>`
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub generic_arg_namespaces: Vec<Namespace>,
     pub inner: MirRustOpaqueInner,
     pub codec: RustOpaqueCodecMode,
     pub dart_api_type: Option<String>,

@@ -45,6 +45,7 @@ mod tests {
         let wire_rust_config = test_utils::wire_rust_config(false);
         let inner = MirTypeRustOpaque {
             namespace: Namespace::default(),
+            generic_arg_namespaces: vec![],
             inner: MirRustOpaqueInner(MirLifetimeAwareType::new("crate::api::Handle".into())),
             codec: RustOpaqueCodecMode::Nom,
             dart_api_type: Some("Handle".into()),
