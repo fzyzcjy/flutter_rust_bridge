@@ -116,10 +116,21 @@ where
             };
 
             for key in keys {
+                if attrs.dart_code_mixin() {
+                    self.dart_code_mixin_opt_in().insert(key.clone());
+                }
+                if attrs.ui_state() {
+                    self.dart_code_mixin_blocked().insert(key.clone());
+                }
                 self.dart_code_of_type()
                     .insert(key, dart_code_typed.clone());
             }
         }
+    }
+
+    #[cfg(test)]
+    fn record_dart_code_for_test(&mut self, raw_output: &Option<(MirType, FrbAttributes)>) {
+        self.handle_dart_code(raw_output);
     }
 
     fn parse_opaque(
@@ -157,6 +168,10 @@ where
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
     fn dart_code_of_type(&mut self) -> &mut HashMap<String, GeneralDartCode>;
+
+    fn dart_code_mixin_opt_in(&mut self) -> &mut HashSet<String>;
+
+    fn dart_code_mixin_blocked(&mut self) -> &mut HashSet<String>;
 
     fn parse_type_rust_auto_opaque_implicit(
         &mut self,

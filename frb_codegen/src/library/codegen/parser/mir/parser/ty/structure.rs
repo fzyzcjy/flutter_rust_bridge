@@ -16,7 +16,7 @@ use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::crate_name::CrateName;
 use crate::utils::namespace::{Namespace, NamespacedName};
 use anyhow::bail;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibility};
 
 impl TypeParserWithContext<'_, '_, '_> {
@@ -144,6 +144,14 @@ impl EnumOrStructParser<MirStructIdent, MirStruct, ItemStruct>
         &mut self.0.inner.dart_code_of_type
     }
 
+    fn dart_code_mixin_opt_in(&mut self) -> &mut HashSet<String> {
+        &mut self.0.inner.dart_code_mixin_opt_in
+    }
+
+    fn dart_code_mixin_blocked(&mut self) -> &mut HashSet<String> {
+        &mut self.0.inner.dart_code_mixin_blocked
+    }
+
     fn parse_type_rust_auto_opaque_implicit(
         &mut self,
         namespace: Option<Namespace>,
@@ -169,4 +177,39 @@ pub(super) fn structure_compute_default_opaque(s: &MirStruct, crate_name: &Crate
         matches!(f.ty, MirType::RustAutoOpaqueImplicit(_))
             || ((!crate_name.is_self_crate()) && !f.is_rust_public.unwrap())
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::super::enum_or_struct::EnumOrStructParser;
+    use super::super::{empty_type_parser, test_parsing_context, TypeParserWithContext};
+    use super::EnumOrStructParserStruct;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::MirType;
+    use crate::codegen::ir::mir::ty::MirTypeTrait;
+    use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+    use syn::parse_quote;
+
+    /// Records both opt-in and the ui_state block when a struct carries `dart_code`.
+    #[test]
+    fn records_mixin_and_ui_state_flags_from_dart_code() {
+        let mut parser = empty_type_parser();
+        let context = test_parsing_context();
+        let item: syn::ItemStruct = parse_quote! {
+            #[frb(dart_code = "int extra() => 1;", dart_code_mixin, ui_state)]
+            struct Value;
+        };
+        let raw = Some((
+            MirType::Primitive(MirTypePrimitive::I32),
+            FrbAttributes::parse(&item.attrs).unwrap(),
+        ));
+        {
+            let mut with_context = TypeParserWithContext::new(&mut parser, &context);
+            EnumOrStructParserStruct(&mut with_context).record_dart_code_for_test(&raw);
+        }
+        let key = MirType::Primitive(MirTypePrimitive::I32).safe_ident();
+        assert!(parser.dart_code_mixin_opt_in.contains(&key));
+        assert!(parser.dart_code_mixin_blocked.contains(&key));
+        assert!(parser.dart_code_of_type.contains_key(&key));
+    }
 }

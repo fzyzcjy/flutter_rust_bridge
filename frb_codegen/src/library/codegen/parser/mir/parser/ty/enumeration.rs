@@ -22,7 +22,7 @@ use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypePars
 use crate::if_then_some;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::{Namespace, NamespacedName};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
 
 impl TypeParserWithContext<'_, '_, '_> {
@@ -209,6 +209,14 @@ impl EnumOrStructParser<MirEnumIdent, MirEnum, ItemEnum>
         &mut self.0.inner.dart_code_of_type
     }
 
+    fn dart_code_mixin_opt_in(&mut self) -> &mut HashSet<String> {
+        &mut self.0.inner.dart_code_mixin_opt_in
+    }
+
+    fn dart_code_mixin_blocked(&mut self) -> &mut HashSet<String> {
+        &mut self.0.inner.dart_code_mixin_blocked
+    }
+
     fn parse_type_rust_auto_opaque_implicit(
         &mut self,
         namespace: Option<Namespace>,
@@ -271,9 +279,38 @@ fn compute_enum_mode(variants: &[MirEnumVariant]) -> MirEnumMode {
 
 #[cfg(test)]
 mod tests {
+    use super::super::enum_or_struct::EnumOrStructParser;
+    use super::super::{empty_type_parser, test_parsing_context, TypeParserWithContext};
     use super::*;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
     use crate::codegen::ir::mir::ty::record::MirTypeRecord;
     use crate::codegen::ir::mir::ty::structure::MirStructIdent;
+    use crate::codegen::ir::mir::ty::MirTypeTrait;
+    use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+    use syn::parse_quote;
+
+    /// Records both opt-in and the ui_state block when an enum carries `dart_code`.
+    #[test]
+    fn records_mixin_and_ui_state_flags_from_dart_code() {
+        let mut parser = empty_type_parser();
+        let context = test_parsing_context();
+        let item: syn::ItemEnum = parse_quote! {
+            #[frb(dart_code = "int extra() => 1;", dart_code_mixin, ui_state)]
+            enum Value { One }
+        };
+        let raw = Some((
+            MirType::Primitive(MirTypePrimitive::I32),
+            FrbAttributes::parse(&item.attrs).unwrap(),
+        ));
+        {
+            let mut with_context = TypeParserWithContext::new(&mut parser, &context);
+            EnumOrStructParserEnum(&mut with_context).record_dart_code_for_test(&raw);
+        }
+        let key = MirType::Primitive(MirTypePrimitive::I32).safe_ident();
+        assert!(parser.dart_code_mixin_opt_in.contains(&key));
+        assert!(parser.dart_code_mixin_blocked.contains(&key));
+        assert!(parser.dart_code_of_type.contains_key(&key));
+    }
 
     /// Nests generated enum-variant structures under their enum namespace.
     #[test]

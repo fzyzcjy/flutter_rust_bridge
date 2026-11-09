@@ -56,6 +56,8 @@ mod tests {
             struct_pool: Default::default(),
             enum_pool: Default::default(),
             dart_code_of_type: Default::default(),
+            dart_code_mixin_opt_in: Default::default(),
+            dart_code_mixin_blocked: Default::default(),
             existing_handler: None,
             skips: vec![],
             trait_impls: vec![],
@@ -67,6 +69,7 @@ mod tests {
     fn api_dart_config() -> GeneratorApiDartInternalConfig {
         GeneratorApiDartInternalConfig {
             dart_collection_deep_equality: false,
+            dart_code_mixin: false,
             dart_enums_style: true,
             dart3: true,
             dart_decl_base_output_path: PathBuf::new(),

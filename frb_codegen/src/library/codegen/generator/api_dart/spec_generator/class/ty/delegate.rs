@@ -1,6 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::{
     generate_api_methods, GenerateApiMethodConfig, GenerateApiMethodMode,
 };
+use crate::codegen::generator::api_dart::spec_generator::class::ty::rust_opaque::mixes_in_dart_code;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::{
     proxy_variant, ApiDartGeneratedClass,
@@ -124,8 +125,14 @@ fn generate_proxy_variant(
     );
     let methods_str = methods.code;
 
+    let supertypes = if mixes_in_dart_code(&mir.inner, context) {
+        format!("with SimpleDisposable, {implements_name}")
+    } else {
+        format!("with SimpleDisposable implements {implements_name}")
+    };
+
     format!(
-        "class {class_name} with SimpleDisposable implements {implements_name} {{
+        "class {class_name} {supertypes} {{
             final {upstream_name} _upstream;
 
             {class_name}(this._upstream);

@@ -83,7 +83,13 @@ pub(crate) fn parse(
         parse_mode,
     )?;
 
-    let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
+    let (
+        struct_pool,
+        enum_pool,
+        dart_code_of_type,
+        dart_code_mixin_opt_in,
+        dart_code_mixin_blocked,
+    ) = type_parser.consume();
 
     let mut ans = MirPack {
         funcs_all,
@@ -91,6 +97,8 @@ pub(crate) fn parse(
         struct_pool,
         enum_pool,
         dart_code_of_type,
+        dart_code_mixin_opt_in,
+        dart_code_mixin_blocked,
         existing_handler: hir_flat.existing_handler.clone(),
         skips: vec![],
         trait_impls,

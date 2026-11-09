@@ -112,6 +112,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub dart_collection_deep_equality: bool,
 
+    /// Mix dart_code instance members into opaque objects returned from Rust.
+    #[arg(long)]
+    pub dart_code_mixin: bool,
+
     /// The generated Dart enums will not have their variant names camelCased.
     #[arg(long)]
     pub no_dart_enums_style: bool,

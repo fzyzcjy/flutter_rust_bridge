@@ -2,6 +2,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use enum_dispatch::enum_dispatch;
 
+mod dart_code_body;
 pub(crate) mod delegate;
 pub(crate) mod enumeration;
 pub(crate) mod enumeration_complex;
