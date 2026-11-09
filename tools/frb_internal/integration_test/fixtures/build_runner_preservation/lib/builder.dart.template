@@ -7,6 +7,7 @@ class _CustomOutput implements Builder {
   final buildExtensions = const {
     '.input': ['.custom.dart'],
     '.meta': ['.bin'],
+    '.seed': ['.dart'],
   };
 
   @override
@@ -20,6 +21,13 @@ class _CustomOutput implements Builder {
       return;
     }
     final value = await step.readAsString(step.inputId);
+    if (step.inputId.path.endsWith('.seed')) {
+      await step.writeAsString(
+        step.inputId.changeExtension('.dart'),
+        'const plainValue = $value\n',
+      );
+      return;
+    }
     await step.writeAsString(
       step.inputId.changeExtension('.custom.dart'),
       'const customValue = $value\n',

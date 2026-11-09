@@ -7,10 +7,10 @@ use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::path_to_string;
 use anyhow::{bail, Context};
-use log::debug;
+use log::{debug, info};
 use std::collections::HashMap;
 use std::fs;
-use std::path::{Path, PathBuf, MAIN_SEPARATOR};
+use std::path::{Path, MAIN_SEPARATOR};
 
 pub fn dart_build_runner(
     dart_root: &Path,
@@ -22,18 +22,17 @@ pub fn dart_build_runner(
 
     let repo = DartRepository::from_path(dart_root)?;
     let dart_package_name = get_dart_package_name(dart_root)?;
-    let output_filters = include_existing_outputs(
+    let output_filters = if has_asset_graph(dart_root) {
         build_runner_output_filters(
             dart_root,
             dart_output,
             &dart_package_name,
             needs_json_serializable,
-        )?,
-        dart_root,
-        dart_output,
-        needs_json_serializable,
-        &dart_package_name,
-    );
+        )?
+    } else {
+        info!("No build_runner asset graph found, so build_runner runs without output filters");
+        Vec::new()
+    };
     let args = build_runner_args(output_filters);
     let out = command_run!(
         call_shell[Some(dart_root), Some(ExecuteCommandOptions {
@@ -66,90 +65,19 @@ pub(super) fn dart_run_extra_env() -> HashMap<String, String> {
     [("FRB_SIMPLE_BUILD_SKIP".to_owned(), "1".to_owned())].into()
 }
 
-/// `--delete-conflicting-outputs` also deletes the outputs of other builders that the filters skip,
-/// so add a filter for every generated Dart file that already exists. Falls back to an unfiltered
-/// build when a file cannot be expressed as a filter or the filters would not fit on a command line.
-/// The budget is a conservative cap on all systems, well below the 8191 character limit of `cmd.exe`
-/// (which runs `flutter.bat`), so the rest of the command still fits.
-fn include_existing_outputs(
-    mut output_filters: Vec<String>,
-    dart_root: &Path,
-    dart_output: &Path,
-    needs_json_serializable: bool,
-    dart_package_name: &str,
-) -> Vec<String> {
-    const MAX_EXTRA_FILTER_BYTES: usize = 6_000;
-    if output_filters.is_empty() {
-        return output_filters;
-    }
-    let extra_filters = existing_generated_files(dart_root, dart_output, needs_json_serializable)
-        .and_then(|files| {
-            files
-                .iter()
-                .map(|file| {
-                    let relative = path_to_string(file.strip_prefix(dart_root)?)?;
-                    let relative = relative.replace(MAIN_SEPARATOR, "/");
-                    build_filter_literal_path(&relative, dart_package_name)
-                        .map(|path| format!("--build-filter={path}"))
-                        .with_context(|| format!("Cannot filter existing output {relative:?}"))
-                })
-                .collect::<anyhow::Result<Vec<_>>>()
-        });
-    match extra_filters {
-        Ok(mut filters) => {
-            if filters.iter().map(|x| x.len() + 1).sum::<usize>() > MAX_EXTRA_FILTER_BYTES {
-                debug!("Too many existing outputs to filter, using an unfiltered build");
-                return Vec::new();
-            }
-            filters.sort();
-            output_filters.extend(filters);
-            output_filters
-        }
-        Err(err) => {
-            debug!("Cannot filter existing outputs, using an unfiltered build: {err:?}");
-            Vec::new()
-        }
-    }
-}
-
-/// Generated Dart files (such as `*.g.dart` of other builders) that the FRB filters do not cover.
-fn existing_generated_files(
-    dart_root: &Path,
-    dart_output: &Path,
-    needs_json_serializable: bool,
-) -> anyhow::Result<Vec<PathBuf>> {
-    let mut files = Vec::new();
-    let mut directories = vec![dart_root.to_owned()];
-    while let Some(directory) = directories.pop() {
-        for entry in fs::read_dir(&directory)? {
-            let entry = entry?;
-            let path = entry.path();
-            let name = entry.file_name().to_string_lossy().into_owned();
-            if name.starts_with('.') {
-                continue;
-            }
-            if entry.file_type()?.is_dir() {
-                let is_build_dir = directory == dart_root && (name == "build" || name == "target");
-                let is_cargo_target = name == "target" && directory.join("Cargo.toml").is_file();
-                if name != "node_modules" && !is_build_dir && !is_cargo_target {
-                    directories.push(path);
-                }
-            } else if !entry.file_type()?.is_file() {
-                continue;
-            } else if let Some((_, extension)) = name
-                .strip_suffix(".dart")
-                .and_then(|stem| stem.rsplit_once('.'))
-            {
-                let is_frb_output = directory == dart_output && name.starts_with("frb_generated.");
-                let is_filtered = path.starts_with(dart_output)
-                    && (extension == "freezed" || (needs_json_serializable && extension == "g"));
-                if !is_frb_output && !is_filtered {
-                    files.push(path);
-                }
-            }
-        }
-    }
-    Ok(files)
+/// With a cold asset graph, `--delete-conflicting-outputs` deletes every output that a builder
+/// declares, including those the build filters skip, and nothing rebuilds them. A build without
+/// filters regenerates them, so filters are only used once an asset graph exists. build_runner
+/// writes it to `.dart_tool/build/asset_graph.json` (2.16) or to a subdirectory of that
+/// directory named after the build script (2.4 and 2.5).
+fn has_asset_graph(dart_root: &Path) -> bool {
+    let build_dir = dart_root.join(".dart_tool").join("build");
+    build_dir.join("asset_graph.json").is_file()
+        || fs::read_dir(&build_dir).is_ok_and(|entries| {
+            entries
+                .flatten()
+                .any(|entry| entry.path().join("asset_graph.json").is_file())
+        })
 }
 
 fn build_runner_output_filters(
@@ -196,25 +124,22 @@ fn build_filter_output_prefix(relative_output: &str, dart_package_name: &str) ->
     if relative_output.is_empty() {
         return Some(String::new());
     }
-    build_filter_literal_path(relative_output, dart_package_name).map(|path| format!("{path}/"))
-}
 
-fn build_filter_literal_path(relative_path: &str, dart_package_name: &str) -> Option<String> {
-    if let Some(library_path) = relative_path.strip_prefix("lib/") {
+    if let Some(library_output) = relative_output.strip_prefix("lib/") {
         return Some(format!(
-            "package:{dart_package_name}/{}",
-            quote_package_glob_uri_path(library_path)
+            "package:{dart_package_name}/{}/",
+            quote_package_glob_uri_path(library_output)
         ));
     }
 
-    if relative_path == "lib" {
-        return Some(format!("package:{dart_package_name}"));
+    if relative_output == "lib" {
+        return Some(format!("package:{dart_package_name}/"));
     }
 
-    if relative_path.bytes().all(|byte| {
+    if relative_output.bytes().all(|byte| {
         byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'.' | b'_' | b'~' | b'/')
     }) {
-        return Some(relative_path.to_owned());
+        return Some(format!("{relative_output}/"));
     }
 
     None
@@ -254,8 +179,7 @@ fn percent_encode_uri_path(path: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::{
-        build_runner_args, build_runner_output_filters, dart_run_extra_env,
-        include_existing_outputs,
+        build_runner_args, build_runner_output_filters, dart_run_extra_env, has_asset_graph,
     };
     use std::fs;
     use std::path::Path;
@@ -382,93 +306,25 @@ mod tests {
         );
     }
 
+    /// Uses output filters only after build_runner has written an asset graph.
     #[test]
-    fn test_include_existing_outputs() {
+    fn test_has_asset_graph() {
         let root = tempfile::tempdir().unwrap();
-        for file in [
-            "lib/unrelated.g.dart",
-            "test/other.custom.dart",
-            "lib/types [#]/example.mapper.dart",
-            "lib/src/rust/api.freezed.dart",
-            "lib/src/rust/api.g.dart",
-            "lib/src/rust/frb_generated.io.dart",
-            "lib/main.dart",
-            "test/.test_config.dart",
-            "build/out.g.dart",
-            "target/out.g.dart",
-            "node_modules/pkg/out.g.dart",
-            "rust/target/debug/out.g.dart",
-        ] {
-            let path = root.path().join(file);
-            fs::create_dir_all(path.parent().unwrap()).unwrap();
-            fs::write(path, "output").unwrap();
-        }
-        fs::write(root.path().join("rust/Cargo.toml"), "").unwrap();
-        let frb_filter = "--build-filter=package:example/src/rust/**.freezed.dart".to_owned();
-        let dart_output = root.path().join("lib/src/rust");
-        let include = |filters: Vec<String>, needs_json_serializable| {
-            include_existing_outputs(
-                filters,
-                root.path(),
-                &dart_output,
-                needs_json_serializable,
-                "example",
-            )
-        };
+        assert!(!has_asset_graph(root.path()));
 
-        assert_eq!(
-            include(vec![frb_filter.clone()], true),
-            vec![
-                frb_filter.as_str(),
-                "--build-filter=package:example/types%20%5C%5B%23%5C%5D/example.mapper.dart",
-                "--build-filter=package:example/unrelated.g.dart",
-                "--build-filter=test/other.custom.dart",
-            ]
-        );
-        assert!(include(vec![frb_filter.clone()], false)
-            .contains(&"--build-filter=package:example/src/rust/api.g.dart".to_owned()));
-        assert!(include(Vec::new(), true).is_empty());
-    }
+        let build_dir = root.path().join(".dart_tool/build");
+        fs::create_dir_all(build_dir.join("0123abcd")).unwrap();
+        assert!(!has_asset_graph(root.path()));
 
-    #[test]
-    fn test_include_existing_outputs_falls_back_to_unfiltered() {
-        let root = tempfile::tempdir().unwrap();
-        let include = || {
-            include_existing_outputs(
-                vec!["--build-filter=**.freezed.dart".to_owned()],
-                root.path(),
-                root.path(),
-                false,
-                "example",
-            )
-        };
-        let test_dir = root.path().join("test");
-        fs::create_dir_all(&test_dir).unwrap();
+        fs::write(build_dir.join("0123abcd/asset_graph.json"), "{}").unwrap();
+        assert!(has_asset_graph(root.path()));
 
-        // A path that cannot be written as a filter
-        fs::write(test_dir.join("model [x].custom.dart"), "output").unwrap();
-        assert!(include().is_empty());
-        fs::remove_file(test_dir.join("model [x].custom.dart")).unwrap();
+        fs::remove_dir_all(&build_dir).unwrap();
+        fs::create_dir_all(&build_dir).unwrap();
+        assert!(!has_asset_graph(root.path()));
 
-        // More filters than fit on a command line
-        for index in 0..400 {
-            fs::write(
-                test_dir.join(format!("output_{index:04}.custom.dart")),
-                "output",
-            )
-            .unwrap();
-        }
-        assert!(include().is_empty());
-
-        // A directory that cannot be read
-        assert!(include_existing_outputs(
-            vec!["--build-filter=**.freezed.dart".to_owned()],
-            &root.path().join("missing"),
-            root.path(),
-            false,
-            "example",
-        )
-        .is_empty());
+        fs::write(build_dir.join("asset_graph.json"), "{}").unwrap();
+        assert!(has_asset_graph(root.path()));
     }
 
     /// Sets the build-script bypass required by every Dart subprocess.

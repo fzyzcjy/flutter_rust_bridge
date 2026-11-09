@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 
 void main() {
   test(
-    'code generation rebuilds existing outputs excluded by its filters',
+    'code generation keeps the outputs of other builders',
     () async {
       final repoRoot = Directory.current.parent.parent.path;
       final cargoTargetDir =
@@ -83,15 +83,17 @@ void main() {
       final unrelated = File('${temp.path}/lib/unrelated_model.g.dart');
       final custom = File('${temp.path}/test/other.custom.dart');
       final binary = File('${temp.path}/test/other.bin');
+      final plain = File('${temp.path}/test/other.dart');
       final freezed = File('${temp.path}/lib/src/rust/api.freezed.dart');
       expect(unrelated.existsSync(), isTrue);
       expect(freezed.existsSync(), isTrue);
       final original = unrelated.readAsStringSync();
       final originalCustom = custom.readAsStringSync();
       final originalBinary = binary.readAsBytesSync();
-      expect(originalBinary, [0, 255, 10]);
-      binary.deleteSync();
+      final originalPlain = plain.readAsStringSync();
       expect(originalCustom, 'const customValue = 42;\n');
+      expect(originalBinary, [0, 255, 10]);
+      expect(originalPlain, 'const plainValue = 7;\n');
 
       final config = File('${temp.path}/flutter_rust_bridge.yaml');
       config.writeAsStringSync(
@@ -100,53 +102,41 @@ void main() {
           'build_runner: true',
         ),
       );
-      File('${temp.path}/test/.test_config.dart')
-          .writeAsStringSync('// config');
+      void expectUnrelatedOutputsKept(String reason) {
+        expect(
+          unrelated.existsSync(),
+          isTrue,
+          reason: 'FRB generation deleted an unrelated builder output\n$reason',
+        );
+        expect(unrelated.readAsStringSync(), original);
+        expect(custom.readAsStringSync(), originalCustom);
+        expect(binary.readAsBytesSync(), originalBinary);
+        expect(plain.readAsStringSync(), originalPlain);
+      }
+
+      // A cold graph deletes every declared output, so the filters are dropped.
       final buildCache = Directory('${temp.path}/.dart_tool/build');
       buildCache.deleteSync(recursive: true);
       freezed.deleteSync();
-
       final coldOutput = await run('flutter_rust_bridge_codegen', ['generate']);
-      expect(
-        unrelated.existsSync(),
-        isTrue,
-        reason: 'FRB generation deleted an unrelated builder output',
-      );
-      expect(unrelated.readAsStringSync(), original);
-      expect(custom.readAsStringSync(), originalCustom);
-      expect(binary.existsSync(), isFalse);
+      expectUnrelatedOutputsKept(coldOutput);
       expect(freezed.existsSync(), isTrue, reason: coldOutput);
       await run('dart', ['run', 'bin/check.dart']);
 
-      // A warm graph must also leave the unrelated output available.
-      await run('flutter_rust_bridge_codegen', ['generate']);
-      expect(unrelated.readAsStringSync(), original);
-      expect(custom.readAsStringSync(), originalCustom);
-      expect(binary.existsSync(), isFalse);
+      // A warm graph keeps the unrelated outputs and the FRB outputs.
+      freezed.deleteSync();
+      final warmOutput = await run('flutter_rust_bridge_codegen', ['generate']);
+      expectUnrelatedOutputsKept(warmOutput);
+      expect(freezed.existsSync(), isTrue, reason: warmOutput);
 
-      // A custom Dart output must not pull in the unrelated JSON builder.
+      // A warm graph still scopes the build to the FRB outputs.
       unrelated.deleteSync();
-      buildCache.deleteSync(recursive: true);
       freezed.deleteSync();
       final filteredOutput = await run('flutter_rust_bridge_codegen', [
         'generate',
       ]);
       expect(unrelated.existsSync(), isFalse, reason: filteredOutput);
-      expect(custom.readAsStringSync(), originalCustom);
-      expect(binary.existsSync(), isFalse);
       expect(freezed.existsSync(), isTrue, reason: filteredOutput);
-
-      // Without existing unrelated outputs, keep the filtered build.
-      custom.deleteSync();
-      buildCache.deleteSync(recursive: true);
-      freezed.deleteSync();
-      final frbOnlyOutput = await run('flutter_rust_bridge_codegen', [
-        'generate',
-      ]);
-      expect(unrelated.existsSync(), isFalse, reason: frbOnlyOutput);
-      expect(custom.existsSync(), isFalse, reason: frbOnlyOutput);
-      expect(binary.existsSync(), isFalse, reason: frbOnlyOutput);
-      expect(freezed.existsSync(), isTrue, reason: frbOnlyOutput);
     },
     timeout: const Timeout(Duration(minutes: 10)),
   );
