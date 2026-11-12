@@ -193,11 +193,12 @@ abstract class BaseEntrypoint<
     ExternalLibrary externalLibrary,
   ) {
     return apiImplConstructor(
-      handler: handler,
-      generalizedFrbRustBinding: generalizedFrbRustBinding,
-      portManager: portManager,
-      wire: wireConstructor(externalLibrary),
-    ) as A;
+          handler: handler,
+          generalizedFrbRustBinding: generalizedFrbRustBinding,
+          portManager: portManager,
+          wire: wireConstructor(externalLibrary),
+        )
+        as A;
   }
 }
 

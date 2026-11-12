@@ -243,6 +243,30 @@ mod tests {
         body("library/codegen/config/internal_config_parser/wildcard_rust_input")
     }
 
+    #[test]
+    #[serial]
+    fn native_symbol_prefix_validation_and_propagation() -> anyhow::Result<()> {
+        let fixture =
+            get_test_fixture_dir("library/codegen/config/internal_config_parser/single_rust_input");
+        let _guard = CurrentDirGuard::change_to(&fixture)?;
+        for prefix in ["", "package_a_", "PackageB_2_"] {
+            let mut config = Config::from_files_auto()?;
+            config.native_symbol_prefix = Some(prefix.to_owned());
+            let internal = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
+            assert_eq!(internal.generator.wire.rust.native_symbol_prefix, prefix);
+            assert_eq!(internal.generator.wire.dart.native_symbol_prefix, prefix);
+        }
+        for prefix in ["package-a_", "package'a_", "package\na_", "é_"] {
+            let mut config = Config::from_files_auto()?;
+            config.native_symbol_prefix = Some(prefix.to_owned());
+            let error = InternalConfig::parse(&config, &MetaConfig { watch: false }).unwrap_err();
+            assert!(error.to_string().contains(
+                "native_symbol_prefix must contain only ASCII letters, digits, or underscores"
+            ));
+        }
+        Ok(())
+    }
+
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
