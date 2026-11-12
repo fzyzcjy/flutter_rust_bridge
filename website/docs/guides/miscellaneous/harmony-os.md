@@ -44,6 +44,11 @@ Use the CargoKit backend for OHOS builds. The Native Assets path still depends
 on `native_toolchain_rust` target mappings that do not cover OHOS, so selecting
 that backend does not provide a supported OHOS build today.
 
+OHOS support for the Native Assets backend is being discussed in
+[#3524](https://github.com/fzyzcjy/flutter_rust_bridge/issues/3524). See that issue
+for the OHOS-specific implementation and the discussion about integrating it
+while keeping non-OHOS behavior unchanged.
+
 ## `OHOS_SDK_HOME`
 
 In addition to the variables required by the OpenHarmony Flutter guide,
