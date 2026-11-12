@@ -30,4 +30,4 @@ internal_feature_for_testing = []
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
-frb_example_dart_minimal = { path = "../../dart_minimal/rust" }
+frb_example_native_symbol_prefix = { path = "../../native_symbol_prefix/rust" }

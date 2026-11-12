@@ -17,10 +17,10 @@ Future<void> generateRunFrbCodegenCommandGenerateFromScratch() async {
     );
     await generateInternalRust(generateConfig);
     await generateInternalBuildRunner(generateConfig);
-    // pure_dart links dart_minimal as an rlib, so its bindings must exist
+    // pure_dart links native_symbol_prefix as an rlib, so its bindings must exist
     // before cargo expand compiles that dependency.
     for (final package in [
-      'frb_example/dart_minimal',
+      'frb_example/native_symbol_prefix',
       'frb_example/pure_dart',
       'frb_example/pure_dart_pde',
     ]) {

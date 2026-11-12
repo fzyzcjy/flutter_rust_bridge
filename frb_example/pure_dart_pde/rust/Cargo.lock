@@ -316,7 +316,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "frb_example_dart_minimal"
+name = "frb_example_native_symbol_prefix"
 version = "0.1.0"
 dependencies = [
  "flutter_rust_bridge",
@@ -335,7 +335,7 @@ dependencies = [
  "byteorder",
  "chrono",
  "flutter_rust_bridge",
- "frb_example_dart_minimal",
+ "frb_example_native_symbol_prefix",
  "frb_example_pure_dart_example_external_lib",
  "futures",
  "lazy_static",

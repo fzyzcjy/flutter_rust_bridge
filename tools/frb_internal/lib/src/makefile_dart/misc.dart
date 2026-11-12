@@ -157,9 +157,9 @@ Future<void> precommit(PrecommitConfig config) async {
 Future<void> precommitGenerate() async {
   await ensureCargoExpandInstalledForPrecommitGenerate();
 
-  // pure_dart and pure_dart_pde compile dart_minimal as a native dependency.
+  // pure_dart and pure_dart_pde compile the namespaced bridge as a native dependency.
   // Finish writing its bindings before those generators read them.
-  const dependencyPackage = 'frb_example/dart_minimal';
+  const dependencyPackage = 'frb_example/native_symbol_prefix';
   await generateRunFrbCodegenCommandGenerate(
     const GeneratePackageConfig(
       setExitIfChanged: false,
