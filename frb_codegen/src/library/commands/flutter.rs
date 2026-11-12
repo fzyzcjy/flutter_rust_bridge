@@ -130,17 +130,26 @@ pub(crate) fn resolve_flutter_platforms(
     Ok(default_flutter_platforms(template, include_ohos))
 }
 
-#[allow(clippy::vec_init_then_push)]
 pub fn is_ohos_flutter() -> anyhow::Result<bool> {
+    is_ohos_flutter_at(None, FvmInstallMode::Skip)
+}
+
+#[allow(clippy::vec_init_then_push)]
+pub(crate) fn is_ohos_flutter_at(
+    pwd: Option<&Path>,
+    fvm_install_mode: FvmInstallMode,
+) -> anyhow::Result<bool> {
     let mut full_args = vec![];
-    full_args.extend(command_arg_maybe_fvm(None, FvmInstallMode::Skip));
+    // Root create/pub-add commands select FVM from the current invocation. Execute
+    // the probe in the package directory so FVM resolves that package's SDK.
+    full_args.extend(command_arg_maybe_fvm(None, fvm_install_mode));
     full_args.extend(vec![
         "flutter".to_owned(),
         "create".to_owned(),
         "--help".to_owned(),
     ]);
     info!("Execute `{}` (this may take a while)", full_args.join(" "));
-    let out = command_run!(call_shell[None, None], *full_args)?;
+    let out = command_run!(call_shell[pwd, None], *full_args)?;
     if !out.status.success() {
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
@@ -155,7 +164,7 @@ pub fn is_ohos_flutter() -> anyhow::Result<bool> {
     Ok(is_ohos)
 }
 
-fn default_flutter_platforms(template: Template, include_ohos: bool) -> String {
+pub(crate) fn default_flutter_platforms(template: Template, include_ohos: bool) -> String {
     format!(
         "android,ios,linux,macos,windows{}{}",
         if include_ohos { ",ohos" } else { "" },

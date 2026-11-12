@@ -1,17 +1,22 @@
 mod backend_cargokit;
+mod backend_native_assets;
 mod overlay;
 mod pubspec;
 
 use self::backend_cargokit::{
     exclude_cargokit_from_outer_analyzer, modify_permissions, setup_cargokit_dependencies,
 };
+use self::backend_native_assets::{configure_ohos_native_assets, ohos_rust_targets_template};
 use self::overlay::{compute_replacements, execute_overlay_templates};
 pub(crate) use self::pubspec::pub_add_dependency_frb;
 use self::pubspec::{add_publish_to_none, pub_add_dependencies};
 use crate::library::commands::cargo::cargo_fetch;
 use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
-use crate::library::commands::flutter::{platform_list_contains_ohos, resolve_flutter_platforms};
+use crate::library::commands::flutter::{
+    default_flutter_platforms, is_ohos_flutter_at, platform_list_contains_ohos,
+    resolve_flutter_platforms,
+};
 use crate::misc::{FvmInstallMode, IntegrationBackend, Template};
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
@@ -51,12 +56,23 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
             }
             Template::Plugin => dart_package_name.to_owned(),
         });
-    let platforms = resolve_flutter_platforms(config.template, config.platforms.clone())?;
+    let use_ohos_native_assets = config.integration_backend == IntegrationBackend::NativeAssets
+        && is_ohos_flutter_at(Some(&dart_root), config.fvm_install_mode)?;
+    let platforms = if config.integration_backend == IntegrationBackend::NativeAssets {
+        config
+            .platforms
+            .clone()
+            .unwrap_or_else(|| default_flutter_platforms(config.template, use_ohos_native_assets))
+    } else {
+        resolve_flutter_platforms(config.template, config.platforms.clone())?
+    };
     let include_ohos = platform_list_contains_ohos(&platforms);
 
     info!("Overlay template onto project");
-    let replacements =
+    let mut replacements =
         compute_replacements(&config, &dart_package_name, &rust_crate_name, include_ohos);
+    let ohos_rust_targets = ohos_rust_targets_template(use_ohos_native_assets);
+    replacements.insert("REPLACE_ME_OHOS_RUST_TARGETS", &ohos_rust_targets);
     execute_overlay_templates(
         &replacements,
         &dart_root,
@@ -64,6 +80,11 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         include_ohos,
         &dart_package_name,
     )?;
+
+    if use_ohos_native_assets {
+        info!("Configure OHOS Native Assets hooks and Rust targets");
+        configure_ohos_native_assets(&dart_root, &config)?;
+    }
 
     if config.enable_local_dependency && config.template == Template::Plugin {
         add_publish_to_none(&dart_root)?;
@@ -76,12 +97,10 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 
     info!("Add pub dependencies");
     pub_add_dependencies(
-        config.enable_integration_test,
-        config.enable_local_dependency,
+        &dart_root,
         &rust_crate_name,
-        &config.template,
-        config.integration_backend,
-        config.fvm_install_mode,
+        &config,
+        use_ohos_native_assets,
     )?;
 
     if config.integration_backend == IntegrationBackend::Cargokit {
