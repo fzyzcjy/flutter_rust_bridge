@@ -99,9 +99,9 @@ fn update_pubspec(path: &Path, add_hook_dependency: bool, root_overrides: bool) 
         let root = yaml_section(&mut manifest, "dependency_overrides")?;
         root.extend(overrides);
         let hook_package = Value::String("flutter_rust_bridge_hooks".to_owned());
-        if root.contains_key(&hook_package) {
-            root.insert(hook_package, serde_yaml::from_str(OHOS_HOOK_DEPENDENCY)?);
-        }
+        // Workspace members may already use hosted or local hooks. Pub resolves
+        // one source per package, so unify the hook source at the consumer root.
+        root.insert(hook_package, serde_yaml::from_str(OHOS_HOOK_DEPENDENCY)?);
     } else if let Some(overrides) = manifest
         .get_mut("dependency_overrides")
         .filter(|section| !section.is_null())
@@ -300,6 +300,66 @@ mod tests {
         assert!(example_pubspec["dependencies"]
             .get("flutter_rust_bridge_hooks")
             .is_none());
+    }
+
+    #[test]
+    fn workspace_root_unifies_existing_hook_dependency_sources() {
+        for existing_dependency in ["any", "{path: ../local_hooks}"] {
+            for dependency_at_root in [false, true] {
+                let temp = tempfile::tempdir().unwrap();
+                let root = temp.path();
+                let package = root.join("package");
+                let other_package = root.join("other_package");
+                fs::create_dir_all(&package).unwrap();
+                fs::create_dir_all(&other_package).unwrap();
+                let hook_dependency =
+                    format!("dependencies:\n  flutter_rust_bridge_hooks: {existing_dependency}\n");
+                fs::write(
+                    root.join("pubspec.yaml"),
+                    format!(
+                        "name: workspace\nworkspace: [package, other_package]\n{}",
+                        if dependency_at_root {
+                            &hook_dependency
+                        } else {
+                            ""
+                        }
+                    ),
+                )
+                .unwrap();
+                fs::write(
+                    package.join("pubspec.yaml"),
+                    "name: package\nresolution: workspace\n",
+                )
+                .unwrap();
+                fs::write(
+                    other_package.join("pubspec.yaml"),
+                    format!(
+                        "name: other_package\nresolution: workspace\n{}",
+                        if dependency_at_root {
+                            ""
+                        } else {
+                            &hook_dependency
+                        }
+                    ),
+                )
+                .unwrap();
+                configure_ohos_native_assets(&package, &config(Template::App)).unwrap();
+                let root_pubspec = read_yaml(&root.join("pubspec.yaml"));
+                assert_eq!(
+                    root_pubspec["dependency_overrides"]["flutter_rust_bridge_hooks"],
+                    serde_yaml::from_str::<Value>(OHOS_HOOK_DEPENDENCY).unwrap()
+                );
+                let existing_manifest = if dependency_at_root {
+                    root.join("pubspec.yaml")
+                } else {
+                    other_package.join("pubspec.yaml")
+                };
+                assert_eq!(
+                    read_yaml(&existing_manifest)["dependencies"]["flutter_rust_bridge_hooks"],
+                    serde_yaml::from_str::<Value>(existing_dependency).unwrap()
+                );
+            }
+        }
     }
 
     #[test]

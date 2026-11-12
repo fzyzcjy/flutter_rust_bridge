@@ -31,7 +31,9 @@ If the project already has `hook/build.dart`, `integrate` preserves it and print
 When the active Flutter SDK supports OHOS, `create` and `integrate` select the
 [OHOS hooks package](https://github.com/star4277/native_toolchain_rust_ohos/tree/main/frb_hooks_ohos)
 and configure its required `hooks` and `code_assets` dependency overrides at the
-consumer root. They also add `aarch64-unknown-linux-ohos`,
+consumer root. The hooks package source is also overridden there so existing
+hosted or local hooks dependencies in a workspace use the same OHOS Git package.
+They also add `aarch64-unknown-linux-ohos`,
 `x86_64-unknown-linux-ohos`, and `armv7-unknown-linux-ohos` to the Rust toolchain
 targets, including when the toolchain file already exists. This selection follows
 the SDK rather than `--platforms`; ordinary Flutter SDKs retain the existing hooks
