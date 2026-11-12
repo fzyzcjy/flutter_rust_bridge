@@ -22,6 +22,9 @@ abstract class BaseEntrypoint<
   AI extends BaseApiImpl,
   W extends BaseWire
 > {
+  /// Prefix used by this package's generated native exports.
+  String get nativeSymbolPrefix => '';
+
   /// Whether the system has been initialized.
   bool get initialized => __state != null;
 
@@ -56,6 +59,7 @@ abstract class BaseEntrypoint<
     handler ??= BaseHandler();
     final generalizedFrbRustBinding = GeneralizedFrbRustBinding(
       externalLibrary,
+      nativeSymbolPrefix: nativeSymbolPrefix,
     );
     _sanityCheckContentHash(generalizedFrbRustBinding);
     final portManager = PortManager(generalizedFrbRustBinding, handler);
@@ -189,12 +193,11 @@ abstract class BaseEntrypoint<
     ExternalLibrary externalLibrary,
   ) {
     return apiImplConstructor(
-          handler: handler,
-          generalizedFrbRustBinding: generalizedFrbRustBinding,
-          portManager: portManager,
-          wire: wireConstructor(externalLibrary),
-        )
-        as A;
+      handler: handler,
+      generalizedFrbRustBinding: generalizedFrbRustBinding,
+      portManager: portManager,
+      wire: wireConstructor(externalLibrary),
+    ) as A;
   }
 }
 

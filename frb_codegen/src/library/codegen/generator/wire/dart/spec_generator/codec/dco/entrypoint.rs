@@ -83,6 +83,7 @@ mod tests {
         let pack = pack();
         let api_dart_config = api_dart_config();
         let wire_dart_config = GeneratorWireDartInternalConfig {
+            native_symbol_prefix: String::new(),
             has_ffigen: false,
             web_enabled: false,
             llvm_path: vec![],
@@ -108,6 +109,7 @@ mod tests {
             c_symbol_prefix: String::new(),
         };
         let wire_rust_config = GeneratorWireRustInternalConfig {
+            native_symbol_prefix: String::new(),
             rust_crate_dir: PathBuf::new(),
             web_enabled: false,
             rust_output_path: PathBuf::new(),
