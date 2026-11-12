@@ -5,6 +5,9 @@ c_output: frb_generated.h
 dump_all: true
 local: true
 
+# Also linked statically into pure_dart for the multi-package regression.
+native_symbol_prefix: minimal_test_
+
 # TODO temp
 #full_dep: true
 #enable_lifetime: true

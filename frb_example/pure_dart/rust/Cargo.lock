@@ -316,6 +316,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "frb_example_dart_minimal"
+version = "0.1.0"
+dependencies = [
+ "flutter_rust_bridge",
+]
+
+[[package]]
 name = "frb_example_pure_dart"
 version = "0.1.0"
 dependencies = [
@@ -324,6 +331,7 @@ dependencies = [
  "byteorder",
  "chrono",
  "flutter_rust_bridge",
+ "frb_example_dart_minimal",
  "frb_example_pure_dart_example_external_lib",
  "futures",
  "lazy_static",

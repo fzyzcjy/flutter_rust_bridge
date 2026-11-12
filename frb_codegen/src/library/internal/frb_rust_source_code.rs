@@ -182,11 +182,14 @@ mod tests {
         let code = super::generate_target(Target::Io);
         assert!(code.contains("($prefix:literal)"));
         assert!(code.contains("frb_generated_io_extern_func!(\"\")"));
-        for symbol in ["frb_pde_ffi_dispatcher_primary", "frb_pde_ffi_dispatcher_sync", "frb_dart_fn_deliver_output"] {
+        for symbol in [
+            "frb_pde_ffi_dispatcher_primary",
+            "frb_pde_ffi_dispatcher_sync",
+            "frb_dart_fn_deliver_output",
+        ] {
             assert!(code.contains(&format!("concat!($prefix, \"{symbol}\")")));
         }
         let web = super::generate_target(Target::Web);
         assert!(!web.contains("$prefix"));
     }
-
 }
