@@ -28,6 +28,25 @@ That package currently wraps [`native_toolchain_rust`](https://pub.dev/packages/
 
 If the project already has `hook/build.dart`, `integrate` preserves it and prints a warning instead of modifying it. Add `FlutterRustBridgeNativeAssetsBuilder` to the existing hook manually; see the generated hook from a new Native Assets project for the required call.
 
+When the active Flutter SDK supports OHOS, `create` and `integrate` select the
+[OHOS hooks package](https://github.com/star4277/native_toolchain_rust_ohos/tree/main/frb_hooks_ohos)
+and configure its required `hooks` and `code_assets` dependency overrides at the
+consumer root. The hooks package source is also overridden there so existing
+hosted or local hooks dependencies in a workspace use the same OHOS Git package.
+They also add `aarch64-unknown-linux-ohos`,
+`x86_64-unknown-linux-ohos`, and `armv7-unknown-linux-ohos` to the Rust toolchain
+targets, including when the toolchain file already exists. This selection follows
+the SDK rather than `--platforms`; ordinary Flutter SDKs retain the existing hooks
+dependency and Rust targets.
+
+Use an OHOS Flutter SDK that supports Native Assets and follow the fork's
+[setup requirements](https://github.com/star4277/native_toolchain_rust_ohos/blob/main/frb_hooks_ohos/README.md).
+The fork discovers the native SDK from Flutter's C compiler configuration when
+`OHOS_SDK_HOME` is filtered out of the hook environment. If that variable is
+available, it must point to the native SDK directory. Applications consuming an
+OHOS-enabled package must also configure the fork's dependency
+overrides at their own root; dependency overrides do not propagate from packages.
+
 For existing projects that already use Cargokit, see [Migrate from Cargokit to Native Assets](migrate-cargokit-to-native-assets).
 
 ## Rust crate requirements

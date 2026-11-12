@@ -1,3 +1,4 @@
+use super::IntegrateConfig;
 use crate::library::commands::flutter::flutter_pub_add;
 use crate::misc::{FvmInstallMode, IntegrationBackend, Template};
 use anyhow::Result;
@@ -6,16 +7,15 @@ use std::path::Path;
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
 pub(super) fn pub_add_dependencies(
-    enable_integration_test: bool,
-    enable_local_dependency: bool,
+    dart_root: &Path,
     rust_crate_name: &str,
-    template: &Template,
-    integration_backend: IntegrationBackend,
-    fvm_install_mode: FvmInstallMode,
+    config: &IntegrateConfig,
+    use_ohos_native_assets: bool,
 ) -> Result<()> {
     // frb-coverage:ignore-end
-    if integration_backend == IntegrationBackend::Cargokit {
-        match template {
+    let fvm_install_mode = config.fvm_install_mode;
+    if config.integration_backend == IntegrationBackend::Cargokit {
+        match config.template {
             Template::App => flutter_pub_add(
                 &[rust_crate_name, "--path=rust_builder"],
                 None,
@@ -25,15 +25,15 @@ pub(super) fn pub_add_dependencies(
         }
     }
 
-    pub_add_dependency_frb(enable_local_dependency, None, fvm_install_mode)?;
-    if integration_backend == IntegrationBackend::NativeAssets {
-        pub_add_dependency_frb_hooks(enable_local_dependency, None, fvm_install_mode)?;
+    pub_add_dependency_frb(config.enable_local_dependency, None, fvm_install_mode)?;
+    if config.integration_backend == IntegrationBackend::NativeAssets && !use_ohos_native_assets {
+        pub_add_dependency_frb_hooks(config.enable_local_dependency, None, fvm_install_mode)?;
     }
 
-    if matches!(template, Template::Plugin) {
+    if matches!(config.template, Template::Plugin) {
         flutter_pub_add(
             &["integration_test", "--dev", "--sdk=flutter"],
-            Some(Path::new("example")),
+            Some(&dart_root.join("example")),
             fvm_install_mode,
         )?;
     }
@@ -41,7 +41,7 @@ pub(super) fn pub_add_dependencies(
     // // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
     // flutter_pub_add(&["ffigen:8.0.2", "--dev"])?;
 
-    if enable_integration_test {
+    if config.enable_integration_test {
         flutter_pub_add(
             &["integration_test", "--dev", "--sdk=flutter"],
             None,

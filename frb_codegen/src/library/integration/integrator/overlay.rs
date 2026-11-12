@@ -120,6 +120,7 @@ pub(super) fn compute_replacements<'a>(
     replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name);
     replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir.as_str());
     replacements.insert("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION"));
+    replacements.insert("REPLACE_ME_OHOS_RUST_TARGETS", "");
 
     let rust_frb_dependency = if config.enable_local_dependency {
         r#"{ path = "../../../frb_rust" }"#
@@ -523,6 +524,53 @@ mod tests {
             }
             for path in absent_paths {
                 assert!(!temp_dir.path().join(path).exists(), "unexpected {path}");
+            }
+        }
+    }
+
+    #[test]
+    fn native_assets_targets_follow_sdk_independently_of_platform_selection() {
+        use super::super::backend_native_assets::ohos_rust_targets_template;
+
+        for template in [Template::App, Template::Plugin] {
+            for use_ohos_native_assets in [false, true] {
+                // An explicit platform list may include or exclude OHOS independently of the SDK.
+                for include_ohos in [false, true] {
+                    let temp = tempfile::tempdir().unwrap();
+                    let mut config = config(template, IntegrationBackend::NativeAssets);
+                    config.rust_crate_dir = "native/rust".to_owned();
+                    let target_text = ohos_rust_targets_template(use_ohos_native_assets);
+                    let mut replacements =
+                        compute_replacements(&config, "demo", "demo_rust", include_ohos);
+                    replacements.insert("REPLACE_ME_OHOS_RUST_TARGETS", &target_text);
+                    execute_overlay_templates(
+                        &replacements,
+                        temp.path(),
+                        &config,
+                        include_ohos,
+                        "demo",
+                    )
+                    .unwrap();
+
+                    let toolchain: toml::Value = toml::from_str(
+                        &std::fs::read_to_string(
+                            temp.path().join("native/rust/rust-toolchain.toml"),
+                        )
+                        .unwrap(),
+                    )
+                    .unwrap();
+                    let targets = toolchain["toolchain"]["targets"].as_array().unwrap();
+                    let ohos_count = targets
+                        .iter()
+                        .filter(|target| target.as_str().unwrap().ends_with("-ohos"))
+                        .count();
+                    assert_eq!(ohos_count, if use_ohos_native_assets { 3 } else { 0 });
+                    assert_eq!(targets.len(), if use_ohos_native_assets { 16 } else { 13 });
+                    assert_eq!(toolchain["toolchain"]["channel"].as_str(), Some("1.93.1"));
+                    let hook =
+                        std::fs::read_to_string(temp.path().join("hook/build.dart")).unwrap();
+                    assert!(hook.contains("cratePath: 'native/rust'"));
+                }
             }
         }
     }
