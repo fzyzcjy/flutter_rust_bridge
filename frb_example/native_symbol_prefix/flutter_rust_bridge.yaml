@@ -1,0 +1,7 @@
+# A second bridge statically linked into pure_dart and pure_dart_pde.
+rust_input: crate::api
+rust_root: rust
+dart_output: lib/src/rust
+native_symbol_prefix: namespace_fixture_
+web: false
+local: true

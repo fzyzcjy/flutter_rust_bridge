@@ -17,7 +17,10 @@ Future<void> generateRunFrbCodegenCommandGenerateFromScratch() async {
     );
     await generateInternalRust(generateConfig);
     await generateInternalBuildRunner(generateConfig);
+    // pure_dart links native_symbol_prefix as an rlib, so its bindings must exist
+    // before cargo expand compiles that dependency.
     for (final package in [
+      'frb_example/native_symbol_prefix',
       'frb_example/pure_dart',
       'frb_example/pure_dart_pde',
     ]) {
@@ -41,6 +44,9 @@ Future<void> _generateExampleBuildRunnerOutputs() async {
     'frb_example/pure_dart',
     'frb_example/pure_dart_pde',
   ]) {
+    // Discard analyzer state from earlier passes over partially restored sources.
+    // The final builder pass must resolve the complete generated source graph.
+    await exec('dart run build_runner clean', relativePwd: package);
     await exec(
       'dart run build_runner build --delete-conflicting-outputs',
       relativePwd: package,

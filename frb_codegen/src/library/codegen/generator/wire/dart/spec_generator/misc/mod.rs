@@ -202,6 +202,8 @@ fn generate_boilerplate(
                   @override
                   String get codegenVersion => '{codegen_version}';
 
+                  {native_symbol_prefix_override}
+
                   @override
                   int get rustContentHash => {rust_content_hash};
 
@@ -213,6 +215,9 @@ fn generate_boilerplate(
                   );
                 }}
                 "#,
+                native_symbol_prefix_override = if context.config.native_symbol_prefix.is_empty() { String::new() } else {
+                    format!("@override\nString get nativeSymbolPrefix => '{}';", context.config.native_symbol_prefix)
+                },
                 stem = context.config.default_external_library_loader.stem,
                 io_directory = context.config.default_external_library_loader.io_directory,
                 web_prefix = context.config.default_external_library_loader.web_prefix,

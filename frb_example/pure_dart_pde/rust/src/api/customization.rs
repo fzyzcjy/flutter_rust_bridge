@@ -13,6 +13,8 @@ lazy_static! {
 
 #[frb(init)]
 pub fn init_app() {
+    #[cfg(not(target_family = "wasm"))]
+    frb_example_native_symbol_prefix::link_bridge();
     // Keep stacktraces, but do not install a default logger, since that would
     // prevent users from enabling the FRB Rust-to-Dart logging bridge.
     flutter_rust_bridge::setup_backtrace();

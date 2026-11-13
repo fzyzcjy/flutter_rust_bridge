@@ -75,6 +75,7 @@ pub(crate) mod test_utils {
 
     pub(crate) fn wire_dart_config(web_enabled: bool) -> GeneratorWireDartInternalConfig {
         GeneratorWireDartInternalConfig {
+            native_symbol_prefix: String::new(),
             has_ffigen: false,
             web_enabled,
             llvm_path: vec![],
@@ -103,6 +104,7 @@ pub(crate) mod test_utils {
 
     pub(crate) fn wire_rust_config(web_enabled: bool) -> GeneratorWireRustInternalConfig {
         GeneratorWireRustInternalConfig {
+            native_symbol_prefix: String::new(),
             rust_crate_dir: PathBuf::new(),
             web_enabled,
             rust_output_path: PathBuf::new(),

@@ -18,9 +18,23 @@ class GeneralizedFrbRustBinding {
   static _ShutdownWatcher? _shutdownWatcher;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
-    : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary),
-      _externalLibraryDebugInfo = externalLibrary.debugInfo;
+  GeneralizedFrbRustBinding(
+    ExternalLibrary externalLibrary, {
+    String nativeSymbolPrefix = '',
+  }) : _binding = MultiPackageCBinding.fromLookup(<T extends ffi.NativeType>(
+         String name,
+       ) {
+         const packageSymbols = {
+           'frb_get_rust_content_hash',
+           'frb_pde_ffi_dispatcher_primary',
+           'frb_pde_ffi_dispatcher_sync',
+           'frb_dart_fn_deliver_output',
+         };
+         return externalLibrary.ffiDynamicLibrary.lookup<T>(
+           packageSymbols.contains(name) ? '$nativeSymbolPrefix$name' : name,
+         );
+       }),
+       _externalLibraryDebugInfo = externalLibrary.debugInfo;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {

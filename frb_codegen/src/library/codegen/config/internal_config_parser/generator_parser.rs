@@ -51,6 +51,13 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
         full_dep,
     } = args;
 
+    let native_symbol_prefix = config.native_symbol_prefix.clone().unwrap_or_default();
+    anyhow::ensure!(
+        native_symbol_prefix
+            .bytes()
+            .all(|c| c.is_ascii_alphanumeric() || c == b'_'),
+        "native_symbol_prefix must contain only ASCII letters, digits, or underscores"
+    );
     let dart_enums_style = config.dart_enums_style.unwrap_or(true);
     let dart3 = config.dart3.unwrap_or(true);
     let default_external_library_loader =
@@ -71,6 +78,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
         wire: GeneratorWireInternalConfig {
             dart: GeneratorWireDartInternalConfig {
                 dart_root: dart_root.to_owned(),
+                native_symbol_prefix: native_symbol_prefix.clone(),
                 web_enabled,
                 llvm_path: config
                     .llvm_path
@@ -89,6 +97,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             },
             rust: GeneratorWireRustInternalConfig {
                 rust_crate_dir: rust_crate_dir.to_owned(),
+                native_symbol_prefix: native_symbol_prefix.clone(),
                 web_enabled,
                 rust_output_path: rust_output_path.to_owned(),
                 c_symbol_prefix: c_symbol_prefix.clone(),

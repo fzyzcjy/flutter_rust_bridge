@@ -136,6 +136,7 @@ mod tests {
 
     fn config(web_enabled: bool) -> GeneratorWireRustInternalConfig {
         GeneratorWireRustInternalConfig {
+            native_symbol_prefix: String::new(),
             rust_crate_dir: PathBuf::new(),
             web_enabled,
             rust_output_path: PathBuf::new(),
