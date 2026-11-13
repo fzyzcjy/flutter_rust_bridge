@@ -44,6 +44,9 @@ Future<void> _generateExampleBuildRunnerOutputs() async {
     'frb_example/pure_dart',
     'frb_example/pure_dart_pde',
   ]) {
+    // Discard analyzer state from earlier passes over partially restored sources.
+    // The final builder pass must resolve the complete generated source graph.
+    await exec('dart run build_runner clean', relativePwd: package);
     await exec(
       'dart run build_runner build --delete-conflicting-outputs',
       relativePwd: package,

@@ -1,6 +1,8 @@
 @TestOn('vm')
 library;
 
+import 'dart:ffi';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
@@ -23,10 +25,12 @@ void main() {
       RustLib.dispose();
     });
 
-    // Both initializers check their own (different) content hashes.
+    // Both initializers validate their generated hash against their own export.
+    int nativeHash(String symbol) => library.ffiDynamicLibrary
+        .lookupFunction<Int32 Function(), int Function()>(symbol)();
     expect(
-      RustLib.instance.rustContentHash,
-      isNot(fixture.RustLib.instance.rustContentHash),
+      nativeHash('frb_get_rust_content_hash'),
+      isNot(nativeHash('namespace_fixture_frb_get_rust_content_hash')),
     );
     expect(await simpleAdderTwinNormal(a: 2, b: 3), 5);
     expect(await fixture_api.add(a: 20, b: 30), 50);
