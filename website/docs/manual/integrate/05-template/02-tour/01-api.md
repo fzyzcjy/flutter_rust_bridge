@@ -11,4 +11,4 @@ been imported through `pub use` so that they are visible from `native/src/bridge
 Only types defined within the current crate are eligible for codegen.
 Furthermore, structs and enums may only comprise of types that are themselves eligible.
 
-To review the subset of currently eligible functions and types, see [the example file here](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs).
+To review the subset of currently eligible functions and types, see [the example file here](https://github.com/fzyzcjy/flutter_rust_bridge/blob/v1.82.6/frb_example/pure_dart/rust/src/api.rs).
