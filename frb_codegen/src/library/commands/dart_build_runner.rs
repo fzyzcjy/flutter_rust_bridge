@@ -7,7 +7,7 @@ use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::path_to_string;
 use anyhow::{bail, Context};
-use log::{debug, info};
+use log::debug;
 use std::collections::HashMap;
 use std::path::{Path, MAIN_SEPARATOR};
 
@@ -73,7 +73,7 @@ fn build_runner_output_filters(
     let relative_output = path_to_string(relative_output)?.replace(MAIN_SEPARATOR, "/");
 
     if !enable_build_runner_filter {
-        info!("build_runner runs without output filters, so every enabled builder runs");
+        debug!("build_runner runs without output filters, so every enabled builder runs");
         return Ok(Vec::new());
     }
 
