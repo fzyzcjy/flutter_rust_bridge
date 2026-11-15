@@ -8,146 +8,209 @@ import 'package:test/test.dart';
 
 void main() {
   test('code generation keeps the outputs of other builders', () async {
-    final repoRoot = Directory.current.parent.parent.path;
-    final cargoTargetDir = Platform.environment['CARGO_TARGET_DIR'] ?? 'target';
-    final targetDir = cargoTargetDir.startsWith('/')
-        ? cargoTargetDir
-        : '$repoRoot/$cargoTargetDir';
-    final binaryDir = '$targetDir/debug';
-    final temp = await Directory.systemTemp.createTemp('frb_build_runner_');
-    addTearDown(() => temp.delete(recursive: true));
+    final fixture = await _Fixture.prepare();
+    addTearDown(fixture.dispose);
 
-    final fixture = Directory(
-      'integration_test/fixtures/build_runner_preservation',
+    await fixture.checkWarmBuild();
+    await fixture.checkColdBuild();
+    await fixture.checkFilteredBuild();
+  }, timeout: const Timeout(Duration(minutes: 15)));
+}
+
+/// Runs code generation against a package that mixes FRB outputs with the
+/// outputs of other builders.
+class _Fixture {
+  final Directory _temp;
+  final String _repoRoot;
+  final Map<String, String> _environment;
+  final File _unrelated;
+  final File _custom;
+  final File _binary;
+  final File _plain;
+  final File _freezed;
+  final File _config;
+  late final String _originalUnrelated;
+  late final String _originalCustom;
+  late final List<int> _originalBinary;
+  late final String _originalPlain;
+
+  _Fixture._({
+    required Directory temp,
+    required String repoRoot,
+    required Map<String, String> environment,
+  }) : _temp = temp,
+       _repoRoot = repoRoot,
+       _environment = environment,
+       _unrelated = File('${temp.path}/lib/unrelated_model.g.dart'),
+       _custom = File('${temp.path}/test/other.custom.dart'),
+       _binary = File('${temp.path}/test/other.bin'),
+       _plain = File('${temp.path}/test/other.dart'),
+       _freezed = File('${temp.path}/lib/src/rust/api.freezed.dart'),
+       _config = File('${temp.path}/flutter_rust_bridge.yaml');
+
+  /// Copies the fixture into a temporary package and generates once.
+  static Future<_Fixture> prepare() async {
+    final repoRoot = Directory.current.parent.parent.path;
+    final temp = await Directory.systemTemp.createTemp('frb_build_runner_');
+    _copyFixture(temp);
+    _rewriteFrbdartPath(temp: temp, repoRoot: repoRoot);
+
+    final fixture = _Fixture._(
+      temp: temp,
+      repoRoot: repoRoot,
+      environment: {
+        'PATH': '${_binaryDir(repoRoot)}:${Platform.environment['PATH']}',
+        'FRB_SIMPLE_BUILD_SKIP': '1',
+      },
     );
-    for (final entry in fixture.listSync(recursive: true)) {
-      final relative = entry.path.substring(fixture.path.length + 1);
-      final destination =
-          '${temp.path}/${relative.replaceFirst(RegExp(r'\.template$'), '')}';
-      if (entry is Directory) {
-        Directory(destination).createSync(recursive: true);
-      } else if (entry is File) {
-        File(destination).parent.createSync(recursive: true);
-        entry.copySync(destination);
-      }
-    }
-    final pubspec = File('${temp.path}/pubspec.yaml');
-    pubspec.writeAsStringSync(
-      pubspec.readAsStringSync().replaceFirst(
-        '"../../../../../frb_dart"',
-        jsonEncode('$repoRoot/frb_dart'),
+    await fixture._buildCodegen();
+    await fixture._pubGet();
+    await fixture._checkInitialBuild();
+    return fixture;
+  }
+
+  void dispose() => _temp.deleteSync(recursive: true);
+
+  /// Keeps the outputs of the other builders when the asset graph is warm.
+  Future<void> checkWarmBuild() async {
+    final output = await _generate();
+    _expectUnrelatedOutputsKept(output);
+    expect(_freezed.existsSync(), isTrue, reason: output);
+  }
+
+  /// Keeps the outputs of the other builders when the asset graph is cold.
+  Future<void> checkColdBuild() async {
+    Directory('${_temp.path}/.dart_tool/build').deleteSync(recursive: true);
+    _freezed.deleteSync();
+    final output = await _generate();
+    _expectUnrelatedOutputsKept(output);
+    expect(_freezed.existsSync(), isTrue, reason: output);
+  }
+
+  /// Scopes the build to the FRB outputs once the flag is enabled.
+  Future<void> checkFilteredBuild() async {
+    _config.writeAsStringSync(
+      _config.readAsStringSync().replaceFirst(
+        'build_runner: true',
+        'build_runner: true\nenable_build_runner_filter: true',
       ),
     );
+    _unrelated.deleteSync();
+    _freezed.deleteSync();
+    final output = await _generate();
+    expect(_unrelated.existsSync(), isFalse, reason: output);
+    expect(_freezed.existsSync(), isTrue, reason: output);
+    expect(_custom.readAsStringSync(), _originalCustom);
+    expect(_binary.readAsBytesSync(), _originalBinary);
+    expect(_plain.readAsStringSync(), _originalPlain);
+  }
 
-    final environment = {
-      'PATH': '$binaryDir:${Platform.environment['PATH']}',
-      'FRB_SIMPLE_BUILD_SKIP': '1',
-    };
-    Future<String> run(
-      String executable,
-      List<String> arguments, {
-      String? workingDirectory,
-    }) async {
-      final result = await Process.run(
-        executable,
-        arguments,
-        workingDirectory: workingDirectory ?? temp.path,
-        environment: environment,
-      );
-      expect(
-        result.exitCode,
-        0,
-        reason: '$executable $arguments\n${result.stdout}\n${result.stderr}',
-      );
-      return '${result.stdout}\n${result.stderr}';
-    }
+  Future<void> _buildCodegen() => _run('cargo', [
+    'build',
+    '--manifest-path',
+    '$_repoRoot/frb_codegen/Cargo.toml',
+    '--package',
+    'flutter_rust_bridge_codegen',
+    '--bin',
+    'flutter_rust_bridge_codegen',
+  ], workingDirectory: _repoRoot);
 
-    await run('cargo', [
-      'build',
-      '--manifest-path',
-      '$repoRoot/frb_codegen/Cargo.toml',
-      '--package',
-      'flutter_rust_bridge_codegen',
-      '--bin',
-      'flutter_rust_bridge_codegen',
-    ], workingDirectory: repoRoot);
-    await run('dart', ['pub', 'get']);
+  Future<void> _pubGet() async {
+    await _run('dart', ['pub', 'get']);
+  }
 
-    final unrelated = File('${temp.path}/lib/unrelated_model.g.dart');
-    final custom = File('${temp.path}/test/other.custom.dart');
-    final binary = File('${temp.path}/test/other.bin');
-    final plain = File('${temp.path}/test/other.dart');
-    final freezed = File('${temp.path}/lib/src/rust/api.freezed.dart');
-
-    final initialOutput = await run('flutter_rust_bridge_codegen', [
-      'generate',
-    ]);
-    for (final file in [unrelated, custom, binary, plain]) {
+  Future<void> _checkInitialBuild() async {
+    final output = await _generate();
+    for (final file in [_unrelated, _custom, _binary, _plain]) {
       expect(
         file.existsSync(),
         isTrue,
         reason:
             'FRB generation did not generate an unrelated builder output '
-            '$file\n$initialOutput',
+            '$file\n$output',
       );
     }
-    expect(freezed.existsSync(), isTrue, reason: initialOutput);
-    final originalUnrelated = unrelated.readAsStringSync();
-    final originalCustom = custom.readAsStringSync();
-    final originalBinary = binary.readAsBytesSync();
-    final originalPlain = plain.readAsStringSync();
-    expect(originalCustom, 'const customValue = 42;\n');
-    expect(originalBinary, [0, 255, 10]);
-    expect(originalPlain, 'const plainValue = 7;\n');
-    await run('dart', ['run', 'bin/check.dart']);
+    expect(_freezed.existsSync(), isTrue, reason: output);
 
-    void expectUnrelatedOutputsKept(String reason) {
-      for (final file in [unrelated, custom, binary, plain]) {
-        expect(
-          file.existsSync(),
-          isTrue,
-          reason:
-              'FRB generation deleted an unrelated builder output $file\n'
-              '$reason',
-        );
-      }
-      expect(unrelated.readAsStringSync(), originalUnrelated);
-      expect(custom.readAsStringSync(), originalCustom);
-      expect(binary.readAsBytesSync(), originalBinary);
-      expect(plain.readAsStringSync(), originalPlain);
+    _originalUnrelated = _unrelated.readAsStringSync();
+    _originalCustom = _custom.readAsStringSync();
+    _originalBinary = _binary.readAsBytesSync();
+    _originalPlain = _plain.readAsStringSync();
+    expect(_originalCustom, 'const customValue = 42;\n');
+    expect(_originalBinary, [0, 255, 10]);
+    expect(_originalPlain, 'const plainValue = 7;\n');
+    await _run('dart', ['run', 'bin/check.dart']);
+  }
+
+  void _expectUnrelatedOutputsKept(String reason) {
+    for (final file in [_unrelated, _custom, _binary, _plain]) {
+      expect(
+        file.existsSync(),
+        isTrue,
+        reason:
+            'FRB generation deleted an unrelated builder output $file\n$reason',
+      );
     }
+    expect(_unrelated.readAsStringSync(), _originalUnrelated);
+    expect(_custom.readAsStringSync(), _originalCustom);
+    expect(_binary.readAsBytesSync(), _originalBinary);
+    expect(_plain.readAsStringSync(), _originalPlain);
+  }
 
-    // A warm asset graph keeps the outputs of the other builders as well.
-    final warmDefaultOutput = await run('flutter_rust_bridge_codegen', [
-      'generate',
-    ]);
-    expectUnrelatedOutputsKept(warmDefaultOutput);
-    expect(freezed.existsSync(), isTrue, reason: warmDefaultOutput);
+  Future<String> _generate() =>
+      _run('flutter_rust_bridge_codegen', ['generate']);
 
-    // A cold asset graph deletes every declared output before rebuilding.
-    Directory('${temp.path}/.dart_tool/build').deleteSync(recursive: true);
-    freezed.deleteSync();
-    final coldOutput = await run('flutter_rust_bridge_codegen', ['generate']);
-    expectUnrelatedOutputsKept(coldOutput);
-    expect(freezed.existsSync(), isTrue, reason: coldOutput);
-
-    // Opting into output filters scopes the build to the FRB outputs.
-    final config = File('${temp.path}/flutter_rust_bridge.yaml');
-    config.writeAsStringSync(
-      config.readAsStringSync().replaceFirst(
-        'build_runner: true',
-        'build_runner: true\nenable_build_runner_filter: true',
-      ),
+  Future<String> _run(
+    String executable,
+    List<String> arguments, {
+    String? workingDirectory,
+  }) async {
+    final result = await Process.run(
+      executable,
+      arguments,
+      workingDirectory: workingDirectory ?? _temp.path,
+      environment: _environment,
     );
-    unrelated.deleteSync();
-    freezed.deleteSync();
-    final filteredOutput = await run('flutter_rust_bridge_codegen', [
-      'generate',
-    ]);
-    expect(unrelated.existsSync(), isFalse, reason: filteredOutput);
-    expect(freezed.existsSync(), isTrue, reason: filteredOutput);
-    expect(custom.readAsStringSync(), originalCustom);
-    expect(binary.readAsBytesSync(), originalBinary);
-    expect(plain.readAsStringSync(), originalPlain);
-  }, timeout: const Timeout(Duration(minutes: 15)));
+    expect(
+      result.exitCode,
+      0,
+      reason: '$executable $arguments\n${result.stdout}\n${result.stderr}',
+    );
+    return '${result.stdout}\n${result.stderr}';
+  }
+}
+
+String _binaryDir(String repoRoot) {
+  final cargoTargetDir = Platform.environment['CARGO_TARGET_DIR'] ?? 'target';
+  final targetDir = cargoTargetDir.startsWith('/')
+      ? cargoTargetDir
+      : '$repoRoot/$cargoTargetDir';
+  return '$targetDir/debug';
+}
+
+void _copyFixture(Directory temp) {
+  final fixture = Directory(
+    'integration_test/fixtures/build_runner_preservation',
+  );
+  for (final entry in fixture.listSync(recursive: true)) {
+    final relative = entry.path.substring(fixture.path.length + 1);
+    final destination =
+        '${temp.path}/${relative.replaceFirst(RegExp(r'\.template$'), '')}';
+    if (entry is Directory) {
+      Directory(destination).createSync(recursive: true);
+    } else if (entry is File) {
+      File(destination).parent.createSync(recursive: true);
+      entry.copySync(destination);
+    }
+  }
+}
+
+void _rewriteFrbdartPath({required Directory temp, required String repoRoot}) {
+  final pubspec = File('${temp.path}/pubspec.yaml');
+  pubspec.writeAsStringSync(
+    pubspec.readAsStringSync().replaceFirst(
+      '"../../../../../frb_dart"',
+      jsonEncode('$repoRoot/frb_dart'),
+    ),
+  );
 }
