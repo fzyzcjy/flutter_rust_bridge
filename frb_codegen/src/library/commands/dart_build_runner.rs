@@ -7,12 +7,12 @@ use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::path_to_string;
 use anyhow::{bail, Context};
-use log::debug;
+use log::{debug, info};
 use std::collections::HashMap;
 use std::path::{Path, MAIN_SEPARATOR};
 
 pub fn dart_build_runner(
-    enable_output_filter: bool,
+    enable_build_runner_filter: bool,
     dart_root: &Path,
     dart_output: &Path,
     needs_json_serializable: bool,
@@ -22,7 +22,7 @@ pub fn dart_build_runner(
 
     let repo = DartRepository::from_path(dart_root)?;
     let output_filters = build_runner_output_filters(
-        enable_output_filter,
+        enable_build_runner_filter,
         dart_root,
         dart_output,
         &get_dart_package_name(dart_root)?,
@@ -61,21 +61,22 @@ pub(super) fn dart_run_extra_env() -> HashMap<String, String> {
 }
 
 fn build_runner_output_filters(
-    enable_output_filter: bool,
+    enable_build_runner_filter: bool,
     dart_root: &Path,
     dart_output: &Path,
     dart_package_name: &str,
     needs_json_serializable: bool,
 ) -> anyhow::Result<Vec<String>> {
-    if !enable_output_filter {
-        debug!("Skipping build_runner output filters because enable_build_runner_filter is false");
-        return Ok(Vec::new());
-    }
-
     let relative_output = dart_output.strip_prefix(dart_root).with_context(|| {
         format!("dart_output={dart_output:?} must be within dart_root={dart_root:?}")
     })?;
     let relative_output = path_to_string(relative_output)?.replace(MAIN_SEPARATOR, "/");
+
+    if !enable_build_runner_filter {
+        info!("build_runner runs without output filters, so every enabled builder runs");
+        return Ok(Vec::new());
+    }
+
     let Some(output_prefix) = build_filter_output_prefix(&relative_output, dart_package_name)
     else {
         debug!("Falling back to unfiltered build_runner for dart_output path {relative_output:?}");
