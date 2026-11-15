@@ -57884,6 +57884,7 @@ A.QY.prototype={
 $1(a){return this.a.d.$1(B.c.au(a))},
 $S:21}
 A.Bs.prototype={
+k(a){return"Point(x: 0.36024044343761435, y: -0.6413130610648031)"},
 gp(a){return B.c.gp(0.36024044343761435)^B.c.gp(-0.6413130610648031)},
 i(a,b){var s
 if(b==null)return!1
@@ -57892,6 +57893,7 @@ else s=!1
 else s=!0
 return s}}
 A.D5.prototype={
+k(a){return"Size(width: "+this.a+", height: "+this.b+")"},
 gp(a){return B.h.gp(this.a)^B.h.gp(this.b)},
 i(a,b){var s,r=this
 if(b==null)return!1
