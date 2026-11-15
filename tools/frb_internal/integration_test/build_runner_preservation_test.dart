@@ -117,6 +117,13 @@ void main() {
       expect(plain.readAsStringSync(), originalPlain);
     }
 
+    // A warm asset graph keeps the outputs of the other builders as well.
+    final warmDefaultOutput = await run('flutter_rust_bridge_codegen', [
+      'generate',
+    ]);
+    expectUnrelatedOutputsKept(warmDefaultOutput);
+    expect(freezed.existsSync(), isTrue, reason: warmDefaultOutput);
+
     // A cold asset graph deletes every declared output before rebuilding.
     Directory('${temp.path}/.dart_tool/build').deleteSync(recursive: true);
     freezed.deleteSync();
@@ -142,5 +149,5 @@ void main() {
     expect(custom.readAsStringSync(), originalCustom);
     expect(binary.readAsBytesSync(), originalBinary);
     expect(plain.readAsStringSync(), originalPlain);
-  }, timeout: const Timeout(Duration(minutes: 10)));
+  }, timeout: const Timeout(Duration(minutes: 15)));
 }
