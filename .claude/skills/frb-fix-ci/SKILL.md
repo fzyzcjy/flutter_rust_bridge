@@ -32,6 +32,8 @@ Use this order before diving into individual failure types:
 
 Do not answer from stale CI state. Read the latest relevant run or job information first.
 
+One FRB commit has around 200 checks, but the check-runs API returns at most 100 per page, so a first-page-only read silently hides half of them. Read every page (`?per_page=100&page=2`) or use `gh pr checks`, and compare against `total_count` before calling a run green.
+
 ### Temporary CI Narrowing
 
 When CI feedback is slow and only one job family matters for the current investigation, read `frb-ci-filter` before using `ci_filter`, the `ci-manual-dispatch` label, or related workflow configuration.

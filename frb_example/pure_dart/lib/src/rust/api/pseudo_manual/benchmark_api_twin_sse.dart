@@ -100,6 +100,10 @@ class BenchmarkBinaryTreeTwinSse {
   });
 
   @override
+  String toString() =>
+      'BenchmarkBinaryTreeTwinSse(name: $name, left: $left, right: $right)';
+
+  @override
   int get hashCode => name.hashCode ^ left.hashCode ^ right.hashCode;
 
   @override
@@ -122,6 +126,10 @@ class BenchmarkBlobTwinSse {
     required this.second,
     required this.third,
   });
+
+  @override
+  String toString() =>
+      'BenchmarkBlobTwinSse(first: $first, second: $second, third: $third)';
 
   @override
   int get hashCode => first.hashCode ^ second.hashCode ^ third.hashCode;

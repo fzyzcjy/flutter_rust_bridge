@@ -114,6 +114,10 @@ class DartOpaqueNestedTwinRustAsyncSse {
   });
 
   @override
+  String toString() =>
+      'DartOpaqueNestedTwinRustAsyncSse(first: $first, second: $second)';
+
+  @override
   int get hashCode => first.hashCode ^ second.hashCode;
 
   @override

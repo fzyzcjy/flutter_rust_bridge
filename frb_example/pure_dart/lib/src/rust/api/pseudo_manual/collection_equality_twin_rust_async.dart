@@ -42,6 +42,10 @@ class StructWithDeepCollectionEqualityTwinRustAsync {
   });
 
   @override
+  String toString() =>
+      'StructWithDeepCollectionEqualityTwinRustAsync(list: $list, map: $map, setValues: $setValues, optionalList: $optionalList, bytes: $bytes, fixedBytes: $fixedBytes)';
+
+  @override
   int get hashCode =>
       const DeepCollectionEquality().hash(list) ^
       const DeepCollectionEquality().hash(map) ^
@@ -80,6 +84,10 @@ class StructWithShallowCollectionEqualityTwinRustAsync {
     required this.bytes,
     required this.fixedBytes,
   });
+
+  @override
+  String toString() =>
+      'StructWithShallowCollectionEqualityTwinRustAsync(list: $list, map: $map, setValues: $setValues, optionalList: $optionalList, bytes: $bytes, fixedBytes: $fixedBytes)';
 
   @override
   int get hashCode =>

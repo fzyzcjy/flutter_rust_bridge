@@ -41,6 +41,10 @@ class StructWithDeepCollectionEqualityTwinSync {
   });
 
   @override
+  String toString() =>
+      'StructWithDeepCollectionEqualityTwinSync(list: $list, map: $map, setValues: $setValues, optionalList: $optionalList, bytes: $bytes, fixedBytes: $fixedBytes)';
+
+  @override
   int get hashCode =>
       const DeepCollectionEquality().hash(list) ^
       const DeepCollectionEquality().hash(map) ^
@@ -79,6 +83,10 @@ class StructWithShallowCollectionEqualityTwinSync {
     required this.bytes,
     required this.fixedBytes,
   });
+
+  @override
+  String toString() =>
+      'StructWithShallowCollectionEqualityTwinSync(list: $list, map: $map, setValues: $setValues, optionalList: $optionalList, bytes: $bytes, fixedBytes: $fixedBytes)';
 
   @override
   int get hashCode =>
