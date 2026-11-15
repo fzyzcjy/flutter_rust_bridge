@@ -12,6 +12,7 @@ use std::collections::HashMap;
 use std::path::{Path, MAIN_SEPARATOR};
 
 pub fn dart_build_runner(
+    enable_output_filter: bool,
     dart_root: &Path,
     dart_output: &Path,
     needs_json_serializable: bool,
@@ -21,6 +22,7 @@ pub fn dart_build_runner(
 
     let repo = DartRepository::from_path(dart_root)?;
     let output_filters = build_runner_output_filters(
+        enable_output_filter,
         dart_root,
         dart_output,
         &get_dart_package_name(dart_root)?,
@@ -59,11 +61,17 @@ pub(super) fn dart_run_extra_env() -> HashMap<String, String> {
 }
 
 fn build_runner_output_filters(
+    enable_output_filter: bool,
     dart_root: &Path,
     dart_output: &Path,
     dart_package_name: &str,
     needs_json_serializable: bool,
 ) -> anyhow::Result<Vec<String>> {
+    if !enable_output_filter {
+        debug!("Skipping build_runner output filters because enable_build_runner_filter is false");
+        return Ok(Vec::new());
+    }
+
     let relative_output = dart_output.strip_prefix(dart_root).with_context(|| {
         format!("dart_output={dart_output:?} must be within dart_root={dart_root:?}")
     })?;
@@ -164,6 +172,7 @@ mod tests {
     fn test_build_runner_output_filters_nested_output() {
         assert_eq!(
             build_runner_output_filters(
+                true,
                 Path::new("/project"),
                 Path::new("/project/lib/src/rust"),
                 "example",
@@ -177,11 +186,28 @@ mod tests {
         );
     }
 
+    /// Skips output filters when the flag is disabled.
+    #[test]
+    fn test_build_runner_output_filters_disabled() {
+        assert_eq!(
+            build_runner_output_filters(
+                false,
+                Path::new("/project"),
+                Path::new("/project/lib/src/rust"),
+                "example",
+                true,
+            )
+            .unwrap(),
+            Vec::<String>::new()
+        );
+    }
+
     /// Includes JSON serialization output only when the generator requires it.
     #[test]
     fn test_build_runner_output_filters_without_json_serializable() {
         assert_eq!(
             build_runner_output_filters(
+                true,
                 Path::new("/project"),
                 Path::new("/project/lib/src/rust"),
                 "example",
@@ -197,6 +223,7 @@ mod tests {
     fn test_build_runner_output_filters_root_output() {
         assert_eq!(
             build_runner_output_filters(
+                true,
                 Path::new("/project"),
                 Path::new("/project"),
                 "example",
@@ -212,6 +239,7 @@ mod tests {
     fn test_build_runner_output_filters_metacharacter_output() {
         assert_eq!(
             build_runner_output_filters(
+                true,
                 Path::new("/project"),
                 Path::new("/project/lib/generated[foo] #bar?"),
                 "example",
@@ -226,6 +254,7 @@ mod tests {
     #[test]
     fn test_build_runner_output_filters_outside_dart_root() {
         let error = build_runner_output_filters(
+            true,
             Path::new("/project/dart"),
             Path::new("/project/generated"),
             "example",
@@ -241,6 +270,7 @@ mod tests {
     fn test_build_runner_output_filters_metacharacter_output_outside_lib() {
         assert_eq!(
             build_runner_output_filters(
+                true,
                 Path::new("/project"),
                 Path::new("/project/generated[foo]"),
                 "example",
@@ -256,6 +286,7 @@ mod tests {
     fn test_build_runner_output_filters_safe_output_outside_lib() {
         assert_eq!(
             build_runner_output_filters(
+                true,
                 Path::new("/project"),
                 Path::new("/project/test/generated"),
                 "example",
