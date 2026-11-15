@@ -427,6 +427,9 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
       if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
       ...kEnvEnableRustBacktrace,
     },
+    // Rust test binaries can abort when writing to the overlapped pipes that
+    // captured stdio gets on Windows; the output is not needed here.
+    inheritStdio: true,
   );
 
   if (effectiveEnableCoverage) transformCodecovReport(outputCodecovPath);
