@@ -141,5 +141,5 @@ If you wish to use these types, replace all `dart:typed_list` imports with this 
 [`bigint64array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt64Array
 [`biguint64array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array
 [`dartcobject`]: https://docs.rs/allo-isolate/latest/allo_isolate/ffi/struct.DartCObject.html
-[`dartcobject`]: https://docs.rs/allo-isolate/latest/allo_isolate/ffi/struct.DartCObject.html
+[`dartdynamic`]: https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/type.DartDynamic.html
 [`jsvalue`]: https://wasm-bindgen.github.io/wasm-bindgen/reference/types/jsvalue.html
