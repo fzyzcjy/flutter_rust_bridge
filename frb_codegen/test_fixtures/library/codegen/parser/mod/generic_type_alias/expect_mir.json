@@ -1,4 +1,6 @@
 {
+  "dart_code_mixin_blocked": [],
+  "dart_code_mixin_opt_in": [],
   "dart_code_of_type": {},
   "enum_pool": {
     "crate::api/AppError": {
