@@ -7,8 +7,9 @@ use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::path_to_string;
 use anyhow::{bail, Context};
-use log::debug;
+use log::{debug, info};
 use std::collections::HashMap;
+use std::fs;
 use std::path::{Path, MAIN_SEPARATOR};
 
 pub fn dart_build_runner(
@@ -20,12 +21,18 @@ pub fn dart_build_runner(
     debug!("Running build_runner at dart_root={dart_root:?} dart_output={dart_output:?}");
 
     let repo = DartRepository::from_path(dart_root)?;
-    let output_filters = build_runner_output_filters(
-        dart_root,
-        dart_output,
-        &get_dart_package_name(dart_root)?,
-        needs_json_serializable,
-    )?;
+    let dart_package_name = get_dart_package_name(dart_root)?;
+    let output_filters = if has_asset_graph(dart_root) {
+        build_runner_output_filters(
+            dart_root,
+            dart_output,
+            &dart_package_name,
+            needs_json_serializable,
+        )?
+    } else {
+        info!("No build_runner asset graph found, so build_runner runs without output filters");
+        Vec::new()
+    };
     let args = build_runner_args(output_filters);
     let out = command_run!(
         call_shell[Some(dart_root), Some(ExecuteCommandOptions {
@@ -56,6 +63,21 @@ pub(super) fn dart_run_extra_env() -> HashMap<String, String> {
     // Otherwise every call to `ffigen`, `build_runner`, etc will need to
     // trigger `build.dart`, which takes minutes to compile the `./rust` crate
     [("FRB_SIMPLE_BUILD_SKIP".to_owned(), "1".to_owned())].into()
+}
+
+/// With a cold asset graph, `--delete-conflicting-outputs` deletes every output that a builder
+/// declares, including those the build filters skip, and nothing rebuilds them. A build without
+/// filters regenerates them, so filters are only used once an asset graph exists. build_runner
+/// writes it to `.dart_tool/build/asset_graph.json` (2.16) or to a subdirectory of that
+/// directory named after the build script (2.4 and 2.5).
+fn has_asset_graph(dart_root: &Path) -> bool {
+    let build_dir = dart_root.join(".dart_tool").join("build");
+    build_dir.join("asset_graph.json").is_file()
+        || fs::read_dir(&build_dir).is_ok_and(|entries| {
+            entries
+                .flatten()
+                .any(|entry| entry.path().join("asset_graph.json").is_file())
+        })
 }
 
 fn build_runner_output_filters(
@@ -156,7 +178,10 @@ fn percent_encode_uri_path(path: &str) -> String {
 
 #[cfg(test)]
 mod tests {
-    use super::{build_runner_args, build_runner_output_filters, dart_run_extra_env};
+    use super::{
+        build_runner_args, build_runner_output_filters, dart_run_extra_env, has_asset_graph,
+    };
+    use std::fs;
     use std::path::Path;
 
     /// Limits build runner to generated outputs beneath a nested Dart output directory.
@@ -279,6 +304,27 @@ mod tests {
                 "--build-filter=lib/**.freezed.dart",
             ]
         );
+    }
+
+    /// Uses output filters only after build_runner has written an asset graph.
+    #[test]
+    fn test_has_asset_graph() {
+        let root = tempfile::tempdir().unwrap();
+        assert!(!has_asset_graph(root.path()));
+
+        let build_dir = root.path().join(".dart_tool/build");
+        fs::create_dir_all(build_dir.join("0123abcd")).unwrap();
+        assert!(!has_asset_graph(root.path()));
+
+        fs::write(build_dir.join("0123abcd/asset_graph.json"), "{}").unwrap();
+        assert!(has_asset_graph(root.path()));
+
+        fs::remove_dir_all(&build_dir).unwrap();
+        fs::create_dir_all(&build_dir).unwrap();
+        assert!(!has_asset_graph(root.path()));
+
+        fs::write(build_dir.join("asset_graph.json"), "{}").unwrap();
+        assert!(has_asset_graph(root.path()));
     }
 
     /// Sets the build-script bypass required by every Dart subprocess.

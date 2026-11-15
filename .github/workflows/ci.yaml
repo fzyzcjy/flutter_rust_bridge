@@ -613,6 +613,29 @@ jobs:
 
   # ----------------------------------- test -----------------------------------
 
+  test_build_runner_preservation:
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_build_runner_preservation.enable == true }}
+    name: 'Test :: BuildRunnerPreservation'
+    runs-on: ubuntu-latest
+
+    steps:
+      # setup
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
+
+      # execute
+      - run: ./frb_internal test-build-runner-preservation
+
   test_mimic_quickstart:
     needs: plan_ci
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_mimic_quickstart.enable == true }}
