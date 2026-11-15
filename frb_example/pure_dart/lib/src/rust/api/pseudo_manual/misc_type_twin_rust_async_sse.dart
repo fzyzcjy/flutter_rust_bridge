@@ -36,6 +36,9 @@ class EmptyTwinRustAsyncSse {
   const EmptyTwinRustAsyncSse();
 
   @override
+  String toString() => 'EmptyTwinRustAsyncSse()';
+
+  @override
   int get hashCode => 0;
 
   @override

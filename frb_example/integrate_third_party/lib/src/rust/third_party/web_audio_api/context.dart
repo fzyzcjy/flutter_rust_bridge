@@ -801,6 +801,10 @@ class AudioContextOptions {
       RustLib.instance.api.webAudioApiContextAudioContextOptionsDefault();
 
   @override
+  String toString() =>
+      'AudioContextOptions(latencyHint: $latencyHint, sampleRate: $sampleRate, sinkId: $sinkId, renderSizeHint: $renderSizeHint)';
+
+  @override
   int get hashCode =>
       latencyHint.hashCode ^
       sampleRate.hashCode ^
