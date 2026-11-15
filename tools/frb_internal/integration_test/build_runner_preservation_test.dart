@@ -34,19 +34,17 @@ class _Fixture {
   late final List<int> _originalBinary;
   late final String _originalPlain;
 
-  _Fixture._({
-    required Directory temp,
-    required String repoRoot,
-    required Map<String, String> environment,
-  }) : _temp = temp,
-       _repoRoot = repoRoot,
-       _environment = environment,
-       _unrelated = File('${temp.path}/lib/unrelated_model.g.dart'),
-       _custom = File('${temp.path}/test/other.custom.dart'),
-       _binary = File('${temp.path}/test/other.bin'),
-       _plain = File('${temp.path}/test/other.dart'),
-       _freezed = File('${temp.path}/lib/src/rust/api.freezed.dart'),
-       _config = File('${temp.path}/flutter_rust_bridge.yaml');
+  _Fixture._(this._temp, this._repoRoot)
+    : _environment = {
+        'PATH': '${_binaryDir(_repoRoot)}:${Platform.environment['PATH']}',
+        'FRB_SIMPLE_BUILD_SKIP': '1',
+      },
+      _unrelated = File('${_temp.path}/lib/unrelated_model.g.dart'),
+      _custom = File('${_temp.path}/test/other.custom.dart'),
+      _binary = File('${_temp.path}/test/other.bin'),
+      _plain = File('${_temp.path}/test/other.dart'),
+      _freezed = File('${_temp.path}/lib/src/rust/api.freezed.dart'),
+      _config = File('${_temp.path}/flutter_rust_bridge.yaml');
 
   /// Copies the fixture into a temporary package and generates once.
   static Future<_Fixture> prepare() async {
@@ -55,14 +53,7 @@ class _Fixture {
     _copyFixture(temp);
     _rewriteFrbdartPath(temp: temp, repoRoot: repoRoot);
 
-    final fixture = _Fixture._(
-      temp: temp,
-      repoRoot: repoRoot,
-      environment: {
-        'PATH': '${_binaryDir(repoRoot)}:${Platform.environment['PATH']}',
-        'FRB_SIMPLE_BUILD_SKIP': '1',
-      },
-    );
+    final fixture = _Fixture._(temp, repoRoot);
     await fixture._buildCodegen();
     await fixture._pubGet();
     await fixture._checkInitialBuild();
