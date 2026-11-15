@@ -29,6 +29,11 @@ final U8Array3 fixedBytes;
 
 
         @override
+        String toString() => 'DeepCollectionStruct(values: $values, map: $map, set_: $set_, optionalValues: $optionalValues, bytes: $bytes, fixedBytes: $fixedBytes)';
+
+
+
+        @override
         int get hashCode => const DeepCollectionEquality().hash(values)^const DeepCollectionEquality().hash(map)^const DeepCollectionEquality().hash(set_)^const DeepCollectionEquality().hash(optionalValues)^const DeepCollectionEquality().hash(bytes)^const DeepCollectionEquality().hash(fixedBytes);
 
 
@@ -53,6 +58,11 @@ final U8Array3 fixedBytes;
 
 
         @override
+        String toString() => 'ShallowCollectionStruct(bytes: $bytes, fixedBytes: $fixedBytes)';
+
+
+
+        @override
         int get hashCode => bytes.hashCode^fixedBytes.hashCode;
 
 
@@ -73,6 +83,11 @@ final List<String> values;
                 const Simple({required this.val ,required this.values ,});
 
 
+
+
+
+        @override
+        String toString() => 'Simple(val: $val, values: $values)';
 
 
 

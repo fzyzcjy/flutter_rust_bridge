@@ -157,6 +157,10 @@ class BasicStructTwinRustAsyncSse {
   });
 
   @override
+  String toString() =>
+      'BasicStructTwinRustAsyncSse(apple: $apple, orange: $orange)';
+
+  @override
   int get hashCode => apple.hashCode ^ orange.hashCode;
 
   @override

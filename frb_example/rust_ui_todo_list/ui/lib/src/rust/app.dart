@@ -51,6 +51,10 @@ class Item {
   });
 
   @override
+  String toString() =>
+      'Item(id: $id, content: $content, completed: $completed)';
+
+  @override
   int get hashCode => id.hashCode ^ content.hashCode ^ completed.hashCode;
 
   @override

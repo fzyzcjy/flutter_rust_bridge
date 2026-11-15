@@ -211,6 +211,10 @@ class ItemContainerSolutionTwoTwinNormal {
       );
 
   @override
+  String toString() =>
+      'ItemContainerSolutionTwoTwinNormal(name: $name, items: $items)';
+
+  @override
   int get hashCode => name.hashCode ^ items.hashCode;
 
   @override
@@ -280,6 +284,9 @@ class MyStructWithSync {
       );
 
   @override
+  String toString() => 'MyStructWithSync()';
+
+  @override
   int get hashCode => 0;
 
   @override
@@ -294,6 +301,9 @@ class MyStructWithoutFnWithUnignoreTwinNormal {
   const MyStructWithoutFnWithUnignoreTwinNormal({
     required this.a,
   });
+
+  @override
+  String toString() => 'MyStructWithoutFnWithUnignoreTwinNormal(a: $a)';
 
   @override
   int get hashCode => a.hashCode;
@@ -332,6 +342,9 @@ class StructWithCustomNameMethodTwinNormal {
       );
 
   @override
+  String toString() => 'StructWithCustomNameMethodTwinNormal(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -352,6 +365,9 @@ class StructWithImplBlockInAnotherFile {
               arg: arg);
 
   @override
+  String toString() => 'StructWithImplBlockInAnotherFile()';
+
+  @override
   int get hashCode => 0;
 
   @override
@@ -370,6 +386,9 @@ class StructWithRawNameField {
 
   static Future<void> dummyFunction() => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithRawNameFieldDummyFunction();
+
+  @override
+  String toString() => 'StructWithRawNameField(type: $type)';
 
   @override
   int get hashCode => type.hashCode;
@@ -399,6 +418,10 @@ class StructWithRustAutoOpaqueFieldWithManyDerive {
       );
 
   @override
+  String toString() =>
+      'StructWithRustAutoOpaqueFieldWithManyDerive(content: $content)';
+
+  @override
   int get hashCode => content.hashCode;
 
   @override
@@ -420,6 +443,10 @@ class StructWithRustAutoOpaqueWithNonCloneData {
           .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueWithNonCloneDataF(
         that: this,
       );
+
+  @override
+  String toString() =>
+      'StructWithRustAutoOpaqueWithNonCloneData(content: $content)';
 
   @override
   int get hashCode => content.hashCode;

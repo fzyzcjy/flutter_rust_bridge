@@ -288,6 +288,10 @@ class StructWithExplicitAutoOpaqueFieldTwinSseMoi {
   });
 
   @override
+  String toString() =>
+      'StructWithExplicitAutoOpaqueFieldTwinSseMoi(autoOpaque: $autoOpaque, normal: $normal)';
+
+  @override
   int get hashCode => autoOpaque.hashCode ^ normal.hashCode;
 
   @override
@@ -309,6 +313,10 @@ class StructWithGoodAndOpaqueFieldTwinSseMoi {
     required this.opaque,
     this.optionOpaque,
   });
+
+  @override
+  String toString() =>
+      'StructWithGoodAndOpaqueFieldTwinSseMoi(good: $good, opaque: $opaque, optionOpaque: $optionOpaque)';
 
   @override
   int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
