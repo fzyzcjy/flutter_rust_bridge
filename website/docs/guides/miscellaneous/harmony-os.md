@@ -40,9 +40,12 @@ their test matrix is added. A dedicated test entrypoint provides a deterministic
 synchronous Dart-to-Rust device smoke marker; broader FRB API coverage is not
 yet a release gate.
 
-Use the CargoKit backend for OHOS builds. The Native Assets path still depends
-on `native_toolchain_rust` target mappings that do not cover OHOS, so selecting
-that backend does not provide a supported OHOS build today.
+CargoKit is the backend covered by the repository's OHOS CI baseline. With an
+OHOS-enabled Flutter SDK, the
+[Native Assets backend](../../manual/integrate/03-native-assets.md)
+uses the OHOS-specific Git hooks and toolchain instead of the standard hosted
+packages. Follow that backend's setup requirements; its OHOS builds are not part
+of the CI baseline above.
 
 ## `OHOS_SDK_HOME`
 
