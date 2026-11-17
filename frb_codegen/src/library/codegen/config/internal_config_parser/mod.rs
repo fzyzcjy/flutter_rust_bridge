@@ -138,6 +138,7 @@ impl InternalConfig {
                 rust_format: config.rust_format.unwrap_or(true),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
+                enable_build_runner_filter: config.enable_build_runner_filter.unwrap_or_default(),
                 web_enabled,
                 dart_output: dart_output_dir,
                 dart_root,

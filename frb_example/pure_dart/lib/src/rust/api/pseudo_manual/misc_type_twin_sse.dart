@@ -31,6 +31,9 @@ class EmptyTwinSse {
   const EmptyTwinSse();
 
   @override
+  String toString() => 'EmptyTwinSse()';
+
+  @override
   int get hashCode => 0;
 
   @override

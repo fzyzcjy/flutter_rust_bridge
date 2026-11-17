@@ -47,6 +47,9 @@ class SimpleStructForBorrowTwinRustAsync {
   });
 
   @override
+  String toString() => 'SimpleStructForBorrowTwinRustAsync(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override

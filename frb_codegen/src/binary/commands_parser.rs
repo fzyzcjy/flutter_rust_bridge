@@ -48,6 +48,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         llvm_compiler_opts: args.llvm_compiler_opts,
         dart_root: args.dart_root,
         build_runner: negative_bool_arg(args.no_build_runner),
+        enable_build_runner_filter: positive_bool_arg(args.enable_build_runner_filter),
         extra_headers: args.extra_headers,
         web: negative_bool_arg(args.no_web),
         deps_check: negative_bool_arg(args.no_deps_check),

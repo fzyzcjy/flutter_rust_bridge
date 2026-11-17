@@ -5,6 +5,7 @@ use flutter_rust_bridge::frb;
 #[frb(
     non_hash,
     non_eq,
+    non_to_string,
     dart_code = "
   import 'dart:math';
 
@@ -16,6 +17,9 @@ use flutter_rust_bridge::frb;
 
   @override
   int get hashCode => a.hashCode;
+
+  @override
+  String toString() => 'custom-translatable($a)';
 
   int dartCodeMethod() => a * 2;
 "

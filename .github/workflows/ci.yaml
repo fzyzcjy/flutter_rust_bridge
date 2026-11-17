@@ -162,7 +162,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -234,7 +234,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -315,7 +315,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -345,7 +345,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -374,7 +374,7 @@ jobs:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
       - if: matrix.platforms != 'ohos'
-        uses: flutter-actions/setup-flutter@v4
+        uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -433,7 +433,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -458,7 +458,7 @@ jobs:
           components: rustfmt, clippy
       - run: rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }} && rustup component add rustfmt llvm-tools-preview --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}-x86_64-unknown-linux-gnu
       - run: yarn global add all-contributors-cli@7.0.0
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -566,7 +566,7 @@ jobs:
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
       - if: matrix.info.target != 'ohos'
-        uses: flutter-actions/setup-flutter@v4
+        uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -613,6 +613,29 @@ jobs:
 
   # ----------------------------------- test -----------------------------------
 
+  test_build_runner_preservation:
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_build_runner_preservation.enable == true }}
+    name: 'Test :: BuildRunnerPreservation'
+    runs-on: ubuntu-latest
+
+    steps:
+      # setup
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
+
+      # execute
+      - run: ./frb_internal test-build-runner-preservation
+
   test_mimic_quickstart:
     needs: plan_ci
     if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_mimic_quickstart.enable == true }}
@@ -631,7 +654,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -666,7 +689,7 @@ jobs:
   #       with:
   #         toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
   #         components: rustfmt
-  #     - uses: flutter-actions/setup-flutter@v4
+  #     - uses: flutter-actions/setup-flutter@v4.3
   #       with:
   #         cache: true
   #         version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -884,7 +907,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -947,7 +970,7 @@ jobs:
           UDID=$(/usr/bin/python3 tools/find_ios_simulator_udid.py '${{ matrix.device }}')
           echo UDID=$UDID
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -974,7 +997,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
       - if: runner.os == 'Linux'
         uses: pyvista/setup-headless-display-action@v4
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -998,7 +1021,7 @@ jobs:
       # https://github.com/puppeteer/puppeteer/pull/13196
       - name: Disable AppArmor
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -1052,7 +1075,7 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           nix_path: nixpkgs=channel:nixos-26.05
       - if: ${{ matrix.info.platform != 'nixos' }}
-        uses: flutter-actions/setup-flutter@v4
+        uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
@@ -1181,7 +1204,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}

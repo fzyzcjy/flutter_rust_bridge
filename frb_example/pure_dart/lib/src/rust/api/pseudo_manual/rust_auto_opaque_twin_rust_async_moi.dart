@@ -293,6 +293,10 @@ class StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi {
   });
 
   @override
+  String toString() =>
+      'StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi(autoOpaque: $autoOpaque, normal: $normal)';
+
+  @override
   int get hashCode => autoOpaque.hashCode ^ normal.hashCode;
 
   @override
@@ -314,6 +318,10 @@ class StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
     required this.opaque,
     this.optionOpaque,
   });
+
+  @override
+  String toString() =>
+      'StructWithGoodAndOpaqueFieldTwinRustAsyncMoi(good: $good, opaque: $opaque, optionOpaque: $optionOpaque)';
 
   @override
   int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;

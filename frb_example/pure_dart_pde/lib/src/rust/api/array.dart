@@ -52,6 +52,9 @@ class BlobTwinNormal {
   });
 
   @override
+  String toString() => 'BlobTwinNormal(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -82,6 +85,9 @@ class FeedIdTwinNormal {
   const FeedIdTwinNormal({
     required this.field0,
   });
+
+  @override
+  String toString() => 'FeedIdTwinNormal(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;
@@ -116,6 +122,9 @@ class MessageIdTwinNormal {
   });
 
   @override
+  String toString() => 'MessageIdTwinNormal(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -134,6 +143,9 @@ class PointTwinNormal {
     required this.x,
     required this.y,
   });
+
+  @override
+  String toString() => 'PointTwinNormal(x: $x, y: $y)';
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -168,6 +180,9 @@ class TestIdTwinNormal {
   const TestIdTwinNormal({
     required this.field0,
   });
+
+  @override
+  String toString() => 'TestIdTwinNormal(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;
