@@ -157,8 +157,20 @@ Future<void> precommit(PrecommitConfig config) async {
 Future<void> precommitGenerate() async {
   await ensureCargoExpandInstalledForPrecommitGenerate();
 
+  // pure_dart and pure_dart_pde compile the namespaced bridge as a native dependency.
+  // Finish writing its bindings before those generators read them.
+  const dependencyPackage = 'frb_example/native_symbol_prefix';
+  await generateRunFrbCodegenCommandGenerate(
+    const GeneratePackageConfig(
+      setExitIfChanged: false,
+      package: dependencyPackage,
+      coverage: false,
+    ),
+  );
   await Future.wait([
-    for (final package in kDartExamplePackages)
+    for (final package in kDartExamplePackages.where(
+      (p) => p != dependencyPackage,
+    ))
       generateRunFrbCodegenCommandGenerate(
         GeneratePackageConfig(
           setExitIfChanged: false,

@@ -92,6 +92,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub rust_output: Option<String>,
 
+    /// Prefix the four package-specific native FRB exports (for static linking).
+    #[arg(long)]
+    pub native_symbol_prefix: Option<String>,
+
     /// Generated dart entrypoint class name
     #[arg(long)]
     pub dart_entrypoint_class_name: Option<String>,

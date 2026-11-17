@@ -24,7 +24,11 @@ const kRustPackagesAllowWeb = [
   'frb_example/gallery/rust',
 ];
 
-const kRustPackagesDisallowWeb = ['frb_codegen', 'frb_macros'];
+const kRustPackagesDisallowWeb = [
+  'frb_codegen',
+  'frb_macros',
+  'frb_example/native_symbol_prefix/rust',
+];
 
 const kRustPackages = [...kRustPackagesAllowWeb, ...kRustPackagesDisallowWeb];
 
@@ -87,6 +91,7 @@ const kDartExampleIntegratePackages = [
 ];
 
 const kDartExamplePackages = [
+  'frb_example/native_symbol_prefix',
   'frb_example/dart_minimal',
   'frb_example/pure_dart',
   'frb_example/pure_dart_pde',
@@ -126,6 +131,7 @@ const kDartModeOfPackage = {
   'frb_utils': DartMode.dart,
   'tools/frb_internal': DartMode.dart,
   'frb_example/dart_minimal': DartMode.dart,
+  'frb_example/native_symbol_prefix': DartMode.dart,
   'frb_example/pure_dart': DartMode.dart,
   'frb_example/pure_dart_pde': DartMode.dart,
   'frb_example/dart_build_rs': DartMode.dart,

@@ -50,14 +50,33 @@ fn generate_target(target: Target) -> String {
         vec![generate_dart_fn_deliver_output(target)],
     ]
     .concat();
-    let body = funcs.iter().map(|f| f.generate("")).join("\n");
+    let body = funcs
+        .iter()
+        .map(|f| {
+            let code = f.generate("");
+            match target {
+                Target::Io => code.replace(
+                    "#[unsafe(no_mangle)]",
+                    &format!(
+                        "#[unsafe(export_name = concat!($prefix, \"{}\"))]",
+                        f.partial_func_name
+                    ),
+                ),
+                Target::Web => code,
+            }
+        })
+        .join("\n");
+    let macro_args = match target {
+        Target::Io => r#"() => { $crate::frb_generated_io_extern_func!(""); }; ($prefix:literal)"#,
+        Target::Web => "()",
+    };
 
     format!(
         r#"
             #[doc(hidden)]
             #[macro_export]
             macro_rules! frb_generated_{target_lowercase}_extern_func {{
-                () => {{
+                {macro_args} => {{
                     {body}
                 }};
             }}
@@ -157,5 +176,20 @@ mod tests {
             function.return_type.as_deref(),
             Some("$crate::for_generated::WireSyncRust2DartSse")
         );
+    }
+    #[test]
+    fn io_exports_accept_package_prefix_and_keep_legacy_invocation() {
+        let code = super::generate_target(Target::Io);
+        assert!(code.contains("($prefix:literal)"));
+        assert!(code.contains("frb_generated_io_extern_func!(\"\")"));
+        for symbol in [
+            "frb_pde_ffi_dispatcher_primary",
+            "frb_pde_ffi_dispatcher_sync",
+            "frb_dart_fn_deliver_output",
+        ] {
+            assert!(code.contains(&format!("concat!($prefix, \"{symbol}\")")));
+        }
+        let web = super::generate_target(Target::Web);
+        assert!(!web.contains("$prefix"));
     }
 }

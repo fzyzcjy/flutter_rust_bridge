@@ -4,7 +4,10 @@
 #[macro_export]
 macro_rules! frb_generated_io_extern_func {
     () => {
-        #[unsafe(no_mangle)]
+        $crate::frb_generated_io_extern_func!("");
+    };
+    ($prefix:literal) => {
+        #[unsafe(export_name = concat!($prefix, "frb_pde_ffi_dispatcher_primary"))]
         pub extern "C" fn frb_pde_ffi_dispatcher_primary(
             func_id: i32,
             port_: i64,
@@ -15,7 +18,7 @@ macro_rules! frb_generated_io_extern_func {
             pde_ffi_dispatcher_primary_impl(func_id, port_, ptr_, rust_vec_len_, data_len_)
         }
 
-        #[unsafe(no_mangle)]
+        #[unsafe(export_name = concat!($prefix, "frb_pde_ffi_dispatcher_sync"))]
         pub extern "C" fn frb_pde_ffi_dispatcher_sync(
             func_id: i32,
             ptr_: *mut u8,
@@ -25,7 +28,7 @@ macro_rules! frb_generated_io_extern_func {
             pde_ffi_dispatcher_sync_impl(func_id, ptr_, rust_vec_len_, data_len_)
         }
 
-        #[unsafe(no_mangle)]
+        #[unsafe(export_name = concat!($prefix, "frb_dart_fn_deliver_output"))]
         pub extern "C" fn frb_dart_fn_deliver_output(
             call_id: i32,
             ptr_: *mut u8,
