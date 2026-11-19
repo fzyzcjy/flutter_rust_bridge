@@ -2,6 +2,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
 
+use crate::api::misc_no_twin_generic_arg::StructForGenericArg;
 use crate::api::rust_opaque::NonCloneDataRaw;
 use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
@@ -332,4 +333,21 @@ impl Default for TypeForIgnoreAll {
     fn default() -> Self {
         Self::new()
     }
+}
+
+// The generic argument is defined in a module that is not otherwise imported by the generated code
+pub struct GenericHolder<T> {
+    pub a: T,
+    pub b: T,
+}
+
+pub fn create_generic_holder(value: f64) -> GenericHolder<StructForGenericArg> {
+    GenericHolder {
+        a: StructForGenericArg(value),
+        b: StructForGenericArg(value * 2.0),
+    }
+}
+
+pub fn sum_generic_holder(holder: &GenericHolder<StructForGenericArg>) -> f64 {
+    holder.a.0 + holder.b.0
 }

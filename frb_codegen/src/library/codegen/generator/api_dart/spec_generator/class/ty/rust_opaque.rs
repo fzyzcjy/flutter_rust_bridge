@@ -204,6 +204,7 @@ mod tests {
     fn rust_opaque() -> MirTypeRustOpaque {
         MirTypeRustOpaque {
             namespace: Namespace::default(),
+            generic_arg_namespaces: vec![],
             inner: MirRustOpaqueInner(MirLifetimeAwareType::new("Thing".into())),
             codec: RustOpaqueCodecMode::Nom,
             dart_api_type: None,

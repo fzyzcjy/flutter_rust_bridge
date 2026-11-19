@@ -65,6 +65,7 @@ mod tests {
             ownership_mode: OwnershipMode::Owned,
             inner: MirTypeRustOpaque {
                 namespace: Namespace::default(),
+                generic_arg_namespaces: vec![],
                 inner: MirRustOpaqueInner(MirLifetimeAwareType::new("Thing<'a>".into())),
                 codec: RustOpaqueCodecMode::Nom,
                 dart_api_type: None,
