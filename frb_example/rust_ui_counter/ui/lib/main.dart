@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:frb_example_rust_ui_counter/src/rust/app.dart';
 import 'package:frb_example_rust_ui_counter/src/rust/frb_generated.dart';
 import 'package:styled_widget/styled_widget.dart';

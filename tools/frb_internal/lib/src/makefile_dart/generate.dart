@@ -557,6 +557,10 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
             generatedPackageDir: dirPackage,
           );
         }
+        preserveOhosCompatibleDesign(
+          package: config.package,
+          generatedPackageDir: dirPackage,
+        );
         normalizePubspecFiles(packageRoot: dirPackage);
         await runPubGet(config.package, kDartModeOfPackage[config.package]!);
         await executeFrbCodegen(

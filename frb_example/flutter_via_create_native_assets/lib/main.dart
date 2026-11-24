@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_via_create_native_assets/src/rust/api/simple.dart';
 import 'package:flutter_via_create_native_assets/src/rust/frb_generated.dart';
 

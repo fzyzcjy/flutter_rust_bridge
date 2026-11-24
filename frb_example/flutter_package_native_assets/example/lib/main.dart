@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_package_native_assets/flutter_package_native_assets.dart';
 
 Future<void> main() async {

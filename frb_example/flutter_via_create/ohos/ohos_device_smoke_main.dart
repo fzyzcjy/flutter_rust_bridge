@@ -1,3 +1,5 @@
+// Keep the legacy Material API for the older OHOS Flutter fork.
+// ignore: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:flutter_via_create/src/rust/api/simple.dart';
 import 'package:flutter_via_create/src/rust/frb_generated.dart';

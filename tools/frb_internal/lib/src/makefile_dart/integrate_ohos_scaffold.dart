@@ -3,6 +3,56 @@ import 'dart:io';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:path/path.dart' as path;
 
+// These shared apps are also built by the older OHOS Flutter fork. Other
+// examples follow the current Flutter template's standalone design packages.
+const _kLegacyOhosDesignPackages = {
+  'frb_example/flutter_via_create',
+  'frb_example/flutter_via_integrate',
+};
+
+void preserveOhosCompatibleDesign({
+  required String package,
+  required String generatedPackageDir,
+}) {
+  final legacyApp = _kLegacyOhosDesignPackages.contains(package);
+  if (legacyApp) {
+    final pubspec = File(path.join(generatedPackageDir, 'pubspec.yaml'));
+    pubspec.writeAsStringSync(
+      pubspec.readAsStringSync().replaceAll(
+        RegExp(
+          r'^  (material_ui|cupertino_ui): [^\r\n]*\r?\n',
+          multiLine: true,
+        ),
+        '',
+      ),
+    );
+  }
+
+  for (final relativePath in [
+    if (legacyApp) ...['lib/main.dart', 'test/widget_test.dart'],
+    'ohos/ohos_device_smoke_main.dart',
+  ]) {
+    final file = File(path.join(generatedPackageDir, relativePath));
+    if (!file.existsSync()) continue;
+    const legacyImport = "import 'package:flutter/material.dart';";
+    const compatibleImport =
+        '// Keep the legacy Material API for the older OHOS Flutter fork.\n'
+        '// ignore: deprecated_member_use\n'
+        '$legacyImport';
+    var text = file.readAsStringSync().replaceAll(
+      "import 'package:material_ui/material_ui.dart';",
+      legacyImport,
+    );
+    if (!text.contains(compatibleImport)) {
+      text = text.replaceAll(
+        RegExp(r"^import 'package:flutter/material.dart';$", multiLine: true),
+        compatibleImport,
+      );
+    }
+    file.writeAsStringSync(text);
+  }
+}
+
 const _kPreservedOhosScaffoldPaths = <String, List<String>>{
   'frb_example/flutter_via_create': [
     'ohos',

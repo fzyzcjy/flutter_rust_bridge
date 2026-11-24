@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:frb_example_gallery/src/ignore_me/mandelbrot_related.dart';
 import 'package:frb_example_gallery/src/rust/api/mandelbrot.dart';
 

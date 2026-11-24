@@ -4,11 +4,14 @@
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
 import 'api/mandelbrot.dart';
+
 import 'dart:async';
 import 'dart:convert';
+
 import 'frb_generated.dart';
 import 'frb_generated.io.dart'
     if (dart.library.js_interop) 'frb_generated.web.dart';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
@@ -35,12 +38,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   /// Initialize flutter_rust_bridge in mock mode.
   /// No libraries for FFI are loaded.
-  static void initMock({
-    required RustLibApi api,
-  }) {
-    instance.initMockImpl(
-      api: api,
-    );
+  static void initMock({required RustLibApi api}) {
+    instance.initMockImpl(api: api);
   }
 
   /// Dispose flutter_rust_bridge
@@ -72,19 +71,20 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-    stem: 'rust_lib',
-    ioDirectory: 'rust/target/release/',
-    webPrefix: 'pkg/',
-    wasmBindgenName: 'wasm_bindgen',
-  );
+        stem: 'rust_lib',
+        ioDirectory: 'rust/target/release/',
+        webPrefix: 'pkg/',
+        wasmBindgenName: 'wasm_bindgen',
+      );
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<Uint8List> crateApiMandelbrotDrawMandelbrot(
-      {required Size imageSize,
-      required Point zoomPoint,
-      required double scale,
-      required int numThreads});
+  Future<Uint8List> crateApiMandelbrotDrawMandelbrot({
+    required Size imageSize,
+    required Point zoomPoint,
+    required double scale,
+    required int numThreads,
+  });
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -96,34 +96,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<Uint8List> crateApiMandelbrotDrawMandelbrot(
-      {required Size imageSize,
-      required Point zoomPoint,
-      required double scale,
-      required int numThreads}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        try {
-          sse_encode_box_autoadd_size(imageSize, serializer);
-          sse_encode_box_autoadd_point(zoomPoint, serializer);
-          sse_encode_f_64(scale, serializer);
-          sse_encode_i_32(numThreads, serializer);
-        } catch (_) {
-          serializer.dispose();
-          rethrow;
-        }
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: sse_decode_AnyhowException,
+  Future<Uint8List> crateApiMandelbrotDrawMandelbrot({
+    required Size imageSize,
+    required Point zoomPoint,
+    required double scale,
+    required int numThreads,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          try {
+            sse_encode_box_autoadd_size(imageSize, serializer);
+            sse_encode_box_autoadd_point(zoomPoint, serializer);
+            sse_encode_f_64(scale, serializer);
+            sse_encode_i_32(numThreads, serializer);
+          } catch (_) {
+            serializer.dispose();
+            rethrow;
+          }
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 1,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_list_prim_u_8_strict,
+          decodeErrorData: sse_decode_AnyhowException,
+        ),
+        constMeta: kCrateApiMandelbrotDrawMandelbrotConstMeta,
+        argValues: [imageSize, zoomPoint, scale, numThreads],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiMandelbrotDrawMandelbrotConstMeta,
-      argValues: [imageSize, zoomPoint, scale, numThreads],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiMandelbrotDrawMandelbrotConstMeta =>
@@ -180,10 +187,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     final arr = dcoDecodeList(raw);
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return Point(
-      x: dco_decode_f_64(arr[0]),
-      y: dco_decode_f_64(arr[1]),
-    );
+    return Point(x: dco_decode_f_64(arr[0]), y: dco_decode_f_64(arr[1]));
   }
 
   @protected
@@ -279,7 +283,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_AnyhowException(
-      AnyhowException self, SseSerializer serializer) {
+    AnyhowException self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.message, serializer);
   }
@@ -316,7 +322,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer) {
+    Uint8List self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:frb_example_gallery/src/examples/mandelbrot.dart';
 import 'package:frb_example_gallery/src/rust/frb_generated.dart';
 

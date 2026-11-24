@@ -3,6 +3,8 @@
 ## 2.14.0-beta.2
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Upgrade the primary toolchain to Flutter 3.50 and Dart 3.14 #3532
+* Require Dart 3.10 for the native-assets hooks package to match its dependencies
 * Fix `StreamSubscription.cancel()` hanging for an idle `RustStreamSink` #3366 (thanks @dbsxdbsx)
 * Document Dart WebAssembly support #3437
 * Support Dart Wasm output in `build-web` #3431

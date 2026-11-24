@@ -6,16 +6,11 @@ const _kPubHostMirror = 'pub.flutter-io.cn';
 const _kPubHostCanonical = 'pub.dev';
 const _kPackagesUsingPrimarySdkFloor = {'tools/frb_internal'};
 
-// Keep Flutter 3.47 templates from raising checked-in app SDK floors.
-const _kPubspecYamlSdkReplacements = <String, String>{
-  '  sdk: ^3.13.0': '  sdk: ^3.11.0',
-  '  sdk: ^3.12.0': '  sdk: ^3.11.0',
-};
+// Keep Flutter templates from raising checked-in app SDK floors.
+const _kTemplateDartVersions = ['3.12.0', '3.13.0', '3.14.0'];
 
 // Keep generated lockfile floors aligned with repo and OHOS package policy.
 const _kPubspecLockSdkReplacements = <String, String>{
-  '  dart: ">=3.13.0 <4.0.0"': '  dart: ">=3.11.0 <4.0.0"',
-  '  dart: ">=3.12.0 <4.0.0"': '  dart: ">=3.11.0 <4.0.0"',
   '  dart: ">=3.11.0-0 <4.0.0"': '  dart: ">=3.9.2 <4.0.0"',
   '  dart: ">=3.10.0-0 <4.0.0"': '  dart: ">=3.9.2 <4.0.0"',
 };
@@ -46,11 +41,26 @@ void normalizePubspecFiles({
   );
 }
 
-String normalizePubspecYamlText(String text) =>
-    _replaceAll(text, _kPubspecYamlSdkReplacements);
+String normalizePubspecYamlText(String text) => _replaceAll(text, {
+  for (final version in _kTemplateDartVersions)
+    '  sdk: ^$version': '  sdk: ^${_appSdkFloor(text)}',
+});
 
-String normalizePubspecLockText(String text) =>
-    _replaceAll(_normalizePubspecLockHost(text), _kPubspecLockSdkReplacements);
+String normalizePubspecLockText(String text) => _replaceAll(
+  _normalizePubspecLockHost(text),
+  {
+    for (final version in _kTemplateDartVersions)
+      '  dart: ">=$version <4.0.0"': '  dart: ">=${_appSdkFloor(text)} <4.0.0"',
+    ..._kPubspecLockSdkReplacements,
+  },
+);
+
+// Flutter 3.50 templates depend on standalone design packages, which require
+// Dart 3.13 / Flutter 3.47. Legacy apps and plugin packages retain Dart 3.11.
+String _appSdkFloor(String text) =>
+    RegExp(r'^  (material_ui|cupertino_ui):', multiLine: true).hasMatch(text)
+    ? '3.13.0'
+    : '3.11.0';
 
 String _normalizePubspecYamlHost(String text) => text;
 
