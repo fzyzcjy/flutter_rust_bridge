@@ -603,7 +603,13 @@ jobs:
       - if: matrix.info.prepare_ohos_package != null
         name: Generate OHOS scaffold for integration scenario
         run: ./frb_internal generate-run-frb-codegen-command-integrate --package ${{ matrix.info.prepare_ohos_package }} --include-ohos
+      - if: runner.os == 'Windows'
+        name: Shorten Windows build paths for the MSVC linker
+        shell: pwsh
+        run: |
+          subst R: "$env:GITHUB_WORKSPACE"
       - run: ./frb_internal build-flutter --package ${{ matrix.info.package }} --target ${{ matrix.info.target }}
+        working-directory: ${{ runner.os == 'Windows' && 'R:/' || github.workspace }}
 
       # report
       - uses: actions/upload-artifact@v4
