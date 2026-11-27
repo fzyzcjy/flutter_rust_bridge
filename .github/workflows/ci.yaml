@@ -604,12 +604,16 @@ jobs:
         name: Generate OHOS scaffold for integration scenario
         run: ./frb_internal generate-run-frb-codegen-command-integrate --package ${{ matrix.info.prepare_ohos_package }} --include-ohos
       - if: runner.os == 'Windows'
-        name: Shorten Windows build paths for the MSVC linker
+        name: Move Windows checkout to a short physical path
         shell: pwsh
+        working-directory: ${{ runner.temp }}
         run: |
-          subst R: "$env:GITHUB_WORKSPACE"
+          $frbWindowsWorkspace = Join-Path ([IO.Path]::GetPathRoot($env:GITHUB_WORKSPACE)) 'frb'
+          Move-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $frbWindowsWorkspace
+          New-Item -ItemType Junction -Path $env:GITHUB_WORKSPACE -Target $frbWindowsWorkspace | Out-Null
+          "FRB_WINDOWS_WORKSPACE=$frbWindowsWorkspace" >> $env:GITHUB_ENV
       - run: ./frb_internal build-flutter --package ${{ matrix.info.package }} --target ${{ matrix.info.target }}
-        working-directory: ${{ runner.os == 'Windows' && 'R:/' || github.workspace }}
+        working-directory: ${{ runner.os == 'Windows' && env.FRB_WINDOWS_WORKSPACE || github.workspace }}
 
       # report
       - uses: actions/upload-artifact@v4
@@ -1062,12 +1066,16 @@ jobs:
 
       # execute
       - if: runner.os == 'Windows'
-        name: Shorten Windows build paths for the MSVC linker
+        name: Move Windows checkout to a short physical path
         shell: pwsh
+        working-directory: ${{ runner.temp }}
         run: |
-          subst R: "$env:GITHUB_WORKSPACE"
+          $frbWindowsWorkspace = Join-Path ([IO.Path]::GetPathRoot($env:GITHUB_WORKSPACE)) 'frb'
+          Move-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $frbWindowsWorkspace
+          New-Item -ItemType Junction -Path $env:GITHUB_WORKSPACE -Target $frbWindowsWorkspace | Out-Null
+          "FRB_WINDOWS_WORKSPACE=$frbWindowsWorkspace" >> $env:GITHUB_ENV
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
-        working-directory: ${{ runner.os == 'Windows' && 'R:/' || github.workspace }}
+        working-directory: ${{ runner.os == 'Windows' && env.FRB_WINDOWS_WORKSPACE || github.workspace }}
 
   test_flutter_web:
     needs: plan_ci
@@ -1201,10 +1209,14 @@ jobs:
           choco install imagemagick.app tesseract -y
           echo "C:\Program Files\Tesseract-OCR" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - if: runner.os == 'Windows'
-        name: Shorten Windows build paths for the MSVC linker
+        name: Move Windows checkout to a short physical path
         shell: pwsh
+        working-directory: ${{ runner.temp }}
         run: |
-          subst R: "$env:GITHUB_WORKSPACE"
+          $frbWindowsWorkspace = Join-Path ([IO.Path]::GetPathRoot($env:GITHUB_WORKSPACE)) 'frb'
+          Move-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $frbWindowsWorkspace
+          New-Item -ItemType Junction -Path $env:GITHUB_WORKSPACE -Target $frbWindowsWorkspace | Out-Null
+          "FRB_WINDOWS_WORKSPACE=$frbWindowsWorkspace" >> $env:GITHUB_ENV
 
       # execute
       - if: ${{ matrix.info.target == 'android' }}
@@ -1237,7 +1249,7 @@ jobs:
       - if: ${{ matrix.info.target != 'android' && matrix.info.platform != 'nixos' }}
         shell: bash
         run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target ${{ matrix.info.target }} --device-id "${QUICKSTART_SMOKE_DEVICE_ID:-${{ matrix.info.device }}}"
-        working-directory: ${{ runner.os == 'Windows' && 'R:/' || github.workspace }}
+        working-directory: ${{ runner.os == 'Windows' && env.FRB_WINDOWS_WORKSPACE || github.workspace }}
 
       # report
       - uses: actions/upload-artifact@v4
