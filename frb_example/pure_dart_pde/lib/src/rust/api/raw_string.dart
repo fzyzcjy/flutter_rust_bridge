@@ -34,6 +34,10 @@ class MoreThanJustOneRawStringStructTwinNormal {
   });
 
   @override
+  String toString() =>
+      'MoreThanJustOneRawStringStructTwinNormal(regular: $regular, type: $type, async_: $async_, another: $another)';
+
+  @override
   int get hashCode =>
       regular.hashCode ^ type.hashCode ^ async_.hashCode ^ another.hashCode;
 
@@ -66,6 +70,9 @@ class RawStringItemStructTwinNormal {
   const RawStringItemStructTwinNormal({
     required this.type,
   });
+
+  @override
+  String toString() => 'RawStringItemStructTwinNormal(type: $type)';
 
   @override
   int get hashCode => type.hashCode;

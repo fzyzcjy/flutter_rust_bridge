@@ -72,6 +72,9 @@ class ATwinSync {
   });
 
   @override
+  String toString() => 'ATwinSync(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override
@@ -106,6 +109,9 @@ class BTwinSync {
   });
 
   @override
+  String toString() => 'BTwinSync(b: $b)';
+
+  @override
   int get hashCode => b.hashCode;
 
   @override
@@ -122,6 +128,9 @@ class BigBuffersTwinSync {
     required this.int64,
     required this.uint64,
   });
+
+  @override
+  String toString() => 'BigBuffersTwinSync(int64: $int64, uint64: $uint64)';
 
   @override
   int get hashCode => int64.hashCode ^ uint64.hashCode;
@@ -143,6 +152,9 @@ class CTwinSync {
   });
 
   @override
+  String toString() => 'CTwinSync(c: $c)';
+
+  @override
   int get hashCode => c.hashCode;
 
   @override
@@ -159,6 +171,10 @@ class MyNestedStructTwinSync {
     required this.treeNode,
     required this.weekday,
   });
+
+  @override
+  String toString() =>
+      'MyNestedStructTwinSync(treeNode: $treeNode, weekday: $weekday)';
 
   @override
   int get hashCode => treeNode.hashCode ^ weekday.hashCode;
@@ -186,6 +202,10 @@ class MyTreeNodeTwinSync {
   });
 
   @override
+  String toString() =>
+      'MyTreeNodeTwinSync(valueI32: $valueI32, valueVecU8: $valueVecU8, valueBoolean: $valueBoolean, children: $children)';
+
+  @override
   int get hashCode =>
       valueI32.hashCode ^
       valueVecU8.hashCode ^
@@ -211,6 +231,9 @@ class StructWithEnumTwinSync {
     required this.abc1,
     required this.abc2,
   });
+
+  @override
+  String toString() => 'StructWithEnumTwinSync(abc1: $abc1, abc2: $abc2)';
 
   @override
   int get hashCode => abc1.hashCode ^ abc2.hashCode;

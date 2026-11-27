@@ -28,6 +28,9 @@ class Point {
   const Point({required this.x, required this.y});
 
   @override
+  String toString() => 'Point(x: $x, y: $y)';
+
+  @override
   int get hashCode => x.hashCode ^ y.hashCode;
 
   @override
@@ -44,6 +47,9 @@ class Size {
   final int height;
 
   const Size({required this.width, required this.height});
+
+  @override
+  String toString() => 'Size(width: $width, height: $height)';
 
   @override
   int get hashCode => width.hashCode ^ height.hashCode;

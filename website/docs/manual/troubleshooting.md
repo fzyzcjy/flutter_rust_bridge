@@ -72,9 +72,9 @@ You can install llvm using `brew install llvm` and it will be installed at `/usr
 
 ## Freezed file is sometimes not generated when it should be
 
-With automatic `build_runner` invocation enabled, code generation runs `build_runner` 1.7.0 or newer for required `.freezed.dart` outputs and, when JSON serialization is needed, `.g.dart` outputs under the configured `dart_output` directory. If those files seem outdated, ensure `build_runner`, `freezed`, and the corresponding annotations are installed.
+With automatic `build_runner` invocation enabled, code generation runs `build_runner` 1.7.0 or newer for the `.freezed.dart` outputs it needs and, when JSON serialization is needed, `.g.dart` outputs. If those files seem outdated, ensure `build_runner`, `freezed`, and the corresponding annotations are installed.
 
-Run `build_runner` separately when the Dart package contains unrelated builders whose outputs live outside `dart_output`. The automatic invocation uses output filters to scope work to FRB-generated outputs. For non-library output paths that build_runner 1.7 cannot represent safely as filters, it falls back to an unfiltered build to preserve generation correctness.
+By default the invocation runs `build_runner` without output filters, so every enabled builder runs and a failure is only a warning. Filters are opt-in (`enable_build_runner_filter: true` or `--enable-build-runner-filter`) because when `build_runner` cannot reuse its asset graph it deletes the other builders' declared outputs, which a filtered build does not rebuild (`database.g.dart` from `drift`). Enable them only when no other builder writes generated files into the source tree; to recover those outputs run `dart run build_runner clean` and a full `dart run build_runner build --delete-conflicting-outputs`. Non-library output paths that build_runner 1.7 cannot express as filters still fall back to an unfiltered build.
 
 Code generation streams child command output, including `build_runner`, when run with `--verbose`. If Polish looks stuck, re-run with `--verbose` and look at those lines first (for example `freezed on N inputs` or an analyzer exception).
 

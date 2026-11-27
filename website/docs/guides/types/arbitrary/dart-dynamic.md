@@ -42,9 +42,9 @@ struct MyStruct {
 ## Returning `dynamic`s
 
 Aside from [`DartOpaque`], you may also return a `dynamic` type to Dart by specifing the return type as [`DartDynamic`].
-[`DartDynamic`] is the umbrella type for all [C-representable](https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/io/ffi/enum.DartCObjectType.html)
+[`DartDynamic`] is the umbrella type for all [C-representable](https://docs.rs/allo-isolate/latest/allo_isolate/ffi/enum.DartCObjectType.html)
 Dart values, which can be obtained from Rust types that implement
-[`IntoDart`](https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/trait.IntoDart.html).
+[`IntoDart`](https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/trait.IntoDart.html).
 
 ```rust
 pub fn return_dynamic() -> DartDynamic {
@@ -70,4 +70,4 @@ If you only care about accepting or returning an opaque Dart object without inte
 This type is meant to be used only as an escape hatch, if your data cannot be expressed as either a fixed [struct](../translatable/detailed/struct) or [enum](../translatable/detailed/enum).
 
 [`DartOpaque`]: ./dart-opaque
-[`DartDynamic`]: https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/type.DartDynamic.html
+[`DartDynamic`]: https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/type.DartDynamic.html
