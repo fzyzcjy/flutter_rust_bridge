@@ -1061,7 +1061,13 @@ jobs:
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
 
       # execute
+      - if: runner.os == 'Windows'
+        name: Shorten Windows build paths for the MSVC linker
+        shell: pwsh
+        run: |
+          subst R: "$env:GITHUB_WORKSPACE"
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
+        working-directory: ${{ runner.os == 'Windows' && 'R:/' || github.workspace }}
 
   test_flutter_web:
     needs: plan_ci
@@ -1194,6 +1200,11 @@ jobs:
         run: |-
           choco install imagemagick.app tesseract -y
           echo "C:\Program Files\Tesseract-OCR" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - if: runner.os == 'Windows'
+        name: Shorten Windows build paths for the MSVC linker
+        shell: pwsh
+        run: |
+          subst R: "$env:GITHUB_WORKSPACE"
 
       # execute
       - if: ${{ matrix.info.target == 'android' }}
@@ -1226,6 +1237,7 @@ jobs:
       - if: ${{ matrix.info.target != 'android' && matrix.info.platform != 'nixos' }}
         shell: bash
         run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target ${{ matrix.info.target }} --device-id "${QUICKSTART_SMOKE_DEVICE_ID:-${{ matrix.info.device }}}"
+        working-directory: ${{ runner.os == 'Windows' && 'R:/' || github.workspace }}
 
       # report
       - uses: actions/upload-artifact@v4
