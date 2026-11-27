@@ -74,6 +74,9 @@ class LogTwinSse {
   });
 
   @override
+  String toString() => 'LogTwinSse(key: $key, value: $value)';
+
+  @override
   int get hashCode => key.hashCode ^ value.hashCode;
 
   @override
@@ -91,6 +94,9 @@ class MyStreamEntryTwinSse {
   const MyStreamEntryTwinSse({
     required this.hello,
   });
+
+  @override
+  String toString() => 'MyStreamEntryTwinSse(hello: $hello)';
 
   @override
   int get hashCode => hello.hashCode;
@@ -111,6 +117,9 @@ class MyStructContainingStreamSinkTwinSse {
     required this.a,
     required this.b,
   });
+
+  @override
+  String toString() => 'MyStructContainingStreamSinkTwinSse(a: $a, b: $b)';
 
   @override
   int get hashCode => a.hashCode ^ b.hashCode;

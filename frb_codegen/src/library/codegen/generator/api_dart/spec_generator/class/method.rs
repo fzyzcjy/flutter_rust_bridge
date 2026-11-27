@@ -48,11 +48,13 @@ pub(crate) struct GeneratedApiMethods {
     pub(crate) num_methods: usize,
     pub(crate) code: String,
     pub(crate) header: DartHeaderCode,
+    pub(crate) names: Vec<String>,
 }
 
 struct GeneratedApiMethod {
     code: String,
     header: DartHeaderCode,
+    name: String,
 }
 
 pub(crate) fn generate_api_methods(
@@ -70,6 +72,7 @@ pub(crate) fn generate_api_methods(
         num_methods: methods.len(),
         code: methods.iter().map(|x| x.code.clone()).join("\n"),
         header: (methods.iter().map(|x| x.header.clone())).fold(Default::default(), |a, b| a + b),
+        names: methods.iter().map(|x| x.name.clone()).collect(),
     }
 }
 
@@ -192,6 +195,7 @@ fn generate_api_method(
     Some(GeneratedApiMethod {
         code,
         header: api_dart_func.header,
+        name: method_name,
     })
 }
 

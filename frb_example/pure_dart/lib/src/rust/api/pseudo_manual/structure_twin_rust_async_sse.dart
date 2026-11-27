@@ -67,6 +67,10 @@ class StructWithDartKeywordFieldTwinRustAsyncSse {
   });
 
   @override
+  String toString() =>
+      'StructWithDartKeywordFieldTwinRustAsyncSse(class_: $class_, interface_: $interface_)';
+
+  @override
   int get hashCode => class_.hashCode ^ interface_.hashCode;
 
   @override
@@ -86,6 +90,10 @@ class StructWithFieldRenameTwinRustAsyncSse {
   });
 
   @override
+  String toString() =>
+      'StructWithFieldRenameTwinRustAsyncSse(renamed_field: $renamed_field)';
+
+  @override
   int get hashCode => renamed_field.hashCode;
 
   @override
@@ -102,6 +110,9 @@ class StructWithOneFieldTwinRustAsyncSse {
   const StructWithOneFieldTwinRustAsyncSse({
     required this.a,
   });
+
+  @override
+  String toString() => 'StructWithOneFieldTwinRustAsyncSse(a: $a)';
 
   @override
   int get hashCode => a.hashCode;
@@ -124,6 +135,9 @@ class StructWithTwoFieldTwinRustAsyncSse {
   });
 
   @override
+  String toString() => 'StructWithTwoFieldTwinRustAsyncSse(a: $a, b: $b)';
+
+  @override
   int get hashCode => a.hashCode ^ b.hashCode;
 
   @override
@@ -137,6 +151,9 @@ class StructWithTwoFieldTwinRustAsyncSse {
 
 class StructWithZeroFieldTwinRustAsyncSse {
   const StructWithZeroFieldTwinRustAsyncSse();
+
+  @override
+  String toString() => 'StructWithZeroFieldTwinRustAsyncSse()';
 
   @override
   int get hashCode => 0;
@@ -154,6 +171,10 @@ class TupleStructWithOneFieldTwinRustAsyncSse {
   const TupleStructWithOneFieldTwinRustAsyncSse({
     required this.field0,
   });
+
+  @override
+  String toString() =>
+      'TupleStructWithOneFieldTwinRustAsyncSse(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;
@@ -174,6 +195,10 @@ class TupleStructWithTwoFieldTwinRustAsyncSse {
     required this.field0,
     required this.field1,
   });
+
+  @override
+  String toString() =>
+      'TupleStructWithTwoFieldTwinRustAsyncSse(field0: $field0, field1: $field1)';
 
   @override
   int get hashCode => field0.hashCode ^ field1.hashCode;

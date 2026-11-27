@@ -57,7 +57,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt
-      - uses: flutter-actions/setup-flutter@v4
+      - uses: flutter-actions/setup-flutter@v4.3
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
