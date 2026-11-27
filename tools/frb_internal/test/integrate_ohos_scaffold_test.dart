@@ -74,6 +74,45 @@ import 'package:flutter/material.dart';
     });
   }
 
+  for (final alreadyCompatible in [false, true]) {
+    test(
+      'OHOS compatibility normalizes CRLF (annotated: $alreadyCompatible)',
+      () {
+        final temp = Directory.systemTemp.createTempSync('frb-ohos-crlf-');
+        addTearDown(() => temp.deleteSync(recursive: true));
+        const expected =
+            '// Keep the legacy Material API for the older OHOS Flutter fork.\n'
+            '// ignore: deprecated_member_use\n'
+            "import 'package:flutter/material.dart';\n";
+        final source = File('${temp.path}/ohos/ohos_device_smoke_main.dart')
+          ..createSync(recursive: true)
+          ..writeAsStringSync(
+            (alreadyCompatible
+                    ? expected
+                    : "import 'package:flutter/material.dart';\n")
+                .replaceAll('\n', '\r\n'),
+          );
+        if (alreadyCompatible) {
+          // Dart fixes can rewrite the import while preserving CRLF comments.
+          source.writeAsStringSync(
+            source.readAsStringSync().replaceFirst(
+              "material.dart';\r\n",
+              "material.dart';\n",
+            ),
+          );
+        }
+
+        for (var pass = 0; pass < 2; pass++) {
+          preserveOhosCompatibleDesign(
+            package: 'frb_example/flutter_via_create_native_assets',
+            generatedPackageDir: temp.path,
+          );
+          expect(source.readAsStringSync(), expected);
+        }
+      },
+    );
+  }
+
   test('preserved OHOS scaffold paths are explicit', () {
     expect(preservedOhosScaffoldPaths('frb_example/flutter_via_create'), [
       'ohos',

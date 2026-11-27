@@ -39,10 +39,13 @@ void preserveOhosCompatibleDesign({
         '// Keep the legacy Material API for the older OHOS Flutter fork.\n'
         '// ignore: deprecated_member_use\n'
         '$legacyImport';
-    var text = file.readAsStringSync().replaceAll(
-      "import 'package:material_ui/material_ui.dart';",
-      legacyImport,
-    );
+    var text = file
+        .readAsStringSync()
+        .replaceAll('\r\n', '\n')
+        .replaceAll(
+          "import 'package:material_ui/material_ui.dart';",
+          legacyImport,
+        );
     if (!text.contains(compatibleImport)) {
       text = text.replaceAll(
         RegExp(r"^import 'package:flutter/material.dart';$", multiLine: true),
