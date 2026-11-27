@@ -1,5 +1,8 @@
 [advisories]
 unmaintained = "workspace"
+# Keep chrono interoperability for existing Rust APIs. This advisory reports
+# maintenance status, with no patched release; replacing chrono is an API migration.
+ignore = ["RUSTSEC-2026-0543"]
 
 [sources]
 required-git-spec = "rev"
