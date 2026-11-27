@@ -109,7 +109,7 @@ RUN ARCH="$(dpkg --print-architecture)" && \
 RUN cargo install wasm-pack
 
 # Install extra CLI tools used by internal generation and coverage workflows
-RUN cargo install cargo-expand && \
+RUN cargo install cargo-expand --locked && \
     cargo install cargo-llvm-cov && \
     npm install -g all-contributors-cli "yarn@${YARN_VERSION}"
 
