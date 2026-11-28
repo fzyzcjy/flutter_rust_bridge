@@ -115,6 +115,7 @@ mod tests {
 
         assert!(MirType::RustOpaque(MirTypeRustOpaque {
             namespace: Namespace::new_raw("".to_owned()),
+            generic_arg_namespaces: vec![],
             inner: MirRustOpaqueInner(MirLifetimeAwareType::new("".to_owned())),
             codec: RustOpaqueCodecMode::Nom,
             dart_api_type: None,
