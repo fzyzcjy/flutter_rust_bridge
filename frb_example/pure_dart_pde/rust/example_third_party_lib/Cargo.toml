@@ -1,0 +1,9 @@
+[package]
+name = "frb_example_pure_dart_example_third_party_lib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
