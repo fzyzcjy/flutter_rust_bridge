@@ -205,7 +205,7 @@ Chinese characters or whitespace.
 :::caution
 This recipe is contributed by the community. It is not maintained, reviewed, or
 covered by flutter_rust_bridge CI. It replaces the standard Native Assets hooks
-package with a community fork maintained by
+package with a personal fork of the standard hooks package maintained by
 [@star4277](https://github.com/star4277), and build hooks execute third-party
 code during `flutter build` and `flutter run`. Review the pinned sources before
 using them, and prefer CargoKit for production builds until the OHOS toolchain
