@@ -1,5 +1,8 @@
 [advisories]
 unmaintained = "workspace"
+ignore = [
+    { id = "RUSTSEC-2026-0543", reason = "chrono is still supported in bridged APIs; this advisory reports no vulnerability" },
+]
 
 [sources]
 required-git-spec = "rev"

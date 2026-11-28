@@ -24,6 +24,9 @@ class NewTypeIntTwinRustAsync {
   });
 
   @override
+  String toString() => 'NewTypeIntTwinRustAsync(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override

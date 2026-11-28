@@ -24,6 +24,10 @@ class AnotherMacroStructTwinNormal {
   });
 
   @override
+  String toString() =>
+      'AnotherMacroStructTwinNormal(data: $data, nonFinalData: $nonFinalData)';
+
+  @override
   int get hashCode => data.hashCode ^ nonFinalData.hashCode;
 
   @override
@@ -41,6 +45,9 @@ class MacroStruct {
   const MacroStruct({
     required this.data,
   });
+
+  @override
+  String toString() => 'MacroStruct(data: $data)';
 
   @override
   int get hashCode => data.hashCode;

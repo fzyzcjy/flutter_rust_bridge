@@ -178,6 +178,7 @@ mod tests {
             rust_format: false,
             add_mod_to_lib: false,
             build_runner: false,
+            enable_build_runner_filter: false,
             web_enabled: false,
             dart_output: temp_dir.path().join("dart_output"),
             dart_root: temp_dir.path().join("dart_root"),
