@@ -40,9 +40,12 @@ their test matrix is added. A dedicated test entrypoint provides a deterministic
 synchronous Dart-to-Rust device smoke marker; broader FRB API coverage is not
 yet a release gate.
 
-Use the CargoKit backend for OHOS builds. The Native Assets path still depends
-on `native_toolchain_rust` target mappings that do not cover OHOS, so selecting
-that backend does not provide a supported OHOS build today.
+CargoKit is the backend covered by the repository's OHOS CI baseline. With an
+OHOS-enabled Flutter SDK, the Native Assets backend can also be used through a
+community-maintained hooks package; see
+[Native Assets (community-maintained)](#native-assets-community-maintained).
+That path is neither maintained nor release-gated by flutter_rust_bridge, so
+prefer CargoKit for production builds until the OHOS toolchain is upstreamed.
 
 ## `OHOS_SDK_HOME`
 
@@ -196,6 +199,174 @@ Flutter or system libraries cannot call the generated Rust bridge.
 If the Rust build fails with an OHOS SDK error, check `OHOS_SDK_HOME` first. It
 must point to the `native` SDK directory and the full path must not contain
 Chinese characters or whitespace.
+
+## Native Assets (community-maintained)
+
+:::caution
+This recipe is contributed by the community. It is not maintained, reviewed, or
+covered by flutter_rust_bridge CI. It replaces the standard Native Assets hooks
+package with a community fork maintained by
+[@star4277](https://github.com/star4277), and build hooks execute third-party
+code during `flutter build` and `flutter run`. Review the pinned sources before
+using them, and prefer CargoKit for production builds until the OHOS toolchain
+is upstreamed. Upstream discussion:
+[#3524](https://github.com/fzyzcjy/flutter_rust_bridge/issues/3524).
+:::
+
+The flutter_rust_bridge generator does not perform the steps below
+automatically.
+
+### Verified versions
+
+The fork was validated with the following versions:
+
+| Component | Verified value |
+| --- | --- |
+| flutter_rust_bridge | `2.14.0-beta.2` |
+| Hooks package | Fork of `flutter_rust_bridge_hooks` at `2.14.0-beta.2` |
+| OHOS Flutter | `3.47.7+ohos-0.0.1-pre`, revision `650641656f`, Dart `3.13.5` |
+| Rust | `1.93.1` |
+
+Other combinations can work, but are not verified. The fork is a snapshot of
+the hooks package; later flutter_rust_bridge releases may change the hook API.
+Check the
+[fork README](https://github.com/star4277/native_toolchain_rust_ohos/blob/main/frb_hooks_ohos/README.md)
+for newer snapshots and setup notes.
+
+### 1. Generate the Native Assets project
+
+Run the normal Native Assets setup on the OHOS Flutter SDK. For an application:
+
+```shell
+flutter_rust_bridge_codegen create my_app \
+  --integration-backend native-assets \
+  --platforms ohos \
+  --skip-fvm-install
+```
+
+For an existing project, run the matching `integrate` command with the same
+flags. For a plugin, omit `--platforms` in both commands: the `package_ffi`
+template does not accept platform filtering. The generated `hook/build.dart`
+already imports `flutter_rust_bridge_hooks`; the remaining steps only change
+where that package and its build dependencies come from. If the project already
+had a `hook/build.dart`, confirm that it calls
+`FlutterRustBridgeNativeAssetsBuilder` as described in
+[Native assets](../../manual/integrate/03-native-assets.md).
+
+Re-running `create` or `integrate` with this version of flutter_rust_bridge
+restores the hosted hooks dependency. Re-apply steps 2 to 4 afterwards.
+
+### 2. Replace the hooks dependency
+
+In the package that contains `hook/build.dart` (the application, or the plugin
+package), replace the existing `flutter_rust_bridge_hooks` entry with a Git
+dependency pinned to a commit:
+
+```yaml
+dependencies:
+  flutter_rust_bridge_hooks:
+    git:
+      url: https://github.com/star4277/native_toolchain_rust_ohos.git
+      path: frb_hooks_ohos
+      ref: 93d6e1b8cc939b50d1849124683f34b23a3bfd49
+```
+
+Do not replace the commit with `main` or another branch. Build hooks are
+executed, so a mutable ref lets later commits change what your build runs.
+
+### 3. Add the overrides at the consumer root
+
+`hooks` and `code_assets` must come from the OHOS-compatible fork, and pub
+resolves one source per package. Add all three entries to the
+`dependency_overrides` section of the package graph root: the application root,
+or the Pub workspace root. Do not put them in a workspace member.
+
+```yaml
+dependency_overrides:
+  hooks:
+    git:
+      url: https://gitcode.com/CPF-Flutter/fluttertpc_dart_native.git
+      path: pkgs/hooks
+      ref: 124484c19678e7fbc21de3ef6726a5e6bd51832e
+  code_assets:
+    git:
+      url: https://gitcode.com/CPF-Flutter/fluttertpc_dart_native.git
+      path: pkgs/code_assets
+      ref: 124484c19678e7fbc21de3ef6726a5e6bd51832e
+  flutter_rust_bridge_hooks:
+    git:
+      url: https://github.com/star4277/native_toolchain_rust_ohos.git
+      path: frb_hooks_ohos
+      ref: 93d6e1b8cc939b50d1849124683f34b23a3bfd49
+```
+
+The `flutter_rust_bridge_hooks` override is required when a workspace member
+already depends on a hosted or local copy of that package. In a plain
+application it is harmless.
+
+A plugin's `example/` application resolves independently. Add the same three
+overrides to `example/pubspec.yaml`, or to the `example` workspace root when
+the example belongs to a workspace.
+
+Re-resolve dependencies:
+
+```shell
+flutter pub get
+```
+
+If the lockfile still resolves the hosted hooks package, force the source
+change:
+
+```shell
+flutter pub upgrade flutter_rust_bridge_hooks native_toolchain_rust
+```
+
+### 4. Add the OHOS Rust targets
+
+In the `rust-toolchain.toml` next to the Rust crate (the directory configured
+as `rust_crate_dir`), add these entries to the existing `targets` array and
+keep the existing `channel` and other settings:
+
+```toml
+"aarch64-unknown-linux-ohos",
+"x86_64-unknown-linux-ohos",
+"armv7-unknown-linux-ohos",
+```
+
+### 5. Build
+
+```shell
+flutter build hap --debug
+```
+
+The fork discovers the native SDK from Flutter's C compiler configuration when
+`OHOS_SDK_HOME` is filtered out of the build hook environment. If the variable
+is available it must point to the native SDK directory, as described in
+[`OHOS_SDK_HOME`](#ohos_sdk_home) above.
+
+### Restoring the standard setup
+
+Switch back to a standard Flutter SDK with these steps:
+
+- remove the three `dependency_overrides` entries and the Git
+  `flutter_rust_bridge_hooks` dependency from the package and its example;
+- restore the hosted `flutter_rust_bridge_hooks` dependency for your
+  flutter_rust_bridge version;
+- remove the three OHOS entries from the `rust-toolchain.toml` `targets` array;
+- run `flutter pub get` and rebuild.
+
+### Troubleshooting
+
+- **Version solving mentions `flutter_rust_bridge_hooks` from git and from
+  hosted**: an override is in a workspace member instead of the workspace root.
+  Move it to the root and remove the member entry.
+- **Hook or `native_toolchain_rust` errors after upgrading
+  flutter_rust_bridge**: the fork is a snapshot of `2.14.0-beta.2`. Use that
+  version, or check the fork README for a newer snapshot.
+- **`dart pub publish` warns about overridden dependencies**: the overrides are
+  for local builds. Keep `publish_to: none` for applications and review the
+  warning before publishing a plugin.
+- **Fetch failures**: both `github.com` and `gitcode.com` must be reachable.
 
 ## Running the signed HAP smoke test on a device
 
