@@ -487,8 +487,10 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   }
 }
 
+// Native tests need core VM-service RPCs for coverage and forced GC.
+// Keep their endpoint stable by avoiding asynchronous DDS startup.
 String _testCommand(DartMode mode) => mode == DartMode.dart
-    ? 'dart --enable-vm-service=0 run test'
+    ? 'dart --enable-vm-service=0 --no-dds run test'
     : 'flutter test';
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests

@@ -4,6 +4,115 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_ohos_sc
 import 'package:test/test.dart';
 
 void main() {
+  for (final package in [
+    'frb_example/flutter_via_create',
+    'frb_example/flutter_via_integrate',
+    'frb_example/flutter_via_create_native_assets',
+  ]) {
+    test('design dependencies respect OHOS compatibility for $package', () {
+      final temp = Directory.systemTemp.createTempSync('frb-ohos-design-');
+      addTearDown(() => temp.deleteSync(recursive: true));
+      final pubspec = File('${temp.path}/pubspec.yaml')
+        ..writeAsStringSync('''
+environment:
+  sdk: ^3.14.0
+dependencies:
+  flutter:
+    sdk: flutter
+  material_ui: ^1.1.0
+''');
+      const modernImport = "import 'package:material_ui/material_ui.dart';\n";
+      final sources = [
+        for (final name in ['lib/main.dart', 'test/widget_test.dart'])
+          File('${temp.path}/$name')
+            ..createSync(recursive: true)
+            ..writeAsStringSync(modernImport),
+      ];
+      final ohosSource = File('${temp.path}/ohos/ohos_device_smoke_main.dart')
+        ..createSync(recursive: true)
+        ..writeAsStringSync("import 'package:flutter/material.dart';\n");
+
+      preserveOhosCompatibleDesign(
+        package: package,
+        generatedPackageDir: temp.path,
+      );
+
+      if (package.endsWith('_native_assets')) {
+        expect(pubspec.readAsStringSync(), contains('material_ui: ^1.1.0'));
+        for (final file in sources) {
+          expect(file.readAsStringSync(), modernImport);
+        }
+      } else {
+        expect(pubspec.readAsStringSync(), isNot(contains('material_ui:')));
+        for (final file in sources) {
+          expect(file.readAsStringSync(), '''
+// Keep the legacy Material API for the older OHOS Flutter fork.
+// ignore: deprecated_member_use
+import 'package:flutter/material.dart';
+''');
+        }
+      }
+
+      final firstManifest = pubspec.readAsStringSync();
+      expect(ohosSource.readAsStringSync(), '''
+// Keep the legacy Material API for the older OHOS Flutter fork.
+// ignore: deprecated_member_use
+import 'package:flutter/material.dart';
+''');
+      final firstSources = sources
+          .map((file) => file.readAsStringSync())
+          .toList();
+      preserveOhosCompatibleDesign(
+        package: package,
+        generatedPackageDir: temp.path,
+      );
+      expect(pubspec.readAsStringSync(), firstManifest);
+      expect(
+        sources.map((file) => file.readAsStringSync()).toList(),
+        firstSources,
+      );
+    });
+  }
+
+  for (final alreadyCompatible in [false, true]) {
+    test(
+      'OHOS compatibility normalizes CRLF (annotated: $alreadyCompatible)',
+      () {
+        final temp = Directory.systemTemp.createTempSync('frb-ohos-crlf-');
+        addTearDown(() => temp.deleteSync(recursive: true));
+        const expected =
+            '// Keep the legacy Material API for the older OHOS Flutter fork.\n'
+            '// ignore: deprecated_member_use\n'
+            "import 'package:flutter/material.dart';\n";
+        final source = File('${temp.path}/ohos/ohos_device_smoke_main.dart')
+          ..createSync(recursive: true)
+          ..writeAsStringSync(
+            (alreadyCompatible
+                    ? expected
+                    : "import 'package:flutter/material.dart';\n")
+                .replaceAll('\n', '\r\n'),
+          );
+        if (alreadyCompatible) {
+          // Dart fixes can rewrite the import while preserving CRLF comments.
+          source.writeAsStringSync(
+            source.readAsStringSync().replaceFirst(
+              "material.dart';\r\n",
+              "material.dart';\n",
+            ),
+          );
+        }
+
+        for (var pass = 0; pass < 2; pass++) {
+          preserveOhosCompatibleDesign(
+            package: 'frb_example/flutter_via_create_native_assets',
+            generatedPackageDir: temp.path,
+          );
+          expect(source.readAsStringSync(), expected);
+        }
+      },
+    );
+  }
+
   test('preserved OHOS scaffold paths are explicit', () {
     expect(preservedOhosScaffoldPaths('frb_example/flutter_via_create'), [
       'ohos',

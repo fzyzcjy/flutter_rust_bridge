@@ -165,6 +165,23 @@ final kCiJobs = [
             {'image': image, 'package': package},
     ]),
   ),
+  const CiJob(
+    'test_dart_minimum',
+    matrix: CiMatrix([
+      {'package': 'frb_dart', 'dart': '3.9.2'},
+      {'package': 'frb_hooks', 'dart': '3.10.0'},
+    ]),
+  ),
+  const CiJob(
+    'test_flutter_minimum',
+    matrix: CiMatrix([
+      {'package': 'frb_example/flutter_via_create', 'flutter': '3.41.0'},
+      {
+        'package': 'frb_example/flutter_via_create_native_assets',
+        'flutter': '3.47.0',
+      },
+    ]),
+  ),
   CiJob(
     'test_dart_web',
     matrix: CiMatrix([

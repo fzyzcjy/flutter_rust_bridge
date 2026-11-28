@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:frb_example_gallery/src/rust/api/mandelbrot.dart';
 
 class AnimatedReplaceableImage extends StatefulWidget {
@@ -35,21 +35,21 @@ class AnimatedReplaceableImageState extends State<AnimatedReplaceableImage> {
     return Image(
       image: widget.image,
       fit: BoxFit.fill,
-      frameBuilder: (
-        BuildContext context,
-        Widget child,
-        int? frame,
-        bool wasSynchronouslyLoaded,
-      ) =>
-          (frame == null && previousImage != null)
-              ? Stack(
-                  fit: StackFit.passthrough,
-                  children: [
-                    Image(image: previousImage!, fit: BoxFit.fill),
-                    child,
-                  ],
-                )
-              : child,
+      frameBuilder:
+          (
+            BuildContext context,
+            Widget child,
+            int? frame,
+            bool wasSynchronouslyLoaded,
+          ) => (frame == null && previousImage != null)
+          ? Stack(
+              fit: StackFit.passthrough,
+              children: [
+                Image(image: previousImage!, fit: BoxFit.fill),
+                child,
+              ],
+            )
+          : child,
     );
   }
 }

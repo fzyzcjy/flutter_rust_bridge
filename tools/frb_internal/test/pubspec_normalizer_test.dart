@@ -4,33 +4,73 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalize
 import 'package:test/test.dart';
 
 void main() {
-  test('pubspec yaml normalization keeps checked-in Dart minimum', () {
-    expect(
-      normalizePubspecYamlText('''
+  for (final version in ['3.12.0', '3.13.0', '3.14.0']) {
+    test(
+      'pubspec yaml normalization keeps Dart $version template floor stable',
+      () {
+        expect(
+          normalizePubspecYamlText('''
 environment:
-  sdk: ^3.13.0
+  sdk: ^$version
 '''),
-      '''
+          '''
 environment:
   sdk: ^3.11.0
 ''',
+        );
+      },
     );
-  });
 
-  test('pubspec lock normalization keeps Flutter 3.47 app floor stable', () {
-    expect(
-      normalizePubspecLockText('''
+    test('pubspec lock normalization keeps Dart $version app floor stable', () {
+      expect(
+        normalizePubspecLockText('''
 sdks:
-  dart: ">=3.13.0 <4.0.0"
+  dart: ">=$version <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"
 '''),
-      '''
+        '''
 sdks:
   dart: ">=3.11.0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"
 ''',
-    );
-  });
+      );
+    });
+  }
+
+  for (final package in ['material_ui', 'cupertino_ui']) {
+    test('standalone $package keeps its required SDK floor', () {
+      expect(
+        normalizePubspecYamlText('''
+environment:
+  sdk: ^3.14.0
+dependencies:
+  $package: ^1.1.0
+'''),
+        '''
+environment:
+  sdk: ^3.13.0
+dependencies:
+  $package: ^1.1.0
+''',
+      );
+      expect(
+        normalizePubspecLockText('''
+packages:
+  $package:
+    dependency: "direct main"
+sdks:
+  dart: ">=3.14.0 <4.0.0"
+'''),
+        '''
+packages:
+  $package:
+    dependency: "direct main"
+sdks:
+  dart: ">=3.13.0 <4.0.0"
+''',
+      );
+    });
+  }
 
   test('pubspec lock normalization keeps older example floor stable', () {
     expect(

@@ -565,6 +565,32 @@
       ]
     },
     {
+      "id": "test_dart_minimum",
+      "matrix": [
+        {
+          "package": "frb_dart",
+          "dart": "3.9.2"
+        },
+        {
+          "package": "frb_hooks",
+          "dart": "3.10.0"
+        }
+      ]
+    },
+    {
+      "id": "test_flutter_minimum",
+      "matrix": [
+        {
+          "package": "frb_example/flutter_via_create",
+          "flutter": "3.41.0"
+        },
+        {
+          "package": "frb_example/flutter_via_create_native_assets",
+          "flutter": "3.47.0"
+        }
+      ]
+    },
+    {
       "id": "test_dart_web",
       "matrix": [
         {

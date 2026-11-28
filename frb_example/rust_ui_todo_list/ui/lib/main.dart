@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:frb_example_rust_ui_todo_list/src/rust/app.dart';
 import 'package:frb_example_rust_ui_todo_list/src/rust/frb_generated.dart';
 import 'package:styled_widget/styled_widget.dart';
@@ -26,9 +26,8 @@ Widget body(RustState state) {
       for (final filter in Filter.values)
         TextButton(
           onPressed: () => state.filter = filter,
-          child: Text(
-            filter.name,
-          ).textColor(state.filter == filter ? Colors.blue : Colors.black87),
+          child: Text(filter.name)
+              .textColor(state.filter == filter ? Colors.blue : Colors.black87),
         ),
     ].toRow(),
   ].toColumn().padding(all: 16);

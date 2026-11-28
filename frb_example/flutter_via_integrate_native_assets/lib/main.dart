@@ -1,6 +1,6 @@
 // The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.
 
-// import 'package:flutter/material.dart';
+// import 'package:material_ui/material_ui.dart';
 //
 // void main() {
 //   runApp(const MyApp());
@@ -124,7 +124,7 @@
 // }
 //
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_via_integrate_native_assets/src/rust/api/simple.dart';
 import 'package:flutter_via_integrate_native_assets/src/rust/frb_generated.dart';
 

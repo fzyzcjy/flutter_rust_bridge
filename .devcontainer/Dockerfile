@@ -1,7 +1,7 @@
 FROM ghcr.io/cirruslabs/android-sdk:36
 
 # Inlined from https://github.com/cirruslabs/docker-images-flutter/blob/master/sdk/Dockerfile
-ARG FLUTTER_VERSION=3.47.0
+ARG FLUTTER_VERSION=3.50.0
 ENV FLUTTER_HOME=/sdks/flutter \
     FLUTTER_VERSION=${FLUTTER_VERSION}
 ENV FLUTTER_ROOT=${FLUTTER_HOME}
@@ -109,7 +109,7 @@ RUN ARCH="$(dpkg --print-architecture)" && \
 RUN cargo install wasm-pack
 
 # Install extra CLI tools used by internal generation and coverage workflows
-RUN cargo install cargo-expand && \
+RUN cargo install cargo-expand --locked && \
     cargo install cargo-llvm-cov && \
     npm install -g all-contributors-cli "yarn@${YARN_VERSION}"
 
