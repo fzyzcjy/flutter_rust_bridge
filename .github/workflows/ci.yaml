@@ -612,6 +612,9 @@ jobs:
           Move-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $frbWindowsWorkspace
           New-Item -ItemType Junction -Path $env:GITHUB_WORKSPACE -Target $frbWindowsWorkspace | Out-Null
           "FRB_WINDOWS_WORKSPACE=$frbWindowsWorkspace" >> $env:GITHUB_ENV
+          # Cargo intermediate paths can exceed MAX_PATH even with the short checkout.
+          $frbWindowsBuildDir = Join-Path ([IO.Path]::GetPathRoot($env:GITHUB_WORKSPACE)) 'frb-cargo/{workspace-path-hash}'
+          "CARGO_BUILD_BUILD_DIR=$frbWindowsBuildDir" >> $env:GITHUB_ENV
       - run: ./frb_internal build-flutter --package ${{ matrix.info.package }} --target ${{ matrix.info.target }}
         working-directory: ${{ runner.os == 'Windows' && env.FRB_WINDOWS_WORKSPACE || github.workspace }}
 
@@ -1074,6 +1077,9 @@ jobs:
           Move-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $frbWindowsWorkspace
           New-Item -ItemType Junction -Path $env:GITHUB_WORKSPACE -Target $frbWindowsWorkspace | Out-Null
           "FRB_WINDOWS_WORKSPACE=$frbWindowsWorkspace" >> $env:GITHUB_ENV
+          # Cargo intermediate paths can exceed MAX_PATH even with the short checkout.
+          $frbWindowsBuildDir = Join-Path ([IO.Path]::GetPathRoot($env:GITHUB_WORKSPACE)) 'frb-cargo/{workspace-path-hash}'
+          "CARGO_BUILD_BUILD_DIR=$frbWindowsBuildDir" >> $env:GITHUB_ENV
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
         working-directory: ${{ runner.os == 'Windows' && env.FRB_WINDOWS_WORKSPACE || github.workspace }}
 
@@ -1217,6 +1223,9 @@ jobs:
           Move-Item -LiteralPath $env:GITHUB_WORKSPACE -Destination $frbWindowsWorkspace
           New-Item -ItemType Junction -Path $env:GITHUB_WORKSPACE -Target $frbWindowsWorkspace | Out-Null
           "FRB_WINDOWS_WORKSPACE=$frbWindowsWorkspace" >> $env:GITHUB_ENV
+          # Cargo intermediate paths can exceed MAX_PATH even with the short checkout.
+          $frbWindowsBuildDir = Join-Path ([IO.Path]::GetPathRoot($env:GITHUB_WORKSPACE)) 'frb-cargo/{workspace-path-hash}'
+          "CARGO_BUILD_BUILD_DIR=$frbWindowsBuildDir" >> $env:GITHUB_ENV
 
       # execute
       - if: ${{ matrix.info.target == 'android' }}
