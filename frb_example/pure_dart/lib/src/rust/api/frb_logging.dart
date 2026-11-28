@@ -49,6 +49,10 @@ class FrbLogRecord {
   });
 
   @override
+  String toString() =>
+      'FrbLogRecord(level: $level, message: $message, target: $target, modulePath: $modulePath, file: $file, line: $line)';
+
+  @override
   int get hashCode =>
       level.hashCode ^
       message.hashCode ^

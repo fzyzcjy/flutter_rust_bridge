@@ -30,6 +30,10 @@ List<Command<void>> createCommands() {
       _$populateTestMimicQuickstartConfigParser,
       _$parseTestMimicQuickstartConfigResult,
     ),
+    SimpleCommand(
+      'test-build-runner-preservation',
+      testBuildRunnerPreservation,
+    ),
     SimpleCommand('test-upgrade', testUpgrade),
     SimpleConfigCommand(
       'test-rust',
@@ -340,6 +344,14 @@ class MimicQuickstartTester {
         '--integration-backend native-assets',
     };
   }
+}
+
+Future<void> testBuildRunnerPreservation() async {
+  await runPubGetIfNotRunYet('tools/frb_internal');
+  await exec(
+    'dart test integration_test/build_runner_preservation_test.dart',
+    relativePwd: 'tools/frb_internal',
+  );
 }
 
 Future<void> testUpgrade() async {

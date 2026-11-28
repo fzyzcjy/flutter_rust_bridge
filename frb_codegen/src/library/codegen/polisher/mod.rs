@@ -142,6 +142,7 @@ fn execute_build_runner(
 
     let _pb = progress_bar_pack.polish_dart_build_runner.start();
     dart_build_runner(
+        config.enable_build_runner_filter,
         &config.dart_root,
         &config.dart_output,
         needs_json_serializable,

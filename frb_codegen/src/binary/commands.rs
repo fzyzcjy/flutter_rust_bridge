@@ -136,6 +136,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub no_build_runner: bool,
 
+    /// Scope the automatic build_runner run to FRB outputs with `--build-filter`
+    #[arg(long)]
+    pub enable_build_runner_filter: bool,
+
     /// extra_headers is used to add dependencies header
     #[arg(long)]
     pub extra_headers: Option<String>,

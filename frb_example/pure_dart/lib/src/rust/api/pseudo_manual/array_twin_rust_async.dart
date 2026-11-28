@@ -71,6 +71,9 @@ class BlobTwinRustAsync {
   });
 
   @override
+  String toString() => 'BlobTwinRustAsync(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -87,6 +90,9 @@ class FeedIdTwinRustAsync {
   const FeedIdTwinRustAsync({
     required this.field0,
   });
+
+  @override
+  String toString() => 'FeedIdTwinRustAsync(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;
@@ -107,6 +113,9 @@ class MessageIdTwinRustAsync {
   });
 
   @override
+  String toString() => 'MessageIdTwinRustAsync(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -125,6 +134,9 @@ class PointTwinRustAsync {
     required this.x,
     required this.y,
   });
+
+  @override
+  String toString() => 'PointTwinRustAsync(x: $x, y: $y)';
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -159,6 +171,9 @@ class TestIdTwinRustAsync {
   const TestIdTwinRustAsync({
     required this.field0,
   });
+
+  @override
+  String toString() => 'TestIdTwinRustAsync(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;

@@ -16,6 +16,9 @@ class NewSimpleStruct {
   });
 
   @override
+  String toString() => 'NewSimpleStruct(field: $field)';
+
+  @override
   int get hashCode => field.hashCode;
 
   @override

@@ -30,6 +30,9 @@ class EmptyTwinSync {
   const EmptyTwinSync();
 
   @override
+  String toString() => 'EmptyTwinSync()';
+
+  @override
   int get hashCode => 0;
 
   @override
