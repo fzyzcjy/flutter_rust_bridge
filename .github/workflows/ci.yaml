@@ -562,6 +562,12 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+      - if: runner.os == 'Windows'
+        name: Shorten Windows Cargo intermediate paths
+        shell: pwsh
+        # CargoKit sets --target-dir for final artifacts. Move only Cargo's
+        # intermediate files so their paths fit within MSVC's linker limit.
+        run: '"CARGO_BUILD_BUILD_DIR=$env:RUNNER_TEMP\frb-cargo\{workspace-path-hash}" >> $env:GITHUB_ENV'
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
@@ -1057,6 +1063,10 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+      - if: runner.os == 'Windows'
+        name: Shorten Windows Cargo intermediate paths
+        shell: pwsh
+        run: '"CARGO_BUILD_BUILD_DIR=$env:RUNNER_TEMP\frb-cargo\{workspace-path-hash}" >> $env:GITHUB_ENV'
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
@@ -1145,6 +1155,10 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+      - if: runner.os == 'Windows'
+        name: Shorten Windows Cargo intermediate paths
+        shell: pwsh
+        run: '"CARGO_BUILD_BUILD_DIR=$env:RUNNER_TEMP\frb-cargo\{workspace-path-hash}" >> $env:GITHUB_ENV'
       - if: ${{ matrix.info.platform == 'nixos' }}
         uses: cachix/install-nix-action@v31
         with:
