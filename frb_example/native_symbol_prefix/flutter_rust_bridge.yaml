@@ -2,6 +2,6 @@
 rust_input: crate::api
 rust_root: rust
 dart_output: lib/src/rust
-native_symbol_prefix: namespace_fixture_
+native_symbol_prefix: example_2nd_pkg_
 web: false
 local: true

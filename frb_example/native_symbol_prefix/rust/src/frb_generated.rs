@@ -384,7 +384,7 @@ mod io {
 
     // Section: boilerplate
 
-    flutter_rust_bridge::frb_generated_boilerplate_io!("namespace_fixture_");
+    flutter_rust_bridge::frb_generated_boilerplate_io!("example_2nd_pkg_");
 }
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;

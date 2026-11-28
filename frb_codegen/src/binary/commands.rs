@@ -92,7 +92,7 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub rust_output: Option<String>,
 
-    /// Prefix the four package-specific native FRB exports (for static linking).
+    /// Prefix the package-specific native FRB exports (for static linking).
     #[arg(long)]
     pub native_symbol_prefix: Option<String>,
 

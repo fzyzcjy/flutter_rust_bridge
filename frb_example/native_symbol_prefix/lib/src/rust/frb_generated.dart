@@ -64,7 +64,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.14.0-beta.2';
 
   @override
-  String get nativeSymbolPrefix => 'namespace_fixture_';
+  String get nativeSymbolPrefix => 'example_2nd_pkg_';
 
   @override
   int get rustContentHash => -743743597;

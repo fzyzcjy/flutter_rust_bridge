@@ -367,6 +367,7 @@ const sidebars = {
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/expanding-macros',
                         'guides/miscellaneous/pure-dart',
+                        'guides/miscellaneous/native-symbol-prefix',
                         'guides/miscellaneous/isolates',
                         'guides/miscellaneous/harmony-os',
                         'guides/miscellaneous/safety',

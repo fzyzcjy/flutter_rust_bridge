@@ -52,18 +52,15 @@ fn generate_target(target: Target) -> String {
     .concat();
     let body = funcs
         .iter()
-        .map(|f| {
-            let code = f.generate("");
-            match target {
-                Target::Io => code.replace(
-                    "#[unsafe(no_mangle)]",
-                    &format!(
-                        "#[unsafe(export_name = concat!($prefix, \"{}\"))]",
-                        f.partial_func_name
-                    ),
+        .map(|f| match target {
+            Target::Io => f.generate_with_attribute(
+                "",
+                &format!(
+                    "#[unsafe(export_name = concat!($prefix, \"{}\"))]",
+                    f.partial_func_name
                 ),
-                Target::Web => code,
-            }
+            ),
+            Target::Web => f.generate(""),
         })
         .join("\n");
     let macro_args = match target {
