@@ -30,6 +30,12 @@ If the project already has `hook/build.dart`, `integrate` preserves it and print
 
 For existing projects that already use Cargokit, see [Migrate from Cargokit to Native Assets](migrate-cargokit-to-native-assets).
 
+:::caution
+OHOS has a separate community-maintained Native Assets recipe. It is not
+maintained by flutter_rust_bridge and is not covered by CI; see
+[HarmonyOS setup: Native Assets (community-maintained)](../../guides/miscellaneous/harmony-os.md#native-assets-community-maintained).
+:::
+
 ## Rust crate requirements
 
 The Rust crate must be buildable by Cargo for the requested target platform.
