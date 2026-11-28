@@ -1,0 +1,9 @@
+name: frb_example_native_symbol_prefix
+publish_to: none
+environment:
+  sdk: ">=3.9.2 <4.0.0"
+dependencies:
+  flutter_rust_bridge:
+    path: ../../frb_dart
+dev_dependencies:
+  lints: ^5.1.1

@@ -36,6 +36,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         duplicated_c_output: args.duplicated_c_output,
         rust_root: args.rust_root,
         rust_output: args.rust_output,
+        native_symbol_prefix: args.native_symbol_prefix,
         dart_entrypoint_class_name: args.dart_entrypoint_class_name,
         dart_format_line_length: args.dart_format_line_length,
         dart_preamble: args.dart_preamble,

@@ -52,15 +52,9 @@ class ExternalLibrary extends BaseExternalLibrary {
   /// (see https://github.com/flutter/flutter/blob/8b6277e63868c2029f1e2327879b7899be44fbe2/packages/flutter_tools/templates/plugin_ffi/lib/projectName.dart.tmpl#L47-L58),
   /// and flutter_rust_bridge's template also uses the `open()`.
   ///
-  /// Secondly, if you need this function,
-  /// please ensure your Flutter application does not use more than one
-  /// packages which are using flutter_rust_bridge. It is fine to use as many
-  /// packages as you like, as long as only one of them uses flutter_rust_bridge.
-  /// This is because that, flutter_rust_bridge (currently) has some C symbols
-  /// that are the same (i.e. not prefixed) across multiple packages.
-  ///
-  /// Thirdly, if you must use this function and multiple packages-with-flutter_rust_bridge,
-  /// feel free to open an issue in GitHub repository to discuss.
+  /// When linking multiple FRB packages into the process, generate each package
+  /// with a unique `native_symbol_prefix` and share a compatible FRB runtime.
+  /// Executables must also export those symbols for dynamic lookup.
   ///
   /// After reading the remarks above, set [iKnowHowToUseIt] to true to use it :)
   factory ExternalLibrary.process({

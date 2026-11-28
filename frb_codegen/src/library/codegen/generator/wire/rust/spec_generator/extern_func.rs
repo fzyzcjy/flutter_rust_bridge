@@ -28,13 +28,17 @@ pub(crate) struct ExternFuncParam {
 
 impl ExternFunc {
     pub(crate) fn generate(&self, c_symbol_prefix: &str) -> String {
-        let call_convention = match self.target {
-            Target::Io => "extern \"C\"",
-            Target::Web => "",
-        };
         let attribute = match self.target {
             Target::Io => "#[unsafe(no_mangle)]",
             Target::Web => "#[wasm_bindgen]",
+        };
+        self.generate_with_attribute(c_symbol_prefix, attribute)
+    }
+
+    pub(crate) fn generate_with_attribute(&self, c_symbol_prefix: &str, attribute: &str) -> String {
+        let call_convention = match self.target {
+            Target::Io => "extern \"C\"",
+            Target::Web => "",
         };
         let ExternFunc { body, .. } = self;
 
