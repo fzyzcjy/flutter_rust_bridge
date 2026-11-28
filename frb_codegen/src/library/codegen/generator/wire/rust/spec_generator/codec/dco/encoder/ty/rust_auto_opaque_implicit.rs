@@ -88,6 +88,8 @@ mod tests {
             struct_pool: Default::default(),
             enum_pool: Default::default(),
             dart_code_of_type: Default::default(),
+            dart_code_mixin_opt_in: Default::default(),
+            dart_code_mixin_blocked: Default::default(),
             existing_handler: None,
             skips: vec![],
             trait_impls: vec![],

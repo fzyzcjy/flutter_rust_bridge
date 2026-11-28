@@ -147,6 +147,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::DartCollectionDeepEquality)
     }
 
+    pub(crate) fn dart_code_mixin(&self) -> bool {
+        self.any_eq(&FrbAttribute::DartCodeMixin)
+    }
+
     pub(crate) fn positional(&self) -> bool {
         self.any_eq(&FrbAttribute::Positional)
     }
@@ -294,6 +298,7 @@ fn parse_syn_attribute(raw: &str) -> anyhow::Result<Attribute> {
 
 mod frb_keyword {
     syn::custom_keyword!(dart_collection_deep_equality);
+    syn::custom_keyword!(dart_code_mixin);
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
@@ -352,6 +357,7 @@ enum FrbAttribute {
     DartCollectionDeepEquality,
     Dart2Rust(FrbAttributeSerDes),
     DartCode(FrbAttributeDartCode),
+    DartCodeMixin,
     Default(FrbAttributeDefaultValue),
     External,
     Getter,
@@ -442,6 +448,14 @@ impl Parse for FrbAttribute {
                     &lookahead,
                     dart_collection_deep_equality,
                     DartCollectionDeepEquality,
+                )
+            })
+            .or_else(|| {
+                parse_keyword::<dart_code_mixin, _>(
+                    input,
+                    &lookahead,
+                    dart_code_mixin,
+                    DartCodeMixin,
                 )
             })
             // .or_else(|| {
@@ -888,6 +902,11 @@ mod tests {
             "dart_collection_deep_equality",
             FrbAttribute::DartCollectionDeepEquality,
         );
+    }
+
+    #[test]
+    fn test_dart_code_mixin() {
+        simple_keyword_tester("dart_code_mixin", FrbAttribute::DartCodeMixin);
     }
 
     #[test]

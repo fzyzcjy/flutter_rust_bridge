@@ -10,7 +10,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::general_code::GeneralDartCode;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use strum::IntoEnumIterator;
 
 pub type MirStructPool = HashMap<MirStructIdent, MirStruct>;
@@ -23,6 +23,10 @@ pub struct MirPack {
     pub struct_pool: MirStructPool,
     pub enum_pool: MirEnumPool,
     pub dart_code_of_type: HashMap<String, GeneralDartCode>,
+    /// Opaque types whose `#[frb(dart_code_mixin)]` opts into mixing `dart_code` in.
+    pub dart_code_mixin_opt_in: HashSet<String>,
+    /// `#[frb(ui_state)]` types, which never mix `dart_code` in.
+    pub dart_code_mixin_blocked: HashSet<String>,
     pub existing_handler: Option<NamespacedName>,
     pub skips: Vec<IrSkip>,
     pub trait_impls: Vec<MirTraitImpl>,
@@ -216,6 +220,8 @@ mod tests {
             struct_pool: HashMap::new(),
             enum_pool: HashMap::new(),
             dart_code_of_type: HashMap::new(),
+            dart_code_mixin_opt_in: Default::default(),
+            dart_code_mixin_blocked: Default::default(),
             existing_handler: None,
             skips: vec![],
             trait_impls: vec![],

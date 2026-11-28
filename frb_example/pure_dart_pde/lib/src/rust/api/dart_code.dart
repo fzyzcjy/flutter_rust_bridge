@@ -10,11 +10,46 @@ import 'dart:math';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueStructWithDartCodeTwinNormal>>
-abstract class OpaqueStructWithDartCodeTwinNormal
+abstract mixin class OpaqueStructWithDartCodeTwinNormal
     implements RustOpaqueInterface {
+  factory OpaqueStructWithDartCodeTwinNormal() => RustLib.instance.api
+      .crateApiDartCodeOpaqueStructWithDartCodeTwinNormalNew();
+
   Future<int> normalMethodTwinNormal();
 
   static int get dartCodeGetter => 123;
+
+  Future<int> dartCodeMethod() async => await normalMethodTwinNormal() * 2;
+
+  @override
+  bool operator ==(Object other) => other is OpaqueStructWithDartCodeTwinNormal;
+
+  @override
+  int get hashCode => 7;
+
+  @override
+  String toString() => 'OpaqueStructWithDartCodeTwinNormal(dart_code)';
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxiedOpaqueStructWithDartCodeOwnerTwinNormal>>
+abstract class ProxiedOpaqueStructWithDartCodeOwnerTwinNormal
+    implements RustOpaqueInterface {
+  Future<ProxiedOpaqueStructWithDartCodeTwinNormal> innerTwinNormal();
+
+  factory ProxiedOpaqueStructWithDartCodeOwnerTwinNormal() =>
+      RustLib.instance.api
+          .crateApiDartCodeProxiedOpaqueStructWithDartCodeOwnerTwinNormalNew();
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ProxiedOpaqueStructWithDartCodeTwinNormal>>
+abstract mixin class ProxiedOpaqueStructWithDartCodeTwinNormal
+    implements RustOpaqueInterface {
+  Future<int> normalMethodTwinNormal();
+
+  Future<int> dartCodeMethod() async => await normalMethodTwinNormal() * 2;
+
+  @override
+  String toString() => 'ProxiedOpaqueStructWithDartCodeTwinNormal(dart_code)';
 }
 
 class TranslatableStructWithDartCodeTwinNormal {
