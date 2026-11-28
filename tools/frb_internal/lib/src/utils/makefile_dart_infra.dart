@@ -21,6 +21,7 @@ class SimpleExecutor {
     bool? checkExitCode,
     bool silent = false,
     Duration? timeout,
+    bool inheritStdio = false,
   }) async {
     final String command;
     final List<String> args;
@@ -31,14 +32,16 @@ class SimpleExecutor {
       command = '/bin/sh';
       args = ['-c', cmd];
     }
+    final effectivePwd = '${pwd ?? ""}${relativePwd ?? ""}';
     return await runCommand(
       command,
       args,
       env: {...?env, ...?extraEnv},
-      pwd: '${pwd ?? ""}${relativePwd ?? ""}',
+      pwd: effectivePwd,
       checkExitCode: checkExitCode,
       silent: silent,
       timeout: timeout,
+      inheritStdio: inheritStdio,
     );
   }
 }

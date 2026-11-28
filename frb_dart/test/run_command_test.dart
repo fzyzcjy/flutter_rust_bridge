@@ -118,6 +118,59 @@ void main() {
       }
     },
   );
+
+  test(
+    'runCommand inherits stdio without capturing it',
+    skip: !(Platform.isLinux || Platform.isMacOS),
+    () async {
+      final output = await runCommand(
+        '/bin/sh',
+        ['-c', 'echo inherited-stdio-marker; exit 3'],
+        shell: false,
+        inheritStdio: true,
+        checkExitCode: false,
+      );
+
+      expect(output.exitCode, 3);
+      expect(output.stdout, isEmpty);
+      expect(output.stderr, isEmpty);
+    },
+  );
+
+  test(
+    'runCommand enforces the exit code when stdio is inherited',
+    skip: !(Platform.isLinux || Platform.isMacOS),
+    () async {
+      await expectLater(
+        () async => await runCommand(
+          '/bin/sh',
+          ['-c', 'exit 4'],
+          shell: false,
+          inheritStdio: true,
+        ),
+        throwsA(
+          isA<ProcessException>().having((e) => e.exitCode, 'exitCode', 4),
+        ),
+      );
+    },
+  );
+
+  test(
+    'runCommand still honours the timeout when stdio is inherited',
+    skip: !(Platform.isLinux || Platform.isMacOS),
+    () async {
+      await expectLater(
+        () async => await runCommand(
+          '/bin/sh',
+          ['-c', 'sleep 30'],
+          shell: false,
+          inheritStdio: true,
+          timeout: const Duration(seconds: 2),
+        ),
+        throwsA(isA<TimeoutException>()),
+      );
+    },
+  );
 }
 
 Future<bool> _processExists(int pid) async {

@@ -33,6 +33,7 @@ Future<RunCommandOutput> runCommand(
   bool printCommandInStderr = false,
   List<String> removedParentEnvKeys = const [],
   Duration? timeout,
+  bool inheritStdio = false,
 }) async {
   final removedKeysSet = removedParentEnvKeys
       .map((key) => key.toUpperCase())
@@ -61,20 +62,25 @@ Future<RunCommandOutput> runCommand(
     workingDirectory: pwd,
     environment: processEnvironment,
     includeParentEnvironment: removedParentEnvKeys.isEmpty,
+    mode: inheritStdio
+        ? ProcessStartMode.inheritStdio
+        : ProcessStartMode.normal,
   );
 
   final stdoutText = <String>[];
   final stderrText = <String>[];
 
-  process.stdout.transform(utf8.decoder).listen((line) {
-    if (!silent) stdout.writeAndFlush(line);
-    stdoutText.add(line);
-  });
+  if (!inheritStdio) {
+    process.stdout.transform(utf8.decoder).listen((line) {
+      if (!silent) stdout.writeAndFlush(line);
+      stdoutText.add(line);
+    });
 
-  process.stderr.transform(utf8.decoder).listen((line) {
-    if (!silent) stderr.writeAndFlush(line);
-    stderrText.add(line);
-  });
+    process.stderr.transform(utf8.decoder).listen((line) {
+      if (!silent) stderr.writeAndFlush(line);
+      stderrText.add(line);
+    });
+  }
 
   final int exitCode;
   try {

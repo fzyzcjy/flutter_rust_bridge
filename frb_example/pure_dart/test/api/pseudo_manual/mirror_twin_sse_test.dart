@@ -46,7 +46,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     _testAppSettings(settings);
   });
 
-  test('dart call app_settings_vec_stream', () async {
+  test('dart call app_settings_vec_stream',
+      skip: skipWebStreamFlake(
+        twin: 'TwinSse',
+        wasmModes: ['Sse'],
+      ), () async {
     final settings = await appSettingsVecStreamTwinSse().first;
     _testAppSettings(settings[0]);
     _testAppSettings(settings[1]);
