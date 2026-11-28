@@ -36,6 +36,9 @@ class EmptyTwinRustAsync {
   const EmptyTwinRustAsync();
 
   @override
+  String toString() => 'EmptyTwinRustAsync()';
+
+  @override
   int get hashCode => 0;
 
   @override

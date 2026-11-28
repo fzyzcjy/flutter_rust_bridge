@@ -33,6 +33,9 @@ class NonOpaqueStructContainingIpv4Addr {
   });
 
   @override
+  String toString() => 'NonOpaqueStructContainingIpv4Addr(inner: $inner)';
+
+  @override
   int get hashCode => inner.hashCode;
 
   @override

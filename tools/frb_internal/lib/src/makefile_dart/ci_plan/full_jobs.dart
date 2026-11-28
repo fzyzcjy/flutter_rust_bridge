@@ -125,6 +125,7 @@ final kCiJobs = [
         {'info': info},
     ]),
   ),
+  const CiJob('test_build_runner_preservation'),
   CiJob(
     'test_mimic_quickstart',
     matrix: CiMatrix([

@@ -133,6 +133,7 @@
     "dart_root": "{the-working-directory}",
     "duplicated_c_output_path": [],
     "enable_auto_upgrade": true,
+    "enable_build_runner_filter": false,
     "fvm_install_mode": "Normal",
     "rust_crate_dir": "{the-working-directory}",
     "rust_format": true,

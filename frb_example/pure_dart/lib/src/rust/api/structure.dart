@@ -55,6 +55,10 @@ class StructWithDartKeywordFieldTwinNormal {
   });
 
   @override
+  String toString() =>
+      'StructWithDartKeywordFieldTwinNormal(class_: $class_, interface_: $interface_)';
+
+  @override
   int get hashCode => class_.hashCode ^ interface_.hashCode;
 
   @override
@@ -74,6 +78,10 @@ class StructWithFieldRenameTwinNormal {
   });
 
   @override
+  String toString() =>
+      'StructWithFieldRenameTwinNormal(renamed_field: $renamed_field)';
+
+  @override
   int get hashCode => renamed_field.hashCode;
 
   @override
@@ -90,6 +98,9 @@ class StructWithOneFieldTwinNormal {
   const StructWithOneFieldTwinNormal({
     required this.a,
   });
+
+  @override
+  String toString() => 'StructWithOneFieldTwinNormal(a: $a)';
 
   @override
   int get hashCode => a.hashCode;
@@ -112,6 +123,9 @@ class StructWithTwoFieldTwinNormal {
   });
 
   @override
+  String toString() => 'StructWithTwoFieldTwinNormal(a: $a, b: $b)';
+
+  @override
   int get hashCode => a.hashCode ^ b.hashCode;
 
   @override
@@ -125,6 +139,9 @@ class StructWithTwoFieldTwinNormal {
 
 class StructWithZeroFieldTwinNormal {
   const StructWithZeroFieldTwinNormal();
+
+  @override
+  String toString() => 'StructWithZeroFieldTwinNormal()';
 
   @override
   int get hashCode => 0;
@@ -142,6 +159,9 @@ class TupleStructWithOneFieldTwinNormal {
   const TupleStructWithOneFieldTwinNormal({
     required this.field0,
   });
+
+  @override
+  String toString() => 'TupleStructWithOneFieldTwinNormal(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;
@@ -162,6 +182,10 @@ class TupleStructWithTwoFieldTwinNormal {
     required this.field0,
     required this.field1,
   });
+
+  @override
+  String toString() =>
+      'TupleStructWithTwoFieldTwinNormal(field0: $field0, field1: $field1)';
 
   @override
   int get hashCode => field0.hashCode ^ field1.hashCode;

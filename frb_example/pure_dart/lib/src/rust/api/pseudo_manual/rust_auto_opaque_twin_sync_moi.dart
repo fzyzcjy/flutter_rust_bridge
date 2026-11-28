@@ -288,6 +288,10 @@ class StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
   });
 
   @override
+  String toString() =>
+      'StructWithExplicitAutoOpaqueFieldTwinSyncMoi(autoOpaque: $autoOpaque, normal: $normal)';
+
+  @override
   int get hashCode => autoOpaque.hashCode ^ normal.hashCode;
 
   @override
@@ -309,6 +313,10 @@ class StructWithGoodAndOpaqueFieldTwinSyncMoi {
     required this.opaque,
     this.optionOpaque,
   });
+
+  @override
+  String toString() =>
+      'StructWithGoodAndOpaqueFieldTwinSyncMoi(good: $good, opaque: $opaque, optionOpaque: $optionOpaque)';
 
   @override
   int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;

@@ -63,6 +63,9 @@ class BlobTwinSyncSse {
   });
 
   @override
+  String toString() => 'BlobTwinSyncSse(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -79,6 +82,9 @@ class FeedIdTwinSyncSse {
   const FeedIdTwinSyncSse({
     required this.field0,
   });
+
+  @override
+  String toString() => 'FeedIdTwinSyncSse(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;
@@ -99,6 +105,9 @@ class MessageIdTwinSyncSse {
   });
 
   @override
+  String toString() => 'MessageIdTwinSyncSse(field0: $field0)';
+
+  @override
   int get hashCode => field0.hashCode;
 
   @override
@@ -117,6 +126,9 @@ class PointTwinSyncSse {
     required this.x,
     required this.y,
   });
+
+  @override
+  String toString() => 'PointTwinSyncSse(x: $x, y: $y)';
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -151,6 +163,9 @@ class TestIdTwinSyncSse {
   const TestIdTwinSyncSse({
     required this.field0,
   });
+
+  @override
+  String toString() => 'TestIdTwinSyncSse(field0: $field0)';
 
   @override
   int get hashCode => field0.hashCode;

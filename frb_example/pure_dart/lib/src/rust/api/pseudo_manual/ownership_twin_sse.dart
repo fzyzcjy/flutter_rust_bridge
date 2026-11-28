@@ -41,6 +41,9 @@ class SimpleStructForBorrowTwinSse {
   });
 
   @override
+  String toString() => 'SimpleStructForBorrowTwinSse(one: $one)';
+
+  @override
   int get hashCode => one.hashCode;
 
   @override

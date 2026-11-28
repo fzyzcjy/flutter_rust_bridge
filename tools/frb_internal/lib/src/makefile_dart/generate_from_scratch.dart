@@ -41,6 +41,7 @@ Future<void> _generateExampleBuildRunnerOutputs() async {
     'frb_example/pure_dart',
     'frb_example/pure_dart_pde',
   ]) {
+    await exec('dart run build_runner clean', relativePwd: package);
     await exec(
       'dart run build_runner build --delete-conflicting-outputs',
       relativePwd: package,

@@ -64,6 +64,9 @@ class ATwinNormal {
   });
 
   @override
+  String toString() => 'ATwinNormal(a: $a)';
+
+  @override
   int get hashCode => a.hashCode;
 
   @override
@@ -98,6 +101,9 @@ class BTwinNormal {
   });
 
   @override
+  String toString() => 'BTwinNormal(b: $b)';
+
+  @override
   int get hashCode => b.hashCode;
 
   @override
@@ -114,6 +120,9 @@ class BigBuffersTwinNormal {
     required this.int64,
     required this.uint64,
   });
+
+  @override
+  String toString() => 'BigBuffersTwinNormal(int64: $int64, uint64: $uint64)';
 
   @override
   int get hashCode => int64.hashCode ^ uint64.hashCode;
@@ -135,6 +144,9 @@ class CTwinNormal {
   });
 
   @override
+  String toString() => 'CTwinNormal(c: $c)';
+
+  @override
   int get hashCode => c.hashCode;
 
   @override
@@ -151,6 +163,10 @@ class MyNestedStructTwinNormal {
     required this.treeNode,
     required this.weekday,
   });
+
+  @override
+  String toString() =>
+      'MyNestedStructTwinNormal(treeNode: $treeNode, weekday: $weekday)';
 
   @override
   int get hashCode => treeNode.hashCode ^ weekday.hashCode;
@@ -178,6 +194,10 @@ class MyTreeNodeTwinNormal {
   });
 
   @override
+  String toString() =>
+      'MyTreeNodeTwinNormal(valueI32: $valueI32, valueVecU8: $valueVecU8, valueBoolean: $valueBoolean, children: $children)';
+
+  @override
   int get hashCode =>
       valueI32.hashCode ^
       valueVecU8.hashCode ^
@@ -203,6 +223,9 @@ class StructWithEnumTwinNormal {
     required this.abc1,
     required this.abc2,
   });
+
+  @override
+  String toString() => 'StructWithEnumTwinNormal(abc1: $abc1, abc2: $abc2)';
 
   @override
   int get hashCode => abc1.hashCode ^ abc2.hashCode;
