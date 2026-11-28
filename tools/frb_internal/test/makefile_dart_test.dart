@@ -917,7 +917,7 @@ dev_dependencies:
       quickstartSmokeMacosDiagnosticsScriptForTesting,
     ]);
     expect(result.exitCode, 0, reason: '${result.stderr}');
-  });
+  }, skip: Platform.isWindows ? 'needs /bin/sh' : null);
 
   test('quickstart smoke disables DDS for Android runs', () {
     expect(

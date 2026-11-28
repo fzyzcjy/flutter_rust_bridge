@@ -34,7 +34,11 @@ class SimpleExecutor {
     }
     final effectivePwd = '${pwd ?? ""}${relativePwd ?? ""}';
     if (inheritStdio) {
-      assert(!silent && timeout == null);
+      if (silent || timeout != null) {
+        throw ArgumentError(
+          'inheritStdio cannot be combined with silent or timeout',
+        );
+      }
       return await _runCommandInheritingStdio(
         command,
         args,
@@ -69,10 +73,11 @@ Future<RunCommandOutput> _runCommandInheritingStdio(
   required String pwd,
   required bool checkExitCode,
 }) async {
-  stdout.writeln(
+  stdout.write(
     '\x1B[1m> $command ${arguments.join(' ')}\x1B[0m '
-    '(pwd: $pwd, env: $env, inheritStdio: true)',
+    '(pwd: $pwd, env: $env, inheritStdio: true)\n',
   );
+  await stdout.flush();
   final process = await Process.start(
     command,
     arguments,

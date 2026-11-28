@@ -716,21 +716,27 @@ Future<void> _recordMacosQuickstartSmokeDiagnostics(
   _QuickstartSmokeContext context, {
   required String label,
 }) async {
-  final screenshot = context.screenshotFile;
-  final result = await Process.run('/bin/sh', [
-    '-c',
-    quickstartSmokeMacosDiagnosticsScriptForTesting,
-    'sh',
-    screenshot.existsSync() ? screenshot.path : '',
-  ], stderrEncoding: systemEncoding);
-  final report =
-      '===== macOS diagnostics: $label (${DateTime.now().toUtc()}) =====\n'
-      '${result.stdout}${result.stderr}';
-  print(report);
-  context.macosDiagnosticsFile.writeAsStringSync(
-    '$report\n',
-    mode: FileMode.append,
-  );
+  try {
+    final screenshot = context.screenshotFile;
+    final result = await Process.run('/bin/sh', [
+      '-c',
+      quickstartSmokeMacosDiagnosticsScriptForTesting,
+      'sh',
+      screenshot.existsSync() ? screenshot.path : '',
+    ], stderrEncoding: systemEncoding).timeout(const Duration(minutes: 2));
+    final report =
+        '===== macOS diagnostics: $label (${DateTime.now().toUtc()}) =====\n'
+        '${result.stdout}${result.stderr}';
+    print(report);
+    context.macosDiagnosticsFile.writeAsStringSync(
+      '$report\n',
+      mode: FileMode.append,
+    );
+  } on Exception catch (exception, stackTrace) {
+    print(
+      'Failed to record macOS diagnostics ($label): $exception\n$stackTrace',
+    );
+  }
 }
 
 /// The macOS app window sometimes stays black even though the desktop captures
@@ -741,10 +747,20 @@ Future<void> _dumpQuickstartSmokeFlutterTrees(
 ) async {
   // flutter run ignores keys while a previous one is still being handled.
   for (final (key, tree) in quickstartSmokeFlutterTreeDumpKeysForTesting) {
+    if (flutterRun.observedExitCode != null) {
+      print('flutter run already exited, so the $tree tree dump is skipped');
+      break;
+    }
     print('Asking flutter run to dump the $tree tree');
     flutterRun.recordOutput('\n===== $tree tree dump =====\n');
-    flutterRun.process.stdin.write('$key\n');
-    await flutterRun.process.stdin.flush();
+    try {
+      flutterRun.process.stdin.done.ignore();
+      flutterRun.process.stdin.write('$key\n');
+      await flutterRun.process.stdin.flush();
+    } on Exception catch (exception) {
+      print('Could not ask flutter run for the $tree tree: $exception');
+      break;
+    }
     await Future<void>.delayed(const Duration(seconds: 5));
   }
 }
